@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 
+import os
 import json
+from pathlib import Path
+
 
 def get_all_valtypes(d):
     for key, value in d.items():
@@ -71,21 +74,28 @@ class IndentBlock:
 
 
 class Writer:
-    def __init__(self):
+    INDENT_SIZE = 4
+    def __init__(self, output_file=None):
         self.indent_level = 0
+        self._output_file = output_file
+        self._output_file_handle = open(self._output_file, "w") if self._output_file is not None else sys.stdout
+        # TODO: handle closing file
 
     def write(self, line):
-        indent = " " * 4 * self.indent_level
-        print(f"{indent}{line}")
+        """Outputs input text with a newline at current indent level"""
+        indent = " " * self.INDENT_SIZE * self.indent_level
+        print(f"{indent}{line}", file=self._output_file_handle)
 
 
 def emit_trace(trace, writer, top_level=False):
-    writer.write(f"// {trace.description}")
+    if trace.description:
+        writer.write(f"// {trace.description}")
     writer.write(f"class {trace.name.capitalize()} {{")
     writer.write("public:")
 
     with IndentBlock(writer):
         for e in trace.enums:
+            writer.write("")
             writer.write(f"// {e.description}")
             writer.write(f"enum class {e.name.capitalize()} {{")
             with IndentBlock(writer):
@@ -102,12 +112,14 @@ def emit_trace(trace, writer, top_level=False):
                 writer.write("}")
             writer.write("}")
 
+        writer.write("")
         for obj in trace.objects:
             emit_trace(obj, writer)
 
         for field in trace.fields:
-            for line in field.description.split("\n"):
-                writer.write(f"// {line}")
+            if field.description:
+                for line in field.description.split("\n"):
+                    writer.write(f"// {line}")
             if field.is_enum:
                 # TODO: is it allowed to have enum and function with same name?
                 # To help the compiler out in the vector case, add enum keyword.
@@ -158,12 +170,17 @@ def emit_trace(trace, writer, top_level=False):
                             writer.write(f"json[\"{field.name}\"] = std::move(f);")
                         writer.write("return *this;")
                     writer.write("}")
+            writer.write("")
 
         if top_level:
+            pass
             # Include the "type" field at the top level
-            writer.write
+            #writer.write
+
         writer.write("nlohmann::json json{};")
     writer.write("};")
+    writer.write("")
+    # TODO: namespace
 
 
 class Object:
@@ -356,7 +373,9 @@ def create_trace(name, trace_node):
 
     #emit_trace(trace)
     print_obj_structure(trace)
-    emit_trace(trace, Writer())
+    out_dir = Path("generated")
+    os.makedirs(out_dir, exist_ok=True)
+    emit_trace(trace, Writer(out_dir/f"{trace.name}.hpp"))
 
 
 
@@ -372,7 +391,7 @@ def create_traces(schema):
 
 def main():
     schema = {}
-    with open('/Users/jimmyorourke/schema/schema.json') as f:
+    with open('schema.json') as f:
         schema = json.load(f)
 
 
