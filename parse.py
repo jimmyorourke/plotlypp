@@ -3,6 +3,7 @@
 import os
 import json
 from pathlib import Path
+import subprocess
 
 
 def get_all_valtypes(d):
@@ -118,8 +119,11 @@ def emit_trace(trace, writer, top_level=False):
 
         for field in trace.fields:
             if field.description:
-                for line in field.description.split("\n"):
-                    writer.write(f"// {line}")
+                lines = field.description.split("\n")
+                # Dumb hack for clang-format not respecting existing newlines in comments.
+                writer.write(f"// {lines[0]}")
+                for line in lines[1:]:
+                    writer.write(f"// - {line}")
             if field.is_enum:
                 # TODO: is it allowed to have enum and function with same name?
                 # To help the compiler out in the vector case, add enum keyword.
@@ -375,8 +379,10 @@ def create_trace(name, trace_node):
     print_obj_structure(trace)
     out_dir = Path("generated")
     os.makedirs(out_dir, exist_ok=True)
-    emit_trace(trace, Writer(out_dir/f"{trace.name}.hpp"))
-
+    out_file = out_dir/f"{trace.name}.hpp"
+    emit_trace(trace, Writer(out_file))
+    # We did our best with formatting, but let's auto format to catch long comments, etc.
+    subprocess.run(["clang-format", "--style=file", "-i", str(out_file)])
 
 
 

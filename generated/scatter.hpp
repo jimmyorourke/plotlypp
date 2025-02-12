@@ -1,8 +1,19 @@
-// The scatter trace type encompasses line charts, scatter charts, text charts, and bubble charts. The data visualized as scatter point or lines is set in `x` and `y`. Text (appearing either on the chart or on hover only) is via `text`. Bubble charts are achieved by setting `marker.size` and/or `marker.color` to numerical arrays.
+// The scatter trace type encompasses line charts, scatter charts, text charts, and bubble charts. The data visualized
+// as scatter point or lines is set in `x` and `y`. Text (appearing either on the chart or on hover only) is via `text`.
+// Bubble charts are achieved by setting `marker.size` and/or `marker.color` to numerical arrays.
 class Scatter {
-public:
-    
-    // Sets the area to fill with a solid color. Defaults to *none* unless this trace is stacked, then it gets *tonexty* (*tonextx*) if `orientation` is *v* (*h*) Use with `fillcolor` if not *none*. *tozerox* and *tozeroy* fill to x=0 and y=0 respectively. *tonextx* and *tonexty* fill between the endpoints of this trace and the endpoints of the trace before it, connecting those endpoints with straight lines (to make a stacked area graph); if there is no trace before it, they behave like *tozerox* and *tozeroy*. *toself* connects the endpoints of the trace (or each segment of the trace if it has gaps) into a closed shape. *tonext* fills the space between two traces if one completely encloses the other (eg consecutive contour lines), and behaves like *toself* if there is no trace before it. *tonext* should not be used if one trace does not enclose the other. Traces in a `stackgroup` will only fill to (or be filled to) other traces in the same group. With multiple `stackgroup`s or some traces stacked and some not, if fill-linked traces are not already consecutive, the later ones will be pushed down in the drawing order.
+ public:
+    // Sets the area to fill with a solid color. Defaults to *none* unless this trace is stacked, then it gets *tonexty*
+    // (*tonextx*) if `orientation` is *v* (*h*) Use with `fillcolor` if not *none*. *tozerox* and *tozeroy* fill to x=0
+    // and y=0 respectively. *tonextx* and *tonexty* fill between the endpoints of this trace and the endpoints of the
+    // trace before it, connecting those endpoints with straight lines (to make a stacked area graph); if there is no
+    // trace before it, they behave like *tozerox* and *tozeroy*. *toself* connects the endpoints of the trace (or each
+    // segment of the trace if it has gaps) into a closed shape. *tonext* fills the space between two traces if one
+    // completely encloses the other (eg consecutive contour lines), and behaves like *toself* if there is no trace
+    // before it. *tonext* should not be used if one trace does not enclose the other. Traces in a `stackgroup` will
+    // only fill to (or be filled to) other traces in the same group. With multiple `stackgroup`s or some traces stacked
+    // and some not, if fill-linked traces are not already consecutive, the later ones will be pushed down in the
+    // drawing order.
     enum class Fill {
         NONE,
         TOZEROY,
@@ -13,55 +24,80 @@ public:
         TONEXT,
     };
     std::string to_string(Fill e) {
-        switch(e) {
-            case Fill::NONE: return "none";
-            case Fill::TOZEROY: return "tozeroy";
-            case Fill::TOZEROX: return "tozerox";
-            case Fill::TONEXTY: return "tonexty";
-            case Fill::TONEXTX: return "tonextx";
-            case Fill::TOSELF: return "toself";
-            case Fill::TONEXT: return "tonext";
+        switch (e) {
+        case Fill::NONE:
+            return "none";
+        case Fill::TOZEROY:
+            return "tozeroy";
+        case Fill::TOZEROX:
+            return "tozerox";
+        case Fill::TONEXTY:
+            return "tonexty";
+        case Fill::TONEXTX:
+            return "tonextx";
+        case Fill::TOSELF:
+            return "toself";
+        case Fill::TONEXT:
+            return "tonext";
         }
     }
-    
-    // Only relevant when `stackgroup` is used, and only the first `groupnorm` found in the `stackgroup` will be used - including if `visible` is *legendonly* but not if it is `false`. Sets the normalization for the sum of this `stackgroup`. With *fraction*, the value of each trace at each location is divided by the sum of all trace values at that location. *percent* is the same but multiplied by 100 to show percentages. If there are multiple subplots, or multiple `stackgroup`s on one subplot, each will be normalized within its own set.
+
+    // Only relevant when `stackgroup` is used, and only the first `groupnorm` found in the `stackgroup` will be used -
+    // including if `visible` is *legendonly* but not if it is `false`. Sets the normalization for the sum of this
+    // `stackgroup`. With *fraction*, the value of each trace at each location is divided by the sum of all trace values
+    // at that location. *percent* is the same but multiplied by 100 to show percentages. If there are multiple
+    // subplots, or multiple `stackgroup`s on one subplot, each will be normalized within its own set.
     enum class Groupnorm {
         EMPTY,
         FRACTION,
         PERCENT,
     };
     std::string to_string(Groupnorm e) {
-        switch(e) {
-            case Groupnorm::EMPTY: return "";
-            case Groupnorm::FRACTION: return "fraction";
-            case Groupnorm::PERCENT: return "percent";
+        switch (e) {
+        case Groupnorm::EMPTY:
+            return "";
+        case Groupnorm::FRACTION:
+            return "fraction";
+        case Groupnorm::PERCENT:
+            return "percent";
         }
     }
-    
-    // Only relevant in the following cases: 1. when `scattermode` is set to *group*. 2. when `stackgroup` is used, and only the first `orientation` found in the `stackgroup` will be used - including if `visible` is *legendonly* but not if it is `false`. Sets the stacking direction. With *v* (*h*), the y (x) values of subsequent traces are added. Also affects the default value of `fill`.
+
+    // Only relevant in the following cases: 1. when `scattermode` is set to *group*. 2. when `stackgroup` is used, and
+    // only the first `orientation` found in the `stackgroup` will be used - including if `visible` is *legendonly* but
+    // not if it is `false`. Sets the stacking direction. With *v* (*h*), the y (x) values of subsequent traces are
+    // added. Also affects the default value of `fill`.
     enum class Orientation {
         V,
         H,
     };
     std::string to_string(Orientation e) {
-        switch(e) {
-            case Orientation::V: return "v";
-            case Orientation::H: return "h";
+        switch (e) {
+        case Orientation::V:
+            return "v";
+        case Orientation::H:
+            return "h";
         }
     }
-    
-    // Only relevant when `stackgroup` is used, and only the first `stackgaps` found in the `stackgroup` will be used - including if `visible` is *legendonly* but not if it is `false`. Determines how we handle locations at which other traces in this group have data but this one does not. With *infer zero* we insert a zero at these locations. With *interpolate* we linearly interpolate between existing values, and extrapolate a constant beyond the existing values.
+
+    // Only relevant when `stackgroup` is used, and only the first `stackgaps` found in the `stackgroup` will be used -
+    // including if `visible` is *legendonly* but not if it is `false`. Determines how we handle locations at which
+    // other traces in this group have data but this one does not. With *infer zero* we insert a zero at these
+    // locations. With *interpolate* we linearly interpolate between existing values, and extrapolate a constant beyond
+    // the existing values.
     enum class Stackgaps {
         INFER_ZERO,
         INTERPOLATE,
     };
     std::string to_string(Stackgaps e) {
-        switch(e) {
-            case Stackgaps::INFER_ZERO: return "infer zero";
-            case Stackgaps::INTERPOLATE: return "interpolate";
+        switch (e) {
+        case Stackgaps::INFER_ZERO:
+            return "infer zero";
+        case Stackgaps::INTERPOLATE:
+            return "interpolate";
         }
     }
-    
+
     // Sets the positions of the `text` elements with respects to the (x,y) coordinates.
     enum class Textposition {
         TOP_LEFT,
@@ -75,33 +111,46 @@ public:
         BOTTOM_RIGHT,
     };
     std::string to_string(Textposition e) {
-        switch(e) {
-            case Textposition::TOP_LEFT: return "top left";
-            case Textposition::TOP_CENTER: return "top center";
-            case Textposition::TOP_RIGHT: return "top right";
-            case Textposition::MIDDLE_LEFT: return "middle left";
-            case Textposition::MIDDLE_CENTER: return "middle center";
-            case Textposition::MIDDLE_RIGHT: return "middle right";
-            case Textposition::BOTTOM_LEFT: return "bottom left";
-            case Textposition::BOTTOM_CENTER: return "bottom center";
-            case Textposition::BOTTOM_RIGHT: return "bottom right";
+        switch (e) {
+        case Textposition::TOP_LEFT:
+            return "top left";
+        case Textposition::TOP_CENTER:
+            return "top center";
+        case Textposition::TOP_RIGHT:
+            return "top right";
+        case Textposition::MIDDLE_LEFT:
+            return "middle left";
+        case Textposition::MIDDLE_CENTER:
+            return "middle center";
+        case Textposition::MIDDLE_RIGHT:
+            return "middle right";
+        case Textposition::BOTTOM_LEFT:
+            return "bottom left";
+        case Textposition::BOTTOM_CENTER:
+            return "bottom center";
+        case Textposition::BOTTOM_RIGHT:
+            return "bottom right";
         }
     }
-    
-    // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
+
+    // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
+    // legend item (provided that the legend itself is visible).
     enum class Visible {
         TRUE,
         FALSE,
         LEGENDONLY,
     };
     std::string to_string(Visible e) {
-        switch(e) {
-            case Visible::TRUE: return "True";
-            case Visible::FALSE: return "False";
-            case Visible::LEGENDONLY: return "legendonly";
+        switch (e) {
+        case Visible::TRUE:
+            return "True";
+        case Visible::FALSE:
+            return "False";
+        case Visible::LEGENDONLY:
+            return "legendonly";
         }
     }
-    
+
     // Sets the calendar system to use with `x` date data.
     enum class Xcalendar {
         CHINESE,
@@ -122,26 +171,42 @@ public:
         UMMALQURA,
     };
     std::string to_string(Xcalendar e) {
-        switch(e) {
-            case Xcalendar::CHINESE: return "chinese";
-            case Xcalendar::COPTIC: return "coptic";
-            case Xcalendar::DISCWORLD: return "discworld";
-            case Xcalendar::ETHIOPIAN: return "ethiopian";
-            case Xcalendar::GREGORIAN: return "gregorian";
-            case Xcalendar::HEBREW: return "hebrew";
-            case Xcalendar::ISLAMIC: return "islamic";
-            case Xcalendar::JALALI: return "jalali";
-            case Xcalendar::JULIAN: return "julian";
-            case Xcalendar::MAYAN: return "mayan";
-            case Xcalendar::NANAKSHAHI: return "nanakshahi";
-            case Xcalendar::NEPALI: return "nepali";
-            case Xcalendar::PERSIAN: return "persian";
-            case Xcalendar::TAIWAN: return "taiwan";
-            case Xcalendar::THAI: return "thai";
-            case Xcalendar::UMMALQURA: return "ummalqura";
+        switch (e) {
+        case Xcalendar::CHINESE:
+            return "chinese";
+        case Xcalendar::COPTIC:
+            return "coptic";
+        case Xcalendar::DISCWORLD:
+            return "discworld";
+        case Xcalendar::ETHIOPIAN:
+            return "ethiopian";
+        case Xcalendar::GREGORIAN:
+            return "gregorian";
+        case Xcalendar::HEBREW:
+            return "hebrew";
+        case Xcalendar::ISLAMIC:
+            return "islamic";
+        case Xcalendar::JALALI:
+            return "jalali";
+        case Xcalendar::JULIAN:
+            return "julian";
+        case Xcalendar::MAYAN:
+            return "mayan";
+        case Xcalendar::NANAKSHAHI:
+            return "nanakshahi";
+        case Xcalendar::NEPALI:
+            return "nepali";
+        case Xcalendar::PERSIAN:
+            return "persian";
+        case Xcalendar::TAIWAN:
+            return "taiwan";
+        case Xcalendar::THAI:
+            return "thai";
+        case Xcalendar::UMMALQURA:
+            return "ummalqura";
         }
     }
-    
+
     // Only relevant when the axis `type` is *date*. Sets the alignment of data points on the x axis.
     enum class Xperiodalignment {
         START,
@@ -149,13 +214,16 @@ public:
         END,
     };
     std::string to_string(Xperiodalignment e) {
-        switch(e) {
-            case Xperiodalignment::START: return "start";
-            case Xperiodalignment::MIDDLE: return "middle";
-            case Xperiodalignment::END: return "end";
+        switch (e) {
+        case Xperiodalignment::START:
+            return "start";
+        case Xperiodalignment::MIDDLE:
+            return "middle";
+        case Xperiodalignment::END:
+            return "end";
         }
     }
-    
+
     // Sets the calendar system to use with `y` date data.
     enum class Ycalendar {
         CHINESE,
@@ -176,26 +244,42 @@ public:
         UMMALQURA,
     };
     std::string to_string(Ycalendar e) {
-        switch(e) {
-            case Ycalendar::CHINESE: return "chinese";
-            case Ycalendar::COPTIC: return "coptic";
-            case Ycalendar::DISCWORLD: return "discworld";
-            case Ycalendar::ETHIOPIAN: return "ethiopian";
-            case Ycalendar::GREGORIAN: return "gregorian";
-            case Ycalendar::HEBREW: return "hebrew";
-            case Ycalendar::ISLAMIC: return "islamic";
-            case Ycalendar::JALALI: return "jalali";
-            case Ycalendar::JULIAN: return "julian";
-            case Ycalendar::MAYAN: return "mayan";
-            case Ycalendar::NANAKSHAHI: return "nanakshahi";
-            case Ycalendar::NEPALI: return "nepali";
-            case Ycalendar::PERSIAN: return "persian";
-            case Ycalendar::TAIWAN: return "taiwan";
-            case Ycalendar::THAI: return "thai";
-            case Ycalendar::UMMALQURA: return "ummalqura";
+        switch (e) {
+        case Ycalendar::CHINESE:
+            return "chinese";
+        case Ycalendar::COPTIC:
+            return "coptic";
+        case Ycalendar::DISCWORLD:
+            return "discworld";
+        case Ycalendar::ETHIOPIAN:
+            return "ethiopian";
+        case Ycalendar::GREGORIAN:
+            return "gregorian";
+        case Ycalendar::HEBREW:
+            return "hebrew";
+        case Ycalendar::ISLAMIC:
+            return "islamic";
+        case Ycalendar::JALALI:
+            return "jalali";
+        case Ycalendar::JULIAN:
+            return "julian";
+        case Ycalendar::MAYAN:
+            return "mayan";
+        case Ycalendar::NANAKSHAHI:
+            return "nanakshahi";
+        case Ycalendar::NEPALI:
+            return "nepali";
+        case Ycalendar::PERSIAN:
+            return "persian";
+        case Ycalendar::TAIWAN:
+            return "taiwan";
+        case Ycalendar::THAI:
+            return "thai";
+        case Ycalendar::UMMALQURA:
+            return "ummalqura";
         }
     }
-    
+
     // Only relevant when the axis `type` is *date*. Sets the alignment of data points on the y axis.
     enum class Yperiodalignment {
         START,
@@ -203,17 +287,22 @@ public:
         END,
     };
     std::string to_string(Yperiodalignment e) {
-        switch(e) {
-            case Yperiodalignment::START: return "start";
-            case Yperiodalignment::MIDDLE: return "middle";
-            case Yperiodalignment::END: return "end";
+        switch (e) {
+        case Yperiodalignment::START:
+            return "start";
+        case Yperiodalignment::MIDDLE:
+            return "middle";
+        case Yperiodalignment::END:
+            return "end";
         }
     }
-    
+
     class Error_x {
-    public:
-        
-        // Determines the rule used to generate the error bars. If *constant`, the bar lengths are of a constant value. Set this constant in `value`. If *percent*, the bar lengths correspond to a percentage of underlying data. Set this percentage in `value`. If *sqrt*, the bar lengths correspond to the square of the underlying data. If *data*, the bar lengths are set with data set `array`.
+     public:
+        // Determines the rule used to generate the error bars. If *constant`, the bar lengths are of a constant value.
+        // Set this constant in `value`. If *percent*, the bar lengths correspond to a percentage of underlying data.
+        // Set this percentage in `value`. If *sqrt*, the bar lengths correspond to the square of the underlying data.
+        // If *data*, the bar lengths are set with data set `array`.
         enum class Type {
             PERCENT,
             CONSTANT,
@@ -221,110 +310,124 @@ public:
             DATA,
         };
         std::string to_string(Type e) {
-            switch(e) {
-                case Type::PERCENT: return "percent";
-                case Type::CONSTANT: return "constant";
-                case Type::SQRT: return "sqrt";
-                case Type::DATA: return "data";
+            switch (e) {
+            case Type::PERCENT:
+                return "percent";
+            case Type::CONSTANT:
+                return "constant";
+            case Type::SQRT:
+                return "sqrt";
+            case Type::DATA:
+                return "data";
             }
         }
-        
+
         // Sets the data corresponding the length of each error bar. Values are plotted relative to the underlying data.
-        template <typename T, typename=std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
         error_x& array(std::vector<T> f) {
             json["array"] = std::move(f);
             return *this;
         }
-        
-        // Sets the data corresponding the length of each error bar in the bottom (left) direction for vertical (horizontal) bars Values are plotted relative to the underlying data.
-        template <typename T, typename=std::enable_if_t<std::is_arithmetic_v<T>>>
+
+        // Sets the data corresponding the length of each error bar in the bottom (left) direction for vertical
+        // (horizontal) bars Values are plotted relative to the underlying data.
+        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
         error_x& arrayminus(std::vector<T> f) {
             json["arrayminus"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `arrayminus`.
         error_x& arrayminussrc(std::string f) {
             json["arrayminussrc"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `array`.
         error_x& arraysrc(std::string f) {
             json["arraysrc"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the stoke color of the error bars.
         error_x& color(std::string f) {
             json["color"] = std::move(f);
             return *this;
         }
-        
+
         error_x& copy_ystyle(bool f) {
             json["copy_ystyle"] = std::move(f);
             return *this;
         }
-        
-        // Determines whether or not the error bars have the same length in both direction (top/bottom for vertical bars, left/right for horizontal bars.
+
+        // Determines whether or not the error bars have the same length in both direction (top/bottom for vertical
+        // bars, left/right for horizontal bars.
         error_x& symmetric(bool f) {
             json["symmetric"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the thickness (in px) of the error bars.
         error_x& thickness(double f) {
             json["thickness"] = std::move(f);
             return *this;
         }
-        
+
         error_x& traceref(int f) {
             json["traceref"] = std::move(f);
             return *this;
         }
-        
+
         error_x& tracerefminus(int f) {
             json["tracerefminus"] = std::move(f);
             return *this;
         }
-        
-        // Determines the rule used to generate the error bars. If *constant`, the bar lengths are of a constant value. Set this constant in `value`. If *percent*, the bar lengths correspond to a percentage of underlying data. Set this percentage in `value`. If *sqrt*, the bar lengths correspond to the square of the underlying data. If *data*, the bar lengths are set with data set `array`.
+
+        // Determines the rule used to generate the error bars. If *constant`, the bar lengths are of a constant value.
+        // Set this constant in `value`. If *percent*, the bar lengths correspond to a percentage of underlying data.
+        // Set this percentage in `value`. If *sqrt*, the bar lengths correspond to the square of the underlying data.
+        // If *data*, the bar lengths are set with data set `array`.
         Error_x& type(enum Type f) {
             json["type"] = to_string(f);
             return *this;
         }
-        
-        // Sets the value of either the percentage (if `type` is set to *percent*) or the constant (if `type` is set to *constant*) corresponding to the lengths of the error bars.
+
+        // Sets the value of either the percentage (if `type` is set to *percent*) or the constant (if `type` is set to
+        // *constant*) corresponding to the lengths of the error bars.
         error_x& value(double f) {
             json["value"] = std::move(f);
             return *this;
         }
-        
-        // Sets the value of either the percentage (if `type` is set to *percent*) or the constant (if `type` is set to *constant*) corresponding to the lengths of the error bars in the bottom (left) direction for vertical (horizontal) bars
+
+        // Sets the value of either the percentage (if `type` is set to *percent*) or the constant (if `type` is set to
+        // *constant*) corresponding to the lengths of the error bars in the bottom (left) direction for vertical
+        // (horizontal) bars
         error_x& valueminus(double f) {
             json["valueminus"] = std::move(f);
             return *this;
         }
-        
+
         // Determines whether or not this set of error bars is visible.
         error_x& visible(bool f) {
             json["visible"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the width (in px) of the cross-bar at both ends of the error bars.
         error_x& width(double f) {
             json["width"] = std::move(f);
             return *this;
         }
-        
+
         nlohmann::json json{};
     };
-    
+
     class Error_y {
-    public:
-        
-        // Determines the rule used to generate the error bars. If *constant`, the bar lengths are of a constant value. Set this constant in `value`. If *percent*, the bar lengths correspond to a percentage of underlying data. Set this percentage in `value`. If *sqrt*, the bar lengths correspond to the square of the underlying data. If *data*, the bar lengths are set with data set `array`.
+     public:
+        // Determines the rule used to generate the error bars. If *constant`, the bar lengths are of a constant value.
+        // Set this constant in `value`. If *percent*, the bar lengths correspond to a percentage of underlying data.
+        // Set this percentage in `value`. If *sqrt*, the bar lengths correspond to the square of the underlying data.
+        // If *data*, the bar lengths are set with data set `array`.
         enum class Type {
             PERCENT,
             CONSTANT,
@@ -332,117 +435,130 @@ public:
             DATA,
         };
         std::string to_string(Type e) {
-            switch(e) {
-                case Type::PERCENT: return "percent";
-                case Type::CONSTANT: return "constant";
-                case Type::SQRT: return "sqrt";
-                case Type::DATA: return "data";
+            switch (e) {
+            case Type::PERCENT:
+                return "percent";
+            case Type::CONSTANT:
+                return "constant";
+            case Type::SQRT:
+                return "sqrt";
+            case Type::DATA:
+                return "data";
             }
         }
-        
+
         // Sets the data corresponding the length of each error bar. Values are plotted relative to the underlying data.
-        template <typename T, typename=std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
         error_y& array(std::vector<T> f) {
             json["array"] = std::move(f);
             return *this;
         }
-        
-        // Sets the data corresponding the length of each error bar in the bottom (left) direction for vertical (horizontal) bars Values are plotted relative to the underlying data.
-        template <typename T, typename=std::enable_if_t<std::is_arithmetic_v<T>>>
+
+        // Sets the data corresponding the length of each error bar in the bottom (left) direction for vertical
+        // (horizontal) bars Values are plotted relative to the underlying data.
+        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
         error_y& arrayminus(std::vector<T> f) {
             json["arrayminus"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `arrayminus`.
         error_y& arrayminussrc(std::string f) {
             json["arrayminussrc"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `array`.
         error_y& arraysrc(std::string f) {
             json["arraysrc"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the stoke color of the error bars.
         error_y& color(std::string f) {
             json["color"] = std::move(f);
             return *this;
         }
-        
-        // Determines whether or not the error bars have the same length in both direction (top/bottom for vertical bars, left/right for horizontal bars.
+
+        // Determines whether or not the error bars have the same length in both direction (top/bottom for vertical
+        // bars, left/right for horizontal bars.
         error_y& symmetric(bool f) {
             json["symmetric"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the thickness (in px) of the error bars.
         error_y& thickness(double f) {
             json["thickness"] = std::move(f);
             return *this;
         }
-        
+
         error_y& traceref(int f) {
             json["traceref"] = std::move(f);
             return *this;
         }
-        
+
         error_y& tracerefminus(int f) {
             json["tracerefminus"] = std::move(f);
             return *this;
         }
-        
-        // Determines the rule used to generate the error bars. If *constant`, the bar lengths are of a constant value. Set this constant in `value`. If *percent*, the bar lengths correspond to a percentage of underlying data. Set this percentage in `value`. If *sqrt*, the bar lengths correspond to the square of the underlying data. If *data*, the bar lengths are set with data set `array`.
+
+        // Determines the rule used to generate the error bars. If *constant`, the bar lengths are of a constant value.
+        // Set this constant in `value`. If *percent*, the bar lengths correspond to a percentage of underlying data.
+        // Set this percentage in `value`. If *sqrt*, the bar lengths correspond to the square of the underlying data.
+        // If *data*, the bar lengths are set with data set `array`.
         Error_y& type(enum Type f) {
             json["type"] = to_string(f);
             return *this;
         }
-        
-        // Sets the value of either the percentage (if `type` is set to *percent*) or the constant (if `type` is set to *constant*) corresponding to the lengths of the error bars.
+
+        // Sets the value of either the percentage (if `type` is set to *percent*) or the constant (if `type` is set to
+        // *constant*) corresponding to the lengths of the error bars.
         error_y& value(double f) {
             json["value"] = std::move(f);
             return *this;
         }
-        
-        // Sets the value of either the percentage (if `type` is set to *percent*) or the constant (if `type` is set to *constant*) corresponding to the lengths of the error bars in the bottom (left) direction for vertical (horizontal) bars
+
+        // Sets the value of either the percentage (if `type` is set to *percent*) or the constant (if `type` is set to
+        // *constant*) corresponding to the lengths of the error bars in the bottom (left) direction for vertical
+        // (horizontal) bars
         error_y& valueminus(double f) {
             json["valueminus"] = std::move(f);
             return *this;
         }
-        
+
         // Determines whether or not this set of error bars is visible.
         error_y& visible(bool f) {
             json["visible"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the width (in px) of the cross-bar at both ends of the error bars.
         error_y& width(double f) {
             json["width"] = std::move(f);
             return *this;
         }
-        
+
         nlohmann::json json{};
     };
-    
+
     // Sets the pattern within the marker.
     class Fillpattern {
-    public:
-        
+     public:
         // Determines whether `marker.color` should be used as a default to `bgcolor` or a `fgcolor`.
         enum class Fillmode {
             REPLACE,
             OVERLAY,
         };
         std::string to_string(Fillmode e) {
-            switch(e) {
-                case Fillmode::REPLACE: return "replace";
-                case Fillmode::OVERLAY: return "overlay";
+            switch (e) {
+            case Fillmode::REPLACE:
+                return "replace";
+            case Fillmode::OVERLAY:
+                return "overlay";
             }
         }
-        
+
         // Sets the shape of the pattern fill. By default, no pattern is used for filling the area.
         enum class Shape {
             EMPTY,
@@ -455,19 +571,28 @@ public:
             DOT,
         };
         std::string to_string(Shape e) {
-            switch(e) {
-                case Shape::EMPTY: return "";
-                case Shape::SLASH: return "/";
-                case Shape::DOUBLEBACKSLASH: return "\\";
-                case Shape::X: return "x";
-                case Shape::HYPHEN: return "-";
-                case Shape::OR: return "|";
-                case Shape::PLUS: return "+";
-                case Shape::DOT: return ".";
+            switch (e) {
+            case Shape::EMPTY:
+                return "";
+            case Shape::SLASH:
+                return "/";
+            case Shape::DOUBLEBACKSLASH:
+                return "\\";
+            case Shape::X:
+                return "x";
+            case Shape::HYPHEN:
+                return "-";
+            case Shape::OR:
+                return "|";
+            case Shape::PLUS:
+                return "+";
+            case Shape::DOT:
+                return ".";
             }
         }
-        
-        // When there is no colorscale sets the color of background pattern fill. Defaults to a `marker.color` background when `fillmode` is *overlay*. Otherwise, defaults to a transparent background.
+
+        // When there is no colorscale sets the color of background pattern fill. Defaults to a `marker.color`
+        // background when `fillmode` is *overlay*. Otherwise, defaults to a transparent background.
         fillpattern& bgcolor(std::string f) {
             json["bgcolor"] = std::move(f);
             return *this;
@@ -476,14 +601,16 @@ public:
             json["bgcolor"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `bgcolor`.
         fillpattern& bgcolorsrc(std::string f) {
             json["bgcolorsrc"] = std::move(f);
             return *this;
         }
-        
-        // When there is no colorscale sets the color of foreground pattern fill. Defaults to a `marker.color` background when `fillmode` is *replace*. Otherwise, defaults to dark grey or white to increase contrast with the `bgcolor`.
+
+        // When there is no colorscale sets the color of foreground pattern fill. Defaults to a `marker.color`
+        // background when `fillmode` is *replace*. Otherwise, defaults to dark grey or white to increase contrast with
+        // the `bgcolor`.
         fillpattern& fgcolor(std::string f) {
             json["fgcolor"] = std::move(f);
             return *this;
@@ -492,46 +619,48 @@ public:
             json["fgcolor"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `fgcolor`.
         fillpattern& fgcolorsrc(std::string f) {
             json["fgcolorsrc"] = std::move(f);
             return *this;
         }
-        
-        // Sets the opacity of the foreground pattern fill. Defaults to a 0.5 when `fillmode` is *overlay*. Otherwise, defaults to 1.
+
+        // Sets the opacity of the foreground pattern fill. Defaults to a 0.5 when `fillmode` is *overlay*. Otherwise,
+        // defaults to 1.
         fillpattern& fgopacity(double f) {
             json["fgopacity"] = std::move(f);
             return *this;
         }
-        
+
         // Determines whether `marker.color` should be used as a default to `bgcolor` or a `fgcolor`.
-        // Default: replace
+        // - Default: replace
         Fillpattern& fillmode(enum Fillmode f) {
             json["fillmode"] = to_string(f);
             return *this;
         }
-        
+
         // Sets the shape of the pattern fill. By default, no pattern is used for filling the area.
-        // Default: 
+        // - Default:
         Fillpattern& shape(enum Shape f) {
             json["shape"] = to_string(f);
             return *this;
         }
         fillpattern& shape(const std::vector<enum Shape>& f) {
             std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
             json["shape"] = std::move(stringified);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `shape`.
         fillpattern& shapesrc(std::string f) {
             json["shapesrc"] = std::move(f);
             return *this;
         }
-        
-        // Sets the size of unit squares of the pattern fill in pixels, which corresponds to the interval of repetition of the pattern.
+
+        // Sets the size of unit squares of the pattern fill in pixels, which corresponds to the interval of repetition
+        // of the pattern.
         fillpattern& size(double f) {
             json["size"] = std::move(f);
             return *this;
@@ -540,14 +669,16 @@ public:
             json["size"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `size`.
         fillpattern& sizesrc(std::string f) {
             json["sizesrc"] = std::move(f);
             return *this;
         }
-        
-        // Sets the solidity of the pattern fill. Solidity is roughly the fraction of the area filled by the pattern. Solidity of 0 shows only the background color without pattern and solidty of 1 shows only the foreground color without pattern.
+
+        // Sets the solidity of the pattern fill. Solidity is roughly the fraction of the area filled by the pattern.
+        // Solidity of 0 shows only the background color without pattern and solidty of 1 shows only the foreground
+        // color without pattern.
         fillpattern& solidity(double f) {
             json["solidity"] = std::move(f);
             return *this;
@@ -556,37 +687,39 @@ public:
             json["solidity"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `solidity`.
         fillpattern& soliditysrc(std::string f) {
             json["soliditysrc"] = std::move(f);
             return *this;
         }
-        
+
         nlohmann::json json{};
     };
-    
+
     class Hoverlabel {
-    public:
-        
-        // Sets the horizontal alignment of the text content within hover label box. Has an effect only if the hover label text spans more two or more lines
+     public:
+        // Sets the horizontal alignment of the text content within hover label box. Has an effect only if the hover
+        // label text spans more two or more lines
         enum class Align {
             LEFT,
             RIGHT,
             AUTO,
         };
         std::string to_string(Align e) {
-            switch(e) {
-                case Align::LEFT: return "left";
-                case Align::RIGHT: return "right";
-                case Align::AUTO: return "auto";
+            switch (e) {
+            case Align::LEFT:
+                return "left";
+            case Align::RIGHT:
+                return "right";
+            case Align::AUTO:
+                return "auto";
             }
         }
-        
+
         // Sets the font used in hover labels.
         class Font {
-        public:
-            
+         public:
             font& color(std::string f) {
                 json["color"] = std::move(f);
                 return *this;
@@ -595,14 +728,20 @@ public:
                 json["color"] = std::move(f);
                 return *this;
             }
-            
+
             // Sets the source reference on Chart Studio Cloud for `color`.
             font& colorsrc(std::string f) {
                 json["colorsrc"] = std::move(f);
                 return *this;
             }
-            
-            // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to apply a font if it is available on the system which it operates. Provide multiple font families, separated by commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*,, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*, *Raleway*, *Times New Roman*.
+
+            // HTML font family - the typeface that will be applied by the web browser. The web browser will only be
+            // able to apply a font if it is available on the system which it operates. Provide multiple font families,
+            // separated by commas, to indicate the preference in which to apply fonts if they aren't available on the
+            // system. The Chart Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a
+            // server, where only a select number of fonts are installed and supported. These include *Arial*, *Balto*,
+            // *Courier New*, *Droid Sans*,, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open
+            // Sans*, *Overpass*, *PT Sans Narrow*, *Raleway*, *Times New Roman*.
             font& family(std::string f) {
                 json["family"] = std::move(f);
                 return *this;
@@ -611,13 +750,13 @@ public:
                 json["family"] = std::move(f);
                 return *this;
             }
-            
+
             // Sets the source reference on Chart Studio Cloud for `family`.
             font& familysrc(std::string f) {
                 json["familysrc"] = std::move(f);
                 return *this;
             }
-            
+
             font& size(double f) {
                 json["size"] = std::move(f);
                 return *this;
@@ -626,35 +765,36 @@ public:
                 json["size"] = std::move(f);
                 return *this;
             }
-            
+
             // Sets the source reference on Chart Studio Cloud for `size`.
             font& sizesrc(std::string f) {
                 json["sizesrc"] = std::move(f);
                 return *this;
             }
-            
+
             nlohmann::json json{};
         };
-        
-        // Sets the horizontal alignment of the text content within hover label box. Has an effect only if the hover label text spans more two or more lines
-        // Default: auto
+
+        // Sets the horizontal alignment of the text content within hover label box. Has an effect only if the hover
+        // label text spans more two or more lines
+        // - Default: auto
         Hoverlabel& align(enum Align f) {
             json["align"] = to_string(f);
             return *this;
         }
         hoverlabel& align(const std::vector<enum Align>& f) {
             std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
             json["align"] = std::move(stringified);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `align`.
         hoverlabel& alignsrc(std::string f) {
             json["alignsrc"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the background color of the hover labels for this trace
         hoverlabel& bgcolor(std::string f) {
             json["bgcolor"] = std::move(f);
@@ -664,13 +804,13 @@ public:
             json["bgcolor"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `bgcolor`.
         hoverlabel& bgcolorsrc(std::string f) {
             json["bgcolorsrc"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the border color of the hover labels for this trace.
         hoverlabel& bordercolor(std::string f) {
             json["bordercolor"] = std::move(f);
@@ -680,20 +820,23 @@ public:
             json["bordercolor"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `bordercolor`.
         hoverlabel& bordercolorsrc(std::string f) {
             json["bordercolorsrc"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the font used in hover labels.
         hoverlabel& font(class Font f) {
             json["font"] = std::move(f.json);
             return *this;
         }
-        
-        // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole name if it is less than that many characters, but if it is longer, will truncate to `namelength - 3` characters and add an ellipsis.
+
+        // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1
+        // shows the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show
+        // the whole name if it is less than that many characters, but if it is longer, will truncate to `namelength -
+        // 3` characters and add an ellipsis.
         hoverlabel& namelength(int f) {
             json["namelength"] = std::move(f);
             return *this;
@@ -702,61 +845,65 @@ public:
             json["namelength"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `namelength`.
         hoverlabel& namelengthsrc(std::string f) {
             json["namelengthsrc"] = std::move(f);
             return *this;
         }
-        
+
         nlohmann::json json{};
     };
-    
+
     class Legendgrouptitle {
-    public:
-        
+     public:
         // Sets this legend group's title font.
         class Font {
-        public:
-            
+         public:
             font& color(std::string f) {
                 json["color"] = std::move(f);
                 return *this;
             }
-            
-            // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to apply a font if it is available on the system which it operates. Provide multiple font families, separated by commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*,, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*, *Raleway*, *Times New Roman*.
+
+            // HTML font family - the typeface that will be applied by the web browser. The web browser will only be
+            // able to apply a font if it is available on the system which it operates. Provide multiple font families,
+            // separated by commas, to indicate the preference in which to apply fonts if they aren't available on the
+            // system. The Chart Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a
+            // server, where only a select number of fonts are installed and supported. These include *Arial*, *Balto*,
+            // *Courier New*, *Droid Sans*,, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open
+            // Sans*, *Overpass*, *PT Sans Narrow*, *Raleway*, *Times New Roman*.
             font& family(std::string f) {
                 json["family"] = std::move(f);
                 return *this;
             }
-            
+
             font& size(double f) {
                 json["size"] = std::move(f);
                 return *this;
             }
-            
+
             nlohmann::json json{};
         };
-        
+
         // Sets this legend group's title font.
         legendgrouptitle& font(class Font f) {
             json["font"] = std::move(f.json);
             return *this;
         }
-        
+
         // Sets the title of the legend group.
         legendgrouptitle& text(std::string f) {
             json["text"] = std::move(f);
             return *this;
         }
-        
+
         nlohmann::json json{};
     };
-    
+
     class Line {
-    public:
-        
-        // Determines the line shape. With *spline* the lines are drawn using spline interpolation. The other available values correspond to step-wise line shapes.
+     public:
+        // Determines the line shape. With *spline* the lines are drawn using spline interpolation. The other available
+        // values correspond to step-wise line shapes.
         enum class Shape {
             LINEAR,
             SPLINE,
@@ -766,17 +913,25 @@ public:
             VHV,
         };
         std::string to_string(Shape e) {
-            switch(e) {
-                case Shape::LINEAR: return "linear";
-                case Shape::SPLINE: return "spline";
-                case Shape::HV: return "hv";
-                case Shape::VH: return "vh";
-                case Shape::HVH: return "hvh";
-                case Shape::VHV: return "vhv";
+            switch (e) {
+            case Shape::LINEAR:
+                return "linear";
+            case Shape::SPLINE:
+                return "spline";
+            case Shape::HV:
+                return "hv";
+            case Shape::VH:
+                return "vh";
+            case Shape::HVH:
+                return "hvh";
+            case Shape::VHV:
+                return "vhv";
             }
         }
-        
-        // Sets the line back off from the end point of the nth line segment (in px). This option is useful e.g. to avoid overlap with arrowhead markers. With *auto* the lines would trim before markers if `marker.angleref` is set to *previous*.
+
+        // Sets the line back off from the end point of the nth line segment (in px). This option is useful e.g. to
+        // avoid overlap with arrowhead markers. With *auto* the lines would trim before markers if `marker.angleref` is
+        // set to *previous*.
         line& backoff(double f) {
             json["backoff"] = std::move(f);
             return *this;
@@ -785,81 +940,92 @@ public:
             json["backoff"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `backoff`.
         line& backoffsrc(std::string f) {
             json["backoffsrc"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the line color.
         line& color(std::string f) {
             json["color"] = std::move(f);
             return *this;
         }
-        
-        // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
+
+        // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
+        // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
         line& dash(std::string f) {
             json["dash"] = std::move(f);
             return *this;
         }
-        
-        // Determines the line shape. With *spline* the lines are drawn using spline interpolation. The other available values correspond to step-wise line shapes.
-        // Default: linear
+
+        // Determines the line shape. With *spline* the lines are drawn using spline interpolation. The other available
+        // values correspond to step-wise line shapes.
+        // - Default: linear
         Line& shape(enum Shape f) {
             json["shape"] = to_string(f);
             return *this;
         }
-        
-        // Simplifies lines by removing nearly-collinear points. When transitioning lines, it may be desirable to disable this so that the number of points along the resulting SVG path is unaffected.
+
+        // Simplifies lines by removing nearly-collinear points. When transitioning lines, it may be desirable to
+        // disable this so that the number of points along the resulting SVG path is unaffected.
         line& simplify(bool f) {
             json["simplify"] = std::move(f);
             return *this;
         }
-        
-        // Has an effect only if `shape` is set to *spline* Sets the amount of smoothing. *0* corresponds to no smoothing (equivalent to a *linear* shape).
+
+        // Has an effect only if `shape` is set to *spline* Sets the amount of smoothing. *0* corresponds to no
+        // smoothing (equivalent to a *linear* shape).
         line& smoothing(double f) {
             json["smoothing"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the line width (in px).
         line& width(double f) {
             json["width"] = std::move(f);
             return *this;
         }
-        
+
         nlohmann::json json{};
     };
-    
+
     class Marker {
-    public:
-        
-        // Sets the reference for marker angle. With *previous*, angle 0 points along the line from the previous point to this one. With *up*, angle 0 points toward the top of the screen.
+     public:
+        // Sets the reference for marker angle. With *previous*, angle 0 points along the line from the previous point
+        // to this one. With *up*, angle 0 points toward the top of the screen.
         enum class Angleref {
             PREVIOUS,
             UP,
         };
         std::string to_string(Angleref e) {
-            switch(e) {
-                case Angleref::PREVIOUS: return "previous";
-                case Angleref::UP: return "up";
+            switch (e) {
+            case Angleref::PREVIOUS:
+                return "previous";
+            case Angleref::UP:
+                return "up";
             }
         }
-        
-        // Has an effect only if `marker.size` is set to a numerical array. Sets the rule for which the data in `size` is converted to pixels.
+
+        // Has an effect only if `marker.size` is set to a numerical array. Sets the rule for which the data in `size`
+        // is converted to pixels.
         enum class Sizemode {
             DIAMETER,
             AREA,
         };
         std::string to_string(Sizemode e) {
-            switch(e) {
-                case Sizemode::DIAMETER: return "diameter";
-                case Sizemode::AREA: return "area";
+            switch (e) {
+            case Sizemode::DIAMETER:
+                return "diameter";
+            case Sizemode::AREA:
+                return "area";
             }
         }
-        
-        // Sets the marker symbol type. Adding 100 is equivalent to appending *-open* to a symbol name. Adding 200 is equivalent to appending *-dot* to a symbol name. Adding 300 is equivalent to appending *-open-dot* or *dot-open* to a symbol name.
+
+        // Sets the marker symbol type. Adding 100 is equivalent to appending *-open* to a symbol name. Adding 200 is
+        // equivalent to appending *-dot* to a symbol name. Adding 300 is equivalent to appending *-open-dot* or
+        // *dot-open* to a symbol name.
         enum class Symbol {
             NUM_0,
             CIRCLE,
@@ -1187,338 +1353,663 @@ public:
             ARROW_WIDE_OPEN,
         };
         std::string to_string(Symbol e) {
-            switch(e) {
-                case Symbol::NUM_0: return "0";
-                case Symbol::CIRCLE: return "circle";
-                case Symbol::NUM_100: return "100";
-                case Symbol::CIRCLE_OPEN: return "circle-open";
-                case Symbol::NUM_200: return "200";
-                case Symbol::CIRCLE_DOT: return "circle-dot";
-                case Symbol::NUM_300: return "300";
-                case Symbol::CIRCLE_OPEN_DOT: return "circle-open-dot";
-                case Symbol::NUM_1: return "1";
-                case Symbol::SQUARE: return "square";
-                case Symbol::NUM_101: return "101";
-                case Symbol::SQUARE_OPEN: return "square-open";
-                case Symbol::NUM_201: return "201";
-                case Symbol::SQUARE_DOT: return "square-dot";
-                case Symbol::NUM_301: return "301";
-                case Symbol::SQUARE_OPEN_DOT: return "square-open-dot";
-                case Symbol::NUM_2: return "2";
-                case Symbol::DIAMOND: return "diamond";
-                case Symbol::NUM_102: return "102";
-                case Symbol::DIAMOND_OPEN: return "diamond-open";
-                case Symbol::NUM_202: return "202";
-                case Symbol::DIAMOND_DOT: return "diamond-dot";
-                case Symbol::NUM_302: return "302";
-                case Symbol::DIAMOND_OPEN_DOT: return "diamond-open-dot";
-                case Symbol::NUM_3: return "3";
-                case Symbol::CROSS: return "cross";
-                case Symbol::NUM_103: return "103";
-                case Symbol::CROSS_OPEN: return "cross-open";
-                case Symbol::NUM_203: return "203";
-                case Symbol::CROSS_DOT: return "cross-dot";
-                case Symbol::NUM_303: return "303";
-                case Symbol::CROSS_OPEN_DOT: return "cross-open-dot";
-                case Symbol::NUM_4: return "4";
-                case Symbol::X: return "x";
-                case Symbol::NUM_104: return "104";
-                case Symbol::X_OPEN: return "x-open";
-                case Symbol::NUM_204: return "204";
-                case Symbol::X_DOT: return "x-dot";
-                case Symbol::NUM_304: return "304";
-                case Symbol::X_OPEN_DOT: return "x-open-dot";
-                case Symbol::NUM_5: return "5";
-                case Symbol::TRIANGLE_UP: return "triangle-up";
-                case Symbol::NUM_105: return "105";
-                case Symbol::TRIANGLE_UP_OPEN: return "triangle-up-open";
-                case Symbol::NUM_205: return "205";
-                case Symbol::TRIANGLE_UP_DOT: return "triangle-up-dot";
-                case Symbol::NUM_305: return "305";
-                case Symbol::TRIANGLE_UP_OPEN_DOT: return "triangle-up-open-dot";
-                case Symbol::NUM_6: return "6";
-                case Symbol::TRIANGLE_DOWN: return "triangle-down";
-                case Symbol::NUM_106: return "106";
-                case Symbol::TRIANGLE_DOWN_OPEN: return "triangle-down-open";
-                case Symbol::NUM_206: return "206";
-                case Symbol::TRIANGLE_DOWN_DOT: return "triangle-down-dot";
-                case Symbol::NUM_306: return "306";
-                case Symbol::TRIANGLE_DOWN_OPEN_DOT: return "triangle-down-open-dot";
-                case Symbol::NUM_7: return "7";
-                case Symbol::TRIANGLE_LEFT: return "triangle-left";
-                case Symbol::NUM_107: return "107";
-                case Symbol::TRIANGLE_LEFT_OPEN: return "triangle-left-open";
-                case Symbol::NUM_207: return "207";
-                case Symbol::TRIANGLE_LEFT_DOT: return "triangle-left-dot";
-                case Symbol::NUM_307: return "307";
-                case Symbol::TRIANGLE_LEFT_OPEN_DOT: return "triangle-left-open-dot";
-                case Symbol::NUM_8: return "8";
-                case Symbol::TRIANGLE_RIGHT: return "triangle-right";
-                case Symbol::NUM_108: return "108";
-                case Symbol::TRIANGLE_RIGHT_OPEN: return "triangle-right-open";
-                case Symbol::NUM_208: return "208";
-                case Symbol::TRIANGLE_RIGHT_DOT: return "triangle-right-dot";
-                case Symbol::NUM_308: return "308";
-                case Symbol::TRIANGLE_RIGHT_OPEN_DOT: return "triangle-right-open-dot";
-                case Symbol::NUM_9: return "9";
-                case Symbol::TRIANGLE_NE: return "triangle-ne";
-                case Symbol::NUM_109: return "109";
-                case Symbol::TRIANGLE_NE_OPEN: return "triangle-ne-open";
-                case Symbol::NUM_209: return "209";
-                case Symbol::TRIANGLE_NE_DOT: return "triangle-ne-dot";
-                case Symbol::NUM_309: return "309";
-                case Symbol::TRIANGLE_NE_OPEN_DOT: return "triangle-ne-open-dot";
-                case Symbol::NUM_10: return "10";
-                case Symbol::TRIANGLE_SE: return "triangle-se";
-                case Symbol::NUM_110: return "110";
-                case Symbol::TRIANGLE_SE_OPEN: return "triangle-se-open";
-                case Symbol::NUM_210: return "210";
-                case Symbol::TRIANGLE_SE_DOT: return "triangle-se-dot";
-                case Symbol::NUM_310: return "310";
-                case Symbol::TRIANGLE_SE_OPEN_DOT: return "triangle-se-open-dot";
-                case Symbol::NUM_11: return "11";
-                case Symbol::TRIANGLE_SW: return "triangle-sw";
-                case Symbol::NUM_111: return "111";
-                case Symbol::TRIANGLE_SW_OPEN: return "triangle-sw-open";
-                case Symbol::NUM_211: return "211";
-                case Symbol::TRIANGLE_SW_DOT: return "triangle-sw-dot";
-                case Symbol::NUM_311: return "311";
-                case Symbol::TRIANGLE_SW_OPEN_DOT: return "triangle-sw-open-dot";
-                case Symbol::NUM_12: return "12";
-                case Symbol::TRIANGLE_NW: return "triangle-nw";
-                case Symbol::NUM_112: return "112";
-                case Symbol::TRIANGLE_NW_OPEN: return "triangle-nw-open";
-                case Symbol::NUM_212: return "212";
-                case Symbol::TRIANGLE_NW_DOT: return "triangle-nw-dot";
-                case Symbol::NUM_312: return "312";
-                case Symbol::TRIANGLE_NW_OPEN_DOT: return "triangle-nw-open-dot";
-                case Symbol::NUM_13: return "13";
-                case Symbol::PENTAGON: return "pentagon";
-                case Symbol::NUM_113: return "113";
-                case Symbol::PENTAGON_OPEN: return "pentagon-open";
-                case Symbol::NUM_213: return "213";
-                case Symbol::PENTAGON_DOT: return "pentagon-dot";
-                case Symbol::NUM_313: return "313";
-                case Symbol::PENTAGON_OPEN_DOT: return "pentagon-open-dot";
-                case Symbol::NUM_14: return "14";
-                case Symbol::HEXAGON: return "hexagon";
-                case Symbol::NUM_114: return "114";
-                case Symbol::HEXAGON_OPEN: return "hexagon-open";
-                case Symbol::NUM_214: return "214";
-                case Symbol::HEXAGON_DOT: return "hexagon-dot";
-                case Symbol::NUM_314: return "314";
-                case Symbol::HEXAGON_OPEN_DOT: return "hexagon-open-dot";
-                case Symbol::NUM_15: return "15";
-                case Symbol::HEXAGON2: return "hexagon2";
-                case Symbol::NUM_115: return "115";
-                case Symbol::HEXAGON2_OPEN: return "hexagon2-open";
-                case Symbol::NUM_215: return "215";
-                case Symbol::HEXAGON2_DOT: return "hexagon2-dot";
-                case Symbol::NUM_315: return "315";
-                case Symbol::HEXAGON2_OPEN_DOT: return "hexagon2-open-dot";
-                case Symbol::NUM_16: return "16";
-                case Symbol::OCTAGON: return "octagon";
-                case Symbol::NUM_116: return "116";
-                case Symbol::OCTAGON_OPEN: return "octagon-open";
-                case Symbol::NUM_216: return "216";
-                case Symbol::OCTAGON_DOT: return "octagon-dot";
-                case Symbol::NUM_316: return "316";
-                case Symbol::OCTAGON_OPEN_DOT: return "octagon-open-dot";
-                case Symbol::NUM_17: return "17";
-                case Symbol::STAR: return "star";
-                case Symbol::NUM_117: return "117";
-                case Symbol::STAR_OPEN: return "star-open";
-                case Symbol::NUM_217: return "217";
-                case Symbol::STAR_DOT: return "star-dot";
-                case Symbol::NUM_317: return "317";
-                case Symbol::STAR_OPEN_DOT: return "star-open-dot";
-                case Symbol::NUM_18: return "18";
-                case Symbol::HEXAGRAM: return "hexagram";
-                case Symbol::NUM_118: return "118";
-                case Symbol::HEXAGRAM_OPEN: return "hexagram-open";
-                case Symbol::NUM_218: return "218";
-                case Symbol::HEXAGRAM_DOT: return "hexagram-dot";
-                case Symbol::NUM_318: return "318";
-                case Symbol::HEXAGRAM_OPEN_DOT: return "hexagram-open-dot";
-                case Symbol::NUM_19: return "19";
-                case Symbol::STAR_TRIANGLE_UP: return "star-triangle-up";
-                case Symbol::NUM_119: return "119";
-                case Symbol::STAR_TRIANGLE_UP_OPEN: return "star-triangle-up-open";
-                case Symbol::NUM_219: return "219";
-                case Symbol::STAR_TRIANGLE_UP_DOT: return "star-triangle-up-dot";
-                case Symbol::NUM_319: return "319";
-                case Symbol::STAR_TRIANGLE_UP_OPEN_DOT: return "star-triangle-up-open-dot";
-                case Symbol::NUM_20: return "20";
-                case Symbol::STAR_TRIANGLE_DOWN: return "star-triangle-down";
-                case Symbol::NUM_120: return "120";
-                case Symbol::STAR_TRIANGLE_DOWN_OPEN: return "star-triangle-down-open";
-                case Symbol::NUM_220: return "220";
-                case Symbol::STAR_TRIANGLE_DOWN_DOT: return "star-triangle-down-dot";
-                case Symbol::NUM_320: return "320";
-                case Symbol::STAR_TRIANGLE_DOWN_OPEN_DOT: return "star-triangle-down-open-dot";
-                case Symbol::NUM_21: return "21";
-                case Symbol::STAR_SQUARE: return "star-square";
-                case Symbol::NUM_121: return "121";
-                case Symbol::STAR_SQUARE_OPEN: return "star-square-open";
-                case Symbol::NUM_221: return "221";
-                case Symbol::STAR_SQUARE_DOT: return "star-square-dot";
-                case Symbol::NUM_321: return "321";
-                case Symbol::STAR_SQUARE_OPEN_DOT: return "star-square-open-dot";
-                case Symbol::NUM_22: return "22";
-                case Symbol::STAR_DIAMOND: return "star-diamond";
-                case Symbol::NUM_122: return "122";
-                case Symbol::STAR_DIAMOND_OPEN: return "star-diamond-open";
-                case Symbol::NUM_222: return "222";
-                case Symbol::STAR_DIAMOND_DOT: return "star-diamond-dot";
-                case Symbol::NUM_322: return "322";
-                case Symbol::STAR_DIAMOND_OPEN_DOT: return "star-diamond-open-dot";
-                case Symbol::NUM_23: return "23";
-                case Symbol::DIAMOND_TALL: return "diamond-tall";
-                case Symbol::NUM_123: return "123";
-                case Symbol::DIAMOND_TALL_OPEN: return "diamond-tall-open";
-                case Symbol::NUM_223: return "223";
-                case Symbol::DIAMOND_TALL_DOT: return "diamond-tall-dot";
-                case Symbol::NUM_323: return "323";
-                case Symbol::DIAMOND_TALL_OPEN_DOT: return "diamond-tall-open-dot";
-                case Symbol::NUM_24: return "24";
-                case Symbol::DIAMOND_WIDE: return "diamond-wide";
-                case Symbol::NUM_124: return "124";
-                case Symbol::DIAMOND_WIDE_OPEN: return "diamond-wide-open";
-                case Symbol::NUM_224: return "224";
-                case Symbol::DIAMOND_WIDE_DOT: return "diamond-wide-dot";
-                case Symbol::NUM_324: return "324";
-                case Symbol::DIAMOND_WIDE_OPEN_DOT: return "diamond-wide-open-dot";
-                case Symbol::NUM_25: return "25";
-                case Symbol::HOURGLASS: return "hourglass";
-                case Symbol::NUM_125: return "125";
-                case Symbol::HOURGLASS_OPEN: return "hourglass-open";
-                case Symbol::NUM_26: return "26";
-                case Symbol::BOWTIE: return "bowtie";
-                case Symbol::NUM_126: return "126";
-                case Symbol::BOWTIE_OPEN: return "bowtie-open";
-                case Symbol::NUM_27: return "27";
-                case Symbol::CIRCLE_CROSS: return "circle-cross";
-                case Symbol::NUM_127: return "127";
-                case Symbol::CIRCLE_CROSS_OPEN: return "circle-cross-open";
-                case Symbol::NUM_28: return "28";
-                case Symbol::CIRCLE_X: return "circle-x";
-                case Symbol::NUM_128: return "128";
-                case Symbol::CIRCLE_X_OPEN: return "circle-x-open";
-                case Symbol::NUM_29: return "29";
-                case Symbol::SQUARE_CROSS: return "square-cross";
-                case Symbol::NUM_129: return "129";
-                case Symbol::SQUARE_CROSS_OPEN: return "square-cross-open";
-                case Symbol::NUM_30: return "30";
-                case Symbol::SQUARE_X: return "square-x";
-                case Symbol::NUM_130: return "130";
-                case Symbol::SQUARE_X_OPEN: return "square-x-open";
-                case Symbol::NUM_31: return "31";
-                case Symbol::DIAMOND_CROSS: return "diamond-cross";
-                case Symbol::NUM_131: return "131";
-                case Symbol::DIAMOND_CROSS_OPEN: return "diamond-cross-open";
-                case Symbol::NUM_32: return "32";
-                case Symbol::DIAMOND_X: return "diamond-x";
-                case Symbol::NUM_132: return "132";
-                case Symbol::DIAMOND_X_OPEN: return "diamond-x-open";
-                case Symbol::NUM_33: return "33";
-                case Symbol::CROSS_THIN: return "cross-thin";
-                case Symbol::NUM_133: return "133";
-                case Symbol::CROSS_THIN_OPEN: return "cross-thin-open";
-                case Symbol::NUM_34: return "34";
-                case Symbol::X_THIN: return "x-thin";
-                case Symbol::NUM_134: return "134";
-                case Symbol::X_THIN_OPEN: return "x-thin-open";
-                case Symbol::NUM_35: return "35";
-                case Symbol::ASTERISK: return "asterisk";
-                case Symbol::NUM_135: return "135";
-                case Symbol::ASTERISK_OPEN: return "asterisk-open";
-                case Symbol::NUM_36: return "36";
-                case Symbol::HASH: return "hash";
-                case Symbol::NUM_136: return "136";
-                case Symbol::HASH_OPEN: return "hash-open";
-                case Symbol::NUM_236: return "236";
-                case Symbol::HASH_DOT: return "hash-dot";
-                case Symbol::NUM_336: return "336";
-                case Symbol::HASH_OPEN_DOT: return "hash-open-dot";
-                case Symbol::NUM_37: return "37";
-                case Symbol::Y_UP: return "y-up";
-                case Symbol::NUM_137: return "137";
-                case Symbol::Y_UP_OPEN: return "y-up-open";
-                case Symbol::NUM_38: return "38";
-                case Symbol::Y_DOWN: return "y-down";
-                case Symbol::NUM_138: return "138";
-                case Symbol::Y_DOWN_OPEN: return "y-down-open";
-                case Symbol::NUM_39: return "39";
-                case Symbol::Y_LEFT: return "y-left";
-                case Symbol::NUM_139: return "139";
-                case Symbol::Y_LEFT_OPEN: return "y-left-open";
-                case Symbol::NUM_40: return "40";
-                case Symbol::Y_RIGHT: return "y-right";
-                case Symbol::NUM_140: return "140";
-                case Symbol::Y_RIGHT_OPEN: return "y-right-open";
-                case Symbol::NUM_41: return "41";
-                case Symbol::LINE_EW: return "line-ew";
-                case Symbol::NUM_141: return "141";
-                case Symbol::LINE_EW_OPEN: return "line-ew-open";
-                case Symbol::NUM_42: return "42";
-                case Symbol::LINE_NS: return "line-ns";
-                case Symbol::NUM_142: return "142";
-                case Symbol::LINE_NS_OPEN: return "line-ns-open";
-                case Symbol::NUM_43: return "43";
-                case Symbol::LINE_NE: return "line-ne";
-                case Symbol::NUM_143: return "143";
-                case Symbol::LINE_NE_OPEN: return "line-ne-open";
-                case Symbol::NUM_44: return "44";
-                case Symbol::LINE_NW: return "line-nw";
-                case Symbol::NUM_144: return "144";
-                case Symbol::LINE_NW_OPEN: return "line-nw-open";
-                case Symbol::NUM_45: return "45";
-                case Symbol::ARROW_UP: return "arrow-up";
-                case Symbol::NUM_145: return "145";
-                case Symbol::ARROW_UP_OPEN: return "arrow-up-open";
-                case Symbol::NUM_46: return "46";
-                case Symbol::ARROW_DOWN: return "arrow-down";
-                case Symbol::NUM_146: return "146";
-                case Symbol::ARROW_DOWN_OPEN: return "arrow-down-open";
-                case Symbol::NUM_47: return "47";
-                case Symbol::ARROW_LEFT: return "arrow-left";
-                case Symbol::NUM_147: return "147";
-                case Symbol::ARROW_LEFT_OPEN: return "arrow-left-open";
-                case Symbol::NUM_48: return "48";
-                case Symbol::ARROW_RIGHT: return "arrow-right";
-                case Symbol::NUM_148: return "148";
-                case Symbol::ARROW_RIGHT_OPEN: return "arrow-right-open";
-                case Symbol::NUM_49: return "49";
-                case Symbol::ARROW_BAR_UP: return "arrow-bar-up";
-                case Symbol::NUM_149: return "149";
-                case Symbol::ARROW_BAR_UP_OPEN: return "arrow-bar-up-open";
-                case Symbol::NUM_50: return "50";
-                case Symbol::ARROW_BAR_DOWN: return "arrow-bar-down";
-                case Symbol::NUM_150: return "150";
-                case Symbol::ARROW_BAR_DOWN_OPEN: return "arrow-bar-down-open";
-                case Symbol::NUM_51: return "51";
-                case Symbol::ARROW_BAR_LEFT: return "arrow-bar-left";
-                case Symbol::NUM_151: return "151";
-                case Symbol::ARROW_BAR_LEFT_OPEN: return "arrow-bar-left-open";
-                case Symbol::NUM_52: return "52";
-                case Symbol::ARROW_BAR_RIGHT: return "arrow-bar-right";
-                case Symbol::NUM_152: return "152";
-                case Symbol::ARROW_BAR_RIGHT_OPEN: return "arrow-bar-right-open";
-                case Symbol::NUM_53: return "53";
-                case Symbol::ARROW: return "arrow";
-                case Symbol::NUM_153: return "153";
-                case Symbol::ARROW_OPEN: return "arrow-open";
-                case Symbol::NUM_54: return "54";
-                case Symbol::ARROW_WIDE: return "arrow-wide";
-                case Symbol::NUM_154: return "154";
-                case Symbol::ARROW_WIDE_OPEN: return "arrow-wide-open";
+            switch (e) {
+            case Symbol::NUM_0:
+                return "0";
+            case Symbol::CIRCLE:
+                return "circle";
+            case Symbol::NUM_100:
+                return "100";
+            case Symbol::CIRCLE_OPEN:
+                return "circle-open";
+            case Symbol::NUM_200:
+                return "200";
+            case Symbol::CIRCLE_DOT:
+                return "circle-dot";
+            case Symbol::NUM_300:
+                return "300";
+            case Symbol::CIRCLE_OPEN_DOT:
+                return "circle-open-dot";
+            case Symbol::NUM_1:
+                return "1";
+            case Symbol::SQUARE:
+                return "square";
+            case Symbol::NUM_101:
+                return "101";
+            case Symbol::SQUARE_OPEN:
+                return "square-open";
+            case Symbol::NUM_201:
+                return "201";
+            case Symbol::SQUARE_DOT:
+                return "square-dot";
+            case Symbol::NUM_301:
+                return "301";
+            case Symbol::SQUARE_OPEN_DOT:
+                return "square-open-dot";
+            case Symbol::NUM_2:
+                return "2";
+            case Symbol::DIAMOND:
+                return "diamond";
+            case Symbol::NUM_102:
+                return "102";
+            case Symbol::DIAMOND_OPEN:
+                return "diamond-open";
+            case Symbol::NUM_202:
+                return "202";
+            case Symbol::DIAMOND_DOT:
+                return "diamond-dot";
+            case Symbol::NUM_302:
+                return "302";
+            case Symbol::DIAMOND_OPEN_DOT:
+                return "diamond-open-dot";
+            case Symbol::NUM_3:
+                return "3";
+            case Symbol::CROSS:
+                return "cross";
+            case Symbol::NUM_103:
+                return "103";
+            case Symbol::CROSS_OPEN:
+                return "cross-open";
+            case Symbol::NUM_203:
+                return "203";
+            case Symbol::CROSS_DOT:
+                return "cross-dot";
+            case Symbol::NUM_303:
+                return "303";
+            case Symbol::CROSS_OPEN_DOT:
+                return "cross-open-dot";
+            case Symbol::NUM_4:
+                return "4";
+            case Symbol::X:
+                return "x";
+            case Symbol::NUM_104:
+                return "104";
+            case Symbol::X_OPEN:
+                return "x-open";
+            case Symbol::NUM_204:
+                return "204";
+            case Symbol::X_DOT:
+                return "x-dot";
+            case Symbol::NUM_304:
+                return "304";
+            case Symbol::X_OPEN_DOT:
+                return "x-open-dot";
+            case Symbol::NUM_5:
+                return "5";
+            case Symbol::TRIANGLE_UP:
+                return "triangle-up";
+            case Symbol::NUM_105:
+                return "105";
+            case Symbol::TRIANGLE_UP_OPEN:
+                return "triangle-up-open";
+            case Symbol::NUM_205:
+                return "205";
+            case Symbol::TRIANGLE_UP_DOT:
+                return "triangle-up-dot";
+            case Symbol::NUM_305:
+                return "305";
+            case Symbol::TRIANGLE_UP_OPEN_DOT:
+                return "triangle-up-open-dot";
+            case Symbol::NUM_6:
+                return "6";
+            case Symbol::TRIANGLE_DOWN:
+                return "triangle-down";
+            case Symbol::NUM_106:
+                return "106";
+            case Symbol::TRIANGLE_DOWN_OPEN:
+                return "triangle-down-open";
+            case Symbol::NUM_206:
+                return "206";
+            case Symbol::TRIANGLE_DOWN_DOT:
+                return "triangle-down-dot";
+            case Symbol::NUM_306:
+                return "306";
+            case Symbol::TRIANGLE_DOWN_OPEN_DOT:
+                return "triangle-down-open-dot";
+            case Symbol::NUM_7:
+                return "7";
+            case Symbol::TRIANGLE_LEFT:
+                return "triangle-left";
+            case Symbol::NUM_107:
+                return "107";
+            case Symbol::TRIANGLE_LEFT_OPEN:
+                return "triangle-left-open";
+            case Symbol::NUM_207:
+                return "207";
+            case Symbol::TRIANGLE_LEFT_DOT:
+                return "triangle-left-dot";
+            case Symbol::NUM_307:
+                return "307";
+            case Symbol::TRIANGLE_LEFT_OPEN_DOT:
+                return "triangle-left-open-dot";
+            case Symbol::NUM_8:
+                return "8";
+            case Symbol::TRIANGLE_RIGHT:
+                return "triangle-right";
+            case Symbol::NUM_108:
+                return "108";
+            case Symbol::TRIANGLE_RIGHT_OPEN:
+                return "triangle-right-open";
+            case Symbol::NUM_208:
+                return "208";
+            case Symbol::TRIANGLE_RIGHT_DOT:
+                return "triangle-right-dot";
+            case Symbol::NUM_308:
+                return "308";
+            case Symbol::TRIANGLE_RIGHT_OPEN_DOT:
+                return "triangle-right-open-dot";
+            case Symbol::NUM_9:
+                return "9";
+            case Symbol::TRIANGLE_NE:
+                return "triangle-ne";
+            case Symbol::NUM_109:
+                return "109";
+            case Symbol::TRIANGLE_NE_OPEN:
+                return "triangle-ne-open";
+            case Symbol::NUM_209:
+                return "209";
+            case Symbol::TRIANGLE_NE_DOT:
+                return "triangle-ne-dot";
+            case Symbol::NUM_309:
+                return "309";
+            case Symbol::TRIANGLE_NE_OPEN_DOT:
+                return "triangle-ne-open-dot";
+            case Symbol::NUM_10:
+                return "10";
+            case Symbol::TRIANGLE_SE:
+                return "triangle-se";
+            case Symbol::NUM_110:
+                return "110";
+            case Symbol::TRIANGLE_SE_OPEN:
+                return "triangle-se-open";
+            case Symbol::NUM_210:
+                return "210";
+            case Symbol::TRIANGLE_SE_DOT:
+                return "triangle-se-dot";
+            case Symbol::NUM_310:
+                return "310";
+            case Symbol::TRIANGLE_SE_OPEN_DOT:
+                return "triangle-se-open-dot";
+            case Symbol::NUM_11:
+                return "11";
+            case Symbol::TRIANGLE_SW:
+                return "triangle-sw";
+            case Symbol::NUM_111:
+                return "111";
+            case Symbol::TRIANGLE_SW_OPEN:
+                return "triangle-sw-open";
+            case Symbol::NUM_211:
+                return "211";
+            case Symbol::TRIANGLE_SW_DOT:
+                return "triangle-sw-dot";
+            case Symbol::NUM_311:
+                return "311";
+            case Symbol::TRIANGLE_SW_OPEN_DOT:
+                return "triangle-sw-open-dot";
+            case Symbol::NUM_12:
+                return "12";
+            case Symbol::TRIANGLE_NW:
+                return "triangle-nw";
+            case Symbol::NUM_112:
+                return "112";
+            case Symbol::TRIANGLE_NW_OPEN:
+                return "triangle-nw-open";
+            case Symbol::NUM_212:
+                return "212";
+            case Symbol::TRIANGLE_NW_DOT:
+                return "triangle-nw-dot";
+            case Symbol::NUM_312:
+                return "312";
+            case Symbol::TRIANGLE_NW_OPEN_DOT:
+                return "triangle-nw-open-dot";
+            case Symbol::NUM_13:
+                return "13";
+            case Symbol::PENTAGON:
+                return "pentagon";
+            case Symbol::NUM_113:
+                return "113";
+            case Symbol::PENTAGON_OPEN:
+                return "pentagon-open";
+            case Symbol::NUM_213:
+                return "213";
+            case Symbol::PENTAGON_DOT:
+                return "pentagon-dot";
+            case Symbol::NUM_313:
+                return "313";
+            case Symbol::PENTAGON_OPEN_DOT:
+                return "pentagon-open-dot";
+            case Symbol::NUM_14:
+                return "14";
+            case Symbol::HEXAGON:
+                return "hexagon";
+            case Symbol::NUM_114:
+                return "114";
+            case Symbol::HEXAGON_OPEN:
+                return "hexagon-open";
+            case Symbol::NUM_214:
+                return "214";
+            case Symbol::HEXAGON_DOT:
+                return "hexagon-dot";
+            case Symbol::NUM_314:
+                return "314";
+            case Symbol::HEXAGON_OPEN_DOT:
+                return "hexagon-open-dot";
+            case Symbol::NUM_15:
+                return "15";
+            case Symbol::HEXAGON2:
+                return "hexagon2";
+            case Symbol::NUM_115:
+                return "115";
+            case Symbol::HEXAGON2_OPEN:
+                return "hexagon2-open";
+            case Symbol::NUM_215:
+                return "215";
+            case Symbol::HEXAGON2_DOT:
+                return "hexagon2-dot";
+            case Symbol::NUM_315:
+                return "315";
+            case Symbol::HEXAGON2_OPEN_DOT:
+                return "hexagon2-open-dot";
+            case Symbol::NUM_16:
+                return "16";
+            case Symbol::OCTAGON:
+                return "octagon";
+            case Symbol::NUM_116:
+                return "116";
+            case Symbol::OCTAGON_OPEN:
+                return "octagon-open";
+            case Symbol::NUM_216:
+                return "216";
+            case Symbol::OCTAGON_DOT:
+                return "octagon-dot";
+            case Symbol::NUM_316:
+                return "316";
+            case Symbol::OCTAGON_OPEN_DOT:
+                return "octagon-open-dot";
+            case Symbol::NUM_17:
+                return "17";
+            case Symbol::STAR:
+                return "star";
+            case Symbol::NUM_117:
+                return "117";
+            case Symbol::STAR_OPEN:
+                return "star-open";
+            case Symbol::NUM_217:
+                return "217";
+            case Symbol::STAR_DOT:
+                return "star-dot";
+            case Symbol::NUM_317:
+                return "317";
+            case Symbol::STAR_OPEN_DOT:
+                return "star-open-dot";
+            case Symbol::NUM_18:
+                return "18";
+            case Symbol::HEXAGRAM:
+                return "hexagram";
+            case Symbol::NUM_118:
+                return "118";
+            case Symbol::HEXAGRAM_OPEN:
+                return "hexagram-open";
+            case Symbol::NUM_218:
+                return "218";
+            case Symbol::HEXAGRAM_DOT:
+                return "hexagram-dot";
+            case Symbol::NUM_318:
+                return "318";
+            case Symbol::HEXAGRAM_OPEN_DOT:
+                return "hexagram-open-dot";
+            case Symbol::NUM_19:
+                return "19";
+            case Symbol::STAR_TRIANGLE_UP:
+                return "star-triangle-up";
+            case Symbol::NUM_119:
+                return "119";
+            case Symbol::STAR_TRIANGLE_UP_OPEN:
+                return "star-triangle-up-open";
+            case Symbol::NUM_219:
+                return "219";
+            case Symbol::STAR_TRIANGLE_UP_DOT:
+                return "star-triangle-up-dot";
+            case Symbol::NUM_319:
+                return "319";
+            case Symbol::STAR_TRIANGLE_UP_OPEN_DOT:
+                return "star-triangle-up-open-dot";
+            case Symbol::NUM_20:
+                return "20";
+            case Symbol::STAR_TRIANGLE_DOWN:
+                return "star-triangle-down";
+            case Symbol::NUM_120:
+                return "120";
+            case Symbol::STAR_TRIANGLE_DOWN_OPEN:
+                return "star-triangle-down-open";
+            case Symbol::NUM_220:
+                return "220";
+            case Symbol::STAR_TRIANGLE_DOWN_DOT:
+                return "star-triangle-down-dot";
+            case Symbol::NUM_320:
+                return "320";
+            case Symbol::STAR_TRIANGLE_DOWN_OPEN_DOT:
+                return "star-triangle-down-open-dot";
+            case Symbol::NUM_21:
+                return "21";
+            case Symbol::STAR_SQUARE:
+                return "star-square";
+            case Symbol::NUM_121:
+                return "121";
+            case Symbol::STAR_SQUARE_OPEN:
+                return "star-square-open";
+            case Symbol::NUM_221:
+                return "221";
+            case Symbol::STAR_SQUARE_DOT:
+                return "star-square-dot";
+            case Symbol::NUM_321:
+                return "321";
+            case Symbol::STAR_SQUARE_OPEN_DOT:
+                return "star-square-open-dot";
+            case Symbol::NUM_22:
+                return "22";
+            case Symbol::STAR_DIAMOND:
+                return "star-diamond";
+            case Symbol::NUM_122:
+                return "122";
+            case Symbol::STAR_DIAMOND_OPEN:
+                return "star-diamond-open";
+            case Symbol::NUM_222:
+                return "222";
+            case Symbol::STAR_DIAMOND_DOT:
+                return "star-diamond-dot";
+            case Symbol::NUM_322:
+                return "322";
+            case Symbol::STAR_DIAMOND_OPEN_DOT:
+                return "star-diamond-open-dot";
+            case Symbol::NUM_23:
+                return "23";
+            case Symbol::DIAMOND_TALL:
+                return "diamond-tall";
+            case Symbol::NUM_123:
+                return "123";
+            case Symbol::DIAMOND_TALL_OPEN:
+                return "diamond-tall-open";
+            case Symbol::NUM_223:
+                return "223";
+            case Symbol::DIAMOND_TALL_DOT:
+                return "diamond-tall-dot";
+            case Symbol::NUM_323:
+                return "323";
+            case Symbol::DIAMOND_TALL_OPEN_DOT:
+                return "diamond-tall-open-dot";
+            case Symbol::NUM_24:
+                return "24";
+            case Symbol::DIAMOND_WIDE:
+                return "diamond-wide";
+            case Symbol::NUM_124:
+                return "124";
+            case Symbol::DIAMOND_WIDE_OPEN:
+                return "diamond-wide-open";
+            case Symbol::NUM_224:
+                return "224";
+            case Symbol::DIAMOND_WIDE_DOT:
+                return "diamond-wide-dot";
+            case Symbol::NUM_324:
+                return "324";
+            case Symbol::DIAMOND_WIDE_OPEN_DOT:
+                return "diamond-wide-open-dot";
+            case Symbol::NUM_25:
+                return "25";
+            case Symbol::HOURGLASS:
+                return "hourglass";
+            case Symbol::NUM_125:
+                return "125";
+            case Symbol::HOURGLASS_OPEN:
+                return "hourglass-open";
+            case Symbol::NUM_26:
+                return "26";
+            case Symbol::BOWTIE:
+                return "bowtie";
+            case Symbol::NUM_126:
+                return "126";
+            case Symbol::BOWTIE_OPEN:
+                return "bowtie-open";
+            case Symbol::NUM_27:
+                return "27";
+            case Symbol::CIRCLE_CROSS:
+                return "circle-cross";
+            case Symbol::NUM_127:
+                return "127";
+            case Symbol::CIRCLE_CROSS_OPEN:
+                return "circle-cross-open";
+            case Symbol::NUM_28:
+                return "28";
+            case Symbol::CIRCLE_X:
+                return "circle-x";
+            case Symbol::NUM_128:
+                return "128";
+            case Symbol::CIRCLE_X_OPEN:
+                return "circle-x-open";
+            case Symbol::NUM_29:
+                return "29";
+            case Symbol::SQUARE_CROSS:
+                return "square-cross";
+            case Symbol::NUM_129:
+                return "129";
+            case Symbol::SQUARE_CROSS_OPEN:
+                return "square-cross-open";
+            case Symbol::NUM_30:
+                return "30";
+            case Symbol::SQUARE_X:
+                return "square-x";
+            case Symbol::NUM_130:
+                return "130";
+            case Symbol::SQUARE_X_OPEN:
+                return "square-x-open";
+            case Symbol::NUM_31:
+                return "31";
+            case Symbol::DIAMOND_CROSS:
+                return "diamond-cross";
+            case Symbol::NUM_131:
+                return "131";
+            case Symbol::DIAMOND_CROSS_OPEN:
+                return "diamond-cross-open";
+            case Symbol::NUM_32:
+                return "32";
+            case Symbol::DIAMOND_X:
+                return "diamond-x";
+            case Symbol::NUM_132:
+                return "132";
+            case Symbol::DIAMOND_X_OPEN:
+                return "diamond-x-open";
+            case Symbol::NUM_33:
+                return "33";
+            case Symbol::CROSS_THIN:
+                return "cross-thin";
+            case Symbol::NUM_133:
+                return "133";
+            case Symbol::CROSS_THIN_OPEN:
+                return "cross-thin-open";
+            case Symbol::NUM_34:
+                return "34";
+            case Symbol::X_THIN:
+                return "x-thin";
+            case Symbol::NUM_134:
+                return "134";
+            case Symbol::X_THIN_OPEN:
+                return "x-thin-open";
+            case Symbol::NUM_35:
+                return "35";
+            case Symbol::ASTERISK:
+                return "asterisk";
+            case Symbol::NUM_135:
+                return "135";
+            case Symbol::ASTERISK_OPEN:
+                return "asterisk-open";
+            case Symbol::NUM_36:
+                return "36";
+            case Symbol::HASH:
+                return "hash";
+            case Symbol::NUM_136:
+                return "136";
+            case Symbol::HASH_OPEN:
+                return "hash-open";
+            case Symbol::NUM_236:
+                return "236";
+            case Symbol::HASH_DOT:
+                return "hash-dot";
+            case Symbol::NUM_336:
+                return "336";
+            case Symbol::HASH_OPEN_DOT:
+                return "hash-open-dot";
+            case Symbol::NUM_37:
+                return "37";
+            case Symbol::Y_UP:
+                return "y-up";
+            case Symbol::NUM_137:
+                return "137";
+            case Symbol::Y_UP_OPEN:
+                return "y-up-open";
+            case Symbol::NUM_38:
+                return "38";
+            case Symbol::Y_DOWN:
+                return "y-down";
+            case Symbol::NUM_138:
+                return "138";
+            case Symbol::Y_DOWN_OPEN:
+                return "y-down-open";
+            case Symbol::NUM_39:
+                return "39";
+            case Symbol::Y_LEFT:
+                return "y-left";
+            case Symbol::NUM_139:
+                return "139";
+            case Symbol::Y_LEFT_OPEN:
+                return "y-left-open";
+            case Symbol::NUM_40:
+                return "40";
+            case Symbol::Y_RIGHT:
+                return "y-right";
+            case Symbol::NUM_140:
+                return "140";
+            case Symbol::Y_RIGHT_OPEN:
+                return "y-right-open";
+            case Symbol::NUM_41:
+                return "41";
+            case Symbol::LINE_EW:
+                return "line-ew";
+            case Symbol::NUM_141:
+                return "141";
+            case Symbol::LINE_EW_OPEN:
+                return "line-ew-open";
+            case Symbol::NUM_42:
+                return "42";
+            case Symbol::LINE_NS:
+                return "line-ns";
+            case Symbol::NUM_142:
+                return "142";
+            case Symbol::LINE_NS_OPEN:
+                return "line-ns-open";
+            case Symbol::NUM_43:
+                return "43";
+            case Symbol::LINE_NE:
+                return "line-ne";
+            case Symbol::NUM_143:
+                return "143";
+            case Symbol::LINE_NE_OPEN:
+                return "line-ne-open";
+            case Symbol::NUM_44:
+                return "44";
+            case Symbol::LINE_NW:
+                return "line-nw";
+            case Symbol::NUM_144:
+                return "144";
+            case Symbol::LINE_NW_OPEN:
+                return "line-nw-open";
+            case Symbol::NUM_45:
+                return "45";
+            case Symbol::ARROW_UP:
+                return "arrow-up";
+            case Symbol::NUM_145:
+                return "145";
+            case Symbol::ARROW_UP_OPEN:
+                return "arrow-up-open";
+            case Symbol::NUM_46:
+                return "46";
+            case Symbol::ARROW_DOWN:
+                return "arrow-down";
+            case Symbol::NUM_146:
+                return "146";
+            case Symbol::ARROW_DOWN_OPEN:
+                return "arrow-down-open";
+            case Symbol::NUM_47:
+                return "47";
+            case Symbol::ARROW_LEFT:
+                return "arrow-left";
+            case Symbol::NUM_147:
+                return "147";
+            case Symbol::ARROW_LEFT_OPEN:
+                return "arrow-left-open";
+            case Symbol::NUM_48:
+                return "48";
+            case Symbol::ARROW_RIGHT:
+                return "arrow-right";
+            case Symbol::NUM_148:
+                return "148";
+            case Symbol::ARROW_RIGHT_OPEN:
+                return "arrow-right-open";
+            case Symbol::NUM_49:
+                return "49";
+            case Symbol::ARROW_BAR_UP:
+                return "arrow-bar-up";
+            case Symbol::NUM_149:
+                return "149";
+            case Symbol::ARROW_BAR_UP_OPEN:
+                return "arrow-bar-up-open";
+            case Symbol::NUM_50:
+                return "50";
+            case Symbol::ARROW_BAR_DOWN:
+                return "arrow-bar-down";
+            case Symbol::NUM_150:
+                return "150";
+            case Symbol::ARROW_BAR_DOWN_OPEN:
+                return "arrow-bar-down-open";
+            case Symbol::NUM_51:
+                return "51";
+            case Symbol::ARROW_BAR_LEFT:
+                return "arrow-bar-left";
+            case Symbol::NUM_151:
+                return "151";
+            case Symbol::ARROW_BAR_LEFT_OPEN:
+                return "arrow-bar-left-open";
+            case Symbol::NUM_52:
+                return "52";
+            case Symbol::ARROW_BAR_RIGHT:
+                return "arrow-bar-right";
+            case Symbol::NUM_152:
+                return "152";
+            case Symbol::ARROW_BAR_RIGHT_OPEN:
+                return "arrow-bar-right-open";
+            case Symbol::NUM_53:
+                return "53";
+            case Symbol::ARROW:
+                return "arrow";
+            case Symbol::NUM_153:
+                return "153";
+            case Symbol::ARROW_OPEN:
+                return "arrow-open";
+            case Symbol::NUM_54:
+                return "54";
+            case Symbol::ARROW_WIDE:
+                return "arrow-wide";
+            case Symbol::NUM_154:
+                return "154";
+            case Symbol::ARROW_WIDE_OPEN:
+                return "arrow-wide-open";
             }
         }
-        
+
         class Colorbar {
-        public:
-            
-            // Determines a formatting rule for the tick exponents. For example, consider the number 1,000,000,000. If *none*, it appears as 1,000,000,000. If *e*, 1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super script). If *SI*, 1G. If *B*, 1B.
+         public:
+            // Determines a formatting rule for the tick exponents. For example, consider the number 1,000,000,000. If
+            // *none*, it appears as 1,000,000,000. If *e*, 1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super
+            // script). If *SI*, 1G. If *B*, 1B.
             enum class Exponentformat {
                 NONE,
                 E,
@@ -1527,40 +2018,51 @@ public:
                 B,
             };
             std::string to_string(Exponentformat e) {
-                switch(e) {
-                    case Exponentformat::NONE: return "none";
-                    case Exponentformat::E: return "E";
-                    case Exponentformat::POWER: return "power";
-                    case Exponentformat::SI: return "SI";
-                    case Exponentformat::B: return "B";
+                switch (e) {
+                case Exponentformat::NONE:
+                    return "none";
+                case Exponentformat::E:
+                    return "E";
+                case Exponentformat::POWER:
+                    return "power";
+                case Exponentformat::SI:
+                    return "SI";
+                case Exponentformat::B:
+                    return "B";
                 }
             }
-            
-            // Determines whether this color bar's length (i.e. the measure in the color variation direction) is set in units of plot *fraction* or in *pixels. Use `len` to set the value.
+
+            // Determines whether this color bar's length (i.e. the measure in the color variation direction) is set in
+            // units of plot *fraction* or in *pixels. Use `len` to set the value.
             enum class Lenmode {
                 FRACTION,
                 PIXELS,
             };
             std::string to_string(Lenmode e) {
-                switch(e) {
-                    case Lenmode::FRACTION: return "fraction";
-                    case Lenmode::PIXELS: return "pixels";
+                switch (e) {
+                case Lenmode::FRACTION:
+                    return "fraction";
+                case Lenmode::PIXELS:
+                    return "pixels";
                 }
             }
-            
+
             // Sets the orientation of the colorbar.
             enum class Orientation {
                 H,
                 V,
             };
             std::string to_string(Orientation e) {
-                switch(e) {
-                    case Orientation::H: return "h";
-                    case Orientation::V: return "v";
+                switch (e) {
+                case Orientation::H:
+                    return "h";
+                case Orientation::V:
+                    return "v";
                 }
             }
-            
-            // If *all*, all exponents are shown besides their significands. If *first*, only the exponent of the first tick is shown. If *last*, only the exponent of the last tick is shown. If *none*, no exponents appear.
+
+            // If *all*, all exponents are shown besides their significands. If *first*, only the exponent of the first
+            // tick is shown. If *last*, only the exponent of the last tick is shown. If *none*, no exponents appear.
             enum class Showexponent {
                 ALL,
                 FIRST,
@@ -1568,15 +2070,20 @@ public:
                 NONE,
             };
             std::string to_string(Showexponent e) {
-                switch(e) {
-                    case Showexponent::ALL: return "all";
-                    case Showexponent::FIRST: return "first";
-                    case Showexponent::LAST: return "last";
-                    case Showexponent::NONE: return "none";
+                switch (e) {
+                case Showexponent::ALL:
+                    return "all";
+                case Showexponent::FIRST:
+                    return "first";
+                case Showexponent::LAST:
+                    return "last";
+                case Showexponent::NONE:
+                    return "none";
                 }
             }
-            
-            // If *all*, all tick labels are displayed with a prefix. If *first*, only the first tick is displayed with a prefix. If *last*, only the last tick is displayed with a suffix. If *none*, tick prefixes are hidden.
+
+            // If *all*, all tick labels are displayed with a prefix. If *first*, only the first tick is displayed with
+            // a prefix. If *last*, only the last tick is displayed with a suffix. If *none*, tick prefixes are hidden.
             enum class Showtickprefix {
                 ALL,
                 FIRST,
@@ -1584,14 +2091,18 @@ public:
                 NONE,
             };
             std::string to_string(Showtickprefix e) {
-                switch(e) {
-                    case Showtickprefix::ALL: return "all";
-                    case Showtickprefix::FIRST: return "first";
-                    case Showtickprefix::LAST: return "last";
-                    case Showtickprefix::NONE: return "none";
+                switch (e) {
+                case Showtickprefix::ALL:
+                    return "all";
+                case Showtickprefix::FIRST:
+                    return "first";
+                case Showtickprefix::LAST:
+                    return "last";
+                case Showtickprefix::NONE:
+                    return "none";
                 }
             }
-            
+
             // Same as `showtickprefix` but for tick suffixes.
             enum class Showticksuffix {
                 ALL,
@@ -1600,41 +2111,54 @@ public:
                 NONE,
             };
             std::string to_string(Showticksuffix e) {
-                switch(e) {
-                    case Showticksuffix::ALL: return "all";
-                    case Showticksuffix::FIRST: return "first";
-                    case Showticksuffix::LAST: return "last";
-                    case Showticksuffix::NONE: return "none";
+                switch (e) {
+                case Showticksuffix::ALL:
+                    return "all";
+                case Showticksuffix::FIRST:
+                    return "first";
+                case Showticksuffix::LAST:
+                    return "last";
+                case Showticksuffix::NONE:
+                    return "none";
                 }
             }
-            
-            // Determines whether this color bar's thickness (i.e. the measure in the constant color direction) is set in units of plot *fraction* or in *pixels*. Use `thickness` to set the value.
+
+            // Determines whether this color bar's thickness (i.e. the measure in the constant color direction) is set
+            // in units of plot *fraction* or in *pixels*. Use `thickness` to set the value.
             enum class Thicknessmode {
                 FRACTION,
                 PIXELS,
             };
             std::string to_string(Thicknessmode e) {
-                switch(e) {
-                    case Thicknessmode::FRACTION: return "fraction";
-                    case Thicknessmode::PIXELS: return "pixels";
+                switch (e) {
+                case Thicknessmode::FRACTION:
+                    return "fraction";
+                case Thicknessmode::PIXELS:
+                    return "pixels";
                 }
             }
-            
-            // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
+
+            // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis.
+            // The default value for inside tick labels is *hide past domain*. In other cases the default is *hide past
+            // div*.
             enum class Ticklabeloverflow {
                 ALLOW,
                 HIDE_PAST_DIV,
                 HIDE_PAST_DOMAIN,
             };
             std::string to_string(Ticklabeloverflow e) {
-                switch(e) {
-                    case Ticklabeloverflow::ALLOW: return "allow";
-                    case Ticklabeloverflow::HIDE_PAST_DIV: return "hide past div";
-                    case Ticklabeloverflow::HIDE_PAST_DOMAIN: return "hide past domain";
+                switch (e) {
+                case Ticklabeloverflow::ALLOW:
+                    return "allow";
+                case Ticklabeloverflow::HIDE_PAST_DIV:
+                    return "hide past div";
+                case Ticklabeloverflow::HIDE_PAST_DOMAIN:
+                    return "hide past domain";
                 }
             }
-            
-            // Determines where tick labels are drawn relative to the ticks. Left and right options are used when `orientation` is *h*, top and bottom when `orientation` is *v*.
+
+            // Determines where tick labels are drawn relative to the ticks. Left and right options are used when
+            // `orientation` is *h*, top and bottom when `orientation` is *v*.
             enum class Ticklabelposition {
                 OUTSIDE,
                 INSIDE,
@@ -1648,539 +2172,658 @@ public:
                 INSIDE_BOTTOM,
             };
             std::string to_string(Ticklabelposition e) {
-                switch(e) {
-                    case Ticklabelposition::OUTSIDE: return "outside";
-                    case Ticklabelposition::INSIDE: return "inside";
-                    case Ticklabelposition::OUTSIDE_TOP: return "outside top";
-                    case Ticklabelposition::INSIDE_TOP: return "inside top";
-                    case Ticklabelposition::OUTSIDE_LEFT: return "outside left";
-                    case Ticklabelposition::INSIDE_LEFT: return "inside left";
-                    case Ticklabelposition::OUTSIDE_RIGHT: return "outside right";
-                    case Ticklabelposition::INSIDE_RIGHT: return "inside right";
-                    case Ticklabelposition::OUTSIDE_BOTTOM: return "outside bottom";
-                    case Ticklabelposition::INSIDE_BOTTOM: return "inside bottom";
+                switch (e) {
+                case Ticklabelposition::OUTSIDE:
+                    return "outside";
+                case Ticklabelposition::INSIDE:
+                    return "inside";
+                case Ticklabelposition::OUTSIDE_TOP:
+                    return "outside top";
+                case Ticklabelposition::INSIDE_TOP:
+                    return "inside top";
+                case Ticklabelposition::OUTSIDE_LEFT:
+                    return "outside left";
+                case Ticklabelposition::INSIDE_LEFT:
+                    return "inside left";
+                case Ticklabelposition::OUTSIDE_RIGHT:
+                    return "outside right";
+                case Ticklabelposition::INSIDE_RIGHT:
+                    return "inside right";
+                case Ticklabelposition::OUTSIDE_BOTTOM:
+                    return "outside bottom";
+                case Ticklabelposition::INSIDE_BOTTOM:
+                    return "inside bottom";
                 }
             }
-            
-            // Sets the tick mode for this axis. If *auto*, the number of ticks is set via `nticks`. If *linear*, the placement of the ticks is determined by a starting position `tick0` and a tick step `dtick` (*linear* is the default value if `tick0` and `dtick` are provided). If *array*, the placement of the ticks is set via `tickvals` and the tick text is `ticktext`. (*array* is the default value if `tickvals` is provided).
+
+            // Sets the tick mode for this axis. If *auto*, the number of ticks is set via `nticks`. If *linear*, the
+            // placement of the ticks is determined by a starting position `tick0` and a tick step `dtick` (*linear* is
+            // the default value if `tick0` and `dtick` are provided). If *array*, the placement of the ticks is set via
+            // `tickvals` and the tick text is `ticktext`. (*array* is the default value if `tickvals` is provided).
             enum class Tickmode {
                 AUTO,
                 LINEAR,
                 ARRAY,
             };
             std::string to_string(Tickmode e) {
-                switch(e) {
-                    case Tickmode::AUTO: return "auto";
-                    case Tickmode::LINEAR: return "linear";
-                    case Tickmode::ARRAY: return "array";
+                switch (e) {
+                case Tickmode::AUTO:
+                    return "auto";
+                case Tickmode::LINEAR:
+                    return "linear";
+                case Tickmode::ARRAY:
+                    return "array";
                 }
             }
-            
-            // Determines whether ticks are drawn or not. If **, this axis' ticks are not drawn. If *outside* (*inside*), this axis' are drawn outside (inside) the axis lines.
+
+            // Determines whether ticks are drawn or not. If **, this axis' ticks are not drawn. If *outside*
+            // (*inside*), this axis' are drawn outside (inside) the axis lines.
             enum class Ticks {
                 OUTSIDE,
                 INSIDE,
                 EMPTY,
             };
             std::string to_string(Ticks e) {
-                switch(e) {
-                    case Ticks::OUTSIDE: return "outside";
-                    case Ticks::INSIDE: return "inside";
-                    case Ticks::EMPTY: return "";
+                switch (e) {
+                case Ticks::OUTSIDE:
+                    return "outside";
+                case Ticks::INSIDE:
+                    return "inside";
+                case Ticks::EMPTY:
+                    return "";
                 }
             }
-            
-            // Sets this color bar's horizontal position anchor. This anchor binds the `x` position to the *left*, *center* or *right* of the color bar. Defaults to *left* when `orientation` is *v* and *center* when `orientation` is *h*.
+
+            // Sets this color bar's horizontal position anchor. This anchor binds the `x` position to the *left*,
+            // *center* or *right* of the color bar. Defaults to *left* when `orientation` is *v* and *center* when
+            // `orientation` is *h*.
             enum class Xanchor {
                 LEFT,
                 CENTER,
                 RIGHT,
             };
             std::string to_string(Xanchor e) {
-                switch(e) {
-                    case Xanchor::LEFT: return "left";
-                    case Xanchor::CENTER: return "center";
-                    case Xanchor::RIGHT: return "right";
+                switch (e) {
+                case Xanchor::LEFT:
+                    return "left";
+                case Xanchor::CENTER:
+                    return "center";
+                case Xanchor::RIGHT:
+                    return "right";
                 }
             }
-            
-            // Sets the container `x` refers to. *container* spans the entire `width` of the plot. *paper* refers to the width of the plotting area only.
+
+            // Sets the container `x` refers to. *container* spans the entire `width` of the plot. *paper* refers to the
+            // width of the plotting area only.
             enum class Xref {
                 CONTAINER,
                 PAPER,
             };
             std::string to_string(Xref e) {
-                switch(e) {
-                    case Xref::CONTAINER: return "container";
-                    case Xref::PAPER: return "paper";
+                switch (e) {
+                case Xref::CONTAINER:
+                    return "container";
+                case Xref::PAPER:
+                    return "paper";
                 }
             }
-            
-            // Sets this color bar's vertical position anchor This anchor binds the `y` position to the *top*, *middle* or *bottom* of the color bar. Defaults to *middle* when `orientation` is *v* and *bottom* when `orientation` is *h*.
+
+            // Sets this color bar's vertical position anchor This anchor binds the `y` position to the *top*, *middle*
+            // or *bottom* of the color bar. Defaults to *middle* when `orientation` is *v* and *bottom* when
+            // `orientation` is *h*.
             enum class Yanchor {
                 TOP,
                 MIDDLE,
                 BOTTOM,
             };
             std::string to_string(Yanchor e) {
-                switch(e) {
-                    case Yanchor::TOP: return "top";
-                    case Yanchor::MIDDLE: return "middle";
-                    case Yanchor::BOTTOM: return "bottom";
+                switch (e) {
+                case Yanchor::TOP:
+                    return "top";
+                case Yanchor::MIDDLE:
+                    return "middle";
+                case Yanchor::BOTTOM:
+                    return "bottom";
                 }
             }
-            
-            // Sets the container `y` refers to. *container* spans the entire `height` of the plot. *paper* refers to the height of the plotting area only.
+
+            // Sets the container `y` refers to. *container* spans the entire `height` of the plot. *paper* refers to
+            // the height of the plotting area only.
             enum class Yref {
                 CONTAINER,
                 PAPER,
             };
             std::string to_string(Yref e) {
-                switch(e) {
-                    case Yref::CONTAINER: return "container";
-                    case Yref::PAPER: return "paper";
+                switch (e) {
+                case Yref::CONTAINER:
+                    return "container";
+                case Yref::PAPER:
+                    return "paper";
                 }
             }
-            
+
             // Sets the color bar's tick label font
             class Tickfont {
-            public:
-                
+             public:
                 tickfont& color(std::string f) {
                     json["color"] = std::move(f);
                     return *this;
                 }
-                
-                // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to apply a font if it is available on the system which it operates. Provide multiple font families, separated by commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*,, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*, *Raleway*, *Times New Roman*.
+
+                // HTML font family - the typeface that will be applied by the web browser. The web browser will only be
+                // able to apply a font if it is available on the system which it operates. Provide multiple font
+                // families, separated by commas, to indicate the preference in which to apply fonts if they aren't
+                // available on the system. The Chart Studio Cloud (at https://chart-studio.plotly.com or on-premise)
+                // generates images on a server, where only a select number of fonts are installed and supported. These
+                // include *Arial*, *Balto*, *Courier New*, *Droid Sans*,, *Droid Serif*, *Droid Sans Mono*, *Gravitas
+                // One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*, *Raleway*, *Times New Roman*.
                 tickfont& family(std::string f) {
                     json["family"] = std::move(f);
                     return *this;
                 }
-                
+
                 tickfont& size(double f) {
                     json["size"] = std::move(f);
                     return *this;
                 }
-                
+
                 nlohmann::json json{};
             };
-            
+
             class Tickformatstops {
-            public:
-                
+             public:
                 class Tickformatstop {
-                public:
-                    
-                    // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit *min* or *max* value by passing *null*
+                 public:
+                    // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is
+                    // possible to omit *min* or *max* value by passing *null*
                     tickformatstop& dtickrange(std::vector<std::string> f) {
                         json["dtickrange"] = std::move(f);
                         return *this;
                     }
-                    
-                    // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
+
+                    // Determines whether or not this stop is used. If `false`, this stop is ignored even within its
+                    // `dtickrange`.
                     tickformatstop& enabled(bool f) {
                         json["enabled"] = std::move(f);
                         return *this;
                     }
-                    
-                    // When used in a template, named items are created in the output figure in addition to any items the figure already has in this array. You can modify these items in the output figure by making your own item with `templateitemname` matching this `name` alongside your modifications (including `visible: false` or `enabled: false` to hide it). Has no effect outside of a template.
+
+                    // When used in a template, named items are created in the output figure in addition to any items
+                    // the figure already has in this array. You can modify these items in the output figure by making
+                    // your own item with `templateitemname` matching this `name` alongside your modifications
+                    // (including `visible: false` or `enabled: false` to hide it). Has no effect outside of a template.
                     tickformatstop& name(std::string f) {
                         json["name"] = std::move(f);
                         return *this;
                     }
-                    
-                    // Used to refer to a named item in this array in the template. Named items from the template will be created even without a matching item in the input figure, but you can modify one by making an item with `templateitemname` matching its `name`, alongside your modifications (including `visible: false` or `enabled: false` to hide it). If there is no template or no matching item, this item will be hidden unless you explicitly show it with `visible: true`.
+
+                    // Used to refer to a named item in this array in the template. Named items from the template will
+                    // be created even without a matching item in the input figure, but you can modify one by making an
+                    // item with `templateitemname` matching its `name`, alongside your modifications (including
+                    // `visible: false` or `enabled: false` to hide it). If there is no template or no matching item,
+                    // this item will be hidden unless you explicitly show it with `visible: true`.
                     tickformatstop& templateitemname(std::string f) {
                         json["templateitemname"] = std::move(f);
                         return *this;
                     }
-                    
+
                     // string - dtickformat for described zoom level, the same as *tickformat*
                     tickformatstop& value(std::string f) {
                         json["value"] = std::move(f);
                         return *this;
                     }
-                    
+
                     nlohmann::json json{};
                 };
-                
+
                 tickformatstops& tickformatstop(class Tickformatstop f) {
                     json["tickformatstop"] = std::move(f.json);
                     return *this;
                 }
-                
+
                 nlohmann::json json{};
             };
-            
+
             class Title {
-            public:
-                
-                // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation` if *v* and  defaults to *right* when `orientation` if *h*. Note that the title's location used to be set by the now deprecated `titleside` attribute.
+             public:
+                // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when
+                // `orientation` if *v* and  defaults to *right* when `orientation` if *h*. Note that the title's
+                // location used to be set by the now deprecated `titleside` attribute.
                 enum class Side {
                     RIGHT,
                     TOP,
                     BOTTOM,
                 };
                 std::string to_string(Side e) {
-                    switch(e) {
-                        case Side::RIGHT: return "right";
-                        case Side::TOP: return "top";
-                        case Side::BOTTOM: return "bottom";
+                    switch (e) {
+                    case Side::RIGHT:
+                        return "right";
+                    case Side::TOP:
+                        return "top";
+                    case Side::BOTTOM:
+                        return "bottom";
                     }
                 }
-                
-                // Sets this color bar's title font. Note that the title's font used to be set by the now deprecated `titlefont` attribute.
+
+                // Sets this color bar's title font. Note that the title's font used to be set by the now deprecated
+                // `titlefont` attribute.
                 class Font {
-                public:
-                    
+                 public:
                     font& color(std::string f) {
                         json["color"] = std::move(f);
                         return *this;
                     }
-                    
-                    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to apply a font if it is available on the system which it operates. Provide multiple font families, separated by commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*,, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*, *Raleway*, *Times New Roman*.
+
+                    // HTML font family - the typeface that will be applied by the web browser. The web browser will
+                    // only be able to apply a font if it is available on the system which it operates. Provide multiple
+                    // font families, separated by commas, to indicate the preference in which to apply fonts if they
+                    // aren't available on the system. The Chart Studio Cloud (at https://chart-studio.plotly.com or
+                    // on-premise) generates images on a server, where only a select number of fonts are installed and
+                    // supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*,, *Droid Serif*, *Droid
+                    // Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+                    // *Raleway*, *Times New Roman*.
                     font& family(std::string f) {
                         json["family"] = std::move(f);
                         return *this;
                     }
-                    
+
                     font& size(double f) {
                         json["size"] = std::move(f);
                         return *this;
                     }
-                    
+
                     nlohmann::json json{};
                 };
-                
-                // Sets this color bar's title font. Note that the title's font used to be set by the now deprecated `titlefont` attribute.
+
+                // Sets this color bar's title font. Note that the title's font used to be set by the now deprecated
+                // `titlefont` attribute.
                 title& font(class Font f) {
                     json["font"] = std::move(f.json);
                     return *this;
                 }
-                
-                // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation` if *v* and  defaults to *right* when `orientation` if *h*. Note that the title's location used to be set by the now deprecated `titleside` attribute.
+
+                // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when
+                // `orientation` if *v* and  defaults to *right* when `orientation` if *h*. Note that the title's
+                // location used to be set by the now deprecated `titleside` attribute.
                 Title& side(enum Side f) {
                     json["side"] = to_string(f);
                     return *this;
                 }
-                
-                // Sets the title of the color bar. Note that before the existence of `title.text`, the title's contents used to be defined as the `title` attribute itself. This behavior has been deprecated.
+
+                // Sets the title of the color bar. Note that before the existence of `title.text`, the title's contents
+                // used to be defined as the `title` attribute itself. This behavior has been deprecated.
                 title& text(std::string f) {
                     json["text"] = std::move(f);
                     return *this;
                 }
-                
+
                 nlohmann::json json{};
             };
-            
+
             // Sets the color of padded area.
             colorbar& bgcolor(std::string f) {
                 json["bgcolor"] = std::move(f);
                 return *this;
             }
-            
+
             // Sets the axis line color.
             colorbar& bordercolor(std::string f) {
                 json["bordercolor"] = std::move(f);
                 return *this;
             }
-            
+
             // Sets the width (in px) or the border enclosing this color bar.
             colorbar& borderwidth(double f) {
                 json["borderwidth"] = std::move(f);
                 return *this;
             }
-            
-            // Sets the step in-between ticks on this axis. Use with `tick0`. Must be a positive number, or special strings available to *log* and *date* axes. If the axis `type` is *log*, then ticks are set every 10^(n*dtick) where n is the tick number. For example, to set a tick mark at 1, 10, 100, 1000, ... set dtick to 1. To set tick marks at 1, 100, 10000, ... set dtick to 2. To set tick marks at 1, 5, 25, 125, 625, 3125, ... set dtick to log_10(5), or 0.69897000433. *log* has several special values; *L<f>*, where `f` is a positive number, gives ticks linearly spaced in value (but not position). For example `tick0` = 0.1, `dtick` = *L0.5* will put ticks at 0.1, 0.6, 1.1, 1.6 etc. To show powers of 10 plus small digits between, use *D1* (all digits) or *D2* (only 2 and 5). `tick0` is ignored for *D1* and *D2*. If the axis `type` is *date*, then you must convert the time to milliseconds. For example, to set the interval between ticks to one day, set `dtick` to 86400000.0. *date* also has special values *M<n>* gives ticks spaced by a number of months. `n` must be a positive integer. To set ticks on the 15th of every third month, set `tick0` to *2000-01-15* and `dtick` to *M3*. To set ticks every 4 years, set `dtick` to *M48*
+
+            // Sets the step in-between ticks on this axis. Use with `tick0`. Must be a positive number, or special
+            // strings available to *log* and *date* axes. If the axis `type` is *log*, then ticks are set every
+            // 10^(n*dtick) where n is the tick number. For example, to set a tick mark at 1, 10, 100, 1000, ... set
+            // dtick to 1. To set tick marks at 1, 100, 10000, ... set dtick to 2. To set tick marks at 1, 5, 25, 125,
+            // 625, 3125, ... set dtick to log_10(5), or 0.69897000433. *log* has several special values; *L<f>*, where
+            // `f` is a positive number, gives ticks linearly spaced in value (but not position). For example `tick0` =
+            // 0.1, `dtick` = *L0.5* will put ticks at 0.1, 0.6, 1.1, 1.6 etc. To show powers of 10 plus small digits
+            // between, use *D1* (all digits) or *D2* (only 2 and 5). `tick0` is ignored for *D1* and *D2*. If the axis
+            // `type` is *date*, then you must convert the time to milliseconds. For example, to set the interval
+            // between ticks to one day, set `dtick` to 86400000.0. *date* also has special values *M<n>* gives ticks
+            // spaced by a number of months. `n` must be a positive integer. To set ticks on the 15th of every third
+            // month, set `tick0` to *2000-01-15* and `dtick` to *M3*. To set ticks every 4 years, set `dtick` to *M48*
             template <typename T>
             colorbar& dtick(T f) {
                 json["dtick"] = std::move(f);
                 return *this;
             }
-            
-            // Determines a formatting rule for the tick exponents. For example, consider the number 1,000,000,000. If *none*, it appears as 1,000,000,000. If *e*, 1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super script). If *SI*, 1G. If *B*, 1B.
-            // Default: B
+
+            // Determines a formatting rule for the tick exponents. For example, consider the number 1,000,000,000. If
+            // *none*, it appears as 1,000,000,000. If *e*, 1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super
+            // script). If *SI*, 1G. If *B*, 1B.
+            // - Default: B
             Colorbar& exponentformat(enum Exponentformat f) {
                 json["exponentformat"] = to_string(f);
                 return *this;
             }
-            
-            // Replacement text for specific tick or hover labels. For example using {US: 'USA', CA: 'Canada'} changes US to USA and CA to Canada. The labels we would have shown must match the keys exactly, after adding any tickprefix or ticksuffix. For negative numbers the minus sign symbol used (U+2212) is wider than the regular ascii dash. That means you need to use −1 instead of -1. labelalias can be used with any axis type, and both keys (if needed) and values (if desired) can include html-like tags or MathJax.
+
+            // Replacement text for specific tick or hover labels. For example using {US: 'USA', CA: 'Canada'} changes
+            // US to USA and CA to Canada. The labels we would have shown must match the keys exactly, after adding any
+            // tickprefix or ticksuffix. For negative numbers the minus sign symbol used (U+2212) is wider than the
+            // regular ascii dash. That means you need to use −1 instead of -1. labelalias can be used with any axis
+            // type, and both keys (if needed) and values (if desired) can include html-like tags or MathJax.
             template <typename T>
             colorbar& labelalias(T f) {
                 json["labelalias"] = std::move(f);
                 return *this;
             }
-            
-            // Sets the length of the color bar This measure excludes the padding of both ends. That is, the color bar length is this length minus the padding on both ends.
+
+            // Sets the length of the color bar This measure excludes the padding of both ends. That is, the color bar
+            // length is this length minus the padding on both ends.
             colorbar& len(double f) {
                 json["len"] = std::move(f);
                 return *this;
             }
-            
-            // Determines whether this color bar's length (i.e. the measure in the color variation direction) is set in units of plot *fraction* or in *pixels. Use `len` to set the value.
-            // Default: fraction
+
+            // Determines whether this color bar's length (i.e. the measure in the color variation direction) is set in
+            // units of plot *fraction* or in *pixels. Use `len` to set the value.
+            // - Default: fraction
             Colorbar& lenmode(enum Lenmode f) {
                 json["lenmode"] = to_string(f);
                 return *this;
             }
-            
-            // Hide SI prefix for 10^n if |n| is below this number. This only has an effect when `tickformat` is *SI* or *B*.
+
+            // Hide SI prefix for 10^n if |n| is below this number. This only has an effect when `tickformat` is *SI* or
+            // *B*.
             colorbar& minexponent(double f) {
                 json["minexponent"] = std::move(f);
                 return *this;
             }
-            
-            // Specifies the maximum number of ticks for the particular axis. The actual number of ticks will be chosen automatically to be less than or equal to `nticks`. Has an effect only if `tickmode` is set to *auto*.
+
+            // Specifies the maximum number of ticks for the particular axis. The actual number of ticks will be chosen
+            // automatically to be less than or equal to `nticks`. Has an effect only if `tickmode` is set to *auto*.
             colorbar& nticks(int f) {
                 json["nticks"] = std::move(f);
                 return *this;
             }
-            
+
             // Sets the orientation of the colorbar.
-            // Default: v
+            // - Default: v
             Colorbar& orientation(enum Orientation f) {
                 json["orientation"] = to_string(f);
                 return *this;
             }
-            
+
             // Sets the axis line color.
             colorbar& outlinecolor(std::string f) {
                 json["outlinecolor"] = std::move(f);
                 return *this;
             }
-            
+
             // Sets the width (in px) of the axis line.
             colorbar& outlinewidth(double f) {
                 json["outlinewidth"] = std::move(f);
                 return *this;
             }
-            
+
             // If "true", even 4-digit integers are separated
             colorbar& separatethousands(bool f) {
                 json["separatethousands"] = std::move(f);
                 return *this;
             }
-            
-            // If *all*, all exponents are shown besides their significands. If *first*, only the exponent of the first tick is shown. If *last*, only the exponent of the last tick is shown. If *none*, no exponents appear.
-            // Default: all
+
+            // If *all*, all exponents are shown besides their significands. If *first*, only the exponent of the first
+            // tick is shown. If *last*, only the exponent of the last tick is shown. If *none*, no exponents appear.
+            // - Default: all
             Colorbar& showexponent(enum Showexponent f) {
                 json["showexponent"] = to_string(f);
                 return *this;
             }
-            
+
             // Determines whether or not the tick labels are drawn.
             colorbar& showticklabels(bool f) {
                 json["showticklabels"] = std::move(f);
                 return *this;
             }
-            
-            // If *all*, all tick labels are displayed with a prefix. If *first*, only the first tick is displayed with a prefix. If *last*, only the last tick is displayed with a suffix. If *none*, tick prefixes are hidden.
-            // Default: all
+
+            // If *all*, all tick labels are displayed with a prefix. If *first*, only the first tick is displayed with
+            // a prefix. If *last*, only the last tick is displayed with a suffix. If *none*, tick prefixes are hidden.
+            // - Default: all
             Colorbar& showtickprefix(enum Showtickprefix f) {
                 json["showtickprefix"] = to_string(f);
                 return *this;
             }
-            
+
             // Same as `showtickprefix` but for tick suffixes.
-            // Default: all
+            // - Default: all
             Colorbar& showticksuffix(enum Showticksuffix f) {
                 json["showticksuffix"] = to_string(f);
                 return *this;
             }
-            
+
             // Sets the thickness of the color bar This measure excludes the size of the padding, ticks and labels.
             colorbar& thickness(double f) {
                 json["thickness"] = std::move(f);
                 return *this;
             }
-            
-            // Determines whether this color bar's thickness (i.e. the measure in the constant color direction) is set in units of plot *fraction* or in *pixels*. Use `thickness` to set the value.
-            // Default: pixels
+
+            // Determines whether this color bar's thickness (i.e. the measure in the constant color direction) is set
+            // in units of plot *fraction* or in *pixels*. Use `thickness` to set the value.
+            // - Default: pixels
             Colorbar& thicknessmode(enum Thicknessmode f) {
                 json["thicknessmode"] = to_string(f);
                 return *this;
             }
-            
-            // Sets the placement of the first tick on this axis. Use with `dtick`. If the axis `type` is *log*, then you must take the log of your starting tick (e.g. to set the starting tick to 100, set the `tick0` to 2) except when `dtick`=*L<f>* (see `dtick` for more info). If the axis `type` is *date*, it should be a date string, like date data. If the axis `type` is *category*, it should be a number, using the scale where each category is assigned a serial number from zero in the order it appears.
+
+            // Sets the placement of the first tick on this axis. Use with `dtick`. If the axis `type` is *log*, then
+            // you must take the log of your starting tick (e.g. to set the starting tick to 100, set the `tick0` to 2)
+            // except when `dtick`=*L<f>* (see `dtick` for more info). If the axis `type` is *date*, it should be a date
+            // string, like date data. If the axis `type` is *category*, it should be a number, using the scale where
+            // each category is assigned a serial number from zero in the order it appears.
             template <typename T>
             colorbar& tick0(T f) {
                 json["tick0"] = std::move(f);
                 return *this;
             }
-            
-            // Sets the angle of the tick labels with respect to the horizontal. For example, a `tickangle` of -90 draws the tick labels vertically.
+
+            // Sets the angle of the tick labels with respect to the horizontal. For example, a `tickangle` of -90 draws
+            // the tick labels vertically.
             colorbar& tickangle(double f) {
                 json["tickangle"] = std::move(f);
                 return *this;
             }
-            
+
             // Sets the tick color.
             colorbar& tickcolor(std::string f) {
                 json["tickcolor"] = std::move(f);
                 return *this;
             }
-            
+
             // Sets the color bar's tick label font
             colorbar& tickfont(class Tickfont f) {
                 json["tickfont"] = std::move(f.json);
                 return *this;
             }
-            
-            // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see: https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format. We add two items to d3's date formatter: *%h* for half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example, *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
+
+            // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in
+            // Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
+            // https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format. We add two items to d3's date formatter:
+            // *%h* for half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits.
+            // For example, *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
             colorbar& tickformat(std::string f) {
                 json["tickformat"] = std::move(f);
                 return *this;
             }
-            
+
             colorbar& tickformatstops(class Tickformatstops f) {
                 json["tickformatstops"] = std::move(f.json);
                 return *this;
             }
-            
-            // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
+
+            // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis.
+            // The default value for inside tick labels is *hide past domain*. In other cases the default is *hide past
+            // div*.
             Colorbar& ticklabeloverflow(enum Ticklabeloverflow f) {
                 json["ticklabeloverflow"] = to_string(f);
                 return *this;
             }
-            
-            // Determines where tick labels are drawn relative to the ticks. Left and right options are used when `orientation` is *h*, top and bottom when `orientation` is *v*.
-            // Default: outside
+
+            // Determines where tick labels are drawn relative to the ticks. Left and right options are used when
+            // `orientation` is *h*, top and bottom when `orientation` is *v*.
+            // - Default: outside
             Colorbar& ticklabelposition(enum Ticklabelposition f) {
                 json["ticklabelposition"] = to_string(f);
                 return *this;
             }
-            
-            // Sets the spacing between tick labels as compared to the spacing between ticks. A value of 1 (default) means each tick gets a label. A value of 2 means shows every 2nd label. A larger value n means only every nth tick is labeled. `tick0` determines which labels are shown. Not implemented for axes with `type` *log* or *multicategory*, or when `tickmode` is *array*.
+
+            // Sets the spacing between tick labels as compared to the spacing between ticks. A value of 1 (default)
+            // means each tick gets a label. A value of 2 means shows every 2nd label. A larger value n means only every
+            // nth tick is labeled. `tick0` determines which labels are shown. Not implemented for axes with `type`
+            // *log* or *multicategory*, or when `tickmode` is *array*.
             colorbar& ticklabelstep(int f) {
                 json["ticklabelstep"] = std::move(f);
                 return *this;
             }
-            
+
             // Sets the tick length (in px).
             colorbar& ticklen(double f) {
                 json["ticklen"] = std::move(f);
                 return *this;
             }
-            
-            // Sets the tick mode for this axis. If *auto*, the number of ticks is set via `nticks`. If *linear*, the placement of the ticks is determined by a starting position `tick0` and a tick step `dtick` (*linear* is the default value if `tick0` and `dtick` are provided). If *array*, the placement of the ticks is set via `tickvals` and the tick text is `ticktext`. (*array* is the default value if `tickvals` is provided).
+
+            // Sets the tick mode for this axis. If *auto*, the number of ticks is set via `nticks`. If *linear*, the
+            // placement of the ticks is determined by a starting position `tick0` and a tick step `dtick` (*linear* is
+            // the default value if `tick0` and `dtick` are provided). If *array*, the placement of the ticks is set via
+            // `tickvals` and the tick text is `ticktext`. (*array* is the default value if `tickvals` is provided).
             Colorbar& tickmode(enum Tickmode f) {
                 json["tickmode"] = to_string(f);
                 return *this;
             }
-            
+
             // Sets a tick label prefix.
             colorbar& tickprefix(std::string f) {
                 json["tickprefix"] = std::move(f);
                 return *this;
             }
-            
-            // Determines whether ticks are drawn or not. If **, this axis' ticks are not drawn. If *outside* (*inside*), this axis' are drawn outside (inside) the axis lines.
-            // Default: 
+
+            // Determines whether ticks are drawn or not. If **, this axis' ticks are not drawn. If *outside*
+            // (*inside*), this axis' are drawn outside (inside) the axis lines.
+            // - Default:
             Colorbar& ticks(enum Ticks f) {
                 json["ticks"] = to_string(f);
                 return *this;
             }
-            
+
             // Sets a tick label suffix.
             colorbar& ticksuffix(std::string f) {
                 json["ticksuffix"] = std::move(f);
                 return *this;
             }
-            
-            // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*. Used with `tickvals`.
-            template <typename T, typename=std::enable_if_t<std::is_arithmetic_v<T>>>
+
+            // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to
+            // *array*. Used with `tickvals`.
+            template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
             colorbar& ticktext(std::vector<T> f) {
                 json["ticktext"] = std::move(f);
                 return *this;
             }
-            
+
             // Sets the source reference on Chart Studio Cloud for `ticktext`.
             colorbar& ticktextsrc(std::string f) {
                 json["ticktextsrc"] = std::move(f);
                 return *this;
             }
-            
-            // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with `ticktext`.
-            template <typename T, typename=std::enable_if_t<std::is_arithmetic_v<T>>>
+
+            // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*.
+            // Used with `ticktext`.
+            template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
             colorbar& tickvals(std::vector<T> f) {
                 json["tickvals"] = std::move(f);
                 return *this;
             }
-            
+
             // Sets the source reference on Chart Studio Cloud for `tickvals`.
             colorbar& tickvalssrc(std::string f) {
                 json["tickvalssrc"] = std::move(f);
                 return *this;
             }
-            
+
             // Sets the tick width (in px).
             colorbar& tickwidth(double f) {
                 json["tickwidth"] = std::move(f);
                 return *this;
             }
-            
+
             colorbar& title(class Title f) {
                 json["title"] = std::move(f.json);
                 return *this;
             }
-            
-            // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1* when `orientation` is *v* and 0.5 when `orientation` is *h*. Must be between *0* and *1* if `xref` is *container* and between *-2* and *3* if `xref` is *paper*.
+
+            // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*,
+            // defaults to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*,
+            // defaults to *1* when `orientation` is *v* and 0.5 when `orientation` is *h*. Must be between *0* and *1*
+            // if `xref` is *container* and between *-2* and *3* if `xref` is *paper*.
             colorbar& x(double f) {
                 json["x"] = std::move(f);
                 return *this;
             }
-            
-            // Sets this color bar's horizontal position anchor. This anchor binds the `x` position to the *left*, *center* or *right* of the color bar. Defaults to *left* when `orientation` is *v* and *center* when `orientation` is *h*.
+
+            // Sets this color bar's horizontal position anchor. This anchor binds the `x` position to the *left*,
+            // *center* or *right* of the color bar. Defaults to *left* when `orientation` is *v* and *center* when
+            // `orientation` is *h*.
             Colorbar& xanchor(enum Xanchor f) {
                 json["xanchor"] = to_string(f);
                 return *this;
             }
-            
+
             // Sets the amount of padding (in px) along the x direction.
             colorbar& xpad(double f) {
                 json["xpad"] = std::move(f);
                 return *this;
             }
-            
-            // Sets the container `x` refers to. *container* spans the entire `width` of the plot. *paper* refers to the width of the plotting area only.
-            // Default: paper
+
+            // Sets the container `x` refers to. *container* spans the entire `width` of the plot. *paper* refers to the
+            // width of the plotting area only.
+            // - Default: paper
             Colorbar& xref(enum Xref f) {
                 json["xref"] = to_string(f);
                 return *this;
             }
-            
-            // Sets the y position with respect to `yref` of the color bar (in plot fraction). When `yref` is *paper*, defaults to 0.5 when `orientation` is *v* and 1.02 when `orientation` is *h*. When `yref` is *container*, defaults to 0.5 when `orientation` is *v* and 1 when `orientation` is *h*. Must be between *0* and *1* if `yref` is *container* and between *-2* and *3* if `yref` is *paper*.
+
+            // Sets the y position with respect to `yref` of the color bar (in plot fraction). When `yref` is *paper*,
+            // defaults to 0.5 when `orientation` is *v* and 1.02 when `orientation` is *h*. When `yref` is *container*,
+            // defaults to 0.5 when `orientation` is *v* and 1 when `orientation` is *h*. Must be between *0* and *1* if
+            // `yref` is *container* and between *-2* and *3* if `yref` is *paper*.
             colorbar& y(double f) {
                 json["y"] = std::move(f);
                 return *this;
             }
-            
-            // Sets this color bar's vertical position anchor This anchor binds the `y` position to the *top*, *middle* or *bottom* of the color bar. Defaults to *middle* when `orientation` is *v* and *bottom* when `orientation` is *h*.
+
+            // Sets this color bar's vertical position anchor This anchor binds the `y` position to the *top*, *middle*
+            // or *bottom* of the color bar. Defaults to *middle* when `orientation` is *v* and *bottom* when
+            // `orientation` is *h*.
             Colorbar& yanchor(enum Yanchor f) {
                 json["yanchor"] = to_string(f);
                 return *this;
             }
-            
+
             // Sets the amount of padding (in px) along the y direction.
             colorbar& ypad(double f) {
                 json["ypad"] = std::move(f);
                 return *this;
             }
-            
-            // Sets the container `y` refers to. *container* spans the entire `height` of the plot. *paper* refers to the height of the plotting area only.
-            // Default: paper
+
+            // Sets the container `y` refers to. *container* spans the entire `height` of the plot. *paper* refers to
+            // the height of the plotting area only.
+            // - Default: paper
             Colorbar& yref(enum Yref f) {
                 json["yref"] = to_string(f);
                 return *this;
             }
-            
+
             nlohmann::json json{};
         };
-        
+
         class Gradient {
-        public:
-            
+         public:
             // Sets the type of gradient used to fill the markers
             enum class Type {
                 RADIAL,
@@ -2189,15 +2832,20 @@ public:
                 NONE,
             };
             std::string to_string(Type e) {
-                switch(e) {
-                    case Type::RADIAL: return "radial";
-                    case Type::HORIZONTAL: return "horizontal";
-                    case Type::VERTICAL: return "vertical";
-                    case Type::NONE: return "none";
+                switch (e) {
+                case Type::RADIAL:
+                    return "radial";
+                case Type::HORIZONTAL:
+                    return "horizontal";
+                case Type::VERTICAL:
+                    return "vertical";
+                case Type::NONE:
+                    return "none";
                 }
             }
-            
-            // Sets the final color of the gradient fill: the center color for radial, the right for horizontal, or the bottom for vertical.
+
+            // Sets the final color of the gradient fill: the center color for radial, the right for horizontal, or the
+            // bottom for vertical.
             gradient& color(std::string f) {
                 json["color"] = std::move(f);
                 return *this;
@@ -2206,69 +2854,83 @@ public:
                 json["color"] = std::move(f);
                 return *this;
             }
-            
+
             // Sets the source reference on Chart Studio Cloud for `color`.
             gradient& colorsrc(std::string f) {
                 json["colorsrc"] = std::move(f);
                 return *this;
             }
-            
+
             // Sets the type of gradient used to fill the markers
-            // Default: none
+            // - Default: none
             Gradient& type(enum Type f) {
                 json["type"] = to_string(f);
                 return *this;
             }
             gradient& type(const std::vector<enum Type>& f) {
                 std::vector<std::string> stringified(f.size());
-                std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+                std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
                 json["type"] = std::move(stringified);
                 return *this;
             }
-            
+
             // Sets the source reference on Chart Studio Cloud for `type`.
             gradient& typesrc(std::string f) {
                 json["typesrc"] = std::move(f);
                 return *this;
             }
-            
+
             nlohmann::json json{};
         };
-        
+
         class Line {
-        public:
-            
-            // Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by `marker.line.colorscale`. Has an effect only if in `marker.line.color` is set to a numerical array. In case `colorscale` is unspecified or `autocolorscale` is true, the default palette will be chosen according to whether numbers in the `color` array are all positive, all negative or mixed.
+         public:
+            // Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined
+            // by `marker.line.colorscale`. Has an effect only if in `marker.line.color` is set to a numerical array. In
+            // case `colorscale` is unspecified or `autocolorscale` is true, the default palette will be chosen
+            // according to whether numbers in the `color` array are all positive, all negative or mixed.
             line& autocolorscale(bool f) {
                 json["autocolorscale"] = std::move(f);
                 return *this;
             }
-            
-            // Determines whether or not the color domain is computed with respect to the input data (here in `marker.line.color`) or the bounds set in `marker.line.cmin` and `marker.line.cmax` Has an effect only if in `marker.line.color` is set to a numerical array. Defaults to `false` when `marker.line.cmin` and `marker.line.cmax` are set by the user.
+
+            // Determines whether or not the color domain is computed with respect to the input data (here in
+            // `marker.line.color`) or the bounds set in `marker.line.cmin` and `marker.line.cmax` Has an effect only if
+            // in `marker.line.color` is set to a numerical array. Defaults to `false` when `marker.line.cmin` and
+            // `marker.line.cmax` are set by the user.
             line& cauto(bool f) {
                 json["cauto"] = std::move(f);
                 return *this;
             }
-            
-            // Sets the upper bound of the color domain. Has an effect only if in `marker.line.color` is set to a numerical array. Value should have the same units as in `marker.line.color` and if set, `marker.line.cmin` must be set as well.
+
+            // Sets the upper bound of the color domain. Has an effect only if in `marker.line.color` is set to a
+            // numerical array. Value should have the same units as in `marker.line.color` and if set,
+            // `marker.line.cmin` must be set as well.
             line& cmax(double f) {
                 json["cmax"] = std::move(f);
                 return *this;
             }
-            
-            // Sets the mid-point of the color domain by scaling `marker.line.cmin` and/or `marker.line.cmax` to be equidistant to this point. Has an effect only if in `marker.line.color` is set to a numerical array. Value should have the same units as in `marker.line.color`. Has no effect when `marker.line.cauto` is `false`.
+
+            // Sets the mid-point of the color domain by scaling `marker.line.cmin` and/or `marker.line.cmax` to be
+            // equidistant to this point. Has an effect only if in `marker.line.color` is set to a numerical array.
+            // Value should have the same units as in `marker.line.color`. Has no effect when `marker.line.cauto` is
+            // `false`.
             line& cmid(double f) {
                 json["cmid"] = std::move(f);
                 return *this;
             }
-            
-            // Sets the lower bound of the color domain. Has an effect only if in `marker.line.color` is set to a numerical array. Value should have the same units as in `marker.line.color` and if set, `marker.line.cmax` must be set as well.
+
+            // Sets the lower bound of the color domain. Has an effect only if in `marker.line.color` is set to a
+            // numerical array. Value should have the same units as in `marker.line.color` and if set,
+            // `marker.line.cmax` must be set as well.
             line& cmin(double f) {
                 json["cmin"] = std::move(f);
                 return *this;
             }
-            
-            // Sets the marker.line color. It accepts either a specific color or an array of numbers that are mapped to the colorscale relative to the max and min values of the array or relative to `marker.line.cmin` and `marker.line.cmax` if set.
+
+            // Sets the marker.line color. It accepts either a specific color or an array of numbers that are mapped to
+            // the colorscale relative to the max and min values of the array or relative to `marker.line.cmin` and
+            // `marker.line.cmax` if set.
             line& color(std::string f) {
                 json["color"] = std::move(f);
                 return *this;
@@ -2277,31 +2939,42 @@ public:
                 json["color"] = std::move(f);
                 return *this;
             }
-            
-            // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*, *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`, `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
+
+            // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*,
+            // *coloraxis2*, *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under
+            // `layout.coloraxis`, `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same
+            // color axis.
             line& coloraxis(std::string f) {
                 json["coloraxis"] = std::move(f);
                 return *this;
             }
-            
-            // Sets the colorscale. Has an effect only if in `marker.line.color` is set to a numerical array. The colorscale must be an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0, 'rgb(0,0,255)'], [1, 'rgb(255,0,0)']]`. To control the bounds of the colorscale in color space, use `marker.line.cmin` and `marker.line.cmax`. Alternatively, `colorscale` may be a palette name string of the following list: Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
+
+            // Sets the colorscale. Has an effect only if in `marker.line.color` is set to a numerical array. The
+            // colorscale must be an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv,
+            // or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are required. For
+            // example, `[[0, 'rgb(0,0,255)'], [1, 'rgb(255,0,0)']]`. To control the bounds of the colorscale in color
+            // space, use `marker.line.cmin` and `marker.line.cmax`. Alternatively, `colorscale` may be a palette name
+            // string of the following list:
+            // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
             line& colorscale(std::string f) {
                 json["colorscale"] = std::move(f);
                 return *this;
             }
-            
+
             // Sets the source reference on Chart Studio Cloud for `color`.
             line& colorsrc(std::string f) {
                 json["colorsrc"] = std::move(f);
                 return *this;
             }
-            
-            // Reverses the color mapping if true. Has an effect only if in `marker.line.color` is set to a numerical array. If true, `marker.line.cmin` will correspond to the last color in the array and `marker.line.cmax` will correspond to the first color.
+
+            // Reverses the color mapping if true. Has an effect only if in `marker.line.color` is set to a numerical
+            // array. If true, `marker.line.cmin` will correspond to the last color in the array and `marker.line.cmax`
+            // will correspond to the first color.
             line& reversescale(bool f) {
                 json["reversescale"] = std::move(f);
                 return *this;
             }
-            
+
             // Sets the width (in px) of the lines bounding the marker points.
             line& width(double f) {
                 json["width"] = std::move(f);
@@ -2311,16 +2984,16 @@ public:
                 json["width"] = std::move(f);
                 return *this;
             }
-            
+
             // Sets the source reference on Chart Studio Cloud for `width`.
             line& widthsrc(std::string f) {
                 json["widthsrc"] = std::move(f);
                 return *this;
             }
-            
+
             nlohmann::json json{};
         };
-        
+
         // Sets the marker angle in respect to `angleref`.
         marker& angle(double f) {
             json["angle"] = std::move(f);
@@ -2330,51 +3003,63 @@ public:
             json["angle"] = std::move(f);
             return *this;
         }
-        
-        // Sets the reference for marker angle. With *previous*, angle 0 points along the line from the previous point to this one. With *up*, angle 0 points toward the top of the screen.
-        // Default: up
+
+        // Sets the reference for marker angle. With *previous*, angle 0 points along the line from the previous point
+        // to this one. With *up*, angle 0 points toward the top of the screen.
+        // - Default: up
         Marker& angleref(enum Angleref f) {
             json["angleref"] = to_string(f);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `angle`.
         marker& anglesrc(std::string f) {
             json["anglesrc"] = std::move(f);
             return *this;
         }
-        
-        // Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by `marker.colorscale`. Has an effect only if in `marker.color` is set to a numerical array. In case `colorscale` is unspecified or `autocolorscale` is true, the default palette will be chosen according to whether numbers in the `color` array are all positive, all negative or mixed.
+
+        // Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by
+        // `marker.colorscale`. Has an effect only if in `marker.color` is set to a numerical array. In case
+        // `colorscale` is unspecified or `autocolorscale` is true, the default palette will be chosen according to
+        // whether numbers in the `color` array are all positive, all negative or mixed.
         marker& autocolorscale(bool f) {
             json["autocolorscale"] = std::move(f);
             return *this;
         }
-        
-        // Determines whether or not the color domain is computed with respect to the input data (here in `marker.color`) or the bounds set in `marker.cmin` and `marker.cmax` Has an effect only if in `marker.color` is set to a numerical array. Defaults to `false` when `marker.cmin` and `marker.cmax` are set by the user.
+
+        // Determines whether or not the color domain is computed with respect to the input data (here in
+        // `marker.color`) or the bounds set in `marker.cmin` and `marker.cmax` Has an effect only if in `marker.color`
+        // is set to a numerical array. Defaults to `false` when `marker.cmin` and `marker.cmax` are set by the user.
         marker& cauto(bool f) {
             json["cauto"] = std::move(f);
             return *this;
         }
-        
-        // Sets the upper bound of the color domain. Has an effect only if in `marker.color` is set to a numerical array. Value should have the same units as in `marker.color` and if set, `marker.cmin` must be set as well.
+
+        // Sets the upper bound of the color domain. Has an effect only if in `marker.color` is set to a numerical
+        // array. Value should have the same units as in `marker.color` and if set, `marker.cmin` must be set as well.
         marker& cmax(double f) {
             json["cmax"] = std::move(f);
             return *this;
         }
-        
-        // Sets the mid-point of the color domain by scaling `marker.cmin` and/or `marker.cmax` to be equidistant to this point. Has an effect only if in `marker.color` is set to a numerical array. Value should have the same units as in `marker.color`. Has no effect when `marker.cauto` is `false`.
+
+        // Sets the mid-point of the color domain by scaling `marker.cmin` and/or `marker.cmax` to be equidistant to
+        // this point. Has an effect only if in `marker.color` is set to a numerical array. Value should have the same
+        // units as in `marker.color`. Has no effect when `marker.cauto` is `false`.
         marker& cmid(double f) {
             json["cmid"] = std::move(f);
             return *this;
         }
-        
-        // Sets the lower bound of the color domain. Has an effect only if in `marker.color` is set to a numerical array. Value should have the same units as in `marker.color` and if set, `marker.cmax` must be set as well.
+
+        // Sets the lower bound of the color domain. Has an effect only if in `marker.color` is set to a numerical
+        // array. Value should have the same units as in `marker.color` and if set, `marker.cmax` must be set as well.
         marker& cmin(double f) {
             json["cmin"] = std::move(f);
             return *this;
         }
-        
-        // Sets the marker color. It accepts either a specific color or an array of numbers that are mapped to the colorscale relative to the max and min values of the array or relative to `marker.cmin` and `marker.cmax` if set.
+
+        // Sets the marker color. It accepts either a specific color or an array of numbers that are mapped to the
+        // colorscale relative to the max and min values of the array or relative to `marker.cmin` and `marker.cmax` if
+        // set.
         marker& color(std::string f) {
             json["color"] = std::move(f);
             return *this;
@@ -2383,46 +3068,54 @@ public:
             json["color"] = std::move(f);
             return *this;
         }
-        
-        // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*, *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`, `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
+
+        // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
+        // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
+        // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
         marker& coloraxis(std::string f) {
             json["coloraxis"] = std::move(f);
             return *this;
         }
-        
+
         marker& colorbar(class Colorbar f) {
             json["colorbar"] = std::move(f.json);
             return *this;
         }
-        
-        // Sets the colorscale. Has an effect only if in `marker.color` is set to a numerical array. The colorscale must be an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0, 'rgb(0,0,255)'], [1, 'rgb(255,0,0)']]`. To control the bounds of the colorscale in color space, use `marker.cmin` and `marker.cmax`. Alternatively, `colorscale` may be a palette name string of the following list: Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
+
+        // Sets the colorscale. Has an effect only if in `marker.color` is set to a numerical array. The colorscale must
+        // be an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color
+        // string. At minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0,
+        // 'rgb(0,0,255)'], [1, 'rgb(255,0,0)']]`. To control the bounds of the colorscale in color space, use
+        // `marker.cmin` and `marker.cmax`. Alternatively, `colorscale` may be a palette name string of the following
+        // list:
+        // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
         marker& colorscale(std::string f) {
             json["colorscale"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `color`.
         marker& colorsrc(std::string f) {
             json["colorsrc"] = std::move(f);
             return *this;
         }
-        
+
         marker& gradient(class Gradient f) {
             json["gradient"] = std::move(f.json);
             return *this;
         }
-        
+
         marker& line(class Line f) {
             json["line"] = std::move(f.json);
             return *this;
         }
-        
+
         // Sets a maximum number of points to be drawn on the graph. *0* corresponds to no limit.
         marker& maxdisplayed(double f) {
             json["maxdisplayed"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the marker opacity.
         marker& opacity(double f) {
             json["opacity"] = std::move(f);
@@ -2432,25 +3125,28 @@ public:
             json["opacity"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `opacity`.
         marker& opacitysrc(std::string f) {
             json["opacitysrc"] = std::move(f);
             return *this;
         }
-        
-        // Reverses the color mapping if true. Has an effect only if in `marker.color` is set to a numerical array. If true, `marker.cmin` will correspond to the last color in the array and `marker.cmax` will correspond to the first color.
+
+        // Reverses the color mapping if true. Has an effect only if in `marker.color` is set to a numerical array. If
+        // true, `marker.cmin` will correspond to the last color in the array and `marker.cmax` will correspond to the
+        // first color.
         marker& reversescale(bool f) {
             json["reversescale"] = std::move(f);
             return *this;
         }
-        
-        // Determines whether or not a colorbar is displayed for this trace. Has an effect only if in `marker.color` is set to a numerical array.
+
+        // Determines whether or not a colorbar is displayed for this trace. Has an effect only if in `marker.color` is
+        // set to a numerical array.
         marker& showscale(bool f) {
             json["showscale"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the marker size (in px).
         marker& size(double f) {
             json["size"] = std::move(f);
@@ -2460,33 +3156,37 @@ public:
             json["size"] = std::move(f);
             return *this;
         }
-        
-        // Has an effect only if `marker.size` is set to a numerical array. Sets the minimum size (in px) of the rendered marker points.
+
+        // Has an effect only if `marker.size` is set to a numerical array. Sets the minimum size (in px) of the
+        // rendered marker points.
         marker& sizemin(double f) {
             json["sizemin"] = std::move(f);
             return *this;
         }
-        
-        // Has an effect only if `marker.size` is set to a numerical array. Sets the rule for which the data in `size` is converted to pixels.
-        // Default: diameter
+
+        // Has an effect only if `marker.size` is set to a numerical array. Sets the rule for which the data in `size`
+        // is converted to pixels.
+        // - Default: diameter
         Marker& sizemode(enum Sizemode f) {
             json["sizemode"] = to_string(f);
             return *this;
         }
-        
-        // Has an effect only if `marker.size` is set to a numerical array. Sets the scale factor used to determine the rendered size of marker points. Use with `sizemin` and `sizemode`.
+
+        // Has an effect only if `marker.size` is set to a numerical array. Sets the scale factor used to determine the
+        // rendered size of marker points. Use with `sizemin` and `sizemode`.
         marker& sizeref(double f) {
             json["sizeref"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `size`.
         marker& sizesrc(std::string f) {
             json["sizesrc"] = std::move(f);
             return *this;
         }
-        
-        // Moves the marker away from the data point in the direction of `angle` (in px). This can be useful for example if you have another marker at this location and you want to point an arrowhead marker at it.
+
+        // Moves the marker away from the data point in the direction of `angle` (in px). This can be useful for example
+        // if you have another marker at this location and you want to point an arrowhead marker at it.
         marker& standoff(double f) {
             json["standoff"] = std::move(f);
             return *this;
@@ -2495,109 +3195,108 @@ public:
             json["standoff"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `standoff`.
         marker& standoffsrc(std::string f) {
             json["standoffsrc"] = std::move(f);
             return *this;
         }
-        
-        // Sets the marker symbol type. Adding 100 is equivalent to appending *-open* to a symbol name. Adding 200 is equivalent to appending *-dot* to a symbol name. Adding 300 is equivalent to appending *-open-dot* or *dot-open* to a symbol name.
-        // Default: circle
+
+        // Sets the marker symbol type. Adding 100 is equivalent to appending *-open* to a symbol name. Adding 200 is
+        // equivalent to appending *-dot* to a symbol name. Adding 300 is equivalent to appending *-open-dot* or
+        // *dot-open* to a symbol name.
+        // - Default: circle
         Marker& symbol(enum Symbol f) {
             json["symbol"] = to_string(f);
             return *this;
         }
         marker& symbol(const std::vector<enum Symbol>& f) {
             std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
             json["symbol"] = std::move(stringified);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `symbol`.
         marker& symbolsrc(std::string f) {
             json["symbolsrc"] = std::move(f);
             return *this;
         }
-        
+
         nlohmann::json json{};
     };
-    
+
     class Selected {
-    public:
-        
+     public:
         class Marker {
-        public:
-            
+         public:
             // Sets the marker color of selected points.
             marker& color(std::string f) {
                 json["color"] = std::move(f);
                 return *this;
             }
-            
+
             // Sets the marker opacity of selected points.
             marker& opacity(double f) {
                 json["opacity"] = std::move(f);
                 return *this;
             }
-            
+
             // Sets the marker size of selected points.
             marker& size(double f) {
                 json["size"] = std::move(f);
                 return *this;
             }
-            
+
             nlohmann::json json{};
         };
-        
+
         class Textfont {
-        public:
-            
+         public:
             // Sets the text font color of selected points.
             textfont& color(std::string f) {
                 json["color"] = std::move(f);
                 return *this;
             }
-            
+
             nlohmann::json json{};
         };
-        
+
         selected& marker(class Marker f) {
             json["marker"] = std::move(f.json);
             return *this;
         }
-        
+
         selected& textfont(class Textfont f) {
             json["textfont"] = std::move(f.json);
             return *this;
         }
-        
+
         nlohmann::json json{};
     };
-    
+
     class Stream {
-    public:
-        
-        // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*, only the newest 50 points will be displayed on the plot.
+     public:
+        // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to
+        // *50*, only the newest 50 points will be displayed on the plot.
         stream& maxpoints(double f) {
             json["maxpoints"] = std::move(f);
             return *this;
         }
-        
-        // The stream id number links a data trace on a plot with a stream. See https://chart-studio.plotly.com/settings for more details.
+
+        // The stream id number links a data trace on a plot with a stream. See https://chart-studio.plotly.com/settings
+        // for more details.
         stream& token(std::string f) {
             json["token"] = std::move(f);
             return *this;
         }
-        
+
         nlohmann::json json{};
     };
-    
+
     // Sets the text font.
     class Textfont {
-    public:
-        
+     public:
         textfont& color(std::string f) {
             json["color"] = std::move(f);
             return *this;
@@ -2606,14 +3305,20 @@ public:
             json["color"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `color`.
         textfont& colorsrc(std::string f) {
             json["colorsrc"] = std::move(f);
             return *this;
         }
-        
-        // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to apply a font if it is available on the system which it operates. Provide multiple font families, separated by commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*,, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*, *Raleway*, *Times New Roman*.
+
+        // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+        // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+        // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+        // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a
+        // select number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid
+        // Sans*,, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT
+        // Sans Narrow*, *Raleway*, *Times New Roman*.
         textfont& family(std::string f) {
             json["family"] = std::move(f);
             return *this;
@@ -2622,13 +3327,13 @@ public:
             json["family"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `family`.
         textfont& familysrc(std::string f) {
             json["familysrc"] = std::move(f);
             return *this;
         }
-        
+
         textfont& size(double f) {
             json["size"] = std::move(f);
             return *this;
@@ -2637,169 +3342,185 @@ public:
             json["size"] = std::move(f);
             return *this;
         }
-        
+
         // Sets the source reference on Chart Studio Cloud for `size`.
         textfont& sizesrc(std::string f) {
             json["sizesrc"] = std::move(f);
             return *this;
         }
-        
+
         nlohmann::json json{};
     };
-    
+
     class Transforms {
-    public:
-        
-        // WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.
+     public:
+        // WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of
+        // operations that manipulate the trace data, for example filtering or sorting the data arrays.
         class Transform {
-        public:
-            
+         public:
             nlohmann::json json{};
         };
-        
-        // WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.
+
+        // WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of
+        // operations that manipulate the trace data, for example filtering or sorting the data arrays.
         transforms& transform(class Transform f) {
             json["transform"] = std::move(f.json);
             return *this;
         }
-        
+
         nlohmann::json json{};
     };
-    
+
     class Unselected {
-    public:
-        
+     public:
         class Marker {
-        public:
-            
+         public:
             // Sets the marker color of unselected points, applied only when a selection exists.
             marker& color(std::string f) {
                 json["color"] = std::move(f);
                 return *this;
             }
-            
+
             // Sets the marker opacity of unselected points, applied only when a selection exists.
             marker& opacity(double f) {
                 json["opacity"] = std::move(f);
                 return *this;
             }
-            
+
             // Sets the marker size of unselected points, applied only when a selection exists.
             marker& size(double f) {
                 json["size"] = std::move(f);
                 return *this;
             }
-            
+
             nlohmann::json json{};
         };
-        
+
         class Textfont {
-        public:
-            
+         public:
             // Sets the text font color of unselected points, applied only when a selection exists.
             textfont& color(std::string f) {
                 json["color"] = std::move(f);
                 return *this;
             }
-            
+
             nlohmann::json json{};
         };
-        
+
         unselected& marker(class Marker f) {
             json["marker"] = std::move(f.json);
             return *this;
         }
-        
+
         unselected& textfont(class Textfont f) {
             json["textfont"] = std::move(f.json);
             return *this;
         }
-        
+
         nlohmann::json json{};
     };
-    
-    // Set several traces linked to the same position axis or matching axes to the same alignmentgroup. This controls whether bars compute their positional range dependently or independently.
+
+    // Set several traces linked to the same position axis or matching axes to the same alignmentgroup. This controls
+    // whether bars compute their positional range dependently or independently.
     scatter& alignmentgroup(std::string f) {
         json["alignmentgroup"] = std::move(f);
         return *this;
     }
-    
-    // Determines whether or not markers and text nodes are clipped about the subplot axes. To show markers and text nodes above axis lines and tick labels, make sure to set `xaxis.layer` and `yaxis.layer` to *below traces*.
+
+    // Determines whether or not markers and text nodes are clipped about the subplot axes. To show markers and text
+    // nodes above axis lines and tick labels, make sure to set `xaxis.layer` and `yaxis.layer` to *below traces*.
     scatter& cliponaxis(bool f) {
         json["cliponaxis"] = std::move(f);
         return *this;
     }
-    
+
     // Determines whether or not gaps (i.e. {nan} or missing values) in the provided data arrays are connected.
     scatter& connectgaps(bool f) {
         json["connectgaps"] = std::move(f);
         return *this;
     }
-    
-    // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-    template <typename T, typename=std::enable_if_t<std::is_arithmetic_v<T>>>
+
+    // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
+    // *scatter* traces also appends customdata items in the markers DOM elements
+    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     scatter& customdata(std::vector<T> f) {
         json["customdata"] = std::move(f);
         return *this;
     }
-    
+
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     scatter& customdatasrc(std::string f) {
         json["customdatasrc"] = std::move(f);
         return *this;
     }
-    
+
     // Sets the x coordinate step. See `x0` for more info.
     scatter& dx(double f) {
         json["dx"] = std::move(f);
         return *this;
     }
-    
+
     // Sets the y coordinate step. See `y0` for more info.
     scatter& dy(double f) {
         json["dy"] = std::move(f);
         return *this;
     }
-    
+
     scatter& error_x(class Error_x f) {
         json["error_x"] = std::move(f.json);
         return *this;
     }
-    
+
     scatter& error_y(class Error_y f) {
         json["error_y"] = std::move(f.json);
         return *this;
     }
-    
-    // Sets the area to fill with a solid color. Defaults to *none* unless this trace is stacked, then it gets *tonexty* (*tonextx*) if `orientation` is *v* (*h*) Use with `fillcolor` if not *none*. *tozerox* and *tozeroy* fill to x=0 and y=0 respectively. *tonextx* and *tonexty* fill between the endpoints of this trace and the endpoints of the trace before it, connecting those endpoints with straight lines (to make a stacked area graph); if there is no trace before it, they behave like *tozerox* and *tozeroy*. *toself* connects the endpoints of the trace (or each segment of the trace if it has gaps) into a closed shape. *tonext* fills the space between two traces if one completely encloses the other (eg consecutive contour lines), and behaves like *toself* if there is no trace before it. *tonext* should not be used if one trace does not enclose the other. Traces in a `stackgroup` will only fill to (or be filled to) other traces in the same group. With multiple `stackgroup`s or some traces stacked and some not, if fill-linked traces are not already consecutive, the later ones will be pushed down in the drawing order.
+
+    // Sets the area to fill with a solid color. Defaults to *none* unless this trace is stacked, then it gets *tonexty*
+    // (*tonextx*) if `orientation` is *v* (*h*) Use with `fillcolor` if not *none*. *tozerox* and *tozeroy* fill to x=0
+    // and y=0 respectively. *tonextx* and *tonexty* fill between the endpoints of this trace and the endpoints of the
+    // trace before it, connecting those endpoints with straight lines (to make a stacked area graph); if there is no
+    // trace before it, they behave like *tozerox* and *tozeroy*. *toself* connects the endpoints of the trace (or each
+    // segment of the trace if it has gaps) into a closed shape. *tonext* fills the space between two traces if one
+    // completely encloses the other (eg consecutive contour lines), and behaves like *toself* if there is no trace
+    // before it. *tonext* should not be used if one trace does not enclose the other. Traces in a `stackgroup` will
+    // only fill to (or be filled to) other traces in the same group. With multiple `stackgroup`s or some traces stacked
+    // and some not, if fill-linked traces are not already consecutive, the later ones will be pushed down in the
+    // drawing order.
     Scatter& fill(enum Fill f) {
         json["fill"] = to_string(f);
         return *this;
     }
-    
-    // Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line color, whichever is available.
+
+    // Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line
+    // color, whichever is available.
     scatter& fillcolor(std::string f) {
         json["fillcolor"] = std::move(f);
         return *this;
     }
-    
+
     // Sets the pattern within the marker.
     scatter& fillpattern(class Fillpattern f) {
         json["fillpattern"] = std::move(f.json);
         return *this;
     }
-    
-    // Only relevant when `stackgroup` is used, and only the first `groupnorm` found in the `stackgroup` will be used - including if `visible` is *legendonly* but not if it is `false`. Sets the normalization for the sum of this `stackgroup`. With *fraction*, the value of each trace at each location is divided by the sum of all trace values at that location. *percent* is the same but multiplied by 100 to show percentages. If there are multiple subplots, or multiple `stackgroup`s on one subplot, each will be normalized within its own set.
-    // Default: 
+
+    // Only relevant when `stackgroup` is used, and only the first `groupnorm` found in the `stackgroup` will be used -
+    // including if `visible` is *legendonly* but not if it is `false`. Sets the normalization for the sum of this
+    // `stackgroup`. With *fraction*, the value of each trace at each location is divided by the sum of all trace values
+    // at that location. *percent* is the same but multiplied by 100 to show percentages. If there are multiple
+    // subplots, or multiple `stackgroup`s on one subplot, each will be normalized within its own set.
+    // - Default:
     Scatter& groupnorm(enum Groupnorm f) {
         json["groupnorm"] = to_string(f);
         return *this;
     }
-    
-    // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-    // Default: all
-    // Flags: ['x', 'y', 'z', 'text', 'name']
-    // Extras ['all', 'none', 'skip']
+
+    // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
+    // hovering. But, if `none` is set, click and hover events are still fired.
+    // - Default: all
+    // - Flags: ['x', 'y', 'z', 'text', 'name']
+    // - Extras ['all', 'none', 'skip']
     scatter& hoverinfo(std::string f) {
         json["hoverinfo"] = std::move(f);
         return *this;
@@ -2808,26 +3529,40 @@ public:
         json["hoverinfo"] = std::move(f);
         return *this;
     }
-    
+
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     scatter& hoverinfosrc(std::string f) {
         json["hoverinfosrc"] = std::move(f);
         return *this;
     }
-    
+
     scatter& hoverlabel(class Hoverlabel f) {
         json["hoverlabel"] = std::move(f.json);
         return *this;
     }
-    
-    // Do the hover effects highlight individual points (markers or line points) or do they highlight filled regions? If the fill is *toself* or *tonext* and there are no markers or text, then the default is *fills*, otherwise it is *points*.
-    // Flags: ['points', 'fills']
+
+    // Do the hover effects highlight individual points (markers or line points) or do they highlight filled regions? If
+    // the fill is *toself* or *tonext* and there are no markers or text, then the default is *fills*, otherwise it is
+    // *points*.
+    // - Flags: ['points', 'fills']
     scatter& hoveron(std::string f) {
         json["hoveron"] = std::move(f);
         return *this;
     }
-    
-    // Template string used for rendering the information that appear on hover box. Note that this will override `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother}, {%_xother_}, {%xother_}. When showing info for several points, *xother* will be added to those with different x positions from the first point. An underscore before or after *(x|y)other* will add a space on that side, only when this field is shown. Numbers are formatted using d3-format's syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". https://github.com/d3/d3-format/tree/v1.4.5#d3-format for details on the formatting syntax. Dates are formatted using d3-time-format's syntax %{variable|d3-time-format}, for example "Day: %{2019-01-01|%A}". https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details on the date formatting syntax. The variables available in `hovertemplate` are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data. Additionally, every attributes that can be specified per-point (the ones that are `arrayOk: true`) are available.  Anything contained in tag `<extra>` is displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an empty tag `<extra></extra>`.
+
+    // Template string used for rendering the information that appear on hover box. Note that this will override
+    // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
+    // {%_xother_}, {%xother_}. When showing info for several points, *xother* will be added to those with different x
+    // positions from the first point. An underscore before or after *(x|y)other* will add a space on that side, only
+    // when this field is shown. Numbers are formatted using d3-format's syntax %{variable:d3-format}, for example
+    // "Price: %{y:$.2f}". https://github.com/d3/d3-format/tree/v1.4.5#d3-format for details on the formatting syntax.
+    // Dates are formatted using d3-time-format's syntax %{variable|d3-time-format}, for example "Day:
+    // %{2019-01-01|%A}". https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details on the date
+    // formatting syntax. The variables available in `hovertemplate` are the ones emitted as event data described at
+    // this link https://plotly.com/javascript/plotlyjs-events/#event-data. Additionally, every attributes that can be
+    // specified per-point (the ones that are `arrayOk: true`) are available.  Anything contained in tag `<extra>` is
+    // displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box
+    // completely, use an empty tag `<extra></extra>`.
     scatter& hovertemplate(std::string f) {
         json["hovertemplate"] = std::move(f);
         return *this;
@@ -2836,14 +3571,16 @@ public:
         json["hovertemplate"] = std::move(f);
         return *this;
     }
-    
+
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     scatter& hovertemplatesrc(std::string f) {
         json["hovertemplatesrc"] = std::move(f);
         return *this;
     }
-    
-    // Sets hover text elements associated with each (x,y) pair. If a single string, the same string appears over all the data points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. To be seen, trace `hoverinfo` must contain a *text* flag.
+
+    // Sets hover text elements associated with each (x,y) pair. If a single string, the same string appears over all
+    // the data points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. To
+    // be seen, trace `hoverinfo` must contain a *text* flag.
     scatter& hovertext(std::string f) {
         json["hovertext"] = std::move(f);
         return *this;
@@ -2852,66 +3589,78 @@ public:
         json["hovertext"] = std::move(f);
         return *this;
     }
-    
+
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     scatter& hovertextsrc(std::string f) {
         json["hovertextsrc"] = std::move(f);
         return *this;
     }
-    
-    // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-    template <typename T, typename=std::enable_if_t<std::is_arithmetic_v<T>>>
+
+    // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
+    // array of strings, not numbers or any other type.
+    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     scatter& ids(std::vector<T> f) {
         json["ids"] = std::move(f);
         return *this;
     }
-    
+
     // Sets the source reference on Chart Studio Cloud for `ids`.
     scatter& idssrc(std::string f) {
         json["idssrc"] = std::move(f);
         return *this;
     }
-    
-    // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*, *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
+
+    // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
+    // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
     scatter& legend(std::string f) {
         json["legend"] = std::move(f);
         return *this;
     }
-    
-    // Sets the legend group for this trace. Traces and shapes part of the same legend group hide/show at the same time when toggling legend items.
+
+    // Sets the legend group for this trace. Traces and shapes part of the same legend group hide/show at the same time
+    // when toggling legend items.
     scatter& legendgroup(std::string f) {
         json["legendgroup"] = std::move(f);
         return *this;
     }
-    
+
     scatter& legendgrouptitle(class Legendgrouptitle f) {
         json["legendgrouptitle"] = std::move(f.json);
         return *this;
     }
-    
-    // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you can use ranks less than 1000 to place certain items before all unranked items, and ranks greater than 1000 to go after all unranked items. When having unranked or equal rank items shapes would be displayed after traces i.e. according to their order in data and layout.
+
+    // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
+    // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
+    // can use ranks less than 1000 to place certain items before all unranked items, and ranks greater than 1000 to go
+    // after all unranked items. When having unranked or equal rank items shapes would be displayed after traces i.e.
+    // according to their order in data and layout.
     scatter& legendrank(double f) {
         json["legendrank"] = std::move(f);
         return *this;
     }
-    
+
     // Sets the width (in px or fraction) of the legend for this trace.
     scatter& legendwidth(double f) {
         json["legendwidth"] = std::move(f);
         return *this;
     }
-    
+
     scatter& line(class Line f) {
         json["line"] = std::move(f.json);
         return *this;
     }
-    
+
     scatter& marker(class Marker f) {
         json["marker"] = std::move(f.json);
         return *this;
     }
-    
-    // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues` and `sliders` `label` text all support `meta`. To access the trace `meta` values in an attribute in the same trace, simply use `%{meta[i]}` where `i` is the index or key of the `meta` item in question. To access trace `meta` in layout attributes, use `%{data[n[.meta[i]}` where `i` is the index or key of the `meta` and `n` is the trace index.
+
+    // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
+    // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
+    // and `sliders` `label` text all support `meta`. To access the trace `meta` values in an attribute in the same
+    // trace, simply use `%{meta[i]}` where `i` is the index or key of the `meta` item in question. To access trace
+    // `meta` in layout attributes, use `%{data[n[.meta[i]}` where `i` is the index or key of the `meta` and `n` is the
+    // trace index.
     template <typename T>
     scatter& meta(T f) {
         json["meta"] = std::move(f);
@@ -2922,82 +3671,102 @@ public:
         json["meta"] = std::move(f);
         return *this;
     }
-    
+
     // Sets the source reference on Chart Studio Cloud for `meta`.
     scatter& metasrc(std::string f) {
         json["metasrc"] = std::move(f);
         return *this;
     }
-    
-    // Determines the drawing mode for this scatter trace. If the provided `mode` includes *text* then the `text` elements appear at the coordinates. Otherwise, the `text` elements appear on hover. If there are less than 20 points and the trace is not stacked then the default is *lines+markers*. Otherwise, *lines*.
-    // Flags: ['lines', 'markers', 'text']
-    // Extras ['none']
+
+    // Determines the drawing mode for this scatter trace. If the provided `mode` includes *text* then the `text`
+    // elements appear at the coordinates. Otherwise, the `text` elements appear on hover. If there are less than 20
+    // points and the trace is not stacked then the default is *lines+markers*. Otherwise, *lines*.
+    // - Flags: ['lines', 'markers', 'text']
+    // - Extras ['none']
     scatter& mode(std::string f) {
         json["mode"] = std::move(f);
         return *this;
     }
-    
+
     // Sets the trace name. The trace name appears as the legend item and on hover.
     scatter& name(std::string f) {
         json["name"] = std::move(f);
         return *this;
     }
-    
-    // Set several traces linked to the same position axis or matching axes to the same offsetgroup where bars of the same position coordinate will line up.
+
+    // Set several traces linked to the same position axis or matching axes to the same offsetgroup where bars of the
+    // same position coordinate will line up.
     scatter& offsetgroup(std::string f) {
         json["offsetgroup"] = std::move(f);
         return *this;
     }
-    
+
     // Sets the opacity of the trace.
     scatter& opacity(double f) {
         json["opacity"] = std::move(f);
         return *this;
     }
-    
-    // Only relevant in the following cases: 1. when `scattermode` is set to *group*. 2. when `stackgroup` is used, and only the first `orientation` found in the `stackgroup` will be used - including if `visible` is *legendonly* but not if it is `false`. Sets the stacking direction. With *v* (*h*), the y (x) values of subsequent traces are added. Also affects the default value of `fill`.
+
+    // Only relevant in the following cases: 1. when `scattermode` is set to *group*. 2. when `stackgroup` is used, and
+    // only the first `orientation` found in the `stackgroup` will be used - including if `visible` is *legendonly* but
+    // not if it is `false`. Sets the stacking direction. With *v* (*h*), the y (x) values of subsequent traces are
+    // added. Also affects the default value of `fill`.
     Scatter& orientation(enum Orientation f) {
         json["orientation"] = to_string(f);
         return *this;
     }
-    
+
     scatter& selected(class Selected f) {
         json["selected"] = std::move(f.json);
         return *this;
     }
-    
-    // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
+
+    // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
+    // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
+    // other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
     template <typename T>
     scatter& selectedpoints(T f) {
         json["selectedpoints"] = std::move(f);
         return *this;
     }
-    
+
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     scatter& showlegend(bool f) {
         json["showlegend"] = std::move(f);
         return *this;
     }
-    
-    // Only relevant when `stackgroup` is used, and only the first `stackgaps` found in the `stackgroup` will be used - including if `visible` is *legendonly* but not if it is `false`. Determines how we handle locations at which other traces in this group have data but this one does not. With *infer zero* we insert a zero at these locations. With *interpolate* we linearly interpolate between existing values, and extrapolate a constant beyond the existing values.
-    // Default: infer zero
+
+    // Only relevant when `stackgroup` is used, and only the first `stackgaps` found in the `stackgroup` will be used -
+    // including if `visible` is *legendonly* but not if it is `false`. Determines how we handle locations at which
+    // other traces in this group have data but this one does not. With *infer zero* we insert a zero at these
+    // locations. With *interpolate* we linearly interpolate between existing values, and extrapolate a constant beyond
+    // the existing values.
+    // - Default: infer zero
     Scatter& stackgaps(enum Stackgaps f) {
         json["stackgaps"] = to_string(f);
         return *this;
     }
-    
-    // Set several scatter traces (on the same subplot) to the same stackgroup in order to add their y values (or their x values if `orientation` is *h*). If blank or omitted this trace will not be stacked. Stacking also turns `fill` on by default, using *tonexty* (*tonextx*) if `orientation` is *h* (*v*) and sets the default `mode` to *lines* irrespective of point count. You can only stack on a numeric (linear or log) axis. Traces in a `stackgroup` will only fill to (or be filled to) other traces in the same group. With multiple `stackgroup`s or some traces stacked and some not, if fill-linked traces are not already consecutive, the later ones will be pushed down in the drawing order.
+
+    // Set several scatter traces (on the same subplot) to the same stackgroup in order to add their y values (or their
+    // x values if `orientation` is *h*). If blank or omitted this trace will not be stacked. Stacking also turns `fill`
+    // on by default, using *tonexty* (*tonextx*) if `orientation` is *h* (*v*) and sets the default `mode` to *lines*
+    // irrespective of point count. You can only stack on a numeric (linear or log) axis. Traces in a `stackgroup` will
+    // only fill to (or be filled to) other traces in the same group. With multiple `stackgroup`s or some traces stacked
+    // and some not, if fill-linked traces are not already consecutive, the later ones will be pushed down in the
+    // drawing order.
     scatter& stackgroup(std::string f) {
         json["stackgroup"] = std::move(f);
         return *this;
     }
-    
+
     scatter& stream(class Stream f) {
         json["stream"] = std::move(f.json);
         return *this;
     }
-    
-    // Sets text elements associated with each (x,y) pair. If a single string, the same string appears over all the data points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
+
+    // Sets text elements associated with each (x,y) pair. If a single string, the same string appears over all the data
+    // points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. If trace
+    // `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
     scatter& text(std::string f) {
         json["text"] = std::move(f);
         return *this;
@@ -3006,39 +3775,45 @@ public:
         json["text"] = std::move(f);
         return *this;
     }
-    
+
     // Sets the text font.
     scatter& textfont(class Textfont f) {
         json["textfont"] = std::move(f.json);
         return *this;
     }
-    
+
     // Sets the positions of the `text` elements with respects to the (x,y) coordinates.
-    // Default: middle center
+    // - Default: middle center
     Scatter& textposition(enum Textposition f) {
         json["textposition"] = to_string(f);
         return *this;
     }
     scatter& textposition(const std::vector<enum Textposition>& f) {
         std::vector<std::string> stringified(f.size());
-        std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+        std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
         json["textposition"] = std::move(stringified);
         return *this;
     }
-    
+
     // Sets the source reference on Chart Studio Cloud for `textposition`.
     scatter& textpositionsrc(std::string f) {
         json["textpositionsrc"] = std::move(f);
         return *this;
     }
-    
+
     // Sets the source reference on Chart Studio Cloud for `text`.
     scatter& textsrc(std::string f) {
         json["textsrc"] = std::move(f);
         return *this;
     }
-    
-    // Template string used for rendering the information text that appear on points. Note that this will override `textinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". https://github.com/d3/d3-format/tree/v1.4.5#d3-format for details on the formatting syntax. Dates are formatted using d3-time-format's syntax %{variable|d3-time-format}, for example "Day: %{2019-01-01|%A}". https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details on the date formatting syntax. Every attributes that can be specified per-point (the ones that are `arrayOk: true`) are available. 
+
+    // Template string used for rendering the information text that appear on points. Note that this will override
+    // `textinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using
+    // d3-format's syntax %{variable:d3-format}, for example "Price: %{y:$.2f}".
+    // https://github.com/d3/d3-format/tree/v1.4.5#d3-format for details on the formatting syntax. Dates are formatted
+    // using d3-time-format's syntax %{variable|d3-time-format}, for example "Day: %{2019-01-01|%A}".
+    // https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details on the date formatting syntax. Every
+    // attributes that can be specified per-point (the ones that are `arrayOk: true`) are available.
     scatter& texttemplate(std::string f) {
         json["texttemplate"] = std::move(f);
         return *this;
@@ -3047,163 +3822,193 @@ public:
         json["texttemplate"] = std::move(f);
         return *this;
     }
-    
+
     // Sets the source reference on Chart Studio Cloud for `texttemplate`.
     scatter& texttemplatesrc(std::string f) {
         json["texttemplatesrc"] = std::move(f);
         return *this;
     }
-    
+
     scatter& transforms(class Transforms f) {
         json["transforms"] = std::move(f.json);
         return *this;
     }
-    
-    // Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+
+    // Assign an id to this trace, Use this to provide object constancy between traces during animations and
+    // transitions.
     scatter& uid(std::string f) {
         json["uid"] = std::move(f);
         return *this;
     }
-    
-    // Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+
+    // Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well
+    // as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note
+    // that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is
+    // controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and
+    // `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace
+    // changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can
+    // add/remove traces before the end of the `data` array, such that the same trace has a different index, you can
+    // still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
     template <typename T>
     scatter& uirevision(T f) {
         json["uirevision"] = std::move(f);
         return *this;
     }
-    
+
     scatter& unselected(class Unselected f) {
         json["unselected"] = std::move(f.json);
         return *this;
     }
-    
-    // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-    // Default: True
+
+    // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
+    // legend item (provided that the legend itself is visible).
+    // - Default: True
     Scatter& visible(enum Visible f) {
         json["visible"] = to_string(f);
         return *this;
     }
-    
+
     // Sets the x coordinates.
-    template <typename T, typename=std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     scatter& x(std::vector<T> f) {
         json["x"] = std::move(f);
         return *this;
     }
-    
-    // Alternate to `x`. Builds a linear space of x coordinates. Use with `dx` where `x0` is the starting coordinate and `dx` the step.
+
+    // Alternate to `x`. Builds a linear space of x coordinates. Use with `dx` where `x0` is the starting coordinate and
+    // `dx` the step.
     template <typename T>
     scatter& x0(T f) {
         json["x0"] = std::move(f);
         return *this;
     }
-    
-    // Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
+
+    // Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x
+    // coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
     scatter& xaxis(std::string f) {
         json["xaxis"] = std::move(f);
         return *this;
     }
-    
+
     // Sets the calendar system to use with `x` date data.
-    // Default: gregorian
+    // - Default: gregorian
     Scatter& xcalendar(enum Xcalendar f) {
         json["xcalendar"] = to_string(f);
         return *this;
     }
-    
-    // Sets the hover text formatting rulefor `x`  using d3 formatting mini-languages which are very similar to those in Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see: https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format. We add two items to d3's date formatter: *%h* for half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example, *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are formatted using `xaxis.hoverformat`.
+
+    // Sets the hover text formatting rulefor `x`  using d3 formatting mini-languages which are very similar to those in
+    // Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
+    // https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format. We add two items to d3's date formatter: *%h* for
+    // half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example,
+    // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
+    // formatted using `xaxis.hoverformat`.
     scatter& xhoverformat(std::string f) {
         json["xhoverformat"] = std::move(f);
         return *this;
     }
-    
-    // Only relevant when the axis `type` is *date*. Sets the period positioning in milliseconds or *M<n>* on the x axis. Special values in the form of *M<n>* could be used to declare the number of months. In this case `n` must be a positive integer.
+
+    // Only relevant when the axis `type` is *date*. Sets the period positioning in milliseconds or *M<n>* on the x
+    // axis. Special values in the form of *M<n>* could be used to declare the number of months. In this case `n` must
+    // be a positive integer.
     template <typename T>
     scatter& xperiod(T f) {
         json["xperiod"] = std::move(f);
         return *this;
     }
-    
-    // Only relevant when the axis `type` is *date*. Sets the base for period positioning in milliseconds or date string on the x0 axis. When `x0period` is round number of weeks, the `x0period0` by default would be on a Sunday i.e. 2000-01-02, otherwise it would be at 2000-01-01.
+
+    // Only relevant when the axis `type` is *date*. Sets the base for period positioning in milliseconds or date string
+    // on the x0 axis. When `x0period` is round number of weeks, the `x0period0` by default would be on a Sunday i.e.
+    // 2000-01-02, otherwise it would be at 2000-01-01.
     template <typename T>
     scatter& xperiod0(T f) {
         json["xperiod0"] = std::move(f);
         return *this;
     }
-    
+
     // Only relevant when the axis `type` is *date*. Sets the alignment of data points on the x axis.
-    // Default: middle
+    // - Default: middle
     Scatter& xperiodalignment(enum Xperiodalignment f) {
         json["xperiodalignment"] = to_string(f);
         return *this;
     }
-    
+
     // Sets the source reference on Chart Studio Cloud for `x`.
     scatter& xsrc(std::string f) {
         json["xsrc"] = std::move(f);
         return *this;
     }
-    
+
     // Sets the y coordinates.
-    template <typename T, typename=std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     scatter& y(std::vector<T> f) {
         json["y"] = std::move(f);
         return *this;
     }
-    
-    // Alternate to `y`. Builds a linear space of y coordinates. Use with `dy` where `y0` is the starting coordinate and `dy` the step.
+
+    // Alternate to `y`. Builds a linear space of y coordinates. Use with `dy` where `y0` is the starting coordinate and
+    // `dy` the step.
     template <typename T>
     scatter& y0(T f) {
         json["y0"] = std::move(f);
         return *this;
     }
-    
-    // Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
+
+    // Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y
+    // coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
     scatter& yaxis(std::string f) {
         json["yaxis"] = std::move(f);
         return *this;
     }
-    
+
     // Sets the calendar system to use with `y` date data.
-    // Default: gregorian
+    // - Default: gregorian
     Scatter& ycalendar(enum Ycalendar f) {
         json["ycalendar"] = to_string(f);
         return *this;
     }
-    
-    // Sets the hover text formatting rulefor `y`  using d3 formatting mini-languages which are very similar to those in Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see: https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format. We add two items to d3's date formatter: *%h* for half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example, *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are formatted using `yaxis.hoverformat`.
+
+    // Sets the hover text formatting rulefor `y`  using d3 formatting mini-languages which are very similar to those in
+    // Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
+    // https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format. We add two items to d3's date formatter: *%h* for
+    // half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example,
+    // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
+    // formatted using `yaxis.hoverformat`.
     scatter& yhoverformat(std::string f) {
         json["yhoverformat"] = std::move(f);
         return *this;
     }
-    
-    // Only relevant when the axis `type` is *date*. Sets the period positioning in milliseconds or *M<n>* on the y axis. Special values in the form of *M<n>* could be used to declare the number of months. In this case `n` must be a positive integer.
+
+    // Only relevant when the axis `type` is *date*. Sets the period positioning in milliseconds or *M<n>* on the y
+    // axis. Special values in the form of *M<n>* could be used to declare the number of months. In this case `n` must
+    // be a positive integer.
     template <typename T>
     scatter& yperiod(T f) {
         json["yperiod"] = std::move(f);
         return *this;
     }
-    
-    // Only relevant when the axis `type` is *date*. Sets the base for period positioning in milliseconds or date string on the y0 axis. When `y0period` is round number of weeks, the `y0period0` by default would be on a Sunday i.e. 2000-01-02, otherwise it would be at 2000-01-01.
+
+    // Only relevant when the axis `type` is *date*. Sets the base for period positioning in milliseconds or date string
+    // on the y0 axis. When `y0period` is round number of weeks, the `y0period0` by default would be on a Sunday i.e.
+    // 2000-01-02, otherwise it would be at 2000-01-01.
     template <typename T>
     scatter& yperiod0(T f) {
         json["yperiod0"] = std::move(f);
         return *this;
     }
-    
+
     // Only relevant when the axis `type` is *date*. Sets the alignment of data points on the y axis.
-    // Default: middle
+    // - Default: middle
     Scatter& yperiodalignment(enum Yperiodalignment f) {
         json["yperiodalignment"] = to_string(f);
         return *this;
     }
-    
+
     // Sets the source reference on Chart Studio Cloud for `y`.
     scatter& ysrc(std::string f) {
         json["ysrc"] = std::move(f);
         return *this;
     }
-    
+
     nlohmann::json json{};
 };
-
