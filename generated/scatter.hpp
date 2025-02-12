@@ -290,7 +290,7 @@ class Scatter {
 
         // Sets the data corresponding the length of each error bar. Values are plotted relative to the underlying data.
         template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-        error_x& array(std::vector<T> f) {
+        Error_x& array(std::vector<T> f) {
             json["array"] = std::move(f);
             return *this;
         }
@@ -298,53 +298,53 @@ class Scatter {
         // Sets the data corresponding the length of each error bar in the bottom (left) direction for vertical
         // (horizontal) bars Values are plotted relative to the underlying data.
         template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-        error_x& arrayminus(std::vector<T> f) {
+        Error_x& arrayminus(std::vector<T> f) {
             json["arrayminus"] = std::move(f);
             return *this;
         }
 
         // Sets the source reference on Chart Studio Cloud for `arrayminus`.
-        error_x& arrayminussrc(std::string f) {
+        Error_x& arrayminussrc(std::string f) {
             json["arrayminussrc"] = std::move(f);
             return *this;
         }
 
         // Sets the source reference on Chart Studio Cloud for `array`.
-        error_x& arraysrc(std::string f) {
+        Error_x& arraysrc(std::string f) {
             json["arraysrc"] = std::move(f);
             return *this;
         }
 
         // Sets the stoke color of the error bars.
-        error_x& color(std::string f) {
+        Error_x& color(std::string f) {
             json["color"] = std::move(f);
             return *this;
         }
 
-        error_x& copy_ystyle(bool f) {
+        Error_x& copy_ystyle(bool f) {
             json["copy_ystyle"] = std::move(f);
             return *this;
         }
 
         // Determines whether or not the error bars have the same length in both direction (top/bottom for vertical
         // bars, left/right for horizontal bars.
-        error_x& symmetric(bool f) {
+        Error_x& symmetric(bool f) {
             json["symmetric"] = std::move(f);
             return *this;
         }
 
         // Sets the thickness (in px) of the error bars.
-        error_x& thickness(double f) {
+        Error_x& thickness(double f) {
             json["thickness"] = std::move(f);
             return *this;
         }
 
-        error_x& traceref(int f) {
+        Error_x& traceref(int f) {
             json["traceref"] = std::move(f);
             return *this;
         }
 
-        error_x& tracerefminus(int f) {
+        Error_x& tracerefminus(int f) {
             json["tracerefminus"] = std::move(f);
             return *this;
         }
@@ -360,7 +360,7 @@ class Scatter {
 
         // Sets the value of either the percentage (if `type` is set to *percent*) or the constant (if `type` is set to
         // *constant*) corresponding to the lengths of the error bars.
-        error_x& value(double f) {
+        Error_x& value(double f) {
             json["value"] = std::move(f);
             return *this;
         }
@@ -368,19 +368,19 @@ class Scatter {
         // Sets the value of either the percentage (if `type` is set to *percent*) or the constant (if `type` is set to
         // *constant*) corresponding to the lengths of the error bars in the bottom (left) direction for vertical
         // (horizontal) bars
-        error_x& valueminus(double f) {
+        Error_x& valueminus(double f) {
             json["valueminus"] = std::move(f);
             return *this;
         }
 
         // Determines whether or not this set of error bars is visible.
-        error_x& visible(bool f) {
+        Error_x& visible(bool f) {
             json["visible"] = std::move(f);
             return *this;
         }
 
         // Sets the width (in px) of the cross-bar at both ends of the error bars.
-        error_x& width(double f) {
+        Error_x& width(double f) {
             json["width"] = std::move(f);
             return *this;
         }
@@ -412,7 +412,7 @@ class Scatter {
 
         // Sets the data corresponding the length of each error bar. Values are plotted relative to the underlying data.
         template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-        error_y& array(std::vector<T> f) {
+        Error_y& array(std::vector<T> f) {
             json["array"] = std::move(f);
             return *this;
         }
@@ -420,48 +420,48 @@ class Scatter {
         // Sets the data corresponding the length of each error bar in the bottom (left) direction for vertical
         // (horizontal) bars Values are plotted relative to the underlying data.
         template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-        error_y& arrayminus(std::vector<T> f) {
+        Error_y& arrayminus(std::vector<T> f) {
             json["arrayminus"] = std::move(f);
             return *this;
         }
 
         // Sets the source reference on Chart Studio Cloud for `arrayminus`.
-        error_y& arrayminussrc(std::string f) {
+        Error_y& arrayminussrc(std::string f) {
             json["arrayminussrc"] = std::move(f);
             return *this;
         }
 
         // Sets the source reference on Chart Studio Cloud for `array`.
-        error_y& arraysrc(std::string f) {
+        Error_y& arraysrc(std::string f) {
             json["arraysrc"] = std::move(f);
             return *this;
         }
 
         // Sets the stoke color of the error bars.
-        error_y& color(std::string f) {
+        Error_y& color(std::string f) {
             json["color"] = std::move(f);
             return *this;
         }
 
         // Determines whether or not the error bars have the same length in both direction (top/bottom for vertical
         // bars, left/right for horizontal bars.
-        error_y& symmetric(bool f) {
+        Error_y& symmetric(bool f) {
             json["symmetric"] = std::move(f);
             return *this;
         }
 
         // Sets the thickness (in px) of the error bars.
-        error_y& thickness(double f) {
+        Error_y& thickness(double f) {
             json["thickness"] = std::move(f);
             return *this;
         }
 
-        error_y& traceref(int f) {
+        Error_y& traceref(int f) {
             json["traceref"] = std::move(f);
             return *this;
         }
 
-        error_y& tracerefminus(int f) {
+        Error_y& tracerefminus(int f) {
             json["tracerefminus"] = std::move(f);
             return *this;
         }
@@ -477,7 +477,7 @@ class Scatter {
 
         // Sets the value of either the percentage (if `type` is set to *percent*) or the constant (if `type` is set to
         // *constant*) corresponding to the lengths of the error bars.
-        error_y& value(double f) {
+        Error_y& value(double f) {
             json["value"] = std::move(f);
             return *this;
         }
@@ -485,19 +485,19 @@ class Scatter {
         // Sets the value of either the percentage (if `type` is set to *percent*) or the constant (if `type` is set to
         // *constant*) corresponding to the lengths of the error bars in the bottom (left) direction for vertical
         // (horizontal) bars
-        error_y& valueminus(double f) {
+        Error_y& valueminus(double f) {
             json["valueminus"] = std::move(f);
             return *this;
         }
 
         // Determines whether or not this set of error bars is visible.
-        error_y& visible(bool f) {
+        Error_y& visible(bool f) {
             json["visible"] = std::move(f);
             return *this;
         }
 
         // Sets the width (in px) of the cross-bar at both ends of the error bars.
-        error_y& width(double f) {
+        Error_y& width(double f) {
             json["width"] = std::move(f);
             return *this;
         }
@@ -555,17 +555,17 @@ class Scatter {
 
         // When there is no colorscale sets the color of background pattern fill. Defaults to a `marker.color`
         // background when `fillmode` is *overlay*. Otherwise, defaults to a transparent background.
-        fillpattern& bgcolor(std::string f) {
+        Fillpattern& bgcolor(std::string f) {
             json["bgcolor"] = std::move(f);
             return *this;
         }
-        fillpattern& bgcolor(std::vector<std::string> f) {
+        Fillpattern& bgcolor(std::vector<std::string> f) {
             json["bgcolor"] = std::move(f);
             return *this;
         }
 
         // Sets the source reference on Chart Studio Cloud for `bgcolor`.
-        fillpattern& bgcolorsrc(std::string f) {
+        Fillpattern& bgcolorsrc(std::string f) {
             json["bgcolorsrc"] = std::move(f);
             return *this;
         }
@@ -573,24 +573,24 @@ class Scatter {
         // When there is no colorscale sets the color of foreground pattern fill. Defaults to a `marker.color`
         // background when `fillmode` is *replace*. Otherwise, defaults to dark grey or white to increase contrast with
         // the `bgcolor`.
-        fillpattern& fgcolor(std::string f) {
+        Fillpattern& fgcolor(std::string f) {
             json["fgcolor"] = std::move(f);
             return *this;
         }
-        fillpattern& fgcolor(std::vector<std::string> f) {
+        Fillpattern& fgcolor(std::vector<std::string> f) {
             json["fgcolor"] = std::move(f);
             return *this;
         }
 
         // Sets the source reference on Chart Studio Cloud for `fgcolor`.
-        fillpattern& fgcolorsrc(std::string f) {
+        Fillpattern& fgcolorsrc(std::string f) {
             json["fgcolorsrc"] = std::move(f);
             return *this;
         }
 
         // Sets the opacity of the foreground pattern fill. Defaults to a 0.5 when `fillmode` is *overlay*. Otherwise,
         // defaults to 1.
-        fillpattern& fgopacity(double f) {
+        Fillpattern& fgopacity(double f) {
             json["fgopacity"] = std::move(f);
             return *this;
         }
@@ -608,7 +608,7 @@ class Scatter {
             json["shape"] = to_string(f);
             return *this;
         }
-        fillpattern& shape(const std::vector<enum Shape>& f) {
+        Fillpattern& shape(const std::vector<enum Shape>& f) {
             std::vector<std::string> stringified(f.size());
             std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
             json["shape"] = std::move(stringified);
@@ -616,24 +616,24 @@ class Scatter {
         }
 
         // Sets the source reference on Chart Studio Cloud for `shape`.
-        fillpattern& shapesrc(std::string f) {
+        Fillpattern& shapesrc(std::string f) {
             json["shapesrc"] = std::move(f);
             return *this;
         }
 
         // Sets the size of unit squares of the pattern fill in pixels, which corresponds to the interval of repetition
         // of the pattern.
-        fillpattern& size(double f) {
+        Fillpattern& size(double f) {
             json["size"] = std::move(f);
             return *this;
         }
-        fillpattern& size(std::vector<double> f) {
+        Fillpattern& size(std::vector<double> f) {
             json["size"] = std::move(f);
             return *this;
         }
 
         // Sets the source reference on Chart Studio Cloud for `size`.
-        fillpattern& sizesrc(std::string f) {
+        Fillpattern& sizesrc(std::string f) {
             json["sizesrc"] = std::move(f);
             return *this;
         }
@@ -641,17 +641,17 @@ class Scatter {
         // Sets the solidity of the pattern fill. Solidity is roughly the fraction of the area filled by the pattern.
         // Solidity of 0 shows only the background color without pattern and solidty of 1 shows only the foreground
         // color without pattern.
-        fillpattern& solidity(double f) {
+        Fillpattern& solidity(double f) {
             json["solidity"] = std::move(f);
             return *this;
         }
-        fillpattern& solidity(std::vector<double> f) {
+        Fillpattern& solidity(std::vector<double> f) {
             json["solidity"] = std::move(f);
             return *this;
         }
 
         // Sets the source reference on Chart Studio Cloud for `solidity`.
-        fillpattern& soliditysrc(std::string f) {
+        Fillpattern& soliditysrc(std::string f) {
             json["soliditysrc"] = std::move(f);
             return *this;
         }
@@ -682,17 +682,17 @@ class Scatter {
         class Font {
          public:
 
-            font& color(std::string f) {
+            Font& color(std::string f) {
                 json["color"] = std::move(f);
                 return *this;
             }
-            font& color(std::vector<std::string> f) {
+            Font& color(std::vector<std::string> f) {
                 json["color"] = std::move(f);
                 return *this;
             }
 
             // Sets the source reference on Chart Studio Cloud for `color`.
-            font& colorsrc(std::string f) {
+            Font& colorsrc(std::string f) {
                 json["colorsrc"] = std::move(f);
                 return *this;
             }
@@ -704,32 +704,32 @@ class Scatter {
             // server, where only a select number of fonts are installed and supported. These include *Arial*, *Balto*,
             // *Courier New*, *Droid Sans*,, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open
             // Sans*, *Overpass*, *PT Sans Narrow*, *Raleway*, *Times New Roman*.
-            font& family(std::string f) {
+            Font& family(std::string f) {
                 json["family"] = std::move(f);
                 return *this;
             }
-            font& family(std::vector<std::string> f) {
+            Font& family(std::vector<std::string> f) {
                 json["family"] = std::move(f);
                 return *this;
             }
 
             // Sets the source reference on Chart Studio Cloud for `family`.
-            font& familysrc(std::string f) {
+            Font& familysrc(std::string f) {
                 json["familysrc"] = std::move(f);
                 return *this;
             }
 
-            font& size(double f) {
+            Font& size(double f) {
                 json["size"] = std::move(f);
                 return *this;
             }
-            font& size(std::vector<double> f) {
+            Font& size(std::vector<double> f) {
                 json["size"] = std::move(f);
                 return *this;
             }
 
             // Sets the source reference on Chart Studio Cloud for `size`.
-            font& sizesrc(std::string f) {
+            Font& sizesrc(std::string f) {
                 json["sizesrc"] = std::move(f);
                 return *this;
             }
@@ -744,7 +744,7 @@ class Scatter {
             json["align"] = to_string(f);
             return *this;
         }
-        hoverlabel& align(const std::vector<enum Align>& f) {
+        Hoverlabel& align(const std::vector<enum Align>& f) {
             std::vector<std::string> stringified(f.size());
             std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
             json["align"] = std::move(stringified);
@@ -752,45 +752,45 @@ class Scatter {
         }
 
         // Sets the source reference on Chart Studio Cloud for `align`.
-        hoverlabel& alignsrc(std::string f) {
+        Hoverlabel& alignsrc(std::string f) {
             json["alignsrc"] = std::move(f);
             return *this;
         }
 
         // Sets the background color of the hover labels for this trace
-        hoverlabel& bgcolor(std::string f) {
+        Hoverlabel& bgcolor(std::string f) {
             json["bgcolor"] = std::move(f);
             return *this;
         }
-        hoverlabel& bgcolor(std::vector<std::string> f) {
+        Hoverlabel& bgcolor(std::vector<std::string> f) {
             json["bgcolor"] = std::move(f);
             return *this;
         }
 
         // Sets the source reference on Chart Studio Cloud for `bgcolor`.
-        hoverlabel& bgcolorsrc(std::string f) {
+        Hoverlabel& bgcolorsrc(std::string f) {
             json["bgcolorsrc"] = std::move(f);
             return *this;
         }
 
         // Sets the border color of the hover labels for this trace.
-        hoverlabel& bordercolor(std::string f) {
+        Hoverlabel& bordercolor(std::string f) {
             json["bordercolor"] = std::move(f);
             return *this;
         }
-        hoverlabel& bordercolor(std::vector<std::string> f) {
+        Hoverlabel& bordercolor(std::vector<std::string> f) {
             json["bordercolor"] = std::move(f);
             return *this;
         }
 
         // Sets the source reference on Chart Studio Cloud for `bordercolor`.
-        hoverlabel& bordercolorsrc(std::string f) {
+        Hoverlabel& bordercolorsrc(std::string f) {
             json["bordercolorsrc"] = std::move(f);
             return *this;
         }
 
         // Sets the font used in hover labels.
-        hoverlabel& font(class Font f) {
+        Hoverlabel& font(class Font f) {
             json["font"] = std::move(f.json);
             return *this;
         }
@@ -799,17 +799,17 @@ class Scatter {
         // shows the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show
         // the whole name if it is less than that many characters, but if it is longer, will truncate to `namelength -
         // 3` characters and add an ellipsis.
-        hoverlabel& namelength(int f) {
+        Hoverlabel& namelength(int f) {
             json["namelength"] = std::move(f);
             return *this;
         }
-        hoverlabel& namelength(std::vector<int> f) {
+        Hoverlabel& namelength(std::vector<int> f) {
             json["namelength"] = std::move(f);
             return *this;
         }
 
         // Sets the source reference on Chart Studio Cloud for `namelength`.
-        hoverlabel& namelengthsrc(std::string f) {
+        Hoverlabel& namelengthsrc(std::string f) {
             json["namelengthsrc"] = std::move(f);
             return *this;
         }
@@ -824,7 +824,7 @@ class Scatter {
         class Font {
          public:
 
-            font& color(std::string f) {
+            Font& color(std::string f) {
                 json["color"] = std::move(f);
                 return *this;
             }
@@ -836,12 +836,12 @@ class Scatter {
             // server, where only a select number of fonts are installed and supported. These include *Arial*, *Balto*,
             // *Courier New*, *Droid Sans*,, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open
             // Sans*, *Overpass*, *PT Sans Narrow*, *Raleway*, *Times New Roman*.
-            font& family(std::string f) {
+            Font& family(std::string f) {
                 json["family"] = std::move(f);
                 return *this;
             }
 
-            font& size(double f) {
+            Font& size(double f) {
                 json["size"] = std::move(f);
                 return *this;
             }
@@ -850,13 +850,13 @@ class Scatter {
         };
 
         // Sets this legend group's title font.
-        legendgrouptitle& font(class Font f) {
+        Legendgrouptitle& font(class Font f) {
             json["font"] = std::move(f.json);
             return *this;
         }
 
         // Sets the title of the legend group.
-        legendgrouptitle& text(std::string f) {
+        Legendgrouptitle& text(std::string f) {
             json["text"] = std::move(f);
             return *this;
         }
@@ -895,30 +895,30 @@ class Scatter {
         // Sets the line back off from the end point of the nth line segment (in px). This option is useful e.g. to
         // avoid overlap with arrowhead markers. With *auto* the lines would trim before markers if `marker.angleref` is
         // set to *previous*.
-        line& backoff(double f) {
+        Line& backoff(double f) {
             json["backoff"] = std::move(f);
             return *this;
         }
-        line& backoff(std::vector<double> f) {
+        Line& backoff(std::vector<double> f) {
             json["backoff"] = std::move(f);
             return *this;
         }
 
         // Sets the source reference on Chart Studio Cloud for `backoff`.
-        line& backoffsrc(std::string f) {
+        Line& backoffsrc(std::string f) {
             json["backoffsrc"] = std::move(f);
             return *this;
         }
 
         // Sets the line color.
-        line& color(std::string f) {
+        Line& color(std::string f) {
             json["color"] = std::move(f);
             return *this;
         }
 
         // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
         // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
-        line& dash(std::string f) {
+        Line& dash(std::string f) {
             json["dash"] = std::move(f);
             return *this;
         }
@@ -933,20 +933,20 @@ class Scatter {
 
         // Simplifies lines by removing nearly-collinear points. When transitioning lines, it may be desirable to
         // disable this so that the number of points along the resulting SVG path is unaffected.
-        line& simplify(bool f) {
+        Line& simplify(bool f) {
             json["simplify"] = std::move(f);
             return *this;
         }
 
         // Has an effect only if `shape` is set to *spline* Sets the amount of smoothing. *0* corresponds to no
         // smoothing (equivalent to a *linear* shape).
-        line& smoothing(double f) {
+        Line& smoothing(double f) {
             json["smoothing"] = std::move(f);
             return *this;
         }
 
         // Sets the line width (in px).
-        line& width(double f) {
+        Line& width(double f) {
             json["width"] = std::move(f);
             return *this;
         }
@@ -2230,7 +2230,7 @@ class Scatter {
             class Tickfont {
              public:
 
-                tickfont& color(std::string f) {
+                Tickfont& color(std::string f) {
                     json["color"] = std::move(f);
                     return *this;
                 }
@@ -2242,12 +2242,12 @@ class Scatter {
                 // generates images on a server, where only a select number of fonts are installed and supported. These
                 // include *Arial*, *Balto*, *Courier New*, *Droid Sans*,, *Droid Serif*, *Droid Sans Mono*, *Gravitas
                 // One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*, *Raleway*, *Times New Roman*.
-                tickfont& family(std::string f) {
+                Tickfont& family(std::string f) {
                     json["family"] = std::move(f);
                     return *this;
                 }
 
-                tickfont& size(double f) {
+                Tickfont& size(double f) {
                     json["size"] = std::move(f);
                     return *this;
                 }
@@ -2263,14 +2263,14 @@ class Scatter {
 
                     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is
                     // possible to omit *min* or *max* value by passing *null*
-                    tickformatstop& dtickrange(std::vector<std::string> f) {
+                    Tickformatstop& dtickrange(std::vector<std::string> f) {
                         json["dtickrange"] = std::move(f);
                         return *this;
                     }
 
                     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its
                     // `dtickrange`.
-                    tickformatstop& enabled(bool f) {
+                    Tickformatstop& enabled(bool f) {
                         json["enabled"] = std::move(f);
                         return *this;
                     }
@@ -2279,7 +2279,7 @@ class Scatter {
                     // the figure already has in this array. You can modify these items in the output figure by making
                     // your own item with `templateitemname` matching this `name` alongside your modifications
                     // (including `visible: false` or `enabled: false` to hide it). Has no effect outside of a template.
-                    tickformatstop& name(std::string f) {
+                    Tickformatstop& name(std::string f) {
                         json["name"] = std::move(f);
                         return *this;
                     }
@@ -2289,13 +2289,13 @@ class Scatter {
                     // item with `templateitemname` matching its `name`, alongside your modifications (including
                     // `visible: false` or `enabled: false` to hide it). If there is no template or no matching item,
                     // this item will be hidden unless you explicitly show it with `visible: true`.
-                    tickformatstop& templateitemname(std::string f) {
+                    Tickformatstop& templateitemname(std::string f) {
                         json["templateitemname"] = std::move(f);
                         return *this;
                     }
 
                     // string - dtickformat for described zoom level, the same as *tickformat*
-                    tickformatstop& value(std::string f) {
+                    Tickformatstop& value(std::string f) {
                         json["value"] = std::move(f);
                         return *this;
                     }
@@ -2303,7 +2303,7 @@ class Scatter {
                     nlohmann::json json{};
                 };
 
-                tickformatstops& tickformatstop(class Tickformatstop f) {
+                Tickformatstops& tickformatstop(class Tickformatstop f) {
                     json["tickformatstop"] = std::move(f.json);
                     return *this;
                 }
@@ -2335,7 +2335,7 @@ class Scatter {
                 class Font {
                  public:
 
-                    font& color(std::string f) {
+                    Font& color(std::string f) {
                         json["color"] = std::move(f);
                         return *this;
                     }
@@ -2348,12 +2348,12 @@ class Scatter {
                     // supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*,, *Droid Serif*, *Droid
                     // Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
                     // *Raleway*, *Times New Roman*.
-                    font& family(std::string f) {
+                    Font& family(std::string f) {
                         json["family"] = std::move(f);
                         return *this;
                     }
 
-                    font& size(double f) {
+                    Font& size(double f) {
                         json["size"] = std::move(f);
                         return *this;
                     }
@@ -2363,7 +2363,7 @@ class Scatter {
 
                 // Sets this color bar's title font. Note that the title's font used to be set by the now deprecated
                 // `titlefont` attribute.
-                title& font(class Font f) {
+                Title& font(class Font f) {
                     json["font"] = std::move(f.json);
                     return *this;
                 }
@@ -2378,7 +2378,7 @@ class Scatter {
 
                 // Sets the title of the color bar. Note that before the existence of `title.text`, the title's contents
                 // used to be defined as the `title` attribute itself. This behavior has been deprecated.
-                title& text(std::string f) {
+                Title& text(std::string f) {
                     json["text"] = std::move(f);
                     return *this;
                 }
@@ -2387,19 +2387,19 @@ class Scatter {
             };
 
             // Sets the color of padded area.
-            colorbar& bgcolor(std::string f) {
+            Colorbar& bgcolor(std::string f) {
                 json["bgcolor"] = std::move(f);
                 return *this;
             }
 
             // Sets the axis line color.
-            colorbar& bordercolor(std::string f) {
+            Colorbar& bordercolor(std::string f) {
                 json["bordercolor"] = std::move(f);
                 return *this;
             }
 
             // Sets the width (in px) or the border enclosing this color bar.
-            colorbar& borderwidth(double f) {
+            Colorbar& borderwidth(double f) {
                 json["borderwidth"] = std::move(f);
                 return *this;
             }
@@ -2417,7 +2417,7 @@ class Scatter {
             // spaced by a number of months. `n` must be a positive integer. To set ticks on the 15th of every third
             // month, set `tick0` to *2000-01-15* and `dtick` to *M3*. To set ticks every 4 years, set `dtick` to *M48*
             template <typename T>
-            colorbar& dtick(T f) {
+            Colorbar& dtick(T f) {
                 json["dtick"] = std::move(f);
                 return *this;
             }
@@ -2437,14 +2437,14 @@ class Scatter {
             // regular ascii dash. That means you need to use −1 instead of -1. labelalias can be used with any axis
             // type, and both keys (if needed) and values (if desired) can include html-like tags or MathJax.
             template <typename T>
-            colorbar& labelalias(T f) {
+            Colorbar& labelalias(T f) {
                 json["labelalias"] = std::move(f);
                 return *this;
             }
 
             // Sets the length of the color bar This measure excludes the padding of both ends. That is, the color bar
             // length is this length minus the padding on both ends.
-            colorbar& len(double f) {
+            Colorbar& len(double f) {
                 json["len"] = std::move(f);
                 return *this;
             }
@@ -2459,14 +2459,14 @@ class Scatter {
 
             // Hide SI prefix for 10^n if |n| is below this number. This only has an effect when `tickformat` is *SI* or
             // *B*.
-            colorbar& minexponent(double f) {
+            Colorbar& minexponent(double f) {
                 json["minexponent"] = std::move(f);
                 return *this;
             }
 
             // Specifies the maximum number of ticks for the particular axis. The actual number of ticks will be chosen
             // automatically to be less than or equal to `nticks`. Has an effect only if `tickmode` is set to *auto*.
-            colorbar& nticks(int f) {
+            Colorbar& nticks(int f) {
                 json["nticks"] = std::move(f);
                 return *this;
             }
@@ -2479,19 +2479,19 @@ class Scatter {
             }
 
             // Sets the axis line color.
-            colorbar& outlinecolor(std::string f) {
+            Colorbar& outlinecolor(std::string f) {
                 json["outlinecolor"] = std::move(f);
                 return *this;
             }
 
             // Sets the width (in px) of the axis line.
-            colorbar& outlinewidth(double f) {
+            Colorbar& outlinewidth(double f) {
                 json["outlinewidth"] = std::move(f);
                 return *this;
             }
 
             // If "true", even 4-digit integers are separated
-            colorbar& separatethousands(bool f) {
+            Colorbar& separatethousands(bool f) {
                 json["separatethousands"] = std::move(f);
                 return *this;
             }
@@ -2505,7 +2505,7 @@ class Scatter {
             }
 
             // Determines whether or not the tick labels are drawn.
-            colorbar& showticklabels(bool f) {
+            Colorbar& showticklabels(bool f) {
                 json["showticklabels"] = std::move(f);
                 return *this;
             }
@@ -2526,7 +2526,7 @@ class Scatter {
             }
 
             // Sets the thickness of the color bar This measure excludes the size of the padding, ticks and labels.
-            colorbar& thickness(double f) {
+            Colorbar& thickness(double f) {
                 json["thickness"] = std::move(f);
                 return *this;
             }
@@ -2545,26 +2545,26 @@ class Scatter {
             // string, like date data. If the axis `type` is *category*, it should be a number, using the scale where
             // each category is assigned a serial number from zero in the order it appears.
             template <typename T>
-            colorbar& tick0(T f) {
+            Colorbar& tick0(T f) {
                 json["tick0"] = std::move(f);
                 return *this;
             }
 
             // Sets the angle of the tick labels with respect to the horizontal. For example, a `tickangle` of -90 draws
             // the tick labels vertically.
-            colorbar& tickangle(double f) {
+            Colorbar& tickangle(double f) {
                 json["tickangle"] = std::move(f);
                 return *this;
             }
 
             // Sets the tick color.
-            colorbar& tickcolor(std::string f) {
+            Colorbar& tickcolor(std::string f) {
                 json["tickcolor"] = std::move(f);
                 return *this;
             }
 
             // Sets the color bar's tick label font
-            colorbar& tickfont(class Tickfont f) {
+            Colorbar& tickfont(class Tickfont f) {
                 json["tickfont"] = std::move(f.json);
                 return *this;
             }
@@ -2574,12 +2574,12 @@ class Scatter {
             // https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format. We add two items to d3's date formatter:
             // *%h* for half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits.
             // For example, *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
-            colorbar& tickformat(std::string f) {
+            Colorbar& tickformat(std::string f) {
                 json["tickformat"] = std::move(f);
                 return *this;
             }
 
-            colorbar& tickformatstops(class Tickformatstops f) {
+            Colorbar& tickformatstops(class Tickformatstops f) {
                 json["tickformatstops"] = std::move(f.json);
                 return *this;
             }
@@ -2604,13 +2604,13 @@ class Scatter {
             // means each tick gets a label. A value of 2 means shows every 2nd label. A larger value n means only every
             // nth tick is labeled. `tick0` determines which labels are shown. Not implemented for axes with `type`
             // *log* or *multicategory*, or when `tickmode` is *array*.
-            colorbar& ticklabelstep(int f) {
+            Colorbar& ticklabelstep(int f) {
                 json["ticklabelstep"] = std::move(f);
                 return *this;
             }
 
             // Sets the tick length (in px).
-            colorbar& ticklen(double f) {
+            Colorbar& ticklen(double f) {
                 json["ticklen"] = std::move(f);
                 return *this;
             }
@@ -2625,7 +2625,7 @@ class Scatter {
             }
 
             // Sets a tick label prefix.
-            colorbar& tickprefix(std::string f) {
+            Colorbar& tickprefix(std::string f) {
                 json["tickprefix"] = std::move(f);
                 return *this;
             }
@@ -2639,7 +2639,7 @@ class Scatter {
             }
 
             // Sets a tick label suffix.
-            colorbar& ticksuffix(std::string f) {
+            Colorbar& ticksuffix(std::string f) {
                 json["ticksuffix"] = std::move(f);
                 return *this;
             }
@@ -2647,13 +2647,13 @@ class Scatter {
             // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to
             // *array*. Used with `tickvals`.
             template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-            colorbar& ticktext(std::vector<T> f) {
+            Colorbar& ticktext(std::vector<T> f) {
                 json["ticktext"] = std::move(f);
                 return *this;
             }
 
             // Sets the source reference on Chart Studio Cloud for `ticktext`.
-            colorbar& ticktextsrc(std::string f) {
+            Colorbar& ticktextsrc(std::string f) {
                 json["ticktextsrc"] = std::move(f);
                 return *this;
             }
@@ -2661,24 +2661,24 @@ class Scatter {
             // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*.
             // Used with `ticktext`.
             template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-            colorbar& tickvals(std::vector<T> f) {
+            Colorbar& tickvals(std::vector<T> f) {
                 json["tickvals"] = std::move(f);
                 return *this;
             }
 
             // Sets the source reference on Chart Studio Cloud for `tickvals`.
-            colorbar& tickvalssrc(std::string f) {
+            Colorbar& tickvalssrc(std::string f) {
                 json["tickvalssrc"] = std::move(f);
                 return *this;
             }
 
             // Sets the tick width (in px).
-            colorbar& tickwidth(double f) {
+            Colorbar& tickwidth(double f) {
                 json["tickwidth"] = std::move(f);
                 return *this;
             }
 
-            colorbar& title(class Title f) {
+            Colorbar& title(class Title f) {
                 json["title"] = std::move(f.json);
                 return *this;
             }
@@ -2687,7 +2687,7 @@ class Scatter {
             // defaults to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*,
             // defaults to *1* when `orientation` is *v* and 0.5 when `orientation` is *h*. Must be between *0* and *1*
             // if `xref` is *container* and between *-2* and *3* if `xref` is *paper*.
-            colorbar& x(double f) {
+            Colorbar& x(double f) {
                 json["x"] = std::move(f);
                 return *this;
             }
@@ -2701,7 +2701,7 @@ class Scatter {
             }
 
             // Sets the amount of padding (in px) along the x direction.
-            colorbar& xpad(double f) {
+            Colorbar& xpad(double f) {
                 json["xpad"] = std::move(f);
                 return *this;
             }
@@ -2718,7 +2718,7 @@ class Scatter {
             // defaults to 0.5 when `orientation` is *v* and 1.02 when `orientation` is *h*. When `yref` is *container*,
             // defaults to 0.5 when `orientation` is *v* and 1 when `orientation` is *h*. Must be between *0* and *1* if
             // `yref` is *container* and between *-2* and *3* if `yref` is *paper*.
-            colorbar& y(double f) {
+            Colorbar& y(double f) {
                 json["y"] = std::move(f);
                 return *this;
             }
@@ -2732,7 +2732,7 @@ class Scatter {
             }
 
             // Sets the amount of padding (in px) along the y direction.
-            colorbar& ypad(double f) {
+            Colorbar& ypad(double f) {
                 json["ypad"] = std::move(f);
                 return *this;
             }
@@ -2772,17 +2772,17 @@ class Scatter {
 
             // Sets the final color of the gradient fill: the center color for radial, the right for horizontal, or the
             // bottom for vertical.
-            gradient& color(std::string f) {
+            Gradient& color(std::string f) {
                 json["color"] = std::move(f);
                 return *this;
             }
-            gradient& color(std::vector<std::string> f) {
+            Gradient& color(std::vector<std::string> f) {
                 json["color"] = std::move(f);
                 return *this;
             }
 
             // Sets the source reference on Chart Studio Cloud for `color`.
-            gradient& colorsrc(std::string f) {
+            Gradient& colorsrc(std::string f) {
                 json["colorsrc"] = std::move(f);
                 return *this;
             }
@@ -2793,7 +2793,7 @@ class Scatter {
                 json["type"] = to_string(f);
                 return *this;
             }
-            gradient& type(const std::vector<enum Type>& f) {
+            Gradient& type(const std::vector<enum Type>& f) {
                 std::vector<std::string> stringified(f.size());
                 std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
                 json["type"] = std::move(stringified);
@@ -2801,7 +2801,7 @@ class Scatter {
             }
 
             // Sets the source reference on Chart Studio Cloud for `type`.
-            gradient& typesrc(std::string f) {
+            Gradient& typesrc(std::string f) {
                 json["typesrc"] = std::move(f);
                 return *this;
             }
@@ -2816,7 +2816,7 @@ class Scatter {
             // by `marker.line.colorscale`. Has an effect only if in `marker.line.color` is set to a numerical array. In
             // case `colorscale` is unspecified or `autocolorscale` is true, the default palette will be chosen
             // according to whether numbers in the `color` array are all positive, all negative or mixed.
-            line& autocolorscale(bool f) {
+            Line& autocolorscale(bool f) {
                 json["autocolorscale"] = std::move(f);
                 return *this;
             }
@@ -2825,7 +2825,7 @@ class Scatter {
             // `marker.line.color`) or the bounds set in `marker.line.cmin` and `marker.line.cmax` Has an effect only if
             // in `marker.line.color` is set to a numerical array. Defaults to `false` when `marker.line.cmin` and
             // `marker.line.cmax` are set by the user.
-            line& cauto(bool f) {
+            Line& cauto(bool f) {
                 json["cauto"] = std::move(f);
                 return *this;
             }
@@ -2833,7 +2833,7 @@ class Scatter {
             // Sets the upper bound of the color domain. Has an effect only if in `marker.line.color` is set to a
             // numerical array. Value should have the same units as in `marker.line.color` and if set,
             // `marker.line.cmin` must be set as well.
-            line& cmax(double f) {
+            Line& cmax(double f) {
                 json["cmax"] = std::move(f);
                 return *this;
             }
@@ -2842,7 +2842,7 @@ class Scatter {
             // equidistant to this point. Has an effect only if in `marker.line.color` is set to a numerical array.
             // Value should have the same units as in `marker.line.color`. Has no effect when `marker.line.cauto` is
             // `false`.
-            line& cmid(double f) {
+            Line& cmid(double f) {
                 json["cmid"] = std::move(f);
                 return *this;
             }
@@ -2850,7 +2850,7 @@ class Scatter {
             // Sets the lower bound of the color domain. Has an effect only if in `marker.line.color` is set to a
             // numerical array. Value should have the same units as in `marker.line.color` and if set,
             // `marker.line.cmax` must be set as well.
-            line& cmin(double f) {
+            Line& cmin(double f) {
                 json["cmin"] = std::move(f);
                 return *this;
             }
@@ -2858,11 +2858,11 @@ class Scatter {
             // Sets the marker.line color. It accepts either a specific color or an array of numbers that are mapped to
             // the colorscale relative to the max and min values of the array or relative to `marker.line.cmin` and
             // `marker.line.cmax` if set.
-            line& color(std::string f) {
+            Line& color(std::string f) {
                 json["color"] = std::move(f);
                 return *this;
             }
-            line& color(std::vector<std::string> f) {
+            Line& color(std::vector<std::string> f) {
                 json["color"] = std::move(f);
                 return *this;
             }
@@ -2871,7 +2871,7 @@ class Scatter {
             // *coloraxis2*, *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under
             // `layout.coloraxis`, `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same
             // color axis.
-            line& coloraxis(std::string f) {
+            Line& coloraxis(std::string f) {
                 json["coloraxis"] = std::move(f);
                 return *this;
             }
@@ -2883,13 +2883,13 @@ class Scatter {
             // space, use `marker.line.cmin` and `marker.line.cmax`. Alternatively, `colorscale` may be a palette name
             // string of the following list:
             // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
-            line& colorscale(std::string f) {
+            Line& colorscale(std::string f) {
                 json["colorscale"] = std::move(f);
                 return *this;
             }
 
             // Sets the source reference on Chart Studio Cloud for `color`.
-            line& colorsrc(std::string f) {
+            Line& colorsrc(std::string f) {
                 json["colorsrc"] = std::move(f);
                 return *this;
             }
@@ -2897,23 +2897,23 @@ class Scatter {
             // Reverses the color mapping if true. Has an effect only if in `marker.line.color` is set to a numerical
             // array. If true, `marker.line.cmin` will correspond to the last color in the array and `marker.line.cmax`
             // will correspond to the first color.
-            line& reversescale(bool f) {
+            Line& reversescale(bool f) {
                 json["reversescale"] = std::move(f);
                 return *this;
             }
 
             // Sets the width (in px) of the lines bounding the marker points.
-            line& width(double f) {
+            Line& width(double f) {
                 json["width"] = std::move(f);
                 return *this;
             }
-            line& width(std::vector<double> f) {
+            Line& width(std::vector<double> f) {
                 json["width"] = std::move(f);
                 return *this;
             }
 
             // Sets the source reference on Chart Studio Cloud for `width`.
-            line& widthsrc(std::string f) {
+            Line& widthsrc(std::string f) {
                 json["widthsrc"] = std::move(f);
                 return *this;
             }
@@ -2922,11 +2922,11 @@ class Scatter {
         };
 
         // Sets the marker angle in respect to `angleref`.
-        marker& angle(double f) {
+        Marker& angle(double f) {
             json["angle"] = std::move(f);
             return *this;
         }
-        marker& angle(std::vector<double> f) {
+        Marker& angle(std::vector<double> f) {
             json["angle"] = std::move(f);
             return *this;
         }
@@ -2940,7 +2940,7 @@ class Scatter {
         }
 
         // Sets the source reference on Chart Studio Cloud for `angle`.
-        marker& anglesrc(std::string f) {
+        Marker& anglesrc(std::string f) {
             json["anglesrc"] = std::move(f);
             return *this;
         }
@@ -2949,7 +2949,7 @@ class Scatter {
         // `marker.colorscale`. Has an effect only if in `marker.color` is set to a numerical array. In case
         // `colorscale` is unspecified or `autocolorscale` is true, the default palette will be chosen according to
         // whether numbers in the `color` array are all positive, all negative or mixed.
-        marker& autocolorscale(bool f) {
+        Marker& autocolorscale(bool f) {
             json["autocolorscale"] = std::move(f);
             return *this;
         }
@@ -2957,14 +2957,14 @@ class Scatter {
         // Determines whether or not the color domain is computed with respect to the input data (here in
         // `marker.color`) or the bounds set in `marker.cmin` and `marker.cmax` Has an effect only if in `marker.color`
         // is set to a numerical array. Defaults to `false` when `marker.cmin` and `marker.cmax` are set by the user.
-        marker& cauto(bool f) {
+        Marker& cauto(bool f) {
             json["cauto"] = std::move(f);
             return *this;
         }
 
         // Sets the upper bound of the color domain. Has an effect only if in `marker.color` is set to a numerical
         // array. Value should have the same units as in `marker.color` and if set, `marker.cmin` must be set as well.
-        marker& cmax(double f) {
+        Marker& cmax(double f) {
             json["cmax"] = std::move(f);
             return *this;
         }
@@ -2972,14 +2972,14 @@ class Scatter {
         // Sets the mid-point of the color domain by scaling `marker.cmin` and/or `marker.cmax` to be equidistant to
         // this point. Has an effect only if in `marker.color` is set to a numerical array. Value should have the same
         // units as in `marker.color`. Has no effect when `marker.cauto` is `false`.
-        marker& cmid(double f) {
+        Marker& cmid(double f) {
             json["cmid"] = std::move(f);
             return *this;
         }
 
         // Sets the lower bound of the color domain. Has an effect only if in `marker.color` is set to a numerical
         // array. Value should have the same units as in `marker.color` and if set, `marker.cmax` must be set as well.
-        marker& cmin(double f) {
+        Marker& cmin(double f) {
             json["cmin"] = std::move(f);
             return *this;
         }
@@ -2987,11 +2987,11 @@ class Scatter {
         // Sets the marker color. It accepts either a specific color or an array of numbers that are mapped to the
         // colorscale relative to the max and min values of the array or relative to `marker.cmin` and `marker.cmax` if
         // set.
-        marker& color(std::string f) {
+        Marker& color(std::string f) {
             json["color"] = std::move(f);
             return *this;
         }
-        marker& color(std::vector<std::string> f) {
+        Marker& color(std::vector<std::string> f) {
             json["color"] = std::move(f);
             return *this;
         }
@@ -2999,12 +2999,12 @@ class Scatter {
         // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
         // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
         // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
-        marker& coloraxis(std::string f) {
+        Marker& coloraxis(std::string f) {
             json["coloraxis"] = std::move(f);
             return *this;
         }
 
-        marker& colorbar(class Colorbar f) {
+        Marker& colorbar(class Colorbar f) {
             json["colorbar"] = std::move(f.json);
             return *this;
         }
@@ -3016,45 +3016,45 @@ class Scatter {
         // `marker.cmin` and `marker.cmax`. Alternatively, `colorscale` may be a palette name string of the following
         // list:
         // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
-        marker& colorscale(std::string f) {
+        Marker& colorscale(std::string f) {
             json["colorscale"] = std::move(f);
             return *this;
         }
 
         // Sets the source reference on Chart Studio Cloud for `color`.
-        marker& colorsrc(std::string f) {
+        Marker& colorsrc(std::string f) {
             json["colorsrc"] = std::move(f);
             return *this;
         }
 
-        marker& gradient(class Gradient f) {
+        Marker& gradient(class Gradient f) {
             json["gradient"] = std::move(f.json);
             return *this;
         }
 
-        marker& line(class Line f) {
+        Marker& line(class Line f) {
             json["line"] = std::move(f.json);
             return *this;
         }
 
         // Sets a maximum number of points to be drawn on the graph. *0* corresponds to no limit.
-        marker& maxdisplayed(double f) {
+        Marker& maxdisplayed(double f) {
             json["maxdisplayed"] = std::move(f);
             return *this;
         }
 
         // Sets the marker opacity.
-        marker& opacity(double f) {
+        Marker& opacity(double f) {
             json["opacity"] = std::move(f);
             return *this;
         }
-        marker& opacity(std::vector<double> f) {
+        Marker& opacity(std::vector<double> f) {
             json["opacity"] = std::move(f);
             return *this;
         }
 
         // Sets the source reference on Chart Studio Cloud for `opacity`.
-        marker& opacitysrc(std::string f) {
+        Marker& opacitysrc(std::string f) {
             json["opacitysrc"] = std::move(f);
             return *this;
         }
@@ -3062,31 +3062,31 @@ class Scatter {
         // Reverses the color mapping if true. Has an effect only if in `marker.color` is set to a numerical array. If
         // true, `marker.cmin` will correspond to the last color in the array and `marker.cmax` will correspond to the
         // first color.
-        marker& reversescale(bool f) {
+        Marker& reversescale(bool f) {
             json["reversescale"] = std::move(f);
             return *this;
         }
 
         // Determines whether or not a colorbar is displayed for this trace. Has an effect only if in `marker.color` is
         // set to a numerical array.
-        marker& showscale(bool f) {
+        Marker& showscale(bool f) {
             json["showscale"] = std::move(f);
             return *this;
         }
 
         // Sets the marker size (in px).
-        marker& size(double f) {
+        Marker& size(double f) {
             json["size"] = std::move(f);
             return *this;
         }
-        marker& size(std::vector<double> f) {
+        Marker& size(std::vector<double> f) {
             json["size"] = std::move(f);
             return *this;
         }
 
         // Has an effect only if `marker.size` is set to a numerical array. Sets the minimum size (in px) of the
         // rendered marker points.
-        marker& sizemin(double f) {
+        Marker& sizemin(double f) {
             json["sizemin"] = std::move(f);
             return *this;
         }
@@ -3101,30 +3101,30 @@ class Scatter {
 
         // Has an effect only if `marker.size` is set to a numerical array. Sets the scale factor used to determine the
         // rendered size of marker points. Use with `sizemin` and `sizemode`.
-        marker& sizeref(double f) {
+        Marker& sizeref(double f) {
             json["sizeref"] = std::move(f);
             return *this;
         }
 
         // Sets the source reference on Chart Studio Cloud for `size`.
-        marker& sizesrc(std::string f) {
+        Marker& sizesrc(std::string f) {
             json["sizesrc"] = std::move(f);
             return *this;
         }
 
         // Moves the marker away from the data point in the direction of `angle` (in px). This can be useful for example
         // if you have another marker at this location and you want to point an arrowhead marker at it.
-        marker& standoff(double f) {
+        Marker& standoff(double f) {
             json["standoff"] = std::move(f);
             return *this;
         }
-        marker& standoff(std::vector<double> f) {
+        Marker& standoff(std::vector<double> f) {
             json["standoff"] = std::move(f);
             return *this;
         }
 
         // Sets the source reference on Chart Studio Cloud for `standoff`.
-        marker& standoffsrc(std::string f) {
+        Marker& standoffsrc(std::string f) {
             json["standoffsrc"] = std::move(f);
             return *this;
         }
@@ -3137,7 +3137,7 @@ class Scatter {
             json["symbol"] = to_string(f);
             return *this;
         }
-        marker& symbol(const std::vector<enum Symbol>& f) {
+        Marker& symbol(const std::vector<enum Symbol>& f) {
             std::vector<std::string> stringified(f.size());
             std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
             json["symbol"] = std::move(stringified);
@@ -3145,7 +3145,7 @@ class Scatter {
         }
 
         // Sets the source reference on Chart Studio Cloud for `symbol`.
-        marker& symbolsrc(std::string f) {
+        Marker& symbolsrc(std::string f) {
             json["symbolsrc"] = std::move(f);
             return *this;
         }
@@ -3160,19 +3160,19 @@ class Scatter {
          public:
 
             // Sets the marker color of selected points.
-            marker& color(std::string f) {
+            Marker& color(std::string f) {
                 json["color"] = std::move(f);
                 return *this;
             }
 
             // Sets the marker opacity of selected points.
-            marker& opacity(double f) {
+            Marker& opacity(double f) {
                 json["opacity"] = std::move(f);
                 return *this;
             }
 
             // Sets the marker size of selected points.
-            marker& size(double f) {
+            Marker& size(double f) {
                 json["size"] = std::move(f);
                 return *this;
             }
@@ -3184,7 +3184,7 @@ class Scatter {
          public:
 
             // Sets the text font color of selected points.
-            textfont& color(std::string f) {
+            Textfont& color(std::string f) {
                 json["color"] = std::move(f);
                 return *this;
             }
@@ -3192,12 +3192,12 @@ class Scatter {
             nlohmann::json json{};
         };
 
-        selected& marker(class Marker f) {
+        Selected& marker(class Marker f) {
             json["marker"] = std::move(f.json);
             return *this;
         }
 
-        selected& textfont(class Textfont f) {
+        Selected& textfont(class Textfont f) {
             json["textfont"] = std::move(f.json);
             return *this;
         }
@@ -3210,14 +3210,14 @@ class Scatter {
 
         // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to
         // *50*, only the newest 50 points will be displayed on the plot.
-        stream& maxpoints(double f) {
+        Stream& maxpoints(double f) {
             json["maxpoints"] = std::move(f);
             return *this;
         }
 
         // The stream id number links a data trace on a plot with a stream. See https://chart-studio.plotly.com/settings
         // for more details.
-        stream& token(std::string f) {
+        Stream& token(std::string f) {
             json["token"] = std::move(f);
             return *this;
         }
@@ -3229,17 +3229,17 @@ class Scatter {
     class Textfont {
      public:
 
-        textfont& color(std::string f) {
+        Textfont& color(std::string f) {
             json["color"] = std::move(f);
             return *this;
         }
-        textfont& color(std::vector<std::string> f) {
+        Textfont& color(std::vector<std::string> f) {
             json["color"] = std::move(f);
             return *this;
         }
 
         // Sets the source reference on Chart Studio Cloud for `color`.
-        textfont& colorsrc(std::string f) {
+        Textfont& colorsrc(std::string f) {
             json["colorsrc"] = std::move(f);
             return *this;
         }
@@ -3251,32 +3251,32 @@ class Scatter {
         // select number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid
         // Sans*,, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT
         // Sans Narrow*, *Raleway*, *Times New Roman*.
-        textfont& family(std::string f) {
+        Textfont& family(std::string f) {
             json["family"] = std::move(f);
             return *this;
         }
-        textfont& family(std::vector<std::string> f) {
+        Textfont& family(std::vector<std::string> f) {
             json["family"] = std::move(f);
             return *this;
         }
 
         // Sets the source reference on Chart Studio Cloud for `family`.
-        textfont& familysrc(std::string f) {
+        Textfont& familysrc(std::string f) {
             json["familysrc"] = std::move(f);
             return *this;
         }
 
-        textfont& size(double f) {
+        Textfont& size(double f) {
             json["size"] = std::move(f);
             return *this;
         }
-        textfont& size(std::vector<double> f) {
+        Textfont& size(std::vector<double> f) {
             json["size"] = std::move(f);
             return *this;
         }
 
         // Sets the source reference on Chart Studio Cloud for `size`.
-        textfont& sizesrc(std::string f) {
+        Textfont& sizesrc(std::string f) {
             json["sizesrc"] = std::move(f);
             return *this;
         }
@@ -3297,7 +3297,7 @@ class Scatter {
 
         // WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of
         // operations that manipulate the trace data, for example filtering or sorting the data arrays.
-        transforms& transform(class Transform f) {
+        Transforms& transform(class Transform f) {
             json["transform"] = std::move(f.json);
             return *this;
         }
@@ -3312,19 +3312,19 @@ class Scatter {
          public:
 
             // Sets the marker color of unselected points, applied only when a selection exists.
-            marker& color(std::string f) {
+            Marker& color(std::string f) {
                 json["color"] = std::move(f);
                 return *this;
             }
 
             // Sets the marker opacity of unselected points, applied only when a selection exists.
-            marker& opacity(double f) {
+            Marker& opacity(double f) {
                 json["opacity"] = std::move(f);
                 return *this;
             }
 
             // Sets the marker size of unselected points, applied only when a selection exists.
-            marker& size(double f) {
+            Marker& size(double f) {
                 json["size"] = std::move(f);
                 return *this;
             }
@@ -3336,7 +3336,7 @@ class Scatter {
          public:
 
             // Sets the text font color of unselected points, applied only when a selection exists.
-            textfont& color(std::string f) {
+            Textfont& color(std::string f) {
                 json["color"] = std::move(f);
                 return *this;
             }
@@ -3344,12 +3344,12 @@ class Scatter {
             nlohmann::json json{};
         };
 
-        unselected& marker(class Marker f) {
+        Unselected& marker(class Marker f) {
             json["marker"] = std::move(f.json);
             return *this;
         }
 
-        unselected& textfont(class Textfont f) {
+        Unselected& textfont(class Textfont f) {
             json["textfont"] = std::move(f.json);
             return *this;
         }
@@ -3359,20 +3359,20 @@ class Scatter {
 
     // Set several traces linked to the same position axis or matching axes to the same alignmentgroup. This controls
     // whether bars compute their positional range dependently or independently.
-    scatter& alignmentgroup(std::string f) {
+    Scatter& alignmentgroup(std::string f) {
         json["alignmentgroup"] = std::move(f);
         return *this;
     }
 
     // Determines whether or not markers and text nodes are clipped about the subplot axes. To show markers and text
     // nodes above axis lines and tick labels, make sure to set `xaxis.layer` and `yaxis.layer` to *below traces*.
-    scatter& cliponaxis(bool f) {
+    Scatter& cliponaxis(bool f) {
         json["cliponaxis"] = std::move(f);
         return *this;
     }
 
     // Determines whether or not gaps (i.e. {nan} or missing values) in the provided data arrays are connected.
-    scatter& connectgaps(bool f) {
+    Scatter& connectgaps(bool f) {
         json["connectgaps"] = std::move(f);
         return *this;
     }
@@ -3380,35 +3380,35 @@ class Scatter {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-    scatter& customdata(std::vector<T> f) {
+    Scatter& customdata(std::vector<T> f) {
         json["customdata"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `customdata`.
-    scatter& customdatasrc(std::string f) {
+    Scatter& customdatasrc(std::string f) {
         json["customdatasrc"] = std::move(f);
         return *this;
     }
 
     // Sets the x coordinate step. See `x0` for more info.
-    scatter& dx(double f) {
+    Scatter& dx(double f) {
         json["dx"] = std::move(f);
         return *this;
     }
 
     // Sets the y coordinate step. See `y0` for more info.
-    scatter& dy(double f) {
+    Scatter& dy(double f) {
         json["dy"] = std::move(f);
         return *this;
     }
 
-    scatter& error_x(class Error_x f) {
+    Scatter& error_x(class Error_x f) {
         json["error_x"] = std::move(f.json);
         return *this;
     }
 
-    scatter& error_y(class Error_y f) {
+    Scatter& error_y(class Error_y f) {
         json["error_y"] = std::move(f.json);
         return *this;
     }
@@ -3431,13 +3431,13 @@ class Scatter {
 
     // Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line
     // color, whichever is available.
-    scatter& fillcolor(std::string f) {
+    Scatter& fillcolor(std::string f) {
         json["fillcolor"] = std::move(f);
         return *this;
     }
 
     // Sets the pattern within the marker.
-    scatter& fillpattern(class Fillpattern f) {
+    Scatter& fillpattern(class Fillpattern f) {
         json["fillpattern"] = std::move(f.json);
         return *this;
     }
@@ -3458,22 +3458,22 @@ class Scatter {
     // - Default: all
     // - Flags: ['x', 'y', 'z', 'text', 'name']
     // - Extras ['all', 'none', 'skip']
-    scatter& hoverinfo(std::string f) {
+    Scatter& hoverinfo(std::string f) {
         json["hoverinfo"] = std::move(f);
         return *this;
     }
-    scatter& hoverinfo(std::vector<std::string> f) {
+    Scatter& hoverinfo(std::vector<std::string> f) {
         json["hoverinfo"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
-    scatter& hoverinfosrc(std::string f) {
+    Scatter& hoverinfosrc(std::string f) {
         json["hoverinfosrc"] = std::move(f);
         return *this;
     }
 
-    scatter& hoverlabel(class Hoverlabel f) {
+    Scatter& hoverlabel(class Hoverlabel f) {
         json["hoverlabel"] = std::move(f.json);
         return *this;
     }
@@ -3482,7 +3482,7 @@ class Scatter {
     // the fill is *toself* or *tonext* and there are no markers or text, then the default is *fills*, otherwise it is
     // *points*.
     // - Flags: ['points', 'fills']
-    scatter& hoveron(std::string f) {
+    Scatter& hoveron(std::string f) {
         json["hoveron"] = std::move(f);
         return *this;
     }
@@ -3500,17 +3500,17 @@ class Scatter {
     // specified per-point (the ones that are `arrayOk: true`) are available.  Anything contained in tag `<extra>` is
     // displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box
     // completely, use an empty tag `<extra></extra>`.
-    scatter& hovertemplate(std::string f) {
+    Scatter& hovertemplate(std::string f) {
         json["hovertemplate"] = std::move(f);
         return *this;
     }
-    scatter& hovertemplate(std::vector<std::string> f) {
+    Scatter& hovertemplate(std::vector<std::string> f) {
         json["hovertemplate"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
-    scatter& hovertemplatesrc(std::string f) {
+    Scatter& hovertemplatesrc(std::string f) {
         json["hovertemplatesrc"] = std::move(f);
         return *this;
     }
@@ -3518,17 +3518,17 @@ class Scatter {
     // Sets hover text elements associated with each (x,y) pair. If a single string, the same string appears over all
     // the data points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. To
     // be seen, trace `hoverinfo` must contain a *text* flag.
-    scatter& hovertext(std::string f) {
+    Scatter& hovertext(std::string f) {
         json["hovertext"] = std::move(f);
         return *this;
     }
-    scatter& hovertext(std::vector<std::string> f) {
+    Scatter& hovertext(std::vector<std::string> f) {
         json["hovertext"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
-    scatter& hovertextsrc(std::string f) {
+    Scatter& hovertextsrc(std::string f) {
         json["hovertextsrc"] = std::move(f);
         return *this;
     }
@@ -3536,32 +3536,32 @@ class Scatter {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-    scatter& ids(std::vector<T> f) {
+    Scatter& ids(std::vector<T> f) {
         json["ids"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `ids`.
-    scatter& idssrc(std::string f) {
+    Scatter& idssrc(std::string f) {
         json["idssrc"] = std::move(f);
         return *this;
     }
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
-    scatter& legend(std::string f) {
+    Scatter& legend(std::string f) {
         json["legend"] = std::move(f);
         return *this;
     }
 
     // Sets the legend group for this trace. Traces and shapes part of the same legend group hide/show at the same time
     // when toggling legend items.
-    scatter& legendgroup(std::string f) {
+    Scatter& legendgroup(std::string f) {
         json["legendgroup"] = std::move(f);
         return *this;
     }
 
-    scatter& legendgrouptitle(class Legendgrouptitle f) {
+    Scatter& legendgrouptitle(class Legendgrouptitle f) {
         json["legendgrouptitle"] = std::move(f.json);
         return *this;
     }
@@ -3571,23 +3571,23 @@ class Scatter {
     // can use ranks less than 1000 to place certain items before all unranked items, and ranks greater than 1000 to go
     // after all unranked items. When having unranked or equal rank items shapes would be displayed after traces i.e.
     // according to their order in data and layout.
-    scatter& legendrank(double f) {
+    Scatter& legendrank(double f) {
         json["legendrank"] = std::move(f);
         return *this;
     }
 
     // Sets the width (in px or fraction) of the legend for this trace.
-    scatter& legendwidth(double f) {
+    Scatter& legendwidth(double f) {
         json["legendwidth"] = std::move(f);
         return *this;
     }
 
-    scatter& line(class Line f) {
+    Scatter& line(class Line f) {
         json["line"] = std::move(f.json);
         return *this;
     }
 
-    scatter& marker(class Marker f) {
+    Scatter& marker(class Marker f) {
         json["marker"] = std::move(f.json);
         return *this;
     }
@@ -3599,18 +3599,18 @@ class Scatter {
     // `meta` in layout attributes, use `%{data[n[.meta[i]}` where `i` is the index or key of the `meta` and `n` is the
     // trace index.
     template <typename T>
-    scatter& meta(T f) {
+    Scatter& meta(T f) {
         json["meta"] = std::move(f);
         return *this;
     }
     template <typename T>
-    scatter& meta(std::vector<T> f) {
+    Scatter& meta(std::vector<T> f) {
         json["meta"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
-    scatter& metasrc(std::string f) {
+    Scatter& metasrc(std::string f) {
         json["metasrc"] = std::move(f);
         return *this;
     }
@@ -3620,26 +3620,26 @@ class Scatter {
     // points and the trace is not stacked then the default is *lines+markers*. Otherwise, *lines*.
     // - Flags: ['lines', 'markers', 'text']
     // - Extras ['none']
-    scatter& mode(std::string f) {
+    Scatter& mode(std::string f) {
         json["mode"] = std::move(f);
         return *this;
     }
 
     // Sets the trace name. The trace name appears as the legend item and on hover.
-    scatter& name(std::string f) {
+    Scatter& name(std::string f) {
         json["name"] = std::move(f);
         return *this;
     }
 
     // Set several traces linked to the same position axis or matching axes to the same offsetgroup where bars of the
     // same position coordinate will line up.
-    scatter& offsetgroup(std::string f) {
+    Scatter& offsetgroup(std::string f) {
         json["offsetgroup"] = std::move(f);
         return *this;
     }
 
     // Sets the opacity of the trace.
-    scatter& opacity(double f) {
+    Scatter& opacity(double f) {
         json["opacity"] = std::move(f);
         return *this;
     }
@@ -3653,7 +3653,7 @@ class Scatter {
         return *this;
     }
 
-    scatter& selected(class Selected f) {
+    Scatter& selected(class Selected f) {
         json["selected"] = std::move(f.json);
         return *this;
     }
@@ -3662,13 +3662,13 @@ class Scatter {
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
     // other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
     template <typename T>
-    scatter& selectedpoints(T f) {
+    Scatter& selectedpoints(T f) {
         json["selectedpoints"] = std::move(f);
         return *this;
     }
 
     // Determines whether or not an item corresponding to this trace is shown in the legend.
-    scatter& showlegend(bool f) {
+    Scatter& showlegend(bool f) {
         json["showlegend"] = std::move(f);
         return *this;
     }
@@ -3691,12 +3691,12 @@ class Scatter {
     // only fill to (or be filled to) other traces in the same group. With multiple `stackgroup`s or some traces stacked
     // and some not, if fill-linked traces are not already consecutive, the later ones will be pushed down in the
     // drawing order.
-    scatter& stackgroup(std::string f) {
+    Scatter& stackgroup(std::string f) {
         json["stackgroup"] = std::move(f);
         return *this;
     }
 
-    scatter& stream(class Stream f) {
+    Scatter& stream(class Stream f) {
         json["stream"] = std::move(f.json);
         return *this;
     }
@@ -3704,17 +3704,17 @@ class Scatter {
     // Sets text elements associated with each (x,y) pair. If a single string, the same string appears over all the data
     // points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. If trace
     // `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
-    scatter& text(std::string f) {
+    Scatter& text(std::string f) {
         json["text"] = std::move(f);
         return *this;
     }
-    scatter& text(std::vector<std::string> f) {
+    Scatter& text(std::vector<std::string> f) {
         json["text"] = std::move(f);
         return *this;
     }
 
     // Sets the text font.
-    scatter& textfont(class Textfont f) {
+    Scatter& textfont(class Textfont f) {
         json["textfont"] = std::move(f.json);
         return *this;
     }
@@ -3725,7 +3725,7 @@ class Scatter {
         json["textposition"] = to_string(f);
         return *this;
     }
-    scatter& textposition(const std::vector<enum Textposition>& f) {
+    Scatter& textposition(const std::vector<enum Textposition>& f) {
         std::vector<std::string> stringified(f.size());
         std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
         json["textposition"] = std::move(stringified);
@@ -3733,13 +3733,13 @@ class Scatter {
     }
 
     // Sets the source reference on Chart Studio Cloud for `textposition`.
-    scatter& textpositionsrc(std::string f) {
+    Scatter& textpositionsrc(std::string f) {
         json["textpositionsrc"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `text`.
-    scatter& textsrc(std::string f) {
+    Scatter& textsrc(std::string f) {
         json["textsrc"] = std::move(f);
         return *this;
     }
@@ -3751,29 +3751,29 @@ class Scatter {
     // using d3-time-format's syntax %{variable|d3-time-format}, for example "Day: %{2019-01-01|%A}".
     // https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details on the date formatting syntax. Every
     // attributes that can be specified per-point (the ones that are `arrayOk: true`) are available.
-    scatter& texttemplate(std::string f) {
+    Scatter& texttemplate(std::string f) {
         json["texttemplate"] = std::move(f);
         return *this;
     }
-    scatter& texttemplate(std::vector<std::string> f) {
+    Scatter& texttemplate(std::vector<std::string> f) {
         json["texttemplate"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `texttemplate`.
-    scatter& texttemplatesrc(std::string f) {
+    Scatter& texttemplatesrc(std::string f) {
         json["texttemplatesrc"] = std::move(f);
         return *this;
     }
 
-    scatter& transforms(class Transforms f) {
+    Scatter& transforms(class Transforms f) {
         json["transforms"] = std::move(f.json);
         return *this;
     }
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
-    scatter& uid(std::string f) {
+    Scatter& uid(std::string f) {
         json["uid"] = std::move(f);
         return *this;
     }
@@ -3787,12 +3787,12 @@ class Scatter {
     // add/remove traces before the end of the `data` array, such that the same trace has a different index, you can
     // still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
     template <typename T>
-    scatter& uirevision(T f) {
+    Scatter& uirevision(T f) {
         json["uirevision"] = std::move(f);
         return *this;
     }
 
-    scatter& unselected(class Unselected f) {
+    Scatter& unselected(class Unselected f) {
         json["unselected"] = std::move(f.json);
         return *this;
     }
@@ -3807,7 +3807,7 @@ class Scatter {
 
     // Sets the x coordinates.
     template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-    scatter& x(std::vector<T> f) {
+    Scatter& x(std::vector<T> f) {
         json["x"] = std::move(f);
         return *this;
     }
@@ -3815,14 +3815,14 @@ class Scatter {
     // Alternate to `x`. Builds a linear space of x coordinates. Use with `dx` where `x0` is the starting coordinate and
     // `dx` the step.
     template <typename T>
-    scatter& x0(T f) {
+    Scatter& x0(T f) {
         json["x0"] = std::move(f);
         return *this;
     }
 
     // Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x
     // coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
-    scatter& xaxis(std::string f) {
+    Scatter& xaxis(std::string f) {
         json["xaxis"] = std::move(f);
         return *this;
     }
@@ -3840,7 +3840,7 @@ class Scatter {
     // half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example,
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `xaxis.hoverformat`.
-    scatter& xhoverformat(std::string f) {
+    Scatter& xhoverformat(std::string f) {
         json["xhoverformat"] = std::move(f);
         return *this;
     }
@@ -3849,7 +3849,7 @@ class Scatter {
     // axis. Special values in the form of *M<n>* could be used to declare the number of months. In this case `n` must
     // be a positive integer.
     template <typename T>
-    scatter& xperiod(T f) {
+    Scatter& xperiod(T f) {
         json["xperiod"] = std::move(f);
         return *this;
     }
@@ -3858,7 +3858,7 @@ class Scatter {
     // on the x0 axis. When `x0period` is round number of weeks, the `x0period0` by default would be on a Sunday i.e.
     // 2000-01-02, otherwise it would be at 2000-01-01.
     template <typename T>
-    scatter& xperiod0(T f) {
+    Scatter& xperiod0(T f) {
         json["xperiod0"] = std::move(f);
         return *this;
     }
@@ -3871,14 +3871,14 @@ class Scatter {
     }
 
     // Sets the source reference on Chart Studio Cloud for `x`.
-    scatter& xsrc(std::string f) {
+    Scatter& xsrc(std::string f) {
         json["xsrc"] = std::move(f);
         return *this;
     }
 
     // Sets the y coordinates.
     template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-    scatter& y(std::vector<T> f) {
+    Scatter& y(std::vector<T> f) {
         json["y"] = std::move(f);
         return *this;
     }
@@ -3886,14 +3886,14 @@ class Scatter {
     // Alternate to `y`. Builds a linear space of y coordinates. Use with `dy` where `y0` is the starting coordinate and
     // `dy` the step.
     template <typename T>
-    scatter& y0(T f) {
+    Scatter& y0(T f) {
         json["y0"] = std::move(f);
         return *this;
     }
 
     // Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y
     // coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
-    scatter& yaxis(std::string f) {
+    Scatter& yaxis(std::string f) {
         json["yaxis"] = std::move(f);
         return *this;
     }
@@ -3911,7 +3911,7 @@ class Scatter {
     // half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example,
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `yaxis.hoverformat`.
-    scatter& yhoverformat(std::string f) {
+    Scatter& yhoverformat(std::string f) {
         json["yhoverformat"] = std::move(f);
         return *this;
     }
@@ -3920,7 +3920,7 @@ class Scatter {
     // axis. Special values in the form of *M<n>* could be used to declare the number of months. In this case `n` must
     // be a positive integer.
     template <typename T>
-    scatter& yperiod(T f) {
+    Scatter& yperiod(T f) {
         json["yperiod"] = std::move(f);
         return *this;
     }
@@ -3929,7 +3929,7 @@ class Scatter {
     // on the y0 axis. When `y0period` is round number of weeks, the `y0period0` by default would be on a Sunday i.e.
     // 2000-01-02, otherwise it would be at 2000-01-01.
     template <typename T>
-    scatter& yperiod0(T f) {
+    Scatter& yperiod0(T f) {
         json["yperiod0"] = std::move(f);
         return *this;
     }
@@ -3942,7 +3942,7 @@ class Scatter {
     }
 
     // Sets the source reference on Chart Studio Cloud for `y`.
-    scatter& ysrc(std::string f) {
+    Scatter& ysrc(std::string f) {
         json["ysrc"] = std::move(f);
         return *this;
     }

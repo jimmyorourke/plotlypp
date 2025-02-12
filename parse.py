@@ -133,7 +133,7 @@ def emit_trace(trace, writer, top_level=False):
                 writer.write("}")
 
                 if field.array_ok:
-                    writer.write(f"{trace.name}& {field.name}(const std::vector<enum {field.name.capitalize()}>& f) {{")
+                    writer.write(f"{trace.name.capitalize()}& {field.name}(const std::vector<enum {field.name.capitalize()}>& f) {{")
                     with IndentBlock(writer):
                         writer.write(f"std::vector<std::string> stringified(f.size());")
                         writer.write(f"std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){{return to_string(e);}});")
@@ -151,7 +151,7 @@ def emit_trace(trace, writer, top_level=False):
                     writer.write(f"template <typename T>")
                 elif field.json_val_type == 'data_array':
                     writer.write(f"template <typename T, typename=std::enable_if_t<std::is_arithmetic_v<T>>>")
-                writer.write(f"{trace.name}& {field.name}({output_val_type} f) {{")
+                writer.write(f"{trace.name.capitalize()}& {field.name}({output_val_type} f) {{")
                 with IndentBlock(writer):
                     if field.is_object:
                         writer.write(f"json[\"{field.name}\"] = std::move(f.json);")
@@ -163,7 +163,7 @@ def emit_trace(trace, writer, top_level=False):
                 if field.array_ok:
                     if output_val_type == 'T':
                         writer.write(f"template <typename T>")
-                    writer.write(f"{trace.name}& {field.name}(std::vector<{output_val_type}> f) {{")
+                    writer.write(f"{trace.name.capitalize()}& {field.name}(std::vector<{output_val_type}> f) {{")
                     with IndentBlock(writer):
                         if field.is_object:
                             writer.write(f"std::vector<nlohmann::json> jsonified(f.size());")
