@@ -22,3 +22,4 @@ KeepEmptyLinesAtTheStartOfBlocks: true
 SpacesBeforeTrailingComments: 1
 MaxEmptyLinesToKeep: 1
 SpacesInSquareBrackets: false
+EmptyLineAfterAccessModifier: Leave

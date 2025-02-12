@@ -3,17 +3,7 @@
 // Bubble charts are achieved by setting `marker.size` and/or `marker.color` to numerical arrays.
 class Scatter {
  public:
-    // Sets the area to fill with a solid color. Defaults to *none* unless this trace is stacked, then it gets *tonexty*
-    // (*tonextx*) if `orientation` is *v* (*h*) Use with `fillcolor` if not *none*. *tozerox* and *tozeroy* fill to x=0
-    // and y=0 respectively. *tonextx* and *tonexty* fill between the endpoints of this trace and the endpoints of the
-    // trace before it, connecting those endpoints with straight lines (to make a stacked area graph); if there is no
-    // trace before it, they behave like *tozerox* and *tozeroy*. *toself* connects the endpoints of the trace (or each
-    // segment of the trace if it has gaps) into a closed shape. *tonext* fills the space between two traces if one
-    // completely encloses the other (eg consecutive contour lines), and behaves like *toself* if there is no trace
-    // before it. *tonext* should not be used if one trace does not enclose the other. Traces in a `stackgroup` will
-    // only fill to (or be filled to) other traces in the same group. With multiple `stackgroup`s or some traces stacked
-    // and some not, if fill-linked traces are not already consecutive, the later ones will be pushed down in the
-    // drawing order.
+
     enum class Fill {
         NONE,
         TOZEROY,
@@ -42,11 +32,6 @@ class Scatter {
         }
     }
 
-    // Only relevant when `stackgroup` is used, and only the first `groupnorm` found in the `stackgroup` will be used -
-    // including if `visible` is *legendonly* but not if it is `false`. Sets the normalization for the sum of this
-    // `stackgroup`. With *fraction*, the value of each trace at each location is divided by the sum of all trace values
-    // at that location. *percent* is the same but multiplied by 100 to show percentages. If there are multiple
-    // subplots, or multiple `stackgroup`s on one subplot, each will be normalized within its own set.
     enum class Groupnorm {
         EMPTY,
         FRACTION,
@@ -63,10 +48,6 @@ class Scatter {
         }
     }
 
-    // Only relevant in the following cases: 1. when `scattermode` is set to *group*. 2. when `stackgroup` is used, and
-    // only the first `orientation` found in the `stackgroup` will be used - including if `visible` is *legendonly* but
-    // not if it is `false`. Sets the stacking direction. With *v* (*h*), the y (x) values of subsequent traces are
-    // added. Also affects the default value of `fill`.
     enum class Orientation {
         V,
         H,
@@ -80,11 +61,6 @@ class Scatter {
         }
     }
 
-    // Only relevant when `stackgroup` is used, and only the first `stackgaps` found in the `stackgroup` will be used -
-    // including if `visible` is *legendonly* but not if it is `false`. Determines how we handle locations at which
-    // other traces in this group have data but this one does not. With *infer zero* we insert a zero at these
-    // locations. With *interpolate* we linearly interpolate between existing values, and extrapolate a constant beyond
-    // the existing values.
     enum class Stackgaps {
         INFER_ZERO,
         INTERPOLATE,
@@ -98,7 +74,6 @@ class Scatter {
         }
     }
 
-    // Sets the positions of the `text` elements with respects to the (x,y) coordinates.
     enum class Textposition {
         TOP_LEFT,
         TOP_CENTER,
@@ -133,8 +108,6 @@ class Scatter {
         }
     }
 
-    // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
-    // legend item (provided that the legend itself is visible).
     enum class Visible {
         TRUE,
         FALSE,
@@ -151,7 +124,6 @@ class Scatter {
         }
     }
 
-    // Sets the calendar system to use with `x` date data.
     enum class Xcalendar {
         CHINESE,
         COPTIC,
@@ -207,7 +179,6 @@ class Scatter {
         }
     }
 
-    // Only relevant when the axis `type` is *date*. Sets the alignment of data points on the x axis.
     enum class Xperiodalignment {
         START,
         MIDDLE,
@@ -224,7 +195,6 @@ class Scatter {
         }
     }
 
-    // Sets the calendar system to use with `y` date data.
     enum class Ycalendar {
         CHINESE,
         COPTIC,
@@ -280,7 +250,6 @@ class Scatter {
         }
     }
 
-    // Only relevant when the axis `type` is *date*. Sets the alignment of data points on the y axis.
     enum class Yperiodalignment {
         START,
         MIDDLE,
@@ -299,10 +268,7 @@ class Scatter {
 
     class Error_x {
      public:
-        // Determines the rule used to generate the error bars. If *constant`, the bar lengths are of a constant value.
-        // Set this constant in `value`. If *percent*, the bar lengths correspond to a percentage of underlying data.
-        // Set this percentage in `value`. If *sqrt*, the bar lengths correspond to the square of the underlying data.
-        // If *data*, the bar lengths are set with data set `array`.
+
         enum class Type {
             PERCENT,
             CONSTANT,
@@ -424,10 +390,7 @@ class Scatter {
 
     class Error_y {
      public:
-        // Determines the rule used to generate the error bars. If *constant`, the bar lengths are of a constant value.
-        // Set this constant in `value`. If *percent*, the bar lengths correspond to a percentage of underlying data.
-        // Set this percentage in `value`. If *sqrt*, the bar lengths correspond to the square of the underlying data.
-        // If *data*, the bar lengths are set with data set `array`.
+
         enum class Type {
             PERCENT,
             CONSTANT,
@@ -545,7 +508,7 @@ class Scatter {
     // Sets the pattern within the marker.
     class Fillpattern {
      public:
-        // Determines whether `marker.color` should be used as a default to `bgcolor` or a `fgcolor`.
+
         enum class Fillmode {
             REPLACE,
             OVERLAY,
@@ -559,7 +522,6 @@ class Scatter {
             }
         }
 
-        // Sets the shape of the pattern fill. By default, no pattern is used for filling the area.
         enum class Shape {
             EMPTY,
             SLASH,
@@ -699,8 +661,7 @@ class Scatter {
 
     class Hoverlabel {
      public:
-        // Sets the horizontal alignment of the text content within hover label box. Has an effect only if the hover
-        // label text spans more two or more lines
+
         enum class Align {
             LEFT,
             RIGHT,
@@ -720,6 +681,7 @@ class Scatter {
         // Sets the font used in hover labels.
         class Font {
          public:
+
             font& color(std::string f) {
                 json["color"] = std::move(f);
                 return *this;
@@ -857,9 +819,11 @@ class Scatter {
 
     class Legendgrouptitle {
      public:
+
         // Sets this legend group's title font.
         class Font {
          public:
+
             font& color(std::string f) {
                 json["color"] = std::move(f);
                 return *this;
@@ -902,8 +866,7 @@ class Scatter {
 
     class Line {
      public:
-        // Determines the line shape. With *spline* the lines are drawn using spline interpolation. The other available
-        // values correspond to step-wise line shapes.
+
         enum class Shape {
             LINEAR,
             SPLINE,
@@ -993,8 +956,7 @@ class Scatter {
 
     class Marker {
      public:
-        // Sets the reference for marker angle. With *previous*, angle 0 points along the line from the previous point
-        // to this one. With *up*, angle 0 points toward the top of the screen.
+
         enum class Angleref {
             PREVIOUS,
             UP,
@@ -1008,8 +970,6 @@ class Scatter {
             }
         }
 
-        // Has an effect only if `marker.size` is set to a numerical array. Sets the rule for which the data in `size`
-        // is converted to pixels.
         enum class Sizemode {
             DIAMETER,
             AREA,
@@ -1023,9 +983,6 @@ class Scatter {
             }
         }
 
-        // Sets the marker symbol type. Adding 100 is equivalent to appending *-open* to a symbol name. Adding 200 is
-        // equivalent to appending *-dot* to a symbol name. Adding 300 is equivalent to appending *-open-dot* or
-        // *dot-open* to a symbol name.
         enum class Symbol {
             NUM_0,
             CIRCLE,
@@ -2007,9 +1964,7 @@ class Scatter {
 
         class Colorbar {
          public:
-            // Determines a formatting rule for the tick exponents. For example, consider the number 1,000,000,000. If
-            // *none*, it appears as 1,000,000,000. If *e*, 1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super
-            // script). If *SI*, 1G. If *B*, 1B.
+
             enum class Exponentformat {
                 NONE,
                 E,
@@ -2032,8 +1987,6 @@ class Scatter {
                 }
             }
 
-            // Determines whether this color bar's length (i.e. the measure in the color variation direction) is set in
-            // units of plot *fraction* or in *pixels. Use `len` to set the value.
             enum class Lenmode {
                 FRACTION,
                 PIXELS,
@@ -2047,7 +2000,6 @@ class Scatter {
                 }
             }
 
-            // Sets the orientation of the colorbar.
             enum class Orientation {
                 H,
                 V,
@@ -2061,8 +2013,6 @@ class Scatter {
                 }
             }
 
-            // If *all*, all exponents are shown besides their significands. If *first*, only the exponent of the first
-            // tick is shown. If *last*, only the exponent of the last tick is shown. If *none*, no exponents appear.
             enum class Showexponent {
                 ALL,
                 FIRST,
@@ -2082,8 +2032,6 @@ class Scatter {
                 }
             }
 
-            // If *all*, all tick labels are displayed with a prefix. If *first*, only the first tick is displayed with
-            // a prefix. If *last*, only the last tick is displayed with a suffix. If *none*, tick prefixes are hidden.
             enum class Showtickprefix {
                 ALL,
                 FIRST,
@@ -2103,7 +2051,6 @@ class Scatter {
                 }
             }
 
-            // Same as `showtickprefix` but for tick suffixes.
             enum class Showticksuffix {
                 ALL,
                 FIRST,
@@ -2123,8 +2070,6 @@ class Scatter {
                 }
             }
 
-            // Determines whether this color bar's thickness (i.e. the measure in the constant color direction) is set
-            // in units of plot *fraction* or in *pixels*. Use `thickness` to set the value.
             enum class Thicknessmode {
                 FRACTION,
                 PIXELS,
@@ -2138,9 +2083,6 @@ class Scatter {
                 }
             }
 
-            // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis.
-            // The default value for inside tick labels is *hide past domain*. In other cases the default is *hide past
-            // div*.
             enum class Ticklabeloverflow {
                 ALLOW,
                 HIDE_PAST_DIV,
@@ -2157,8 +2099,6 @@ class Scatter {
                 }
             }
 
-            // Determines where tick labels are drawn relative to the ticks. Left and right options are used when
-            // `orientation` is *h*, top and bottom when `orientation` is *v*.
             enum class Ticklabelposition {
                 OUTSIDE,
                 INSIDE,
@@ -2196,10 +2136,6 @@ class Scatter {
                 }
             }
 
-            // Sets the tick mode for this axis. If *auto*, the number of ticks is set via `nticks`. If *linear*, the
-            // placement of the ticks is determined by a starting position `tick0` and a tick step `dtick` (*linear* is
-            // the default value if `tick0` and `dtick` are provided). If *array*, the placement of the ticks is set via
-            // `tickvals` and the tick text is `ticktext`. (*array* is the default value if `tickvals` is provided).
             enum class Tickmode {
                 AUTO,
                 LINEAR,
@@ -2216,8 +2152,6 @@ class Scatter {
                 }
             }
 
-            // Determines whether ticks are drawn or not. If **, this axis' ticks are not drawn. If *outside*
-            // (*inside*), this axis' are drawn outside (inside) the axis lines.
             enum class Ticks {
                 OUTSIDE,
                 INSIDE,
@@ -2234,9 +2168,6 @@ class Scatter {
                 }
             }
 
-            // Sets this color bar's horizontal position anchor. This anchor binds the `x` position to the *left*,
-            // *center* or *right* of the color bar. Defaults to *left* when `orientation` is *v* and *center* when
-            // `orientation` is *h*.
             enum class Xanchor {
                 LEFT,
                 CENTER,
@@ -2253,8 +2184,6 @@ class Scatter {
                 }
             }
 
-            // Sets the container `x` refers to. *container* spans the entire `width` of the plot. *paper* refers to the
-            // width of the plotting area only.
             enum class Xref {
                 CONTAINER,
                 PAPER,
@@ -2268,9 +2197,6 @@ class Scatter {
                 }
             }
 
-            // Sets this color bar's vertical position anchor This anchor binds the `y` position to the *top*, *middle*
-            // or *bottom* of the color bar. Defaults to *middle* when `orientation` is *v* and *bottom* when
-            // `orientation` is *h*.
             enum class Yanchor {
                 TOP,
                 MIDDLE,
@@ -2287,8 +2213,6 @@ class Scatter {
                 }
             }
 
-            // Sets the container `y` refers to. *container* spans the entire `height` of the plot. *paper* refers to
-            // the height of the plotting area only.
             enum class Yref {
                 CONTAINER,
                 PAPER,
@@ -2305,6 +2229,7 @@ class Scatter {
             // Sets the color bar's tick label font
             class Tickfont {
              public:
+
                 tickfont& color(std::string f) {
                     json["color"] = std::move(f);
                     return *this;
@@ -2332,8 +2257,10 @@ class Scatter {
 
             class Tickformatstops {
              public:
+
                 class Tickformatstop {
                  public:
+
                     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is
                     // possible to omit *min* or *max* value by passing *null*
                     tickformatstop& dtickrange(std::vector<std::string> f) {
@@ -2386,9 +2313,7 @@ class Scatter {
 
             class Title {
              public:
-                // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when
-                // `orientation` if *v* and  defaults to *right* when `orientation` if *h*. Note that the title's
-                // location used to be set by the now deprecated `titleside` attribute.
+
                 enum class Side {
                     RIGHT,
                     TOP,
@@ -2409,6 +2334,7 @@ class Scatter {
                 // `titlefont` attribute.
                 class Font {
                  public:
+
                     font& color(std::string f) {
                         json["color"] = std::move(f);
                         return *this;
@@ -2824,7 +2750,7 @@ class Scatter {
 
         class Gradient {
          public:
-            // Sets the type of gradient used to fill the markers
+
             enum class Type {
                 RADIAL,
                 HORIZONTAL,
@@ -2885,6 +2811,7 @@ class Scatter {
 
         class Line {
          public:
+
             // Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined
             // by `marker.line.colorscale`. Has an effect only if in `marker.line.color` is set to a numerical array. In
             // case `colorscale` is unspecified or `autocolorscale` is true, the default palette will be chosen
@@ -3228,8 +3155,10 @@ class Scatter {
 
     class Selected {
      public:
+
         class Marker {
          public:
+
             // Sets the marker color of selected points.
             marker& color(std::string f) {
                 json["color"] = std::move(f);
@@ -3253,6 +3182,7 @@ class Scatter {
 
         class Textfont {
          public:
+
             // Sets the text font color of selected points.
             textfont& color(std::string f) {
                 json["color"] = std::move(f);
@@ -3277,6 +3207,7 @@ class Scatter {
 
     class Stream {
      public:
+
         // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to
         // *50*, only the newest 50 points will be displayed on the plot.
         stream& maxpoints(double f) {
@@ -3297,6 +3228,7 @@ class Scatter {
     // Sets the text font.
     class Textfont {
      public:
+
         textfont& color(std::string f) {
             json["color"] = std::move(f);
             return *this;
@@ -3354,10 +3286,12 @@ class Scatter {
 
     class Transforms {
      public:
+
         // WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of
         // operations that manipulate the trace data, for example filtering or sorting the data arrays.
         class Transform {
          public:
+
             nlohmann::json json{};
         };
 
@@ -3373,8 +3307,10 @@ class Scatter {
 
     class Unselected {
      public:
+
         class Marker {
          public:
+
             // Sets the marker color of unselected points, applied only when a selection exists.
             marker& color(std::string f) {
                 json["color"] = std::move(f);
@@ -3398,6 +3334,7 @@ class Scatter {
 
         class Textfont {
          public:
+
             // Sets the text font color of unselected points, applied only when a selection exists.
             textfont& color(std::string f) {
                 json["color"] = std::move(f);

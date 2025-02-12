@@ -97,7 +97,6 @@ def emit_trace(trace, writer, top_level=False):
     with IndentBlock(writer):
         for e in trace.enums:
             writer.write("")
-            writer.write(f"// {e.description}")
             writer.write(f"enum class {e.name.capitalize()} {{")
             with IndentBlock(writer):
                 for safe_val in e.safe_to_json_vals:
