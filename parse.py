@@ -88,14 +88,9 @@ class Writer:
         print(f"{indent}{line}", file=self._output_file_handle)
 
 
-def emit_trace(trace, writer, top_level=False):
-    if trace.description:
-        writer.write(f"// {trace.description}")
-    writer.write(f"class {trace.name.capitalize()} {{")
-    writer.write("public:")
-
+def emit_class_public_members(class_object, writer):
     with IndentBlock(writer):
-        for e in trace.enums:
+        for e in class_object.enums:
             writer.write("")
             writer.write(f"enum class {e.name.capitalize()} {{")
             with IndentBlock(writer):
@@ -113,10 +108,10 @@ def emit_trace(trace, writer, top_level=False):
             writer.write("}")
 
         writer.write("")
-        for obj in trace.objects:
-            emit_trace(obj, writer)
+        for obj in class_object.objects:
+            emit_object(obj, writer)
 
-        for field in trace.fields:
+        for field in class_object.fields:
             if field.description:
                 lines = field.description.split("\n")
                 # Dumb hack for clang-format not respecting existing newlines in comments.
@@ -126,14 +121,14 @@ def emit_trace(trace, writer, top_level=False):
             if field.is_enum:
                 # TODO: is it allowed to have enum and function with same name?
                 # To help the compiler out in the vector case, add enum keyword.
-                writer.write(f"{trace.name.capitalize()}& {field.name}(enum {field.name.capitalize()} f) {{")
+                writer.write(f"{class_object.name.capitalize()}& {field.name}(enum {field.name.capitalize()} f) {{")
                 with IndentBlock(writer):
                     writer.write(f"json[\"{field.name}\"] = to_string(f);")
                     writer.write("return *this;")
                 writer.write("}")
 
                 if field.array_ok:
-                    writer.write(f"{trace.name.capitalize()}& {field.name}(const std::vector<enum {field.name.capitalize()}>& f) {{")
+                    writer.write(f"{class_object.name.capitalize()}& {field.name}(const std::vector<enum {field.name.capitalize()}>& f) {{")
                     with IndentBlock(writer):
                         writer.write(f"std::vector<std::string> stringified(f.size());")
                         writer.write(f"std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){{return to_string(e);}});")
@@ -151,7 +146,7 @@ def emit_trace(trace, writer, top_level=False):
                     writer.write(f"template <typename T>")
                 elif field.json_val_type == 'data_array':
                     writer.write(f"template <typename T, typename=std::enable_if_t<std::is_arithmetic_v<T>>>")
-                writer.write(f"{trace.name.capitalize()}& {field.name}({output_val_type} f) {{")
+                writer.write(f"{class_object.name.capitalize()}& {field.name}({output_val_type} f) {{")
                 with IndentBlock(writer):
                     if field.is_object:
                         writer.write(f"json[\"{field.name}\"] = std::move(f.json);")
@@ -163,7 +158,7 @@ def emit_trace(trace, writer, top_level=False):
                 if field.array_ok:
                     if output_val_type == 'T':
                         writer.write(f"template <typename T>")
-                    writer.write(f"{trace.name.capitalize()}& {field.name}(std::vector<{output_val_type}> f) {{")
+                    writer.write(f"{class_object.name.capitalize()}& {field.name}(std::vector<{output_val_type}> f) {{")
                     with IndentBlock(writer):
                         if field.is_object:
                             writer.write(f"std::vector<nlohmann::json> jsonified(f.size());")
@@ -175,14 +170,41 @@ def emit_trace(trace, writer, top_level=False):
                     writer.write("}")
             writer.write("")
 
-        if top_level:
-            pass
-            # Include the "type" field at the top level
-            #writer.write
-
+        writer.write("// Advanced users may modify the JSON representation directly, at their own peril!")
         writer.write("nlohmann::json json{};")
+
+def emit_object(class_object, writer):
+    if class_object.description:
+        writer.write(f"// {class_object.description}")
+    writer.write(f"class {class_object.name.capitalize()} {{")
+    writer.write("public:")
+    emit_class_public_members(class_object, writer)
     writer.write("};")
     writer.write("")
+
+
+def emit_trace(trace, writer):
+    writer.write("// TODO: includes, copyright, etc")
+    writer.write("#include <string>")
+    writer.write("#include <vector>")
+    writer.write("#include <type_traits>")
+    writer.write("")
+    writer.write("#include <nlohmann/json.hpp>")
+    writer.write("")
+    writer.write("namespace plotlypp {")
+    writer.write("")
+    # Special case the outermost trace object to handle the 'type' field
+    writer.write(f"class {trace.name.capitalize()} {{")
+    writer.write("public:")
+    writer.write(f"{trace.name.capitalize()}() {{")
+    with IndentBlock(writer):
+        writer.write(f"json[\"type\"] = \"{trace.name}\";")
+    writer.write("}")
+    emit_class_public_members(trace, writer)
+    writer.write("};")
+    writer.write("} // namespace plotlypp")
+    writer.write("")
+
     # TODO: namespace
 
 
@@ -260,8 +282,9 @@ def parse_attributes(parent, attributes_node):
     for name, node in attributes_node.items():
         if name == "_deprecated":
             continue
-
-        if not ("role" in node or "valType" in node):
+        #print(name, node)
+        # TODO: check contour impliedEdits autocontour
+        if not (isinstance(node, dict) and ("role" in node or "valType" in node)):
             continue
 
         # Every node is a field that can be set.
@@ -361,6 +384,7 @@ def parse_meta(trace, meta_node):
 def create_trace(name, trace_node):
     trace = Object()
     trace.name = name # TODO: convert case
+    print("Parsing trace", name)
 
     for node_name, node in trace_node.items():
         if node_name == "meta":
@@ -375,7 +399,7 @@ def create_trace(name, trace_node):
             print(f"Skipping unknown attribute field {attribute}. Does parser needs updating?")
 
     #emit_trace(trace)
-    print_obj_structure(trace)
+    #print_obj_structure(trace)
     out_dir = Path("generated")
     os.makedirs(out_dir, exist_ok=True)
     out_file = out_dir/f"{trace.name}.hpp"
@@ -387,8 +411,8 @@ def create_trace(name, trace_node):
 
 def create_traces(schema):
     for name, trace_node in schema['traces'].items():
-        if name != "scatter":
-            continue
+        #if name != "scatter":
+        #    continue
         create_trace(name, trace_node)
 
 
@@ -421,11 +445,11 @@ def main():
 
 
 
-    print("--")
-    print("traces")
+    #print("--")
+    #print("traces")
     # for k in data['traces']:
     #     print("\t", k)
-    print("traces/scatter")
+    #print("traces/scatter")
     create_traces(schema)
     #for name, trace in data['traces'].items():
     #    if name == "scatter":
@@ -433,7 +457,7 @@ def main():
     #         process_trace(name, trace)
         #process_trace(name, trace)
 
-    valtypes = set()
+    #valtypes = set()
     # for v in get_all_valtypes(data['traces']):
     #     valtypes.add(v)
     # print(valtypes)

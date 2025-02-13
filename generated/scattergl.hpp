@@ -7,9 +7,9 @@
 
 namespace plotlypp {
 
-class Scatter {
+class Scattergl {
  public:
-    Scatter() { json["type"] = "scatter"; }
+    Scattergl() { json["type"] = "scattergl"; }
 
     enum class Fill {
         NONE,
@@ -36,48 +36,6 @@ class Scatter {
             return "toself";
         case Fill::TONEXT:
             return "tonext";
-        }
-    }
-
-    enum class Groupnorm {
-        EMPTY,
-        FRACTION,
-        PERCENT,
-    };
-    std::string to_string(Groupnorm e) {
-        switch (e) {
-        case Groupnorm::EMPTY:
-            return "";
-        case Groupnorm::FRACTION:
-            return "fraction";
-        case Groupnorm::PERCENT:
-            return "percent";
-        }
-    }
-
-    enum class Orientation {
-        V,
-        H,
-    };
-    std::string to_string(Orientation e) {
-        switch (e) {
-        case Orientation::V:
-            return "v";
-        case Orientation::H:
-            return "h";
-        }
-    }
-
-    enum class Stackgaps {
-        INFER_ZERO,
-        INTERPOLATE,
-    };
-    std::string to_string(Stackgaps e) {
-        switch (e) {
-        case Stackgaps::INFER_ZERO:
-            return "infer zero";
-        case Stackgaps::INTERPOLATE:
-            return "interpolate";
         }
     }
 
@@ -514,161 +472,6 @@ class Scatter {
         nlohmann::json json{};
     };
 
-    // Sets the pattern within the marker.
-    class Fillpattern {
-     public:
-
-        enum class Fillmode {
-            REPLACE,
-            OVERLAY,
-        };
-        std::string to_string(Fillmode e) {
-            switch (e) {
-            case Fillmode::REPLACE:
-                return "replace";
-            case Fillmode::OVERLAY:
-                return "overlay";
-            }
-        }
-
-        enum class Shape {
-            EMPTY,
-            SLASH,
-            DOUBLEBACKSLASH,
-            X,
-            HYPHEN,
-            OR,
-            PLUS,
-            DOT,
-        };
-        std::string to_string(Shape e) {
-            switch (e) {
-            case Shape::EMPTY:
-                return "";
-            case Shape::SLASH:
-                return "/";
-            case Shape::DOUBLEBACKSLASH:
-                return "\\";
-            case Shape::X:
-                return "x";
-            case Shape::HYPHEN:
-                return "-";
-            case Shape::OR:
-                return "|";
-            case Shape::PLUS:
-                return "+";
-            case Shape::DOT:
-                return ".";
-            }
-        }
-
-        // When there is no colorscale sets the color of background pattern fill. Defaults to a `marker.color`
-        // background when `fillmode` is *overlay*. Otherwise, defaults to a transparent background.
-        Fillpattern& bgcolor(std::string f) {
-            json["bgcolor"] = std::move(f);
-            return *this;
-        }
-        Fillpattern& bgcolor(std::vector<std::string> f) {
-            json["bgcolor"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `bgcolor`.
-        Fillpattern& bgcolorsrc(std::string f) {
-            json["bgcolorsrc"] = std::move(f);
-            return *this;
-        }
-
-        // When there is no colorscale sets the color of foreground pattern fill. Defaults to a `marker.color`
-        // background when `fillmode` is *replace*. Otherwise, defaults to dark grey or white to increase contrast with
-        // the `bgcolor`.
-        Fillpattern& fgcolor(std::string f) {
-            json["fgcolor"] = std::move(f);
-            return *this;
-        }
-        Fillpattern& fgcolor(std::vector<std::string> f) {
-            json["fgcolor"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `fgcolor`.
-        Fillpattern& fgcolorsrc(std::string f) {
-            json["fgcolorsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the opacity of the foreground pattern fill. Defaults to a 0.5 when `fillmode` is *overlay*. Otherwise,
-        // defaults to 1.
-        Fillpattern& fgopacity(double f) {
-            json["fgopacity"] = std::move(f);
-            return *this;
-        }
-
-        // Determines whether `marker.color` should be used as a default to `bgcolor` or a `fgcolor`.
-        // - Default: replace
-        Fillpattern& fillmode(enum Fillmode f) {
-            json["fillmode"] = to_string(f);
-            return *this;
-        }
-
-        // Sets the shape of the pattern fill. By default, no pattern is used for filling the area.
-        // - Default:
-        Fillpattern& shape(enum Shape f) {
-            json["shape"] = to_string(f);
-            return *this;
-        }
-        Fillpattern& shape(const std::vector<enum Shape>& f) {
-            std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-            json["shape"] = std::move(stringified);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `shape`.
-        Fillpattern& shapesrc(std::string f) {
-            json["shapesrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the size of unit squares of the pattern fill in pixels, which corresponds to the interval of repetition
-        // of the pattern.
-        Fillpattern& size(double f) {
-            json["size"] = std::move(f);
-            return *this;
-        }
-        Fillpattern& size(std::vector<double> f) {
-            json["size"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `size`.
-        Fillpattern& sizesrc(std::string f) {
-            json["sizesrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the solidity of the pattern fill. Solidity is roughly the fraction of the area filled by the pattern.
-        // Solidity of 0 shows only the background color without pattern and solidty of 1 shows only the foreground
-        // color without pattern.
-        Fillpattern& solidity(double f) {
-            json["solidity"] = std::move(f);
-            return *this;
-        }
-        Fillpattern& solidity(std::vector<double> f) {
-            json["solidity"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `solidity`.
-        Fillpattern& soliditysrc(std::string f) {
-            json["soliditysrc"] = std::move(f);
-            return *this;
-        }
-
-        // Advanced users may modify the JSON representation directly, at their own peril!
-        nlohmann::json json{};
-    };
-
     class Hoverlabel {
      public:
 
@@ -881,9 +684,33 @@ class Scatter {
     class Line {
      public:
 
+        enum class Dash {
+            DASH,
+            DASHDOT,
+            DOT,
+            LONGDASH,
+            LONGDASHDOT,
+            SOLID,
+        };
+        std::string to_string(Dash e) {
+            switch (e) {
+            case Dash::DASH:
+                return "dash";
+            case Dash::DASHDOT:
+                return "dashdot";
+            case Dash::DOT:
+                return "dot";
+            case Dash::LONGDASH:
+                return "longdash";
+            case Dash::LONGDASHDOT:
+                return "longdashdot";
+            case Dash::SOLID:
+                return "solid";
+            }
+        }
+
         enum class Shape {
             LINEAR,
-            SPLINE,
             HV,
             VH,
             HVH,
@@ -893,8 +720,6 @@ class Scatter {
             switch (e) {
             case Shape::LINEAR:
                 return "linear";
-            case Shape::SPLINE:
-                return "spline";
             case Shape::HV:
                 return "hv";
             case Shape::VH:
@@ -906,56 +731,23 @@ class Scatter {
             }
         }
 
-        // Sets the line back off from the end point of the nth line segment (in px). This option is useful e.g. to
-        // avoid overlap with arrowhead markers. With *auto* the lines would trim before markers if `marker.angleref` is
-        // set to *previous*.
-        Line& backoff(double f) {
-            json["backoff"] = std::move(f);
-            return *this;
-        }
-        Line& backoff(std::vector<double> f) {
-            json["backoff"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `backoff`.
-        Line& backoffsrc(std::string f) {
-            json["backoffsrc"] = std::move(f);
-            return *this;
-        }
-
         // Sets the line color.
         Line& color(std::string f) {
             json["color"] = std::move(f);
             return *this;
         }
 
-        // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
-        // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
-        Line& dash(std::string f) {
-            json["dash"] = std::move(f);
+        // Sets the style of the lines.
+        // - Default: solid
+        Line& dash(enum Dash f) {
+            json["dash"] = to_string(f);
             return *this;
         }
 
-        // Determines the line shape. With *spline* the lines are drawn using spline interpolation. The other available
-        // values correspond to step-wise line shapes.
+        // Determines the line shape. The values correspond to step-wise line shapes.
         // - Default: linear
         Line& shape(enum Shape f) {
             json["shape"] = to_string(f);
-            return *this;
-        }
-
-        // Simplifies lines by removing nearly-collinear points. When transitioning lines, it may be desirable to
-        // disable this so that the number of points along the resulting SVG path is unaffected.
-        Line& simplify(bool f) {
-            json["simplify"] = std::move(f);
-            return *this;
-        }
-
-        // Has an effect only if `shape` is set to *spline* Sets the amount of smoothing. *0* corresponds to no
-        // smoothing (equivalent to a *linear* shape).
-        Line& smoothing(double f) {
-            json["smoothing"] = std::move(f);
             return *this;
         }
 
@@ -971,19 +763,6 @@ class Scatter {
 
     class Marker {
      public:
-
-        enum class Angleref {
-            PREVIOUS,
-            UP,
-        };
-        std::string to_string(Angleref e) {
-            switch (e) {
-            case Angleref::PREVIOUS:
-                return "previous";
-            case Angleref::UP:
-                return "up";
-            }
-        }
 
         enum class Sizemode {
             DIAMETER,
@@ -2769,68 +2548,6 @@ class Scatter {
             nlohmann::json json{};
         };
 
-        class Gradient {
-         public:
-
-            enum class Type {
-                RADIAL,
-                HORIZONTAL,
-                VERTICAL,
-                NONE,
-            };
-            std::string to_string(Type e) {
-                switch (e) {
-                case Type::RADIAL:
-                    return "radial";
-                case Type::HORIZONTAL:
-                    return "horizontal";
-                case Type::VERTICAL:
-                    return "vertical";
-                case Type::NONE:
-                    return "none";
-                }
-            }
-
-            // Sets the final color of the gradient fill: the center color for radial, the right for horizontal, or the
-            // bottom for vertical.
-            Gradient& color(std::string f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-            Gradient& color(std::vector<std::string> f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the source reference on Chart Studio Cloud for `color`.
-            Gradient& colorsrc(std::string f) {
-                json["colorsrc"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the type of gradient used to fill the markers
-            // - Default: none
-            Gradient& type(enum Type f) {
-                json["type"] = to_string(f);
-                return *this;
-            }
-            Gradient& type(const std::vector<enum Type>& f) {
-                std::vector<std::string> stringified(f.size());
-                std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-                json["type"] = std::move(stringified);
-                return *this;
-            }
-
-            // Sets the source reference on Chart Studio Cloud for `type`.
-            Gradient& typesrc(std::string f) {
-                json["typesrc"] = std::move(f);
-                return *this;
-            }
-
-            // Advanced users may modify the JSON representation directly, at their own peril!
-            nlohmann::json json{};
-        };
-
         class Line {
          public:
 
@@ -2954,14 +2671,6 @@ class Scatter {
             return *this;
         }
 
-        // Sets the reference for marker angle. With *previous*, angle 0 points along the line from the previous point
-        // to this one. With *up*, angle 0 points toward the top of the screen.
-        // - Default: up
-        Marker& angleref(enum Angleref f) {
-            json["angleref"] = to_string(f);
-            return *this;
-        }
-
         // Sets the source reference on Chart Studio Cloud for `angle`.
         Marker& anglesrc(std::string f) {
             json["anglesrc"] = std::move(f);
@@ -3050,19 +2759,8 @@ class Scatter {
             return *this;
         }
 
-        Marker& gradient(class Gradient f) {
-            json["gradient"] = std::move(f.json);
-            return *this;
-        }
-
         Marker& line(class Line f) {
             json["line"] = std::move(f.json);
-            return *this;
-        }
-
-        // Sets a maximum number of points to be drawn on the graph. *0* corresponds to no limit.
-        Marker& maxdisplayed(double f) {
-            json["maxdisplayed"] = std::move(f);
             return *this;
         }
 
@@ -3132,23 +2830,6 @@ class Scatter {
         // Sets the source reference on Chart Studio Cloud for `size`.
         Marker& sizesrc(std::string f) {
             json["sizesrc"] = std::move(f);
-            return *this;
-        }
-
-        // Moves the marker away from the data point in the direction of `angle` (in px). This can be useful for example
-        // if you have another marker at this location and you want to point an arrowhead marker at it.
-        Marker& standoff(double f) {
-            json["standoff"] = std::move(f);
-            return *this;
-        }
-        Marker& standoff(std::vector<double> f) {
-            json["standoff"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `standoff`.
-        Marker& standoffsrc(std::string f) {
-            json["standoffsrc"] = std::move(f);
             return *this;
         }
 
@@ -3391,22 +3072,8 @@ class Scatter {
         nlohmann::json json{};
     };
 
-    // Set several traces linked to the same position axis or matching axes to the same alignmentgroup. This controls
-    // whether bars compute their positional range dependently or independently.
-    Scatter& alignmentgroup(std::string f) {
-        json["alignmentgroup"] = std::move(f);
-        return *this;
-    }
-
-    // Determines whether or not markers and text nodes are clipped about the subplot axes. To show markers and text
-    // nodes above axis lines and tick labels, make sure to set `xaxis.layer` and `yaxis.layer` to *below traces*.
-    Scatter& cliponaxis(bool f) {
-        json["cliponaxis"] = std::move(f);
-        return *this;
-    }
-
     // Determines whether or not gaps (i.e. {nan} or missing values) in the provided data arrays are connected.
-    Scatter& connectgaps(bool f) {
+    Scattergl& connectgaps(bool f) {
         json["connectgaps"] = std::move(f);
         return *this;
     }
@@ -3414,35 +3081,35 @@ class Scatter {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-    Scatter& customdata(std::vector<T> f) {
+    Scattergl& customdata(std::vector<T> f) {
         json["customdata"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `customdata`.
-    Scatter& customdatasrc(std::string f) {
+    Scattergl& customdatasrc(std::string f) {
         json["customdatasrc"] = std::move(f);
         return *this;
     }
 
     // Sets the x coordinate step. See `x0` for more info.
-    Scatter& dx(double f) {
+    Scattergl& dx(double f) {
         json["dx"] = std::move(f);
         return *this;
     }
 
     // Sets the y coordinate step. See `y0` for more info.
-    Scatter& dy(double f) {
+    Scattergl& dy(double f) {
         json["dy"] = std::move(f);
         return *this;
     }
 
-    Scatter& error_x(class Error_x f) {
+    Scattergl& error_x(class Error_x f) {
         json["error_x"] = std::move(f.json);
         return *this;
     }
 
-    Scatter& error_y(class Error_y f) {
+    Scattergl& error_y(class Error_y f) {
         json["error_y"] = std::move(f.json);
         return *this;
     }
@@ -3458,32 +3125,16 @@ class Scatter {
     // only fill to (or be filled to) other traces in the same group. With multiple `stackgroup`s or some traces stacked
     // and some not, if fill-linked traces are not already consecutive, the later ones will be pushed down in the
     // drawing order.
-    Scatter& fill(enum Fill f) {
+    // - Default: none
+    Scattergl& fill(enum Fill f) {
         json["fill"] = to_string(f);
         return *this;
     }
 
     // Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line
     // color, whichever is available.
-    Scatter& fillcolor(std::string f) {
+    Scattergl& fillcolor(std::string f) {
         json["fillcolor"] = std::move(f);
-        return *this;
-    }
-
-    // Sets the pattern within the marker.
-    Scatter& fillpattern(class Fillpattern f) {
-        json["fillpattern"] = std::move(f.json);
-        return *this;
-    }
-
-    // Only relevant when `stackgroup` is used, and only the first `groupnorm` found in the `stackgroup` will be used -
-    // including if `visible` is *legendonly* but not if it is `false`. Sets the normalization for the sum of this
-    // `stackgroup`. With *fraction*, the value of each trace at each location is divided by the sum of all trace values
-    // at that location. *percent* is the same but multiplied by 100 to show percentages. If there are multiple
-    // subplots, or multiple `stackgroup`s on one subplot, each will be normalized within its own set.
-    // - Default:
-    Scatter& groupnorm(enum Groupnorm f) {
-        json["groupnorm"] = to_string(f);
         return *this;
     }
 
@@ -3492,32 +3143,23 @@ class Scatter {
     // - Default: all
     // - Flags: ['x', 'y', 'z', 'text', 'name']
     // - Extras ['all', 'none', 'skip']
-    Scatter& hoverinfo(std::string f) {
+    Scattergl& hoverinfo(std::string f) {
         json["hoverinfo"] = std::move(f);
         return *this;
     }
-    Scatter& hoverinfo(std::vector<std::string> f) {
+    Scattergl& hoverinfo(std::vector<std::string> f) {
         json["hoverinfo"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
-    Scatter& hoverinfosrc(std::string f) {
+    Scattergl& hoverinfosrc(std::string f) {
         json["hoverinfosrc"] = std::move(f);
         return *this;
     }
 
-    Scatter& hoverlabel(class Hoverlabel f) {
+    Scattergl& hoverlabel(class Hoverlabel f) {
         json["hoverlabel"] = std::move(f.json);
-        return *this;
-    }
-
-    // Do the hover effects highlight individual points (markers or line points) or do they highlight filled regions? If
-    // the fill is *toself* or *tonext* and there are no markers or text, then the default is *fills*, otherwise it is
-    // *points*.
-    // - Flags: ['points', 'fills']
-    Scatter& hoveron(std::string f) {
-        json["hoveron"] = std::move(f);
         return *this;
     }
 
@@ -3534,17 +3176,17 @@ class Scatter {
     // specified per-point (the ones that are `arrayOk: true`) are available.  Anything contained in tag `<extra>` is
     // displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box
     // completely, use an empty tag `<extra></extra>`.
-    Scatter& hovertemplate(std::string f) {
+    Scattergl& hovertemplate(std::string f) {
         json["hovertemplate"] = std::move(f);
         return *this;
     }
-    Scatter& hovertemplate(std::vector<std::string> f) {
+    Scattergl& hovertemplate(std::vector<std::string> f) {
         json["hovertemplate"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
-    Scatter& hovertemplatesrc(std::string f) {
+    Scattergl& hovertemplatesrc(std::string f) {
         json["hovertemplatesrc"] = std::move(f);
         return *this;
     }
@@ -3552,17 +3194,17 @@ class Scatter {
     // Sets hover text elements associated with each (x,y) pair. If a single string, the same string appears over all
     // the data points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. To
     // be seen, trace `hoverinfo` must contain a *text* flag.
-    Scatter& hovertext(std::string f) {
+    Scattergl& hovertext(std::string f) {
         json["hovertext"] = std::move(f);
         return *this;
     }
-    Scatter& hovertext(std::vector<std::string> f) {
+    Scattergl& hovertext(std::vector<std::string> f) {
         json["hovertext"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
-    Scatter& hovertextsrc(std::string f) {
+    Scattergl& hovertextsrc(std::string f) {
         json["hovertextsrc"] = std::move(f);
         return *this;
     }
@@ -3570,32 +3212,32 @@ class Scatter {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-    Scatter& ids(std::vector<T> f) {
+    Scattergl& ids(std::vector<T> f) {
         json["ids"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `ids`.
-    Scatter& idssrc(std::string f) {
+    Scattergl& idssrc(std::string f) {
         json["idssrc"] = std::move(f);
         return *this;
     }
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
-    Scatter& legend(std::string f) {
+    Scattergl& legend(std::string f) {
         json["legend"] = std::move(f);
         return *this;
     }
 
     // Sets the legend group for this trace. Traces and shapes part of the same legend group hide/show at the same time
     // when toggling legend items.
-    Scatter& legendgroup(std::string f) {
+    Scattergl& legendgroup(std::string f) {
         json["legendgroup"] = std::move(f);
         return *this;
     }
 
-    Scatter& legendgrouptitle(class Legendgrouptitle f) {
+    Scattergl& legendgrouptitle(class Legendgrouptitle f) {
         json["legendgrouptitle"] = std::move(f.json);
         return *this;
     }
@@ -3605,23 +3247,23 @@ class Scatter {
     // can use ranks less than 1000 to place certain items before all unranked items, and ranks greater than 1000 to go
     // after all unranked items. When having unranked or equal rank items shapes would be displayed after traces i.e.
     // according to their order in data and layout.
-    Scatter& legendrank(double f) {
+    Scattergl& legendrank(double f) {
         json["legendrank"] = std::move(f);
         return *this;
     }
 
     // Sets the width (in px or fraction) of the legend for this trace.
-    Scatter& legendwidth(double f) {
+    Scattergl& legendwidth(double f) {
         json["legendwidth"] = std::move(f);
         return *this;
     }
 
-    Scatter& line(class Line f) {
+    Scattergl& line(class Line f) {
         json["line"] = std::move(f.json);
         return *this;
     }
 
-    Scatter& marker(class Marker f) {
+    Scattergl& marker(class Marker f) {
         json["marker"] = std::move(f.json);
         return *this;
     }
@@ -3633,61 +3275,43 @@ class Scatter {
     // `meta` in layout attributes, use `%{data[n[.meta[i]}` where `i` is the index or key of the `meta` and `n` is the
     // trace index.
     template <typename T>
-    Scatter& meta(T f) {
+    Scattergl& meta(T f) {
         json["meta"] = std::move(f);
         return *this;
     }
     template <typename T>
-    Scatter& meta(std::vector<T> f) {
+    Scattergl& meta(std::vector<T> f) {
         json["meta"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
-    Scatter& metasrc(std::string f) {
+    Scattergl& metasrc(std::string f) {
         json["metasrc"] = std::move(f);
         return *this;
     }
 
-    // Determines the drawing mode for this scatter trace. If the provided `mode` includes *text* then the `text`
-    // elements appear at the coordinates. Otherwise, the `text` elements appear on hover. If there are less than 20
-    // points and the trace is not stacked then the default is *lines+markers*. Otherwise, *lines*.
+    // Determines the drawing mode for this scatter trace.
     // - Flags: ['lines', 'markers', 'text']
     // - Extras ['none']
-    Scatter& mode(std::string f) {
+    Scattergl& mode(std::string f) {
         json["mode"] = std::move(f);
         return *this;
     }
 
     // Sets the trace name. The trace name appears as the legend item and on hover.
-    Scatter& name(std::string f) {
+    Scattergl& name(std::string f) {
         json["name"] = std::move(f);
         return *this;
     }
 
-    // Set several traces linked to the same position axis or matching axes to the same offsetgroup where bars of the
-    // same position coordinate will line up.
-    Scatter& offsetgroup(std::string f) {
-        json["offsetgroup"] = std::move(f);
-        return *this;
-    }
-
     // Sets the opacity of the trace.
-    Scatter& opacity(double f) {
+    Scattergl& opacity(double f) {
         json["opacity"] = std::move(f);
         return *this;
     }
 
-    // Only relevant in the following cases: 1. when `scattermode` is set to *group*. 2. when `stackgroup` is used, and
-    // only the first `orientation` found in the `stackgroup` will be used - including if `visible` is *legendonly* but
-    // not if it is `false`. Sets the stacking direction. With *v* (*h*), the y (x) values of subsequent traces are
-    // added. Also affects the default value of `fill`.
-    Scatter& orientation(enum Orientation f) {
-        json["orientation"] = to_string(f);
-        return *this;
-    }
-
-    Scatter& selected(class Selected f) {
+    Scattergl& selected(class Selected f) {
         json["selected"] = std::move(f.json);
         return *this;
     }
@@ -3696,41 +3320,18 @@ class Scatter {
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
     // other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
     template <typename T>
-    Scatter& selectedpoints(T f) {
+    Scattergl& selectedpoints(T f) {
         json["selectedpoints"] = std::move(f);
         return *this;
     }
 
     // Determines whether or not an item corresponding to this trace is shown in the legend.
-    Scatter& showlegend(bool f) {
+    Scattergl& showlegend(bool f) {
         json["showlegend"] = std::move(f);
         return *this;
     }
 
-    // Only relevant when `stackgroup` is used, and only the first `stackgaps` found in the `stackgroup` will be used -
-    // including if `visible` is *legendonly* but not if it is `false`. Determines how we handle locations at which
-    // other traces in this group have data but this one does not. With *infer zero* we insert a zero at these
-    // locations. With *interpolate* we linearly interpolate between existing values, and extrapolate a constant beyond
-    // the existing values.
-    // - Default: infer zero
-    Scatter& stackgaps(enum Stackgaps f) {
-        json["stackgaps"] = to_string(f);
-        return *this;
-    }
-
-    // Set several scatter traces (on the same subplot) to the same stackgroup in order to add their y values (or their
-    // x values if `orientation` is *h*). If blank or omitted this trace will not be stacked. Stacking also turns `fill`
-    // on by default, using *tonexty* (*tonextx*) if `orientation` is *h* (*v*) and sets the default `mode` to *lines*
-    // irrespective of point count. You can only stack on a numeric (linear or log) axis. Traces in a `stackgroup` will
-    // only fill to (or be filled to) other traces in the same group. With multiple `stackgroup`s or some traces stacked
-    // and some not, if fill-linked traces are not already consecutive, the later ones will be pushed down in the
-    // drawing order.
-    Scatter& stackgroup(std::string f) {
-        json["stackgroup"] = std::move(f);
-        return *this;
-    }
-
-    Scatter& stream(class Stream f) {
+    Scattergl& stream(class Stream f) {
         json["stream"] = std::move(f.json);
         return *this;
     }
@@ -3738,28 +3339,28 @@ class Scatter {
     // Sets text elements associated with each (x,y) pair. If a single string, the same string appears over all the data
     // points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. If trace
     // `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
-    Scatter& text(std::string f) {
+    Scattergl& text(std::string f) {
         json["text"] = std::move(f);
         return *this;
     }
-    Scatter& text(std::vector<std::string> f) {
+    Scattergl& text(std::vector<std::string> f) {
         json["text"] = std::move(f);
         return *this;
     }
 
     // Sets the text font.
-    Scatter& textfont(class Textfont f) {
+    Scattergl& textfont(class Textfont f) {
         json["textfont"] = std::move(f.json);
         return *this;
     }
 
     // Sets the positions of the `text` elements with respects to the (x,y) coordinates.
     // - Default: middle center
-    Scatter& textposition(enum Textposition f) {
+    Scattergl& textposition(enum Textposition f) {
         json["textposition"] = to_string(f);
         return *this;
     }
-    Scatter& textposition(const std::vector<enum Textposition>& f) {
+    Scattergl& textposition(const std::vector<enum Textposition>& f) {
         std::vector<std::string> stringified(f.size());
         std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
         json["textposition"] = std::move(stringified);
@@ -3767,13 +3368,13 @@ class Scatter {
     }
 
     // Sets the source reference on Chart Studio Cloud for `textposition`.
-    Scatter& textpositionsrc(std::string f) {
+    Scattergl& textpositionsrc(std::string f) {
         json["textpositionsrc"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `text`.
-    Scatter& textsrc(std::string f) {
+    Scattergl& textsrc(std::string f) {
         json["textsrc"] = std::move(f);
         return *this;
     }
@@ -3785,29 +3386,29 @@ class Scatter {
     // using d3-time-format's syntax %{variable|d3-time-format}, for example "Day: %{2019-01-01|%A}".
     // https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details on the date formatting syntax. Every
     // attributes that can be specified per-point (the ones that are `arrayOk: true`) are available.
-    Scatter& texttemplate(std::string f) {
+    Scattergl& texttemplate(std::string f) {
         json["texttemplate"] = std::move(f);
         return *this;
     }
-    Scatter& texttemplate(std::vector<std::string> f) {
+    Scattergl& texttemplate(std::vector<std::string> f) {
         json["texttemplate"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `texttemplate`.
-    Scatter& texttemplatesrc(std::string f) {
+    Scattergl& texttemplatesrc(std::string f) {
         json["texttemplatesrc"] = std::move(f);
         return *this;
     }
 
-    Scatter& transforms(class Transforms f) {
+    Scattergl& transforms(class Transforms f) {
         json["transforms"] = std::move(f.json);
         return *this;
     }
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
-    Scatter& uid(std::string f) {
+    Scattergl& uid(std::string f) {
         json["uid"] = std::move(f);
         return *this;
     }
@@ -3821,12 +3422,12 @@ class Scatter {
     // add/remove traces before the end of the `data` array, such that the same trace has a different index, you can
     // still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
     template <typename T>
-    Scatter& uirevision(T f) {
+    Scattergl& uirevision(T f) {
         json["uirevision"] = std::move(f);
         return *this;
     }
 
-    Scatter& unselected(class Unselected f) {
+    Scattergl& unselected(class Unselected f) {
         json["unselected"] = std::move(f.json);
         return *this;
     }
@@ -3834,14 +3435,14 @@ class Scatter {
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
     // - Default: True
-    Scatter& visible(enum Visible f) {
+    Scattergl& visible(enum Visible f) {
         json["visible"] = to_string(f);
         return *this;
     }
 
     // Sets the x coordinates.
     template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-    Scatter& x(std::vector<T> f) {
+    Scattergl& x(std::vector<T> f) {
         json["x"] = std::move(f);
         return *this;
     }
@@ -3849,21 +3450,21 @@ class Scatter {
     // Alternate to `x`. Builds a linear space of x coordinates. Use with `dx` where `x0` is the starting coordinate and
     // `dx` the step.
     template <typename T>
-    Scatter& x0(T f) {
+    Scattergl& x0(T f) {
         json["x0"] = std::move(f);
         return *this;
     }
 
     // Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x
     // coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
-    Scatter& xaxis(std::string f) {
+    Scattergl& xaxis(std::string f) {
         json["xaxis"] = std::move(f);
         return *this;
     }
 
     // Sets the calendar system to use with `x` date data.
     // - Default: gregorian
-    Scatter& xcalendar(enum Xcalendar f) {
+    Scattergl& xcalendar(enum Xcalendar f) {
         json["xcalendar"] = to_string(f);
         return *this;
     }
@@ -3874,7 +3475,7 @@ class Scatter {
     // half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example,
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `xaxis.hoverformat`.
-    Scatter& xhoverformat(std::string f) {
+    Scattergl& xhoverformat(std::string f) {
         json["xhoverformat"] = std::move(f);
         return *this;
     }
@@ -3883,7 +3484,7 @@ class Scatter {
     // axis. Special values in the form of *M<n>* could be used to declare the number of months. In this case `n` must
     // be a positive integer.
     template <typename T>
-    Scatter& xperiod(T f) {
+    Scattergl& xperiod(T f) {
         json["xperiod"] = std::move(f);
         return *this;
     }
@@ -3892,27 +3493,27 @@ class Scatter {
     // on the x0 axis. When `x0period` is round number of weeks, the `x0period0` by default would be on a Sunday i.e.
     // 2000-01-02, otherwise it would be at 2000-01-01.
     template <typename T>
-    Scatter& xperiod0(T f) {
+    Scattergl& xperiod0(T f) {
         json["xperiod0"] = std::move(f);
         return *this;
     }
 
     // Only relevant when the axis `type` is *date*. Sets the alignment of data points on the x axis.
     // - Default: middle
-    Scatter& xperiodalignment(enum Xperiodalignment f) {
+    Scattergl& xperiodalignment(enum Xperiodalignment f) {
         json["xperiodalignment"] = to_string(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `x`.
-    Scatter& xsrc(std::string f) {
+    Scattergl& xsrc(std::string f) {
         json["xsrc"] = std::move(f);
         return *this;
     }
 
     // Sets the y coordinates.
     template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-    Scatter& y(std::vector<T> f) {
+    Scattergl& y(std::vector<T> f) {
         json["y"] = std::move(f);
         return *this;
     }
@@ -3920,21 +3521,21 @@ class Scatter {
     // Alternate to `y`. Builds a linear space of y coordinates. Use with `dy` where `y0` is the starting coordinate and
     // `dy` the step.
     template <typename T>
-    Scatter& y0(T f) {
+    Scattergl& y0(T f) {
         json["y0"] = std::move(f);
         return *this;
     }
 
     // Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y
     // coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
-    Scatter& yaxis(std::string f) {
+    Scattergl& yaxis(std::string f) {
         json["yaxis"] = std::move(f);
         return *this;
     }
 
     // Sets the calendar system to use with `y` date data.
     // - Default: gregorian
-    Scatter& ycalendar(enum Ycalendar f) {
+    Scattergl& ycalendar(enum Ycalendar f) {
         json["ycalendar"] = to_string(f);
         return *this;
     }
@@ -3945,7 +3546,7 @@ class Scatter {
     // half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example,
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `yaxis.hoverformat`.
-    Scatter& yhoverformat(std::string f) {
+    Scattergl& yhoverformat(std::string f) {
         json["yhoverformat"] = std::move(f);
         return *this;
     }
@@ -3954,7 +3555,7 @@ class Scatter {
     // axis. Special values in the form of *M<n>* could be used to declare the number of months. In this case `n` must
     // be a positive integer.
     template <typename T>
-    Scatter& yperiod(T f) {
+    Scattergl& yperiod(T f) {
         json["yperiod"] = std::move(f);
         return *this;
     }
@@ -3963,20 +3564,20 @@ class Scatter {
     // on the y0 axis. When `y0period` is round number of weeks, the `y0period0` by default would be on a Sunday i.e.
     // 2000-01-02, otherwise it would be at 2000-01-01.
     template <typename T>
-    Scatter& yperiod0(T f) {
+    Scattergl& yperiod0(T f) {
         json["yperiod0"] = std::move(f);
         return *this;
     }
 
     // Only relevant when the axis `type` is *date*. Sets the alignment of data points on the y axis.
     // - Default: middle
-    Scatter& yperiodalignment(enum Yperiodalignment f) {
+    Scattergl& yperiodalignment(enum Yperiodalignment f) {
         json["yperiodalignment"] = to_string(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `y`.
-    Scatter& ysrc(std::string f) {
+    Scattergl& ysrc(std::string f) {
         json["ysrc"] = std::move(f);
         return *this;
     }

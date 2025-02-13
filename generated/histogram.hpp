@@ -7,51 +7,86 @@
 
 namespace plotlypp {
 
-class Scatter {
+class Histogram {
  public:
-    Scatter() { json["type"] = "scatter"; }
+    Histogram() { json["type"] = "histogram"; }
 
-    enum class Fill {
+    enum class Constraintext {
+        INSIDE,
+        OUTSIDE,
+        BOTH,
         NONE,
-        TOZEROY,
-        TOZEROX,
-        TONEXTY,
-        TONEXTX,
-        TOSELF,
-        TONEXT,
     };
-    std::string to_string(Fill e) {
+    std::string to_string(Constraintext e) {
         switch (e) {
-        case Fill::NONE:
+        case Constraintext::INSIDE:
+            return "inside";
+        case Constraintext::OUTSIDE:
+            return "outside";
+        case Constraintext::BOTH:
+            return "both";
+        case Constraintext::NONE:
             return "none";
-        case Fill::TOZEROY:
-            return "tozeroy";
-        case Fill::TOZEROX:
-            return "tozerox";
-        case Fill::TONEXTY:
-            return "tonexty";
-        case Fill::TONEXTX:
-            return "tonextx";
-        case Fill::TOSELF:
-            return "toself";
-        case Fill::TONEXT:
-            return "tonext";
         }
     }
 
-    enum class Groupnorm {
-        EMPTY,
-        FRACTION,
-        PERCENT,
+    enum class Histfunc {
+        COUNT,
+        SUM,
+        AVG,
+        MIN,
+        MAX,
     };
-    std::string to_string(Groupnorm e) {
+    std::string to_string(Histfunc e) {
         switch (e) {
-        case Groupnorm::EMPTY:
+        case Histfunc::COUNT:
+            return "count";
+        case Histfunc::SUM:
+            return "sum";
+        case Histfunc::AVG:
+            return "avg";
+        case Histfunc::MIN:
+            return "min";
+        case Histfunc::MAX:
+            return "max";
+        }
+    }
+
+    enum class Histnorm {
+        EMPTY,
+        PERCENT,
+        PROBABILITY,
+        DENSITY,
+        PROBABILITY_DENSITY,
+    };
+    std::string to_string(Histnorm e) {
+        switch (e) {
+        case Histnorm::EMPTY:
             return "";
-        case Groupnorm::FRACTION:
-            return "fraction";
-        case Groupnorm::PERCENT:
+        case Histnorm::PERCENT:
             return "percent";
+        case Histnorm::PROBABILITY:
+            return "probability";
+        case Histnorm::DENSITY:
+            return "density";
+        case Histnorm::PROBABILITY_DENSITY:
+            return "probability density";
+        }
+    }
+
+    enum class Insidetextanchor {
+        END,
+        MIDDLE,
+        START,
+    };
+    std::string to_string(Insidetextanchor e) {
+        switch (e) {
+        case Insidetextanchor::END:
+            return "end";
+        case Insidetextanchor::MIDDLE:
+            return "middle";
+        case Insidetextanchor::START:
+            return "start";
         }
     }
 
@@ -68,50 +103,22 @@ class Scatter {
         }
     }
 
-    enum class Stackgaps {
-        INFER_ZERO,
-        INTERPOLATE,
-    };
-    std::string to_string(Stackgaps e) {
-        switch (e) {
-        case Stackgaps::INFER_ZERO:
-            return "infer zero";
-        case Stackgaps::INTERPOLATE:
-            return "interpolate";
-        }
-    }
-
     enum class Textposition {
-        TOP_LEFT,
-        TOP_CENTER,
-        TOP_RIGHT,
-        MIDDLE_LEFT,
-        MIDDLE_CENTER,
-        MIDDLE_RIGHT,
-        BOTTOM_LEFT,
-        BOTTOM_CENTER,
-        BOTTOM_RIGHT,
+        INSIDE,
+        OUTSIDE,
+        AUTO,
+        NONE,
     };
     std::string to_string(Textposition e) {
         switch (e) {
-        case Textposition::TOP_LEFT:
-            return "top left";
-        case Textposition::TOP_CENTER:
-            return "top center";
-        case Textposition::TOP_RIGHT:
-            return "top right";
-        case Textposition::MIDDLE_LEFT:
-            return "middle left";
-        case Textposition::MIDDLE_CENTER:
-            return "middle center";
-        case Textposition::MIDDLE_RIGHT:
-            return "middle right";
-        case Textposition::BOTTOM_LEFT:
-            return "bottom left";
-        case Textposition::BOTTOM_CENTER:
-            return "bottom center";
-        case Textposition::BOTTOM_RIGHT:
-            return "bottom right";
+        case Textposition::INSIDE:
+            return "inside";
+        case Textposition::OUTSIDE:
+            return "outside";
+        case Textposition::AUTO:
+            return "auto";
+        case Textposition::NONE:
+            return "none";
         }
     }
 
@@ -186,22 +193,6 @@ class Scatter {
         }
     }
 
-    enum class Xperiodalignment {
-        START,
-        MIDDLE,
-        END,
-    };
-    std::string to_string(Xperiodalignment e) {
-        switch (e) {
-        case Xperiodalignment::START:
-            return "start";
-        case Xperiodalignment::MIDDLE:
-            return "middle";
-        case Xperiodalignment::END:
-            return "end";
-        }
-    }
-
     enum class Ycalendar {
         CHINESE,
         COPTIC,
@@ -257,21 +248,68 @@ class Scatter {
         }
     }
 
-    enum class Yperiodalignment {
-        START,
-        MIDDLE,
-        END,
-    };
-    std::string to_string(Yperiodalignment e) {
-        switch (e) {
-        case Yperiodalignment::START:
-            return "start";
-        case Yperiodalignment::MIDDLE:
-            return "middle";
-        case Yperiodalignment::END:
-            return "end";
+    class Cumulative {
+     public:
+
+        enum class Currentbin {
+            INCLUDE,
+            EXCLUDE,
+            HALF,
+        };
+        std::string to_string(Currentbin e) {
+            switch (e) {
+            case Currentbin::INCLUDE:
+                return "include";
+            case Currentbin::EXCLUDE:
+                return "exclude";
+            case Currentbin::HALF:
+                return "half";
+            }
         }
-    }
+
+        enum class Direction {
+            INCREASING,
+            DECREASING,
+        };
+        std::string to_string(Direction e) {
+            switch (e) {
+            case Direction::INCREASING:
+                return "increasing";
+            case Direction::DECREASING:
+                return "decreasing";
+            }
+        }
+
+        // Only applies if cumulative is enabled. Sets whether the current bin is included, excluded, or has half of its
+        // value included in the current cumulative value. *include* is the default for compatibility with various other
+        // tools, however it introduces a half-bin bias to the results. *exclude* makes the opposite half-bin bias, and
+        // *half* removes it.
+        // - Default: include
+        Cumulative& currentbin(enum Currentbin f) {
+            json["currentbin"] = to_string(f);
+            return *this;
+        }
+
+        // Only applies if cumulative is enabled. If *increasing* (default) we sum all prior bins, so the result
+        // increases from left to right. If *decreasing* we sum later bins so the result decreases from left to right.
+        // - Default: increasing
+        Cumulative& direction(enum Direction f) {
+            json["direction"] = to_string(f);
+            return *this;
+        }
+
+        // If true, display the cumulative distribution by summing the binned values. Use the `direction` and
+        // `centralbin` attributes to tune the accumulation method. Note: in this mode, the *density* `histnorm`
+        // settings behave the same as their equivalents without *density*: ** and *density* both rise to the number of
+        // data points, and *probability* and *probability density* both rise to the number of sample points.
+        Cumulative& enabled(bool f) {
+            json["enabled"] = std::move(f);
+            return *this;
+        }
+
+        // Advanced users may modify the JSON representation directly, at their own peril!
+        nlohmann::json json{};
+    };
 
     class Error_x {
      public:
@@ -514,161 +552,6 @@ class Scatter {
         nlohmann::json json{};
     };
 
-    // Sets the pattern within the marker.
-    class Fillpattern {
-     public:
-
-        enum class Fillmode {
-            REPLACE,
-            OVERLAY,
-        };
-        std::string to_string(Fillmode e) {
-            switch (e) {
-            case Fillmode::REPLACE:
-                return "replace";
-            case Fillmode::OVERLAY:
-                return "overlay";
-            }
-        }
-
-        enum class Shape {
-            EMPTY,
-            SLASH,
-            DOUBLEBACKSLASH,
-            X,
-            HYPHEN,
-            OR,
-            PLUS,
-            DOT,
-        };
-        std::string to_string(Shape e) {
-            switch (e) {
-            case Shape::EMPTY:
-                return "";
-            case Shape::SLASH:
-                return "/";
-            case Shape::DOUBLEBACKSLASH:
-                return "\\";
-            case Shape::X:
-                return "x";
-            case Shape::HYPHEN:
-                return "-";
-            case Shape::OR:
-                return "|";
-            case Shape::PLUS:
-                return "+";
-            case Shape::DOT:
-                return ".";
-            }
-        }
-
-        // When there is no colorscale sets the color of background pattern fill. Defaults to a `marker.color`
-        // background when `fillmode` is *overlay*. Otherwise, defaults to a transparent background.
-        Fillpattern& bgcolor(std::string f) {
-            json["bgcolor"] = std::move(f);
-            return *this;
-        }
-        Fillpattern& bgcolor(std::vector<std::string> f) {
-            json["bgcolor"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `bgcolor`.
-        Fillpattern& bgcolorsrc(std::string f) {
-            json["bgcolorsrc"] = std::move(f);
-            return *this;
-        }
-
-        // When there is no colorscale sets the color of foreground pattern fill. Defaults to a `marker.color`
-        // background when `fillmode` is *replace*. Otherwise, defaults to dark grey or white to increase contrast with
-        // the `bgcolor`.
-        Fillpattern& fgcolor(std::string f) {
-            json["fgcolor"] = std::move(f);
-            return *this;
-        }
-        Fillpattern& fgcolor(std::vector<std::string> f) {
-            json["fgcolor"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `fgcolor`.
-        Fillpattern& fgcolorsrc(std::string f) {
-            json["fgcolorsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the opacity of the foreground pattern fill. Defaults to a 0.5 when `fillmode` is *overlay*. Otherwise,
-        // defaults to 1.
-        Fillpattern& fgopacity(double f) {
-            json["fgopacity"] = std::move(f);
-            return *this;
-        }
-
-        // Determines whether `marker.color` should be used as a default to `bgcolor` or a `fgcolor`.
-        // - Default: replace
-        Fillpattern& fillmode(enum Fillmode f) {
-            json["fillmode"] = to_string(f);
-            return *this;
-        }
-
-        // Sets the shape of the pattern fill. By default, no pattern is used for filling the area.
-        // - Default:
-        Fillpattern& shape(enum Shape f) {
-            json["shape"] = to_string(f);
-            return *this;
-        }
-        Fillpattern& shape(const std::vector<enum Shape>& f) {
-            std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-            json["shape"] = std::move(stringified);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `shape`.
-        Fillpattern& shapesrc(std::string f) {
-            json["shapesrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the size of unit squares of the pattern fill in pixels, which corresponds to the interval of repetition
-        // of the pattern.
-        Fillpattern& size(double f) {
-            json["size"] = std::move(f);
-            return *this;
-        }
-        Fillpattern& size(std::vector<double> f) {
-            json["size"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `size`.
-        Fillpattern& sizesrc(std::string f) {
-            json["sizesrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the solidity of the pattern fill. Solidity is roughly the fraction of the area filled by the pattern.
-        // Solidity of 0 shows only the background color without pattern and solidty of 1 shows only the foreground
-        // color without pattern.
-        Fillpattern& solidity(double f) {
-            json["solidity"] = std::move(f);
-            return *this;
-        }
-        Fillpattern& solidity(std::vector<double> f) {
-            json["solidity"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `solidity`.
-        Fillpattern& soliditysrc(std::string f) {
-            json["soliditysrc"] = std::move(f);
-            return *this;
-        }
-
-        // Advanced users may modify the JSON representation directly, at their own peril!
-        nlohmann::json json{};
-    };
-
     class Hoverlabel {
      public:
 
@@ -829,6 +712,36 @@ class Scatter {
         nlohmann::json json{};
     };
 
+    // Sets the font used for `text` lying inside the bar.
+    class Insidetextfont {
+     public:
+
+        Insidetextfont& color(std::string f) {
+            json["color"] = std::move(f);
+            return *this;
+        }
+
+        // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+        // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+        // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+        // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a
+        // select number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid
+        // Sans*,, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT
+        // Sans Narrow*, *Raleway*, *Times New Roman*.
+        Insidetextfont& family(std::string f) {
+            json["family"] = std::move(f);
+            return *this;
+        }
+
+        Insidetextfont& size(double f) {
+            json["size"] = std::move(f);
+            return *this;
+        }
+
+        // Advanced users may modify the JSON representation directly, at their own peril!
+        nlohmann::json json{};
+    };
+
     class Legendgrouptitle {
      public:
 
@@ -878,1104 +791,8 @@ class Scatter {
         nlohmann::json json{};
     };
 
-    class Line {
-     public:
-
-        enum class Shape {
-            LINEAR,
-            SPLINE,
-            HV,
-            VH,
-            HVH,
-            VHV,
-        };
-        std::string to_string(Shape e) {
-            switch (e) {
-            case Shape::LINEAR:
-                return "linear";
-            case Shape::SPLINE:
-                return "spline";
-            case Shape::HV:
-                return "hv";
-            case Shape::VH:
-                return "vh";
-            case Shape::HVH:
-                return "hvh";
-            case Shape::VHV:
-                return "vhv";
-            }
-        }
-
-        // Sets the line back off from the end point of the nth line segment (in px). This option is useful e.g. to
-        // avoid overlap with arrowhead markers. With *auto* the lines would trim before markers if `marker.angleref` is
-        // set to *previous*.
-        Line& backoff(double f) {
-            json["backoff"] = std::move(f);
-            return *this;
-        }
-        Line& backoff(std::vector<double> f) {
-            json["backoff"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `backoff`.
-        Line& backoffsrc(std::string f) {
-            json["backoffsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the line color.
-        Line& color(std::string f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
-        // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
-        Line& dash(std::string f) {
-            json["dash"] = std::move(f);
-            return *this;
-        }
-
-        // Determines the line shape. With *spline* the lines are drawn using spline interpolation. The other available
-        // values correspond to step-wise line shapes.
-        // - Default: linear
-        Line& shape(enum Shape f) {
-            json["shape"] = to_string(f);
-            return *this;
-        }
-
-        // Simplifies lines by removing nearly-collinear points. When transitioning lines, it may be desirable to
-        // disable this so that the number of points along the resulting SVG path is unaffected.
-        Line& simplify(bool f) {
-            json["simplify"] = std::move(f);
-            return *this;
-        }
-
-        // Has an effect only if `shape` is set to *spline* Sets the amount of smoothing. *0* corresponds to no
-        // smoothing (equivalent to a *linear* shape).
-        Line& smoothing(double f) {
-            json["smoothing"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the line width (in px).
-        Line& width(double f) {
-            json["width"] = std::move(f);
-            return *this;
-        }
-
-        // Advanced users may modify the JSON representation directly, at their own peril!
-        nlohmann::json json{};
-    };
-
     class Marker {
      public:
-
-        enum class Angleref {
-            PREVIOUS,
-            UP,
-        };
-        std::string to_string(Angleref e) {
-            switch (e) {
-            case Angleref::PREVIOUS:
-                return "previous";
-            case Angleref::UP:
-                return "up";
-            }
-        }
-
-        enum class Sizemode {
-            DIAMETER,
-            AREA,
-        };
-        std::string to_string(Sizemode e) {
-            switch (e) {
-            case Sizemode::DIAMETER:
-                return "diameter";
-            case Sizemode::AREA:
-                return "area";
-            }
-        }
-
-        enum class Symbol {
-            NUM_0,
-            CIRCLE,
-            NUM_100,
-            CIRCLE_OPEN,
-            NUM_200,
-            CIRCLE_DOT,
-            NUM_300,
-            CIRCLE_OPEN_DOT,
-            NUM_1,
-            SQUARE,
-            NUM_101,
-            SQUARE_OPEN,
-            NUM_201,
-            SQUARE_DOT,
-            NUM_301,
-            SQUARE_OPEN_DOT,
-            NUM_2,
-            DIAMOND,
-            NUM_102,
-            DIAMOND_OPEN,
-            NUM_202,
-            DIAMOND_DOT,
-            NUM_302,
-            DIAMOND_OPEN_DOT,
-            NUM_3,
-            CROSS,
-            NUM_103,
-            CROSS_OPEN,
-            NUM_203,
-            CROSS_DOT,
-            NUM_303,
-            CROSS_OPEN_DOT,
-            NUM_4,
-            X,
-            NUM_104,
-            X_OPEN,
-            NUM_204,
-            X_DOT,
-            NUM_304,
-            X_OPEN_DOT,
-            NUM_5,
-            TRIANGLE_UP,
-            NUM_105,
-            TRIANGLE_UP_OPEN,
-            NUM_205,
-            TRIANGLE_UP_DOT,
-            NUM_305,
-            TRIANGLE_UP_OPEN_DOT,
-            NUM_6,
-            TRIANGLE_DOWN,
-            NUM_106,
-            TRIANGLE_DOWN_OPEN,
-            NUM_206,
-            TRIANGLE_DOWN_DOT,
-            NUM_306,
-            TRIANGLE_DOWN_OPEN_DOT,
-            NUM_7,
-            TRIANGLE_LEFT,
-            NUM_107,
-            TRIANGLE_LEFT_OPEN,
-            NUM_207,
-            TRIANGLE_LEFT_DOT,
-            NUM_307,
-            TRIANGLE_LEFT_OPEN_DOT,
-            NUM_8,
-            TRIANGLE_RIGHT,
-            NUM_108,
-            TRIANGLE_RIGHT_OPEN,
-            NUM_208,
-            TRIANGLE_RIGHT_DOT,
-            NUM_308,
-            TRIANGLE_RIGHT_OPEN_DOT,
-            NUM_9,
-            TRIANGLE_NE,
-            NUM_109,
-            TRIANGLE_NE_OPEN,
-            NUM_209,
-            TRIANGLE_NE_DOT,
-            NUM_309,
-            TRIANGLE_NE_OPEN_DOT,
-            NUM_10,
-            TRIANGLE_SE,
-            NUM_110,
-            TRIANGLE_SE_OPEN,
-            NUM_210,
-            TRIANGLE_SE_DOT,
-            NUM_310,
-            TRIANGLE_SE_OPEN_DOT,
-            NUM_11,
-            TRIANGLE_SW,
-            NUM_111,
-            TRIANGLE_SW_OPEN,
-            NUM_211,
-            TRIANGLE_SW_DOT,
-            NUM_311,
-            TRIANGLE_SW_OPEN_DOT,
-            NUM_12,
-            TRIANGLE_NW,
-            NUM_112,
-            TRIANGLE_NW_OPEN,
-            NUM_212,
-            TRIANGLE_NW_DOT,
-            NUM_312,
-            TRIANGLE_NW_OPEN_DOT,
-            NUM_13,
-            PENTAGON,
-            NUM_113,
-            PENTAGON_OPEN,
-            NUM_213,
-            PENTAGON_DOT,
-            NUM_313,
-            PENTAGON_OPEN_DOT,
-            NUM_14,
-            HEXAGON,
-            NUM_114,
-            HEXAGON_OPEN,
-            NUM_214,
-            HEXAGON_DOT,
-            NUM_314,
-            HEXAGON_OPEN_DOT,
-            NUM_15,
-            HEXAGON2,
-            NUM_115,
-            HEXAGON2_OPEN,
-            NUM_215,
-            HEXAGON2_DOT,
-            NUM_315,
-            HEXAGON2_OPEN_DOT,
-            NUM_16,
-            OCTAGON,
-            NUM_116,
-            OCTAGON_OPEN,
-            NUM_216,
-            OCTAGON_DOT,
-            NUM_316,
-            OCTAGON_OPEN_DOT,
-            NUM_17,
-            STAR,
-            NUM_117,
-            STAR_OPEN,
-            NUM_217,
-            STAR_DOT,
-            NUM_317,
-            STAR_OPEN_DOT,
-            NUM_18,
-            HEXAGRAM,
-            NUM_118,
-            HEXAGRAM_OPEN,
-            NUM_218,
-            HEXAGRAM_DOT,
-            NUM_318,
-            HEXAGRAM_OPEN_DOT,
-            NUM_19,
-            STAR_TRIANGLE_UP,
-            NUM_119,
-            STAR_TRIANGLE_UP_OPEN,
-            NUM_219,
-            STAR_TRIANGLE_UP_DOT,
-            NUM_319,
-            STAR_TRIANGLE_UP_OPEN_DOT,
-            NUM_20,
-            STAR_TRIANGLE_DOWN,
-            NUM_120,
-            STAR_TRIANGLE_DOWN_OPEN,
-            NUM_220,
-            STAR_TRIANGLE_DOWN_DOT,
-            NUM_320,
-            STAR_TRIANGLE_DOWN_OPEN_DOT,
-            NUM_21,
-            STAR_SQUARE,
-            NUM_121,
-            STAR_SQUARE_OPEN,
-            NUM_221,
-            STAR_SQUARE_DOT,
-            NUM_321,
-            STAR_SQUARE_OPEN_DOT,
-            NUM_22,
-            STAR_DIAMOND,
-            NUM_122,
-            STAR_DIAMOND_OPEN,
-            NUM_222,
-            STAR_DIAMOND_DOT,
-            NUM_322,
-            STAR_DIAMOND_OPEN_DOT,
-            NUM_23,
-            DIAMOND_TALL,
-            NUM_123,
-            DIAMOND_TALL_OPEN,
-            NUM_223,
-            DIAMOND_TALL_DOT,
-            NUM_323,
-            DIAMOND_TALL_OPEN_DOT,
-            NUM_24,
-            DIAMOND_WIDE,
-            NUM_124,
-            DIAMOND_WIDE_OPEN,
-            NUM_224,
-            DIAMOND_WIDE_DOT,
-            NUM_324,
-            DIAMOND_WIDE_OPEN_DOT,
-            NUM_25,
-            HOURGLASS,
-            NUM_125,
-            HOURGLASS_OPEN,
-            NUM_26,
-            BOWTIE,
-            NUM_126,
-            BOWTIE_OPEN,
-            NUM_27,
-            CIRCLE_CROSS,
-            NUM_127,
-            CIRCLE_CROSS_OPEN,
-            NUM_28,
-            CIRCLE_X,
-            NUM_128,
-            CIRCLE_X_OPEN,
-            NUM_29,
-            SQUARE_CROSS,
-            NUM_129,
-            SQUARE_CROSS_OPEN,
-            NUM_30,
-            SQUARE_X,
-            NUM_130,
-            SQUARE_X_OPEN,
-            NUM_31,
-            DIAMOND_CROSS,
-            NUM_131,
-            DIAMOND_CROSS_OPEN,
-            NUM_32,
-            DIAMOND_X,
-            NUM_132,
-            DIAMOND_X_OPEN,
-            NUM_33,
-            CROSS_THIN,
-            NUM_133,
-            CROSS_THIN_OPEN,
-            NUM_34,
-            X_THIN,
-            NUM_134,
-            X_THIN_OPEN,
-            NUM_35,
-            ASTERISK,
-            NUM_135,
-            ASTERISK_OPEN,
-            NUM_36,
-            HASH,
-            NUM_136,
-            HASH_OPEN,
-            NUM_236,
-            HASH_DOT,
-            NUM_336,
-            HASH_OPEN_DOT,
-            NUM_37,
-            Y_UP,
-            NUM_137,
-            Y_UP_OPEN,
-            NUM_38,
-            Y_DOWN,
-            NUM_138,
-            Y_DOWN_OPEN,
-            NUM_39,
-            Y_LEFT,
-            NUM_139,
-            Y_LEFT_OPEN,
-            NUM_40,
-            Y_RIGHT,
-            NUM_140,
-            Y_RIGHT_OPEN,
-            NUM_41,
-            LINE_EW,
-            NUM_141,
-            LINE_EW_OPEN,
-            NUM_42,
-            LINE_NS,
-            NUM_142,
-            LINE_NS_OPEN,
-            NUM_43,
-            LINE_NE,
-            NUM_143,
-            LINE_NE_OPEN,
-            NUM_44,
-            LINE_NW,
-            NUM_144,
-            LINE_NW_OPEN,
-            NUM_45,
-            ARROW_UP,
-            NUM_145,
-            ARROW_UP_OPEN,
-            NUM_46,
-            ARROW_DOWN,
-            NUM_146,
-            ARROW_DOWN_OPEN,
-            NUM_47,
-            ARROW_LEFT,
-            NUM_147,
-            ARROW_LEFT_OPEN,
-            NUM_48,
-            ARROW_RIGHT,
-            NUM_148,
-            ARROW_RIGHT_OPEN,
-            NUM_49,
-            ARROW_BAR_UP,
-            NUM_149,
-            ARROW_BAR_UP_OPEN,
-            NUM_50,
-            ARROW_BAR_DOWN,
-            NUM_150,
-            ARROW_BAR_DOWN_OPEN,
-            NUM_51,
-            ARROW_BAR_LEFT,
-            NUM_151,
-            ARROW_BAR_LEFT_OPEN,
-            NUM_52,
-            ARROW_BAR_RIGHT,
-            NUM_152,
-            ARROW_BAR_RIGHT_OPEN,
-            NUM_53,
-            ARROW,
-            NUM_153,
-            ARROW_OPEN,
-            NUM_54,
-            ARROW_WIDE,
-            NUM_154,
-            ARROW_WIDE_OPEN,
-        };
-        std::string to_string(Symbol e) {
-            switch (e) {
-            case Symbol::NUM_0:
-                return "0";
-            case Symbol::CIRCLE:
-                return "circle";
-            case Symbol::NUM_100:
-                return "100";
-            case Symbol::CIRCLE_OPEN:
-                return "circle-open";
-            case Symbol::NUM_200:
-                return "200";
-            case Symbol::CIRCLE_DOT:
-                return "circle-dot";
-            case Symbol::NUM_300:
-                return "300";
-            case Symbol::CIRCLE_OPEN_DOT:
-                return "circle-open-dot";
-            case Symbol::NUM_1:
-                return "1";
-            case Symbol::SQUARE:
-                return "square";
-            case Symbol::NUM_101:
-                return "101";
-            case Symbol::SQUARE_OPEN:
-                return "square-open";
-            case Symbol::NUM_201:
-                return "201";
-            case Symbol::SQUARE_DOT:
-                return "square-dot";
-            case Symbol::NUM_301:
-                return "301";
-            case Symbol::SQUARE_OPEN_DOT:
-                return "square-open-dot";
-            case Symbol::NUM_2:
-                return "2";
-            case Symbol::DIAMOND:
-                return "diamond";
-            case Symbol::NUM_102:
-                return "102";
-            case Symbol::DIAMOND_OPEN:
-                return "diamond-open";
-            case Symbol::NUM_202:
-                return "202";
-            case Symbol::DIAMOND_DOT:
-                return "diamond-dot";
-            case Symbol::NUM_302:
-                return "302";
-            case Symbol::DIAMOND_OPEN_DOT:
-                return "diamond-open-dot";
-            case Symbol::NUM_3:
-                return "3";
-            case Symbol::CROSS:
-                return "cross";
-            case Symbol::NUM_103:
-                return "103";
-            case Symbol::CROSS_OPEN:
-                return "cross-open";
-            case Symbol::NUM_203:
-                return "203";
-            case Symbol::CROSS_DOT:
-                return "cross-dot";
-            case Symbol::NUM_303:
-                return "303";
-            case Symbol::CROSS_OPEN_DOT:
-                return "cross-open-dot";
-            case Symbol::NUM_4:
-                return "4";
-            case Symbol::X:
-                return "x";
-            case Symbol::NUM_104:
-                return "104";
-            case Symbol::X_OPEN:
-                return "x-open";
-            case Symbol::NUM_204:
-                return "204";
-            case Symbol::X_DOT:
-                return "x-dot";
-            case Symbol::NUM_304:
-                return "304";
-            case Symbol::X_OPEN_DOT:
-                return "x-open-dot";
-            case Symbol::NUM_5:
-                return "5";
-            case Symbol::TRIANGLE_UP:
-                return "triangle-up";
-            case Symbol::NUM_105:
-                return "105";
-            case Symbol::TRIANGLE_UP_OPEN:
-                return "triangle-up-open";
-            case Symbol::NUM_205:
-                return "205";
-            case Symbol::TRIANGLE_UP_DOT:
-                return "triangle-up-dot";
-            case Symbol::NUM_305:
-                return "305";
-            case Symbol::TRIANGLE_UP_OPEN_DOT:
-                return "triangle-up-open-dot";
-            case Symbol::NUM_6:
-                return "6";
-            case Symbol::TRIANGLE_DOWN:
-                return "triangle-down";
-            case Symbol::NUM_106:
-                return "106";
-            case Symbol::TRIANGLE_DOWN_OPEN:
-                return "triangle-down-open";
-            case Symbol::NUM_206:
-                return "206";
-            case Symbol::TRIANGLE_DOWN_DOT:
-                return "triangle-down-dot";
-            case Symbol::NUM_306:
-                return "306";
-            case Symbol::TRIANGLE_DOWN_OPEN_DOT:
-                return "triangle-down-open-dot";
-            case Symbol::NUM_7:
-                return "7";
-            case Symbol::TRIANGLE_LEFT:
-                return "triangle-left";
-            case Symbol::NUM_107:
-                return "107";
-            case Symbol::TRIANGLE_LEFT_OPEN:
-                return "triangle-left-open";
-            case Symbol::NUM_207:
-                return "207";
-            case Symbol::TRIANGLE_LEFT_DOT:
-                return "triangle-left-dot";
-            case Symbol::NUM_307:
-                return "307";
-            case Symbol::TRIANGLE_LEFT_OPEN_DOT:
-                return "triangle-left-open-dot";
-            case Symbol::NUM_8:
-                return "8";
-            case Symbol::TRIANGLE_RIGHT:
-                return "triangle-right";
-            case Symbol::NUM_108:
-                return "108";
-            case Symbol::TRIANGLE_RIGHT_OPEN:
-                return "triangle-right-open";
-            case Symbol::NUM_208:
-                return "208";
-            case Symbol::TRIANGLE_RIGHT_DOT:
-                return "triangle-right-dot";
-            case Symbol::NUM_308:
-                return "308";
-            case Symbol::TRIANGLE_RIGHT_OPEN_DOT:
-                return "triangle-right-open-dot";
-            case Symbol::NUM_9:
-                return "9";
-            case Symbol::TRIANGLE_NE:
-                return "triangle-ne";
-            case Symbol::NUM_109:
-                return "109";
-            case Symbol::TRIANGLE_NE_OPEN:
-                return "triangle-ne-open";
-            case Symbol::NUM_209:
-                return "209";
-            case Symbol::TRIANGLE_NE_DOT:
-                return "triangle-ne-dot";
-            case Symbol::NUM_309:
-                return "309";
-            case Symbol::TRIANGLE_NE_OPEN_DOT:
-                return "triangle-ne-open-dot";
-            case Symbol::NUM_10:
-                return "10";
-            case Symbol::TRIANGLE_SE:
-                return "triangle-se";
-            case Symbol::NUM_110:
-                return "110";
-            case Symbol::TRIANGLE_SE_OPEN:
-                return "triangle-se-open";
-            case Symbol::NUM_210:
-                return "210";
-            case Symbol::TRIANGLE_SE_DOT:
-                return "triangle-se-dot";
-            case Symbol::NUM_310:
-                return "310";
-            case Symbol::TRIANGLE_SE_OPEN_DOT:
-                return "triangle-se-open-dot";
-            case Symbol::NUM_11:
-                return "11";
-            case Symbol::TRIANGLE_SW:
-                return "triangle-sw";
-            case Symbol::NUM_111:
-                return "111";
-            case Symbol::TRIANGLE_SW_OPEN:
-                return "triangle-sw-open";
-            case Symbol::NUM_211:
-                return "211";
-            case Symbol::TRIANGLE_SW_DOT:
-                return "triangle-sw-dot";
-            case Symbol::NUM_311:
-                return "311";
-            case Symbol::TRIANGLE_SW_OPEN_DOT:
-                return "triangle-sw-open-dot";
-            case Symbol::NUM_12:
-                return "12";
-            case Symbol::TRIANGLE_NW:
-                return "triangle-nw";
-            case Symbol::NUM_112:
-                return "112";
-            case Symbol::TRIANGLE_NW_OPEN:
-                return "triangle-nw-open";
-            case Symbol::NUM_212:
-                return "212";
-            case Symbol::TRIANGLE_NW_DOT:
-                return "triangle-nw-dot";
-            case Symbol::NUM_312:
-                return "312";
-            case Symbol::TRIANGLE_NW_OPEN_DOT:
-                return "triangle-nw-open-dot";
-            case Symbol::NUM_13:
-                return "13";
-            case Symbol::PENTAGON:
-                return "pentagon";
-            case Symbol::NUM_113:
-                return "113";
-            case Symbol::PENTAGON_OPEN:
-                return "pentagon-open";
-            case Symbol::NUM_213:
-                return "213";
-            case Symbol::PENTAGON_DOT:
-                return "pentagon-dot";
-            case Symbol::NUM_313:
-                return "313";
-            case Symbol::PENTAGON_OPEN_DOT:
-                return "pentagon-open-dot";
-            case Symbol::NUM_14:
-                return "14";
-            case Symbol::HEXAGON:
-                return "hexagon";
-            case Symbol::NUM_114:
-                return "114";
-            case Symbol::HEXAGON_OPEN:
-                return "hexagon-open";
-            case Symbol::NUM_214:
-                return "214";
-            case Symbol::HEXAGON_DOT:
-                return "hexagon-dot";
-            case Symbol::NUM_314:
-                return "314";
-            case Symbol::HEXAGON_OPEN_DOT:
-                return "hexagon-open-dot";
-            case Symbol::NUM_15:
-                return "15";
-            case Symbol::HEXAGON2:
-                return "hexagon2";
-            case Symbol::NUM_115:
-                return "115";
-            case Symbol::HEXAGON2_OPEN:
-                return "hexagon2-open";
-            case Symbol::NUM_215:
-                return "215";
-            case Symbol::HEXAGON2_DOT:
-                return "hexagon2-dot";
-            case Symbol::NUM_315:
-                return "315";
-            case Symbol::HEXAGON2_OPEN_DOT:
-                return "hexagon2-open-dot";
-            case Symbol::NUM_16:
-                return "16";
-            case Symbol::OCTAGON:
-                return "octagon";
-            case Symbol::NUM_116:
-                return "116";
-            case Symbol::OCTAGON_OPEN:
-                return "octagon-open";
-            case Symbol::NUM_216:
-                return "216";
-            case Symbol::OCTAGON_DOT:
-                return "octagon-dot";
-            case Symbol::NUM_316:
-                return "316";
-            case Symbol::OCTAGON_OPEN_DOT:
-                return "octagon-open-dot";
-            case Symbol::NUM_17:
-                return "17";
-            case Symbol::STAR:
-                return "star";
-            case Symbol::NUM_117:
-                return "117";
-            case Symbol::STAR_OPEN:
-                return "star-open";
-            case Symbol::NUM_217:
-                return "217";
-            case Symbol::STAR_DOT:
-                return "star-dot";
-            case Symbol::NUM_317:
-                return "317";
-            case Symbol::STAR_OPEN_DOT:
-                return "star-open-dot";
-            case Symbol::NUM_18:
-                return "18";
-            case Symbol::HEXAGRAM:
-                return "hexagram";
-            case Symbol::NUM_118:
-                return "118";
-            case Symbol::HEXAGRAM_OPEN:
-                return "hexagram-open";
-            case Symbol::NUM_218:
-                return "218";
-            case Symbol::HEXAGRAM_DOT:
-                return "hexagram-dot";
-            case Symbol::NUM_318:
-                return "318";
-            case Symbol::HEXAGRAM_OPEN_DOT:
-                return "hexagram-open-dot";
-            case Symbol::NUM_19:
-                return "19";
-            case Symbol::STAR_TRIANGLE_UP:
-                return "star-triangle-up";
-            case Symbol::NUM_119:
-                return "119";
-            case Symbol::STAR_TRIANGLE_UP_OPEN:
-                return "star-triangle-up-open";
-            case Symbol::NUM_219:
-                return "219";
-            case Symbol::STAR_TRIANGLE_UP_DOT:
-                return "star-triangle-up-dot";
-            case Symbol::NUM_319:
-                return "319";
-            case Symbol::STAR_TRIANGLE_UP_OPEN_DOT:
-                return "star-triangle-up-open-dot";
-            case Symbol::NUM_20:
-                return "20";
-            case Symbol::STAR_TRIANGLE_DOWN:
-                return "star-triangle-down";
-            case Symbol::NUM_120:
-                return "120";
-            case Symbol::STAR_TRIANGLE_DOWN_OPEN:
-                return "star-triangle-down-open";
-            case Symbol::NUM_220:
-                return "220";
-            case Symbol::STAR_TRIANGLE_DOWN_DOT:
-                return "star-triangle-down-dot";
-            case Symbol::NUM_320:
-                return "320";
-            case Symbol::STAR_TRIANGLE_DOWN_OPEN_DOT:
-                return "star-triangle-down-open-dot";
-            case Symbol::NUM_21:
-                return "21";
-            case Symbol::STAR_SQUARE:
-                return "star-square";
-            case Symbol::NUM_121:
-                return "121";
-            case Symbol::STAR_SQUARE_OPEN:
-                return "star-square-open";
-            case Symbol::NUM_221:
-                return "221";
-            case Symbol::STAR_SQUARE_DOT:
-                return "star-square-dot";
-            case Symbol::NUM_321:
-                return "321";
-            case Symbol::STAR_SQUARE_OPEN_DOT:
-                return "star-square-open-dot";
-            case Symbol::NUM_22:
-                return "22";
-            case Symbol::STAR_DIAMOND:
-                return "star-diamond";
-            case Symbol::NUM_122:
-                return "122";
-            case Symbol::STAR_DIAMOND_OPEN:
-                return "star-diamond-open";
-            case Symbol::NUM_222:
-                return "222";
-            case Symbol::STAR_DIAMOND_DOT:
-                return "star-diamond-dot";
-            case Symbol::NUM_322:
-                return "322";
-            case Symbol::STAR_DIAMOND_OPEN_DOT:
-                return "star-diamond-open-dot";
-            case Symbol::NUM_23:
-                return "23";
-            case Symbol::DIAMOND_TALL:
-                return "diamond-tall";
-            case Symbol::NUM_123:
-                return "123";
-            case Symbol::DIAMOND_TALL_OPEN:
-                return "diamond-tall-open";
-            case Symbol::NUM_223:
-                return "223";
-            case Symbol::DIAMOND_TALL_DOT:
-                return "diamond-tall-dot";
-            case Symbol::NUM_323:
-                return "323";
-            case Symbol::DIAMOND_TALL_OPEN_DOT:
-                return "diamond-tall-open-dot";
-            case Symbol::NUM_24:
-                return "24";
-            case Symbol::DIAMOND_WIDE:
-                return "diamond-wide";
-            case Symbol::NUM_124:
-                return "124";
-            case Symbol::DIAMOND_WIDE_OPEN:
-                return "diamond-wide-open";
-            case Symbol::NUM_224:
-                return "224";
-            case Symbol::DIAMOND_WIDE_DOT:
-                return "diamond-wide-dot";
-            case Symbol::NUM_324:
-                return "324";
-            case Symbol::DIAMOND_WIDE_OPEN_DOT:
-                return "diamond-wide-open-dot";
-            case Symbol::NUM_25:
-                return "25";
-            case Symbol::HOURGLASS:
-                return "hourglass";
-            case Symbol::NUM_125:
-                return "125";
-            case Symbol::HOURGLASS_OPEN:
-                return "hourglass-open";
-            case Symbol::NUM_26:
-                return "26";
-            case Symbol::BOWTIE:
-                return "bowtie";
-            case Symbol::NUM_126:
-                return "126";
-            case Symbol::BOWTIE_OPEN:
-                return "bowtie-open";
-            case Symbol::NUM_27:
-                return "27";
-            case Symbol::CIRCLE_CROSS:
-                return "circle-cross";
-            case Symbol::NUM_127:
-                return "127";
-            case Symbol::CIRCLE_CROSS_OPEN:
-                return "circle-cross-open";
-            case Symbol::NUM_28:
-                return "28";
-            case Symbol::CIRCLE_X:
-                return "circle-x";
-            case Symbol::NUM_128:
-                return "128";
-            case Symbol::CIRCLE_X_OPEN:
-                return "circle-x-open";
-            case Symbol::NUM_29:
-                return "29";
-            case Symbol::SQUARE_CROSS:
-                return "square-cross";
-            case Symbol::NUM_129:
-                return "129";
-            case Symbol::SQUARE_CROSS_OPEN:
-                return "square-cross-open";
-            case Symbol::NUM_30:
-                return "30";
-            case Symbol::SQUARE_X:
-                return "square-x";
-            case Symbol::NUM_130:
-                return "130";
-            case Symbol::SQUARE_X_OPEN:
-                return "square-x-open";
-            case Symbol::NUM_31:
-                return "31";
-            case Symbol::DIAMOND_CROSS:
-                return "diamond-cross";
-            case Symbol::NUM_131:
-                return "131";
-            case Symbol::DIAMOND_CROSS_OPEN:
-                return "diamond-cross-open";
-            case Symbol::NUM_32:
-                return "32";
-            case Symbol::DIAMOND_X:
-                return "diamond-x";
-            case Symbol::NUM_132:
-                return "132";
-            case Symbol::DIAMOND_X_OPEN:
-                return "diamond-x-open";
-            case Symbol::NUM_33:
-                return "33";
-            case Symbol::CROSS_THIN:
-                return "cross-thin";
-            case Symbol::NUM_133:
-                return "133";
-            case Symbol::CROSS_THIN_OPEN:
-                return "cross-thin-open";
-            case Symbol::NUM_34:
-                return "34";
-            case Symbol::X_THIN:
-                return "x-thin";
-            case Symbol::NUM_134:
-                return "134";
-            case Symbol::X_THIN_OPEN:
-                return "x-thin-open";
-            case Symbol::NUM_35:
-                return "35";
-            case Symbol::ASTERISK:
-                return "asterisk";
-            case Symbol::NUM_135:
-                return "135";
-            case Symbol::ASTERISK_OPEN:
-                return "asterisk-open";
-            case Symbol::NUM_36:
-                return "36";
-            case Symbol::HASH:
-                return "hash";
-            case Symbol::NUM_136:
-                return "136";
-            case Symbol::HASH_OPEN:
-                return "hash-open";
-            case Symbol::NUM_236:
-                return "236";
-            case Symbol::HASH_DOT:
-                return "hash-dot";
-            case Symbol::NUM_336:
-                return "336";
-            case Symbol::HASH_OPEN_DOT:
-                return "hash-open-dot";
-            case Symbol::NUM_37:
-                return "37";
-            case Symbol::Y_UP:
-                return "y-up";
-            case Symbol::NUM_137:
-                return "137";
-            case Symbol::Y_UP_OPEN:
-                return "y-up-open";
-            case Symbol::NUM_38:
-                return "38";
-            case Symbol::Y_DOWN:
-                return "y-down";
-            case Symbol::NUM_138:
-                return "138";
-            case Symbol::Y_DOWN_OPEN:
-                return "y-down-open";
-            case Symbol::NUM_39:
-                return "39";
-            case Symbol::Y_LEFT:
-                return "y-left";
-            case Symbol::NUM_139:
-                return "139";
-            case Symbol::Y_LEFT_OPEN:
-                return "y-left-open";
-            case Symbol::NUM_40:
-                return "40";
-            case Symbol::Y_RIGHT:
-                return "y-right";
-            case Symbol::NUM_140:
-                return "140";
-            case Symbol::Y_RIGHT_OPEN:
-                return "y-right-open";
-            case Symbol::NUM_41:
-                return "41";
-            case Symbol::LINE_EW:
-                return "line-ew";
-            case Symbol::NUM_141:
-                return "141";
-            case Symbol::LINE_EW_OPEN:
-                return "line-ew-open";
-            case Symbol::NUM_42:
-                return "42";
-            case Symbol::LINE_NS:
-                return "line-ns";
-            case Symbol::NUM_142:
-                return "142";
-            case Symbol::LINE_NS_OPEN:
-                return "line-ns-open";
-            case Symbol::NUM_43:
-                return "43";
-            case Symbol::LINE_NE:
-                return "line-ne";
-            case Symbol::NUM_143:
-                return "143";
-            case Symbol::LINE_NE_OPEN:
-                return "line-ne-open";
-            case Symbol::NUM_44:
-                return "44";
-            case Symbol::LINE_NW:
-                return "line-nw";
-            case Symbol::NUM_144:
-                return "144";
-            case Symbol::LINE_NW_OPEN:
-                return "line-nw-open";
-            case Symbol::NUM_45:
-                return "45";
-            case Symbol::ARROW_UP:
-                return "arrow-up";
-            case Symbol::NUM_145:
-                return "145";
-            case Symbol::ARROW_UP_OPEN:
-                return "arrow-up-open";
-            case Symbol::NUM_46:
-                return "46";
-            case Symbol::ARROW_DOWN:
-                return "arrow-down";
-            case Symbol::NUM_146:
-                return "146";
-            case Symbol::ARROW_DOWN_OPEN:
-                return "arrow-down-open";
-            case Symbol::NUM_47:
-                return "47";
-            case Symbol::ARROW_LEFT:
-                return "arrow-left";
-            case Symbol::NUM_147:
-                return "147";
-            case Symbol::ARROW_LEFT_OPEN:
-                return "arrow-left-open";
-            case Symbol::NUM_48:
-                return "48";
-            case Symbol::ARROW_RIGHT:
-                return "arrow-right";
-            case Symbol::NUM_148:
-                return "148";
-            case Symbol::ARROW_RIGHT_OPEN:
-                return "arrow-right-open";
-            case Symbol::NUM_49:
-                return "49";
-            case Symbol::ARROW_BAR_UP:
-                return "arrow-bar-up";
-            case Symbol::NUM_149:
-                return "149";
-            case Symbol::ARROW_BAR_UP_OPEN:
-                return "arrow-bar-up-open";
-            case Symbol::NUM_50:
-                return "50";
-            case Symbol::ARROW_BAR_DOWN:
-                return "arrow-bar-down";
-            case Symbol::NUM_150:
-                return "150";
-            case Symbol::ARROW_BAR_DOWN_OPEN:
-                return "arrow-bar-down-open";
-            case Symbol::NUM_51:
-                return "51";
-            case Symbol::ARROW_BAR_LEFT:
-                return "arrow-bar-left";
-            case Symbol::NUM_151:
-                return "151";
-            case Symbol::ARROW_BAR_LEFT_OPEN:
-                return "arrow-bar-left-open";
-            case Symbol::NUM_52:
-                return "52";
-            case Symbol::ARROW_BAR_RIGHT:
-                return "arrow-bar-right";
-            case Symbol::NUM_152:
-                return "152";
-            case Symbol::ARROW_BAR_RIGHT_OPEN:
-                return "arrow-bar-right-open";
-            case Symbol::NUM_53:
-                return "53";
-            case Symbol::ARROW:
-                return "arrow";
-            case Symbol::NUM_153:
-                return "153";
-            case Symbol::ARROW_OPEN:
-                return "arrow-open";
-            case Symbol::NUM_54:
-                return "54";
-            case Symbol::ARROW_WIDE:
-                return "arrow-wide";
-            case Symbol::NUM_154:
-                return "154";
-            case Symbol::ARROW_WIDE_OPEN:
-                return "arrow-wide-open";
-            }
-        }
 
         class Colorbar {
          public:
@@ -2769,68 +1586,6 @@ class Scatter {
             nlohmann::json json{};
         };
 
-        class Gradient {
-         public:
-
-            enum class Type {
-                RADIAL,
-                HORIZONTAL,
-                VERTICAL,
-                NONE,
-            };
-            std::string to_string(Type e) {
-                switch (e) {
-                case Type::RADIAL:
-                    return "radial";
-                case Type::HORIZONTAL:
-                    return "horizontal";
-                case Type::VERTICAL:
-                    return "vertical";
-                case Type::NONE:
-                    return "none";
-                }
-            }
-
-            // Sets the final color of the gradient fill: the center color for radial, the right for horizontal, or the
-            // bottom for vertical.
-            Gradient& color(std::string f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-            Gradient& color(std::vector<std::string> f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the source reference on Chart Studio Cloud for `color`.
-            Gradient& colorsrc(std::string f) {
-                json["colorsrc"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the type of gradient used to fill the markers
-            // - Default: none
-            Gradient& type(enum Type f) {
-                json["type"] = to_string(f);
-                return *this;
-            }
-            Gradient& type(const std::vector<enum Type>& f) {
-                std::vector<std::string> stringified(f.size());
-                std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-                json["type"] = std::move(stringified);
-                return *this;
-            }
-
-            // Sets the source reference on Chart Studio Cloud for `type`.
-            Gradient& typesrc(std::string f) {
-                json["typesrc"] = std::move(f);
-                return *this;
-            }
-
-            // Advanced users may modify the JSON representation directly, at their own peril!
-            nlohmann::json json{};
-        };
-
         class Line {
          public:
 
@@ -2944,29 +1699,160 @@ class Scatter {
             nlohmann::json json{};
         };
 
-        // Sets the marker angle in respect to `angleref`.
-        Marker& angle(double f) {
-            json["angle"] = std::move(f);
-            return *this;
-        }
-        Marker& angle(std::vector<double> f) {
-            json["angle"] = std::move(f);
-            return *this;
-        }
+        // Sets the pattern within the marker.
+        class Pattern {
+         public:
 
-        // Sets the reference for marker angle. With *previous*, angle 0 points along the line from the previous point
-        // to this one. With *up*, angle 0 points toward the top of the screen.
-        // - Default: up
-        Marker& angleref(enum Angleref f) {
-            json["angleref"] = to_string(f);
-            return *this;
-        }
+            enum class Fillmode {
+                REPLACE,
+                OVERLAY,
+            };
+            std::string to_string(Fillmode e) {
+                switch (e) {
+                case Fillmode::REPLACE:
+                    return "replace";
+                case Fillmode::OVERLAY:
+                    return "overlay";
+                }
+            }
 
-        // Sets the source reference on Chart Studio Cloud for `angle`.
-        Marker& anglesrc(std::string f) {
-            json["anglesrc"] = std::move(f);
-            return *this;
-        }
+            enum class Shape {
+                EMPTY,
+                SLASH,
+                DOUBLEBACKSLASH,
+                X,
+                HYPHEN,
+                OR,
+                PLUS,
+                DOT,
+            };
+            std::string to_string(Shape e) {
+                switch (e) {
+                case Shape::EMPTY:
+                    return "";
+                case Shape::SLASH:
+                    return "/";
+                case Shape::DOUBLEBACKSLASH:
+                    return "\\";
+                case Shape::X:
+                    return "x";
+                case Shape::HYPHEN:
+                    return "-";
+                case Shape::OR:
+                    return "|";
+                case Shape::PLUS:
+                    return "+";
+                case Shape::DOT:
+                    return ".";
+                }
+            }
+
+            // When there is no colorscale sets the color of background pattern fill. Defaults to a `marker.color`
+            // background when `fillmode` is *overlay*. Otherwise, defaults to a transparent background.
+            Pattern& bgcolor(std::string f) {
+                json["bgcolor"] = std::move(f);
+                return *this;
+            }
+            Pattern& bgcolor(std::vector<std::string> f) {
+                json["bgcolor"] = std::move(f);
+                return *this;
+            }
+
+            // Sets the source reference on Chart Studio Cloud for `bgcolor`.
+            Pattern& bgcolorsrc(std::string f) {
+                json["bgcolorsrc"] = std::move(f);
+                return *this;
+            }
+
+            // When there is no colorscale sets the color of foreground pattern fill. Defaults to a `marker.color`
+            // background when `fillmode` is *replace*. Otherwise, defaults to dark grey or white to increase contrast
+            // with the `bgcolor`.
+            Pattern& fgcolor(std::string f) {
+                json["fgcolor"] = std::move(f);
+                return *this;
+            }
+            Pattern& fgcolor(std::vector<std::string> f) {
+                json["fgcolor"] = std::move(f);
+                return *this;
+            }
+
+            // Sets the source reference on Chart Studio Cloud for `fgcolor`.
+            Pattern& fgcolorsrc(std::string f) {
+                json["fgcolorsrc"] = std::move(f);
+                return *this;
+            }
+
+            // Sets the opacity of the foreground pattern fill. Defaults to a 0.5 when `fillmode` is *overlay*.
+            // Otherwise, defaults to 1.
+            Pattern& fgopacity(double f) {
+                json["fgopacity"] = std::move(f);
+                return *this;
+            }
+
+            // Determines whether `marker.color` should be used as a default to `bgcolor` or a `fgcolor`.
+            // - Default: replace
+            Pattern& fillmode(enum Fillmode f) {
+                json["fillmode"] = to_string(f);
+                return *this;
+            }
+
+            // Sets the shape of the pattern fill. By default, no pattern is used for filling the area.
+            // - Default:
+            Pattern& shape(enum Shape f) {
+                json["shape"] = to_string(f);
+                return *this;
+            }
+            Pattern& shape(const std::vector<enum Shape>& f) {
+                std::vector<std::string> stringified(f.size());
+                std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
+                json["shape"] = std::move(stringified);
+                return *this;
+            }
+
+            // Sets the source reference on Chart Studio Cloud for `shape`.
+            Pattern& shapesrc(std::string f) {
+                json["shapesrc"] = std::move(f);
+                return *this;
+            }
+
+            // Sets the size of unit squares of the pattern fill in pixels, which corresponds to the interval of
+            // repetition of the pattern.
+            Pattern& size(double f) {
+                json["size"] = std::move(f);
+                return *this;
+            }
+            Pattern& size(std::vector<double> f) {
+                json["size"] = std::move(f);
+                return *this;
+            }
+
+            // Sets the source reference on Chart Studio Cloud for `size`.
+            Pattern& sizesrc(std::string f) {
+                json["sizesrc"] = std::move(f);
+                return *this;
+            }
+
+            // Sets the solidity of the pattern fill. Solidity is roughly the fraction of the area filled by the
+            // pattern. Solidity of 0 shows only the background color without pattern and solidty of 1 shows only the
+            // foreground color without pattern.
+            Pattern& solidity(double f) {
+                json["solidity"] = std::move(f);
+                return *this;
+            }
+            Pattern& solidity(std::vector<double> f) {
+                json["solidity"] = std::move(f);
+                return *this;
+            }
+
+            // Sets the source reference on Chart Studio Cloud for `solidity`.
+            Pattern& soliditysrc(std::string f) {
+                json["soliditysrc"] = std::move(f);
+                return *this;
+            }
+
+            // Advanced users may modify the JSON representation directly, at their own peril!
+            nlohmann::json json{};
+        };
 
         // Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by
         // `marker.colorscale`. Has an effect only if in `marker.color` is set to a numerical array. In case
@@ -3050,23 +1936,12 @@ class Scatter {
             return *this;
         }
 
-        Marker& gradient(class Gradient f) {
-            json["gradient"] = std::move(f.json);
-            return *this;
-        }
-
         Marker& line(class Line f) {
             json["line"] = std::move(f.json);
             return *this;
         }
 
-        // Sets a maximum number of points to be drawn on the graph. *0* corresponds to no limit.
-        Marker& maxdisplayed(double f) {
-            json["maxdisplayed"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the marker opacity.
+        // Sets the opacity of the bars.
         Marker& opacity(double f) {
             json["opacity"] = std::move(f);
             return *this;
@@ -3079,6 +1954,12 @@ class Scatter {
         // Sets the source reference on Chart Studio Cloud for `opacity`.
         Marker& opacitysrc(std::string f) {
             json["opacitysrc"] = std::move(f);
+            return *this;
+        }
+
+        // Sets the pattern within the marker.
+        Marker& pattern(class Pattern f) {
+            json["pattern"] = std::move(f.json);
             return *this;
         }
 
@@ -3097,79 +1978,33 @@ class Scatter {
             return *this;
         }
 
-        // Sets the marker size (in px).
-        Marker& size(double f) {
+        // Advanced users may modify the JSON representation directly, at their own peril!
+        nlohmann::json json{};
+    };
+
+    // Sets the font used for `text` lying outside the bar.
+    class Outsidetextfont {
+     public:
+
+        Outsidetextfont& color(std::string f) {
+            json["color"] = std::move(f);
+            return *this;
+        }
+
+        // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+        // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+        // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+        // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a
+        // select number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid
+        // Sans*,, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT
+        // Sans Narrow*, *Raleway*, *Times New Roman*.
+        Outsidetextfont& family(std::string f) {
+            json["family"] = std::move(f);
+            return *this;
+        }
+
+        Outsidetextfont& size(double f) {
             json["size"] = std::move(f);
-            return *this;
-        }
-        Marker& size(std::vector<double> f) {
-            json["size"] = std::move(f);
-            return *this;
-        }
-
-        // Has an effect only if `marker.size` is set to a numerical array. Sets the minimum size (in px) of the
-        // rendered marker points.
-        Marker& sizemin(double f) {
-            json["sizemin"] = std::move(f);
-            return *this;
-        }
-
-        // Has an effect only if `marker.size` is set to a numerical array. Sets the rule for which the data in `size`
-        // is converted to pixels.
-        // - Default: diameter
-        Marker& sizemode(enum Sizemode f) {
-            json["sizemode"] = to_string(f);
-            return *this;
-        }
-
-        // Has an effect only if `marker.size` is set to a numerical array. Sets the scale factor used to determine the
-        // rendered size of marker points. Use with `sizemin` and `sizemode`.
-        Marker& sizeref(double f) {
-            json["sizeref"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `size`.
-        Marker& sizesrc(std::string f) {
-            json["sizesrc"] = std::move(f);
-            return *this;
-        }
-
-        // Moves the marker away from the data point in the direction of `angle` (in px). This can be useful for example
-        // if you have another marker at this location and you want to point an arrowhead marker at it.
-        Marker& standoff(double f) {
-            json["standoff"] = std::move(f);
-            return *this;
-        }
-        Marker& standoff(std::vector<double> f) {
-            json["standoff"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `standoff`.
-        Marker& standoffsrc(std::string f) {
-            json["standoffsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the marker symbol type. Adding 100 is equivalent to appending *-open* to a symbol name. Adding 200 is
-        // equivalent to appending *-dot* to a symbol name. Adding 300 is equivalent to appending *-open-dot* or
-        // *dot-open* to a symbol name.
-        // - Default: circle
-        Marker& symbol(enum Symbol f) {
-            json["symbol"] = to_string(f);
-            return *this;
-        }
-        Marker& symbol(const std::vector<enum Symbol>& f) {
-            std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-            json["symbol"] = std::move(stringified);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `symbol`.
-        Marker& symbolsrc(std::string f) {
-            json["symbolsrc"] = std::move(f);
             return *this;
         }
 
@@ -3192,12 +2027,6 @@ class Scatter {
             // Sets the marker opacity of selected points.
             Marker& opacity(double f) {
                 json["opacity"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the marker size of selected points.
-            Marker& size(double f) {
-                json["size"] = std::move(f);
                 return *this;
             }
 
@@ -3261,16 +2090,6 @@ class Scatter {
             json["color"] = std::move(f);
             return *this;
         }
-        Textfont& color(std::vector<std::string> f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `color`.
-        Textfont& colorsrc(std::string f) {
-            json["colorsrc"] = std::move(f);
-            return *this;
-        }
 
         // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
         // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -3283,29 +2102,9 @@ class Scatter {
             json["family"] = std::move(f);
             return *this;
         }
-        Textfont& family(std::vector<std::string> f) {
-            json["family"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `family`.
-        Textfont& familysrc(std::string f) {
-            json["familysrc"] = std::move(f);
-            return *this;
-        }
 
         Textfont& size(double f) {
             json["size"] = std::move(f);
-            return *this;
-        }
-        Textfont& size(std::vector<double> f) {
-            json["size"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `size`.
-        Textfont& sizesrc(std::string f) {
-            json["sizesrc"] = std::move(f);
             return *this;
         }
 
@@ -3354,12 +2153,6 @@ class Scatter {
                 return *this;
             }
 
-            // Sets the marker size of unselected points, applied only when a selection exists.
-            Marker& size(double f) {
-                json["size"] = std::move(f);
-                return *this;
-            }
-
             // Advanced users may modify the JSON representation directly, at their own peril!
             nlohmann::json json{};
         };
@@ -3391,99 +2184,184 @@ class Scatter {
         nlohmann::json json{};
     };
 
+    class Xbins {
+     public:
+
+        // Sets the end value for the x axis bins. The last bin may not end exactly at this value, we increment the bin
+        // edge by `size` from `start` until we reach or exceed `end`. Defaults to the maximum data value. Like `start`,
+        // for dates use a date string, and for category data `end` is based on the category serial numbers.
+        template <typename T>
+        Xbins& end(T f) {
+            json["end"] = std::move(f);
+            return *this;
+        }
+
+        // Sets the size of each x axis bin. Default behavior: If `nbinsx` is 0 or omitted, we choose a nice round bin
+        // size such that the number of bins is about the same as the typical number of samples in each bin. If `nbinsx`
+        // is provided, we choose a nice round bin size giving no more than that many bins. For date data, use
+        // milliseconds or *M<n>* for months, as in `axis.dtick`. For category data, the number of categories to bin
+        // together (always defaults to 1). If multiple non-overlaying histograms share a subplot, the first explicit
+        // `size` is used and all others discarded. If no `size` is provided,the sample data from all traces is combined
+        // to determine `size` as described above.
+        template <typename T>
+        Xbins& size(T f) {
+            json["size"] = std::move(f);
+            return *this;
+        }
+
+        // Sets the starting value for the x axis bins. Defaults to the minimum data value, shifted down if necessary to
+        // make nice round values and to remove ambiguous bin edges. For example, if most of the data is integers we
+        // shift the bin edges 0.5 down, so a `size` of 5 would have a default `start` of -0.5, so it is clear that 0-4
+        // are in the first bin, 5-9 in the second, but continuous data gets a start of 0 and bins [0,5), [5,10) etc.
+        // Dates behave similarly, and `start` should be a date string. For category data, `start` is based on the
+        // category serial numbers, and defaults to -0.5. If multiple non-overlaying histograms share a subplot, the
+        // first explicit `start` is used exactly and all others are shifted down (if necessary) to differ from that one
+        // by an integer number of bins.
+        template <typename T>
+        Xbins& start(T f) {
+            json["start"] = std::move(f);
+            return *this;
+        }
+
+        // Advanced users may modify the JSON representation directly, at their own peril!
+        nlohmann::json json{};
+    };
+
+    class Ybins {
+     public:
+
+        // Sets the end value for the y axis bins. The last bin may not end exactly at this value, we increment the bin
+        // edge by `size` from `start` until we reach or exceed `end`. Defaults to the maximum data value. Like `start`,
+        // for dates use a date string, and for category data `end` is based on the category serial numbers.
+        template <typename T>
+        Ybins& end(T f) {
+            json["end"] = std::move(f);
+            return *this;
+        }
+
+        // Sets the size of each y axis bin. Default behavior: If `nbinsy` is 0 or omitted, we choose a nice round bin
+        // size such that the number of bins is about the same as the typical number of samples in each bin. If `nbinsy`
+        // is provided, we choose a nice round bin size giving no more than that many bins. For date data, use
+        // milliseconds or *M<n>* for months, as in `axis.dtick`. For category data, the number of categories to bin
+        // together (always defaults to 1). If multiple non-overlaying histograms share a subplot, the first explicit
+        // `size` is used and all others discarded. If no `size` is provided,the sample data from all traces is combined
+        // to determine `size` as described above.
+        template <typename T>
+        Ybins& size(T f) {
+            json["size"] = std::move(f);
+            return *this;
+        }
+
+        // Sets the starting value for the y axis bins. Defaults to the minimum data value, shifted down if necessary to
+        // make nice round values and to remove ambiguous bin edges. For example, if most of the data is integers we
+        // shift the bin edges 0.5 down, so a `size` of 5 would have a default `start` of -0.5, so it is clear that 0-4
+        // are in the first bin, 5-9 in the second, but continuous data gets a start of 0 and bins [0,5), [5,10) etc.
+        // Dates behave similarly, and `start` should be a date string. For category data, `start` is based on the
+        // category serial numbers, and defaults to -0.5. If multiple non-overlaying histograms share a subplot, the
+        // first explicit `start` is used exactly and all others are shifted down (if necessary) to differ from that one
+        // by an integer number of bins.
+        template <typename T>
+        Ybins& start(T f) {
+            json["start"] = std::move(f);
+            return *this;
+        }
+
+        // Advanced users may modify the JSON representation directly, at their own peril!
+        nlohmann::json json{};
+    };
+
     // Set several traces linked to the same position axis or matching axes to the same alignmentgroup. This controls
     // whether bars compute their positional range dependently or independently.
-    Scatter& alignmentgroup(std::string f) {
+    Histogram& alignmentgroup(std::string f) {
         json["alignmentgroup"] = std::move(f);
         return *this;
     }
 
-    // Determines whether or not markers and text nodes are clipped about the subplot axes. To show markers and text
-    // nodes above axis lines and tick labels, make sure to set `xaxis.layer` and `yaxis.layer` to *below traces*.
-    Scatter& cliponaxis(bool f) {
+    // Obsolete: since v1.42 each bin attribute is auto-determined separately and `autobinx` is not needed. However, we
+    // accept `autobinx: true` or `false` and will update `xbins` accordingly before deleting `autobinx` from the trace.
+    Histogram& autobinx(bool f) {
+        json["autobinx"] = std::move(f);
+        return *this;
+    }
+
+    // Obsolete: since v1.42 each bin attribute is auto-determined separately and `autobiny` is not needed. However, we
+    // accept `autobiny: true` or `false` and will update `ybins` accordingly before deleting `autobiny` from the trace.
+    Histogram& autobiny(bool f) {
+        json["autobiny"] = std::move(f);
+        return *this;
+    }
+
+    // Set a group of histogram traces which will have compatible bin settings. Note that traces on the same subplot and
+    // with the same *orientation* under `barmode` *stack*, *relative* and *group* are forced into the same bingroup,
+    // Using `bingroup`, traces under `barmode` *overlay* and on different axes (of the same axis type) can have
+    // compatible bin settings. Note that histogram and histogram2d* trace can share the same `bingroup`
+    Histogram& bingroup(std::string f) {
+        json["bingroup"] = std::move(f);
+        return *this;
+    }
+
+    // Determines whether the text nodes are clipped about the subplot axes. To show the text nodes above axis lines and
+    // tick labels, make sure to set `xaxis.layer` and `yaxis.layer` to *below traces*.
+    Histogram& cliponaxis(bool f) {
         json["cliponaxis"] = std::move(f);
         return *this;
     }
 
-    // Determines whether or not gaps (i.e. {nan} or missing values) in the provided data arrays are connected.
-    Scatter& connectgaps(bool f) {
-        json["connectgaps"] = std::move(f);
+    // Constrain the size of text inside or outside a bar to be no larger than the bar itself.
+    // - Default: both
+    Histogram& constraintext(enum Constraintext f) {
+        json["constraintext"] = to_string(f);
+        return *this;
+    }
+
+    Histogram& cumulative(class Cumulative f) {
+        json["cumulative"] = std::move(f.json);
         return *this;
     }
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-    Scatter& customdata(std::vector<T> f) {
+    Histogram& customdata(std::vector<T> f) {
         json["customdata"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `customdata`.
-    Scatter& customdatasrc(std::string f) {
+    Histogram& customdatasrc(std::string f) {
         json["customdatasrc"] = std::move(f);
         return *this;
     }
 
-    // Sets the x coordinate step. See `x0` for more info.
-    Scatter& dx(double f) {
-        json["dx"] = std::move(f);
-        return *this;
-    }
-
-    // Sets the y coordinate step. See `y0` for more info.
-    Scatter& dy(double f) {
-        json["dy"] = std::move(f);
-        return *this;
-    }
-
-    Scatter& error_x(class Error_x f) {
+    Histogram& error_x(class Error_x f) {
         json["error_x"] = std::move(f.json);
         return *this;
     }
 
-    Scatter& error_y(class Error_y f) {
+    Histogram& error_y(class Error_y f) {
         json["error_y"] = std::move(f.json);
         return *this;
     }
 
-    // Sets the area to fill with a solid color. Defaults to *none* unless this trace is stacked, then it gets *tonexty*
-    // (*tonextx*) if `orientation` is *v* (*h*) Use with `fillcolor` if not *none*. *tozerox* and *tozeroy* fill to x=0
-    // and y=0 respectively. *tonextx* and *tonexty* fill between the endpoints of this trace and the endpoints of the
-    // trace before it, connecting those endpoints with straight lines (to make a stacked area graph); if there is no
-    // trace before it, they behave like *tozerox* and *tozeroy*. *toself* connects the endpoints of the trace (or each
-    // segment of the trace if it has gaps) into a closed shape. *tonext* fills the space between two traces if one
-    // completely encloses the other (eg consecutive contour lines), and behaves like *toself* if there is no trace
-    // before it. *tonext* should not be used if one trace does not enclose the other. Traces in a `stackgroup` will
-    // only fill to (or be filled to) other traces in the same group. With multiple `stackgroup`s or some traces stacked
-    // and some not, if fill-linked traces are not already consecutive, the later ones will be pushed down in the
-    // drawing order.
-    Scatter& fill(enum Fill f) {
-        json["fill"] = to_string(f);
+    // Specifies the binning function used for this histogram trace. If *count*, the histogram values are computed by
+    // counting the number of values lying inside each bin. If *sum*, *avg*, *min*, *max*, the histogram values are
+    // computed using the sum, the average, the minimum or the maximum of the values lying inside each bin respectively.
+    // - Default: count
+    Histogram& histfunc(enum Histfunc f) {
+        json["histfunc"] = to_string(f);
         return *this;
     }
 
-    // Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line
-    // color, whichever is available.
-    Scatter& fillcolor(std::string f) {
-        json["fillcolor"] = std::move(f);
-        return *this;
-    }
-
-    // Sets the pattern within the marker.
-    Scatter& fillpattern(class Fillpattern f) {
-        json["fillpattern"] = std::move(f.json);
-        return *this;
-    }
-
-    // Only relevant when `stackgroup` is used, and only the first `groupnorm` found in the `stackgroup` will be used -
-    // including if `visible` is *legendonly* but not if it is `false`. Sets the normalization for the sum of this
-    // `stackgroup`. With *fraction*, the value of each trace at each location is divided by the sum of all trace values
-    // at that location. *percent* is the same but multiplied by 100 to show percentages. If there are multiple
-    // subplots, or multiple `stackgroup`s on one subplot, each will be normalized within its own set.
+    // Specifies the type of normalization used for this histogram trace. If **, the span of each bar corresponds to the
+    // number of occurrences (i.e. the number of data points lying inside the bins). If *percent* / *probability*, the
+    // span of each bar corresponds to the percentage / fraction of occurrences with respect to the total number of
+    // sample points (here, the sum of all bin HEIGHTS equals 100% / 1). If *density*, the span of each bar corresponds
+    // to the number of occurrences in a bin divided by the size of the bin interval (here, the sum of all bin AREAS
+    // equals the total number of sample points). If *probability density*, the area of each bar corresponds to the
+    // probability that an event will fall into the corresponding bin (here, the sum of all bin AREAS equals 1).
     // - Default:
-    Scatter& groupnorm(enum Groupnorm f) {
-        json["groupnorm"] = to_string(f);
+    Histogram& histnorm(enum Histnorm f) {
+        json["histnorm"] = to_string(f);
         return *this;
     }
 
@@ -3492,32 +2370,23 @@ class Scatter {
     // - Default: all
     // - Flags: ['x', 'y', 'z', 'text', 'name']
     // - Extras ['all', 'none', 'skip']
-    Scatter& hoverinfo(std::string f) {
+    Histogram& hoverinfo(std::string f) {
         json["hoverinfo"] = std::move(f);
         return *this;
     }
-    Scatter& hoverinfo(std::vector<std::string> f) {
+    Histogram& hoverinfo(std::vector<std::string> f) {
         json["hoverinfo"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
-    Scatter& hoverinfosrc(std::string f) {
+    Histogram& hoverinfosrc(std::string f) {
         json["hoverinfosrc"] = std::move(f);
         return *this;
     }
 
-    Scatter& hoverlabel(class Hoverlabel f) {
+    Histogram& hoverlabel(class Hoverlabel f) {
         json["hoverlabel"] = std::move(f.json);
-        return *this;
-    }
-
-    // Do the hover effects highlight individual points (markers or line points) or do they highlight filled regions? If
-    // the fill is *toself* or *tonext* and there are no markers or text, then the default is *fills*, otherwise it is
-    // *points*.
-    // - Flags: ['points', 'fills']
-    Scatter& hoveron(std::string f) {
-        json["hoveron"] = std::move(f);
         return *this;
     }
 
@@ -3531,38 +2400,36 @@ class Scatter {
     // %{2019-01-01|%A}". https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details on the date
     // formatting syntax. The variables available in `hovertemplate` are the ones emitted as event data described at
     // this link https://plotly.com/javascript/plotlyjs-events/#event-data. Additionally, every attributes that can be
-    // specified per-point (the ones that are `arrayOk: true`) are available.  Anything contained in tag `<extra>` is
-    // displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box
-    // completely, use an empty tag `<extra></extra>`.
-    Scatter& hovertemplate(std::string f) {
+    // specified per-point (the ones that are `arrayOk: true`) are available. Finally, the template string has access to
+    // variable `binNumber` Anything contained in tag `<extra>` is displayed in the secondary box, for example
+    // "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an empty tag `<extra></extra>`.
+    Histogram& hovertemplate(std::string f) {
         json["hovertemplate"] = std::move(f);
         return *this;
     }
-    Scatter& hovertemplate(std::vector<std::string> f) {
+    Histogram& hovertemplate(std::vector<std::string> f) {
         json["hovertemplate"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
-    Scatter& hovertemplatesrc(std::string f) {
+    Histogram& hovertemplatesrc(std::string f) {
         json["hovertemplatesrc"] = std::move(f);
         return *this;
     }
 
-    // Sets hover text elements associated with each (x,y) pair. If a single string, the same string appears over all
-    // the data points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. To
-    // be seen, trace `hoverinfo` must contain a *text* flag.
-    Scatter& hovertext(std::string f) {
+    // Same as `text`.
+    Histogram& hovertext(std::string f) {
         json["hovertext"] = std::move(f);
         return *this;
     }
-    Scatter& hovertext(std::vector<std::string> f) {
+    Histogram& hovertext(std::vector<std::string> f) {
         json["hovertext"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
-    Scatter& hovertextsrc(std::string f) {
+    Histogram& hovertextsrc(std::string f) {
         json["hovertextsrc"] = std::move(f);
         return *this;
     }
@@ -3570,32 +2437,45 @@ class Scatter {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-    Scatter& ids(std::vector<T> f) {
+    Histogram& ids(std::vector<T> f) {
         json["ids"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `ids`.
-    Scatter& idssrc(std::string f) {
+    Histogram& idssrc(std::string f) {
         json["idssrc"] = std::move(f);
+        return *this;
+    }
+
+    // Determines if texts are kept at center or start/end points in `textposition` *inside* mode.
+    // - Default: end
+    Histogram& insidetextanchor(enum Insidetextanchor f) {
+        json["insidetextanchor"] = to_string(f);
+        return *this;
+    }
+
+    // Sets the font used for `text` lying inside the bar.
+    Histogram& insidetextfont(class Insidetextfont f) {
+        json["insidetextfont"] = std::move(f.json);
         return *this;
     }
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
-    Scatter& legend(std::string f) {
+    Histogram& legend(std::string f) {
         json["legend"] = std::move(f);
         return *this;
     }
 
     // Sets the legend group for this trace. Traces and shapes part of the same legend group hide/show at the same time
     // when toggling legend items.
-    Scatter& legendgroup(std::string f) {
+    Histogram& legendgroup(std::string f) {
         json["legendgroup"] = std::move(f);
         return *this;
     }
 
-    Scatter& legendgrouptitle(class Legendgrouptitle f) {
+    Histogram& legendgrouptitle(class Legendgrouptitle f) {
         json["legendgrouptitle"] = std::move(f.json);
         return *this;
     }
@@ -3605,23 +2485,18 @@ class Scatter {
     // can use ranks less than 1000 to place certain items before all unranked items, and ranks greater than 1000 to go
     // after all unranked items. When having unranked or equal rank items shapes would be displayed after traces i.e.
     // according to their order in data and layout.
-    Scatter& legendrank(double f) {
+    Histogram& legendrank(double f) {
         json["legendrank"] = std::move(f);
         return *this;
     }
 
     // Sets the width (in px or fraction) of the legend for this trace.
-    Scatter& legendwidth(double f) {
+    Histogram& legendwidth(double f) {
         json["legendwidth"] = std::move(f);
         return *this;
     }
 
-    Scatter& line(class Line f) {
-        json["line"] = std::move(f.json);
-        return *this;
-    }
-
-    Scatter& marker(class Marker f) {
+    Histogram& marker(class Marker f) {
         json["marker"] = std::move(f.json);
         return *this;
     }
@@ -3633,61 +2508,71 @@ class Scatter {
     // `meta` in layout attributes, use `%{data[n[.meta[i]}` where `i` is the index or key of the `meta` and `n` is the
     // trace index.
     template <typename T>
-    Scatter& meta(T f) {
+    Histogram& meta(T f) {
         json["meta"] = std::move(f);
         return *this;
     }
     template <typename T>
-    Scatter& meta(std::vector<T> f) {
+    Histogram& meta(std::vector<T> f) {
         json["meta"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
-    Scatter& metasrc(std::string f) {
+    Histogram& metasrc(std::string f) {
         json["metasrc"] = std::move(f);
         return *this;
     }
 
-    // Determines the drawing mode for this scatter trace. If the provided `mode` includes *text* then the `text`
-    // elements appear at the coordinates. Otherwise, the `text` elements appear on hover. If there are less than 20
-    // points and the trace is not stacked then the default is *lines+markers*. Otherwise, *lines*.
-    // - Flags: ['lines', 'markers', 'text']
-    // - Extras ['none']
-    Scatter& mode(std::string f) {
-        json["mode"] = std::move(f);
+    // Sets the trace name. The trace name appears as the legend item and on hover.
+    Histogram& name(std::string f) {
+        json["name"] = std::move(f);
         return *this;
     }
 
-    // Sets the trace name. The trace name appears as the legend item and on hover.
-    Scatter& name(std::string f) {
-        json["name"] = std::move(f);
+    // Specifies the maximum number of desired bins. This value will be used in an algorithm that will decide the
+    // optimal bin size such that the histogram best visualizes the distribution of the data. Ignored if `xbins.size` is
+    // provided.
+    Histogram& nbinsx(int f) {
+        json["nbinsx"] = std::move(f);
+        return *this;
+    }
+
+    // Specifies the maximum number of desired bins. This value will be used in an algorithm that will decide the
+    // optimal bin size such that the histogram best visualizes the distribution of the data. Ignored if `ybins.size` is
+    // provided.
+    Histogram& nbinsy(int f) {
+        json["nbinsy"] = std::move(f);
         return *this;
     }
 
     // Set several traces linked to the same position axis or matching axes to the same offsetgroup where bars of the
     // same position coordinate will line up.
-    Scatter& offsetgroup(std::string f) {
+    Histogram& offsetgroup(std::string f) {
         json["offsetgroup"] = std::move(f);
         return *this;
     }
 
     // Sets the opacity of the trace.
-    Scatter& opacity(double f) {
+    Histogram& opacity(double f) {
         json["opacity"] = std::move(f);
         return *this;
     }
 
-    // Only relevant in the following cases: 1. when `scattermode` is set to *group*. 2. when `stackgroup` is used, and
-    // only the first `orientation` found in the `stackgroup` will be used - including if `visible` is *legendonly* but
-    // not if it is `false`. Sets the stacking direction. With *v* (*h*), the y (x) values of subsequent traces are
-    // added. Also affects the default value of `fill`.
-    Scatter& orientation(enum Orientation f) {
+    // Sets the orientation of the bars. With *v* (*h*), the value of the each bar spans along the vertical
+    // (horizontal).
+    Histogram& orientation(enum Orientation f) {
         json["orientation"] = to_string(f);
         return *this;
     }
 
-    Scatter& selected(class Selected f) {
+    // Sets the font used for `text` lying outside the bar.
+    Histogram& outsidetextfont(class Outsidetextfont f) {
+        json["outsidetextfont"] = std::move(f.json);
+        return *this;
+    }
+
+    Histogram& selected(class Selected f) {
         json["selected"] = std::move(f.json);
         return *this;
     }
@@ -3696,84 +2581,58 @@ class Scatter {
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
     // other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
     template <typename T>
-    Scatter& selectedpoints(T f) {
+    Histogram& selectedpoints(T f) {
         json["selectedpoints"] = std::move(f);
         return *this;
     }
 
     // Determines whether or not an item corresponding to this trace is shown in the legend.
-    Scatter& showlegend(bool f) {
+    Histogram& showlegend(bool f) {
         json["showlegend"] = std::move(f);
         return *this;
     }
 
-    // Only relevant when `stackgroup` is used, and only the first `stackgaps` found in the `stackgroup` will be used -
-    // including if `visible` is *legendonly* but not if it is `false`. Determines how we handle locations at which
-    // other traces in this group have data but this one does not. With *infer zero* we insert a zero at these
-    // locations. With *interpolate* we linearly interpolate between existing values, and extrapolate a constant beyond
-    // the existing values.
-    // - Default: infer zero
-    Scatter& stackgaps(enum Stackgaps f) {
-        json["stackgaps"] = to_string(f);
-        return *this;
-    }
-
-    // Set several scatter traces (on the same subplot) to the same stackgroup in order to add their y values (or their
-    // x values if `orientation` is *h*). If blank or omitted this trace will not be stacked. Stacking also turns `fill`
-    // on by default, using *tonexty* (*tonextx*) if `orientation` is *h* (*v*) and sets the default `mode` to *lines*
-    // irrespective of point count. You can only stack on a numeric (linear or log) axis. Traces in a `stackgroup` will
-    // only fill to (or be filled to) other traces in the same group. With multiple `stackgroup`s or some traces stacked
-    // and some not, if fill-linked traces are not already consecutive, the later ones will be pushed down in the
-    // drawing order.
-    Scatter& stackgroup(std::string f) {
-        json["stackgroup"] = std::move(f);
-        return *this;
-    }
-
-    Scatter& stream(class Stream f) {
+    Histogram& stream(class Stream f) {
         json["stream"] = std::move(f.json);
         return *this;
     }
 
-    // Sets text elements associated with each (x,y) pair. If a single string, the same string appears over all the data
-    // points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. If trace
-    // `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
-    Scatter& text(std::string f) {
+    // Sets hover text elements associated with each bar. If a single string, the same string appears over all bars. If
+    // an array of string, the items are mapped in order to the this trace's coordinates.
+    Histogram& text(std::string f) {
         json["text"] = std::move(f);
         return *this;
     }
-    Scatter& text(std::vector<std::string> f) {
+    Histogram& text(std::vector<std::string> f) {
         json["text"] = std::move(f);
+        return *this;
+    }
+
+    // Sets the angle of the tick labels with respect to the bar. For example, a `tickangle` of -90 draws the tick
+    // labels vertically. With *auto* the texts may automatically be rotated to fit with the maximum size in bars.
+    Histogram& textangle(double f) {
+        json["textangle"] = std::move(f);
         return *this;
     }
 
     // Sets the text font.
-    Scatter& textfont(class Textfont f) {
+    Histogram& textfont(class Textfont f) {
         json["textfont"] = std::move(f.json);
         return *this;
     }
 
-    // Sets the positions of the `text` elements with respects to the (x,y) coordinates.
-    // - Default: middle center
-    Scatter& textposition(enum Textposition f) {
+    // Specifies the location of the `text`. *inside* positions `text` inside, next to the bar end (rotated and scaled
+    // if needed). *outside* positions `text` outside, next to the bar end (scaled if needed), unless there is another
+    // bar stacked on this one, then the text gets pushed inside. *auto* tries to position `text` inside the bar, but if
+    // the bar is too small and no bar is stacked on this one the text is moved outside. If *none*, no text appears.
+    // - Default: auto
+    Histogram& textposition(enum Textposition f) {
         json["textposition"] = to_string(f);
-        return *this;
-    }
-    Scatter& textposition(const std::vector<enum Textposition>& f) {
-        std::vector<std::string> stringified(f.size());
-        std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-        json["textposition"] = std::move(stringified);
-        return *this;
-    }
-
-    // Sets the source reference on Chart Studio Cloud for `textposition`.
-    Scatter& textpositionsrc(std::string f) {
-        json["textpositionsrc"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `text`.
-    Scatter& textsrc(std::string f) {
+    Histogram& textsrc(std::string f) {
         json["textsrc"] = std::move(f);
         return *this;
     }
@@ -3784,30 +2643,21 @@ class Scatter {
     // https://github.com/d3/d3-format/tree/v1.4.5#d3-format for details on the formatting syntax. Dates are formatted
     // using d3-time-format's syntax %{variable|d3-time-format}, for example "Day: %{2019-01-01|%A}".
     // https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details on the date formatting syntax. Every
-    // attributes that can be specified per-point (the ones that are `arrayOk: true`) are available.
-    Scatter& texttemplate(std::string f) {
-        json["texttemplate"] = std::move(f);
-        return *this;
-    }
-    Scatter& texttemplate(std::vector<std::string> f) {
+    // attributes that can be specified per-point (the ones that are `arrayOk: true`) are available. Finally, the
+    // template string has access to variables `label` and `value`.
+    Histogram& texttemplate(std::string f) {
         json["texttemplate"] = std::move(f);
         return *this;
     }
 
-    // Sets the source reference on Chart Studio Cloud for `texttemplate`.
-    Scatter& texttemplatesrc(std::string f) {
-        json["texttemplatesrc"] = std::move(f);
-        return *this;
-    }
-
-    Scatter& transforms(class Transforms f) {
+    Histogram& transforms(class Transforms f) {
         json["transforms"] = std::move(f.json);
         return *this;
     }
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
-    Scatter& uid(std::string f) {
+    Histogram& uid(std::string f) {
         json["uid"] = std::move(f);
         return *this;
     }
@@ -3821,12 +2671,12 @@ class Scatter {
     // add/remove traces before the end of the `data` array, such that the same trace has a different index, you can
     // still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
     template <typename T>
-    Scatter& uirevision(T f) {
+    Histogram& uirevision(T f) {
         json["uirevision"] = std::move(f);
         return *this;
     }
 
-    Scatter& unselected(class Unselected f) {
+    Histogram& unselected(class Unselected f) {
         json["unselected"] = std::move(f.json);
         return *this;
     }
@@ -3834,36 +2684,33 @@ class Scatter {
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
     // - Default: True
-    Scatter& visible(enum Visible f) {
+    Histogram& visible(enum Visible f) {
         json["visible"] = to_string(f);
         return *this;
     }
 
-    // Sets the x coordinates.
+    // Sets the sample data to be binned on the x axis.
     template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-    Scatter& x(std::vector<T> f) {
+    Histogram& x(std::vector<T> f) {
         json["x"] = std::move(f);
-        return *this;
-    }
-
-    // Alternate to `x`. Builds a linear space of x coordinates. Use with `dx` where `x0` is the starting coordinate and
-    // `dx` the step.
-    template <typename T>
-    Scatter& x0(T f) {
-        json["x0"] = std::move(f);
         return *this;
     }
 
     // Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x
     // coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
-    Scatter& xaxis(std::string f) {
+    Histogram& xaxis(std::string f) {
         json["xaxis"] = std::move(f);
+        return *this;
+    }
+
+    Histogram& xbins(class Xbins f) {
+        json["xbins"] = std::move(f.json);
         return *this;
     }
 
     // Sets the calendar system to use with `x` date data.
     // - Default: gregorian
-    Scatter& xcalendar(enum Xcalendar f) {
+    Histogram& xcalendar(enum Xcalendar f) {
         json["xcalendar"] = to_string(f);
         return *this;
     }
@@ -3874,67 +2721,39 @@ class Scatter {
     // half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example,
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `xaxis.hoverformat`.
-    Scatter& xhoverformat(std::string f) {
+    Histogram& xhoverformat(std::string f) {
         json["xhoverformat"] = std::move(f);
         return *this;
     }
 
-    // Only relevant when the axis `type` is *date*. Sets the period positioning in milliseconds or *M<n>* on the x
-    // axis. Special values in the form of *M<n>* could be used to declare the number of months. In this case `n` must
-    // be a positive integer.
-    template <typename T>
-    Scatter& xperiod(T f) {
-        json["xperiod"] = std::move(f);
-        return *this;
-    }
-
-    // Only relevant when the axis `type` is *date*. Sets the base for period positioning in milliseconds or date string
-    // on the x0 axis. When `x0period` is round number of weeks, the `x0period0` by default would be on a Sunday i.e.
-    // 2000-01-02, otherwise it would be at 2000-01-01.
-    template <typename T>
-    Scatter& xperiod0(T f) {
-        json["xperiod0"] = std::move(f);
-        return *this;
-    }
-
-    // Only relevant when the axis `type` is *date*. Sets the alignment of data points on the x axis.
-    // - Default: middle
-    Scatter& xperiodalignment(enum Xperiodalignment f) {
-        json["xperiodalignment"] = to_string(f);
-        return *this;
-    }
-
     // Sets the source reference on Chart Studio Cloud for `x`.
-    Scatter& xsrc(std::string f) {
+    Histogram& xsrc(std::string f) {
         json["xsrc"] = std::move(f);
         return *this;
     }
 
-    // Sets the y coordinates.
+    // Sets the sample data to be binned on the y axis.
     template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-    Scatter& y(std::vector<T> f) {
+    Histogram& y(std::vector<T> f) {
         json["y"] = std::move(f);
-        return *this;
-    }
-
-    // Alternate to `y`. Builds a linear space of y coordinates. Use with `dy` where `y0` is the starting coordinate and
-    // `dy` the step.
-    template <typename T>
-    Scatter& y0(T f) {
-        json["y0"] = std::move(f);
         return *this;
     }
 
     // Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y
     // coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
-    Scatter& yaxis(std::string f) {
+    Histogram& yaxis(std::string f) {
         json["yaxis"] = std::move(f);
+        return *this;
+    }
+
+    Histogram& ybins(class Ybins f) {
+        json["ybins"] = std::move(f.json);
         return *this;
     }
 
     // Sets the calendar system to use with `y` date data.
     // - Default: gregorian
-    Scatter& ycalendar(enum Ycalendar f) {
+    Histogram& ycalendar(enum Ycalendar f) {
         json["ycalendar"] = to_string(f);
         return *this;
     }
@@ -3945,38 +2764,13 @@ class Scatter {
     // half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example,
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `yaxis.hoverformat`.
-    Scatter& yhoverformat(std::string f) {
+    Histogram& yhoverformat(std::string f) {
         json["yhoverformat"] = std::move(f);
         return *this;
     }
 
-    // Only relevant when the axis `type` is *date*. Sets the period positioning in milliseconds or *M<n>* on the y
-    // axis. Special values in the form of *M<n>* could be used to declare the number of months. In this case `n` must
-    // be a positive integer.
-    template <typename T>
-    Scatter& yperiod(T f) {
-        json["yperiod"] = std::move(f);
-        return *this;
-    }
-
-    // Only relevant when the axis `type` is *date*. Sets the base for period positioning in milliseconds or date string
-    // on the y0 axis. When `y0period` is round number of weeks, the `y0period0` by default would be on a Sunday i.e.
-    // 2000-01-02, otherwise it would be at 2000-01-01.
-    template <typename T>
-    Scatter& yperiod0(T f) {
-        json["yperiod0"] = std::move(f);
-        return *this;
-    }
-
-    // Only relevant when the axis `type` is *date*. Sets the alignment of data points on the y axis.
-    // - Default: middle
-    Scatter& yperiodalignment(enum Yperiodalignment f) {
-        json["yperiodalignment"] = to_string(f);
-        return *this;
-    }
-
     // Sets the source reference on Chart Studio Cloud for `y`.
-    Scatter& ysrc(std::string f) {
+    Histogram& ysrc(std::string f) {
         json["ysrc"] = std::move(f);
         return *this;
     }
