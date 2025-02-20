@@ -1,15 +1,23 @@
 // TODO: includes, copyright, etc
+#pragma once
+
 #include <string>
 #include <type_traits>
 #include <vector>
+
+#include <trace.hpp>
+#include <traits.hpp>
 
 #include <nlohmann/json.hpp>
 
 namespace plotlypp {
 
-class Image {
+class Image : public Trace {
  public:
-    Image() { json["type"] = "image"; }
+    Image()
+    : Trace() {
+        json["type"] = "image";
+    }
 
     enum class Colormodel {
         RGB,
@@ -301,7 +309,7 @@ class Image {
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Image& customdata(std::vector<T> f) {
         json["customdata"] = std::move(f);
         return *this;
@@ -380,7 +388,7 @@ class Image {
     }
 
     // Same as `text`.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Image& hovertext(std::vector<T> f) {
         json["hovertext"] = std::move(f);
         return *this;
@@ -394,7 +402,7 @@ class Image {
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Image& ids(std::vector<T> f) {
         json["ids"] = std::move(f);
         return *this;
@@ -482,7 +490,7 @@ class Image {
     }
 
     // Sets the text elements associated with each z value.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Image& text(std::vector<T> f) {
         json["text"] = std::move(f);
         return *this;
@@ -556,7 +564,7 @@ class Image {
     }
 
     // A 2-dimensional array in which each element is an array of 3 or 4 numbers representing a color.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Image& z(std::vector<T> f) {
         json["z"] = std::move(f);
         return *this;
@@ -593,8 +601,5 @@ class Image {
         json["zsrc"] = std::move(f);
         return *this;
     }
-
-    // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
 };
 } // namespace plotlypp

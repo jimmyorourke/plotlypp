@@ -1,15 +1,23 @@
 // TODO: includes, copyright, etc
+#pragma once
+
 #include <string>
 #include <type_traits>
 #include <vector>
+
+#include <trace.hpp>
+#include <traits.hpp>
 
 #include <nlohmann/json.hpp>
 
 namespace plotlypp {
 
-class Pie {
+class Pie : public Trace {
  public:
-    Pie() { json["type"] = "pie"; }
+    Pie()
+    : Trace() {
+        json["type"] = "pie";
+    }
 
     enum class Direction {
         CLOCKWISE,
@@ -577,7 +585,7 @@ class Pie {
 
         // Sets the color of each sector. If not specified, the default trace color set is used to pick the sector
         // colors.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Marker& colors(std::vector<T> f) {
             json["colors"] = std::move(f);
             return *this;
@@ -894,7 +902,7 @@ class Pie {
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Pie& customdata(std::vector<T> f) {
         json["customdata"] = std::move(f);
         return *this;
@@ -1004,7 +1012,7 @@ class Pie {
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Pie& ids(std::vector<T> f) {
         json["ids"] = std::move(f);
         return *this;
@@ -1043,7 +1051,7 @@ class Pie {
     // Sets the sector labels. If `labels` entries are duplicated, we sum associated `values` or simply count
     // occurrences if `values` is not provided. For other array attributes (including color) we use the first non-empty
     // entry among all occurrences of the label.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Pie& labels(std::vector<T> f) {
         json["labels"] = std::move(f);
         return *this;
@@ -1186,7 +1194,7 @@ class Pie {
     // Sets text elements associated with each sector. If trace `textinfo` contains a *text* flag, these elements will
     // be seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will
     // be seen in the hover labels.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Pie& text(std::vector<T> f) {
         json["text"] = std::move(f);
         return *this;
@@ -1286,7 +1294,7 @@ class Pie {
     }
 
     // Sets the values of the sectors. If omitted, we count occurrences of each label.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Pie& values(std::vector<T> f) {
         json["values"] = std::move(f);
         return *this;
@@ -1305,8 +1313,5 @@ class Pie {
         json["visible"] = to_string(f);
         return *this;
     }
-
-    // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
 };
 } // namespace plotlypp

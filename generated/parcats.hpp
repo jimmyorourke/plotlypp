@@ -1,15 +1,23 @@
 // TODO: includes, copyright, etc
+#pragma once
+
 #include <string>
 #include <type_traits>
 #include <vector>
+
+#include <trace.hpp>
+#include <traits.hpp>
 
 #include <nlohmann/json.hpp>
 
 namespace plotlypp {
 
-class Parcats {
+class Parcats : public Trace {
  public:
-    Parcats() { json["type"] = "parcats"; }
+    Parcats()
+    : Trace() {
+        json["type"] = "parcats";
+    }
 
     enum class Arrangement {
         PERPENDICULAR,
@@ -100,7 +108,7 @@ class Parcats {
 
             // Sets the order in which categories in this dimension appear. Only has an effect if `categoryorder` is set
             // to *array*. Used with `categoryorder`.
-            template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+            template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
             Dimension& categoryarray(std::vector<T> f) {
                 json["categoryarray"] = std::move(f);
                 return *this;
@@ -138,7 +146,7 @@ class Parcats {
 
             // Sets alternative tick labels for the categories in this dimension. Only has an effect if `categoryorder`
             // is set to *array*. Should be an array the same length as `categoryarray` Used with `categoryorder`.
-            template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+            template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
             Dimension& ticktext(std::vector<T> f) {
                 json["ticktext"] = std::move(f);
                 return *this;
@@ -152,7 +160,7 @@ class Parcats {
 
             // Dimension values. `values[n]` represents the category value of the `n`th point in the dataset, therefore
             // the `values` vector for all dimensions must be the same (longer vectors will be truncated).
-            template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+            template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
             Dimension& values(std::vector<T> f) {
                 json["values"] = std::move(f);
                 return *this;
@@ -999,7 +1007,7 @@ class Parcats {
 
             // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to
             // *array*. Used with `tickvals`.
-            template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+            template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
             Colorbar& ticktext(std::vector<T> f) {
                 json["ticktext"] = std::move(f);
                 return *this;
@@ -1013,7 +1021,7 @@ class Parcats {
 
             // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*.
             // Used with `ticktext`.
-            template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+            template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
             Colorbar& tickvals(std::vector<T> f) {
                 json["tickvals"] = std::move(f);
                 return *this;
@@ -1487,8 +1495,5 @@ class Parcats {
         json["visible"] = to_string(f);
         return *this;
     }
-
-    // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
 };
 } // namespace plotlypp

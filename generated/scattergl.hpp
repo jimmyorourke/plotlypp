@@ -1,15 +1,23 @@
 // TODO: includes, copyright, etc
+#pragma once
+
 #include <string>
 #include <type_traits>
 #include <vector>
+
+#include <trace.hpp>
+#include <traits.hpp>
 
 #include <nlohmann/json.hpp>
 
 namespace plotlypp {
 
-class Scattergl {
+class Scattergl : public Trace {
  public:
-    Scattergl() { json["type"] = "scattergl"; }
+    Scattergl()
+    : Trace() {
+        json["type"] = "scattergl";
+    }
 
     enum class Fill {
         NONE,
@@ -254,7 +262,7 @@ class Scattergl {
         }
 
         // Sets the data corresponding the length of each error bar. Values are plotted relative to the underlying data.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Error_x& array(std::vector<T> f) {
             json["array"] = std::move(f);
             return *this;
@@ -262,7 +270,7 @@ class Scattergl {
 
         // Sets the data corresponding the length of each error bar in the bottom (left) direction for vertical
         // (horizontal) bars Values are plotted relative to the underlying data.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Error_x& arrayminus(std::vector<T> f) {
             json["arrayminus"] = std::move(f);
             return *this;
@@ -377,7 +385,7 @@ class Scattergl {
         }
 
         // Sets the data corresponding the length of each error bar. Values are plotted relative to the underlying data.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Error_y& array(std::vector<T> f) {
             json["array"] = std::move(f);
             return *this;
@@ -385,7 +393,7 @@ class Scattergl {
 
         // Sets the data corresponding the length of each error bar in the bottom (left) direction for vertical
         // (horizontal) bars Values are plotted relative to the underlying data.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Error_y& arrayminus(std::vector<T> f) {
             json["arrayminus"] = std::move(f);
             return *this;
@@ -2445,7 +2453,7 @@ class Scattergl {
 
             // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to
             // *array*. Used with `tickvals`.
-            template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+            template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
             Colorbar& ticktext(std::vector<T> f) {
                 json["ticktext"] = std::move(f);
                 return *this;
@@ -2459,7 +2467,7 @@ class Scattergl {
 
             // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*.
             // Used with `ticktext`.
-            template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+            template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
             Colorbar& tickvals(std::vector<T> f) {
                 json["tickvals"] = std::move(f);
                 return *this;
@@ -3080,7 +3088,7 @@ class Scattergl {
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Scattergl& customdata(std::vector<T> f) {
         json["customdata"] = std::move(f);
         return *this;
@@ -3211,7 +3219,7 @@ class Scattergl {
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Scattergl& ids(std::vector<T> f) {
         json["ids"] = std::move(f);
         return *this;
@@ -3441,7 +3449,7 @@ class Scattergl {
     }
 
     // Sets the x coordinates.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Scattergl& x(std::vector<T> f) {
         json["x"] = std::move(f);
         return *this;
@@ -3512,7 +3520,7 @@ class Scattergl {
     }
 
     // Sets the y coordinates.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Scattergl& y(std::vector<T> f) {
         json["y"] = std::move(f);
         return *this;
@@ -3581,8 +3589,5 @@ class Scattergl {
         json["ysrc"] = std::move(f);
         return *this;
     }
-
-    // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
 };
 } // namespace plotlypp

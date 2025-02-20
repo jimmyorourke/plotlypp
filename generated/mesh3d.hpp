@@ -1,15 +1,23 @@
 // TODO: includes, copyright, etc
+#pragma once
+
 #include <string>
 #include <type_traits>
 #include <vector>
+
+#include <trace.hpp>
+#include <traits.hpp>
 
 #include <nlohmann/json.hpp>
 
 namespace plotlypp {
 
-class Mesh3d {
+class Mesh3d : public Trace {
  public:
-    Mesh3d() { json["type"] = "mesh3d"; }
+    Mesh3d()
+    : Trace() {
+        json["type"] = "mesh3d";
+    }
 
     enum class Delaunayaxis {
         X,
@@ -908,7 +916,7 @@ class Mesh3d {
 
         // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to
         // *array*. Used with `tickvals`.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Colorbar& ticktext(std::vector<T> f) {
             json["ticktext"] = std::move(f);
             return *this;
@@ -922,7 +930,7 @@ class Mesh3d {
 
         // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used
         // with `ticktext`.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Colorbar& tickvals(std::vector<T> f) {
             json["tickvals"] = std::move(f);
             return *this;
@@ -1428,7 +1436,7 @@ class Mesh3d {
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3d& customdata(std::vector<T> f) {
         json["customdata"] = std::move(f);
         return *this;
@@ -1449,7 +1457,7 @@ class Mesh3d {
     }
 
     // Sets the color of each face Overrides *color* and *vertexcolor*.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3d& facecolor(std::vector<T> f) {
         json["facecolor"] = std::move(f);
         return *this;
@@ -1541,7 +1549,7 @@ class Mesh3d {
     // *first* vertex of a triangle. For example, `{i[m], j[m], k[m]}` together represent face m (triangle m) in the
     // mesh, where `i[m] = n` points to the triplet `{x[n], y[n], z[n]}` in the vertex arrays. Therefore, each element
     // in `i` represents a point in space, which is the first vertex of a triangle.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3d& i(std::vector<T> f) {
         json["i"] = std::move(f);
         return *this;
@@ -1549,7 +1557,7 @@ class Mesh3d {
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3d& ids(std::vector<T> f) {
         json["ids"] = std::move(f);
         return *this;
@@ -1563,7 +1571,7 @@ class Mesh3d {
 
     // Sets the intensity values for vertices or cells as defined by `intensitymode`. It can be used for plotting fields
     // on meshes.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3d& intensity(std::vector<T> f) {
         json["intensity"] = std::move(f);
         return *this;
@@ -1592,7 +1600,7 @@ class Mesh3d {
     // *second* vertex of a triangle. For example, `{i[m], j[m], k[m]}`  together represent face m (triangle m) in the
     // mesh, where `j[m] = n` points to the triplet `{x[n], y[n], z[n]}` in the vertex arrays. Therefore, each element
     // in `j` represents a point in space, which is the second vertex of a triangle.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3d& j(std::vector<T> f) {
         json["j"] = std::move(f);
         return *this;
@@ -1608,7 +1616,7 @@ class Mesh3d {
     // *third* vertex of a triangle. For example, `{i[m], j[m], k[m]}` together represent face m (triangle m) in the
     // mesh, where `k[m] = n` points to the triplet  `{x[n], y[n], z[n]}` in the vertex arrays. Therefore, each element
     // in `k` represents a point in space, which is the third vertex of a triangle.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3d& k(std::vector<T> f) {
         json["k"] = std::move(f);
         return *this;
@@ -1776,7 +1784,7 @@ class Mesh3d {
     // Sets the color of each vertex Overrides *color*. While Red, green and blue colors are in the range of 0 and 255;
     // in the case of having vertex color data in RGBA format, the alpha color should be normalized to be between 0
     // and 1.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3d& vertexcolor(std::vector<T> f) {
         json["vertexcolor"] = std::move(f);
         return *this;
@@ -1798,7 +1806,7 @@ class Mesh3d {
 
     // Sets the X coordinates of the vertices. The nth element of vectors `x`, `y` and `z` jointly represent the X, Y
     // and Z coordinates of the nth vertex.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3d& x(std::vector<T> f) {
         json["x"] = std::move(f);
         return *this;
@@ -1830,7 +1838,7 @@ class Mesh3d {
 
     // Sets the Y coordinates of the vertices. The nth element of vectors `x`, `y` and `z` jointly represent the X, Y
     // and Z coordinates of the nth vertex.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3d& y(std::vector<T> f) {
         json["y"] = std::move(f);
         return *this;
@@ -1862,7 +1870,7 @@ class Mesh3d {
 
     // Sets the Z coordinates of the vertices. The nth element of vectors `x`, `y` and `z` jointly represent the X, Y
     // and Z coordinates of the nth vertex.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3d& z(std::vector<T> f) {
         json["z"] = std::move(f);
         return *this;
@@ -1891,8 +1899,5 @@ class Mesh3d {
         json["zsrc"] = std::move(f);
         return *this;
     }
-
-    // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
 };
 } // namespace plotlypp

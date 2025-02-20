@@ -1,15 +1,23 @@
 // TODO: includes, copyright, etc
+#pragma once
+
 #include <string>
 #include <type_traits>
 #include <vector>
+
+#include <trace.hpp>
+#include <traits.hpp>
 
 #include <nlohmann/json.hpp>
 
 namespace plotlypp {
 
-class Pointcloud {
+class Pointcloud : public Trace {
  public:
-    Pointcloud() { json["type"] = "pointcloud"; }
+    Pointcloud()
+    : Trace() {
+        json["type"] = "pointcloud";
+    }
 
     enum class Visible {
         TRUE,
@@ -327,7 +335,7 @@ class Pointcloud {
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Pointcloud& customdata(std::vector<T> f) {
         json["customdata"] = std::move(f);
         return *this;
@@ -366,7 +374,7 @@ class Pointcloud {
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Pointcloud& ids(std::vector<T> f) {
         json["ids"] = std::move(f);
         return *this;
@@ -382,7 +390,7 @@ class Pointcloud {
     // typed `Int32Array` array. Its length must be equal to or greater than the number of points. For the best
     // performance and memory use, create one large `indices` typed array that is guaranteed to be at least as long as
     // the largest number of points during use, and reuse it on each `Plotly.restyle()` call.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Pointcloud& indices(std::vector<T> f) {
         json["indices"] = std::move(f);
         return *this;
@@ -528,7 +536,7 @@ class Pointcloud {
     }
 
     // Sets the x coordinates.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Pointcloud& x(std::vector<T> f) {
         json["x"] = std::move(f);
         return *this;
@@ -543,7 +551,7 @@ class Pointcloud {
 
     // Specify `xbounds` in the shape of `[xMin, xMax] to avoid looping through the `xy` typed array. Use it in
     // conjunction with `xy` and `ybounds` for the performance benefits.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Pointcloud& xbounds(std::vector<T> f) {
         json["xbounds"] = std::move(f);
         return *this;
@@ -563,7 +571,7 @@ class Pointcloud {
 
     // Faster alternative to specifying `x` and `y` separately. If supplied, it must be a typed `Float32Array` array
     // that represents points such that `xy[i * 2] = x[i]` and `xy[i * 2 + 1] = y[i]`
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Pointcloud& xy(std::vector<T> f) {
         json["xy"] = std::move(f);
         return *this;
@@ -576,7 +584,7 @@ class Pointcloud {
     }
 
     // Sets the y coordinates.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Pointcloud& y(std::vector<T> f) {
         json["y"] = std::move(f);
         return *this;
@@ -591,7 +599,7 @@ class Pointcloud {
 
     // Specify `ybounds` in the shape of `[yMin, yMax] to avoid looping through the `xy` typed array. Use it in
     // conjunction with `xy` and `xbounds` for the performance benefits.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Pointcloud& ybounds(std::vector<T> f) {
         json["ybounds"] = std::move(f);
         return *this;
@@ -608,8 +616,5 @@ class Pointcloud {
         json["ysrc"] = std::move(f);
         return *this;
     }
-
-    // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
 };
 } // namespace plotlypp

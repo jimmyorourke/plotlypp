@@ -1,15 +1,23 @@
 // TODO: includes, copyright, etc
+#pragma once
+
 #include <string>
 #include <type_traits>
 #include <vector>
+
+#include <trace.hpp>
+#include <traits.hpp>
 
 #include <nlohmann/json.hpp>
 
 namespace plotlypp {
 
-class Table {
+class Table : public Trace {
  public:
-    Table() { json["type"] = "table"; }
+    Table()
+    : Trace() {
+        json["type"] = "table";
+    }
 
     enum class Visible {
         TRUE,
@@ -199,7 +207,7 @@ class Table {
 
         // Sets the cell value formatting rule using d3 formatting mini-languages which are very similar to those in
         // Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Cells& format(std::vector<T> f) {
             json["format"] = std::move(f);
             return *this;
@@ -257,7 +265,7 @@ class Table {
         // Cell values. `values[m][n]` represents the value of the `n`th point in column `m`, therefore the `values[m]`
         // vector length for all columns must be the same (longer vectors will be truncated). Each value must be a
         // finite number or a string.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Cells& values(std::vector<T> f) {
             json["values"] = std::move(f);
             return *this;
@@ -476,7 +484,7 @@ class Table {
 
         // Sets the cell value formatting rule using d3 formatting mini-languages which are very similar to those in
         // Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Header& format(std::vector<T> f) {
             json["format"] = std::move(f);
             return *this;
@@ -534,7 +542,7 @@ class Table {
         // Header cell values. `values[m][n]` represents the value of the `n`th point in column `m`, therefore the
         // `values[m]` vector length for all columns must be the same (longer vectors will be truncated). Each value
         // must be a finite number or a string.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Header& values(std::vector<T> f) {
             json["values"] = std::move(f);
             return *this;
@@ -787,7 +795,7 @@ class Table {
 
     // Specifies the rendered order of the data columns; for example, a value `2` at position `0` means that column
     // index `0` in the data will be rendered as the third column, as columns have an index base of zero.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Table& columnorder(std::vector<T> f) {
         json["columnorder"] = std::move(f);
         return *this;
@@ -818,7 +826,7 @@ class Table {
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Table& customdata(std::vector<T> f) {
         json["customdata"] = std::move(f);
         return *this;
@@ -867,7 +875,7 @@ class Table {
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Table& ids(std::vector<T> f) {
         json["ids"] = std::move(f);
         return *this;
@@ -969,8 +977,5 @@ class Table {
         json["visible"] = to_string(f);
         return *this;
     }
-
-    // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
 };
 } // namespace plotlypp

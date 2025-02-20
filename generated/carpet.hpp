@@ -1,15 +1,23 @@
 // TODO: includes, copyright, etc
+#pragma once
+
 #include <string>
 #include <type_traits>
 #include <vector>
+
+#include <trace.hpp>
+#include <traits.hpp>
 
 #include <nlohmann/json.hpp>
 
 namespace plotlypp {
 
-class Carpet {
+class Carpet : public Trace {
  public:
-    Carpet() { json["type"] = "carpet"; }
+    Carpet()
+    : Trace() {
+        json["type"] = "carpet";
+    }
 
     enum class Visible {
         TRUE,
@@ -415,7 +423,7 @@ class Carpet {
 
         // Sets the order in which categories on this axis appear. Only has an effect if `categoryorder` is set to
         // *array*. Used with `categoryorder`.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Aaxis& categoryarray(std::vector<T> f) {
             json["categoryarray"] = std::move(f);
             return *this;
@@ -737,7 +745,7 @@ class Carpet {
 
         // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to
         // *array*. Used with `tickvals`.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Aaxis& ticktext(std::vector<T> f) {
             json["ticktext"] = std::move(f);
             return *this;
@@ -751,7 +759,7 @@ class Carpet {
 
         // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used
         // with `ticktext`.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Aaxis& tickvals(std::vector<T> f) {
             json["tickvals"] = std::move(f);
             return *this;
@@ -1168,7 +1176,7 @@ class Carpet {
 
         // Sets the order in which categories on this axis appear. Only has an effect if `categoryorder` is set to
         // *array*. Used with `categoryorder`.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Baxis& categoryarray(std::vector<T> f) {
             json["categoryarray"] = std::move(f);
             return *this;
@@ -1490,7 +1498,7 @@ class Carpet {
 
         // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to
         // *array*. Used with `tickvals`.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Baxis& ticktext(std::vector<T> f) {
             json["ticktext"] = std::move(f);
             return *this;
@@ -1504,7 +1512,7 @@ class Carpet {
 
         // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used
         // with `ticktext`.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Baxis& tickvals(std::vector<T> f) {
             json["tickvals"] = std::move(f);
             return *this;
@@ -1634,7 +1642,7 @@ class Carpet {
     };
 
     // An array containing values of the first parameter value
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Carpet& a(std::vector<T> f) {
         json["a"] = std::move(f);
         return *this;
@@ -1659,7 +1667,7 @@ class Carpet {
     }
 
     // A two dimensional array of y coordinates at each carpet point.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Carpet& b(std::vector<T> f) {
         json["b"] = std::move(f);
         return *this;
@@ -1705,7 +1713,7 @@ class Carpet {
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Carpet& customdata(std::vector<T> f) {
         json["customdata"] = std::move(f);
         return *this;
@@ -1737,7 +1745,7 @@ class Carpet {
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Carpet& ids(std::vector<T> f) {
         json["ids"] = std::move(f);
         return *this;
@@ -1848,7 +1856,7 @@ class Carpet {
 
     // A two dimensional array of x coordinates at each carpet point. If omitted, the plot is a cheater plot and the
     // xaxis is hidden by default.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Carpet& x(std::vector<T> f) {
         json["x"] = std::move(f);
         return *this;
@@ -1868,7 +1876,7 @@ class Carpet {
     }
 
     // A two dimensional array of y coordinates at each carpet point.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Carpet& y(std::vector<T> f) {
         json["y"] = std::move(f);
         return *this;
@@ -1886,8 +1894,5 @@ class Carpet {
         json["ysrc"] = std::move(f);
         return *this;
     }
-
-    // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
 };
 } // namespace plotlypp

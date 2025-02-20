@@ -1,15 +1,23 @@
 // TODO: includes, copyright, etc
+#pragma once
+
 #include <string>
 #include <type_traits>
 #include <vector>
+
+#include <trace.hpp>
+#include <traits.hpp>
 
 #include <nlohmann/json.hpp>
 
 namespace plotlypp {
 
-class Streamtube {
+class Streamtube : public Trace {
  public:
-    Streamtube() { json["type"] = "streamtube"; }
+    Streamtube()
+    : Trace() {
+        json["type"] = "streamtube";
+    }
 
     enum class Visible {
         TRUE,
@@ -714,7 +722,7 @@ class Streamtube {
 
         // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to
         // *array*. Used with `tickvals`.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Colorbar& ticktext(std::vector<T> f) {
             json["ticktext"] = std::move(f);
             return *this;
@@ -728,7 +736,7 @@ class Streamtube {
 
         // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used
         // with `ticktext`.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Colorbar& tickvals(std::vector<T> f) {
             json["tickvals"] = std::move(f);
             return *this;
@@ -1105,7 +1113,7 @@ class Streamtube {
      public:
 
         // Sets the x components of the starting position of the streamtubes
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Starts& x(std::vector<T> f) {
             json["x"] = std::move(f);
             return *this;
@@ -1118,7 +1126,7 @@ class Streamtube {
         }
 
         // Sets the y components of the starting position of the streamtubes
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Starts& y(std::vector<T> f) {
             json["y"] = std::move(f);
             return *this;
@@ -1131,7 +1139,7 @@ class Streamtube {
         }
 
         // Sets the z components of the starting position of the streamtubes
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Starts& z(std::vector<T> f) {
             json["z"] = std::move(f);
             return *this;
@@ -1230,7 +1238,7 @@ class Streamtube {
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Streamtube& customdata(std::vector<T> f) {
         json["customdata"] = std::move(f);
         return *this;
@@ -1304,7 +1312,7 @@ class Streamtube {
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Streamtube& ids(std::vector<T> f) {
         json["ids"] = std::move(f);
         return *this;
@@ -1457,7 +1465,7 @@ class Streamtube {
     }
 
     // Sets the x components of the vector field.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Streamtube& u(std::vector<T> f) {
         json["u"] = std::move(f);
         return *this;
@@ -1499,7 +1507,7 @@ class Streamtube {
     }
 
     // Sets the y components of the vector field.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Streamtube& v(std::vector<T> f) {
         json["v"] = std::move(f);
         return *this;
@@ -1528,7 +1536,7 @@ class Streamtube {
     }
 
     // Sets the z components of the vector field.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Streamtube& w(std::vector<T> f) {
         json["w"] = std::move(f);
         return *this;
@@ -1549,7 +1557,7 @@ class Streamtube {
     }
 
     // Sets the x coordinates of the vector field.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Streamtube& x(std::vector<T> f) {
         json["x"] = std::move(f);
         return *this;
@@ -1573,7 +1581,7 @@ class Streamtube {
     }
 
     // Sets the y coordinates of the vector field.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Streamtube& y(std::vector<T> f) {
         json["y"] = std::move(f);
         return *this;
@@ -1597,7 +1605,7 @@ class Streamtube {
     }
 
     // Sets the z coordinates of the vector field.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Streamtube& z(std::vector<T> f) {
         json["z"] = std::move(f);
         return *this;
@@ -1619,8 +1627,5 @@ class Streamtube {
         json["zsrc"] = std::move(f);
         return *this;
     }
-
-    // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
 };
 } // namespace plotlypp

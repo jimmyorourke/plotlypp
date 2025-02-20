@@ -1,15 +1,23 @@
 // TODO: includes, copyright, etc
+#pragma once
+
 #include <string>
 #include <type_traits>
 #include <vector>
+
+#include <trace.hpp>
+#include <traits.hpp>
 
 #include <nlohmann/json.hpp>
 
 namespace plotlypp {
 
-class Scatterternary {
+class Scatterternary : public Trace {
  public:
-    Scatterternary() { json["type"] = "scatterternary"; }
+    Scatterternary()
+    : Trace() {
+        json["type"] = "scatterternary";
+    }
 
     enum class Fill {
         NONE,
@@ -2055,7 +2063,7 @@ class Scatterternary {
 
             // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to
             // *array*. Used with `tickvals`.
-            template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+            template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
             Colorbar& ticktext(std::vector<T> f) {
                 json["ticktext"] = std::move(f);
                 return *this;
@@ -2069,7 +2077,7 @@ class Scatterternary {
 
             // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*.
             // Used with `ticktext`.
-            template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+            template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
             Colorbar& tickvals(std::vector<T> f) {
                 json["tickvals"] = std::move(f);
                 return *this;
@@ -2783,7 +2791,7 @@ class Scatterternary {
     // Sets the quantity of component `a` in each data point. If `a`, `b`, and `c` are all provided, they need not be
     // normalized, only the relative values matter. If only two arrays are provided they must be normalized to match
     // `ternary<i>.sum`.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Scatterternary& a(std::vector<T> f) {
         json["a"] = std::move(f);
         return *this;
@@ -2798,7 +2806,7 @@ class Scatterternary {
     // Sets the quantity of component `a` in each data point. If `a`, `b`, and `c` are all provided, they need not be
     // normalized, only the relative values matter. If only two arrays are provided they must be normalized to match
     // `ternary<i>.sum`.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Scatterternary& b(std::vector<T> f) {
         json["b"] = std::move(f);
         return *this;
@@ -2813,7 +2821,7 @@ class Scatterternary {
     // Sets the quantity of component `a` in each data point. If `a`, `b`, and `c` are all provided, they need not be
     // normalized, only the relative values matter. If only two arrays are provided they must be normalized to match
     // `ternary<i>.sum`.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Scatterternary& c(std::vector<T> f) {
         json["c"] = std::move(f);
         return *this;
@@ -2840,7 +2848,7 @@ class Scatterternary {
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Scatterternary& customdata(std::vector<T> f) {
         json["customdata"] = std::move(f);
         return *this;
@@ -2952,7 +2960,7 @@ class Scatterternary {
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Scatterternary& ids(std::vector<T> f) {
         json["ids"] = std::move(f);
         return *this;
@@ -3199,8 +3207,5 @@ class Scatterternary {
         json["visible"] = to_string(f);
         return *this;
     }
-
-    // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
 };
 } // namespace plotlypp

@@ -1,15 +1,23 @@
 // TODO: includes, copyright, etc
+#pragma once
+
 #include <string>
 #include <type_traits>
 #include <vector>
+
+#include <trace.hpp>
+#include <traits.hpp>
 
 #include <nlohmann/json.hpp>
 
 namespace plotlypp {
 
-class Sankey {
+class Sankey : public Trace {
  public:
-    Sankey() { json["type"] = "sankey"; }
+    Sankey()
+    : Trace() {
+        json["type"] = "sankey";
+    }
 
     enum class Arrangement {
         SNAP,
@@ -614,7 +622,7 @@ class Sankey {
         }
 
         // Assigns extra data to each link.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Link& customdata(std::vector<T> f) {
             json["customdata"] = std::move(f);
             return *this;
@@ -670,7 +678,7 @@ class Sankey {
         }
 
         // The shown name of the link.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Link& label(std::vector<T> f) {
             json["label"] = std::move(f);
             return *this;
@@ -688,7 +696,7 @@ class Sankey {
         }
 
         // An integer number `[0..nodes.length - 1]` that represents the source node.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Link& source(std::vector<T> f) {
             json["source"] = std::move(f);
             return *this;
@@ -701,7 +709,7 @@ class Sankey {
         }
 
         // An integer number `[0..nodes.length - 1]` that represents the target node.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Link& target(std::vector<T> f) {
             json["target"] = std::move(f);
             return *this;
@@ -714,7 +722,7 @@ class Sankey {
         }
 
         // A numeric value representing the flow volume value.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Link& value(std::vector<T> f) {
             json["value"] = std::move(f);
             return *this;
@@ -968,7 +976,7 @@ class Sankey {
         }
 
         // Assigns extra data to each node.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Node& customdata(std::vector<T> f) {
             json["customdata"] = std::move(f);
             return *this;
@@ -1031,7 +1039,7 @@ class Sankey {
         }
 
         // The shown name of the node.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Node& label(std::vector<T> f) {
             json["label"] = std::move(f);
             return *this;
@@ -1061,7 +1069,7 @@ class Sankey {
         }
 
         // The normalized horizontal position of the node.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Node& x(std::vector<T> f) {
             json["x"] = std::move(f);
             return *this;
@@ -1074,7 +1082,7 @@ class Sankey {
         }
 
         // The normalized vertical position of the node.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Node& y(std::vector<T> f) {
             json["y"] = std::move(f);
             return *this;
@@ -1153,7 +1161,7 @@ class Sankey {
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Sankey& customdata(std::vector<T> f) {
         json["customdata"] = std::move(f);
         return *this;
@@ -1188,7 +1196,7 @@ class Sankey {
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Sankey& ids(std::vector<T> f) {
         json["ids"] = std::move(f);
         return *this;
@@ -1337,8 +1345,5 @@ class Sankey {
         json["visible"] = to_string(f);
         return *this;
     }
-
-    // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
 };
 } // namespace plotlypp

@@ -1,15 +1,23 @@
 // TODO: includes, copyright, etc
+#pragma once
+
 #include <string>
 #include <type_traits>
 #include <vector>
+
+#include <trace.hpp>
+#include <traits.hpp>
 
 #include <nlohmann/json.hpp>
 
 namespace plotlypp {
 
-class Volume {
+class Volume : public Trace {
  public:
-    Volume() { json["type"] = "volume"; }
+    Volume()
+    : Trace() {
+        json["type"] = "volume";
+    }
 
     enum class Visible {
         TRUE,
@@ -805,7 +813,7 @@ class Volume {
 
         // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to
         // *array*. Used with `tickvals`.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Colorbar& ticktext(std::vector<T> f) {
             json["ticktext"] = std::move(f);
             return *this;
@@ -819,7 +827,7 @@ class Volume {
 
         // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used
         // with `ticktext`.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Colorbar& tickvals(std::vector<T> f) {
             json["tickvals"] = std::move(f);
             return *this;
@@ -1233,7 +1241,7 @@ class Volume {
 
             // Specifies the location(s) of slices on the axis. When not specified slices would be created for all
             // points of the axis x except start and end.
-            template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+            template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
             X& locations(std::vector<T> f) {
                 json["locations"] = std::move(f);
                 return *this;
@@ -1268,7 +1276,7 @@ class Volume {
 
             // Specifies the location(s) of slices on the axis. When not specified slices would be created for all
             // points of the axis y except start and end.
-            template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+            template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
             Y& locations(std::vector<T> f) {
                 json["locations"] = std::move(f);
                 return *this;
@@ -1303,7 +1311,7 @@ class Volume {
 
             // Specifies the location(s) of slices on the axis. When not specified slices would be created for all
             // points of the axis z except start and end.
-            template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+            template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
             Z& locations(std::vector<T> f) {
                 json["locations"] = std::move(f);
                 return *this;
@@ -1498,7 +1506,7 @@ class Volume {
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Volume& customdata(std::vector<T> f) {
         json["customdata"] = std::move(f);
         return *this;
@@ -1588,7 +1596,7 @@ class Volume {
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Volume& ids(std::vector<T> f) {
         json["ids"] = std::move(f);
         return *this;
@@ -1792,7 +1800,7 @@ class Volume {
     }
 
     // Sets the 4th dimension (value) of the vertices.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Volume& value(std::vector<T> f) {
         json["value"] = std::move(f);
         return *this;
@@ -1821,7 +1829,7 @@ class Volume {
     }
 
     // Sets the X coordinates of the vertices on X axis.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Volume& x(std::vector<T> f) {
         json["x"] = std::move(f);
         return *this;
@@ -1845,7 +1853,7 @@ class Volume {
     }
 
     // Sets the Y coordinates of the vertices on Y axis.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Volume& y(std::vector<T> f) {
         json["y"] = std::move(f);
         return *this;
@@ -1869,7 +1877,7 @@ class Volume {
     }
 
     // Sets the Z coordinates of the vertices on Z axis.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Volume& z(std::vector<T> f) {
         json["z"] = std::move(f);
         return *this;
@@ -1891,8 +1899,5 @@ class Volume {
         json["zsrc"] = std::move(f);
         return *this;
     }
-
-    // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
 };
 } // namespace plotlypp

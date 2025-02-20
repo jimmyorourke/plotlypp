@@ -1,15 +1,23 @@
 // TODO: includes, copyright, etc
+#pragma once
+
 #include <string>
 #include <type_traits>
 #include <vector>
+
+#include <trace.hpp>
+#include <traits.hpp>
 
 #include <nlohmann/json.hpp>
 
 namespace plotlypp {
 
-class Parcoords {
+class Parcoords : public Trace {
  public:
-    Parcoords() { json["type"] = "parcoords"; }
+    Parcoords()
+    : Trace() {
+        json["type"] = "parcoords";
+    }
 
     enum class Labelside {
         TOP,
@@ -104,7 +112,7 @@ class Parcoords {
             }
 
             // Sets the text displayed at the ticks position via `tickvals`.
-            template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+            template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
             Dimension& ticktext(std::vector<T> f) {
                 json["ticktext"] = std::move(f);
                 return *this;
@@ -117,7 +125,7 @@ class Parcoords {
             }
 
             // Sets the values at which ticks on this axis appear.
-            template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+            template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
             Dimension& tickvals(std::vector<T> f) {
                 json["tickvals"] = std::move(f);
                 return *this;
@@ -132,7 +140,7 @@ class Parcoords {
             // Dimension values. `values[n]` represents the value of the `n`th point in the dataset, therefore the
             // `values` vector for all dimensions must be the same (longer vectors will be truncated). Each value must
             // be a finite number.
-            template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+            template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
             Dimension& values(std::vector<T> f) {
                 json["values"] = std::move(f);
                 return *this;
@@ -966,7 +974,7 @@ class Parcoords {
 
             // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to
             // *array*. Used with `tickvals`.
-            template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+            template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
             Colorbar& ticktext(std::vector<T> f) {
                 json["ticktext"] = std::move(f);
                 return *this;
@@ -980,7 +988,7 @@ class Parcoords {
 
             // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*.
             // Used with `ticktext`.
-            template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+            template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
             Colorbar& tickvals(std::vector<T> f) {
                 json["tickvals"] = std::move(f);
                 return *this;
@@ -1306,7 +1314,7 @@ class Parcoords {
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Parcoords& customdata(std::vector<T> f) {
         json["customdata"] = std::move(f);
         return *this;
@@ -1330,7 +1338,7 @@ class Parcoords {
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Parcoords& ids(std::vector<T> f) {
         json["ids"] = std::move(f);
         return *this;
@@ -1482,8 +1490,5 @@ class Parcoords {
         json["visible"] = to_string(f);
         return *this;
     }
-
-    // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
 };
 } // namespace plotlypp

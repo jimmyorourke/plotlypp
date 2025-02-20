@@ -1,15 +1,23 @@
 // TODO: includes, copyright, etc
+#pragma once
+
 #include <string>
 #include <type_traits>
 #include <vector>
+
+#include <trace.hpp>
+#include <traits.hpp>
 
 #include <nlohmann/json.hpp>
 
 namespace plotlypp {
 
-class Waterfall {
+class Waterfall : public Trace {
  public:
-    Waterfall() { json["type"] = "waterfall"; }
+    Waterfall()
+    : Trace() {
+        json["type"] = "waterfall";
+    }
 
     enum class Constraintext {
         INSIDE,
@@ -804,7 +812,7 @@ class Waterfall {
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Waterfall& customdata(std::vector<T> f) {
         json["customdata"] = std::move(f);
         return *this;
@@ -907,7 +915,7 @@ class Waterfall {
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Waterfall& ids(std::vector<T> f) {
         json["ids"] = std::move(f);
         return *this;
@@ -975,7 +983,7 @@ class Waterfall {
     // An array containing types of values. By default the values are considered as 'relative'. However; it is possible
     // to use 'total' to compute the sums. Also 'absolute' could be applied to reset the computed total or to declare an
     // initial value where needed.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Waterfall& measure(std::vector<T> f) {
         json["measure"] = std::move(f);
         return *this;
@@ -1220,7 +1228,7 @@ class Waterfall {
     }
 
     // Sets the x coordinates.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Waterfall& x(std::vector<T> f) {
         json["x"] = std::move(f);
         return *this;
@@ -1284,7 +1292,7 @@ class Waterfall {
     }
 
     // Sets the y coordinates.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Waterfall& y(std::vector<T> f) {
         json["y"] = std::move(f);
         return *this;
@@ -1346,8 +1354,5 @@ class Waterfall {
         json["ysrc"] = std::move(f);
         return *this;
     }
-
-    // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
 };
 } // namespace plotlypp

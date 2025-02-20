@@ -1,15 +1,23 @@
 // TODO: includes, copyright, etc
+#pragma once
+
 #include <string>
 #include <type_traits>
 #include <vector>
+
+#include <trace.hpp>
+#include <traits.hpp>
 
 #include <nlohmann/json.hpp>
 
 namespace plotlypp {
 
-class Ohlc {
+class Ohlc : public Trace {
  public:
-    Ohlc() { json["type"] = "ohlc"; }
+    Ohlc()
+    : Trace() {
+        json["type"] = "ohlc";
+    }
 
     enum class Visible {
         TRUE,
@@ -456,7 +464,7 @@ class Ohlc {
     };
 
     // Sets the close values.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Ohlc& close(std::vector<T> f) {
         json["close"] = std::move(f);
         return *this;
@@ -470,7 +478,7 @@ class Ohlc {
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Ohlc& customdata(std::vector<T> f) {
         json["customdata"] = std::move(f);
         return *this;
@@ -488,7 +496,7 @@ class Ohlc {
     }
 
     // Sets the high values.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Ohlc& high(std::vector<T> f) {
         json["high"] = std::move(f);
         return *this;
@@ -543,7 +551,7 @@ class Ohlc {
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Ohlc& ids(std::vector<T> f) {
         json["ids"] = std::move(f);
         return *this;
@@ -601,7 +609,7 @@ class Ohlc {
     }
 
     // Sets the low values.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Ohlc& low(std::vector<T> f) {
         json["low"] = std::move(f);
         return *this;
@@ -649,7 +657,7 @@ class Ohlc {
     }
 
     // Sets the open values.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Ohlc& open(std::vector<T> f) {
         json["open"] = std::move(f);
         return *this;
@@ -739,7 +747,7 @@ class Ohlc {
     }
 
     // Sets the x coordinates. If absent, linear coordinate will be generated.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Ohlc& x(std::vector<T> f) {
         json["x"] = std::move(f);
         return *this;
@@ -818,8 +826,5 @@ class Ohlc {
         json["yhoverformat"] = std::move(f);
         return *this;
     }
-
-    // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
 };
 } // namespace plotlypp

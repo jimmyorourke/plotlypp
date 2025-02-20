@@ -1,15 +1,23 @@
 // TODO: includes, copyright, etc
+#pragma once
+
 #include <string>
 #include <type_traits>
 #include <vector>
+
+#include <trace.hpp>
+#include <traits.hpp>
 
 #include <nlohmann/json.hpp>
 
 namespace plotlypp {
 
-class Histogram2dcontour {
+class Histogram2dcontour : public Trace {
  public:
-    Histogram2dcontour() { json["type"] = "histogram2dcontour"; }
+    Histogram2dcontour()
+    : Trace() {
+        json["type"] = "histogram2dcontour";
+    }
 
     enum class Histfunc {
         COUNT,
@@ -868,7 +876,7 @@ class Histogram2dcontour {
 
         // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to
         // *array*. Used with `tickvals`.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Colorbar& ticktext(std::vector<T> f) {
             json["ticktext"] = std::move(f);
             return *this;
@@ -882,7 +890,7 @@ class Histogram2dcontour {
 
         // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used
         // with `ticktext`.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Colorbar& tickvals(std::vector<T> f) {
             json["tickvals"] = std::move(f);
             return *this;
@@ -1427,7 +1435,7 @@ class Histogram2dcontour {
      public:
 
         // Sets the aggregation data.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Marker& color(std::vector<T> f) {
             json["color"] = std::move(f);
             return *this;
@@ -1662,7 +1670,7 @@ class Histogram2dcontour {
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram2dcontour& customdata(std::vector<T> f) {
         json["customdata"] = std::move(f);
         return *this;
@@ -1751,7 +1759,7 @@ class Histogram2dcontour {
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram2dcontour& ids(std::vector<T> f) {
         json["ids"] = std::move(f);
         return *this;
@@ -1945,7 +1953,7 @@ class Histogram2dcontour {
     }
 
     // Sets the sample data to be binned on the x axis.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram2dcontour& x(std::vector<T> f) {
         json["x"] = std::move(f);
         return *this;
@@ -1996,7 +2004,7 @@ class Histogram2dcontour {
     }
 
     // Sets the sample data to be binned on the y axis.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram2dcontour& y(std::vector<T> f) {
         json["y"] = std::move(f);
         return *this;
@@ -2047,7 +2055,7 @@ class Histogram2dcontour {
     }
 
     // Sets the aggregation data.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram2dcontour& z(std::vector<T> f) {
         json["z"] = std::move(f);
         return *this;
@@ -2094,8 +2102,5 @@ class Histogram2dcontour {
         json["zsrc"] = std::move(f);
         return *this;
     }
-
-    // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
 };
 } // namespace plotlypp

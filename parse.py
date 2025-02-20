@@ -88,6 +88,11 @@ class Writer:
         print(f"{indent}{line}", file=self._output_file_handle)
 
 
+def emit_json_member(writer):
+    writer.write("// Advanced users may modify the JSON representation directly, at their own peril!")
+    writer.write("nlohmann::json json{};")
+
+
 def emit_class_public_members(class_object, writer):
     with IndentBlock(writer):
         for e in class_object.enums:
@@ -145,7 +150,7 @@ def emit_class_public_members(class_object, writer):
                 if output_val_type == 'T':
                     writer.write(f"template <typename T>")
                 elif field.json_val_type == 'data_array':
-                    writer.write(f"template <typename T, typename=std::enable_if_t<std::is_arithmetic_v<T>>>")
+                    writer.write(f"template <typename T, typename=std::enable_if_t<is_data_array_element_v<T>>>")
                 writer.write(f"{class_object.name.capitalize()}& {field.name}({output_val_type} f) {{")
                 with IndentBlock(writer):
                     if field.is_object:
@@ -170,33 +175,36 @@ def emit_class_public_members(class_object, writer):
                     writer.write("}")
             writer.write("")
 
-        writer.write("// Advanced users may modify the JSON representation directly, at their own peril!")
-        writer.write("nlohmann::json json{};")
-
 def emit_object(class_object, writer):
     if class_object.description:
         writer.write(f"// {class_object.description}")
     writer.write(f"class {class_object.name.capitalize()} {{")
     writer.write("public:")
     emit_class_public_members(class_object, writer)
+    emit_json_member(writer)
     writer.write("};")
     writer.write("")
 
 
 def emit_trace(trace, writer):
     writer.write("// TODO: includes, copyright, etc")
+    writer.write("#pragma once")
+    writer.write("")
     writer.write("#include <string>")
     writer.write("#include <vector>")
     writer.write("#include <type_traits>")
+    writer.write("")
+    writer.write("#include <trace.hpp>")
+    writer.write("#include <traits.hpp>")
     writer.write("")
     writer.write("#include <nlohmann/json.hpp>")
     writer.write("")
     writer.write("namespace plotlypp {")
     writer.write("")
     # Special case the outermost trace object to handle the 'type' field
-    writer.write(f"class {trace.name.capitalize()} {{")
+    writer.write(f"class {trace.name.capitalize()} : public Trace {{")
     writer.write("public:")
-    writer.write(f"{trace.name.capitalize()}() {{")
+    writer.write(f"{trace.name.capitalize()}() : Trace() {{")
     with IndentBlock(writer):
         writer.write(f"json[\"type\"] = \"{trace.name}\";")
     writer.write("}")

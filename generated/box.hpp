@@ -1,15 +1,23 @@
 // TODO: includes, copyright, etc
+#pragma once
+
 #include <string>
 #include <type_traits>
 #include <vector>
+
+#include <trace.hpp>
+#include <traits.hpp>
 
 #include <nlohmann/json.hpp>
 
 namespace plotlypp {
 
-class Box {
+class Box : public Trace {
  public:
-    Box() { json["type"] = "box"; }
+    Box()
+    : Trace() {
+        json["type"] = "box";
+    }
 
     enum class Boxmean {
         TRUE,
@@ -1684,7 +1692,7 @@ class Box {
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& customdata(std::vector<T> f) {
         json["customdata"] = std::move(f);
         return *this;
@@ -1794,7 +1802,7 @@ class Box {
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& ids(std::vector<T> f) {
         json["ids"] = std::move(f);
         return *this;
@@ -1856,7 +1864,7 @@ class Box {
     // Sets the lower fence values. There should be as many items as the number of boxes desired. This attribute has
     // effect only under the q1/median/q3 signature. If `lowerfence` is not provided but a sample (in `y` or `x`) is
     // set, we compute the lower as the last sample point below 1.5 times the IQR.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& lowerfence(std::vector<T> f) {
         json["lowerfence"] = std::move(f);
         return *this;
@@ -1876,7 +1884,7 @@ class Box {
     // Sets the mean values. There should be as many items as the number of boxes desired. This attribute has effect
     // only under the q1/median/q3 signature. If `mean` is not provided but a sample (in `y` or `x`) is set, we compute
     // the mean for each box using the sample values.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& mean(std::vector<T> f) {
         json["mean"] = std::move(f);
         return *this;
@@ -1889,7 +1897,7 @@ class Box {
     }
 
     // Sets the median values. There should be as many items as the number of boxes desired.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& median(std::vector<T> f) {
         json["median"] = std::move(f);
         return *this;
@@ -1945,7 +1953,7 @@ class Box {
     // Sets the notch span from the boxes' `median` values. There should be as many items as the number of boxes
     // desired. This attribute has effect only under the q1/median/q3 signature. If `notchspan` is not provided but a
     // sample (in `y` or `x`) is set, we compute it as 1.57 * IQR / sqrt(N), where N is the sample size.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& notchspan(std::vector<T> f) {
         json["notchspan"] = std::move(f);
         return *this;
@@ -1993,7 +2001,7 @@ class Box {
     }
 
     // Sets the Quartile 1 values. There should be as many items as the number of boxes desired.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& q1(std::vector<T> f) {
         json["q1"] = std::move(f);
         return *this;
@@ -2006,7 +2014,7 @@ class Box {
     }
 
     // Sets the Quartile 3 values. There should be as many items as the number of boxes desired.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& q3(std::vector<T> f) {
         json["q3"] = std::move(f);
         return *this;
@@ -2034,7 +2042,7 @@ class Box {
     // Sets the standard deviation values. There should be as many items as the number of boxes desired. This attribute
     // has effect only under the q1/median/q3 signature. If `sd` is not provided but a sample (in `y` or `x`) is set, we
     // compute the standard deviation for each box using the sample values.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& sd(std::vector<T> f) {
         json["sd"] = std::move(f);
         return *this;
@@ -2145,7 +2153,7 @@ class Box {
     // Sets the upper fence values. There should be as many items as the number of boxes desired. This attribute has
     // effect only under the q1/median/q3 signature. If `upperfence` is not provided but a sample (in `y` or `x`) is
     // set, we compute the lower as the last sample point above 1.5 times the IQR.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& upperfence(std::vector<T> f) {
         json["upperfence"] = std::move(f);
         return *this;
@@ -2180,7 +2188,7 @@ class Box {
     }
 
     // Sets the x sample data or coordinates. See overview for more info.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& x(std::vector<T> f) {
         json["x"] = std::move(f);
         return *this;
@@ -2251,7 +2259,7 @@ class Box {
     }
 
     // Sets the y sample data or coordinates. See overview for more info.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& y(std::vector<T> f) {
         json["y"] = std::move(f);
         return *this;
@@ -2320,8 +2328,5 @@ class Box {
         json["ysrc"] = std::move(f);
         return *this;
     }
-
-    // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
 };
 } // namespace plotlypp

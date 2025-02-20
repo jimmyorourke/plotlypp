@@ -1,15 +1,23 @@
 // TODO: includes, copyright, etc
+#pragma once
+
 #include <string>
 #include <type_traits>
 #include <vector>
+
+#include <trace.hpp>
+#include <traits.hpp>
 
 #include <nlohmann/json.hpp>
 
 namespace plotlypp {
 
-class Icicle {
+class Icicle : public Trace {
  public:
-    Icicle() { json["type"] = "icicle"; }
+    Icicle()
+    : Trace() {
+        json["type"] = "icicle";
+    }
 
     enum class Branchvalues {
         REMAINDER,
@@ -1079,7 +1087,7 @@ class Icicle {
 
             // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to
             // *array*. Used with `tickvals`.
-            template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+            template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
             Colorbar& ticktext(std::vector<T> f) {
                 json["ticktext"] = std::move(f);
                 return *this;
@@ -1093,7 +1101,7 @@ class Icicle {
 
             // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*.
             // Used with `ticktext`.
-            template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+            template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
             Colorbar& tickvals(std::vector<T> f) {
                 json["tickvals"] = std::move(f);
                 return *this;
@@ -1430,7 +1438,7 @@ class Icicle {
 
         // Sets the color of each sector of this trace. If not specified, the default trace color set is used to pick
         // the sector colors.
-        template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
         Marker& colors(std::vector<T> f) {
             json["colors"] = std::move(f);
             return *this;
@@ -1864,7 +1872,7 @@ class Icicle {
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Icicle& customdata(std::vector<T> f) {
         json["customdata"] = std::move(f);
         return *this;
@@ -1955,7 +1963,7 @@ class Icicle {
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Icicle& ids(std::vector<T> f) {
         json["ids"] = std::move(f);
         return *this;
@@ -1974,7 +1982,7 @@ class Icicle {
     }
 
     // Sets the labels of each of the sectors.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Icicle& labels(std::vector<T> f) {
         json["labels"] = std::move(f);
         return *this;
@@ -2086,7 +2094,7 @@ class Icicle {
     // Sets the parent sectors for each of the sectors. Empty string items '' are understood to reference the root node
     // in the hierarchy. If `ids` is filled, `parents` items are understood to be "ids" themselves. When `ids` is not
     // set, plotly attempts to find matching items in `labels`, but beware they must be unique.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Icicle& parents(std::vector<T> f) {
         json["parents"] = std::move(f);
         return *this;
@@ -2122,7 +2130,7 @@ class Icicle {
     // Sets text elements associated with each sector. If trace `textinfo` contains a *text* flag, these elements will
     // be seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will
     // be seen in the hover labels.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Icicle& text(std::vector<T> f) {
         json["text"] = std::move(f);
         return *this;
@@ -2212,7 +2220,7 @@ class Icicle {
 
     // Sets the values associated with each of the sectors. Use with `branchvalues` to determine how the values are
     // summed.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Icicle& values(std::vector<T> f) {
         json["values"] = std::move(f);
         return *this;
@@ -2231,8 +2239,5 @@ class Icicle {
         json["visible"] = to_string(f);
         return *this;
     }
-
-    // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
 };
 } // namespace plotlypp
