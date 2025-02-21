@@ -91,10 +91,11 @@ int main() {
         y.push_back(std::sin(t_val));
     }
 
-    std::cout << Figure().addTrace(Scatter3d().x(x).y(y).z(t).mode("markers")).toHtml();
-    Figure().addTrace(Scatter3d().x(x).y(y).z(t).mode("markers")).show();
+    //std::cout << Figure().addTrace(Scatter3d().x(x).y(y).z(t).mode("markers")).toHtml();
+    //Figure().addTrace(Scatter3d().x(x).y(y).z(t).mode("markers")).show();
 
     gensurface().show();
+    gensurface().show(true);
     //system("open ../sample.html");
     std::cout << "Done" << "\n";
 

@@ -1,27 +1,36 @@
 #pragma once
 
-#include <sstream>
-#include <string>
 #include <filesystem>
 #include <fstream>
+#include <sstream>
+#include <string>
+#include <iostream>
 
 #include <nlohmann/json.hpp>
+
+#include "plotly_min_js.h"
 
 namespace plotlypp {
 
 class Figure {
  public:
-    template <typename T, typename=std::enable_if_t<std::is_base_of_v<Trace, T>>>
+    template <typename T, typename = std::enable_if_t<std::is_base_of_v<Trace, T>>>
     Figure& addTrace(T trace) {
         _json["data"].push_back(std::move(trace.json));
         return *this;
     }
 
-    void toHtml(std::ostream& os) {
-        // clang-format off
+    void toHtml(std::ostream& os, bool renderOffline = false) {
         os << "<meta charset=\"utf-8\">\n";
         os << "<head>\n";
-        os << "    <script src=\"https://cdn.plot.ly/plotly-2.31.1.min.js\"></script>\n";
+        if (renderOffline) {
+            os << "    <script>\n";
+            os << plotlyJS << "\n";
+            os << "    </script>\n";
+        } else {
+            // TODO: check versions;
+            os << "    <script src=\"https://cdn.plot.ly/plotly-3.0.1.min.js\"></script>\n";
+        }
         os << "</head>\n";
         os << "<body>\n";
         os << "    <div id=\"plot\"></div>\n";
@@ -39,38 +48,42 @@ class Figure {
         os << "        window.addEventListener('resize', resizeDiv);\n";
         os << "    </script>\n";
         os << "</body>\n";
-        // clang-format on
     }
 
-    std::string toHtml() {
+    std::string toHtml(bool renderOffline = false) {
         std::ostringstream html;
-        toHtml(html);
+        toHtml(html, renderOffline);
         return html.str();
     }
 
-    void show() {
-      const auto temp_file = std::filesystem::temp_directory_path() / "plotlypp_plot.html";
-      std::ofstream outputFile(temp_file);
-      toHtml(outputFile);
-      showInBrowser(temp_file.string());
+    void show(bool renderOffline = false) {
+        const auto tempFile =
+            std::filesystem::temp_directory_path() / ("plotlypp_plot_" + std::to_string(_showCount++) + ".html");
+        std::cout << "creating " << tempFile << "\n";
+        std::ofstream outputFile(tempFile);
+        toHtml(outputFile, renderOffline);
+        showInBrowser(tempFile.string());
     }
 
  private:
-    void showInBrowser(const std::string& plot_file) {
-      #ifdef _WIN32
-        system(("cmd /C start " + plot_file).c_str());
-      #elif __APPLE__
-        system(("open " + plot_file).c_str());
-      #elif __linux__
-        system(("xdg-open " + plot_file).c_str());
-      #else
+    void showInBrowser(const std::string& plotFile) {
+      std::cout << "opening " << plotFile << "\n";
+#ifdef _WIN32
+        system(("cmd /C start " + plotFile).c_str());
+#elif __APPLE__
+        system(("open " + plotFile).c_str());
+#elif __linux__
+        system(("xdg-open " + plotFile).c_str());
+#else
         // Force a linker error, only if this function is actually called.
         unimplementedPlatorm();
-      #endif
+#endif
     }
     void unimplementedPlatorm();
 
     nlohmann::json _json;
+    inline static int _showCount = 0;
 };
+
 
 } // namespace plotlypp
