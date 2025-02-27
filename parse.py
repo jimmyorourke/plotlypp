@@ -45,22 +45,24 @@ def get_all_valtypes(d):
 
 #Plotly.newPlot(                        "054d4733-9bc6-4455-bd62-e734b2551e79",                        [{"mode":"markers","name":"Markers","x":[1,2,3,4,5],"y":[2,4,1,3,5],"type":"scatter"}]
 
+# Colors can be strings or numbers. The template for proper handling of std::string, const char*,
+                    # or double gets complicated, as does a vector of std::variant, so just use overloads instead.
 valtype_map = {
-    'number': 'double',
-    'boolean': 'bool',
-    'angle': 'double',
-    'integer': 'int',
-    'subplotid': 'std::string',
-    'string': 'std::string',
-    'any': 'T', # can usualle be dbl?
-    'data_array': 'std::vector<T>', # or is_arithmetic?
-    'info_array': 'std::vector<std::string>',#'std::vector<T>',
-    'enumerated': 'ENUM', # also need to json
-    'color': 'std::string', # also need to json
-    'flaglist': 'std::string', # also need to json, basically enum
-    'colorscale': 'std::string', # also need to json, basically enum --- could be smarter
+    'number': ['double'],
+    'boolean': ['bool'],
+    'angle': ['double'],
+    'integer': ['int'],
+    'subplotid': ['std::string'],
+    'string': ['std::string'],
+    'any': ['T'], # can usualle be dbl?
+    'data_array': ['std::vector<T>'], # with constraint
+    'info_array': ['std::vector<std::string>'],#'std::vector<T>',
+    'enumerated': ['ENUM'], # also need to json
+    'color': ["std::string", "double"], # also need to json
+    'flaglist': ['std::string'], # also need to json, basically enum
+    'colorscale': ['std::string', 'std::vector<std::pair<double, std::string>>'], # also need to json, basically enum --- could be smarter
     # Not really, but it's useful to add here
-    "object": 'OBJECT'
+    "object": ['OBJECT']
 }
 
 class IndentBlock:
@@ -92,25 +94,74 @@ def emit_json_member(writer):
     writer.write("// Advanced users may modify the JSON representation directly, at their own peril!")
     writer.write("nlohmann::json json{};")
 
+def emit_array_field_setter(class_object, field, output_val_type, writer):
+    if output_val_type == 'T':
+        writer.write(f"template <typename T>")
+    writer.write(f"{class_object.name.capitalize()}& {field.name}(std::vector<{output_val_type}> f) {{")
+    with IndentBlock(writer):
+        if field.is_object:
+            writer.write(f"std::vector<nlohmann::json> jsonified(f.size());")
+            writer.write(f"std::transform(f.begin(), f.end(), jsonified.begin(), [](auto& e){{return std::move(e.j);}});")
+            writer.write(f"json[\"{field.name}\"] = std::move(jsonified);")
+        else:
+            writer.write(f"json[\"{field.name}\"] = std::move(f);")
+        writer.write("return *this;")
+    writer.write("}")
+
+def emit_field_setter(class_object, field, output_val_type, writer):
+    if output_val_type == 'T':
+        writer.write(f"template <typename T>")
+    elif field.json_val_type == 'data_array':
+        writer.write(f"template <typename T, typename=std::enable_if_t<is_data_array_element_v<T>>>")
+    writer.write(f"{class_object.name.capitalize()}& {field.name}({output_val_type} f) {{")
+    with IndentBlock(writer):
+        if field.is_object:
+            writer.write(f"json[\"{field.name}\"] = std::move(f.json);")
+        else:
+            writer.write(f"json[\"{field.name}\"] = std::move(f);")
+        writer.write("return *this;")
+    writer.write("}")
+
+def emit_enum_field_setter(class_object, field, writer):
+    # To help compiler ambiguity, add enum keyword.
+    writer.write(f"{class_object.name.capitalize()}& {field.name}(enum {field.name.capitalize()} f) {{")
+    with IndentBlock(writer):
+        writer.write(f"json[\"{field.name}\"] = to_string(f);")
+        writer.write("return *this;")
+    writer.write("}")
+
+def emit_enum_array_field_setter(class_object, field, writer):
+    writer.write(f"{class_object.name.capitalize()}& {field.name}(const std::vector<enum {field.name.capitalize()}>& f) {{")
+    with IndentBlock(writer):
+        writer.write(f"std::vector<std::string> stringified(f.size());")
+        writer.write(f"std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){{return to_string(e);}});")
+        writer.write(f"json[\"{field.name}\"] = std::move(stringified);")
+        writer.write("return *this;")
+    writer.write("}")
+
+def emit_enum_definition(enum, writer):
+    writer.write("")
+    writer.write(f"enum class {enum.name.capitalize()} {{")
+    with IndentBlock(writer):
+        for safe_val in enum.safe_to_json_vals:
+            writer.write(f"{safe_val},")
+    writer.write("};")
+
+def emit_enum_to_string(enum, writer):
+    writer.write(f"std::string to_string({enum.name.capitalize()} e) {{")
+    with IndentBlock(writer):
+        writer.write("switch(e) {")
+        with IndentBlock(writer):
+            for safe_val, json_val in enum.safe_to_json_vals.items():
+                writer.write(f'case {enum.name.capitalize()}::{safe_val}: return "{json_val}";')
+        writer.write("}")
+    writer.write("}")
 
 def emit_class_public_members(class_object, writer):
     with IndentBlock(writer):
         for e in class_object.enums:
-            writer.write("")
-            writer.write(f"enum class {e.name.capitalize()} {{")
-            with IndentBlock(writer):
-                for safe_val in e.safe_to_json_vals:
-                    writer.write(f"{safe_val},")
-            writer.write("};")
-
-            writer.write(f"std::string to_string({e.name.capitalize()} e) {{")
-            with IndentBlock(writer):
-                writer.write("switch(e) {")
-                with IndentBlock(writer):
-                    for safe_val, json_val in e.safe_to_json_vals.items():
-                        writer.write(f'case {e.name.capitalize()}::{safe_val}: return "{json_val}";')
-                writer.write("}")
-            writer.write("}")
+            emit_enum_definition(e, writer)
+            emit_enum_to_string(e, writer)
 
         writer.write("")
         for obj in class_object.objects:
@@ -124,55 +175,21 @@ def emit_class_public_members(class_object, writer):
                 for line in lines[1:]:
                     writer.write(f"// - {line}")
             if field.is_enum:
-                # TODO: is it allowed to have enum and function with same name?
-                # To help the compiler out in the vector case, add enum keyword.
-                writer.write(f"{class_object.name.capitalize()}& {field.name}(enum {field.name.capitalize()} f) {{")
-                with IndentBlock(writer):
-                    writer.write(f"json[\"{field.name}\"] = to_string(f);")
-                    writer.write("return *this;")
-                writer.write("}")
-
+                emit_enum_field_setter(class_object, field, writer)
                 if field.array_ok:
-                    writer.write(f"{class_object.name.capitalize()}& {field.name}(const std::vector<enum {field.name.capitalize()}>& f) {{")
-                    with IndentBlock(writer):
-                        writer.write(f"std::vector<std::string> stringified(f.size());")
-                        writer.write(f"std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){{return to_string(e);}});")
-                        writer.write(f"json[\"{field.name}\"] = std::move(stringified);")
-                        writer.write("return *this;")
-                    writer.write("}")
+                    emit_enum_array_field_setter(class_object, field, writer)
             else:
                 if field.is_object:
                     # Quirky
-                    output_val_type = f"class {field.name.capitalize()}"
+                    output_val_types = [f"class {field.name.capitalize()}"]
                 else:
-                    output_val_type = valtype_map[field.json_val_type]
-
-                if output_val_type == 'T':
-                    writer.write(f"template <typename T>")
-                elif field.json_val_type == 'data_array':
-                    writer.write(f"template <typename T, typename=std::enable_if_t<is_data_array_element_v<T>>>")
-                writer.write(f"{class_object.name.capitalize()}& {field.name}({output_val_type} f) {{")
-                with IndentBlock(writer):
-                    if field.is_object:
-                        writer.write(f"json[\"{field.name}\"] = std::move(f.json);")
-                    else:
-                        writer.write(f"json[\"{field.name}\"] = std::move(f);")
-                    writer.write("return *this;")
-                writer.write("}")
-
+                    output_val_types = valtype_map[field.json_val_type]
+                for output_val_type_overload in output_val_types:
+                    emit_field_setter(class_object, field, output_val_type_overload, writer)
                 if field.array_ok:
-                    if output_val_type == 'T':
-                        writer.write(f"template <typename T>")
-                    writer.write(f"{class_object.name.capitalize()}& {field.name}(std::vector<{output_val_type}> f) {{")
-                    with IndentBlock(writer):
-                        if field.is_object:
-                            writer.write(f"std::vector<nlohmann::json> jsonified(f.size());")
-                            writer.write(f"std::transform(f.begin(), f.end(), jsonified.begin(), [](auto& e){{return std::move(e.j);}});")
-                            writer.write(f"json[\"{field.name}\"] = std::move(jsonified);")
-                        else:
-                            writer.write(f"json[\"{field.name}\"] = std::move(f);")
-                        writer.write("return *this;")
-                    writer.write("}")
+                    for output_val_type_overload in output_val_types:
+                        emit_array_field_setter(class_object, field, output_val_type_overload, writer)
+
             writer.write("")
 
 def emit_object(class_object, writer):

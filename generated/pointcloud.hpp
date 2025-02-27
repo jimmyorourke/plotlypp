@@ -62,7 +62,15 @@ class Pointcloud : public Trace {
                 json["color"] = std::move(f);
                 return *this;
             }
+            Font& color(double f) {
+                json["color"] = std::move(f);
+                return *this;
+            }
             Font& color(std::vector<std::string> f) {
+                json["color"] = std::move(f);
+                return *this;
+            }
+            Font& color(std::vector<double> f) {
                 json["color"] = std::move(f);
                 return *this;
             }
@@ -139,7 +147,15 @@ class Pointcloud : public Trace {
             json["bgcolor"] = std::move(f);
             return *this;
         }
+        Hoverlabel& bgcolor(double f) {
+            json["bgcolor"] = std::move(f);
+            return *this;
+        }
         Hoverlabel& bgcolor(std::vector<std::string> f) {
+            json["bgcolor"] = std::move(f);
+            return *this;
+        }
+        Hoverlabel& bgcolor(std::vector<double> f) {
             json["bgcolor"] = std::move(f);
             return *this;
         }
@@ -155,7 +171,15 @@ class Pointcloud : public Trace {
             json["bordercolor"] = std::move(f);
             return *this;
         }
+        Hoverlabel& bordercolor(double f) {
+            json["bordercolor"] = std::move(f);
+            return *this;
+        }
         Hoverlabel& bordercolor(std::vector<std::string> f) {
+            json["bordercolor"] = std::move(f);
+            return *this;
+        }
+        Hoverlabel& bordercolor(std::vector<double> f) {
             json["bordercolor"] = std::move(f);
             return *this;
         }
@@ -203,6 +227,10 @@ class Pointcloud : public Trace {
          public:
 
             Font& color(std::string f) {
+                json["color"] = std::move(f);
+                return *this;
+            }
+            Font& color(double f) {
                 json["color"] = std::move(f);
                 return *this;
             }
@@ -262,6 +290,10 @@ class Pointcloud : public Trace {
                 json["color"] = std::move(f);
                 return *this;
             }
+            Border& color(double f) {
+                json["color"] = std::move(f);
+                return *this;
+            }
 
             // Advanced users may modify the JSON representation directly, at their own peril!
             nlohmann::json json{};
@@ -282,6 +314,10 @@ class Pointcloud : public Trace {
         // Sets the marker fill color. It accepts a specific color. If the color is not fully opaque and there are
         // hundreds of thousands of points, it may cause slower zooming and panning.
         Marker& color(std::string f) {
+            json["color"] = std::move(f);
+            return *this;
+        }
+        Marker& color(double f) {
             json["color"] = std::move(f);
             return *this;
         }

@@ -12,42 +12,57 @@
 
 namespace plotlypp {
 
-class Sunburst : public Trace {
+class Scattermap : public Trace {
  public:
-    Sunburst()
+    Scattermap()
     : Trace() {
-        json["type"] = "sunburst";
+        json["type"] = "scattermap";
     }
 
-    enum class Branchvalues {
-        REMAINDER,
-        TOTAL,
+    enum class Fill {
+        NONE,
+        TOSELF,
     };
-    std::string to_string(Branchvalues e) {
+    std::string to_string(Fill e) {
         switch (e) {
-        case Branchvalues::REMAINDER:
-            return "remainder";
-        case Branchvalues::TOTAL:
-            return "total";
+        case Fill::NONE:
+            return "none";
+        case Fill::TOSELF:
+            return "toself";
         }
     }
 
-    enum class Insidetextorientation {
-        HORIZONTAL,
-        RADIAL,
-        TANGENTIAL,
-        AUTO,
+    enum class Textposition {
+        TOP_LEFT,
+        TOP_CENTER,
+        TOP_RIGHT,
+        MIDDLE_LEFT,
+        MIDDLE_CENTER,
+        MIDDLE_RIGHT,
+        BOTTOM_LEFT,
+        BOTTOM_CENTER,
+        BOTTOM_RIGHT,
     };
-    std::string to_string(Insidetextorientation e) {
+    std::string to_string(Textposition e) {
         switch (e) {
-        case Insidetextorientation::HORIZONTAL:
-            return "horizontal";
-        case Insidetextorientation::RADIAL:
-            return "radial";
-        case Insidetextorientation::TANGENTIAL:
-            return "tangential";
-        case Insidetextorientation::AUTO:
-            return "auto";
+        case Textposition::TOP_LEFT:
+            return "top left";
+        case Textposition::TOP_CENTER:
+            return "top center";
+        case Textposition::TOP_RIGHT:
+            return "top right";
+        case Textposition::MIDDLE_LEFT:
+            return "middle left";
+        case Textposition::MIDDLE_CENTER:
+            return "middle center";
+        case Textposition::MIDDLE_RIGHT:
+            return "middle right";
+        case Textposition::BOTTOM_LEFT:
+            return "bottom left";
+        case Textposition::BOTTOM_CENTER:
+            return "bottom center";
+        case Textposition::BOTTOM_RIGHT:
+            return "bottom right";
         }
     }
 
@@ -67,30 +82,92 @@ class Sunburst : public Trace {
         }
     }
 
-    class Domain {
+    class Cluster {
      public:
 
-        // If there is a layout grid, use the domain for this column in the grid for this sunburst trace .
-        Domain& column(int f) {
-            json["column"] = std::move(f);
+        // Sets the color for each cluster step.
+        Cluster& color(std::string f) {
+            json["color"] = std::move(f);
+            return *this;
+        }
+        Cluster& color(double f) {
+            json["color"] = std::move(f);
+            return *this;
+        }
+        Cluster& color(std::vector<std::string> f) {
+            json["color"] = std::move(f);
+            return *this;
+        }
+        Cluster& color(std::vector<double> f) {
+            json["color"] = std::move(f);
             return *this;
         }
 
-        // If there is a layout grid, use the domain for this row in the grid for this sunburst trace .
-        Domain& row(int f) {
-            json["row"] = std::move(f);
+        // Sets the source reference on Chart Studio Cloud for `color`.
+        Cluster& colorsrc(std::string f) {
+            json["colorsrc"] = std::move(f);
             return *this;
         }
 
-        // Sets the horizontal domain of this sunburst trace (in plot fraction).
-        Domain& x(std::vector<std::string> f) {
-            json["x"] = std::move(f);
+        // Determines whether clustering is enabled or disabled.
+        Cluster& enabled(bool f) {
+            json["enabled"] = std::move(f);
             return *this;
         }
 
-        // Sets the vertical domain of this sunburst trace (in plot fraction).
-        Domain& y(std::vector<std::string> f) {
-            json["y"] = std::move(f);
+        // Sets the maximum zoom level. At zoom levels equal to or greater than this, points will never be clustered.
+        Cluster& maxzoom(double f) {
+            json["maxzoom"] = std::move(f);
+            return *this;
+        }
+
+        // Sets the marker opacity.
+        Cluster& opacity(double f) {
+            json["opacity"] = std::move(f);
+            return *this;
+        }
+        Cluster& opacity(std::vector<double> f) {
+            json["opacity"] = std::move(f);
+            return *this;
+        }
+
+        // Sets the source reference on Chart Studio Cloud for `opacity`.
+        Cluster& opacitysrc(std::string f) {
+            json["opacitysrc"] = std::move(f);
+            return *this;
+        }
+
+        // Sets the size for each cluster step.
+        Cluster& size(double f) {
+            json["size"] = std::move(f);
+            return *this;
+        }
+        Cluster& size(std::vector<double> f) {
+            json["size"] = std::move(f);
+            return *this;
+        }
+
+        // Sets the source reference on Chart Studio Cloud for `size`.
+        Cluster& sizesrc(std::string f) {
+            json["sizesrc"] = std::move(f);
+            return *this;
+        }
+
+        // Sets how many points it takes to create a cluster or advance to the next cluster step. Use this in
+        // conjunction with arrays for `size` and / or `color`. If an integer, steps start at multiples of this number.
+        // If an array, each step extends from the given value until one less than the next value.
+        Cluster& step(double f) {
+            json["step"] = std::move(f);
+            return *this;
+        }
+        Cluster& step(std::vector<double> f) {
+            json["step"] = std::move(f);
+            return *this;
+        }
+
+        // Sets the source reference on Chart Studio Cloud for `step`.
+        Cluster& stepsrc(std::string f) {
+            json["stepsrc"] = std::move(f);
             return *this;
         }
 
@@ -450,255 +527,6 @@ class Sunburst : public Trace {
         nlohmann::json json{};
     };
 
-    // Sets the font used for `textinfo` lying inside the sector.
-    class Insidetextfont {
-     public:
-
-        enum class Style {
-            NORMAL,
-            ITALIC,
-        };
-        std::string to_string(Style e) {
-            switch (e) {
-            case Style::NORMAL:
-                return "normal";
-            case Style::ITALIC:
-                return "italic";
-            }
-        }
-
-        enum class Textcase {
-            NORMAL,
-            WORD_CAPS,
-            UPPER,
-            LOWER,
-        };
-        std::string to_string(Textcase e) {
-            switch (e) {
-            case Textcase::NORMAL:
-                return "normal";
-            case Textcase::WORD_CAPS:
-                return "word caps";
-            case Textcase::UPPER:
-                return "upper";
-            case Textcase::LOWER:
-                return "lower";
-            }
-        }
-
-        enum class Variant {
-            NORMAL,
-            SMALL_CAPS,
-            ALL_SMALL_CAPS,
-            ALL_PETITE_CAPS,
-            PETITE_CAPS,
-            UNICASE,
-        };
-        std::string to_string(Variant e) {
-            switch (e) {
-            case Variant::NORMAL:
-                return "normal";
-            case Variant::SMALL_CAPS:
-                return "small-caps";
-            case Variant::ALL_SMALL_CAPS:
-                return "all-small-caps";
-            case Variant::ALL_PETITE_CAPS:
-                return "all-petite-caps";
-            case Variant::PETITE_CAPS:
-                return "petite-caps";
-            case Variant::UNICASE:
-                return "unicase";
-            }
-        }
-
-        Insidetextfont& color(std::string f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-        Insidetextfont& color(double f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-        Insidetextfont& color(std::vector<std::string> f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-        Insidetextfont& color(std::vector<double> f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `color`.
-        Insidetextfont& colorsrc(std::string f) {
-            json["colorsrc"] = std::move(f);
-            return *this;
-        }
-
-        // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
-        // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
-        // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
-        // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a
-        // select number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid
-        // Sans*, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans
-        // Narrow*, *Raleway*, *Times New Roman*.
-        Insidetextfont& family(std::string f) {
-            json["family"] = std::move(f);
-            return *this;
-        }
-        Insidetextfont& family(std::vector<std::string> f) {
-            json["family"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `family`.
-        Insidetextfont& familysrc(std::string f) {
-            json["familysrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as
-        // combinations e.g. *under+over*, etc.
-        // - Default: none
-        // - Flags: ['under', 'over', 'through']
-        // - Extras ['none']
-        Insidetextfont& lineposition(std::string f) {
-            json["lineposition"] = std::move(f);
-            return *this;
-        }
-        Insidetextfont& lineposition(std::vector<std::string> f) {
-            json["lineposition"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `lineposition`.
-        Insidetextfont& linepositionsrc(std::string f) {
-            json["linepositionsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text
-        // font color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
-        Insidetextfont& shadow(std::string f) {
-            json["shadow"] = std::move(f);
-            return *this;
-        }
-        Insidetextfont& shadow(std::vector<std::string> f) {
-            json["shadow"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `shadow`.
-        Insidetextfont& shadowsrc(std::string f) {
-            json["shadowsrc"] = std::move(f);
-            return *this;
-        }
-
-        Insidetextfont& size(double f) {
-            json["size"] = std::move(f);
-            return *this;
-        }
-        Insidetextfont& size(std::vector<double> f) {
-            json["size"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `size`.
-        Insidetextfont& sizesrc(std::string f) {
-            json["sizesrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets whether a font should be styled with a normal or italic face from its family.
-        // - Default: normal
-        Insidetextfont& style(enum Style f) {
-            json["style"] = to_string(f);
-            return *this;
-        }
-        Insidetextfont& style(const std::vector<enum Style>& f) {
-            std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-            json["style"] = std::move(stringified);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `style`.
-        Insidetextfont& stylesrc(std::string f) {
-            json["stylesrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with
-        // each word capitalized.
-        // - Default: normal
-        Insidetextfont& textcase(enum Textcase f) {
-            json["textcase"] = to_string(f);
-            return *this;
-        }
-        Insidetextfont& textcase(const std::vector<enum Textcase>& f) {
-            std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-            json["textcase"] = std::move(stringified);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `textcase`.
-        Insidetextfont& textcasesrc(std::string f) {
-            json["textcasesrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the variant of the font.
-        // - Default: normal
-        Insidetextfont& variant(enum Variant f) {
-            json["variant"] = to_string(f);
-            return *this;
-        }
-        Insidetextfont& variant(const std::vector<enum Variant>& f) {
-            std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-            json["variant"] = std::move(stringified);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `variant`.
-        Insidetextfont& variantsrc(std::string f) {
-            json["variantsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the weight (or boldness) of the font.
-        Insidetextfont& weight(int f) {
-            json["weight"] = std::move(f);
-            return *this;
-        }
-        Insidetextfont& weight(std::vector<int> f) {
-            json["weight"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `weight`.
-        Insidetextfont& weightsrc(std::string f) {
-            json["weightsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Advanced users may modify the JSON representation directly, at their own peril!
-        nlohmann::json json{};
-    };
-
-    class Leaf {
-     public:
-
-        // Sets the opacity of the leaves. With colorscale it is defaulted to 1; otherwise it is defaulted to 0.7
-        Leaf& opacity(double f) {
-            json["opacity"] = std::move(f);
-            return *this;
-        }
-
-        // Advanced users may modify the JSON representation directly, at their own peril!
-        nlohmann::json json{};
-    };
-
     class Legendgrouptitle {
      public:
 
@@ -854,8 +682,44 @@ class Sunburst : public Trace {
         nlohmann::json json{};
     };
 
+    class Line {
+     public:
+
+        // Sets the line color.
+        Line& color(std::string f) {
+            json["color"] = std::move(f);
+            return *this;
+        }
+        Line& color(double f) {
+            json["color"] = std::move(f);
+            return *this;
+        }
+
+        // Sets the line width (in px).
+        Line& width(double f) {
+            json["width"] = std::move(f);
+            return *this;
+        }
+
+        // Advanced users may modify the JSON representation directly, at their own peril!
+        nlohmann::json json{};
+    };
+
     class Marker {
      public:
+
+        enum class Sizemode {
+            DIAMETER,
+            AREA,
+        };
+        std::string to_string(Sizemode e) {
+            switch (e) {
+            case Sizemode::DIAMETER:
+                return "diameter";
+            case Sizemode::AREA:
+                return "area";
+            }
+        }
 
         class Colorbar {
          public:
@@ -1875,260 +1739,85 @@ class Sunburst : public Trace {
             nlohmann::json json{};
         };
 
-        class Line {
-         public:
+        // Flag to draw all symbols, even if they overlap.
+        Marker& allowoverlap(bool f) {
+            json["allowoverlap"] = std::move(f);
+            return *this;
+        }
 
-            // Sets the color of the line enclosing each sector. Defaults to the `paper_bgcolor` value.
-            Line& color(std::string f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-            Line& color(double f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-            Line& color(std::vector<std::string> f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-            Line& color(std::vector<double> f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
+        // Sets the marker orientation from true North, in degrees clockwise. When using the *auto* default, no rotation
+        // would be applied in perspective views which is different from using a zero angle.
+        Marker& angle(double f) {
+            json["angle"] = std::move(f);
+            return *this;
+        }
+        Marker& angle(std::vector<double> f) {
+            json["angle"] = std::move(f);
+            return *this;
+        }
 
-            // Sets the source reference on Chart Studio Cloud for `color`.
-            Line& colorsrc(std::string f) {
-                json["colorsrc"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the width (in px) of the line enclosing each sector.
-            Line& width(double f) {
-                json["width"] = std::move(f);
-                return *this;
-            }
-            Line& width(std::vector<double> f) {
-                json["width"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the source reference on Chart Studio Cloud for `width`.
-            Line& widthsrc(std::string f) {
-                json["widthsrc"] = std::move(f);
-                return *this;
-            }
-
-            // Advanced users may modify the JSON representation directly, at their own peril!
-            nlohmann::json json{};
-        };
-
-        // Sets the pattern within the marker.
-        class Pattern {
-         public:
-
-            enum class Fillmode {
-                REPLACE,
-                OVERLAY,
-            };
-            std::string to_string(Fillmode e) {
-                switch (e) {
-                case Fillmode::REPLACE:
-                    return "replace";
-                case Fillmode::OVERLAY:
-                    return "overlay";
-                }
-            }
-
-            enum class Shape {
-                EMPTY,
-                SLASH,
-                DOUBLEBACKSLASH,
-                X,
-                HYPHEN,
-                OR,
-                PLUS,
-                DOT,
-            };
-            std::string to_string(Shape e) {
-                switch (e) {
-                case Shape::EMPTY:
-                    return "";
-                case Shape::SLASH:
-                    return "/";
-                case Shape::DOUBLEBACKSLASH:
-                    return "\\";
-                case Shape::X:
-                    return "x";
-                case Shape::HYPHEN:
-                    return "-";
-                case Shape::OR:
-                    return "|";
-                case Shape::PLUS:
-                    return "+";
-                case Shape::DOT:
-                    return ".";
-                }
-            }
-
-            // When there is no colorscale sets the color of background pattern fill. Defaults to a `marker.color`
-            // background when `fillmode` is *overlay*. Otherwise, defaults to a transparent background.
-            Pattern& bgcolor(std::string f) {
-                json["bgcolor"] = std::move(f);
-                return *this;
-            }
-            Pattern& bgcolor(double f) {
-                json["bgcolor"] = std::move(f);
-                return *this;
-            }
-            Pattern& bgcolor(std::vector<std::string> f) {
-                json["bgcolor"] = std::move(f);
-                return *this;
-            }
-            Pattern& bgcolor(std::vector<double> f) {
-                json["bgcolor"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the source reference on Chart Studio Cloud for `bgcolor`.
-            Pattern& bgcolorsrc(std::string f) {
-                json["bgcolorsrc"] = std::move(f);
-                return *this;
-            }
-
-            // When there is no colorscale sets the color of foreground pattern fill. Defaults to a `marker.color`
-            // background when `fillmode` is *replace*. Otherwise, defaults to dark grey or white to increase contrast
-            // with the `bgcolor`.
-            Pattern& fgcolor(std::string f) {
-                json["fgcolor"] = std::move(f);
-                return *this;
-            }
-            Pattern& fgcolor(double f) {
-                json["fgcolor"] = std::move(f);
-                return *this;
-            }
-            Pattern& fgcolor(std::vector<std::string> f) {
-                json["fgcolor"] = std::move(f);
-                return *this;
-            }
-            Pattern& fgcolor(std::vector<double> f) {
-                json["fgcolor"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the source reference on Chart Studio Cloud for `fgcolor`.
-            Pattern& fgcolorsrc(std::string f) {
-                json["fgcolorsrc"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the opacity of the foreground pattern fill. Defaults to a 0.5 when `fillmode` is *overlay*.
-            // Otherwise, defaults to 1.
-            Pattern& fgopacity(double f) {
-                json["fgopacity"] = std::move(f);
-                return *this;
-            }
-
-            // Determines whether `marker.color` should be used as a default to `bgcolor` or a `fgcolor`.
-            // - Default: replace
-            Pattern& fillmode(enum Fillmode f) {
-                json["fillmode"] = to_string(f);
-                return *this;
-            }
-
-            // Sets the shape of the pattern fill. By default, no pattern is used for filling the area.
-            // - Default:
-            Pattern& shape(enum Shape f) {
-                json["shape"] = to_string(f);
-                return *this;
-            }
-            Pattern& shape(const std::vector<enum Shape>& f) {
-                std::vector<std::string> stringified(f.size());
-                std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-                json["shape"] = std::move(stringified);
-                return *this;
-            }
-
-            // Sets the source reference on Chart Studio Cloud for `shape`.
-            Pattern& shapesrc(std::string f) {
-                json["shapesrc"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the size of unit squares of the pattern fill in pixels, which corresponds to the interval of
-            // repetition of the pattern.
-            Pattern& size(double f) {
-                json["size"] = std::move(f);
-                return *this;
-            }
-            Pattern& size(std::vector<double> f) {
-                json["size"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the source reference on Chart Studio Cloud for `size`.
-            Pattern& sizesrc(std::string f) {
-                json["sizesrc"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the solidity of the pattern fill. Solidity is roughly the fraction of the area filled by the
-            // pattern. Solidity of 0 shows only the background color without pattern and solidty of 1 shows only the
-            // foreground color without pattern.
-            Pattern& solidity(double f) {
-                json["solidity"] = std::move(f);
-                return *this;
-            }
-            Pattern& solidity(std::vector<double> f) {
-                json["solidity"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the source reference on Chart Studio Cloud for `solidity`.
-            Pattern& soliditysrc(std::string f) {
-                json["soliditysrc"] = std::move(f);
-                return *this;
-            }
-
-            // Advanced users may modify the JSON representation directly, at their own peril!
-            nlohmann::json json{};
-        };
+        // Sets the source reference on Chart Studio Cloud for `angle`.
+        Marker& anglesrc(std::string f) {
+            json["anglesrc"] = std::move(f);
+            return *this;
+        }
 
         // Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by
-        // `marker.colorscale`. Has an effect only if colors is set to a numerical array. In case `colorscale` is
-        // unspecified or `autocolorscale` is true, the default palette will be chosen according to whether numbers in
-        // the `color` array are all positive, all negative or mixed.
+        // `marker.colorscale`. Has an effect only if in `marker.color` is set to a numerical array. In case
+        // `colorscale` is unspecified or `autocolorscale` is true, the default palette will be chosen according to
+        // whether numbers in the `color` array are all positive, all negative or mixed.
         Marker& autocolorscale(bool f) {
             json["autocolorscale"] = std::move(f);
             return *this;
         }
 
-        // Determines whether or not the color domain is computed with respect to the input data (here colors) or the
-        // bounds set in `marker.cmin` and `marker.cmax` Has an effect only if colors is set to a numerical array.
-        // Defaults to `false` when `marker.cmin` and `marker.cmax` are set by the user.
+        // Determines whether or not the color domain is computed with respect to the input data (here in
+        // `marker.color`) or the bounds set in `marker.cmin` and `marker.cmax` Has an effect only if in `marker.color`
+        // is set to a numerical array. Defaults to `false` when `marker.cmin` and `marker.cmax` are set by the user.
         Marker& cauto(bool f) {
             json["cauto"] = std::move(f);
             return *this;
         }
 
-        // Sets the upper bound of the color domain. Has an effect only if colors is set to a numerical array. Value
-        // should have the same units as colors and if set, `marker.cmin` must be set as well.
+        // Sets the upper bound of the color domain. Has an effect only if in `marker.color` is set to a numerical
+        // array. Value should have the same units as in `marker.color` and if set, `marker.cmin` must be set as well.
         Marker& cmax(double f) {
             json["cmax"] = std::move(f);
             return *this;
         }
 
         // Sets the mid-point of the color domain by scaling `marker.cmin` and/or `marker.cmax` to be equidistant to
-        // this point. Has an effect only if colors is set to a numerical array. Value should have the same units as
-        // colors. Has no effect when `marker.cauto` is `false`.
+        // this point. Has an effect only if in `marker.color` is set to a numerical array. Value should have the same
+        // units as in `marker.color`. Has no effect when `marker.cauto` is `false`.
         Marker& cmid(double f) {
             json["cmid"] = std::move(f);
             return *this;
         }
 
-        // Sets the lower bound of the color domain. Has an effect only if colors is set to a numerical array. Value
-        // should have the same units as colors and if set, `marker.cmax` must be set as well.
+        // Sets the lower bound of the color domain. Has an effect only if in `marker.color` is set to a numerical
+        // array. Value should have the same units as in `marker.color` and if set, `marker.cmax` must be set as well.
         Marker& cmin(double f) {
             json["cmin"] = std::move(f);
+            return *this;
+        }
+
+        // Sets the marker color. It accepts either a specific color or an array of numbers that are mapped to the
+        // colorscale relative to the max and min values of the array or relative to `marker.cmin` and `marker.cmax` if
+        // set.
+        Marker& color(std::string f) {
+            json["color"] = std::move(f);
+            return *this;
+        }
+        Marker& color(double f) {
+            json["color"] = std::move(f);
+            return *this;
+        }
+        Marker& color(std::vector<std::string> f) {
+            json["color"] = std::move(f);
+            return *this;
+        }
+        Marker& color(std::vector<double> f) {
+            json["color"] = std::move(f);
             return *this;
         }
 
@@ -2145,17 +1834,9 @@ class Sunburst : public Trace {
             return *this;
         }
 
-        // Sets the color of each sector of this trace. If not specified, the default trace color set is used to pick
-        // the sector colors.
-        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-        Marker& colors(std::vector<T> f) {
-            json["colors"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the colorscale. Has an effect only if colors is set to a numerical array. The colorscale must be an
-        // array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At
-        // minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0,
+        // Sets the colorscale. Has an effect only if in `marker.color` is set to a numerical array. The colorscale must
+        // be an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color
+        // string. At minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0,
         // 'rgb(0,0,255)'], [1, 'rgb(255,0,0)']]`. To control the bounds of the colorscale in color space, use
         // `marker.cmin` and `marker.cmax`. Alternatively, `colorscale` may be a palette name string of the following
         // list:
@@ -2169,273 +1850,95 @@ class Sunburst : public Trace {
             return *this;
         }
 
-        // Sets the source reference on Chart Studio Cloud for `colors`.
-        Marker& colorssrc(std::string f) {
-            json["colorssrc"] = std::move(f);
+        // Sets the source reference on Chart Studio Cloud for `color`.
+        Marker& colorsrc(std::string f) {
+            json["colorsrc"] = std::move(f);
             return *this;
         }
 
-        Marker& line(class Line f) {
-            json["line"] = std::move(f.json);
+        // Sets the marker opacity.
+        Marker& opacity(double f) {
+            json["opacity"] = std::move(f);
+            return *this;
+        }
+        Marker& opacity(std::vector<double> f) {
+            json["opacity"] = std::move(f);
             return *this;
         }
 
-        // Sets the pattern within the marker.
-        Marker& pattern(class Pattern f) {
-            json["pattern"] = std::move(f.json);
+        // Sets the source reference on Chart Studio Cloud for `opacity`.
+        Marker& opacitysrc(std::string f) {
+            json["opacitysrc"] = std::move(f);
             return *this;
         }
 
-        // Reverses the color mapping if true. Has an effect only if colors is set to a numerical array. If true,
-        // `marker.cmin` will correspond to the last color in the array and `marker.cmax` will correspond to the first
-        // color.
+        // Reverses the color mapping if true. Has an effect only if in `marker.color` is set to a numerical array. If
+        // true, `marker.cmin` will correspond to the last color in the array and `marker.cmax` will correspond to the
+        // first color.
         Marker& reversescale(bool f) {
             json["reversescale"] = std::move(f);
             return *this;
         }
 
-        // Determines whether or not a colorbar is displayed for this trace. Has an effect only if colors is set to a
-        // numerical array.
+        // Determines whether or not a colorbar is displayed for this trace. Has an effect only if in `marker.color` is
+        // set to a numerical array.
         Marker& showscale(bool f) {
             json["showscale"] = std::move(f);
             return *this;
         }
 
-        // Advanced users may modify the JSON representation directly, at their own peril!
-        nlohmann::json json{};
-    };
-
-    // Sets the font used for `textinfo` lying outside the sector. This option refers to the root of the hierarchy
-    // presented at the center of a sunburst graph. Please note that if a hierarchy has multiple root nodes, this option
-    // won't have any effect and `insidetextfont` would be used.
-    class Outsidetextfont {
-     public:
-
-        enum class Style {
-            NORMAL,
-            ITALIC,
-        };
-        std::string to_string(Style e) {
-            switch (e) {
-            case Style::NORMAL:
-                return "normal";
-            case Style::ITALIC:
-                return "italic";
-            }
-        }
-
-        enum class Textcase {
-            NORMAL,
-            WORD_CAPS,
-            UPPER,
-            LOWER,
-        };
-        std::string to_string(Textcase e) {
-            switch (e) {
-            case Textcase::NORMAL:
-                return "normal";
-            case Textcase::WORD_CAPS:
-                return "word caps";
-            case Textcase::UPPER:
-                return "upper";
-            case Textcase::LOWER:
-                return "lower";
-            }
-        }
-
-        enum class Variant {
-            NORMAL,
-            SMALL_CAPS,
-            ALL_SMALL_CAPS,
-            ALL_PETITE_CAPS,
-            PETITE_CAPS,
-            UNICASE,
-        };
-        std::string to_string(Variant e) {
-            switch (e) {
-            case Variant::NORMAL:
-                return "normal";
-            case Variant::SMALL_CAPS:
-                return "small-caps";
-            case Variant::ALL_SMALL_CAPS:
-                return "all-small-caps";
-            case Variant::ALL_PETITE_CAPS:
-                return "all-petite-caps";
-            case Variant::PETITE_CAPS:
-                return "petite-caps";
-            case Variant::UNICASE:
-                return "unicase";
-            }
-        }
-
-        Outsidetextfont& color(std::string f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-        Outsidetextfont& color(double f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-        Outsidetextfont& color(std::vector<std::string> f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-        Outsidetextfont& color(std::vector<double> f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `color`.
-        Outsidetextfont& colorsrc(std::string f) {
-            json["colorsrc"] = std::move(f);
-            return *this;
-        }
-
-        // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
-        // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
-        // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
-        // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a
-        // select number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid
-        // Sans*, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans
-        // Narrow*, *Raleway*, *Times New Roman*.
-        Outsidetextfont& family(std::string f) {
-            json["family"] = std::move(f);
-            return *this;
-        }
-        Outsidetextfont& family(std::vector<std::string> f) {
-            json["family"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `family`.
-        Outsidetextfont& familysrc(std::string f) {
-            json["familysrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as
-        // combinations e.g. *under+over*, etc.
-        // - Default: none
-        // - Flags: ['under', 'over', 'through']
-        // - Extras ['none']
-        Outsidetextfont& lineposition(std::string f) {
-            json["lineposition"] = std::move(f);
-            return *this;
-        }
-        Outsidetextfont& lineposition(std::vector<std::string> f) {
-            json["lineposition"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `lineposition`.
-        Outsidetextfont& linepositionsrc(std::string f) {
-            json["linepositionsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text
-        // font color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
-        Outsidetextfont& shadow(std::string f) {
-            json["shadow"] = std::move(f);
-            return *this;
-        }
-        Outsidetextfont& shadow(std::vector<std::string> f) {
-            json["shadow"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `shadow`.
-        Outsidetextfont& shadowsrc(std::string f) {
-            json["shadowsrc"] = std::move(f);
-            return *this;
-        }
-
-        Outsidetextfont& size(double f) {
+        // Sets the marker size (in px).
+        Marker& size(double f) {
             json["size"] = std::move(f);
             return *this;
         }
-        Outsidetextfont& size(std::vector<double> f) {
+        Marker& size(std::vector<double> f) {
             json["size"] = std::move(f);
+            return *this;
+        }
+
+        // Has an effect only if `marker.size` is set to a numerical array. Sets the minimum size (in px) of the
+        // rendered marker points.
+        Marker& sizemin(double f) {
+            json["sizemin"] = std::move(f);
+            return *this;
+        }
+
+        // Has an effect only if `marker.size` is set to a numerical array. Sets the rule for which the data in `size`
+        // is converted to pixels.
+        // - Default: diameter
+        Marker& sizemode(enum Sizemode f) {
+            json["sizemode"] = to_string(f);
+            return *this;
+        }
+
+        // Has an effect only if `marker.size` is set to a numerical array. Sets the scale factor used to determine the
+        // rendered size of marker points. Use with `sizemin` and `sizemode`.
+        Marker& sizeref(double f) {
+            json["sizeref"] = std::move(f);
             return *this;
         }
 
         // Sets the source reference on Chart Studio Cloud for `size`.
-        Outsidetextfont& sizesrc(std::string f) {
+        Marker& sizesrc(std::string f) {
             json["sizesrc"] = std::move(f);
             return *this;
         }
 
-        // Sets whether a font should be styled with a normal or italic face from its family.
-        // - Default: normal
-        Outsidetextfont& style(enum Style f) {
-            json["style"] = to_string(f);
+        // Sets the marker symbol. Full list: https://www.map.com/maki-icons/ Note that the array `marker.color` and
+        // `marker.size` are only available for *circle* symbols.
+        Marker& symbol(std::string f) {
+            json["symbol"] = std::move(f);
             return *this;
         }
-        Outsidetextfont& style(const std::vector<enum Style>& f) {
-            std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-            json["style"] = std::move(stringified);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `style`.
-        Outsidetextfont& stylesrc(std::string f) {
-            json["stylesrc"] = std::move(f);
+        Marker& symbol(std::vector<std::string> f) {
+            json["symbol"] = std::move(f);
             return *this;
         }
 
-        // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with
-        // each word capitalized.
-        // - Default: normal
-        Outsidetextfont& textcase(enum Textcase f) {
-            json["textcase"] = to_string(f);
-            return *this;
-        }
-        Outsidetextfont& textcase(const std::vector<enum Textcase>& f) {
-            std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-            json["textcase"] = std::move(stringified);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `textcase`.
-        Outsidetextfont& textcasesrc(std::string f) {
-            json["textcasesrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the variant of the font.
-        // - Default: normal
-        Outsidetextfont& variant(enum Variant f) {
-            json["variant"] = to_string(f);
-            return *this;
-        }
-        Outsidetextfont& variant(const std::vector<enum Variant>& f) {
-            std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-            json["variant"] = std::move(stringified);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `variant`.
-        Outsidetextfont& variantsrc(std::string f) {
-            json["variantsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the weight (or boldness) of the font.
-        Outsidetextfont& weight(int f) {
-            json["weight"] = std::move(f);
-            return *this;
-        }
-        Outsidetextfont& weight(std::vector<int> f) {
-            json["weight"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `weight`.
-        Outsidetextfont& weightsrc(std::string f) {
-            json["weightsrc"] = std::move(f);
+        // Sets the source reference on Chart Studio Cloud for `symbol`.
+        Marker& symbolsrc(std::string f) {
+            json["symbolsrc"] = std::move(f);
             return *this;
         }
 
@@ -2443,17 +1946,40 @@ class Sunburst : public Trace {
         nlohmann::json json{};
     };
 
-    class Root {
+    class Selected {
      public:
 
-        // sets the color of the root node for a sunburst/treemap/icicle trace. this has no effect when a colorscale is
-        // used to set the markers.
-        Root& color(std::string f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-        Root& color(double f) {
-            json["color"] = std::move(f);
+        class Marker {
+         public:
+
+            // Sets the marker color of selected points.
+            Marker& color(std::string f) {
+                json["color"] = std::move(f);
+                return *this;
+            }
+            Marker& color(double f) {
+                json["color"] = std::move(f);
+                return *this;
+            }
+
+            // Sets the marker opacity of selected points.
+            Marker& opacity(double f) {
+                json["opacity"] = std::move(f);
+                return *this;
+            }
+
+            // Sets the marker size of selected points.
+            Marker& size(double f) {
+                json["size"] = std::move(f);
+                return *this;
+            }
+
+            // Advanced users may modify the JSON representation directly, at their own peril!
+            nlohmann::json json{};
+        };
+
+        Selected& marker(class Marker f) {
+            json["marker"] = std::move(f.json);
             return *this;
         }
 
@@ -2482,7 +2008,8 @@ class Sunburst : public Trace {
         nlohmann::json json{};
     };
 
-    // Sets the font used for `textinfo`.
+    // Sets the icon text font (color=map.layer.paint.text-color, size=map.layer.layout.text-size). Has an effect only
+    // when `type` is set to *symbol*.
     class Textfont {
      public:
 
@@ -2499,70 +2026,12 @@ class Sunburst : public Trace {
             }
         }
 
-        enum class Textcase {
-            NORMAL,
-            WORD_CAPS,
-            UPPER,
-            LOWER,
-        };
-        std::string to_string(Textcase e) {
-            switch (e) {
-            case Textcase::NORMAL:
-                return "normal";
-            case Textcase::WORD_CAPS:
-                return "word caps";
-            case Textcase::UPPER:
-                return "upper";
-            case Textcase::LOWER:
-                return "lower";
-            }
-        }
-
-        enum class Variant {
-            NORMAL,
-            SMALL_CAPS,
-            ALL_SMALL_CAPS,
-            ALL_PETITE_CAPS,
-            PETITE_CAPS,
-            UNICASE,
-        };
-        std::string to_string(Variant e) {
-            switch (e) {
-            case Variant::NORMAL:
-                return "normal";
-            case Variant::SMALL_CAPS:
-                return "small-caps";
-            case Variant::ALL_SMALL_CAPS:
-                return "all-small-caps";
-            case Variant::ALL_PETITE_CAPS:
-                return "all-petite-caps";
-            case Variant::PETITE_CAPS:
-                return "petite-caps";
-            case Variant::UNICASE:
-                return "unicase";
-            }
-        }
-
         Textfont& color(std::string f) {
             json["color"] = std::move(f);
             return *this;
         }
         Textfont& color(double f) {
             json["color"] = std::move(f);
-            return *this;
-        }
-        Textfont& color(std::vector<std::string> f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-        Textfont& color(std::vector<double> f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `color`.
-        Textfont& colorsrc(std::string f) {
-            json["colorsrc"] = std::move(f);
             return *this;
         }
 
@@ -2577,66 +2046,9 @@ class Sunburst : public Trace {
             json["family"] = std::move(f);
             return *this;
         }
-        Textfont& family(std::vector<std::string> f) {
-            json["family"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `family`.
-        Textfont& familysrc(std::string f) {
-            json["familysrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as
-        // combinations e.g. *under+over*, etc.
-        // - Default: none
-        // - Flags: ['under', 'over', 'through']
-        // - Extras ['none']
-        Textfont& lineposition(std::string f) {
-            json["lineposition"] = std::move(f);
-            return *this;
-        }
-        Textfont& lineposition(std::vector<std::string> f) {
-            json["lineposition"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `lineposition`.
-        Textfont& linepositionsrc(std::string f) {
-            json["linepositionsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text
-        // font color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
-        Textfont& shadow(std::string f) {
-            json["shadow"] = std::move(f);
-            return *this;
-        }
-        Textfont& shadow(std::vector<std::string> f) {
-            json["shadow"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `shadow`.
-        Textfont& shadowsrc(std::string f) {
-            json["shadowsrc"] = std::move(f);
-            return *this;
-        }
 
         Textfont& size(double f) {
             json["size"] = std::move(f);
-            return *this;
-        }
-        Textfont& size(std::vector<double> f) {
-            json["size"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `size`.
-        Textfont& sizesrc(std::string f) {
-            json["sizesrc"] = std::move(f);
             return *this;
         }
 
@@ -2646,71 +2058,10 @@ class Sunburst : public Trace {
             json["style"] = to_string(f);
             return *this;
         }
-        Textfont& style(const std::vector<enum Style>& f) {
-            std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-            json["style"] = std::move(stringified);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `style`.
-        Textfont& stylesrc(std::string f) {
-            json["stylesrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with
-        // each word capitalized.
-        // - Default: normal
-        Textfont& textcase(enum Textcase f) {
-            json["textcase"] = to_string(f);
-            return *this;
-        }
-        Textfont& textcase(const std::vector<enum Textcase>& f) {
-            std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-            json["textcase"] = std::move(stringified);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `textcase`.
-        Textfont& textcasesrc(std::string f) {
-            json["textcasesrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the variant of the font.
-        // - Default: normal
-        Textfont& variant(enum Variant f) {
-            json["variant"] = to_string(f);
-            return *this;
-        }
-        Textfont& variant(const std::vector<enum Variant>& f) {
-            std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-            json["variant"] = std::move(stringified);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `variant`.
-        Textfont& variantsrc(std::string f) {
-            json["variantsrc"] = std::move(f);
-            return *this;
-        }
 
         // Sets the weight (or boldness) of the font.
         Textfont& weight(int f) {
             json["weight"] = std::move(f);
-            return *this;
-        }
-        Textfont& weight(std::vector<int> f) {
-            json["weight"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `weight`.
-        Textfont& weightsrc(std::string f) {
-            json["weightsrc"] = std::move(f);
             return *this;
         }
 
@@ -2718,64 +2069,120 @@ class Sunburst : public Trace {
         nlohmann::json json{};
     };
 
-    // Determines how the items in `values` are summed. When set to *total*, items in `values` are taken to be value of
-    // all its descendants. When set to *remainder*, items in `values` corresponding to the root and the branches
-    // sectors are taken to be the extra part not part of the sum of the values at their leaves.
-    // - Default: remainder
-    Sunburst& branchvalues(enum Branchvalues f) {
-        json["branchvalues"] = to_string(f);
+    class Unselected {
+     public:
+
+        class Marker {
+         public:
+
+            // Sets the marker color of unselected points, applied only when a selection exists.
+            Marker& color(std::string f) {
+                json["color"] = std::move(f);
+                return *this;
+            }
+            Marker& color(double f) {
+                json["color"] = std::move(f);
+                return *this;
+            }
+
+            // Sets the marker opacity of unselected points, applied only when a selection exists.
+            Marker& opacity(double f) {
+                json["opacity"] = std::move(f);
+                return *this;
+            }
+
+            // Sets the marker size of unselected points, applied only when a selection exists.
+            Marker& size(double f) {
+                json["size"] = std::move(f);
+                return *this;
+            }
+
+            // Advanced users may modify the JSON representation directly, at their own peril!
+            nlohmann::json json{};
+        };
+
+        Unselected& marker(class Marker f) {
+            json["marker"] = std::move(f.json);
+            return *this;
+        }
+
+        // Advanced users may modify the JSON representation directly, at their own peril!
+        nlohmann::json json{};
+    };
+
+    // Determines if this scattermap trace's layers are to be inserted before the layer with the specified ID. By
+    // default, scattermap layers are inserted above all the base layers. To place the scattermap layers above every
+    // other layer, set `below` to *''*.
+    Scattermap& below(std::string f) {
+        json["below"] = std::move(f);
         return *this;
     }
 
-    // Determines default for `values` when it is not provided, by inferring a 1 for each of the *leaves* and/or
-    // *branches*, otherwise 0.
-    // - Default: leaves
-    // - Flags: ['branches', 'leaves']
-    Sunburst& count(std::string f) {
-        json["count"] = std::move(f);
+    Scattermap& cluster(class Cluster f) {
+        json["cluster"] = std::move(f.json);
+        return *this;
+    }
+
+    // Determines whether or not gaps (i.e. {nan} or missing values) in the provided data arrays are connected.
+    Scattermap& connectgaps(bool f) {
+        json["connectgaps"] = std::move(f);
         return *this;
     }
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sunburst& customdata(std::vector<T> f) {
+    Scattermap& customdata(std::vector<T> f) {
         json["customdata"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `customdata`.
-    Sunburst& customdatasrc(std::string f) {
+    Scattermap& customdatasrc(std::string f) {
         json["customdatasrc"] = std::move(f);
         return *this;
     }
 
-    Sunburst& domain(class Domain f) {
-        json["domain"] = std::move(f.json);
+    // Sets the area to fill with a solid color. Use with `fillcolor` if not *none*. *toself* connects the endpoints of
+    // the trace (or each segment of the trace if it has gaps) into a closed shape.
+    // - Default: none
+    Scattermap& fill(enum Fill f) {
+        json["fill"] = to_string(f);
+        return *this;
+    }
+
+    // Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line
+    // color, whichever is available.
+    Scattermap& fillcolor(std::string f) {
+        json["fillcolor"] = std::move(f);
+        return *this;
+    }
+    Scattermap& fillcolor(double f) {
+        json["fillcolor"] = std::move(f);
         return *this;
     }
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
-    // - Default: label+text+value+name
-    // - Flags: ['label', 'text', 'value', 'name', 'current path', 'percent root', 'percent entry', 'percent parent']
+    // - Default: all
+    // - Flags: ['lon', 'lat', 'text', 'name']
     // - Extras ['all', 'none', 'skip']
-    Sunburst& hoverinfo(std::string f) {
+    Scattermap& hoverinfo(std::string f) {
         json["hoverinfo"] = std::move(f);
         return *this;
     }
-    Sunburst& hoverinfo(std::vector<std::string> f) {
+    Scattermap& hoverinfo(std::vector<std::string> f) {
         json["hoverinfo"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
-    Sunburst& hoverinfosrc(std::string f) {
+    Scattermap& hoverinfosrc(std::string f) {
         json["hoverinfosrc"] = std::move(f);
         return *this;
     }
 
-    Sunburst& hoverlabel(class Hoverlabel f) {
+    Scattermap& hoverlabel(class Hoverlabel f) {
         json["hoverlabel"] = std::move(f.json);
         return *this;
     }
@@ -2790,39 +2197,38 @@ class Sunburst : public Trace {
     // %{2019-01-01|%A}". https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details on the date
     // formatting syntax. The variables available in `hovertemplate` are the ones emitted as event data described at
     // this link https://plotly.com/javascript/plotlyjs-events/#event-data. Additionally, every attributes that can be
-    // specified per-point (the ones that are `arrayOk: true`) are available. Finally, the template string has access to
-    // variables `currentPath`, `root`, `entry`, `percentRoot`, `percentEntry` and `percentParent`. Anything contained
-    // in tag `<extra>` is displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the
-    // secondary box completely, use an empty tag `<extra></extra>`.
-    Sunburst& hovertemplate(std::string f) {
+    // specified per-point (the ones that are `arrayOk: true`) are available.  Anything contained in tag `<extra>` is
+    // displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box
+    // completely, use an empty tag `<extra></extra>`.
+    Scattermap& hovertemplate(std::string f) {
         json["hovertemplate"] = std::move(f);
         return *this;
     }
-    Sunburst& hovertemplate(std::vector<std::string> f) {
+    Scattermap& hovertemplate(std::vector<std::string> f) {
         json["hovertemplate"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
-    Sunburst& hovertemplatesrc(std::string f) {
+    Scattermap& hovertemplatesrc(std::string f) {
         json["hovertemplatesrc"] = std::move(f);
         return *this;
     }
 
-    // Sets hover text elements associated with each sector. If a single string, the same string appears for all data
-    // points. If an array of string, the items are mapped in order of this trace's sectors. To be seen, trace
-    // `hoverinfo` must contain a *text* flag.
-    Sunburst& hovertext(std::string f) {
+    // Sets hover text elements associated with each (lon,lat) pair If a single string, the same string appears over all
+    // the data points. If an array of string, the items are mapped in order to the this trace's (lon,lat) coordinates.
+    // To be seen, trace `hoverinfo` must contain a *text* flag.
+    Scattermap& hovertext(std::string f) {
         json["hovertext"] = std::move(f);
         return *this;
     }
-    Sunburst& hovertext(std::vector<std::string> f) {
+    Scattermap& hovertext(std::vector<std::string> f) {
         json["hovertext"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
-    Sunburst& hovertextsrc(std::string f) {
+    Scattermap& hovertextsrc(std::string f) {
         json["hovertextsrc"] = std::move(f);
         return *this;
     }
@@ -2830,60 +2236,45 @@ class Sunburst : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sunburst& ids(std::vector<T> f) {
+    Scattermap& ids(std::vector<T> f) {
         json["ids"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `ids`.
-    Sunburst& idssrc(std::string f) {
+    Scattermap& idssrc(std::string f) {
         json["idssrc"] = std::move(f);
         return *this;
     }
 
-    // Sets the font used for `textinfo` lying inside the sector.
-    Sunburst& insidetextfont(class Insidetextfont f) {
-        json["insidetextfont"] = std::move(f.json);
-        return *this;
-    }
-
-    // Controls the orientation of the text inside chart sectors. When set to *auto*, text may be oriented in any
-    // direction in order to be as big as possible in the middle of a sector. The *horizontal* option orients text to be
-    // parallel with the bottom of the chart, and may make text smaller in order to achieve that goal. The *radial*
-    // option orients text along the radius of the sector. The *tangential* option orients text perpendicular to the
-    // radius of the sector.
-    // - Default: auto
-    Sunburst& insidetextorientation(enum Insidetextorientation f) {
-        json["insidetextorientation"] = to_string(f);
-        return *this;
-    }
-
-    // Sets the labels of each of the sectors.
+    // Sets the latitude coordinates (in degrees North).
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sunburst& labels(std::vector<T> f) {
-        json["labels"] = std::move(f);
+    Scattermap& lat(std::vector<T> f) {
+        json["lat"] = std::move(f);
         return *this;
     }
 
-    // Sets the source reference on Chart Studio Cloud for `labels`.
-    Sunburst& labelssrc(std::string f) {
-        json["labelssrc"] = std::move(f);
-        return *this;
-    }
-
-    Sunburst& leaf(class Leaf f) {
-        json["leaf"] = std::move(f.json);
+    // Sets the source reference on Chart Studio Cloud for `lat`.
+    Scattermap& latsrc(std::string f) {
+        json["latsrc"] = std::move(f);
         return *this;
     }
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
-    Sunburst& legend(std::string f) {
+    Scattermap& legend(std::string f) {
         json["legend"] = std::move(f);
         return *this;
     }
 
-    Sunburst& legendgrouptitle(class Legendgrouptitle f) {
+    // Sets the legend group for this trace. Traces and shapes part of the same legend group hide/show at the same time
+    // when toggling legend items.
+    Scattermap& legendgroup(std::string f) {
+        json["legendgroup"] = std::move(f);
+        return *this;
+    }
+
+    Scattermap& legendgrouptitle(class Legendgrouptitle f) {
         json["legendgrouptitle"] = std::move(f.json);
         return *this;
     }
@@ -2893,35 +2284,37 @@ class Sunburst : public Trace {
     // can use ranks less than 1000 to place certain items before all unranked items, and ranks greater than 1000 to go
     // after all unranked items. When having unranked or equal rank items shapes would be displayed after traces i.e.
     // according to their order in data and layout.
-    Sunburst& legendrank(double f) {
+    Scattermap& legendrank(double f) {
         json["legendrank"] = std::move(f);
         return *this;
     }
 
     // Sets the width (in px or fraction) of the legend for this trace.
-    Sunburst& legendwidth(double f) {
+    Scattermap& legendwidth(double f) {
         json["legendwidth"] = std::move(f);
         return *this;
     }
 
-    // Sets the level from which this trace hierarchy is rendered. Set `level` to `''` to start from the root node in
-    // the hierarchy. Must be an "id" if `ids` is filled in, otherwise plotly attempts to find a matching item in
-    // `labels`.
-    template <typename T>
-    Sunburst& level(T f) {
-        json["level"] = std::move(f);
+    Scattermap& line(class Line f) {
+        json["line"] = std::move(f.json);
         return *this;
     }
 
-    Sunburst& marker(class Marker f) {
+    // Sets the longitude coordinates (in degrees East).
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
+    Scattermap& lon(std::vector<T> f) {
+        json["lon"] = std::move(f);
+        return *this;
+    }
+
+    // Sets the source reference on Chart Studio Cloud for `lon`.
+    Scattermap& lonsrc(std::string f) {
+        json["lonsrc"] = std::move(f);
+        return *this;
+    }
+
+    Scattermap& marker(class Marker f) {
         json["marker"] = std::move(f.json);
-        return *this;
-    }
-
-    // Sets the number of rendered sectors from any given `level`. Set `maxdepth` to *-1* to render all the levels in
-    // the hierarchy.
-    Sunburst& maxdepth(int f) {
-        json["maxdepth"] = std::move(f);
         return *this;
     }
 
@@ -2932,104 +2325,105 @@ class Sunburst : public Trace {
     // `meta` in layout attributes, use `%{data[n[.meta[i]}` where `i` is the index or key of the `meta` and `n` is the
     // trace index.
     template <typename T>
-    Sunburst& meta(T f) {
+    Scattermap& meta(T f) {
         json["meta"] = std::move(f);
         return *this;
     }
     template <typename T>
-    Sunburst& meta(std::vector<T> f) {
+    Scattermap& meta(std::vector<T> f) {
         json["meta"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
-    Sunburst& metasrc(std::string f) {
+    Scattermap& metasrc(std::string f) {
         json["metasrc"] = std::move(f);
         return *this;
     }
 
+    // Determines the drawing mode for this scatter trace. If the provided `mode` includes *text* then the `text`
+    // elements appear at the coordinates. Otherwise, the `text` elements appear on hover.
+    // - Default: markers
+    // - Flags: ['lines', 'markers', 'text']
+    // - Extras ['none']
+    Scattermap& mode(std::string f) {
+        json["mode"] = std::move(f);
+        return *this;
+    }
+
     // Sets the trace name. The trace name appears as the legend item and on hover.
-    Sunburst& name(std::string f) {
+    Scattermap& name(std::string f) {
         json["name"] = std::move(f);
         return *this;
     }
 
     // Sets the opacity of the trace.
-    Sunburst& opacity(double f) {
+    Scattermap& opacity(double f) {
         json["opacity"] = std::move(f);
         return *this;
     }
 
-    // Sets the font used for `textinfo` lying outside the sector. This option refers to the root of the hierarchy
-    // presented at the center of a sunburst graph. Please note that if a hierarchy has multiple root nodes, this option
-    // won't have any effect and `insidetextfont` would be used.
-    Sunburst& outsidetextfont(class Outsidetextfont f) {
-        json["outsidetextfont"] = std::move(f.json);
+    Scattermap& selected(class Selected f) {
+        json["selected"] = std::move(f.json);
         return *this;
     }
 
-    // Sets the parent sectors for each of the sectors. Empty string items '' are understood to reference the root node
-    // in the hierarchy. If `ids` is filled, `parents` items are understood to be "ids" themselves. When `ids` is not
-    // set, plotly attempts to find matching items in `labels`, but beware they must be unique.
-    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sunburst& parents(std::vector<T> f) {
-        json["parents"] = std::move(f);
+    // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
+    // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
+    // other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
+    template <typename T>
+    Scattermap& selectedpoints(T f) {
+        json["selectedpoints"] = std::move(f);
         return *this;
     }
 
-    // Sets the source reference on Chart Studio Cloud for `parents`.
-    Sunburst& parentssrc(std::string f) {
-        json["parentssrc"] = std::move(f);
+    // Determines whether or not an item corresponding to this trace is shown in the legend.
+    Scattermap& showlegend(bool f) {
+        json["showlegend"] = std::move(f);
         return *this;
     }
 
-    Sunburst& root(class Root f) {
-        json["root"] = std::move(f.json);
-        return *this;
-    }
-
-    // Rotates the whole diagram counterclockwise by some angle. By default the first slice starts at 3 o'clock.
-    Sunburst& rotation(double f) {
-        json["rotation"] = std::move(f);
-        return *this;
-    }
-
-    // Determines whether or not the sectors are reordered from largest to smallest.
-    Sunburst& sort(bool f) {
-        json["sort"] = std::move(f);
-        return *this;
-    }
-
-    Sunburst& stream(class Stream f) {
+    Scattermap& stream(class Stream f) {
         json["stream"] = std::move(f.json);
         return *this;
     }
 
-    // Sets text elements associated with each sector. If trace `textinfo` contains a *text* flag, these elements will
-    // be seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will
-    // be seen in the hover labels.
-    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sunburst& text(std::vector<T> f) {
+    // Sets a reference between this trace's data coordinates and a map subplot. If *map* (the default value), the data
+    // refer to `layout.map`. If *map2*, the data refer to `layout.map2`, and so on.
+    Scattermap& subplot(std::string f) {
+        json["subplot"] = std::move(f);
+        return *this;
+    }
+
+    // Sets text elements associated with each (lon,lat) pair If a single string, the same string appears over all the
+    // data points. If an array of string, the items are mapped in order to the this trace's (lon,lat) coordinates. If
+    // trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover
+    // labels.
+    Scattermap& text(std::string f) {
+        json["text"] = std::move(f);
+        return *this;
+    }
+    Scattermap& text(std::vector<std::string> f) {
         json["text"] = std::move(f);
         return *this;
     }
 
-    // Sets the font used for `textinfo`.
-    Sunburst& textfont(class Textfont f) {
+    // Sets the icon text font (color=map.layer.paint.text-color, size=map.layer.layout.text-size). Has an effect only
+    // when `type` is set to *symbol*.
+    Scattermap& textfont(class Textfont f) {
         json["textfont"] = std::move(f.json);
         return *this;
     }
 
-    // Determines which trace information appear on the graph.
-    // - Flags: ['label', 'text', 'value', 'current path', 'percent root', 'percent entry', 'percent parent']
-    // - Extras ['none']
-    Sunburst& textinfo(std::string f) {
-        json["textinfo"] = std::move(f);
+    // Sets the positions of the `text` elements with respects to the (x,y) coordinates.
+    // - Default: middle center
+    Scattermap& textposition(enum Textposition f) {
+        json["textposition"] = to_string(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `text`.
-    Sunburst& textsrc(std::string f) {
+    Scattermap& textsrc(std::string f) {
         json["textsrc"] = std::move(f);
         return *this;
     }
@@ -3041,26 +2435,25 @@ class Sunburst : public Trace {
     // using d3-time-format's syntax %{variable|d3-time-format}, for example "Day: %{2019-01-01|%A}".
     // https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details on the date formatting syntax. Every
     // attributes that can be specified per-point (the ones that are `arrayOk: true`) are available. Finally, the
-    // template string has access to variables `currentPath`, `root`, `entry`, `percentRoot`, `percentEntry`,
-    // `percentParent`, `label` and `value`.
-    Sunburst& texttemplate(std::string f) {
+    // template string has access to variables `lat`, `lon` and `text`.
+    Scattermap& texttemplate(std::string f) {
         json["texttemplate"] = std::move(f);
         return *this;
     }
-    Sunburst& texttemplate(std::vector<std::string> f) {
+    Scattermap& texttemplate(std::vector<std::string> f) {
         json["texttemplate"] = std::move(f);
         return *this;
     }
 
     // Sets the source reference on Chart Studio Cloud for `texttemplate`.
-    Sunburst& texttemplatesrc(std::string f) {
+    Scattermap& texttemplatesrc(std::string f) {
         json["texttemplatesrc"] = std::move(f);
         return *this;
     }
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
-    Sunburst& uid(std::string f) {
+    Scattermap& uid(std::string f) {
         json["uid"] = std::move(f);
         return *this;
     }
@@ -3074,29 +2467,20 @@ class Sunburst : public Trace {
     // add/remove traces before the end of the `data` array, such that the same trace has a different index, you can
     // still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
     template <typename T>
-    Sunburst& uirevision(T f) {
+    Scattermap& uirevision(T f) {
         json["uirevision"] = std::move(f);
         return *this;
     }
 
-    // Sets the values associated with each of the sectors. Use with `branchvalues` to determine how the values are
-    // summed.
-    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sunburst& values(std::vector<T> f) {
-        json["values"] = std::move(f);
-        return *this;
-    }
-
-    // Sets the source reference on Chart Studio Cloud for `values`.
-    Sunburst& valuessrc(std::string f) {
-        json["valuessrc"] = std::move(f);
+    Scattermap& unselected(class Unselected f) {
+        json["unselected"] = std::move(f.json);
         return *this;
     }
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
     // - Default: True
-    Sunburst& visible(enum Visible f) {
+    Scattermap& visible(enum Visible f) {
         json["visible"] = to_string(f);
         return *this;
     }

@@ -346,6 +346,10 @@ class Heatmapgl : public Trace {
                 json["color"] = std::move(f);
                 return *this;
             }
+            Tickfont& color(double f) {
+                json["color"] = std::move(f);
+                return *this;
+            }
 
             // HTML font family - the typeface that will be applied by the web browser. The web browser will only be
             // able to apply a font if it is available on the system which it operates. Provide multiple font families,
@@ -454,6 +458,10 @@ class Heatmapgl : public Trace {
                     json["color"] = std::move(f);
                     return *this;
                 }
+                Font& color(double f) {
+                    json["color"] = std::move(f);
+                    return *this;
+                }
 
                 // HTML font family - the typeface that will be applied by the web browser. The web browser will only be
                 // able to apply a font if it is available on the system which it operates. Provide multiple font
@@ -507,9 +515,17 @@ class Heatmapgl : public Trace {
             json["bgcolor"] = std::move(f);
             return *this;
         }
+        Colorbar& bgcolor(double f) {
+            json["bgcolor"] = std::move(f);
+            return *this;
+        }
 
         // Sets the axis line color.
         Colorbar& bordercolor(std::string f) {
+            json["bordercolor"] = std::move(f);
+            return *this;
+        }
+        Colorbar& bordercolor(double f) {
             json["bordercolor"] = std::move(f);
             return *this;
         }
@@ -599,6 +615,10 @@ class Heatmapgl : public Trace {
             json["outlinecolor"] = std::move(f);
             return *this;
         }
+        Colorbar& outlinecolor(double f) {
+            json["outlinecolor"] = std::move(f);
+            return *this;
+        }
 
         // Sets the width (in px) of the axis line.
         Colorbar& outlinewidth(double f) {
@@ -675,6 +695,10 @@ class Heatmapgl : public Trace {
 
         // Sets the tick color.
         Colorbar& tickcolor(std::string f) {
+            json["tickcolor"] = std::move(f);
+            return *this;
+        }
+        Colorbar& tickcolor(double f) {
             json["tickcolor"] = std::move(f);
             return *this;
         }
@@ -891,7 +915,15 @@ class Heatmapgl : public Trace {
                 json["color"] = std::move(f);
                 return *this;
             }
+            Font& color(double f) {
+                json["color"] = std::move(f);
+                return *this;
+            }
             Font& color(std::vector<std::string> f) {
+                json["color"] = std::move(f);
+                return *this;
+            }
+            Font& color(std::vector<double> f) {
                 json["color"] = std::move(f);
                 return *this;
             }
@@ -968,7 +1000,15 @@ class Heatmapgl : public Trace {
             json["bgcolor"] = std::move(f);
             return *this;
         }
+        Hoverlabel& bgcolor(double f) {
+            json["bgcolor"] = std::move(f);
+            return *this;
+        }
         Hoverlabel& bgcolor(std::vector<std::string> f) {
+            json["bgcolor"] = std::move(f);
+            return *this;
+        }
+        Hoverlabel& bgcolor(std::vector<double> f) {
             json["bgcolor"] = std::move(f);
             return *this;
         }
@@ -984,7 +1024,15 @@ class Heatmapgl : public Trace {
             json["bordercolor"] = std::move(f);
             return *this;
         }
+        Hoverlabel& bordercolor(double f) {
+            json["bordercolor"] = std::move(f);
+            return *this;
+        }
         Hoverlabel& bordercolor(std::vector<std::string> f) {
+            json["bordercolor"] = std::move(f);
+            return *this;
+        }
+        Hoverlabel& bordercolor(std::vector<double> f) {
             json["bordercolor"] = std::move(f);
             return *this;
         }
@@ -1032,6 +1080,10 @@ class Heatmapgl : public Trace {
          public:
 
             Font& color(std::string f) {
+                json["color"] = std::move(f);
+                return *this;
+            }
+            Font& color(double f) {
                 json["color"] = std::move(f);
                 return *this;
             }

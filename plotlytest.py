@@ -1,4 +1,5 @@
 import plotly.graph_objects as go
+import numpy as np
 
 # Sample data
 x_data = [1, 2, 3, 4, 5]
@@ -28,7 +29,39 @@ data2 = go.Scatter(
 print(data2)
 fig = go.Figure(data=[data1,data2])
 print(fig)
-fig.show()
+#fig.show()
+
+
+# Define parameters for the torus
+major_radius = 5
+minor_radius = 2
+u = np.linspace(0, 2 * np.pi, 50)
+v = np.linspace(0, 2 * np.pi, 50)
+print(u)
+print(u.shape)
+print(v)
+print(v.shape)
+u, v = np.meshgrid(u, v)
+print(u)
+print(u.shape)
+print(v)
+print(v.shape)
+
+
+# Calculate coordinates of the torus
+x = (major_radius + minor_radius * np.cos(v)) * np.cos(u)
+y = (major_radius + minor_radius * np.cos(v)) * np.sin(u)
+z = minor_radius * np.sin(v)
+print(x)
+print(x.shape)
+print(y)
+print(y.shape)
+print(z)
+print(z.shape)
+
+# Create the plot
+fig = go.Figure(data=[go.Surface(x=x, y=y, z=z)])
+#fig.show()
 
 
 

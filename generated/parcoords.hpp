@@ -207,7 +207,68 @@ class Parcoords : public Trace {
     class Labelfont {
      public:
 
+        enum class Style {
+            NORMAL,
+            ITALIC,
+        };
+        std::string to_string(Style e) {
+            switch (e) {
+            case Style::NORMAL:
+                return "normal";
+            case Style::ITALIC:
+                return "italic";
+            }
+        }
+
+        enum class Textcase {
+            NORMAL,
+            WORD_CAPS,
+            UPPER,
+            LOWER,
+        };
+        std::string to_string(Textcase e) {
+            switch (e) {
+            case Textcase::NORMAL:
+                return "normal";
+            case Textcase::WORD_CAPS:
+                return "word caps";
+            case Textcase::UPPER:
+                return "upper";
+            case Textcase::LOWER:
+                return "lower";
+            }
+        }
+
+        enum class Variant {
+            NORMAL,
+            SMALL_CAPS,
+            ALL_SMALL_CAPS,
+            ALL_PETITE_CAPS,
+            PETITE_CAPS,
+            UNICASE,
+        };
+        std::string to_string(Variant e) {
+            switch (e) {
+            case Variant::NORMAL:
+                return "normal";
+            case Variant::SMALL_CAPS:
+                return "small-caps";
+            case Variant::ALL_SMALL_CAPS:
+                return "all-small-caps";
+            case Variant::ALL_PETITE_CAPS:
+                return "all-petite-caps";
+            case Variant::PETITE_CAPS:
+                return "petite-caps";
+            case Variant::UNICASE:
+                return "unicase";
+            }
+        }
+
         Labelfont& color(std::string f) {
+            json["color"] = std::move(f);
+            return *this;
+        }
+        Labelfont& color(double f) {
             json["color"] = std::move(f);
             return *this;
         }
@@ -217,15 +278,60 @@ class Parcoords : public Trace {
         // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
         // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a
         // select number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid
-        // Sans*,, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT
-        // Sans Narrow*, *Raleway*, *Times New Roman*.
+        // Sans*, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans
+        // Narrow*, *Raleway*, *Times New Roman*.
         Labelfont& family(std::string f) {
             json["family"] = std::move(f);
             return *this;
         }
 
+        // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as
+        // combinations e.g. *under+over*, etc.
+        // - Default: none
+        // - Flags: ['under', 'over', 'through']
+        // - Extras ['none']
+        Labelfont& lineposition(std::string f) {
+            json["lineposition"] = std::move(f);
+            return *this;
+        }
+
+        // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text
+        // font color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+        Labelfont& shadow(std::string f) {
+            json["shadow"] = std::move(f);
+            return *this;
+        }
+
         Labelfont& size(double f) {
             json["size"] = std::move(f);
+            return *this;
+        }
+
+        // Sets whether a font should be styled with a normal or italic face from its family.
+        // - Default: normal
+        Labelfont& style(enum Style f) {
+            json["style"] = to_string(f);
+            return *this;
+        }
+
+        // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with
+        // each word capitalized.
+        // - Default: normal
+        Labelfont& textcase(enum Textcase f) {
+            json["textcase"] = to_string(f);
+            return *this;
+        }
+
+        // Sets the variant of the font.
+        // - Default: normal
+        Labelfont& variant(enum Variant f) {
+            json["variant"] = to_string(f);
+            return *this;
+        }
+
+        // Sets the weight (or boldness) of the font.
+        Labelfont& weight(int f) {
+            json["weight"] = std::move(f);
             return *this;
         }
 
@@ -240,7 +346,68 @@ class Parcoords : public Trace {
         class Font {
          public:
 
+            enum class Style {
+                NORMAL,
+                ITALIC,
+            };
+            std::string to_string(Style e) {
+                switch (e) {
+                case Style::NORMAL:
+                    return "normal";
+                case Style::ITALIC:
+                    return "italic";
+                }
+            }
+
+            enum class Textcase {
+                NORMAL,
+                WORD_CAPS,
+                UPPER,
+                LOWER,
+            };
+            std::string to_string(Textcase e) {
+                switch (e) {
+                case Textcase::NORMAL:
+                    return "normal";
+                case Textcase::WORD_CAPS:
+                    return "word caps";
+                case Textcase::UPPER:
+                    return "upper";
+                case Textcase::LOWER:
+                    return "lower";
+                }
+            }
+
+            enum class Variant {
+                NORMAL,
+                SMALL_CAPS,
+                ALL_SMALL_CAPS,
+                ALL_PETITE_CAPS,
+                PETITE_CAPS,
+                UNICASE,
+            };
+            std::string to_string(Variant e) {
+                switch (e) {
+                case Variant::NORMAL:
+                    return "normal";
+                case Variant::SMALL_CAPS:
+                    return "small-caps";
+                case Variant::ALL_SMALL_CAPS:
+                    return "all-small-caps";
+                case Variant::ALL_PETITE_CAPS:
+                    return "all-petite-caps";
+                case Variant::PETITE_CAPS:
+                    return "petite-caps";
+                case Variant::UNICASE:
+                    return "unicase";
+                }
+            }
+
             Font& color(std::string f) {
+                json["color"] = std::move(f);
+                return *this;
+            }
+            Font& color(double f) {
                 json["color"] = std::move(f);
                 return *this;
             }
@@ -250,15 +417,60 @@ class Parcoords : public Trace {
             // separated by commas, to indicate the preference in which to apply fonts if they aren't available on the
             // system. The Chart Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a
             // server, where only a select number of fonts are installed and supported. These include *Arial*, *Balto*,
-            // *Courier New*, *Droid Sans*,, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open
+            // *Courier New*, *Droid Sans*, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open
             // Sans*, *Overpass*, *PT Sans Narrow*, *Raleway*, *Times New Roman*.
             Font& family(std::string f) {
                 json["family"] = std::move(f);
                 return *this;
             }
 
+            // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as
+            // combinations e.g. *under+over*, etc.
+            // - Default: none
+            // - Flags: ['under', 'over', 'through']
+            // - Extras ['none']
+            Font& lineposition(std::string f) {
+                json["lineposition"] = std::move(f);
+                return *this;
+            }
+
+            // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast
+            // text font color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+            Font& shadow(std::string f) {
+                json["shadow"] = std::move(f);
+                return *this;
+            }
+
             Font& size(double f) {
                 json["size"] = std::move(f);
+                return *this;
+            }
+
+            // Sets whether a font should be styled with a normal or italic face from its family.
+            // - Default: normal
+            Font& style(enum Style f) {
+                json["style"] = to_string(f);
+                return *this;
+            }
+
+            // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or
+            // with each word capitalized.
+            // - Default: normal
+            Font& textcase(enum Textcase f) {
+                json["textcase"] = to_string(f);
+                return *this;
+            }
+
+            // Sets the variant of the font.
+            // - Default: normal
+            Font& variant(enum Variant f) {
+                json["variant"] = to_string(f);
+                return *this;
+            }
+
+            // Sets the weight (or boldness) of the font.
+            Font& weight(int f) {
+                json["weight"] = std::move(f);
                 return *this;
             }
 
@@ -553,7 +765,68 @@ class Parcoords : public Trace {
             class Tickfont {
              public:
 
+                enum class Style {
+                    NORMAL,
+                    ITALIC,
+                };
+                std::string to_string(Style e) {
+                    switch (e) {
+                    case Style::NORMAL:
+                        return "normal";
+                    case Style::ITALIC:
+                        return "italic";
+                    }
+                }
+
+                enum class Textcase {
+                    NORMAL,
+                    WORD_CAPS,
+                    UPPER,
+                    LOWER,
+                };
+                std::string to_string(Textcase e) {
+                    switch (e) {
+                    case Textcase::NORMAL:
+                        return "normal";
+                    case Textcase::WORD_CAPS:
+                        return "word caps";
+                    case Textcase::UPPER:
+                        return "upper";
+                    case Textcase::LOWER:
+                        return "lower";
+                    }
+                }
+
+                enum class Variant {
+                    NORMAL,
+                    SMALL_CAPS,
+                    ALL_SMALL_CAPS,
+                    ALL_PETITE_CAPS,
+                    PETITE_CAPS,
+                    UNICASE,
+                };
+                std::string to_string(Variant e) {
+                    switch (e) {
+                    case Variant::NORMAL:
+                        return "normal";
+                    case Variant::SMALL_CAPS:
+                        return "small-caps";
+                    case Variant::ALL_SMALL_CAPS:
+                        return "all-small-caps";
+                    case Variant::ALL_PETITE_CAPS:
+                        return "all-petite-caps";
+                    case Variant::PETITE_CAPS:
+                        return "petite-caps";
+                    case Variant::UNICASE:
+                        return "unicase";
+                    }
+                }
+
                 Tickfont& color(std::string f) {
+                    json["color"] = std::move(f);
+                    return *this;
+                }
+                Tickfont& color(double f) {
                     json["color"] = std::move(f);
                     return *this;
                 }
@@ -563,15 +836,61 @@ class Parcoords : public Trace {
                 // families, separated by commas, to indicate the preference in which to apply fonts if they aren't
                 // available on the system. The Chart Studio Cloud (at https://chart-studio.plotly.com or on-premise)
                 // generates images on a server, where only a select number of fonts are installed and supported. These
-                // include *Arial*, *Balto*, *Courier New*, *Droid Sans*,, *Droid Serif*, *Droid Sans Mono*, *Gravitas
+                // include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid Serif*, *Droid Sans Mono*, *Gravitas
                 // One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*, *Raleway*, *Times New Roman*.
                 Tickfont& family(std::string f) {
                     json["family"] = std::move(f);
                     return *this;
                 }
 
+                // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as
+                // combinations e.g. *under+over*, etc.
+                // - Default: none
+                // - Flags: ['under', 'over', 'through']
+                // - Extras ['none']
+                Tickfont& lineposition(std::string f) {
+                    json["lineposition"] = std::move(f);
+                    return *this;
+                }
+
+                // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast
+                // text font color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional
+                // options.
+                Tickfont& shadow(std::string f) {
+                    json["shadow"] = std::move(f);
+                    return *this;
+                }
+
                 Tickfont& size(double f) {
                     json["size"] = std::move(f);
+                    return *this;
+                }
+
+                // Sets whether a font should be styled with a normal or italic face from its family.
+                // - Default: normal
+                Tickfont& style(enum Style f) {
+                    json["style"] = to_string(f);
+                    return *this;
+                }
+
+                // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or
+                // with each word capitalized.
+                // - Default: normal
+                Tickfont& textcase(enum Textcase f) {
+                    json["textcase"] = to_string(f);
+                    return *this;
+                }
+
+                // Sets the variant of the font.
+                // - Default: normal
+                Tickfont& variant(enum Variant f) {
+                    json["variant"] = to_string(f);
+                    return *this;
+                }
+
+                // Sets the weight (or boldness) of the font.
+                Tickfont& weight(int f) {
+                    json["weight"] = std::move(f);
                     return *this;
                 }
 
@@ -656,12 +975,72 @@ class Parcoords : public Trace {
                     }
                 }
 
-                // Sets this color bar's title font. Note that the title's font used to be set by the now deprecated
-                // `titlefont` attribute.
+                // Sets this color bar's title font.
                 class Font {
                  public:
 
+                    enum class Style {
+                        NORMAL,
+                        ITALIC,
+                    };
+                    std::string to_string(Style e) {
+                        switch (e) {
+                        case Style::NORMAL:
+                            return "normal";
+                        case Style::ITALIC:
+                            return "italic";
+                        }
+                    }
+
+                    enum class Textcase {
+                        NORMAL,
+                        WORD_CAPS,
+                        UPPER,
+                        LOWER,
+                    };
+                    std::string to_string(Textcase e) {
+                        switch (e) {
+                        case Textcase::NORMAL:
+                            return "normal";
+                        case Textcase::WORD_CAPS:
+                            return "word caps";
+                        case Textcase::UPPER:
+                            return "upper";
+                        case Textcase::LOWER:
+                            return "lower";
+                        }
+                    }
+
+                    enum class Variant {
+                        NORMAL,
+                        SMALL_CAPS,
+                        ALL_SMALL_CAPS,
+                        ALL_PETITE_CAPS,
+                        PETITE_CAPS,
+                        UNICASE,
+                    };
+                    std::string to_string(Variant e) {
+                        switch (e) {
+                        case Variant::NORMAL:
+                            return "normal";
+                        case Variant::SMALL_CAPS:
+                            return "small-caps";
+                        case Variant::ALL_SMALL_CAPS:
+                            return "all-small-caps";
+                        case Variant::ALL_PETITE_CAPS:
+                            return "all-petite-caps";
+                        case Variant::PETITE_CAPS:
+                            return "petite-caps";
+                        case Variant::UNICASE:
+                            return "unicase";
+                        }
+                    }
+
                     Font& color(std::string f) {
+                        json["color"] = std::move(f);
+                        return *this;
+                    }
+                    Font& color(double f) {
                         json["color"] = std::move(f);
                         return *this;
                     }
@@ -671,11 +1050,29 @@ class Parcoords : public Trace {
                     // font families, separated by commas, to indicate the preference in which to apply fonts if they
                     // aren't available on the system. The Chart Studio Cloud (at https://chart-studio.plotly.com or
                     // on-premise) generates images on a server, where only a select number of fonts are installed and
-                    // supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*,, *Droid Serif*, *Droid
+                    // supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid Serif*, *Droid
                     // Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
                     // *Raleway*, *Times New Roman*.
                     Font& family(std::string f) {
                         json["family"] = std::move(f);
+                        return *this;
+                    }
+
+                    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as
+                    // combinations e.g. *under+over*, etc.
+                    // - Default: none
+                    // - Flags: ['under', 'over', 'through']
+                    // - Extras ['none']
+                    Font& lineposition(std::string f) {
+                        json["lineposition"] = std::move(f);
+                        return *this;
+                    }
+
+                    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies
+                    // contrast text font color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for
+                    // additional options.
+                    Font& shadow(std::string f) {
+                        json["shadow"] = std::move(f);
                         return *this;
                     }
 
@@ -684,27 +1081,52 @@ class Parcoords : public Trace {
                         return *this;
                     }
 
+                    // Sets whether a font should be styled with a normal or italic face from its family.
+                    // - Default: normal
+                    Font& style(enum Style f) {
+                        json["style"] = to_string(f);
+                        return *this;
+                    }
+
+                    // Sets capitalization of text. It can be used to make text appear in all-uppercase or
+                    // all-lowercase, or with each word capitalized.
+                    // - Default: normal
+                    Font& textcase(enum Textcase f) {
+                        json["textcase"] = to_string(f);
+                        return *this;
+                    }
+
+                    // Sets the variant of the font.
+                    // - Default: normal
+                    Font& variant(enum Variant f) {
+                        json["variant"] = to_string(f);
+                        return *this;
+                    }
+
+                    // Sets the weight (or boldness) of the font.
+                    Font& weight(int f) {
+                        json["weight"] = std::move(f);
+                        return *this;
+                    }
+
                     // Advanced users may modify the JSON representation directly, at their own peril!
                     nlohmann::json json{};
                 };
 
-                // Sets this color bar's title font. Note that the title's font used to be set by the now deprecated
-                // `titlefont` attribute.
+                // Sets this color bar's title font.
                 Title& font(class Font f) {
                     json["font"] = std::move(f.json);
                     return *this;
                 }
 
                 // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when
-                // `orientation` if *v* and  defaults to *right* when `orientation` if *h*. Note that the title's
-                // location used to be set by the now deprecated `titleside` attribute.
+                // `orientation` if *v* and  defaults to *right* when `orientation` if *h*.
                 Title& side(enum Side f) {
                     json["side"] = to_string(f);
                     return *this;
                 }
 
-                // Sets the title of the color bar. Note that before the existence of `title.text`, the title's contents
-                // used to be defined as the `title` attribute itself. This behavior has been deprecated.
+                // Sets the title of the color bar.
                 Title& text(std::string f) {
                     json["text"] = std::move(f);
                     return *this;
@@ -719,9 +1141,17 @@ class Parcoords : public Trace {
                 json["bgcolor"] = std::move(f);
                 return *this;
             }
+            Colorbar& bgcolor(double f) {
+                json["bgcolor"] = std::move(f);
+                return *this;
+            }
 
             // Sets the axis line color.
             Colorbar& bordercolor(std::string f) {
+                json["bordercolor"] = std::move(f);
+                return *this;
+            }
+            Colorbar& bordercolor(double f) {
                 json["bordercolor"] = std::move(f);
                 return *this;
             }
@@ -811,6 +1241,10 @@ class Parcoords : public Trace {
                 json["outlinecolor"] = std::move(f);
                 return *this;
             }
+            Colorbar& outlinecolor(double f) {
+                json["outlinecolor"] = std::move(f);
+                return *this;
+            }
 
             // Sets the width (in px) of the axis line.
             Colorbar& outlinewidth(double f) {
@@ -887,6 +1321,10 @@ class Parcoords : public Trace {
 
             // Sets the tick color.
             Colorbar& tickcolor(std::string f) {
+                json["tickcolor"] = std::move(f);
+                return *this;
+            }
+            Colorbar& tickcolor(double f) {
                 json["tickcolor"] = std::move(f);
                 return *this;
             }
@@ -1122,7 +1560,15 @@ class Parcoords : public Trace {
             json["color"] = std::move(f);
             return *this;
         }
+        Line& color(double f) {
+            json["color"] = std::move(f);
+            return *this;
+        }
         Line& color(std::vector<std::string> f) {
+            json["color"] = std::move(f);
+            return *this;
+        }
+        Line& color(std::vector<double> f) {
             json["color"] = std::move(f);
             return *this;
         }
@@ -1147,6 +1593,10 @@ class Parcoords : public Trace {
         // `line.cmin` and `line.cmax`. Alternatively, `colorscale` may be a palette name string of the following list:
         // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
         Line& colorscale(std::string f) {
+            json["colorscale"] = std::move(f);
+            return *this;
+        }
+        Line& colorscale(std::vector<std::pair<double, std::string>> f) {
             json["colorscale"] = std::move(f);
             return *this;
         }
@@ -1180,7 +1630,68 @@ class Parcoords : public Trace {
     class Rangefont {
      public:
 
+        enum class Style {
+            NORMAL,
+            ITALIC,
+        };
+        std::string to_string(Style e) {
+            switch (e) {
+            case Style::NORMAL:
+                return "normal";
+            case Style::ITALIC:
+                return "italic";
+            }
+        }
+
+        enum class Textcase {
+            NORMAL,
+            WORD_CAPS,
+            UPPER,
+            LOWER,
+        };
+        std::string to_string(Textcase e) {
+            switch (e) {
+            case Textcase::NORMAL:
+                return "normal";
+            case Textcase::WORD_CAPS:
+                return "word caps";
+            case Textcase::UPPER:
+                return "upper";
+            case Textcase::LOWER:
+                return "lower";
+            }
+        }
+
+        enum class Variant {
+            NORMAL,
+            SMALL_CAPS,
+            ALL_SMALL_CAPS,
+            ALL_PETITE_CAPS,
+            PETITE_CAPS,
+            UNICASE,
+        };
+        std::string to_string(Variant e) {
+            switch (e) {
+            case Variant::NORMAL:
+                return "normal";
+            case Variant::SMALL_CAPS:
+                return "small-caps";
+            case Variant::ALL_SMALL_CAPS:
+                return "all-small-caps";
+            case Variant::ALL_PETITE_CAPS:
+                return "all-petite-caps";
+            case Variant::PETITE_CAPS:
+                return "petite-caps";
+            case Variant::UNICASE:
+                return "unicase";
+            }
+        }
+
         Rangefont& color(std::string f) {
+            json["color"] = std::move(f);
+            return *this;
+        }
+        Rangefont& color(double f) {
             json["color"] = std::move(f);
             return *this;
         }
@@ -1190,15 +1701,60 @@ class Parcoords : public Trace {
         // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
         // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a
         // select number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid
-        // Sans*,, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT
-        // Sans Narrow*, *Raleway*, *Times New Roman*.
+        // Sans*, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans
+        // Narrow*, *Raleway*, *Times New Roman*.
         Rangefont& family(std::string f) {
             json["family"] = std::move(f);
             return *this;
         }
 
+        // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as
+        // combinations e.g. *under+over*, etc.
+        // - Default: none
+        // - Flags: ['under', 'over', 'through']
+        // - Extras ['none']
+        Rangefont& lineposition(std::string f) {
+            json["lineposition"] = std::move(f);
+            return *this;
+        }
+
+        // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text
+        // font color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+        Rangefont& shadow(std::string f) {
+            json["shadow"] = std::move(f);
+            return *this;
+        }
+
         Rangefont& size(double f) {
             json["size"] = std::move(f);
+            return *this;
+        }
+
+        // Sets whether a font should be styled with a normal or italic face from its family.
+        // - Default: normal
+        Rangefont& style(enum Style f) {
+            json["style"] = to_string(f);
+            return *this;
+        }
+
+        // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with
+        // each word capitalized.
+        // - Default: normal
+        Rangefont& textcase(enum Textcase f) {
+            json["textcase"] = to_string(f);
+            return *this;
+        }
+
+        // Sets the variant of the font.
+        // - Default: normal
+        Rangefont& variant(enum Variant f) {
+            json["variant"] = to_string(f);
+            return *this;
+        }
+
+        // Sets the weight (or boldness) of the font.
+        Rangefont& weight(int f) {
+            json["weight"] = std::move(f);
             return *this;
         }
 
@@ -1231,7 +1787,68 @@ class Parcoords : public Trace {
     class Tickfont {
      public:
 
+        enum class Style {
+            NORMAL,
+            ITALIC,
+        };
+        std::string to_string(Style e) {
+            switch (e) {
+            case Style::NORMAL:
+                return "normal";
+            case Style::ITALIC:
+                return "italic";
+            }
+        }
+
+        enum class Textcase {
+            NORMAL,
+            WORD_CAPS,
+            UPPER,
+            LOWER,
+        };
+        std::string to_string(Textcase e) {
+            switch (e) {
+            case Textcase::NORMAL:
+                return "normal";
+            case Textcase::WORD_CAPS:
+                return "word caps";
+            case Textcase::UPPER:
+                return "upper";
+            case Textcase::LOWER:
+                return "lower";
+            }
+        }
+
+        enum class Variant {
+            NORMAL,
+            SMALL_CAPS,
+            ALL_SMALL_CAPS,
+            ALL_PETITE_CAPS,
+            PETITE_CAPS,
+            UNICASE,
+        };
+        std::string to_string(Variant e) {
+            switch (e) {
+            case Variant::NORMAL:
+                return "normal";
+            case Variant::SMALL_CAPS:
+                return "small-caps";
+            case Variant::ALL_SMALL_CAPS:
+                return "all-small-caps";
+            case Variant::ALL_PETITE_CAPS:
+                return "all-petite-caps";
+            case Variant::PETITE_CAPS:
+                return "petite-caps";
+            case Variant::UNICASE:
+                return "unicase";
+            }
+        }
+
         Tickfont& color(std::string f) {
+            json["color"] = std::move(f);
+            return *this;
+        }
+        Tickfont& color(double f) {
             json["color"] = std::move(f);
             return *this;
         }
@@ -1241,10 +1858,27 @@ class Parcoords : public Trace {
         // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
         // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a
         // select number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid
-        // Sans*,, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT
-        // Sans Narrow*, *Raleway*, *Times New Roman*.
+        // Sans*, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans
+        // Narrow*, *Raleway*, *Times New Roman*.
         Tickfont& family(std::string f) {
             json["family"] = std::move(f);
+            return *this;
+        }
+
+        // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as
+        // combinations e.g. *under+over*, etc.
+        // - Default: none
+        // - Flags: ['under', 'over', 'through']
+        // - Extras ['none']
+        Tickfont& lineposition(std::string f) {
+            json["lineposition"] = std::move(f);
+            return *this;
+        }
+
+        // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text
+        // font color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+        Tickfont& shadow(std::string f) {
+            json["shadow"] = std::move(f);
             return *this;
         }
 
@@ -1253,26 +1887,31 @@ class Parcoords : public Trace {
             return *this;
         }
 
-        // Advanced users may modify the JSON representation directly, at their own peril!
-        nlohmann::json json{};
-    };
+        // Sets whether a font should be styled with a normal or italic face from its family.
+        // - Default: normal
+        Tickfont& style(enum Style f) {
+            json["style"] = to_string(f);
+            return *this;
+        }
 
-    class Transforms {
-     public:
+        // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with
+        // each word capitalized.
+        // - Default: normal
+        Tickfont& textcase(enum Textcase f) {
+            json["textcase"] = to_string(f);
+            return *this;
+        }
 
-        // WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of
-        // operations that manipulate the trace data, for example filtering or sorting the data arrays.
-        class Transform {
-         public:
+        // Sets the variant of the font.
+        // - Default: normal
+        Tickfont& variant(enum Variant f) {
+            json["variant"] = to_string(f);
+            return *this;
+        }
 
-            // Advanced users may modify the JSON representation directly, at their own peril!
-            nlohmann::json json{};
-        };
-
-        // WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of
-        // operations that manipulate the trace data, for example filtering or sorting the data arrays.
-        Transforms& transform(class Transform f) {
-            json["transform"] = std::move(f.json);
+        // Sets the weight (or boldness) of the font.
+        Tickfont& weight(int f) {
+            json["weight"] = std::move(f);
             return *this;
         }
 
@@ -1288,6 +1927,10 @@ class Parcoords : public Trace {
 
             // Sets the base color of unselected lines. in connection with `unselected.line.opacity`.
             Line& color(std::string f) {
+                json["color"] = std::move(f);
+                return *this;
+            }
+            Line& color(double f) {
                 json["color"] = std::move(f);
                 return *this;
             }
@@ -1449,11 +2092,6 @@ class Parcoords : public Trace {
     // Sets the font for the `dimension` tick values.
     Parcoords& tickfont(class Tickfont f) {
         json["tickfont"] = std::move(f.json);
-        return *this;
-    }
-
-    Parcoords& transforms(class Transforms f) {
-        json["transforms"] = std::move(f.json);
         return *this;
     }
 
