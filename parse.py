@@ -94,10 +94,15 @@ def emit_json_member(writer):
     writer.write("// Advanced users may modify the JSON representation directly, at their own peril!")
     writer.write("nlohmann::json json{};")
 
+def emit_array_field_setter_decl(class_object, field, output_val_type, writer):
+    if output_val_type == 'T':
+        writer.write(f"template <typename T>")
+    writer.write(f"{class_object.name.capitalize()}& {field.name}(std::vector<{output_val_type}> f);")
+
 def emit_array_field_setter(class_object, field, output_val_type, writer):
     if output_val_type == 'T':
         writer.write(f"template <typename T>")
-    writer.write(f"{class_object.name.capitalize()}& {field.name}(std::vector<{output_val_type}> f) {{")
+    writer.write(f"{class_object.name.capitalize()}& {class_object.name.capitalize()}::{field.name}(std::vector<{output_val_type}> f) {{")
     with IndentBlock(writer):
         if field.is_object:
             writer.write(f"std::vector<nlohmann::json> jsonified(f.size());")
@@ -108,12 +113,19 @@ def emit_array_field_setter(class_object, field, output_val_type, writer):
         writer.write("return *this;")
     writer.write("}")
 
+def emit_field_setter_decl(class_object, field, output_val_type, writer):
+    if output_val_type == 'T':
+        writer.write(f"template <typename T>")
+    elif field.json_val_type == 'data_array':
+        writer.write(f"template <typename T, typename=std::enable_if_t<is_data_array_element_v<T>>>")
+    writer.write(f"{class_object.name.capitalize()}& {field.name}({output_val_type} f);")
+
 def emit_field_setter(class_object, field, output_val_type, writer):
     if output_val_type == 'T':
         writer.write(f"template <typename T>")
     elif field.json_val_type == 'data_array':
         writer.write(f"template <typename T, typename=std::enable_if_t<is_data_array_element_v<T>>>")
-    writer.write(f"{class_object.name.capitalize()}& {field.name}({output_val_type} f) {{")
+    writer.write(f"{class_object.name.capitalize()}& {class_object.name.capitalize()}::{field.name}({output_val_type} f) {{")
     with IndentBlock(writer):
         if field.is_object:
             writer.write(f"json[\"{field.name}\"] = std::move(f.json);")
@@ -122,16 +134,23 @@ def emit_field_setter(class_object, field, output_val_type, writer):
         writer.write("return *this;")
     writer.write("}")
 
+def emit_enum_field_setter_decl(class_object, field, writer):
+    # To help compiler ambiguity, add enum keyword.
+    writer.write(f"{class_object.name.capitalize()}& {field.name}(enum {field.name.capitalize()} f);")
+
 def emit_enum_field_setter(class_object, field, writer):
     # To help compiler ambiguity, add enum keyword.
-    writer.write(f"{class_object.name.capitalize()}& {field.name}(enum {field.name.capitalize()} f) {{")
+    writer.write(f"{class_object.name.capitalize()}& {class_object.name.capitalize()}::{field.name}(enum {field.name.capitalize()} f) {{")
     with IndentBlock(writer):
         writer.write(f"json[\"{field.name}\"] = to_string(f);")
         writer.write("return *this;")
     writer.write("}")
 
+def emit_enum_array_field_setter_decl(class_object, field, writer):
+    writer.write(f"{class_object.name.capitalize()}& {field.name}(const std::vector<enum {field.name.capitalize()}>& f);")
+
 def emit_enum_array_field_setter(class_object, field, writer):
-    writer.write(f"{class_object.name.capitalize()}& {field.name}(const std::vector<enum {field.name.capitalize()}>& f) {{")
+    writer.write(f"{class_object.name.capitalize()}& {class_object.name.capitalize()}::{field.name}(const std::vector<enum {field.name.capitalize()}>& f) {{")
     with IndentBlock(writer):
         writer.write(f"std::vector<std::string> stringified(f.size());")
         writer.write(f"std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){{return to_string(e);}});")
@@ -147,8 +166,11 @@ def emit_enum_definition(enum, writer):
             writer.write(f"{safe_val},")
     writer.write("};")
 
+def emit_enum_to_string_decl(enum, writer):
+    writer.write(f"static std::string to_string({enum.name.capitalize()} e);")
+
 def emit_enum_to_string(enum, writer):
-    writer.write(f"std::string to_string({enum.name.capitalize()} e) {{")
+    writer.write(f"static std::string {enum.name.capitalize()}::to_string({enum.name.capitalize()} e) {{")
     with IndentBlock(writer):
         writer.write("switch(e) {")
         with IndentBlock(writer):
@@ -158,14 +180,39 @@ def emit_enum_to_string(enum, writer):
     writer.write("}")
 
 def emit_class_public_members(class_object, writer):
+    for e in class_object.enums:
+        emit_enum_to_string(e, writer)
+
+    writer.write("")
+
+    for field in class_object.fields:
+        if field.is_enum:
+            emit_enum_field_setter(class_object, field, writer)
+            if field.array_ok:
+                emit_enum_array_field_setter(class_object, field, writer)
+        else:
+            if field.is_object:
+                # Quirky
+                output_val_types = [f"class {field.name.capitalize()}"]
+            else:
+                output_val_types = valtype_map[field.json_val_type]
+            for output_val_type_overload in output_val_types:
+                emit_field_setter(class_object, field, output_val_type_overload, writer)
+            if field.array_ok:
+                for output_val_type_overload in output_val_types:
+                    emit_array_field_setter(class_object, field, output_val_type_overload, writer)
+
+        writer.write("")
+
+def emit_class_public_members_decl(class_object, writer):
     with IndentBlock(writer):
         for e in class_object.enums:
             emit_enum_definition(e, writer)
-            emit_enum_to_string(e, writer)
+            emit_enum_to_string_decl(e, writer)
 
         writer.write("")
         for obj in class_object.objects:
-            emit_object(obj, writer)
+            emit_object_decl(obj, writer)
 
         for field in class_object.fields:
             if field.description:
@@ -175,9 +222,9 @@ def emit_class_public_members(class_object, writer):
                 for line in lines[1:]:
                     writer.write(f"// - {line}")
             if field.is_enum:
-                emit_enum_field_setter(class_object, field, writer)
+                emit_enum_field_setter_decl(class_object, field, writer)
                 if field.array_ok:
-                    emit_enum_array_field_setter(class_object, field, writer)
+                    emit_enum_array_field_setter_decl(class_object, field, writer)
             else:
                 if field.is_object:
                     # Quirky
@@ -185,12 +232,17 @@ def emit_class_public_members(class_object, writer):
                 else:
                     output_val_types = valtype_map[field.json_val_type]
                 for output_val_type_overload in output_val_types:
-                    emit_field_setter(class_object, field, output_val_type_overload, writer)
+                    emit_field_setter_decl(class_object, field, output_val_type_overload, writer)
                 if field.array_ok:
                     for output_val_type_overload in output_val_types:
-                        emit_array_field_setter(class_object, field, output_val_type_overload, writer)
+                        emit_array_field_setter_decl(class_object, field, output_val_type_overload, writer)
 
             writer.write("")
+
+def emit_object_decl(class_object, writer):
+    if class_object.description:
+        writer.write(f"// {class_object.description}")
+    writer.write(f"class {class_object.name};")
 
 def emit_object(class_object, writer):
     if class_object.description:
@@ -201,6 +253,12 @@ def emit_object(class_object, writer):
     emit_json_member(writer)
     writer.write("};")
     writer.write("")
+
+def unnest_objects(parent, unnested_objects):
+    for obj in parent.objects:
+        obj.name = f"{parent.name}::{obj.name.capitalize()}"
+        unnested_objects.append(obj)
+        unnest_objects(obj, unnested_objects)
 
 
 def emit_trace(trace, writer):
@@ -225,8 +283,27 @@ def emit_trace(trace, writer):
     with IndentBlock(writer):
         writer.write(f"json[\"type\"] = \"{trace.name}\";")
     writer.write("}")
-    emit_class_public_members(trace, writer)
+    emit_class_public_members_decl(trace, writer)
     writer.write("};")
+    writer.write("")
+
+    unnested_objects = []
+    unnest_objects(trace, unnested_objects)
+    for obj in unnested_objects:
+        writer.write(f"class {obj.name} {{")
+        writer.write("public:")
+        emit_class_public_members_decl(obj, writer)
+        writer.write("};")
+        writer.write("")
+
+
+    writer.write("")
+    writer.write("//// IMPL")
+    emit_class_public_members(trace, writer)
+    for obj in unnested_objects:
+        emit_class_public_members(obj, writer)
+    writer.write("//// IMPL END")
+
     writer.write("} // namespace plotlypp")
     writer.write("")
 
@@ -439,6 +516,7 @@ def create_traces(schema):
         #if name != "scatter":
         #    continue
         create_trace(name, trace_node)
+        break
 
 
 
