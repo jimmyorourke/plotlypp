@@ -7,7 +7,7 @@
 
 namespace plotlypp {
 
-// A data array is either a vected of arithmetic types, or a nested vector (depth currently unbounded) of arithmetic types.
+// A data array is either a vector of arithmetic types, or a nested vector (depth currently unbounded) of arithmetic types.
 
 template <typename T>
 struct is_data_array_element: std::is_arithmetic<T>{};

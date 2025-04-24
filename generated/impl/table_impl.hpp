@@ -1,0 +1,1164 @@
+// TODO: includes, copyright, etc
+
+namespace plotlypp {
+
+std::string Table::to_string(Visible e) {
+    switch(e) {
+        case Visible::TRUE: return "True";
+        case Visible::FALSE: return "False";
+        case Visible::LEGENDONLY: return "legendonly";
+    }
+}
+
+Table& Table::cells(class Cells f) {
+    json["cells"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T, typename>
+Table& Table::columnorder(std::vector<T> f) {
+    json["columnorder"] = std::move(f);
+    return *this;
+}
+
+Table& Table::columnordersrc(std::string f) {
+    json["columnordersrc"] = std::move(f);
+    return *this;
+}
+
+Table& Table::columnwidth(double f) {
+    json["columnwidth"] = std::move(f);
+    return *this;
+}
+Table& Table::columnwidth(std::vector<double> f) {
+    json["columnwidth"] = std::move(f);
+    return *this;
+}
+
+Table& Table::columnwidthsrc(std::string f) {
+    json["columnwidthsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Table& Table::customdata(std::vector<T> f) {
+    json["customdata"] = std::move(f);
+    return *this;
+}
+
+Table& Table::customdatasrc(std::string f) {
+    json["customdatasrc"] = std::move(f);
+    return *this;
+}
+
+Table& Table::domain(class Domain f) {
+    json["domain"] = std::move(f.json);
+    return *this;
+}
+
+Table& Table::header(class Header f) {
+    json["header"] = std::move(f.json);
+    return *this;
+}
+
+Table& Table::hoverinfo(std::string f) {
+    json["hoverinfo"] = std::move(f);
+    return *this;
+}
+Table& Table::hoverinfo(std::vector<std::string> f) {
+    json["hoverinfo"] = std::move(f);
+    return *this;
+}
+
+Table& Table::hoverinfosrc(std::string f) {
+    json["hoverinfosrc"] = std::move(f);
+    return *this;
+}
+
+Table& Table::hoverlabel(class Hoverlabel f) {
+    json["hoverlabel"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T, typename>
+Table& Table::ids(std::vector<T> f) {
+    json["ids"] = std::move(f);
+    return *this;
+}
+
+Table& Table::idssrc(std::string f) {
+    json["idssrc"] = std::move(f);
+    return *this;
+}
+
+Table& Table::legend(std::string f) {
+    json["legend"] = std::move(f);
+    return *this;
+}
+
+Table& Table::legendgrouptitle(class Legendgrouptitle f) {
+    json["legendgrouptitle"] = std::move(f.json);
+    return *this;
+}
+
+Table& Table::legendrank(double f) {
+    json["legendrank"] = std::move(f);
+    return *this;
+}
+
+Table& Table::legendwidth(double f) {
+    json["legendwidth"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Table& Table::meta(T f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+template <typename T>
+Table& Table::meta(std::vector<T> f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+
+Table& Table::metasrc(std::string f) {
+    json["metasrc"] = std::move(f);
+    return *this;
+}
+
+Table& Table::name(std::string f) {
+    json["name"] = std::move(f);
+    return *this;
+}
+
+Table& Table::stream(class Stream f) {
+    json["stream"] = std::move(f.json);
+    return *this;
+}
+
+Table& Table::uid(std::string f) {
+    json["uid"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Table& Table::uirevision(T f) {
+    json["uirevision"] = std::move(f);
+    return *this;
+}
+
+Table& Table::visible(enum Visible f) {
+    json["visible"] = to_string(f);
+    return *this;
+}
+
+std::string Table::Cells::to_string(Align e) {
+    switch(e) {
+        case Align::LEFT: return "left";
+        case Align::CENTER: return "center";
+        case Align::RIGHT: return "right";
+    }
+}
+
+Table::Cells& Table::Cells::align(enum Align f) {
+    json["align"] = to_string(f);
+    return *this;
+}
+Table::Cells& Table::Cells::align(const std::vector<enum Align>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["align"] = std::move(stringified);
+    return *this;
+}
+
+Table::Cells& Table::Cells::alignsrc(std::string f) {
+    json["alignsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Cells& Table::Cells::fill(class Fill f) {
+    json["fill"] = std::move(f.json);
+    return *this;
+}
+
+Table::Cells& Table::Cells::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T, typename>
+Table::Cells& Table::Cells::format(std::vector<T> f) {
+    json["format"] = std::move(f);
+    return *this;
+}
+
+Table::Cells& Table::Cells::formatsrc(std::string f) {
+    json["formatsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Cells& Table::Cells::height(double f) {
+    json["height"] = std::move(f);
+    return *this;
+}
+
+Table::Cells& Table::Cells::line(class Line f) {
+    json["line"] = std::move(f.json);
+    return *this;
+}
+
+Table::Cells& Table::Cells::prefix(std::string f) {
+    json["prefix"] = std::move(f);
+    return *this;
+}
+Table::Cells& Table::Cells::prefix(std::vector<std::string> f) {
+    json["prefix"] = std::move(f);
+    return *this;
+}
+
+Table::Cells& Table::Cells::prefixsrc(std::string f) {
+    json["prefixsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Cells& Table::Cells::suffix(std::string f) {
+    json["suffix"] = std::move(f);
+    return *this;
+}
+Table::Cells& Table::Cells::suffix(std::vector<std::string> f) {
+    json["suffix"] = std::move(f);
+    return *this;
+}
+
+Table::Cells& Table::Cells::suffixsrc(std::string f) {
+    json["suffixsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Table::Cells& Table::Cells::values(std::vector<T> f) {
+    json["values"] = std::move(f);
+    return *this;
+}
+
+Table::Cells& Table::Cells::valuessrc(std::string f) {
+    json["valuessrc"] = std::move(f);
+    return *this;
+}
+
+
+Table::Cells::Fill& Table::Cells::Fill::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Table::Cells::Fill& Table::Cells::Fill::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Table::Cells::Fill& Table::Cells::Fill::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Table::Cells::Fill& Table::Cells::Fill::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Table::Cells::Fill& Table::Cells::Fill::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+std::string Table::Cells::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Table::Cells::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Table::Cells::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Table::Cells::Font& Table::Cells::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Table::Cells::Font& Table::Cells::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Table::Cells::Font& Table::Cells::Font::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Table::Cells::Font& Table::Cells::Font::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Table::Cells::Font& Table::Cells::Font::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Cells::Font& Table::Cells::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+Table::Cells::Font& Table::Cells::Font::family(std::vector<std::string> f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Table::Cells::Font& Table::Cells::Font::familysrc(std::string f) {
+    json["familysrc"] = std::move(f);
+    return *this;
+}
+
+Table::Cells::Font& Table::Cells::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+Table::Cells::Font& Table::Cells::Font::lineposition(std::vector<std::string> f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Table::Cells::Font& Table::Cells::Font::linepositionsrc(std::string f) {
+    json["linepositionsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Cells::Font& Table::Cells::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+Table::Cells::Font& Table::Cells::Font::shadow(std::vector<std::string> f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Table::Cells::Font& Table::Cells::Font::shadowsrc(std::string f) {
+    json["shadowsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Cells::Font& Table::Cells::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+Table::Cells::Font& Table::Cells::Font::size(std::vector<double> f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Table::Cells::Font& Table::Cells::Font::sizesrc(std::string f) {
+    json["sizesrc"] = std::move(f);
+    return *this;
+}
+
+Table::Cells::Font& Table::Cells::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+Table::Cells::Font& Table::Cells::Font::style(const std::vector<enum Style>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["style"] = std::move(stringified);
+    return *this;
+}
+
+Table::Cells::Font& Table::Cells::Font::stylesrc(std::string f) {
+    json["stylesrc"] = std::move(f);
+    return *this;
+}
+
+Table::Cells::Font& Table::Cells::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+Table::Cells::Font& Table::Cells::Font::textcase(const std::vector<enum Textcase>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["textcase"] = std::move(stringified);
+    return *this;
+}
+
+Table::Cells::Font& Table::Cells::Font::textcasesrc(std::string f) {
+    json["textcasesrc"] = std::move(f);
+    return *this;
+}
+
+Table::Cells::Font& Table::Cells::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+Table::Cells::Font& Table::Cells::Font::variant(const std::vector<enum Variant>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["variant"] = std::move(stringified);
+    return *this;
+}
+
+Table::Cells::Font& Table::Cells::Font::variantsrc(std::string f) {
+    json["variantsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Cells::Font& Table::Cells::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+Table::Cells::Font& Table::Cells::Font::weight(std::vector<int> f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+Table::Cells::Font& Table::Cells::Font::weightsrc(std::string f) {
+    json["weightsrc"] = std::move(f);
+    return *this;
+}
+
+
+Table::Cells::Line& Table::Cells::Line::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Table::Cells::Line& Table::Cells::Line::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Table::Cells::Line& Table::Cells::Line::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Table::Cells::Line& Table::Cells::Line::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Table::Cells::Line& Table::Cells::Line::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Cells::Line& Table::Cells::Line::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+Table::Cells::Line& Table::Cells::Line::width(std::vector<double> f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+Table::Cells::Line& Table::Cells::Line::widthsrc(std::string f) {
+    json["widthsrc"] = std::move(f);
+    return *this;
+}
+
+
+Table::Domain& Table::Domain::column(int f) {
+    json["column"] = std::move(f);
+    return *this;
+}
+
+Table::Domain& Table::Domain::row(int f) {
+    json["row"] = std::move(f);
+    return *this;
+}
+
+Table::Domain& Table::Domain::x(std::vector<std::string> f) {
+    json["x"] = std::move(f);
+    return *this;
+}
+
+Table::Domain& Table::Domain::y(std::vector<std::string> f) {
+    json["y"] = std::move(f);
+    return *this;
+}
+
+std::string Table::Header::to_string(Align e) {
+    switch(e) {
+        case Align::LEFT: return "left";
+        case Align::CENTER: return "center";
+        case Align::RIGHT: return "right";
+    }
+}
+
+Table::Header& Table::Header::align(enum Align f) {
+    json["align"] = to_string(f);
+    return *this;
+}
+Table::Header& Table::Header::align(const std::vector<enum Align>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["align"] = std::move(stringified);
+    return *this;
+}
+
+Table::Header& Table::Header::alignsrc(std::string f) {
+    json["alignsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Header& Table::Header::fill(class Fill f) {
+    json["fill"] = std::move(f.json);
+    return *this;
+}
+
+Table::Header& Table::Header::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T, typename>
+Table::Header& Table::Header::format(std::vector<T> f) {
+    json["format"] = std::move(f);
+    return *this;
+}
+
+Table::Header& Table::Header::formatsrc(std::string f) {
+    json["formatsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Header& Table::Header::height(double f) {
+    json["height"] = std::move(f);
+    return *this;
+}
+
+Table::Header& Table::Header::line(class Line f) {
+    json["line"] = std::move(f.json);
+    return *this;
+}
+
+Table::Header& Table::Header::prefix(std::string f) {
+    json["prefix"] = std::move(f);
+    return *this;
+}
+Table::Header& Table::Header::prefix(std::vector<std::string> f) {
+    json["prefix"] = std::move(f);
+    return *this;
+}
+
+Table::Header& Table::Header::prefixsrc(std::string f) {
+    json["prefixsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Header& Table::Header::suffix(std::string f) {
+    json["suffix"] = std::move(f);
+    return *this;
+}
+Table::Header& Table::Header::suffix(std::vector<std::string> f) {
+    json["suffix"] = std::move(f);
+    return *this;
+}
+
+Table::Header& Table::Header::suffixsrc(std::string f) {
+    json["suffixsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Table::Header& Table::Header::values(std::vector<T> f) {
+    json["values"] = std::move(f);
+    return *this;
+}
+
+Table::Header& Table::Header::valuessrc(std::string f) {
+    json["valuessrc"] = std::move(f);
+    return *this;
+}
+
+
+Table::Header::Fill& Table::Header::Fill::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Table::Header::Fill& Table::Header::Fill::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Table::Header::Fill& Table::Header::Fill::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Table::Header::Fill& Table::Header::Fill::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Table::Header::Fill& Table::Header::Fill::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+std::string Table::Header::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Table::Header::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Table::Header::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Table::Header::Font& Table::Header::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Table::Header::Font& Table::Header::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Table::Header::Font& Table::Header::Font::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Table::Header::Font& Table::Header::Font::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Table::Header::Font& Table::Header::Font::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Header::Font& Table::Header::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+Table::Header::Font& Table::Header::Font::family(std::vector<std::string> f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Table::Header::Font& Table::Header::Font::familysrc(std::string f) {
+    json["familysrc"] = std::move(f);
+    return *this;
+}
+
+Table::Header::Font& Table::Header::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+Table::Header::Font& Table::Header::Font::lineposition(std::vector<std::string> f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Table::Header::Font& Table::Header::Font::linepositionsrc(std::string f) {
+    json["linepositionsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Header::Font& Table::Header::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+Table::Header::Font& Table::Header::Font::shadow(std::vector<std::string> f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Table::Header::Font& Table::Header::Font::shadowsrc(std::string f) {
+    json["shadowsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Header::Font& Table::Header::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+Table::Header::Font& Table::Header::Font::size(std::vector<double> f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Table::Header::Font& Table::Header::Font::sizesrc(std::string f) {
+    json["sizesrc"] = std::move(f);
+    return *this;
+}
+
+Table::Header::Font& Table::Header::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+Table::Header::Font& Table::Header::Font::style(const std::vector<enum Style>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["style"] = std::move(stringified);
+    return *this;
+}
+
+Table::Header::Font& Table::Header::Font::stylesrc(std::string f) {
+    json["stylesrc"] = std::move(f);
+    return *this;
+}
+
+Table::Header::Font& Table::Header::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+Table::Header::Font& Table::Header::Font::textcase(const std::vector<enum Textcase>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["textcase"] = std::move(stringified);
+    return *this;
+}
+
+Table::Header::Font& Table::Header::Font::textcasesrc(std::string f) {
+    json["textcasesrc"] = std::move(f);
+    return *this;
+}
+
+Table::Header::Font& Table::Header::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+Table::Header::Font& Table::Header::Font::variant(const std::vector<enum Variant>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["variant"] = std::move(stringified);
+    return *this;
+}
+
+Table::Header::Font& Table::Header::Font::variantsrc(std::string f) {
+    json["variantsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Header::Font& Table::Header::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+Table::Header::Font& Table::Header::Font::weight(std::vector<int> f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+Table::Header::Font& Table::Header::Font::weightsrc(std::string f) {
+    json["weightsrc"] = std::move(f);
+    return *this;
+}
+
+
+Table::Header::Line& Table::Header::Line::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Table::Header::Line& Table::Header::Line::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Table::Header::Line& Table::Header::Line::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Table::Header::Line& Table::Header::Line::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Table::Header::Line& Table::Header::Line::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Header::Line& Table::Header::Line::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+Table::Header::Line& Table::Header::Line::width(std::vector<double> f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+Table::Header::Line& Table::Header::Line::widthsrc(std::string f) {
+    json["widthsrc"] = std::move(f);
+    return *this;
+}
+
+std::string Table::Hoverlabel::to_string(Align e) {
+    switch(e) {
+        case Align::LEFT: return "left";
+        case Align::RIGHT: return "right";
+        case Align::AUTO: return "auto";
+    }
+}
+
+Table::Hoverlabel& Table::Hoverlabel::align(enum Align f) {
+    json["align"] = to_string(f);
+    return *this;
+}
+Table::Hoverlabel& Table::Hoverlabel::align(const std::vector<enum Align>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["align"] = std::move(stringified);
+    return *this;
+}
+
+Table::Hoverlabel& Table::Hoverlabel::alignsrc(std::string f) {
+    json["alignsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Hoverlabel& Table::Hoverlabel::bgcolor(std::string f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Table::Hoverlabel& Table::Hoverlabel::bgcolor(double f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Table::Hoverlabel& Table::Hoverlabel::bgcolor(std::vector<std::string> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Table::Hoverlabel& Table::Hoverlabel::bgcolor(std::vector<double> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+
+Table::Hoverlabel& Table::Hoverlabel::bgcolorsrc(std::string f) {
+    json["bgcolorsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Hoverlabel& Table::Hoverlabel::bordercolor(std::string f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Table::Hoverlabel& Table::Hoverlabel::bordercolor(double f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Table::Hoverlabel& Table::Hoverlabel::bordercolor(std::vector<std::string> f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Table::Hoverlabel& Table::Hoverlabel::bordercolor(std::vector<double> f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+
+Table::Hoverlabel& Table::Hoverlabel::bordercolorsrc(std::string f) {
+    json["bordercolorsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Hoverlabel& Table::Hoverlabel::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Table::Hoverlabel& Table::Hoverlabel::namelength(int f) {
+    json["namelength"] = std::move(f);
+    return *this;
+}
+Table::Hoverlabel& Table::Hoverlabel::namelength(std::vector<int> f) {
+    json["namelength"] = std::move(f);
+    return *this;
+}
+
+Table::Hoverlabel& Table::Hoverlabel::namelengthsrc(std::string f) {
+    json["namelengthsrc"] = std::move(f);
+    return *this;
+}
+
+std::string Table::Hoverlabel::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Table::Hoverlabel::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Table::Hoverlabel::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::family(std::vector<std::string> f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::familysrc(std::string f) {
+    json["familysrc"] = std::move(f);
+    return *this;
+}
+
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::linepositionsrc(std::string f) {
+    json["linepositionsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::shadow(std::vector<std::string> f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::shadowsrc(std::string f) {
+    json["shadowsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::size(std::vector<double> f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::sizesrc(std::string f) {
+    json["sizesrc"] = std::move(f);
+    return *this;
+}
+
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::style(const std::vector<enum Style>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["style"] = std::move(stringified);
+    return *this;
+}
+
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::stylesrc(std::string f) {
+    json["stylesrc"] = std::move(f);
+    return *this;
+}
+
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::textcase(const std::vector<enum Textcase>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["textcase"] = std::move(stringified);
+    return *this;
+}
+
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::textcasesrc(std::string f) {
+    json["textcasesrc"] = std::move(f);
+    return *this;
+}
+
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::variant(const std::vector<enum Variant>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["variant"] = std::move(stringified);
+    return *this;
+}
+
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::variantsrc(std::string f) {
+    json["variantsrc"] = std::move(f);
+    return *this;
+}
+
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::weight(std::vector<int> f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::weightsrc(std::string f) {
+    json["weightsrc"] = std::move(f);
+    return *this;
+}
+
+
+Table::Legendgrouptitle& Table::Legendgrouptitle::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Table::Legendgrouptitle& Table::Legendgrouptitle::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+std::string Table::Legendgrouptitle::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Table::Legendgrouptitle::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Table::Legendgrouptitle::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Table::Stream& Table::Stream::maxpoints(double f) {
+    json["maxpoints"] = std::move(f);
+    return *this;
+}
+
+Table::Stream& Table::Stream::token(std::string f) {
+    json["token"] = std::move(f);
+    return *this;
+}
+
+} // namespace plotlypp
+

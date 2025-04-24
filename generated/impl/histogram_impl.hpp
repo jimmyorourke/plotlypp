@@ -1,0 +1,2225 @@
+// TODO: includes, copyright, etc
+
+namespace plotlypp {
+
+std::string Histogram::to_string(Constraintext e) {
+    switch(e) {
+        case Constraintext::INSIDE: return "inside";
+        case Constraintext::OUTSIDE: return "outside";
+        case Constraintext::BOTH: return "both";
+        case Constraintext::NONE: return "none";
+    }
+}
+std::string Histogram::to_string(Histfunc e) {
+    switch(e) {
+        case Histfunc::COUNT: return "count";
+        case Histfunc::SUM: return "sum";
+        case Histfunc::AVG: return "avg";
+        case Histfunc::MIN: return "min";
+        case Histfunc::MAX: return "max";
+    }
+}
+std::string Histogram::to_string(Histnorm e) {
+    switch(e) {
+        case Histnorm::EMPTY: return "";
+        case Histnorm::PERCENT: return "percent";
+        case Histnorm::PROBABILITY: return "probability";
+        case Histnorm::DENSITY: return "density";
+        case Histnorm::PROBABILITY_DENSITY: return "probability density";
+    }
+}
+std::string Histogram::to_string(Insidetextanchor e) {
+    switch(e) {
+        case Insidetextanchor::END: return "end";
+        case Insidetextanchor::MIDDLE: return "middle";
+        case Insidetextanchor::START: return "start";
+    }
+}
+std::string Histogram::to_string(Orientation e) {
+    switch(e) {
+        case Orientation::V: return "v";
+        case Orientation::H: return "h";
+    }
+}
+std::string Histogram::to_string(Textposition e) {
+    switch(e) {
+        case Textposition::INSIDE: return "inside";
+        case Textposition::OUTSIDE: return "outside";
+        case Textposition::AUTO: return "auto";
+        case Textposition::NONE: return "none";
+    }
+}
+std::string Histogram::to_string(Visible e) {
+    switch(e) {
+        case Visible::TRUE: return "True";
+        case Visible::FALSE: return "False";
+        case Visible::LEGENDONLY: return "legendonly";
+    }
+}
+std::string Histogram::to_string(Xcalendar e) {
+    switch(e) {
+        case Xcalendar::CHINESE: return "chinese";
+        case Xcalendar::COPTIC: return "coptic";
+        case Xcalendar::DISCWORLD: return "discworld";
+        case Xcalendar::ETHIOPIAN: return "ethiopian";
+        case Xcalendar::GREGORIAN: return "gregorian";
+        case Xcalendar::HEBREW: return "hebrew";
+        case Xcalendar::ISLAMIC: return "islamic";
+        case Xcalendar::JALALI: return "jalali";
+        case Xcalendar::JULIAN: return "julian";
+        case Xcalendar::MAYAN: return "mayan";
+        case Xcalendar::NANAKSHAHI: return "nanakshahi";
+        case Xcalendar::NEPALI: return "nepali";
+        case Xcalendar::PERSIAN: return "persian";
+        case Xcalendar::TAIWAN: return "taiwan";
+        case Xcalendar::THAI: return "thai";
+        case Xcalendar::UMMALQURA: return "ummalqura";
+    }
+}
+std::string Histogram::to_string(Ycalendar e) {
+    switch(e) {
+        case Ycalendar::CHINESE: return "chinese";
+        case Ycalendar::COPTIC: return "coptic";
+        case Ycalendar::DISCWORLD: return "discworld";
+        case Ycalendar::ETHIOPIAN: return "ethiopian";
+        case Ycalendar::GREGORIAN: return "gregorian";
+        case Ycalendar::HEBREW: return "hebrew";
+        case Ycalendar::ISLAMIC: return "islamic";
+        case Ycalendar::JALALI: return "jalali";
+        case Ycalendar::JULIAN: return "julian";
+        case Ycalendar::MAYAN: return "mayan";
+        case Ycalendar::NANAKSHAHI: return "nanakshahi";
+        case Ycalendar::NEPALI: return "nepali";
+        case Ycalendar::PERSIAN: return "persian";
+        case Ycalendar::TAIWAN: return "taiwan";
+        case Ycalendar::THAI: return "thai";
+        case Ycalendar::UMMALQURA: return "ummalqura";
+    }
+}
+
+Histogram& Histogram::alignmentgroup(std::string f) {
+    json["alignmentgroup"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::autobinx(bool f) {
+    json["autobinx"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::autobiny(bool f) {
+    json["autobiny"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::bingroup(std::string f) {
+    json["bingroup"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::cliponaxis(bool f) {
+    json["cliponaxis"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::constraintext(enum Constraintext f) {
+    json["constraintext"] = to_string(f);
+    return *this;
+}
+
+Histogram& Histogram::cumulative(class Cumulative f) {
+    json["cumulative"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T, typename>
+Histogram& Histogram::customdata(std::vector<T> f) {
+    json["customdata"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::customdatasrc(std::string f) {
+    json["customdatasrc"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::error_x(class Error_X f) {
+    json["error_x"] = std::move(f.json);
+    return *this;
+}
+
+Histogram& Histogram::error_y(class Error_Y f) {
+    json["error_y"] = std::move(f.json);
+    return *this;
+}
+
+Histogram& Histogram::histfunc(enum Histfunc f) {
+    json["histfunc"] = to_string(f);
+    return *this;
+}
+
+Histogram& Histogram::histnorm(enum Histnorm f) {
+    json["histnorm"] = to_string(f);
+    return *this;
+}
+
+Histogram& Histogram::hoverinfo(std::string f) {
+    json["hoverinfo"] = std::move(f);
+    return *this;
+}
+Histogram& Histogram::hoverinfo(std::vector<std::string> f) {
+    json["hoverinfo"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::hoverinfosrc(std::string f) {
+    json["hoverinfosrc"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::hoverlabel(class Hoverlabel f) {
+    json["hoverlabel"] = std::move(f.json);
+    return *this;
+}
+
+Histogram& Histogram::hovertemplate(std::string f) {
+    json["hovertemplate"] = std::move(f);
+    return *this;
+}
+Histogram& Histogram::hovertemplate(std::vector<std::string> f) {
+    json["hovertemplate"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::hovertemplatesrc(std::string f) {
+    json["hovertemplatesrc"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::hovertext(std::string f) {
+    json["hovertext"] = std::move(f);
+    return *this;
+}
+Histogram& Histogram::hovertext(std::vector<std::string> f) {
+    json["hovertext"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::hovertextsrc(std::string f) {
+    json["hovertextsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Histogram& Histogram::ids(std::vector<T> f) {
+    json["ids"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::idssrc(std::string f) {
+    json["idssrc"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::insidetextanchor(enum Insidetextanchor f) {
+    json["insidetextanchor"] = to_string(f);
+    return *this;
+}
+
+Histogram& Histogram::insidetextfont(class Insidetextfont f) {
+    json["insidetextfont"] = std::move(f.json);
+    return *this;
+}
+
+Histogram& Histogram::legend(std::string f) {
+    json["legend"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::legendgroup(std::string f) {
+    json["legendgroup"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::legendgrouptitle(class Legendgrouptitle f) {
+    json["legendgrouptitle"] = std::move(f.json);
+    return *this;
+}
+
+Histogram& Histogram::legendrank(double f) {
+    json["legendrank"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::legendwidth(double f) {
+    json["legendwidth"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::marker(class Marker f) {
+    json["marker"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T>
+Histogram& Histogram::meta(T f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+template <typename T>
+Histogram& Histogram::meta(std::vector<T> f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::metasrc(std::string f) {
+    json["metasrc"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::name(std::string f) {
+    json["name"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::nbinsx(int f) {
+    json["nbinsx"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::nbinsy(int f) {
+    json["nbinsy"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::offsetgroup(std::string f) {
+    json["offsetgroup"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::opacity(double f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::orientation(enum Orientation f) {
+    json["orientation"] = to_string(f);
+    return *this;
+}
+
+Histogram& Histogram::outsidetextfont(class Outsidetextfont f) {
+    json["outsidetextfont"] = std::move(f.json);
+    return *this;
+}
+
+Histogram& Histogram::selected(class Selected f) {
+    json["selected"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T>
+Histogram& Histogram::selectedpoints(T f) {
+    json["selectedpoints"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::showlegend(bool f) {
+    json["showlegend"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::stream(class Stream f) {
+    json["stream"] = std::move(f.json);
+    return *this;
+}
+
+Histogram& Histogram::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+Histogram& Histogram::text(std::vector<std::string> f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::textangle(double f) {
+    json["textangle"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::textfont(class Textfont f) {
+    json["textfont"] = std::move(f.json);
+    return *this;
+}
+
+Histogram& Histogram::textposition(enum Textposition f) {
+    json["textposition"] = to_string(f);
+    return *this;
+}
+
+Histogram& Histogram::textsrc(std::string f) {
+    json["textsrc"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::texttemplate(std::string f) {
+    json["texttemplate"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::uid(std::string f) {
+    json["uid"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Histogram& Histogram::uirevision(T f) {
+    json["uirevision"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::unselected(class Unselected f) {
+    json["unselected"] = std::move(f.json);
+    return *this;
+}
+
+Histogram& Histogram::visible(enum Visible f) {
+    json["visible"] = to_string(f);
+    return *this;
+}
+
+template <typename T, typename>
+Histogram& Histogram::x(std::vector<T> f) {
+    json["x"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::xaxis(std::string f) {
+    json["xaxis"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::xbins(class Xbins f) {
+    json["xbins"] = std::move(f.json);
+    return *this;
+}
+
+Histogram& Histogram::xcalendar(enum Xcalendar f) {
+    json["xcalendar"] = to_string(f);
+    return *this;
+}
+
+Histogram& Histogram::xhoverformat(std::string f) {
+    json["xhoverformat"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::xsrc(std::string f) {
+    json["xsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Histogram& Histogram::y(std::vector<T> f) {
+    json["y"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::yaxis(std::string f) {
+    json["yaxis"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::ybins(class Ybins f) {
+    json["ybins"] = std::move(f.json);
+    return *this;
+}
+
+Histogram& Histogram::ycalendar(enum Ycalendar f) {
+    json["ycalendar"] = to_string(f);
+    return *this;
+}
+
+Histogram& Histogram::yhoverformat(std::string f) {
+    json["yhoverformat"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::ysrc(std::string f) {
+    json["ysrc"] = std::move(f);
+    return *this;
+}
+
+Histogram& Histogram::zorder(int f) {
+    json["zorder"] = std::move(f);
+    return *this;
+}
+
+std::string Histogram::Cumulative::to_string(Currentbin e) {
+    switch(e) {
+        case Currentbin::INCLUDE: return "include";
+        case Currentbin::EXCLUDE: return "exclude";
+        case Currentbin::HALF: return "half";
+    }
+}
+std::string Histogram::Cumulative::to_string(Direction e) {
+    switch(e) {
+        case Direction::INCREASING: return "increasing";
+        case Direction::DECREASING: return "decreasing";
+    }
+}
+
+Histogram::Cumulative& Histogram::Cumulative::currentbin(enum Currentbin f) {
+    json["currentbin"] = to_string(f);
+    return *this;
+}
+
+Histogram::Cumulative& Histogram::Cumulative::direction(enum Direction f) {
+    json["direction"] = to_string(f);
+    return *this;
+}
+
+Histogram::Cumulative& Histogram::Cumulative::enabled(bool f) {
+    json["enabled"] = std::move(f);
+    return *this;
+}
+
+std::string Histogram::Error_X::to_string(Type e) {
+    switch(e) {
+        case Type::PERCENT: return "percent";
+        case Type::CONSTANT: return "constant";
+        case Type::SQRT: return "sqrt";
+        case Type::DATA: return "data";
+    }
+}
+
+template <typename T, typename>
+Histogram::Error_X& Histogram::Error_X::array(std::vector<T> f) {
+    json["array"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Histogram::Error_X& Histogram::Error_X::arrayminus(std::vector<T> f) {
+    json["arrayminus"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_X& Histogram::Error_X::arrayminussrc(std::string f) {
+    json["arrayminussrc"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_X& Histogram::Error_X::arraysrc(std::string f) {
+    json["arraysrc"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_X& Histogram::Error_X::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Histogram::Error_X& Histogram::Error_X::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_X& Histogram::Error_X::copy_ystyle(bool f) {
+    json["copy_ystyle"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_X& Histogram::Error_X::symmetric(bool f) {
+    json["symmetric"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_X& Histogram::Error_X::thickness(double f) {
+    json["thickness"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_X& Histogram::Error_X::traceref(int f) {
+    json["traceref"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_X& Histogram::Error_X::tracerefminus(int f) {
+    json["tracerefminus"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_X& Histogram::Error_X::type(enum Type f) {
+    json["type"] = to_string(f);
+    return *this;
+}
+
+Histogram::Error_X& Histogram::Error_X::value(double f) {
+    json["value"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_X& Histogram::Error_X::valueminus(double f) {
+    json["valueminus"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_X& Histogram::Error_X::visible(bool f) {
+    json["visible"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_X& Histogram::Error_X::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+std::string Histogram::Error_Y::to_string(Type e) {
+    switch(e) {
+        case Type::PERCENT: return "percent";
+        case Type::CONSTANT: return "constant";
+        case Type::SQRT: return "sqrt";
+        case Type::DATA: return "data";
+    }
+}
+
+template <typename T, typename>
+Histogram::Error_Y& Histogram::Error_Y::array(std::vector<T> f) {
+    json["array"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Histogram::Error_Y& Histogram::Error_Y::arrayminus(std::vector<T> f) {
+    json["arrayminus"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_Y& Histogram::Error_Y::arrayminussrc(std::string f) {
+    json["arrayminussrc"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_Y& Histogram::Error_Y::arraysrc(std::string f) {
+    json["arraysrc"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_Y& Histogram::Error_Y::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Histogram::Error_Y& Histogram::Error_Y::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_Y& Histogram::Error_Y::symmetric(bool f) {
+    json["symmetric"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_Y& Histogram::Error_Y::thickness(double f) {
+    json["thickness"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_Y& Histogram::Error_Y::traceref(int f) {
+    json["traceref"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_Y& Histogram::Error_Y::tracerefminus(int f) {
+    json["tracerefminus"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_Y& Histogram::Error_Y::type(enum Type f) {
+    json["type"] = to_string(f);
+    return *this;
+}
+
+Histogram::Error_Y& Histogram::Error_Y::value(double f) {
+    json["value"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_Y& Histogram::Error_Y::valueminus(double f) {
+    json["valueminus"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_Y& Histogram::Error_Y::visible(bool f) {
+    json["visible"] = std::move(f);
+    return *this;
+}
+
+Histogram::Error_Y& Histogram::Error_Y::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+std::string Histogram::Hoverlabel::to_string(Align e) {
+    switch(e) {
+        case Align::LEFT: return "left";
+        case Align::RIGHT: return "right";
+        case Align::AUTO: return "auto";
+    }
+}
+
+Histogram::Hoverlabel& Histogram::Hoverlabel::align(enum Align f) {
+    json["align"] = to_string(f);
+    return *this;
+}
+Histogram::Hoverlabel& Histogram::Hoverlabel::align(const std::vector<enum Align>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["align"] = std::move(stringified);
+    return *this;
+}
+
+Histogram::Hoverlabel& Histogram::Hoverlabel::alignsrc(std::string f) {
+    json["alignsrc"] = std::move(f);
+    return *this;
+}
+
+Histogram::Hoverlabel& Histogram::Hoverlabel::bgcolor(std::string f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Histogram::Hoverlabel& Histogram::Hoverlabel::bgcolor(double f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Histogram::Hoverlabel& Histogram::Hoverlabel::bgcolor(std::vector<std::string> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Histogram::Hoverlabel& Histogram::Hoverlabel::bgcolor(std::vector<double> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+
+Histogram::Hoverlabel& Histogram::Hoverlabel::bgcolorsrc(std::string f) {
+    json["bgcolorsrc"] = std::move(f);
+    return *this;
+}
+
+Histogram::Hoverlabel& Histogram::Hoverlabel::bordercolor(std::string f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Histogram::Hoverlabel& Histogram::Hoverlabel::bordercolor(double f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Histogram::Hoverlabel& Histogram::Hoverlabel::bordercolor(std::vector<std::string> f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Histogram::Hoverlabel& Histogram::Hoverlabel::bordercolor(std::vector<double> f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+
+Histogram::Hoverlabel& Histogram::Hoverlabel::bordercolorsrc(std::string f) {
+    json["bordercolorsrc"] = std::move(f);
+    return *this;
+}
+
+Histogram::Hoverlabel& Histogram::Hoverlabel::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Histogram::Hoverlabel& Histogram::Hoverlabel::namelength(int f) {
+    json["namelength"] = std::move(f);
+    return *this;
+}
+Histogram::Hoverlabel& Histogram::Hoverlabel::namelength(std::vector<int> f) {
+    json["namelength"] = std::move(f);
+    return *this;
+}
+
+Histogram::Hoverlabel& Histogram::Hoverlabel::namelengthsrc(std::string f) {
+    json["namelengthsrc"] = std::move(f);
+    return *this;
+}
+
+std::string Histogram::Hoverlabel::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Histogram::Hoverlabel::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Histogram::Hoverlabel::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::family(std::vector<std::string> f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::familysrc(std::string f) {
+    json["familysrc"] = std::move(f);
+    return *this;
+}
+
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::linepositionsrc(std::string f) {
+    json["linepositionsrc"] = std::move(f);
+    return *this;
+}
+
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::shadow(std::vector<std::string> f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::shadowsrc(std::string f) {
+    json["shadowsrc"] = std::move(f);
+    return *this;
+}
+
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::size(std::vector<double> f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::sizesrc(std::string f) {
+    json["sizesrc"] = std::move(f);
+    return *this;
+}
+
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::style(const std::vector<enum Style>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["style"] = std::move(stringified);
+    return *this;
+}
+
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::stylesrc(std::string f) {
+    json["stylesrc"] = std::move(f);
+    return *this;
+}
+
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::textcase(const std::vector<enum Textcase>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["textcase"] = std::move(stringified);
+    return *this;
+}
+
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::textcasesrc(std::string f) {
+    json["textcasesrc"] = std::move(f);
+    return *this;
+}
+
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::variant(const std::vector<enum Variant>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["variant"] = std::move(stringified);
+    return *this;
+}
+
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::variantsrc(std::string f) {
+    json["variantsrc"] = std::move(f);
+    return *this;
+}
+
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::weight(std::vector<int> f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::weightsrc(std::string f) {
+    json["weightsrc"] = std::move(f);
+    return *this;
+}
+
+std::string Histogram::Insidetextfont::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Histogram::Insidetextfont::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Histogram::Insidetextfont::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Histogram::Insidetextfont& Histogram::Insidetextfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Histogram::Insidetextfont& Histogram::Insidetextfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Histogram::Insidetextfont& Histogram::Insidetextfont::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Histogram::Insidetextfont& Histogram::Insidetextfont::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Histogram::Insidetextfont& Histogram::Insidetextfont::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Histogram::Insidetextfont& Histogram::Insidetextfont::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Histogram::Insidetextfont& Histogram::Insidetextfont::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Histogram::Insidetextfont& Histogram::Insidetextfont::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Histogram::Insidetextfont& Histogram::Insidetextfont::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Histogram::Insidetextfont& Histogram::Insidetextfont::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Histogram::Legendgrouptitle& Histogram::Legendgrouptitle::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Histogram::Legendgrouptitle& Histogram::Legendgrouptitle::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+std::string Histogram::Legendgrouptitle::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Histogram::Legendgrouptitle::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Histogram::Legendgrouptitle::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Histogram::Marker& Histogram::Marker::autocolorscale(bool f) {
+    json["autocolorscale"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker& Histogram::Marker::cauto(bool f) {
+    json["cauto"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker& Histogram::Marker::cmax(double f) {
+    json["cmax"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker& Histogram::Marker::cmid(double f) {
+    json["cmid"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker& Histogram::Marker::cmin(double f) {
+    json["cmin"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker& Histogram::Marker::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Histogram::Marker& Histogram::Marker::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Histogram::Marker& Histogram::Marker::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Histogram::Marker& Histogram::Marker::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker& Histogram::Marker::coloraxis(std::string f) {
+    json["coloraxis"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker& Histogram::Marker::colorbar(class Colorbar f) {
+    json["colorbar"] = std::move(f.json);
+    return *this;
+}
+
+Histogram::Marker& Histogram::Marker::colorscale(std::string f) {
+    json["colorscale"] = std::move(f);
+    return *this;
+}
+Histogram::Marker& Histogram::Marker::colorscale(std::vector<std::pair<double, std::string>> f) {
+    json["colorscale"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker& Histogram::Marker::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Histogram::Marker& Histogram::Marker::cornerradius(T f) {
+    json["cornerradius"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker& Histogram::Marker::line(class Line f) {
+    json["line"] = std::move(f.json);
+    return *this;
+}
+
+Histogram::Marker& Histogram::Marker::opacity(double f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+Histogram::Marker& Histogram::Marker::opacity(std::vector<double> f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker& Histogram::Marker::opacitysrc(std::string f) {
+    json["opacitysrc"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker& Histogram::Marker::pattern(class Pattern f) {
+    json["pattern"] = std::move(f.json);
+    return *this;
+}
+
+Histogram::Marker& Histogram::Marker::reversescale(bool f) {
+    json["reversescale"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker& Histogram::Marker::showscale(bool f) {
+    json["showscale"] = std::move(f);
+    return *this;
+}
+
+std::string Histogram::Marker::Colorbar::to_string(Exponentformat e) {
+    switch(e) {
+        case Exponentformat::NONE: return "none";
+        case Exponentformat::E: return "E";
+        case Exponentformat::POWER: return "power";
+        case Exponentformat::SI: return "SI";
+        case Exponentformat::B: return "B";
+    }
+}
+std::string Histogram::Marker::Colorbar::to_string(Lenmode e) {
+    switch(e) {
+        case Lenmode::FRACTION: return "fraction";
+        case Lenmode::PIXELS: return "pixels";
+    }
+}
+std::string Histogram::Marker::Colorbar::to_string(Orientation e) {
+    switch(e) {
+        case Orientation::H: return "h";
+        case Orientation::V: return "v";
+    }
+}
+std::string Histogram::Marker::Colorbar::to_string(Showexponent e) {
+    switch(e) {
+        case Showexponent::ALL: return "all";
+        case Showexponent::FIRST: return "first";
+        case Showexponent::LAST: return "last";
+        case Showexponent::NONE: return "none";
+    }
+}
+std::string Histogram::Marker::Colorbar::to_string(Showtickprefix e) {
+    switch(e) {
+        case Showtickprefix::ALL: return "all";
+        case Showtickprefix::FIRST: return "first";
+        case Showtickprefix::LAST: return "last";
+        case Showtickprefix::NONE: return "none";
+    }
+}
+std::string Histogram::Marker::Colorbar::to_string(Showticksuffix e) {
+    switch(e) {
+        case Showticksuffix::ALL: return "all";
+        case Showticksuffix::FIRST: return "first";
+        case Showticksuffix::LAST: return "last";
+        case Showticksuffix::NONE: return "none";
+    }
+}
+std::string Histogram::Marker::Colorbar::to_string(Thicknessmode e) {
+    switch(e) {
+        case Thicknessmode::FRACTION: return "fraction";
+        case Thicknessmode::PIXELS: return "pixels";
+    }
+}
+std::string Histogram::Marker::Colorbar::to_string(Ticklabeloverflow e) {
+    switch(e) {
+        case Ticklabeloverflow::ALLOW: return "allow";
+        case Ticklabeloverflow::HIDE_PAST_DIV: return "hide past div";
+        case Ticklabeloverflow::HIDE_PAST_DOMAIN: return "hide past domain";
+    }
+}
+std::string Histogram::Marker::Colorbar::to_string(Ticklabelposition e) {
+    switch(e) {
+        case Ticklabelposition::OUTSIDE: return "outside";
+        case Ticklabelposition::INSIDE: return "inside";
+        case Ticklabelposition::OUTSIDE_TOP: return "outside top";
+        case Ticklabelposition::INSIDE_TOP: return "inside top";
+        case Ticklabelposition::OUTSIDE_LEFT: return "outside left";
+        case Ticklabelposition::INSIDE_LEFT: return "inside left";
+        case Ticklabelposition::OUTSIDE_RIGHT: return "outside right";
+        case Ticklabelposition::INSIDE_RIGHT: return "inside right";
+        case Ticklabelposition::OUTSIDE_BOTTOM: return "outside bottom";
+        case Ticklabelposition::INSIDE_BOTTOM: return "inside bottom";
+    }
+}
+std::string Histogram::Marker::Colorbar::to_string(Tickmode e) {
+    switch(e) {
+        case Tickmode::AUTO: return "auto";
+        case Tickmode::LINEAR: return "linear";
+        case Tickmode::ARRAY: return "array";
+    }
+}
+std::string Histogram::Marker::Colorbar::to_string(Ticks e) {
+    switch(e) {
+        case Ticks::OUTSIDE: return "outside";
+        case Ticks::INSIDE: return "inside";
+        case Ticks::EMPTY: return "";
+    }
+}
+std::string Histogram::Marker::Colorbar::to_string(Xanchor e) {
+    switch(e) {
+        case Xanchor::LEFT: return "left";
+        case Xanchor::CENTER: return "center";
+        case Xanchor::RIGHT: return "right";
+    }
+}
+std::string Histogram::Marker::Colorbar::to_string(Xref e) {
+    switch(e) {
+        case Xref::CONTAINER: return "container";
+        case Xref::PAPER: return "paper";
+    }
+}
+std::string Histogram::Marker::Colorbar::to_string(Yanchor e) {
+    switch(e) {
+        case Yanchor::TOP: return "top";
+        case Yanchor::MIDDLE: return "middle";
+        case Yanchor::BOTTOM: return "bottom";
+    }
+}
+std::string Histogram::Marker::Colorbar::to_string(Yref e) {
+    switch(e) {
+        case Yref::CONTAINER: return "container";
+        case Yref::PAPER: return "paper";
+    }
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::bgcolor(std::string f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::bgcolor(double f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::bordercolor(std::string f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::bordercolor(double f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::borderwidth(double f) {
+    json["borderwidth"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::dtick(T f) {
+    json["dtick"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::exponentformat(enum Exponentformat f) {
+    json["exponentformat"] = to_string(f);
+    return *this;
+}
+
+template <typename T>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::labelalias(T f) {
+    json["labelalias"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::len(double f) {
+    json["len"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::lenmode(enum Lenmode f) {
+    json["lenmode"] = to_string(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::minexponent(double f) {
+    json["minexponent"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::nticks(int f) {
+    json["nticks"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::orientation(enum Orientation f) {
+    json["orientation"] = to_string(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::outlinecolor(std::string f) {
+    json["outlinecolor"] = std::move(f);
+    return *this;
+}
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::outlinecolor(double f) {
+    json["outlinecolor"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::outlinewidth(double f) {
+    json["outlinewidth"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::separatethousands(bool f) {
+    json["separatethousands"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::showexponent(enum Showexponent f) {
+    json["showexponent"] = to_string(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::showticklabels(bool f) {
+    json["showticklabels"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::showtickprefix(enum Showtickprefix f) {
+    json["showtickprefix"] = to_string(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::showticksuffix(enum Showticksuffix f) {
+    json["showticksuffix"] = to_string(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::thickness(double f) {
+    json["thickness"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::thicknessmode(enum Thicknessmode f) {
+    json["thicknessmode"] = to_string(f);
+    return *this;
+}
+
+template <typename T>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tick0(T f) {
+    json["tick0"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickangle(double f) {
+    json["tickangle"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickcolor(std::string f) {
+    json["tickcolor"] = std::move(f);
+    return *this;
+}
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickcolor(double f) {
+    json["tickcolor"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickfont(class Tickfont f) {
+    json["tickfont"] = std::move(f.json);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickformat(std::string f) {
+    json["tickformat"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickformatstops(class Tickformatstops f) {
+    json["tickformatstops"] = std::move(f.json);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ticklabeloverflow(enum Ticklabeloverflow f) {
+    json["ticklabeloverflow"] = to_string(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ticklabelposition(enum Ticklabelposition f) {
+    json["ticklabelposition"] = to_string(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ticklabelstep(int f) {
+    json["ticklabelstep"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ticklen(double f) {
+    json["ticklen"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickmode(enum Tickmode f) {
+    json["tickmode"] = to_string(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickprefix(std::string f) {
+    json["tickprefix"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ticks(enum Ticks f) {
+    json["ticks"] = to_string(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ticksuffix(std::string f) {
+    json["ticksuffix"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ticktext(std::vector<T> f) {
+    json["ticktext"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ticktextsrc(std::string f) {
+    json["ticktextsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickvals(std::vector<T> f) {
+    json["tickvals"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickvalssrc(std::string f) {
+    json["tickvalssrc"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickwidth(double f) {
+    json["tickwidth"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::title(class Title f) {
+    json["title"] = std::move(f.json);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::x(double f) {
+    json["x"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::xanchor(enum Xanchor f) {
+    json["xanchor"] = to_string(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::xpad(double f) {
+    json["xpad"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::xref(enum Xref f) {
+    json["xref"] = to_string(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::y(double f) {
+    json["y"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::yanchor(enum Yanchor f) {
+    json["yanchor"] = to_string(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ypad(double f) {
+    json["ypad"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::yref(enum Yref f) {
+    json["yref"] = to_string(f);
+    return *this;
+}
+
+std::string Histogram::Marker::Colorbar::Tickfont::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Histogram::Marker::Colorbar::Tickfont::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Histogram::Marker::Colorbar::Tickfont::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Histogram::Marker::Colorbar::Tickformatstops& Histogram::Marker::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+    json["tickformatstop"] = std::move(f.json);
+    return *this;
+}
+
+
+Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+    json["dtickrange"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop::enabled(bool f) {
+    json["enabled"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop::name(std::string f) {
+    json["name"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop::templateitemname(std::string f) {
+    json["templateitemname"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop::value(std::string f) {
+    json["value"] = std::move(f);
+    return *this;
+}
+
+std::string Histogram::Marker::Colorbar::Title::to_string(Side e) {
+    switch(e) {
+        case Side::RIGHT: return "right";
+        case Side::TOP: return "top";
+        case Side::BOTTOM: return "bottom";
+    }
+}
+
+Histogram::Marker::Colorbar::Title& Histogram::Marker::Colorbar::Title::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Histogram::Marker::Colorbar::Title& Histogram::Marker::Colorbar::Title::side(enum Side f) {
+    json["side"] = to_string(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar::Title& Histogram::Marker::Colorbar::Title::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+std::string Histogram::Marker::Colorbar::Title::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Histogram::Marker::Colorbar::Title::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Histogram::Marker::Colorbar::Title::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Histogram::Marker::Line& Histogram::Marker::Line::autocolorscale(bool f) {
+    json["autocolorscale"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Line& Histogram::Marker::Line::cauto(bool f) {
+    json["cauto"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Line& Histogram::Marker::Line::cmax(double f) {
+    json["cmax"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Line& Histogram::Marker::Line::cmid(double f) {
+    json["cmid"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Line& Histogram::Marker::Line::cmin(double f) {
+    json["cmin"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Line& Histogram::Marker::Line::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Histogram::Marker::Line& Histogram::Marker::Line::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Histogram::Marker::Line& Histogram::Marker::Line::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Histogram::Marker::Line& Histogram::Marker::Line::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Line& Histogram::Marker::Line::coloraxis(std::string f) {
+    json["coloraxis"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Line& Histogram::Marker::Line::colorscale(std::string f) {
+    json["colorscale"] = std::move(f);
+    return *this;
+}
+Histogram::Marker::Line& Histogram::Marker::Line::colorscale(std::vector<std::pair<double, std::string>> f) {
+    json["colorscale"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Line& Histogram::Marker::Line::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Line& Histogram::Marker::Line::reversescale(bool f) {
+    json["reversescale"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Line& Histogram::Marker::Line::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+Histogram::Marker::Line& Histogram::Marker::Line::width(std::vector<double> f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Line& Histogram::Marker::Line::widthsrc(std::string f) {
+    json["widthsrc"] = std::move(f);
+    return *this;
+}
+
+std::string Histogram::Marker::Pattern::to_string(Fillmode e) {
+    switch(e) {
+        case Fillmode::REPLACE: return "replace";
+        case Fillmode::OVERLAY: return "overlay";
+    }
+}
+std::string Histogram::Marker::Pattern::to_string(Shape e) {
+    switch(e) {
+        case Shape::EMPTY: return "";
+        case Shape::SLASH: return "/";
+        case Shape::DOUBLEBACKSLASH: return "\\";
+        case Shape::X: return "x";
+        case Shape::HYPHEN: return "-";
+        case Shape::OR: return "|";
+        case Shape::PLUS: return "+";
+        case Shape::DOT: return ".";
+    }
+}
+
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::bgcolor(std::string f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::bgcolor(double f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::bgcolor(std::vector<std::string> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::bgcolor(std::vector<double> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::bgcolorsrc(std::string f) {
+    json["bgcolorsrc"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::fgcolor(std::string f) {
+    json["fgcolor"] = std::move(f);
+    return *this;
+}
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::fgcolor(double f) {
+    json["fgcolor"] = std::move(f);
+    return *this;
+}
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::fgcolor(std::vector<std::string> f) {
+    json["fgcolor"] = std::move(f);
+    return *this;
+}
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::fgcolor(std::vector<double> f) {
+    json["fgcolor"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::fgcolorsrc(std::string f) {
+    json["fgcolorsrc"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::fgopacity(double f) {
+    json["fgopacity"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::fillmode(enum Fillmode f) {
+    json["fillmode"] = to_string(f);
+    return *this;
+}
+
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::shape(enum Shape f) {
+    json["shape"] = to_string(f);
+    return *this;
+}
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::shape(const std::vector<enum Shape>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["shape"] = std::move(stringified);
+    return *this;
+}
+
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::shapesrc(std::string f) {
+    json["shapesrc"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::size(std::vector<double> f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::sizesrc(std::string f) {
+    json["sizesrc"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::solidity(double f) {
+    json["solidity"] = std::move(f);
+    return *this;
+}
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::solidity(std::vector<double> f) {
+    json["solidity"] = std::move(f);
+    return *this;
+}
+
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::soliditysrc(std::string f) {
+    json["soliditysrc"] = std::move(f);
+    return *this;
+}
+
+std::string Histogram::Outsidetextfont::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Histogram::Outsidetextfont::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Histogram::Outsidetextfont::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Histogram::Outsidetextfont& Histogram::Outsidetextfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Histogram::Outsidetextfont& Histogram::Outsidetextfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Histogram::Outsidetextfont& Histogram::Outsidetextfont::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Histogram::Outsidetextfont& Histogram::Outsidetextfont::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Histogram::Outsidetextfont& Histogram::Outsidetextfont::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Histogram::Outsidetextfont& Histogram::Outsidetextfont::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Histogram::Outsidetextfont& Histogram::Outsidetextfont::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Histogram::Outsidetextfont& Histogram::Outsidetextfont::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Histogram::Outsidetextfont& Histogram::Outsidetextfont::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Histogram::Outsidetextfont& Histogram::Outsidetextfont::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Histogram::Selected& Histogram::Selected::marker(class Marker f) {
+    json["marker"] = std::move(f.json);
+    return *this;
+}
+
+Histogram::Selected& Histogram::Selected::textfont(class Textfont f) {
+    json["textfont"] = std::move(f.json);
+    return *this;
+}
+
+
+Histogram::Selected::Marker& Histogram::Selected::Marker::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Histogram::Selected::Marker& Histogram::Selected::Marker::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Histogram::Selected::Marker& Histogram::Selected::Marker::opacity(double f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+
+
+Histogram::Selected::Textfont& Histogram::Selected::Textfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Histogram::Selected::Textfont& Histogram::Selected::Textfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+
+Histogram::Stream& Histogram::Stream::maxpoints(double f) {
+    json["maxpoints"] = std::move(f);
+    return *this;
+}
+
+Histogram::Stream& Histogram::Stream::token(std::string f) {
+    json["token"] = std::move(f);
+    return *this;
+}
+
+std::string Histogram::Textfont::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Histogram::Textfont::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Histogram::Textfont::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Histogram::Textfont& Histogram::Textfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Histogram::Textfont& Histogram::Textfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Histogram::Textfont& Histogram::Textfont::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Histogram::Textfont& Histogram::Textfont::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Histogram::Textfont& Histogram::Textfont::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Histogram::Textfont& Histogram::Textfont::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Histogram::Textfont& Histogram::Textfont::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Histogram::Textfont& Histogram::Textfont::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Histogram::Textfont& Histogram::Textfont::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Histogram::Textfont& Histogram::Textfont::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Histogram::Unselected& Histogram::Unselected::marker(class Marker f) {
+    json["marker"] = std::move(f.json);
+    return *this;
+}
+
+Histogram::Unselected& Histogram::Unselected::textfont(class Textfont f) {
+    json["textfont"] = std::move(f.json);
+    return *this;
+}
+
+
+Histogram::Unselected::Marker& Histogram::Unselected::Marker::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Histogram::Unselected::Marker& Histogram::Unselected::Marker::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Histogram::Unselected::Marker& Histogram::Unselected::Marker::opacity(double f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+
+
+Histogram::Unselected::Textfont& Histogram::Unselected::Textfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Histogram::Unselected::Textfont& Histogram::Unselected::Textfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+
+template <typename T>
+Histogram::Xbins& Histogram::Xbins::end(T f) {
+    json["end"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Histogram::Xbins& Histogram::Xbins::size(T f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Histogram::Xbins& Histogram::Xbins::start(T f) {
+    json["start"] = std::move(f);
+    return *this;
+}
+
+
+template <typename T>
+Histogram::Ybins& Histogram::Ybins::end(T f) {
+    json["end"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Histogram::Ybins& Histogram::Ybins::size(T f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Histogram::Ybins& Histogram::Ybins::start(T f) {
+    json["start"] = std::move(f);
+    return *this;
+}
+
+} // namespace plotlypp
+

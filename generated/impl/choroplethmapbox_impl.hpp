@@ -1,0 +1,1293 @@
+// TODO: includes, copyright, etc
+
+namespace plotlypp {
+
+std::string Choroplethmapbox::to_string(Visible e) {
+    switch(e) {
+        case Visible::TRUE: return "True";
+        case Visible::FALSE: return "False";
+        case Visible::LEGENDONLY: return "legendonly";
+    }
+}
+
+Choroplethmapbox& Choroplethmapbox::autocolorscale(bool f) {
+    json["autocolorscale"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::below(std::string f) {
+    json["below"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::coloraxis(std::string f) {
+    json["coloraxis"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::colorbar(class Colorbar f) {
+    json["colorbar"] = std::move(f.json);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::colorscale(std::string f) {
+    json["colorscale"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox& Choroplethmapbox::colorscale(std::vector<std::pair<double, std::string>> f) {
+    json["colorscale"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Choroplethmapbox& Choroplethmapbox::customdata(std::vector<T> f) {
+    json["customdata"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::customdatasrc(std::string f) {
+    json["customdatasrc"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::featureidkey(std::string f) {
+    json["featureidkey"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Choroplethmapbox& Choroplethmapbox::geojson(T f) {
+    json["geojson"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::hoverinfo(std::string f) {
+    json["hoverinfo"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox& Choroplethmapbox::hoverinfo(std::vector<std::string> f) {
+    json["hoverinfo"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::hoverinfosrc(std::string f) {
+    json["hoverinfosrc"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::hoverlabel(class Hoverlabel f) {
+    json["hoverlabel"] = std::move(f.json);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::hovertemplate(std::string f) {
+    json["hovertemplate"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox& Choroplethmapbox::hovertemplate(std::vector<std::string> f) {
+    json["hovertemplate"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::hovertemplatesrc(std::string f) {
+    json["hovertemplatesrc"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::hovertext(std::string f) {
+    json["hovertext"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox& Choroplethmapbox::hovertext(std::vector<std::string> f) {
+    json["hovertext"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::hovertextsrc(std::string f) {
+    json["hovertextsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Choroplethmapbox& Choroplethmapbox::ids(std::vector<T> f) {
+    json["ids"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::idssrc(std::string f) {
+    json["idssrc"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::legend(std::string f) {
+    json["legend"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::legendgroup(std::string f) {
+    json["legendgroup"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::legendgrouptitle(class Legendgrouptitle f) {
+    json["legendgrouptitle"] = std::move(f.json);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::legendrank(double f) {
+    json["legendrank"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::legendwidth(double f) {
+    json["legendwidth"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Choroplethmapbox& Choroplethmapbox::locations(std::vector<T> f) {
+    json["locations"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::locationssrc(std::string f) {
+    json["locationssrc"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::marker(class Marker f) {
+    json["marker"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T>
+Choroplethmapbox& Choroplethmapbox::meta(T f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+template <typename T>
+Choroplethmapbox& Choroplethmapbox::meta(std::vector<T> f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::metasrc(std::string f) {
+    json["metasrc"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::name(std::string f) {
+    json["name"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::reversescale(bool f) {
+    json["reversescale"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::selected(class Selected f) {
+    json["selected"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T>
+Choroplethmapbox& Choroplethmapbox::selectedpoints(T f) {
+    json["selectedpoints"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::showlegend(bool f) {
+    json["showlegend"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::showscale(bool f) {
+    json["showscale"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::stream(class Stream f) {
+    json["stream"] = std::move(f.json);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::subplot(std::string f) {
+    json["subplot"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox& Choroplethmapbox::text(std::vector<std::string> f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::textsrc(std::string f) {
+    json["textsrc"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::uid(std::string f) {
+    json["uid"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Choroplethmapbox& Choroplethmapbox::uirevision(T f) {
+    json["uirevision"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::unselected(class Unselected f) {
+    json["unselected"] = std::move(f.json);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::visible(enum Visible f) {
+    json["visible"] = to_string(f);
+    return *this;
+}
+
+template <typename T, typename>
+Choroplethmapbox& Choroplethmapbox::z(std::vector<T> f) {
+    json["z"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::zauto(bool f) {
+    json["zauto"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::zmax(double f) {
+    json["zmax"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::zmid(double f) {
+    json["zmid"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::zmin(double f) {
+    json["zmin"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox& Choroplethmapbox::zsrc(std::string f) {
+    json["zsrc"] = std::move(f);
+    return *this;
+}
+
+std::string Choroplethmapbox::Colorbar::to_string(Exponentformat e) {
+    switch(e) {
+        case Exponentformat::NONE: return "none";
+        case Exponentformat::E: return "E";
+        case Exponentformat::POWER: return "power";
+        case Exponentformat::SI: return "SI";
+        case Exponentformat::B: return "B";
+    }
+}
+std::string Choroplethmapbox::Colorbar::to_string(Lenmode e) {
+    switch(e) {
+        case Lenmode::FRACTION: return "fraction";
+        case Lenmode::PIXELS: return "pixels";
+    }
+}
+std::string Choroplethmapbox::Colorbar::to_string(Orientation e) {
+    switch(e) {
+        case Orientation::H: return "h";
+        case Orientation::V: return "v";
+    }
+}
+std::string Choroplethmapbox::Colorbar::to_string(Showexponent e) {
+    switch(e) {
+        case Showexponent::ALL: return "all";
+        case Showexponent::FIRST: return "first";
+        case Showexponent::LAST: return "last";
+        case Showexponent::NONE: return "none";
+    }
+}
+std::string Choroplethmapbox::Colorbar::to_string(Showtickprefix e) {
+    switch(e) {
+        case Showtickprefix::ALL: return "all";
+        case Showtickprefix::FIRST: return "first";
+        case Showtickprefix::LAST: return "last";
+        case Showtickprefix::NONE: return "none";
+    }
+}
+std::string Choroplethmapbox::Colorbar::to_string(Showticksuffix e) {
+    switch(e) {
+        case Showticksuffix::ALL: return "all";
+        case Showticksuffix::FIRST: return "first";
+        case Showticksuffix::LAST: return "last";
+        case Showticksuffix::NONE: return "none";
+    }
+}
+std::string Choroplethmapbox::Colorbar::to_string(Thicknessmode e) {
+    switch(e) {
+        case Thicknessmode::FRACTION: return "fraction";
+        case Thicknessmode::PIXELS: return "pixels";
+    }
+}
+std::string Choroplethmapbox::Colorbar::to_string(Ticklabeloverflow e) {
+    switch(e) {
+        case Ticklabeloverflow::ALLOW: return "allow";
+        case Ticklabeloverflow::HIDE_PAST_DIV: return "hide past div";
+        case Ticklabeloverflow::HIDE_PAST_DOMAIN: return "hide past domain";
+    }
+}
+std::string Choroplethmapbox::Colorbar::to_string(Ticklabelposition e) {
+    switch(e) {
+        case Ticklabelposition::OUTSIDE: return "outside";
+        case Ticklabelposition::INSIDE: return "inside";
+        case Ticklabelposition::OUTSIDE_TOP: return "outside top";
+        case Ticklabelposition::INSIDE_TOP: return "inside top";
+        case Ticklabelposition::OUTSIDE_LEFT: return "outside left";
+        case Ticklabelposition::INSIDE_LEFT: return "inside left";
+        case Ticklabelposition::OUTSIDE_RIGHT: return "outside right";
+        case Ticklabelposition::INSIDE_RIGHT: return "inside right";
+        case Ticklabelposition::OUTSIDE_BOTTOM: return "outside bottom";
+        case Ticklabelposition::INSIDE_BOTTOM: return "inside bottom";
+    }
+}
+std::string Choroplethmapbox::Colorbar::to_string(Tickmode e) {
+    switch(e) {
+        case Tickmode::AUTO: return "auto";
+        case Tickmode::LINEAR: return "linear";
+        case Tickmode::ARRAY: return "array";
+    }
+}
+std::string Choroplethmapbox::Colorbar::to_string(Ticks e) {
+    switch(e) {
+        case Ticks::OUTSIDE: return "outside";
+        case Ticks::INSIDE: return "inside";
+        case Ticks::EMPTY: return "";
+    }
+}
+std::string Choroplethmapbox::Colorbar::to_string(Xanchor e) {
+    switch(e) {
+        case Xanchor::LEFT: return "left";
+        case Xanchor::CENTER: return "center";
+        case Xanchor::RIGHT: return "right";
+    }
+}
+std::string Choroplethmapbox::Colorbar::to_string(Xref e) {
+    switch(e) {
+        case Xref::CONTAINER: return "container";
+        case Xref::PAPER: return "paper";
+    }
+}
+std::string Choroplethmapbox::Colorbar::to_string(Yanchor e) {
+    switch(e) {
+        case Yanchor::TOP: return "top";
+        case Yanchor::MIDDLE: return "middle";
+        case Yanchor::BOTTOM: return "bottom";
+    }
+}
+std::string Choroplethmapbox::Colorbar::to_string(Yref e) {
+    switch(e) {
+        case Yref::CONTAINER: return "container";
+        case Yref::PAPER: return "paper";
+    }
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::bgcolor(std::string f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::bgcolor(double f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::bordercolor(std::string f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::bordercolor(double f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::borderwidth(double f) {
+    json["borderwidth"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::dtick(T f) {
+    json["dtick"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::exponentformat(enum Exponentformat f) {
+    json["exponentformat"] = to_string(f);
+    return *this;
+}
+
+template <typename T>
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::labelalias(T f) {
+    json["labelalias"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::len(double f) {
+    json["len"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::lenmode(enum Lenmode f) {
+    json["lenmode"] = to_string(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::minexponent(double f) {
+    json["minexponent"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::nticks(int f) {
+    json["nticks"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::orientation(enum Orientation f) {
+    json["orientation"] = to_string(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::outlinecolor(std::string f) {
+    json["outlinecolor"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::outlinecolor(double f) {
+    json["outlinecolor"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::outlinewidth(double f) {
+    json["outlinewidth"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::separatethousands(bool f) {
+    json["separatethousands"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::showexponent(enum Showexponent f) {
+    json["showexponent"] = to_string(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::showticklabels(bool f) {
+    json["showticklabels"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::showtickprefix(enum Showtickprefix f) {
+    json["showtickprefix"] = to_string(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::showticksuffix(enum Showticksuffix f) {
+    json["showticksuffix"] = to_string(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::thickness(double f) {
+    json["thickness"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::thicknessmode(enum Thicknessmode f) {
+    json["thicknessmode"] = to_string(f);
+    return *this;
+}
+
+template <typename T>
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::tick0(T f) {
+    json["tick0"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::tickangle(double f) {
+    json["tickangle"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::tickcolor(std::string f) {
+    json["tickcolor"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::tickcolor(double f) {
+    json["tickcolor"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::tickfont(class Tickfont f) {
+    json["tickfont"] = std::move(f.json);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::tickformat(std::string f) {
+    json["tickformat"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::tickformatstops(class Tickformatstops f) {
+    json["tickformatstops"] = std::move(f.json);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::ticklabeloverflow(enum Ticklabeloverflow f) {
+    json["ticklabeloverflow"] = to_string(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::ticklabelposition(enum Ticklabelposition f) {
+    json["ticklabelposition"] = to_string(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::ticklabelstep(int f) {
+    json["ticklabelstep"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::ticklen(double f) {
+    json["ticklen"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::tickmode(enum Tickmode f) {
+    json["tickmode"] = to_string(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::tickprefix(std::string f) {
+    json["tickprefix"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::ticks(enum Ticks f) {
+    json["ticks"] = to_string(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::ticksuffix(std::string f) {
+    json["ticksuffix"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::ticktext(std::vector<T> f) {
+    json["ticktext"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::ticktextsrc(std::string f) {
+    json["ticktextsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::tickvals(std::vector<T> f) {
+    json["tickvals"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::tickvalssrc(std::string f) {
+    json["tickvalssrc"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::tickwidth(double f) {
+    json["tickwidth"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::title(class Title f) {
+    json["title"] = std::move(f.json);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::x(double f) {
+    json["x"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::xanchor(enum Xanchor f) {
+    json["xanchor"] = to_string(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::xpad(double f) {
+    json["xpad"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::xref(enum Xref f) {
+    json["xref"] = to_string(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::y(double f) {
+    json["y"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::yanchor(enum Yanchor f) {
+    json["yanchor"] = to_string(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::ypad(double f) {
+    json["ypad"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::yref(enum Yref f) {
+    json["yref"] = to_string(f);
+    return *this;
+}
+
+std::string Choroplethmapbox::Colorbar::Tickfont::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Choroplethmapbox::Colorbar::Tickfont::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Choroplethmapbox::Colorbar::Tickfont::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Choroplethmapbox::Colorbar::Tickfont& Choroplethmapbox::Colorbar::Tickfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Colorbar::Tickfont& Choroplethmapbox::Colorbar::Tickfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar::Tickfont& Choroplethmapbox::Colorbar::Tickfont::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar::Tickfont& Choroplethmapbox::Colorbar::Tickfont::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar::Tickfont& Choroplethmapbox::Colorbar::Tickfont::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar::Tickfont& Choroplethmapbox::Colorbar::Tickfont::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar::Tickfont& Choroplethmapbox::Colorbar::Tickfont::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar::Tickfont& Choroplethmapbox::Colorbar::Tickfont::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar::Tickfont& Choroplethmapbox::Colorbar::Tickfont::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar::Tickfont& Choroplethmapbox::Colorbar::Tickfont::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Choroplethmapbox::Colorbar::Tickformatstops& Choroplethmapbox::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+    json["tickformatstop"] = std::move(f.json);
+    return *this;
+}
+
+
+Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop& Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+    json["dtickrange"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop& Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop::enabled(bool f) {
+    json["enabled"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop& Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop::name(std::string f) {
+    json["name"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop& Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop::templateitemname(std::string f) {
+    json["templateitemname"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop& Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop::value(std::string f) {
+    json["value"] = std::move(f);
+    return *this;
+}
+
+std::string Choroplethmapbox::Colorbar::Title::to_string(Side e) {
+    switch(e) {
+        case Side::RIGHT: return "right";
+        case Side::TOP: return "top";
+        case Side::BOTTOM: return "bottom";
+    }
+}
+
+Choroplethmapbox::Colorbar::Title& Choroplethmapbox::Colorbar::Title::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar::Title& Choroplethmapbox::Colorbar::Title::side(enum Side f) {
+    json["side"] = to_string(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar::Title& Choroplethmapbox::Colorbar::Title::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+std::string Choroplethmapbox::Colorbar::Title::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Choroplethmapbox::Colorbar::Title::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Choroplethmapbox::Colorbar::Title::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Choroplethmapbox::Colorbar::Title::Font& Choroplethmapbox::Colorbar::Title::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Colorbar::Title::Font& Choroplethmapbox::Colorbar::Title::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar::Title::Font& Choroplethmapbox::Colorbar::Title::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar::Title::Font& Choroplethmapbox::Colorbar::Title::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar::Title::Font& Choroplethmapbox::Colorbar::Title::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar::Title::Font& Choroplethmapbox::Colorbar::Title::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar::Title::Font& Choroplethmapbox::Colorbar::Title::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar::Title::Font& Choroplethmapbox::Colorbar::Title::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar::Title::Font& Choroplethmapbox::Colorbar::Title::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Choroplethmapbox::Colorbar::Title::Font& Choroplethmapbox::Colorbar::Title::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+std::string Choroplethmapbox::Hoverlabel::to_string(Align e) {
+    switch(e) {
+        case Align::LEFT: return "left";
+        case Align::RIGHT: return "right";
+        case Align::AUTO: return "auto";
+    }
+}
+
+Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::align(enum Align f) {
+    json["align"] = to_string(f);
+    return *this;
+}
+Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::align(const std::vector<enum Align>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["align"] = std::move(stringified);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::alignsrc(std::string f) {
+    json["alignsrc"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::bgcolor(std::string f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::bgcolor(double f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::bgcolor(std::vector<std::string> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::bgcolor(std::vector<double> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::bgcolorsrc(std::string f) {
+    json["bgcolorsrc"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::bordercolor(std::string f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::bordercolor(double f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::bordercolor(std::vector<std::string> f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::bordercolor(std::vector<double> f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::bordercolorsrc(std::string f) {
+    json["bordercolorsrc"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::namelength(int f) {
+    json["namelength"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::namelength(std::vector<int> f) {
+    json["namelength"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::namelengthsrc(std::string f) {
+    json["namelengthsrc"] = std::move(f);
+    return *this;
+}
+
+std::string Choroplethmapbox::Hoverlabel::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Choroplethmapbox::Hoverlabel::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Choroplethmapbox::Hoverlabel::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::family(std::vector<std::string> f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::familysrc(std::string f) {
+    json["familysrc"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::linepositionsrc(std::string f) {
+    json["linepositionsrc"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::shadow(std::vector<std::string> f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::shadowsrc(std::string f) {
+    json["shadowsrc"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::size(std::vector<double> f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::sizesrc(std::string f) {
+    json["sizesrc"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::style(const std::vector<enum Style>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["style"] = std::move(stringified);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::stylesrc(std::string f) {
+    json["stylesrc"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::textcase(const std::vector<enum Textcase>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["textcase"] = std::move(stringified);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::textcasesrc(std::string f) {
+    json["textcasesrc"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::variant(const std::vector<enum Variant>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["variant"] = std::move(stringified);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::variantsrc(std::string f) {
+    json["variantsrc"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::weight(std::vector<int> f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::weightsrc(std::string f) {
+    json["weightsrc"] = std::move(f);
+    return *this;
+}
+
+
+Choroplethmapbox::Legendgrouptitle& Choroplethmapbox::Legendgrouptitle::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Choroplethmapbox::Legendgrouptitle& Choroplethmapbox::Legendgrouptitle::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+std::string Choroplethmapbox::Legendgrouptitle::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Choroplethmapbox::Legendgrouptitle::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Choroplethmapbox::Legendgrouptitle::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Choroplethmapbox::Legendgrouptitle::Font& Choroplethmapbox::Legendgrouptitle::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Legendgrouptitle::Font& Choroplethmapbox::Legendgrouptitle::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Legendgrouptitle::Font& Choroplethmapbox::Legendgrouptitle::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Legendgrouptitle::Font& Choroplethmapbox::Legendgrouptitle::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Legendgrouptitle::Font& Choroplethmapbox::Legendgrouptitle::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Legendgrouptitle::Font& Choroplethmapbox::Legendgrouptitle::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Legendgrouptitle::Font& Choroplethmapbox::Legendgrouptitle::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Choroplethmapbox::Legendgrouptitle::Font& Choroplethmapbox::Legendgrouptitle::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Choroplethmapbox::Legendgrouptitle::Font& Choroplethmapbox::Legendgrouptitle::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Choroplethmapbox::Legendgrouptitle::Font& Choroplethmapbox::Legendgrouptitle::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Choroplethmapbox::Marker& Choroplethmapbox::Marker::line(class Line f) {
+    json["line"] = std::move(f.json);
+    return *this;
+}
+
+Choroplethmapbox::Marker& Choroplethmapbox::Marker::opacity(double f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Marker& Choroplethmapbox::Marker::opacity(std::vector<double> f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Marker& Choroplethmapbox::Marker::opacitysrc(std::string f) {
+    json["opacitysrc"] = std::move(f);
+    return *this;
+}
+
+
+Choroplethmapbox::Marker::Line& Choroplethmapbox::Marker::Line::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Marker::Line& Choroplethmapbox::Marker::Line::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Marker::Line& Choroplethmapbox::Marker::Line::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Marker::Line& Choroplethmapbox::Marker::Line::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Marker::Line& Choroplethmapbox::Marker::Line::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Marker::Line& Choroplethmapbox::Marker::Line::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+Choroplethmapbox::Marker::Line& Choroplethmapbox::Marker::Line::width(std::vector<double> f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Marker::Line& Choroplethmapbox::Marker::Line::widthsrc(std::string f) {
+    json["widthsrc"] = std::move(f);
+    return *this;
+}
+
+
+Choroplethmapbox::Selected& Choroplethmapbox::Selected::marker(class Marker f) {
+    json["marker"] = std::move(f.json);
+    return *this;
+}
+
+
+Choroplethmapbox::Selected::Marker& Choroplethmapbox::Selected::Marker::opacity(double f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+
+
+Choroplethmapbox::Stream& Choroplethmapbox::Stream::maxpoints(double f) {
+    json["maxpoints"] = std::move(f);
+    return *this;
+}
+
+Choroplethmapbox::Stream& Choroplethmapbox::Stream::token(std::string f) {
+    json["token"] = std::move(f);
+    return *this;
+}
+
+
+Choroplethmapbox::Unselected& Choroplethmapbox::Unselected::marker(class Marker f) {
+    json["marker"] = std::move(f.json);
+    return *this;
+}
+
+
+Choroplethmapbox::Unselected::Marker& Choroplethmapbox::Unselected::Marker::opacity(double f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+
+} // namespace plotlypp
+

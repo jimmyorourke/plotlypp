@@ -25,47 +25,20 @@ class Waterfall : public Trace {
         BOTH,
         NONE,
     };
-    std::string to_string(Constraintext e) {
-        switch (e) {
-        case Constraintext::INSIDE:
-            return "inside";
-        case Constraintext::OUTSIDE:
-            return "outside";
-        case Constraintext::BOTH:
-            return "both";
-        case Constraintext::NONE:
-            return "none";
-        }
-    }
+    static std::string to_string(Constraintext e);
 
     enum class Insidetextanchor {
         END,
         MIDDLE,
         START,
     };
-    std::string to_string(Insidetextanchor e) {
-        switch (e) {
-        case Insidetextanchor::END:
-            return "end";
-        case Insidetextanchor::MIDDLE:
-            return "middle";
-        case Insidetextanchor::START:
-            return "start";
-        }
-    }
+    static std::string to_string(Insidetextanchor e);
 
     enum class Orientation {
         V,
         H,
     };
-    std::string to_string(Orientation e) {
-        switch (e) {
-        case Orientation::V:
-            return "v";
-        case Orientation::H:
-            return "h";
-        }
-    }
+    static std::string to_string(Orientation e);
 
     enum class Textposition {
         INSIDE,
@@ -73,1629 +46,88 @@ class Waterfall : public Trace {
         AUTO,
         NONE,
     };
-    std::string to_string(Textposition e) {
-        switch (e) {
-        case Textposition::INSIDE:
-            return "inside";
-        case Textposition::OUTSIDE:
-            return "outside";
-        case Textposition::AUTO:
-            return "auto";
-        case Textposition::NONE:
-            return "none";
-        }
-    }
+    static std::string to_string(Textposition e);
 
     enum class Visible {
         TRUE,
         FALSE,
         LEGENDONLY,
     };
-    std::string to_string(Visible e) {
-        switch (e) {
-        case Visible::TRUE:
-            return "True";
-        case Visible::FALSE:
-            return "False";
-        case Visible::LEGENDONLY:
-            return "legendonly";
-        }
-    }
+    static std::string to_string(Visible e);
 
     enum class Xperiodalignment {
         START,
         MIDDLE,
         END,
     };
-    std::string to_string(Xperiodalignment e) {
-        switch (e) {
-        case Xperiodalignment::START:
-            return "start";
-        case Xperiodalignment::MIDDLE:
-            return "middle";
-        case Xperiodalignment::END:
-            return "end";
-        }
-    }
+    static std::string to_string(Xperiodalignment e);
 
     enum class Yperiodalignment {
         START,
         MIDDLE,
         END,
     };
-    std::string to_string(Yperiodalignment e) {
-        switch (e) {
-        case Yperiodalignment::START:
-            return "start";
-        case Yperiodalignment::MIDDLE:
-            return "middle";
-        case Yperiodalignment::END:
-            return "end";
-        }
-    }
-
-    class Connector {
-     public:
-
-        enum class Mode {
-            SPANNING,
-            BETWEEN,
-        };
-        std::string to_string(Mode e) {
-            switch (e) {
-            case Mode::SPANNING:
-                return "spanning";
-            case Mode::BETWEEN:
-                return "between";
-            }
-        }
-
-        class Line {
-         public:
-
-            // Sets the line color.
-            Line& color(std::string f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-            Line& color(double f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*,
-            // or *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
-            Line& dash(std::string f) {
-                json["dash"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the line width (in px).
-            Line& width(double f) {
-                json["width"] = std::move(f);
-                return *this;
-            }
-
-            // Advanced users may modify the JSON representation directly, at their own peril!
-            nlohmann::json json{};
-        };
-
-        Connector& line(class Line f) {
-            json["line"] = std::move(f.json);
-            return *this;
-        }
-
-        // Sets the shape of connector lines.
-        // - Default: between
-        Connector& mode(enum Mode f) {
-            json["mode"] = to_string(f);
-            return *this;
-        }
-
-        // Determines if connector lines are drawn.
-        Connector& visible(bool f) {
-            json["visible"] = std::move(f);
-            return *this;
-        }
-
-        // Advanced users may modify the JSON representation directly, at their own peril!
-        nlohmann::json json{};
-    };
-
-    class Decreasing {
-     public:
-
-        class Marker {
-         public:
-
-            class Line {
-             public:
-
-                // Sets the line color of all decreasing values.
-                Line& color(std::string f) {
-                    json["color"] = std::move(f);
-                    return *this;
-                }
-                Line& color(double f) {
-                    json["color"] = std::move(f);
-                    return *this;
-                }
-
-                // Sets the line width of all decreasing values.
-                Line& width(double f) {
-                    json["width"] = std::move(f);
-                    return *this;
-                }
-
-                // Advanced users may modify the JSON representation directly, at their own peril!
-                nlohmann::json json{};
-            };
-
-            // Sets the marker color of all decreasing values.
-            Marker& color(std::string f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-            Marker& color(double f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-
-            Marker& line(class Line f) {
-                json["line"] = std::move(f.json);
-                return *this;
-            }
-
-            // Advanced users may modify the JSON representation directly, at their own peril!
-            nlohmann::json json{};
-        };
-
-        Decreasing& marker(class Marker f) {
-            json["marker"] = std::move(f.json);
-            return *this;
-        }
-
-        // Advanced users may modify the JSON representation directly, at their own peril!
-        nlohmann::json json{};
-    };
-
-    class Hoverlabel {
-     public:
-
-        enum class Align {
-            LEFT,
-            RIGHT,
-            AUTO,
-        };
-        std::string to_string(Align e) {
-            switch (e) {
-            case Align::LEFT:
-                return "left";
-            case Align::RIGHT:
-                return "right";
-            case Align::AUTO:
-                return "auto";
-            }
-        }
-
-        // Sets the font used in hover labels.
-        class Font {
-         public:
-
-            enum class Style {
-                NORMAL,
-                ITALIC,
-            };
-            std::string to_string(Style e) {
-                switch (e) {
-                case Style::NORMAL:
-                    return "normal";
-                case Style::ITALIC:
-                    return "italic";
-                }
-            }
-
-            enum class Textcase {
-                NORMAL,
-                WORD_CAPS,
-                UPPER,
-                LOWER,
-            };
-            std::string to_string(Textcase e) {
-                switch (e) {
-                case Textcase::NORMAL:
-                    return "normal";
-                case Textcase::WORD_CAPS:
-                    return "word caps";
-                case Textcase::UPPER:
-                    return "upper";
-                case Textcase::LOWER:
-                    return "lower";
-                }
-            }
-
-            enum class Variant {
-                NORMAL,
-                SMALL_CAPS,
-                ALL_SMALL_CAPS,
-                ALL_PETITE_CAPS,
-                PETITE_CAPS,
-                UNICASE,
-            };
-            std::string to_string(Variant e) {
-                switch (e) {
-                case Variant::NORMAL:
-                    return "normal";
-                case Variant::SMALL_CAPS:
-                    return "small-caps";
-                case Variant::ALL_SMALL_CAPS:
-                    return "all-small-caps";
-                case Variant::ALL_PETITE_CAPS:
-                    return "all-petite-caps";
-                case Variant::PETITE_CAPS:
-                    return "petite-caps";
-                case Variant::UNICASE:
-                    return "unicase";
-                }
-            }
-
-            Font& color(std::string f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-            Font& color(double f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-            Font& color(std::vector<std::string> f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-            Font& color(std::vector<double> f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the source reference on Chart Studio Cloud for `color`.
-            Font& colorsrc(std::string f) {
-                json["colorsrc"] = std::move(f);
-                return *this;
-            }
-
-            // HTML font family - the typeface that will be applied by the web browser. The web browser will only be
-            // able to apply a font if it is available on the system which it operates. Provide multiple font families,
-            // separated by commas, to indicate the preference in which to apply fonts if they aren't available on the
-            // system. The Chart Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a
-            // server, where only a select number of fonts are installed and supported. These include *Arial*, *Balto*,
-            // *Courier New*, *Droid Sans*, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open
-            // Sans*, *Overpass*, *PT Sans Narrow*, *Raleway*, *Times New Roman*.
-            Font& family(std::string f) {
-                json["family"] = std::move(f);
-                return *this;
-            }
-            Font& family(std::vector<std::string> f) {
-                json["family"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the source reference on Chart Studio Cloud for `family`.
-            Font& familysrc(std::string f) {
-                json["familysrc"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as
-            // combinations e.g. *under+over*, etc.
-            // - Default: none
-            // - Flags: ['under', 'over', 'through']
-            // - Extras ['none']
-            Font& lineposition(std::string f) {
-                json["lineposition"] = std::move(f);
-                return *this;
-            }
-            Font& lineposition(std::vector<std::string> f) {
-                json["lineposition"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the source reference on Chart Studio Cloud for `lineposition`.
-            Font& linepositionsrc(std::string f) {
-                json["linepositionsrc"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast
-            // text font color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
-            Font& shadow(std::string f) {
-                json["shadow"] = std::move(f);
-                return *this;
-            }
-            Font& shadow(std::vector<std::string> f) {
-                json["shadow"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the source reference on Chart Studio Cloud for `shadow`.
-            Font& shadowsrc(std::string f) {
-                json["shadowsrc"] = std::move(f);
-                return *this;
-            }
-
-            Font& size(double f) {
-                json["size"] = std::move(f);
-                return *this;
-            }
-            Font& size(std::vector<double> f) {
-                json["size"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the source reference on Chart Studio Cloud for `size`.
-            Font& sizesrc(std::string f) {
-                json["sizesrc"] = std::move(f);
-                return *this;
-            }
-
-            // Sets whether a font should be styled with a normal or italic face from its family.
-            // - Default: normal
-            Font& style(enum Style f) {
-                json["style"] = to_string(f);
-                return *this;
-            }
-            Font& style(const std::vector<enum Style>& f) {
-                std::vector<std::string> stringified(f.size());
-                std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-                json["style"] = std::move(stringified);
-                return *this;
-            }
-
-            // Sets the source reference on Chart Studio Cloud for `style`.
-            Font& stylesrc(std::string f) {
-                json["stylesrc"] = std::move(f);
-                return *this;
-            }
-
-            // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or
-            // with each word capitalized.
-            // - Default: normal
-            Font& textcase(enum Textcase f) {
-                json["textcase"] = to_string(f);
-                return *this;
-            }
-            Font& textcase(const std::vector<enum Textcase>& f) {
-                std::vector<std::string> stringified(f.size());
-                std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-                json["textcase"] = std::move(stringified);
-                return *this;
-            }
-
-            // Sets the source reference on Chart Studio Cloud for `textcase`.
-            Font& textcasesrc(std::string f) {
-                json["textcasesrc"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the variant of the font.
-            // - Default: normal
-            Font& variant(enum Variant f) {
-                json["variant"] = to_string(f);
-                return *this;
-            }
-            Font& variant(const std::vector<enum Variant>& f) {
-                std::vector<std::string> stringified(f.size());
-                std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-                json["variant"] = std::move(stringified);
-                return *this;
-            }
-
-            // Sets the source reference on Chart Studio Cloud for `variant`.
-            Font& variantsrc(std::string f) {
-                json["variantsrc"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the weight (or boldness) of the font.
-            Font& weight(int f) {
-                json["weight"] = std::move(f);
-                return *this;
-            }
-            Font& weight(std::vector<int> f) {
-                json["weight"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the source reference on Chart Studio Cloud for `weight`.
-            Font& weightsrc(std::string f) {
-                json["weightsrc"] = std::move(f);
-                return *this;
-            }
-
-            // Advanced users may modify the JSON representation directly, at their own peril!
-            nlohmann::json json{};
-        };
-
-        // Sets the horizontal alignment of the text content within hover label box. Has an effect only if the hover
-        // label text spans more two or more lines
-        // - Default: auto
-        Hoverlabel& align(enum Align f) {
-            json["align"] = to_string(f);
-            return *this;
-        }
-        Hoverlabel& align(const std::vector<enum Align>& f) {
-            std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-            json["align"] = std::move(stringified);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `align`.
-        Hoverlabel& alignsrc(std::string f) {
-            json["alignsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the background color of the hover labels for this trace
-        Hoverlabel& bgcolor(std::string f) {
-            json["bgcolor"] = std::move(f);
-            return *this;
-        }
-        Hoverlabel& bgcolor(double f) {
-            json["bgcolor"] = std::move(f);
-            return *this;
-        }
-        Hoverlabel& bgcolor(std::vector<std::string> f) {
-            json["bgcolor"] = std::move(f);
-            return *this;
-        }
-        Hoverlabel& bgcolor(std::vector<double> f) {
-            json["bgcolor"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `bgcolor`.
-        Hoverlabel& bgcolorsrc(std::string f) {
-            json["bgcolorsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the border color of the hover labels for this trace.
-        Hoverlabel& bordercolor(std::string f) {
-            json["bordercolor"] = std::move(f);
-            return *this;
-        }
-        Hoverlabel& bordercolor(double f) {
-            json["bordercolor"] = std::move(f);
-            return *this;
-        }
-        Hoverlabel& bordercolor(std::vector<std::string> f) {
-            json["bordercolor"] = std::move(f);
-            return *this;
-        }
-        Hoverlabel& bordercolor(std::vector<double> f) {
-            json["bordercolor"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `bordercolor`.
-        Hoverlabel& bordercolorsrc(std::string f) {
-            json["bordercolorsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the font used in hover labels.
-        Hoverlabel& font(class Font f) {
-            json["font"] = std::move(f.json);
-            return *this;
-        }
-
-        // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1
-        // shows the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show
-        // the whole name if it is less than that many characters, but if it is longer, will truncate to `namelength -
-        // 3` characters and add an ellipsis.
-        Hoverlabel& namelength(int f) {
-            json["namelength"] = std::move(f);
-            return *this;
-        }
-        Hoverlabel& namelength(std::vector<int> f) {
-            json["namelength"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `namelength`.
-        Hoverlabel& namelengthsrc(std::string f) {
-            json["namelengthsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Advanced users may modify the JSON representation directly, at their own peril!
-        nlohmann::json json{};
-    };
-
-    class Increasing {
-     public:
-
-        class Marker {
-         public:
-
-            class Line {
-             public:
-
-                // Sets the line color of all increasing values.
-                Line& color(std::string f) {
-                    json["color"] = std::move(f);
-                    return *this;
-                }
-                Line& color(double f) {
-                    json["color"] = std::move(f);
-                    return *this;
-                }
-
-                // Sets the line width of all increasing values.
-                Line& width(double f) {
-                    json["width"] = std::move(f);
-                    return *this;
-                }
-
-                // Advanced users may modify the JSON representation directly, at their own peril!
-                nlohmann::json json{};
-            };
-
-            // Sets the marker color of all increasing values.
-            Marker& color(std::string f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-            Marker& color(double f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-
-            Marker& line(class Line f) {
-                json["line"] = std::move(f.json);
-                return *this;
-            }
-
-            // Advanced users may modify the JSON representation directly, at their own peril!
-            nlohmann::json json{};
-        };
-
-        Increasing& marker(class Marker f) {
-            json["marker"] = std::move(f.json);
-            return *this;
-        }
-
-        // Advanced users may modify the JSON representation directly, at their own peril!
-        nlohmann::json json{};
-    };
-
+    static std::string to_string(Yperiodalignment e);
+
+    class Connector;
+    class Decreasing;
+    class Hoverlabel;
+    class Increasing;
     // Sets the font used for `text` lying inside the bar.
-    class Insidetextfont {
-     public:
-
-        enum class Style {
-            NORMAL,
-            ITALIC,
-        };
-        std::string to_string(Style e) {
-            switch (e) {
-            case Style::NORMAL:
-                return "normal";
-            case Style::ITALIC:
-                return "italic";
-            }
-        }
-
-        enum class Textcase {
-            NORMAL,
-            WORD_CAPS,
-            UPPER,
-            LOWER,
-        };
-        std::string to_string(Textcase e) {
-            switch (e) {
-            case Textcase::NORMAL:
-                return "normal";
-            case Textcase::WORD_CAPS:
-                return "word caps";
-            case Textcase::UPPER:
-                return "upper";
-            case Textcase::LOWER:
-                return "lower";
-            }
-        }
-
-        enum class Variant {
-            NORMAL,
-            SMALL_CAPS,
-            ALL_SMALL_CAPS,
-            ALL_PETITE_CAPS,
-            PETITE_CAPS,
-            UNICASE,
-        };
-        std::string to_string(Variant e) {
-            switch (e) {
-            case Variant::NORMAL:
-                return "normal";
-            case Variant::SMALL_CAPS:
-                return "small-caps";
-            case Variant::ALL_SMALL_CAPS:
-                return "all-small-caps";
-            case Variant::ALL_PETITE_CAPS:
-                return "all-petite-caps";
-            case Variant::PETITE_CAPS:
-                return "petite-caps";
-            case Variant::UNICASE:
-                return "unicase";
-            }
-        }
-
-        Insidetextfont& color(std::string f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-        Insidetextfont& color(double f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-        Insidetextfont& color(std::vector<std::string> f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-        Insidetextfont& color(std::vector<double> f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `color`.
-        Insidetextfont& colorsrc(std::string f) {
-            json["colorsrc"] = std::move(f);
-            return *this;
-        }
-
-        // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
-        // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
-        // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
-        // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a
-        // select number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid
-        // Sans*, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans
-        // Narrow*, *Raleway*, *Times New Roman*.
-        Insidetextfont& family(std::string f) {
-            json["family"] = std::move(f);
-            return *this;
-        }
-        Insidetextfont& family(std::vector<std::string> f) {
-            json["family"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `family`.
-        Insidetextfont& familysrc(std::string f) {
-            json["familysrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as
-        // combinations e.g. *under+over*, etc.
-        // - Default: none
-        // - Flags: ['under', 'over', 'through']
-        // - Extras ['none']
-        Insidetextfont& lineposition(std::string f) {
-            json["lineposition"] = std::move(f);
-            return *this;
-        }
-        Insidetextfont& lineposition(std::vector<std::string> f) {
-            json["lineposition"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `lineposition`.
-        Insidetextfont& linepositionsrc(std::string f) {
-            json["linepositionsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text
-        // font color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
-        Insidetextfont& shadow(std::string f) {
-            json["shadow"] = std::move(f);
-            return *this;
-        }
-        Insidetextfont& shadow(std::vector<std::string> f) {
-            json["shadow"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `shadow`.
-        Insidetextfont& shadowsrc(std::string f) {
-            json["shadowsrc"] = std::move(f);
-            return *this;
-        }
-
-        Insidetextfont& size(double f) {
-            json["size"] = std::move(f);
-            return *this;
-        }
-        Insidetextfont& size(std::vector<double> f) {
-            json["size"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `size`.
-        Insidetextfont& sizesrc(std::string f) {
-            json["sizesrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets whether a font should be styled with a normal or italic face from its family.
-        // - Default: normal
-        Insidetextfont& style(enum Style f) {
-            json["style"] = to_string(f);
-            return *this;
-        }
-        Insidetextfont& style(const std::vector<enum Style>& f) {
-            std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-            json["style"] = std::move(stringified);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `style`.
-        Insidetextfont& stylesrc(std::string f) {
-            json["stylesrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with
-        // each word capitalized.
-        // - Default: normal
-        Insidetextfont& textcase(enum Textcase f) {
-            json["textcase"] = to_string(f);
-            return *this;
-        }
-        Insidetextfont& textcase(const std::vector<enum Textcase>& f) {
-            std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-            json["textcase"] = std::move(stringified);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `textcase`.
-        Insidetextfont& textcasesrc(std::string f) {
-            json["textcasesrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the variant of the font.
-        // - Default: normal
-        Insidetextfont& variant(enum Variant f) {
-            json["variant"] = to_string(f);
-            return *this;
-        }
-        Insidetextfont& variant(const std::vector<enum Variant>& f) {
-            std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-            json["variant"] = std::move(stringified);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `variant`.
-        Insidetextfont& variantsrc(std::string f) {
-            json["variantsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the weight (or boldness) of the font.
-        Insidetextfont& weight(int f) {
-            json["weight"] = std::move(f);
-            return *this;
-        }
-        Insidetextfont& weight(std::vector<int> f) {
-            json["weight"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `weight`.
-        Insidetextfont& weightsrc(std::string f) {
-            json["weightsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Advanced users may modify the JSON representation directly, at their own peril!
-        nlohmann::json json{};
-    };
-
-    class Legendgrouptitle {
-     public:
-
-        // Sets this legend group's title font.
-        class Font {
-         public:
-
-            enum class Style {
-                NORMAL,
-                ITALIC,
-            };
-            std::string to_string(Style e) {
-                switch (e) {
-                case Style::NORMAL:
-                    return "normal";
-                case Style::ITALIC:
-                    return "italic";
-                }
-            }
-
-            enum class Textcase {
-                NORMAL,
-                WORD_CAPS,
-                UPPER,
-                LOWER,
-            };
-            std::string to_string(Textcase e) {
-                switch (e) {
-                case Textcase::NORMAL:
-                    return "normal";
-                case Textcase::WORD_CAPS:
-                    return "word caps";
-                case Textcase::UPPER:
-                    return "upper";
-                case Textcase::LOWER:
-                    return "lower";
-                }
-            }
-
-            enum class Variant {
-                NORMAL,
-                SMALL_CAPS,
-                ALL_SMALL_CAPS,
-                ALL_PETITE_CAPS,
-                PETITE_CAPS,
-                UNICASE,
-            };
-            std::string to_string(Variant e) {
-                switch (e) {
-                case Variant::NORMAL:
-                    return "normal";
-                case Variant::SMALL_CAPS:
-                    return "small-caps";
-                case Variant::ALL_SMALL_CAPS:
-                    return "all-small-caps";
-                case Variant::ALL_PETITE_CAPS:
-                    return "all-petite-caps";
-                case Variant::PETITE_CAPS:
-                    return "petite-caps";
-                case Variant::UNICASE:
-                    return "unicase";
-                }
-            }
-
-            Font& color(std::string f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-            Font& color(double f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-
-            // HTML font family - the typeface that will be applied by the web browser. The web browser will only be
-            // able to apply a font if it is available on the system which it operates. Provide multiple font families,
-            // separated by commas, to indicate the preference in which to apply fonts if they aren't available on the
-            // system. The Chart Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a
-            // server, where only a select number of fonts are installed and supported. These include *Arial*, *Balto*,
-            // *Courier New*, *Droid Sans*, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open
-            // Sans*, *Overpass*, *PT Sans Narrow*, *Raleway*, *Times New Roman*.
-            Font& family(std::string f) {
-                json["family"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as
-            // combinations e.g. *under+over*, etc.
-            // - Default: none
-            // - Flags: ['under', 'over', 'through']
-            // - Extras ['none']
-            Font& lineposition(std::string f) {
-                json["lineposition"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast
-            // text font color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
-            Font& shadow(std::string f) {
-                json["shadow"] = std::move(f);
-                return *this;
-            }
-
-            Font& size(double f) {
-                json["size"] = std::move(f);
-                return *this;
-            }
-
-            // Sets whether a font should be styled with a normal or italic face from its family.
-            // - Default: normal
-            Font& style(enum Style f) {
-                json["style"] = to_string(f);
-                return *this;
-            }
-
-            // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or
-            // with each word capitalized.
-            // - Default: normal
-            Font& textcase(enum Textcase f) {
-                json["textcase"] = to_string(f);
-                return *this;
-            }
-
-            // Sets the variant of the font.
-            // - Default: normal
-            Font& variant(enum Variant f) {
-                json["variant"] = to_string(f);
-                return *this;
-            }
-
-            // Sets the weight (or boldness) of the font.
-            Font& weight(int f) {
-                json["weight"] = std::move(f);
-                return *this;
-            }
-
-            // Advanced users may modify the JSON representation directly, at their own peril!
-            nlohmann::json json{};
-        };
-
-        // Sets this legend group's title font.
-        Legendgrouptitle& font(class Font f) {
-            json["font"] = std::move(f.json);
-            return *this;
-        }
-
-        // Sets the title of the legend group.
-        Legendgrouptitle& text(std::string f) {
-            json["text"] = std::move(f);
-            return *this;
-        }
-
-        // Advanced users may modify the JSON representation directly, at their own peril!
-        nlohmann::json json{};
-    };
-
+    class Insidetextfont;
+    class Legendgrouptitle;
     // Sets the font used for `text` lying outside the bar.
-    class Outsidetextfont {
-     public:
-
-        enum class Style {
-            NORMAL,
-            ITALIC,
-        };
-        std::string to_string(Style e) {
-            switch (e) {
-            case Style::NORMAL:
-                return "normal";
-            case Style::ITALIC:
-                return "italic";
-            }
-        }
-
-        enum class Textcase {
-            NORMAL,
-            WORD_CAPS,
-            UPPER,
-            LOWER,
-        };
-        std::string to_string(Textcase e) {
-            switch (e) {
-            case Textcase::NORMAL:
-                return "normal";
-            case Textcase::WORD_CAPS:
-                return "word caps";
-            case Textcase::UPPER:
-                return "upper";
-            case Textcase::LOWER:
-                return "lower";
-            }
-        }
-
-        enum class Variant {
-            NORMAL,
-            SMALL_CAPS,
-            ALL_SMALL_CAPS,
-            ALL_PETITE_CAPS,
-            PETITE_CAPS,
-            UNICASE,
-        };
-        std::string to_string(Variant e) {
-            switch (e) {
-            case Variant::NORMAL:
-                return "normal";
-            case Variant::SMALL_CAPS:
-                return "small-caps";
-            case Variant::ALL_SMALL_CAPS:
-                return "all-small-caps";
-            case Variant::ALL_PETITE_CAPS:
-                return "all-petite-caps";
-            case Variant::PETITE_CAPS:
-                return "petite-caps";
-            case Variant::UNICASE:
-                return "unicase";
-            }
-        }
-
-        Outsidetextfont& color(std::string f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-        Outsidetextfont& color(double f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-        Outsidetextfont& color(std::vector<std::string> f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-        Outsidetextfont& color(std::vector<double> f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `color`.
-        Outsidetextfont& colorsrc(std::string f) {
-            json["colorsrc"] = std::move(f);
-            return *this;
-        }
-
-        // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
-        // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
-        // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
-        // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a
-        // select number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid
-        // Sans*, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans
-        // Narrow*, *Raleway*, *Times New Roman*.
-        Outsidetextfont& family(std::string f) {
-            json["family"] = std::move(f);
-            return *this;
-        }
-        Outsidetextfont& family(std::vector<std::string> f) {
-            json["family"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `family`.
-        Outsidetextfont& familysrc(std::string f) {
-            json["familysrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as
-        // combinations e.g. *under+over*, etc.
-        // - Default: none
-        // - Flags: ['under', 'over', 'through']
-        // - Extras ['none']
-        Outsidetextfont& lineposition(std::string f) {
-            json["lineposition"] = std::move(f);
-            return *this;
-        }
-        Outsidetextfont& lineposition(std::vector<std::string> f) {
-            json["lineposition"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `lineposition`.
-        Outsidetextfont& linepositionsrc(std::string f) {
-            json["linepositionsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text
-        // font color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
-        Outsidetextfont& shadow(std::string f) {
-            json["shadow"] = std::move(f);
-            return *this;
-        }
-        Outsidetextfont& shadow(std::vector<std::string> f) {
-            json["shadow"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `shadow`.
-        Outsidetextfont& shadowsrc(std::string f) {
-            json["shadowsrc"] = std::move(f);
-            return *this;
-        }
-
-        Outsidetextfont& size(double f) {
-            json["size"] = std::move(f);
-            return *this;
-        }
-        Outsidetextfont& size(std::vector<double> f) {
-            json["size"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `size`.
-        Outsidetextfont& sizesrc(std::string f) {
-            json["sizesrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets whether a font should be styled with a normal or italic face from its family.
-        // - Default: normal
-        Outsidetextfont& style(enum Style f) {
-            json["style"] = to_string(f);
-            return *this;
-        }
-        Outsidetextfont& style(const std::vector<enum Style>& f) {
-            std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-            json["style"] = std::move(stringified);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `style`.
-        Outsidetextfont& stylesrc(std::string f) {
-            json["stylesrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with
-        // each word capitalized.
-        // - Default: normal
-        Outsidetextfont& textcase(enum Textcase f) {
-            json["textcase"] = to_string(f);
-            return *this;
-        }
-        Outsidetextfont& textcase(const std::vector<enum Textcase>& f) {
-            std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-            json["textcase"] = std::move(stringified);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `textcase`.
-        Outsidetextfont& textcasesrc(std::string f) {
-            json["textcasesrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the variant of the font.
-        // - Default: normal
-        Outsidetextfont& variant(enum Variant f) {
-            json["variant"] = to_string(f);
-            return *this;
-        }
-        Outsidetextfont& variant(const std::vector<enum Variant>& f) {
-            std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-            json["variant"] = std::move(stringified);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `variant`.
-        Outsidetextfont& variantsrc(std::string f) {
-            json["variantsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the weight (or boldness) of the font.
-        Outsidetextfont& weight(int f) {
-            json["weight"] = std::move(f);
-            return *this;
-        }
-        Outsidetextfont& weight(std::vector<int> f) {
-            json["weight"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `weight`.
-        Outsidetextfont& weightsrc(std::string f) {
-            json["weightsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Advanced users may modify the JSON representation directly, at their own peril!
-        nlohmann::json json{};
-    };
-
-    class Stream {
-     public:
-
-        // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to
-        // *50*, only the newest 50 points will be displayed on the plot.
-        Stream& maxpoints(double f) {
-            json["maxpoints"] = std::move(f);
-            return *this;
-        }
-
-        // The stream id number links a data trace on a plot with a stream. See https://chart-studio.plotly.com/settings
-        // for more details.
-        Stream& token(std::string f) {
-            json["token"] = std::move(f);
-            return *this;
-        }
-
-        // Advanced users may modify the JSON representation directly, at their own peril!
-        nlohmann::json json{};
-    };
-
+    class Outsidetextfont;
+    class Stream;
     // Sets the font used for `text`.
-    class Textfont {
-     public:
-
-        enum class Style {
-            NORMAL,
-            ITALIC,
-        };
-        std::string to_string(Style e) {
-            switch (e) {
-            case Style::NORMAL:
-                return "normal";
-            case Style::ITALIC:
-                return "italic";
-            }
-        }
-
-        enum class Textcase {
-            NORMAL,
-            WORD_CAPS,
-            UPPER,
-            LOWER,
-        };
-        std::string to_string(Textcase e) {
-            switch (e) {
-            case Textcase::NORMAL:
-                return "normal";
-            case Textcase::WORD_CAPS:
-                return "word caps";
-            case Textcase::UPPER:
-                return "upper";
-            case Textcase::LOWER:
-                return "lower";
-            }
-        }
-
-        enum class Variant {
-            NORMAL,
-            SMALL_CAPS,
-            ALL_SMALL_CAPS,
-            ALL_PETITE_CAPS,
-            PETITE_CAPS,
-            UNICASE,
-        };
-        std::string to_string(Variant e) {
-            switch (e) {
-            case Variant::NORMAL:
-                return "normal";
-            case Variant::SMALL_CAPS:
-                return "small-caps";
-            case Variant::ALL_SMALL_CAPS:
-                return "all-small-caps";
-            case Variant::ALL_PETITE_CAPS:
-                return "all-petite-caps";
-            case Variant::PETITE_CAPS:
-                return "petite-caps";
-            case Variant::UNICASE:
-                return "unicase";
-            }
-        }
-
-        Textfont& color(std::string f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-        Textfont& color(double f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-        Textfont& color(std::vector<std::string> f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-        Textfont& color(std::vector<double> f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `color`.
-        Textfont& colorsrc(std::string f) {
-            json["colorsrc"] = std::move(f);
-            return *this;
-        }
-
-        // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
-        // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
-        // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
-        // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a
-        // select number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid
-        // Sans*, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans
-        // Narrow*, *Raleway*, *Times New Roman*.
-        Textfont& family(std::string f) {
-            json["family"] = std::move(f);
-            return *this;
-        }
-        Textfont& family(std::vector<std::string> f) {
-            json["family"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `family`.
-        Textfont& familysrc(std::string f) {
-            json["familysrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as
-        // combinations e.g. *under+over*, etc.
-        // - Default: none
-        // - Flags: ['under', 'over', 'through']
-        // - Extras ['none']
-        Textfont& lineposition(std::string f) {
-            json["lineposition"] = std::move(f);
-            return *this;
-        }
-        Textfont& lineposition(std::vector<std::string> f) {
-            json["lineposition"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `lineposition`.
-        Textfont& linepositionsrc(std::string f) {
-            json["linepositionsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text
-        // font color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
-        Textfont& shadow(std::string f) {
-            json["shadow"] = std::move(f);
-            return *this;
-        }
-        Textfont& shadow(std::vector<std::string> f) {
-            json["shadow"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `shadow`.
-        Textfont& shadowsrc(std::string f) {
-            json["shadowsrc"] = std::move(f);
-            return *this;
-        }
-
-        Textfont& size(double f) {
-            json["size"] = std::move(f);
-            return *this;
-        }
-        Textfont& size(std::vector<double> f) {
-            json["size"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `size`.
-        Textfont& sizesrc(std::string f) {
-            json["sizesrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets whether a font should be styled with a normal or italic face from its family.
-        // - Default: normal
-        Textfont& style(enum Style f) {
-            json["style"] = to_string(f);
-            return *this;
-        }
-        Textfont& style(const std::vector<enum Style>& f) {
-            std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-            json["style"] = std::move(stringified);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `style`.
-        Textfont& stylesrc(std::string f) {
-            json["stylesrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with
-        // each word capitalized.
-        // - Default: normal
-        Textfont& textcase(enum Textcase f) {
-            json["textcase"] = to_string(f);
-            return *this;
-        }
-        Textfont& textcase(const std::vector<enum Textcase>& f) {
-            std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-            json["textcase"] = std::move(stringified);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `textcase`.
-        Textfont& textcasesrc(std::string f) {
-            json["textcasesrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the variant of the font.
-        // - Default: normal
-        Textfont& variant(enum Variant f) {
-            json["variant"] = to_string(f);
-            return *this;
-        }
-        Textfont& variant(const std::vector<enum Variant>& f) {
-            std::vector<std::string> stringified(f.size());
-            std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-            json["variant"] = std::move(stringified);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `variant`.
-        Textfont& variantsrc(std::string f) {
-            json["variantsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the weight (or boldness) of the font.
-        Textfont& weight(int f) {
-            json["weight"] = std::move(f);
-            return *this;
-        }
-        Textfont& weight(std::vector<int> f) {
-            json["weight"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `weight`.
-        Textfont& weightsrc(std::string f) {
-            json["weightsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Advanced users may modify the JSON representation directly, at their own peril!
-        nlohmann::json json{};
-    };
-
-    class Totals {
-     public:
-
-        class Marker {
-         public:
-
-            class Line {
-             public:
-
-                // Sets the line color of all intermediate sums and total values.
-                Line& color(std::string f) {
-                    json["color"] = std::move(f);
-                    return *this;
-                }
-                Line& color(double f) {
-                    json["color"] = std::move(f);
-                    return *this;
-                }
-
-                // Sets the line width of all intermediate sums and total values.
-                Line& width(double f) {
-                    json["width"] = std::move(f);
-                    return *this;
-                }
-
-                // Advanced users may modify the JSON representation directly, at their own peril!
-                nlohmann::json json{};
-            };
-
-            // Sets the marker color of all intermediate sums and total values.
-            Marker& color(std::string f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-            Marker& color(double f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-
-            Marker& line(class Line f) {
-                json["line"] = std::move(f.json);
-                return *this;
-            }
-
-            // Advanced users may modify the JSON representation directly, at their own peril!
-            nlohmann::json json{};
-        };
-
-        Totals& marker(class Marker f) {
-            json["marker"] = std::move(f.json);
-            return *this;
-        }
-
-        // Advanced users may modify the JSON representation directly, at their own peril!
-        nlohmann::json json{};
-    };
+    class Textfont;
+    class Totals;
 
     // Set several traces linked to the same position axis or matching axes to the same alignmentgroup. This controls
     // whether bars compute their positional range dependently or independently.
-    Waterfall& alignmentgroup(std::string f) {
-        json["alignmentgroup"] = std::move(f);
-        return *this;
-    }
+    Waterfall& alignmentgroup(std::string f);
 
     // Sets where the bar base is drawn (in position axis units).
-    Waterfall& base(double f) {
-        json["base"] = std::move(f);
-        return *this;
-    }
+    Waterfall& base(double f);
 
     // Determines whether the text nodes are clipped about the subplot axes. To show the text nodes above axis lines and
     // tick labels, make sure to set `xaxis.layer` and `yaxis.layer` to *below traces*.
-    Waterfall& cliponaxis(bool f) {
-        json["cliponaxis"] = std::move(f);
-        return *this;
-    }
+    Waterfall& cliponaxis(bool f);
 
-    Waterfall& connector(class Connector f) {
-        json["connector"] = std::move(f.json);
-        return *this;
-    }
+    Waterfall& connector(class Connector f);
 
     // Constrain the size of text inside or outside a bar to be no larger than the bar itself.
     // - Default: both
-    Waterfall& constraintext(enum Constraintext f) {
-        json["constraintext"] = to_string(f);
-        return *this;
-    }
+    Waterfall& constraintext(enum Constraintext f);
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Waterfall& customdata(std::vector<T> f) {
-        json["customdata"] = std::move(f);
-        return *this;
-    }
+    Waterfall& customdata(std::vector<T> f);
 
     // Sets the source reference on Chart Studio Cloud for `customdata`.
-    Waterfall& customdatasrc(std::string f) {
-        json["customdatasrc"] = std::move(f);
-        return *this;
-    }
+    Waterfall& customdatasrc(std::string f);
 
-    Waterfall& decreasing(class Decreasing f) {
-        json["decreasing"] = std::move(f.json);
-        return *this;
-    }
+    Waterfall& decreasing(class Decreasing f);
 
     // Sets the x coordinate step. See `x0` for more info.
-    Waterfall& dx(double f) {
-        json["dx"] = std::move(f);
-        return *this;
-    }
+    Waterfall& dx(double f);
 
     // Sets the y coordinate step. See `y0` for more info.
-    Waterfall& dy(double f) {
-        json["dy"] = std::move(f);
-        return *this;
-    }
+    Waterfall& dy(double f);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
     // - Default: all
     // - Flags: ['name', 'x', 'y', 'text', 'initial', 'delta', 'final']
     // - Extras ['all', 'none', 'skip']
-    Waterfall& hoverinfo(std::string f) {
-        json["hoverinfo"] = std::move(f);
-        return *this;
-    }
-    Waterfall& hoverinfo(std::vector<std::string> f) {
-        json["hoverinfo"] = std::move(f);
-        return *this;
-    }
+    Waterfall& hoverinfo(std::string f);
+    Waterfall& hoverinfo(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
-    Waterfall& hoverinfosrc(std::string f) {
-        json["hoverinfosrc"] = std::move(f);
-        return *this;
-    }
+    Waterfall& hoverinfosrc(std::string f);
 
-    Waterfall& hoverlabel(class Hoverlabel f) {
-        json["hoverlabel"] = std::move(f.json);
-        return *this;
-    }
+    Waterfall& hoverlabel(class Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -1711,120 +143,66 @@ class Waterfall : public Trace {
     // variables `initial`, `delta` and `final`. Anything contained in tag `<extra>` is displayed in the secondary box,
     // for example "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an empty tag
     // `<extra></extra>`.
-    Waterfall& hovertemplate(std::string f) {
-        json["hovertemplate"] = std::move(f);
-        return *this;
-    }
-    Waterfall& hovertemplate(std::vector<std::string> f) {
-        json["hovertemplate"] = std::move(f);
-        return *this;
-    }
+    Waterfall& hovertemplate(std::string f);
+    Waterfall& hovertemplate(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
-    Waterfall& hovertemplatesrc(std::string f) {
-        json["hovertemplatesrc"] = std::move(f);
-        return *this;
-    }
+    Waterfall& hovertemplatesrc(std::string f);
 
     // Sets hover text elements associated with each (x,y) pair. If a single string, the same string appears over all
     // the data points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. To
     // be seen, trace `hoverinfo` must contain a *text* flag.
-    Waterfall& hovertext(std::string f) {
-        json["hovertext"] = std::move(f);
-        return *this;
-    }
-    Waterfall& hovertext(std::vector<std::string> f) {
-        json["hovertext"] = std::move(f);
-        return *this;
-    }
+    Waterfall& hovertext(std::string f);
+    Waterfall& hovertext(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
-    Waterfall& hovertextsrc(std::string f) {
-        json["hovertextsrc"] = std::move(f);
-        return *this;
-    }
+    Waterfall& hovertextsrc(std::string f);
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Waterfall& ids(std::vector<T> f) {
-        json["ids"] = std::move(f);
-        return *this;
-    }
+    Waterfall& ids(std::vector<T> f);
 
     // Sets the source reference on Chart Studio Cloud for `ids`.
-    Waterfall& idssrc(std::string f) {
-        json["idssrc"] = std::move(f);
-        return *this;
-    }
+    Waterfall& idssrc(std::string f);
 
-    Waterfall& increasing(class Increasing f) {
-        json["increasing"] = std::move(f.json);
-        return *this;
-    }
+    Waterfall& increasing(class Increasing f);
 
     // Determines if texts are kept at center or start/end points in `textposition` *inside* mode.
     // - Default: end
-    Waterfall& insidetextanchor(enum Insidetextanchor f) {
-        json["insidetextanchor"] = to_string(f);
-        return *this;
-    }
+    Waterfall& insidetextanchor(enum Insidetextanchor f);
 
     // Sets the font used for `text` lying inside the bar.
-    Waterfall& insidetextfont(class Insidetextfont f) {
-        json["insidetextfont"] = std::move(f.json);
-        return *this;
-    }
+    Waterfall& insidetextfont(class Insidetextfont f);
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
-    Waterfall& legend(std::string f) {
-        json["legend"] = std::move(f);
-        return *this;
-    }
+    Waterfall& legend(std::string f);
 
     // Sets the legend group for this trace. Traces and shapes part of the same legend group hide/show at the same time
     // when toggling legend items.
-    Waterfall& legendgroup(std::string f) {
-        json["legendgroup"] = std::move(f);
-        return *this;
-    }
+    Waterfall& legendgroup(std::string f);
 
-    Waterfall& legendgrouptitle(class Legendgrouptitle f) {
-        json["legendgrouptitle"] = std::move(f.json);
-        return *this;
-    }
+    Waterfall& legendgrouptitle(class Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
     // can use ranks less than 1000 to place certain items before all unranked items, and ranks greater than 1000 to go
     // after all unranked items. When having unranked or equal rank items shapes would be displayed after traces i.e.
     // according to their order in data and layout.
-    Waterfall& legendrank(double f) {
-        json["legendrank"] = std::move(f);
-        return *this;
-    }
+    Waterfall& legendrank(double f);
 
     // Sets the width (in px or fraction) of the legend for this trace.
-    Waterfall& legendwidth(double f) {
-        json["legendwidth"] = std::move(f);
-        return *this;
-    }
+    Waterfall& legendwidth(double f);
 
     // An array containing types of values. By default the values are considered as 'relative'. However; it is possible
     // to use 'total' to compute the sums. Also 'absolute' could be applied to reset the computed total or to declare an
     // initial value where needed.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Waterfall& measure(std::vector<T> f) {
-        json["measure"] = std::move(f);
-        return *this;
-    }
+    Waterfall& measure(std::vector<T> f);
 
     // Sets the source reference on Chart Studio Cloud for `measure`.
-    Waterfall& measuresrc(std::string f) {
-        json["measuresrc"] = std::move(f);
-        return *this;
-    }
+    Waterfall& measuresrc(std::string f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -1833,152 +211,81 @@ class Waterfall : public Trace {
     // `meta` in layout attributes, use `%{data[n[.meta[i]}` where `i` is the index or key of the `meta` and `n` is the
     // trace index.
     template <typename T>
-    Waterfall& meta(T f) {
-        json["meta"] = std::move(f);
-        return *this;
-    }
+    Waterfall& meta(T f);
     template <typename T>
-    Waterfall& meta(std::vector<T> f) {
-        json["meta"] = std::move(f);
-        return *this;
-    }
+    Waterfall& meta(std::vector<T> f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
-    Waterfall& metasrc(std::string f) {
-        json["metasrc"] = std::move(f);
-        return *this;
-    }
+    Waterfall& metasrc(std::string f);
 
     // Sets the trace name. The trace name appears as the legend item and on hover.
-    Waterfall& name(std::string f) {
-        json["name"] = std::move(f);
-        return *this;
-    }
+    Waterfall& name(std::string f);
 
     // Shifts the position where the bar is drawn (in position axis units). In *group* barmode, traces that set *offset*
     // will be excluded and drawn in *overlay* mode instead.
-    Waterfall& offset(double f) {
-        json["offset"] = std::move(f);
-        return *this;
-    }
-    Waterfall& offset(std::vector<double> f) {
-        json["offset"] = std::move(f);
-        return *this;
-    }
+    Waterfall& offset(double f);
+    Waterfall& offset(std::vector<double> f);
 
     // Set several traces linked to the same position axis or matching axes to the same offsetgroup where bars of the
     // same position coordinate will line up.
-    Waterfall& offsetgroup(std::string f) {
-        json["offsetgroup"] = std::move(f);
-        return *this;
-    }
+    Waterfall& offsetgroup(std::string f);
 
     // Sets the source reference on Chart Studio Cloud for `offset`.
-    Waterfall& offsetsrc(std::string f) {
-        json["offsetsrc"] = std::move(f);
-        return *this;
-    }
+    Waterfall& offsetsrc(std::string f);
 
     // Sets the opacity of the trace.
-    Waterfall& opacity(double f) {
-        json["opacity"] = std::move(f);
-        return *this;
-    }
+    Waterfall& opacity(double f);
 
     // Sets the orientation of the bars. With *v* (*h*), the value of the each bar spans along the vertical
     // (horizontal).
-    Waterfall& orientation(enum Orientation f) {
-        json["orientation"] = to_string(f);
-        return *this;
-    }
+    Waterfall& orientation(enum Orientation f);
 
     // Sets the font used for `text` lying outside the bar.
-    Waterfall& outsidetextfont(class Outsidetextfont f) {
-        json["outsidetextfont"] = std::move(f.json);
-        return *this;
-    }
+    Waterfall& outsidetextfont(class Outsidetextfont f);
 
     // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
     // other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
     template <typename T>
-    Waterfall& selectedpoints(T f) {
-        json["selectedpoints"] = std::move(f);
-        return *this;
-    }
+    Waterfall& selectedpoints(T f);
 
     // Determines whether or not an item corresponding to this trace is shown in the legend.
-    Waterfall& showlegend(bool f) {
-        json["showlegend"] = std::move(f);
-        return *this;
-    }
+    Waterfall& showlegend(bool f);
 
-    Waterfall& stream(class Stream f) {
-        json["stream"] = std::move(f.json);
-        return *this;
-    }
+    Waterfall& stream(class Stream f);
 
     // Sets text elements associated with each (x,y) pair. If a single string, the same string appears over all the data
     // points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. If trace
     // `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
-    Waterfall& text(std::string f) {
-        json["text"] = std::move(f);
-        return *this;
-    }
-    Waterfall& text(std::vector<std::string> f) {
-        json["text"] = std::move(f);
-        return *this;
-    }
+    Waterfall& text(std::string f);
+    Waterfall& text(std::vector<std::string> f);
 
     // Sets the angle of the tick labels with respect to the bar. For example, a `tickangle` of -90 draws the tick
     // labels vertically. With *auto* the texts may automatically be rotated to fit with the maximum size in bars.
-    Waterfall& textangle(double f) {
-        json["textangle"] = std::move(f);
-        return *this;
-    }
+    Waterfall& textangle(double f);
 
     // Sets the font used for `text`.
-    Waterfall& textfont(class Textfont f) {
-        json["textfont"] = std::move(f.json);
-        return *this;
-    }
+    Waterfall& textfont(class Textfont f);
 
     // Determines which trace information appear on the graph. In the case of having multiple waterfalls, totals are
     // computed separately (per trace).
     // - Flags: ['label', 'text', 'initial', 'delta', 'final']
     // - Extras ['none']
-    Waterfall& textinfo(std::string f) {
-        json["textinfo"] = std::move(f);
-        return *this;
-    }
+    Waterfall& textinfo(std::string f);
 
     // Specifies the location of the `text`. *inside* positions `text` inside, next to the bar end (rotated and scaled
     // if needed). *outside* positions `text` outside, next to the bar end (scaled if needed), unless there is another
     // bar stacked on this one, then the text gets pushed inside. *auto* tries to position `text` inside the bar, but if
     // the bar is too small and no bar is stacked on this one the text is moved outside. If *none*, no text appears.
     // - Default: auto
-    Waterfall& textposition(enum Textposition f) {
-        json["textposition"] = to_string(f);
-        return *this;
-    }
-    Waterfall& textposition(const std::vector<enum Textposition>& f) {
-        std::vector<std::string> stringified(f.size());
-        std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e) { return to_string(e); });
-        json["textposition"] = std::move(stringified);
-        return *this;
-    }
+    Waterfall& textposition(enum Textposition f);
+    Waterfall& textposition(const std::vector<enum Textposition>& f);
 
     // Sets the source reference on Chart Studio Cloud for `textposition`.
-    Waterfall& textpositionsrc(std::string f) {
-        json["textpositionsrc"] = std::move(f);
-        return *this;
-    }
+    Waterfall& textpositionsrc(std::string f);
 
     // Sets the source reference on Chart Studio Cloud for `text`.
-    Waterfall& textsrc(std::string f) {
-        json["textsrc"] = std::move(f);
-        return *this;
-    }
+    Waterfall& textsrc(std::string f);
 
     // Template string used for rendering the information text that appear on points. Note that this will override
     // `textinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using
@@ -1988,32 +295,17 @@ class Waterfall : public Trace {
     // https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details on the date formatting syntax. Every
     // attributes that can be specified per-point (the ones that are `arrayOk: true`) are available. Finally, the
     // template string has access to variables `initial`, `delta`, `final` and `label`.
-    Waterfall& texttemplate(std::string f) {
-        json["texttemplate"] = std::move(f);
-        return *this;
-    }
-    Waterfall& texttemplate(std::vector<std::string> f) {
-        json["texttemplate"] = std::move(f);
-        return *this;
-    }
+    Waterfall& texttemplate(std::string f);
+    Waterfall& texttemplate(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `texttemplate`.
-    Waterfall& texttemplatesrc(std::string f) {
-        json["texttemplatesrc"] = std::move(f);
-        return *this;
-    }
+    Waterfall& texttemplatesrc(std::string f);
 
-    Waterfall& totals(class Totals f) {
-        json["totals"] = std::move(f.json);
-        return *this;
-    }
+    Waterfall& totals(class Totals f);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
-    Waterfall& uid(std::string f) {
-        json["uid"] = std::move(f);
-        return *this;
-    }
+    Waterfall& uid(std::string f);
 
     // Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well
     // as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note
@@ -2024,56 +316,32 @@ class Waterfall : public Trace {
     // add/remove traces before the end of the `data` array, such that the same trace has a different index, you can
     // still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
     template <typename T>
-    Waterfall& uirevision(T f) {
-        json["uirevision"] = std::move(f);
-        return *this;
-    }
+    Waterfall& uirevision(T f);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
     // - Default: True
-    Waterfall& visible(enum Visible f) {
-        json["visible"] = to_string(f);
-        return *this;
-    }
+    Waterfall& visible(enum Visible f);
 
     // Sets the bar width (in position axis units).
-    Waterfall& width(double f) {
-        json["width"] = std::move(f);
-        return *this;
-    }
-    Waterfall& width(std::vector<double> f) {
-        json["width"] = std::move(f);
-        return *this;
-    }
+    Waterfall& width(double f);
+    Waterfall& width(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `width`.
-    Waterfall& widthsrc(std::string f) {
-        json["widthsrc"] = std::move(f);
-        return *this;
-    }
+    Waterfall& widthsrc(std::string f);
 
     // Sets the x coordinates.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Waterfall& x(std::vector<T> f) {
-        json["x"] = std::move(f);
-        return *this;
-    }
+    Waterfall& x(std::vector<T> f);
 
     // Alternate to `x`. Builds a linear space of x coordinates. Use with `dx` where `x0` is the starting coordinate and
     // `dx` the step.
     template <typename T>
-    Waterfall& x0(T f) {
-        json["x0"] = std::move(f);
-        return *this;
-    }
+    Waterfall& x0(T f);
 
     // Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x
     // coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
-    Waterfall& xaxis(std::string f) {
-        json["xaxis"] = std::move(f);
-        return *this;
-    }
+    Waterfall& xaxis(std::string f);
 
     // Sets the hover text formatting rulefor `x`  using d3 formatting mini-languages which are very similar to those in
     // Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -2081,63 +349,39 @@ class Waterfall : public Trace {
     // half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example,
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `xaxis.hoverformat`.
-    Waterfall& xhoverformat(std::string f) {
-        json["xhoverformat"] = std::move(f);
-        return *this;
-    }
+    Waterfall& xhoverformat(std::string f);
 
     // Only relevant when the axis `type` is *date*. Sets the period positioning in milliseconds or *M<n>* on the x
     // axis. Special values in the form of *M<n>* could be used to declare the number of months. In this case `n` must
     // be a positive integer.
     template <typename T>
-    Waterfall& xperiod(T f) {
-        json["xperiod"] = std::move(f);
-        return *this;
-    }
+    Waterfall& xperiod(T f);
 
     // Only relevant when the axis `type` is *date*. Sets the base for period positioning in milliseconds or date string
     // on the x0 axis. When `x0period` is round number of weeks, the `x0period0` by default would be on a Sunday i.e.
     // 2000-01-02, otherwise it would be at 2000-01-01.
     template <typename T>
-    Waterfall& xperiod0(T f) {
-        json["xperiod0"] = std::move(f);
-        return *this;
-    }
+    Waterfall& xperiod0(T f);
 
     // Only relevant when the axis `type` is *date*. Sets the alignment of data points on the x axis.
     // - Default: middle
-    Waterfall& xperiodalignment(enum Xperiodalignment f) {
-        json["xperiodalignment"] = to_string(f);
-        return *this;
-    }
+    Waterfall& xperiodalignment(enum Xperiodalignment f);
 
     // Sets the source reference on Chart Studio Cloud for `x`.
-    Waterfall& xsrc(std::string f) {
-        json["xsrc"] = std::move(f);
-        return *this;
-    }
+    Waterfall& xsrc(std::string f);
 
     // Sets the y coordinates.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Waterfall& y(std::vector<T> f) {
-        json["y"] = std::move(f);
-        return *this;
-    }
+    Waterfall& y(std::vector<T> f);
 
     // Alternate to `y`. Builds a linear space of y coordinates. Use with `dy` where `y0` is the starting coordinate and
     // `dy` the step.
     template <typename T>
-    Waterfall& y0(T f) {
-        json["y0"] = std::move(f);
-        return *this;
-    }
+    Waterfall& y0(T f);
 
     // Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y
     // coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
-    Waterfall& yaxis(std::string f) {
-        json["yaxis"] = std::move(f);
-        return *this;
-    }
+    Waterfall& yaxis(std::string f);
 
     // Sets the hover text formatting rulefor `y`  using d3 formatting mini-languages which are very similar to those in
     // Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -2145,47 +389,795 @@ class Waterfall : public Trace {
     // half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example,
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `yaxis.hoverformat`.
-    Waterfall& yhoverformat(std::string f) {
-        json["yhoverformat"] = std::move(f);
-        return *this;
-    }
+    Waterfall& yhoverformat(std::string f);
 
     // Only relevant when the axis `type` is *date*. Sets the period positioning in milliseconds or *M<n>* on the y
     // axis. Special values in the form of *M<n>* could be used to declare the number of months. In this case `n` must
     // be a positive integer.
     template <typename T>
-    Waterfall& yperiod(T f) {
-        json["yperiod"] = std::move(f);
-        return *this;
-    }
+    Waterfall& yperiod(T f);
 
     // Only relevant when the axis `type` is *date*. Sets the base for period positioning in milliseconds or date string
     // on the y0 axis. When `y0period` is round number of weeks, the `y0period0` by default would be on a Sunday i.e.
     // 2000-01-02, otherwise it would be at 2000-01-01.
     template <typename T>
-    Waterfall& yperiod0(T f) {
-        json["yperiod0"] = std::move(f);
-        return *this;
-    }
+    Waterfall& yperiod0(T f);
 
     // Only relevant when the axis `type` is *date*. Sets the alignment of data points on the y axis.
     // - Default: middle
-    Waterfall& yperiodalignment(enum Yperiodalignment f) {
-        json["yperiodalignment"] = to_string(f);
-        return *this;
-    }
+    Waterfall& yperiodalignment(enum Yperiodalignment f);
 
     // Sets the source reference on Chart Studio Cloud for `y`.
-    Waterfall& ysrc(std::string f) {
-        json["ysrc"] = std::move(f);
-        return *this;
-    }
+    Waterfall& ysrc(std::string f);
 
     // Sets the layer on which this trace is displayed, relative to other SVG traces on the same subplot. SVG traces
     // with higher `zorder` appear in front of those with lower `zorder`.
-    Waterfall& zorder(int f) {
-        json["zorder"] = std::move(f);
-        return *this;
-    }
+    Waterfall& zorder(int f);
 };
+
+class Waterfall::Connector {
+ public:
+
+    enum class Mode {
+        SPANNING,
+        BETWEEN,
+    };
+    static std::string to_string(Mode e);
+
+    class Line;
+
+    Waterfall::Connector& line(class Line f);
+
+    // Sets the shape of connector lines.
+    // - Default: between
+    Waterfall::Connector& mode(enum Mode f);
+
+    // Determines if connector lines are drawn.
+    Waterfall::Connector& visible(bool f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+class Waterfall::Connector::Line {
+ public:
+
+    // Sets the line color.
+    Waterfall::Connector::Line& color(std::string f);
+    Waterfall::Connector::Line& color(double f);
+
+    // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
+    // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
+    Waterfall::Connector::Line& dash(std::string f);
+
+    // Sets the line width (in px).
+    Waterfall::Connector::Line& width(double f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+class Waterfall::Decreasing {
+ public:
+
+    class Marker;
+
+    Waterfall::Decreasing& marker(class Marker f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+class Waterfall::Decreasing::Marker {
+ public:
+
+    class Line;
+
+    // Sets the marker color of all decreasing values.
+    Waterfall::Decreasing::Marker& color(std::string f);
+    Waterfall::Decreasing::Marker& color(double f);
+
+    Waterfall::Decreasing::Marker& line(class Line f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+class Waterfall::Decreasing::Marker::Line {
+ public:
+
+    // Sets the line color of all decreasing values.
+    Waterfall::Decreasing::Marker::Line& color(std::string f);
+    Waterfall::Decreasing::Marker::Line& color(double f);
+
+    // Sets the line width of all decreasing values.
+    Waterfall::Decreasing::Marker::Line& width(double f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+class Waterfall::Hoverlabel {
+ public:
+
+    enum class Align {
+        LEFT,
+        RIGHT,
+        AUTO,
+    };
+    static std::string to_string(Align e);
+
+    // Sets the font used in hover labels.
+    class Font;
+
+    // Sets the horizontal alignment of the text content within hover label box. Has an effect only if the hover label
+    // text spans more two or more lines
+    // - Default: auto
+    Waterfall::Hoverlabel& align(enum Align f);
+    Waterfall::Hoverlabel& align(const std::vector<enum Align>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `align`.
+    Waterfall::Hoverlabel& alignsrc(std::string f);
+
+    // Sets the background color of the hover labels for this trace
+    Waterfall::Hoverlabel& bgcolor(std::string f);
+    Waterfall::Hoverlabel& bgcolor(double f);
+    Waterfall::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Waterfall::Hoverlabel& bgcolor(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `bgcolor`.
+    Waterfall::Hoverlabel& bgcolorsrc(std::string f);
+
+    // Sets the border color of the hover labels for this trace.
+    Waterfall::Hoverlabel& bordercolor(std::string f);
+    Waterfall::Hoverlabel& bordercolor(double f);
+    Waterfall::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Waterfall::Hoverlabel& bordercolor(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `bordercolor`.
+    Waterfall::Hoverlabel& bordercolorsrc(std::string f);
+
+    // Sets the font used in hover labels.
+    Waterfall::Hoverlabel& font(class Font f);
+
+    // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
+    // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
+    // name if it is less than that many characters, but if it is longer, will truncate to `namelength - 3` characters
+    // and add an ellipsis.
+    Waterfall::Hoverlabel& namelength(int f);
+    Waterfall::Hoverlabel& namelength(std::vector<int> f);
+
+    // Sets the source reference on Chart Studio Cloud for `namelength`.
+    Waterfall::Hoverlabel& namelengthsrc(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+// Sets the font used in hover labels.
+class Waterfall::Hoverlabel::Font {
+ public:
+
+    enum class Style {
+        NORMAL,
+        ITALIC,
+    };
+    static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
+
+    Waterfall::Hoverlabel::Font& color(std::string f);
+    Waterfall::Hoverlabel::Font& color(double f);
+    Waterfall::Hoverlabel::Font& color(std::vector<std::string> f);
+    Waterfall::Hoverlabel::Font& color(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `color`.
+    Waterfall::Hoverlabel::Font& colorsrc(std::string f);
+
+    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+    // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+    // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+    // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select
+    // number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid
+    // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+    // *Raleway*, *Times New Roman*.
+    Waterfall::Hoverlabel::Font& family(std::string f);
+    Waterfall::Hoverlabel::Font& family(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `family`.
+    Waterfall::Hoverlabel::Font& familysrc(std::string f);
+
+    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
+    // e.g. *under+over*, etc.
+    // - Default: none
+    // - Flags: ['under', 'over', 'through']
+    // - Extras ['none']
+    Waterfall::Hoverlabel::Font& lineposition(std::string f);
+    Waterfall::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `lineposition`.
+    Waterfall::Hoverlabel::Font& linepositionsrc(std::string f);
+
+    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
+    // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+    Waterfall::Hoverlabel::Font& shadow(std::string f);
+    Waterfall::Hoverlabel::Font& shadow(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `shadow`.
+    Waterfall::Hoverlabel::Font& shadowsrc(std::string f);
+
+    Waterfall::Hoverlabel::Font& size(double f);
+    Waterfall::Hoverlabel::Font& size(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `size`.
+    Waterfall::Hoverlabel::Font& sizesrc(std::string f);
+
+    // Sets whether a font should be styled with a normal or italic face from its family.
+    // - Default: normal
+    Waterfall::Hoverlabel::Font& style(enum Style f);
+    Waterfall::Hoverlabel::Font& style(const std::vector<enum Style>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `style`.
+    Waterfall::Hoverlabel::Font& stylesrc(std::string f);
+
+    // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
+    // word capitalized.
+    // - Default: normal
+    Waterfall::Hoverlabel::Font& textcase(enum Textcase f);
+    Waterfall::Hoverlabel::Font& textcase(const std::vector<enum Textcase>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `textcase`.
+    Waterfall::Hoverlabel::Font& textcasesrc(std::string f);
+
+    // Sets the variant of the font.
+    // - Default: normal
+    Waterfall::Hoverlabel::Font& variant(enum Variant f);
+    Waterfall::Hoverlabel::Font& variant(const std::vector<enum Variant>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `variant`.
+    Waterfall::Hoverlabel::Font& variantsrc(std::string f);
+
+    // Sets the weight (or boldness) of the font.
+    Waterfall::Hoverlabel::Font& weight(int f);
+    Waterfall::Hoverlabel::Font& weight(std::vector<int> f);
+
+    // Sets the source reference on Chart Studio Cloud for `weight`.
+    Waterfall::Hoverlabel::Font& weightsrc(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+class Waterfall::Increasing {
+ public:
+
+    class Marker;
+
+    Waterfall::Increasing& marker(class Marker f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+class Waterfall::Increasing::Marker {
+ public:
+
+    class Line;
+
+    // Sets the marker color of all increasing values.
+    Waterfall::Increasing::Marker& color(std::string f);
+    Waterfall::Increasing::Marker& color(double f);
+
+    Waterfall::Increasing::Marker& line(class Line f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+class Waterfall::Increasing::Marker::Line {
+ public:
+
+    // Sets the line color of all increasing values.
+    Waterfall::Increasing::Marker::Line& color(std::string f);
+    Waterfall::Increasing::Marker::Line& color(double f);
+
+    // Sets the line width of all increasing values.
+    Waterfall::Increasing::Marker::Line& width(double f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+// Sets the font used for `text` lying inside the bar.
+class Waterfall::Insidetextfont {
+ public:
+
+    enum class Style {
+        NORMAL,
+        ITALIC,
+    };
+    static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
+
+    Waterfall::Insidetextfont& color(std::string f);
+    Waterfall::Insidetextfont& color(double f);
+    Waterfall::Insidetextfont& color(std::vector<std::string> f);
+    Waterfall::Insidetextfont& color(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `color`.
+    Waterfall::Insidetextfont& colorsrc(std::string f);
+
+    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+    // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+    // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+    // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select
+    // number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid
+    // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+    // *Raleway*, *Times New Roman*.
+    Waterfall::Insidetextfont& family(std::string f);
+    Waterfall::Insidetextfont& family(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `family`.
+    Waterfall::Insidetextfont& familysrc(std::string f);
+
+    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
+    // e.g. *under+over*, etc.
+    // - Default: none
+    // - Flags: ['under', 'over', 'through']
+    // - Extras ['none']
+    Waterfall::Insidetextfont& lineposition(std::string f);
+    Waterfall::Insidetextfont& lineposition(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `lineposition`.
+    Waterfall::Insidetextfont& linepositionsrc(std::string f);
+
+    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
+    // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+    Waterfall::Insidetextfont& shadow(std::string f);
+    Waterfall::Insidetextfont& shadow(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `shadow`.
+    Waterfall::Insidetextfont& shadowsrc(std::string f);
+
+    Waterfall::Insidetextfont& size(double f);
+    Waterfall::Insidetextfont& size(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `size`.
+    Waterfall::Insidetextfont& sizesrc(std::string f);
+
+    // Sets whether a font should be styled with a normal or italic face from its family.
+    // - Default: normal
+    Waterfall::Insidetextfont& style(enum Style f);
+    Waterfall::Insidetextfont& style(const std::vector<enum Style>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `style`.
+    Waterfall::Insidetextfont& stylesrc(std::string f);
+
+    // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
+    // word capitalized.
+    // - Default: normal
+    Waterfall::Insidetextfont& textcase(enum Textcase f);
+    Waterfall::Insidetextfont& textcase(const std::vector<enum Textcase>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `textcase`.
+    Waterfall::Insidetextfont& textcasesrc(std::string f);
+
+    // Sets the variant of the font.
+    // - Default: normal
+    Waterfall::Insidetextfont& variant(enum Variant f);
+    Waterfall::Insidetextfont& variant(const std::vector<enum Variant>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `variant`.
+    Waterfall::Insidetextfont& variantsrc(std::string f);
+
+    // Sets the weight (or boldness) of the font.
+    Waterfall::Insidetextfont& weight(int f);
+    Waterfall::Insidetextfont& weight(std::vector<int> f);
+
+    // Sets the source reference on Chart Studio Cloud for `weight`.
+    Waterfall::Insidetextfont& weightsrc(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+class Waterfall::Legendgrouptitle {
+ public:
+
+    // Sets this legend group's title font.
+    class Font;
+
+    // Sets this legend group's title font.
+    Waterfall::Legendgrouptitle& font(class Font f);
+
+    // Sets the title of the legend group.
+    Waterfall::Legendgrouptitle& text(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+// Sets this legend group's title font.
+class Waterfall::Legendgrouptitle::Font {
+ public:
+
+    enum class Style {
+        NORMAL,
+        ITALIC,
+    };
+    static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
+
+    Waterfall::Legendgrouptitle::Font& color(std::string f);
+    Waterfall::Legendgrouptitle::Font& color(double f);
+
+    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+    // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+    // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+    // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select
+    // number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid
+    // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+    // *Raleway*, *Times New Roman*.
+    Waterfall::Legendgrouptitle::Font& family(std::string f);
+
+    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
+    // e.g. *under+over*, etc.
+    // - Default: none
+    // - Flags: ['under', 'over', 'through']
+    // - Extras ['none']
+    Waterfall::Legendgrouptitle::Font& lineposition(std::string f);
+
+    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
+    // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+    Waterfall::Legendgrouptitle::Font& shadow(std::string f);
+
+    Waterfall::Legendgrouptitle::Font& size(double f);
+
+    // Sets whether a font should be styled with a normal or italic face from its family.
+    // - Default: normal
+    Waterfall::Legendgrouptitle::Font& style(enum Style f);
+
+    // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
+    // word capitalized.
+    // - Default: normal
+    Waterfall::Legendgrouptitle::Font& textcase(enum Textcase f);
+
+    // Sets the variant of the font.
+    // - Default: normal
+    Waterfall::Legendgrouptitle::Font& variant(enum Variant f);
+
+    // Sets the weight (or boldness) of the font.
+    Waterfall::Legendgrouptitle::Font& weight(int f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+// Sets the font used for `text` lying outside the bar.
+class Waterfall::Outsidetextfont {
+ public:
+
+    enum class Style {
+        NORMAL,
+        ITALIC,
+    };
+    static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
+
+    Waterfall::Outsidetextfont& color(std::string f);
+    Waterfall::Outsidetextfont& color(double f);
+    Waterfall::Outsidetextfont& color(std::vector<std::string> f);
+    Waterfall::Outsidetextfont& color(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `color`.
+    Waterfall::Outsidetextfont& colorsrc(std::string f);
+
+    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+    // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+    // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+    // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select
+    // number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid
+    // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+    // *Raleway*, *Times New Roman*.
+    Waterfall::Outsidetextfont& family(std::string f);
+    Waterfall::Outsidetextfont& family(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `family`.
+    Waterfall::Outsidetextfont& familysrc(std::string f);
+
+    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
+    // e.g. *under+over*, etc.
+    // - Default: none
+    // - Flags: ['under', 'over', 'through']
+    // - Extras ['none']
+    Waterfall::Outsidetextfont& lineposition(std::string f);
+    Waterfall::Outsidetextfont& lineposition(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `lineposition`.
+    Waterfall::Outsidetextfont& linepositionsrc(std::string f);
+
+    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
+    // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+    Waterfall::Outsidetextfont& shadow(std::string f);
+    Waterfall::Outsidetextfont& shadow(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `shadow`.
+    Waterfall::Outsidetextfont& shadowsrc(std::string f);
+
+    Waterfall::Outsidetextfont& size(double f);
+    Waterfall::Outsidetextfont& size(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `size`.
+    Waterfall::Outsidetextfont& sizesrc(std::string f);
+
+    // Sets whether a font should be styled with a normal or italic face from its family.
+    // - Default: normal
+    Waterfall::Outsidetextfont& style(enum Style f);
+    Waterfall::Outsidetextfont& style(const std::vector<enum Style>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `style`.
+    Waterfall::Outsidetextfont& stylesrc(std::string f);
+
+    // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
+    // word capitalized.
+    // - Default: normal
+    Waterfall::Outsidetextfont& textcase(enum Textcase f);
+    Waterfall::Outsidetextfont& textcase(const std::vector<enum Textcase>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `textcase`.
+    Waterfall::Outsidetextfont& textcasesrc(std::string f);
+
+    // Sets the variant of the font.
+    // - Default: normal
+    Waterfall::Outsidetextfont& variant(enum Variant f);
+    Waterfall::Outsidetextfont& variant(const std::vector<enum Variant>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `variant`.
+    Waterfall::Outsidetextfont& variantsrc(std::string f);
+
+    // Sets the weight (or boldness) of the font.
+    Waterfall::Outsidetextfont& weight(int f);
+    Waterfall::Outsidetextfont& weight(std::vector<int> f);
+
+    // Sets the source reference on Chart Studio Cloud for `weight`.
+    Waterfall::Outsidetextfont& weightsrc(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+class Waterfall::Stream {
+ public:
+
+    // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
+    // only the newest 50 points will be displayed on the plot.
+    Waterfall::Stream& maxpoints(double f);
+
+    // The stream id number links a data trace on a plot with a stream. See https://chart-studio.plotly.com/settings for
+    // more details.
+    Waterfall::Stream& token(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+// Sets the font used for `text`.
+class Waterfall::Textfont {
+ public:
+
+    enum class Style {
+        NORMAL,
+        ITALIC,
+    };
+    static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
+
+    Waterfall::Textfont& color(std::string f);
+    Waterfall::Textfont& color(double f);
+    Waterfall::Textfont& color(std::vector<std::string> f);
+    Waterfall::Textfont& color(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `color`.
+    Waterfall::Textfont& colorsrc(std::string f);
+
+    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+    // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+    // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+    // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select
+    // number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid
+    // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+    // *Raleway*, *Times New Roman*.
+    Waterfall::Textfont& family(std::string f);
+    Waterfall::Textfont& family(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `family`.
+    Waterfall::Textfont& familysrc(std::string f);
+
+    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
+    // e.g. *under+over*, etc.
+    // - Default: none
+    // - Flags: ['under', 'over', 'through']
+    // - Extras ['none']
+    Waterfall::Textfont& lineposition(std::string f);
+    Waterfall::Textfont& lineposition(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `lineposition`.
+    Waterfall::Textfont& linepositionsrc(std::string f);
+
+    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
+    // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+    Waterfall::Textfont& shadow(std::string f);
+    Waterfall::Textfont& shadow(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `shadow`.
+    Waterfall::Textfont& shadowsrc(std::string f);
+
+    Waterfall::Textfont& size(double f);
+    Waterfall::Textfont& size(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `size`.
+    Waterfall::Textfont& sizesrc(std::string f);
+
+    // Sets whether a font should be styled with a normal or italic face from its family.
+    // - Default: normal
+    Waterfall::Textfont& style(enum Style f);
+    Waterfall::Textfont& style(const std::vector<enum Style>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `style`.
+    Waterfall::Textfont& stylesrc(std::string f);
+
+    // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
+    // word capitalized.
+    // - Default: normal
+    Waterfall::Textfont& textcase(enum Textcase f);
+    Waterfall::Textfont& textcase(const std::vector<enum Textcase>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `textcase`.
+    Waterfall::Textfont& textcasesrc(std::string f);
+
+    // Sets the variant of the font.
+    // - Default: normal
+    Waterfall::Textfont& variant(enum Variant f);
+    Waterfall::Textfont& variant(const std::vector<enum Variant>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `variant`.
+    Waterfall::Textfont& variantsrc(std::string f);
+
+    // Sets the weight (or boldness) of the font.
+    Waterfall::Textfont& weight(int f);
+    Waterfall::Textfont& weight(std::vector<int> f);
+
+    // Sets the source reference on Chart Studio Cloud for `weight`.
+    Waterfall::Textfont& weightsrc(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+class Waterfall::Totals {
+ public:
+
+    class Marker;
+
+    Waterfall::Totals& marker(class Marker f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+class Waterfall::Totals::Marker {
+ public:
+
+    class Line;
+
+    // Sets the marker color of all intermediate sums and total values.
+    Waterfall::Totals::Marker& color(std::string f);
+    Waterfall::Totals::Marker& color(double f);
+
+    Waterfall::Totals::Marker& line(class Line f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+class Waterfall::Totals::Marker::Line {
+ public:
+
+    // Sets the line color of all intermediate sums and total values.
+    Waterfall::Totals::Marker::Line& color(std::string f);
+    Waterfall::Totals::Marker::Line& color(double f);
+
+    // Sets the line width of all intermediate sums and total values.
+    Waterfall::Totals::Marker::Line& width(double f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
 } // namespace plotlypp
+
+#include "impl/waterfall_impl.hpp"

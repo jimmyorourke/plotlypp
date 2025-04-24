@@ -1,0 +1,1270 @@
+// TODO: includes, copyright, etc
+
+namespace plotlypp {
+
+std::string Violin::to_string(Orientation e) {
+    switch(e) {
+        case Orientation::V: return "v";
+        case Orientation::H: return "h";
+    }
+}
+std::string Violin::to_string(Points e) {
+    switch(e) {
+        case Points::ALL: return "all";
+        case Points::OUTLIERS: return "outliers";
+        case Points::SUSPECTEDOUTLIERS: return "suspectedoutliers";
+        case Points::FALSE: return "False";
+    }
+}
+std::string Violin::to_string(Quartilemethod e) {
+    switch(e) {
+        case Quartilemethod::LINEAR: return "linear";
+        case Quartilemethod::EXCLUSIVE: return "exclusive";
+        case Quartilemethod::INCLUSIVE: return "inclusive";
+    }
+}
+std::string Violin::to_string(Scalemode e) {
+    switch(e) {
+        case Scalemode::WIDTH: return "width";
+        case Scalemode::COUNT: return "count";
+    }
+}
+std::string Violin::to_string(Side e) {
+    switch(e) {
+        case Side::BOTH: return "both";
+        case Side::POSITIVE: return "positive";
+        case Side::NEGATIVE: return "negative";
+    }
+}
+std::string Violin::to_string(Spanmode e) {
+    switch(e) {
+        case Spanmode::SOFT: return "soft";
+        case Spanmode::HARD: return "hard";
+        case Spanmode::MANUAL: return "manual";
+    }
+}
+std::string Violin::to_string(Visible e) {
+    switch(e) {
+        case Visible::TRUE: return "True";
+        case Visible::FALSE: return "False";
+        case Visible::LEGENDONLY: return "legendonly";
+    }
+}
+
+Violin& Violin::alignmentgroup(std::string f) {
+    json["alignmentgroup"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::bandwidth(double f) {
+    json["bandwidth"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::box(class Box f) {
+    json["box"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T, typename>
+Violin& Violin::customdata(std::vector<T> f) {
+    json["customdata"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::customdatasrc(std::string f) {
+    json["customdatasrc"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::fillcolor(std::string f) {
+    json["fillcolor"] = std::move(f);
+    return *this;
+}
+Violin& Violin::fillcolor(double f) {
+    json["fillcolor"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::hoverinfo(std::string f) {
+    json["hoverinfo"] = std::move(f);
+    return *this;
+}
+Violin& Violin::hoverinfo(std::vector<std::string> f) {
+    json["hoverinfo"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::hoverinfosrc(std::string f) {
+    json["hoverinfosrc"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::hoverlabel(class Hoverlabel f) {
+    json["hoverlabel"] = std::move(f.json);
+    return *this;
+}
+
+Violin& Violin::hoveron(std::string f) {
+    json["hoveron"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::hovertemplate(std::string f) {
+    json["hovertemplate"] = std::move(f);
+    return *this;
+}
+Violin& Violin::hovertemplate(std::vector<std::string> f) {
+    json["hovertemplate"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::hovertemplatesrc(std::string f) {
+    json["hovertemplatesrc"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::hovertext(std::string f) {
+    json["hovertext"] = std::move(f);
+    return *this;
+}
+Violin& Violin::hovertext(std::vector<std::string> f) {
+    json["hovertext"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::hovertextsrc(std::string f) {
+    json["hovertextsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Violin& Violin::ids(std::vector<T> f) {
+    json["ids"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::idssrc(std::string f) {
+    json["idssrc"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::jitter(double f) {
+    json["jitter"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::legend(std::string f) {
+    json["legend"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::legendgroup(std::string f) {
+    json["legendgroup"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::legendgrouptitle(class Legendgrouptitle f) {
+    json["legendgrouptitle"] = std::move(f.json);
+    return *this;
+}
+
+Violin& Violin::legendrank(double f) {
+    json["legendrank"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::legendwidth(double f) {
+    json["legendwidth"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::line(class Line f) {
+    json["line"] = std::move(f.json);
+    return *this;
+}
+
+Violin& Violin::marker(class Marker f) {
+    json["marker"] = std::move(f.json);
+    return *this;
+}
+
+Violin& Violin::meanline(class Meanline f) {
+    json["meanline"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T>
+Violin& Violin::meta(T f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+template <typename T>
+Violin& Violin::meta(std::vector<T> f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::metasrc(std::string f) {
+    json["metasrc"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::name(std::string f) {
+    json["name"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::offsetgroup(std::string f) {
+    json["offsetgroup"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::opacity(double f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::orientation(enum Orientation f) {
+    json["orientation"] = to_string(f);
+    return *this;
+}
+
+Violin& Violin::pointpos(double f) {
+    json["pointpos"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::points(enum Points f) {
+    json["points"] = to_string(f);
+    return *this;
+}
+
+Violin& Violin::quartilemethod(enum Quartilemethod f) {
+    json["quartilemethod"] = to_string(f);
+    return *this;
+}
+
+Violin& Violin::scalegroup(std::string f) {
+    json["scalegroup"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::scalemode(enum Scalemode f) {
+    json["scalemode"] = to_string(f);
+    return *this;
+}
+
+Violin& Violin::selected(class Selected f) {
+    json["selected"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T>
+Violin& Violin::selectedpoints(T f) {
+    json["selectedpoints"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::showlegend(bool f) {
+    json["showlegend"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::side(enum Side f) {
+    json["side"] = to_string(f);
+    return *this;
+}
+
+Violin& Violin::span(std::vector<std::string> f) {
+    json["span"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::spanmode(enum Spanmode f) {
+    json["spanmode"] = to_string(f);
+    return *this;
+}
+
+Violin& Violin::stream(class Stream f) {
+    json["stream"] = std::move(f.json);
+    return *this;
+}
+
+Violin& Violin::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+Violin& Violin::text(std::vector<std::string> f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::textsrc(std::string f) {
+    json["textsrc"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::uid(std::string f) {
+    json["uid"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Violin& Violin::uirevision(T f) {
+    json["uirevision"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::unselected(class Unselected f) {
+    json["unselected"] = std::move(f.json);
+    return *this;
+}
+
+Violin& Violin::visible(enum Visible f) {
+    json["visible"] = to_string(f);
+    return *this;
+}
+
+Violin& Violin::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Violin& Violin::x(std::vector<T> f) {
+    json["x"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Violin& Violin::x0(T f) {
+    json["x0"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::xaxis(std::string f) {
+    json["xaxis"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::xhoverformat(std::string f) {
+    json["xhoverformat"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::xsrc(std::string f) {
+    json["xsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Violin& Violin::y(std::vector<T> f) {
+    json["y"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Violin& Violin::y0(T f) {
+    json["y0"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::yaxis(std::string f) {
+    json["yaxis"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::yhoverformat(std::string f) {
+    json["yhoverformat"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::ysrc(std::string f) {
+    json["ysrc"] = std::move(f);
+    return *this;
+}
+
+Violin& Violin::zorder(int f) {
+    json["zorder"] = std::move(f);
+    return *this;
+}
+
+
+Violin::Box& Violin::Box::fillcolor(std::string f) {
+    json["fillcolor"] = std::move(f);
+    return *this;
+}
+Violin::Box& Violin::Box::fillcolor(double f) {
+    json["fillcolor"] = std::move(f);
+    return *this;
+}
+
+Violin::Box& Violin::Box::line(class Line f) {
+    json["line"] = std::move(f.json);
+    return *this;
+}
+
+Violin::Box& Violin::Box::visible(bool f) {
+    json["visible"] = std::move(f);
+    return *this;
+}
+
+Violin::Box& Violin::Box::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+
+Violin::Box::Line& Violin::Box::Line::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Violin::Box::Line& Violin::Box::Line::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Violin::Box::Line& Violin::Box::Line::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+std::string Violin::Hoverlabel::to_string(Align e) {
+    switch(e) {
+        case Align::LEFT: return "left";
+        case Align::RIGHT: return "right";
+        case Align::AUTO: return "auto";
+    }
+}
+
+Violin::Hoverlabel& Violin::Hoverlabel::align(enum Align f) {
+    json["align"] = to_string(f);
+    return *this;
+}
+Violin::Hoverlabel& Violin::Hoverlabel::align(const std::vector<enum Align>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["align"] = std::move(stringified);
+    return *this;
+}
+
+Violin::Hoverlabel& Violin::Hoverlabel::alignsrc(std::string f) {
+    json["alignsrc"] = std::move(f);
+    return *this;
+}
+
+Violin::Hoverlabel& Violin::Hoverlabel::bgcolor(std::string f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Violin::Hoverlabel& Violin::Hoverlabel::bgcolor(double f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Violin::Hoverlabel& Violin::Hoverlabel::bgcolor(std::vector<std::string> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Violin::Hoverlabel& Violin::Hoverlabel::bgcolor(std::vector<double> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+
+Violin::Hoverlabel& Violin::Hoverlabel::bgcolorsrc(std::string f) {
+    json["bgcolorsrc"] = std::move(f);
+    return *this;
+}
+
+Violin::Hoverlabel& Violin::Hoverlabel::bordercolor(std::string f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Violin::Hoverlabel& Violin::Hoverlabel::bordercolor(double f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Violin::Hoverlabel& Violin::Hoverlabel::bordercolor(std::vector<std::string> f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Violin::Hoverlabel& Violin::Hoverlabel::bordercolor(std::vector<double> f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+
+Violin::Hoverlabel& Violin::Hoverlabel::bordercolorsrc(std::string f) {
+    json["bordercolorsrc"] = std::move(f);
+    return *this;
+}
+
+Violin::Hoverlabel& Violin::Hoverlabel::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Violin::Hoverlabel& Violin::Hoverlabel::namelength(int f) {
+    json["namelength"] = std::move(f);
+    return *this;
+}
+Violin::Hoverlabel& Violin::Hoverlabel::namelength(std::vector<int> f) {
+    json["namelength"] = std::move(f);
+    return *this;
+}
+
+Violin::Hoverlabel& Violin::Hoverlabel::namelengthsrc(std::string f) {
+    json["namelengthsrc"] = std::move(f);
+    return *this;
+}
+
+std::string Violin::Hoverlabel::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Violin::Hoverlabel::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Violin::Hoverlabel::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::family(std::vector<std::string> f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::familysrc(std::string f) {
+    json["familysrc"] = std::move(f);
+    return *this;
+}
+
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::linepositionsrc(std::string f) {
+    json["linepositionsrc"] = std::move(f);
+    return *this;
+}
+
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::shadow(std::vector<std::string> f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::shadowsrc(std::string f) {
+    json["shadowsrc"] = std::move(f);
+    return *this;
+}
+
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::size(std::vector<double> f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::sizesrc(std::string f) {
+    json["sizesrc"] = std::move(f);
+    return *this;
+}
+
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::style(const std::vector<enum Style>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["style"] = std::move(stringified);
+    return *this;
+}
+
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::stylesrc(std::string f) {
+    json["stylesrc"] = std::move(f);
+    return *this;
+}
+
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::textcase(const std::vector<enum Textcase>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["textcase"] = std::move(stringified);
+    return *this;
+}
+
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::textcasesrc(std::string f) {
+    json["textcasesrc"] = std::move(f);
+    return *this;
+}
+
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::variant(const std::vector<enum Variant>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["variant"] = std::move(stringified);
+    return *this;
+}
+
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::variantsrc(std::string f) {
+    json["variantsrc"] = std::move(f);
+    return *this;
+}
+
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::weight(std::vector<int> f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::weightsrc(std::string f) {
+    json["weightsrc"] = std::move(f);
+    return *this;
+}
+
+
+Violin::Legendgrouptitle& Violin::Legendgrouptitle::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Violin::Legendgrouptitle& Violin::Legendgrouptitle::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+std::string Violin::Legendgrouptitle::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Violin::Legendgrouptitle::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Violin::Legendgrouptitle::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Violin::Legendgrouptitle::Font& Violin::Legendgrouptitle::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Violin::Legendgrouptitle::Font& Violin::Legendgrouptitle::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Violin::Legendgrouptitle::Font& Violin::Legendgrouptitle::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Violin::Legendgrouptitle::Font& Violin::Legendgrouptitle::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Violin::Legendgrouptitle::Font& Violin::Legendgrouptitle::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Violin::Legendgrouptitle::Font& Violin::Legendgrouptitle::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Violin::Legendgrouptitle::Font& Violin::Legendgrouptitle::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Violin::Legendgrouptitle::Font& Violin::Legendgrouptitle::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Violin::Legendgrouptitle::Font& Violin::Legendgrouptitle::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Violin::Legendgrouptitle::Font& Violin::Legendgrouptitle::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Violin::Line& Violin::Line::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Violin::Line& Violin::Line::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Violin::Line& Violin::Line::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+std::string Violin::Marker::to_string(Symbol e) {
+    switch(e) {
+        case Symbol::NUM_0: return "0";
+        case Symbol::CIRCLE: return "circle";
+        case Symbol::NUM_100: return "100";
+        case Symbol::CIRCLE_OPEN: return "circle-open";
+        case Symbol::NUM_200: return "200";
+        case Symbol::CIRCLE_DOT: return "circle-dot";
+        case Symbol::NUM_300: return "300";
+        case Symbol::CIRCLE_OPEN_DOT: return "circle-open-dot";
+        case Symbol::NUM_1: return "1";
+        case Symbol::SQUARE: return "square";
+        case Symbol::NUM_101: return "101";
+        case Symbol::SQUARE_OPEN: return "square-open";
+        case Symbol::NUM_201: return "201";
+        case Symbol::SQUARE_DOT: return "square-dot";
+        case Symbol::NUM_301: return "301";
+        case Symbol::SQUARE_OPEN_DOT: return "square-open-dot";
+        case Symbol::NUM_2: return "2";
+        case Symbol::DIAMOND: return "diamond";
+        case Symbol::NUM_102: return "102";
+        case Symbol::DIAMOND_OPEN: return "diamond-open";
+        case Symbol::NUM_202: return "202";
+        case Symbol::DIAMOND_DOT: return "diamond-dot";
+        case Symbol::NUM_302: return "302";
+        case Symbol::DIAMOND_OPEN_DOT: return "diamond-open-dot";
+        case Symbol::NUM_3: return "3";
+        case Symbol::CROSS: return "cross";
+        case Symbol::NUM_103: return "103";
+        case Symbol::CROSS_OPEN: return "cross-open";
+        case Symbol::NUM_203: return "203";
+        case Symbol::CROSS_DOT: return "cross-dot";
+        case Symbol::NUM_303: return "303";
+        case Symbol::CROSS_OPEN_DOT: return "cross-open-dot";
+        case Symbol::NUM_4: return "4";
+        case Symbol::X: return "x";
+        case Symbol::NUM_104: return "104";
+        case Symbol::X_OPEN: return "x-open";
+        case Symbol::NUM_204: return "204";
+        case Symbol::X_DOT: return "x-dot";
+        case Symbol::NUM_304: return "304";
+        case Symbol::X_OPEN_DOT: return "x-open-dot";
+        case Symbol::NUM_5: return "5";
+        case Symbol::TRIANGLE_UP: return "triangle-up";
+        case Symbol::NUM_105: return "105";
+        case Symbol::TRIANGLE_UP_OPEN: return "triangle-up-open";
+        case Symbol::NUM_205: return "205";
+        case Symbol::TRIANGLE_UP_DOT: return "triangle-up-dot";
+        case Symbol::NUM_305: return "305";
+        case Symbol::TRIANGLE_UP_OPEN_DOT: return "triangle-up-open-dot";
+        case Symbol::NUM_6: return "6";
+        case Symbol::TRIANGLE_DOWN: return "triangle-down";
+        case Symbol::NUM_106: return "106";
+        case Symbol::TRIANGLE_DOWN_OPEN: return "triangle-down-open";
+        case Symbol::NUM_206: return "206";
+        case Symbol::TRIANGLE_DOWN_DOT: return "triangle-down-dot";
+        case Symbol::NUM_306: return "306";
+        case Symbol::TRIANGLE_DOWN_OPEN_DOT: return "triangle-down-open-dot";
+        case Symbol::NUM_7: return "7";
+        case Symbol::TRIANGLE_LEFT: return "triangle-left";
+        case Symbol::NUM_107: return "107";
+        case Symbol::TRIANGLE_LEFT_OPEN: return "triangle-left-open";
+        case Symbol::NUM_207: return "207";
+        case Symbol::TRIANGLE_LEFT_DOT: return "triangle-left-dot";
+        case Symbol::NUM_307: return "307";
+        case Symbol::TRIANGLE_LEFT_OPEN_DOT: return "triangle-left-open-dot";
+        case Symbol::NUM_8: return "8";
+        case Symbol::TRIANGLE_RIGHT: return "triangle-right";
+        case Symbol::NUM_108: return "108";
+        case Symbol::TRIANGLE_RIGHT_OPEN: return "triangle-right-open";
+        case Symbol::NUM_208: return "208";
+        case Symbol::TRIANGLE_RIGHT_DOT: return "triangle-right-dot";
+        case Symbol::NUM_308: return "308";
+        case Symbol::TRIANGLE_RIGHT_OPEN_DOT: return "triangle-right-open-dot";
+        case Symbol::NUM_9: return "9";
+        case Symbol::TRIANGLE_NE: return "triangle-ne";
+        case Symbol::NUM_109: return "109";
+        case Symbol::TRIANGLE_NE_OPEN: return "triangle-ne-open";
+        case Symbol::NUM_209: return "209";
+        case Symbol::TRIANGLE_NE_DOT: return "triangle-ne-dot";
+        case Symbol::NUM_309: return "309";
+        case Symbol::TRIANGLE_NE_OPEN_DOT: return "triangle-ne-open-dot";
+        case Symbol::NUM_10: return "10";
+        case Symbol::TRIANGLE_SE: return "triangle-se";
+        case Symbol::NUM_110: return "110";
+        case Symbol::TRIANGLE_SE_OPEN: return "triangle-se-open";
+        case Symbol::NUM_210: return "210";
+        case Symbol::TRIANGLE_SE_DOT: return "triangle-se-dot";
+        case Symbol::NUM_310: return "310";
+        case Symbol::TRIANGLE_SE_OPEN_DOT: return "triangle-se-open-dot";
+        case Symbol::NUM_11: return "11";
+        case Symbol::TRIANGLE_SW: return "triangle-sw";
+        case Symbol::NUM_111: return "111";
+        case Symbol::TRIANGLE_SW_OPEN: return "triangle-sw-open";
+        case Symbol::NUM_211: return "211";
+        case Symbol::TRIANGLE_SW_DOT: return "triangle-sw-dot";
+        case Symbol::NUM_311: return "311";
+        case Symbol::TRIANGLE_SW_OPEN_DOT: return "triangle-sw-open-dot";
+        case Symbol::NUM_12: return "12";
+        case Symbol::TRIANGLE_NW: return "triangle-nw";
+        case Symbol::NUM_112: return "112";
+        case Symbol::TRIANGLE_NW_OPEN: return "triangle-nw-open";
+        case Symbol::NUM_212: return "212";
+        case Symbol::TRIANGLE_NW_DOT: return "triangle-nw-dot";
+        case Symbol::NUM_312: return "312";
+        case Symbol::TRIANGLE_NW_OPEN_DOT: return "triangle-nw-open-dot";
+        case Symbol::NUM_13: return "13";
+        case Symbol::PENTAGON: return "pentagon";
+        case Symbol::NUM_113: return "113";
+        case Symbol::PENTAGON_OPEN: return "pentagon-open";
+        case Symbol::NUM_213: return "213";
+        case Symbol::PENTAGON_DOT: return "pentagon-dot";
+        case Symbol::NUM_313: return "313";
+        case Symbol::PENTAGON_OPEN_DOT: return "pentagon-open-dot";
+        case Symbol::NUM_14: return "14";
+        case Symbol::HEXAGON: return "hexagon";
+        case Symbol::NUM_114: return "114";
+        case Symbol::HEXAGON_OPEN: return "hexagon-open";
+        case Symbol::NUM_214: return "214";
+        case Symbol::HEXAGON_DOT: return "hexagon-dot";
+        case Symbol::NUM_314: return "314";
+        case Symbol::HEXAGON_OPEN_DOT: return "hexagon-open-dot";
+        case Symbol::NUM_15: return "15";
+        case Symbol::HEXAGON2: return "hexagon2";
+        case Symbol::NUM_115: return "115";
+        case Symbol::HEXAGON2_OPEN: return "hexagon2-open";
+        case Symbol::NUM_215: return "215";
+        case Symbol::HEXAGON2_DOT: return "hexagon2-dot";
+        case Symbol::NUM_315: return "315";
+        case Symbol::HEXAGON2_OPEN_DOT: return "hexagon2-open-dot";
+        case Symbol::NUM_16: return "16";
+        case Symbol::OCTAGON: return "octagon";
+        case Symbol::NUM_116: return "116";
+        case Symbol::OCTAGON_OPEN: return "octagon-open";
+        case Symbol::NUM_216: return "216";
+        case Symbol::OCTAGON_DOT: return "octagon-dot";
+        case Symbol::NUM_316: return "316";
+        case Symbol::OCTAGON_OPEN_DOT: return "octagon-open-dot";
+        case Symbol::NUM_17: return "17";
+        case Symbol::STAR: return "star";
+        case Symbol::NUM_117: return "117";
+        case Symbol::STAR_OPEN: return "star-open";
+        case Symbol::NUM_217: return "217";
+        case Symbol::STAR_DOT: return "star-dot";
+        case Symbol::NUM_317: return "317";
+        case Symbol::STAR_OPEN_DOT: return "star-open-dot";
+        case Symbol::NUM_18: return "18";
+        case Symbol::HEXAGRAM: return "hexagram";
+        case Symbol::NUM_118: return "118";
+        case Symbol::HEXAGRAM_OPEN: return "hexagram-open";
+        case Symbol::NUM_218: return "218";
+        case Symbol::HEXAGRAM_DOT: return "hexagram-dot";
+        case Symbol::NUM_318: return "318";
+        case Symbol::HEXAGRAM_OPEN_DOT: return "hexagram-open-dot";
+        case Symbol::NUM_19: return "19";
+        case Symbol::STAR_TRIANGLE_UP: return "star-triangle-up";
+        case Symbol::NUM_119: return "119";
+        case Symbol::STAR_TRIANGLE_UP_OPEN: return "star-triangle-up-open";
+        case Symbol::NUM_219: return "219";
+        case Symbol::STAR_TRIANGLE_UP_DOT: return "star-triangle-up-dot";
+        case Symbol::NUM_319: return "319";
+        case Symbol::STAR_TRIANGLE_UP_OPEN_DOT: return "star-triangle-up-open-dot";
+        case Symbol::NUM_20: return "20";
+        case Symbol::STAR_TRIANGLE_DOWN: return "star-triangle-down";
+        case Symbol::NUM_120: return "120";
+        case Symbol::STAR_TRIANGLE_DOWN_OPEN: return "star-triangle-down-open";
+        case Symbol::NUM_220: return "220";
+        case Symbol::STAR_TRIANGLE_DOWN_DOT: return "star-triangle-down-dot";
+        case Symbol::NUM_320: return "320";
+        case Symbol::STAR_TRIANGLE_DOWN_OPEN_DOT: return "star-triangle-down-open-dot";
+        case Symbol::NUM_21: return "21";
+        case Symbol::STAR_SQUARE: return "star-square";
+        case Symbol::NUM_121: return "121";
+        case Symbol::STAR_SQUARE_OPEN: return "star-square-open";
+        case Symbol::NUM_221: return "221";
+        case Symbol::STAR_SQUARE_DOT: return "star-square-dot";
+        case Symbol::NUM_321: return "321";
+        case Symbol::STAR_SQUARE_OPEN_DOT: return "star-square-open-dot";
+        case Symbol::NUM_22: return "22";
+        case Symbol::STAR_DIAMOND: return "star-diamond";
+        case Symbol::NUM_122: return "122";
+        case Symbol::STAR_DIAMOND_OPEN: return "star-diamond-open";
+        case Symbol::NUM_222: return "222";
+        case Symbol::STAR_DIAMOND_DOT: return "star-diamond-dot";
+        case Symbol::NUM_322: return "322";
+        case Symbol::STAR_DIAMOND_OPEN_DOT: return "star-diamond-open-dot";
+        case Symbol::NUM_23: return "23";
+        case Symbol::DIAMOND_TALL: return "diamond-tall";
+        case Symbol::NUM_123: return "123";
+        case Symbol::DIAMOND_TALL_OPEN: return "diamond-tall-open";
+        case Symbol::NUM_223: return "223";
+        case Symbol::DIAMOND_TALL_DOT: return "diamond-tall-dot";
+        case Symbol::NUM_323: return "323";
+        case Symbol::DIAMOND_TALL_OPEN_DOT: return "diamond-tall-open-dot";
+        case Symbol::NUM_24: return "24";
+        case Symbol::DIAMOND_WIDE: return "diamond-wide";
+        case Symbol::NUM_124: return "124";
+        case Symbol::DIAMOND_WIDE_OPEN: return "diamond-wide-open";
+        case Symbol::NUM_224: return "224";
+        case Symbol::DIAMOND_WIDE_DOT: return "diamond-wide-dot";
+        case Symbol::NUM_324: return "324";
+        case Symbol::DIAMOND_WIDE_OPEN_DOT: return "diamond-wide-open-dot";
+        case Symbol::NUM_25: return "25";
+        case Symbol::HOURGLASS: return "hourglass";
+        case Symbol::NUM_125: return "125";
+        case Symbol::HOURGLASS_OPEN: return "hourglass-open";
+        case Symbol::NUM_26: return "26";
+        case Symbol::BOWTIE: return "bowtie";
+        case Symbol::NUM_126: return "126";
+        case Symbol::BOWTIE_OPEN: return "bowtie-open";
+        case Symbol::NUM_27: return "27";
+        case Symbol::CIRCLE_CROSS: return "circle-cross";
+        case Symbol::NUM_127: return "127";
+        case Symbol::CIRCLE_CROSS_OPEN: return "circle-cross-open";
+        case Symbol::NUM_28: return "28";
+        case Symbol::CIRCLE_X: return "circle-x";
+        case Symbol::NUM_128: return "128";
+        case Symbol::CIRCLE_X_OPEN: return "circle-x-open";
+        case Symbol::NUM_29: return "29";
+        case Symbol::SQUARE_CROSS: return "square-cross";
+        case Symbol::NUM_129: return "129";
+        case Symbol::SQUARE_CROSS_OPEN: return "square-cross-open";
+        case Symbol::NUM_30: return "30";
+        case Symbol::SQUARE_X: return "square-x";
+        case Symbol::NUM_130: return "130";
+        case Symbol::SQUARE_X_OPEN: return "square-x-open";
+        case Symbol::NUM_31: return "31";
+        case Symbol::DIAMOND_CROSS: return "diamond-cross";
+        case Symbol::NUM_131: return "131";
+        case Symbol::DIAMOND_CROSS_OPEN: return "diamond-cross-open";
+        case Symbol::NUM_32: return "32";
+        case Symbol::DIAMOND_X: return "diamond-x";
+        case Symbol::NUM_132: return "132";
+        case Symbol::DIAMOND_X_OPEN: return "diamond-x-open";
+        case Symbol::NUM_33: return "33";
+        case Symbol::CROSS_THIN: return "cross-thin";
+        case Symbol::NUM_133: return "133";
+        case Symbol::CROSS_THIN_OPEN: return "cross-thin-open";
+        case Symbol::NUM_34: return "34";
+        case Symbol::X_THIN: return "x-thin";
+        case Symbol::NUM_134: return "134";
+        case Symbol::X_THIN_OPEN: return "x-thin-open";
+        case Symbol::NUM_35: return "35";
+        case Symbol::ASTERISK: return "asterisk";
+        case Symbol::NUM_135: return "135";
+        case Symbol::ASTERISK_OPEN: return "asterisk-open";
+        case Symbol::NUM_36: return "36";
+        case Symbol::HASH: return "hash";
+        case Symbol::NUM_136: return "136";
+        case Symbol::HASH_OPEN: return "hash-open";
+        case Symbol::NUM_236: return "236";
+        case Symbol::HASH_DOT: return "hash-dot";
+        case Symbol::NUM_336: return "336";
+        case Symbol::HASH_OPEN_DOT: return "hash-open-dot";
+        case Symbol::NUM_37: return "37";
+        case Symbol::Y_UP: return "y-up";
+        case Symbol::NUM_137: return "137";
+        case Symbol::Y_UP_OPEN: return "y-up-open";
+        case Symbol::NUM_38: return "38";
+        case Symbol::Y_DOWN: return "y-down";
+        case Symbol::NUM_138: return "138";
+        case Symbol::Y_DOWN_OPEN: return "y-down-open";
+        case Symbol::NUM_39: return "39";
+        case Symbol::Y_LEFT: return "y-left";
+        case Symbol::NUM_139: return "139";
+        case Symbol::Y_LEFT_OPEN: return "y-left-open";
+        case Symbol::NUM_40: return "40";
+        case Symbol::Y_RIGHT: return "y-right";
+        case Symbol::NUM_140: return "140";
+        case Symbol::Y_RIGHT_OPEN: return "y-right-open";
+        case Symbol::NUM_41: return "41";
+        case Symbol::LINE_EW: return "line-ew";
+        case Symbol::NUM_141: return "141";
+        case Symbol::LINE_EW_OPEN: return "line-ew-open";
+        case Symbol::NUM_42: return "42";
+        case Symbol::LINE_NS: return "line-ns";
+        case Symbol::NUM_142: return "142";
+        case Symbol::LINE_NS_OPEN: return "line-ns-open";
+        case Symbol::NUM_43: return "43";
+        case Symbol::LINE_NE: return "line-ne";
+        case Symbol::NUM_143: return "143";
+        case Symbol::LINE_NE_OPEN: return "line-ne-open";
+        case Symbol::NUM_44: return "44";
+        case Symbol::LINE_NW: return "line-nw";
+        case Symbol::NUM_144: return "144";
+        case Symbol::LINE_NW_OPEN: return "line-nw-open";
+        case Symbol::NUM_45: return "45";
+        case Symbol::ARROW_UP: return "arrow-up";
+        case Symbol::NUM_145: return "145";
+        case Symbol::ARROW_UP_OPEN: return "arrow-up-open";
+        case Symbol::NUM_46: return "46";
+        case Symbol::ARROW_DOWN: return "arrow-down";
+        case Symbol::NUM_146: return "146";
+        case Symbol::ARROW_DOWN_OPEN: return "arrow-down-open";
+        case Symbol::NUM_47: return "47";
+        case Symbol::ARROW_LEFT: return "arrow-left";
+        case Symbol::NUM_147: return "147";
+        case Symbol::ARROW_LEFT_OPEN: return "arrow-left-open";
+        case Symbol::NUM_48: return "48";
+        case Symbol::ARROW_RIGHT: return "arrow-right";
+        case Symbol::NUM_148: return "148";
+        case Symbol::ARROW_RIGHT_OPEN: return "arrow-right-open";
+        case Symbol::NUM_49: return "49";
+        case Symbol::ARROW_BAR_UP: return "arrow-bar-up";
+        case Symbol::NUM_149: return "149";
+        case Symbol::ARROW_BAR_UP_OPEN: return "arrow-bar-up-open";
+        case Symbol::NUM_50: return "50";
+        case Symbol::ARROW_BAR_DOWN: return "arrow-bar-down";
+        case Symbol::NUM_150: return "150";
+        case Symbol::ARROW_BAR_DOWN_OPEN: return "arrow-bar-down-open";
+        case Symbol::NUM_51: return "51";
+        case Symbol::ARROW_BAR_LEFT: return "arrow-bar-left";
+        case Symbol::NUM_151: return "151";
+        case Symbol::ARROW_BAR_LEFT_OPEN: return "arrow-bar-left-open";
+        case Symbol::NUM_52: return "52";
+        case Symbol::ARROW_BAR_RIGHT: return "arrow-bar-right";
+        case Symbol::NUM_152: return "152";
+        case Symbol::ARROW_BAR_RIGHT_OPEN: return "arrow-bar-right-open";
+        case Symbol::NUM_53: return "53";
+        case Symbol::ARROW: return "arrow";
+        case Symbol::NUM_153: return "153";
+        case Symbol::ARROW_OPEN: return "arrow-open";
+        case Symbol::NUM_54: return "54";
+        case Symbol::ARROW_WIDE: return "arrow-wide";
+        case Symbol::NUM_154: return "154";
+        case Symbol::ARROW_WIDE_OPEN: return "arrow-wide-open";
+    }
+}
+
+Violin::Marker& Violin::Marker::angle(double f) {
+    json["angle"] = std::move(f);
+    return *this;
+}
+
+Violin::Marker& Violin::Marker::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Violin::Marker& Violin::Marker::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Violin::Marker& Violin::Marker::line(class Line f) {
+    json["line"] = std::move(f.json);
+    return *this;
+}
+
+Violin::Marker& Violin::Marker::opacity(double f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+
+Violin::Marker& Violin::Marker::outliercolor(std::string f) {
+    json["outliercolor"] = std::move(f);
+    return *this;
+}
+Violin::Marker& Violin::Marker::outliercolor(double f) {
+    json["outliercolor"] = std::move(f);
+    return *this;
+}
+
+Violin::Marker& Violin::Marker::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Violin::Marker& Violin::Marker::symbol(enum Symbol f) {
+    json["symbol"] = to_string(f);
+    return *this;
+}
+
+
+Violin::Marker::Line& Violin::Marker::Line::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Violin::Marker::Line& Violin::Marker::Line::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Violin::Marker::Line& Violin::Marker::Line::outliercolor(std::string f) {
+    json["outliercolor"] = std::move(f);
+    return *this;
+}
+Violin::Marker::Line& Violin::Marker::Line::outliercolor(double f) {
+    json["outliercolor"] = std::move(f);
+    return *this;
+}
+
+Violin::Marker::Line& Violin::Marker::Line::outlierwidth(double f) {
+    json["outlierwidth"] = std::move(f);
+    return *this;
+}
+
+Violin::Marker::Line& Violin::Marker::Line::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+
+Violin::Meanline& Violin::Meanline::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Violin::Meanline& Violin::Meanline::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Violin::Meanline& Violin::Meanline::visible(bool f) {
+    json["visible"] = std::move(f);
+    return *this;
+}
+
+Violin::Meanline& Violin::Meanline::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+
+Violin::Selected& Violin::Selected::marker(class Marker f) {
+    json["marker"] = std::move(f.json);
+    return *this;
+}
+
+
+Violin::Selected::Marker& Violin::Selected::Marker::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Violin::Selected::Marker& Violin::Selected::Marker::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Violin::Selected::Marker& Violin::Selected::Marker::opacity(double f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+
+Violin::Selected::Marker& Violin::Selected::Marker::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+
+Violin::Stream& Violin::Stream::maxpoints(double f) {
+    json["maxpoints"] = std::move(f);
+    return *this;
+}
+
+Violin::Stream& Violin::Stream::token(std::string f) {
+    json["token"] = std::move(f);
+    return *this;
+}
+
+
+Violin::Unselected& Violin::Unselected::marker(class Marker f) {
+    json["marker"] = std::move(f.json);
+    return *this;
+}
+
+
+Violin::Unselected::Marker& Violin::Unselected::Marker::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Violin::Unselected::Marker& Violin::Unselected::Marker::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Violin::Unselected::Marker& Violin::Unselected::Marker::opacity(double f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+
+Violin::Unselected::Marker& Violin::Unselected::Marker::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+} // namespace plotlypp
+

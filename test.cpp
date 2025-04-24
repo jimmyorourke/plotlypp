@@ -58,12 +58,12 @@ plotlypp::Figure gen3dScatterHelix() {
         y.push_back(std::sin(t_val));
     }
 
-    return Figure().addTrace(Scatter3d()
+    return Figure().addTrace(Scatter3D()
                                  .x(std::move(x))
                                  .y(std::move(y))
                                  .z(t)
                                  .mode("markers")
-                                 .marker(Scatter3d::Marker().size(12).color(t).colorscale("Viridis").opacity(0.8)));
+                                 .marker(Scatter3D::Marker().size(12).color(t).colorscale("Viridis").opacity(0.8)));
 }
 
 plotlypp::Figure gen3dScatterBubblePlanets() {
@@ -79,14 +79,14 @@ plotlypp::Figure gen3dScatterBubblePlanets() {
                                              "rgb(178, 0, 0)",     "rgb(235, 235, 210)", "rgb(235, 205, 130)",
                                              "rgb(55, 255, 217)",  "rgb(38, 0, 171)",    "rgb(255, 255, 255)"};
 
-    return Figure().addTrace(Scatter3d()
+    return Figure().addTrace(Scatter3D()
                                  .x(std::move(distanceFromSun))
                                  .y(std::move(density))
                                  .z(std::move(gravity))
                                  .text(std::move(planets))
                                  .mode("markers")
-                                 .marker(Scatter3d::Marker()
-                                             .sizemode(Scatter3d::Marker::Sizemode::DIAMETER)
+                                 .marker(Scatter3D::Marker()
+                                             .sizemode(Scatter3D::Marker::Sizemode::DIAMETER)
                                              .sizeref(750)
                                              .size(std::move(planetDiameter))
                                              .color(std::move(planetColors))));
@@ -199,7 +199,7 @@ plotlypp::Figure genMesh3dTetrahedron() {
 
     using colorscale_t = std::vector<std::pair<double, std::string>>;
 
-    auto mesh = Mesh3d()
+    auto mesh = Mesh3D()
                     .x(std::vector{0, 1, 2, 0})
                     .y(std::vector{0, 0, 1, 2})
                     .z(std::vector{0, 2, 0, 1})
@@ -207,7 +207,7 @@ plotlypp::Figure genMesh3dTetrahedron() {
                     .i(std::move(i))
                     .j(std::move(j))
                     .k(std::move(k))
-                    .colorbar(Mesh3d::Colorbar().title(Mesh3d::Colorbar::Title().text("z")))
+                    .colorbar(Mesh3D::Colorbar().title(Mesh3D::Colorbar::Title().text("z")))
                     .colorscale(colorscale_t{{0, "gold"}, {0.5, "mediumturquoise"}, {1, "magenta"}})
                     .name("y")
                     .showscale(true);
@@ -249,8 +249,8 @@ int main() {
                        .y(std::vector{2, 4, 1, 3, 5})
                        .mode("markers")
                        .name("Markers plt");
-    auto error_x = plotlypp::Scatter::Error_x().visible(true).array(std::vector{0.2, 0.3, 0.1, 0.4, 0.2});
-    auto error_y = plotlypp::Scatter::Error_y().visible(true).array(std::vector{0.5, 0.8, 0.3, 0.6, 0.4});
+    auto error_x = plotlypp::Scatter::Error_X().visible(true).array(std::vector{0.2, 0.3, 0.1, 0.4, 0.2});
+    auto error_y = plotlypp::Scatter::Error_Y().visible(true).array(std::vector{0.5, 0.8, 0.3, 0.6, 0.4});
     auto scatter2 = plotlypp::Scatter()
                         .x(std::vector{1, 2, 3, 4, 5})
                         .y(std::vector{3, 6, 4, 7, 5})

@@ -91,18 +91,19 @@ class Writer:
 
 
 def emit_json_member(writer):
-    writer.write("// Advanced users may modify the JSON representation directly, at their own peril!")
-    writer.write("nlohmann::json json{};")
+    with IndentBlock(writer):
+        writer.write("// Advanced users may modify the JSON representation directly, at their own peril!")
+        writer.write("nlohmann::json json{};")
 
 def emit_array_field_setter_decl(class_object, field, output_val_type, writer):
     if output_val_type == 'T':
         writer.write(f"template <typename T>")
-    writer.write(f"{class_object.name.capitalize()}& {field.name}(std::vector<{output_val_type}> f);")
+    writer.write(f"{class_object.name.title()}& {field.name}(std::vector<{output_val_type}> f);")
 
 def emit_array_field_setter(class_object, field, output_val_type, writer):
     if output_val_type == 'T':
         writer.write(f"template <typename T>")
-    writer.write(f"{class_object.name.capitalize()}& {class_object.name.capitalize()}::{field.name}(std::vector<{output_val_type}> f) {{")
+    writer.write(f"{class_object.name.title()}& {class_object.name.title()}::{field.name}(std::vector<{output_val_type}> f) {{")
     with IndentBlock(writer):
         if field.is_object:
             writer.write(f"std::vector<nlohmann::json> jsonified(f.size());")
@@ -118,14 +119,14 @@ def emit_field_setter_decl(class_object, field, output_val_type, writer):
         writer.write(f"template <typename T>")
     elif field.json_val_type == 'data_array':
         writer.write(f"template <typename T, typename=std::enable_if_t<is_data_array_element_v<T>>>")
-    writer.write(f"{class_object.name.capitalize()}& {field.name}({output_val_type} f);")
+    writer.write(f"{class_object.name.title()}& {field.name}({output_val_type} f);")
 
 def emit_field_setter(class_object, field, output_val_type, writer):
     if output_val_type == 'T':
         writer.write(f"template <typename T>")
     elif field.json_val_type == 'data_array':
-        writer.write(f"template <typename T, typename=std::enable_if_t<is_data_array_element_v<T>>>")
-    writer.write(f"{class_object.name.capitalize()}& {class_object.name.capitalize()}::{field.name}({output_val_type} f) {{")
+        writer.write(f"template <typename T, typename>")
+    writer.write(f"{class_object.name.title()}& {class_object.name.title()}::{field.name}({output_val_type} f) {{")
     with IndentBlock(writer):
         if field.is_object:
             writer.write(f"json[\"{field.name}\"] = std::move(f.json);")
@@ -136,21 +137,21 @@ def emit_field_setter(class_object, field, output_val_type, writer):
 
 def emit_enum_field_setter_decl(class_object, field, writer):
     # To help compiler ambiguity, add enum keyword.
-    writer.write(f"{class_object.name.capitalize()}& {field.name}(enum {field.name.capitalize()} f);")
+    writer.write(f"{class_object.name.title()}& {field.name}(enum {field.name.title()} f);")
 
 def emit_enum_field_setter(class_object, field, writer):
     # To help compiler ambiguity, add enum keyword.
-    writer.write(f"{class_object.name.capitalize()}& {class_object.name.capitalize()}::{field.name}(enum {field.name.capitalize()} f) {{")
+    writer.write(f"{class_object.name.title()}& {class_object.name.title()}::{field.name}(enum {field.name.title()} f) {{")
     with IndentBlock(writer):
         writer.write(f"json[\"{field.name}\"] = to_string(f);")
         writer.write("return *this;")
     writer.write("}")
 
 def emit_enum_array_field_setter_decl(class_object, field, writer):
-    writer.write(f"{class_object.name.capitalize()}& {field.name}(const std::vector<enum {field.name.capitalize()}>& f);")
+    writer.write(f"{class_object.name.title()}& {field.name}(const std::vector<enum {field.name.title()}>& f);")
 
 def emit_enum_array_field_setter(class_object, field, writer):
-    writer.write(f"{class_object.name.capitalize()}& {class_object.name.capitalize()}::{field.name}(const std::vector<enum {field.name.capitalize()}>& f) {{")
+    writer.write(f"{class_object.name.title()}& {class_object.name.title()}::{field.name}(const std::vector<enum {field.name.title()}>& f) {{")
     with IndentBlock(writer):
         writer.write(f"std::vector<std::string> stringified(f.size());")
         writer.write(f"std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){{return to_string(e);}});")
@@ -160,28 +161,28 @@ def emit_enum_array_field_setter(class_object, field, writer):
 
 def emit_enum_definition(enum, writer):
     writer.write("")
-    writer.write(f"enum class {enum.name.capitalize()} {{")
+    writer.write(f"enum class {enum.name.title()} {{")
     with IndentBlock(writer):
         for safe_val in enum.safe_to_json_vals:
             writer.write(f"{safe_val},")
     writer.write("};")
 
 def emit_enum_to_string_decl(enum, writer):
-    writer.write(f"static std::string to_string({enum.name.capitalize()} e);")
+    writer.write(f"static std::string to_string({enum.name.title()} e);")
 
-def emit_enum_to_string(enum, writer):
-    writer.write(f"static std::string {enum.name.capitalize()}::to_string({enum.name.capitalize()} e) {{")
+def emit_enum_to_string(class_object, enum, writer):
+    writer.write(f"std::string {class_object.name.title()}::to_string({enum.name.title()} e) {{")
     with IndentBlock(writer):
         writer.write("switch(e) {")
         with IndentBlock(writer):
             for safe_val, json_val in enum.safe_to_json_vals.items():
-                writer.write(f'case {enum.name.capitalize()}::{safe_val}: return "{json_val}";')
+                writer.write(f'case {enum.name.title()}::{safe_val}: return "{json_val}";')
         writer.write("}")
     writer.write("}")
 
 def emit_class_public_members(class_object, writer):
     for e in class_object.enums:
-        emit_enum_to_string(e, writer)
+        emit_enum_to_string(class_object, e, writer)
 
     writer.write("")
 
@@ -193,7 +194,7 @@ def emit_class_public_members(class_object, writer):
         else:
             if field.is_object:
                 # Quirky
-                output_val_types = [f"class {field.name.capitalize()}"]
+                output_val_types = [f"class {field.name.title()}"]
             else:
                 output_val_types = valtype_map[field.json_val_type]
             for output_val_type_overload in output_val_types:
@@ -212,8 +213,9 @@ def emit_class_public_members_decl(class_object, writer):
 
         writer.write("")
         for obj in class_object.objects:
-            emit_object_decl(obj, writer)
+            emit_forward_object_decl(obj, writer)
 
+        writer.write("")
         for field in class_object.fields:
             if field.description:
                 lines = field.description.split("\n")
@@ -228,7 +230,7 @@ def emit_class_public_members_decl(class_object, writer):
             else:
                 if field.is_object:
                     # Quirky
-                    output_val_types = [f"class {field.name.capitalize()}"]
+                    output_val_types = [f"class {field.name.title()}"]
                 else:
                     output_val_types = valtype_map[field.json_val_type]
                 for output_val_type_overload in output_val_types:
@@ -239,17 +241,17 @@ def emit_class_public_members_decl(class_object, writer):
 
             writer.write("")
 
+def emit_forward_object_decl(class_object, writer):
+    if class_object.description:
+        writer.write(f"// {class_object.description}")
+    writer.write(f"class {class_object.name.split("::")[-1].title()};")
+
 def emit_object_decl(class_object, writer):
     if class_object.description:
         writer.write(f"// {class_object.description}")
-    writer.write(f"class {class_object.name};")
-
-def emit_object(class_object, writer):
-    if class_object.description:
-        writer.write(f"// {class_object.description}")
-    writer.write(f"class {class_object.name.capitalize()} {{")
+    writer.write(f"class {class_object.name.title()} {{")
     writer.write("public:")
-    emit_class_public_members(class_object, writer)
+    emit_class_public_members_decl(class_object, writer)
     emit_json_member(writer)
     writer.write("};")
     writer.write("")
@@ -261,7 +263,10 @@ def unnest_objects(parent, unnested_objects):
         unnest_objects(obj, unnested_objects)
 
 
-def emit_trace(trace, writer):
+def emit_trace(trace, out_dir, impl_subdir):
+    out_file = out_dir/f"{trace.name}.hpp"
+    writer = Writer(out_file)
+
     writer.write("// TODO: includes, copyright, etc")
     writer.write("#pragma once")
     writer.write("")
@@ -277,12 +282,13 @@ def emit_trace(trace, writer):
     writer.write("namespace plotlypp {")
     writer.write("")
     # Special case the outermost trace object to handle the 'type' field
-    writer.write(f"class {trace.name.capitalize()} : public Trace {{")
+    writer.write(f"class {trace.name.title()} : public Trace {{")
     writer.write("public:")
-    writer.write(f"{trace.name.capitalize()}() : Trace() {{")
     with IndentBlock(writer):
-        writer.write(f"json[\"type\"] = \"{trace.name}\";")
-    writer.write("}")
+        writer.write(f"{trace.name.title()}() : Trace() {{")
+        with IndentBlock(writer):
+            writer.write(f"json[\"type\"] = \"{trace.name}\";")
+        writer.write("}")
     emit_class_public_members_decl(trace, writer)
     writer.write("};")
     writer.write("")
@@ -290,24 +296,23 @@ def emit_trace(trace, writer):
     unnested_objects = []
     unnest_objects(trace, unnested_objects)
     for obj in unnested_objects:
-        writer.write(f"class {obj.name} {{")
-        writer.write("public:")
-        emit_class_public_members_decl(obj, writer)
-        writer.write("};")
-        writer.write("")
-
-
-    writer.write("")
-    writer.write("//// IMPL")
-    emit_class_public_members(trace, writer)
-    for obj in unnested_objects:
-        emit_class_public_members(obj, writer)
-    writer.write("//// IMPL END")
+        emit_object_decl(obj, writer)
 
     writer.write("} // namespace plotlypp")
     writer.write("")
+    writer.write(f"#include \"{impl_subdir}/{trace.name}_impl.hpp\"")
+    writer.write("")
 
-    # TODO: namespace
+    writer = Writer(out_dir / impl_subdir / f"{trace.name}_impl.hpp")
+    writer.write("// TODO: includes, copyright, etc")
+    writer.write("")
+    writer.write("namespace plotlypp {")
+    writer.write("")
+    emit_class_public_members(trace, writer)
+    for obj in unnested_objects:
+        emit_class_public_members(obj, writer)
+    writer.write("} // namespace plotlypp")
+    writer.write("")
 
 
 class Object:
@@ -503,11 +508,11 @@ def create_trace(name, trace_node):
     #emit_trace(trace)
     #print_obj_structure(trace)
     out_dir = Path("generated")
-    os.makedirs(out_dir, exist_ok=True)
-    out_file = out_dir/f"{trace.name}.hpp"
-    emit_trace(trace, Writer(out_file))
+    impl_subdir = Path("impl")
+    os.makedirs(out_dir / impl_subdir, exist_ok=True)
+    emit_trace(trace, out_dir, impl_subdir)
     # We did our best with formatting, but let's auto format to catch long comments, etc.
-    subprocess.run(["clang-format", "--style=file", "-i", str(out_file)])
+    subprocess.run(["clang-format", "--style=file", "-i", str(out_dir/f"{trace.name}.hpp")])
 
 
 
@@ -516,7 +521,7 @@ def create_traces(schema):
         #if name != "scatter":
         #    continue
         create_trace(name, trace_node)
-        break
+        #break
 
 
 

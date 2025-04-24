@@ -1,0 +1,1507 @@
+// TODO: includes, copyright, etc
+
+namespace plotlypp {
+
+std::string Isosurface::to_string(Visible e) {
+    switch(e) {
+        case Visible::TRUE: return "True";
+        case Visible::FALSE: return "False";
+        case Visible::LEGENDONLY: return "legendonly";
+    }
+}
+
+Isosurface& Isosurface::autocolorscale(bool f) {
+    json["autocolorscale"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::caps(class Caps f) {
+    json["caps"] = std::move(f.json);
+    return *this;
+}
+
+Isosurface& Isosurface::cauto(bool f) {
+    json["cauto"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::cmax(double f) {
+    json["cmax"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::cmid(double f) {
+    json["cmid"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::cmin(double f) {
+    json["cmin"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::coloraxis(std::string f) {
+    json["coloraxis"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::colorbar(class Colorbar f) {
+    json["colorbar"] = std::move(f.json);
+    return *this;
+}
+
+Isosurface& Isosurface::colorscale(std::string f) {
+    json["colorscale"] = std::move(f);
+    return *this;
+}
+Isosurface& Isosurface::colorscale(std::vector<std::pair<double, std::string>> f) {
+    json["colorscale"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::contour(class Contour f) {
+    json["contour"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T, typename>
+Isosurface& Isosurface::customdata(std::vector<T> f) {
+    json["customdata"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::customdatasrc(std::string f) {
+    json["customdatasrc"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::flatshading(bool f) {
+    json["flatshading"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::hoverinfo(std::string f) {
+    json["hoverinfo"] = std::move(f);
+    return *this;
+}
+Isosurface& Isosurface::hoverinfo(std::vector<std::string> f) {
+    json["hoverinfo"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::hoverinfosrc(std::string f) {
+    json["hoverinfosrc"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::hoverlabel(class Hoverlabel f) {
+    json["hoverlabel"] = std::move(f.json);
+    return *this;
+}
+
+Isosurface& Isosurface::hovertemplate(std::string f) {
+    json["hovertemplate"] = std::move(f);
+    return *this;
+}
+Isosurface& Isosurface::hovertemplate(std::vector<std::string> f) {
+    json["hovertemplate"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::hovertemplatesrc(std::string f) {
+    json["hovertemplatesrc"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::hovertext(std::string f) {
+    json["hovertext"] = std::move(f);
+    return *this;
+}
+Isosurface& Isosurface::hovertext(std::vector<std::string> f) {
+    json["hovertext"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::hovertextsrc(std::string f) {
+    json["hovertextsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Isosurface& Isosurface::ids(std::vector<T> f) {
+    json["ids"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::idssrc(std::string f) {
+    json["idssrc"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::isomax(double f) {
+    json["isomax"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::isomin(double f) {
+    json["isomin"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::legend(std::string f) {
+    json["legend"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::legendgroup(std::string f) {
+    json["legendgroup"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::legendgrouptitle(class Legendgrouptitle f) {
+    json["legendgrouptitle"] = std::move(f.json);
+    return *this;
+}
+
+Isosurface& Isosurface::legendrank(double f) {
+    json["legendrank"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::legendwidth(double f) {
+    json["legendwidth"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::lighting(class Lighting f) {
+    json["lighting"] = std::move(f.json);
+    return *this;
+}
+
+Isosurface& Isosurface::lightposition(class Lightposition f) {
+    json["lightposition"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T>
+Isosurface& Isosurface::meta(T f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+template <typename T>
+Isosurface& Isosurface::meta(std::vector<T> f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::metasrc(std::string f) {
+    json["metasrc"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::name(std::string f) {
+    json["name"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::opacity(double f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::reversescale(bool f) {
+    json["reversescale"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::scene(std::string f) {
+    json["scene"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::showlegend(bool f) {
+    json["showlegend"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::showscale(bool f) {
+    json["showscale"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::slices(class Slices f) {
+    json["slices"] = std::move(f.json);
+    return *this;
+}
+
+Isosurface& Isosurface::spaceframe(class Spaceframe f) {
+    json["spaceframe"] = std::move(f.json);
+    return *this;
+}
+
+Isosurface& Isosurface::stream(class Stream f) {
+    json["stream"] = std::move(f.json);
+    return *this;
+}
+
+Isosurface& Isosurface::surface(class Surface f) {
+    json["surface"] = std::move(f.json);
+    return *this;
+}
+
+Isosurface& Isosurface::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+Isosurface& Isosurface::text(std::vector<std::string> f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::textsrc(std::string f) {
+    json["textsrc"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::uid(std::string f) {
+    json["uid"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Isosurface& Isosurface::uirevision(T f) {
+    json["uirevision"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Isosurface& Isosurface::value(std::vector<T> f) {
+    json["value"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::valuehoverformat(std::string f) {
+    json["valuehoverformat"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::valuesrc(std::string f) {
+    json["valuesrc"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::visible(enum Visible f) {
+    json["visible"] = to_string(f);
+    return *this;
+}
+
+template <typename T, typename>
+Isosurface& Isosurface::x(std::vector<T> f) {
+    json["x"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::xhoverformat(std::string f) {
+    json["xhoverformat"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::xsrc(std::string f) {
+    json["xsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Isosurface& Isosurface::y(std::vector<T> f) {
+    json["y"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::yhoverformat(std::string f) {
+    json["yhoverformat"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::ysrc(std::string f) {
+    json["ysrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Isosurface& Isosurface::z(std::vector<T> f) {
+    json["z"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::zhoverformat(std::string f) {
+    json["zhoverformat"] = std::move(f);
+    return *this;
+}
+
+Isosurface& Isosurface::zsrc(std::string f) {
+    json["zsrc"] = std::move(f);
+    return *this;
+}
+
+
+Isosurface::Caps& Isosurface::Caps::x(class X f) {
+    json["x"] = std::move(f.json);
+    return *this;
+}
+
+Isosurface::Caps& Isosurface::Caps::y(class Y f) {
+    json["y"] = std::move(f.json);
+    return *this;
+}
+
+Isosurface::Caps& Isosurface::Caps::z(class Z f) {
+    json["z"] = std::move(f.json);
+    return *this;
+}
+
+
+Isosurface::Caps::X& Isosurface::Caps::X::fill(double f) {
+    json["fill"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Caps::X& Isosurface::Caps::X::show(bool f) {
+    json["show"] = std::move(f);
+    return *this;
+}
+
+
+Isosurface::Caps::Y& Isosurface::Caps::Y::fill(double f) {
+    json["fill"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Caps::Y& Isosurface::Caps::Y::show(bool f) {
+    json["show"] = std::move(f);
+    return *this;
+}
+
+
+Isosurface::Caps::Z& Isosurface::Caps::Z::fill(double f) {
+    json["fill"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Caps::Z& Isosurface::Caps::Z::show(bool f) {
+    json["show"] = std::move(f);
+    return *this;
+}
+
+std::string Isosurface::Colorbar::to_string(Exponentformat e) {
+    switch(e) {
+        case Exponentformat::NONE: return "none";
+        case Exponentformat::E: return "E";
+        case Exponentformat::POWER: return "power";
+        case Exponentformat::SI: return "SI";
+        case Exponentformat::B: return "B";
+    }
+}
+std::string Isosurface::Colorbar::to_string(Lenmode e) {
+    switch(e) {
+        case Lenmode::FRACTION: return "fraction";
+        case Lenmode::PIXELS: return "pixels";
+    }
+}
+std::string Isosurface::Colorbar::to_string(Orientation e) {
+    switch(e) {
+        case Orientation::H: return "h";
+        case Orientation::V: return "v";
+    }
+}
+std::string Isosurface::Colorbar::to_string(Showexponent e) {
+    switch(e) {
+        case Showexponent::ALL: return "all";
+        case Showexponent::FIRST: return "first";
+        case Showexponent::LAST: return "last";
+        case Showexponent::NONE: return "none";
+    }
+}
+std::string Isosurface::Colorbar::to_string(Showtickprefix e) {
+    switch(e) {
+        case Showtickprefix::ALL: return "all";
+        case Showtickprefix::FIRST: return "first";
+        case Showtickprefix::LAST: return "last";
+        case Showtickprefix::NONE: return "none";
+    }
+}
+std::string Isosurface::Colorbar::to_string(Showticksuffix e) {
+    switch(e) {
+        case Showticksuffix::ALL: return "all";
+        case Showticksuffix::FIRST: return "first";
+        case Showticksuffix::LAST: return "last";
+        case Showticksuffix::NONE: return "none";
+    }
+}
+std::string Isosurface::Colorbar::to_string(Thicknessmode e) {
+    switch(e) {
+        case Thicknessmode::FRACTION: return "fraction";
+        case Thicknessmode::PIXELS: return "pixels";
+    }
+}
+std::string Isosurface::Colorbar::to_string(Ticklabeloverflow e) {
+    switch(e) {
+        case Ticklabeloverflow::ALLOW: return "allow";
+        case Ticklabeloverflow::HIDE_PAST_DIV: return "hide past div";
+        case Ticklabeloverflow::HIDE_PAST_DOMAIN: return "hide past domain";
+    }
+}
+std::string Isosurface::Colorbar::to_string(Ticklabelposition e) {
+    switch(e) {
+        case Ticklabelposition::OUTSIDE: return "outside";
+        case Ticklabelposition::INSIDE: return "inside";
+        case Ticklabelposition::OUTSIDE_TOP: return "outside top";
+        case Ticklabelposition::INSIDE_TOP: return "inside top";
+        case Ticklabelposition::OUTSIDE_LEFT: return "outside left";
+        case Ticklabelposition::INSIDE_LEFT: return "inside left";
+        case Ticklabelposition::OUTSIDE_RIGHT: return "outside right";
+        case Ticklabelposition::INSIDE_RIGHT: return "inside right";
+        case Ticklabelposition::OUTSIDE_BOTTOM: return "outside bottom";
+        case Ticklabelposition::INSIDE_BOTTOM: return "inside bottom";
+    }
+}
+std::string Isosurface::Colorbar::to_string(Tickmode e) {
+    switch(e) {
+        case Tickmode::AUTO: return "auto";
+        case Tickmode::LINEAR: return "linear";
+        case Tickmode::ARRAY: return "array";
+    }
+}
+std::string Isosurface::Colorbar::to_string(Ticks e) {
+    switch(e) {
+        case Ticks::OUTSIDE: return "outside";
+        case Ticks::INSIDE: return "inside";
+        case Ticks::EMPTY: return "";
+    }
+}
+std::string Isosurface::Colorbar::to_string(Xanchor e) {
+    switch(e) {
+        case Xanchor::LEFT: return "left";
+        case Xanchor::CENTER: return "center";
+        case Xanchor::RIGHT: return "right";
+    }
+}
+std::string Isosurface::Colorbar::to_string(Xref e) {
+    switch(e) {
+        case Xref::CONTAINER: return "container";
+        case Xref::PAPER: return "paper";
+    }
+}
+std::string Isosurface::Colorbar::to_string(Yanchor e) {
+    switch(e) {
+        case Yanchor::TOP: return "top";
+        case Yanchor::MIDDLE: return "middle";
+        case Yanchor::BOTTOM: return "bottom";
+    }
+}
+std::string Isosurface::Colorbar::to_string(Yref e) {
+    switch(e) {
+        case Yref::CONTAINER: return "container";
+        case Yref::PAPER: return "paper";
+    }
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::bgcolor(std::string f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Isosurface::Colorbar& Isosurface::Colorbar::bgcolor(double f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::bordercolor(std::string f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Isosurface::Colorbar& Isosurface::Colorbar::bordercolor(double f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::borderwidth(double f) {
+    json["borderwidth"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Isosurface::Colorbar& Isosurface::Colorbar::dtick(T f) {
+    json["dtick"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::exponentformat(enum Exponentformat f) {
+    json["exponentformat"] = to_string(f);
+    return *this;
+}
+
+template <typename T>
+Isosurface::Colorbar& Isosurface::Colorbar::labelalias(T f) {
+    json["labelalias"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::len(double f) {
+    json["len"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::lenmode(enum Lenmode f) {
+    json["lenmode"] = to_string(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::minexponent(double f) {
+    json["minexponent"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::nticks(int f) {
+    json["nticks"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::orientation(enum Orientation f) {
+    json["orientation"] = to_string(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::outlinecolor(std::string f) {
+    json["outlinecolor"] = std::move(f);
+    return *this;
+}
+Isosurface::Colorbar& Isosurface::Colorbar::outlinecolor(double f) {
+    json["outlinecolor"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::outlinewidth(double f) {
+    json["outlinewidth"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::separatethousands(bool f) {
+    json["separatethousands"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::showexponent(enum Showexponent f) {
+    json["showexponent"] = to_string(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::showticklabels(bool f) {
+    json["showticklabels"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::showtickprefix(enum Showtickprefix f) {
+    json["showtickprefix"] = to_string(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::showticksuffix(enum Showticksuffix f) {
+    json["showticksuffix"] = to_string(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::thickness(double f) {
+    json["thickness"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::thicknessmode(enum Thicknessmode f) {
+    json["thicknessmode"] = to_string(f);
+    return *this;
+}
+
+template <typename T>
+Isosurface::Colorbar& Isosurface::Colorbar::tick0(T f) {
+    json["tick0"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::tickangle(double f) {
+    json["tickangle"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::tickcolor(std::string f) {
+    json["tickcolor"] = std::move(f);
+    return *this;
+}
+Isosurface::Colorbar& Isosurface::Colorbar::tickcolor(double f) {
+    json["tickcolor"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::tickfont(class Tickfont f) {
+    json["tickfont"] = std::move(f.json);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::tickformat(std::string f) {
+    json["tickformat"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::tickformatstops(class Tickformatstops f) {
+    json["tickformatstops"] = std::move(f.json);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::ticklabeloverflow(enum Ticklabeloverflow f) {
+    json["ticklabeloverflow"] = to_string(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::ticklabelposition(enum Ticklabelposition f) {
+    json["ticklabelposition"] = to_string(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::ticklabelstep(int f) {
+    json["ticklabelstep"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::ticklen(double f) {
+    json["ticklen"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::tickmode(enum Tickmode f) {
+    json["tickmode"] = to_string(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::tickprefix(std::string f) {
+    json["tickprefix"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::ticks(enum Ticks f) {
+    json["ticks"] = to_string(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::ticksuffix(std::string f) {
+    json["ticksuffix"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Isosurface::Colorbar& Isosurface::Colorbar::ticktext(std::vector<T> f) {
+    json["ticktext"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::ticktextsrc(std::string f) {
+    json["ticktextsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Isosurface::Colorbar& Isosurface::Colorbar::tickvals(std::vector<T> f) {
+    json["tickvals"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::tickvalssrc(std::string f) {
+    json["tickvalssrc"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::tickwidth(double f) {
+    json["tickwidth"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::title(class Title f) {
+    json["title"] = std::move(f.json);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::x(double f) {
+    json["x"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::xanchor(enum Xanchor f) {
+    json["xanchor"] = to_string(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::xpad(double f) {
+    json["xpad"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::xref(enum Xref f) {
+    json["xref"] = to_string(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::y(double f) {
+    json["y"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::yanchor(enum Yanchor f) {
+    json["yanchor"] = to_string(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::ypad(double f) {
+    json["ypad"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar& Isosurface::Colorbar::yref(enum Yref f) {
+    json["yref"] = to_string(f);
+    return *this;
+}
+
+std::string Isosurface::Colorbar::Tickfont::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Isosurface::Colorbar::Tickfont::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Isosurface::Colorbar::Tickfont::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Isosurface::Colorbar::Tickfont& Isosurface::Colorbar::Tickfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Isosurface::Colorbar::Tickfont& Isosurface::Colorbar::Tickfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar::Tickfont& Isosurface::Colorbar::Tickfont::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar::Tickfont& Isosurface::Colorbar::Tickfont::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar::Tickfont& Isosurface::Colorbar::Tickfont::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar::Tickfont& Isosurface::Colorbar::Tickfont::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar::Tickfont& Isosurface::Colorbar::Tickfont::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Isosurface::Colorbar::Tickfont& Isosurface::Colorbar::Tickfont::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Isosurface::Colorbar::Tickfont& Isosurface::Colorbar::Tickfont::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Isosurface::Colorbar::Tickfont& Isosurface::Colorbar::Tickfont::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Isosurface::Colorbar::Tickformatstops& Isosurface::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+    json["tickformatstop"] = std::move(f.json);
+    return *this;
+}
+
+
+Isosurface::Colorbar::Tickformatstops::Tickformatstop& Isosurface::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+    json["dtickrange"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar::Tickformatstops::Tickformatstop& Isosurface::Colorbar::Tickformatstops::Tickformatstop::enabled(bool f) {
+    json["enabled"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar::Tickformatstops::Tickformatstop& Isosurface::Colorbar::Tickformatstops::Tickformatstop::name(std::string f) {
+    json["name"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar::Tickformatstops::Tickformatstop& Isosurface::Colorbar::Tickformatstops::Tickformatstop::templateitemname(std::string f) {
+    json["templateitemname"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar::Tickformatstops::Tickformatstop& Isosurface::Colorbar::Tickformatstops::Tickformatstop::value(std::string f) {
+    json["value"] = std::move(f);
+    return *this;
+}
+
+std::string Isosurface::Colorbar::Title::to_string(Side e) {
+    switch(e) {
+        case Side::RIGHT: return "right";
+        case Side::TOP: return "top";
+        case Side::BOTTOM: return "bottom";
+    }
+}
+
+Isosurface::Colorbar::Title& Isosurface::Colorbar::Title::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Isosurface::Colorbar::Title& Isosurface::Colorbar::Title::side(enum Side f) {
+    json["side"] = to_string(f);
+    return *this;
+}
+
+Isosurface::Colorbar::Title& Isosurface::Colorbar::Title::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+std::string Isosurface::Colorbar::Title::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Isosurface::Colorbar::Title::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Isosurface::Colorbar::Title::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Isosurface::Colorbar::Title::Font& Isosurface::Colorbar::Title::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Isosurface::Colorbar::Title::Font& Isosurface::Colorbar::Title::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar::Title::Font& Isosurface::Colorbar::Title::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar::Title::Font& Isosurface::Colorbar::Title::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar::Title::Font& Isosurface::Colorbar::Title::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar::Title::Font& Isosurface::Colorbar::Title::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Colorbar::Title::Font& Isosurface::Colorbar::Title::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Isosurface::Colorbar::Title::Font& Isosurface::Colorbar::Title::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Isosurface::Colorbar::Title::Font& Isosurface::Colorbar::Title::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Isosurface::Colorbar::Title::Font& Isosurface::Colorbar::Title::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Isosurface::Contour& Isosurface::Contour::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Isosurface::Contour& Isosurface::Contour::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Contour& Isosurface::Contour::show(bool f) {
+    json["show"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Contour& Isosurface::Contour::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+std::string Isosurface::Hoverlabel::to_string(Align e) {
+    switch(e) {
+        case Align::LEFT: return "left";
+        case Align::RIGHT: return "right";
+        case Align::AUTO: return "auto";
+    }
+}
+
+Isosurface::Hoverlabel& Isosurface::Hoverlabel::align(enum Align f) {
+    json["align"] = to_string(f);
+    return *this;
+}
+Isosurface::Hoverlabel& Isosurface::Hoverlabel::align(const std::vector<enum Align>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["align"] = std::move(stringified);
+    return *this;
+}
+
+Isosurface::Hoverlabel& Isosurface::Hoverlabel::alignsrc(std::string f) {
+    json["alignsrc"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Hoverlabel& Isosurface::Hoverlabel::bgcolor(std::string f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Isosurface::Hoverlabel& Isosurface::Hoverlabel::bgcolor(double f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Isosurface::Hoverlabel& Isosurface::Hoverlabel::bgcolor(std::vector<std::string> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Isosurface::Hoverlabel& Isosurface::Hoverlabel::bgcolor(std::vector<double> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Hoverlabel& Isosurface::Hoverlabel::bgcolorsrc(std::string f) {
+    json["bgcolorsrc"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Hoverlabel& Isosurface::Hoverlabel::bordercolor(std::string f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Isosurface::Hoverlabel& Isosurface::Hoverlabel::bordercolor(double f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Isosurface::Hoverlabel& Isosurface::Hoverlabel::bordercolor(std::vector<std::string> f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Isosurface::Hoverlabel& Isosurface::Hoverlabel::bordercolor(std::vector<double> f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Hoverlabel& Isosurface::Hoverlabel::bordercolorsrc(std::string f) {
+    json["bordercolorsrc"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Hoverlabel& Isosurface::Hoverlabel::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Isosurface::Hoverlabel& Isosurface::Hoverlabel::namelength(int f) {
+    json["namelength"] = std::move(f);
+    return *this;
+}
+Isosurface::Hoverlabel& Isosurface::Hoverlabel::namelength(std::vector<int> f) {
+    json["namelength"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Hoverlabel& Isosurface::Hoverlabel::namelengthsrc(std::string f) {
+    json["namelengthsrc"] = std::move(f);
+    return *this;
+}
+
+std::string Isosurface::Hoverlabel::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Isosurface::Hoverlabel::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Isosurface::Hoverlabel::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::family(std::vector<std::string> f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::familysrc(std::string f) {
+    json["familysrc"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::linepositionsrc(std::string f) {
+    json["linepositionsrc"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::shadow(std::vector<std::string> f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::shadowsrc(std::string f) {
+    json["shadowsrc"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::size(std::vector<double> f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::sizesrc(std::string f) {
+    json["sizesrc"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::style(const std::vector<enum Style>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["style"] = std::move(stringified);
+    return *this;
+}
+
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::stylesrc(std::string f) {
+    json["stylesrc"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::textcase(const std::vector<enum Textcase>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["textcase"] = std::move(stringified);
+    return *this;
+}
+
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::textcasesrc(std::string f) {
+    json["textcasesrc"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::variant(const std::vector<enum Variant>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["variant"] = std::move(stringified);
+    return *this;
+}
+
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::variantsrc(std::string f) {
+    json["variantsrc"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::weight(std::vector<int> f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::weightsrc(std::string f) {
+    json["weightsrc"] = std::move(f);
+    return *this;
+}
+
+
+Isosurface::Legendgrouptitle& Isosurface::Legendgrouptitle::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Isosurface::Legendgrouptitle& Isosurface::Legendgrouptitle::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+std::string Isosurface::Legendgrouptitle::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Isosurface::Legendgrouptitle::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Isosurface::Legendgrouptitle::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Isosurface::Legendgrouptitle::Font& Isosurface::Legendgrouptitle::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Isosurface::Legendgrouptitle::Font& Isosurface::Legendgrouptitle::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Legendgrouptitle::Font& Isosurface::Legendgrouptitle::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Legendgrouptitle::Font& Isosurface::Legendgrouptitle::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Legendgrouptitle::Font& Isosurface::Legendgrouptitle::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Legendgrouptitle::Font& Isosurface::Legendgrouptitle::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Legendgrouptitle::Font& Isosurface::Legendgrouptitle::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Isosurface::Legendgrouptitle::Font& Isosurface::Legendgrouptitle::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Isosurface::Legendgrouptitle::Font& Isosurface::Legendgrouptitle::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Isosurface::Legendgrouptitle::Font& Isosurface::Legendgrouptitle::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Isosurface::Lighting& Isosurface::Lighting::ambient(double f) {
+    json["ambient"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Lighting& Isosurface::Lighting::diffuse(double f) {
+    json["diffuse"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Lighting& Isosurface::Lighting::facenormalsepsilon(double f) {
+    json["facenormalsepsilon"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Lighting& Isosurface::Lighting::fresnel(double f) {
+    json["fresnel"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Lighting& Isosurface::Lighting::roughness(double f) {
+    json["roughness"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Lighting& Isosurface::Lighting::specular(double f) {
+    json["specular"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Lighting& Isosurface::Lighting::vertexnormalsepsilon(double f) {
+    json["vertexnormalsepsilon"] = std::move(f);
+    return *this;
+}
+
+
+Isosurface::Lightposition& Isosurface::Lightposition::x(double f) {
+    json["x"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Lightposition& Isosurface::Lightposition::y(double f) {
+    json["y"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Lightposition& Isosurface::Lightposition::z(double f) {
+    json["z"] = std::move(f);
+    return *this;
+}
+
+
+Isosurface::Slices& Isosurface::Slices::x(class X f) {
+    json["x"] = std::move(f.json);
+    return *this;
+}
+
+Isosurface::Slices& Isosurface::Slices::y(class Y f) {
+    json["y"] = std::move(f.json);
+    return *this;
+}
+
+Isosurface::Slices& Isosurface::Slices::z(class Z f) {
+    json["z"] = std::move(f.json);
+    return *this;
+}
+
+
+Isosurface::Slices::X& Isosurface::Slices::X::fill(double f) {
+    json["fill"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Isosurface::Slices::X& Isosurface::Slices::X::locations(std::vector<T> f) {
+    json["locations"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Slices::X& Isosurface::Slices::X::locationssrc(std::string f) {
+    json["locationssrc"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Slices::X& Isosurface::Slices::X::show(bool f) {
+    json["show"] = std::move(f);
+    return *this;
+}
+
+
+Isosurface::Slices::Y& Isosurface::Slices::Y::fill(double f) {
+    json["fill"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Isosurface::Slices::Y& Isosurface::Slices::Y::locations(std::vector<T> f) {
+    json["locations"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Slices::Y& Isosurface::Slices::Y::locationssrc(std::string f) {
+    json["locationssrc"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Slices::Y& Isosurface::Slices::Y::show(bool f) {
+    json["show"] = std::move(f);
+    return *this;
+}
+
+
+Isosurface::Slices::Z& Isosurface::Slices::Z::fill(double f) {
+    json["fill"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Isosurface::Slices::Z& Isosurface::Slices::Z::locations(std::vector<T> f) {
+    json["locations"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Slices::Z& Isosurface::Slices::Z::locationssrc(std::string f) {
+    json["locationssrc"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Slices::Z& Isosurface::Slices::Z::show(bool f) {
+    json["show"] = std::move(f);
+    return *this;
+}
+
+
+Isosurface::Spaceframe& Isosurface::Spaceframe::fill(double f) {
+    json["fill"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Spaceframe& Isosurface::Spaceframe::show(bool f) {
+    json["show"] = std::move(f);
+    return *this;
+}
+
+
+Isosurface::Stream& Isosurface::Stream::maxpoints(double f) {
+    json["maxpoints"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Stream& Isosurface::Stream::token(std::string f) {
+    json["token"] = std::move(f);
+    return *this;
+}
+
+
+Isosurface::Surface& Isosurface::Surface::count(int f) {
+    json["count"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Surface& Isosurface::Surface::fill(double f) {
+    json["fill"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Surface& Isosurface::Surface::pattern(std::string f) {
+    json["pattern"] = std::move(f);
+    return *this;
+}
+
+Isosurface::Surface& Isosurface::Surface::show(bool f) {
+    json["show"] = std::move(f);
+    return *this;
+}
+
+} // namespace plotlypp
+

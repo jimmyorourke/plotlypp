@@ -1,0 +1,1468 @@
+// TODO: includes, copyright, etc
+
+namespace plotlypp {
+
+std::string Waterfall::to_string(Constraintext e) {
+    switch(e) {
+        case Constraintext::INSIDE: return "inside";
+        case Constraintext::OUTSIDE: return "outside";
+        case Constraintext::BOTH: return "both";
+        case Constraintext::NONE: return "none";
+    }
+}
+std::string Waterfall::to_string(Insidetextanchor e) {
+    switch(e) {
+        case Insidetextanchor::END: return "end";
+        case Insidetextanchor::MIDDLE: return "middle";
+        case Insidetextanchor::START: return "start";
+    }
+}
+std::string Waterfall::to_string(Orientation e) {
+    switch(e) {
+        case Orientation::V: return "v";
+        case Orientation::H: return "h";
+    }
+}
+std::string Waterfall::to_string(Textposition e) {
+    switch(e) {
+        case Textposition::INSIDE: return "inside";
+        case Textposition::OUTSIDE: return "outside";
+        case Textposition::AUTO: return "auto";
+        case Textposition::NONE: return "none";
+    }
+}
+std::string Waterfall::to_string(Visible e) {
+    switch(e) {
+        case Visible::TRUE: return "True";
+        case Visible::FALSE: return "False";
+        case Visible::LEGENDONLY: return "legendonly";
+    }
+}
+std::string Waterfall::to_string(Xperiodalignment e) {
+    switch(e) {
+        case Xperiodalignment::START: return "start";
+        case Xperiodalignment::MIDDLE: return "middle";
+        case Xperiodalignment::END: return "end";
+    }
+}
+std::string Waterfall::to_string(Yperiodalignment e) {
+    switch(e) {
+        case Yperiodalignment::START: return "start";
+        case Yperiodalignment::MIDDLE: return "middle";
+        case Yperiodalignment::END: return "end";
+    }
+}
+
+Waterfall& Waterfall::alignmentgroup(std::string f) {
+    json["alignmentgroup"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::base(double f) {
+    json["base"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::cliponaxis(bool f) {
+    json["cliponaxis"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::connector(class Connector f) {
+    json["connector"] = std::move(f.json);
+    return *this;
+}
+
+Waterfall& Waterfall::constraintext(enum Constraintext f) {
+    json["constraintext"] = to_string(f);
+    return *this;
+}
+
+template <typename T, typename>
+Waterfall& Waterfall::customdata(std::vector<T> f) {
+    json["customdata"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::customdatasrc(std::string f) {
+    json["customdatasrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::decreasing(class Decreasing f) {
+    json["decreasing"] = std::move(f.json);
+    return *this;
+}
+
+Waterfall& Waterfall::dx(double f) {
+    json["dx"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::dy(double f) {
+    json["dy"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::hoverinfo(std::string f) {
+    json["hoverinfo"] = std::move(f);
+    return *this;
+}
+Waterfall& Waterfall::hoverinfo(std::vector<std::string> f) {
+    json["hoverinfo"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::hoverinfosrc(std::string f) {
+    json["hoverinfosrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::hoverlabel(class Hoverlabel f) {
+    json["hoverlabel"] = std::move(f.json);
+    return *this;
+}
+
+Waterfall& Waterfall::hovertemplate(std::string f) {
+    json["hovertemplate"] = std::move(f);
+    return *this;
+}
+Waterfall& Waterfall::hovertemplate(std::vector<std::string> f) {
+    json["hovertemplate"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::hovertemplatesrc(std::string f) {
+    json["hovertemplatesrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::hovertext(std::string f) {
+    json["hovertext"] = std::move(f);
+    return *this;
+}
+Waterfall& Waterfall::hovertext(std::vector<std::string> f) {
+    json["hovertext"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::hovertextsrc(std::string f) {
+    json["hovertextsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Waterfall& Waterfall::ids(std::vector<T> f) {
+    json["ids"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::idssrc(std::string f) {
+    json["idssrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::increasing(class Increasing f) {
+    json["increasing"] = std::move(f.json);
+    return *this;
+}
+
+Waterfall& Waterfall::insidetextanchor(enum Insidetextanchor f) {
+    json["insidetextanchor"] = to_string(f);
+    return *this;
+}
+
+Waterfall& Waterfall::insidetextfont(class Insidetextfont f) {
+    json["insidetextfont"] = std::move(f.json);
+    return *this;
+}
+
+Waterfall& Waterfall::legend(std::string f) {
+    json["legend"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::legendgroup(std::string f) {
+    json["legendgroup"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::legendgrouptitle(class Legendgrouptitle f) {
+    json["legendgrouptitle"] = std::move(f.json);
+    return *this;
+}
+
+Waterfall& Waterfall::legendrank(double f) {
+    json["legendrank"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::legendwidth(double f) {
+    json["legendwidth"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Waterfall& Waterfall::measure(std::vector<T> f) {
+    json["measure"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::measuresrc(std::string f) {
+    json["measuresrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Waterfall& Waterfall::meta(T f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+template <typename T>
+Waterfall& Waterfall::meta(std::vector<T> f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::metasrc(std::string f) {
+    json["metasrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::name(std::string f) {
+    json["name"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::offset(double f) {
+    json["offset"] = std::move(f);
+    return *this;
+}
+Waterfall& Waterfall::offset(std::vector<double> f) {
+    json["offset"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::offsetgroup(std::string f) {
+    json["offsetgroup"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::offsetsrc(std::string f) {
+    json["offsetsrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::opacity(double f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::orientation(enum Orientation f) {
+    json["orientation"] = to_string(f);
+    return *this;
+}
+
+Waterfall& Waterfall::outsidetextfont(class Outsidetextfont f) {
+    json["outsidetextfont"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T>
+Waterfall& Waterfall::selectedpoints(T f) {
+    json["selectedpoints"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::showlegend(bool f) {
+    json["showlegend"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::stream(class Stream f) {
+    json["stream"] = std::move(f.json);
+    return *this;
+}
+
+Waterfall& Waterfall::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+Waterfall& Waterfall::text(std::vector<std::string> f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::textangle(double f) {
+    json["textangle"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::textfont(class Textfont f) {
+    json["textfont"] = std::move(f.json);
+    return *this;
+}
+
+Waterfall& Waterfall::textinfo(std::string f) {
+    json["textinfo"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::textposition(enum Textposition f) {
+    json["textposition"] = to_string(f);
+    return *this;
+}
+Waterfall& Waterfall::textposition(const std::vector<enum Textposition>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["textposition"] = std::move(stringified);
+    return *this;
+}
+
+Waterfall& Waterfall::textpositionsrc(std::string f) {
+    json["textpositionsrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::textsrc(std::string f) {
+    json["textsrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::texttemplate(std::string f) {
+    json["texttemplate"] = std::move(f);
+    return *this;
+}
+Waterfall& Waterfall::texttemplate(std::vector<std::string> f) {
+    json["texttemplate"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::texttemplatesrc(std::string f) {
+    json["texttemplatesrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::totals(class Totals f) {
+    json["totals"] = std::move(f.json);
+    return *this;
+}
+
+Waterfall& Waterfall::uid(std::string f) {
+    json["uid"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Waterfall& Waterfall::uirevision(T f) {
+    json["uirevision"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::visible(enum Visible f) {
+    json["visible"] = to_string(f);
+    return *this;
+}
+
+Waterfall& Waterfall::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+Waterfall& Waterfall::width(std::vector<double> f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::widthsrc(std::string f) {
+    json["widthsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Waterfall& Waterfall::x(std::vector<T> f) {
+    json["x"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Waterfall& Waterfall::x0(T f) {
+    json["x0"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::xaxis(std::string f) {
+    json["xaxis"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::xhoverformat(std::string f) {
+    json["xhoverformat"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Waterfall& Waterfall::xperiod(T f) {
+    json["xperiod"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Waterfall& Waterfall::xperiod0(T f) {
+    json["xperiod0"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::xperiodalignment(enum Xperiodalignment f) {
+    json["xperiodalignment"] = to_string(f);
+    return *this;
+}
+
+Waterfall& Waterfall::xsrc(std::string f) {
+    json["xsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Waterfall& Waterfall::y(std::vector<T> f) {
+    json["y"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Waterfall& Waterfall::y0(T f) {
+    json["y0"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::yaxis(std::string f) {
+    json["yaxis"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::yhoverformat(std::string f) {
+    json["yhoverformat"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Waterfall& Waterfall::yperiod(T f) {
+    json["yperiod"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Waterfall& Waterfall::yperiod0(T f) {
+    json["yperiod0"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::yperiodalignment(enum Yperiodalignment f) {
+    json["yperiodalignment"] = to_string(f);
+    return *this;
+}
+
+Waterfall& Waterfall::ysrc(std::string f) {
+    json["ysrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall& Waterfall::zorder(int f) {
+    json["zorder"] = std::move(f);
+    return *this;
+}
+
+std::string Waterfall::Connector::to_string(Mode e) {
+    switch(e) {
+        case Mode::SPANNING: return "spanning";
+        case Mode::BETWEEN: return "between";
+    }
+}
+
+Waterfall::Connector& Waterfall::Connector::line(class Line f) {
+    json["line"] = std::move(f.json);
+    return *this;
+}
+
+Waterfall::Connector& Waterfall::Connector::mode(enum Mode f) {
+    json["mode"] = to_string(f);
+    return *this;
+}
+
+Waterfall::Connector& Waterfall::Connector::visible(bool f) {
+    json["visible"] = std::move(f);
+    return *this;
+}
+
+
+Waterfall::Connector::Line& Waterfall::Connector::Line::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Waterfall::Connector::Line& Waterfall::Connector::Line::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Connector::Line& Waterfall::Connector::Line::dash(std::string f) {
+    json["dash"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Connector::Line& Waterfall::Connector::Line::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+
+Waterfall::Decreasing& Waterfall::Decreasing::marker(class Marker f) {
+    json["marker"] = std::move(f.json);
+    return *this;
+}
+
+
+Waterfall::Decreasing::Marker& Waterfall::Decreasing::Marker::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Waterfall::Decreasing::Marker& Waterfall::Decreasing::Marker::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Decreasing::Marker& Waterfall::Decreasing::Marker::line(class Line f) {
+    json["line"] = std::move(f.json);
+    return *this;
+}
+
+
+Waterfall::Decreasing::Marker::Line& Waterfall::Decreasing::Marker::Line::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Waterfall::Decreasing::Marker::Line& Waterfall::Decreasing::Marker::Line::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Decreasing::Marker::Line& Waterfall::Decreasing::Marker::Line::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+std::string Waterfall::Hoverlabel::to_string(Align e) {
+    switch(e) {
+        case Align::LEFT: return "left";
+        case Align::RIGHT: return "right";
+        case Align::AUTO: return "auto";
+    }
+}
+
+Waterfall::Hoverlabel& Waterfall::Hoverlabel::align(enum Align f) {
+    json["align"] = to_string(f);
+    return *this;
+}
+Waterfall::Hoverlabel& Waterfall::Hoverlabel::align(const std::vector<enum Align>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["align"] = std::move(stringified);
+    return *this;
+}
+
+Waterfall::Hoverlabel& Waterfall::Hoverlabel::alignsrc(std::string f) {
+    json["alignsrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Hoverlabel& Waterfall::Hoverlabel::bgcolor(std::string f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Waterfall::Hoverlabel& Waterfall::Hoverlabel::bgcolor(double f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Waterfall::Hoverlabel& Waterfall::Hoverlabel::bgcolor(std::vector<std::string> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Waterfall::Hoverlabel& Waterfall::Hoverlabel::bgcolor(std::vector<double> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Hoverlabel& Waterfall::Hoverlabel::bgcolorsrc(std::string f) {
+    json["bgcolorsrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Hoverlabel& Waterfall::Hoverlabel::bordercolor(std::string f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Waterfall::Hoverlabel& Waterfall::Hoverlabel::bordercolor(double f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Waterfall::Hoverlabel& Waterfall::Hoverlabel::bordercolor(std::vector<std::string> f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Waterfall::Hoverlabel& Waterfall::Hoverlabel::bordercolor(std::vector<double> f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Hoverlabel& Waterfall::Hoverlabel::bordercolorsrc(std::string f) {
+    json["bordercolorsrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Hoverlabel& Waterfall::Hoverlabel::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Waterfall::Hoverlabel& Waterfall::Hoverlabel::namelength(int f) {
+    json["namelength"] = std::move(f);
+    return *this;
+}
+Waterfall::Hoverlabel& Waterfall::Hoverlabel::namelength(std::vector<int> f) {
+    json["namelength"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Hoverlabel& Waterfall::Hoverlabel::namelengthsrc(std::string f) {
+    json["namelengthsrc"] = std::move(f);
+    return *this;
+}
+
+std::string Waterfall::Hoverlabel::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Waterfall::Hoverlabel::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Waterfall::Hoverlabel::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::family(std::vector<std::string> f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::familysrc(std::string f) {
+    json["familysrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::linepositionsrc(std::string f) {
+    json["linepositionsrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::shadow(std::vector<std::string> f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::shadowsrc(std::string f) {
+    json["shadowsrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::size(std::vector<double> f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::sizesrc(std::string f) {
+    json["sizesrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::style(const std::vector<enum Style>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["style"] = std::move(stringified);
+    return *this;
+}
+
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::stylesrc(std::string f) {
+    json["stylesrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::textcase(const std::vector<enum Textcase>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["textcase"] = std::move(stringified);
+    return *this;
+}
+
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::textcasesrc(std::string f) {
+    json["textcasesrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::variant(const std::vector<enum Variant>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["variant"] = std::move(stringified);
+    return *this;
+}
+
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::variantsrc(std::string f) {
+    json["variantsrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::weight(std::vector<int> f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::weightsrc(std::string f) {
+    json["weightsrc"] = std::move(f);
+    return *this;
+}
+
+
+Waterfall::Increasing& Waterfall::Increasing::marker(class Marker f) {
+    json["marker"] = std::move(f.json);
+    return *this;
+}
+
+
+Waterfall::Increasing::Marker& Waterfall::Increasing::Marker::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Waterfall::Increasing::Marker& Waterfall::Increasing::Marker::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Increasing::Marker& Waterfall::Increasing::Marker::line(class Line f) {
+    json["line"] = std::move(f.json);
+    return *this;
+}
+
+
+Waterfall::Increasing::Marker::Line& Waterfall::Increasing::Marker::Line::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Waterfall::Increasing::Marker::Line& Waterfall::Increasing::Marker::Line::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Increasing::Marker::Line& Waterfall::Increasing::Marker::Line::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+std::string Waterfall::Insidetextfont::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Waterfall::Insidetextfont::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Waterfall::Insidetextfont::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::family(std::vector<std::string> f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::familysrc(std::string f) {
+    json["familysrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::lineposition(std::vector<std::string> f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::linepositionsrc(std::string f) {
+    json["linepositionsrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::shadow(std::vector<std::string> f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::shadowsrc(std::string f) {
+    json["shadowsrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::size(std::vector<double> f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::sizesrc(std::string f) {
+    json["sizesrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::style(const std::vector<enum Style>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["style"] = std::move(stringified);
+    return *this;
+}
+
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::stylesrc(std::string f) {
+    json["stylesrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::textcase(const std::vector<enum Textcase>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["textcase"] = std::move(stringified);
+    return *this;
+}
+
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::textcasesrc(std::string f) {
+    json["textcasesrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::variant(const std::vector<enum Variant>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["variant"] = std::move(stringified);
+    return *this;
+}
+
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::variantsrc(std::string f) {
+    json["variantsrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::weight(std::vector<int> f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::weightsrc(std::string f) {
+    json["weightsrc"] = std::move(f);
+    return *this;
+}
+
+
+Waterfall::Legendgrouptitle& Waterfall::Legendgrouptitle::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Waterfall::Legendgrouptitle& Waterfall::Legendgrouptitle::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+std::string Waterfall::Legendgrouptitle::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Waterfall::Legendgrouptitle::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Waterfall::Legendgrouptitle::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Waterfall::Legendgrouptitle::Font& Waterfall::Legendgrouptitle::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Waterfall::Legendgrouptitle::Font& Waterfall::Legendgrouptitle::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Legendgrouptitle::Font& Waterfall::Legendgrouptitle::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Legendgrouptitle::Font& Waterfall::Legendgrouptitle::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Legendgrouptitle::Font& Waterfall::Legendgrouptitle::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Legendgrouptitle::Font& Waterfall::Legendgrouptitle::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Legendgrouptitle::Font& Waterfall::Legendgrouptitle::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Waterfall::Legendgrouptitle::Font& Waterfall::Legendgrouptitle::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Waterfall::Legendgrouptitle::Font& Waterfall::Legendgrouptitle::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Waterfall::Legendgrouptitle::Font& Waterfall::Legendgrouptitle::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+std::string Waterfall::Outsidetextfont::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Waterfall::Outsidetextfont::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Waterfall::Outsidetextfont::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::family(std::vector<std::string> f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::familysrc(std::string f) {
+    json["familysrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::lineposition(std::vector<std::string> f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::linepositionsrc(std::string f) {
+    json["linepositionsrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::shadow(std::vector<std::string> f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::shadowsrc(std::string f) {
+    json["shadowsrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::size(std::vector<double> f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::sizesrc(std::string f) {
+    json["sizesrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::style(const std::vector<enum Style>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["style"] = std::move(stringified);
+    return *this;
+}
+
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::stylesrc(std::string f) {
+    json["stylesrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::textcase(const std::vector<enum Textcase>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["textcase"] = std::move(stringified);
+    return *this;
+}
+
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::textcasesrc(std::string f) {
+    json["textcasesrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::variant(const std::vector<enum Variant>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["variant"] = std::move(stringified);
+    return *this;
+}
+
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::variantsrc(std::string f) {
+    json["variantsrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::weight(std::vector<int> f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::weightsrc(std::string f) {
+    json["weightsrc"] = std::move(f);
+    return *this;
+}
+
+
+Waterfall::Stream& Waterfall::Stream::maxpoints(double f) {
+    json["maxpoints"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Stream& Waterfall::Stream::token(std::string f) {
+    json["token"] = std::move(f);
+    return *this;
+}
+
+std::string Waterfall::Textfont::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Waterfall::Textfont::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Waterfall::Textfont::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Waterfall::Textfont& Waterfall::Textfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Waterfall::Textfont& Waterfall::Textfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Waterfall::Textfont& Waterfall::Textfont::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Waterfall::Textfont& Waterfall::Textfont::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Textfont& Waterfall::Textfont::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Textfont& Waterfall::Textfont::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+Waterfall::Textfont& Waterfall::Textfont::family(std::vector<std::string> f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Textfont& Waterfall::Textfont::familysrc(std::string f) {
+    json["familysrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Textfont& Waterfall::Textfont::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+Waterfall::Textfont& Waterfall::Textfont::lineposition(std::vector<std::string> f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Textfont& Waterfall::Textfont::linepositionsrc(std::string f) {
+    json["linepositionsrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Textfont& Waterfall::Textfont::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+Waterfall::Textfont& Waterfall::Textfont::shadow(std::vector<std::string> f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Textfont& Waterfall::Textfont::shadowsrc(std::string f) {
+    json["shadowsrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Textfont& Waterfall::Textfont::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+Waterfall::Textfont& Waterfall::Textfont::size(std::vector<double> f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Textfont& Waterfall::Textfont::sizesrc(std::string f) {
+    json["sizesrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Textfont& Waterfall::Textfont::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+Waterfall::Textfont& Waterfall::Textfont::style(const std::vector<enum Style>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["style"] = std::move(stringified);
+    return *this;
+}
+
+Waterfall::Textfont& Waterfall::Textfont::stylesrc(std::string f) {
+    json["stylesrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Textfont& Waterfall::Textfont::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+Waterfall::Textfont& Waterfall::Textfont::textcase(const std::vector<enum Textcase>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["textcase"] = std::move(stringified);
+    return *this;
+}
+
+Waterfall::Textfont& Waterfall::Textfont::textcasesrc(std::string f) {
+    json["textcasesrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Textfont& Waterfall::Textfont::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+Waterfall::Textfont& Waterfall::Textfont::variant(const std::vector<enum Variant>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["variant"] = std::move(stringified);
+    return *this;
+}
+
+Waterfall::Textfont& Waterfall::Textfont::variantsrc(std::string f) {
+    json["variantsrc"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Textfont& Waterfall::Textfont::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+Waterfall::Textfont& Waterfall::Textfont::weight(std::vector<int> f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Textfont& Waterfall::Textfont::weightsrc(std::string f) {
+    json["weightsrc"] = std::move(f);
+    return *this;
+}
+
+
+Waterfall::Totals& Waterfall::Totals::marker(class Marker f) {
+    json["marker"] = std::move(f.json);
+    return *this;
+}
+
+
+Waterfall::Totals::Marker& Waterfall::Totals::Marker::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Waterfall::Totals::Marker& Waterfall::Totals::Marker::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Totals::Marker& Waterfall::Totals::Marker::line(class Line f) {
+    json["line"] = std::move(f.json);
+    return *this;
+}
+
+
+Waterfall::Totals::Marker::Line& Waterfall::Totals::Marker::Line::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Waterfall::Totals::Marker::Line& Waterfall::Totals::Marker::Line::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Waterfall::Totals::Marker::Line& Waterfall::Totals::Marker::Line::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+} // namespace plotlypp
+

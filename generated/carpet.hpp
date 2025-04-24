@@ -24,2448 +24,93 @@ class Carpet : public Trace {
         FALSE,
         LEGENDONLY,
     };
-    std::string to_string(Visible e) {
-        switch (e) {
-        case Visible::TRUE:
-            return "True";
-        case Visible::FALSE:
-            return "False";
-        case Visible::LEGENDONLY:
-            return "legendonly";
-        }
-    }
+    static std::string to_string(Visible e);
 
-    class Aaxis {
-     public:
-
-        enum class Autorange {
-            TRUE,
-            FALSE,
-            REVERSED,
-        };
-        std::string to_string(Autorange e) {
-            switch (e) {
-            case Autorange::TRUE:
-                return "True";
-            case Autorange::FALSE:
-                return "False";
-            case Autorange::REVERSED:
-                return "reversed";
-            }
-        }
-
-        enum class Autotypenumbers {
-            CONVERT_TYPES,
-            STRICT,
-        };
-        std::string to_string(Autotypenumbers e) {
-            switch (e) {
-            case Autotypenumbers::CONVERT_TYPES:
-                return "convert types";
-            case Autotypenumbers::STRICT:
-                return "strict";
-            }
-        }
-
-        enum class Categoryorder {
-            TRACE,
-            CATEGORY_ASCENDING,
-            CATEGORY_DESCENDING,
-            ARRAY,
-        };
-        std::string to_string(Categoryorder e) {
-            switch (e) {
-            case Categoryorder::TRACE:
-                return "trace";
-            case Categoryorder::CATEGORY_ASCENDING:
-                return "category ascending";
-            case Categoryorder::CATEGORY_DESCENDING:
-                return "category descending";
-            case Categoryorder::ARRAY:
-                return "array";
-            }
-        }
-
-        enum class Cheatertype {
-            INDEX,
-            VALUE,
-        };
-        std::string to_string(Cheatertype e) {
-            switch (e) {
-            case Cheatertype::INDEX:
-                return "index";
-            case Cheatertype::VALUE:
-                return "value";
-            }
-        }
-
-        enum class Exponentformat {
-            NONE,
-            E,
-            POWER,
-            SI,
-            B,
-        };
-        std::string to_string(Exponentformat e) {
-            switch (e) {
-            case Exponentformat::NONE:
-                return "none";
-            case Exponentformat::E:
-                return "E";
-            case Exponentformat::POWER:
-                return "power";
-            case Exponentformat::SI:
-                return "SI";
-            case Exponentformat::B:
-                return "B";
-            }
-        }
-
-        enum class Rangemode {
-            NORMAL,
-            TOZERO,
-            NONNEGATIVE,
-        };
-        std::string to_string(Rangemode e) {
-            switch (e) {
-            case Rangemode::NORMAL:
-                return "normal";
-            case Rangemode::TOZERO:
-                return "tozero";
-            case Rangemode::NONNEGATIVE:
-                return "nonnegative";
-            }
-        }
-
-        enum class Showexponent {
-            ALL,
-            FIRST,
-            LAST,
-            NONE,
-        };
-        std::string to_string(Showexponent e) {
-            switch (e) {
-            case Showexponent::ALL:
-                return "all";
-            case Showexponent::FIRST:
-                return "first";
-            case Showexponent::LAST:
-                return "last";
-            case Showexponent::NONE:
-                return "none";
-            }
-        }
-
-        enum class Showticklabels {
-            START,
-            END,
-            BOTH,
-            NONE,
-        };
-        std::string to_string(Showticklabels e) {
-            switch (e) {
-            case Showticklabels::START:
-                return "start";
-            case Showticklabels::END:
-                return "end";
-            case Showticklabels::BOTH:
-                return "both";
-            case Showticklabels::NONE:
-                return "none";
-            }
-        }
-
-        enum class Showtickprefix {
-            ALL,
-            FIRST,
-            LAST,
-            NONE,
-        };
-        std::string to_string(Showtickprefix e) {
-            switch (e) {
-            case Showtickprefix::ALL:
-                return "all";
-            case Showtickprefix::FIRST:
-                return "first";
-            case Showtickprefix::LAST:
-                return "last";
-            case Showtickprefix::NONE:
-                return "none";
-            }
-        }
-
-        enum class Showticksuffix {
-            ALL,
-            FIRST,
-            LAST,
-            NONE,
-        };
-        std::string to_string(Showticksuffix e) {
-            switch (e) {
-            case Showticksuffix::ALL:
-                return "all";
-            case Showticksuffix::FIRST:
-                return "first";
-            case Showticksuffix::LAST:
-                return "last";
-            case Showticksuffix::NONE:
-                return "none";
-            }
-        }
-
-        enum class Tickmode {
-            LINEAR,
-            ARRAY,
-        };
-        std::string to_string(Tickmode e) {
-            switch (e) {
-            case Tickmode::LINEAR:
-                return "linear";
-            case Tickmode::ARRAY:
-                return "array";
-            }
-        }
-
-        enum class Type {
-            HYPHEN,
-            LINEAR,
-            DATE,
-            CATEGORY,
-        };
-        std::string to_string(Type e) {
-            switch (e) {
-            case Type::HYPHEN:
-                return "-";
-            case Type::LINEAR:
-                return "linear";
-            case Type::DATE:
-                return "date";
-            case Type::CATEGORY:
-                return "category";
-            }
-        }
-
-        // Sets the tick font.
-        class Tickfont {
-         public:
-
-            enum class Style {
-                NORMAL,
-                ITALIC,
-            };
-            std::string to_string(Style e) {
-                switch (e) {
-                case Style::NORMAL:
-                    return "normal";
-                case Style::ITALIC:
-                    return "italic";
-                }
-            }
-
-            enum class Textcase {
-                NORMAL,
-                WORD_CAPS,
-                UPPER,
-                LOWER,
-            };
-            std::string to_string(Textcase e) {
-                switch (e) {
-                case Textcase::NORMAL:
-                    return "normal";
-                case Textcase::WORD_CAPS:
-                    return "word caps";
-                case Textcase::UPPER:
-                    return "upper";
-                case Textcase::LOWER:
-                    return "lower";
-                }
-            }
-
-            enum class Variant {
-                NORMAL,
-                SMALL_CAPS,
-                ALL_SMALL_CAPS,
-                ALL_PETITE_CAPS,
-                PETITE_CAPS,
-                UNICASE,
-            };
-            std::string to_string(Variant e) {
-                switch (e) {
-                case Variant::NORMAL:
-                    return "normal";
-                case Variant::SMALL_CAPS:
-                    return "small-caps";
-                case Variant::ALL_SMALL_CAPS:
-                    return "all-small-caps";
-                case Variant::ALL_PETITE_CAPS:
-                    return "all-petite-caps";
-                case Variant::PETITE_CAPS:
-                    return "petite-caps";
-                case Variant::UNICASE:
-                    return "unicase";
-                }
-            }
-
-            Tickfont& color(std::string f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-            Tickfont& color(double f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-
-            // HTML font family - the typeface that will be applied by the web browser. The web browser will only be
-            // able to apply a font if it is available on the system which it operates. Provide multiple font families,
-            // separated by commas, to indicate the preference in which to apply fonts if they aren't available on the
-            // system. The Chart Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a
-            // server, where only a select number of fonts are installed and supported. These include *Arial*, *Balto*,
-            // *Courier New*, *Droid Sans*, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open
-            // Sans*, *Overpass*, *PT Sans Narrow*, *Raleway*, *Times New Roman*.
-            Tickfont& family(std::string f) {
-                json["family"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as
-            // combinations e.g. *under+over*, etc.
-            // - Default: none
-            // - Flags: ['under', 'over', 'through']
-            // - Extras ['none']
-            Tickfont& lineposition(std::string f) {
-                json["lineposition"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast
-            // text font color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
-            Tickfont& shadow(std::string f) {
-                json["shadow"] = std::move(f);
-                return *this;
-            }
-
-            Tickfont& size(double f) {
-                json["size"] = std::move(f);
-                return *this;
-            }
-
-            // Sets whether a font should be styled with a normal or italic face from its family.
-            // - Default: normal
-            Tickfont& style(enum Style f) {
-                json["style"] = to_string(f);
-                return *this;
-            }
-
-            // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or
-            // with each word capitalized.
-            // - Default: normal
-            Tickfont& textcase(enum Textcase f) {
-                json["textcase"] = to_string(f);
-                return *this;
-            }
-
-            // Sets the variant of the font.
-            // - Default: normal
-            Tickfont& variant(enum Variant f) {
-                json["variant"] = to_string(f);
-                return *this;
-            }
-
-            // Sets the weight (or boldness) of the font.
-            Tickfont& weight(int f) {
-                json["weight"] = std::move(f);
-                return *this;
-            }
-
-            // Advanced users may modify the JSON representation directly, at their own peril!
-            nlohmann::json json{};
-        };
-
-        class Tickformatstops {
-         public:
-
-            class Tickformatstop {
-             public:
-
-                // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is
-                // possible to omit *min* or *max* value by passing *null*
-                Tickformatstop& dtickrange(std::vector<std::string> f) {
-                    json["dtickrange"] = std::move(f);
-                    return *this;
-                }
-
-                // Determines whether or not this stop is used. If `false`, this stop is ignored even within its
-                // `dtickrange`.
-                Tickformatstop& enabled(bool f) {
-                    json["enabled"] = std::move(f);
-                    return *this;
-                }
-
-                // When used in a template, named items are created in the output figure in addition to any items the
-                // figure already has in this array. You can modify these items in the output figure by making your own
-                // item with `templateitemname` matching this `name` alongside your modifications (including `visible:
-                // false` or `enabled: false` to hide it). Has no effect outside of a template.
-                Tickformatstop& name(std::string f) {
-                    json["name"] = std::move(f);
-                    return *this;
-                }
-
-                // Used to refer to a named item in this array in the template. Named items from the template will be
-                // created even without a matching item in the input figure, but you can modify one by making an item
-                // with `templateitemname` matching its `name`, alongside your modifications (including `visible: false`
-                // or `enabled: false` to hide it). If there is no template or no matching item, this item will be
-                // hidden unless you explicitly show it with `visible: true`.
-                Tickformatstop& templateitemname(std::string f) {
-                    json["templateitemname"] = std::move(f);
-                    return *this;
-                }
-
-                // string - dtickformat for described zoom level, the same as *tickformat*
-                Tickformatstop& value(std::string f) {
-                    json["value"] = std::move(f);
-                    return *this;
-                }
-
-                // Advanced users may modify the JSON representation directly, at their own peril!
-                nlohmann::json json{};
-            };
-
-            Tickformatstops& tickformatstop(class Tickformatstop f) {
-                json["tickformatstop"] = std::move(f.json);
-                return *this;
-            }
-
-            // Advanced users may modify the JSON representation directly, at their own peril!
-            nlohmann::json json{};
-        };
-
-        class Title {
-         public:
-
-            // Sets this axis' title font.
-            class Font {
-             public:
-
-                enum class Style {
-                    NORMAL,
-                    ITALIC,
-                };
-                std::string to_string(Style e) {
-                    switch (e) {
-                    case Style::NORMAL:
-                        return "normal";
-                    case Style::ITALIC:
-                        return "italic";
-                    }
-                }
-
-                enum class Textcase {
-                    NORMAL,
-                    WORD_CAPS,
-                    UPPER,
-                    LOWER,
-                };
-                std::string to_string(Textcase e) {
-                    switch (e) {
-                    case Textcase::NORMAL:
-                        return "normal";
-                    case Textcase::WORD_CAPS:
-                        return "word caps";
-                    case Textcase::UPPER:
-                        return "upper";
-                    case Textcase::LOWER:
-                        return "lower";
-                    }
-                }
-
-                enum class Variant {
-                    NORMAL,
-                    SMALL_CAPS,
-                    ALL_SMALL_CAPS,
-                    ALL_PETITE_CAPS,
-                    PETITE_CAPS,
-                    UNICASE,
-                };
-                std::string to_string(Variant e) {
-                    switch (e) {
-                    case Variant::NORMAL:
-                        return "normal";
-                    case Variant::SMALL_CAPS:
-                        return "small-caps";
-                    case Variant::ALL_SMALL_CAPS:
-                        return "all-small-caps";
-                    case Variant::ALL_PETITE_CAPS:
-                        return "all-petite-caps";
-                    case Variant::PETITE_CAPS:
-                        return "petite-caps";
-                    case Variant::UNICASE:
-                        return "unicase";
-                    }
-                }
-
-                Font& color(std::string f) {
-                    json["color"] = std::move(f);
-                    return *this;
-                }
-                Font& color(double f) {
-                    json["color"] = std::move(f);
-                    return *this;
-                }
-
-                // HTML font family - the typeface that will be applied by the web browser. The web browser will only be
-                // able to apply a font if it is available on the system which it operates. Provide multiple font
-                // families, separated by commas, to indicate the preference in which to apply fonts if they aren't
-                // available on the system. The Chart Studio Cloud (at https://chart-studio.plotly.com or on-premise)
-                // generates images on a server, where only a select number of fonts are installed and supported. These
-                // include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid Serif*, *Droid Sans Mono*, *Gravitas
-                // One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*, *Raleway*, *Times New Roman*.
-                Font& family(std::string f) {
-                    json["family"] = std::move(f);
-                    return *this;
-                }
-
-                // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as
-                // combinations e.g. *under+over*, etc.
-                // - Default: none
-                // - Flags: ['under', 'over', 'through']
-                // - Extras ['none']
-                Font& lineposition(std::string f) {
-                    json["lineposition"] = std::move(f);
-                    return *this;
-                }
-
-                // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast
-                // text font color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional
-                // options.
-                Font& shadow(std::string f) {
-                    json["shadow"] = std::move(f);
-                    return *this;
-                }
-
-                Font& size(double f) {
-                    json["size"] = std::move(f);
-                    return *this;
-                }
-
-                // Sets whether a font should be styled with a normal or italic face from its family.
-                // - Default: normal
-                Font& style(enum Style f) {
-                    json["style"] = to_string(f);
-                    return *this;
-                }
-
-                // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or
-                // with each word capitalized.
-                // - Default: normal
-                Font& textcase(enum Textcase f) {
-                    json["textcase"] = to_string(f);
-                    return *this;
-                }
-
-                // Sets the variant of the font.
-                // - Default: normal
-                Font& variant(enum Variant f) {
-                    json["variant"] = to_string(f);
-                    return *this;
-                }
-
-                // Sets the weight (or boldness) of the font.
-                Font& weight(int f) {
-                    json["weight"] = std::move(f);
-                    return *this;
-                }
-
-                // Advanced users may modify the JSON representation directly, at their own peril!
-                nlohmann::json json{};
-            };
-
-            // Sets this axis' title font.
-            Title& font(class Font f) {
-                json["font"] = std::move(f.json);
-                return *this;
-            }
-
-            // An additional amount by which to offset the title from the tick labels, given in pixels.
-            Title& offset(double f) {
-                json["offset"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the title of this axis.
-            Title& text(std::string f) {
-                json["text"] = std::move(f);
-                return *this;
-            }
-
-            // Advanced users may modify the JSON representation directly, at their own peril!
-            nlohmann::json json{};
-        };
-
-        // The stride between grid lines along the axis
-        Aaxis& arraydtick(int f) {
-            json["arraydtick"] = std::move(f);
-            return *this;
-        }
-
-        // The starting index of grid lines along the axis
-        Aaxis& arraytick0(int f) {
-            json["arraytick0"] = std::move(f);
-            return *this;
-        }
-
-        // Determines whether or not the range of this axis is computed in relation to the input data. See `rangemode`
-        // for more info. If `range` is provided, then `autorange` is set to *false*.
-        // - Default: True
-        Aaxis& autorange(enum Autorange f) {
-            json["autorange"] = to_string(f);
-            return *this;
-        }
-
-        // Using *strict* a numeric string in trace data is not converted to a number. Using *convert types* a numeric
-        // string in trace data may be treated as a number during automatic axis `type` detection. Defaults to
-        // layout.autotypenumbers.
-        // - Default: convert types
-        Aaxis& autotypenumbers(enum Autotypenumbers f) {
-            json["autotypenumbers"] = to_string(f);
-            return *this;
-        }
-
-        // Sets the order in which categories on this axis appear. Only has an effect if `categoryorder` is set to
-        // *array*. Used with `categoryorder`.
-        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-        Aaxis& categoryarray(std::vector<T> f) {
-            json["categoryarray"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `categoryarray`.
-        Aaxis& categoryarraysrc(std::string f) {
-            json["categoryarraysrc"] = std::move(f);
-            return *this;
-        }
-
-        // Specifies the ordering logic for the case of categorical variables. By default, plotly uses *trace*, which
-        // specifies the order that is present in the data supplied. Set `categoryorder` to *category ascending* or
-        // *category descending* if order should be determined by the alphanumerical order of the category names. Set
-        // `categoryorder` to *array* to derive the ordering from the attribute `categoryarray`. If a category is not
-        // found in the `categoryarray` array, the sorting behavior for that attribute will be identical to the *trace*
-        // mode. The unspecified categories will follow the categories in `categoryarray`.
-        // - Default: trace
-        Aaxis& categoryorder(enum Categoryorder f) {
-            json["categoryorder"] = to_string(f);
-            return *this;
-        }
-
-        //
-        // - Default: value
-        Aaxis& cheatertype(enum Cheatertype f) {
-            json["cheatertype"] = to_string(f);
-            return *this;
-        }
-
-        // Sets default for all colors associated with this axis all at once: line, font, tick, and grid colors. Grid
-        // color is lightened by blending this with the plot background Individual pieces can override this.
-        Aaxis& color(std::string f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-        Aaxis& color(double f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-
-        // The stride between grid lines along the axis
-        Aaxis& dtick(double f) {
-            json["dtick"] = std::move(f);
-            return *this;
-        }
-
-        // Determines whether or not a line is drawn at along the final value of this axis. If *true*, the end line is
-        // drawn on top of the grid lines.
-        Aaxis& endline(bool f) {
-            json["endline"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the line color of the end line.
-        Aaxis& endlinecolor(std::string f) {
-            json["endlinecolor"] = std::move(f);
-            return *this;
-        }
-        Aaxis& endlinecolor(double f) {
-            json["endlinecolor"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the width (in px) of the end line.
-        Aaxis& endlinewidth(double f) {
-            json["endlinewidth"] = std::move(f);
-            return *this;
-        }
-
-        // Determines a formatting rule for the tick exponents. For example, consider the number 1,000,000,000. If
-        // *none*, it appears as 1,000,000,000. If *e*, 1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super
-        // script). If *SI*, 1G. If *B*, 1B.
-        // - Default: B
-        Aaxis& exponentformat(enum Exponentformat f) {
-            json["exponentformat"] = to_string(f);
-            return *this;
-        }
-
-        // Determines whether or not this axis is zoom-able. If true, then zoom is disabled.
-        Aaxis& fixedrange(bool f) {
-            json["fixedrange"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the axis line color.
-        Aaxis& gridcolor(std::string f) {
-            json["gridcolor"] = std::move(f);
-            return *this;
-        }
-        Aaxis& gridcolor(double f) {
-            json["gridcolor"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
-        // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
-        Aaxis& griddash(std::string f) {
-            json["griddash"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the width (in px) of the axis line.
-        Aaxis& gridwidth(double f) {
-            json["gridwidth"] = std::move(f);
-            return *this;
-        }
-
-        // Replacement text for specific tick or hover labels. For example using {US: 'USA', CA: 'Canada'} changes US to
-        // USA and CA to Canada. The labels we would have shown must match the keys exactly, after adding any tickprefix
-        // or ticksuffix. For negative numbers the minus sign symbol used (U+2212) is wider than the regular ascii dash.
-        // That means you need to use −1 instead of -1. labelalias can be used with any axis type, and both keys (if
-        // needed) and values (if desired) can include html-like tags or MathJax.
-        template <typename T>
-        Aaxis& labelalias(T f) {
-            json["labelalias"] = std::move(f);
-            return *this;
-        }
-
-        // Extra padding between label and the axis
-        Aaxis& labelpadding(int f) {
-            json["labelpadding"] = std::move(f);
-            return *this;
-        }
-
-        // Sets a axis label prefix.
-        Aaxis& labelprefix(std::string f) {
-            json["labelprefix"] = std::move(f);
-            return *this;
-        }
-
-        // Sets a axis label suffix.
-        Aaxis& labelsuffix(std::string f) {
-            json["labelsuffix"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the axis line color.
-        Aaxis& linecolor(std::string f) {
-            json["linecolor"] = std::move(f);
-            return *this;
-        }
-        Aaxis& linecolor(double f) {
-            json["linecolor"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the width (in px) of the axis line.
-        Aaxis& linewidth(double f) {
-            json["linewidth"] = std::move(f);
-            return *this;
-        }
-
-        // Hide SI prefix for 10^n if |n| is below this number
-        Aaxis& minexponent(double f) {
-            json["minexponent"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the color of the grid lines.
-        Aaxis& minorgridcolor(std::string f) {
-            json["minorgridcolor"] = std::move(f);
-            return *this;
-        }
-        Aaxis& minorgridcolor(double f) {
-            json["minorgridcolor"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the number of minor grid ticks per major grid tick
-        Aaxis& minorgridcount(int f) {
-            json["minorgridcount"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
-        // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
-        Aaxis& minorgriddash(std::string f) {
-            json["minorgriddash"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the width (in px) of the grid lines.
-        Aaxis& minorgridwidth(double f) {
-            json["minorgridwidth"] = std::move(f);
-            return *this;
-        }
-
-        // Specifies the maximum number of ticks for the particular axis. The actual number of ticks will be chosen
-        // automatically to be less than or equal to `nticks`. Has an effect only if `tickmode` is set to *auto*.
-        Aaxis& nticks(int f) {
-            json["nticks"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the range of this axis. If the axis `type` is *log*, then you must take the log of your desired range
-        // (e.g. to set the range from 1 to 100, set the range from 0 to 2). If the axis `type` is *date*, it should be
-        // date strings, like date data, though Date objects and unix milliseconds will be accepted and converted to
-        // strings. If the axis `type` is *category*, it should be numbers, using the scale where each category is
-        // assigned a serial number from zero in the order it appears.
-        Aaxis& range(std::vector<std::string> f) {
-            json["range"] = std::move(f);
-            return *this;
-        }
-
-        // If *normal*, the range is computed in relation to the extrema of the input data. If *tozero*`, the range
-        // extends to 0, regardless of the input data If *nonnegative*, the range is non-negative, regardless of the
-        // input data.
-        // - Default: normal
-        Aaxis& rangemode(enum Rangemode f) {
-            json["rangemode"] = to_string(f);
-            return *this;
-        }
-
-        // If "true", even 4-digit integers are separated
-        Aaxis& separatethousands(bool f) {
-            json["separatethousands"] = std::move(f);
-            return *this;
-        }
-
-        // If *all*, all exponents are shown besides their significands. If *first*, only the exponent of the first tick
-        // is shown. If *last*, only the exponent of the last tick is shown. If *none*, no exponents appear.
-        // - Default: all
-        Aaxis& showexponent(enum Showexponent f) {
-            json["showexponent"] = to_string(f);
-            return *this;
-        }
-
-        // Determines whether or not grid lines are drawn. If *true*, the grid lines are drawn at every tick mark.
-        Aaxis& showgrid(bool f) {
-            json["showgrid"] = std::move(f);
-            return *this;
-        }
-
-        // Determines whether or not a line bounding this axis is drawn.
-        Aaxis& showline(bool f) {
-            json["showline"] = std::move(f);
-            return *this;
-        }
-
-        // Determines whether axis labels are drawn on the low side, the high side, both, or neither side of the axis.
-        // - Default: start
-        Aaxis& showticklabels(enum Showticklabels f) {
-            json["showticklabels"] = to_string(f);
-            return *this;
-        }
-
-        // If *all*, all tick labels are displayed with a prefix. If *first*, only the first tick is displayed with a
-        // prefix. If *last*, only the last tick is displayed with a suffix. If *none*, tick prefixes are hidden.
-        // - Default: all
-        Aaxis& showtickprefix(enum Showtickprefix f) {
-            json["showtickprefix"] = to_string(f);
-            return *this;
-        }
-
-        // Same as `showtickprefix` but for tick suffixes.
-        // - Default: all
-        Aaxis& showticksuffix(enum Showticksuffix f) {
-            json["showticksuffix"] = to_string(f);
-            return *this;
-        }
-
-        Aaxis& smoothing(double f) {
-            json["smoothing"] = std::move(f);
-            return *this;
-        }
-
-        // Determines whether or not a line is drawn at along the starting value of this axis. If *true*, the start line
-        // is drawn on top of the grid lines.
-        Aaxis& startline(bool f) {
-            json["startline"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the line color of the start line.
-        Aaxis& startlinecolor(std::string f) {
-            json["startlinecolor"] = std::move(f);
-            return *this;
-        }
-        Aaxis& startlinecolor(double f) {
-            json["startlinecolor"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the width (in px) of the start line.
-        Aaxis& startlinewidth(double f) {
-            json["startlinewidth"] = std::move(f);
-            return *this;
-        }
-
-        // The starting index of grid lines along the axis
-        Aaxis& tick0(double f) {
-            json["tick0"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the angle of the tick labels with respect to the horizontal. For example, a `tickangle` of -90 draws the
-        // tick labels vertically.
-        Aaxis& tickangle(double f) {
-            json["tickangle"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the tick font.
-        Aaxis& tickfont(class Tickfont f) {
-            json["tickfont"] = std::move(f.json);
-            return *this;
-        }
-
-        // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in
-        // Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
-        // https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format. We add two items to d3's date formatter: *%h*
-        // for half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For
-        // example, *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
-        Aaxis& tickformat(std::string f) {
-            json["tickformat"] = std::move(f);
-            return *this;
-        }
-
-        Aaxis& tickformatstops(class Tickformatstops f) {
-            json["tickformatstops"] = std::move(f.json);
-            return *this;
-        }
-
-        //
-        // - Default: array
-        Aaxis& tickmode(enum Tickmode f) {
-            json["tickmode"] = to_string(f);
-            return *this;
-        }
-
-        // Sets a tick label prefix.
-        Aaxis& tickprefix(std::string f) {
-            json["tickprefix"] = std::move(f);
-            return *this;
-        }
-
-        // Sets a tick label suffix.
-        Aaxis& ticksuffix(std::string f) {
-            json["ticksuffix"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to
-        // *array*. Used with `tickvals`.
-        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-        Aaxis& ticktext(std::vector<T> f) {
-            json["ticktext"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `ticktext`.
-        Aaxis& ticktextsrc(std::string f) {
-            json["ticktextsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used
-        // with `ticktext`.
-        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-        Aaxis& tickvals(std::vector<T> f) {
-            json["tickvals"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `tickvals`.
-        Aaxis& tickvalssrc(std::string f) {
-            json["tickvalssrc"] = std::move(f);
-            return *this;
-        }
-
-        Aaxis& title(class Title f) {
-            json["title"] = std::move(f.json);
-            return *this;
-        }
-
-        // Sets the axis type. By default, plotly attempts to determined the axis type by looking into the data of the
-        // traces that referenced the axis in question.
-        // - Default: -
-        Aaxis& type(enum Type f) {
-            json["type"] = to_string(f);
-            return *this;
-        }
-
-        // Advanced users may modify the JSON representation directly, at their own peril!
-        nlohmann::json json{};
-    };
-
-    class Baxis {
-     public:
-
-        enum class Autorange {
-            TRUE,
-            FALSE,
-            REVERSED,
-        };
-        std::string to_string(Autorange e) {
-            switch (e) {
-            case Autorange::TRUE:
-                return "True";
-            case Autorange::FALSE:
-                return "False";
-            case Autorange::REVERSED:
-                return "reversed";
-            }
-        }
-
-        enum class Autotypenumbers {
-            CONVERT_TYPES,
-            STRICT,
-        };
-        std::string to_string(Autotypenumbers e) {
-            switch (e) {
-            case Autotypenumbers::CONVERT_TYPES:
-                return "convert types";
-            case Autotypenumbers::STRICT:
-                return "strict";
-            }
-        }
-
-        enum class Categoryorder {
-            TRACE,
-            CATEGORY_ASCENDING,
-            CATEGORY_DESCENDING,
-            ARRAY,
-        };
-        std::string to_string(Categoryorder e) {
-            switch (e) {
-            case Categoryorder::TRACE:
-                return "trace";
-            case Categoryorder::CATEGORY_ASCENDING:
-                return "category ascending";
-            case Categoryorder::CATEGORY_DESCENDING:
-                return "category descending";
-            case Categoryorder::ARRAY:
-                return "array";
-            }
-        }
-
-        enum class Cheatertype {
-            INDEX,
-            VALUE,
-        };
-        std::string to_string(Cheatertype e) {
-            switch (e) {
-            case Cheatertype::INDEX:
-                return "index";
-            case Cheatertype::VALUE:
-                return "value";
-            }
-        }
-
-        enum class Exponentformat {
-            NONE,
-            E,
-            POWER,
-            SI,
-            B,
-        };
-        std::string to_string(Exponentformat e) {
-            switch (e) {
-            case Exponentformat::NONE:
-                return "none";
-            case Exponentformat::E:
-                return "E";
-            case Exponentformat::POWER:
-                return "power";
-            case Exponentformat::SI:
-                return "SI";
-            case Exponentformat::B:
-                return "B";
-            }
-        }
-
-        enum class Rangemode {
-            NORMAL,
-            TOZERO,
-            NONNEGATIVE,
-        };
-        std::string to_string(Rangemode e) {
-            switch (e) {
-            case Rangemode::NORMAL:
-                return "normal";
-            case Rangemode::TOZERO:
-                return "tozero";
-            case Rangemode::NONNEGATIVE:
-                return "nonnegative";
-            }
-        }
-
-        enum class Showexponent {
-            ALL,
-            FIRST,
-            LAST,
-            NONE,
-        };
-        std::string to_string(Showexponent e) {
-            switch (e) {
-            case Showexponent::ALL:
-                return "all";
-            case Showexponent::FIRST:
-                return "first";
-            case Showexponent::LAST:
-                return "last";
-            case Showexponent::NONE:
-                return "none";
-            }
-        }
-
-        enum class Showticklabels {
-            START,
-            END,
-            BOTH,
-            NONE,
-        };
-        std::string to_string(Showticklabels e) {
-            switch (e) {
-            case Showticklabels::START:
-                return "start";
-            case Showticklabels::END:
-                return "end";
-            case Showticklabels::BOTH:
-                return "both";
-            case Showticklabels::NONE:
-                return "none";
-            }
-        }
-
-        enum class Showtickprefix {
-            ALL,
-            FIRST,
-            LAST,
-            NONE,
-        };
-        std::string to_string(Showtickprefix e) {
-            switch (e) {
-            case Showtickprefix::ALL:
-                return "all";
-            case Showtickprefix::FIRST:
-                return "first";
-            case Showtickprefix::LAST:
-                return "last";
-            case Showtickprefix::NONE:
-                return "none";
-            }
-        }
-
-        enum class Showticksuffix {
-            ALL,
-            FIRST,
-            LAST,
-            NONE,
-        };
-        std::string to_string(Showticksuffix e) {
-            switch (e) {
-            case Showticksuffix::ALL:
-                return "all";
-            case Showticksuffix::FIRST:
-                return "first";
-            case Showticksuffix::LAST:
-                return "last";
-            case Showticksuffix::NONE:
-                return "none";
-            }
-        }
-
-        enum class Tickmode {
-            LINEAR,
-            ARRAY,
-        };
-        std::string to_string(Tickmode e) {
-            switch (e) {
-            case Tickmode::LINEAR:
-                return "linear";
-            case Tickmode::ARRAY:
-                return "array";
-            }
-        }
-
-        enum class Type {
-            HYPHEN,
-            LINEAR,
-            DATE,
-            CATEGORY,
-        };
-        std::string to_string(Type e) {
-            switch (e) {
-            case Type::HYPHEN:
-                return "-";
-            case Type::LINEAR:
-                return "linear";
-            case Type::DATE:
-                return "date";
-            case Type::CATEGORY:
-                return "category";
-            }
-        }
-
-        // Sets the tick font.
-        class Tickfont {
-         public:
-
-            enum class Style {
-                NORMAL,
-                ITALIC,
-            };
-            std::string to_string(Style e) {
-                switch (e) {
-                case Style::NORMAL:
-                    return "normal";
-                case Style::ITALIC:
-                    return "italic";
-                }
-            }
-
-            enum class Textcase {
-                NORMAL,
-                WORD_CAPS,
-                UPPER,
-                LOWER,
-            };
-            std::string to_string(Textcase e) {
-                switch (e) {
-                case Textcase::NORMAL:
-                    return "normal";
-                case Textcase::WORD_CAPS:
-                    return "word caps";
-                case Textcase::UPPER:
-                    return "upper";
-                case Textcase::LOWER:
-                    return "lower";
-                }
-            }
-
-            enum class Variant {
-                NORMAL,
-                SMALL_CAPS,
-                ALL_SMALL_CAPS,
-                ALL_PETITE_CAPS,
-                PETITE_CAPS,
-                UNICASE,
-            };
-            std::string to_string(Variant e) {
-                switch (e) {
-                case Variant::NORMAL:
-                    return "normal";
-                case Variant::SMALL_CAPS:
-                    return "small-caps";
-                case Variant::ALL_SMALL_CAPS:
-                    return "all-small-caps";
-                case Variant::ALL_PETITE_CAPS:
-                    return "all-petite-caps";
-                case Variant::PETITE_CAPS:
-                    return "petite-caps";
-                case Variant::UNICASE:
-                    return "unicase";
-                }
-            }
-
-            Tickfont& color(std::string f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-            Tickfont& color(double f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-
-            // HTML font family - the typeface that will be applied by the web browser. The web browser will only be
-            // able to apply a font if it is available on the system which it operates. Provide multiple font families,
-            // separated by commas, to indicate the preference in which to apply fonts if they aren't available on the
-            // system. The Chart Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a
-            // server, where only a select number of fonts are installed and supported. These include *Arial*, *Balto*,
-            // *Courier New*, *Droid Sans*, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open
-            // Sans*, *Overpass*, *PT Sans Narrow*, *Raleway*, *Times New Roman*.
-            Tickfont& family(std::string f) {
-                json["family"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as
-            // combinations e.g. *under+over*, etc.
-            // - Default: none
-            // - Flags: ['under', 'over', 'through']
-            // - Extras ['none']
-            Tickfont& lineposition(std::string f) {
-                json["lineposition"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast
-            // text font color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
-            Tickfont& shadow(std::string f) {
-                json["shadow"] = std::move(f);
-                return *this;
-            }
-
-            Tickfont& size(double f) {
-                json["size"] = std::move(f);
-                return *this;
-            }
-
-            // Sets whether a font should be styled with a normal or italic face from its family.
-            // - Default: normal
-            Tickfont& style(enum Style f) {
-                json["style"] = to_string(f);
-                return *this;
-            }
-
-            // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or
-            // with each word capitalized.
-            // - Default: normal
-            Tickfont& textcase(enum Textcase f) {
-                json["textcase"] = to_string(f);
-                return *this;
-            }
-
-            // Sets the variant of the font.
-            // - Default: normal
-            Tickfont& variant(enum Variant f) {
-                json["variant"] = to_string(f);
-                return *this;
-            }
-
-            // Sets the weight (or boldness) of the font.
-            Tickfont& weight(int f) {
-                json["weight"] = std::move(f);
-                return *this;
-            }
-
-            // Advanced users may modify the JSON representation directly, at their own peril!
-            nlohmann::json json{};
-        };
-
-        class Tickformatstops {
-         public:
-
-            class Tickformatstop {
-             public:
-
-                // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is
-                // possible to omit *min* or *max* value by passing *null*
-                Tickformatstop& dtickrange(std::vector<std::string> f) {
-                    json["dtickrange"] = std::move(f);
-                    return *this;
-                }
-
-                // Determines whether or not this stop is used. If `false`, this stop is ignored even within its
-                // `dtickrange`.
-                Tickformatstop& enabled(bool f) {
-                    json["enabled"] = std::move(f);
-                    return *this;
-                }
-
-                // When used in a template, named items are created in the output figure in addition to any items the
-                // figure already has in this array. You can modify these items in the output figure by making your own
-                // item with `templateitemname` matching this `name` alongside your modifications (including `visible:
-                // false` or `enabled: false` to hide it). Has no effect outside of a template.
-                Tickformatstop& name(std::string f) {
-                    json["name"] = std::move(f);
-                    return *this;
-                }
-
-                // Used to refer to a named item in this array in the template. Named items from the template will be
-                // created even without a matching item in the input figure, but you can modify one by making an item
-                // with `templateitemname` matching its `name`, alongside your modifications (including `visible: false`
-                // or `enabled: false` to hide it). If there is no template or no matching item, this item will be
-                // hidden unless you explicitly show it with `visible: true`.
-                Tickformatstop& templateitemname(std::string f) {
-                    json["templateitemname"] = std::move(f);
-                    return *this;
-                }
-
-                // string - dtickformat for described zoom level, the same as *tickformat*
-                Tickformatstop& value(std::string f) {
-                    json["value"] = std::move(f);
-                    return *this;
-                }
-
-                // Advanced users may modify the JSON representation directly, at their own peril!
-                nlohmann::json json{};
-            };
-
-            Tickformatstops& tickformatstop(class Tickformatstop f) {
-                json["tickformatstop"] = std::move(f.json);
-                return *this;
-            }
-
-            // Advanced users may modify the JSON representation directly, at their own peril!
-            nlohmann::json json{};
-        };
-
-        class Title {
-         public:
-
-            // Sets this axis' title font.
-            class Font {
-             public:
-
-                enum class Style {
-                    NORMAL,
-                    ITALIC,
-                };
-                std::string to_string(Style e) {
-                    switch (e) {
-                    case Style::NORMAL:
-                        return "normal";
-                    case Style::ITALIC:
-                        return "italic";
-                    }
-                }
-
-                enum class Textcase {
-                    NORMAL,
-                    WORD_CAPS,
-                    UPPER,
-                    LOWER,
-                };
-                std::string to_string(Textcase e) {
-                    switch (e) {
-                    case Textcase::NORMAL:
-                        return "normal";
-                    case Textcase::WORD_CAPS:
-                        return "word caps";
-                    case Textcase::UPPER:
-                        return "upper";
-                    case Textcase::LOWER:
-                        return "lower";
-                    }
-                }
-
-                enum class Variant {
-                    NORMAL,
-                    SMALL_CAPS,
-                    ALL_SMALL_CAPS,
-                    ALL_PETITE_CAPS,
-                    PETITE_CAPS,
-                    UNICASE,
-                };
-                std::string to_string(Variant e) {
-                    switch (e) {
-                    case Variant::NORMAL:
-                        return "normal";
-                    case Variant::SMALL_CAPS:
-                        return "small-caps";
-                    case Variant::ALL_SMALL_CAPS:
-                        return "all-small-caps";
-                    case Variant::ALL_PETITE_CAPS:
-                        return "all-petite-caps";
-                    case Variant::PETITE_CAPS:
-                        return "petite-caps";
-                    case Variant::UNICASE:
-                        return "unicase";
-                    }
-                }
-
-                Font& color(std::string f) {
-                    json["color"] = std::move(f);
-                    return *this;
-                }
-                Font& color(double f) {
-                    json["color"] = std::move(f);
-                    return *this;
-                }
-
-                // HTML font family - the typeface that will be applied by the web browser. The web browser will only be
-                // able to apply a font if it is available on the system which it operates. Provide multiple font
-                // families, separated by commas, to indicate the preference in which to apply fonts if they aren't
-                // available on the system. The Chart Studio Cloud (at https://chart-studio.plotly.com or on-premise)
-                // generates images on a server, where only a select number of fonts are installed and supported. These
-                // include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid Serif*, *Droid Sans Mono*, *Gravitas
-                // One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*, *Raleway*, *Times New Roman*.
-                Font& family(std::string f) {
-                    json["family"] = std::move(f);
-                    return *this;
-                }
-
-                // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as
-                // combinations e.g. *under+over*, etc.
-                // - Default: none
-                // - Flags: ['under', 'over', 'through']
-                // - Extras ['none']
-                Font& lineposition(std::string f) {
-                    json["lineposition"] = std::move(f);
-                    return *this;
-                }
-
-                // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast
-                // text font color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional
-                // options.
-                Font& shadow(std::string f) {
-                    json["shadow"] = std::move(f);
-                    return *this;
-                }
-
-                Font& size(double f) {
-                    json["size"] = std::move(f);
-                    return *this;
-                }
-
-                // Sets whether a font should be styled with a normal or italic face from its family.
-                // - Default: normal
-                Font& style(enum Style f) {
-                    json["style"] = to_string(f);
-                    return *this;
-                }
-
-                // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or
-                // with each word capitalized.
-                // - Default: normal
-                Font& textcase(enum Textcase f) {
-                    json["textcase"] = to_string(f);
-                    return *this;
-                }
-
-                // Sets the variant of the font.
-                // - Default: normal
-                Font& variant(enum Variant f) {
-                    json["variant"] = to_string(f);
-                    return *this;
-                }
-
-                // Sets the weight (or boldness) of the font.
-                Font& weight(int f) {
-                    json["weight"] = std::move(f);
-                    return *this;
-                }
-
-                // Advanced users may modify the JSON representation directly, at their own peril!
-                nlohmann::json json{};
-            };
-
-            // Sets this axis' title font.
-            Title& font(class Font f) {
-                json["font"] = std::move(f.json);
-                return *this;
-            }
-
-            // An additional amount by which to offset the title from the tick labels, given in pixels.
-            Title& offset(double f) {
-                json["offset"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the title of this axis.
-            Title& text(std::string f) {
-                json["text"] = std::move(f);
-                return *this;
-            }
-
-            // Advanced users may modify the JSON representation directly, at their own peril!
-            nlohmann::json json{};
-        };
-
-        // The stride between grid lines along the axis
-        Baxis& arraydtick(int f) {
-            json["arraydtick"] = std::move(f);
-            return *this;
-        }
-
-        // The starting index of grid lines along the axis
-        Baxis& arraytick0(int f) {
-            json["arraytick0"] = std::move(f);
-            return *this;
-        }
-
-        // Determines whether or not the range of this axis is computed in relation to the input data. See `rangemode`
-        // for more info. If `range` is provided, then `autorange` is set to *false*.
-        // - Default: True
-        Baxis& autorange(enum Autorange f) {
-            json["autorange"] = to_string(f);
-            return *this;
-        }
-
-        // Using *strict* a numeric string in trace data is not converted to a number. Using *convert types* a numeric
-        // string in trace data may be treated as a number during automatic axis `type` detection. Defaults to
-        // layout.autotypenumbers.
-        // - Default: convert types
-        Baxis& autotypenumbers(enum Autotypenumbers f) {
-            json["autotypenumbers"] = to_string(f);
-            return *this;
-        }
-
-        // Sets the order in which categories on this axis appear. Only has an effect if `categoryorder` is set to
-        // *array*. Used with `categoryorder`.
-        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-        Baxis& categoryarray(std::vector<T> f) {
-            json["categoryarray"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `categoryarray`.
-        Baxis& categoryarraysrc(std::string f) {
-            json["categoryarraysrc"] = std::move(f);
-            return *this;
-        }
-
-        // Specifies the ordering logic for the case of categorical variables. By default, plotly uses *trace*, which
-        // specifies the order that is present in the data supplied. Set `categoryorder` to *category ascending* or
-        // *category descending* if order should be determined by the alphanumerical order of the category names. Set
-        // `categoryorder` to *array* to derive the ordering from the attribute `categoryarray`. If a category is not
-        // found in the `categoryarray` array, the sorting behavior for that attribute will be identical to the *trace*
-        // mode. The unspecified categories will follow the categories in `categoryarray`.
-        // - Default: trace
-        Baxis& categoryorder(enum Categoryorder f) {
-            json["categoryorder"] = to_string(f);
-            return *this;
-        }
-
-        //
-        // - Default: value
-        Baxis& cheatertype(enum Cheatertype f) {
-            json["cheatertype"] = to_string(f);
-            return *this;
-        }
-
-        // Sets default for all colors associated with this axis all at once: line, font, tick, and grid colors. Grid
-        // color is lightened by blending this with the plot background Individual pieces can override this.
-        Baxis& color(std::string f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-        Baxis& color(double f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-
-        // The stride between grid lines along the axis
-        Baxis& dtick(double f) {
-            json["dtick"] = std::move(f);
-            return *this;
-        }
-
-        // Determines whether or not a line is drawn at along the final value of this axis. If *true*, the end line is
-        // drawn on top of the grid lines.
-        Baxis& endline(bool f) {
-            json["endline"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the line color of the end line.
-        Baxis& endlinecolor(std::string f) {
-            json["endlinecolor"] = std::move(f);
-            return *this;
-        }
-        Baxis& endlinecolor(double f) {
-            json["endlinecolor"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the width (in px) of the end line.
-        Baxis& endlinewidth(double f) {
-            json["endlinewidth"] = std::move(f);
-            return *this;
-        }
-
-        // Determines a formatting rule for the tick exponents. For example, consider the number 1,000,000,000. If
-        // *none*, it appears as 1,000,000,000. If *e*, 1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super
-        // script). If *SI*, 1G. If *B*, 1B.
-        // - Default: B
-        Baxis& exponentformat(enum Exponentformat f) {
-            json["exponentformat"] = to_string(f);
-            return *this;
-        }
-
-        // Determines whether or not this axis is zoom-able. If true, then zoom is disabled.
-        Baxis& fixedrange(bool f) {
-            json["fixedrange"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the axis line color.
-        Baxis& gridcolor(std::string f) {
-            json["gridcolor"] = std::move(f);
-            return *this;
-        }
-        Baxis& gridcolor(double f) {
-            json["gridcolor"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
-        // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
-        Baxis& griddash(std::string f) {
-            json["griddash"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the width (in px) of the axis line.
-        Baxis& gridwidth(double f) {
-            json["gridwidth"] = std::move(f);
-            return *this;
-        }
-
-        // Replacement text for specific tick or hover labels. For example using {US: 'USA', CA: 'Canada'} changes US to
-        // USA and CA to Canada. The labels we would have shown must match the keys exactly, after adding any tickprefix
-        // or ticksuffix. For negative numbers the minus sign symbol used (U+2212) is wider than the regular ascii dash.
-        // That means you need to use −1 instead of -1. labelalias can be used with any axis type, and both keys (if
-        // needed) and values (if desired) can include html-like tags or MathJax.
-        template <typename T>
-        Baxis& labelalias(T f) {
-            json["labelalias"] = std::move(f);
-            return *this;
-        }
-
-        // Extra padding between label and the axis
-        Baxis& labelpadding(int f) {
-            json["labelpadding"] = std::move(f);
-            return *this;
-        }
-
-        // Sets a axis label prefix.
-        Baxis& labelprefix(std::string f) {
-            json["labelprefix"] = std::move(f);
-            return *this;
-        }
-
-        // Sets a axis label suffix.
-        Baxis& labelsuffix(std::string f) {
-            json["labelsuffix"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the axis line color.
-        Baxis& linecolor(std::string f) {
-            json["linecolor"] = std::move(f);
-            return *this;
-        }
-        Baxis& linecolor(double f) {
-            json["linecolor"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the width (in px) of the axis line.
-        Baxis& linewidth(double f) {
-            json["linewidth"] = std::move(f);
-            return *this;
-        }
-
-        // Hide SI prefix for 10^n if |n| is below this number
-        Baxis& minexponent(double f) {
-            json["minexponent"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the color of the grid lines.
-        Baxis& minorgridcolor(std::string f) {
-            json["minorgridcolor"] = std::move(f);
-            return *this;
-        }
-        Baxis& minorgridcolor(double f) {
-            json["minorgridcolor"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the number of minor grid ticks per major grid tick
-        Baxis& minorgridcount(int f) {
-            json["minorgridcount"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
-        // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
-        Baxis& minorgriddash(std::string f) {
-            json["minorgriddash"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the width (in px) of the grid lines.
-        Baxis& minorgridwidth(double f) {
-            json["minorgridwidth"] = std::move(f);
-            return *this;
-        }
-
-        // Specifies the maximum number of ticks for the particular axis. The actual number of ticks will be chosen
-        // automatically to be less than or equal to `nticks`. Has an effect only if `tickmode` is set to *auto*.
-        Baxis& nticks(int f) {
-            json["nticks"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the range of this axis. If the axis `type` is *log*, then you must take the log of your desired range
-        // (e.g. to set the range from 1 to 100, set the range from 0 to 2). If the axis `type` is *date*, it should be
-        // date strings, like date data, though Date objects and unix milliseconds will be accepted and converted to
-        // strings. If the axis `type` is *category*, it should be numbers, using the scale where each category is
-        // assigned a serial number from zero in the order it appears.
-        Baxis& range(std::vector<std::string> f) {
-            json["range"] = std::move(f);
-            return *this;
-        }
-
-        // If *normal*, the range is computed in relation to the extrema of the input data. If *tozero*`, the range
-        // extends to 0, regardless of the input data If *nonnegative*, the range is non-negative, regardless of the
-        // input data.
-        // - Default: normal
-        Baxis& rangemode(enum Rangemode f) {
-            json["rangemode"] = to_string(f);
-            return *this;
-        }
-
-        // If "true", even 4-digit integers are separated
-        Baxis& separatethousands(bool f) {
-            json["separatethousands"] = std::move(f);
-            return *this;
-        }
-
-        // If *all*, all exponents are shown besides their significands. If *first*, only the exponent of the first tick
-        // is shown. If *last*, only the exponent of the last tick is shown. If *none*, no exponents appear.
-        // - Default: all
-        Baxis& showexponent(enum Showexponent f) {
-            json["showexponent"] = to_string(f);
-            return *this;
-        }
-
-        // Determines whether or not grid lines are drawn. If *true*, the grid lines are drawn at every tick mark.
-        Baxis& showgrid(bool f) {
-            json["showgrid"] = std::move(f);
-            return *this;
-        }
-
-        // Determines whether or not a line bounding this axis is drawn.
-        Baxis& showline(bool f) {
-            json["showline"] = std::move(f);
-            return *this;
-        }
-
-        // Determines whether axis labels are drawn on the low side, the high side, both, or neither side of the axis.
-        // - Default: start
-        Baxis& showticklabels(enum Showticklabels f) {
-            json["showticklabels"] = to_string(f);
-            return *this;
-        }
-
-        // If *all*, all tick labels are displayed with a prefix. If *first*, only the first tick is displayed with a
-        // prefix. If *last*, only the last tick is displayed with a suffix. If *none*, tick prefixes are hidden.
-        // - Default: all
-        Baxis& showtickprefix(enum Showtickprefix f) {
-            json["showtickprefix"] = to_string(f);
-            return *this;
-        }
-
-        // Same as `showtickprefix` but for tick suffixes.
-        // - Default: all
-        Baxis& showticksuffix(enum Showticksuffix f) {
-            json["showticksuffix"] = to_string(f);
-            return *this;
-        }
-
-        Baxis& smoothing(double f) {
-            json["smoothing"] = std::move(f);
-            return *this;
-        }
-
-        // Determines whether or not a line is drawn at along the starting value of this axis. If *true*, the start line
-        // is drawn on top of the grid lines.
-        Baxis& startline(bool f) {
-            json["startline"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the line color of the start line.
-        Baxis& startlinecolor(std::string f) {
-            json["startlinecolor"] = std::move(f);
-            return *this;
-        }
-        Baxis& startlinecolor(double f) {
-            json["startlinecolor"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the width (in px) of the start line.
-        Baxis& startlinewidth(double f) {
-            json["startlinewidth"] = std::move(f);
-            return *this;
-        }
-
-        // The starting index of grid lines along the axis
-        Baxis& tick0(double f) {
-            json["tick0"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the angle of the tick labels with respect to the horizontal. For example, a `tickangle` of -90 draws the
-        // tick labels vertically.
-        Baxis& tickangle(double f) {
-            json["tickangle"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the tick font.
-        Baxis& tickfont(class Tickfont f) {
-            json["tickfont"] = std::move(f.json);
-            return *this;
-        }
-
-        // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in
-        // Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
-        // https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format. We add two items to d3's date formatter: *%h*
-        // for half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For
-        // example, *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
-        Baxis& tickformat(std::string f) {
-            json["tickformat"] = std::move(f);
-            return *this;
-        }
-
-        Baxis& tickformatstops(class Tickformatstops f) {
-            json["tickformatstops"] = std::move(f.json);
-            return *this;
-        }
-
-        //
-        // - Default: array
-        Baxis& tickmode(enum Tickmode f) {
-            json["tickmode"] = to_string(f);
-            return *this;
-        }
-
-        // Sets a tick label prefix.
-        Baxis& tickprefix(std::string f) {
-            json["tickprefix"] = std::move(f);
-            return *this;
-        }
-
-        // Sets a tick label suffix.
-        Baxis& ticksuffix(std::string f) {
-            json["ticksuffix"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to
-        // *array*. Used with `tickvals`.
-        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-        Baxis& ticktext(std::vector<T> f) {
-            json["ticktext"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `ticktext`.
-        Baxis& ticktextsrc(std::string f) {
-            json["ticktextsrc"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used
-        // with `ticktext`.
-        template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-        Baxis& tickvals(std::vector<T> f) {
-            json["tickvals"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the source reference on Chart Studio Cloud for `tickvals`.
-        Baxis& tickvalssrc(std::string f) {
-            json["tickvalssrc"] = std::move(f);
-            return *this;
-        }
-
-        Baxis& title(class Title f) {
-            json["title"] = std::move(f.json);
-            return *this;
-        }
-
-        // Sets the axis type. By default, plotly attempts to determined the axis type by looking into the data of the
-        // traces that referenced the axis in question.
-        // - Default: -
-        Baxis& type(enum Type f) {
-            json["type"] = to_string(f);
-            return *this;
-        }
-
-        // Advanced users may modify the JSON representation directly, at their own peril!
-        nlohmann::json json{};
-    };
-
+    class Aaxis;
+    class Baxis;
     // The default font used for axis & tick labels on this carpet
-    class Font {
-     public:
-
-        enum class Style {
-            NORMAL,
-            ITALIC,
-        };
-        std::string to_string(Style e) {
-            switch (e) {
-            case Style::NORMAL:
-                return "normal";
-            case Style::ITALIC:
-                return "italic";
-            }
-        }
-
-        enum class Textcase {
-            NORMAL,
-            WORD_CAPS,
-            UPPER,
-            LOWER,
-        };
-        std::string to_string(Textcase e) {
-            switch (e) {
-            case Textcase::NORMAL:
-                return "normal";
-            case Textcase::WORD_CAPS:
-                return "word caps";
-            case Textcase::UPPER:
-                return "upper";
-            case Textcase::LOWER:
-                return "lower";
-            }
-        }
-
-        enum class Variant {
-            NORMAL,
-            SMALL_CAPS,
-            ALL_SMALL_CAPS,
-            ALL_PETITE_CAPS,
-            PETITE_CAPS,
-            UNICASE,
-        };
-        std::string to_string(Variant e) {
-            switch (e) {
-            case Variant::NORMAL:
-                return "normal";
-            case Variant::SMALL_CAPS:
-                return "small-caps";
-            case Variant::ALL_SMALL_CAPS:
-                return "all-small-caps";
-            case Variant::ALL_PETITE_CAPS:
-                return "all-petite-caps";
-            case Variant::PETITE_CAPS:
-                return "petite-caps";
-            case Variant::UNICASE:
-                return "unicase";
-            }
-        }
-
-        Font& color(std::string f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-        Font& color(double f) {
-            json["color"] = std::move(f);
-            return *this;
-        }
-
-        // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
-        // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
-        // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
-        // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a
-        // select number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid
-        // Sans*, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans
-        // Narrow*, *Raleway*, *Times New Roman*.
-        Font& family(std::string f) {
-            json["family"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as
-        // combinations e.g. *under+over*, etc.
-        // - Default: none
-        // - Flags: ['under', 'over', 'through']
-        // - Extras ['none']
-        Font& lineposition(std::string f) {
-            json["lineposition"] = std::move(f);
-            return *this;
-        }
-
-        // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text
-        // font color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
-        Font& shadow(std::string f) {
-            json["shadow"] = std::move(f);
-            return *this;
-        }
-
-        Font& size(double f) {
-            json["size"] = std::move(f);
-            return *this;
-        }
-
-        // Sets whether a font should be styled with a normal or italic face from its family.
-        // - Default: normal
-        Font& style(enum Style f) {
-            json["style"] = to_string(f);
-            return *this;
-        }
-
-        // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with
-        // each word capitalized.
-        // - Default: normal
-        Font& textcase(enum Textcase f) {
-            json["textcase"] = to_string(f);
-            return *this;
-        }
-
-        // Sets the variant of the font.
-        // - Default: normal
-        Font& variant(enum Variant f) {
-            json["variant"] = to_string(f);
-            return *this;
-        }
-
-        // Sets the weight (or boldness) of the font.
-        Font& weight(int f) {
-            json["weight"] = std::move(f);
-            return *this;
-        }
-
-        // Advanced users may modify the JSON representation directly, at their own peril!
-        nlohmann::json json{};
-    };
-
-    class Legendgrouptitle {
-     public:
-
-        // Sets this legend group's title font.
-        class Font {
-         public:
-
-            enum class Style {
-                NORMAL,
-                ITALIC,
-            };
-            std::string to_string(Style e) {
-                switch (e) {
-                case Style::NORMAL:
-                    return "normal";
-                case Style::ITALIC:
-                    return "italic";
-                }
-            }
-
-            enum class Textcase {
-                NORMAL,
-                WORD_CAPS,
-                UPPER,
-                LOWER,
-            };
-            std::string to_string(Textcase e) {
-                switch (e) {
-                case Textcase::NORMAL:
-                    return "normal";
-                case Textcase::WORD_CAPS:
-                    return "word caps";
-                case Textcase::UPPER:
-                    return "upper";
-                case Textcase::LOWER:
-                    return "lower";
-                }
-            }
-
-            enum class Variant {
-                NORMAL,
-                SMALL_CAPS,
-                ALL_SMALL_CAPS,
-                ALL_PETITE_CAPS,
-                PETITE_CAPS,
-                UNICASE,
-            };
-            std::string to_string(Variant e) {
-                switch (e) {
-                case Variant::NORMAL:
-                    return "normal";
-                case Variant::SMALL_CAPS:
-                    return "small-caps";
-                case Variant::ALL_SMALL_CAPS:
-                    return "all-small-caps";
-                case Variant::ALL_PETITE_CAPS:
-                    return "all-petite-caps";
-                case Variant::PETITE_CAPS:
-                    return "petite-caps";
-                case Variant::UNICASE:
-                    return "unicase";
-                }
-            }
-
-            Font& color(std::string f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-            Font& color(double f) {
-                json["color"] = std::move(f);
-                return *this;
-            }
-
-            // HTML font family - the typeface that will be applied by the web browser. The web browser will only be
-            // able to apply a font if it is available on the system which it operates. Provide multiple font families,
-            // separated by commas, to indicate the preference in which to apply fonts if they aren't available on the
-            // system. The Chart Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a
-            // server, where only a select number of fonts are installed and supported. These include *Arial*, *Balto*,
-            // *Courier New*, *Droid Sans*, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open
-            // Sans*, *Overpass*, *PT Sans Narrow*, *Raleway*, *Times New Roman*.
-            Font& family(std::string f) {
-                json["family"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as
-            // combinations e.g. *under+over*, etc.
-            // - Default: none
-            // - Flags: ['under', 'over', 'through']
-            // - Extras ['none']
-            Font& lineposition(std::string f) {
-                json["lineposition"] = std::move(f);
-                return *this;
-            }
-
-            // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast
-            // text font color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
-            Font& shadow(std::string f) {
-                json["shadow"] = std::move(f);
-                return *this;
-            }
-
-            Font& size(double f) {
-                json["size"] = std::move(f);
-                return *this;
-            }
-
-            // Sets whether a font should be styled with a normal or italic face from its family.
-            // - Default: normal
-            Font& style(enum Style f) {
-                json["style"] = to_string(f);
-                return *this;
-            }
-
-            // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or
-            // with each word capitalized.
-            // - Default: normal
-            Font& textcase(enum Textcase f) {
-                json["textcase"] = to_string(f);
-                return *this;
-            }
-
-            // Sets the variant of the font.
-            // - Default: normal
-            Font& variant(enum Variant f) {
-                json["variant"] = to_string(f);
-                return *this;
-            }
-
-            // Sets the weight (or boldness) of the font.
-            Font& weight(int f) {
-                json["weight"] = std::move(f);
-                return *this;
-            }
-
-            // Advanced users may modify the JSON representation directly, at their own peril!
-            nlohmann::json json{};
-        };
-
-        // Sets this legend group's title font.
-        Legendgrouptitle& font(class Font f) {
-            json["font"] = std::move(f.json);
-            return *this;
-        }
-
-        // Sets the title of the legend group.
-        Legendgrouptitle& text(std::string f) {
-            json["text"] = std::move(f);
-            return *this;
-        }
-
-        // Advanced users may modify the JSON representation directly, at their own peril!
-        nlohmann::json json{};
-    };
-
-    class Stream {
-     public:
-
-        // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to
-        // *50*, only the newest 50 points will be displayed on the plot.
-        Stream& maxpoints(double f) {
-            json["maxpoints"] = std::move(f);
-            return *this;
-        }
-
-        // The stream id number links a data trace on a plot with a stream. See https://chart-studio.plotly.com/settings
-        // for more details.
-        Stream& token(std::string f) {
-            json["token"] = std::move(f);
-            return *this;
-        }
-
-        // Advanced users may modify the JSON representation directly, at their own peril!
-        nlohmann::json json{};
-    };
+    class Font;
+    class Legendgrouptitle;
+    class Stream;
 
     // An array containing values of the first parameter value
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Carpet& a(std::vector<T> f) {
-        json["a"] = std::move(f);
-        return *this;
-    }
+    Carpet& a(std::vector<T> f);
 
     // Alternate to `a`. Builds a linear space of a coordinates. Use with `da` where `a0` is the starting coordinate and
     // `da` the step.
-    Carpet& a0(double f) {
-        json["a0"] = std::move(f);
-        return *this;
-    }
+    Carpet& a0(double f);
 
-    Carpet& aaxis(class Aaxis f) {
-        json["aaxis"] = std::move(f.json);
-        return *this;
-    }
+    Carpet& aaxis(class Aaxis f);
 
     // Sets the source reference on Chart Studio Cloud for `a`.
-    Carpet& asrc(std::string f) {
-        json["asrc"] = std::move(f);
-        return *this;
-    }
+    Carpet& asrc(std::string f);
 
     // A two dimensional array of y coordinates at each carpet point.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Carpet& b(std::vector<T> f) {
-        json["b"] = std::move(f);
-        return *this;
-    }
+    Carpet& b(std::vector<T> f);
 
     // Alternate to `b`. Builds a linear space of a coordinates. Use with `db` where `b0` is the starting coordinate and
     // `db` the step.
-    Carpet& b0(double f) {
-        json["b0"] = std::move(f);
-        return *this;
-    }
+    Carpet& b0(double f);
 
-    Carpet& baxis(class Baxis f) {
-        json["baxis"] = std::move(f.json);
-        return *this;
-    }
+    Carpet& baxis(class Baxis f);
 
     // Sets the source reference on Chart Studio Cloud for `b`.
-    Carpet& bsrc(std::string f) {
-        json["bsrc"] = std::move(f);
-        return *this;
-    }
+    Carpet& bsrc(std::string f);
 
     // An identifier for this carpet, so that `scattercarpet` and `contourcarpet` traces can specify a carpet plot on
     // which they lie
-    Carpet& carpet(std::string f) {
-        json["carpet"] = std::move(f);
-        return *this;
-    }
+    Carpet& carpet(std::string f);
 
     // The shift applied to each successive row of data in creating a cheater plot. Only used if `x` is been omitted.
-    Carpet& cheaterslope(double f) {
-        json["cheaterslope"] = std::move(f);
-        return *this;
-    }
+    Carpet& cheaterslope(double f);
 
     // Sets default for all colors associated with this axis all at once: line, font, tick, and grid colors. Grid color
     // is lightened by blending this with the plot background Individual pieces can override this.
-    Carpet& color(std::string f) {
-        json["color"] = std::move(f);
-        return *this;
-    }
-    Carpet& color(double f) {
-        json["color"] = std::move(f);
-        return *this;
-    }
+    Carpet& color(std::string f);
+    Carpet& color(double f);
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Carpet& customdata(std::vector<T> f) {
-        json["customdata"] = std::move(f);
-        return *this;
-    }
+    Carpet& customdata(std::vector<T> f);
 
     // Sets the source reference on Chart Studio Cloud for `customdata`.
-    Carpet& customdatasrc(std::string f) {
-        json["customdatasrc"] = std::move(f);
-        return *this;
-    }
+    Carpet& customdatasrc(std::string f);
 
     // Sets the a coordinate step. See `a0` for more info.
-    Carpet& da(double f) {
-        json["da"] = std::move(f);
-        return *this;
-    }
+    Carpet& da(double f);
 
     // Sets the b coordinate step. See `b0` for more info.
-    Carpet& db(double f) {
-        json["db"] = std::move(f);
-        return *this;
-    }
+    Carpet& db(double f);
 
     // The default font used for axis & tick labels on this carpet
-    Carpet& font(class Font f) {
-        json["font"] = std::move(f.json);
-        return *this;
-    }
+    Carpet& font(class Font f);
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Carpet& ids(std::vector<T> f) {
-        json["ids"] = std::move(f);
-        return *this;
-    }
+    Carpet& ids(std::vector<T> f);
 
     // Sets the source reference on Chart Studio Cloud for `ids`.
-    Carpet& idssrc(std::string f) {
-        json["idssrc"] = std::move(f);
-        return *this;
-    }
+    Carpet& idssrc(std::string f);
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
-    Carpet& legend(std::string f) {
-        json["legend"] = std::move(f);
-        return *this;
-    }
+    Carpet& legend(std::string f);
 
-    Carpet& legendgrouptitle(class Legendgrouptitle f) {
-        json["legendgrouptitle"] = std::move(f.json);
-        return *this;
-    }
+    Carpet& legendgrouptitle(class Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
     // can use ranks less than 1000 to place certain items before all unranked items, and ranks greater than 1000 to go
     // after all unranked items. When having unranked or equal rank items shapes would be displayed after traces i.e.
     // according to their order in data and layout.
-    Carpet& legendrank(double f) {
-        json["legendrank"] = std::move(f);
-        return *this;
-    }
+    Carpet& legendrank(double f);
 
     // Sets the width (in px or fraction) of the legend for this trace.
-    Carpet& legendwidth(double f) {
-        json["legendwidth"] = std::move(f);
-        return *this;
-    }
+    Carpet& legendwidth(double f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -2474,45 +119,24 @@ class Carpet : public Trace {
     // `meta` in layout attributes, use `%{data[n[.meta[i]}` where `i` is the index or key of the `meta` and `n` is the
     // trace index.
     template <typename T>
-    Carpet& meta(T f) {
-        json["meta"] = std::move(f);
-        return *this;
-    }
+    Carpet& meta(T f);
     template <typename T>
-    Carpet& meta(std::vector<T> f) {
-        json["meta"] = std::move(f);
-        return *this;
-    }
+    Carpet& meta(std::vector<T> f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
-    Carpet& metasrc(std::string f) {
-        json["metasrc"] = std::move(f);
-        return *this;
-    }
+    Carpet& metasrc(std::string f);
 
     // Sets the trace name. The trace name appears as the legend item and on hover.
-    Carpet& name(std::string f) {
-        json["name"] = std::move(f);
-        return *this;
-    }
+    Carpet& name(std::string f);
 
     // Sets the opacity of the trace.
-    Carpet& opacity(double f) {
-        json["opacity"] = std::move(f);
-        return *this;
-    }
+    Carpet& opacity(double f);
 
-    Carpet& stream(class Stream f) {
-        json["stream"] = std::move(f.json);
-        return *this;
-    }
+    Carpet& stream(class Stream f);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
-    Carpet& uid(std::string f) {
-        json["uid"] = std::move(f);
-        return *this;
-    }
+    Carpet& uid(std::string f);
 
     // Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well
     // as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note
@@ -2523,65 +147,1284 @@ class Carpet : public Trace {
     // add/remove traces before the end of the `data` array, such that the same trace has a different index, you can
     // still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
     template <typename T>
-    Carpet& uirevision(T f) {
-        json["uirevision"] = std::move(f);
-        return *this;
-    }
+    Carpet& uirevision(T f);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
     // - Default: True
-    Carpet& visible(enum Visible f) {
-        json["visible"] = to_string(f);
-        return *this;
-    }
+    Carpet& visible(enum Visible f);
 
     // A two dimensional array of x coordinates at each carpet point. If omitted, the plot is a cheater plot and the
     // xaxis is hidden by default.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Carpet& x(std::vector<T> f) {
-        json["x"] = std::move(f);
-        return *this;
-    }
+    Carpet& x(std::vector<T> f);
 
     // Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x
     // coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
-    Carpet& xaxis(std::string f) {
-        json["xaxis"] = std::move(f);
-        return *this;
-    }
+    Carpet& xaxis(std::string f);
 
     // Sets the source reference on Chart Studio Cloud for `x`.
-    Carpet& xsrc(std::string f) {
-        json["xsrc"] = std::move(f);
-        return *this;
-    }
+    Carpet& xsrc(std::string f);
 
     // A two dimensional array of y coordinates at each carpet point.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Carpet& y(std::vector<T> f) {
-        json["y"] = std::move(f);
-        return *this;
-    }
+    Carpet& y(std::vector<T> f);
 
     // Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y
     // coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
-    Carpet& yaxis(std::string f) {
-        json["yaxis"] = std::move(f);
-        return *this;
-    }
+    Carpet& yaxis(std::string f);
 
     // Sets the source reference on Chart Studio Cloud for `y`.
-    Carpet& ysrc(std::string f) {
-        json["ysrc"] = std::move(f);
-        return *this;
-    }
+    Carpet& ysrc(std::string f);
 
     // Sets the layer on which this trace is displayed, relative to other SVG traces on the same subplot. SVG traces
     // with higher `zorder` appear in front of those with lower `zorder`.
-    Carpet& zorder(int f) {
-        json["zorder"] = std::move(f);
-        return *this;
-    }
+    Carpet& zorder(int f);
 };
+
+class Carpet::Aaxis {
+ public:
+
+    enum class Autorange {
+        TRUE,
+        FALSE,
+        REVERSED,
+    };
+    static std::string to_string(Autorange e);
+
+    enum class Autotypenumbers {
+        CONVERT_TYPES,
+        STRICT,
+    };
+    static std::string to_string(Autotypenumbers e);
+
+    enum class Categoryorder {
+        TRACE,
+        CATEGORY_ASCENDING,
+        CATEGORY_DESCENDING,
+        ARRAY,
+    };
+    static std::string to_string(Categoryorder e);
+
+    enum class Cheatertype {
+        INDEX,
+        VALUE,
+    };
+    static std::string to_string(Cheatertype e);
+
+    enum class Exponentformat {
+        NONE,
+        E,
+        POWER,
+        SI,
+        B,
+    };
+    static std::string to_string(Exponentformat e);
+
+    enum class Rangemode {
+        NORMAL,
+        TOZERO,
+        NONNEGATIVE,
+    };
+    static std::string to_string(Rangemode e);
+
+    enum class Showexponent {
+        ALL,
+        FIRST,
+        LAST,
+        NONE,
+    };
+    static std::string to_string(Showexponent e);
+
+    enum class Showticklabels {
+        START,
+        END,
+        BOTH,
+        NONE,
+    };
+    static std::string to_string(Showticklabels e);
+
+    enum class Showtickprefix {
+        ALL,
+        FIRST,
+        LAST,
+        NONE,
+    };
+    static std::string to_string(Showtickprefix e);
+
+    enum class Showticksuffix {
+        ALL,
+        FIRST,
+        LAST,
+        NONE,
+    };
+    static std::string to_string(Showticksuffix e);
+
+    enum class Tickmode {
+        LINEAR,
+        ARRAY,
+    };
+    static std::string to_string(Tickmode e);
+
+    enum class Type {
+        HYPHEN,
+        LINEAR,
+        DATE,
+        CATEGORY,
+    };
+    static std::string to_string(Type e);
+
+    // Sets the tick font.
+    class Tickfont;
+    class Tickformatstops;
+    class Title;
+
+    // The stride between grid lines along the axis
+    Carpet::Aaxis& arraydtick(int f);
+
+    // The starting index of grid lines along the axis
+    Carpet::Aaxis& arraytick0(int f);
+
+    // Determines whether or not the range of this axis is computed in relation to the input data. See `rangemode` for
+    // more info. If `range` is provided, then `autorange` is set to *false*.
+    // - Default: True
+    Carpet::Aaxis& autorange(enum Autorange f);
+
+    // Using *strict* a numeric string in trace data is not converted to a number. Using *convert types* a numeric
+    // string in trace data may be treated as a number during automatic axis `type` detection. Defaults to
+    // layout.autotypenumbers.
+    // - Default: convert types
+    Carpet::Aaxis& autotypenumbers(enum Autotypenumbers f);
+
+    // Sets the order in which categories on this axis appear. Only has an effect if `categoryorder` is set to *array*.
+    // Used with `categoryorder`.
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
+    Carpet::Aaxis& categoryarray(std::vector<T> f);
+
+    // Sets the source reference on Chart Studio Cloud for `categoryarray`.
+    Carpet::Aaxis& categoryarraysrc(std::string f);
+
+    // Specifies the ordering logic for the case of categorical variables. By default, plotly uses *trace*, which
+    // specifies the order that is present in the data supplied. Set `categoryorder` to *category ascending* or
+    // *category descending* if order should be determined by the alphanumerical order of the category names. Set
+    // `categoryorder` to *array* to derive the ordering from the attribute `categoryarray`. If a category is not found
+    // in the `categoryarray` array, the sorting behavior for that attribute will be identical to the *trace* mode. The
+    // unspecified categories will follow the categories in `categoryarray`.
+    // - Default: trace
+    Carpet::Aaxis& categoryorder(enum Categoryorder f);
+
+    //
+    // - Default: value
+    Carpet::Aaxis& cheatertype(enum Cheatertype f);
+
+    // Sets default for all colors associated with this axis all at once: line, font, tick, and grid colors. Grid color
+    // is lightened by blending this with the plot background Individual pieces can override this.
+    Carpet::Aaxis& color(std::string f);
+    Carpet::Aaxis& color(double f);
+
+    // The stride between grid lines along the axis
+    Carpet::Aaxis& dtick(double f);
+
+    // Determines whether or not a line is drawn at along the final value of this axis. If *true*, the end line is drawn
+    // on top of the grid lines.
+    Carpet::Aaxis& endline(bool f);
+
+    // Sets the line color of the end line.
+    Carpet::Aaxis& endlinecolor(std::string f);
+    Carpet::Aaxis& endlinecolor(double f);
+
+    // Sets the width (in px) of the end line.
+    Carpet::Aaxis& endlinewidth(double f);
+
+    // Determines a formatting rule for the tick exponents. For example, consider the number 1,000,000,000. If *none*,
+    // it appears as 1,000,000,000. If *e*, 1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super script). If *SI*,
+    // 1G. If *B*, 1B.
+    // - Default: B
+    Carpet::Aaxis& exponentformat(enum Exponentformat f);
+
+    // Determines whether or not this axis is zoom-able. If true, then zoom is disabled.
+    Carpet::Aaxis& fixedrange(bool f);
+
+    // Sets the axis line color.
+    Carpet::Aaxis& gridcolor(std::string f);
+    Carpet::Aaxis& gridcolor(double f);
+
+    // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
+    // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
+    Carpet::Aaxis& griddash(std::string f);
+
+    // Sets the width (in px) of the axis line.
+    Carpet::Aaxis& gridwidth(double f);
+
+    // Replacement text for specific tick or hover labels. For example using {US: 'USA', CA: 'Canada'} changes US to USA
+    // and CA to Canada. The labels we would have shown must match the keys exactly, after adding any tickprefix or
+    // ticksuffix. For negative numbers the minus sign symbol used (U+2212) is wider than the regular ascii dash. That
+    // means you need to use −1 instead of -1. labelalias can be used with any axis type, and both keys (if needed) and
+    // values (if desired) can include html-like tags or MathJax.
+    template <typename T>
+    Carpet::Aaxis& labelalias(T f);
+
+    // Extra padding between label and the axis
+    Carpet::Aaxis& labelpadding(int f);
+
+    // Sets a axis label prefix.
+    Carpet::Aaxis& labelprefix(std::string f);
+
+    // Sets a axis label suffix.
+    Carpet::Aaxis& labelsuffix(std::string f);
+
+    // Sets the axis line color.
+    Carpet::Aaxis& linecolor(std::string f);
+    Carpet::Aaxis& linecolor(double f);
+
+    // Sets the width (in px) of the axis line.
+    Carpet::Aaxis& linewidth(double f);
+
+    // Hide SI prefix for 10^n if |n| is below this number
+    Carpet::Aaxis& minexponent(double f);
+
+    // Sets the color of the grid lines.
+    Carpet::Aaxis& minorgridcolor(std::string f);
+    Carpet::Aaxis& minorgridcolor(double f);
+
+    // Sets the number of minor grid ticks per major grid tick
+    Carpet::Aaxis& minorgridcount(int f);
+
+    // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
+    // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
+    Carpet::Aaxis& minorgriddash(std::string f);
+
+    // Sets the width (in px) of the grid lines.
+    Carpet::Aaxis& minorgridwidth(double f);
+
+    // Specifies the maximum number of ticks for the particular axis. The actual number of ticks will be chosen
+    // automatically to be less than or equal to `nticks`. Has an effect only if `tickmode` is set to *auto*.
+    Carpet::Aaxis& nticks(int f);
+
+    // Sets the range of this axis. If the axis `type` is *log*, then you must take the log of your desired range (e.g.
+    // to set the range from 1 to 100, set the range from 0 to 2). If the axis `type` is *date*, it should be date
+    // strings, like date data, though Date objects and unix milliseconds will be accepted and converted to strings. If
+    // the axis `type` is *category*, it should be numbers, using the scale where each category is assigned a serial
+    // number from zero in the order it appears.
+    Carpet::Aaxis& range(std::vector<std::string> f);
+
+    // If *normal*, the range is computed in relation to the extrema of the input data. If *tozero*`, the range extends
+    // to 0, regardless of the input data If *nonnegative*, the range is non-negative, regardless of the input data.
+    // - Default: normal
+    Carpet::Aaxis& rangemode(enum Rangemode f);
+
+    // If "true", even 4-digit integers are separated
+    Carpet::Aaxis& separatethousands(bool f);
+
+    // If *all*, all exponents are shown besides their significands. If *first*, only the exponent of the first tick is
+    // shown. If *last*, only the exponent of the last tick is shown. If *none*, no exponents appear.
+    // - Default: all
+    Carpet::Aaxis& showexponent(enum Showexponent f);
+
+    // Determines whether or not grid lines are drawn. If *true*, the grid lines are drawn at every tick mark.
+    Carpet::Aaxis& showgrid(bool f);
+
+    // Determines whether or not a line bounding this axis is drawn.
+    Carpet::Aaxis& showline(bool f);
+
+    // Determines whether axis labels are drawn on the low side, the high side, both, or neither side of the axis.
+    // - Default: start
+    Carpet::Aaxis& showticklabels(enum Showticklabels f);
+
+    // If *all*, all tick labels are displayed with a prefix. If *first*, only the first tick is displayed with a
+    // prefix. If *last*, only the last tick is displayed with a suffix. If *none*, tick prefixes are hidden.
+    // - Default: all
+    Carpet::Aaxis& showtickprefix(enum Showtickprefix f);
+
+    // Same as `showtickprefix` but for tick suffixes.
+    // - Default: all
+    Carpet::Aaxis& showticksuffix(enum Showticksuffix f);
+
+    Carpet::Aaxis& smoothing(double f);
+
+    // Determines whether or not a line is drawn at along the starting value of this axis. If *true*, the start line is
+    // drawn on top of the grid lines.
+    Carpet::Aaxis& startline(bool f);
+
+    // Sets the line color of the start line.
+    Carpet::Aaxis& startlinecolor(std::string f);
+    Carpet::Aaxis& startlinecolor(double f);
+
+    // Sets the width (in px) of the start line.
+    Carpet::Aaxis& startlinewidth(double f);
+
+    // The starting index of grid lines along the axis
+    Carpet::Aaxis& tick0(double f);
+
+    // Sets the angle of the tick labels with respect to the horizontal. For example, a `tickangle` of -90 draws the
+    // tick labels vertically.
+    Carpet::Aaxis& tickangle(double f);
+
+    // Sets the tick font.
+    Carpet::Aaxis& tickfont(class Tickfont f);
+
+    // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
+    // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
+    // https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format. We add two items to d3's date formatter: *%h* for
+    // half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example,
+    // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
+    Carpet::Aaxis& tickformat(std::string f);
+
+    Carpet::Aaxis& tickformatstops(class Tickformatstops f);
+
+    //
+    // - Default: array
+    Carpet::Aaxis& tickmode(enum Tickmode f);
+
+    // Sets a tick label prefix.
+    Carpet::Aaxis& tickprefix(std::string f);
+
+    // Sets a tick label suffix.
+    Carpet::Aaxis& ticksuffix(std::string f);
+
+    // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
+    // Used with `tickvals`.
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
+    Carpet::Aaxis& ticktext(std::vector<T> f);
+
+    // Sets the source reference on Chart Studio Cloud for `ticktext`.
+    Carpet::Aaxis& ticktextsrc(std::string f);
+
+    // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
+    // `ticktext`.
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
+    Carpet::Aaxis& tickvals(std::vector<T> f);
+
+    // Sets the source reference on Chart Studio Cloud for `tickvals`.
+    Carpet::Aaxis& tickvalssrc(std::string f);
+
+    Carpet::Aaxis& title(class Title f);
+
+    // Sets the axis type. By default, plotly attempts to determined the axis type by looking into the data of the
+    // traces that referenced the axis in question.
+    // - Default: -
+    Carpet::Aaxis& type(enum Type f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+// Sets the tick font.
+class Carpet::Aaxis::Tickfont {
+ public:
+
+    enum class Style {
+        NORMAL,
+        ITALIC,
+    };
+    static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
+
+    Carpet::Aaxis::Tickfont& color(std::string f);
+    Carpet::Aaxis::Tickfont& color(double f);
+
+    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+    // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+    // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+    // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select
+    // number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid
+    // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+    // *Raleway*, *Times New Roman*.
+    Carpet::Aaxis::Tickfont& family(std::string f);
+
+    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
+    // e.g. *under+over*, etc.
+    // - Default: none
+    // - Flags: ['under', 'over', 'through']
+    // - Extras ['none']
+    Carpet::Aaxis::Tickfont& lineposition(std::string f);
+
+    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
+    // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+    Carpet::Aaxis::Tickfont& shadow(std::string f);
+
+    Carpet::Aaxis::Tickfont& size(double f);
+
+    // Sets whether a font should be styled with a normal or italic face from its family.
+    // - Default: normal
+    Carpet::Aaxis::Tickfont& style(enum Style f);
+
+    // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
+    // word capitalized.
+    // - Default: normal
+    Carpet::Aaxis::Tickfont& textcase(enum Textcase f);
+
+    // Sets the variant of the font.
+    // - Default: normal
+    Carpet::Aaxis::Tickfont& variant(enum Variant f);
+
+    // Sets the weight (or boldness) of the font.
+    Carpet::Aaxis::Tickfont& weight(int f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+class Carpet::Aaxis::Tickformatstops {
+ public:
+
+    class Tickformatstop;
+
+    Carpet::Aaxis::Tickformatstops& tickformatstop(class Tickformatstop f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+class Carpet::Aaxis::Tickformatstops::Tickformatstop {
+ public:
+
+    // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
+    // *min* or *max* value by passing *null*
+    Carpet::Aaxis::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+
+    // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
+    Carpet::Aaxis::Tickformatstops::Tickformatstop& enabled(bool f);
+
+    // When used in a template, named items are created in the output figure in addition to any items the figure already
+    // has in this array. You can modify these items in the output figure by making your own item with
+    // `templateitemname` matching this `name` alongside your modifications (including `visible: false` or `enabled:
+    // false` to hide it). Has no effect outside of a template.
+    Carpet::Aaxis::Tickformatstops::Tickformatstop& name(std::string f);
+
+    // Used to refer to a named item in this array in the template. Named items from the template will be created even
+    // without a matching item in the input figure, but you can modify one by making an item with `templateitemname`
+    // matching its `name`, alongside your modifications (including `visible: false` or `enabled: false` to hide it). If
+    // there is no template or no matching item, this item will be hidden unless you explicitly show it with `visible:
+    // true`.
+    Carpet::Aaxis::Tickformatstops::Tickformatstop& templateitemname(std::string f);
+
+    // string - dtickformat for described zoom level, the same as *tickformat*
+    Carpet::Aaxis::Tickformatstops::Tickformatstop& value(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+class Carpet::Aaxis::Title {
+ public:
+
+    // Sets this axis' title font.
+    class Font;
+
+    // Sets this axis' title font.
+    Carpet::Aaxis::Title& font(class Font f);
+
+    // An additional amount by which to offset the title from the tick labels, given in pixels.
+    Carpet::Aaxis::Title& offset(double f);
+
+    // Sets the title of this axis.
+    Carpet::Aaxis::Title& text(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+// Sets this axis' title font.
+class Carpet::Aaxis::Title::Font {
+ public:
+
+    enum class Style {
+        NORMAL,
+        ITALIC,
+    };
+    static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
+
+    Carpet::Aaxis::Title::Font& color(std::string f);
+    Carpet::Aaxis::Title::Font& color(double f);
+
+    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+    // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+    // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+    // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select
+    // number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid
+    // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+    // *Raleway*, *Times New Roman*.
+    Carpet::Aaxis::Title::Font& family(std::string f);
+
+    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
+    // e.g. *under+over*, etc.
+    // - Default: none
+    // - Flags: ['under', 'over', 'through']
+    // - Extras ['none']
+    Carpet::Aaxis::Title::Font& lineposition(std::string f);
+
+    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
+    // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+    Carpet::Aaxis::Title::Font& shadow(std::string f);
+
+    Carpet::Aaxis::Title::Font& size(double f);
+
+    // Sets whether a font should be styled with a normal or italic face from its family.
+    // - Default: normal
+    Carpet::Aaxis::Title::Font& style(enum Style f);
+
+    // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
+    // word capitalized.
+    // - Default: normal
+    Carpet::Aaxis::Title::Font& textcase(enum Textcase f);
+
+    // Sets the variant of the font.
+    // - Default: normal
+    Carpet::Aaxis::Title::Font& variant(enum Variant f);
+
+    // Sets the weight (or boldness) of the font.
+    Carpet::Aaxis::Title::Font& weight(int f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+class Carpet::Baxis {
+ public:
+
+    enum class Autorange {
+        TRUE,
+        FALSE,
+        REVERSED,
+    };
+    static std::string to_string(Autorange e);
+
+    enum class Autotypenumbers {
+        CONVERT_TYPES,
+        STRICT,
+    };
+    static std::string to_string(Autotypenumbers e);
+
+    enum class Categoryorder {
+        TRACE,
+        CATEGORY_ASCENDING,
+        CATEGORY_DESCENDING,
+        ARRAY,
+    };
+    static std::string to_string(Categoryorder e);
+
+    enum class Cheatertype {
+        INDEX,
+        VALUE,
+    };
+    static std::string to_string(Cheatertype e);
+
+    enum class Exponentformat {
+        NONE,
+        E,
+        POWER,
+        SI,
+        B,
+    };
+    static std::string to_string(Exponentformat e);
+
+    enum class Rangemode {
+        NORMAL,
+        TOZERO,
+        NONNEGATIVE,
+    };
+    static std::string to_string(Rangemode e);
+
+    enum class Showexponent {
+        ALL,
+        FIRST,
+        LAST,
+        NONE,
+    };
+    static std::string to_string(Showexponent e);
+
+    enum class Showticklabels {
+        START,
+        END,
+        BOTH,
+        NONE,
+    };
+    static std::string to_string(Showticklabels e);
+
+    enum class Showtickprefix {
+        ALL,
+        FIRST,
+        LAST,
+        NONE,
+    };
+    static std::string to_string(Showtickprefix e);
+
+    enum class Showticksuffix {
+        ALL,
+        FIRST,
+        LAST,
+        NONE,
+    };
+    static std::string to_string(Showticksuffix e);
+
+    enum class Tickmode {
+        LINEAR,
+        ARRAY,
+    };
+    static std::string to_string(Tickmode e);
+
+    enum class Type {
+        HYPHEN,
+        LINEAR,
+        DATE,
+        CATEGORY,
+    };
+    static std::string to_string(Type e);
+
+    // Sets the tick font.
+    class Tickfont;
+    class Tickformatstops;
+    class Title;
+
+    // The stride between grid lines along the axis
+    Carpet::Baxis& arraydtick(int f);
+
+    // The starting index of grid lines along the axis
+    Carpet::Baxis& arraytick0(int f);
+
+    // Determines whether or not the range of this axis is computed in relation to the input data. See `rangemode` for
+    // more info. If `range` is provided, then `autorange` is set to *false*.
+    // - Default: True
+    Carpet::Baxis& autorange(enum Autorange f);
+
+    // Using *strict* a numeric string in trace data is not converted to a number. Using *convert types* a numeric
+    // string in trace data may be treated as a number during automatic axis `type` detection. Defaults to
+    // layout.autotypenumbers.
+    // - Default: convert types
+    Carpet::Baxis& autotypenumbers(enum Autotypenumbers f);
+
+    // Sets the order in which categories on this axis appear. Only has an effect if `categoryorder` is set to *array*.
+    // Used with `categoryorder`.
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
+    Carpet::Baxis& categoryarray(std::vector<T> f);
+
+    // Sets the source reference on Chart Studio Cloud for `categoryarray`.
+    Carpet::Baxis& categoryarraysrc(std::string f);
+
+    // Specifies the ordering logic for the case of categorical variables. By default, plotly uses *trace*, which
+    // specifies the order that is present in the data supplied. Set `categoryorder` to *category ascending* or
+    // *category descending* if order should be determined by the alphanumerical order of the category names. Set
+    // `categoryorder` to *array* to derive the ordering from the attribute `categoryarray`. If a category is not found
+    // in the `categoryarray` array, the sorting behavior for that attribute will be identical to the *trace* mode. The
+    // unspecified categories will follow the categories in `categoryarray`.
+    // - Default: trace
+    Carpet::Baxis& categoryorder(enum Categoryorder f);
+
+    //
+    // - Default: value
+    Carpet::Baxis& cheatertype(enum Cheatertype f);
+
+    // Sets default for all colors associated with this axis all at once: line, font, tick, and grid colors. Grid color
+    // is lightened by blending this with the plot background Individual pieces can override this.
+    Carpet::Baxis& color(std::string f);
+    Carpet::Baxis& color(double f);
+
+    // The stride between grid lines along the axis
+    Carpet::Baxis& dtick(double f);
+
+    // Determines whether or not a line is drawn at along the final value of this axis. If *true*, the end line is drawn
+    // on top of the grid lines.
+    Carpet::Baxis& endline(bool f);
+
+    // Sets the line color of the end line.
+    Carpet::Baxis& endlinecolor(std::string f);
+    Carpet::Baxis& endlinecolor(double f);
+
+    // Sets the width (in px) of the end line.
+    Carpet::Baxis& endlinewidth(double f);
+
+    // Determines a formatting rule for the tick exponents. For example, consider the number 1,000,000,000. If *none*,
+    // it appears as 1,000,000,000. If *e*, 1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super script). If *SI*,
+    // 1G. If *B*, 1B.
+    // - Default: B
+    Carpet::Baxis& exponentformat(enum Exponentformat f);
+
+    // Determines whether or not this axis is zoom-able. If true, then zoom is disabled.
+    Carpet::Baxis& fixedrange(bool f);
+
+    // Sets the axis line color.
+    Carpet::Baxis& gridcolor(std::string f);
+    Carpet::Baxis& gridcolor(double f);
+
+    // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
+    // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
+    Carpet::Baxis& griddash(std::string f);
+
+    // Sets the width (in px) of the axis line.
+    Carpet::Baxis& gridwidth(double f);
+
+    // Replacement text for specific tick or hover labels. For example using {US: 'USA', CA: 'Canada'} changes US to USA
+    // and CA to Canada. The labels we would have shown must match the keys exactly, after adding any tickprefix or
+    // ticksuffix. For negative numbers the minus sign symbol used (U+2212) is wider than the regular ascii dash. That
+    // means you need to use −1 instead of -1. labelalias can be used with any axis type, and both keys (if needed) and
+    // values (if desired) can include html-like tags or MathJax.
+    template <typename T>
+    Carpet::Baxis& labelalias(T f);
+
+    // Extra padding between label and the axis
+    Carpet::Baxis& labelpadding(int f);
+
+    // Sets a axis label prefix.
+    Carpet::Baxis& labelprefix(std::string f);
+
+    // Sets a axis label suffix.
+    Carpet::Baxis& labelsuffix(std::string f);
+
+    // Sets the axis line color.
+    Carpet::Baxis& linecolor(std::string f);
+    Carpet::Baxis& linecolor(double f);
+
+    // Sets the width (in px) of the axis line.
+    Carpet::Baxis& linewidth(double f);
+
+    // Hide SI prefix for 10^n if |n| is below this number
+    Carpet::Baxis& minexponent(double f);
+
+    // Sets the color of the grid lines.
+    Carpet::Baxis& minorgridcolor(std::string f);
+    Carpet::Baxis& minorgridcolor(double f);
+
+    // Sets the number of minor grid ticks per major grid tick
+    Carpet::Baxis& minorgridcount(int f);
+
+    // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
+    // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
+    Carpet::Baxis& minorgriddash(std::string f);
+
+    // Sets the width (in px) of the grid lines.
+    Carpet::Baxis& minorgridwidth(double f);
+
+    // Specifies the maximum number of ticks for the particular axis. The actual number of ticks will be chosen
+    // automatically to be less than or equal to `nticks`. Has an effect only if `tickmode` is set to *auto*.
+    Carpet::Baxis& nticks(int f);
+
+    // Sets the range of this axis. If the axis `type` is *log*, then you must take the log of your desired range (e.g.
+    // to set the range from 1 to 100, set the range from 0 to 2). If the axis `type` is *date*, it should be date
+    // strings, like date data, though Date objects and unix milliseconds will be accepted and converted to strings. If
+    // the axis `type` is *category*, it should be numbers, using the scale where each category is assigned a serial
+    // number from zero in the order it appears.
+    Carpet::Baxis& range(std::vector<std::string> f);
+
+    // If *normal*, the range is computed in relation to the extrema of the input data. If *tozero*`, the range extends
+    // to 0, regardless of the input data If *nonnegative*, the range is non-negative, regardless of the input data.
+    // - Default: normal
+    Carpet::Baxis& rangemode(enum Rangemode f);
+
+    // If "true", even 4-digit integers are separated
+    Carpet::Baxis& separatethousands(bool f);
+
+    // If *all*, all exponents are shown besides their significands. If *first*, only the exponent of the first tick is
+    // shown. If *last*, only the exponent of the last tick is shown. If *none*, no exponents appear.
+    // - Default: all
+    Carpet::Baxis& showexponent(enum Showexponent f);
+
+    // Determines whether or not grid lines are drawn. If *true*, the grid lines are drawn at every tick mark.
+    Carpet::Baxis& showgrid(bool f);
+
+    // Determines whether or not a line bounding this axis is drawn.
+    Carpet::Baxis& showline(bool f);
+
+    // Determines whether axis labels are drawn on the low side, the high side, both, or neither side of the axis.
+    // - Default: start
+    Carpet::Baxis& showticklabels(enum Showticklabels f);
+
+    // If *all*, all tick labels are displayed with a prefix. If *first*, only the first tick is displayed with a
+    // prefix. If *last*, only the last tick is displayed with a suffix. If *none*, tick prefixes are hidden.
+    // - Default: all
+    Carpet::Baxis& showtickprefix(enum Showtickprefix f);
+
+    // Same as `showtickprefix` but for tick suffixes.
+    // - Default: all
+    Carpet::Baxis& showticksuffix(enum Showticksuffix f);
+
+    Carpet::Baxis& smoothing(double f);
+
+    // Determines whether or not a line is drawn at along the starting value of this axis. If *true*, the start line is
+    // drawn on top of the grid lines.
+    Carpet::Baxis& startline(bool f);
+
+    // Sets the line color of the start line.
+    Carpet::Baxis& startlinecolor(std::string f);
+    Carpet::Baxis& startlinecolor(double f);
+
+    // Sets the width (in px) of the start line.
+    Carpet::Baxis& startlinewidth(double f);
+
+    // The starting index of grid lines along the axis
+    Carpet::Baxis& tick0(double f);
+
+    // Sets the angle of the tick labels with respect to the horizontal. For example, a `tickangle` of -90 draws the
+    // tick labels vertically.
+    Carpet::Baxis& tickangle(double f);
+
+    // Sets the tick font.
+    Carpet::Baxis& tickfont(class Tickfont f);
+
+    // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
+    // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
+    // https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format. We add two items to d3's date formatter: *%h* for
+    // half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example,
+    // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
+    Carpet::Baxis& tickformat(std::string f);
+
+    Carpet::Baxis& tickformatstops(class Tickformatstops f);
+
+    //
+    // - Default: array
+    Carpet::Baxis& tickmode(enum Tickmode f);
+
+    // Sets a tick label prefix.
+    Carpet::Baxis& tickprefix(std::string f);
+
+    // Sets a tick label suffix.
+    Carpet::Baxis& ticksuffix(std::string f);
+
+    // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
+    // Used with `tickvals`.
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
+    Carpet::Baxis& ticktext(std::vector<T> f);
+
+    // Sets the source reference on Chart Studio Cloud for `ticktext`.
+    Carpet::Baxis& ticktextsrc(std::string f);
+
+    // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
+    // `ticktext`.
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
+    Carpet::Baxis& tickvals(std::vector<T> f);
+
+    // Sets the source reference on Chart Studio Cloud for `tickvals`.
+    Carpet::Baxis& tickvalssrc(std::string f);
+
+    Carpet::Baxis& title(class Title f);
+
+    // Sets the axis type. By default, plotly attempts to determined the axis type by looking into the data of the
+    // traces that referenced the axis in question.
+    // - Default: -
+    Carpet::Baxis& type(enum Type f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+// Sets the tick font.
+class Carpet::Baxis::Tickfont {
+ public:
+
+    enum class Style {
+        NORMAL,
+        ITALIC,
+    };
+    static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
+
+    Carpet::Baxis::Tickfont& color(std::string f);
+    Carpet::Baxis::Tickfont& color(double f);
+
+    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+    // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+    // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+    // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select
+    // number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid
+    // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+    // *Raleway*, *Times New Roman*.
+    Carpet::Baxis::Tickfont& family(std::string f);
+
+    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
+    // e.g. *under+over*, etc.
+    // - Default: none
+    // - Flags: ['under', 'over', 'through']
+    // - Extras ['none']
+    Carpet::Baxis::Tickfont& lineposition(std::string f);
+
+    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
+    // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+    Carpet::Baxis::Tickfont& shadow(std::string f);
+
+    Carpet::Baxis::Tickfont& size(double f);
+
+    // Sets whether a font should be styled with a normal or italic face from its family.
+    // - Default: normal
+    Carpet::Baxis::Tickfont& style(enum Style f);
+
+    // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
+    // word capitalized.
+    // - Default: normal
+    Carpet::Baxis::Tickfont& textcase(enum Textcase f);
+
+    // Sets the variant of the font.
+    // - Default: normal
+    Carpet::Baxis::Tickfont& variant(enum Variant f);
+
+    // Sets the weight (or boldness) of the font.
+    Carpet::Baxis::Tickfont& weight(int f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+class Carpet::Baxis::Tickformatstops {
+ public:
+
+    class Tickformatstop;
+
+    Carpet::Baxis::Tickformatstops& tickformatstop(class Tickformatstop f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+class Carpet::Baxis::Tickformatstops::Tickformatstop {
+ public:
+
+    // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
+    // *min* or *max* value by passing *null*
+    Carpet::Baxis::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+
+    // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
+    Carpet::Baxis::Tickformatstops::Tickformatstop& enabled(bool f);
+
+    // When used in a template, named items are created in the output figure in addition to any items the figure already
+    // has in this array. You can modify these items in the output figure by making your own item with
+    // `templateitemname` matching this `name` alongside your modifications (including `visible: false` or `enabled:
+    // false` to hide it). Has no effect outside of a template.
+    Carpet::Baxis::Tickformatstops::Tickformatstop& name(std::string f);
+
+    // Used to refer to a named item in this array in the template. Named items from the template will be created even
+    // without a matching item in the input figure, but you can modify one by making an item with `templateitemname`
+    // matching its `name`, alongside your modifications (including `visible: false` or `enabled: false` to hide it). If
+    // there is no template or no matching item, this item will be hidden unless you explicitly show it with `visible:
+    // true`.
+    Carpet::Baxis::Tickformatstops::Tickformatstop& templateitemname(std::string f);
+
+    // string - dtickformat for described zoom level, the same as *tickformat*
+    Carpet::Baxis::Tickformatstops::Tickformatstop& value(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+class Carpet::Baxis::Title {
+ public:
+
+    // Sets this axis' title font.
+    class Font;
+
+    // Sets this axis' title font.
+    Carpet::Baxis::Title& font(class Font f);
+
+    // An additional amount by which to offset the title from the tick labels, given in pixels.
+    Carpet::Baxis::Title& offset(double f);
+
+    // Sets the title of this axis.
+    Carpet::Baxis::Title& text(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+// Sets this axis' title font.
+class Carpet::Baxis::Title::Font {
+ public:
+
+    enum class Style {
+        NORMAL,
+        ITALIC,
+    };
+    static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
+
+    Carpet::Baxis::Title::Font& color(std::string f);
+    Carpet::Baxis::Title::Font& color(double f);
+
+    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+    // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+    // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+    // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select
+    // number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid
+    // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+    // *Raleway*, *Times New Roman*.
+    Carpet::Baxis::Title::Font& family(std::string f);
+
+    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
+    // e.g. *under+over*, etc.
+    // - Default: none
+    // - Flags: ['under', 'over', 'through']
+    // - Extras ['none']
+    Carpet::Baxis::Title::Font& lineposition(std::string f);
+
+    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
+    // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+    Carpet::Baxis::Title::Font& shadow(std::string f);
+
+    Carpet::Baxis::Title::Font& size(double f);
+
+    // Sets whether a font should be styled with a normal or italic face from its family.
+    // - Default: normal
+    Carpet::Baxis::Title::Font& style(enum Style f);
+
+    // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
+    // word capitalized.
+    // - Default: normal
+    Carpet::Baxis::Title::Font& textcase(enum Textcase f);
+
+    // Sets the variant of the font.
+    // - Default: normal
+    Carpet::Baxis::Title::Font& variant(enum Variant f);
+
+    // Sets the weight (or boldness) of the font.
+    Carpet::Baxis::Title::Font& weight(int f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+// The default font used for axis & tick labels on this carpet
+class Carpet::Font {
+ public:
+
+    enum class Style {
+        NORMAL,
+        ITALIC,
+    };
+    static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
+
+    Carpet::Font& color(std::string f);
+    Carpet::Font& color(double f);
+
+    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+    // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+    // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+    // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select
+    // number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid
+    // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+    // *Raleway*, *Times New Roman*.
+    Carpet::Font& family(std::string f);
+
+    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
+    // e.g. *under+over*, etc.
+    // - Default: none
+    // - Flags: ['under', 'over', 'through']
+    // - Extras ['none']
+    Carpet::Font& lineposition(std::string f);
+
+    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
+    // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+    Carpet::Font& shadow(std::string f);
+
+    Carpet::Font& size(double f);
+
+    // Sets whether a font should be styled with a normal or italic face from its family.
+    // - Default: normal
+    Carpet::Font& style(enum Style f);
+
+    // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
+    // word capitalized.
+    // - Default: normal
+    Carpet::Font& textcase(enum Textcase f);
+
+    // Sets the variant of the font.
+    // - Default: normal
+    Carpet::Font& variant(enum Variant f);
+
+    // Sets the weight (or boldness) of the font.
+    Carpet::Font& weight(int f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+class Carpet::Legendgrouptitle {
+ public:
+
+    // Sets this legend group's title font.
+    class Font;
+
+    // Sets this legend group's title font.
+    Carpet::Legendgrouptitle& font(class Font f);
+
+    // Sets the title of the legend group.
+    Carpet::Legendgrouptitle& text(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+// Sets this legend group's title font.
+class Carpet::Legendgrouptitle::Font {
+ public:
+
+    enum class Style {
+        NORMAL,
+        ITALIC,
+    };
+    static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
+
+    Carpet::Legendgrouptitle::Font& color(std::string f);
+    Carpet::Legendgrouptitle::Font& color(double f);
+
+    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+    // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+    // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+    // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select
+    // number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid
+    // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+    // *Raleway*, *Times New Roman*.
+    Carpet::Legendgrouptitle::Font& family(std::string f);
+
+    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
+    // e.g. *under+over*, etc.
+    // - Default: none
+    // - Flags: ['under', 'over', 'through']
+    // - Extras ['none']
+    Carpet::Legendgrouptitle::Font& lineposition(std::string f);
+
+    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
+    // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+    Carpet::Legendgrouptitle::Font& shadow(std::string f);
+
+    Carpet::Legendgrouptitle::Font& size(double f);
+
+    // Sets whether a font should be styled with a normal or italic face from its family.
+    // - Default: normal
+    Carpet::Legendgrouptitle::Font& style(enum Style f);
+
+    // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
+    // word capitalized.
+    // - Default: normal
+    Carpet::Legendgrouptitle::Font& textcase(enum Textcase f);
+
+    // Sets the variant of the font.
+    // - Default: normal
+    Carpet::Legendgrouptitle::Font& variant(enum Variant f);
+
+    // Sets the weight (or boldness) of the font.
+    Carpet::Legendgrouptitle::Font& weight(int f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
+class Carpet::Stream {
+ public:
+
+    // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
+    // only the newest 50 points will be displayed on the plot.
+    Carpet::Stream& maxpoints(double f);
+
+    // The stream id number links a data trace on a plot with a stream. See https://chart-studio.plotly.com/settings for
+    // more details.
+    Carpet::Stream& token(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    nlohmann::json json{};
+};
+
 } // namespace plotlypp
+
+#include "impl/carpet_impl.hpp"
