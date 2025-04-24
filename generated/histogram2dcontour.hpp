@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -728,7 +728,7 @@ class Histogram2Dcontour::Colorbar {
     Histogram2Dcontour::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -801,7 +801,7 @@ class Histogram2Dcontour::Colorbar::Tickfont {
     Histogram2Dcontour::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram2Dcontour::Colorbar::Tickformatstops {
@@ -812,7 +812,7 @@ class Histogram2Dcontour::Colorbar::Tickformatstops {
     Histogram2Dcontour::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop {
@@ -842,7 +842,7 @@ class Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop {
     Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram2Dcontour::Colorbar::Title {
@@ -869,7 +869,7 @@ class Histogram2Dcontour::Colorbar::Title {
     Histogram2Dcontour::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -942,7 +942,7 @@ class Histogram2Dcontour::Colorbar::Title::Font {
     Histogram2Dcontour::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram2Dcontour::Contours {
@@ -1037,14 +1037,14 @@ class Histogram2Dcontour::Contours {
     Histogram2Dcontour::Contours& value(T f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram2Dcontour::Contours::Impliededits {
  public:
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for labeling the contour levels. The default color comes from the lines, if shown. The default
@@ -1118,7 +1118,7 @@ class Histogram2Dcontour::Contours::Labelfont {
     Histogram2Dcontour::Contours::Labelfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram2Dcontour::Hoverlabel {
@@ -1175,7 +1175,7 @@ class Histogram2Dcontour::Hoverlabel {
     Histogram2Dcontour::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -1285,7 +1285,7 @@ class Histogram2Dcontour::Hoverlabel::Font {
     Histogram2Dcontour::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram2Dcontour::Legendgrouptitle {
@@ -1301,7 +1301,7 @@ class Histogram2Dcontour::Legendgrouptitle {
     Histogram2Dcontour::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -1374,7 +1374,7 @@ class Histogram2Dcontour::Legendgrouptitle::Font {
     Histogram2Dcontour::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram2Dcontour::Line {
@@ -1395,7 +1395,7 @@ class Histogram2Dcontour::Line {
     Histogram2Dcontour::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram2Dcontour::Marker {
@@ -1409,7 +1409,7 @@ class Histogram2Dcontour::Marker {
     Histogram2Dcontour::Marker& colorsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram2Dcontour::Stream {
@@ -1424,7 +1424,7 @@ class Histogram2Dcontour::Stream {
     Histogram2Dcontour::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // For this trace it only has an effect if `coloring` is set to *heatmap*. Sets the text font.
@@ -1497,7 +1497,7 @@ class Histogram2Dcontour::Textfont {
     Histogram2Dcontour::Textfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram2Dcontour::Xbins {
@@ -1527,7 +1527,7 @@ class Histogram2Dcontour::Xbins {
     Histogram2Dcontour::Xbins& start(T f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram2Dcontour::Ybins {
@@ -1557,7 +1557,7 @@ class Histogram2Dcontour::Ybins {
     Histogram2Dcontour::Ybins& start(T f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

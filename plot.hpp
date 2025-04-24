@@ -2,11 +2,11 @@
 
 #include <filesystem>
 #include <fstream>
+#include <iostream>
 #include <sstream>
 #include <string>
-#include <iostream>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 #include "plotly_min_js.h"
 
@@ -39,7 +39,7 @@ class Figure {
         os << "            const div = document.getElementById('plot');\n";
         os << "            div.style.width = window.innerWidth;\n";
         os << "            div.style.height = window.innerHeight;\n";
-        os << "            data = JSON.parse('" << _json.dump() << "')\n";
+        os << "            data = JSON.parse('" << serialize(_json) << "')\n";
         os << "            Plotly.newPlot('plot', data);\n";
         os << "        }";
         os << "        // Call resizeDiv initially to set the size on page load.\n";
@@ -67,7 +67,7 @@ class Figure {
 
  private:
     void showInBrowser(const std::string& plotFile) {
-      std::cout << "opening " << plotFile << "\n";
+        std::cout << "opening " << plotFile << "\n";
 #ifdef _WIN32
         system(("cmd /C start " + plotFile).c_str());
 #elif __APPLE__
@@ -81,9 +81,8 @@ class Figure {
     }
     void unimplementedPlatorm();
 
-    nlohmann::json _json;
+    Json _json;
     inline static int _showCount = 0;
 };
-
 
 } // namespace plotlypp

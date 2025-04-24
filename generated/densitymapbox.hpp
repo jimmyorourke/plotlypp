@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -585,7 +585,7 @@ class Densitymapbox::Colorbar {
     Densitymapbox::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -658,7 +658,7 @@ class Densitymapbox::Colorbar::Tickfont {
     Densitymapbox::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Densitymapbox::Colorbar::Tickformatstops {
@@ -669,7 +669,7 @@ class Densitymapbox::Colorbar::Tickformatstops {
     Densitymapbox::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Densitymapbox::Colorbar::Tickformatstops::Tickformatstop {
@@ -699,7 +699,7 @@ class Densitymapbox::Colorbar::Tickformatstops::Tickformatstop {
     Densitymapbox::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Densitymapbox::Colorbar::Title {
@@ -726,7 +726,7 @@ class Densitymapbox::Colorbar::Title {
     Densitymapbox::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -799,7 +799,7 @@ class Densitymapbox::Colorbar::Title::Font {
     Densitymapbox::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Densitymapbox::Hoverlabel {
@@ -856,7 +856,7 @@ class Densitymapbox::Hoverlabel {
     Densitymapbox::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -966,7 +966,7 @@ class Densitymapbox::Hoverlabel::Font {
     Densitymapbox::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Densitymapbox::Legendgrouptitle {
@@ -982,7 +982,7 @@ class Densitymapbox::Legendgrouptitle {
     Densitymapbox::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -1055,7 +1055,7 @@ class Densitymapbox::Legendgrouptitle::Font {
     Densitymapbox::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Densitymapbox::Stream {
@@ -1070,7 +1070,7 @@ class Densitymapbox::Stream {
     Densitymapbox::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

@@ -93,7 +93,7 @@ class Writer:
 def emit_json_member(writer):
     with IndentBlock(writer):
         writer.write("// Advanced users may modify the JSON representation directly, at their own peril!")
-        writer.write("nlohmann::json json{};")
+        writer.write("Json json{};")
 
 def emit_array_field_setter_decl(class_object, field, output_val_type, writer):
     if output_val_type == 'T':
@@ -106,7 +106,7 @@ def emit_array_field_setter(class_object, field, output_val_type, writer):
     writer.write(f"{class_object.name.title()}& {class_object.name.title()}::{field.name}(std::vector<{output_val_type}> f) {{")
     with IndentBlock(writer):
         if field.is_object:
-            writer.write(f"std::vector<nlohmann::json> jsonified(f.size());")
+            writer.write(f"std::vector<json> jsonified(f.size());")
             writer.write(f"std::transform(f.begin(), f.end(), jsonified.begin(), [](auto& e){{return std::move(e.j);}});")
             writer.write(f"json[\"{field.name}\"] = std::move(jsonified);")
         else:
@@ -277,7 +277,7 @@ def emit_trace(trace, out_dir, impl_subdir):
     writer.write("#include <trace.hpp>")
     writer.write("#include <traits.hpp>")
     writer.write("")
-    writer.write("#include <nlohmann/json.hpp>")
+    writer.write("#include <json.hpp>")
     writer.write("")
     writer.write("namespace plotlypp {")
     writer.write("")

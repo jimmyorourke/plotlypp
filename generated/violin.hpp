@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -384,7 +384,7 @@ class Violin::Box {
     Violin::Box& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Violin::Box::Line {
@@ -398,7 +398,7 @@ class Violin::Box::Line {
     Violin::Box::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Violin::Hoverlabel {
@@ -455,7 +455,7 @@ class Violin::Hoverlabel {
     Violin::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -565,7 +565,7 @@ class Violin::Hoverlabel::Font {
     Violin::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Violin::Legendgrouptitle {
@@ -581,7 +581,7 @@ class Violin::Legendgrouptitle {
     Violin::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -654,7 +654,7 @@ class Violin::Legendgrouptitle::Font {
     Violin::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Violin::Line {
@@ -668,7 +668,7 @@ class Violin::Line {
     Violin::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Violin::Marker {
@@ -1031,7 +1031,7 @@ class Violin::Marker {
     Violin::Marker& symbol(enum Symbol f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Violin::Marker::Line {
@@ -1054,7 +1054,7 @@ class Violin::Marker::Line {
     Violin::Marker::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Violin::Meanline {
@@ -1073,7 +1073,7 @@ class Violin::Meanline {
     Violin::Meanline& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Violin::Selected {
@@ -1084,7 +1084,7 @@ class Violin::Selected {
     Violin::Selected& marker(class Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Violin::Selected::Marker {
@@ -1101,7 +1101,7 @@ class Violin::Selected::Marker {
     Violin::Selected::Marker& size(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Violin::Stream {
@@ -1116,7 +1116,7 @@ class Violin::Stream {
     Violin::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Violin::Unselected {
@@ -1127,7 +1127,7 @@ class Violin::Unselected {
     Violin::Unselected& marker(class Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Violin::Unselected::Marker {
@@ -1144,7 +1144,7 @@ class Violin::Unselected::Marker {
     Violin::Unselected::Marker& size(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

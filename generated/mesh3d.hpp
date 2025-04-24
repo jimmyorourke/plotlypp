@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -772,7 +772,7 @@ class Mesh3D::Colorbar {
     Mesh3D::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -845,7 +845,7 @@ class Mesh3D::Colorbar::Tickfont {
     Mesh3D::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Mesh3D::Colorbar::Tickformatstops {
@@ -856,7 +856,7 @@ class Mesh3D::Colorbar::Tickformatstops {
     Mesh3D::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Mesh3D::Colorbar::Tickformatstops::Tickformatstop {
@@ -886,7 +886,7 @@ class Mesh3D::Colorbar::Tickformatstops::Tickformatstop {
     Mesh3D::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Mesh3D::Colorbar::Title {
@@ -913,7 +913,7 @@ class Mesh3D::Colorbar::Title {
     Mesh3D::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -986,7 +986,7 @@ class Mesh3D::Colorbar::Title::Font {
     Mesh3D::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Mesh3D::Contour {
@@ -1003,7 +1003,7 @@ class Mesh3D::Contour {
     Mesh3D::Contour& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Mesh3D::Hoverlabel {
@@ -1060,7 +1060,7 @@ class Mesh3D::Hoverlabel {
     Mesh3D::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -1170,7 +1170,7 @@ class Mesh3D::Hoverlabel::Font {
     Mesh3D::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Mesh3D::Legendgrouptitle {
@@ -1186,7 +1186,7 @@ class Mesh3D::Legendgrouptitle {
     Mesh3D::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -1259,7 +1259,7 @@ class Mesh3D::Legendgrouptitle::Font {
     Mesh3D::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Mesh3D::Lighting {
@@ -1288,7 +1288,7 @@ class Mesh3D::Lighting {
     Mesh3D::Lighting& vertexnormalsepsilon(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Mesh3D::Lightposition {
@@ -1304,7 +1304,7 @@ class Mesh3D::Lightposition {
     Mesh3D::Lightposition& z(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Mesh3D::Stream {
@@ -1319,7 +1319,7 @@ class Mesh3D::Stream {
     Mesh3D::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

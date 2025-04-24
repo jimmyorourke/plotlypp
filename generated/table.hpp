@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -204,7 +204,7 @@ class Table::Cells {
     Table::Cells& valuessrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Table::Cells::Fill {
@@ -220,7 +220,7 @@ class Table::Cells::Fill {
     Table::Cells::Fill& colorsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Table::Cells::Font {
@@ -329,7 +329,7 @@ class Table::Cells::Font {
     Table::Cells::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Table::Cells::Line {
@@ -350,7 +350,7 @@ class Table::Cells::Line {
     Table::Cells::Line& widthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Table::Domain {
@@ -369,7 +369,7 @@ class Table::Domain {
     Table::Domain& y(std::vector<std::string> f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Table::Header {
@@ -436,7 +436,7 @@ class Table::Header {
     Table::Header& valuessrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Table::Header::Fill {
@@ -452,7 +452,7 @@ class Table::Header::Fill {
     Table::Header::Fill& colorsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Table::Header::Font {
@@ -561,7 +561,7 @@ class Table::Header::Font {
     Table::Header::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Table::Header::Line {
@@ -582,7 +582,7 @@ class Table::Header::Line {
     Table::Header::Line& widthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Table::Hoverlabel {
@@ -639,7 +639,7 @@ class Table::Hoverlabel {
     Table::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -749,7 +749,7 @@ class Table::Hoverlabel::Font {
     Table::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Table::Legendgrouptitle {
@@ -765,7 +765,7 @@ class Table::Legendgrouptitle {
     Table::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -838,7 +838,7 @@ class Table::Legendgrouptitle::Font {
     Table::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Table::Stream {
@@ -853,7 +853,7 @@ class Table::Stream {
     Table::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

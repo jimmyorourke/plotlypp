@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -571,7 +571,7 @@ class Box::Hoverlabel {
     Box::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -681,7 +681,7 @@ class Box::Hoverlabel::Font {
     Box::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Box::Legendgrouptitle {
@@ -697,7 +697,7 @@ class Box::Legendgrouptitle {
     Box::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -770,7 +770,7 @@ class Box::Legendgrouptitle::Font {
     Box::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Box::Line {
@@ -784,7 +784,7 @@ class Box::Line {
     Box::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Box::Marker {
@@ -1147,7 +1147,7 @@ class Box::Marker {
     Box::Marker& symbol(enum Symbol f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Box::Marker::Line {
@@ -1170,7 +1170,7 @@ class Box::Marker::Line {
     Box::Marker::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Box::Selected {
@@ -1181,7 +1181,7 @@ class Box::Selected {
     Box::Selected& marker(class Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Box::Selected::Marker {
@@ -1198,7 +1198,7 @@ class Box::Selected::Marker {
     Box::Selected::Marker& size(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Box::Stream {
@@ -1213,7 +1213,7 @@ class Box::Stream {
     Box::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Box::Unselected {
@@ -1224,7 +1224,7 @@ class Box::Unselected {
     Box::Unselected& marker(class Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Box::Unselected::Marker {
@@ -1241,7 +1241,7 @@ class Box::Unselected::Marker {
     Box::Unselected::Marker& size(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

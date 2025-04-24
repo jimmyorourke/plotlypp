@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -522,7 +522,7 @@ class Bar::Error_X {
     Bar::Error_X& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Bar::Error_Y {
@@ -588,7 +588,7 @@ class Bar::Error_Y {
     Bar::Error_Y& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Bar::Hoverlabel {
@@ -645,7 +645,7 @@ class Bar::Hoverlabel {
     Bar::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -755,7 +755,7 @@ class Bar::Hoverlabel::Font {
     Bar::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `text` lying inside the bar.
@@ -865,7 +865,7 @@ class Bar::Insidetextfont {
     Bar::Insidetextfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Bar::Legendgrouptitle {
@@ -881,7 +881,7 @@ class Bar::Legendgrouptitle {
     Bar::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -954,7 +954,7 @@ class Bar::Legendgrouptitle::Font {
     Bar::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Bar::Marker {
@@ -1043,7 +1043,7 @@ class Bar::Marker {
     Bar::Marker& showscale(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Bar::Marker::Colorbar {
@@ -1382,7 +1382,7 @@ class Bar::Marker::Colorbar {
     Bar::Marker::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -1455,7 +1455,7 @@ class Bar::Marker::Colorbar::Tickfont {
     Bar::Marker::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Bar::Marker::Colorbar::Tickformatstops {
@@ -1466,7 +1466,7 @@ class Bar::Marker::Colorbar::Tickformatstops {
     Bar::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Bar::Marker::Colorbar::Tickformatstops::Tickformatstop {
@@ -1496,7 +1496,7 @@ class Bar::Marker::Colorbar::Tickformatstops::Tickformatstop {
     Bar::Marker::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Bar::Marker::Colorbar::Title {
@@ -1523,7 +1523,7 @@ class Bar::Marker::Colorbar::Title {
     Bar::Marker::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -1596,7 +1596,7 @@ class Bar::Marker::Colorbar::Title::Font {
     Bar::Marker::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Bar::Marker::Line {
@@ -1668,7 +1668,7 @@ class Bar::Marker::Line {
     Bar::Marker::Line& widthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the pattern within the marker.
@@ -1747,7 +1747,7 @@ class Bar::Marker::Pattern {
     Bar::Marker::Pattern& soliditysrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `text` lying outside the bar.
@@ -1857,7 +1857,7 @@ class Bar::Outsidetextfont {
     Bar::Outsidetextfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Bar::Selected {
@@ -1871,7 +1871,7 @@ class Bar::Selected {
     Bar::Selected& textfont(class Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Bar::Selected::Marker {
@@ -1885,7 +1885,7 @@ class Bar::Selected::Marker {
     Bar::Selected::Marker& opacity(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Bar::Selected::Textfont {
@@ -1896,7 +1896,7 @@ class Bar::Selected::Textfont {
     Bar::Selected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Bar::Stream {
@@ -1911,7 +1911,7 @@ class Bar::Stream {
     Bar::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `text`.
@@ -2021,7 +2021,7 @@ class Bar::Textfont {
     Bar::Textfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Bar::Unselected {
@@ -2035,7 +2035,7 @@ class Bar::Unselected {
     Bar::Unselected& textfont(class Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Bar::Unselected::Marker {
@@ -2049,7 +2049,7 @@ class Bar::Unselected::Marker {
     Bar::Unselected::Marker& opacity(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Bar::Unselected::Textfont {
@@ -2060,7 +2060,7 @@ class Bar::Unselected::Textfont {
     Bar::Unselected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

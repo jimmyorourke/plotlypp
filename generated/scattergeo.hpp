@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -353,7 +353,7 @@ class Scattergeo::Hoverlabel {
     Scattergeo::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -463,7 +463,7 @@ class Scattergeo::Hoverlabel::Font {
     Scattergeo::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergeo::Legendgrouptitle {
@@ -479,7 +479,7 @@ class Scattergeo::Legendgrouptitle {
     Scattergeo::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -552,7 +552,7 @@ class Scattergeo::Legendgrouptitle::Font {
     Scattergeo::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergeo::Line {
@@ -570,7 +570,7 @@ class Scattergeo::Line {
     Scattergeo::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergeo::Marker {
@@ -1043,7 +1043,7 @@ class Scattergeo::Marker {
     Scattergeo::Marker& symbolsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergeo::Marker::Colorbar {
@@ -1382,7 +1382,7 @@ class Scattergeo::Marker::Colorbar {
     Scattergeo::Marker::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -1455,7 +1455,7 @@ class Scattergeo::Marker::Colorbar::Tickfont {
     Scattergeo::Marker::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergeo::Marker::Colorbar::Tickformatstops {
@@ -1466,7 +1466,7 @@ class Scattergeo::Marker::Colorbar::Tickformatstops {
     Scattergeo::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergeo::Marker::Colorbar::Tickformatstops::Tickformatstop {
@@ -1496,7 +1496,7 @@ class Scattergeo::Marker::Colorbar::Tickformatstops::Tickformatstop {
     Scattergeo::Marker::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergeo::Marker::Colorbar::Title {
@@ -1523,7 +1523,7 @@ class Scattergeo::Marker::Colorbar::Title {
     Scattergeo::Marker::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -1596,7 +1596,7 @@ class Scattergeo::Marker::Colorbar::Title::Font {
     Scattergeo::Marker::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergeo::Marker::Gradient {
@@ -1629,7 +1629,7 @@ class Scattergeo::Marker::Gradient {
     Scattergeo::Marker::Gradient& typesrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergeo::Marker::Line {
@@ -1701,7 +1701,7 @@ class Scattergeo::Marker::Line {
     Scattergeo::Marker::Line& widthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergeo::Selected {
@@ -1715,7 +1715,7 @@ class Scattergeo::Selected {
     Scattergeo::Selected& textfont(class Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergeo::Selected::Marker {
@@ -1732,7 +1732,7 @@ class Scattergeo::Selected::Marker {
     Scattergeo::Selected::Marker& size(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergeo::Selected::Textfont {
@@ -1743,7 +1743,7 @@ class Scattergeo::Selected::Textfont {
     Scattergeo::Selected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergeo::Stream {
@@ -1758,7 +1758,7 @@ class Scattergeo::Stream {
     Scattergeo::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the text font.
@@ -1868,7 +1868,7 @@ class Scattergeo::Textfont {
     Scattergeo::Textfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergeo::Unselected {
@@ -1882,7 +1882,7 @@ class Scattergeo::Unselected {
     Scattergeo::Unselected& textfont(class Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergeo::Unselected::Marker {
@@ -1899,7 +1899,7 @@ class Scattergeo::Unselected::Marker {
     Scattergeo::Unselected::Marker& size(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergeo::Unselected::Textfont {
@@ -1910,7 +1910,7 @@ class Scattergeo::Unselected::Textfont {
     Scattergeo::Unselected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

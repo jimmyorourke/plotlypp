@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -175,7 +175,7 @@ class Parcats::Dimensions {
     Parcats::Dimensions& dimension(class Dimension f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // The dimensions (variables) of the parallel categories diagram.
@@ -233,7 +233,7 @@ class Parcats::Dimensions::Dimension {
     Parcats::Dimensions::Dimension& visible(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Parcats::Domain {
@@ -252,7 +252,7 @@ class Parcats::Domain {
     Parcats::Domain& y(std::vector<std::string> f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font for the `dimension` labels.
@@ -325,7 +325,7 @@ class Parcats::Labelfont {
     Parcats::Labelfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Parcats::Legendgrouptitle {
@@ -341,7 +341,7 @@ class Parcats::Legendgrouptitle {
     Parcats::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -414,7 +414,7 @@ class Parcats::Legendgrouptitle::Font {
     Parcats::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Parcats::Line {
@@ -508,7 +508,7 @@ class Parcats::Line {
     Parcats::Line& showscale(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Parcats::Line::Colorbar {
@@ -847,7 +847,7 @@ class Parcats::Line::Colorbar {
     Parcats::Line::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -920,7 +920,7 @@ class Parcats::Line::Colorbar::Tickfont {
     Parcats::Line::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Parcats::Line::Colorbar::Tickformatstops {
@@ -931,7 +931,7 @@ class Parcats::Line::Colorbar::Tickformatstops {
     Parcats::Line::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Parcats::Line::Colorbar::Tickformatstops::Tickformatstop {
@@ -961,7 +961,7 @@ class Parcats::Line::Colorbar::Tickformatstops::Tickformatstop {
     Parcats::Line::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Parcats::Line::Colorbar::Title {
@@ -988,7 +988,7 @@ class Parcats::Line::Colorbar::Title {
     Parcats::Line::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -1061,7 +1061,7 @@ class Parcats::Line::Colorbar::Title::Font {
     Parcats::Line::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Parcats::Stream {
@@ -1076,7 +1076,7 @@ class Parcats::Stream {
     Parcats::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font for the `category` labels.
@@ -1149,7 +1149,7 @@ class Parcats::Tickfont {
     Parcats::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

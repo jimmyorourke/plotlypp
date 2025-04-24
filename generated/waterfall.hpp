@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -436,7 +436,7 @@ class Waterfall::Connector {
     Waterfall::Connector& visible(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Waterfall::Connector::Line {
@@ -454,7 +454,7 @@ class Waterfall::Connector::Line {
     Waterfall::Connector::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Waterfall::Decreasing {
@@ -465,7 +465,7 @@ class Waterfall::Decreasing {
     Waterfall::Decreasing& marker(class Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Waterfall::Decreasing::Marker {
@@ -480,7 +480,7 @@ class Waterfall::Decreasing::Marker {
     Waterfall::Decreasing::Marker& line(class Line f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Waterfall::Decreasing::Marker::Line {
@@ -494,7 +494,7 @@ class Waterfall::Decreasing::Marker::Line {
     Waterfall::Decreasing::Marker::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Waterfall::Hoverlabel {
@@ -551,7 +551,7 @@ class Waterfall::Hoverlabel {
     Waterfall::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -661,7 +661,7 @@ class Waterfall::Hoverlabel::Font {
     Waterfall::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Waterfall::Increasing {
@@ -672,7 +672,7 @@ class Waterfall::Increasing {
     Waterfall::Increasing& marker(class Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Waterfall::Increasing::Marker {
@@ -687,7 +687,7 @@ class Waterfall::Increasing::Marker {
     Waterfall::Increasing::Marker& line(class Line f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Waterfall::Increasing::Marker::Line {
@@ -701,7 +701,7 @@ class Waterfall::Increasing::Marker::Line {
     Waterfall::Increasing::Marker::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `text` lying inside the bar.
@@ -811,7 +811,7 @@ class Waterfall::Insidetextfont {
     Waterfall::Insidetextfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Waterfall::Legendgrouptitle {
@@ -827,7 +827,7 @@ class Waterfall::Legendgrouptitle {
     Waterfall::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -900,7 +900,7 @@ class Waterfall::Legendgrouptitle::Font {
     Waterfall::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `text` lying outside the bar.
@@ -1010,7 +1010,7 @@ class Waterfall::Outsidetextfont {
     Waterfall::Outsidetextfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Waterfall::Stream {
@@ -1025,7 +1025,7 @@ class Waterfall::Stream {
     Waterfall::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `text`.
@@ -1135,7 +1135,7 @@ class Waterfall::Textfont {
     Waterfall::Textfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Waterfall::Totals {
@@ -1146,7 +1146,7 @@ class Waterfall::Totals {
     Waterfall::Totals& marker(class Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Waterfall::Totals::Marker {
@@ -1161,7 +1161,7 @@ class Waterfall::Totals::Marker {
     Waterfall::Totals::Marker& line(class Line f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Waterfall::Totals::Marker::Line {
@@ -1175,7 +1175,7 @@ class Waterfall::Totals::Marker::Line {
     Waterfall::Totals::Marker::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

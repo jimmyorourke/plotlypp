@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -298,7 +298,7 @@ class Barpolar::Hoverlabel {
     Barpolar::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -408,7 +408,7 @@ class Barpolar::Hoverlabel::Font {
     Barpolar::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Barpolar::Legendgrouptitle {
@@ -424,7 +424,7 @@ class Barpolar::Legendgrouptitle {
     Barpolar::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -497,7 +497,7 @@ class Barpolar::Legendgrouptitle::Font {
     Barpolar::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Barpolar::Marker {
@@ -580,7 +580,7 @@ class Barpolar::Marker {
     Barpolar::Marker& showscale(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Barpolar::Marker::Colorbar {
@@ -919,7 +919,7 @@ class Barpolar::Marker::Colorbar {
     Barpolar::Marker::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -992,7 +992,7 @@ class Barpolar::Marker::Colorbar::Tickfont {
     Barpolar::Marker::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Barpolar::Marker::Colorbar::Tickformatstops {
@@ -1003,7 +1003,7 @@ class Barpolar::Marker::Colorbar::Tickformatstops {
     Barpolar::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Barpolar::Marker::Colorbar::Tickformatstops::Tickformatstop {
@@ -1033,7 +1033,7 @@ class Barpolar::Marker::Colorbar::Tickformatstops::Tickformatstop {
     Barpolar::Marker::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Barpolar::Marker::Colorbar::Title {
@@ -1060,7 +1060,7 @@ class Barpolar::Marker::Colorbar::Title {
     Barpolar::Marker::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -1133,7 +1133,7 @@ class Barpolar::Marker::Colorbar::Title::Font {
     Barpolar::Marker::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Barpolar::Marker::Line {
@@ -1205,7 +1205,7 @@ class Barpolar::Marker::Line {
     Barpolar::Marker::Line& widthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the pattern within the marker.
@@ -1284,7 +1284,7 @@ class Barpolar::Marker::Pattern {
     Barpolar::Marker::Pattern& soliditysrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Barpolar::Selected {
@@ -1298,7 +1298,7 @@ class Barpolar::Selected {
     Barpolar::Selected& textfont(class Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Barpolar::Selected::Marker {
@@ -1312,7 +1312,7 @@ class Barpolar::Selected::Marker {
     Barpolar::Selected::Marker& opacity(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Barpolar::Selected::Textfont {
@@ -1323,7 +1323,7 @@ class Barpolar::Selected::Textfont {
     Barpolar::Selected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Barpolar::Stream {
@@ -1338,7 +1338,7 @@ class Barpolar::Stream {
     Barpolar::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Barpolar::Unselected {
@@ -1352,7 +1352,7 @@ class Barpolar::Unselected {
     Barpolar::Unselected& textfont(class Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Barpolar::Unselected::Marker {
@@ -1366,7 +1366,7 @@ class Barpolar::Unselected::Marker {
     Barpolar::Unselected::Marker& opacity(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Barpolar::Unselected::Textfont {
@@ -1377,7 +1377,7 @@ class Barpolar::Unselected::Textfont {
     Barpolar::Unselected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

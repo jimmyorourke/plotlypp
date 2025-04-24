@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -506,7 +506,7 @@ class Carpet::Aaxis {
     Carpet::Aaxis& type(enum Type f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the tick font.
@@ -579,7 +579,7 @@ class Carpet::Aaxis::Tickfont {
     Carpet::Aaxis::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Carpet::Aaxis::Tickformatstops {
@@ -590,7 +590,7 @@ class Carpet::Aaxis::Tickformatstops {
     Carpet::Aaxis::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Carpet::Aaxis::Tickformatstops::Tickformatstop {
@@ -620,7 +620,7 @@ class Carpet::Aaxis::Tickformatstops::Tickformatstop {
     Carpet::Aaxis::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Carpet::Aaxis::Title {
@@ -639,7 +639,7 @@ class Carpet::Aaxis::Title {
     Carpet::Aaxis::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this axis' title font.
@@ -712,7 +712,7 @@ class Carpet::Aaxis::Title::Font {
     Carpet::Aaxis::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Carpet::Baxis {
@@ -1039,7 +1039,7 @@ class Carpet::Baxis {
     Carpet::Baxis& type(enum Type f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the tick font.
@@ -1112,7 +1112,7 @@ class Carpet::Baxis::Tickfont {
     Carpet::Baxis::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Carpet::Baxis::Tickformatstops {
@@ -1123,7 +1123,7 @@ class Carpet::Baxis::Tickformatstops {
     Carpet::Baxis::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Carpet::Baxis::Tickformatstops::Tickformatstop {
@@ -1153,7 +1153,7 @@ class Carpet::Baxis::Tickformatstops::Tickformatstop {
     Carpet::Baxis::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Carpet::Baxis::Title {
@@ -1172,7 +1172,7 @@ class Carpet::Baxis::Title {
     Carpet::Baxis::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this axis' title font.
@@ -1245,7 +1245,7 @@ class Carpet::Baxis::Title::Font {
     Carpet::Baxis::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // The default font used for axis & tick labels on this carpet
@@ -1318,7 +1318,7 @@ class Carpet::Font {
     Carpet::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Carpet::Legendgrouptitle {
@@ -1334,7 +1334,7 @@ class Carpet::Legendgrouptitle {
     Carpet::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -1407,7 +1407,7 @@ class Carpet::Legendgrouptitle::Font {
     Carpet::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Carpet::Stream {
@@ -1422,7 +1422,7 @@ class Carpet::Stream {
     Carpet::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

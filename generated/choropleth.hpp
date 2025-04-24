@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -594,7 +594,7 @@ class Choropleth::Colorbar {
     Choropleth::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -667,7 +667,7 @@ class Choropleth::Colorbar::Tickfont {
     Choropleth::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Choropleth::Colorbar::Tickformatstops {
@@ -678,7 +678,7 @@ class Choropleth::Colorbar::Tickformatstops {
     Choropleth::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Choropleth::Colorbar::Tickformatstops::Tickformatstop {
@@ -708,7 +708,7 @@ class Choropleth::Colorbar::Tickformatstops::Tickformatstop {
     Choropleth::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Choropleth::Colorbar::Title {
@@ -735,7 +735,7 @@ class Choropleth::Colorbar::Title {
     Choropleth::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -808,7 +808,7 @@ class Choropleth::Colorbar::Title::Font {
     Choropleth::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Choropleth::Hoverlabel {
@@ -865,7 +865,7 @@ class Choropleth::Hoverlabel {
     Choropleth::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -975,7 +975,7 @@ class Choropleth::Hoverlabel::Font {
     Choropleth::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Choropleth::Legendgrouptitle {
@@ -991,7 +991,7 @@ class Choropleth::Legendgrouptitle {
     Choropleth::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -1064,7 +1064,7 @@ class Choropleth::Legendgrouptitle::Font {
     Choropleth::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Choropleth::Marker {
@@ -1082,7 +1082,7 @@ class Choropleth::Marker {
     Choropleth::Marker& opacitysrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Choropleth::Marker::Line {
@@ -1107,7 +1107,7 @@ class Choropleth::Marker::Line {
     Choropleth::Marker::Line& widthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Choropleth::Selected {
@@ -1118,7 +1118,7 @@ class Choropleth::Selected {
     Choropleth::Selected& marker(class Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Choropleth::Selected::Marker {
@@ -1128,7 +1128,7 @@ class Choropleth::Selected::Marker {
     Choropleth::Selected::Marker& opacity(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Choropleth::Stream {
@@ -1143,7 +1143,7 @@ class Choropleth::Stream {
     Choropleth::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Choropleth::Unselected {
@@ -1154,7 +1154,7 @@ class Choropleth::Unselected {
     Choropleth::Unselected& marker(class Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Choropleth::Unselected::Marker {
@@ -1164,7 +1164,7 @@ class Choropleth::Unselected::Marker {
     Choropleth::Unselected::Marker& opacity(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

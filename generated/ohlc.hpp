@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -276,7 +276,7 @@ class Ohlc::Decreasing {
     Ohlc::Decreasing& line(class Line f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Ohlc::Decreasing::Line {
@@ -294,7 +294,7 @@ class Ohlc::Decreasing::Line {
     Ohlc::Decreasing::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Ohlc::Hoverlabel {
@@ -354,7 +354,7 @@ class Ohlc::Hoverlabel {
     Ohlc::Hoverlabel& split(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -464,7 +464,7 @@ class Ohlc::Hoverlabel::Font {
     Ohlc::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Ohlc::Increasing {
@@ -475,7 +475,7 @@ class Ohlc::Increasing {
     Ohlc::Increasing& line(class Line f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Ohlc::Increasing::Line {
@@ -493,7 +493,7 @@ class Ohlc::Increasing::Line {
     Ohlc::Increasing::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Ohlc::Legendgrouptitle {
@@ -509,7 +509,7 @@ class Ohlc::Legendgrouptitle {
     Ohlc::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -582,7 +582,7 @@ class Ohlc::Legendgrouptitle::Font {
     Ohlc::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Ohlc::Line {
@@ -598,7 +598,7 @@ class Ohlc::Line {
     Ohlc::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Ohlc::Stream {
@@ -613,7 +613,7 @@ class Ohlc::Stream {
     Ohlc::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

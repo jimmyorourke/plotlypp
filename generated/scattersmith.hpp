@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -334,7 +334,7 @@ class Scattersmith::Hoverlabel {
     Scattersmith::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -444,7 +444,7 @@ class Scattersmith::Hoverlabel::Font {
     Scattersmith::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattersmith::Legendgrouptitle {
@@ -460,7 +460,7 @@ class Scattersmith::Legendgrouptitle {
     Scattersmith::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -533,7 +533,7 @@ class Scattersmith::Legendgrouptitle::Font {
     Scattersmith::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattersmith::Line {
@@ -575,7 +575,7 @@ class Scattersmith::Line {
     Scattersmith::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattersmith::Marker {
@@ -1049,7 +1049,7 @@ class Scattersmith::Marker {
     Scattersmith::Marker& symbolsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattersmith::Marker::Colorbar {
@@ -1388,7 +1388,7 @@ class Scattersmith::Marker::Colorbar {
     Scattersmith::Marker::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -1461,7 +1461,7 @@ class Scattersmith::Marker::Colorbar::Tickfont {
     Scattersmith::Marker::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattersmith::Marker::Colorbar::Tickformatstops {
@@ -1472,7 +1472,7 @@ class Scattersmith::Marker::Colorbar::Tickformatstops {
     Scattersmith::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattersmith::Marker::Colorbar::Tickformatstops::Tickformatstop {
@@ -1502,7 +1502,7 @@ class Scattersmith::Marker::Colorbar::Tickformatstops::Tickformatstop {
     Scattersmith::Marker::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattersmith::Marker::Colorbar::Title {
@@ -1529,7 +1529,7 @@ class Scattersmith::Marker::Colorbar::Title {
     Scattersmith::Marker::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -1602,7 +1602,7 @@ class Scattersmith::Marker::Colorbar::Title::Font {
     Scattersmith::Marker::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattersmith::Marker::Gradient {
@@ -1635,7 +1635,7 @@ class Scattersmith::Marker::Gradient {
     Scattersmith::Marker::Gradient& typesrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattersmith::Marker::Line {
@@ -1707,7 +1707,7 @@ class Scattersmith::Marker::Line {
     Scattersmith::Marker::Line& widthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattersmith::Selected {
@@ -1721,7 +1721,7 @@ class Scattersmith::Selected {
     Scattersmith::Selected& textfont(class Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattersmith::Selected::Marker {
@@ -1738,7 +1738,7 @@ class Scattersmith::Selected::Marker {
     Scattersmith::Selected::Marker& size(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattersmith::Selected::Textfont {
@@ -1749,7 +1749,7 @@ class Scattersmith::Selected::Textfont {
     Scattersmith::Selected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattersmith::Stream {
@@ -1764,7 +1764,7 @@ class Scattersmith::Stream {
     Scattersmith::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the text font.
@@ -1874,7 +1874,7 @@ class Scattersmith::Textfont {
     Scattersmith::Textfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattersmith::Unselected {
@@ -1888,7 +1888,7 @@ class Scattersmith::Unselected {
     Scattersmith::Unselected& textfont(class Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattersmith::Unselected::Marker {
@@ -1905,7 +1905,7 @@ class Scattersmith::Unselected::Marker {
     Scattersmith::Unselected::Marker& size(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattersmith::Unselected::Textfont {
@@ -1916,7 +1916,7 @@ class Scattersmith::Unselected::Textfont {
     Scattersmith::Unselected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

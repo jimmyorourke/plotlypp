@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -220,7 +220,7 @@ class Splom::Diagonal {
     Splom::Diagonal& visible(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Splom::Dimensions {
@@ -231,7 +231,7 @@ class Splom::Dimensions {
     Splom::Dimensions& dimension(class Dimension f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Splom::Dimensions::Dimension {
@@ -269,7 +269,7 @@ class Splom::Dimensions::Dimension {
     Splom::Dimensions::Dimension& visible(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Splom::Dimensions::Dimension::Axis {
@@ -292,7 +292,7 @@ class Splom::Dimensions::Dimension::Axis {
     Splom::Dimensions::Dimension::Axis& type(enum Type f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Splom::Hoverlabel {
@@ -349,7 +349,7 @@ class Splom::Hoverlabel {
     Splom::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -459,7 +459,7 @@ class Splom::Hoverlabel::Font {
     Splom::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Splom::Legendgrouptitle {
@@ -475,7 +475,7 @@ class Splom::Legendgrouptitle {
     Splom::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -548,7 +548,7 @@ class Splom::Legendgrouptitle::Font {
     Splom::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Splom::Marker {
@@ -997,7 +997,7 @@ class Splom::Marker {
     Splom::Marker& symbolsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Splom::Marker::Colorbar {
@@ -1336,7 +1336,7 @@ class Splom::Marker::Colorbar {
     Splom::Marker::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -1409,7 +1409,7 @@ class Splom::Marker::Colorbar::Tickfont {
     Splom::Marker::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Splom::Marker::Colorbar::Tickformatstops {
@@ -1420,7 +1420,7 @@ class Splom::Marker::Colorbar::Tickformatstops {
     Splom::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Splom::Marker::Colorbar::Tickformatstops::Tickformatstop {
@@ -1450,7 +1450,7 @@ class Splom::Marker::Colorbar::Tickformatstops::Tickformatstop {
     Splom::Marker::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Splom::Marker::Colorbar::Title {
@@ -1477,7 +1477,7 @@ class Splom::Marker::Colorbar::Title {
     Splom::Marker::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -1550,7 +1550,7 @@ class Splom::Marker::Colorbar::Title::Font {
     Splom::Marker::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Splom::Marker::Line {
@@ -1622,7 +1622,7 @@ class Splom::Marker::Line {
     Splom::Marker::Line& widthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Splom::Selected {
@@ -1633,7 +1633,7 @@ class Splom::Selected {
     Splom::Selected& marker(class Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Splom::Selected::Marker {
@@ -1650,7 +1650,7 @@ class Splom::Selected::Marker {
     Splom::Selected::Marker& size(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Splom::Stream {
@@ -1665,7 +1665,7 @@ class Splom::Stream {
     Splom::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Splom::Unselected {
@@ -1676,7 +1676,7 @@ class Splom::Unselected {
     Splom::Unselected& marker(class Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Splom::Unselected::Marker {
@@ -1693,7 +1693,7 @@ class Splom::Unselected::Marker {
     Splom::Unselected::Marker& size(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

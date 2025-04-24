@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -406,7 +406,7 @@ class Funnel::Connector {
     Funnel::Connector& visible(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Funnel::Connector::Line {
@@ -424,7 +424,7 @@ class Funnel::Connector::Line {
     Funnel::Connector::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Funnel::Hoverlabel {
@@ -481,7 +481,7 @@ class Funnel::Hoverlabel {
     Funnel::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -591,7 +591,7 @@ class Funnel::Hoverlabel::Font {
     Funnel::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `text` lying inside the bar.
@@ -701,7 +701,7 @@ class Funnel::Insidetextfont {
     Funnel::Insidetextfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Funnel::Legendgrouptitle {
@@ -717,7 +717,7 @@ class Funnel::Legendgrouptitle {
     Funnel::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -790,7 +790,7 @@ class Funnel::Legendgrouptitle::Font {
     Funnel::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Funnel::Marker {
@@ -868,7 +868,7 @@ class Funnel::Marker {
     Funnel::Marker& showscale(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Funnel::Marker::Colorbar {
@@ -1207,7 +1207,7 @@ class Funnel::Marker::Colorbar {
     Funnel::Marker::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -1280,7 +1280,7 @@ class Funnel::Marker::Colorbar::Tickfont {
     Funnel::Marker::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Funnel::Marker::Colorbar::Tickformatstops {
@@ -1291,7 +1291,7 @@ class Funnel::Marker::Colorbar::Tickformatstops {
     Funnel::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Funnel::Marker::Colorbar::Tickformatstops::Tickformatstop {
@@ -1321,7 +1321,7 @@ class Funnel::Marker::Colorbar::Tickformatstops::Tickformatstop {
     Funnel::Marker::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Funnel::Marker::Colorbar::Title {
@@ -1348,7 +1348,7 @@ class Funnel::Marker::Colorbar::Title {
     Funnel::Marker::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -1421,7 +1421,7 @@ class Funnel::Marker::Colorbar::Title::Font {
     Funnel::Marker::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Funnel::Marker::Line {
@@ -1493,7 +1493,7 @@ class Funnel::Marker::Line {
     Funnel::Marker::Line& widthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `text` lying outside the bar.
@@ -1603,7 +1603,7 @@ class Funnel::Outsidetextfont {
     Funnel::Outsidetextfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Funnel::Stream {
@@ -1618,7 +1618,7 @@ class Funnel::Stream {
     Funnel::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `text`.
@@ -1728,7 +1728,7 @@ class Funnel::Textfont {
     Funnel::Textfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

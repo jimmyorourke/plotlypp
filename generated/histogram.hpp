@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -461,7 +461,7 @@ class Histogram::Cumulative {
     Histogram::Cumulative& enabled(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram::Error_X {
@@ -529,7 +529,7 @@ class Histogram::Error_X {
     Histogram::Error_X& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram::Error_Y {
@@ -595,7 +595,7 @@ class Histogram::Error_Y {
     Histogram::Error_Y& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram::Hoverlabel {
@@ -652,7 +652,7 @@ class Histogram::Hoverlabel {
     Histogram::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -762,7 +762,7 @@ class Histogram::Hoverlabel::Font {
     Histogram::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `text` lying inside the bar.
@@ -835,7 +835,7 @@ class Histogram::Insidetextfont {
     Histogram::Insidetextfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram::Legendgrouptitle {
@@ -851,7 +851,7 @@ class Histogram::Legendgrouptitle {
     Histogram::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -924,7 +924,7 @@ class Histogram::Legendgrouptitle::Font {
     Histogram::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram::Marker {
@@ -1013,7 +1013,7 @@ class Histogram::Marker {
     Histogram::Marker& showscale(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram::Marker::Colorbar {
@@ -1352,7 +1352,7 @@ class Histogram::Marker::Colorbar {
     Histogram::Marker::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -1425,7 +1425,7 @@ class Histogram::Marker::Colorbar::Tickfont {
     Histogram::Marker::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram::Marker::Colorbar::Tickformatstops {
@@ -1436,7 +1436,7 @@ class Histogram::Marker::Colorbar::Tickformatstops {
     Histogram::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop {
@@ -1466,7 +1466,7 @@ class Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop {
     Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram::Marker::Colorbar::Title {
@@ -1493,7 +1493,7 @@ class Histogram::Marker::Colorbar::Title {
     Histogram::Marker::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -1566,7 +1566,7 @@ class Histogram::Marker::Colorbar::Title::Font {
     Histogram::Marker::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram::Marker::Line {
@@ -1638,7 +1638,7 @@ class Histogram::Marker::Line {
     Histogram::Marker::Line& widthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the pattern within the marker.
@@ -1717,7 +1717,7 @@ class Histogram::Marker::Pattern {
     Histogram::Marker::Pattern& soliditysrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `text` lying outside the bar.
@@ -1790,7 +1790,7 @@ class Histogram::Outsidetextfont {
     Histogram::Outsidetextfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram::Selected {
@@ -1804,7 +1804,7 @@ class Histogram::Selected {
     Histogram::Selected& textfont(class Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram::Selected::Marker {
@@ -1818,7 +1818,7 @@ class Histogram::Selected::Marker {
     Histogram::Selected::Marker& opacity(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram::Selected::Textfont {
@@ -1829,7 +1829,7 @@ class Histogram::Selected::Textfont {
     Histogram::Selected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram::Stream {
@@ -1844,7 +1844,7 @@ class Histogram::Stream {
     Histogram::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the text font.
@@ -1917,7 +1917,7 @@ class Histogram::Textfont {
     Histogram::Textfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram::Unselected {
@@ -1931,7 +1931,7 @@ class Histogram::Unselected {
     Histogram::Unselected& textfont(class Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram::Unselected::Marker {
@@ -1945,7 +1945,7 @@ class Histogram::Unselected::Marker {
     Histogram::Unselected::Marker& opacity(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram::Unselected::Textfont {
@@ -1956,7 +1956,7 @@ class Histogram::Unselected::Textfont {
     Histogram::Unselected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram::Xbins {
@@ -1990,7 +1990,7 @@ class Histogram::Xbins {
     Histogram::Xbins& start(T f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram::Ybins {
@@ -2024,7 +2024,7 @@ class Histogram::Ybins {
     Histogram::Ybins& start(T f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

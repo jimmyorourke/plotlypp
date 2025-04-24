@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -282,7 +282,7 @@ class Candlestick::Decreasing {
     Candlestick::Decreasing& line(class Line f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Candlestick::Decreasing::Line {
@@ -296,7 +296,7 @@ class Candlestick::Decreasing::Line {
     Candlestick::Decreasing::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Candlestick::Hoverlabel {
@@ -356,7 +356,7 @@ class Candlestick::Hoverlabel {
     Candlestick::Hoverlabel& split(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -466,7 +466,7 @@ class Candlestick::Hoverlabel::Font {
     Candlestick::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Candlestick::Increasing {
@@ -482,7 +482,7 @@ class Candlestick::Increasing {
     Candlestick::Increasing& line(class Line f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Candlestick::Increasing::Line {
@@ -496,7 +496,7 @@ class Candlestick::Increasing::Line {
     Candlestick::Increasing::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Candlestick::Legendgrouptitle {
@@ -512,7 +512,7 @@ class Candlestick::Legendgrouptitle {
     Candlestick::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -585,7 +585,7 @@ class Candlestick::Legendgrouptitle::Font {
     Candlestick::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Candlestick::Line {
@@ -596,7 +596,7 @@ class Candlestick::Line {
     Candlestick::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Candlestick::Stream {
@@ -611,7 +611,7 @@ class Candlestick::Stream {
     Candlestick::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

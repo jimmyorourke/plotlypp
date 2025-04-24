@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -669,7 +669,7 @@ class Cone::Colorbar {
     Cone::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -742,7 +742,7 @@ class Cone::Colorbar::Tickfont {
     Cone::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Cone::Colorbar::Tickformatstops {
@@ -753,7 +753,7 @@ class Cone::Colorbar::Tickformatstops {
     Cone::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Cone::Colorbar::Tickformatstops::Tickformatstop {
@@ -783,7 +783,7 @@ class Cone::Colorbar::Tickformatstops::Tickformatstop {
     Cone::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Cone::Colorbar::Title {
@@ -810,7 +810,7 @@ class Cone::Colorbar::Title {
     Cone::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -883,7 +883,7 @@ class Cone::Colorbar::Title::Font {
     Cone::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Cone::Hoverlabel {
@@ -940,7 +940,7 @@ class Cone::Hoverlabel {
     Cone::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -1050,7 +1050,7 @@ class Cone::Hoverlabel::Font {
     Cone::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Cone::Legendgrouptitle {
@@ -1066,7 +1066,7 @@ class Cone::Legendgrouptitle {
     Cone::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -1139,7 +1139,7 @@ class Cone::Legendgrouptitle::Font {
     Cone::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Cone::Lighting {
@@ -1168,7 +1168,7 @@ class Cone::Lighting {
     Cone::Lighting& vertexnormalsepsilon(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Cone::Lightposition {
@@ -1184,7 +1184,7 @@ class Cone::Lightposition {
     Cone::Lightposition& z(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Cone::Stream {
@@ -1199,7 +1199,7 @@ class Cone::Stream {
     Cone::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

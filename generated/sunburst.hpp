@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -297,7 +297,7 @@ class Sunburst::Domain {
     Sunburst::Domain& y(std::vector<std::string> f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Sunburst::Hoverlabel {
@@ -354,7 +354,7 @@ class Sunburst::Hoverlabel {
     Sunburst::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -464,7 +464,7 @@ class Sunburst::Hoverlabel::Font {
     Sunburst::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `textinfo` lying inside the sector.
@@ -574,7 +574,7 @@ class Sunburst::Insidetextfont {
     Sunburst::Insidetextfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Sunburst::Leaf {
@@ -584,7 +584,7 @@ class Sunburst::Leaf {
     Sunburst::Leaf& opacity(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Sunburst::Legendgrouptitle {
@@ -600,7 +600,7 @@ class Sunburst::Legendgrouptitle {
     Sunburst::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -673,7 +673,7 @@ class Sunburst::Legendgrouptitle::Font {
     Sunburst::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Sunburst::Marker {
@@ -747,7 +747,7 @@ class Sunburst::Marker {
     Sunburst::Marker& showscale(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Sunburst::Marker::Colorbar {
@@ -1086,7 +1086,7 @@ class Sunburst::Marker::Colorbar {
     Sunburst::Marker::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -1159,7 +1159,7 @@ class Sunburst::Marker::Colorbar::Tickfont {
     Sunburst::Marker::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Sunburst::Marker::Colorbar::Tickformatstops {
@@ -1170,7 +1170,7 @@ class Sunburst::Marker::Colorbar::Tickformatstops {
     Sunburst::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop {
@@ -1200,7 +1200,7 @@ class Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop {
     Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Sunburst::Marker::Colorbar::Title {
@@ -1227,7 +1227,7 @@ class Sunburst::Marker::Colorbar::Title {
     Sunburst::Marker::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -1300,7 +1300,7 @@ class Sunburst::Marker::Colorbar::Title::Font {
     Sunburst::Marker::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Sunburst::Marker::Line {
@@ -1323,7 +1323,7 @@ class Sunburst::Marker::Line {
     Sunburst::Marker::Line& widthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the pattern within the marker.
@@ -1402,7 +1402,7 @@ class Sunburst::Marker::Pattern {
     Sunburst::Marker::Pattern& soliditysrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `textinfo` lying outside the sector. This option refers to the root of the hierarchy presented
@@ -1514,7 +1514,7 @@ class Sunburst::Outsidetextfont {
     Sunburst::Outsidetextfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Sunburst::Root {
@@ -1526,7 +1526,7 @@ class Sunburst::Root {
     Sunburst::Root& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Sunburst::Stream {
@@ -1541,7 +1541,7 @@ class Sunburst::Stream {
     Sunburst::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `textinfo`.
@@ -1651,7 +1651,7 @@ class Sunburst::Textfont {
     Sunburst::Textfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

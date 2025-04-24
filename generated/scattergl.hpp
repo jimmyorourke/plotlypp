@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -476,7 +476,7 @@ class Scattergl::Error_X {
     Scattergl::Error_X& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergl::Error_Y {
@@ -542,7 +542,7 @@ class Scattergl::Error_Y {
     Scattergl::Error_Y& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergl::Hoverlabel {
@@ -599,7 +599,7 @@ class Scattergl::Hoverlabel {
     Scattergl::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -709,7 +709,7 @@ class Scattergl::Hoverlabel::Font {
     Scattergl::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergl::Legendgrouptitle {
@@ -725,7 +725,7 @@ class Scattergl::Legendgrouptitle {
     Scattergl::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -798,7 +798,7 @@ class Scattergl::Legendgrouptitle::Font {
     Scattergl::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergl::Line {
@@ -839,7 +839,7 @@ class Scattergl::Line {
     Scattergl::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergl::Marker {
@@ -1288,7 +1288,7 @@ class Scattergl::Marker {
     Scattergl::Marker& symbolsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergl::Marker::Colorbar {
@@ -1627,7 +1627,7 @@ class Scattergl::Marker::Colorbar {
     Scattergl::Marker::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -1700,7 +1700,7 @@ class Scattergl::Marker::Colorbar::Tickfont {
     Scattergl::Marker::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergl::Marker::Colorbar::Tickformatstops {
@@ -1711,7 +1711,7 @@ class Scattergl::Marker::Colorbar::Tickformatstops {
     Scattergl::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergl::Marker::Colorbar::Tickformatstops::Tickformatstop {
@@ -1741,7 +1741,7 @@ class Scattergl::Marker::Colorbar::Tickformatstops::Tickformatstop {
     Scattergl::Marker::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergl::Marker::Colorbar::Title {
@@ -1768,7 +1768,7 @@ class Scattergl::Marker::Colorbar::Title {
     Scattergl::Marker::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -1841,7 +1841,7 @@ class Scattergl::Marker::Colorbar::Title::Font {
     Scattergl::Marker::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergl::Marker::Line {
@@ -1913,7 +1913,7 @@ class Scattergl::Marker::Line {
     Scattergl::Marker::Line& widthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergl::Selected {
@@ -1927,7 +1927,7 @@ class Scattergl::Selected {
     Scattergl::Selected& textfont(class Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergl::Selected::Marker {
@@ -1944,7 +1944,7 @@ class Scattergl::Selected::Marker {
     Scattergl::Selected::Marker& size(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergl::Selected::Textfont {
@@ -1955,7 +1955,7 @@ class Scattergl::Selected::Textfont {
     Scattergl::Selected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergl::Stream {
@@ -1970,7 +1970,7 @@ class Scattergl::Stream {
     Scattergl::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the text font.
@@ -2047,7 +2047,7 @@ class Scattergl::Textfont {
     Scattergl::Textfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergl::Unselected {
@@ -2061,7 +2061,7 @@ class Scattergl::Unselected {
     Scattergl::Unselected& textfont(class Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergl::Unselected::Marker {
@@ -2078,7 +2078,7 @@ class Scattergl::Unselected::Marker {
     Scattergl::Unselected::Marker& size(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattergl::Unselected::Textfont {
@@ -2089,7 +2089,7 @@ class Scattergl::Unselected::Textfont {
     Scattergl::Unselected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

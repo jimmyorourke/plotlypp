@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -311,7 +311,7 @@ class Pie::Domain {
     Pie::Domain& y(std::vector<std::string> f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Pie::Hoverlabel {
@@ -368,7 +368,7 @@ class Pie::Hoverlabel {
     Pie::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -478,7 +478,7 @@ class Pie::Hoverlabel::Font {
     Pie::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `textinfo` lying inside the sector.
@@ -588,7 +588,7 @@ class Pie::Insidetextfont {
     Pie::Insidetextfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Pie::Legendgrouptitle {
@@ -604,7 +604,7 @@ class Pie::Legendgrouptitle {
     Pie::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -677,7 +677,7 @@ class Pie::Legendgrouptitle::Font {
     Pie::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Pie::Marker {
@@ -700,7 +700,7 @@ class Pie::Marker {
     Pie::Marker& pattern(class Pattern f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Pie::Marker::Line {
@@ -723,7 +723,7 @@ class Pie::Marker::Line {
     Pie::Marker::Line& widthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the pattern within the marker.
@@ -802,7 +802,7 @@ class Pie::Marker::Pattern {
     Pie::Marker::Pattern& soliditysrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `textinfo` lying outside the sector.
@@ -912,7 +912,7 @@ class Pie::Outsidetextfont {
     Pie::Outsidetextfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Pie::Stream {
@@ -927,7 +927,7 @@ class Pie::Stream {
     Pie::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `textinfo`.
@@ -1037,7 +1037,7 @@ class Pie::Textfont {
     Pie::Textfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Pie::Title {
@@ -1067,7 +1067,7 @@ class Pie::Title {
     Pie::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `title`.
@@ -1177,7 +1177,7 @@ class Pie::Title::Font {
     Pie::Title::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

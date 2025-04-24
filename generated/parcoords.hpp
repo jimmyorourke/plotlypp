@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -155,7 +155,7 @@ class Parcoords::Dimensions {
     Parcoords::Dimensions& dimension(class Dimension f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // The dimensions (variables) of the parallel coordinates chart. 2..60 dimensions are supported.
@@ -224,7 +224,7 @@ class Parcoords::Dimensions::Dimension {
     Parcoords::Dimensions::Dimension& visible(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Parcoords::Domain {
@@ -243,7 +243,7 @@ class Parcoords::Domain {
     Parcoords::Domain& y(std::vector<std::string> f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font for the `dimension` labels.
@@ -316,7 +316,7 @@ class Parcoords::Labelfont {
     Parcoords::Labelfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Parcoords::Legendgrouptitle {
@@ -332,7 +332,7 @@ class Parcoords::Legendgrouptitle {
     Parcoords::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -405,7 +405,7 @@ class Parcoords::Legendgrouptitle::Font {
     Parcoords::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Parcoords::Line {
@@ -472,7 +472,7 @@ class Parcoords::Line {
     Parcoords::Line& showscale(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Parcoords::Line::Colorbar {
@@ -811,7 +811,7 @@ class Parcoords::Line::Colorbar {
     Parcoords::Line::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -884,7 +884,7 @@ class Parcoords::Line::Colorbar::Tickfont {
     Parcoords::Line::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Parcoords::Line::Colorbar::Tickformatstops {
@@ -895,7 +895,7 @@ class Parcoords::Line::Colorbar::Tickformatstops {
     Parcoords::Line::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Parcoords::Line::Colorbar::Tickformatstops::Tickformatstop {
@@ -925,7 +925,7 @@ class Parcoords::Line::Colorbar::Tickformatstops::Tickformatstop {
     Parcoords::Line::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Parcoords::Line::Colorbar::Title {
@@ -952,7 +952,7 @@ class Parcoords::Line::Colorbar::Title {
     Parcoords::Line::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -1025,7 +1025,7 @@ class Parcoords::Line::Colorbar::Title::Font {
     Parcoords::Line::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font for the `dimension` range values.
@@ -1098,7 +1098,7 @@ class Parcoords::Rangefont {
     Parcoords::Rangefont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Parcoords::Stream {
@@ -1113,7 +1113,7 @@ class Parcoords::Stream {
     Parcoords::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font for the `dimension` tick values.
@@ -1186,7 +1186,7 @@ class Parcoords::Tickfont {
     Parcoords::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Parcoords::Unselected {
@@ -1197,7 +1197,7 @@ class Parcoords::Unselected {
     Parcoords::Unselected& line(class Line f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Parcoords::Unselected::Line {
@@ -1212,7 +1212,7 @@ class Parcoords::Unselected::Line {
     Parcoords::Unselected::Line& opacity(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

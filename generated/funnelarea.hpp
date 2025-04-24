@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -264,7 +264,7 @@ class Funnelarea::Domain {
     Funnelarea::Domain& y(std::vector<std::string> f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Funnelarea::Hoverlabel {
@@ -321,7 +321,7 @@ class Funnelarea::Hoverlabel {
     Funnelarea::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -431,7 +431,7 @@ class Funnelarea::Hoverlabel::Font {
     Funnelarea::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `textinfo` lying inside the sector.
@@ -541,7 +541,7 @@ class Funnelarea::Insidetextfont {
     Funnelarea::Insidetextfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Funnelarea::Legendgrouptitle {
@@ -557,7 +557,7 @@ class Funnelarea::Legendgrouptitle {
     Funnelarea::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -630,7 +630,7 @@ class Funnelarea::Legendgrouptitle::Font {
     Funnelarea::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Funnelarea::Marker {
@@ -653,7 +653,7 @@ class Funnelarea::Marker {
     Funnelarea::Marker& pattern(class Pattern f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Funnelarea::Marker::Line {
@@ -676,7 +676,7 @@ class Funnelarea::Marker::Line {
     Funnelarea::Marker::Line& widthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the pattern within the marker.
@@ -755,7 +755,7 @@ class Funnelarea::Marker::Pattern {
     Funnelarea::Marker::Pattern& soliditysrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Funnelarea::Stream {
@@ -770,7 +770,7 @@ class Funnelarea::Stream {
     Funnelarea::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `textinfo`.
@@ -880,7 +880,7 @@ class Funnelarea::Textfont {
     Funnelarea::Textfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Funnelarea::Title {
@@ -907,7 +907,7 @@ class Funnelarea::Title {
     Funnelarea::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `title`.
@@ -1017,7 +1017,7 @@ class Funnelarea::Title::Font {
     Funnelarea::Title::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -360,7 +360,7 @@ class Scatterpolargl::Hoverlabel {
     Scatterpolargl::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -470,7 +470,7 @@ class Scatterpolargl::Hoverlabel::Font {
     Scatterpolargl::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatterpolargl::Legendgrouptitle {
@@ -486,7 +486,7 @@ class Scatterpolargl::Legendgrouptitle {
     Scatterpolargl::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -559,7 +559,7 @@ class Scatterpolargl::Legendgrouptitle::Font {
     Scatterpolargl::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatterpolargl::Line {
@@ -587,7 +587,7 @@ class Scatterpolargl::Line {
     Scatterpolargl::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatterpolargl::Marker {
@@ -1036,7 +1036,7 @@ class Scatterpolargl::Marker {
     Scatterpolargl::Marker& symbolsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatterpolargl::Marker::Colorbar {
@@ -1375,7 +1375,7 @@ class Scatterpolargl::Marker::Colorbar {
     Scatterpolargl::Marker::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -1448,7 +1448,7 @@ class Scatterpolargl::Marker::Colorbar::Tickfont {
     Scatterpolargl::Marker::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatterpolargl::Marker::Colorbar::Tickformatstops {
@@ -1459,7 +1459,7 @@ class Scatterpolargl::Marker::Colorbar::Tickformatstops {
     Scatterpolargl::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatterpolargl::Marker::Colorbar::Tickformatstops::Tickformatstop {
@@ -1489,7 +1489,7 @@ class Scatterpolargl::Marker::Colorbar::Tickformatstops::Tickformatstop {
     Scatterpolargl::Marker::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatterpolargl::Marker::Colorbar::Title {
@@ -1516,7 +1516,7 @@ class Scatterpolargl::Marker::Colorbar::Title {
     Scatterpolargl::Marker::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -1589,7 +1589,7 @@ class Scatterpolargl::Marker::Colorbar::Title::Font {
     Scatterpolargl::Marker::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatterpolargl::Marker::Line {
@@ -1661,7 +1661,7 @@ class Scatterpolargl::Marker::Line {
     Scatterpolargl::Marker::Line& widthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatterpolargl::Selected {
@@ -1675,7 +1675,7 @@ class Scatterpolargl::Selected {
     Scatterpolargl::Selected& textfont(class Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatterpolargl::Selected::Marker {
@@ -1692,7 +1692,7 @@ class Scatterpolargl::Selected::Marker {
     Scatterpolargl::Selected::Marker& size(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatterpolargl::Selected::Textfont {
@@ -1703,7 +1703,7 @@ class Scatterpolargl::Selected::Textfont {
     Scatterpolargl::Selected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatterpolargl::Stream {
@@ -1718,7 +1718,7 @@ class Scatterpolargl::Stream {
     Scatterpolargl::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the text font.
@@ -1795,7 +1795,7 @@ class Scatterpolargl::Textfont {
     Scatterpolargl::Textfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatterpolargl::Unselected {
@@ -1809,7 +1809,7 @@ class Scatterpolargl::Unselected {
     Scatterpolargl::Unselected& textfont(class Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatterpolargl::Unselected::Marker {
@@ -1826,7 +1826,7 @@ class Scatterpolargl::Unselected::Marker {
     Scatterpolargl::Unselected::Marker& size(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatterpolargl::Unselected::Textfont {
@@ -1837,7 +1837,7 @@ class Scatterpolargl::Unselected::Textfont {
     Scatterpolargl::Unselected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

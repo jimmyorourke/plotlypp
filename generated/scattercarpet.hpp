@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -341,7 +341,7 @@ class Scattercarpet::Hoverlabel {
     Scattercarpet::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -451,7 +451,7 @@ class Scattercarpet::Hoverlabel::Font {
     Scattercarpet::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattercarpet::Legendgrouptitle {
@@ -467,7 +467,7 @@ class Scattercarpet::Legendgrouptitle {
     Scattercarpet::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -540,7 +540,7 @@ class Scattercarpet::Legendgrouptitle::Font {
     Scattercarpet::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattercarpet::Line {
@@ -582,7 +582,7 @@ class Scattercarpet::Line {
     Scattercarpet::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattercarpet::Marker {
@@ -1056,7 +1056,7 @@ class Scattercarpet::Marker {
     Scattercarpet::Marker& symbolsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattercarpet::Marker::Colorbar {
@@ -1395,7 +1395,7 @@ class Scattercarpet::Marker::Colorbar {
     Scattercarpet::Marker::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -1468,7 +1468,7 @@ class Scattercarpet::Marker::Colorbar::Tickfont {
     Scattercarpet::Marker::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattercarpet::Marker::Colorbar::Tickformatstops {
@@ -1479,7 +1479,7 @@ class Scattercarpet::Marker::Colorbar::Tickformatstops {
     Scattercarpet::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattercarpet::Marker::Colorbar::Tickformatstops::Tickformatstop {
@@ -1509,7 +1509,7 @@ class Scattercarpet::Marker::Colorbar::Tickformatstops::Tickformatstop {
     Scattercarpet::Marker::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattercarpet::Marker::Colorbar::Title {
@@ -1536,7 +1536,7 @@ class Scattercarpet::Marker::Colorbar::Title {
     Scattercarpet::Marker::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -1609,7 +1609,7 @@ class Scattercarpet::Marker::Colorbar::Title::Font {
     Scattercarpet::Marker::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattercarpet::Marker::Gradient {
@@ -1642,7 +1642,7 @@ class Scattercarpet::Marker::Gradient {
     Scattercarpet::Marker::Gradient& typesrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattercarpet::Marker::Line {
@@ -1714,7 +1714,7 @@ class Scattercarpet::Marker::Line {
     Scattercarpet::Marker::Line& widthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattercarpet::Selected {
@@ -1728,7 +1728,7 @@ class Scattercarpet::Selected {
     Scattercarpet::Selected& textfont(class Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattercarpet::Selected::Marker {
@@ -1745,7 +1745,7 @@ class Scattercarpet::Selected::Marker {
     Scattercarpet::Selected::Marker& size(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattercarpet::Selected::Textfont {
@@ -1756,7 +1756,7 @@ class Scattercarpet::Selected::Textfont {
     Scattercarpet::Selected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattercarpet::Stream {
@@ -1771,7 +1771,7 @@ class Scattercarpet::Stream {
     Scattercarpet::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the text font.
@@ -1881,7 +1881,7 @@ class Scattercarpet::Textfont {
     Scattercarpet::Textfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattercarpet::Unselected {
@@ -1895,7 +1895,7 @@ class Scattercarpet::Unselected {
     Scattercarpet::Unselected& textfont(class Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattercarpet::Unselected::Marker {
@@ -1912,7 +1912,7 @@ class Scattercarpet::Unselected::Marker {
     Scattercarpet::Unselected::Marker& size(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattercarpet::Unselected::Textfont {
@@ -1923,7 +1923,7 @@ class Scattercarpet::Unselected::Textfont {
     Scattercarpet::Unselected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

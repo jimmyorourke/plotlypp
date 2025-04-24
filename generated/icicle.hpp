@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -301,7 +301,7 @@ class Icicle::Domain {
     Icicle::Domain& y(std::vector<std::string> f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Icicle::Hoverlabel {
@@ -358,7 +358,7 @@ class Icicle::Hoverlabel {
     Icicle::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -468,7 +468,7 @@ class Icicle::Hoverlabel::Font {
     Icicle::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `textinfo` lying inside the sector.
@@ -578,7 +578,7 @@ class Icicle::Insidetextfont {
     Icicle::Insidetextfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Icicle::Leaf {
@@ -588,7 +588,7 @@ class Icicle::Leaf {
     Icicle::Leaf& opacity(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Icicle::Legendgrouptitle {
@@ -604,7 +604,7 @@ class Icicle::Legendgrouptitle {
     Icicle::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -677,7 +677,7 @@ class Icicle::Legendgrouptitle::Font {
     Icicle::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Icicle::Marker {
@@ -751,7 +751,7 @@ class Icicle::Marker {
     Icicle::Marker& showscale(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Icicle::Marker::Colorbar {
@@ -1090,7 +1090,7 @@ class Icicle::Marker::Colorbar {
     Icicle::Marker::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -1163,7 +1163,7 @@ class Icicle::Marker::Colorbar::Tickfont {
     Icicle::Marker::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Icicle::Marker::Colorbar::Tickformatstops {
@@ -1174,7 +1174,7 @@ class Icicle::Marker::Colorbar::Tickformatstops {
     Icicle::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Icicle::Marker::Colorbar::Tickformatstops::Tickformatstop {
@@ -1204,7 +1204,7 @@ class Icicle::Marker::Colorbar::Tickformatstops::Tickformatstop {
     Icicle::Marker::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Icicle::Marker::Colorbar::Title {
@@ -1231,7 +1231,7 @@ class Icicle::Marker::Colorbar::Title {
     Icicle::Marker::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -1304,7 +1304,7 @@ class Icicle::Marker::Colorbar::Title::Font {
     Icicle::Marker::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Icicle::Marker::Line {
@@ -1327,7 +1327,7 @@ class Icicle::Marker::Line {
     Icicle::Marker::Line& widthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the pattern within the marker.
@@ -1406,7 +1406,7 @@ class Icicle::Marker::Pattern {
     Icicle::Marker::Pattern& soliditysrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `textinfo` lying outside the sector. This option refers to the root of the hierarchy presented
@@ -1518,7 +1518,7 @@ class Icicle::Outsidetextfont {
     Icicle::Outsidetextfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Icicle::Pathbar {
@@ -1561,7 +1561,7 @@ class Icicle::Pathbar {
     Icicle::Pathbar& visible(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used inside `pathbar`.
@@ -1671,7 +1671,7 @@ class Icicle::Pathbar::Textfont {
     Icicle::Pathbar::Textfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Icicle::Root {
@@ -1683,7 +1683,7 @@ class Icicle::Root {
     Icicle::Root& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Icicle::Stream {
@@ -1698,7 +1698,7 @@ class Icicle::Stream {
     Icicle::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `textinfo`.
@@ -1808,7 +1808,7 @@ class Icicle::Textfont {
     Icicle::Textfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Icicle::Tiling {
@@ -1837,7 +1837,7 @@ class Icicle::Tiling {
     Icicle::Tiling& pad(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

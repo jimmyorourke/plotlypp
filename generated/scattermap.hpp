@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -313,7 +313,7 @@ class Scattermap::Cluster {
     Scattermap::Cluster& stepsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattermap::Hoverlabel {
@@ -370,7 +370,7 @@ class Scattermap::Hoverlabel {
     Scattermap::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -480,7 +480,7 @@ class Scattermap::Hoverlabel::Font {
     Scattermap::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattermap::Legendgrouptitle {
@@ -496,7 +496,7 @@ class Scattermap::Legendgrouptitle {
     Scattermap::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -569,7 +569,7 @@ class Scattermap::Legendgrouptitle::Font {
     Scattermap::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattermap::Line {
@@ -583,7 +583,7 @@ class Scattermap::Line {
     Scattermap::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattermap::Marker {
@@ -703,7 +703,7 @@ class Scattermap::Marker {
     Scattermap::Marker& symbolsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattermap::Marker::Colorbar {
@@ -1042,7 +1042,7 @@ class Scattermap::Marker::Colorbar {
     Scattermap::Marker::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -1115,7 +1115,7 @@ class Scattermap::Marker::Colorbar::Tickfont {
     Scattermap::Marker::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattermap::Marker::Colorbar::Tickformatstops {
@@ -1126,7 +1126,7 @@ class Scattermap::Marker::Colorbar::Tickformatstops {
     Scattermap::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattermap::Marker::Colorbar::Tickformatstops::Tickformatstop {
@@ -1156,7 +1156,7 @@ class Scattermap::Marker::Colorbar::Tickformatstops::Tickformatstop {
     Scattermap::Marker::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattermap::Marker::Colorbar::Title {
@@ -1183,7 +1183,7 @@ class Scattermap::Marker::Colorbar::Title {
     Scattermap::Marker::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -1256,7 +1256,7 @@ class Scattermap::Marker::Colorbar::Title::Font {
     Scattermap::Marker::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattermap::Selected {
@@ -1267,7 +1267,7 @@ class Scattermap::Selected {
     Scattermap::Selected& marker(class Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattermap::Selected::Marker {
@@ -1284,7 +1284,7 @@ class Scattermap::Selected::Marker {
     Scattermap::Selected::Marker& size(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattermap::Stream {
@@ -1299,7 +1299,7 @@ class Scattermap::Stream {
     Scattermap::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the icon text font (color=map.layer.paint.text-color, size=map.layer.layout.text-size). Has an effect only when
@@ -1335,7 +1335,7 @@ class Scattermap::Textfont {
     Scattermap::Textfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattermap::Unselected {
@@ -1346,7 +1346,7 @@ class Scattermap::Unselected {
     Scattermap::Unselected& marker(class Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scattermap::Unselected::Marker {
@@ -1363,7 +1363,7 @@ class Scattermap::Unselected::Marker {
     Scattermap::Unselected::Marker& size(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

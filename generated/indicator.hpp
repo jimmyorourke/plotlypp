@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -182,7 +182,7 @@ class Indicator::Delta {
     Indicator::Delta& valueformat(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Indicator::Delta::Decreasing {
@@ -196,7 +196,7 @@ class Indicator::Delta::Decreasing {
     Indicator::Delta::Decreasing& symbol(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Set the font used to display the delta
@@ -269,7 +269,7 @@ class Indicator::Delta::Font {
     Indicator::Delta::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Indicator::Delta::Increasing {
@@ -283,7 +283,7 @@ class Indicator::Delta::Increasing {
     Indicator::Delta::Increasing& symbol(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Indicator::Domain {
@@ -302,7 +302,7 @@ class Indicator::Domain {
     Indicator::Domain& y(std::vector<std::string> f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // The gauge of the Indicator plot.
@@ -346,7 +346,7 @@ class Indicator::Gauge {
     Indicator::Gauge& threshold(class Threshold f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Indicator::Gauge::Axis {
@@ -540,7 +540,7 @@ class Indicator::Gauge::Axis {
     Indicator::Gauge::Axis& visible(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -613,7 +613,7 @@ class Indicator::Gauge::Axis::Tickfont {
     Indicator::Gauge::Axis::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Indicator::Gauge::Axis::Tickformatstops {
@@ -624,7 +624,7 @@ class Indicator::Gauge::Axis::Tickformatstops {
     Indicator::Gauge::Axis::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Indicator::Gauge::Axis::Tickformatstops::Tickformatstop {
@@ -654,7 +654,7 @@ class Indicator::Gauge::Axis::Tickformatstops::Tickformatstop {
     Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Set the appearance of the gauge's value
@@ -673,7 +673,7 @@ class Indicator::Gauge::Bar {
     Indicator::Gauge::Bar& thickness(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Indicator::Gauge::Bar::Line {
@@ -687,7 +687,7 @@ class Indicator::Gauge::Bar::Line {
     Indicator::Gauge::Bar::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Indicator::Gauge::Steps {
@@ -698,7 +698,7 @@ class Indicator::Gauge::Steps {
     Indicator::Gauge::Steps& step(class Step f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Indicator::Gauge::Steps::Step {
@@ -732,7 +732,7 @@ class Indicator::Gauge::Steps::Step {
     Indicator::Gauge::Steps::Step& thickness(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Indicator::Gauge::Steps::Step::Line {
@@ -746,7 +746,7 @@ class Indicator::Gauge::Steps::Step::Line {
     Indicator::Gauge::Steps::Step::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Indicator::Gauge::Threshold {
@@ -763,7 +763,7 @@ class Indicator::Gauge::Threshold {
     Indicator::Gauge::Threshold& value(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Indicator::Gauge::Threshold::Line {
@@ -777,7 +777,7 @@ class Indicator::Gauge::Threshold::Line {
     Indicator::Gauge::Threshold::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Indicator::Legendgrouptitle {
@@ -793,7 +793,7 @@ class Indicator::Legendgrouptitle {
     Indicator::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -866,7 +866,7 @@ class Indicator::Legendgrouptitle::Font {
     Indicator::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Indicator::Number {
@@ -889,7 +889,7 @@ class Indicator::Number {
     Indicator::Number& valueformat(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Set the font used to display main number
@@ -962,7 +962,7 @@ class Indicator::Number::Font {
     Indicator::Number::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Indicator::Stream {
@@ -977,7 +977,7 @@ class Indicator::Stream {
     Indicator::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Indicator::Title {
@@ -1004,7 +1004,7 @@ class Indicator::Title {
     Indicator::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Set the font used to display the title
@@ -1077,7 +1077,7 @@ class Indicator::Title::Font {
     Indicator::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

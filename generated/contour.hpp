@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -769,7 +769,7 @@ class Contour::Colorbar {
     Contour::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -842,7 +842,7 @@ class Contour::Colorbar::Tickfont {
     Contour::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Contour::Colorbar::Tickformatstops {
@@ -853,7 +853,7 @@ class Contour::Colorbar::Tickformatstops {
     Contour::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Contour::Colorbar::Tickformatstops::Tickformatstop {
@@ -883,7 +883,7 @@ class Contour::Colorbar::Tickformatstops::Tickformatstop {
     Contour::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Contour::Colorbar::Title {
@@ -910,7 +910,7 @@ class Contour::Colorbar::Title {
     Contour::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -983,7 +983,7 @@ class Contour::Colorbar::Title::Font {
     Contour::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Contour::Contours {
@@ -1078,14 +1078,14 @@ class Contour::Contours {
     Contour::Contours& value(T f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Contour::Contours::Impliededits {
  public:
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for labeling the contour levels. The default color comes from the lines, if shown. The default
@@ -1159,7 +1159,7 @@ class Contour::Contours::Labelfont {
     Contour::Contours::Labelfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Contour::Hoverlabel {
@@ -1216,7 +1216,7 @@ class Contour::Hoverlabel {
     Contour::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -1326,7 +1326,7 @@ class Contour::Hoverlabel::Font {
     Contour::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Contour::Legendgrouptitle {
@@ -1342,7 +1342,7 @@ class Contour::Legendgrouptitle {
     Contour::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -1415,7 +1415,7 @@ class Contour::Legendgrouptitle::Font {
     Contour::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Contour::Line {
@@ -1437,7 +1437,7 @@ class Contour::Line {
     Contour::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Contour::Stream {
@@ -1452,7 +1452,7 @@ class Contour::Stream {
     Contour::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // For this trace it only has an effect if `coloring` is set to *heatmap*. Sets the text font.
@@ -1525,7 +1525,7 @@ class Contour::Textfont {
     Contour::Textfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

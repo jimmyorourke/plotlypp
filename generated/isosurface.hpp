@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -314,7 +314,7 @@ class Isosurface::Caps {
     Isosurface::Caps& z(class Z f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Isosurface::Caps::X {
@@ -331,7 +331,7 @@ class Isosurface::Caps::X {
     Isosurface::Caps::X& show(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Isosurface::Caps::Y {
@@ -348,7 +348,7 @@ class Isosurface::Caps::Y {
     Isosurface::Caps::Y& show(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Isosurface::Caps::Z {
@@ -365,7 +365,7 @@ class Isosurface::Caps::Z {
     Isosurface::Caps::Z& show(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Isosurface::Colorbar {
@@ -704,7 +704,7 @@ class Isosurface::Colorbar {
     Isosurface::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -777,7 +777,7 @@ class Isosurface::Colorbar::Tickfont {
     Isosurface::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Isosurface::Colorbar::Tickformatstops {
@@ -788,7 +788,7 @@ class Isosurface::Colorbar::Tickformatstops {
     Isosurface::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Isosurface::Colorbar::Tickformatstops::Tickformatstop {
@@ -818,7 +818,7 @@ class Isosurface::Colorbar::Tickformatstops::Tickformatstop {
     Isosurface::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Isosurface::Colorbar::Title {
@@ -845,7 +845,7 @@ class Isosurface::Colorbar::Title {
     Isosurface::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -918,7 +918,7 @@ class Isosurface::Colorbar::Title::Font {
     Isosurface::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Isosurface::Contour {
@@ -935,7 +935,7 @@ class Isosurface::Contour {
     Isosurface::Contour& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Isosurface::Hoverlabel {
@@ -992,7 +992,7 @@ class Isosurface::Hoverlabel {
     Isosurface::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -1102,7 +1102,7 @@ class Isosurface::Hoverlabel::Font {
     Isosurface::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Isosurface::Legendgrouptitle {
@@ -1118,7 +1118,7 @@ class Isosurface::Legendgrouptitle {
     Isosurface::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -1191,7 +1191,7 @@ class Isosurface::Legendgrouptitle::Font {
     Isosurface::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Isosurface::Lighting {
@@ -1220,7 +1220,7 @@ class Isosurface::Lighting {
     Isosurface::Lighting& vertexnormalsepsilon(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Isosurface::Lightposition {
@@ -1236,7 +1236,7 @@ class Isosurface::Lightposition {
     Isosurface::Lightposition& z(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Isosurface::Slices {
@@ -1253,7 +1253,7 @@ class Isosurface::Slices {
     Isosurface::Slices& z(class Z f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Isosurface::Slices::X {
@@ -1276,7 +1276,7 @@ class Isosurface::Slices::X {
     Isosurface::Slices::X& show(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Isosurface::Slices::Y {
@@ -1299,7 +1299,7 @@ class Isosurface::Slices::Y {
     Isosurface::Slices::Y& show(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Isosurface::Slices::Z {
@@ -1322,7 +1322,7 @@ class Isosurface::Slices::Z {
     Isosurface::Slices::Z& show(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Isosurface::Spaceframe {
@@ -1338,7 +1338,7 @@ class Isosurface::Spaceframe {
     Isosurface::Spaceframe& show(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Isosurface::Stream {
@@ -1353,7 +1353,7 @@ class Isosurface::Stream {
     Isosurface::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Isosurface::Surface {
@@ -1381,7 +1381,7 @@ class Isosurface::Surface {
     Isosurface::Surface& show(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

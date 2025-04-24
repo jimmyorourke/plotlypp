@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -184,7 +184,7 @@ class Sankey::Domain {
     Sankey::Domain& y(std::vector<std::string> f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Sankey::Hoverlabel {
@@ -241,7 +241,7 @@ class Sankey::Hoverlabel {
     Sankey::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -351,7 +351,7 @@ class Sankey::Hoverlabel::Font {
     Sankey::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Sankey::Legendgrouptitle {
@@ -367,7 +367,7 @@ class Sankey::Legendgrouptitle {
     Sankey::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -440,7 +440,7 @@ class Sankey::Legendgrouptitle::Font {
     Sankey::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // The links of the Sankey plot.
@@ -548,7 +548,7 @@ class Sankey::Link {
     Sankey::Link& valuesrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Sankey::Link::Colorscales {
@@ -559,7 +559,7 @@ class Sankey::Link::Colorscales {
     Sankey::Link::Colorscales& concentrationscales(class Concentrationscales f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Sankey::Link::Colorscales::Concentrationscales {
@@ -597,7 +597,7 @@ class Sankey::Link::Colorscales::Concentrationscales {
     Sankey::Link::Colorscales::Concentrationscales& templateitemname(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Sankey::Link::Hoverlabel {
@@ -654,7 +654,7 @@ class Sankey::Link::Hoverlabel {
     Sankey::Link::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -764,7 +764,7 @@ class Sankey::Link::Hoverlabel::Font {
     Sankey::Link::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Sankey::Link::Line {
@@ -787,7 +787,7 @@ class Sankey::Link::Line {
     Sankey::Link::Line& widthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // The nodes of the Sankey plot.
@@ -895,7 +895,7 @@ class Sankey::Node {
     Sankey::Node& ysrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Sankey::Node::Hoverlabel {
@@ -952,7 +952,7 @@ class Sankey::Node::Hoverlabel {
     Sankey::Node::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -1062,7 +1062,7 @@ class Sankey::Node::Hoverlabel::Font {
     Sankey::Node::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Sankey::Node::Line {
@@ -1085,7 +1085,7 @@ class Sankey::Node::Line {
     Sankey::Node::Line& widthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Sankey::Stream {
@@ -1100,7 +1100,7 @@ class Sankey::Stream {
     Sankey::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font for node labels
@@ -1173,7 +1173,7 @@ class Sankey::Textfont {
     Sankey::Textfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

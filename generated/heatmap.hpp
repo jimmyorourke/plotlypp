@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -766,7 +766,7 @@ class Heatmap::Colorbar {
     Heatmap::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -839,7 +839,7 @@ class Heatmap::Colorbar::Tickfont {
     Heatmap::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Heatmap::Colorbar::Tickformatstops {
@@ -850,7 +850,7 @@ class Heatmap::Colorbar::Tickformatstops {
     Heatmap::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Heatmap::Colorbar::Tickformatstops::Tickformatstop {
@@ -880,7 +880,7 @@ class Heatmap::Colorbar::Tickformatstops::Tickformatstop {
     Heatmap::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Heatmap::Colorbar::Title {
@@ -907,7 +907,7 @@ class Heatmap::Colorbar::Title {
     Heatmap::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -980,7 +980,7 @@ class Heatmap::Colorbar::Title::Font {
     Heatmap::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Heatmap::Hoverlabel {
@@ -1037,7 +1037,7 @@ class Heatmap::Hoverlabel {
     Heatmap::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -1147,7 +1147,7 @@ class Heatmap::Hoverlabel::Font {
     Heatmap::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Heatmap::Legendgrouptitle {
@@ -1163,7 +1163,7 @@ class Heatmap::Legendgrouptitle {
     Heatmap::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -1236,7 +1236,7 @@ class Heatmap::Legendgrouptitle::Font {
     Heatmap::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Heatmap::Stream {
@@ -1251,7 +1251,7 @@ class Heatmap::Stream {
     Heatmap::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the text font.
@@ -1324,7 +1324,7 @@ class Heatmap::Textfont {
     Heatmap::Textfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

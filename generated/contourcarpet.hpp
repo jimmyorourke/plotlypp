@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -601,7 +601,7 @@ class Contourcarpet::Colorbar {
     Contourcarpet::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -674,7 +674,7 @@ class Contourcarpet::Colorbar::Tickfont {
     Contourcarpet::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Contourcarpet::Colorbar::Tickformatstops {
@@ -685,7 +685,7 @@ class Contourcarpet::Colorbar::Tickformatstops {
     Contourcarpet::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Contourcarpet::Colorbar::Tickformatstops::Tickformatstop {
@@ -715,7 +715,7 @@ class Contourcarpet::Colorbar::Tickformatstops::Tickformatstop {
     Contourcarpet::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Contourcarpet::Colorbar::Title {
@@ -742,7 +742,7 @@ class Contourcarpet::Colorbar::Title {
     Contourcarpet::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -815,7 +815,7 @@ class Contourcarpet::Colorbar::Title::Font {
     Contourcarpet::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Contourcarpet::Contours {
@@ -908,14 +908,14 @@ class Contourcarpet::Contours {
     Contourcarpet::Contours& value(T f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Contourcarpet::Contours::Impliededits {
  public:
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for labeling the contour levels. The default color comes from the lines, if shown. The default
@@ -989,7 +989,7 @@ class Contourcarpet::Contours::Labelfont {
     Contourcarpet::Contours::Labelfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Contourcarpet::Legendgrouptitle {
@@ -1005,7 +1005,7 @@ class Contourcarpet::Legendgrouptitle {
     Contourcarpet::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -1078,7 +1078,7 @@ class Contourcarpet::Legendgrouptitle::Font {
     Contourcarpet::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Contourcarpet::Line {
@@ -1100,7 +1100,7 @@ class Contourcarpet::Line {
     Contourcarpet::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Contourcarpet::Stream {
@@ -1115,7 +1115,7 @@ class Contourcarpet::Stream {
     Contourcarpet::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

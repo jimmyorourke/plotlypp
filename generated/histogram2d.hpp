@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -730,7 +730,7 @@ class Histogram2D::Colorbar {
     Histogram2D::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -803,7 +803,7 @@ class Histogram2D::Colorbar::Tickfont {
     Histogram2D::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram2D::Colorbar::Tickformatstops {
@@ -814,7 +814,7 @@ class Histogram2D::Colorbar::Tickformatstops {
     Histogram2D::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram2D::Colorbar::Tickformatstops::Tickformatstop {
@@ -844,7 +844,7 @@ class Histogram2D::Colorbar::Tickformatstops::Tickformatstop {
     Histogram2D::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram2D::Colorbar::Title {
@@ -871,7 +871,7 @@ class Histogram2D::Colorbar::Title {
     Histogram2D::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -944,7 +944,7 @@ class Histogram2D::Colorbar::Title::Font {
     Histogram2D::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram2D::Hoverlabel {
@@ -1001,7 +1001,7 @@ class Histogram2D::Hoverlabel {
     Histogram2D::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -1111,7 +1111,7 @@ class Histogram2D::Hoverlabel::Font {
     Histogram2D::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram2D::Legendgrouptitle {
@@ -1127,7 +1127,7 @@ class Histogram2D::Legendgrouptitle {
     Histogram2D::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -1200,7 +1200,7 @@ class Histogram2D::Legendgrouptitle::Font {
     Histogram2D::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram2D::Marker {
@@ -1214,7 +1214,7 @@ class Histogram2D::Marker {
     Histogram2D::Marker& colorsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram2D::Stream {
@@ -1229,7 +1229,7 @@ class Histogram2D::Stream {
     Histogram2D::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the text font.
@@ -1302,7 +1302,7 @@ class Histogram2D::Textfont {
     Histogram2D::Textfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram2D::Xbins {
@@ -1332,7 +1332,7 @@ class Histogram2D::Xbins {
     Histogram2D::Xbins& start(T f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Histogram2D::Ybins {
@@ -1362,7 +1362,7 @@ class Histogram2D::Ybins {
     Histogram2D::Ybins& start(T f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

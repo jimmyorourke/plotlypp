@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -298,7 +298,7 @@ class Treemap::Domain {
     Treemap::Domain& y(std::vector<std::string> f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Treemap::Hoverlabel {
@@ -355,7 +355,7 @@ class Treemap::Hoverlabel {
     Treemap::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -465,7 +465,7 @@ class Treemap::Hoverlabel::Font {
     Treemap::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `textinfo` lying inside the sector.
@@ -575,7 +575,7 @@ class Treemap::Insidetextfont {
     Treemap::Insidetextfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Treemap::Legendgrouptitle {
@@ -591,7 +591,7 @@ class Treemap::Legendgrouptitle {
     Treemap::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -664,7 +664,7 @@ class Treemap::Legendgrouptitle::Font {
     Treemap::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Treemap::Marker {
@@ -757,7 +757,7 @@ class Treemap::Marker {
     Treemap::Marker& showscale(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Treemap::Marker::Colorbar {
@@ -1096,7 +1096,7 @@ class Treemap::Marker::Colorbar {
     Treemap::Marker::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -1169,7 +1169,7 @@ class Treemap::Marker::Colorbar::Tickfont {
     Treemap::Marker::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Treemap::Marker::Colorbar::Tickformatstops {
@@ -1180,7 +1180,7 @@ class Treemap::Marker::Colorbar::Tickformatstops {
     Treemap::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Treemap::Marker::Colorbar::Tickformatstops::Tickformatstop {
@@ -1210,7 +1210,7 @@ class Treemap::Marker::Colorbar::Tickformatstops::Tickformatstop {
     Treemap::Marker::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Treemap::Marker::Colorbar::Title {
@@ -1237,7 +1237,7 @@ class Treemap::Marker::Colorbar::Title {
     Treemap::Marker::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -1310,7 +1310,7 @@ class Treemap::Marker::Colorbar::Title::Font {
     Treemap::Marker::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Treemap::Marker::Line {
@@ -1333,7 +1333,7 @@ class Treemap::Marker::Line {
     Treemap::Marker::Line& widthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Treemap::Marker::Pad {
@@ -1352,7 +1352,7 @@ class Treemap::Marker::Pad {
     Treemap::Marker::Pad& t(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the pattern within the marker.
@@ -1431,7 +1431,7 @@ class Treemap::Marker::Pattern {
     Treemap::Marker::Pattern& soliditysrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `textinfo` lying outside the sector. This option refers to the root of the hierarchy presented
@@ -1543,7 +1543,7 @@ class Treemap::Outsidetextfont {
     Treemap::Outsidetextfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Treemap::Pathbar {
@@ -1586,7 +1586,7 @@ class Treemap::Pathbar {
     Treemap::Pathbar& visible(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used inside `pathbar`.
@@ -1696,7 +1696,7 @@ class Treemap::Pathbar::Textfont {
     Treemap::Pathbar::Textfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Treemap::Root {
@@ -1708,7 +1708,7 @@ class Treemap::Root {
     Treemap::Root& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Treemap::Stream {
@@ -1723,7 +1723,7 @@ class Treemap::Stream {
     Treemap::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used for `textinfo`.
@@ -1833,7 +1833,7 @@ class Treemap::Textfont {
     Treemap::Textfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Treemap::Tiling {
@@ -1871,7 +1871,7 @@ class Treemap::Tiling {
     Treemap::Tiling& squarifyratio(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

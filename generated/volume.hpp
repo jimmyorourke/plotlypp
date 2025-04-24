@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -322,7 +322,7 @@ class Volume::Caps {
     Volume::Caps& z(class Z f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Volume::Caps::X {
@@ -339,7 +339,7 @@ class Volume::Caps::X {
     Volume::Caps::X& show(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Volume::Caps::Y {
@@ -356,7 +356,7 @@ class Volume::Caps::Y {
     Volume::Caps::Y& show(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Volume::Caps::Z {
@@ -373,7 +373,7 @@ class Volume::Caps::Z {
     Volume::Caps::Z& show(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Volume::Colorbar {
@@ -712,7 +712,7 @@ class Volume::Colorbar {
     Volume::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -785,7 +785,7 @@ class Volume::Colorbar::Tickfont {
     Volume::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Volume::Colorbar::Tickformatstops {
@@ -796,7 +796,7 @@ class Volume::Colorbar::Tickformatstops {
     Volume::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Volume::Colorbar::Tickformatstops::Tickformatstop {
@@ -826,7 +826,7 @@ class Volume::Colorbar::Tickformatstops::Tickformatstop {
     Volume::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Volume::Colorbar::Title {
@@ -853,7 +853,7 @@ class Volume::Colorbar::Title {
     Volume::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -926,7 +926,7 @@ class Volume::Colorbar::Title::Font {
     Volume::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Volume::Contour {
@@ -943,7 +943,7 @@ class Volume::Contour {
     Volume::Contour& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Volume::Hoverlabel {
@@ -1000,7 +1000,7 @@ class Volume::Hoverlabel {
     Volume::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -1110,7 +1110,7 @@ class Volume::Hoverlabel::Font {
     Volume::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Volume::Legendgrouptitle {
@@ -1126,7 +1126,7 @@ class Volume::Legendgrouptitle {
     Volume::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -1199,7 +1199,7 @@ class Volume::Legendgrouptitle::Font {
     Volume::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Volume::Lighting {
@@ -1228,7 +1228,7 @@ class Volume::Lighting {
     Volume::Lighting& vertexnormalsepsilon(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Volume::Lightposition {
@@ -1244,7 +1244,7 @@ class Volume::Lightposition {
     Volume::Lightposition& z(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Volume::Slices {
@@ -1261,7 +1261,7 @@ class Volume::Slices {
     Volume::Slices& z(class Z f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Volume::Slices::X {
@@ -1284,7 +1284,7 @@ class Volume::Slices::X {
     Volume::Slices::X& show(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Volume::Slices::Y {
@@ -1307,7 +1307,7 @@ class Volume::Slices::Y {
     Volume::Slices::Y& show(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Volume::Slices::Z {
@@ -1330,7 +1330,7 @@ class Volume::Slices::Z {
     Volume::Slices::Z& show(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Volume::Spaceframe {
@@ -1345,7 +1345,7 @@ class Volume::Spaceframe {
     Volume::Spaceframe& show(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Volume::Stream {
@@ -1360,7 +1360,7 @@ class Volume::Stream {
     Volume::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Volume::Surface {
@@ -1388,7 +1388,7 @@ class Volume::Surface {
     Volume::Surface& show(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

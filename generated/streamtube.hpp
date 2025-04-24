@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -638,7 +638,7 @@ class Streamtube::Colorbar {
     Streamtube::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -711,7 +711,7 @@ class Streamtube::Colorbar::Tickfont {
     Streamtube::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Streamtube::Colorbar::Tickformatstops {
@@ -722,7 +722,7 @@ class Streamtube::Colorbar::Tickformatstops {
     Streamtube::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Streamtube::Colorbar::Tickformatstops::Tickformatstop {
@@ -752,7 +752,7 @@ class Streamtube::Colorbar::Tickformatstops::Tickformatstop {
     Streamtube::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Streamtube::Colorbar::Title {
@@ -779,7 +779,7 @@ class Streamtube::Colorbar::Title {
     Streamtube::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -852,7 +852,7 @@ class Streamtube::Colorbar::Title::Font {
     Streamtube::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Streamtube::Hoverlabel {
@@ -909,7 +909,7 @@ class Streamtube::Hoverlabel {
     Streamtube::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -1019,7 +1019,7 @@ class Streamtube::Hoverlabel::Font {
     Streamtube::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Streamtube::Legendgrouptitle {
@@ -1035,7 +1035,7 @@ class Streamtube::Legendgrouptitle {
     Streamtube::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -1108,7 +1108,7 @@ class Streamtube::Legendgrouptitle::Font {
     Streamtube::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Streamtube::Lighting {
@@ -1137,7 +1137,7 @@ class Streamtube::Lighting {
     Streamtube::Lighting& vertexnormalsepsilon(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Streamtube::Lightposition {
@@ -1153,7 +1153,7 @@ class Streamtube::Lightposition {
     Streamtube::Lightposition& z(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Streamtube::Starts {
@@ -1181,7 +1181,7 @@ class Streamtube::Starts {
     Streamtube::Starts& zsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Streamtube::Stream {
@@ -1196,7 +1196,7 @@ class Streamtube::Stream {
     Streamtube::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp

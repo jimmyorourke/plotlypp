@@ -8,7 +8,7 @@
 #include <trace.hpp>
 #include <traits.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 
 namespace plotlypp {
 
@@ -435,7 +435,7 @@ class Scatter3D::Error_X {
     Scatter3D::Error_X& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatter3D::Error_Y {
@@ -503,7 +503,7 @@ class Scatter3D::Error_Y {
     Scatter3D::Error_Y& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatter3D::Error_Z {
@@ -569,7 +569,7 @@ class Scatter3D::Error_Z {
     Scatter3D::Error_Z& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatter3D::Hoverlabel {
@@ -626,7 +626,7 @@ class Scatter3D::Hoverlabel {
     Scatter3D::Hoverlabel& namelengthsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the font used in hover labels.
@@ -736,7 +736,7 @@ class Scatter3D::Hoverlabel::Font {
     Scatter3D::Hoverlabel::Font& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatter3D::Legendgrouptitle {
@@ -752,7 +752,7 @@ class Scatter3D::Legendgrouptitle {
     Scatter3D::Legendgrouptitle& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this legend group's title font.
@@ -825,7 +825,7 @@ class Scatter3D::Legendgrouptitle::Font {
     Scatter3D::Legendgrouptitle::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatter3D::Line {
@@ -909,7 +909,7 @@ class Scatter3D::Line {
     Scatter3D::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatter3D::Line::Colorbar {
@@ -1248,7 +1248,7 @@ class Scatter3D::Line::Colorbar {
     Scatter3D::Line::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -1321,7 +1321,7 @@ class Scatter3D::Line::Colorbar::Tickfont {
     Scatter3D::Line::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatter3D::Line::Colorbar::Tickformatstops {
@@ -1332,7 +1332,7 @@ class Scatter3D::Line::Colorbar::Tickformatstops {
     Scatter3D::Line::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatter3D::Line::Colorbar::Tickformatstops::Tickformatstop {
@@ -1362,7 +1362,7 @@ class Scatter3D::Line::Colorbar::Tickformatstops::Tickformatstop {
     Scatter3D::Line::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatter3D::Line::Colorbar::Title {
@@ -1389,7 +1389,7 @@ class Scatter3D::Line::Colorbar::Title {
     Scatter3D::Line::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -1462,7 +1462,7 @@ class Scatter3D::Line::Colorbar::Title::Font {
     Scatter3D::Line::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatter3D::Marker {
@@ -1584,7 +1584,7 @@ class Scatter3D::Marker {
     Scatter3D::Marker& symbolsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatter3D::Marker::Colorbar {
@@ -1923,7 +1923,7 @@ class Scatter3D::Marker::Colorbar {
     Scatter3D::Marker::Colorbar& yref(enum Yref f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the color bar's tick label font
@@ -1996,7 +1996,7 @@ class Scatter3D::Marker::Colorbar::Tickfont {
     Scatter3D::Marker::Colorbar::Tickfont& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatter3D::Marker::Colorbar::Tickformatstops {
@@ -2007,7 +2007,7 @@ class Scatter3D::Marker::Colorbar::Tickformatstops {
     Scatter3D::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatter3D::Marker::Colorbar::Tickformatstops::Tickformatstop {
@@ -2037,7 +2037,7 @@ class Scatter3D::Marker::Colorbar::Tickformatstops::Tickformatstop {
     Scatter3D::Marker::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatter3D::Marker::Colorbar::Title {
@@ -2064,7 +2064,7 @@ class Scatter3D::Marker::Colorbar::Title {
     Scatter3D::Marker::Colorbar::Title& text(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets this color bar's title font.
@@ -2137,7 +2137,7 @@ class Scatter3D::Marker::Colorbar::Title::Font {
     Scatter3D::Marker::Colorbar::Title::Font& weight(int f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatter3D::Marker::Line {
@@ -2205,7 +2205,7 @@ class Scatter3D::Marker::Line {
     Scatter3D::Marker::Line& width(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatter3D::Projection {
@@ -2222,7 +2222,7 @@ class Scatter3D::Projection {
     Scatter3D::Projection& z(class Z f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatter3D::Projection::X {
@@ -2238,7 +2238,7 @@ class Scatter3D::Projection::X {
     Scatter3D::Projection::X& show(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatter3D::Projection::Y {
@@ -2254,7 +2254,7 @@ class Scatter3D::Projection::Y {
     Scatter3D::Projection::Y& show(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatter3D::Projection::Z {
@@ -2270,7 +2270,7 @@ class Scatter3D::Projection::Z {
     Scatter3D::Projection::Z& show(bool f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 class Scatter3D::Stream {
@@ -2285,7 +2285,7 @@ class Scatter3D::Stream {
     Scatter3D::Stream& token(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 // Sets the text font.
@@ -2355,7 +2355,7 @@ class Scatter3D::Textfont {
     Scatter3D::Textfont& weightsrc(std::string f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
-    nlohmann::json json{};
+    Json json{};
 };
 
 } // namespace plotlypp
