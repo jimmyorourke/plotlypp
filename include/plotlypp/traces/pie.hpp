@@ -1,0 +1,1185 @@
+// TODO: includes, copyright, etc
+#pragma once
+
+#include <string>
+#include <type_traits>
+#include <vector>
+
+#include <plotlypp/trace.hpp>
+#include <plotlypp/traits.hpp>
+
+#include <plotlypp/json.hpp>
+
+namespace plotlypp {
+
+class Pie : public Trace {
+ public:
+    Pie()
+    : Trace() {
+        json["type"] = "pie";
+    }
+
+    enum class Direction {
+        CLOCKWISE,
+        COUNTERCLOCKWISE,
+    };
+    static std::string to_string(Direction e);
+
+    enum class Insidetextorientation {
+        HORIZONTAL,
+        RADIAL,
+        TANGENTIAL,
+        AUTO,
+    };
+    static std::string to_string(Insidetextorientation e);
+
+    enum class Textposition {
+        INSIDE,
+        OUTSIDE,
+        AUTO,
+        NONE,
+    };
+    static std::string to_string(Textposition e);
+
+    enum class Visible {
+        TRUE,
+        FALSE,
+        LEGENDONLY,
+    };
+    static std::string to_string(Visible e);
+
+    class Domain;
+    class Hoverlabel;
+    // Sets the font used for `textinfo` lying inside the sector.
+    class Insidetextfont;
+    class Legendgrouptitle;
+    class Marker;
+    // Sets the font used for `textinfo` lying outside the sector.
+    class Outsidetextfont;
+    class Stream;
+    // Sets the font used for `textinfo`.
+    class Textfont;
+    class Title;
+
+    // Determines whether outside text labels can push the margins.
+    Pie& automargin(bool f);
+
+    // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
+    // *scatter* traces also appends customdata items in the markers DOM elements
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
+    Pie& customdata(std::vector<T> f);
+
+    // Sets the source reference on Chart Studio Cloud for `customdata`.
+    Pie& customdatasrc(std::string f);
+
+    // Specifies the direction at which succeeding sectors follow one another.
+    // - Default: counterclockwise
+    Pie& direction(enum Direction f);
+
+    // Sets the label step. See `label0` for more info.
+    Pie& dlabel(double f);
+
+    Pie& domain(class Domain f);
+
+    // Sets the fraction of the radius to cut out of the pie. Use this to make a donut chart.
+    Pie& hole(double f);
+
+    // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
+    // hovering. But, if `none` is set, click and hover events are still fired.
+    // - Default: all
+    // - Flags: ['label', 'text', 'value', 'percent', 'name']
+    // - Extras ['all', 'none', 'skip']
+    Pie& hoverinfo(std::string f);
+    Pie& hoverinfo(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
+    Pie& hoverinfosrc(std::string f);
+
+    Pie& hoverlabel(class Hoverlabel f);
+
+    // Template string used for rendering the information that appear on hover box. Note that this will override
+    // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
+    // {%_xother_}, {%xother_}. When showing info for several points, *xother* will be added to those with different x
+    // positions from the first point. An underscore before or after *(x|y)other* will add a space on that side, only
+    // when this field is shown. Numbers are formatted using d3-format's syntax %{variable:d3-format}, for example
+    // "Price: %{y:$.2f}". https://github.com/d3/d3-format/tree/v1.4.5#d3-format for details on the formatting syntax.
+    // Dates are formatted using d3-time-format's syntax %{variable|d3-time-format}, for example "Day:
+    // %{2019-01-01|%A}". https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details on the date
+    // formatting syntax. The variables available in `hovertemplate` are the ones emitted as event data described at
+    // this link https://plotly.com/javascript/plotlyjs-events/#event-data. Additionally, every attributes that can be
+    // specified per-point (the ones that are `arrayOk: true`) are available. Finally, the template string has access to
+    // variables `label`, `color`, `value`, `percent` and `text`. Anything contained in tag `<extra>` is displayed in
+    // the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an
+    // empty tag `<extra></extra>`.
+    Pie& hovertemplate(std::string f);
+    Pie& hovertemplate(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
+    Pie& hovertemplatesrc(std::string f);
+
+    // Sets hover text elements associated with each sector. If a single string, the same string appears for all data
+    // points. If an array of string, the items are mapped in order of this trace's sectors. To be seen, trace
+    // `hoverinfo` must contain a *text* flag.
+    Pie& hovertext(std::string f);
+    Pie& hovertext(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `hovertext`.
+    Pie& hovertextsrc(std::string f);
+
+    // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
+    // array of strings, not numbers or any other type.
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
+    Pie& ids(std::vector<T> f);
+
+    // Sets the source reference on Chart Studio Cloud for `ids`.
+    Pie& idssrc(std::string f);
+
+    // Sets the font used for `textinfo` lying inside the sector.
+    Pie& insidetextfont(class Insidetextfont f);
+
+    // Controls the orientation of the text inside chart sectors. When set to *auto*, text may be oriented in any
+    // direction in order to be as big as possible in the middle of a sector. The *horizontal* option orients text to be
+    // parallel with the bottom of the chart, and may make text smaller in order to achieve that goal. The *radial*
+    // option orients text along the radius of the sector. The *tangential* option orients text perpendicular to the
+    // radius of the sector.
+    // - Default: auto
+    Pie& insidetextorientation(enum Insidetextorientation f);
+
+    // Alternate to `labels`. Builds a numeric set of labels. Use with `dlabel` where `label0` is the starting label and
+    // `dlabel` the step.
+    Pie& label0(double f);
+
+    // Sets the sector labels. If `labels` entries are duplicated, we sum associated `values` or simply count
+    // occurrences if `values` is not provided. For other array attributes (including color) we use the first non-empty
+    // entry among all occurrences of the label.
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
+    Pie& labels(std::vector<T> f);
+
+    // Sets the source reference on Chart Studio Cloud for `labels`.
+    Pie& labelssrc(std::string f);
+
+    // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
+    // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
+    Pie& legend(std::string f);
+
+    // Sets the legend group for this trace. Traces and shapes part of the same legend group hide/show at the same time
+    // when toggling legend items.
+    Pie& legendgroup(std::string f);
+
+    Pie& legendgrouptitle(class Legendgrouptitle f);
+
+    // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
+    // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
+    // can use ranks less than 1000 to place certain items before all unranked items, and ranks greater than 1000 to go
+    // after all unranked items. When having unranked or equal rank items shapes would be displayed after traces i.e.
+    // according to their order in data and layout.
+    Pie& legendrank(double f);
+
+    // Sets the width (in px or fraction) of the legend for this trace.
+    Pie& legendwidth(double f);
+
+    Pie& marker(class Marker f);
+
+    // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
+    // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
+    // and `sliders` `label` text all support `meta`. To access the trace `meta` values in an attribute in the same
+    // trace, simply use `%{meta[i]}` where `i` is the index or key of the `meta` item in question. To access trace
+    // `meta` in layout attributes, use `%{data[n[.meta[i]}` where `i` is the index or key of the `meta` and `n` is the
+    // trace index.
+    template <typename T>
+    Pie& meta(T f);
+    template <typename T>
+    Pie& meta(std::vector<T> f);
+
+    // Sets the source reference on Chart Studio Cloud for `meta`.
+    Pie& metasrc(std::string f);
+
+    // Sets the trace name. The trace name appears as the legend item and on hover.
+    Pie& name(std::string f);
+
+    // Sets the opacity of the trace.
+    Pie& opacity(double f);
+
+    // Sets the font used for `textinfo` lying outside the sector.
+    Pie& outsidetextfont(class Outsidetextfont f);
+
+    // Sets the fraction of larger radius to pull the sectors out from the center. This can be a constant to pull all
+    // slices apart from each other equally or an array to highlight one or more slices.
+    Pie& pull(double f);
+    Pie& pull(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `pull`.
+    Pie& pullsrc(std::string f);
+
+    // Instead of the first slice starting at 12 o'clock, rotate to some other angle.
+    Pie& rotation(double f);
+
+    // If there are multiple pie charts that should be sized according to their totals, link them by providing a
+    // non-empty group id here shared by every trace in the same group.
+    Pie& scalegroup(std::string f);
+
+    // Determines whether or not an item corresponding to this trace is shown in the legend.
+    Pie& showlegend(bool f);
+
+    // Determines whether or not the sectors are reordered from largest to smallest.
+    Pie& sort(bool f);
+
+    Pie& stream(class Stream f);
+
+    // Sets text elements associated with each sector. If trace `textinfo` contains a *text* flag, these elements will
+    // be seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will
+    // be seen in the hover labels.
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
+    Pie& text(std::vector<T> f);
+
+    // Sets the font used for `textinfo`.
+    Pie& textfont(class Textfont f);
+
+    // Determines which trace information appear on the graph.
+    // - Flags: ['label', 'text', 'value', 'percent']
+    // - Extras ['none']
+    Pie& textinfo(std::string f);
+
+    // Specifies the location of the `textinfo`.
+    // - Default: auto
+    Pie& textposition(enum Textposition f);
+    Pie& textposition(const std::vector<enum Textposition>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `textposition`.
+    Pie& textpositionsrc(std::string f);
+
+    // Sets the source reference on Chart Studio Cloud for `text`.
+    Pie& textsrc(std::string f);
+
+    // Template string used for rendering the information text that appear on points. Note that this will override
+    // `textinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using
+    // d3-format's syntax %{variable:d3-format}, for example "Price: %{y:$.2f}".
+    // https://github.com/d3/d3-format/tree/v1.4.5#d3-format for details on the formatting syntax. Dates are formatted
+    // using d3-time-format's syntax %{variable|d3-time-format}, for example "Day: %{2019-01-01|%A}".
+    // https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details on the date formatting syntax. Every
+    // attributes that can be specified per-point (the ones that are `arrayOk: true`) are available. Finally, the
+    // template string has access to variables `label`, `color`, `value`, `percent` and `text`.
+    Pie& texttemplate(std::string f);
+    Pie& texttemplate(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `texttemplate`.
+    Pie& texttemplatesrc(std::string f);
+
+    Pie& title(class Title f);
+
+    // Assign an id to this trace, Use this to provide object constancy between traces during animations and
+    // transitions.
+    Pie& uid(std::string f);
+
+    // Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well
+    // as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note
+    // that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is
+    // controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and
+    // `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace
+    // changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can
+    // add/remove traces before the end of the `data` array, such that the same trace has a different index, you can
+    // still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+    template <typename T>
+    Pie& uirevision(T f);
+
+    // Sets the values of the sectors. If omitted, we count occurrences of each label.
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
+    Pie& values(std::vector<T> f);
+
+    // Sets the source reference on Chart Studio Cloud for `values`.
+    Pie& valuessrc(std::string f);
+
+    // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
+    // legend item (provided that the legend itself is visible).
+    // - Default: True
+    Pie& visible(enum Visible f);
+};
+
+class Pie::Domain {
+ public:
+
+    // If there is a layout grid, use the domain for this column in the grid for this pie trace .
+    Pie::Domain& column(int f);
+
+    // If there is a layout grid, use the domain for this row in the grid for this pie trace .
+    Pie::Domain& row(int f);
+
+    // Sets the horizontal domain of this pie trace (in plot fraction).
+    Pie::Domain& x(std::vector<std::string> f);
+
+    // Sets the vertical domain of this pie trace (in plot fraction).
+    Pie::Domain& y(std::vector<std::string> f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+class Pie::Hoverlabel {
+ public:
+
+    enum class Align {
+        LEFT,
+        RIGHT,
+        AUTO,
+    };
+    static std::string to_string(Align e);
+
+    // Sets the font used in hover labels.
+    class Font;
+
+    // Sets the horizontal alignment of the text content within hover label box. Has an effect only if the hover label
+    // text spans more two or more lines
+    // - Default: auto
+    Pie::Hoverlabel& align(enum Align f);
+    Pie::Hoverlabel& align(const std::vector<enum Align>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `align`.
+    Pie::Hoverlabel& alignsrc(std::string f);
+
+    // Sets the background color of the hover labels for this trace
+    Pie::Hoverlabel& bgcolor(std::string f);
+    Pie::Hoverlabel& bgcolor(double f);
+    Pie::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Pie::Hoverlabel& bgcolor(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `bgcolor`.
+    Pie::Hoverlabel& bgcolorsrc(std::string f);
+
+    // Sets the border color of the hover labels for this trace.
+    Pie::Hoverlabel& bordercolor(std::string f);
+    Pie::Hoverlabel& bordercolor(double f);
+    Pie::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Pie::Hoverlabel& bordercolor(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `bordercolor`.
+    Pie::Hoverlabel& bordercolorsrc(std::string f);
+
+    // Sets the font used in hover labels.
+    Pie::Hoverlabel& font(class Font f);
+
+    // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
+    // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
+    // name if it is less than that many characters, but if it is longer, will truncate to `namelength - 3` characters
+    // and add an ellipsis.
+    Pie::Hoverlabel& namelength(int f);
+    Pie::Hoverlabel& namelength(std::vector<int> f);
+
+    // Sets the source reference on Chart Studio Cloud for `namelength`.
+    Pie::Hoverlabel& namelengthsrc(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+// Sets the font used in hover labels.
+class Pie::Hoverlabel::Font {
+ public:
+
+    enum class Style {
+        NORMAL,
+        ITALIC,
+    };
+    static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
+
+    Pie::Hoverlabel::Font& color(std::string f);
+    Pie::Hoverlabel::Font& color(double f);
+    Pie::Hoverlabel::Font& color(std::vector<std::string> f);
+    Pie::Hoverlabel::Font& color(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `color`.
+    Pie::Hoverlabel::Font& colorsrc(std::string f);
+
+    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+    // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+    // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+    // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select
+    // number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid
+    // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+    // *Raleway*, *Times New Roman*.
+    Pie::Hoverlabel::Font& family(std::string f);
+    Pie::Hoverlabel::Font& family(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `family`.
+    Pie::Hoverlabel::Font& familysrc(std::string f);
+
+    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
+    // e.g. *under+over*, etc.
+    // - Default: none
+    // - Flags: ['under', 'over', 'through']
+    // - Extras ['none']
+    Pie::Hoverlabel::Font& lineposition(std::string f);
+    Pie::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `lineposition`.
+    Pie::Hoverlabel::Font& linepositionsrc(std::string f);
+
+    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
+    // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+    Pie::Hoverlabel::Font& shadow(std::string f);
+    Pie::Hoverlabel::Font& shadow(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `shadow`.
+    Pie::Hoverlabel::Font& shadowsrc(std::string f);
+
+    Pie::Hoverlabel::Font& size(double f);
+    Pie::Hoverlabel::Font& size(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `size`.
+    Pie::Hoverlabel::Font& sizesrc(std::string f);
+
+    // Sets whether a font should be styled with a normal or italic face from its family.
+    // - Default: normal
+    Pie::Hoverlabel::Font& style(enum Style f);
+    Pie::Hoverlabel::Font& style(const std::vector<enum Style>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `style`.
+    Pie::Hoverlabel::Font& stylesrc(std::string f);
+
+    // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
+    // word capitalized.
+    // - Default: normal
+    Pie::Hoverlabel::Font& textcase(enum Textcase f);
+    Pie::Hoverlabel::Font& textcase(const std::vector<enum Textcase>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `textcase`.
+    Pie::Hoverlabel::Font& textcasesrc(std::string f);
+
+    // Sets the variant of the font.
+    // - Default: normal
+    Pie::Hoverlabel::Font& variant(enum Variant f);
+    Pie::Hoverlabel::Font& variant(const std::vector<enum Variant>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `variant`.
+    Pie::Hoverlabel::Font& variantsrc(std::string f);
+
+    // Sets the weight (or boldness) of the font.
+    Pie::Hoverlabel::Font& weight(int f);
+    Pie::Hoverlabel::Font& weight(std::vector<int> f);
+
+    // Sets the source reference on Chart Studio Cloud for `weight`.
+    Pie::Hoverlabel::Font& weightsrc(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+// Sets the font used for `textinfo` lying inside the sector.
+class Pie::Insidetextfont {
+ public:
+
+    enum class Style {
+        NORMAL,
+        ITALIC,
+    };
+    static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
+
+    Pie::Insidetextfont& color(std::string f);
+    Pie::Insidetextfont& color(double f);
+    Pie::Insidetextfont& color(std::vector<std::string> f);
+    Pie::Insidetextfont& color(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `color`.
+    Pie::Insidetextfont& colorsrc(std::string f);
+
+    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+    // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+    // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+    // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select
+    // number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid
+    // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+    // *Raleway*, *Times New Roman*.
+    Pie::Insidetextfont& family(std::string f);
+    Pie::Insidetextfont& family(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `family`.
+    Pie::Insidetextfont& familysrc(std::string f);
+
+    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
+    // e.g. *under+over*, etc.
+    // - Default: none
+    // - Flags: ['under', 'over', 'through']
+    // - Extras ['none']
+    Pie::Insidetextfont& lineposition(std::string f);
+    Pie::Insidetextfont& lineposition(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `lineposition`.
+    Pie::Insidetextfont& linepositionsrc(std::string f);
+
+    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
+    // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+    Pie::Insidetextfont& shadow(std::string f);
+    Pie::Insidetextfont& shadow(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `shadow`.
+    Pie::Insidetextfont& shadowsrc(std::string f);
+
+    Pie::Insidetextfont& size(double f);
+    Pie::Insidetextfont& size(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `size`.
+    Pie::Insidetextfont& sizesrc(std::string f);
+
+    // Sets whether a font should be styled with a normal or italic face from its family.
+    // - Default: normal
+    Pie::Insidetextfont& style(enum Style f);
+    Pie::Insidetextfont& style(const std::vector<enum Style>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `style`.
+    Pie::Insidetextfont& stylesrc(std::string f);
+
+    // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
+    // word capitalized.
+    // - Default: normal
+    Pie::Insidetextfont& textcase(enum Textcase f);
+    Pie::Insidetextfont& textcase(const std::vector<enum Textcase>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `textcase`.
+    Pie::Insidetextfont& textcasesrc(std::string f);
+
+    // Sets the variant of the font.
+    // - Default: normal
+    Pie::Insidetextfont& variant(enum Variant f);
+    Pie::Insidetextfont& variant(const std::vector<enum Variant>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `variant`.
+    Pie::Insidetextfont& variantsrc(std::string f);
+
+    // Sets the weight (or boldness) of the font.
+    Pie::Insidetextfont& weight(int f);
+    Pie::Insidetextfont& weight(std::vector<int> f);
+
+    // Sets the source reference on Chart Studio Cloud for `weight`.
+    Pie::Insidetextfont& weightsrc(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+class Pie::Legendgrouptitle {
+ public:
+
+    // Sets this legend group's title font.
+    class Font;
+
+    // Sets this legend group's title font.
+    Pie::Legendgrouptitle& font(class Font f);
+
+    // Sets the title of the legend group.
+    Pie::Legendgrouptitle& text(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+// Sets this legend group's title font.
+class Pie::Legendgrouptitle::Font {
+ public:
+
+    enum class Style {
+        NORMAL,
+        ITALIC,
+    };
+    static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
+
+    Pie::Legendgrouptitle::Font& color(std::string f);
+    Pie::Legendgrouptitle::Font& color(double f);
+
+    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+    // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+    // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+    // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select
+    // number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid
+    // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+    // *Raleway*, *Times New Roman*.
+    Pie::Legendgrouptitle::Font& family(std::string f);
+
+    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
+    // e.g. *under+over*, etc.
+    // - Default: none
+    // - Flags: ['under', 'over', 'through']
+    // - Extras ['none']
+    Pie::Legendgrouptitle::Font& lineposition(std::string f);
+
+    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
+    // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+    Pie::Legendgrouptitle::Font& shadow(std::string f);
+
+    Pie::Legendgrouptitle::Font& size(double f);
+
+    // Sets whether a font should be styled with a normal or italic face from its family.
+    // - Default: normal
+    Pie::Legendgrouptitle::Font& style(enum Style f);
+
+    // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
+    // word capitalized.
+    // - Default: normal
+    Pie::Legendgrouptitle::Font& textcase(enum Textcase f);
+
+    // Sets the variant of the font.
+    // - Default: normal
+    Pie::Legendgrouptitle::Font& variant(enum Variant f);
+
+    // Sets the weight (or boldness) of the font.
+    Pie::Legendgrouptitle::Font& weight(int f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+class Pie::Marker {
+ public:
+
+    class Line;
+    // Sets the pattern within the marker.
+    class Pattern;
+
+    // Sets the color of each sector. If not specified, the default trace color set is used to pick the sector colors.
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
+    Pie::Marker& colors(std::vector<T> f);
+
+    // Sets the source reference on Chart Studio Cloud for `colors`.
+    Pie::Marker& colorssrc(std::string f);
+
+    Pie::Marker& line(class Line f);
+
+    // Sets the pattern within the marker.
+    Pie::Marker& pattern(class Pattern f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+class Pie::Marker::Line {
+ public:
+
+    // Sets the color of the line enclosing each sector.
+    Pie::Marker::Line& color(std::string f);
+    Pie::Marker::Line& color(double f);
+    Pie::Marker::Line& color(std::vector<std::string> f);
+    Pie::Marker::Line& color(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `color`.
+    Pie::Marker::Line& colorsrc(std::string f);
+
+    // Sets the width (in px) of the line enclosing each sector.
+    Pie::Marker::Line& width(double f);
+    Pie::Marker::Line& width(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `width`.
+    Pie::Marker::Line& widthsrc(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+// Sets the pattern within the marker.
+class Pie::Marker::Pattern {
+ public:
+
+    enum class Fillmode {
+        REPLACE,
+        OVERLAY,
+    };
+    static std::string to_string(Fillmode e);
+
+    enum class Shape {
+        EMPTY,
+        SLASH,
+        DOUBLEBACKSLASH,
+        X,
+        HYPHEN,
+        OR,
+        PLUS,
+        DOT,
+    };
+    static std::string to_string(Shape e);
+
+    // When there is no colorscale sets the color of background pattern fill. Defaults to a `marker.color` background
+    // when `fillmode` is *overlay*. Otherwise, defaults to a transparent background.
+    Pie::Marker::Pattern& bgcolor(std::string f);
+    Pie::Marker::Pattern& bgcolor(double f);
+    Pie::Marker::Pattern& bgcolor(std::vector<std::string> f);
+    Pie::Marker::Pattern& bgcolor(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `bgcolor`.
+    Pie::Marker::Pattern& bgcolorsrc(std::string f);
+
+    // When there is no colorscale sets the color of foreground pattern fill. Defaults to a `marker.color` background
+    // when `fillmode` is *replace*. Otherwise, defaults to dark grey or white to increase contrast with the `bgcolor`.
+    Pie::Marker::Pattern& fgcolor(std::string f);
+    Pie::Marker::Pattern& fgcolor(double f);
+    Pie::Marker::Pattern& fgcolor(std::vector<std::string> f);
+    Pie::Marker::Pattern& fgcolor(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `fgcolor`.
+    Pie::Marker::Pattern& fgcolorsrc(std::string f);
+
+    // Sets the opacity of the foreground pattern fill. Defaults to a 0.5 when `fillmode` is *overlay*. Otherwise,
+    // defaults to 1.
+    Pie::Marker::Pattern& fgopacity(double f);
+
+    // Determines whether `marker.color` should be used as a default to `bgcolor` or a `fgcolor`.
+    // - Default: replace
+    Pie::Marker::Pattern& fillmode(enum Fillmode f);
+
+    // Sets the shape of the pattern fill. By default, no pattern is used for filling the area.
+    // - Default:
+    Pie::Marker::Pattern& shape(enum Shape f);
+    Pie::Marker::Pattern& shape(const std::vector<enum Shape>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `shape`.
+    Pie::Marker::Pattern& shapesrc(std::string f);
+
+    // Sets the size of unit squares of the pattern fill in pixels, which corresponds to the interval of repetition of
+    // the pattern.
+    Pie::Marker::Pattern& size(double f);
+    Pie::Marker::Pattern& size(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `size`.
+    Pie::Marker::Pattern& sizesrc(std::string f);
+
+    // Sets the solidity of the pattern fill. Solidity is roughly the fraction of the area filled by the pattern.
+    // Solidity of 0 shows only the background color without pattern and solidty of 1 shows only the foreground color
+    // without pattern.
+    Pie::Marker::Pattern& solidity(double f);
+    Pie::Marker::Pattern& solidity(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `solidity`.
+    Pie::Marker::Pattern& soliditysrc(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+// Sets the font used for `textinfo` lying outside the sector.
+class Pie::Outsidetextfont {
+ public:
+
+    enum class Style {
+        NORMAL,
+        ITALIC,
+    };
+    static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
+
+    Pie::Outsidetextfont& color(std::string f);
+    Pie::Outsidetextfont& color(double f);
+    Pie::Outsidetextfont& color(std::vector<std::string> f);
+    Pie::Outsidetextfont& color(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `color`.
+    Pie::Outsidetextfont& colorsrc(std::string f);
+
+    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+    // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+    // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+    // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select
+    // number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid
+    // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+    // *Raleway*, *Times New Roman*.
+    Pie::Outsidetextfont& family(std::string f);
+    Pie::Outsidetextfont& family(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `family`.
+    Pie::Outsidetextfont& familysrc(std::string f);
+
+    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
+    // e.g. *under+over*, etc.
+    // - Default: none
+    // - Flags: ['under', 'over', 'through']
+    // - Extras ['none']
+    Pie::Outsidetextfont& lineposition(std::string f);
+    Pie::Outsidetextfont& lineposition(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `lineposition`.
+    Pie::Outsidetextfont& linepositionsrc(std::string f);
+
+    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
+    // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+    Pie::Outsidetextfont& shadow(std::string f);
+    Pie::Outsidetextfont& shadow(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `shadow`.
+    Pie::Outsidetextfont& shadowsrc(std::string f);
+
+    Pie::Outsidetextfont& size(double f);
+    Pie::Outsidetextfont& size(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `size`.
+    Pie::Outsidetextfont& sizesrc(std::string f);
+
+    // Sets whether a font should be styled with a normal or italic face from its family.
+    // - Default: normal
+    Pie::Outsidetextfont& style(enum Style f);
+    Pie::Outsidetextfont& style(const std::vector<enum Style>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `style`.
+    Pie::Outsidetextfont& stylesrc(std::string f);
+
+    // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
+    // word capitalized.
+    // - Default: normal
+    Pie::Outsidetextfont& textcase(enum Textcase f);
+    Pie::Outsidetextfont& textcase(const std::vector<enum Textcase>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `textcase`.
+    Pie::Outsidetextfont& textcasesrc(std::string f);
+
+    // Sets the variant of the font.
+    // - Default: normal
+    Pie::Outsidetextfont& variant(enum Variant f);
+    Pie::Outsidetextfont& variant(const std::vector<enum Variant>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `variant`.
+    Pie::Outsidetextfont& variantsrc(std::string f);
+
+    // Sets the weight (or boldness) of the font.
+    Pie::Outsidetextfont& weight(int f);
+    Pie::Outsidetextfont& weight(std::vector<int> f);
+
+    // Sets the source reference on Chart Studio Cloud for `weight`.
+    Pie::Outsidetextfont& weightsrc(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+class Pie::Stream {
+ public:
+
+    // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
+    // only the newest 50 points will be displayed on the plot.
+    Pie::Stream& maxpoints(double f);
+
+    // The stream id number links a data trace on a plot with a stream. See https://chart-studio.plotly.com/settings for
+    // more details.
+    Pie::Stream& token(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+// Sets the font used for `textinfo`.
+class Pie::Textfont {
+ public:
+
+    enum class Style {
+        NORMAL,
+        ITALIC,
+    };
+    static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
+
+    Pie::Textfont& color(std::string f);
+    Pie::Textfont& color(double f);
+    Pie::Textfont& color(std::vector<std::string> f);
+    Pie::Textfont& color(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `color`.
+    Pie::Textfont& colorsrc(std::string f);
+
+    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+    // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+    // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+    // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select
+    // number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid
+    // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+    // *Raleway*, *Times New Roman*.
+    Pie::Textfont& family(std::string f);
+    Pie::Textfont& family(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `family`.
+    Pie::Textfont& familysrc(std::string f);
+
+    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
+    // e.g. *under+over*, etc.
+    // - Default: none
+    // - Flags: ['under', 'over', 'through']
+    // - Extras ['none']
+    Pie::Textfont& lineposition(std::string f);
+    Pie::Textfont& lineposition(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `lineposition`.
+    Pie::Textfont& linepositionsrc(std::string f);
+
+    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
+    // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+    Pie::Textfont& shadow(std::string f);
+    Pie::Textfont& shadow(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `shadow`.
+    Pie::Textfont& shadowsrc(std::string f);
+
+    Pie::Textfont& size(double f);
+    Pie::Textfont& size(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `size`.
+    Pie::Textfont& sizesrc(std::string f);
+
+    // Sets whether a font should be styled with a normal or italic face from its family.
+    // - Default: normal
+    Pie::Textfont& style(enum Style f);
+    Pie::Textfont& style(const std::vector<enum Style>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `style`.
+    Pie::Textfont& stylesrc(std::string f);
+
+    // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
+    // word capitalized.
+    // - Default: normal
+    Pie::Textfont& textcase(enum Textcase f);
+    Pie::Textfont& textcase(const std::vector<enum Textcase>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `textcase`.
+    Pie::Textfont& textcasesrc(std::string f);
+
+    // Sets the variant of the font.
+    // - Default: normal
+    Pie::Textfont& variant(enum Variant f);
+    Pie::Textfont& variant(const std::vector<enum Variant>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `variant`.
+    Pie::Textfont& variantsrc(std::string f);
+
+    // Sets the weight (or boldness) of the font.
+    Pie::Textfont& weight(int f);
+    Pie::Textfont& weight(std::vector<int> f);
+
+    // Sets the source reference on Chart Studio Cloud for `weight`.
+    Pie::Textfont& weightsrc(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+class Pie::Title {
+ public:
+
+    enum class Position {
+        TOP_LEFT,
+        TOP_CENTER,
+        TOP_RIGHT,
+        MIDDLE_CENTER,
+        BOTTOM_LEFT,
+        BOTTOM_CENTER,
+        BOTTOM_RIGHT,
+    };
+    static std::string to_string(Position e);
+
+    // Sets the font used for `title`.
+    class Font;
+
+    // Sets the font used for `title`.
+    Pie::Title& font(class Font f);
+
+    // Specifies the location of the `title`.
+    Pie::Title& position(enum Position f);
+
+    // Sets the title of the chart. If it is empty, no title is displayed.
+    Pie::Title& text(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+// Sets the font used for `title`.
+class Pie::Title::Font {
+ public:
+
+    enum class Style {
+        NORMAL,
+        ITALIC,
+    };
+    static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
+
+    Pie::Title::Font& color(std::string f);
+    Pie::Title::Font& color(double f);
+    Pie::Title::Font& color(std::vector<std::string> f);
+    Pie::Title::Font& color(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `color`.
+    Pie::Title::Font& colorsrc(std::string f);
+
+    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+    // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+    // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+    // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select
+    // number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid
+    // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+    // *Raleway*, *Times New Roman*.
+    Pie::Title::Font& family(std::string f);
+    Pie::Title::Font& family(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `family`.
+    Pie::Title::Font& familysrc(std::string f);
+
+    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
+    // e.g. *under+over*, etc.
+    // - Default: none
+    // - Flags: ['under', 'over', 'through']
+    // - Extras ['none']
+    Pie::Title::Font& lineposition(std::string f);
+    Pie::Title::Font& lineposition(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `lineposition`.
+    Pie::Title::Font& linepositionsrc(std::string f);
+
+    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
+    // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+    Pie::Title::Font& shadow(std::string f);
+    Pie::Title::Font& shadow(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `shadow`.
+    Pie::Title::Font& shadowsrc(std::string f);
+
+    Pie::Title::Font& size(double f);
+    Pie::Title::Font& size(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `size`.
+    Pie::Title::Font& sizesrc(std::string f);
+
+    // Sets whether a font should be styled with a normal or italic face from its family.
+    // - Default: normal
+    Pie::Title::Font& style(enum Style f);
+    Pie::Title::Font& style(const std::vector<enum Style>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `style`.
+    Pie::Title::Font& stylesrc(std::string f);
+
+    // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
+    // word capitalized.
+    // - Default: normal
+    Pie::Title::Font& textcase(enum Textcase f);
+    Pie::Title::Font& textcase(const std::vector<enum Textcase>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `textcase`.
+    Pie::Title::Font& textcasesrc(std::string f);
+
+    // Sets the variant of the font.
+    // - Default: normal
+    Pie::Title::Font& variant(enum Variant f);
+    Pie::Title::Font& variant(const std::vector<enum Variant>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `variant`.
+    Pie::Title::Font& variantsrc(std::string f);
+
+    // Sets the weight (or boldness) of the font.
+    Pie::Title::Font& weight(int f);
+    Pie::Title::Font& weight(std::vector<int> f);
+
+    // Sets the source reference on Chart Studio Cloud for `weight`.
+    Pie::Title::Font& weightsrc(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+} // namespace plotlypp
+
+#include "impl/pie_impl.hpp"

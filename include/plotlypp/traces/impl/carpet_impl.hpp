@@ -1,0 +1,1584 @@
+// TODO: includes, copyright, etc
+
+namespace plotlypp {
+
+std::string Carpet::to_string(Visible e) {
+    switch(e) {
+        case Visible::TRUE: return "True";
+        case Visible::FALSE: return "False";
+        case Visible::LEGENDONLY: return "legendonly";
+    }
+}
+
+template <typename T, typename>
+Carpet& Carpet::a(std::vector<T> f) {
+    json["a"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::a0(double f) {
+    json["a0"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::aaxis(class Aaxis f) {
+    json["aaxis"] = std::move(f.json);
+    return *this;
+}
+
+Carpet& Carpet::asrc(std::string f) {
+    json["asrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Carpet& Carpet::b(std::vector<T> f) {
+    json["b"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::b0(double f) {
+    json["b0"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::baxis(class Baxis f) {
+    json["baxis"] = std::move(f.json);
+    return *this;
+}
+
+Carpet& Carpet::bsrc(std::string f) {
+    json["bsrc"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::carpet(std::string f) {
+    json["carpet"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::cheaterslope(double f) {
+    json["cheaterslope"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Carpet& Carpet::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Carpet& Carpet::customdata(std::vector<T> f) {
+    json["customdata"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::customdatasrc(std::string f) {
+    json["customdatasrc"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::da(double f) {
+    json["da"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::db(double f) {
+    json["db"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T, typename>
+Carpet& Carpet::ids(std::vector<T> f) {
+    json["ids"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::idssrc(std::string f) {
+    json["idssrc"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::legend(std::string f) {
+    json["legend"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::legendgrouptitle(class Legendgrouptitle f) {
+    json["legendgrouptitle"] = std::move(f.json);
+    return *this;
+}
+
+Carpet& Carpet::legendrank(double f) {
+    json["legendrank"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::legendwidth(double f) {
+    json["legendwidth"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Carpet& Carpet::meta(T f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+template <typename T>
+Carpet& Carpet::meta(std::vector<T> f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::metasrc(std::string f) {
+    json["metasrc"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::name(std::string f) {
+    json["name"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::opacity(double f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::stream(class Stream f) {
+    json["stream"] = std::move(f.json);
+    return *this;
+}
+
+Carpet& Carpet::uid(std::string f) {
+    json["uid"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Carpet& Carpet::uirevision(T f) {
+    json["uirevision"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::visible(enum Visible f) {
+    json["visible"] = to_string(f);
+    return *this;
+}
+
+template <typename T, typename>
+Carpet& Carpet::x(std::vector<T> f) {
+    json["x"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::xaxis(std::string f) {
+    json["xaxis"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::xsrc(std::string f) {
+    json["xsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Carpet& Carpet::y(std::vector<T> f) {
+    json["y"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::yaxis(std::string f) {
+    json["yaxis"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::ysrc(std::string f) {
+    json["ysrc"] = std::move(f);
+    return *this;
+}
+
+Carpet& Carpet::zorder(int f) {
+    json["zorder"] = std::move(f);
+    return *this;
+}
+
+std::string Carpet::Aaxis::to_string(Autorange e) {
+    switch(e) {
+        case Autorange::TRUE: return "True";
+        case Autorange::FALSE: return "False";
+        case Autorange::REVERSED: return "reversed";
+    }
+}
+std::string Carpet::Aaxis::to_string(Autotypenumbers e) {
+    switch(e) {
+        case Autotypenumbers::CONVERT_TYPES: return "convert types";
+        case Autotypenumbers::STRICT: return "strict";
+    }
+}
+std::string Carpet::Aaxis::to_string(Categoryorder e) {
+    switch(e) {
+        case Categoryorder::TRACE: return "trace";
+        case Categoryorder::CATEGORY_ASCENDING: return "category ascending";
+        case Categoryorder::CATEGORY_DESCENDING: return "category descending";
+        case Categoryorder::ARRAY: return "array";
+    }
+}
+std::string Carpet::Aaxis::to_string(Cheatertype e) {
+    switch(e) {
+        case Cheatertype::INDEX: return "index";
+        case Cheatertype::VALUE: return "value";
+    }
+}
+std::string Carpet::Aaxis::to_string(Exponentformat e) {
+    switch(e) {
+        case Exponentformat::NONE: return "none";
+        case Exponentformat::E: return "E";
+        case Exponentformat::POWER: return "power";
+        case Exponentformat::SI: return "SI";
+        case Exponentformat::B: return "B";
+    }
+}
+std::string Carpet::Aaxis::to_string(Rangemode e) {
+    switch(e) {
+        case Rangemode::NORMAL: return "normal";
+        case Rangemode::TOZERO: return "tozero";
+        case Rangemode::NONNEGATIVE: return "nonnegative";
+    }
+}
+std::string Carpet::Aaxis::to_string(Showexponent e) {
+    switch(e) {
+        case Showexponent::ALL: return "all";
+        case Showexponent::FIRST: return "first";
+        case Showexponent::LAST: return "last";
+        case Showexponent::NONE: return "none";
+    }
+}
+std::string Carpet::Aaxis::to_string(Showticklabels e) {
+    switch(e) {
+        case Showticklabels::START: return "start";
+        case Showticklabels::END: return "end";
+        case Showticklabels::BOTH: return "both";
+        case Showticklabels::NONE: return "none";
+    }
+}
+std::string Carpet::Aaxis::to_string(Showtickprefix e) {
+    switch(e) {
+        case Showtickprefix::ALL: return "all";
+        case Showtickprefix::FIRST: return "first";
+        case Showtickprefix::LAST: return "last";
+        case Showtickprefix::NONE: return "none";
+    }
+}
+std::string Carpet::Aaxis::to_string(Showticksuffix e) {
+    switch(e) {
+        case Showticksuffix::ALL: return "all";
+        case Showticksuffix::FIRST: return "first";
+        case Showticksuffix::LAST: return "last";
+        case Showticksuffix::NONE: return "none";
+    }
+}
+std::string Carpet::Aaxis::to_string(Tickmode e) {
+    switch(e) {
+        case Tickmode::LINEAR: return "linear";
+        case Tickmode::ARRAY: return "array";
+    }
+}
+std::string Carpet::Aaxis::to_string(Type e) {
+    switch(e) {
+        case Type::HYPHEN: return "-";
+        case Type::LINEAR: return "linear";
+        case Type::DATE: return "date";
+        case Type::CATEGORY: return "category";
+    }
+}
+
+Carpet::Aaxis& Carpet::Aaxis::arraydtick(int f) {
+    json["arraydtick"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::arraytick0(int f) {
+    json["arraytick0"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::autorange(enum Autorange f) {
+    json["autorange"] = to_string(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::autotypenumbers(enum Autotypenumbers f) {
+    json["autotypenumbers"] = to_string(f);
+    return *this;
+}
+
+template <typename T, typename>
+Carpet::Aaxis& Carpet::Aaxis::categoryarray(std::vector<T> f) {
+    json["categoryarray"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::categoryarraysrc(std::string f) {
+    json["categoryarraysrc"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::categoryorder(enum Categoryorder f) {
+    json["categoryorder"] = to_string(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::cheatertype(enum Cheatertype f) {
+    json["cheatertype"] = to_string(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Carpet::Aaxis& Carpet::Aaxis::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::dtick(double f) {
+    json["dtick"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::endline(bool f) {
+    json["endline"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::endlinecolor(std::string f) {
+    json["endlinecolor"] = std::move(f);
+    return *this;
+}
+Carpet::Aaxis& Carpet::Aaxis::endlinecolor(double f) {
+    json["endlinecolor"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::endlinewidth(double f) {
+    json["endlinewidth"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::exponentformat(enum Exponentformat f) {
+    json["exponentformat"] = to_string(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::fixedrange(bool f) {
+    json["fixedrange"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::gridcolor(std::string f) {
+    json["gridcolor"] = std::move(f);
+    return *this;
+}
+Carpet::Aaxis& Carpet::Aaxis::gridcolor(double f) {
+    json["gridcolor"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::griddash(std::string f) {
+    json["griddash"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::gridwidth(double f) {
+    json["gridwidth"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Carpet::Aaxis& Carpet::Aaxis::labelalias(T f) {
+    json["labelalias"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::labelpadding(int f) {
+    json["labelpadding"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::labelprefix(std::string f) {
+    json["labelprefix"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::labelsuffix(std::string f) {
+    json["labelsuffix"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::linecolor(std::string f) {
+    json["linecolor"] = std::move(f);
+    return *this;
+}
+Carpet::Aaxis& Carpet::Aaxis::linecolor(double f) {
+    json["linecolor"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::linewidth(double f) {
+    json["linewidth"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::minexponent(double f) {
+    json["minexponent"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::minorgridcolor(std::string f) {
+    json["minorgridcolor"] = std::move(f);
+    return *this;
+}
+Carpet::Aaxis& Carpet::Aaxis::minorgridcolor(double f) {
+    json["minorgridcolor"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::minorgridcount(int f) {
+    json["minorgridcount"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::minorgriddash(std::string f) {
+    json["minorgriddash"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::minorgridwidth(double f) {
+    json["minorgridwidth"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::nticks(int f) {
+    json["nticks"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::range(std::vector<std::string> f) {
+    json["range"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::rangemode(enum Rangemode f) {
+    json["rangemode"] = to_string(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::separatethousands(bool f) {
+    json["separatethousands"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::showexponent(enum Showexponent f) {
+    json["showexponent"] = to_string(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::showgrid(bool f) {
+    json["showgrid"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::showline(bool f) {
+    json["showline"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::showticklabels(enum Showticklabels f) {
+    json["showticklabels"] = to_string(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::showtickprefix(enum Showtickprefix f) {
+    json["showtickprefix"] = to_string(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::showticksuffix(enum Showticksuffix f) {
+    json["showticksuffix"] = to_string(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::smoothing(double f) {
+    json["smoothing"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::startline(bool f) {
+    json["startline"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::startlinecolor(std::string f) {
+    json["startlinecolor"] = std::move(f);
+    return *this;
+}
+Carpet::Aaxis& Carpet::Aaxis::startlinecolor(double f) {
+    json["startlinecolor"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::startlinewidth(double f) {
+    json["startlinewidth"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::tick0(double f) {
+    json["tick0"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::tickangle(double f) {
+    json["tickangle"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::tickfont(class Tickfont f) {
+    json["tickfont"] = std::move(f.json);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::tickformat(std::string f) {
+    json["tickformat"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::tickformatstops(class Tickformatstops f) {
+    json["tickformatstops"] = std::move(f.json);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::tickmode(enum Tickmode f) {
+    json["tickmode"] = to_string(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::tickprefix(std::string f) {
+    json["tickprefix"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::ticksuffix(std::string f) {
+    json["ticksuffix"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Carpet::Aaxis& Carpet::Aaxis::ticktext(std::vector<T> f) {
+    json["ticktext"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::ticktextsrc(std::string f) {
+    json["ticktextsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Carpet::Aaxis& Carpet::Aaxis::tickvals(std::vector<T> f) {
+    json["tickvals"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::tickvalssrc(std::string f) {
+    json["tickvalssrc"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::title(class Title f) {
+    json["title"] = std::move(f.json);
+    return *this;
+}
+
+Carpet::Aaxis& Carpet::Aaxis::type(enum Type f) {
+    json["type"] = to_string(f);
+    return *this;
+}
+
+std::string Carpet::Aaxis::Tickfont::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Carpet::Aaxis::Tickfont::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Carpet::Aaxis::Tickfont::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Carpet::Aaxis::Tickfont& Carpet::Aaxis::Tickfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Carpet::Aaxis::Tickfont& Carpet::Aaxis::Tickfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis::Tickfont& Carpet::Aaxis::Tickfont::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis::Tickfont& Carpet::Aaxis::Tickfont::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis::Tickfont& Carpet::Aaxis::Tickfont::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis::Tickfont& Carpet::Aaxis::Tickfont::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis::Tickfont& Carpet::Aaxis::Tickfont::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Carpet::Aaxis::Tickfont& Carpet::Aaxis::Tickfont::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Carpet::Aaxis::Tickfont& Carpet::Aaxis::Tickfont::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Carpet::Aaxis::Tickfont& Carpet::Aaxis::Tickfont::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Carpet::Aaxis::Tickformatstops& Carpet::Aaxis::Tickformatstops::tickformatstop(class Tickformatstop f) {
+    json["tickformatstop"] = std::move(f.json);
+    return *this;
+}
+
+
+Carpet::Aaxis::Tickformatstops::Tickformatstop& Carpet::Aaxis::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+    json["dtickrange"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis::Tickformatstops::Tickformatstop& Carpet::Aaxis::Tickformatstops::Tickformatstop::enabled(bool f) {
+    json["enabled"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis::Tickformatstops::Tickformatstop& Carpet::Aaxis::Tickformatstops::Tickformatstop::name(std::string f) {
+    json["name"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis::Tickformatstops::Tickformatstop& Carpet::Aaxis::Tickformatstops::Tickformatstop::templateitemname(std::string f) {
+    json["templateitemname"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis::Tickformatstops::Tickformatstop& Carpet::Aaxis::Tickformatstops::Tickformatstop::value(std::string f) {
+    json["value"] = std::move(f);
+    return *this;
+}
+
+
+Carpet::Aaxis::Title& Carpet::Aaxis::Title::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Carpet::Aaxis::Title& Carpet::Aaxis::Title::offset(double f) {
+    json["offset"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis::Title& Carpet::Aaxis::Title::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+std::string Carpet::Aaxis::Title::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Carpet::Aaxis::Title::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Carpet::Aaxis::Title::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Carpet::Aaxis::Title::Font& Carpet::Aaxis::Title::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Carpet::Aaxis::Title::Font& Carpet::Aaxis::Title::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis::Title::Font& Carpet::Aaxis::Title::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis::Title::Font& Carpet::Aaxis::Title::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis::Title::Font& Carpet::Aaxis::Title::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis::Title::Font& Carpet::Aaxis::Title::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Carpet::Aaxis::Title::Font& Carpet::Aaxis::Title::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Carpet::Aaxis::Title::Font& Carpet::Aaxis::Title::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Carpet::Aaxis::Title::Font& Carpet::Aaxis::Title::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Carpet::Aaxis::Title::Font& Carpet::Aaxis::Title::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+std::string Carpet::Baxis::to_string(Autorange e) {
+    switch(e) {
+        case Autorange::TRUE: return "True";
+        case Autorange::FALSE: return "False";
+        case Autorange::REVERSED: return "reversed";
+    }
+}
+std::string Carpet::Baxis::to_string(Autotypenumbers e) {
+    switch(e) {
+        case Autotypenumbers::CONVERT_TYPES: return "convert types";
+        case Autotypenumbers::STRICT: return "strict";
+    }
+}
+std::string Carpet::Baxis::to_string(Categoryorder e) {
+    switch(e) {
+        case Categoryorder::TRACE: return "trace";
+        case Categoryorder::CATEGORY_ASCENDING: return "category ascending";
+        case Categoryorder::CATEGORY_DESCENDING: return "category descending";
+        case Categoryorder::ARRAY: return "array";
+    }
+}
+std::string Carpet::Baxis::to_string(Cheatertype e) {
+    switch(e) {
+        case Cheatertype::INDEX: return "index";
+        case Cheatertype::VALUE: return "value";
+    }
+}
+std::string Carpet::Baxis::to_string(Exponentformat e) {
+    switch(e) {
+        case Exponentformat::NONE: return "none";
+        case Exponentformat::E: return "E";
+        case Exponentformat::POWER: return "power";
+        case Exponentformat::SI: return "SI";
+        case Exponentformat::B: return "B";
+    }
+}
+std::string Carpet::Baxis::to_string(Rangemode e) {
+    switch(e) {
+        case Rangemode::NORMAL: return "normal";
+        case Rangemode::TOZERO: return "tozero";
+        case Rangemode::NONNEGATIVE: return "nonnegative";
+    }
+}
+std::string Carpet::Baxis::to_string(Showexponent e) {
+    switch(e) {
+        case Showexponent::ALL: return "all";
+        case Showexponent::FIRST: return "first";
+        case Showexponent::LAST: return "last";
+        case Showexponent::NONE: return "none";
+    }
+}
+std::string Carpet::Baxis::to_string(Showticklabels e) {
+    switch(e) {
+        case Showticklabels::START: return "start";
+        case Showticklabels::END: return "end";
+        case Showticklabels::BOTH: return "both";
+        case Showticklabels::NONE: return "none";
+    }
+}
+std::string Carpet::Baxis::to_string(Showtickprefix e) {
+    switch(e) {
+        case Showtickprefix::ALL: return "all";
+        case Showtickprefix::FIRST: return "first";
+        case Showtickprefix::LAST: return "last";
+        case Showtickprefix::NONE: return "none";
+    }
+}
+std::string Carpet::Baxis::to_string(Showticksuffix e) {
+    switch(e) {
+        case Showticksuffix::ALL: return "all";
+        case Showticksuffix::FIRST: return "first";
+        case Showticksuffix::LAST: return "last";
+        case Showticksuffix::NONE: return "none";
+    }
+}
+std::string Carpet::Baxis::to_string(Tickmode e) {
+    switch(e) {
+        case Tickmode::LINEAR: return "linear";
+        case Tickmode::ARRAY: return "array";
+    }
+}
+std::string Carpet::Baxis::to_string(Type e) {
+    switch(e) {
+        case Type::HYPHEN: return "-";
+        case Type::LINEAR: return "linear";
+        case Type::DATE: return "date";
+        case Type::CATEGORY: return "category";
+    }
+}
+
+Carpet::Baxis& Carpet::Baxis::arraydtick(int f) {
+    json["arraydtick"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::arraytick0(int f) {
+    json["arraytick0"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::autorange(enum Autorange f) {
+    json["autorange"] = to_string(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::autotypenumbers(enum Autotypenumbers f) {
+    json["autotypenumbers"] = to_string(f);
+    return *this;
+}
+
+template <typename T, typename>
+Carpet::Baxis& Carpet::Baxis::categoryarray(std::vector<T> f) {
+    json["categoryarray"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::categoryarraysrc(std::string f) {
+    json["categoryarraysrc"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::categoryorder(enum Categoryorder f) {
+    json["categoryorder"] = to_string(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::cheatertype(enum Cheatertype f) {
+    json["cheatertype"] = to_string(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Carpet::Baxis& Carpet::Baxis::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::dtick(double f) {
+    json["dtick"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::endline(bool f) {
+    json["endline"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::endlinecolor(std::string f) {
+    json["endlinecolor"] = std::move(f);
+    return *this;
+}
+Carpet::Baxis& Carpet::Baxis::endlinecolor(double f) {
+    json["endlinecolor"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::endlinewidth(double f) {
+    json["endlinewidth"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::exponentformat(enum Exponentformat f) {
+    json["exponentformat"] = to_string(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::fixedrange(bool f) {
+    json["fixedrange"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::gridcolor(std::string f) {
+    json["gridcolor"] = std::move(f);
+    return *this;
+}
+Carpet::Baxis& Carpet::Baxis::gridcolor(double f) {
+    json["gridcolor"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::griddash(std::string f) {
+    json["griddash"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::gridwidth(double f) {
+    json["gridwidth"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Carpet::Baxis& Carpet::Baxis::labelalias(T f) {
+    json["labelalias"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::labelpadding(int f) {
+    json["labelpadding"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::labelprefix(std::string f) {
+    json["labelprefix"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::labelsuffix(std::string f) {
+    json["labelsuffix"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::linecolor(std::string f) {
+    json["linecolor"] = std::move(f);
+    return *this;
+}
+Carpet::Baxis& Carpet::Baxis::linecolor(double f) {
+    json["linecolor"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::linewidth(double f) {
+    json["linewidth"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::minexponent(double f) {
+    json["minexponent"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::minorgridcolor(std::string f) {
+    json["minorgridcolor"] = std::move(f);
+    return *this;
+}
+Carpet::Baxis& Carpet::Baxis::minorgridcolor(double f) {
+    json["minorgridcolor"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::minorgridcount(int f) {
+    json["minorgridcount"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::minorgriddash(std::string f) {
+    json["minorgriddash"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::minorgridwidth(double f) {
+    json["minorgridwidth"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::nticks(int f) {
+    json["nticks"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::range(std::vector<std::string> f) {
+    json["range"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::rangemode(enum Rangemode f) {
+    json["rangemode"] = to_string(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::separatethousands(bool f) {
+    json["separatethousands"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::showexponent(enum Showexponent f) {
+    json["showexponent"] = to_string(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::showgrid(bool f) {
+    json["showgrid"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::showline(bool f) {
+    json["showline"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::showticklabels(enum Showticklabels f) {
+    json["showticklabels"] = to_string(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::showtickprefix(enum Showtickprefix f) {
+    json["showtickprefix"] = to_string(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::showticksuffix(enum Showticksuffix f) {
+    json["showticksuffix"] = to_string(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::smoothing(double f) {
+    json["smoothing"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::startline(bool f) {
+    json["startline"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::startlinecolor(std::string f) {
+    json["startlinecolor"] = std::move(f);
+    return *this;
+}
+Carpet::Baxis& Carpet::Baxis::startlinecolor(double f) {
+    json["startlinecolor"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::startlinewidth(double f) {
+    json["startlinewidth"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::tick0(double f) {
+    json["tick0"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::tickangle(double f) {
+    json["tickangle"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::tickfont(class Tickfont f) {
+    json["tickfont"] = std::move(f.json);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::tickformat(std::string f) {
+    json["tickformat"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::tickformatstops(class Tickformatstops f) {
+    json["tickformatstops"] = std::move(f.json);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::tickmode(enum Tickmode f) {
+    json["tickmode"] = to_string(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::tickprefix(std::string f) {
+    json["tickprefix"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::ticksuffix(std::string f) {
+    json["ticksuffix"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Carpet::Baxis& Carpet::Baxis::ticktext(std::vector<T> f) {
+    json["ticktext"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::ticktextsrc(std::string f) {
+    json["ticktextsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Carpet::Baxis& Carpet::Baxis::tickvals(std::vector<T> f) {
+    json["tickvals"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::tickvalssrc(std::string f) {
+    json["tickvalssrc"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::title(class Title f) {
+    json["title"] = std::move(f.json);
+    return *this;
+}
+
+Carpet::Baxis& Carpet::Baxis::type(enum Type f) {
+    json["type"] = to_string(f);
+    return *this;
+}
+
+std::string Carpet::Baxis::Tickfont::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Carpet::Baxis::Tickfont::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Carpet::Baxis::Tickfont::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Carpet::Baxis::Tickfont& Carpet::Baxis::Tickfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Carpet::Baxis::Tickfont& Carpet::Baxis::Tickfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis::Tickfont& Carpet::Baxis::Tickfont::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis::Tickfont& Carpet::Baxis::Tickfont::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis::Tickfont& Carpet::Baxis::Tickfont::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis::Tickfont& Carpet::Baxis::Tickfont::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis::Tickfont& Carpet::Baxis::Tickfont::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Carpet::Baxis::Tickfont& Carpet::Baxis::Tickfont::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Carpet::Baxis::Tickfont& Carpet::Baxis::Tickfont::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Carpet::Baxis::Tickfont& Carpet::Baxis::Tickfont::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Carpet::Baxis::Tickformatstops& Carpet::Baxis::Tickformatstops::tickformatstop(class Tickformatstop f) {
+    json["tickformatstop"] = std::move(f.json);
+    return *this;
+}
+
+
+Carpet::Baxis::Tickformatstops::Tickformatstop& Carpet::Baxis::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+    json["dtickrange"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis::Tickformatstops::Tickformatstop& Carpet::Baxis::Tickformatstops::Tickformatstop::enabled(bool f) {
+    json["enabled"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis::Tickformatstops::Tickformatstop& Carpet::Baxis::Tickformatstops::Tickformatstop::name(std::string f) {
+    json["name"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis::Tickformatstops::Tickformatstop& Carpet::Baxis::Tickformatstops::Tickformatstop::templateitemname(std::string f) {
+    json["templateitemname"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis::Tickformatstops::Tickformatstop& Carpet::Baxis::Tickformatstops::Tickformatstop::value(std::string f) {
+    json["value"] = std::move(f);
+    return *this;
+}
+
+
+Carpet::Baxis::Title& Carpet::Baxis::Title::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Carpet::Baxis::Title& Carpet::Baxis::Title::offset(double f) {
+    json["offset"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis::Title& Carpet::Baxis::Title::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+std::string Carpet::Baxis::Title::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Carpet::Baxis::Title::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Carpet::Baxis::Title::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Carpet::Baxis::Title::Font& Carpet::Baxis::Title::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Carpet::Baxis::Title::Font& Carpet::Baxis::Title::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis::Title::Font& Carpet::Baxis::Title::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis::Title::Font& Carpet::Baxis::Title::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis::Title::Font& Carpet::Baxis::Title::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis::Title::Font& Carpet::Baxis::Title::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Carpet::Baxis::Title::Font& Carpet::Baxis::Title::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Carpet::Baxis::Title::Font& Carpet::Baxis::Title::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Carpet::Baxis::Title::Font& Carpet::Baxis::Title::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Carpet::Baxis::Title::Font& Carpet::Baxis::Title::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+std::string Carpet::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Carpet::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Carpet::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Carpet::Font& Carpet::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Carpet::Font& Carpet::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Carpet::Font& Carpet::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Carpet::Font& Carpet::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Carpet::Font& Carpet::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Carpet::Font& Carpet::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Carpet::Font& Carpet::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Carpet::Font& Carpet::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Carpet::Font& Carpet::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Carpet::Font& Carpet::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Carpet::Legendgrouptitle& Carpet::Legendgrouptitle::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Carpet::Legendgrouptitle& Carpet::Legendgrouptitle::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+std::string Carpet::Legendgrouptitle::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Carpet::Legendgrouptitle::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Carpet::Legendgrouptitle::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Carpet::Legendgrouptitle::Font& Carpet::Legendgrouptitle::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Carpet::Legendgrouptitle::Font& Carpet::Legendgrouptitle::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Carpet::Legendgrouptitle::Font& Carpet::Legendgrouptitle::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Carpet::Legendgrouptitle::Font& Carpet::Legendgrouptitle::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Carpet::Legendgrouptitle::Font& Carpet::Legendgrouptitle::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Carpet::Legendgrouptitle::Font& Carpet::Legendgrouptitle::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Carpet::Legendgrouptitle::Font& Carpet::Legendgrouptitle::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Carpet::Legendgrouptitle::Font& Carpet::Legendgrouptitle::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Carpet::Legendgrouptitle::Font& Carpet::Legendgrouptitle::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Carpet::Legendgrouptitle::Font& Carpet::Legendgrouptitle::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Carpet::Stream& Carpet::Stream::maxpoints(double f) {
+    json["maxpoints"] = std::move(f);
+    return *this;
+}
+
+Carpet::Stream& Carpet::Stream::token(std::string f) {
+    json["token"] = std::move(f);
+    return *this;
+}
+
+} // namespace plotlypp
+

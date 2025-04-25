@@ -1,0 +1,1158 @@
+// TODO: includes, copyright, etc
+
+namespace plotlypp {
+
+std::string Parcats::to_string(Arrangement e) {
+    switch(e) {
+        case Arrangement::PERPENDICULAR: return "perpendicular";
+        case Arrangement::FREEFORM: return "freeform";
+        case Arrangement::FIXED: return "fixed";
+    }
+}
+std::string Parcats::to_string(Hoveron e) {
+    switch(e) {
+        case Hoveron::CATEGORY: return "category";
+        case Hoveron::COLOR: return "color";
+        case Hoveron::DIMENSION: return "dimension";
+    }
+}
+std::string Parcats::to_string(Sortpaths e) {
+    switch(e) {
+        case Sortpaths::FORWARD: return "forward";
+        case Sortpaths::BACKWARD: return "backward";
+    }
+}
+std::string Parcats::to_string(Visible e) {
+    switch(e) {
+        case Visible::TRUE: return "True";
+        case Visible::FALSE: return "False";
+        case Visible::LEGENDONLY: return "legendonly";
+    }
+}
+
+Parcats& Parcats::arrangement(enum Arrangement f) {
+    json["arrangement"] = to_string(f);
+    return *this;
+}
+
+Parcats& Parcats::bundlecolors(bool f) {
+    json["bundlecolors"] = std::move(f);
+    return *this;
+}
+
+Parcats& Parcats::counts(double f) {
+    json["counts"] = std::move(f);
+    return *this;
+}
+Parcats& Parcats::counts(std::vector<double> f) {
+    json["counts"] = std::move(f);
+    return *this;
+}
+
+Parcats& Parcats::countssrc(std::string f) {
+    json["countssrc"] = std::move(f);
+    return *this;
+}
+
+Parcats& Parcats::dimensions(class Dimensions f) {
+    json["dimensions"] = std::move(f.json);
+    return *this;
+}
+
+Parcats& Parcats::domain(class Domain f) {
+    json["domain"] = std::move(f.json);
+    return *this;
+}
+
+Parcats& Parcats::hoverinfo(std::string f) {
+    json["hoverinfo"] = std::move(f);
+    return *this;
+}
+
+Parcats& Parcats::hoveron(enum Hoveron f) {
+    json["hoveron"] = to_string(f);
+    return *this;
+}
+
+Parcats& Parcats::hovertemplate(std::string f) {
+    json["hovertemplate"] = std::move(f);
+    return *this;
+}
+
+Parcats& Parcats::labelfont(class Labelfont f) {
+    json["labelfont"] = std::move(f.json);
+    return *this;
+}
+
+Parcats& Parcats::legendgrouptitle(class Legendgrouptitle f) {
+    json["legendgrouptitle"] = std::move(f.json);
+    return *this;
+}
+
+Parcats& Parcats::legendwidth(double f) {
+    json["legendwidth"] = std::move(f);
+    return *this;
+}
+
+Parcats& Parcats::line(class Line f) {
+    json["line"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T>
+Parcats& Parcats::meta(T f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+template <typename T>
+Parcats& Parcats::meta(std::vector<T> f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+
+Parcats& Parcats::metasrc(std::string f) {
+    json["metasrc"] = std::move(f);
+    return *this;
+}
+
+Parcats& Parcats::name(std::string f) {
+    json["name"] = std::move(f);
+    return *this;
+}
+
+Parcats& Parcats::sortpaths(enum Sortpaths f) {
+    json["sortpaths"] = to_string(f);
+    return *this;
+}
+
+Parcats& Parcats::stream(class Stream f) {
+    json["stream"] = std::move(f.json);
+    return *this;
+}
+
+Parcats& Parcats::tickfont(class Tickfont f) {
+    json["tickfont"] = std::move(f.json);
+    return *this;
+}
+
+Parcats& Parcats::uid(std::string f) {
+    json["uid"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Parcats& Parcats::uirevision(T f) {
+    json["uirevision"] = std::move(f);
+    return *this;
+}
+
+Parcats& Parcats::visible(enum Visible f) {
+    json["visible"] = to_string(f);
+    return *this;
+}
+
+
+Parcats::Dimensions& Parcats::Dimensions::dimension(class Dimension f) {
+    json["dimension"] = std::move(f.json);
+    return *this;
+}
+
+std::string Parcats::Dimensions::Dimension::to_string(Categoryorder e) {
+    switch(e) {
+        case Categoryorder::TRACE: return "trace";
+        case Categoryorder::CATEGORY_ASCENDING: return "category ascending";
+        case Categoryorder::CATEGORY_DESCENDING: return "category descending";
+        case Categoryorder::ARRAY: return "array";
+    }
+}
+
+template <typename T, typename>
+Parcats::Dimensions::Dimension& Parcats::Dimensions::Dimension::categoryarray(std::vector<T> f) {
+    json["categoryarray"] = std::move(f);
+    return *this;
+}
+
+Parcats::Dimensions::Dimension& Parcats::Dimensions::Dimension::categoryarraysrc(std::string f) {
+    json["categoryarraysrc"] = std::move(f);
+    return *this;
+}
+
+Parcats::Dimensions::Dimension& Parcats::Dimensions::Dimension::categoryorder(enum Categoryorder f) {
+    json["categoryorder"] = to_string(f);
+    return *this;
+}
+
+Parcats::Dimensions::Dimension& Parcats::Dimensions::Dimension::displayindex(int f) {
+    json["displayindex"] = std::move(f);
+    return *this;
+}
+
+Parcats::Dimensions::Dimension& Parcats::Dimensions::Dimension::label(std::string f) {
+    json["label"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Parcats::Dimensions::Dimension& Parcats::Dimensions::Dimension::ticktext(std::vector<T> f) {
+    json["ticktext"] = std::move(f);
+    return *this;
+}
+
+Parcats::Dimensions::Dimension& Parcats::Dimensions::Dimension::ticktextsrc(std::string f) {
+    json["ticktextsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Parcats::Dimensions::Dimension& Parcats::Dimensions::Dimension::values(std::vector<T> f) {
+    json["values"] = std::move(f);
+    return *this;
+}
+
+Parcats::Dimensions::Dimension& Parcats::Dimensions::Dimension::valuessrc(std::string f) {
+    json["valuessrc"] = std::move(f);
+    return *this;
+}
+
+Parcats::Dimensions::Dimension& Parcats::Dimensions::Dimension::visible(bool f) {
+    json["visible"] = std::move(f);
+    return *this;
+}
+
+
+Parcats::Domain& Parcats::Domain::column(int f) {
+    json["column"] = std::move(f);
+    return *this;
+}
+
+Parcats::Domain& Parcats::Domain::row(int f) {
+    json["row"] = std::move(f);
+    return *this;
+}
+
+Parcats::Domain& Parcats::Domain::x(std::vector<std::string> f) {
+    json["x"] = std::move(f);
+    return *this;
+}
+
+Parcats::Domain& Parcats::Domain::y(std::vector<std::string> f) {
+    json["y"] = std::move(f);
+    return *this;
+}
+
+std::string Parcats::Labelfont::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Parcats::Labelfont::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Parcats::Labelfont::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Parcats::Labelfont& Parcats::Labelfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Parcats::Labelfont& Parcats::Labelfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Parcats::Labelfont& Parcats::Labelfont::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Parcats::Labelfont& Parcats::Labelfont::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Parcats::Labelfont& Parcats::Labelfont::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Parcats::Labelfont& Parcats::Labelfont::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Parcats::Labelfont& Parcats::Labelfont::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Parcats::Labelfont& Parcats::Labelfont::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Parcats::Labelfont& Parcats::Labelfont::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Parcats::Labelfont& Parcats::Labelfont::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Parcats::Legendgrouptitle& Parcats::Legendgrouptitle::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Parcats::Legendgrouptitle& Parcats::Legendgrouptitle::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+std::string Parcats::Legendgrouptitle::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Parcats::Legendgrouptitle::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Parcats::Legendgrouptitle::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Parcats::Legendgrouptitle::Font& Parcats::Legendgrouptitle::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Parcats::Legendgrouptitle::Font& Parcats::Legendgrouptitle::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Parcats::Legendgrouptitle::Font& Parcats::Legendgrouptitle::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Parcats::Legendgrouptitle::Font& Parcats::Legendgrouptitle::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Parcats::Legendgrouptitle::Font& Parcats::Legendgrouptitle::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Parcats::Legendgrouptitle::Font& Parcats::Legendgrouptitle::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Parcats::Legendgrouptitle::Font& Parcats::Legendgrouptitle::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Parcats::Legendgrouptitle::Font& Parcats::Legendgrouptitle::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Parcats::Legendgrouptitle::Font& Parcats::Legendgrouptitle::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Parcats::Legendgrouptitle::Font& Parcats::Legendgrouptitle::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+std::string Parcats::Line::to_string(Shape e) {
+    switch(e) {
+        case Shape::LINEAR: return "linear";
+        case Shape::HSPLINE: return "hspline";
+    }
+}
+
+Parcats::Line& Parcats::Line::autocolorscale(bool f) {
+    json["autocolorscale"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line& Parcats::Line::cauto(bool f) {
+    json["cauto"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line& Parcats::Line::cmax(double f) {
+    json["cmax"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line& Parcats::Line::cmid(double f) {
+    json["cmid"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line& Parcats::Line::cmin(double f) {
+    json["cmin"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line& Parcats::Line::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Parcats::Line& Parcats::Line::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Parcats::Line& Parcats::Line::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Parcats::Line& Parcats::Line::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line& Parcats::Line::coloraxis(std::string f) {
+    json["coloraxis"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line& Parcats::Line::colorbar(class Colorbar f) {
+    json["colorbar"] = std::move(f.json);
+    return *this;
+}
+
+Parcats::Line& Parcats::Line::colorscale(std::string f) {
+    json["colorscale"] = std::move(f);
+    return *this;
+}
+Parcats::Line& Parcats::Line::colorscale(std::vector<std::pair<double, std::string>> f) {
+    json["colorscale"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line& Parcats::Line::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line& Parcats::Line::hovertemplate(std::string f) {
+    json["hovertemplate"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line& Parcats::Line::reversescale(bool f) {
+    json["reversescale"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line& Parcats::Line::shape(enum Shape f) {
+    json["shape"] = to_string(f);
+    return *this;
+}
+
+Parcats::Line& Parcats::Line::showscale(bool f) {
+    json["showscale"] = std::move(f);
+    return *this;
+}
+
+std::string Parcats::Line::Colorbar::to_string(Exponentformat e) {
+    switch(e) {
+        case Exponentformat::NONE: return "none";
+        case Exponentformat::E: return "E";
+        case Exponentformat::POWER: return "power";
+        case Exponentformat::SI: return "SI";
+        case Exponentformat::B: return "B";
+    }
+}
+std::string Parcats::Line::Colorbar::to_string(Lenmode e) {
+    switch(e) {
+        case Lenmode::FRACTION: return "fraction";
+        case Lenmode::PIXELS: return "pixels";
+    }
+}
+std::string Parcats::Line::Colorbar::to_string(Orientation e) {
+    switch(e) {
+        case Orientation::H: return "h";
+        case Orientation::V: return "v";
+    }
+}
+std::string Parcats::Line::Colorbar::to_string(Showexponent e) {
+    switch(e) {
+        case Showexponent::ALL: return "all";
+        case Showexponent::FIRST: return "first";
+        case Showexponent::LAST: return "last";
+        case Showexponent::NONE: return "none";
+    }
+}
+std::string Parcats::Line::Colorbar::to_string(Showtickprefix e) {
+    switch(e) {
+        case Showtickprefix::ALL: return "all";
+        case Showtickprefix::FIRST: return "first";
+        case Showtickprefix::LAST: return "last";
+        case Showtickprefix::NONE: return "none";
+    }
+}
+std::string Parcats::Line::Colorbar::to_string(Showticksuffix e) {
+    switch(e) {
+        case Showticksuffix::ALL: return "all";
+        case Showticksuffix::FIRST: return "first";
+        case Showticksuffix::LAST: return "last";
+        case Showticksuffix::NONE: return "none";
+    }
+}
+std::string Parcats::Line::Colorbar::to_string(Thicknessmode e) {
+    switch(e) {
+        case Thicknessmode::FRACTION: return "fraction";
+        case Thicknessmode::PIXELS: return "pixels";
+    }
+}
+std::string Parcats::Line::Colorbar::to_string(Ticklabeloverflow e) {
+    switch(e) {
+        case Ticklabeloverflow::ALLOW: return "allow";
+        case Ticklabeloverflow::HIDE_PAST_DIV: return "hide past div";
+        case Ticklabeloverflow::HIDE_PAST_DOMAIN: return "hide past domain";
+    }
+}
+std::string Parcats::Line::Colorbar::to_string(Ticklabelposition e) {
+    switch(e) {
+        case Ticklabelposition::OUTSIDE: return "outside";
+        case Ticklabelposition::INSIDE: return "inside";
+        case Ticklabelposition::OUTSIDE_TOP: return "outside top";
+        case Ticklabelposition::INSIDE_TOP: return "inside top";
+        case Ticklabelposition::OUTSIDE_LEFT: return "outside left";
+        case Ticklabelposition::INSIDE_LEFT: return "inside left";
+        case Ticklabelposition::OUTSIDE_RIGHT: return "outside right";
+        case Ticklabelposition::INSIDE_RIGHT: return "inside right";
+        case Ticklabelposition::OUTSIDE_BOTTOM: return "outside bottom";
+        case Ticklabelposition::INSIDE_BOTTOM: return "inside bottom";
+    }
+}
+std::string Parcats::Line::Colorbar::to_string(Tickmode e) {
+    switch(e) {
+        case Tickmode::AUTO: return "auto";
+        case Tickmode::LINEAR: return "linear";
+        case Tickmode::ARRAY: return "array";
+    }
+}
+std::string Parcats::Line::Colorbar::to_string(Ticks e) {
+    switch(e) {
+        case Ticks::OUTSIDE: return "outside";
+        case Ticks::INSIDE: return "inside";
+        case Ticks::EMPTY: return "";
+    }
+}
+std::string Parcats::Line::Colorbar::to_string(Xanchor e) {
+    switch(e) {
+        case Xanchor::LEFT: return "left";
+        case Xanchor::CENTER: return "center";
+        case Xanchor::RIGHT: return "right";
+    }
+}
+std::string Parcats::Line::Colorbar::to_string(Xref e) {
+    switch(e) {
+        case Xref::CONTAINER: return "container";
+        case Xref::PAPER: return "paper";
+    }
+}
+std::string Parcats::Line::Colorbar::to_string(Yanchor e) {
+    switch(e) {
+        case Yanchor::TOP: return "top";
+        case Yanchor::MIDDLE: return "middle";
+        case Yanchor::BOTTOM: return "bottom";
+    }
+}
+std::string Parcats::Line::Colorbar::to_string(Yref e) {
+    switch(e) {
+        case Yref::CONTAINER: return "container";
+        case Yref::PAPER: return "paper";
+    }
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::bgcolor(std::string f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::bgcolor(double f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::bordercolor(std::string f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::bordercolor(double f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::borderwidth(double f) {
+    json["borderwidth"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::dtick(T f) {
+    json["dtick"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::exponentformat(enum Exponentformat f) {
+    json["exponentformat"] = to_string(f);
+    return *this;
+}
+
+template <typename T>
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::labelalias(T f) {
+    json["labelalias"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::len(double f) {
+    json["len"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::lenmode(enum Lenmode f) {
+    json["lenmode"] = to_string(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::minexponent(double f) {
+    json["minexponent"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::nticks(int f) {
+    json["nticks"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::orientation(enum Orientation f) {
+    json["orientation"] = to_string(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::outlinecolor(std::string f) {
+    json["outlinecolor"] = std::move(f);
+    return *this;
+}
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::outlinecolor(double f) {
+    json["outlinecolor"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::outlinewidth(double f) {
+    json["outlinewidth"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::separatethousands(bool f) {
+    json["separatethousands"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::showexponent(enum Showexponent f) {
+    json["showexponent"] = to_string(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::showticklabels(bool f) {
+    json["showticklabels"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::showtickprefix(enum Showtickprefix f) {
+    json["showtickprefix"] = to_string(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::showticksuffix(enum Showticksuffix f) {
+    json["showticksuffix"] = to_string(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::thickness(double f) {
+    json["thickness"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::thicknessmode(enum Thicknessmode f) {
+    json["thicknessmode"] = to_string(f);
+    return *this;
+}
+
+template <typename T>
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::tick0(T f) {
+    json["tick0"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::tickangle(double f) {
+    json["tickangle"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::tickcolor(std::string f) {
+    json["tickcolor"] = std::move(f);
+    return *this;
+}
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::tickcolor(double f) {
+    json["tickcolor"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::tickfont(class Tickfont f) {
+    json["tickfont"] = std::move(f.json);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::tickformat(std::string f) {
+    json["tickformat"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::tickformatstops(class Tickformatstops f) {
+    json["tickformatstops"] = std::move(f.json);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::ticklabeloverflow(enum Ticklabeloverflow f) {
+    json["ticklabeloverflow"] = to_string(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::ticklabelposition(enum Ticklabelposition f) {
+    json["ticklabelposition"] = to_string(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::ticklabelstep(int f) {
+    json["ticklabelstep"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::ticklen(double f) {
+    json["ticklen"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::tickmode(enum Tickmode f) {
+    json["tickmode"] = to_string(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::tickprefix(std::string f) {
+    json["tickprefix"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::ticks(enum Ticks f) {
+    json["ticks"] = to_string(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::ticksuffix(std::string f) {
+    json["ticksuffix"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::ticktext(std::vector<T> f) {
+    json["ticktext"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::ticktextsrc(std::string f) {
+    json["ticktextsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::tickvals(std::vector<T> f) {
+    json["tickvals"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::tickvalssrc(std::string f) {
+    json["tickvalssrc"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::tickwidth(double f) {
+    json["tickwidth"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::title(class Title f) {
+    json["title"] = std::move(f.json);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::x(double f) {
+    json["x"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::xanchor(enum Xanchor f) {
+    json["xanchor"] = to_string(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::xpad(double f) {
+    json["xpad"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::xref(enum Xref f) {
+    json["xref"] = to_string(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::y(double f) {
+    json["y"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::yanchor(enum Yanchor f) {
+    json["yanchor"] = to_string(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::ypad(double f) {
+    json["ypad"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::yref(enum Yref f) {
+    json["yref"] = to_string(f);
+    return *this;
+}
+
+std::string Parcats::Line::Colorbar::Tickfont::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Parcats::Line::Colorbar::Tickfont::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Parcats::Line::Colorbar::Tickfont::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Parcats::Line::Colorbar::Tickfont& Parcats::Line::Colorbar::Tickfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Parcats::Line::Colorbar::Tickfont& Parcats::Line::Colorbar::Tickfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar::Tickfont& Parcats::Line::Colorbar::Tickfont::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar::Tickfont& Parcats::Line::Colorbar::Tickfont::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar::Tickfont& Parcats::Line::Colorbar::Tickfont::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar::Tickfont& Parcats::Line::Colorbar::Tickfont::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar::Tickfont& Parcats::Line::Colorbar::Tickfont::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar::Tickfont& Parcats::Line::Colorbar::Tickfont::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar::Tickfont& Parcats::Line::Colorbar::Tickfont::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar::Tickfont& Parcats::Line::Colorbar::Tickfont::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Parcats::Line::Colorbar::Tickformatstops& Parcats::Line::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+    json["tickformatstop"] = std::move(f.json);
+    return *this;
+}
+
+
+Parcats::Line::Colorbar::Tickformatstops::Tickformatstop& Parcats::Line::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+    json["dtickrange"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar::Tickformatstops::Tickformatstop& Parcats::Line::Colorbar::Tickformatstops::Tickformatstop::enabled(bool f) {
+    json["enabled"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar::Tickformatstops::Tickformatstop& Parcats::Line::Colorbar::Tickformatstops::Tickformatstop::name(std::string f) {
+    json["name"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar::Tickformatstops::Tickformatstop& Parcats::Line::Colorbar::Tickformatstops::Tickformatstop::templateitemname(std::string f) {
+    json["templateitemname"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar::Tickformatstops::Tickformatstop& Parcats::Line::Colorbar::Tickformatstops::Tickformatstop::value(std::string f) {
+    json["value"] = std::move(f);
+    return *this;
+}
+
+std::string Parcats::Line::Colorbar::Title::to_string(Side e) {
+    switch(e) {
+        case Side::RIGHT: return "right";
+        case Side::TOP: return "top";
+        case Side::BOTTOM: return "bottom";
+    }
+}
+
+Parcats::Line::Colorbar::Title& Parcats::Line::Colorbar::Title::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Parcats::Line::Colorbar::Title& Parcats::Line::Colorbar::Title::side(enum Side f) {
+    json["side"] = to_string(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar::Title& Parcats::Line::Colorbar::Title::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+std::string Parcats::Line::Colorbar::Title::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Parcats::Line::Colorbar::Title::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Parcats::Line::Colorbar::Title::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Parcats::Line::Colorbar::Title::Font& Parcats::Line::Colorbar::Title::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Parcats::Line::Colorbar::Title::Font& Parcats::Line::Colorbar::Title::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar::Title::Font& Parcats::Line::Colorbar::Title::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar::Title::Font& Parcats::Line::Colorbar::Title::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar::Title::Font& Parcats::Line::Colorbar::Title::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar::Title::Font& Parcats::Line::Colorbar::Title::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar::Title::Font& Parcats::Line::Colorbar::Title::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar::Title::Font& Parcats::Line::Colorbar::Title::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar::Title::Font& Parcats::Line::Colorbar::Title::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Parcats::Line::Colorbar::Title::Font& Parcats::Line::Colorbar::Title::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Parcats::Stream& Parcats::Stream::maxpoints(double f) {
+    json["maxpoints"] = std::move(f);
+    return *this;
+}
+
+Parcats::Stream& Parcats::Stream::token(std::string f) {
+    json["token"] = std::move(f);
+    return *this;
+}
+
+std::string Parcats::Tickfont::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Parcats::Tickfont::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Parcats::Tickfont::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Parcats::Tickfont& Parcats::Tickfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Parcats::Tickfont& Parcats::Tickfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Parcats::Tickfont& Parcats::Tickfont::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Parcats::Tickfont& Parcats::Tickfont::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Parcats::Tickfont& Parcats::Tickfont::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Parcats::Tickfont& Parcats::Tickfont::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Parcats::Tickfont& Parcats::Tickfont::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Parcats::Tickfont& Parcats::Tickfont::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Parcats::Tickfont& Parcats::Tickfont::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Parcats::Tickfont& Parcats::Tickfont::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+} // namespace plotlypp
+

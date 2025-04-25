@@ -1,0 +1,1025 @@
+// TODO: includes, copyright, etc
+#pragma once
+
+#include <string>
+#include <type_traits>
+#include <vector>
+
+#include <plotlypp/trace.hpp>
+#include <plotlypp/traits.hpp>
+
+#include <plotlypp/json.hpp>
+
+namespace plotlypp {
+
+class Funnelarea : public Trace {
+ public:
+    Funnelarea()
+    : Trace() {
+        json["type"] = "funnelarea";
+    }
+
+    enum class Textposition {
+        INSIDE,
+        NONE,
+    };
+    static std::string to_string(Textposition e);
+
+    enum class Visible {
+        TRUE,
+        FALSE,
+        LEGENDONLY,
+    };
+    static std::string to_string(Visible e);
+
+    class Domain;
+    class Hoverlabel;
+    // Sets the font used for `textinfo` lying inside the sector.
+    class Insidetextfont;
+    class Legendgrouptitle;
+    class Marker;
+    class Stream;
+    // Sets the font used for `textinfo`.
+    class Textfont;
+    class Title;
+
+    // Sets the ratio between height and width
+    Funnelarea& aspectratio(double f);
+
+    // Sets the ratio between bottom length and maximum top length.
+    Funnelarea& baseratio(double f);
+
+    // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
+    // *scatter* traces also appends customdata items in the markers DOM elements
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
+    Funnelarea& customdata(std::vector<T> f);
+
+    // Sets the source reference on Chart Studio Cloud for `customdata`.
+    Funnelarea& customdatasrc(std::string f);
+
+    // Sets the label step. See `label0` for more info.
+    Funnelarea& dlabel(double f);
+
+    Funnelarea& domain(class Domain f);
+
+    // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
+    // hovering. But, if `none` is set, click and hover events are still fired.
+    // - Default: all
+    // - Flags: ['label', 'text', 'value', 'percent', 'name']
+    // - Extras ['all', 'none', 'skip']
+    Funnelarea& hoverinfo(std::string f);
+    Funnelarea& hoverinfo(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
+    Funnelarea& hoverinfosrc(std::string f);
+
+    Funnelarea& hoverlabel(class Hoverlabel f);
+
+    // Template string used for rendering the information that appear on hover box. Note that this will override
+    // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
+    // {%_xother_}, {%xother_}. When showing info for several points, *xother* will be added to those with different x
+    // positions from the first point. An underscore before or after *(x|y)other* will add a space on that side, only
+    // when this field is shown. Numbers are formatted using d3-format's syntax %{variable:d3-format}, for example
+    // "Price: %{y:$.2f}". https://github.com/d3/d3-format/tree/v1.4.5#d3-format for details on the formatting syntax.
+    // Dates are formatted using d3-time-format's syntax %{variable|d3-time-format}, for example "Day:
+    // %{2019-01-01|%A}". https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details on the date
+    // formatting syntax. The variables available in `hovertemplate` are the ones emitted as event data described at
+    // this link https://plotly.com/javascript/plotlyjs-events/#event-data. Additionally, every attributes that can be
+    // specified per-point (the ones that are `arrayOk: true`) are available. Finally, the template string has access to
+    // variables `label`, `color`, `value`, `text` and `percent`. Anything contained in tag `<extra>` is displayed in
+    // the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an
+    // empty tag `<extra></extra>`.
+    Funnelarea& hovertemplate(std::string f);
+    Funnelarea& hovertemplate(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
+    Funnelarea& hovertemplatesrc(std::string f);
+
+    // Sets hover text elements associated with each sector. If a single string, the same string appears for all data
+    // points. If an array of string, the items are mapped in order of this trace's sectors. To be seen, trace
+    // `hoverinfo` must contain a *text* flag.
+    Funnelarea& hovertext(std::string f);
+    Funnelarea& hovertext(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `hovertext`.
+    Funnelarea& hovertextsrc(std::string f);
+
+    // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
+    // array of strings, not numbers or any other type.
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
+    Funnelarea& ids(std::vector<T> f);
+
+    // Sets the source reference on Chart Studio Cloud for `ids`.
+    Funnelarea& idssrc(std::string f);
+
+    // Sets the font used for `textinfo` lying inside the sector.
+    Funnelarea& insidetextfont(class Insidetextfont f);
+
+    // Alternate to `labels`. Builds a numeric set of labels. Use with `dlabel` where `label0` is the starting label and
+    // `dlabel` the step.
+    Funnelarea& label0(double f);
+
+    // Sets the sector labels. If `labels` entries are duplicated, we sum associated `values` or simply count
+    // occurrences if `values` is not provided. For other array attributes (including color) we use the first non-empty
+    // entry among all occurrences of the label.
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
+    Funnelarea& labels(std::vector<T> f);
+
+    // Sets the source reference on Chart Studio Cloud for `labels`.
+    Funnelarea& labelssrc(std::string f);
+
+    // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
+    // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
+    Funnelarea& legend(std::string f);
+
+    // Sets the legend group for this trace. Traces and shapes part of the same legend group hide/show at the same time
+    // when toggling legend items.
+    Funnelarea& legendgroup(std::string f);
+
+    Funnelarea& legendgrouptitle(class Legendgrouptitle f);
+
+    // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
+    // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
+    // can use ranks less than 1000 to place certain items before all unranked items, and ranks greater than 1000 to go
+    // after all unranked items. When having unranked or equal rank items shapes would be displayed after traces i.e.
+    // according to their order in data and layout.
+    Funnelarea& legendrank(double f);
+
+    // Sets the width (in px or fraction) of the legend for this trace.
+    Funnelarea& legendwidth(double f);
+
+    Funnelarea& marker(class Marker f);
+
+    // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
+    // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
+    // and `sliders` `label` text all support `meta`. To access the trace `meta` values in an attribute in the same
+    // trace, simply use `%{meta[i]}` where `i` is the index or key of the `meta` item in question. To access trace
+    // `meta` in layout attributes, use `%{data[n[.meta[i]}` where `i` is the index or key of the `meta` and `n` is the
+    // trace index.
+    template <typename T>
+    Funnelarea& meta(T f);
+    template <typename T>
+    Funnelarea& meta(std::vector<T> f);
+
+    // Sets the source reference on Chart Studio Cloud for `meta`.
+    Funnelarea& metasrc(std::string f);
+
+    // Sets the trace name. The trace name appears as the legend item and on hover.
+    Funnelarea& name(std::string f);
+
+    // Sets the opacity of the trace.
+    Funnelarea& opacity(double f);
+
+    // If there are multiple funnelareas that should be sized according to their totals, link them by providing a
+    // non-empty group id here shared by every trace in the same group.
+    Funnelarea& scalegroup(std::string f);
+
+    // Determines whether or not an item corresponding to this trace is shown in the legend.
+    Funnelarea& showlegend(bool f);
+
+    Funnelarea& stream(class Stream f);
+
+    // Sets text elements associated with each sector. If trace `textinfo` contains a *text* flag, these elements will
+    // be seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will
+    // be seen in the hover labels.
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
+    Funnelarea& text(std::vector<T> f);
+
+    // Sets the font used for `textinfo`.
+    Funnelarea& textfont(class Textfont f);
+
+    // Determines which trace information appear on the graph.
+    // - Flags: ['label', 'text', 'value', 'percent']
+    // - Extras ['none']
+    Funnelarea& textinfo(std::string f);
+
+    // Specifies the location of the `textinfo`.
+    // - Default: inside
+    Funnelarea& textposition(enum Textposition f);
+    Funnelarea& textposition(const std::vector<enum Textposition>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `textposition`.
+    Funnelarea& textpositionsrc(std::string f);
+
+    // Sets the source reference on Chart Studio Cloud for `text`.
+    Funnelarea& textsrc(std::string f);
+
+    // Template string used for rendering the information text that appear on points. Note that this will override
+    // `textinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using
+    // d3-format's syntax %{variable:d3-format}, for example "Price: %{y:$.2f}".
+    // https://github.com/d3/d3-format/tree/v1.4.5#d3-format for details on the formatting syntax. Dates are formatted
+    // using d3-time-format's syntax %{variable|d3-time-format}, for example "Day: %{2019-01-01|%A}".
+    // https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details on the date formatting syntax. Every
+    // attributes that can be specified per-point (the ones that are `arrayOk: true`) are available. Finally, the
+    // template string has access to variables `label`, `color`, `value`, `text` and `percent`.
+    Funnelarea& texttemplate(std::string f);
+    Funnelarea& texttemplate(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `texttemplate`.
+    Funnelarea& texttemplatesrc(std::string f);
+
+    Funnelarea& title(class Title f);
+
+    // Assign an id to this trace, Use this to provide object constancy between traces during animations and
+    // transitions.
+    Funnelarea& uid(std::string f);
+
+    // Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well
+    // as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note
+    // that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is
+    // controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and
+    // `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace
+    // changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can
+    // add/remove traces before the end of the `data` array, such that the same trace has a different index, you can
+    // still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+    template <typename T>
+    Funnelarea& uirevision(T f);
+
+    // Sets the values of the sectors. If omitted, we count occurrences of each label.
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
+    Funnelarea& values(std::vector<T> f);
+
+    // Sets the source reference on Chart Studio Cloud for `values`.
+    Funnelarea& valuessrc(std::string f);
+
+    // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
+    // legend item (provided that the legend itself is visible).
+    // - Default: True
+    Funnelarea& visible(enum Visible f);
+};
+
+class Funnelarea::Domain {
+ public:
+
+    // If there is a layout grid, use the domain for this column in the grid for this funnelarea trace .
+    Funnelarea::Domain& column(int f);
+
+    // If there is a layout grid, use the domain for this row in the grid for this funnelarea trace .
+    Funnelarea::Domain& row(int f);
+
+    // Sets the horizontal domain of this funnelarea trace (in plot fraction).
+    Funnelarea::Domain& x(std::vector<std::string> f);
+
+    // Sets the vertical domain of this funnelarea trace (in plot fraction).
+    Funnelarea::Domain& y(std::vector<std::string> f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+class Funnelarea::Hoverlabel {
+ public:
+
+    enum class Align {
+        LEFT,
+        RIGHT,
+        AUTO,
+    };
+    static std::string to_string(Align e);
+
+    // Sets the font used in hover labels.
+    class Font;
+
+    // Sets the horizontal alignment of the text content within hover label box. Has an effect only if the hover label
+    // text spans more two or more lines
+    // - Default: auto
+    Funnelarea::Hoverlabel& align(enum Align f);
+    Funnelarea::Hoverlabel& align(const std::vector<enum Align>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `align`.
+    Funnelarea::Hoverlabel& alignsrc(std::string f);
+
+    // Sets the background color of the hover labels for this trace
+    Funnelarea::Hoverlabel& bgcolor(std::string f);
+    Funnelarea::Hoverlabel& bgcolor(double f);
+    Funnelarea::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Funnelarea::Hoverlabel& bgcolor(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `bgcolor`.
+    Funnelarea::Hoverlabel& bgcolorsrc(std::string f);
+
+    // Sets the border color of the hover labels for this trace.
+    Funnelarea::Hoverlabel& bordercolor(std::string f);
+    Funnelarea::Hoverlabel& bordercolor(double f);
+    Funnelarea::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Funnelarea::Hoverlabel& bordercolor(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `bordercolor`.
+    Funnelarea::Hoverlabel& bordercolorsrc(std::string f);
+
+    // Sets the font used in hover labels.
+    Funnelarea::Hoverlabel& font(class Font f);
+
+    // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
+    // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
+    // name if it is less than that many characters, but if it is longer, will truncate to `namelength - 3` characters
+    // and add an ellipsis.
+    Funnelarea::Hoverlabel& namelength(int f);
+    Funnelarea::Hoverlabel& namelength(std::vector<int> f);
+
+    // Sets the source reference on Chart Studio Cloud for `namelength`.
+    Funnelarea::Hoverlabel& namelengthsrc(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+// Sets the font used in hover labels.
+class Funnelarea::Hoverlabel::Font {
+ public:
+
+    enum class Style {
+        NORMAL,
+        ITALIC,
+    };
+    static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
+
+    Funnelarea::Hoverlabel::Font& color(std::string f);
+    Funnelarea::Hoverlabel::Font& color(double f);
+    Funnelarea::Hoverlabel::Font& color(std::vector<std::string> f);
+    Funnelarea::Hoverlabel::Font& color(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `color`.
+    Funnelarea::Hoverlabel::Font& colorsrc(std::string f);
+
+    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+    // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+    // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+    // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select
+    // number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid
+    // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+    // *Raleway*, *Times New Roman*.
+    Funnelarea::Hoverlabel::Font& family(std::string f);
+    Funnelarea::Hoverlabel::Font& family(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `family`.
+    Funnelarea::Hoverlabel::Font& familysrc(std::string f);
+
+    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
+    // e.g. *under+over*, etc.
+    // - Default: none
+    // - Flags: ['under', 'over', 'through']
+    // - Extras ['none']
+    Funnelarea::Hoverlabel::Font& lineposition(std::string f);
+    Funnelarea::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `lineposition`.
+    Funnelarea::Hoverlabel::Font& linepositionsrc(std::string f);
+
+    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
+    // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+    Funnelarea::Hoverlabel::Font& shadow(std::string f);
+    Funnelarea::Hoverlabel::Font& shadow(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `shadow`.
+    Funnelarea::Hoverlabel::Font& shadowsrc(std::string f);
+
+    Funnelarea::Hoverlabel::Font& size(double f);
+    Funnelarea::Hoverlabel::Font& size(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `size`.
+    Funnelarea::Hoverlabel::Font& sizesrc(std::string f);
+
+    // Sets whether a font should be styled with a normal or italic face from its family.
+    // - Default: normal
+    Funnelarea::Hoverlabel::Font& style(enum Style f);
+    Funnelarea::Hoverlabel::Font& style(const std::vector<enum Style>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `style`.
+    Funnelarea::Hoverlabel::Font& stylesrc(std::string f);
+
+    // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
+    // word capitalized.
+    // - Default: normal
+    Funnelarea::Hoverlabel::Font& textcase(enum Textcase f);
+    Funnelarea::Hoverlabel::Font& textcase(const std::vector<enum Textcase>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `textcase`.
+    Funnelarea::Hoverlabel::Font& textcasesrc(std::string f);
+
+    // Sets the variant of the font.
+    // - Default: normal
+    Funnelarea::Hoverlabel::Font& variant(enum Variant f);
+    Funnelarea::Hoverlabel::Font& variant(const std::vector<enum Variant>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `variant`.
+    Funnelarea::Hoverlabel::Font& variantsrc(std::string f);
+
+    // Sets the weight (or boldness) of the font.
+    Funnelarea::Hoverlabel::Font& weight(int f);
+    Funnelarea::Hoverlabel::Font& weight(std::vector<int> f);
+
+    // Sets the source reference on Chart Studio Cloud for `weight`.
+    Funnelarea::Hoverlabel::Font& weightsrc(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+// Sets the font used for `textinfo` lying inside the sector.
+class Funnelarea::Insidetextfont {
+ public:
+
+    enum class Style {
+        NORMAL,
+        ITALIC,
+    };
+    static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
+
+    Funnelarea::Insidetextfont& color(std::string f);
+    Funnelarea::Insidetextfont& color(double f);
+    Funnelarea::Insidetextfont& color(std::vector<std::string> f);
+    Funnelarea::Insidetextfont& color(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `color`.
+    Funnelarea::Insidetextfont& colorsrc(std::string f);
+
+    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+    // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+    // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+    // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select
+    // number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid
+    // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+    // *Raleway*, *Times New Roman*.
+    Funnelarea::Insidetextfont& family(std::string f);
+    Funnelarea::Insidetextfont& family(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `family`.
+    Funnelarea::Insidetextfont& familysrc(std::string f);
+
+    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
+    // e.g. *under+over*, etc.
+    // - Default: none
+    // - Flags: ['under', 'over', 'through']
+    // - Extras ['none']
+    Funnelarea::Insidetextfont& lineposition(std::string f);
+    Funnelarea::Insidetextfont& lineposition(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `lineposition`.
+    Funnelarea::Insidetextfont& linepositionsrc(std::string f);
+
+    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
+    // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+    Funnelarea::Insidetextfont& shadow(std::string f);
+    Funnelarea::Insidetextfont& shadow(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `shadow`.
+    Funnelarea::Insidetextfont& shadowsrc(std::string f);
+
+    Funnelarea::Insidetextfont& size(double f);
+    Funnelarea::Insidetextfont& size(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `size`.
+    Funnelarea::Insidetextfont& sizesrc(std::string f);
+
+    // Sets whether a font should be styled with a normal or italic face from its family.
+    // - Default: normal
+    Funnelarea::Insidetextfont& style(enum Style f);
+    Funnelarea::Insidetextfont& style(const std::vector<enum Style>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `style`.
+    Funnelarea::Insidetextfont& stylesrc(std::string f);
+
+    // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
+    // word capitalized.
+    // - Default: normal
+    Funnelarea::Insidetextfont& textcase(enum Textcase f);
+    Funnelarea::Insidetextfont& textcase(const std::vector<enum Textcase>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `textcase`.
+    Funnelarea::Insidetextfont& textcasesrc(std::string f);
+
+    // Sets the variant of the font.
+    // - Default: normal
+    Funnelarea::Insidetextfont& variant(enum Variant f);
+    Funnelarea::Insidetextfont& variant(const std::vector<enum Variant>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `variant`.
+    Funnelarea::Insidetextfont& variantsrc(std::string f);
+
+    // Sets the weight (or boldness) of the font.
+    Funnelarea::Insidetextfont& weight(int f);
+    Funnelarea::Insidetextfont& weight(std::vector<int> f);
+
+    // Sets the source reference on Chart Studio Cloud for `weight`.
+    Funnelarea::Insidetextfont& weightsrc(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+class Funnelarea::Legendgrouptitle {
+ public:
+
+    // Sets this legend group's title font.
+    class Font;
+
+    // Sets this legend group's title font.
+    Funnelarea::Legendgrouptitle& font(class Font f);
+
+    // Sets the title of the legend group.
+    Funnelarea::Legendgrouptitle& text(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+// Sets this legend group's title font.
+class Funnelarea::Legendgrouptitle::Font {
+ public:
+
+    enum class Style {
+        NORMAL,
+        ITALIC,
+    };
+    static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
+
+    Funnelarea::Legendgrouptitle::Font& color(std::string f);
+    Funnelarea::Legendgrouptitle::Font& color(double f);
+
+    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+    // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+    // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+    // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select
+    // number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid
+    // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+    // *Raleway*, *Times New Roman*.
+    Funnelarea::Legendgrouptitle::Font& family(std::string f);
+
+    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
+    // e.g. *under+over*, etc.
+    // - Default: none
+    // - Flags: ['under', 'over', 'through']
+    // - Extras ['none']
+    Funnelarea::Legendgrouptitle::Font& lineposition(std::string f);
+
+    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
+    // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+    Funnelarea::Legendgrouptitle::Font& shadow(std::string f);
+
+    Funnelarea::Legendgrouptitle::Font& size(double f);
+
+    // Sets whether a font should be styled with a normal or italic face from its family.
+    // - Default: normal
+    Funnelarea::Legendgrouptitle::Font& style(enum Style f);
+
+    // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
+    // word capitalized.
+    // - Default: normal
+    Funnelarea::Legendgrouptitle::Font& textcase(enum Textcase f);
+
+    // Sets the variant of the font.
+    // - Default: normal
+    Funnelarea::Legendgrouptitle::Font& variant(enum Variant f);
+
+    // Sets the weight (or boldness) of the font.
+    Funnelarea::Legendgrouptitle::Font& weight(int f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+class Funnelarea::Marker {
+ public:
+
+    class Line;
+    // Sets the pattern within the marker.
+    class Pattern;
+
+    // Sets the color of each sector. If not specified, the default trace color set is used to pick the sector colors.
+    template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
+    Funnelarea::Marker& colors(std::vector<T> f);
+
+    // Sets the source reference on Chart Studio Cloud for `colors`.
+    Funnelarea::Marker& colorssrc(std::string f);
+
+    Funnelarea::Marker& line(class Line f);
+
+    // Sets the pattern within the marker.
+    Funnelarea::Marker& pattern(class Pattern f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+class Funnelarea::Marker::Line {
+ public:
+
+    // Sets the color of the line enclosing each sector. Defaults to the `paper_bgcolor` value.
+    Funnelarea::Marker::Line& color(std::string f);
+    Funnelarea::Marker::Line& color(double f);
+    Funnelarea::Marker::Line& color(std::vector<std::string> f);
+    Funnelarea::Marker::Line& color(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `color`.
+    Funnelarea::Marker::Line& colorsrc(std::string f);
+
+    // Sets the width (in px) of the line enclosing each sector.
+    Funnelarea::Marker::Line& width(double f);
+    Funnelarea::Marker::Line& width(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `width`.
+    Funnelarea::Marker::Line& widthsrc(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+// Sets the pattern within the marker.
+class Funnelarea::Marker::Pattern {
+ public:
+
+    enum class Fillmode {
+        REPLACE,
+        OVERLAY,
+    };
+    static std::string to_string(Fillmode e);
+
+    enum class Shape {
+        EMPTY,
+        SLASH,
+        DOUBLEBACKSLASH,
+        X,
+        HYPHEN,
+        OR,
+        PLUS,
+        DOT,
+    };
+    static std::string to_string(Shape e);
+
+    // When there is no colorscale sets the color of background pattern fill. Defaults to a `marker.color` background
+    // when `fillmode` is *overlay*. Otherwise, defaults to a transparent background.
+    Funnelarea::Marker::Pattern& bgcolor(std::string f);
+    Funnelarea::Marker::Pattern& bgcolor(double f);
+    Funnelarea::Marker::Pattern& bgcolor(std::vector<std::string> f);
+    Funnelarea::Marker::Pattern& bgcolor(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `bgcolor`.
+    Funnelarea::Marker::Pattern& bgcolorsrc(std::string f);
+
+    // When there is no colorscale sets the color of foreground pattern fill. Defaults to a `marker.color` background
+    // when `fillmode` is *replace*. Otherwise, defaults to dark grey or white to increase contrast with the `bgcolor`.
+    Funnelarea::Marker::Pattern& fgcolor(std::string f);
+    Funnelarea::Marker::Pattern& fgcolor(double f);
+    Funnelarea::Marker::Pattern& fgcolor(std::vector<std::string> f);
+    Funnelarea::Marker::Pattern& fgcolor(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `fgcolor`.
+    Funnelarea::Marker::Pattern& fgcolorsrc(std::string f);
+
+    // Sets the opacity of the foreground pattern fill. Defaults to a 0.5 when `fillmode` is *overlay*. Otherwise,
+    // defaults to 1.
+    Funnelarea::Marker::Pattern& fgopacity(double f);
+
+    // Determines whether `marker.color` should be used as a default to `bgcolor` or a `fgcolor`.
+    // - Default: replace
+    Funnelarea::Marker::Pattern& fillmode(enum Fillmode f);
+
+    // Sets the shape of the pattern fill. By default, no pattern is used for filling the area.
+    // - Default:
+    Funnelarea::Marker::Pattern& shape(enum Shape f);
+    Funnelarea::Marker::Pattern& shape(const std::vector<enum Shape>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `shape`.
+    Funnelarea::Marker::Pattern& shapesrc(std::string f);
+
+    // Sets the size of unit squares of the pattern fill in pixels, which corresponds to the interval of repetition of
+    // the pattern.
+    Funnelarea::Marker::Pattern& size(double f);
+    Funnelarea::Marker::Pattern& size(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `size`.
+    Funnelarea::Marker::Pattern& sizesrc(std::string f);
+
+    // Sets the solidity of the pattern fill. Solidity is roughly the fraction of the area filled by the pattern.
+    // Solidity of 0 shows only the background color without pattern and solidty of 1 shows only the foreground color
+    // without pattern.
+    Funnelarea::Marker::Pattern& solidity(double f);
+    Funnelarea::Marker::Pattern& solidity(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `solidity`.
+    Funnelarea::Marker::Pattern& soliditysrc(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+class Funnelarea::Stream {
+ public:
+
+    // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
+    // only the newest 50 points will be displayed on the plot.
+    Funnelarea::Stream& maxpoints(double f);
+
+    // The stream id number links a data trace on a plot with a stream. See https://chart-studio.plotly.com/settings for
+    // more details.
+    Funnelarea::Stream& token(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+// Sets the font used for `textinfo`.
+class Funnelarea::Textfont {
+ public:
+
+    enum class Style {
+        NORMAL,
+        ITALIC,
+    };
+    static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
+
+    Funnelarea::Textfont& color(std::string f);
+    Funnelarea::Textfont& color(double f);
+    Funnelarea::Textfont& color(std::vector<std::string> f);
+    Funnelarea::Textfont& color(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `color`.
+    Funnelarea::Textfont& colorsrc(std::string f);
+
+    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+    // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+    // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+    // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select
+    // number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid
+    // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+    // *Raleway*, *Times New Roman*.
+    Funnelarea::Textfont& family(std::string f);
+    Funnelarea::Textfont& family(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `family`.
+    Funnelarea::Textfont& familysrc(std::string f);
+
+    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
+    // e.g. *under+over*, etc.
+    // - Default: none
+    // - Flags: ['under', 'over', 'through']
+    // - Extras ['none']
+    Funnelarea::Textfont& lineposition(std::string f);
+    Funnelarea::Textfont& lineposition(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `lineposition`.
+    Funnelarea::Textfont& linepositionsrc(std::string f);
+
+    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
+    // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+    Funnelarea::Textfont& shadow(std::string f);
+    Funnelarea::Textfont& shadow(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `shadow`.
+    Funnelarea::Textfont& shadowsrc(std::string f);
+
+    Funnelarea::Textfont& size(double f);
+    Funnelarea::Textfont& size(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `size`.
+    Funnelarea::Textfont& sizesrc(std::string f);
+
+    // Sets whether a font should be styled with a normal or italic face from its family.
+    // - Default: normal
+    Funnelarea::Textfont& style(enum Style f);
+    Funnelarea::Textfont& style(const std::vector<enum Style>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `style`.
+    Funnelarea::Textfont& stylesrc(std::string f);
+
+    // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
+    // word capitalized.
+    // - Default: normal
+    Funnelarea::Textfont& textcase(enum Textcase f);
+    Funnelarea::Textfont& textcase(const std::vector<enum Textcase>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `textcase`.
+    Funnelarea::Textfont& textcasesrc(std::string f);
+
+    // Sets the variant of the font.
+    // - Default: normal
+    Funnelarea::Textfont& variant(enum Variant f);
+    Funnelarea::Textfont& variant(const std::vector<enum Variant>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `variant`.
+    Funnelarea::Textfont& variantsrc(std::string f);
+
+    // Sets the weight (or boldness) of the font.
+    Funnelarea::Textfont& weight(int f);
+    Funnelarea::Textfont& weight(std::vector<int> f);
+
+    // Sets the source reference on Chart Studio Cloud for `weight`.
+    Funnelarea::Textfont& weightsrc(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+class Funnelarea::Title {
+ public:
+
+    enum class Position {
+        TOP_LEFT,
+        TOP_CENTER,
+        TOP_RIGHT,
+    };
+    static std::string to_string(Position e);
+
+    // Sets the font used for `title`.
+    class Font;
+
+    // Sets the font used for `title`.
+    Funnelarea::Title& font(class Font f);
+
+    // Specifies the location of the `title`.
+    // - Default: top center
+    Funnelarea::Title& position(enum Position f);
+
+    // Sets the title of the chart. If it is empty, no title is displayed.
+    Funnelarea::Title& text(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+// Sets the font used for `title`.
+class Funnelarea::Title::Font {
+ public:
+
+    enum class Style {
+        NORMAL,
+        ITALIC,
+    };
+    static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
+
+    Funnelarea::Title::Font& color(std::string f);
+    Funnelarea::Title::Font& color(double f);
+    Funnelarea::Title::Font& color(std::vector<std::string> f);
+    Funnelarea::Title::Font& color(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `color`.
+    Funnelarea::Title::Font& colorsrc(std::string f);
+
+    // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
+    // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
+    // commas, to indicate the preference in which to apply fonts if they aren't available on the system. The Chart
+    // Studio Cloud (at https://chart-studio.plotly.com or on-premise) generates images on a server, where only a select
+    // number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*, *Droid
+    // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
+    // *Raleway*, *Times New Roman*.
+    Funnelarea::Title::Font& family(std::string f);
+    Funnelarea::Title::Font& family(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `family`.
+    Funnelarea::Title::Font& familysrc(std::string f);
+
+    // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
+    // e.g. *under+over*, etc.
+    // - Default: none
+    // - Flags: ['under', 'over', 'through']
+    // - Extras ['none']
+    Funnelarea::Title::Font& lineposition(std::string f);
+    Funnelarea::Title::Font& lineposition(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `lineposition`.
+    Funnelarea::Title::Font& linepositionsrc(std::string f);
+
+    // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
+    // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
+    Funnelarea::Title::Font& shadow(std::string f);
+    Funnelarea::Title::Font& shadow(std::vector<std::string> f);
+
+    // Sets the source reference on Chart Studio Cloud for `shadow`.
+    Funnelarea::Title::Font& shadowsrc(std::string f);
+
+    Funnelarea::Title::Font& size(double f);
+    Funnelarea::Title::Font& size(std::vector<double> f);
+
+    // Sets the source reference on Chart Studio Cloud for `size`.
+    Funnelarea::Title::Font& sizesrc(std::string f);
+
+    // Sets whether a font should be styled with a normal or italic face from its family.
+    // - Default: normal
+    Funnelarea::Title::Font& style(enum Style f);
+    Funnelarea::Title::Font& style(const std::vector<enum Style>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `style`.
+    Funnelarea::Title::Font& stylesrc(std::string f);
+
+    // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
+    // word capitalized.
+    // - Default: normal
+    Funnelarea::Title::Font& textcase(enum Textcase f);
+    Funnelarea::Title::Font& textcase(const std::vector<enum Textcase>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `textcase`.
+    Funnelarea::Title::Font& textcasesrc(std::string f);
+
+    // Sets the variant of the font.
+    // - Default: normal
+    Funnelarea::Title::Font& variant(enum Variant f);
+    Funnelarea::Title::Font& variant(const std::vector<enum Variant>& f);
+
+    // Sets the source reference on Chart Studio Cloud for `variant`.
+    Funnelarea::Title::Font& variantsrc(std::string f);
+
+    // Sets the weight (or boldness) of the font.
+    Funnelarea::Title::Font& weight(int f);
+    Funnelarea::Title::Font& weight(std::vector<int> f);
+
+    // Sets the source reference on Chart Studio Cloud for `weight`.
+    Funnelarea::Title::Font& weightsrc(std::string f);
+
+    // Advanced users may modify the JSON representation directly, at their own peril!
+    Json json{};
+};
+
+} // namespace plotlypp
+
+#include "impl/funnelarea_impl.hpp"

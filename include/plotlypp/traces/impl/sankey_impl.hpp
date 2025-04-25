@@ -1,0 +1,1507 @@
+// TODO: includes, copyright, etc
+
+namespace plotlypp {
+
+std::string Sankey::to_string(Arrangement e) {
+    switch(e) {
+        case Arrangement::SNAP: return "snap";
+        case Arrangement::PERPENDICULAR: return "perpendicular";
+        case Arrangement::FREEFORM: return "freeform";
+        case Arrangement::FIXED: return "fixed";
+    }
+}
+std::string Sankey::to_string(Orientation e) {
+    switch(e) {
+        case Orientation::V: return "v";
+        case Orientation::H: return "h";
+    }
+}
+std::string Sankey::to_string(Visible e) {
+    switch(e) {
+        case Visible::TRUE: return "True";
+        case Visible::FALSE: return "False";
+        case Visible::LEGENDONLY: return "legendonly";
+    }
+}
+
+Sankey& Sankey::arrangement(enum Arrangement f) {
+    json["arrangement"] = to_string(f);
+    return *this;
+}
+
+template <typename T, typename>
+Sankey& Sankey::customdata(std::vector<T> f) {
+    json["customdata"] = std::move(f);
+    return *this;
+}
+
+Sankey& Sankey::customdatasrc(std::string f) {
+    json["customdatasrc"] = std::move(f);
+    return *this;
+}
+
+Sankey& Sankey::domain(class Domain f) {
+    json["domain"] = std::move(f.json);
+    return *this;
+}
+
+Sankey& Sankey::hoverinfo(std::string f) {
+    json["hoverinfo"] = std::move(f);
+    return *this;
+}
+
+Sankey& Sankey::hoverlabel(class Hoverlabel f) {
+    json["hoverlabel"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T, typename>
+Sankey& Sankey::ids(std::vector<T> f) {
+    json["ids"] = std::move(f);
+    return *this;
+}
+
+Sankey& Sankey::idssrc(std::string f) {
+    json["idssrc"] = std::move(f);
+    return *this;
+}
+
+Sankey& Sankey::legend(std::string f) {
+    json["legend"] = std::move(f);
+    return *this;
+}
+
+Sankey& Sankey::legendgrouptitle(class Legendgrouptitle f) {
+    json["legendgrouptitle"] = std::move(f.json);
+    return *this;
+}
+
+Sankey& Sankey::legendrank(double f) {
+    json["legendrank"] = std::move(f);
+    return *this;
+}
+
+Sankey& Sankey::legendwidth(double f) {
+    json["legendwidth"] = std::move(f);
+    return *this;
+}
+
+Sankey& Sankey::link(class Link f) {
+    json["link"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T>
+Sankey& Sankey::meta(T f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+template <typename T>
+Sankey& Sankey::meta(std::vector<T> f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+
+Sankey& Sankey::metasrc(std::string f) {
+    json["metasrc"] = std::move(f);
+    return *this;
+}
+
+Sankey& Sankey::name(std::string f) {
+    json["name"] = std::move(f);
+    return *this;
+}
+
+Sankey& Sankey::node(class Node f) {
+    json["node"] = std::move(f.json);
+    return *this;
+}
+
+Sankey& Sankey::orientation(enum Orientation f) {
+    json["orientation"] = to_string(f);
+    return *this;
+}
+
+template <typename T>
+Sankey& Sankey::selectedpoints(T f) {
+    json["selectedpoints"] = std::move(f);
+    return *this;
+}
+
+Sankey& Sankey::stream(class Stream f) {
+    json["stream"] = std::move(f.json);
+    return *this;
+}
+
+Sankey& Sankey::textfont(class Textfont f) {
+    json["textfont"] = std::move(f.json);
+    return *this;
+}
+
+Sankey& Sankey::uid(std::string f) {
+    json["uid"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Sankey& Sankey::uirevision(T f) {
+    json["uirevision"] = std::move(f);
+    return *this;
+}
+
+Sankey& Sankey::valueformat(std::string f) {
+    json["valueformat"] = std::move(f);
+    return *this;
+}
+
+Sankey& Sankey::valuesuffix(std::string f) {
+    json["valuesuffix"] = std::move(f);
+    return *this;
+}
+
+Sankey& Sankey::visible(enum Visible f) {
+    json["visible"] = to_string(f);
+    return *this;
+}
+
+
+Sankey::Domain& Sankey::Domain::column(int f) {
+    json["column"] = std::move(f);
+    return *this;
+}
+
+Sankey::Domain& Sankey::Domain::row(int f) {
+    json["row"] = std::move(f);
+    return *this;
+}
+
+Sankey::Domain& Sankey::Domain::x(std::vector<std::string> f) {
+    json["x"] = std::move(f);
+    return *this;
+}
+
+Sankey::Domain& Sankey::Domain::y(std::vector<std::string> f) {
+    json["y"] = std::move(f);
+    return *this;
+}
+
+std::string Sankey::Hoverlabel::to_string(Align e) {
+    switch(e) {
+        case Align::LEFT: return "left";
+        case Align::RIGHT: return "right";
+        case Align::AUTO: return "auto";
+    }
+}
+
+Sankey::Hoverlabel& Sankey::Hoverlabel::align(enum Align f) {
+    json["align"] = to_string(f);
+    return *this;
+}
+Sankey::Hoverlabel& Sankey::Hoverlabel::align(const std::vector<enum Align>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["align"] = std::move(stringified);
+    return *this;
+}
+
+Sankey::Hoverlabel& Sankey::Hoverlabel::alignsrc(std::string f) {
+    json["alignsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Hoverlabel& Sankey::Hoverlabel::bgcolor(std::string f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Sankey::Hoverlabel& Sankey::Hoverlabel::bgcolor(double f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Sankey::Hoverlabel& Sankey::Hoverlabel::bgcolor(std::vector<std::string> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Sankey::Hoverlabel& Sankey::Hoverlabel::bgcolor(std::vector<double> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+
+Sankey::Hoverlabel& Sankey::Hoverlabel::bgcolorsrc(std::string f) {
+    json["bgcolorsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Hoverlabel& Sankey::Hoverlabel::bordercolor(std::string f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Sankey::Hoverlabel& Sankey::Hoverlabel::bordercolor(double f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Sankey::Hoverlabel& Sankey::Hoverlabel::bordercolor(std::vector<std::string> f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Sankey::Hoverlabel& Sankey::Hoverlabel::bordercolor(std::vector<double> f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+
+Sankey::Hoverlabel& Sankey::Hoverlabel::bordercolorsrc(std::string f) {
+    json["bordercolorsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Hoverlabel& Sankey::Hoverlabel::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Sankey::Hoverlabel& Sankey::Hoverlabel::namelength(int f) {
+    json["namelength"] = std::move(f);
+    return *this;
+}
+Sankey::Hoverlabel& Sankey::Hoverlabel::namelength(std::vector<int> f) {
+    json["namelength"] = std::move(f);
+    return *this;
+}
+
+Sankey::Hoverlabel& Sankey::Hoverlabel::namelengthsrc(std::string f) {
+    json["namelengthsrc"] = std::move(f);
+    return *this;
+}
+
+std::string Sankey::Hoverlabel::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Sankey::Hoverlabel::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Sankey::Hoverlabel::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::family(std::vector<std::string> f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::familysrc(std::string f) {
+    json["familysrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::linepositionsrc(std::string f) {
+    json["linepositionsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::shadow(std::vector<std::string> f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::shadowsrc(std::string f) {
+    json["shadowsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::size(std::vector<double> f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::sizesrc(std::string f) {
+    json["sizesrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::style(const std::vector<enum Style>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["style"] = std::move(stringified);
+    return *this;
+}
+
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::stylesrc(std::string f) {
+    json["stylesrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::textcase(const std::vector<enum Textcase>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["textcase"] = std::move(stringified);
+    return *this;
+}
+
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::textcasesrc(std::string f) {
+    json["textcasesrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::variant(const std::vector<enum Variant>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["variant"] = std::move(stringified);
+    return *this;
+}
+
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::variantsrc(std::string f) {
+    json["variantsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::weight(std::vector<int> f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::weightsrc(std::string f) {
+    json["weightsrc"] = std::move(f);
+    return *this;
+}
+
+
+Sankey::Legendgrouptitle& Sankey::Legendgrouptitle::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Sankey::Legendgrouptitle& Sankey::Legendgrouptitle::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+std::string Sankey::Legendgrouptitle::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Sankey::Legendgrouptitle::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Sankey::Legendgrouptitle::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+std::string Sankey::Link::to_string(Hoverinfo e) {
+    switch(e) {
+        case Hoverinfo::ALL: return "all";
+        case Hoverinfo::NONE: return "none";
+        case Hoverinfo::SKIP: return "skip";
+    }
+}
+
+Sankey::Link& Sankey::Link::arrowlen(double f) {
+    json["arrowlen"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link& Sankey::Link::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Link& Sankey::Link::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Link& Sankey::Link::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Link& Sankey::Link::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link& Sankey::Link::colorscales(class Colorscales f) {
+    json["colorscales"] = std::move(f.json);
+    return *this;
+}
+
+Sankey::Link& Sankey::Link::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Sankey::Link& Sankey::Link::customdata(std::vector<T> f) {
+    json["customdata"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link& Sankey::Link::customdatasrc(std::string f) {
+    json["customdatasrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link& Sankey::Link::hovercolor(std::string f) {
+    json["hovercolor"] = std::move(f);
+    return *this;
+}
+Sankey::Link& Sankey::Link::hovercolor(double f) {
+    json["hovercolor"] = std::move(f);
+    return *this;
+}
+Sankey::Link& Sankey::Link::hovercolor(std::vector<std::string> f) {
+    json["hovercolor"] = std::move(f);
+    return *this;
+}
+Sankey::Link& Sankey::Link::hovercolor(std::vector<double> f) {
+    json["hovercolor"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link& Sankey::Link::hovercolorsrc(std::string f) {
+    json["hovercolorsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link& Sankey::Link::hoverinfo(enum Hoverinfo f) {
+    json["hoverinfo"] = to_string(f);
+    return *this;
+}
+
+Sankey::Link& Sankey::Link::hoverlabel(class Hoverlabel f) {
+    json["hoverlabel"] = std::move(f.json);
+    return *this;
+}
+
+Sankey::Link& Sankey::Link::hovertemplate(std::string f) {
+    json["hovertemplate"] = std::move(f);
+    return *this;
+}
+Sankey::Link& Sankey::Link::hovertemplate(std::vector<std::string> f) {
+    json["hovertemplate"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link& Sankey::Link::hovertemplatesrc(std::string f) {
+    json["hovertemplatesrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Sankey::Link& Sankey::Link::label(std::vector<T> f) {
+    json["label"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link& Sankey::Link::labelsrc(std::string f) {
+    json["labelsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link& Sankey::Link::line(class Line f) {
+    json["line"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T, typename>
+Sankey::Link& Sankey::Link::source(std::vector<T> f) {
+    json["source"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link& Sankey::Link::sourcesrc(std::string f) {
+    json["sourcesrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Sankey::Link& Sankey::Link::target(std::vector<T> f) {
+    json["target"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link& Sankey::Link::targetsrc(std::string f) {
+    json["targetsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Sankey::Link& Sankey::Link::value(std::vector<T> f) {
+    json["value"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link& Sankey::Link::valuesrc(std::string f) {
+    json["valuesrc"] = std::move(f);
+    return *this;
+}
+
+
+Sankey::Link::Colorscales& Sankey::Link::Colorscales::concentrationscales(class Concentrationscales f) {
+    json["concentrationscales"] = std::move(f.json);
+    return *this;
+}
+
+
+Sankey::Link::Colorscales::Concentrationscales& Sankey::Link::Colorscales::Concentrationscales::cmax(double f) {
+    json["cmax"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Colorscales::Concentrationscales& Sankey::Link::Colorscales::Concentrationscales::cmin(double f) {
+    json["cmin"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Colorscales::Concentrationscales& Sankey::Link::Colorscales::Concentrationscales::colorscale(std::string f) {
+    json["colorscale"] = std::move(f);
+    return *this;
+}
+Sankey::Link::Colorscales::Concentrationscales& Sankey::Link::Colorscales::Concentrationscales::colorscale(std::vector<std::pair<double, std::string>> f) {
+    json["colorscale"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Colorscales::Concentrationscales& Sankey::Link::Colorscales::Concentrationscales::label(std::string f) {
+    json["label"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Colorscales::Concentrationscales& Sankey::Link::Colorscales::Concentrationscales::name(std::string f) {
+    json["name"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Colorscales::Concentrationscales& Sankey::Link::Colorscales::Concentrationscales::templateitemname(std::string f) {
+    json["templateitemname"] = std::move(f);
+    return *this;
+}
+
+std::string Sankey::Link::Hoverlabel::to_string(Align e) {
+    switch(e) {
+        case Align::LEFT: return "left";
+        case Align::RIGHT: return "right";
+        case Align::AUTO: return "auto";
+    }
+}
+
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::align(enum Align f) {
+    json["align"] = to_string(f);
+    return *this;
+}
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::align(const std::vector<enum Align>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["align"] = std::move(stringified);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::alignsrc(std::string f) {
+    json["alignsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bgcolor(std::string f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bgcolor(double f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bgcolor(std::vector<std::string> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bgcolor(std::vector<double> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bgcolorsrc(std::string f) {
+    json["bgcolorsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bordercolor(std::string f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bordercolor(double f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bordercolor(std::vector<std::string> f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bordercolor(std::vector<double> f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bordercolorsrc(std::string f) {
+    json["bordercolorsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::namelength(int f) {
+    json["namelength"] = std::move(f);
+    return *this;
+}
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::namelength(std::vector<int> f) {
+    json["namelength"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::namelengthsrc(std::string f) {
+    json["namelengthsrc"] = std::move(f);
+    return *this;
+}
+
+std::string Sankey::Link::Hoverlabel::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Sankey::Link::Hoverlabel::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Sankey::Link::Hoverlabel::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::family(std::vector<std::string> f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::familysrc(std::string f) {
+    json["familysrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::linepositionsrc(std::string f) {
+    json["linepositionsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::shadow(std::vector<std::string> f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::shadowsrc(std::string f) {
+    json["shadowsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::size(std::vector<double> f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::sizesrc(std::string f) {
+    json["sizesrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::style(const std::vector<enum Style>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["style"] = std::move(stringified);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::stylesrc(std::string f) {
+    json["stylesrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::textcase(const std::vector<enum Textcase>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["textcase"] = std::move(stringified);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::textcasesrc(std::string f) {
+    json["textcasesrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::variant(const std::vector<enum Variant>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["variant"] = std::move(stringified);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::variantsrc(std::string f) {
+    json["variantsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::weight(std::vector<int> f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::weightsrc(std::string f) {
+    json["weightsrc"] = std::move(f);
+    return *this;
+}
+
+
+Sankey::Link::Line& Sankey::Link::Line::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Link::Line& Sankey::Link::Line::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Link::Line& Sankey::Link::Line::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Link::Line& Sankey::Link::Line::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Line& Sankey::Link::Line::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Line& Sankey::Link::Line::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+Sankey::Link::Line& Sankey::Link::Line::width(std::vector<double> f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+Sankey::Link::Line& Sankey::Link::Line::widthsrc(std::string f) {
+    json["widthsrc"] = std::move(f);
+    return *this;
+}
+
+std::string Sankey::Node::to_string(Align e) {
+    switch(e) {
+        case Align::JUSTIFY: return "justify";
+        case Align::LEFT: return "left";
+        case Align::RIGHT: return "right";
+        case Align::CENTER: return "center";
+    }
+}
+std::string Sankey::Node::to_string(Hoverinfo e) {
+    switch(e) {
+        case Hoverinfo::ALL: return "all";
+        case Hoverinfo::NONE: return "none";
+        case Hoverinfo::SKIP: return "skip";
+    }
+}
+
+Sankey::Node& Sankey::Node::align(enum Align f) {
+    json["align"] = to_string(f);
+    return *this;
+}
+
+Sankey::Node& Sankey::Node::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Node& Sankey::Node::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Node& Sankey::Node::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Node& Sankey::Node::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node& Sankey::Node::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Sankey::Node& Sankey::Node::customdata(std::vector<T> f) {
+    json["customdata"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node& Sankey::Node::customdatasrc(std::string f) {
+    json["customdatasrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node& Sankey::Node::groups(std::vector<std::string> f) {
+    json["groups"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node& Sankey::Node::hoverinfo(enum Hoverinfo f) {
+    json["hoverinfo"] = to_string(f);
+    return *this;
+}
+
+Sankey::Node& Sankey::Node::hoverlabel(class Hoverlabel f) {
+    json["hoverlabel"] = std::move(f.json);
+    return *this;
+}
+
+Sankey::Node& Sankey::Node::hovertemplate(std::string f) {
+    json["hovertemplate"] = std::move(f);
+    return *this;
+}
+Sankey::Node& Sankey::Node::hovertemplate(std::vector<std::string> f) {
+    json["hovertemplate"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node& Sankey::Node::hovertemplatesrc(std::string f) {
+    json["hovertemplatesrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Sankey::Node& Sankey::Node::label(std::vector<T> f) {
+    json["label"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node& Sankey::Node::labelsrc(std::string f) {
+    json["labelsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node& Sankey::Node::line(class Line f) {
+    json["line"] = std::move(f.json);
+    return *this;
+}
+
+Sankey::Node& Sankey::Node::pad(double f) {
+    json["pad"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node& Sankey::Node::thickness(double f) {
+    json["thickness"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Sankey::Node& Sankey::Node::x(std::vector<T> f) {
+    json["x"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node& Sankey::Node::xsrc(std::string f) {
+    json["xsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Sankey::Node& Sankey::Node::y(std::vector<T> f) {
+    json["y"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node& Sankey::Node::ysrc(std::string f) {
+    json["ysrc"] = std::move(f);
+    return *this;
+}
+
+std::string Sankey::Node::Hoverlabel::to_string(Align e) {
+    switch(e) {
+        case Align::LEFT: return "left";
+        case Align::RIGHT: return "right";
+        case Align::AUTO: return "auto";
+    }
+}
+
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::align(enum Align f) {
+    json["align"] = to_string(f);
+    return *this;
+}
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::align(const std::vector<enum Align>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["align"] = std::move(stringified);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::alignsrc(std::string f) {
+    json["alignsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bgcolor(std::string f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bgcolor(double f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bgcolor(std::vector<std::string> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bgcolor(std::vector<double> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bgcolorsrc(std::string f) {
+    json["bgcolorsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bordercolor(std::string f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bordercolor(double f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bordercolor(std::vector<std::string> f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bordercolor(std::vector<double> f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bordercolorsrc(std::string f) {
+    json["bordercolorsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::namelength(int f) {
+    json["namelength"] = std::move(f);
+    return *this;
+}
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::namelength(std::vector<int> f) {
+    json["namelength"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::namelengthsrc(std::string f) {
+    json["namelengthsrc"] = std::move(f);
+    return *this;
+}
+
+std::string Sankey::Node::Hoverlabel::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Sankey::Node::Hoverlabel::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Sankey::Node::Hoverlabel::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::family(std::vector<std::string> f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::familysrc(std::string f) {
+    json["familysrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::linepositionsrc(std::string f) {
+    json["linepositionsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::shadow(std::vector<std::string> f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::shadowsrc(std::string f) {
+    json["shadowsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::size(std::vector<double> f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::sizesrc(std::string f) {
+    json["sizesrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::style(const std::vector<enum Style>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["style"] = std::move(stringified);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::stylesrc(std::string f) {
+    json["stylesrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::textcase(const std::vector<enum Textcase>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["textcase"] = std::move(stringified);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::textcasesrc(std::string f) {
+    json["textcasesrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::variant(const std::vector<enum Variant>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["variant"] = std::move(stringified);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::variantsrc(std::string f) {
+    json["variantsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::weight(std::vector<int> f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::weightsrc(std::string f) {
+    json["weightsrc"] = std::move(f);
+    return *this;
+}
+
+
+Sankey::Node::Line& Sankey::Node::Line::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Node::Line& Sankey::Node::Line::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Node::Line& Sankey::Node::Line::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Node::Line& Sankey::Node::Line::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Line& Sankey::Node::Line::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Line& Sankey::Node::Line::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+Sankey::Node::Line& Sankey::Node::Line::width(std::vector<double> f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+Sankey::Node::Line& Sankey::Node::Line::widthsrc(std::string f) {
+    json["widthsrc"] = std::move(f);
+    return *this;
+}
+
+
+Sankey::Stream& Sankey::Stream::maxpoints(double f) {
+    json["maxpoints"] = std::move(f);
+    return *this;
+}
+
+Sankey::Stream& Sankey::Stream::token(std::string f) {
+    json["token"] = std::move(f);
+    return *this;
+}
+
+std::string Sankey::Textfont::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Sankey::Textfont::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Sankey::Textfont::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Sankey::Textfont& Sankey::Textfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Sankey::Textfont& Sankey::Textfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Sankey::Textfont& Sankey::Textfont::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Sankey::Textfont& Sankey::Textfont::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Sankey::Textfont& Sankey::Textfont::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Sankey::Textfont& Sankey::Textfont::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Sankey::Textfont& Sankey::Textfont::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Sankey::Textfont& Sankey::Textfont::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Sankey::Textfont& Sankey::Textfont::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Sankey::Textfont& Sankey::Textfont::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+} // namespace plotlypp
+

@@ -1,0 +1,2206 @@
+// TODO: includes, copyright, etc
+
+namespace plotlypp {
+
+std::string Scatterternary::to_string(Fill e) {
+    switch(e) {
+        case Fill::NONE: return "none";
+        case Fill::TOSELF: return "toself";
+        case Fill::TONEXT: return "tonext";
+    }
+}
+std::string Scatterternary::to_string(Textposition e) {
+    switch(e) {
+        case Textposition::TOP_LEFT: return "top left";
+        case Textposition::TOP_CENTER: return "top center";
+        case Textposition::TOP_RIGHT: return "top right";
+        case Textposition::MIDDLE_LEFT: return "middle left";
+        case Textposition::MIDDLE_CENTER: return "middle center";
+        case Textposition::MIDDLE_RIGHT: return "middle right";
+        case Textposition::BOTTOM_LEFT: return "bottom left";
+        case Textposition::BOTTOM_CENTER: return "bottom center";
+        case Textposition::BOTTOM_RIGHT: return "bottom right";
+    }
+}
+std::string Scatterternary::to_string(Visible e) {
+    switch(e) {
+        case Visible::TRUE: return "True";
+        case Visible::FALSE: return "False";
+        case Visible::LEGENDONLY: return "legendonly";
+    }
+}
+
+template <typename T, typename>
+Scatterternary& Scatterternary::a(std::vector<T> f) {
+    json["a"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::asrc(std::string f) {
+    json["asrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Scatterternary& Scatterternary::b(std::vector<T> f) {
+    json["b"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::bsrc(std::string f) {
+    json["bsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Scatterternary& Scatterternary::c(std::vector<T> f) {
+    json["c"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::cliponaxis(bool f) {
+    json["cliponaxis"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::connectgaps(bool f) {
+    json["connectgaps"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::csrc(std::string f) {
+    json["csrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Scatterternary& Scatterternary::customdata(std::vector<T> f) {
+    json["customdata"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::customdatasrc(std::string f) {
+    json["customdatasrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::fill(enum Fill f) {
+    json["fill"] = to_string(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::fillcolor(std::string f) {
+    json["fillcolor"] = std::move(f);
+    return *this;
+}
+Scatterternary& Scatterternary::fillcolor(double f) {
+    json["fillcolor"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::hoverinfo(std::string f) {
+    json["hoverinfo"] = std::move(f);
+    return *this;
+}
+Scatterternary& Scatterternary::hoverinfo(std::vector<std::string> f) {
+    json["hoverinfo"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::hoverinfosrc(std::string f) {
+    json["hoverinfosrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::hoverlabel(class Hoverlabel f) {
+    json["hoverlabel"] = std::move(f.json);
+    return *this;
+}
+
+Scatterternary& Scatterternary::hoveron(std::string f) {
+    json["hoveron"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::hovertemplate(std::string f) {
+    json["hovertemplate"] = std::move(f);
+    return *this;
+}
+Scatterternary& Scatterternary::hovertemplate(std::vector<std::string> f) {
+    json["hovertemplate"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::hovertemplatesrc(std::string f) {
+    json["hovertemplatesrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::hovertext(std::string f) {
+    json["hovertext"] = std::move(f);
+    return *this;
+}
+Scatterternary& Scatterternary::hovertext(std::vector<std::string> f) {
+    json["hovertext"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::hovertextsrc(std::string f) {
+    json["hovertextsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Scatterternary& Scatterternary::ids(std::vector<T> f) {
+    json["ids"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::idssrc(std::string f) {
+    json["idssrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::legend(std::string f) {
+    json["legend"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::legendgroup(std::string f) {
+    json["legendgroup"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::legendgrouptitle(class Legendgrouptitle f) {
+    json["legendgrouptitle"] = std::move(f.json);
+    return *this;
+}
+
+Scatterternary& Scatterternary::legendrank(double f) {
+    json["legendrank"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::legendwidth(double f) {
+    json["legendwidth"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::line(class Line f) {
+    json["line"] = std::move(f.json);
+    return *this;
+}
+
+Scatterternary& Scatterternary::marker(class Marker f) {
+    json["marker"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T>
+Scatterternary& Scatterternary::meta(T f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+template <typename T>
+Scatterternary& Scatterternary::meta(std::vector<T> f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::metasrc(std::string f) {
+    json["metasrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::mode(std::string f) {
+    json["mode"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::name(std::string f) {
+    json["name"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::opacity(double f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::selected(class Selected f) {
+    json["selected"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T>
+Scatterternary& Scatterternary::selectedpoints(T f) {
+    json["selectedpoints"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::showlegend(bool f) {
+    json["showlegend"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::stream(class Stream f) {
+    json["stream"] = std::move(f.json);
+    return *this;
+}
+
+Scatterternary& Scatterternary::subplot(std::string f) {
+    json["subplot"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::sum(double f) {
+    json["sum"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+Scatterternary& Scatterternary::text(std::vector<std::string> f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::textfont(class Textfont f) {
+    json["textfont"] = std::move(f.json);
+    return *this;
+}
+
+Scatterternary& Scatterternary::textposition(enum Textposition f) {
+    json["textposition"] = to_string(f);
+    return *this;
+}
+Scatterternary& Scatterternary::textposition(const std::vector<enum Textposition>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["textposition"] = std::move(stringified);
+    return *this;
+}
+
+Scatterternary& Scatterternary::textpositionsrc(std::string f) {
+    json["textpositionsrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::textsrc(std::string f) {
+    json["textsrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::texttemplate(std::string f) {
+    json["texttemplate"] = std::move(f);
+    return *this;
+}
+Scatterternary& Scatterternary::texttemplate(std::vector<std::string> f) {
+    json["texttemplate"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::texttemplatesrc(std::string f) {
+    json["texttemplatesrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::uid(std::string f) {
+    json["uid"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Scatterternary& Scatterternary::uirevision(T f) {
+    json["uirevision"] = std::move(f);
+    return *this;
+}
+
+Scatterternary& Scatterternary::unselected(class Unselected f) {
+    json["unselected"] = std::move(f.json);
+    return *this;
+}
+
+Scatterternary& Scatterternary::visible(enum Visible f) {
+    json["visible"] = to_string(f);
+    return *this;
+}
+
+std::string Scatterternary::Hoverlabel::to_string(Align e) {
+    switch(e) {
+        case Align::LEFT: return "left";
+        case Align::RIGHT: return "right";
+        case Align::AUTO: return "auto";
+    }
+}
+
+Scatterternary::Hoverlabel& Scatterternary::Hoverlabel::align(enum Align f) {
+    json["align"] = to_string(f);
+    return *this;
+}
+Scatterternary::Hoverlabel& Scatterternary::Hoverlabel::align(const std::vector<enum Align>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["align"] = std::move(stringified);
+    return *this;
+}
+
+Scatterternary::Hoverlabel& Scatterternary::Hoverlabel::alignsrc(std::string f) {
+    json["alignsrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Hoverlabel& Scatterternary::Hoverlabel::bgcolor(std::string f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Scatterternary::Hoverlabel& Scatterternary::Hoverlabel::bgcolor(double f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Scatterternary::Hoverlabel& Scatterternary::Hoverlabel::bgcolor(std::vector<std::string> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Scatterternary::Hoverlabel& Scatterternary::Hoverlabel::bgcolor(std::vector<double> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Hoverlabel& Scatterternary::Hoverlabel::bgcolorsrc(std::string f) {
+    json["bgcolorsrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Hoverlabel& Scatterternary::Hoverlabel::bordercolor(std::string f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Scatterternary::Hoverlabel& Scatterternary::Hoverlabel::bordercolor(double f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Scatterternary::Hoverlabel& Scatterternary::Hoverlabel::bordercolor(std::vector<std::string> f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Scatterternary::Hoverlabel& Scatterternary::Hoverlabel::bordercolor(std::vector<double> f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Hoverlabel& Scatterternary::Hoverlabel::bordercolorsrc(std::string f) {
+    json["bordercolorsrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Hoverlabel& Scatterternary::Hoverlabel::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Scatterternary::Hoverlabel& Scatterternary::Hoverlabel::namelength(int f) {
+    json["namelength"] = std::move(f);
+    return *this;
+}
+Scatterternary::Hoverlabel& Scatterternary::Hoverlabel::namelength(std::vector<int> f) {
+    json["namelength"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Hoverlabel& Scatterternary::Hoverlabel::namelengthsrc(std::string f) {
+    json["namelengthsrc"] = std::move(f);
+    return *this;
+}
+
+std::string Scatterternary::Hoverlabel::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Scatterternary::Hoverlabel::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Scatterternary::Hoverlabel::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::family(std::vector<std::string> f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::familysrc(std::string f) {
+    json["familysrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::linepositionsrc(std::string f) {
+    json["linepositionsrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::shadow(std::vector<std::string> f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::shadowsrc(std::string f) {
+    json["shadowsrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::size(std::vector<double> f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::sizesrc(std::string f) {
+    json["sizesrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::style(const std::vector<enum Style>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["style"] = std::move(stringified);
+    return *this;
+}
+
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::stylesrc(std::string f) {
+    json["stylesrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::textcase(const std::vector<enum Textcase>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["textcase"] = std::move(stringified);
+    return *this;
+}
+
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::textcasesrc(std::string f) {
+    json["textcasesrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::variant(const std::vector<enum Variant>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["variant"] = std::move(stringified);
+    return *this;
+}
+
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::variantsrc(std::string f) {
+    json["variantsrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::weight(std::vector<int> f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::weightsrc(std::string f) {
+    json["weightsrc"] = std::move(f);
+    return *this;
+}
+
+
+Scatterternary::Legendgrouptitle& Scatterternary::Legendgrouptitle::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Scatterternary::Legendgrouptitle& Scatterternary::Legendgrouptitle::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+std::string Scatterternary::Legendgrouptitle::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Scatterternary::Legendgrouptitle::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Scatterternary::Legendgrouptitle::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Scatterternary::Legendgrouptitle::Font& Scatterternary::Legendgrouptitle::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Legendgrouptitle::Font& Scatterternary::Legendgrouptitle::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Legendgrouptitle::Font& Scatterternary::Legendgrouptitle::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Legendgrouptitle::Font& Scatterternary::Legendgrouptitle::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Legendgrouptitle::Font& Scatterternary::Legendgrouptitle::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Legendgrouptitle::Font& Scatterternary::Legendgrouptitle::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Legendgrouptitle::Font& Scatterternary::Legendgrouptitle::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Legendgrouptitle::Font& Scatterternary::Legendgrouptitle::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Legendgrouptitle::Font& Scatterternary::Legendgrouptitle::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Legendgrouptitle::Font& Scatterternary::Legendgrouptitle::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+std::string Scatterternary::Line::to_string(Shape e) {
+    switch(e) {
+        case Shape::LINEAR: return "linear";
+        case Shape::SPLINE: return "spline";
+    }
+}
+
+Scatterternary::Line& Scatterternary::Line::backoff(double f) {
+    json["backoff"] = std::move(f);
+    return *this;
+}
+Scatterternary::Line& Scatterternary::Line::backoff(std::vector<double> f) {
+    json["backoff"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Line& Scatterternary::Line::backoffsrc(std::string f) {
+    json["backoffsrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Line& Scatterternary::Line::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Line& Scatterternary::Line::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Line& Scatterternary::Line::dash(std::string f) {
+    json["dash"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Line& Scatterternary::Line::shape(enum Shape f) {
+    json["shape"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Line& Scatterternary::Line::smoothing(double f) {
+    json["smoothing"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Line& Scatterternary::Line::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+std::string Scatterternary::Marker::to_string(Angleref e) {
+    switch(e) {
+        case Angleref::PREVIOUS: return "previous";
+        case Angleref::UP: return "up";
+    }
+}
+std::string Scatterternary::Marker::to_string(Sizemode e) {
+    switch(e) {
+        case Sizemode::DIAMETER: return "diameter";
+        case Sizemode::AREA: return "area";
+    }
+}
+std::string Scatterternary::Marker::to_string(Symbol e) {
+    switch(e) {
+        case Symbol::NUM_0: return "0";
+        case Symbol::CIRCLE: return "circle";
+        case Symbol::NUM_100: return "100";
+        case Symbol::CIRCLE_OPEN: return "circle-open";
+        case Symbol::NUM_200: return "200";
+        case Symbol::CIRCLE_DOT: return "circle-dot";
+        case Symbol::NUM_300: return "300";
+        case Symbol::CIRCLE_OPEN_DOT: return "circle-open-dot";
+        case Symbol::NUM_1: return "1";
+        case Symbol::SQUARE: return "square";
+        case Symbol::NUM_101: return "101";
+        case Symbol::SQUARE_OPEN: return "square-open";
+        case Symbol::NUM_201: return "201";
+        case Symbol::SQUARE_DOT: return "square-dot";
+        case Symbol::NUM_301: return "301";
+        case Symbol::SQUARE_OPEN_DOT: return "square-open-dot";
+        case Symbol::NUM_2: return "2";
+        case Symbol::DIAMOND: return "diamond";
+        case Symbol::NUM_102: return "102";
+        case Symbol::DIAMOND_OPEN: return "diamond-open";
+        case Symbol::NUM_202: return "202";
+        case Symbol::DIAMOND_DOT: return "diamond-dot";
+        case Symbol::NUM_302: return "302";
+        case Symbol::DIAMOND_OPEN_DOT: return "diamond-open-dot";
+        case Symbol::NUM_3: return "3";
+        case Symbol::CROSS: return "cross";
+        case Symbol::NUM_103: return "103";
+        case Symbol::CROSS_OPEN: return "cross-open";
+        case Symbol::NUM_203: return "203";
+        case Symbol::CROSS_DOT: return "cross-dot";
+        case Symbol::NUM_303: return "303";
+        case Symbol::CROSS_OPEN_DOT: return "cross-open-dot";
+        case Symbol::NUM_4: return "4";
+        case Symbol::X: return "x";
+        case Symbol::NUM_104: return "104";
+        case Symbol::X_OPEN: return "x-open";
+        case Symbol::NUM_204: return "204";
+        case Symbol::X_DOT: return "x-dot";
+        case Symbol::NUM_304: return "304";
+        case Symbol::X_OPEN_DOT: return "x-open-dot";
+        case Symbol::NUM_5: return "5";
+        case Symbol::TRIANGLE_UP: return "triangle-up";
+        case Symbol::NUM_105: return "105";
+        case Symbol::TRIANGLE_UP_OPEN: return "triangle-up-open";
+        case Symbol::NUM_205: return "205";
+        case Symbol::TRIANGLE_UP_DOT: return "triangle-up-dot";
+        case Symbol::NUM_305: return "305";
+        case Symbol::TRIANGLE_UP_OPEN_DOT: return "triangle-up-open-dot";
+        case Symbol::NUM_6: return "6";
+        case Symbol::TRIANGLE_DOWN: return "triangle-down";
+        case Symbol::NUM_106: return "106";
+        case Symbol::TRIANGLE_DOWN_OPEN: return "triangle-down-open";
+        case Symbol::NUM_206: return "206";
+        case Symbol::TRIANGLE_DOWN_DOT: return "triangle-down-dot";
+        case Symbol::NUM_306: return "306";
+        case Symbol::TRIANGLE_DOWN_OPEN_DOT: return "triangle-down-open-dot";
+        case Symbol::NUM_7: return "7";
+        case Symbol::TRIANGLE_LEFT: return "triangle-left";
+        case Symbol::NUM_107: return "107";
+        case Symbol::TRIANGLE_LEFT_OPEN: return "triangle-left-open";
+        case Symbol::NUM_207: return "207";
+        case Symbol::TRIANGLE_LEFT_DOT: return "triangle-left-dot";
+        case Symbol::NUM_307: return "307";
+        case Symbol::TRIANGLE_LEFT_OPEN_DOT: return "triangle-left-open-dot";
+        case Symbol::NUM_8: return "8";
+        case Symbol::TRIANGLE_RIGHT: return "triangle-right";
+        case Symbol::NUM_108: return "108";
+        case Symbol::TRIANGLE_RIGHT_OPEN: return "triangle-right-open";
+        case Symbol::NUM_208: return "208";
+        case Symbol::TRIANGLE_RIGHT_DOT: return "triangle-right-dot";
+        case Symbol::NUM_308: return "308";
+        case Symbol::TRIANGLE_RIGHT_OPEN_DOT: return "triangle-right-open-dot";
+        case Symbol::NUM_9: return "9";
+        case Symbol::TRIANGLE_NE: return "triangle-ne";
+        case Symbol::NUM_109: return "109";
+        case Symbol::TRIANGLE_NE_OPEN: return "triangle-ne-open";
+        case Symbol::NUM_209: return "209";
+        case Symbol::TRIANGLE_NE_DOT: return "triangle-ne-dot";
+        case Symbol::NUM_309: return "309";
+        case Symbol::TRIANGLE_NE_OPEN_DOT: return "triangle-ne-open-dot";
+        case Symbol::NUM_10: return "10";
+        case Symbol::TRIANGLE_SE: return "triangle-se";
+        case Symbol::NUM_110: return "110";
+        case Symbol::TRIANGLE_SE_OPEN: return "triangle-se-open";
+        case Symbol::NUM_210: return "210";
+        case Symbol::TRIANGLE_SE_DOT: return "triangle-se-dot";
+        case Symbol::NUM_310: return "310";
+        case Symbol::TRIANGLE_SE_OPEN_DOT: return "triangle-se-open-dot";
+        case Symbol::NUM_11: return "11";
+        case Symbol::TRIANGLE_SW: return "triangle-sw";
+        case Symbol::NUM_111: return "111";
+        case Symbol::TRIANGLE_SW_OPEN: return "triangle-sw-open";
+        case Symbol::NUM_211: return "211";
+        case Symbol::TRIANGLE_SW_DOT: return "triangle-sw-dot";
+        case Symbol::NUM_311: return "311";
+        case Symbol::TRIANGLE_SW_OPEN_DOT: return "triangle-sw-open-dot";
+        case Symbol::NUM_12: return "12";
+        case Symbol::TRIANGLE_NW: return "triangle-nw";
+        case Symbol::NUM_112: return "112";
+        case Symbol::TRIANGLE_NW_OPEN: return "triangle-nw-open";
+        case Symbol::NUM_212: return "212";
+        case Symbol::TRIANGLE_NW_DOT: return "triangle-nw-dot";
+        case Symbol::NUM_312: return "312";
+        case Symbol::TRIANGLE_NW_OPEN_DOT: return "triangle-nw-open-dot";
+        case Symbol::NUM_13: return "13";
+        case Symbol::PENTAGON: return "pentagon";
+        case Symbol::NUM_113: return "113";
+        case Symbol::PENTAGON_OPEN: return "pentagon-open";
+        case Symbol::NUM_213: return "213";
+        case Symbol::PENTAGON_DOT: return "pentagon-dot";
+        case Symbol::NUM_313: return "313";
+        case Symbol::PENTAGON_OPEN_DOT: return "pentagon-open-dot";
+        case Symbol::NUM_14: return "14";
+        case Symbol::HEXAGON: return "hexagon";
+        case Symbol::NUM_114: return "114";
+        case Symbol::HEXAGON_OPEN: return "hexagon-open";
+        case Symbol::NUM_214: return "214";
+        case Symbol::HEXAGON_DOT: return "hexagon-dot";
+        case Symbol::NUM_314: return "314";
+        case Symbol::HEXAGON_OPEN_DOT: return "hexagon-open-dot";
+        case Symbol::NUM_15: return "15";
+        case Symbol::HEXAGON2: return "hexagon2";
+        case Symbol::NUM_115: return "115";
+        case Symbol::HEXAGON2_OPEN: return "hexagon2-open";
+        case Symbol::NUM_215: return "215";
+        case Symbol::HEXAGON2_DOT: return "hexagon2-dot";
+        case Symbol::NUM_315: return "315";
+        case Symbol::HEXAGON2_OPEN_DOT: return "hexagon2-open-dot";
+        case Symbol::NUM_16: return "16";
+        case Symbol::OCTAGON: return "octagon";
+        case Symbol::NUM_116: return "116";
+        case Symbol::OCTAGON_OPEN: return "octagon-open";
+        case Symbol::NUM_216: return "216";
+        case Symbol::OCTAGON_DOT: return "octagon-dot";
+        case Symbol::NUM_316: return "316";
+        case Symbol::OCTAGON_OPEN_DOT: return "octagon-open-dot";
+        case Symbol::NUM_17: return "17";
+        case Symbol::STAR: return "star";
+        case Symbol::NUM_117: return "117";
+        case Symbol::STAR_OPEN: return "star-open";
+        case Symbol::NUM_217: return "217";
+        case Symbol::STAR_DOT: return "star-dot";
+        case Symbol::NUM_317: return "317";
+        case Symbol::STAR_OPEN_DOT: return "star-open-dot";
+        case Symbol::NUM_18: return "18";
+        case Symbol::HEXAGRAM: return "hexagram";
+        case Symbol::NUM_118: return "118";
+        case Symbol::HEXAGRAM_OPEN: return "hexagram-open";
+        case Symbol::NUM_218: return "218";
+        case Symbol::HEXAGRAM_DOT: return "hexagram-dot";
+        case Symbol::NUM_318: return "318";
+        case Symbol::HEXAGRAM_OPEN_DOT: return "hexagram-open-dot";
+        case Symbol::NUM_19: return "19";
+        case Symbol::STAR_TRIANGLE_UP: return "star-triangle-up";
+        case Symbol::NUM_119: return "119";
+        case Symbol::STAR_TRIANGLE_UP_OPEN: return "star-triangle-up-open";
+        case Symbol::NUM_219: return "219";
+        case Symbol::STAR_TRIANGLE_UP_DOT: return "star-triangle-up-dot";
+        case Symbol::NUM_319: return "319";
+        case Symbol::STAR_TRIANGLE_UP_OPEN_DOT: return "star-triangle-up-open-dot";
+        case Symbol::NUM_20: return "20";
+        case Symbol::STAR_TRIANGLE_DOWN: return "star-triangle-down";
+        case Symbol::NUM_120: return "120";
+        case Symbol::STAR_TRIANGLE_DOWN_OPEN: return "star-triangle-down-open";
+        case Symbol::NUM_220: return "220";
+        case Symbol::STAR_TRIANGLE_DOWN_DOT: return "star-triangle-down-dot";
+        case Symbol::NUM_320: return "320";
+        case Symbol::STAR_TRIANGLE_DOWN_OPEN_DOT: return "star-triangle-down-open-dot";
+        case Symbol::NUM_21: return "21";
+        case Symbol::STAR_SQUARE: return "star-square";
+        case Symbol::NUM_121: return "121";
+        case Symbol::STAR_SQUARE_OPEN: return "star-square-open";
+        case Symbol::NUM_221: return "221";
+        case Symbol::STAR_SQUARE_DOT: return "star-square-dot";
+        case Symbol::NUM_321: return "321";
+        case Symbol::STAR_SQUARE_OPEN_DOT: return "star-square-open-dot";
+        case Symbol::NUM_22: return "22";
+        case Symbol::STAR_DIAMOND: return "star-diamond";
+        case Symbol::NUM_122: return "122";
+        case Symbol::STAR_DIAMOND_OPEN: return "star-diamond-open";
+        case Symbol::NUM_222: return "222";
+        case Symbol::STAR_DIAMOND_DOT: return "star-diamond-dot";
+        case Symbol::NUM_322: return "322";
+        case Symbol::STAR_DIAMOND_OPEN_DOT: return "star-diamond-open-dot";
+        case Symbol::NUM_23: return "23";
+        case Symbol::DIAMOND_TALL: return "diamond-tall";
+        case Symbol::NUM_123: return "123";
+        case Symbol::DIAMOND_TALL_OPEN: return "diamond-tall-open";
+        case Symbol::NUM_223: return "223";
+        case Symbol::DIAMOND_TALL_DOT: return "diamond-tall-dot";
+        case Symbol::NUM_323: return "323";
+        case Symbol::DIAMOND_TALL_OPEN_DOT: return "diamond-tall-open-dot";
+        case Symbol::NUM_24: return "24";
+        case Symbol::DIAMOND_WIDE: return "diamond-wide";
+        case Symbol::NUM_124: return "124";
+        case Symbol::DIAMOND_WIDE_OPEN: return "diamond-wide-open";
+        case Symbol::NUM_224: return "224";
+        case Symbol::DIAMOND_WIDE_DOT: return "diamond-wide-dot";
+        case Symbol::NUM_324: return "324";
+        case Symbol::DIAMOND_WIDE_OPEN_DOT: return "diamond-wide-open-dot";
+        case Symbol::NUM_25: return "25";
+        case Symbol::HOURGLASS: return "hourglass";
+        case Symbol::NUM_125: return "125";
+        case Symbol::HOURGLASS_OPEN: return "hourglass-open";
+        case Symbol::NUM_26: return "26";
+        case Symbol::BOWTIE: return "bowtie";
+        case Symbol::NUM_126: return "126";
+        case Symbol::BOWTIE_OPEN: return "bowtie-open";
+        case Symbol::NUM_27: return "27";
+        case Symbol::CIRCLE_CROSS: return "circle-cross";
+        case Symbol::NUM_127: return "127";
+        case Symbol::CIRCLE_CROSS_OPEN: return "circle-cross-open";
+        case Symbol::NUM_28: return "28";
+        case Symbol::CIRCLE_X: return "circle-x";
+        case Symbol::NUM_128: return "128";
+        case Symbol::CIRCLE_X_OPEN: return "circle-x-open";
+        case Symbol::NUM_29: return "29";
+        case Symbol::SQUARE_CROSS: return "square-cross";
+        case Symbol::NUM_129: return "129";
+        case Symbol::SQUARE_CROSS_OPEN: return "square-cross-open";
+        case Symbol::NUM_30: return "30";
+        case Symbol::SQUARE_X: return "square-x";
+        case Symbol::NUM_130: return "130";
+        case Symbol::SQUARE_X_OPEN: return "square-x-open";
+        case Symbol::NUM_31: return "31";
+        case Symbol::DIAMOND_CROSS: return "diamond-cross";
+        case Symbol::NUM_131: return "131";
+        case Symbol::DIAMOND_CROSS_OPEN: return "diamond-cross-open";
+        case Symbol::NUM_32: return "32";
+        case Symbol::DIAMOND_X: return "diamond-x";
+        case Symbol::NUM_132: return "132";
+        case Symbol::DIAMOND_X_OPEN: return "diamond-x-open";
+        case Symbol::NUM_33: return "33";
+        case Symbol::CROSS_THIN: return "cross-thin";
+        case Symbol::NUM_133: return "133";
+        case Symbol::CROSS_THIN_OPEN: return "cross-thin-open";
+        case Symbol::NUM_34: return "34";
+        case Symbol::X_THIN: return "x-thin";
+        case Symbol::NUM_134: return "134";
+        case Symbol::X_THIN_OPEN: return "x-thin-open";
+        case Symbol::NUM_35: return "35";
+        case Symbol::ASTERISK: return "asterisk";
+        case Symbol::NUM_135: return "135";
+        case Symbol::ASTERISK_OPEN: return "asterisk-open";
+        case Symbol::NUM_36: return "36";
+        case Symbol::HASH: return "hash";
+        case Symbol::NUM_136: return "136";
+        case Symbol::HASH_OPEN: return "hash-open";
+        case Symbol::NUM_236: return "236";
+        case Symbol::HASH_DOT: return "hash-dot";
+        case Symbol::NUM_336: return "336";
+        case Symbol::HASH_OPEN_DOT: return "hash-open-dot";
+        case Symbol::NUM_37: return "37";
+        case Symbol::Y_UP: return "y-up";
+        case Symbol::NUM_137: return "137";
+        case Symbol::Y_UP_OPEN: return "y-up-open";
+        case Symbol::NUM_38: return "38";
+        case Symbol::Y_DOWN: return "y-down";
+        case Symbol::NUM_138: return "138";
+        case Symbol::Y_DOWN_OPEN: return "y-down-open";
+        case Symbol::NUM_39: return "39";
+        case Symbol::Y_LEFT: return "y-left";
+        case Symbol::NUM_139: return "139";
+        case Symbol::Y_LEFT_OPEN: return "y-left-open";
+        case Symbol::NUM_40: return "40";
+        case Symbol::Y_RIGHT: return "y-right";
+        case Symbol::NUM_140: return "140";
+        case Symbol::Y_RIGHT_OPEN: return "y-right-open";
+        case Symbol::NUM_41: return "41";
+        case Symbol::LINE_EW: return "line-ew";
+        case Symbol::NUM_141: return "141";
+        case Symbol::LINE_EW_OPEN: return "line-ew-open";
+        case Symbol::NUM_42: return "42";
+        case Symbol::LINE_NS: return "line-ns";
+        case Symbol::NUM_142: return "142";
+        case Symbol::LINE_NS_OPEN: return "line-ns-open";
+        case Symbol::NUM_43: return "43";
+        case Symbol::LINE_NE: return "line-ne";
+        case Symbol::NUM_143: return "143";
+        case Symbol::LINE_NE_OPEN: return "line-ne-open";
+        case Symbol::NUM_44: return "44";
+        case Symbol::LINE_NW: return "line-nw";
+        case Symbol::NUM_144: return "144";
+        case Symbol::LINE_NW_OPEN: return "line-nw-open";
+        case Symbol::NUM_45: return "45";
+        case Symbol::ARROW_UP: return "arrow-up";
+        case Symbol::NUM_145: return "145";
+        case Symbol::ARROW_UP_OPEN: return "arrow-up-open";
+        case Symbol::NUM_46: return "46";
+        case Symbol::ARROW_DOWN: return "arrow-down";
+        case Symbol::NUM_146: return "146";
+        case Symbol::ARROW_DOWN_OPEN: return "arrow-down-open";
+        case Symbol::NUM_47: return "47";
+        case Symbol::ARROW_LEFT: return "arrow-left";
+        case Symbol::NUM_147: return "147";
+        case Symbol::ARROW_LEFT_OPEN: return "arrow-left-open";
+        case Symbol::NUM_48: return "48";
+        case Symbol::ARROW_RIGHT: return "arrow-right";
+        case Symbol::NUM_148: return "148";
+        case Symbol::ARROW_RIGHT_OPEN: return "arrow-right-open";
+        case Symbol::NUM_49: return "49";
+        case Symbol::ARROW_BAR_UP: return "arrow-bar-up";
+        case Symbol::NUM_149: return "149";
+        case Symbol::ARROW_BAR_UP_OPEN: return "arrow-bar-up-open";
+        case Symbol::NUM_50: return "50";
+        case Symbol::ARROW_BAR_DOWN: return "arrow-bar-down";
+        case Symbol::NUM_150: return "150";
+        case Symbol::ARROW_BAR_DOWN_OPEN: return "arrow-bar-down-open";
+        case Symbol::NUM_51: return "51";
+        case Symbol::ARROW_BAR_LEFT: return "arrow-bar-left";
+        case Symbol::NUM_151: return "151";
+        case Symbol::ARROW_BAR_LEFT_OPEN: return "arrow-bar-left-open";
+        case Symbol::NUM_52: return "52";
+        case Symbol::ARROW_BAR_RIGHT: return "arrow-bar-right";
+        case Symbol::NUM_152: return "152";
+        case Symbol::ARROW_BAR_RIGHT_OPEN: return "arrow-bar-right-open";
+        case Symbol::NUM_53: return "53";
+        case Symbol::ARROW: return "arrow";
+        case Symbol::NUM_153: return "153";
+        case Symbol::ARROW_OPEN: return "arrow-open";
+        case Symbol::NUM_54: return "54";
+        case Symbol::ARROW_WIDE: return "arrow-wide";
+        case Symbol::NUM_154: return "154";
+        case Symbol::ARROW_WIDE_OPEN: return "arrow-wide-open";
+    }
+}
+
+Scatterternary::Marker& Scatterternary::Marker::angle(double f) {
+    json["angle"] = std::move(f);
+    return *this;
+}
+Scatterternary::Marker& Scatterternary::Marker::angle(std::vector<double> f) {
+    json["angle"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::angleref(enum Angleref f) {
+    json["angleref"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::anglesrc(std::string f) {
+    json["anglesrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::autocolorscale(bool f) {
+    json["autocolorscale"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::cauto(bool f) {
+    json["cauto"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::cmax(double f) {
+    json["cmax"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::cmid(double f) {
+    json["cmid"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::cmin(double f) {
+    json["cmin"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Marker& Scatterternary::Marker::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Marker& Scatterternary::Marker::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Marker& Scatterternary::Marker::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::coloraxis(std::string f) {
+    json["coloraxis"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::colorbar(class Colorbar f) {
+    json["colorbar"] = std::move(f.json);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::colorscale(std::string f) {
+    json["colorscale"] = std::move(f);
+    return *this;
+}
+Scatterternary::Marker& Scatterternary::Marker::colorscale(std::vector<std::pair<double, std::string>> f) {
+    json["colorscale"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::gradient(class Gradient f) {
+    json["gradient"] = std::move(f.json);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::line(class Line f) {
+    json["line"] = std::move(f.json);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::maxdisplayed(double f) {
+    json["maxdisplayed"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::opacity(double f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+Scatterternary::Marker& Scatterternary::Marker::opacity(std::vector<double> f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::opacitysrc(std::string f) {
+    json["opacitysrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::reversescale(bool f) {
+    json["reversescale"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::showscale(bool f) {
+    json["showscale"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+Scatterternary::Marker& Scatterternary::Marker::size(std::vector<double> f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::sizemin(double f) {
+    json["sizemin"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::sizemode(enum Sizemode f) {
+    json["sizemode"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::sizeref(double f) {
+    json["sizeref"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::sizesrc(std::string f) {
+    json["sizesrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::standoff(double f) {
+    json["standoff"] = std::move(f);
+    return *this;
+}
+Scatterternary::Marker& Scatterternary::Marker::standoff(std::vector<double> f) {
+    json["standoff"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::standoffsrc(std::string f) {
+    json["standoffsrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::symbol(enum Symbol f) {
+    json["symbol"] = to_string(f);
+    return *this;
+}
+Scatterternary::Marker& Scatterternary::Marker::symbol(const std::vector<enum Symbol>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["symbol"] = std::move(stringified);
+    return *this;
+}
+
+Scatterternary::Marker& Scatterternary::Marker::symbolsrc(std::string f) {
+    json["symbolsrc"] = std::move(f);
+    return *this;
+}
+
+std::string Scatterternary::Marker::Colorbar::to_string(Exponentformat e) {
+    switch(e) {
+        case Exponentformat::NONE: return "none";
+        case Exponentformat::E: return "E";
+        case Exponentformat::POWER: return "power";
+        case Exponentformat::SI: return "SI";
+        case Exponentformat::B: return "B";
+    }
+}
+std::string Scatterternary::Marker::Colorbar::to_string(Lenmode e) {
+    switch(e) {
+        case Lenmode::FRACTION: return "fraction";
+        case Lenmode::PIXELS: return "pixels";
+    }
+}
+std::string Scatterternary::Marker::Colorbar::to_string(Orientation e) {
+    switch(e) {
+        case Orientation::H: return "h";
+        case Orientation::V: return "v";
+    }
+}
+std::string Scatterternary::Marker::Colorbar::to_string(Showexponent e) {
+    switch(e) {
+        case Showexponent::ALL: return "all";
+        case Showexponent::FIRST: return "first";
+        case Showexponent::LAST: return "last";
+        case Showexponent::NONE: return "none";
+    }
+}
+std::string Scatterternary::Marker::Colorbar::to_string(Showtickprefix e) {
+    switch(e) {
+        case Showtickprefix::ALL: return "all";
+        case Showtickprefix::FIRST: return "first";
+        case Showtickprefix::LAST: return "last";
+        case Showtickprefix::NONE: return "none";
+    }
+}
+std::string Scatterternary::Marker::Colorbar::to_string(Showticksuffix e) {
+    switch(e) {
+        case Showticksuffix::ALL: return "all";
+        case Showticksuffix::FIRST: return "first";
+        case Showticksuffix::LAST: return "last";
+        case Showticksuffix::NONE: return "none";
+    }
+}
+std::string Scatterternary::Marker::Colorbar::to_string(Thicknessmode e) {
+    switch(e) {
+        case Thicknessmode::FRACTION: return "fraction";
+        case Thicknessmode::PIXELS: return "pixels";
+    }
+}
+std::string Scatterternary::Marker::Colorbar::to_string(Ticklabeloverflow e) {
+    switch(e) {
+        case Ticklabeloverflow::ALLOW: return "allow";
+        case Ticklabeloverflow::HIDE_PAST_DIV: return "hide past div";
+        case Ticklabeloverflow::HIDE_PAST_DOMAIN: return "hide past domain";
+    }
+}
+std::string Scatterternary::Marker::Colorbar::to_string(Ticklabelposition e) {
+    switch(e) {
+        case Ticklabelposition::OUTSIDE: return "outside";
+        case Ticklabelposition::INSIDE: return "inside";
+        case Ticklabelposition::OUTSIDE_TOP: return "outside top";
+        case Ticklabelposition::INSIDE_TOP: return "inside top";
+        case Ticklabelposition::OUTSIDE_LEFT: return "outside left";
+        case Ticklabelposition::INSIDE_LEFT: return "inside left";
+        case Ticklabelposition::OUTSIDE_RIGHT: return "outside right";
+        case Ticklabelposition::INSIDE_RIGHT: return "inside right";
+        case Ticklabelposition::OUTSIDE_BOTTOM: return "outside bottom";
+        case Ticklabelposition::INSIDE_BOTTOM: return "inside bottom";
+    }
+}
+std::string Scatterternary::Marker::Colorbar::to_string(Tickmode e) {
+    switch(e) {
+        case Tickmode::AUTO: return "auto";
+        case Tickmode::LINEAR: return "linear";
+        case Tickmode::ARRAY: return "array";
+    }
+}
+std::string Scatterternary::Marker::Colorbar::to_string(Ticks e) {
+    switch(e) {
+        case Ticks::OUTSIDE: return "outside";
+        case Ticks::INSIDE: return "inside";
+        case Ticks::EMPTY: return "";
+    }
+}
+std::string Scatterternary::Marker::Colorbar::to_string(Xanchor e) {
+    switch(e) {
+        case Xanchor::LEFT: return "left";
+        case Xanchor::CENTER: return "center";
+        case Xanchor::RIGHT: return "right";
+    }
+}
+std::string Scatterternary::Marker::Colorbar::to_string(Xref e) {
+    switch(e) {
+        case Xref::CONTAINER: return "container";
+        case Xref::PAPER: return "paper";
+    }
+}
+std::string Scatterternary::Marker::Colorbar::to_string(Yanchor e) {
+    switch(e) {
+        case Yanchor::TOP: return "top";
+        case Yanchor::MIDDLE: return "middle";
+        case Yanchor::BOTTOM: return "bottom";
+    }
+}
+std::string Scatterternary::Marker::Colorbar::to_string(Yref e) {
+    switch(e) {
+        case Yref::CONTAINER: return "container";
+        case Yref::PAPER: return "paper";
+    }
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::bgcolor(std::string f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::bgcolor(double f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::bordercolor(std::string f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::bordercolor(double f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::borderwidth(double f) {
+    json["borderwidth"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::dtick(T f) {
+    json["dtick"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::exponentformat(enum Exponentformat f) {
+    json["exponentformat"] = to_string(f);
+    return *this;
+}
+
+template <typename T>
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::labelalias(T f) {
+    json["labelalias"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::len(double f) {
+    json["len"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::lenmode(enum Lenmode f) {
+    json["lenmode"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::minexponent(double f) {
+    json["minexponent"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::nticks(int f) {
+    json["nticks"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::orientation(enum Orientation f) {
+    json["orientation"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::outlinecolor(std::string f) {
+    json["outlinecolor"] = std::move(f);
+    return *this;
+}
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::outlinecolor(double f) {
+    json["outlinecolor"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::outlinewidth(double f) {
+    json["outlinewidth"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::separatethousands(bool f) {
+    json["separatethousands"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::showexponent(enum Showexponent f) {
+    json["showexponent"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::showticklabels(bool f) {
+    json["showticklabels"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::showtickprefix(enum Showtickprefix f) {
+    json["showtickprefix"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::showticksuffix(enum Showticksuffix f) {
+    json["showticksuffix"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::thickness(double f) {
+    json["thickness"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::thicknessmode(enum Thicknessmode f) {
+    json["thicknessmode"] = to_string(f);
+    return *this;
+}
+
+template <typename T>
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::tick0(T f) {
+    json["tick0"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::tickangle(double f) {
+    json["tickangle"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::tickcolor(std::string f) {
+    json["tickcolor"] = std::move(f);
+    return *this;
+}
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::tickcolor(double f) {
+    json["tickcolor"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::tickfont(class Tickfont f) {
+    json["tickfont"] = std::move(f.json);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::tickformat(std::string f) {
+    json["tickformat"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::tickformatstops(class Tickformatstops f) {
+    json["tickformatstops"] = std::move(f.json);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::ticklabeloverflow(enum Ticklabeloverflow f) {
+    json["ticklabeloverflow"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::ticklabelposition(enum Ticklabelposition f) {
+    json["ticklabelposition"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::ticklabelstep(int f) {
+    json["ticklabelstep"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::ticklen(double f) {
+    json["ticklen"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::tickmode(enum Tickmode f) {
+    json["tickmode"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::tickprefix(std::string f) {
+    json["tickprefix"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::ticks(enum Ticks f) {
+    json["ticks"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::ticksuffix(std::string f) {
+    json["ticksuffix"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::ticktext(std::vector<T> f) {
+    json["ticktext"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::ticktextsrc(std::string f) {
+    json["ticktextsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::tickvals(std::vector<T> f) {
+    json["tickvals"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::tickvalssrc(std::string f) {
+    json["tickvalssrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::tickwidth(double f) {
+    json["tickwidth"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::title(class Title f) {
+    json["title"] = std::move(f.json);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::x(double f) {
+    json["x"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::xanchor(enum Xanchor f) {
+    json["xanchor"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::xpad(double f) {
+    json["xpad"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::xref(enum Xref f) {
+    json["xref"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::y(double f) {
+    json["y"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::yanchor(enum Yanchor f) {
+    json["yanchor"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::ypad(double f) {
+    json["ypad"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::yref(enum Yref f) {
+    json["yref"] = to_string(f);
+    return *this;
+}
+
+std::string Scatterternary::Marker::Colorbar::Tickfont::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Scatterternary::Marker::Colorbar::Tickfont::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Scatterternary::Marker::Colorbar::Tickfont::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Scatterternary::Marker::Colorbar::Tickfont& Scatterternary::Marker::Colorbar::Tickfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Marker::Colorbar::Tickfont& Scatterternary::Marker::Colorbar::Tickfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar::Tickfont& Scatterternary::Marker::Colorbar::Tickfont::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar::Tickfont& Scatterternary::Marker::Colorbar::Tickfont::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar::Tickfont& Scatterternary::Marker::Colorbar::Tickfont::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar::Tickfont& Scatterternary::Marker::Colorbar::Tickfont::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar::Tickfont& Scatterternary::Marker::Colorbar::Tickfont::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar::Tickfont& Scatterternary::Marker::Colorbar::Tickfont::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar::Tickfont& Scatterternary::Marker::Colorbar::Tickfont::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar::Tickfont& Scatterternary::Marker::Colorbar::Tickfont::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Scatterternary::Marker::Colorbar::Tickformatstops& Scatterternary::Marker::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+    json["tickformatstop"] = std::move(f.json);
+    return *this;
+}
+
+
+Scatterternary::Marker::Colorbar::Tickformatstops::Tickformatstop& Scatterternary::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+    json["dtickrange"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar::Tickformatstops::Tickformatstop& Scatterternary::Marker::Colorbar::Tickformatstops::Tickformatstop::enabled(bool f) {
+    json["enabled"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar::Tickformatstops::Tickformatstop& Scatterternary::Marker::Colorbar::Tickformatstops::Tickformatstop::name(std::string f) {
+    json["name"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar::Tickformatstops::Tickformatstop& Scatterternary::Marker::Colorbar::Tickformatstops::Tickformatstop::templateitemname(std::string f) {
+    json["templateitemname"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar::Tickformatstops::Tickformatstop& Scatterternary::Marker::Colorbar::Tickformatstops::Tickformatstop::value(std::string f) {
+    json["value"] = std::move(f);
+    return *this;
+}
+
+std::string Scatterternary::Marker::Colorbar::Title::to_string(Side e) {
+    switch(e) {
+        case Side::RIGHT: return "right";
+        case Side::TOP: return "top";
+        case Side::BOTTOM: return "bottom";
+    }
+}
+
+Scatterternary::Marker::Colorbar::Title& Scatterternary::Marker::Colorbar::Title::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar::Title& Scatterternary::Marker::Colorbar::Title::side(enum Side f) {
+    json["side"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar::Title& Scatterternary::Marker::Colorbar::Title::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+std::string Scatterternary::Marker::Colorbar::Title::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Scatterternary::Marker::Colorbar::Title::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Scatterternary::Marker::Colorbar::Title::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Scatterternary::Marker::Colorbar::Title::Font& Scatterternary::Marker::Colorbar::Title::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Marker::Colorbar::Title::Font& Scatterternary::Marker::Colorbar::Title::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar::Title::Font& Scatterternary::Marker::Colorbar::Title::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar::Title::Font& Scatterternary::Marker::Colorbar::Title::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar::Title::Font& Scatterternary::Marker::Colorbar::Title::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar::Title::Font& Scatterternary::Marker::Colorbar::Title::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar::Title::Font& Scatterternary::Marker::Colorbar::Title::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar::Title::Font& Scatterternary::Marker::Colorbar::Title::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar::Title::Font& Scatterternary::Marker::Colorbar::Title::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Scatterternary::Marker::Colorbar::Title::Font& Scatterternary::Marker::Colorbar::Title::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+std::string Scatterternary::Marker::Gradient::to_string(Type e) {
+    switch(e) {
+        case Type::RADIAL: return "radial";
+        case Type::HORIZONTAL: return "horizontal";
+        case Type::VERTICAL: return "vertical";
+        case Type::NONE: return "none";
+    }
+}
+
+Scatterternary::Marker::Gradient& Scatterternary::Marker::Gradient::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Marker::Gradient& Scatterternary::Marker::Gradient::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Marker::Gradient& Scatterternary::Marker::Gradient::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Marker::Gradient& Scatterternary::Marker::Gradient::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Gradient& Scatterternary::Marker::Gradient::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Gradient& Scatterternary::Marker::Gradient::type(enum Type f) {
+    json["type"] = to_string(f);
+    return *this;
+}
+Scatterternary::Marker::Gradient& Scatterternary::Marker::Gradient::type(const std::vector<enum Type>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["type"] = std::move(stringified);
+    return *this;
+}
+
+Scatterternary::Marker::Gradient& Scatterternary::Marker::Gradient::typesrc(std::string f) {
+    json["typesrc"] = std::move(f);
+    return *this;
+}
+
+
+Scatterternary::Marker::Line& Scatterternary::Marker::Line::autocolorscale(bool f) {
+    json["autocolorscale"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Line& Scatterternary::Marker::Line::cauto(bool f) {
+    json["cauto"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Line& Scatterternary::Marker::Line::cmax(double f) {
+    json["cmax"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Line& Scatterternary::Marker::Line::cmid(double f) {
+    json["cmid"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Line& Scatterternary::Marker::Line::cmin(double f) {
+    json["cmin"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Line& Scatterternary::Marker::Line::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Marker::Line& Scatterternary::Marker::Line::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Marker::Line& Scatterternary::Marker::Line::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Marker::Line& Scatterternary::Marker::Line::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Line& Scatterternary::Marker::Line::coloraxis(std::string f) {
+    json["coloraxis"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Line& Scatterternary::Marker::Line::colorscale(std::string f) {
+    json["colorscale"] = std::move(f);
+    return *this;
+}
+Scatterternary::Marker::Line& Scatterternary::Marker::Line::colorscale(std::vector<std::pair<double, std::string>> f) {
+    json["colorscale"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Line& Scatterternary::Marker::Line::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Line& Scatterternary::Marker::Line::reversescale(bool f) {
+    json["reversescale"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Line& Scatterternary::Marker::Line::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+Scatterternary::Marker::Line& Scatterternary::Marker::Line::width(std::vector<double> f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Marker::Line& Scatterternary::Marker::Line::widthsrc(std::string f) {
+    json["widthsrc"] = std::move(f);
+    return *this;
+}
+
+
+Scatterternary::Selected& Scatterternary::Selected::marker(class Marker f) {
+    json["marker"] = std::move(f.json);
+    return *this;
+}
+
+Scatterternary::Selected& Scatterternary::Selected::textfont(class Textfont f) {
+    json["textfont"] = std::move(f.json);
+    return *this;
+}
+
+
+Scatterternary::Selected::Marker& Scatterternary::Selected::Marker::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Selected::Marker& Scatterternary::Selected::Marker::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Selected::Marker& Scatterternary::Selected::Marker::opacity(double f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Selected::Marker& Scatterternary::Selected::Marker::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+
+Scatterternary::Selected::Textfont& Scatterternary::Selected::Textfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Selected::Textfont& Scatterternary::Selected::Textfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+
+Scatterternary::Stream& Scatterternary::Stream::maxpoints(double f) {
+    json["maxpoints"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Stream& Scatterternary::Stream::token(std::string f) {
+    json["token"] = std::move(f);
+    return *this;
+}
+
+std::string Scatterternary::Textfont::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Scatterternary::Textfont::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Scatterternary::Textfont::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Scatterternary::Textfont& Scatterternary::Textfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Textfont& Scatterternary::Textfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Textfont& Scatterternary::Textfont::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Textfont& Scatterternary::Textfont::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Textfont& Scatterternary::Textfont::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Textfont& Scatterternary::Textfont::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+Scatterternary::Textfont& Scatterternary::Textfont::family(std::vector<std::string> f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Textfont& Scatterternary::Textfont::familysrc(std::string f) {
+    json["familysrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Textfont& Scatterternary::Textfont::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+Scatterternary::Textfont& Scatterternary::Textfont::lineposition(std::vector<std::string> f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Textfont& Scatterternary::Textfont::linepositionsrc(std::string f) {
+    json["linepositionsrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Textfont& Scatterternary::Textfont::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+Scatterternary::Textfont& Scatterternary::Textfont::shadow(std::vector<std::string> f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Textfont& Scatterternary::Textfont::shadowsrc(std::string f) {
+    json["shadowsrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Textfont& Scatterternary::Textfont::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+Scatterternary::Textfont& Scatterternary::Textfont::size(std::vector<double> f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Textfont& Scatterternary::Textfont::sizesrc(std::string f) {
+    json["sizesrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Textfont& Scatterternary::Textfont::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+Scatterternary::Textfont& Scatterternary::Textfont::style(const std::vector<enum Style>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["style"] = std::move(stringified);
+    return *this;
+}
+
+Scatterternary::Textfont& Scatterternary::Textfont::stylesrc(std::string f) {
+    json["stylesrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Textfont& Scatterternary::Textfont::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+Scatterternary::Textfont& Scatterternary::Textfont::textcase(const std::vector<enum Textcase>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["textcase"] = std::move(stringified);
+    return *this;
+}
+
+Scatterternary::Textfont& Scatterternary::Textfont::textcasesrc(std::string f) {
+    json["textcasesrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Textfont& Scatterternary::Textfont::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+Scatterternary::Textfont& Scatterternary::Textfont::variant(const std::vector<enum Variant>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["variant"] = std::move(stringified);
+    return *this;
+}
+
+Scatterternary::Textfont& Scatterternary::Textfont::variantsrc(std::string f) {
+    json["variantsrc"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Textfont& Scatterternary::Textfont::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+Scatterternary::Textfont& Scatterternary::Textfont::weight(std::vector<int> f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Textfont& Scatterternary::Textfont::weightsrc(std::string f) {
+    json["weightsrc"] = std::move(f);
+    return *this;
+}
+
+
+Scatterternary::Unselected& Scatterternary::Unselected::marker(class Marker f) {
+    json["marker"] = std::move(f.json);
+    return *this;
+}
+
+Scatterternary::Unselected& Scatterternary::Unselected::textfont(class Textfont f) {
+    json["textfont"] = std::move(f.json);
+    return *this;
+}
+
+
+Scatterternary::Unselected::Marker& Scatterternary::Unselected::Marker::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Unselected::Marker& Scatterternary::Unselected::Marker::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Unselected::Marker& Scatterternary::Unselected::Marker::opacity(double f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+
+Scatterternary::Unselected::Marker& Scatterternary::Unselected::Marker::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+
+Scatterternary::Unselected::Textfont& Scatterternary::Unselected::Textfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Scatterternary::Unselected::Textfont& Scatterternary::Unselected::Textfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+} // namespace plotlypp
+

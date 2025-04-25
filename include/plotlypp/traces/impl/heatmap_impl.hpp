@@ -1,0 +1,1473 @@
+// TODO: includes, copyright, etc
+
+namespace plotlypp {
+
+std::string Heatmap::to_string(Visible e) {
+    switch(e) {
+        case Visible::TRUE: return "True";
+        case Visible::FALSE: return "False";
+        case Visible::LEGENDONLY: return "legendonly";
+    }
+}
+std::string Heatmap::to_string(Xcalendar e) {
+    switch(e) {
+        case Xcalendar::CHINESE: return "chinese";
+        case Xcalendar::COPTIC: return "coptic";
+        case Xcalendar::DISCWORLD: return "discworld";
+        case Xcalendar::ETHIOPIAN: return "ethiopian";
+        case Xcalendar::GREGORIAN: return "gregorian";
+        case Xcalendar::HEBREW: return "hebrew";
+        case Xcalendar::ISLAMIC: return "islamic";
+        case Xcalendar::JALALI: return "jalali";
+        case Xcalendar::JULIAN: return "julian";
+        case Xcalendar::MAYAN: return "mayan";
+        case Xcalendar::NANAKSHAHI: return "nanakshahi";
+        case Xcalendar::NEPALI: return "nepali";
+        case Xcalendar::PERSIAN: return "persian";
+        case Xcalendar::TAIWAN: return "taiwan";
+        case Xcalendar::THAI: return "thai";
+        case Xcalendar::UMMALQURA: return "ummalqura";
+    }
+}
+std::string Heatmap::to_string(Xperiodalignment e) {
+    switch(e) {
+        case Xperiodalignment::START: return "start";
+        case Xperiodalignment::MIDDLE: return "middle";
+        case Xperiodalignment::END: return "end";
+    }
+}
+std::string Heatmap::to_string(Xtype e) {
+    switch(e) {
+        case Xtype::ARRAY: return "array";
+        case Xtype::SCALED: return "scaled";
+    }
+}
+std::string Heatmap::to_string(Ycalendar e) {
+    switch(e) {
+        case Ycalendar::CHINESE: return "chinese";
+        case Ycalendar::COPTIC: return "coptic";
+        case Ycalendar::DISCWORLD: return "discworld";
+        case Ycalendar::ETHIOPIAN: return "ethiopian";
+        case Ycalendar::GREGORIAN: return "gregorian";
+        case Ycalendar::HEBREW: return "hebrew";
+        case Ycalendar::ISLAMIC: return "islamic";
+        case Ycalendar::JALALI: return "jalali";
+        case Ycalendar::JULIAN: return "julian";
+        case Ycalendar::MAYAN: return "mayan";
+        case Ycalendar::NANAKSHAHI: return "nanakshahi";
+        case Ycalendar::NEPALI: return "nepali";
+        case Ycalendar::PERSIAN: return "persian";
+        case Ycalendar::TAIWAN: return "taiwan";
+        case Ycalendar::THAI: return "thai";
+        case Ycalendar::UMMALQURA: return "ummalqura";
+    }
+}
+std::string Heatmap::to_string(Yperiodalignment e) {
+    switch(e) {
+        case Yperiodalignment::START: return "start";
+        case Yperiodalignment::MIDDLE: return "middle";
+        case Yperiodalignment::END: return "end";
+    }
+}
+std::string Heatmap::to_string(Ytype e) {
+    switch(e) {
+        case Ytype::ARRAY: return "array";
+        case Ytype::SCALED: return "scaled";
+    }
+}
+std::string Heatmap::to_string(Zsmooth e) {
+    switch(e) {
+        case Zsmooth::FAST: return "fast";
+        case Zsmooth::BEST: return "best";
+        case Zsmooth::FALSE: return "False";
+    }
+}
+
+Heatmap& Heatmap::autocolorscale(bool f) {
+    json["autocolorscale"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::coloraxis(std::string f) {
+    json["coloraxis"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::colorbar(class Colorbar f) {
+    json["colorbar"] = std::move(f.json);
+    return *this;
+}
+
+Heatmap& Heatmap::colorscale(std::string f) {
+    json["colorscale"] = std::move(f);
+    return *this;
+}
+Heatmap& Heatmap::colorscale(std::vector<std::pair<double, std::string>> f) {
+    json["colorscale"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::connectgaps(bool f) {
+    json["connectgaps"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Heatmap& Heatmap::customdata(std::vector<T> f) {
+    json["customdata"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::customdatasrc(std::string f) {
+    json["customdatasrc"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::dx(double f) {
+    json["dx"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::dy(double f) {
+    json["dy"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::hoverinfo(std::string f) {
+    json["hoverinfo"] = std::move(f);
+    return *this;
+}
+Heatmap& Heatmap::hoverinfo(std::vector<std::string> f) {
+    json["hoverinfo"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::hoverinfosrc(std::string f) {
+    json["hoverinfosrc"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::hoverlabel(class Hoverlabel f) {
+    json["hoverlabel"] = std::move(f.json);
+    return *this;
+}
+
+Heatmap& Heatmap::hoverongaps(bool f) {
+    json["hoverongaps"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::hovertemplate(std::string f) {
+    json["hovertemplate"] = std::move(f);
+    return *this;
+}
+Heatmap& Heatmap::hovertemplate(std::vector<std::string> f) {
+    json["hovertemplate"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::hovertemplatesrc(std::string f) {
+    json["hovertemplatesrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Heatmap& Heatmap::hovertext(std::vector<T> f) {
+    json["hovertext"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::hovertextsrc(std::string f) {
+    json["hovertextsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Heatmap& Heatmap::ids(std::vector<T> f) {
+    json["ids"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::idssrc(std::string f) {
+    json["idssrc"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::legend(std::string f) {
+    json["legend"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::legendgroup(std::string f) {
+    json["legendgroup"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::legendgrouptitle(class Legendgrouptitle f) {
+    json["legendgrouptitle"] = std::move(f.json);
+    return *this;
+}
+
+Heatmap& Heatmap::legendrank(double f) {
+    json["legendrank"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::legendwidth(double f) {
+    json["legendwidth"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Heatmap& Heatmap::meta(T f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+template <typename T>
+Heatmap& Heatmap::meta(std::vector<T> f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::metasrc(std::string f) {
+    json["metasrc"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::name(std::string f) {
+    json["name"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::opacity(double f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::reversescale(bool f) {
+    json["reversescale"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::showlegend(bool f) {
+    json["showlegend"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::showscale(bool f) {
+    json["showscale"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::stream(class Stream f) {
+    json["stream"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T, typename>
+Heatmap& Heatmap::text(std::vector<T> f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::textfont(class Textfont f) {
+    json["textfont"] = std::move(f.json);
+    return *this;
+}
+
+Heatmap& Heatmap::textsrc(std::string f) {
+    json["textsrc"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::texttemplate(std::string f) {
+    json["texttemplate"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::transpose(bool f) {
+    json["transpose"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::uid(std::string f) {
+    json["uid"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Heatmap& Heatmap::uirevision(T f) {
+    json["uirevision"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::visible(enum Visible f) {
+    json["visible"] = to_string(f);
+    return *this;
+}
+
+template <typename T, typename>
+Heatmap& Heatmap::x(std::vector<T> f) {
+    json["x"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Heatmap& Heatmap::x0(T f) {
+    json["x0"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::xaxis(std::string f) {
+    json["xaxis"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::xcalendar(enum Xcalendar f) {
+    json["xcalendar"] = to_string(f);
+    return *this;
+}
+
+Heatmap& Heatmap::xgap(double f) {
+    json["xgap"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::xhoverformat(std::string f) {
+    json["xhoverformat"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Heatmap& Heatmap::xperiod(T f) {
+    json["xperiod"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Heatmap& Heatmap::xperiod0(T f) {
+    json["xperiod0"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::xperiodalignment(enum Xperiodalignment f) {
+    json["xperiodalignment"] = to_string(f);
+    return *this;
+}
+
+Heatmap& Heatmap::xsrc(std::string f) {
+    json["xsrc"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::xtype(enum Xtype f) {
+    json["xtype"] = to_string(f);
+    return *this;
+}
+
+template <typename T, typename>
+Heatmap& Heatmap::y(std::vector<T> f) {
+    json["y"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Heatmap& Heatmap::y0(T f) {
+    json["y0"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::yaxis(std::string f) {
+    json["yaxis"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::ycalendar(enum Ycalendar f) {
+    json["ycalendar"] = to_string(f);
+    return *this;
+}
+
+Heatmap& Heatmap::ygap(double f) {
+    json["ygap"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::yhoverformat(std::string f) {
+    json["yhoverformat"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Heatmap& Heatmap::yperiod(T f) {
+    json["yperiod"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Heatmap& Heatmap::yperiod0(T f) {
+    json["yperiod0"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::yperiodalignment(enum Yperiodalignment f) {
+    json["yperiodalignment"] = to_string(f);
+    return *this;
+}
+
+Heatmap& Heatmap::ysrc(std::string f) {
+    json["ysrc"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::ytype(enum Ytype f) {
+    json["ytype"] = to_string(f);
+    return *this;
+}
+
+template <typename T, typename>
+Heatmap& Heatmap::z(std::vector<T> f) {
+    json["z"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::zauto(bool f) {
+    json["zauto"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::zhoverformat(std::string f) {
+    json["zhoverformat"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::zmax(double f) {
+    json["zmax"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::zmid(double f) {
+    json["zmid"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::zmin(double f) {
+    json["zmin"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::zorder(int f) {
+    json["zorder"] = std::move(f);
+    return *this;
+}
+
+Heatmap& Heatmap::zsmooth(enum Zsmooth f) {
+    json["zsmooth"] = to_string(f);
+    return *this;
+}
+
+Heatmap& Heatmap::zsrc(std::string f) {
+    json["zsrc"] = std::move(f);
+    return *this;
+}
+
+std::string Heatmap::Colorbar::to_string(Exponentformat e) {
+    switch(e) {
+        case Exponentformat::NONE: return "none";
+        case Exponentformat::E: return "E";
+        case Exponentformat::POWER: return "power";
+        case Exponentformat::SI: return "SI";
+        case Exponentformat::B: return "B";
+    }
+}
+std::string Heatmap::Colorbar::to_string(Lenmode e) {
+    switch(e) {
+        case Lenmode::FRACTION: return "fraction";
+        case Lenmode::PIXELS: return "pixels";
+    }
+}
+std::string Heatmap::Colorbar::to_string(Orientation e) {
+    switch(e) {
+        case Orientation::H: return "h";
+        case Orientation::V: return "v";
+    }
+}
+std::string Heatmap::Colorbar::to_string(Showexponent e) {
+    switch(e) {
+        case Showexponent::ALL: return "all";
+        case Showexponent::FIRST: return "first";
+        case Showexponent::LAST: return "last";
+        case Showexponent::NONE: return "none";
+    }
+}
+std::string Heatmap::Colorbar::to_string(Showtickprefix e) {
+    switch(e) {
+        case Showtickprefix::ALL: return "all";
+        case Showtickprefix::FIRST: return "first";
+        case Showtickprefix::LAST: return "last";
+        case Showtickprefix::NONE: return "none";
+    }
+}
+std::string Heatmap::Colorbar::to_string(Showticksuffix e) {
+    switch(e) {
+        case Showticksuffix::ALL: return "all";
+        case Showticksuffix::FIRST: return "first";
+        case Showticksuffix::LAST: return "last";
+        case Showticksuffix::NONE: return "none";
+    }
+}
+std::string Heatmap::Colorbar::to_string(Thicknessmode e) {
+    switch(e) {
+        case Thicknessmode::FRACTION: return "fraction";
+        case Thicknessmode::PIXELS: return "pixels";
+    }
+}
+std::string Heatmap::Colorbar::to_string(Ticklabeloverflow e) {
+    switch(e) {
+        case Ticklabeloverflow::ALLOW: return "allow";
+        case Ticklabeloverflow::HIDE_PAST_DIV: return "hide past div";
+        case Ticklabeloverflow::HIDE_PAST_DOMAIN: return "hide past domain";
+    }
+}
+std::string Heatmap::Colorbar::to_string(Ticklabelposition e) {
+    switch(e) {
+        case Ticklabelposition::OUTSIDE: return "outside";
+        case Ticklabelposition::INSIDE: return "inside";
+        case Ticklabelposition::OUTSIDE_TOP: return "outside top";
+        case Ticklabelposition::INSIDE_TOP: return "inside top";
+        case Ticklabelposition::OUTSIDE_LEFT: return "outside left";
+        case Ticklabelposition::INSIDE_LEFT: return "inside left";
+        case Ticklabelposition::OUTSIDE_RIGHT: return "outside right";
+        case Ticklabelposition::INSIDE_RIGHT: return "inside right";
+        case Ticklabelposition::OUTSIDE_BOTTOM: return "outside bottom";
+        case Ticklabelposition::INSIDE_BOTTOM: return "inside bottom";
+    }
+}
+std::string Heatmap::Colorbar::to_string(Tickmode e) {
+    switch(e) {
+        case Tickmode::AUTO: return "auto";
+        case Tickmode::LINEAR: return "linear";
+        case Tickmode::ARRAY: return "array";
+    }
+}
+std::string Heatmap::Colorbar::to_string(Ticks e) {
+    switch(e) {
+        case Ticks::OUTSIDE: return "outside";
+        case Ticks::INSIDE: return "inside";
+        case Ticks::EMPTY: return "";
+    }
+}
+std::string Heatmap::Colorbar::to_string(Xanchor e) {
+    switch(e) {
+        case Xanchor::LEFT: return "left";
+        case Xanchor::CENTER: return "center";
+        case Xanchor::RIGHT: return "right";
+    }
+}
+std::string Heatmap::Colorbar::to_string(Xref e) {
+    switch(e) {
+        case Xref::CONTAINER: return "container";
+        case Xref::PAPER: return "paper";
+    }
+}
+std::string Heatmap::Colorbar::to_string(Yanchor e) {
+    switch(e) {
+        case Yanchor::TOP: return "top";
+        case Yanchor::MIDDLE: return "middle";
+        case Yanchor::BOTTOM: return "bottom";
+    }
+}
+std::string Heatmap::Colorbar::to_string(Yref e) {
+    switch(e) {
+        case Yref::CONTAINER: return "container";
+        case Yref::PAPER: return "paper";
+    }
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::bgcolor(std::string f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Heatmap::Colorbar& Heatmap::Colorbar::bgcolor(double f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::bordercolor(std::string f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Heatmap::Colorbar& Heatmap::Colorbar::bordercolor(double f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::borderwidth(double f) {
+    json["borderwidth"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Heatmap::Colorbar& Heatmap::Colorbar::dtick(T f) {
+    json["dtick"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::exponentformat(enum Exponentformat f) {
+    json["exponentformat"] = to_string(f);
+    return *this;
+}
+
+template <typename T>
+Heatmap::Colorbar& Heatmap::Colorbar::labelalias(T f) {
+    json["labelalias"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::len(double f) {
+    json["len"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::lenmode(enum Lenmode f) {
+    json["lenmode"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::minexponent(double f) {
+    json["minexponent"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::nticks(int f) {
+    json["nticks"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::orientation(enum Orientation f) {
+    json["orientation"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::outlinecolor(std::string f) {
+    json["outlinecolor"] = std::move(f);
+    return *this;
+}
+Heatmap::Colorbar& Heatmap::Colorbar::outlinecolor(double f) {
+    json["outlinecolor"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::outlinewidth(double f) {
+    json["outlinewidth"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::separatethousands(bool f) {
+    json["separatethousands"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::showexponent(enum Showexponent f) {
+    json["showexponent"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::showticklabels(bool f) {
+    json["showticklabels"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::showtickprefix(enum Showtickprefix f) {
+    json["showtickprefix"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::showticksuffix(enum Showticksuffix f) {
+    json["showticksuffix"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::thickness(double f) {
+    json["thickness"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::thicknessmode(enum Thicknessmode f) {
+    json["thicknessmode"] = to_string(f);
+    return *this;
+}
+
+template <typename T>
+Heatmap::Colorbar& Heatmap::Colorbar::tick0(T f) {
+    json["tick0"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::tickangle(double f) {
+    json["tickangle"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::tickcolor(std::string f) {
+    json["tickcolor"] = std::move(f);
+    return *this;
+}
+Heatmap::Colorbar& Heatmap::Colorbar::tickcolor(double f) {
+    json["tickcolor"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::tickfont(class Tickfont f) {
+    json["tickfont"] = std::move(f.json);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::tickformat(std::string f) {
+    json["tickformat"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::tickformatstops(class Tickformatstops f) {
+    json["tickformatstops"] = std::move(f.json);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::ticklabeloverflow(enum Ticklabeloverflow f) {
+    json["ticklabeloverflow"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::ticklabelposition(enum Ticklabelposition f) {
+    json["ticklabelposition"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::ticklabelstep(int f) {
+    json["ticklabelstep"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::ticklen(double f) {
+    json["ticklen"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::tickmode(enum Tickmode f) {
+    json["tickmode"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::tickprefix(std::string f) {
+    json["tickprefix"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::ticks(enum Ticks f) {
+    json["ticks"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::ticksuffix(std::string f) {
+    json["ticksuffix"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Heatmap::Colorbar& Heatmap::Colorbar::ticktext(std::vector<T> f) {
+    json["ticktext"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::ticktextsrc(std::string f) {
+    json["ticktextsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Heatmap::Colorbar& Heatmap::Colorbar::tickvals(std::vector<T> f) {
+    json["tickvals"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::tickvalssrc(std::string f) {
+    json["tickvalssrc"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::tickwidth(double f) {
+    json["tickwidth"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::title(class Title f) {
+    json["title"] = std::move(f.json);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::x(double f) {
+    json["x"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::xanchor(enum Xanchor f) {
+    json["xanchor"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::xpad(double f) {
+    json["xpad"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::xref(enum Xref f) {
+    json["xref"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::y(double f) {
+    json["y"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::yanchor(enum Yanchor f) {
+    json["yanchor"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::ypad(double f) {
+    json["ypad"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar& Heatmap::Colorbar::yref(enum Yref f) {
+    json["yref"] = to_string(f);
+    return *this;
+}
+
+std::string Heatmap::Colorbar::Tickfont::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Heatmap::Colorbar::Tickfont::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Heatmap::Colorbar::Tickfont::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Heatmap::Colorbar::Tickfont& Heatmap::Colorbar::Tickfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Heatmap::Colorbar::Tickfont& Heatmap::Colorbar::Tickfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar::Tickfont& Heatmap::Colorbar::Tickfont::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar::Tickfont& Heatmap::Colorbar::Tickfont::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar::Tickfont& Heatmap::Colorbar::Tickfont::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar::Tickfont& Heatmap::Colorbar::Tickfont::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar::Tickfont& Heatmap::Colorbar::Tickfont::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Colorbar::Tickfont& Heatmap::Colorbar::Tickfont::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Colorbar::Tickfont& Heatmap::Colorbar::Tickfont::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Colorbar::Tickfont& Heatmap::Colorbar::Tickfont::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Heatmap::Colorbar::Tickformatstops& Heatmap::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+    json["tickformatstop"] = std::move(f.json);
+    return *this;
+}
+
+
+Heatmap::Colorbar::Tickformatstops::Tickformatstop& Heatmap::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+    json["dtickrange"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar::Tickformatstops::Tickformatstop& Heatmap::Colorbar::Tickformatstops::Tickformatstop::enabled(bool f) {
+    json["enabled"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar::Tickformatstops::Tickformatstop& Heatmap::Colorbar::Tickformatstops::Tickformatstop::name(std::string f) {
+    json["name"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar::Tickformatstops::Tickformatstop& Heatmap::Colorbar::Tickformatstops::Tickformatstop::templateitemname(std::string f) {
+    json["templateitemname"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar::Tickformatstops::Tickformatstop& Heatmap::Colorbar::Tickformatstops::Tickformatstop::value(std::string f) {
+    json["value"] = std::move(f);
+    return *this;
+}
+
+std::string Heatmap::Colorbar::Title::to_string(Side e) {
+    switch(e) {
+        case Side::RIGHT: return "right";
+        case Side::TOP: return "top";
+        case Side::BOTTOM: return "bottom";
+    }
+}
+
+Heatmap::Colorbar::Title& Heatmap::Colorbar::Title::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Heatmap::Colorbar::Title& Heatmap::Colorbar::Title::side(enum Side f) {
+    json["side"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Colorbar::Title& Heatmap::Colorbar::Title::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+std::string Heatmap::Colorbar::Title::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Heatmap::Colorbar::Title::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Heatmap::Colorbar::Title::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Heatmap::Colorbar::Title::Font& Heatmap::Colorbar::Title::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Heatmap::Colorbar::Title::Font& Heatmap::Colorbar::Title::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar::Title::Font& Heatmap::Colorbar::Title::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar::Title::Font& Heatmap::Colorbar::Title::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar::Title::Font& Heatmap::Colorbar::Title::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar::Title::Font& Heatmap::Colorbar::Title::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Colorbar::Title::Font& Heatmap::Colorbar::Title::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Colorbar::Title::Font& Heatmap::Colorbar::Title::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Colorbar::Title::Font& Heatmap::Colorbar::Title::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Colorbar::Title::Font& Heatmap::Colorbar::Title::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+std::string Heatmap::Hoverlabel::to_string(Align e) {
+    switch(e) {
+        case Align::LEFT: return "left";
+        case Align::RIGHT: return "right";
+        case Align::AUTO: return "auto";
+    }
+}
+
+Heatmap::Hoverlabel& Heatmap::Hoverlabel::align(enum Align f) {
+    json["align"] = to_string(f);
+    return *this;
+}
+Heatmap::Hoverlabel& Heatmap::Hoverlabel::align(const std::vector<enum Align>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["align"] = std::move(stringified);
+    return *this;
+}
+
+Heatmap::Hoverlabel& Heatmap::Hoverlabel::alignsrc(std::string f) {
+    json["alignsrc"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Hoverlabel& Heatmap::Hoverlabel::bgcolor(std::string f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Heatmap::Hoverlabel& Heatmap::Hoverlabel::bgcolor(double f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Heatmap::Hoverlabel& Heatmap::Hoverlabel::bgcolor(std::vector<std::string> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Heatmap::Hoverlabel& Heatmap::Hoverlabel::bgcolor(std::vector<double> f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Hoverlabel& Heatmap::Hoverlabel::bgcolorsrc(std::string f) {
+    json["bgcolorsrc"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Hoverlabel& Heatmap::Hoverlabel::bordercolor(std::string f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Heatmap::Hoverlabel& Heatmap::Hoverlabel::bordercolor(double f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Heatmap::Hoverlabel& Heatmap::Hoverlabel::bordercolor(std::vector<std::string> f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Heatmap::Hoverlabel& Heatmap::Hoverlabel::bordercolor(std::vector<double> f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Hoverlabel& Heatmap::Hoverlabel::bordercolorsrc(std::string f) {
+    json["bordercolorsrc"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Hoverlabel& Heatmap::Hoverlabel::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Heatmap::Hoverlabel& Heatmap::Hoverlabel::namelength(int f) {
+    json["namelength"] = std::move(f);
+    return *this;
+}
+Heatmap::Hoverlabel& Heatmap::Hoverlabel::namelength(std::vector<int> f) {
+    json["namelength"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Hoverlabel& Heatmap::Hoverlabel::namelengthsrc(std::string f) {
+    json["namelengthsrc"] = std::move(f);
+    return *this;
+}
+
+std::string Heatmap::Hoverlabel::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Heatmap::Hoverlabel::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Heatmap::Hoverlabel::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::color(std::vector<std::string> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::color(std::vector<double> f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::colorsrc(std::string f) {
+    json["colorsrc"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::family(std::vector<std::string> f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::familysrc(std::string f) {
+    json["familysrc"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::linepositionsrc(std::string f) {
+    json["linepositionsrc"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::shadow(std::vector<std::string> f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::shadowsrc(std::string f) {
+    json["shadowsrc"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::size(std::vector<double> f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::sizesrc(std::string f) {
+    json["sizesrc"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::style(const std::vector<enum Style>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["style"] = std::move(stringified);
+    return *this;
+}
+
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::stylesrc(std::string f) {
+    json["stylesrc"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::textcase(const std::vector<enum Textcase>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["textcase"] = std::move(stringified);
+    return *this;
+}
+
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::textcasesrc(std::string f) {
+    json["textcasesrc"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::variant(const std::vector<enum Variant>& f) {
+    std::vector<std::string> stringified(f.size());
+    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
+    json["variant"] = std::move(stringified);
+    return *this;
+}
+
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::variantsrc(std::string f) {
+    json["variantsrc"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::weight(std::vector<int> f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::weightsrc(std::string f) {
+    json["weightsrc"] = std::move(f);
+    return *this;
+}
+
+
+Heatmap::Legendgrouptitle& Heatmap::Legendgrouptitle::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Heatmap::Legendgrouptitle& Heatmap::Legendgrouptitle::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+std::string Heatmap::Legendgrouptitle::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Heatmap::Legendgrouptitle::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Heatmap::Legendgrouptitle::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Heatmap::Legendgrouptitle::Font& Heatmap::Legendgrouptitle::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Heatmap::Legendgrouptitle::Font& Heatmap::Legendgrouptitle::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Legendgrouptitle::Font& Heatmap::Legendgrouptitle::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Legendgrouptitle::Font& Heatmap::Legendgrouptitle::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Legendgrouptitle::Font& Heatmap::Legendgrouptitle::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Legendgrouptitle::Font& Heatmap::Legendgrouptitle::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Legendgrouptitle::Font& Heatmap::Legendgrouptitle::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Legendgrouptitle::Font& Heatmap::Legendgrouptitle::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Legendgrouptitle::Font& Heatmap::Legendgrouptitle::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Legendgrouptitle::Font& Heatmap::Legendgrouptitle::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Heatmap::Stream& Heatmap::Stream::maxpoints(double f) {
+    json["maxpoints"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Stream& Heatmap::Stream::token(std::string f) {
+    json["token"] = std::move(f);
+    return *this;
+}
+
+std::string Heatmap::Textfont::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Heatmap::Textfont::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Heatmap::Textfont::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Heatmap::Textfont& Heatmap::Textfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Heatmap::Textfont& Heatmap::Textfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Textfont& Heatmap::Textfont::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Textfont& Heatmap::Textfont::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Textfont& Heatmap::Textfont::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Textfont& Heatmap::Textfont::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Heatmap::Textfont& Heatmap::Textfont::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Textfont& Heatmap::Textfont::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Textfont& Heatmap::Textfont::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Heatmap::Textfont& Heatmap::Textfont::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+} // namespace plotlypp
+

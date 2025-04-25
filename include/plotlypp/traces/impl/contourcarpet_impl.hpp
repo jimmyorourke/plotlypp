@@ -1,0 +1,1185 @@
+// TODO: includes, copyright, etc
+
+namespace plotlypp {
+
+std::string Contourcarpet::to_string(Atype e) {
+    switch(e) {
+        case Atype::ARRAY: return "array";
+        case Atype::SCALED: return "scaled";
+    }
+}
+std::string Contourcarpet::to_string(Btype e) {
+    switch(e) {
+        case Btype::ARRAY: return "array";
+        case Btype::SCALED: return "scaled";
+    }
+}
+std::string Contourcarpet::to_string(Visible e) {
+    switch(e) {
+        case Visible::TRUE: return "True";
+        case Visible::FALSE: return "False";
+        case Visible::LEGENDONLY: return "legendonly";
+    }
+}
+
+template <typename T, typename>
+Contourcarpet& Contourcarpet::a(std::vector<T> f) {
+    json["a"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Contourcarpet& Contourcarpet::a0(T f) {
+    json["a0"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::asrc(std::string f) {
+    json["asrc"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::atype(enum Atype f) {
+    json["atype"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::autocolorscale(bool f) {
+    json["autocolorscale"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::autocontour(bool f) {
+    json["autocontour"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Contourcarpet& Contourcarpet::b(std::vector<T> f) {
+    json["b"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Contourcarpet& Contourcarpet::b0(T f) {
+    json["b0"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::bsrc(std::string f) {
+    json["bsrc"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::btype(enum Btype f) {
+    json["btype"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::carpet(std::string f) {
+    json["carpet"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::coloraxis(std::string f) {
+    json["coloraxis"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::colorbar(class Colorbar f) {
+    json["colorbar"] = std::move(f.json);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::colorscale(std::string f) {
+    json["colorscale"] = std::move(f);
+    return *this;
+}
+Contourcarpet& Contourcarpet::colorscale(std::vector<std::pair<double, std::string>> f) {
+    json["colorscale"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::contours(class Contours f) {
+    json["contours"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T, typename>
+Contourcarpet& Contourcarpet::customdata(std::vector<T> f) {
+    json["customdata"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::customdatasrc(std::string f) {
+    json["customdatasrc"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::da(double f) {
+    json["da"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::db(double f) {
+    json["db"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::fillcolor(std::string f) {
+    json["fillcolor"] = std::move(f);
+    return *this;
+}
+Contourcarpet& Contourcarpet::fillcolor(double f) {
+    json["fillcolor"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Contourcarpet& Contourcarpet::hovertext(std::vector<T> f) {
+    json["hovertext"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::hovertextsrc(std::string f) {
+    json["hovertextsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Contourcarpet& Contourcarpet::ids(std::vector<T> f) {
+    json["ids"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::idssrc(std::string f) {
+    json["idssrc"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::legend(std::string f) {
+    json["legend"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::legendgroup(std::string f) {
+    json["legendgroup"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::legendgrouptitle(class Legendgrouptitle f) {
+    json["legendgrouptitle"] = std::move(f.json);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::legendrank(double f) {
+    json["legendrank"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::legendwidth(double f) {
+    json["legendwidth"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::line(class Line f) {
+    json["line"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T>
+Contourcarpet& Contourcarpet::meta(T f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+template <typename T>
+Contourcarpet& Contourcarpet::meta(std::vector<T> f) {
+    json["meta"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::metasrc(std::string f) {
+    json["metasrc"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::name(std::string f) {
+    json["name"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::ncontours(int f) {
+    json["ncontours"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::opacity(double f) {
+    json["opacity"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::reversescale(bool f) {
+    json["reversescale"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::showlegend(bool f) {
+    json["showlegend"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::showscale(bool f) {
+    json["showscale"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::stream(class Stream f) {
+    json["stream"] = std::move(f.json);
+    return *this;
+}
+
+template <typename T, typename>
+Contourcarpet& Contourcarpet::text(std::vector<T> f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::textsrc(std::string f) {
+    json["textsrc"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::transpose(bool f) {
+    json["transpose"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::uid(std::string f) {
+    json["uid"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Contourcarpet& Contourcarpet::uirevision(T f) {
+    json["uirevision"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::visible(enum Visible f) {
+    json["visible"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::xaxis(std::string f) {
+    json["xaxis"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::yaxis(std::string f) {
+    json["yaxis"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Contourcarpet& Contourcarpet::z(std::vector<T> f) {
+    json["z"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::zauto(bool f) {
+    json["zauto"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::zmax(double f) {
+    json["zmax"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::zmid(double f) {
+    json["zmid"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::zmin(double f) {
+    json["zmin"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::zorder(int f) {
+    json["zorder"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet& Contourcarpet::zsrc(std::string f) {
+    json["zsrc"] = std::move(f);
+    return *this;
+}
+
+std::string Contourcarpet::Colorbar::to_string(Exponentformat e) {
+    switch(e) {
+        case Exponentformat::NONE: return "none";
+        case Exponentformat::E: return "E";
+        case Exponentformat::POWER: return "power";
+        case Exponentformat::SI: return "SI";
+        case Exponentformat::B: return "B";
+    }
+}
+std::string Contourcarpet::Colorbar::to_string(Lenmode e) {
+    switch(e) {
+        case Lenmode::FRACTION: return "fraction";
+        case Lenmode::PIXELS: return "pixels";
+    }
+}
+std::string Contourcarpet::Colorbar::to_string(Orientation e) {
+    switch(e) {
+        case Orientation::H: return "h";
+        case Orientation::V: return "v";
+    }
+}
+std::string Contourcarpet::Colorbar::to_string(Showexponent e) {
+    switch(e) {
+        case Showexponent::ALL: return "all";
+        case Showexponent::FIRST: return "first";
+        case Showexponent::LAST: return "last";
+        case Showexponent::NONE: return "none";
+    }
+}
+std::string Contourcarpet::Colorbar::to_string(Showtickprefix e) {
+    switch(e) {
+        case Showtickprefix::ALL: return "all";
+        case Showtickprefix::FIRST: return "first";
+        case Showtickprefix::LAST: return "last";
+        case Showtickprefix::NONE: return "none";
+    }
+}
+std::string Contourcarpet::Colorbar::to_string(Showticksuffix e) {
+    switch(e) {
+        case Showticksuffix::ALL: return "all";
+        case Showticksuffix::FIRST: return "first";
+        case Showticksuffix::LAST: return "last";
+        case Showticksuffix::NONE: return "none";
+    }
+}
+std::string Contourcarpet::Colorbar::to_string(Thicknessmode e) {
+    switch(e) {
+        case Thicknessmode::FRACTION: return "fraction";
+        case Thicknessmode::PIXELS: return "pixels";
+    }
+}
+std::string Contourcarpet::Colorbar::to_string(Ticklabeloverflow e) {
+    switch(e) {
+        case Ticklabeloverflow::ALLOW: return "allow";
+        case Ticklabeloverflow::HIDE_PAST_DIV: return "hide past div";
+        case Ticklabeloverflow::HIDE_PAST_DOMAIN: return "hide past domain";
+    }
+}
+std::string Contourcarpet::Colorbar::to_string(Ticklabelposition e) {
+    switch(e) {
+        case Ticklabelposition::OUTSIDE: return "outside";
+        case Ticklabelposition::INSIDE: return "inside";
+        case Ticklabelposition::OUTSIDE_TOP: return "outside top";
+        case Ticklabelposition::INSIDE_TOP: return "inside top";
+        case Ticklabelposition::OUTSIDE_LEFT: return "outside left";
+        case Ticklabelposition::INSIDE_LEFT: return "inside left";
+        case Ticklabelposition::OUTSIDE_RIGHT: return "outside right";
+        case Ticklabelposition::INSIDE_RIGHT: return "inside right";
+        case Ticklabelposition::OUTSIDE_BOTTOM: return "outside bottom";
+        case Ticklabelposition::INSIDE_BOTTOM: return "inside bottom";
+    }
+}
+std::string Contourcarpet::Colorbar::to_string(Tickmode e) {
+    switch(e) {
+        case Tickmode::AUTO: return "auto";
+        case Tickmode::LINEAR: return "linear";
+        case Tickmode::ARRAY: return "array";
+    }
+}
+std::string Contourcarpet::Colorbar::to_string(Ticks e) {
+    switch(e) {
+        case Ticks::OUTSIDE: return "outside";
+        case Ticks::INSIDE: return "inside";
+        case Ticks::EMPTY: return "";
+    }
+}
+std::string Contourcarpet::Colorbar::to_string(Xanchor e) {
+    switch(e) {
+        case Xanchor::LEFT: return "left";
+        case Xanchor::CENTER: return "center";
+        case Xanchor::RIGHT: return "right";
+    }
+}
+std::string Contourcarpet::Colorbar::to_string(Xref e) {
+    switch(e) {
+        case Xref::CONTAINER: return "container";
+        case Xref::PAPER: return "paper";
+    }
+}
+std::string Contourcarpet::Colorbar::to_string(Yanchor e) {
+    switch(e) {
+        case Yanchor::TOP: return "top";
+        case Yanchor::MIDDLE: return "middle";
+        case Yanchor::BOTTOM: return "bottom";
+    }
+}
+std::string Contourcarpet::Colorbar::to_string(Yref e) {
+    switch(e) {
+        case Yref::CONTAINER: return "container";
+        case Yref::PAPER: return "paper";
+    }
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::bgcolor(std::string f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::bgcolor(double f) {
+    json["bgcolor"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::bordercolor(std::string f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::bordercolor(double f) {
+    json["bordercolor"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::borderwidth(double f) {
+    json["borderwidth"] = std::move(f);
+    return *this;
+}
+
+template <typename T>
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::dtick(T f) {
+    json["dtick"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::exponentformat(enum Exponentformat f) {
+    json["exponentformat"] = to_string(f);
+    return *this;
+}
+
+template <typename T>
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::labelalias(T f) {
+    json["labelalias"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::len(double f) {
+    json["len"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::lenmode(enum Lenmode f) {
+    json["lenmode"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::minexponent(double f) {
+    json["minexponent"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::nticks(int f) {
+    json["nticks"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::orientation(enum Orientation f) {
+    json["orientation"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::outlinecolor(std::string f) {
+    json["outlinecolor"] = std::move(f);
+    return *this;
+}
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::outlinecolor(double f) {
+    json["outlinecolor"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::outlinewidth(double f) {
+    json["outlinewidth"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::separatethousands(bool f) {
+    json["separatethousands"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::showexponent(enum Showexponent f) {
+    json["showexponent"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::showticklabels(bool f) {
+    json["showticklabels"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::showtickprefix(enum Showtickprefix f) {
+    json["showtickprefix"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::showticksuffix(enum Showticksuffix f) {
+    json["showticksuffix"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::thickness(double f) {
+    json["thickness"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::thicknessmode(enum Thicknessmode f) {
+    json["thicknessmode"] = to_string(f);
+    return *this;
+}
+
+template <typename T>
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::tick0(T f) {
+    json["tick0"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::tickangle(double f) {
+    json["tickangle"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::tickcolor(std::string f) {
+    json["tickcolor"] = std::move(f);
+    return *this;
+}
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::tickcolor(double f) {
+    json["tickcolor"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::tickfont(class Tickfont f) {
+    json["tickfont"] = std::move(f.json);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::tickformat(std::string f) {
+    json["tickformat"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::tickformatstops(class Tickformatstops f) {
+    json["tickformatstops"] = std::move(f.json);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::ticklabeloverflow(enum Ticklabeloverflow f) {
+    json["ticklabeloverflow"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::ticklabelposition(enum Ticklabelposition f) {
+    json["ticklabelposition"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::ticklabelstep(int f) {
+    json["ticklabelstep"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::ticklen(double f) {
+    json["ticklen"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::tickmode(enum Tickmode f) {
+    json["tickmode"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::tickprefix(std::string f) {
+    json["tickprefix"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::ticks(enum Ticks f) {
+    json["ticks"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::ticksuffix(std::string f) {
+    json["ticksuffix"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::ticktext(std::vector<T> f) {
+    json["ticktext"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::ticktextsrc(std::string f) {
+    json["ticktextsrc"] = std::move(f);
+    return *this;
+}
+
+template <typename T, typename>
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::tickvals(std::vector<T> f) {
+    json["tickvals"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::tickvalssrc(std::string f) {
+    json["tickvalssrc"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::tickwidth(double f) {
+    json["tickwidth"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::title(class Title f) {
+    json["title"] = std::move(f.json);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::x(double f) {
+    json["x"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::xanchor(enum Xanchor f) {
+    json["xanchor"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::xpad(double f) {
+    json["xpad"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::xref(enum Xref f) {
+    json["xref"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::y(double f) {
+    json["y"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::yanchor(enum Yanchor f) {
+    json["yanchor"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::ypad(double f) {
+    json["ypad"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::yref(enum Yref f) {
+    json["yref"] = to_string(f);
+    return *this;
+}
+
+std::string Contourcarpet::Colorbar::Tickfont::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Contourcarpet::Colorbar::Tickfont::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Contourcarpet::Colorbar::Tickfont::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Contourcarpet::Colorbar::Tickfont& Contourcarpet::Colorbar::Tickfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Contourcarpet::Colorbar::Tickfont& Contourcarpet::Colorbar::Tickfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar::Tickfont& Contourcarpet::Colorbar::Tickfont::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar::Tickfont& Contourcarpet::Colorbar::Tickfont::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar::Tickfont& Contourcarpet::Colorbar::Tickfont::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar::Tickfont& Contourcarpet::Colorbar::Tickfont::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar::Tickfont& Contourcarpet::Colorbar::Tickfont::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar::Tickfont& Contourcarpet::Colorbar::Tickfont::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar::Tickfont& Contourcarpet::Colorbar::Tickfont::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar::Tickfont& Contourcarpet::Colorbar::Tickfont::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Contourcarpet::Colorbar::Tickformatstops& Contourcarpet::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+    json["tickformatstop"] = std::move(f.json);
+    return *this;
+}
+
+
+Contourcarpet::Colorbar::Tickformatstops::Tickformatstop& Contourcarpet::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+    json["dtickrange"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar::Tickformatstops::Tickformatstop& Contourcarpet::Colorbar::Tickformatstops::Tickformatstop::enabled(bool f) {
+    json["enabled"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar::Tickformatstops::Tickformatstop& Contourcarpet::Colorbar::Tickformatstops::Tickformatstop::name(std::string f) {
+    json["name"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar::Tickformatstops::Tickformatstop& Contourcarpet::Colorbar::Tickformatstops::Tickformatstop::templateitemname(std::string f) {
+    json["templateitemname"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar::Tickformatstops::Tickformatstop& Contourcarpet::Colorbar::Tickformatstops::Tickformatstop::value(std::string f) {
+    json["value"] = std::move(f);
+    return *this;
+}
+
+std::string Contourcarpet::Colorbar::Title::to_string(Side e) {
+    switch(e) {
+        case Side::RIGHT: return "right";
+        case Side::TOP: return "top";
+        case Side::BOTTOM: return "bottom";
+    }
+}
+
+Contourcarpet::Colorbar::Title& Contourcarpet::Colorbar::Title::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Contourcarpet::Colorbar::Title& Contourcarpet::Colorbar::Title::side(enum Side f) {
+    json["side"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar::Title& Contourcarpet::Colorbar::Title::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+std::string Contourcarpet::Colorbar::Title::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Contourcarpet::Colorbar::Title::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Contourcarpet::Colorbar::Title::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Contourcarpet::Colorbar::Title::Font& Contourcarpet::Colorbar::Title::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Contourcarpet::Colorbar::Title::Font& Contourcarpet::Colorbar::Title::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar::Title::Font& Contourcarpet::Colorbar::Title::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar::Title::Font& Contourcarpet::Colorbar::Title::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar::Title::Font& Contourcarpet::Colorbar::Title::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar::Title::Font& Contourcarpet::Colorbar::Title::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar::Title::Font& Contourcarpet::Colorbar::Title::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar::Title::Font& Contourcarpet::Colorbar::Title::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar::Title::Font& Contourcarpet::Colorbar::Title::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Colorbar::Title::Font& Contourcarpet::Colorbar::Title::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+std::string Contourcarpet::Contours::to_string(Coloring e) {
+    switch(e) {
+        case Coloring::FILL: return "fill";
+        case Coloring::LINES: return "lines";
+        case Coloring::NONE: return "none";
+    }
+}
+std::string Contourcarpet::Contours::to_string(Operation e) {
+    switch(e) {
+        case Operation::EQ: return "=";
+        case Operation::LT: return "<";
+        case Operation::>=: return ">=";
+        case Operation::GT: return ">";
+        case Operation::<=: return "<=";
+        case Operation::[]: return "[]";
+        case Operation::(): return "()";
+        case Operation::[): return "[)";
+        case Operation::(]: return "(]";
+        case Operation::][: return "][";
+        case Operation::)(: return ")(";
+        case Operation::](: return "](";
+        case Operation::)[: return ")[";
+    }
+}
+std::string Contourcarpet::Contours::to_string(Type e) {
+    switch(e) {
+        case Type::LEVELS: return "levels";
+        case Type::CONSTRAINT: return "constraint";
+    }
+}
+
+Contourcarpet::Contours& Contourcarpet::Contours::coloring(enum Coloring f) {
+    json["coloring"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Contours& Contourcarpet::Contours::end(double f) {
+    json["end"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Contours& Contourcarpet::Contours::impliedEdits(class Impliededits f) {
+    json["impliedEdits"] = std::move(f.json);
+    return *this;
+}
+
+Contourcarpet::Contours& Contourcarpet::Contours::labelfont(class Labelfont f) {
+    json["labelfont"] = std::move(f.json);
+    return *this;
+}
+
+Contourcarpet::Contours& Contourcarpet::Contours::labelformat(std::string f) {
+    json["labelformat"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Contours& Contourcarpet::Contours::operation(enum Operation f) {
+    json["operation"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Contours& Contourcarpet::Contours::showlabels(bool f) {
+    json["showlabels"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Contours& Contourcarpet::Contours::showlines(bool f) {
+    json["showlines"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Contours& Contourcarpet::Contours::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Contours& Contourcarpet::Contours::start(double f) {
+    json["start"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Contours& Contourcarpet::Contours::type(enum Type f) {
+    json["type"] = to_string(f);
+    return *this;
+}
+
+template <typename T>
+Contourcarpet::Contours& Contourcarpet::Contours::value(T f) {
+    json["value"] = std::move(f);
+    return *this;
+}
+
+
+std::string Contourcarpet::Contours::Labelfont::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Contourcarpet::Contours::Labelfont::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Contourcarpet::Contours::Labelfont::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Contourcarpet::Contours::Labelfont& Contourcarpet::Contours::Labelfont::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Contourcarpet::Contours::Labelfont& Contourcarpet::Contours::Labelfont::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Contours::Labelfont& Contourcarpet::Contours::Labelfont::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Contours::Labelfont& Contourcarpet::Contours::Labelfont::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Contours::Labelfont& Contourcarpet::Contours::Labelfont::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Contours::Labelfont& Contourcarpet::Contours::Labelfont::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Contours::Labelfont& Contourcarpet::Contours::Labelfont::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Contours::Labelfont& Contourcarpet::Contours::Labelfont::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Contours::Labelfont& Contourcarpet::Contours::Labelfont::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Contours::Labelfont& Contourcarpet::Contours::Labelfont::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Contourcarpet::Legendgrouptitle& Contourcarpet::Legendgrouptitle::font(class Font f) {
+    json["font"] = std::move(f.json);
+    return *this;
+}
+
+Contourcarpet::Legendgrouptitle& Contourcarpet::Legendgrouptitle::text(std::string f) {
+    json["text"] = std::move(f);
+    return *this;
+}
+
+std::string Contourcarpet::Legendgrouptitle::Font::to_string(Style e) {
+    switch(e) {
+        case Style::NORMAL: return "normal";
+        case Style::ITALIC: return "italic";
+    }
+}
+std::string Contourcarpet::Legendgrouptitle::Font::to_string(Textcase e) {
+    switch(e) {
+        case Textcase::NORMAL: return "normal";
+        case Textcase::WORD_CAPS: return "word caps";
+        case Textcase::UPPER: return "upper";
+        case Textcase::LOWER: return "lower";
+    }
+}
+std::string Contourcarpet::Legendgrouptitle::Font::to_string(Variant e) {
+    switch(e) {
+        case Variant::NORMAL: return "normal";
+        case Variant::SMALL_CAPS: return "small-caps";
+        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
+        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
+        case Variant::PETITE_CAPS: return "petite-caps";
+        case Variant::UNICASE: return "unicase";
+    }
+}
+
+Contourcarpet::Legendgrouptitle::Font& Contourcarpet::Legendgrouptitle::Font::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Contourcarpet::Legendgrouptitle::Font& Contourcarpet::Legendgrouptitle::Font::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Legendgrouptitle::Font& Contourcarpet::Legendgrouptitle::Font::family(std::string f) {
+    json["family"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Legendgrouptitle::Font& Contourcarpet::Legendgrouptitle::Font::lineposition(std::string f) {
+    json["lineposition"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Legendgrouptitle::Font& Contourcarpet::Legendgrouptitle::Font::shadow(std::string f) {
+    json["shadow"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Legendgrouptitle::Font& Contourcarpet::Legendgrouptitle::Font::size(double f) {
+    json["size"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Legendgrouptitle::Font& Contourcarpet::Legendgrouptitle::Font::style(enum Style f) {
+    json["style"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Legendgrouptitle::Font& Contourcarpet::Legendgrouptitle::Font::textcase(enum Textcase f) {
+    json["textcase"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Legendgrouptitle::Font& Contourcarpet::Legendgrouptitle::Font::variant(enum Variant f) {
+    json["variant"] = to_string(f);
+    return *this;
+}
+
+Contourcarpet::Legendgrouptitle::Font& Contourcarpet::Legendgrouptitle::Font::weight(int f) {
+    json["weight"] = std::move(f);
+    return *this;
+}
+
+
+Contourcarpet::Line& Contourcarpet::Line::color(std::string f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+Contourcarpet::Line& Contourcarpet::Line::color(double f) {
+    json["color"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Line& Contourcarpet::Line::dash(std::string f) {
+    json["dash"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Line& Contourcarpet::Line::smoothing(double f) {
+    json["smoothing"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Line& Contourcarpet::Line::width(double f) {
+    json["width"] = std::move(f);
+    return *this;
+}
+
+
+Contourcarpet::Stream& Contourcarpet::Stream::maxpoints(double f) {
+    json["maxpoints"] = std::move(f);
+    return *this;
+}
+
+Contourcarpet::Stream& Contourcarpet::Stream::token(std::string f) {
+    json["token"] = std::move(f);
+    return *this;
+}
+
+} // namespace plotlypp
+

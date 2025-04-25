@@ -10,7 +10,7 @@ endif()
 
 set(JSON_LIB nlohmann_json)
 set(JSON_TARGET nlohmann_json::nlohmann_json)
-if(PLOTLY_USE_EXTERNAL_JSON)
+if(PLOTLYPP_USE_EXTERNAL_JSON)
     find_package(${JSON_LIB} 3.11.3 REQUIRED)
 else()
     include(FetchContent)
@@ -23,14 +23,8 @@ endif()
 SET(LIB plotlypp)
 add_library(${LIB} INTERFACE)
 target_link_libraries(${LIB} INTERFACE ${JSON_TARGET})
-target_include_directories(${LIB} INTERFACE generated ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(${LIB} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_compile_features(${LIB} INTERFACE cxx_std_17)
 
 # TODO: conditionally enable
-add_executable(test test.cpp)
-target_link_libraries(test
-  PRIVATE
-    ${LIB}
-)
-
-
+add_subdirectory(examples)
