@@ -44,7 +44,7 @@ class Figure {
         os << "            div.style.height = window.innerHeight;\n";
         os << "            data = JSON.parse('" << serialize(_json) << "')\n";
         os << "            Plotly.newPlot('plot', data);\n";
-        os << "        }";
+        os << "        }\n";
         os << "        // Call resizeDiv initially to set the size on page load.\n";
         os << "        resizeDiv();\n";
         os << "        // Add an event listener to the window's resize event.\n";
