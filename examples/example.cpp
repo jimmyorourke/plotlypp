@@ -270,7 +270,7 @@ int main() {
     // genMesh3dTetrahedron().show();
     //gen3dSurfaceTorus().show();
     //gen3dScatterBubblePlanets().show();
-    genScatterMap().show();
+    //genScatterMap().show();
     // system("open ../sample.html");
     std::cout << "Done" << "\n";
 }

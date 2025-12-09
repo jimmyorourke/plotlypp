@@ -16,6 +16,8 @@ std::string Splom::to_string(Visible e) {
         case Visible::FALSE: return "False";
         case Visible::LEGENDONLY: return "legendonly";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 template <typename T, typename>
@@ -295,6 +297,8 @@ std::string Splom::Dimensions::Dimension::Axis::to_string(Type e) {
         case Type::DATE: return "date";
         case Type::CATEGORY: return "category";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Splom::Dimensions::Dimension::Axis& Splom::Dimensions::Dimension::Axis::matches(bool f) {
@@ -313,6 +317,8 @@ std::string Splom::Hoverlabel::to_string(Align e) {
         case Align::RIGHT: return "right";
         case Align::AUTO: return "auto";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Splom::Hoverlabel& Splom::Hoverlabel::align(enum Align f) {
@@ -399,6 +405,8 @@ std::string Splom::Hoverlabel::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Hoverlabel::Font::to_string(Textcase e) {
     switch(e) {
@@ -407,6 +415,8 @@ std::string Splom::Hoverlabel::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Hoverlabel::Font::to_string(Variant e) {
     switch(e) {
@@ -417,6 +427,8 @@ std::string Splom::Hoverlabel::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::color(std::string f) {
@@ -575,6 +587,8 @@ std::string Splom::Legendgrouptitle::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
@@ -583,6 +597,8 @@ std::string Splom::Legendgrouptitle::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
@@ -593,6 +609,8 @@ std::string Splom::Legendgrouptitle::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Splom::Legendgrouptitle::Font& Splom::Legendgrouptitle::Font::color(std::string f) {
@@ -649,6 +667,8 @@ std::string Splom::Marker::to_string(Sizemode e) {
         case Sizemode::DIAMETER: return "diameter";
         case Sizemode::AREA: return "area";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Marker::to_string(Symbol e) {
     switch(e) {
@@ -977,6 +997,8 @@ std::string Splom::Marker::to_string(Symbol e) {
         case Symbol::NUM_154: return "154";
         case Symbol::ARROW_WIDE_OPEN: return "arrow-wide-open";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Splom::Marker& Splom::Marker::angle(double f) {
@@ -1141,18 +1163,24 @@ std::string Splom::Marker::Colorbar::to_string(Exponentformat e) {
         case Exponentformat::SI: return "SI";
         case Exponentformat::B: return "B";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Marker::Colorbar::to_string(Lenmode e) {
     switch(e) {
         case Lenmode::FRACTION: return "fraction";
         case Lenmode::PIXELS: return "pixels";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Marker::Colorbar::to_string(Orientation e) {
     switch(e) {
         case Orientation::H: return "h";
         case Orientation::V: return "v";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Marker::Colorbar::to_string(Showexponent e) {
     switch(e) {
@@ -1161,6 +1189,8 @@ std::string Splom::Marker::Colorbar::to_string(Showexponent e) {
         case Showexponent::LAST: return "last";
         case Showexponent::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Marker::Colorbar::to_string(Showtickprefix e) {
     switch(e) {
@@ -1169,6 +1199,8 @@ std::string Splom::Marker::Colorbar::to_string(Showtickprefix e) {
         case Showtickprefix::LAST: return "last";
         case Showtickprefix::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Marker::Colorbar::to_string(Showticksuffix e) {
     switch(e) {
@@ -1177,12 +1209,16 @@ std::string Splom::Marker::Colorbar::to_string(Showticksuffix e) {
         case Showticksuffix::LAST: return "last";
         case Showticksuffix::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Marker::Colorbar::to_string(Thicknessmode e) {
     switch(e) {
         case Thicknessmode::FRACTION: return "fraction";
         case Thicknessmode::PIXELS: return "pixels";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Marker::Colorbar::to_string(Ticklabeloverflow e) {
     switch(e) {
@@ -1190,6 +1226,8 @@ std::string Splom::Marker::Colorbar::to_string(Ticklabeloverflow e) {
         case Ticklabeloverflow::HIDE_PAST_DIV: return "hide past div";
         case Ticklabeloverflow::HIDE_PAST_DOMAIN: return "hide past domain";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Marker::Colorbar::to_string(Ticklabelposition e) {
     switch(e) {
@@ -1204,6 +1242,8 @@ std::string Splom::Marker::Colorbar::to_string(Ticklabelposition e) {
         case Ticklabelposition::OUTSIDE_BOTTOM: return "outside bottom";
         case Ticklabelposition::INSIDE_BOTTOM: return "inside bottom";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Marker::Colorbar::to_string(Tickmode e) {
     switch(e) {
@@ -1211,6 +1251,8 @@ std::string Splom::Marker::Colorbar::to_string(Tickmode e) {
         case Tickmode::LINEAR: return "linear";
         case Tickmode::ARRAY: return "array";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Marker::Colorbar::to_string(Ticks e) {
     switch(e) {
@@ -1218,6 +1260,8 @@ std::string Splom::Marker::Colorbar::to_string(Ticks e) {
         case Ticks::INSIDE: return "inside";
         case Ticks::EMPTY: return "";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Marker::Colorbar::to_string(Xanchor e) {
     switch(e) {
@@ -1225,12 +1269,16 @@ std::string Splom::Marker::Colorbar::to_string(Xanchor e) {
         case Xanchor::CENTER: return "center";
         case Xanchor::RIGHT: return "right";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Marker::Colorbar::to_string(Xref e) {
     switch(e) {
         case Xref::CONTAINER: return "container";
         case Xref::PAPER: return "paper";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Marker::Colorbar::to_string(Yanchor e) {
     switch(e) {
@@ -1238,12 +1286,16 @@ std::string Splom::Marker::Colorbar::to_string(Yanchor e) {
         case Yanchor::MIDDLE: return "middle";
         case Yanchor::BOTTOM: return "bottom";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Marker::Colorbar::to_string(Yref e) {
     switch(e) {
         case Yref::CONTAINER: return "container";
         case Yref::PAPER: return "paper";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::bgcolor(std::string f) {
@@ -1512,6 +1564,8 @@ std::string Splom::Marker::Colorbar::Tickfont::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Marker::Colorbar::Tickfont::to_string(Textcase e) {
     switch(e) {
@@ -1520,6 +1574,8 @@ std::string Splom::Marker::Colorbar::Tickfont::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Marker::Colorbar::Tickfont::to_string(Variant e) {
     switch(e) {
@@ -1530,6 +1586,8 @@ std::string Splom::Marker::Colorbar::Tickfont::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Splom::Marker::Colorbar::Tickfont& Splom::Marker::Colorbar::Tickfont::color(std::string f) {
@@ -1619,6 +1677,8 @@ std::string Splom::Marker::Colorbar::Title::to_string(Side e) {
         case Side::TOP: return "top";
         case Side::BOTTOM: return "bottom";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Splom::Marker::Colorbar::Title& Splom::Marker::Colorbar::Title::font(class Font f) {
@@ -1641,6 +1701,8 @@ std::string Splom::Marker::Colorbar::Title::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Marker::Colorbar::Title::Font::to_string(Textcase e) {
     switch(e) {
@@ -1649,6 +1711,8 @@ std::string Splom::Marker::Colorbar::Title::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Splom::Marker::Colorbar::Title::Font::to_string(Variant e) {
     switch(e) {
@@ -1659,6 +1723,8 @@ std::string Splom::Marker::Colorbar::Title::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Splom::Marker::Colorbar::Title::Font& Splom::Marker::Colorbar::Title::Font::color(std::string f) {

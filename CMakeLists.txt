@@ -36,6 +36,8 @@ add_library(plotlypp INTERFACE)
 target_link_libraries(plotlypp INTERFACE ${JSON_TARGET})
 target_include_directories(plotlypp INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_compile_features(plotlypp INTERFACE cxx_std_17)
+target_compile_options(plotlypp INTERFACE -fconstexpr-loop-limit=5000000)
+target_compile_options(plotlypp INTERFACE -fconstexpr-ops-limit=200000000)
 
 if(PLOTLYPP_BUILD_EXAMPLES)
     add_subdirectory(examples)

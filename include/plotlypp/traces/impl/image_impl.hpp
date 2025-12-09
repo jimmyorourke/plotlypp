@@ -18,6 +18,8 @@ std::string Image::to_string(Colormodel e) {
         case Colormodel::HSL: return "hsl";
         case Colormodel::HSLA: return "hsla";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Image::to_string(Visible e) {
     switch(e) {
@@ -25,12 +27,16 @@ std::string Image::to_string(Visible e) {
         case Visible::FALSE: return "False";
         case Visible::LEGENDONLY: return "legendonly";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Image::to_string(Zsmooth e) {
     switch(e) {
         case Zsmooth::FAST: return "fast";
         case Zsmooth::FALSE: return "False";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Image& Image::colormodel(enum Colormodel f) {
@@ -256,6 +262,8 @@ std::string Image::Hoverlabel::to_string(Align e) {
         case Align::RIGHT: return "right";
         case Align::AUTO: return "auto";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Image::Hoverlabel& Image::Hoverlabel::align(enum Align f) {
@@ -342,6 +350,8 @@ std::string Image::Hoverlabel::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Image::Hoverlabel::Font::to_string(Textcase e) {
     switch(e) {
@@ -350,6 +360,8 @@ std::string Image::Hoverlabel::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Image::Hoverlabel::Font::to_string(Variant e) {
     switch(e) {
@@ -360,6 +372,8 @@ std::string Image::Hoverlabel::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Image::Hoverlabel::Font& Image::Hoverlabel::Font::color(std::string f) {
@@ -518,6 +532,8 @@ std::string Image::Legendgrouptitle::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Image::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
@@ -526,6 +542,8 @@ std::string Image::Legendgrouptitle::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Image::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
@@ -536,6 +554,8 @@ std::string Image::Legendgrouptitle::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Image::Legendgrouptitle::Font& Image::Legendgrouptitle::Font::color(std::string f) {

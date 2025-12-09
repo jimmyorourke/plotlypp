@@ -16,6 +16,8 @@ std::string Contour::to_string(Visible e) {
         case Visible::FALSE: return "False";
         case Visible::LEGENDONLY: return "legendonly";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::to_string(Xcalendar e) {
     switch(e) {
@@ -36,6 +38,8 @@ std::string Contour::to_string(Xcalendar e) {
         case Xcalendar::THAI: return "thai";
         case Xcalendar::UMMALQURA: return "ummalqura";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::to_string(Xperiodalignment e) {
     switch(e) {
@@ -43,12 +47,16 @@ std::string Contour::to_string(Xperiodalignment e) {
         case Xperiodalignment::MIDDLE: return "middle";
         case Xperiodalignment::END: return "end";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::to_string(Xtype e) {
     switch(e) {
         case Xtype::ARRAY: return "array";
         case Xtype::SCALED: return "scaled";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::to_string(Ycalendar e) {
     switch(e) {
@@ -69,6 +77,8 @@ std::string Contour::to_string(Ycalendar e) {
         case Ycalendar::THAI: return "thai";
         case Ycalendar::UMMALQURA: return "ummalqura";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::to_string(Yperiodalignment e) {
     switch(e) {
@@ -76,12 +86,16 @@ std::string Contour::to_string(Yperiodalignment e) {
         case Yperiodalignment::MIDDLE: return "middle";
         case Yperiodalignment::END: return "end";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::to_string(Ytype e) {
     switch(e) {
         case Ytype::ARRAY: return "array";
         case Ytype::SCALED: return "scaled";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Contour& Contour::autocolorscale(bool f) {
@@ -493,18 +507,24 @@ std::string Contour::Colorbar::to_string(Exponentformat e) {
         case Exponentformat::SI: return "SI";
         case Exponentformat::B: return "B";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Colorbar::to_string(Lenmode e) {
     switch(e) {
         case Lenmode::FRACTION: return "fraction";
         case Lenmode::PIXELS: return "pixels";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Colorbar::to_string(Orientation e) {
     switch(e) {
         case Orientation::H: return "h";
         case Orientation::V: return "v";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Colorbar::to_string(Showexponent e) {
     switch(e) {
@@ -513,6 +533,8 @@ std::string Contour::Colorbar::to_string(Showexponent e) {
         case Showexponent::LAST: return "last";
         case Showexponent::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Colorbar::to_string(Showtickprefix e) {
     switch(e) {
@@ -521,6 +543,8 @@ std::string Contour::Colorbar::to_string(Showtickprefix e) {
         case Showtickprefix::LAST: return "last";
         case Showtickprefix::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Colorbar::to_string(Showticksuffix e) {
     switch(e) {
@@ -529,12 +553,16 @@ std::string Contour::Colorbar::to_string(Showticksuffix e) {
         case Showticksuffix::LAST: return "last";
         case Showticksuffix::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Colorbar::to_string(Thicknessmode e) {
     switch(e) {
         case Thicknessmode::FRACTION: return "fraction";
         case Thicknessmode::PIXELS: return "pixels";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Colorbar::to_string(Ticklabeloverflow e) {
     switch(e) {
@@ -542,6 +570,8 @@ std::string Contour::Colorbar::to_string(Ticklabeloverflow e) {
         case Ticklabeloverflow::HIDE_PAST_DIV: return "hide past div";
         case Ticklabeloverflow::HIDE_PAST_DOMAIN: return "hide past domain";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Colorbar::to_string(Ticklabelposition e) {
     switch(e) {
@@ -556,6 +586,8 @@ std::string Contour::Colorbar::to_string(Ticklabelposition e) {
         case Ticklabelposition::OUTSIDE_BOTTOM: return "outside bottom";
         case Ticklabelposition::INSIDE_BOTTOM: return "inside bottom";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Colorbar::to_string(Tickmode e) {
     switch(e) {
@@ -563,6 +595,8 @@ std::string Contour::Colorbar::to_string(Tickmode e) {
         case Tickmode::LINEAR: return "linear";
         case Tickmode::ARRAY: return "array";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Colorbar::to_string(Ticks e) {
     switch(e) {
@@ -570,6 +604,8 @@ std::string Contour::Colorbar::to_string(Ticks e) {
         case Ticks::INSIDE: return "inside";
         case Ticks::EMPTY: return "";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Colorbar::to_string(Xanchor e) {
     switch(e) {
@@ -577,12 +613,16 @@ std::string Contour::Colorbar::to_string(Xanchor e) {
         case Xanchor::CENTER: return "center";
         case Xanchor::RIGHT: return "right";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Colorbar::to_string(Xref e) {
     switch(e) {
         case Xref::CONTAINER: return "container";
         case Xref::PAPER: return "paper";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Colorbar::to_string(Yanchor e) {
     switch(e) {
@@ -590,12 +630,16 @@ std::string Contour::Colorbar::to_string(Yanchor e) {
         case Yanchor::MIDDLE: return "middle";
         case Yanchor::BOTTOM: return "bottom";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Colorbar::to_string(Yref e) {
     switch(e) {
         case Yref::CONTAINER: return "container";
         case Yref::PAPER: return "paper";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Contour::Colorbar& Contour::Colorbar::bgcolor(std::string f) {
@@ -864,6 +908,8 @@ std::string Contour::Colorbar::Tickfont::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Colorbar::Tickfont::to_string(Textcase e) {
     switch(e) {
@@ -872,6 +918,8 @@ std::string Contour::Colorbar::Tickfont::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Colorbar::Tickfont::to_string(Variant e) {
     switch(e) {
@@ -882,6 +930,8 @@ std::string Contour::Colorbar::Tickfont::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Contour::Colorbar::Tickfont& Contour::Colorbar::Tickfont::color(std::string f) {
@@ -971,6 +1021,8 @@ std::string Contour::Colorbar::Title::to_string(Side e) {
         case Side::TOP: return "top";
         case Side::BOTTOM: return "bottom";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Contour::Colorbar::Title& Contour::Colorbar::Title::font(class Font f) {
@@ -993,6 +1045,8 @@ std::string Contour::Colorbar::Title::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Colorbar::Title::Font::to_string(Textcase e) {
     switch(e) {
@@ -1001,6 +1055,8 @@ std::string Contour::Colorbar::Title::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Colorbar::Title::Font::to_string(Variant e) {
     switch(e) {
@@ -1011,6 +1067,8 @@ std::string Contour::Colorbar::Title::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Contour::Colorbar::Title::Font& Contour::Colorbar::Title::Font::color(std::string f) {
@@ -1069,6 +1127,8 @@ std::string Contour::Contours::to_string(Coloring e) {
         case Coloring::LINES: return "lines";
         case Coloring::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Contours::to_string(Operation e) {
     switch(e) {
@@ -1086,12 +1146,16 @@ std::string Contour::Contours::to_string(Operation e) {
         case Operation::](: return "](";
         case Operation::)[: return ")[";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Contours::to_string(Type e) {
     switch(e) {
         case Type::LEVELS: return "levels";
         case Type::CONSTRAINT: return "constraint";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Contour::Contours& Contour::Contours::coloring(enum Coloring f) {
@@ -1161,6 +1225,8 @@ std::string Contour::Contours::Labelfont::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Contours::Labelfont::to_string(Textcase e) {
     switch(e) {
@@ -1169,6 +1235,8 @@ std::string Contour::Contours::Labelfont::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Contours::Labelfont::to_string(Variant e) {
     switch(e) {
@@ -1179,6 +1247,8 @@ std::string Contour::Contours::Labelfont::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Contour::Contours::Labelfont& Contour::Contours::Labelfont::color(std::string f) {
@@ -1236,6 +1306,8 @@ std::string Contour::Hoverlabel::to_string(Align e) {
         case Align::RIGHT: return "right";
         case Align::AUTO: return "auto";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Contour::Hoverlabel& Contour::Hoverlabel::align(enum Align f) {
@@ -1322,6 +1394,8 @@ std::string Contour::Hoverlabel::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Hoverlabel::Font::to_string(Textcase e) {
     switch(e) {
@@ -1330,6 +1404,8 @@ std::string Contour::Hoverlabel::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Hoverlabel::Font::to_string(Variant e) {
     switch(e) {
@@ -1340,6 +1416,8 @@ std::string Contour::Hoverlabel::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Contour::Hoverlabel::Font& Contour::Hoverlabel::Font::color(std::string f) {
@@ -1498,6 +1576,8 @@ std::string Contour::Legendgrouptitle::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
@@ -1506,6 +1586,8 @@ std::string Contour::Legendgrouptitle::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
@@ -1516,6 +1598,8 @@ std::string Contour::Legendgrouptitle::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Contour::Legendgrouptitle::Font& Contour::Legendgrouptitle::Font::color(std::string f) {
@@ -1608,6 +1692,8 @@ std::string Contour::Textfont::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Textfont::to_string(Textcase e) {
     switch(e) {
@@ -1616,6 +1702,8 @@ std::string Contour::Textfont::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Contour::Textfont::to_string(Variant e) {
     switch(e) {
@@ -1626,6 +1714,8 @@ std::string Contour::Textfont::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Contour::Textfont& Contour::Textfont::color(std::string f) {

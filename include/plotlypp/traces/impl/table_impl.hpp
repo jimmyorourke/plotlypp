@@ -16,6 +16,8 @@ std::string Table::to_string(Visible e) {
         case Visible::FALSE: return "False";
         case Visible::LEGENDONLY: return "legendonly";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Table& Table::cells(class Cells f) {
@@ -167,6 +169,8 @@ std::string Table::Cells::to_string(Align e) {
         case Align::CENTER: return "center";
         case Align::RIGHT: return "right";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Table::Cells& Table::Cells::align(enum Align f) {
@@ -283,6 +287,8 @@ std::string Table::Cells::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Table::Cells::Font::to_string(Textcase e) {
     switch(e) {
@@ -291,6 +297,8 @@ std::string Table::Cells::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Table::Cells::Font::to_string(Variant e) {
     switch(e) {
@@ -301,6 +309,8 @@ std::string Table::Cells::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Table::Cells::Font& Table::Cells::Font::color(std::string f) {
@@ -507,6 +517,8 @@ std::string Table::Header::to_string(Align e) {
         case Align::CENTER: return "center";
         case Align::RIGHT: return "right";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Table::Header& Table::Header::align(enum Align f) {
@@ -623,6 +635,8 @@ std::string Table::Header::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Table::Header::Font::to_string(Textcase e) {
     switch(e) {
@@ -631,6 +645,8 @@ std::string Table::Header::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Table::Header::Font::to_string(Variant e) {
     switch(e) {
@@ -641,6 +657,8 @@ std::string Table::Header::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Table::Header::Font& Table::Header::Font::color(std::string f) {
@@ -826,6 +844,8 @@ std::string Table::Hoverlabel::to_string(Align e) {
         case Align::RIGHT: return "right";
         case Align::AUTO: return "auto";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Table::Hoverlabel& Table::Hoverlabel::align(enum Align f) {
@@ -912,6 +932,8 @@ std::string Table::Hoverlabel::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Table::Hoverlabel::Font::to_string(Textcase e) {
     switch(e) {
@@ -920,6 +942,8 @@ std::string Table::Hoverlabel::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Table::Hoverlabel::Font::to_string(Variant e) {
     switch(e) {
@@ -930,6 +954,8 @@ std::string Table::Hoverlabel::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Table::Hoverlabel::Font& Table::Hoverlabel::Font::color(std::string f) {
@@ -1088,6 +1114,8 @@ std::string Table::Legendgrouptitle::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Table::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
@@ -1096,6 +1124,8 @@ std::string Table::Legendgrouptitle::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Table::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
@@ -1106,6 +1136,8 @@ std::string Table::Legendgrouptitle::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::color(std::string f) {

@@ -16,6 +16,8 @@ std::string Indicator::to_string(Align e) {
         case Align::CENTER: return "center";
         case Align::RIGHT: return "right";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::to_string(Visible e) {
     switch(e) {
@@ -23,6 +25,8 @@ std::string Indicator::to_string(Visible e) {
         case Visible::FALSE: return "False";
         case Visible::LEGENDONLY: return "legendonly";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Indicator& Indicator::align(enum Align f) {
@@ -156,6 +160,8 @@ std::string Indicator::Delta::to_string(Position e) {
         case Position::LEFT: return "left";
         case Position::RIGHT: return "right";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Indicator::Delta& Indicator::Delta::decreasing(class Decreasing f) {
@@ -223,6 +229,8 @@ std::string Indicator::Delta::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Delta::Font::to_string(Textcase e) {
     switch(e) {
@@ -231,6 +239,8 @@ std::string Indicator::Delta::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Delta::Font::to_string(Variant e) {
     switch(e) {
@@ -241,6 +251,8 @@ std::string Indicator::Delta::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Indicator::Delta::Font& Indicator::Delta::Font::color(std::string f) {
@@ -333,6 +345,8 @@ std::string Indicator::Gauge::to_string(Shape e) {
         case Shape::ANGULAR: return "angular";
         case Shape::BULLET: return "bullet";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Indicator::Gauge& Indicator::Gauge::axis(class Axis f) {
@@ -391,6 +405,8 @@ std::string Indicator::Gauge::Axis::to_string(Exponentformat e) {
         case Exponentformat::SI: return "SI";
         case Exponentformat::B: return "B";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Gauge::Axis::to_string(Showexponent e) {
     switch(e) {
@@ -399,6 +415,8 @@ std::string Indicator::Gauge::Axis::to_string(Showexponent e) {
         case Showexponent::LAST: return "last";
         case Showexponent::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Gauge::Axis::to_string(Showtickprefix e) {
     switch(e) {
@@ -407,6 +425,8 @@ std::string Indicator::Gauge::Axis::to_string(Showtickprefix e) {
         case Showtickprefix::LAST: return "last";
         case Showtickprefix::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Gauge::Axis::to_string(Showticksuffix e) {
     switch(e) {
@@ -415,6 +435,8 @@ std::string Indicator::Gauge::Axis::to_string(Showticksuffix e) {
         case Showticksuffix::LAST: return "last";
         case Showticksuffix::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Gauge::Axis::to_string(Tickmode e) {
     switch(e) {
@@ -422,6 +444,8 @@ std::string Indicator::Gauge::Axis::to_string(Tickmode e) {
         case Tickmode::LINEAR: return "linear";
         case Tickmode::ARRAY: return "array";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Gauge::Axis::to_string(Ticks e) {
     switch(e) {
@@ -429,6 +453,8 @@ std::string Indicator::Gauge::Axis::to_string(Ticks e) {
         case Ticks::INSIDE: return "inside";
         case Ticks::EMPTY: return "";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 template <typename T>
@@ -590,6 +616,8 @@ std::string Indicator::Gauge::Axis::Tickfont::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Gauge::Axis::Tickfont::to_string(Textcase e) {
     switch(e) {
@@ -598,6 +626,8 @@ std::string Indicator::Gauge::Axis::Tickfont::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Gauge::Axis::Tickfont::to_string(Variant e) {
     switch(e) {
@@ -608,6 +638,8 @@ std::string Indicator::Gauge::Axis::Tickfont::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Indicator::Gauge::Axis::Tickfont& Indicator::Gauge::Axis::Tickfont::color(std::string f) {
@@ -829,6 +861,8 @@ std::string Indicator::Legendgrouptitle::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
@@ -837,6 +871,8 @@ std::string Indicator::Legendgrouptitle::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
@@ -847,6 +883,8 @@ std::string Indicator::Legendgrouptitle::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Indicator::Legendgrouptitle::Font& Indicator::Legendgrouptitle::Font::color(std::string f) {
@@ -924,6 +962,8 @@ std::string Indicator::Number::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Number::Font::to_string(Textcase e) {
     switch(e) {
@@ -932,6 +972,8 @@ std::string Indicator::Number::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Number::Font::to_string(Variant e) {
     switch(e) {
@@ -942,6 +984,8 @@ std::string Indicator::Number::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Indicator::Number::Font& Indicator::Number::Font::color(std::string f) {
@@ -1010,6 +1054,8 @@ std::string Indicator::Title::to_string(Align e) {
         case Align::CENTER: return "center";
         case Align::RIGHT: return "right";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Indicator::Title& Indicator::Title::align(enum Align f) {
@@ -1032,6 +1078,8 @@ std::string Indicator::Title::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Title::Font::to_string(Textcase e) {
     switch(e) {
@@ -1040,6 +1088,8 @@ std::string Indicator::Title::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Title::Font::to_string(Variant e) {
     switch(e) {
@@ -1050,6 +1100,8 @@ std::string Indicator::Title::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Indicator::Title::Font& Indicator::Title::Font::color(std::string f) {

@@ -183,6 +183,8 @@ def emit_enum_to_string(class_object, enum, writer):
             for safe_val, json_val in enum.safe_to_json_vals.items():
                 writer.write(f'case {enum.name.title()}::{safe_val}: return "{json_val}";')
         writer.write("}")
+        writer.write("// Should be unreachable.")
+        writer.write('throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};')
     writer.write("}")
 
 def emit_class_public_members(class_object, writer):

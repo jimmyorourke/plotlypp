@@ -17,6 +17,8 @@ std::string Waterfall::to_string(Constraintext e) {
         case Constraintext::BOTH: return "both";
         case Constraintext::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::to_string(Insidetextanchor e) {
     switch(e) {
@@ -24,12 +26,16 @@ std::string Waterfall::to_string(Insidetextanchor e) {
         case Insidetextanchor::MIDDLE: return "middle";
         case Insidetextanchor::START: return "start";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::to_string(Orientation e) {
     switch(e) {
         case Orientation::V: return "v";
         case Orientation::H: return "h";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::to_string(Textposition e) {
     switch(e) {
@@ -38,6 +44,8 @@ std::string Waterfall::to_string(Textposition e) {
         case Textposition::AUTO: return "auto";
         case Textposition::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::to_string(Visible e) {
     switch(e) {
@@ -45,6 +53,8 @@ std::string Waterfall::to_string(Visible e) {
         case Visible::FALSE: return "False";
         case Visible::LEGENDONLY: return "legendonly";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::to_string(Xperiodalignment e) {
     switch(e) {
@@ -52,6 +62,8 @@ std::string Waterfall::to_string(Xperiodalignment e) {
         case Xperiodalignment::MIDDLE: return "middle";
         case Xperiodalignment::END: return "end";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::to_string(Yperiodalignment e) {
     switch(e) {
@@ -59,6 +71,8 @@ std::string Waterfall::to_string(Yperiodalignment e) {
         case Yperiodalignment::MIDDLE: return "middle";
         case Yperiodalignment::END: return "end";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Waterfall& Waterfall::alignmentgroup(std::string f) {
@@ -484,6 +498,8 @@ std::string Waterfall::Connector::to_string(Mode e) {
         case Mode::SPANNING: return "spanning";
         case Mode::BETWEEN: return "between";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Waterfall::Connector& Waterfall::Connector::line(class Line f) {
@@ -563,6 +579,8 @@ std::string Waterfall::Hoverlabel::to_string(Align e) {
         case Align::RIGHT: return "right";
         case Align::AUTO: return "auto";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Waterfall::Hoverlabel& Waterfall::Hoverlabel::align(enum Align f) {
@@ -649,6 +667,8 @@ std::string Waterfall::Hoverlabel::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::Hoverlabel::Font::to_string(Textcase e) {
     switch(e) {
@@ -657,6 +677,8 @@ std::string Waterfall::Hoverlabel::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::Hoverlabel::Font::to_string(Variant e) {
     switch(e) {
@@ -667,6 +689,8 @@ std::string Waterfall::Hoverlabel::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::color(std::string f) {
@@ -850,6 +874,8 @@ std::string Waterfall::Insidetextfont::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::Insidetextfont::to_string(Textcase e) {
     switch(e) {
@@ -858,6 +884,8 @@ std::string Waterfall::Insidetextfont::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::Insidetextfont::to_string(Variant e) {
     switch(e) {
@@ -868,6 +896,8 @@ std::string Waterfall::Insidetextfont::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Waterfall::Insidetextfont& Waterfall::Insidetextfont::color(std::string f) {
@@ -1026,6 +1056,8 @@ std::string Waterfall::Legendgrouptitle::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
@@ -1034,6 +1066,8 @@ std::string Waterfall::Legendgrouptitle::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
@@ -1044,6 +1078,8 @@ std::string Waterfall::Legendgrouptitle::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Waterfall::Legendgrouptitle::Font& Waterfall::Legendgrouptitle::Font::color(std::string f) {
@@ -1100,6 +1136,8 @@ std::string Waterfall::Outsidetextfont::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::Outsidetextfont::to_string(Textcase e) {
     switch(e) {
@@ -1108,6 +1146,8 @@ std::string Waterfall::Outsidetextfont::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::Outsidetextfont::to_string(Variant e) {
     switch(e) {
@@ -1118,6 +1158,8 @@ std::string Waterfall::Outsidetextfont::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::color(std::string f) {
@@ -1276,6 +1318,8 @@ std::string Waterfall::Textfont::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::Textfont::to_string(Textcase e) {
     switch(e) {
@@ -1284,6 +1328,8 @@ std::string Waterfall::Textfont::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::Textfont::to_string(Variant e) {
     switch(e) {
@@ -1294,6 +1340,8 @@ std::string Waterfall::Textfont::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Waterfall::Textfont& Waterfall::Textfont::color(std::string f) {

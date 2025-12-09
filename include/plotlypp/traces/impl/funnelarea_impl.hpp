@@ -15,6 +15,8 @@ std::string Funnelarea::to_string(Textposition e) {
         case Textposition::INSIDE: return "inside";
         case Textposition::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::to_string(Visible e) {
     switch(e) {
@@ -22,6 +24,8 @@ std::string Funnelarea::to_string(Visible e) {
         case Visible::FALSE: return "False";
         case Visible::LEGENDONLY: return "legendonly";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Funnelarea& Funnelarea::aspectratio(double f) {
@@ -315,6 +319,8 @@ std::string Funnelarea::Hoverlabel::to_string(Align e) {
         case Align::RIGHT: return "right";
         case Align::AUTO: return "auto";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Funnelarea::Hoverlabel& Funnelarea::Hoverlabel::align(enum Align f) {
@@ -401,6 +407,8 @@ std::string Funnelarea::Hoverlabel::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::Hoverlabel::Font::to_string(Textcase e) {
     switch(e) {
@@ -409,6 +417,8 @@ std::string Funnelarea::Hoverlabel::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::Hoverlabel::Font::to_string(Variant e) {
     switch(e) {
@@ -419,6 +429,8 @@ std::string Funnelarea::Hoverlabel::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Funnelarea::Hoverlabel::Font& Funnelarea::Hoverlabel::Font::color(std::string f) {
@@ -566,6 +578,8 @@ std::string Funnelarea::Insidetextfont::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::Insidetextfont::to_string(Textcase e) {
     switch(e) {
@@ -574,6 +588,8 @@ std::string Funnelarea::Insidetextfont::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::Insidetextfont::to_string(Variant e) {
     switch(e) {
@@ -584,6 +600,8 @@ std::string Funnelarea::Insidetextfont::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Funnelarea::Insidetextfont& Funnelarea::Insidetextfont::color(std::string f) {
@@ -742,6 +760,8 @@ std::string Funnelarea::Legendgrouptitle::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
@@ -750,6 +770,8 @@ std::string Funnelarea::Legendgrouptitle::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
@@ -760,6 +782,8 @@ std::string Funnelarea::Legendgrouptitle::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Funnelarea::Legendgrouptitle::Font& Funnelarea::Legendgrouptitle::Font::color(std::string f) {
@@ -875,6 +899,8 @@ std::string Funnelarea::Marker::Pattern::to_string(Fillmode e) {
         case Fillmode::REPLACE: return "replace";
         case Fillmode::OVERLAY: return "overlay";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::Marker::Pattern::to_string(Shape e) {
     switch(e) {
@@ -887,6 +913,8 @@ std::string Funnelarea::Marker::Pattern::to_string(Shape e) {
         case Shape::PLUS: return "+";
         case Shape::DOT: return ".";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Funnelarea::Marker::Pattern& Funnelarea::Marker::Pattern::bgcolor(std::string f) {
@@ -1003,6 +1031,8 @@ std::string Funnelarea::Textfont::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::Textfont::to_string(Textcase e) {
     switch(e) {
@@ -1011,6 +1041,8 @@ std::string Funnelarea::Textfont::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::Textfont::to_string(Variant e) {
     switch(e) {
@@ -1021,6 +1053,8 @@ std::string Funnelarea::Textfont::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Funnelarea::Textfont& Funnelarea::Textfont::color(std::string f) {
@@ -1169,6 +1203,8 @@ std::string Funnelarea::Title::to_string(Position e) {
         case Position::TOP_CENTER: return "top center";
         case Position::TOP_RIGHT: return "top right";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Funnelarea::Title& Funnelarea::Title::font(class Font f) {
@@ -1191,6 +1227,8 @@ std::string Funnelarea::Title::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::Title::Font::to_string(Textcase e) {
     switch(e) {
@@ -1199,6 +1237,8 @@ std::string Funnelarea::Title::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::Title::Font::to_string(Variant e) {
     switch(e) {
@@ -1209,6 +1249,8 @@ std::string Funnelarea::Title::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Funnelarea::Title::Font& Funnelarea::Title::Font::color(std::string f) {

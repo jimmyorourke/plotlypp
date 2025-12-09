@@ -16,6 +16,8 @@ std::string Box::to_string(Boxmean e) {
         case Boxmean::SD: return "sd";
         case Boxmean::FALSE: return "False";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::to_string(Boxpoints e) {
     switch(e) {
@@ -24,12 +26,16 @@ std::string Box::to_string(Boxpoints e) {
         case Boxpoints::SUSPECTEDOUTLIERS: return "suspectedoutliers";
         case Boxpoints::FALSE: return "False";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::to_string(Orientation e) {
     switch(e) {
         case Orientation::V: return "v";
         case Orientation::H: return "h";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::to_string(Quartilemethod e) {
     switch(e) {
@@ -37,12 +43,16 @@ std::string Box::to_string(Quartilemethod e) {
         case Quartilemethod::EXCLUSIVE: return "exclusive";
         case Quartilemethod::INCLUSIVE: return "inclusive";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::to_string(Sizemode e) {
     switch(e) {
         case Sizemode::QUARTILES: return "quartiles";
         case Sizemode::SD: return "sd";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::to_string(Visible e) {
     switch(e) {
@@ -50,6 +60,8 @@ std::string Box::to_string(Visible e) {
         case Visible::FALSE: return "False";
         case Visible::LEGENDONLY: return "legendonly";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::to_string(Xcalendar e) {
     switch(e) {
@@ -70,6 +82,8 @@ std::string Box::to_string(Xcalendar e) {
         case Xcalendar::THAI: return "thai";
         case Xcalendar::UMMALQURA: return "ummalqura";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::to_string(Xperiodalignment e) {
     switch(e) {
@@ -77,6 +91,8 @@ std::string Box::to_string(Xperiodalignment e) {
         case Xperiodalignment::MIDDLE: return "middle";
         case Xperiodalignment::END: return "end";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::to_string(Ycalendar e) {
     switch(e) {
@@ -97,6 +113,8 @@ std::string Box::to_string(Ycalendar e) {
         case Ycalendar::THAI: return "thai";
         case Ycalendar::UMMALQURA: return "ummalqura";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::to_string(Yperiodalignment e) {
     switch(e) {
@@ -104,6 +122,8 @@ std::string Box::to_string(Yperiodalignment e) {
         case Yperiodalignment::MIDDLE: return "middle";
         case Yperiodalignment::END: return "end";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Box& Box::alignmentgroup(std::string f) {
@@ -588,6 +608,8 @@ std::string Box::Hoverlabel::to_string(Align e) {
         case Align::RIGHT: return "right";
         case Align::AUTO: return "auto";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Box::Hoverlabel& Box::Hoverlabel::align(enum Align f) {
@@ -674,6 +696,8 @@ std::string Box::Hoverlabel::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::Hoverlabel::Font::to_string(Textcase e) {
     switch(e) {
@@ -682,6 +706,8 @@ std::string Box::Hoverlabel::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::Hoverlabel::Font::to_string(Variant e) {
     switch(e) {
@@ -692,6 +718,8 @@ std::string Box::Hoverlabel::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Box::Hoverlabel::Font& Box::Hoverlabel::Font::color(std::string f) {
@@ -850,6 +878,8 @@ std::string Box::Legendgrouptitle::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
@@ -858,6 +888,8 @@ std::string Box::Legendgrouptitle::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
@@ -868,6 +900,8 @@ std::string Box::Legendgrouptitle::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Box::Legendgrouptitle::Font& Box::Legendgrouptitle::Font::color(std::string f) {
@@ -1261,6 +1295,8 @@ std::string Box::Marker::to_string(Symbol e) {
         case Symbol::NUM_154: return "154";
         case Symbol::ARROW_WIDE_OPEN: return "arrow-wide-open";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Box::Marker& Box::Marker::angle(double f) {

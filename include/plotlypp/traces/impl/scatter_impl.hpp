@@ -20,6 +20,8 @@ std::string Scatter::to_string(Fill e) {
         case Fill::TOSELF: return "toself";
         case Fill::TONEXT: return "tonext";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::to_string(Groupnorm e) {
     switch(e) {
@@ -27,18 +29,24 @@ std::string Scatter::to_string(Groupnorm e) {
         case Groupnorm::FRACTION: return "fraction";
         case Groupnorm::PERCENT: return "percent";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::to_string(Orientation e) {
     switch(e) {
         case Orientation::V: return "v";
         case Orientation::H: return "h";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::to_string(Stackgaps e) {
     switch(e) {
         case Stackgaps::INFER_ZERO: return "infer zero";
         case Stackgaps::INTERPOLATE: return "interpolate";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::to_string(Textposition e) {
     switch(e) {
@@ -52,6 +60,8 @@ std::string Scatter::to_string(Textposition e) {
         case Textposition::BOTTOM_CENTER: return "bottom center";
         case Textposition::BOTTOM_RIGHT: return "bottom right";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::to_string(Visible e) {
     switch(e) {
@@ -59,6 +69,8 @@ std::string Scatter::to_string(Visible e) {
         case Visible::FALSE: return "False";
         case Visible::LEGENDONLY: return "legendonly";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::to_string(Xcalendar e) {
     switch(e) {
@@ -79,6 +91,8 @@ std::string Scatter::to_string(Xcalendar e) {
         case Xcalendar::THAI: return "thai";
         case Xcalendar::UMMALQURA: return "ummalqura";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::to_string(Xperiodalignment e) {
     switch(e) {
@@ -86,6 +100,8 @@ std::string Scatter::to_string(Xperiodalignment e) {
         case Xperiodalignment::MIDDLE: return "middle";
         case Xperiodalignment::END: return "end";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::to_string(Ycalendar e) {
     switch(e) {
@@ -106,6 +122,8 @@ std::string Scatter::to_string(Ycalendar e) {
         case Ycalendar::THAI: return "thai";
         case Ycalendar::UMMALQURA: return "ummalqura";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::to_string(Yperiodalignment e) {
     switch(e) {
@@ -113,6 +131,8 @@ std::string Scatter::to_string(Yperiodalignment e) {
         case Yperiodalignment::MIDDLE: return "middle";
         case Yperiodalignment::END: return "end";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Scatter& Scatter::alignmentgroup(std::string f) {
@@ -540,6 +560,8 @@ std::string Scatter::Error_X::to_string(Type e) {
         case Type::SQRT: return "sqrt";
         case Type::DATA: return "data";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 template <typename T, typename>
@@ -630,6 +652,8 @@ std::string Scatter::Error_Y::to_string(Type e) {
         case Type::SQRT: return "sqrt";
         case Type::DATA: return "data";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 template <typename T, typename>
@@ -715,6 +739,8 @@ std::string Scatter::Fillgradient::to_string(Type e) {
         case Type::VERTICAL: return "vertical";
         case Type::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Scatter::Fillgradient& Scatter::Fillgradient::colorscale(std::string f) {
@@ -746,6 +772,8 @@ std::string Scatter::Fillpattern::to_string(Fillmode e) {
         case Fillmode::REPLACE: return "replace";
         case Fillmode::OVERLAY: return "overlay";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Fillpattern::to_string(Shape e) {
     switch(e) {
@@ -758,6 +786,8 @@ std::string Scatter::Fillpattern::to_string(Shape e) {
         case Shape::PLUS: return "+";
         case Shape::DOT: return ".";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Scatter::Fillpattern& Scatter::Fillpattern::bgcolor(std::string f) {
@@ -864,6 +894,8 @@ std::string Scatter::Hoverlabel::to_string(Align e) {
         case Align::RIGHT: return "right";
         case Align::AUTO: return "auto";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Scatter::Hoverlabel& Scatter::Hoverlabel::align(enum Align f) {
@@ -950,6 +982,8 @@ std::string Scatter::Hoverlabel::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Hoverlabel::Font::to_string(Textcase e) {
     switch(e) {
@@ -958,6 +992,8 @@ std::string Scatter::Hoverlabel::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Hoverlabel::Font::to_string(Variant e) {
     switch(e) {
@@ -968,6 +1004,8 @@ std::string Scatter::Hoverlabel::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::color(std::string f) {
@@ -1126,6 +1164,8 @@ std::string Scatter::Legendgrouptitle::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
@@ -1134,6 +1174,8 @@ std::string Scatter::Legendgrouptitle::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
@@ -1144,6 +1186,8 @@ std::string Scatter::Legendgrouptitle::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Scatter::Legendgrouptitle::Font& Scatter::Legendgrouptitle::Font::color(std::string f) {
@@ -1204,6 +1248,8 @@ std::string Scatter::Line::to_string(Shape e) {
         case Shape::HVH: return "hvh";
         case Shape::VHV: return "vhv";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Scatter::Line& Scatter::Line::backoff(double f) {
@@ -1259,12 +1305,16 @@ std::string Scatter::Marker::to_string(Angleref e) {
         case Angleref::PREVIOUS: return "previous";
         case Angleref::UP: return "up";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Marker::to_string(Sizemode e) {
     switch(e) {
         case Sizemode::DIAMETER: return "diameter";
         case Sizemode::AREA: return "area";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Marker::to_string(Symbol e) {
     switch(e) {
@@ -1593,6 +1643,8 @@ std::string Scatter::Marker::to_string(Symbol e) {
         case Symbol::NUM_154: return "154";
         case Symbol::ARROW_WIDE_OPEN: return "arrow-wide-open";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Scatter::Marker& Scatter::Marker::angle(double f) {
@@ -1786,18 +1838,24 @@ std::string Scatter::Marker::Colorbar::to_string(Exponentformat e) {
         case Exponentformat::SI: return "SI";
         case Exponentformat::B: return "B";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Marker::Colorbar::to_string(Lenmode e) {
     switch(e) {
         case Lenmode::FRACTION: return "fraction";
         case Lenmode::PIXELS: return "pixels";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Marker::Colorbar::to_string(Orientation e) {
     switch(e) {
         case Orientation::H: return "h";
         case Orientation::V: return "v";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Marker::Colorbar::to_string(Showexponent e) {
     switch(e) {
@@ -1806,6 +1864,8 @@ std::string Scatter::Marker::Colorbar::to_string(Showexponent e) {
         case Showexponent::LAST: return "last";
         case Showexponent::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Marker::Colorbar::to_string(Showtickprefix e) {
     switch(e) {
@@ -1814,6 +1874,8 @@ std::string Scatter::Marker::Colorbar::to_string(Showtickprefix e) {
         case Showtickprefix::LAST: return "last";
         case Showtickprefix::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Marker::Colorbar::to_string(Showticksuffix e) {
     switch(e) {
@@ -1822,12 +1884,16 @@ std::string Scatter::Marker::Colorbar::to_string(Showticksuffix e) {
         case Showticksuffix::LAST: return "last";
         case Showticksuffix::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Marker::Colorbar::to_string(Thicknessmode e) {
     switch(e) {
         case Thicknessmode::FRACTION: return "fraction";
         case Thicknessmode::PIXELS: return "pixels";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Marker::Colorbar::to_string(Ticklabeloverflow e) {
     switch(e) {
@@ -1835,6 +1901,8 @@ std::string Scatter::Marker::Colorbar::to_string(Ticklabeloverflow e) {
         case Ticklabeloverflow::HIDE_PAST_DIV: return "hide past div";
         case Ticklabeloverflow::HIDE_PAST_DOMAIN: return "hide past domain";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Marker::Colorbar::to_string(Ticklabelposition e) {
     switch(e) {
@@ -1849,6 +1917,8 @@ std::string Scatter::Marker::Colorbar::to_string(Ticklabelposition e) {
         case Ticklabelposition::OUTSIDE_BOTTOM: return "outside bottom";
         case Ticklabelposition::INSIDE_BOTTOM: return "inside bottom";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Marker::Colorbar::to_string(Tickmode e) {
     switch(e) {
@@ -1856,6 +1926,8 @@ std::string Scatter::Marker::Colorbar::to_string(Tickmode e) {
         case Tickmode::LINEAR: return "linear";
         case Tickmode::ARRAY: return "array";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Marker::Colorbar::to_string(Ticks e) {
     switch(e) {
@@ -1863,6 +1935,8 @@ std::string Scatter::Marker::Colorbar::to_string(Ticks e) {
         case Ticks::INSIDE: return "inside";
         case Ticks::EMPTY: return "";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Marker::Colorbar::to_string(Xanchor e) {
     switch(e) {
@@ -1870,12 +1944,16 @@ std::string Scatter::Marker::Colorbar::to_string(Xanchor e) {
         case Xanchor::CENTER: return "center";
         case Xanchor::RIGHT: return "right";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Marker::Colorbar::to_string(Xref e) {
     switch(e) {
         case Xref::CONTAINER: return "container";
         case Xref::PAPER: return "paper";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Marker::Colorbar::to_string(Yanchor e) {
     switch(e) {
@@ -1883,12 +1961,16 @@ std::string Scatter::Marker::Colorbar::to_string(Yanchor e) {
         case Yanchor::MIDDLE: return "middle";
         case Yanchor::BOTTOM: return "bottom";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Marker::Colorbar::to_string(Yref e) {
     switch(e) {
         case Yref::CONTAINER: return "container";
         case Yref::PAPER: return "paper";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::bgcolor(std::string f) {
@@ -2157,6 +2239,8 @@ std::string Scatter::Marker::Colorbar::Tickfont::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Marker::Colorbar::Tickfont::to_string(Textcase e) {
     switch(e) {
@@ -2165,6 +2249,8 @@ std::string Scatter::Marker::Colorbar::Tickfont::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Marker::Colorbar::Tickfont::to_string(Variant e) {
     switch(e) {
@@ -2175,6 +2261,8 @@ std::string Scatter::Marker::Colorbar::Tickfont::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Scatter::Marker::Colorbar::Tickfont& Scatter::Marker::Colorbar::Tickfont::color(std::string f) {
@@ -2264,6 +2352,8 @@ std::string Scatter::Marker::Colorbar::Title::to_string(Side e) {
         case Side::TOP: return "top";
         case Side::BOTTOM: return "bottom";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Scatter::Marker::Colorbar::Title& Scatter::Marker::Colorbar::Title::font(class Font f) {
@@ -2286,6 +2376,8 @@ std::string Scatter::Marker::Colorbar::Title::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Marker::Colorbar::Title::Font::to_string(Textcase e) {
     switch(e) {
@@ -2294,6 +2386,8 @@ std::string Scatter::Marker::Colorbar::Title::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Marker::Colorbar::Title::Font::to_string(Variant e) {
     switch(e) {
@@ -2304,6 +2398,8 @@ std::string Scatter::Marker::Colorbar::Title::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Scatter::Marker::Colorbar::Title::Font& Scatter::Marker::Colorbar::Title::Font::color(std::string f) {
@@ -2362,6 +2458,8 @@ std::string Scatter::Marker::Gradient::to_string(Type e) {
         case Type::VERTICAL: return "vertical";
         case Type::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Scatter::Marker::Gradient& Scatter::Marker::Gradient::color(std::string f) {
@@ -2540,6 +2638,8 @@ std::string Scatter::Textfont::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Textfont::to_string(Textcase e) {
     switch(e) {
@@ -2548,6 +2648,8 @@ std::string Scatter::Textfont::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scatter::Textfont::to_string(Variant e) {
     switch(e) {
@@ -2558,6 +2660,8 @@ std::string Scatter::Textfont::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Scatter::Textfont& Scatter::Textfont::color(std::string f) {

@@ -15,6 +15,8 @@ std::string Violin::to_string(Orientation e) {
         case Orientation::V: return "v";
         case Orientation::H: return "h";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Violin::to_string(Points e) {
     switch(e) {
@@ -23,6 +25,8 @@ std::string Violin::to_string(Points e) {
         case Points::SUSPECTEDOUTLIERS: return "suspectedoutliers";
         case Points::FALSE: return "False";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Violin::to_string(Quartilemethod e) {
     switch(e) {
@@ -30,12 +34,16 @@ std::string Violin::to_string(Quartilemethod e) {
         case Quartilemethod::EXCLUSIVE: return "exclusive";
         case Quartilemethod::INCLUSIVE: return "inclusive";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Violin::to_string(Scalemode e) {
     switch(e) {
         case Scalemode::WIDTH: return "width";
         case Scalemode::COUNT: return "count";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Violin::to_string(Side e) {
     switch(e) {
@@ -43,6 +51,8 @@ std::string Violin::to_string(Side e) {
         case Side::POSITIVE: return "positive";
         case Side::NEGATIVE: return "negative";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Violin::to_string(Spanmode e) {
     switch(e) {
@@ -50,6 +60,8 @@ std::string Violin::to_string(Spanmode e) {
         case Spanmode::HARD: return "hard";
         case Spanmode::MANUAL: return "manual";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Violin::to_string(Visible e) {
     switch(e) {
@@ -57,6 +69,8 @@ std::string Violin::to_string(Visible e) {
         case Visible::FALSE: return "False";
         case Visible::LEGENDONLY: return "legendonly";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Violin& Violin::alignmentgroup(std::string f) {
@@ -444,6 +458,8 @@ std::string Violin::Hoverlabel::to_string(Align e) {
         case Align::RIGHT: return "right";
         case Align::AUTO: return "auto";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Violin::Hoverlabel& Violin::Hoverlabel::align(enum Align f) {
@@ -530,6 +546,8 @@ std::string Violin::Hoverlabel::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Violin::Hoverlabel::Font::to_string(Textcase e) {
     switch(e) {
@@ -538,6 +556,8 @@ std::string Violin::Hoverlabel::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Violin::Hoverlabel::Font::to_string(Variant e) {
     switch(e) {
@@ -548,6 +568,8 @@ std::string Violin::Hoverlabel::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::color(std::string f) {
@@ -706,6 +728,8 @@ std::string Violin::Legendgrouptitle::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Violin::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
@@ -714,6 +738,8 @@ std::string Violin::Legendgrouptitle::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Violin::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
@@ -724,6 +750,8 @@ std::string Violin::Legendgrouptitle::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Violin::Legendgrouptitle::Font& Violin::Legendgrouptitle::Font::color(std::string f) {
@@ -1117,6 +1145,8 @@ std::string Violin::Marker::to_string(Symbol e) {
         case Symbol::NUM_154: return "154";
         case Symbol::ARROW_WIDE_OPEN: return "arrow-wide-open";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Violin::Marker& Violin::Marker::angle(double f) {

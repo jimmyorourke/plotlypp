@@ -16,6 +16,8 @@ std::string Carpet::to_string(Visible e) {
         case Visible::FALSE: return "False";
         case Visible::LEGENDONLY: return "legendonly";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 template <typename T, typename>
@@ -226,12 +228,16 @@ std::string Carpet::Aaxis::to_string(Autorange e) {
         case Autorange::FALSE: return "False";
         case Autorange::REVERSED: return "reversed";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Aaxis::to_string(Autotypenumbers e) {
     switch(e) {
         case Autotypenumbers::CONVERT_TYPES: return "convert types";
         case Autotypenumbers::STRICT: return "strict";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Aaxis::to_string(Categoryorder e) {
     switch(e) {
@@ -240,12 +246,16 @@ std::string Carpet::Aaxis::to_string(Categoryorder e) {
         case Categoryorder::CATEGORY_DESCENDING: return "category descending";
         case Categoryorder::ARRAY: return "array";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Aaxis::to_string(Cheatertype e) {
     switch(e) {
         case Cheatertype::INDEX: return "index";
         case Cheatertype::VALUE: return "value";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Aaxis::to_string(Exponentformat e) {
     switch(e) {
@@ -255,6 +265,8 @@ std::string Carpet::Aaxis::to_string(Exponentformat e) {
         case Exponentformat::SI: return "SI";
         case Exponentformat::B: return "B";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Aaxis::to_string(Rangemode e) {
     switch(e) {
@@ -262,6 +274,8 @@ std::string Carpet::Aaxis::to_string(Rangemode e) {
         case Rangemode::TOZERO: return "tozero";
         case Rangemode::NONNEGATIVE: return "nonnegative";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Aaxis::to_string(Showexponent e) {
     switch(e) {
@@ -270,6 +284,8 @@ std::string Carpet::Aaxis::to_string(Showexponent e) {
         case Showexponent::LAST: return "last";
         case Showexponent::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Aaxis::to_string(Showticklabels e) {
     switch(e) {
@@ -278,6 +294,8 @@ std::string Carpet::Aaxis::to_string(Showticklabels e) {
         case Showticklabels::BOTH: return "both";
         case Showticklabels::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Aaxis::to_string(Showtickprefix e) {
     switch(e) {
@@ -286,6 +304,8 @@ std::string Carpet::Aaxis::to_string(Showtickprefix e) {
         case Showtickprefix::LAST: return "last";
         case Showtickprefix::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Aaxis::to_string(Showticksuffix e) {
     switch(e) {
@@ -294,12 +314,16 @@ std::string Carpet::Aaxis::to_string(Showticksuffix e) {
         case Showticksuffix::LAST: return "last";
         case Showticksuffix::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Aaxis::to_string(Tickmode e) {
     switch(e) {
         case Tickmode::LINEAR: return "linear";
         case Tickmode::ARRAY: return "array";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Aaxis::to_string(Type e) {
     switch(e) {
@@ -308,6 +332,8 @@ std::string Carpet::Aaxis::to_string(Type e) {
         case Type::DATE: return "date";
         case Type::CATEGORY: return "category";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Carpet::Aaxis& Carpet::Aaxis::arraydtick(int f) {
@@ -628,6 +654,8 @@ std::string Carpet::Aaxis::Tickfont::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Aaxis::Tickfont::to_string(Textcase e) {
     switch(e) {
@@ -636,6 +664,8 @@ std::string Carpet::Aaxis::Tickfont::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Aaxis::Tickfont::to_string(Variant e) {
     switch(e) {
@@ -646,6 +676,8 @@ std::string Carpet::Aaxis::Tickfont::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Carpet::Aaxis::Tickfont& Carpet::Aaxis::Tickfont::color(std::string f) {
@@ -750,6 +782,8 @@ std::string Carpet::Aaxis::Title::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Aaxis::Title::Font::to_string(Textcase e) {
     switch(e) {
@@ -758,6 +792,8 @@ std::string Carpet::Aaxis::Title::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Aaxis::Title::Font::to_string(Variant e) {
     switch(e) {
@@ -768,6 +804,8 @@ std::string Carpet::Aaxis::Title::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Carpet::Aaxis::Title::Font& Carpet::Aaxis::Title::Font::color(std::string f) {
@@ -825,12 +863,16 @@ std::string Carpet::Baxis::to_string(Autorange e) {
         case Autorange::FALSE: return "False";
         case Autorange::REVERSED: return "reversed";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Baxis::to_string(Autotypenumbers e) {
     switch(e) {
         case Autotypenumbers::CONVERT_TYPES: return "convert types";
         case Autotypenumbers::STRICT: return "strict";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Baxis::to_string(Categoryorder e) {
     switch(e) {
@@ -839,12 +881,16 @@ std::string Carpet::Baxis::to_string(Categoryorder e) {
         case Categoryorder::CATEGORY_DESCENDING: return "category descending";
         case Categoryorder::ARRAY: return "array";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Baxis::to_string(Cheatertype e) {
     switch(e) {
         case Cheatertype::INDEX: return "index";
         case Cheatertype::VALUE: return "value";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Baxis::to_string(Exponentformat e) {
     switch(e) {
@@ -854,6 +900,8 @@ std::string Carpet::Baxis::to_string(Exponentformat e) {
         case Exponentformat::SI: return "SI";
         case Exponentformat::B: return "B";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Baxis::to_string(Rangemode e) {
     switch(e) {
@@ -861,6 +909,8 @@ std::string Carpet::Baxis::to_string(Rangemode e) {
         case Rangemode::TOZERO: return "tozero";
         case Rangemode::NONNEGATIVE: return "nonnegative";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Baxis::to_string(Showexponent e) {
     switch(e) {
@@ -869,6 +919,8 @@ std::string Carpet::Baxis::to_string(Showexponent e) {
         case Showexponent::LAST: return "last";
         case Showexponent::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Baxis::to_string(Showticklabels e) {
     switch(e) {
@@ -877,6 +929,8 @@ std::string Carpet::Baxis::to_string(Showticklabels e) {
         case Showticklabels::BOTH: return "both";
         case Showticklabels::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Baxis::to_string(Showtickprefix e) {
     switch(e) {
@@ -885,6 +939,8 @@ std::string Carpet::Baxis::to_string(Showtickprefix e) {
         case Showtickprefix::LAST: return "last";
         case Showtickprefix::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Baxis::to_string(Showticksuffix e) {
     switch(e) {
@@ -893,12 +949,16 @@ std::string Carpet::Baxis::to_string(Showticksuffix e) {
         case Showticksuffix::LAST: return "last";
         case Showticksuffix::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Baxis::to_string(Tickmode e) {
     switch(e) {
         case Tickmode::LINEAR: return "linear";
         case Tickmode::ARRAY: return "array";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Baxis::to_string(Type e) {
     switch(e) {
@@ -907,6 +967,8 @@ std::string Carpet::Baxis::to_string(Type e) {
         case Type::DATE: return "date";
         case Type::CATEGORY: return "category";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Carpet::Baxis& Carpet::Baxis::arraydtick(int f) {
@@ -1227,6 +1289,8 @@ std::string Carpet::Baxis::Tickfont::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Baxis::Tickfont::to_string(Textcase e) {
     switch(e) {
@@ -1235,6 +1299,8 @@ std::string Carpet::Baxis::Tickfont::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Baxis::Tickfont::to_string(Variant e) {
     switch(e) {
@@ -1245,6 +1311,8 @@ std::string Carpet::Baxis::Tickfont::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Carpet::Baxis::Tickfont& Carpet::Baxis::Tickfont::color(std::string f) {
@@ -1349,6 +1417,8 @@ std::string Carpet::Baxis::Title::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Baxis::Title::Font::to_string(Textcase e) {
     switch(e) {
@@ -1357,6 +1427,8 @@ std::string Carpet::Baxis::Title::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Baxis::Title::Font::to_string(Variant e) {
     switch(e) {
@@ -1367,6 +1439,8 @@ std::string Carpet::Baxis::Title::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Carpet::Baxis::Title::Font& Carpet::Baxis::Title::Font::color(std::string f) {
@@ -1423,6 +1497,8 @@ std::string Carpet::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Font::to_string(Textcase e) {
     switch(e) {
@@ -1431,6 +1507,8 @@ std::string Carpet::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Font::to_string(Variant e) {
     switch(e) {
@@ -1441,6 +1519,8 @@ std::string Carpet::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Carpet::Font& Carpet::Font::color(std::string f) {
@@ -1508,6 +1588,8 @@ std::string Carpet::Legendgrouptitle::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
@@ -1516,6 +1598,8 @@ std::string Carpet::Legendgrouptitle::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Carpet::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
@@ -1526,6 +1610,8 @@ std::string Carpet::Legendgrouptitle::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Carpet::Legendgrouptitle::Font& Carpet::Legendgrouptitle::Font::color(std::string f) {

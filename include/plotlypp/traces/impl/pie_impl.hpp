@@ -15,6 +15,8 @@ std::string Pie::to_string(Direction e) {
         case Direction::CLOCKWISE: return "clockwise";
         case Direction::COUNTERCLOCKWISE: return "counterclockwise";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::to_string(Insidetextorientation e) {
     switch(e) {
@@ -23,6 +25,8 @@ std::string Pie::to_string(Insidetextorientation e) {
         case Insidetextorientation::TANGENTIAL: return "tangential";
         case Insidetextorientation::AUTO: return "auto";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::to_string(Textposition e) {
     switch(e) {
@@ -31,6 +35,8 @@ std::string Pie::to_string(Textposition e) {
         case Textposition::AUTO: return "auto";
         case Textposition::NONE: return "none";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::to_string(Visible e) {
     switch(e) {
@@ -38,6 +44,8 @@ std::string Pie::to_string(Visible e) {
         case Visible::FALSE: return "False";
         case Visible::LEGENDONLY: return "legendonly";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Pie& Pie::automargin(bool f) {
@@ -370,6 +378,8 @@ std::string Pie::Hoverlabel::to_string(Align e) {
         case Align::RIGHT: return "right";
         case Align::AUTO: return "auto";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Pie::Hoverlabel& Pie::Hoverlabel::align(enum Align f) {
@@ -456,6 +466,8 @@ std::string Pie::Hoverlabel::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Hoverlabel::Font::to_string(Textcase e) {
     switch(e) {
@@ -464,6 +476,8 @@ std::string Pie::Hoverlabel::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Hoverlabel::Font::to_string(Variant e) {
     switch(e) {
@@ -474,6 +488,8 @@ std::string Pie::Hoverlabel::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::color(std::string f) {
@@ -621,6 +637,8 @@ std::string Pie::Insidetextfont::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Insidetextfont::to_string(Textcase e) {
     switch(e) {
@@ -629,6 +647,8 @@ std::string Pie::Insidetextfont::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Insidetextfont::to_string(Variant e) {
     switch(e) {
@@ -639,6 +659,8 @@ std::string Pie::Insidetextfont::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Pie::Insidetextfont& Pie::Insidetextfont::color(std::string f) {
@@ -797,6 +819,8 @@ std::string Pie::Legendgrouptitle::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
@@ -805,6 +829,8 @@ std::string Pie::Legendgrouptitle::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
@@ -815,6 +841,8 @@ std::string Pie::Legendgrouptitle::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Pie::Legendgrouptitle::Font& Pie::Legendgrouptitle::Font::color(std::string f) {
@@ -930,6 +958,8 @@ std::string Pie::Marker::Pattern::to_string(Fillmode e) {
         case Fillmode::REPLACE: return "replace";
         case Fillmode::OVERLAY: return "overlay";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Marker::Pattern::to_string(Shape e) {
     switch(e) {
@@ -942,6 +972,8 @@ std::string Pie::Marker::Pattern::to_string(Shape e) {
         case Shape::PLUS: return "+";
         case Shape::DOT: return ".";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Pie::Marker::Pattern& Pie::Marker::Pattern::bgcolor(std::string f) {
@@ -1047,6 +1079,8 @@ std::string Pie::Outsidetextfont::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Outsidetextfont::to_string(Textcase e) {
     switch(e) {
@@ -1055,6 +1089,8 @@ std::string Pie::Outsidetextfont::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Outsidetextfont::to_string(Variant e) {
     switch(e) {
@@ -1065,6 +1101,8 @@ std::string Pie::Outsidetextfont::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Pie::Outsidetextfont& Pie::Outsidetextfont::color(std::string f) {
@@ -1223,6 +1261,8 @@ std::string Pie::Textfont::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Textfont::to_string(Textcase e) {
     switch(e) {
@@ -1231,6 +1271,8 @@ std::string Pie::Textfont::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Textfont::to_string(Variant e) {
     switch(e) {
@@ -1241,6 +1283,8 @@ std::string Pie::Textfont::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Pie::Textfont& Pie::Textfont::color(std::string f) {
@@ -1393,6 +1437,8 @@ std::string Pie::Title::to_string(Position e) {
         case Position::BOTTOM_CENTER: return "bottom center";
         case Position::BOTTOM_RIGHT: return "bottom right";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Pie::Title& Pie::Title::font(class Font f) {
@@ -1415,6 +1461,8 @@ std::string Pie::Title::Font::to_string(Style e) {
         case Style::NORMAL: return "normal";
         case Style::ITALIC: return "italic";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Title::Font::to_string(Textcase e) {
     switch(e) {
@@ -1423,6 +1471,8 @@ std::string Pie::Title::Font::to_string(Textcase e) {
         case Textcase::UPPER: return "upper";
         case Textcase::LOWER: return "lower";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Title::Font::to_string(Variant e) {
     switch(e) {
@@ -1433,6 +1483,8 @@ std::string Pie::Title::Font::to_string(Variant e) {
         case Variant::PETITE_CAPS: return "petite-caps";
         case Variant::UNICASE: return "unicase";
     }
+    // Should be unreachable.
+    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 Pie::Title::Font& Pie::Title::Font::color(std::string f) {
