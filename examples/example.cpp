@@ -1,9 +1,9 @@
-#include <plotlypp/traces/mesh3d.hpp>
 #include <plotlypp/plot.hpp>
+#include <plotlypp/traces/mesh3d.hpp>
 #include <plotlypp/traces/scatter.hpp>
 #include <plotlypp/traces/scatter3d.hpp>
-#include <plotlypp/traces/surface.hpp>
 #include <plotlypp/traces/scattermap.hpp>
+#include <plotlypp/traces/surface.hpp>
 
 #include <cmath>
 #include <iostream>
@@ -215,62 +215,67 @@ plotlypp::Figure genMesh3dTetrahedron() {
     return Figure().addTrace(std::move(mesh));
 }
 
-// fig = go.Figure(go.Scattermap(
-//     mode = "markers+text+lines",
-//     lon = [-75, -80, -50], lat = [45, 20, -20],
-//     marker = {'size': 20, 'symbol': ["bus", "harbor", "airport"]},
-//     text = ["Bus", "Harbor", "airport"], textposition = "bottom right",
-//     textfont = dict(size=18, color="black", family="Open Sans Bold")
-//     ))
-
 plotlypp::Figure genScatterMap() {
     using namespace plotlypp;
     // TODO layout stuff
 
-    return Figure().addTrace(Scattermap()
-                                 .mode("markers+text+lines")
-                                 .lon(std::vector{-75, -80, -50})
-                                 .lat(std::vector{45, 20, -20})
-                                 .marker(Scattermap::Marker()
-                                    .size(20)
-                                    .symbol(std::vector<std::string>{"bus", "harbor", "airport"}))
-                                 .text(std::vector<std::string>{"Bus", "Harbor", "Airport"})
-                                 .textposition(Scattermap::Textposition::BOTTOM_RIGHT)
-                                 .textfont(Scattermap::Textfont().size(18).color("black").family("Open Sans Bold")));
+    return Figure().addTrace(
+        Scattermap()
+            .mode("markers+text+lines")
+            .lon(std::vector{-75, -80, -50})
+            .lat(std::vector{45, 20, -20})
+            .marker(Scattermap::Marker().size(20).symbol(std::vector<std::string>{"bus", "harbor", "airport"}))
+            .text(std::vector<std::string>{"Bus", "Harbor", "Airport"})
+            .textposition(Scattermap::Textposition::BOTTOM_RIGHT)
+            .textfont(Scattermap::Textfont().size(18).color("black").family("Open Sans Bold")));
 }
 
+plotlypp::Figure genMultipleScatter() {
+    using namespace ::plotlypp;
 
-
-int main() {
-    using namespace plotlypp;
-
-    auto scatter = plotlypp::Scatter()
-                       .x(std::vector{1, 2, 3, 4, 5})
-                       .y(std::vector{2, 4, 1, 3, 5})
-                       .mode("markers")
-                       .name("Markers plt");
-    auto error_x = plotlypp::Scatter::Error_X().visible(true).array(std::vector{0.2, 0.3, 0.1, 0.4, 0.2});
-    auto error_y = plotlypp::Scatter::Error_Y().visible(true).array(std::vector{0.5, 0.8, 0.3, 0.6, 0.4});
-    auto scatter2 = plotlypp::Scatter()
+    auto scatter =
+        Scatter().x(std::vector{1, 2, 3, 4, 5}).y(std::vector{2, 4, 1, 3, 5}).mode("markers").name("Markers plt");
+    auto error_x = Scatter::Error_X().visible(true).color("brown").array(std::vector{0.2, 0.3, 0.1, 0.4, 0.2});
+    auto error_y = Scatter::Error_Y().visible(true).color("red").array(std::vector{0.5, 0.8, 0.3, 0.6, 0.4});
+    auto scatter2 = Scatter()
                         .x(std::vector{1, 2, 3, 4, 5})
                         .y(std::vector{3, 6, 4, 7, 5})
                         .error_x(std::move(error_x))
                         .error_y(std::move(error_y));
-    std::cout << scatter.json << "\n";
-    auto fig = plotlypp::Figure().addTrace(std::move(scatter)).addTrace(std::move(scatter2));
-    std::cout << fig.toHtml();
 
-    // std::cout << Figure().addTrace(Scatter3d().x(x).y(y).z(t).mode("markers")).toHtml();
-    // Figure().addTrace(Scatter3d().x(x).y(y).z(t).mode("markers")).show();
+    return plotlypp::Figure().addTrace(std::move(scatter)).addTrace(std::move(scatter2));
+}
 
-    // gen3dSurfaces().show();
-    // gen3dSurfaces().show(true);
-    // gen3dScatterHelix().show();
-    // gen3dSurfaceContours().show();
-    // genMesh3dTetrahedron().show();
-    //gen3dSurfaceTorus().show();
-    //gen3dScatterBubblePlanets().show();
-    //genScatterMap().show();
-    // system("open ../sample.html");
+void WaitForEnter() {
+    std::cout << "Press Enter to generate next plot...\n";
+    std::cin.get();
+}
+
+int main() {
+    using namespace plotlypp;
+
+    genMultipleScatter().show();
+    WaitForEnter();
+
+    gen3dSurfaces().show();
+    WaitForEnter();
+
+    gen3dScatterHelix().show();
+    WaitForEnter();
+
+    gen3dSurfaceContours().show();
+    WaitForEnter();
+
+    genMesh3dTetrahedron().show();
+    WaitForEnter();
+
+    gen3dSurfaceTorus().show();
+    WaitForEnter();
+
+    gen3dScatterBubblePlanets().show();
+    WaitForEnter();
+
+    genScatterMap().show();
+
     std::cout << "Done" << "\n";
 }

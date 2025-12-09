@@ -12,6 +12,7 @@
 
 #include <plotlypp/json.hpp>
 #include <plotlypp/plotly_min_js.h>
+#include <plotlypp/trace.hpp>
 
 namespace plotlypp {
 
@@ -62,7 +63,6 @@ class Figure {
     void show(bool renderOffline = false) {
         const auto tempFile =
             std::filesystem::temp_directory_path() / ("plotlypp_plot_" + std::to_string(_showCount++) + ".html");
-        std::cout << "creating " << tempFile << "\n";
         std::ofstream outputFile(tempFile);
         toHtml(outputFile, renderOffline);
         showInBrowser(tempFile.string());
@@ -76,7 +76,9 @@ class Figure {
 #elif __APPLE__
         system(("open " + plotFile).c_str());
 #elif __linux__
-        system(("xdg-open " + plotFile).c_str());
+        // On some systems, using `system` opens a text editor rather than a web browser, for unknown reasons.
+        popen(("xdg-open " + plotFile).c_str(), "r");
+        // system(("xdg-open " + plotFile).c_str());
 #else
         // Force a linker error, only if this function is actually called.
         unimplementedPlatorm();
