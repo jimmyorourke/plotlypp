@@ -1,6 +1,12 @@
 <meta charset="utf-8">
 <head>
-    <script src="https://cdn.plot.ly/plotly-3.0.1.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-3.0.1.min.js1"></script>
+<script>
+if (typeof Plotly === 'undefined') {
+    document.write('<script src="./generator/plotly.min.js">\x3C/script>')
+    document.write('<script src="./js/plotly.min.js">\x3C/script>')
+}
+</script>
 </head>
 <body>
     <div id="plot"></div>

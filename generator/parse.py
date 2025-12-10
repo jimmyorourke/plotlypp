@@ -543,6 +543,20 @@ def create_traces(schema):
         #break
 
 
+def package_js():
+    with open(Path(__file__).parent / 'plotly.min.js') as f:
+        plotly_js = f.read()
+
+    writer = Writer(Path(__file__).parent.parent / "include" / "plotlypp" / "plotly_min_js.hpp")
+    emit_preamble(writer)
+    writer.write("namespace plotlypp {")
+    writer.write("")
+    writer.write("// Note: constexpr string_view excessively bloats compile times due to length counts.")
+    writer.write('inline constexpr const char* const plotlyJS = R"plotly(')
+    writer.write(plotly_js)
+    writer.write(')plotly";')
+    writer.write("")
+    writer.write("} // namespace plotlypp")
 
 
 def main():
@@ -578,6 +592,7 @@ def main():
     #     print("\t", k)
     #print("traces/scatter")
     create_traces(schema)
+    package_js();
     #for name, trace in data['traces'].items():
     #    if name == "scatter":
         #     #print(json.dumps(trace, indent=4))
