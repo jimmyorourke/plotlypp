@@ -54,12 +54,6 @@ class Figure {
         os << "</body>\n";
     }
 
-    std::string toHtml() {
-        std::ostringstream html;
-        toHtml(html);
-        return html.str();
-    }
-
     void writePlotlyJsResourceFile(const std::filesystem::path& outputDir) {
         std::filesystem::create_directories(outputDir / "js");
         std::ofstream jsFile(outputDir / "js" / "plotly.min.js");

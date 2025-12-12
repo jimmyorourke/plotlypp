@@ -19,39 +19,6 @@ def get_all_valtypes(d):
             yield from get_all_valtypes(value)
     #{'number', 'color', 'flaglist', 'info_array', 'boolean', 'angle', 'integer', 'data_array', 'any', 'colorscale', 'subplotid', 'string', 'colorlist', 'enumerated'}
 
-# /*
-#     import plotly.graph_objects as go
-#     import numpy as np
-
-#     N = 1000
-#     t = np.linspace(0, 10, 100)
-#     y = np.sin(t)
-
-#     fig = go.Figure(data=go.Scatter(x=t, y=y, mode='markers'))
-
-#     fig.show()
-# */
-
-    # fig := &grob.Fig{
-    #     Data: []types.Trace{
-    #         &grob.Scatter{
-    #             X:    types.DataArray(t),
-    #             Y:    types.DataArray(y),
-    #             Mode: grob.ScatterModeMarkers,
-    #         },
-    #     },
-    # }
-    # offline.ToHtml(fig, "scatter.html")
-    # data = JSON.parse('{"data":[{"type":"scatter","mode":"markers","x":
-
-
-#auto fig = Figure(Scatter().x(std::move(t)).y(std::move(y)).mode("markers"));
-
-
-#Plotly.newPlot(                        "054d4733-9bc6-4455-bd62-e734b2551e79",                        [{"mode":"markers","name":"Markers","x":[1,2,3,4,5],"y":[2,4,1,3,5],"type":"scatter"}]
-
-# Colors can be strings or numbers. The template for proper handling of std::string, const char*,
-                    # or double gets complicated, as does a vector of std::variant, so just use overloads instead.
 valtype_map = {
     'number': ['double'],
     'boolean': ['bool'],
@@ -63,12 +30,15 @@ valtype_map = {
     'data_array': ['std::vector<T>'], # with constraint
     'info_array': ['std::vector<std::string>'],#'std::vector<T>',
     'enumerated': ['ENUM'], # also need to json
+    # Colors can be strings or numbers. The template for proper handling of std::string, const char*,
+    # or double gets complicated, as does a vector of std::variant, so just use overloads instead.
     'color': ["std::string", "double"], # also need to json
     'flaglist': ['std::string'], # also need to json, basically enum
     'colorscale': ['std::string', 'std::vector<std::pair<double, std::string>>'], # also need to json, basically enum --- could be smarter
     # Not really, but it's useful to add here
     "object": ['OBJECT']
 }
+
 
 class IndentBlock:
     def __init__(self, writer):
@@ -100,10 +70,12 @@ def emit_json_member(writer):
         writer.write("// Advanced users may modify the JSON representation directly, at their own peril!")
         writer.write("Json json{};")
 
+
 def emit_array_field_setter_decl(class_object, field, output_val_type, writer):
     if output_val_type == 'T':
         writer.write(f"template <typename T>")
     writer.write(f"{class_object.name.title()}& {field.name}(std::vector<{output_val_type}> f);")
+
 
 def emit_array_field_setter(class_object, field, output_val_type, writer):
     if output_val_type == 'T':
@@ -119,12 +91,14 @@ def emit_array_field_setter(class_object, field, output_val_type, writer):
         writer.write("return *this;")
     writer.write("}")
 
+
 def emit_field_setter_decl(class_object, field, output_val_type, writer):
     if output_val_type == 'T':
         writer.write(f"template <typename T>")
     elif field.json_val_type == 'data_array':
         writer.write(f"template <typename T, typename=std::enable_if_t<is_data_array_element_v<T>>>")
     writer.write(f"{class_object.name.title()}& {field.name}({output_val_type} f);")
+
 
 def emit_field_setter(class_object, field, output_val_type, writer):
     if output_val_type == 'T':
@@ -140,9 +114,11 @@ def emit_field_setter(class_object, field, output_val_type, writer):
         writer.write("return *this;")
     writer.write("}")
 
+
 def emit_enum_field_setter_decl(class_object, field, writer):
     # To help compiler ambiguity, add enum keyword.
     writer.write(f"{class_object.name.title()}& {field.name}(enum {field.name.title()} f);")
+
 
 def emit_enum_field_setter(class_object, field, writer):
     # To help compiler ambiguity, add enum keyword.
@@ -152,8 +128,10 @@ def emit_enum_field_setter(class_object, field, writer):
         writer.write("return *this;")
     writer.write("}")
 
+
 def emit_enum_array_field_setter_decl(class_object, field, writer):
     writer.write(f"{class_object.name.title()}& {field.name}(const std::vector<enum {field.name.title()}>& f);")
+
 
 def emit_enum_array_field_setter(class_object, field, writer):
     writer.write(f"{class_object.name.title()}& {class_object.name.title()}::{field.name}(const std::vector<enum {field.name.title()}>& f) {{")
@@ -164,6 +142,7 @@ def emit_enum_array_field_setter(class_object, field, writer):
         writer.write("return *this;")
     writer.write("}")
 
+
 def emit_enum_definition(enum, writer):
     writer.write("")
     writer.write(f"enum class {enum.name.title()} {{")
@@ -172,8 +151,10 @@ def emit_enum_definition(enum, writer):
             writer.write(f"{safe_val},")
     writer.write("};")
 
+
 def emit_enum_to_string_decl(enum, writer):
     writer.write(f"static std::string to_string({enum.name.title()} e);")
+
 
 def emit_enum_to_string(class_object, enum, writer):
     writer.write(f"std::string {class_object.name.title()}::to_string({enum.name.title()} e) {{")
@@ -186,6 +167,7 @@ def emit_enum_to_string(class_object, enum, writer):
         writer.write("// Should be unreachable.")
         writer.write('throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};')
     writer.write("}")
+
 
 def emit_class_public_members(class_object, writer):
     for e in class_object.enums:
@@ -211,6 +193,7 @@ def emit_class_public_members(class_object, writer):
                     emit_array_field_setter(class_object, field, output_val_type_overload, writer)
 
         writer.write("")
+
 
 def emit_class_public_members_decl(class_object, writer):
     with IndentBlock(writer):
@@ -248,10 +231,12 @@ def emit_class_public_members_decl(class_object, writer):
 
             writer.write("")
 
+
 def emit_forward_object_decl(class_object, writer):
     if class_object.description:
         writer.write(f"// {class_object.description}")
     writer.write(f"class {class_object.name.split("::")[-1].title()};")
+
 
 def emit_object_decl(class_object, writer):
     if class_object.description:
@@ -263,12 +248,12 @@ def emit_object_decl(class_object, writer):
     writer.write("};")
     writer.write("")
 
+
 def unnest_objects(parent, unnested_objects):
     for obj in parent.objects:
         obj.name = f"{parent.name}::{obj.name.capitalize()}"
         unnested_objects.append(obj)
         unnest_objects(obj, unnested_objects)
-
 
 
 def emit_preamble(writer):
@@ -521,7 +506,7 @@ def create_trace(name, trace_node):
         elif node_name in ["animatable", "categories", "layoutAttributes"]:
             pass
         else:
-            print(f"Skipping unknown attribute field {attribute}. Does parser needs updating?")
+            print(f"Skipping unknown attribute field {node_name}. Does parser needs updating?")
 
     #emit_trace(trace)
     #print_obj_structure(trace)
@@ -534,13 +519,9 @@ def create_trace(name, trace_node):
     subprocess.run(["clang-format", "--style=file", "-i", str(traces_dir/f"{trace.name}.hpp")])
 
 
-
 def create_traces(schema):
     for name, trace_node in schema['traces'].items():
-        #if name != "scatter":
-        #    continue
         create_trace(name, trace_node)
-        #break
 
 
 def package_js():
@@ -559,11 +540,32 @@ def package_js():
     writer.write("} // namespace plotlypp")
 
 
+def create_layout(layout_node):
+    layout = Object()
+    layout.name = "Layout"
+    print("Parsing layout")
+
+    for node_name, node in layout_node.items():
+        if node_name != "layoutAttributes":
+            print(f"Skipping unknown layout field {node_name}. Does parser needs updating?")
+            continue
+
+        # layoutAttributes
+
+    top_level_src_dir = Path(__file__).parent.parent / "include" / "plotlypp"
+    layout_dir = top_level_src_dir / "layout"
+    impl_subdir = Path("impl")
+    os.makedirs(layout_dir / impl_subdir, exist_ok=True)
+    
+    emit_trace(trace, traces_dir, impl_subdir)
+    # We did our best with formatting, but let's auto format to catch long comments, etc.
+    subprocess.run(["clang-format", "--style=file", "-i", str(traces_dir/f"{trace.name}.hpp")])
+
+
 def main():
     schema = {}
     with open(Path(__file__).parent / 'schema.json') as f:
         schema = json.load(f)
-
 
     # handle versions?
 
@@ -580,76 +582,15 @@ def main():
 
     #CreateFrames(graphObjectsOuput)
 
-
-
-
-
-
-
-    #print("--")
-    #print("traces")
-    # for k in data['traces']:
-    #     print("\t", k)
-    #print("traces/scatter")
-    create_traces(schema)
-    package_js();
-    #for name, trace in data['traces'].items():
-    #    if name == "scatter":
-        #     #print(json.dumps(trace, indent=4))
-    #         process_trace(name, trace)
-        #process_trace(name, trace)
-
-    #valtypes = set()
-    # for v in get_all_valtypes(data['traces']):
-    #     valtypes.add(v)
-    # print(valtypes)
-
-    # for k in data:
-
-# traces/scatter
-#      animatable
-#      attributes --
-#      categories
-#      layoutAttributes
-#      meta. --
-#      type --
-
-# animation
-# config. --
-# defs
-# frames
-# layout --
-# traces --
-# transforms
-
-
-# skip
-# var MetaKeys = []MetaKey{
-#     "_isSubplotObj",
-#     "_isLinkedToArray",
-#     "_arrayAttrRegexps",
-#     "_deprecated",
-#     "description",
-#     "role",
-#     "editType",
-#     "impliedEdits",
-# }
-
-    #     print(k)
-
-    # print("--")
-    # print("traces")
-    # for k in data['traces']:
-    #     print("\t", k)
-
-    # print("--")
-    # print("layout")
-    # for k in data['layout']:
-    #     print("\t", k)
-    #     for j in  data['layout'][k]:
-    #         print("\t\t", j)
-
-
+    
+    #create_traces(schema)
+    #package_js();
+    
+    for k, v in schema['layout'].items():
+        print(k) 
+        for kk, vv in schema['layout']['layoutAttributes'].items():
+            print(kk)
+        print(schema['layout']['layoutAttributes']['title'])
 
 # layout
 #      layoutAttributes
