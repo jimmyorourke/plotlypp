@@ -90,7 +90,7 @@ Waterfall& Waterfall::cliponaxis(bool f) {
     return *this;
 }
 
-Waterfall& Waterfall::connector(class Connector f) {
+Waterfall& Waterfall::connector(Connector f) {
     json["connector"] = std::move(f.json);
     return *this;
 }
@@ -111,7 +111,7 @@ Waterfall& Waterfall::customdatasrc(std::string f) {
     return *this;
 }
 
-Waterfall& Waterfall::decreasing(class Decreasing f) {
+Waterfall& Waterfall::decreasing(Decreasing f) {
     json["decreasing"] = std::move(f.json);
     return *this;
 }
@@ -140,7 +140,7 @@ Waterfall& Waterfall::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Waterfall& Waterfall::hoverlabel(class Hoverlabel f) {
+Waterfall& Waterfall::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -184,7 +184,7 @@ Waterfall& Waterfall::idssrc(std::string f) {
     return *this;
 }
 
-Waterfall& Waterfall::increasing(class Increasing f) {
+Waterfall& Waterfall::increasing(Increasing f) {
     json["increasing"] = std::move(f.json);
     return *this;
 }
@@ -194,7 +194,7 @@ Waterfall& Waterfall::insidetextanchor(enum Insidetextanchor f) {
     return *this;
 }
 
-Waterfall& Waterfall::insidetextfont(class Insidetextfont f) {
+Waterfall& Waterfall::insidetextfont(Insidetextfont f) {
     json["insidetextfont"] = std::move(f.json);
     return *this;
 }
@@ -209,7 +209,7 @@ Waterfall& Waterfall::legendgroup(std::string f) {
     return *this;
 }
 
-Waterfall& Waterfall::legendgrouptitle(class Legendgrouptitle f) {
+Waterfall& Waterfall::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -285,7 +285,7 @@ Waterfall& Waterfall::orientation(enum Orientation f) {
     return *this;
 }
 
-Waterfall& Waterfall::outsidetextfont(class Outsidetextfont f) {
+Waterfall& Waterfall::outsidetextfont(Outsidetextfont f) {
     json["outsidetextfont"] = std::move(f.json);
     return *this;
 }
@@ -301,7 +301,7 @@ Waterfall& Waterfall::showlegend(bool f) {
     return *this;
 }
 
-Waterfall& Waterfall::stream(class Stream f) {
+Waterfall& Waterfall::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -320,7 +320,7 @@ Waterfall& Waterfall::textangle(double f) {
     return *this;
 }
 
-Waterfall& Waterfall::textfont(class Textfont f) {
+Waterfall& Waterfall::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -365,7 +365,7 @@ Waterfall& Waterfall::texttemplatesrc(std::string f) {
     return *this;
 }
 
-Waterfall& Waterfall::totals(class Totals f) {
+Waterfall& Waterfall::totals(Totals f) {
     json["totals"] = std::move(f.json);
     return *this;
 }
@@ -502,7 +502,7 @@ std::string Waterfall::Connector::to_string(Mode e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Waterfall::Connector& Waterfall::Connector::line(class Line f) {
+Waterfall::Connector& Waterfall::Connector::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -538,7 +538,7 @@ Waterfall::Connector::Line& Waterfall::Connector::Line::width(double f) {
 }
 
 
-Waterfall::Decreasing& Waterfall::Decreasing::marker(class Marker f) {
+Waterfall::Decreasing& Waterfall::Decreasing::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -553,7 +553,7 @@ Waterfall::Decreasing::Marker& Waterfall::Decreasing::Marker::color(double f) {
     return *this;
 }
 
-Waterfall::Decreasing::Marker& Waterfall::Decreasing::Marker::line(class Line f) {
+Waterfall::Decreasing::Marker& Waterfall::Decreasing::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -643,7 +643,7 @@ Waterfall::Hoverlabel& Waterfall::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Waterfall::Hoverlabel& Waterfall::Hoverlabel::font(class Font f) {
+Waterfall::Hoverlabel& Waterfall::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -834,7 +834,7 @@ Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::weightsrc(std::string 
 }
 
 
-Waterfall::Increasing& Waterfall::Increasing::marker(class Marker f) {
+Waterfall::Increasing& Waterfall::Increasing::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -849,7 +849,7 @@ Waterfall::Increasing::Marker& Waterfall::Increasing::Marker::color(double f) {
     return *this;
 }
 
-Waterfall::Increasing::Marker& Waterfall::Increasing::Marker::line(class Line f) {
+Waterfall::Increasing::Marker& Waterfall::Increasing::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -1041,7 +1041,7 @@ Waterfall::Insidetextfont& Waterfall::Insidetextfont::weightsrc(std::string f) {
 }
 
 
-Waterfall::Legendgrouptitle& Waterfall::Legendgrouptitle::font(class Font f) {
+Waterfall::Legendgrouptitle& Waterfall::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1485,7 +1485,7 @@ Waterfall::Textfont& Waterfall::Textfont::weightsrc(std::string f) {
 }
 
 
-Waterfall::Totals& Waterfall::Totals::marker(class Marker f) {
+Waterfall::Totals& Waterfall::Totals::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -1500,7 +1500,7 @@ Waterfall::Totals::Marker& Waterfall::Totals::Marker::color(double f) {
     return *this;
 }
 
-Waterfall::Totals::Marker& Waterfall::Totals::Marker::line(class Line f) {
+Waterfall::Totals::Marker& Waterfall::Totals::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }

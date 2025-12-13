@@ -67,7 +67,7 @@ class Streamtube : public Trace {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Streamtube& coloraxis(std::string f);
 
-    Streamtube& colorbar(class Colorbar f);
+    Streamtube& colorbar(Colorbar f);
 
     // Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb,
     // rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are
@@ -97,7 +97,7 @@ class Streamtube : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Streamtube& hoverinfosrc(std::string f);
 
-    Streamtube& hoverlabel(class Hoverlabel f);
+    Streamtube& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -138,7 +138,7 @@ class Streamtube : public Trace {
     // when toggling legend items.
     Streamtube& legendgroup(std::string f);
 
-    Streamtube& legendgrouptitle(class Legendgrouptitle f);
+    Streamtube& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -150,9 +150,9 @@ class Streamtube : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Streamtube& legendwidth(double f);
 
-    Streamtube& lighting(class Lighting f);
+    Streamtube& lighting(Lighting f);
 
-    Streamtube& lightposition(class Lightposition f);
+    Streamtube& lightposition(Lightposition f);
 
     // The maximum number of displayed segments in a streamtube.
     Streamtube& maxdisplayed(int f);
@@ -199,9 +199,9 @@ class Streamtube : public Trace {
     // adjacent starting positions.
     Streamtube& sizeref(double f);
 
-    Streamtube& starts(class Starts f);
+    Streamtube& starts(Starts f);
 
-    Streamtube& stream(class Stream f);
+    Streamtube& stream(Stream f);
 
     // Sets a text element associated with this trace. If trace `hoverinfo` contains a *text* flag, this text element
     // will be seen in all hover labels. Note that streamtube traces do not support array `text` values.
@@ -541,7 +541,7 @@ class Streamtube::Colorbar {
     Streamtube::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Streamtube::Colorbar& tickfont(class Tickfont f);
+    Streamtube::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -550,7 +550,7 @@ class Streamtube::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Streamtube::Colorbar& tickformat(std::string f);
 
-    Streamtube::Colorbar& tickformatstops(class Tickformatstops f);
+    Streamtube::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -606,7 +606,7 @@ class Streamtube::Colorbar {
     // Sets the tick width (in px).
     Streamtube::Colorbar& tickwidth(double f);
 
-    Streamtube::Colorbar& title(class Title f);
+    Streamtube::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -726,7 +726,7 @@ class Streamtube::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Streamtube::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Streamtube::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -776,7 +776,7 @@ class Streamtube::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Streamtube::Colorbar::Title& font(class Font f);
+    Streamtube::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -903,7 +903,7 @@ class Streamtube::Hoverlabel {
     Streamtube::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Streamtube::Hoverlabel& font(class Font f);
+    Streamtube::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -1036,7 +1036,7 @@ class Streamtube::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Streamtube::Legendgrouptitle& font(class Font f);
+    Streamtube::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Streamtube::Legendgrouptitle& text(std::string f);

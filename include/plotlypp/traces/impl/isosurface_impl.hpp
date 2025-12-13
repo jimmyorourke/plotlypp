@@ -25,7 +25,7 @@ Isosurface& Isosurface::autocolorscale(bool f) {
     return *this;
 }
 
-Isosurface& Isosurface::caps(class Caps f) {
+Isosurface& Isosurface::caps(Caps f) {
     json["caps"] = std::move(f.json);
     return *this;
 }
@@ -55,7 +55,7 @@ Isosurface& Isosurface::coloraxis(std::string f) {
     return *this;
 }
 
-Isosurface& Isosurface::colorbar(class Colorbar f) {
+Isosurface& Isosurface::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -69,7 +69,7 @@ Isosurface& Isosurface::colorscale(std::vector<std::pair<double, std::string>> f
     return *this;
 }
 
-Isosurface& Isosurface::contour(class Contour f) {
+Isosurface& Isosurface::contour(Contour f) {
     json["contour"] = std::move(f.json);
     return *this;
 }
@@ -104,7 +104,7 @@ Isosurface& Isosurface::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Isosurface& Isosurface::hoverlabel(class Hoverlabel f) {
+Isosurface& Isosurface::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -168,7 +168,7 @@ Isosurface& Isosurface::legendgroup(std::string f) {
     return *this;
 }
 
-Isosurface& Isosurface::legendgrouptitle(class Legendgrouptitle f) {
+Isosurface& Isosurface::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -183,12 +183,12 @@ Isosurface& Isosurface::legendwidth(double f) {
     return *this;
 }
 
-Isosurface& Isosurface::lighting(class Lighting f) {
+Isosurface& Isosurface::lighting(Lighting f) {
     json["lighting"] = std::move(f.json);
     return *this;
 }
 
-Isosurface& Isosurface::lightposition(class Lightposition f) {
+Isosurface& Isosurface::lightposition(Lightposition f) {
     json["lightposition"] = std::move(f.json);
     return *this;
 }
@@ -239,22 +239,22 @@ Isosurface& Isosurface::showscale(bool f) {
     return *this;
 }
 
-Isosurface& Isosurface::slices(class Slices f) {
+Isosurface& Isosurface::slices(Slices f) {
     json["slices"] = std::move(f.json);
     return *this;
 }
 
-Isosurface& Isosurface::spaceframe(class Spaceframe f) {
+Isosurface& Isosurface::spaceframe(Spaceframe f) {
     json["spaceframe"] = std::move(f.json);
     return *this;
 }
 
-Isosurface& Isosurface::stream(class Stream f) {
+Isosurface& Isosurface::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
 
-Isosurface& Isosurface::surface(class Surface f) {
+Isosurface& Isosurface::surface(Surface f) {
     json["surface"] = std::move(f.json);
     return *this;
 }
@@ -354,17 +354,17 @@ Isosurface& Isosurface::zsrc(std::string f) {
 }
 
 
-Isosurface::Caps& Isosurface::Caps::x(class X f) {
+Isosurface::Caps& Isosurface::Caps::x(X f) {
     json["x"] = std::move(f.json);
     return *this;
 }
 
-Isosurface::Caps& Isosurface::Caps::y(class Y f) {
+Isosurface::Caps& Isosurface::Caps::y(Y f) {
     json["y"] = std::move(f.json);
     return *this;
 }
 
-Isosurface::Caps& Isosurface::Caps::z(class Z f) {
+Isosurface::Caps& Isosurface::Caps::z(Z f) {
     json["z"] = std::move(f.json);
     return *this;
 }
@@ -679,7 +679,7 @@ Isosurface::Colorbar& Isosurface::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Isosurface::Colorbar& Isosurface::Colorbar::tickfont(class Tickfont f) {
+Isosurface::Colorbar& Isosurface::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -689,7 +689,7 @@ Isosurface::Colorbar& Isosurface::Colorbar::tickformat(std::string f) {
     return *this;
 }
 
-Isosurface::Colorbar& Isosurface::Colorbar::tickformatstops(class Tickformatstops f) {
+Isosurface::Colorbar& Isosurface::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -761,7 +761,7 @@ Isosurface::Colorbar& Isosurface::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Isosurface::Colorbar& Isosurface::Colorbar::title(class Title f) {
+Isosurface::Colorbar& Isosurface::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -887,7 +887,7 @@ Isosurface::Colorbar::Tickfont& Isosurface::Colorbar::Tickfont::weight(int f) {
 }
 
 
-Isosurface::Colorbar::Tickformatstops& Isosurface::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Isosurface::Colorbar::Tickformatstops& Isosurface::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -928,7 +928,7 @@ std::string Isosurface::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Isosurface::Colorbar::Title& Isosurface::Colorbar::Title::font(class Font f) {
+Isosurface::Colorbar::Title& Isosurface::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1113,7 +1113,7 @@ Isosurface::Hoverlabel& Isosurface::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Isosurface::Hoverlabel& Isosurface::Hoverlabel::font(class Font f) {
+Isosurface::Hoverlabel& Isosurface::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1304,7 +1304,7 @@ Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::weightsrc(std::strin
 }
 
 
-Isosurface::Legendgrouptitle& Isosurface::Legendgrouptitle::font(class Font f) {
+Isosurface::Legendgrouptitle& Isosurface::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1447,17 +1447,17 @@ Isosurface::Lightposition& Isosurface::Lightposition::z(double f) {
 }
 
 
-Isosurface::Slices& Isosurface::Slices::x(class X f) {
+Isosurface::Slices& Isosurface::Slices::x(X f) {
     json["x"] = std::move(f.json);
     return *this;
 }
 
-Isosurface::Slices& Isosurface::Slices::y(class Y f) {
+Isosurface::Slices& Isosurface::Slices::y(Y f) {
     json["y"] = std::move(f.json);
     return *this;
 }
 
-Isosurface::Slices& Isosurface::Slices::z(class Z f) {
+Isosurface::Slices& Isosurface::Slices::z(Z f) {
     json["z"] = std::move(f.json);
     return *this;
 }

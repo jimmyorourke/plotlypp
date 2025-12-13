@@ -120,7 +120,7 @@ Histogram2D& Histogram2D::coloraxis(std::string f) {
     return *this;
 }
 
-Histogram2D& Histogram2D::colorbar(class Colorbar f) {
+Histogram2D& Histogram2D::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -169,7 +169,7 @@ Histogram2D& Histogram2D::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Histogram2D& Histogram2D::hoverlabel(class Hoverlabel f) {
+Histogram2D& Histogram2D::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -209,7 +209,7 @@ Histogram2D& Histogram2D::legendgroup(std::string f) {
     return *this;
 }
 
-Histogram2D& Histogram2D::legendgrouptitle(class Legendgrouptitle f) {
+Histogram2D& Histogram2D::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -224,7 +224,7 @@ Histogram2D& Histogram2D::legendwidth(double f) {
     return *this;
 }
 
-Histogram2D& Histogram2D::marker(class Marker f) {
+Histogram2D& Histogram2D::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -280,12 +280,12 @@ Histogram2D& Histogram2D::showscale(bool f) {
     return *this;
 }
 
-Histogram2D& Histogram2D::stream(class Stream f) {
+Histogram2D& Histogram2D::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
 
-Histogram2D& Histogram2D::textfont(class Textfont f) {
+Histogram2D& Histogram2D::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -327,7 +327,7 @@ Histogram2D& Histogram2D::xbingroup(std::string f) {
     return *this;
 }
 
-Histogram2D& Histogram2D::xbins(class Xbins f) {
+Histogram2D& Histogram2D::xbins(Xbins f) {
     json["xbins"] = std::move(f.json);
     return *this;
 }
@@ -368,7 +368,7 @@ Histogram2D& Histogram2D::ybingroup(std::string f) {
     return *this;
 }
 
-Histogram2D& Histogram2D::ybins(class Ybins f) {
+Histogram2D& Histogram2D::ybins(Ybins f) {
     json["ybins"] = std::move(f.json);
     return *this;
 }
@@ -711,7 +711,7 @@ Histogram2D::Colorbar& Histogram2D::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Histogram2D::Colorbar& Histogram2D::Colorbar::tickfont(class Tickfont f) {
+Histogram2D::Colorbar& Histogram2D::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -721,7 +721,7 @@ Histogram2D::Colorbar& Histogram2D::Colorbar::tickformat(std::string f) {
     return *this;
 }
 
-Histogram2D::Colorbar& Histogram2D::Colorbar::tickformatstops(class Tickformatstops f) {
+Histogram2D::Colorbar& Histogram2D::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -793,7 +793,7 @@ Histogram2D::Colorbar& Histogram2D::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Histogram2D::Colorbar& Histogram2D::Colorbar::title(class Title f) {
+Histogram2D::Colorbar& Histogram2D::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -919,7 +919,7 @@ Histogram2D::Colorbar::Tickfont& Histogram2D::Colorbar::Tickfont::weight(int f) 
 }
 
 
-Histogram2D::Colorbar::Tickformatstops& Histogram2D::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Histogram2D::Colorbar::Tickformatstops& Histogram2D::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -960,7 +960,7 @@ std::string Histogram2D::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Histogram2D::Colorbar::Title& Histogram2D::Colorbar::Title::font(class Font f) {
+Histogram2D::Colorbar::Title& Histogram2D::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1125,7 +1125,7 @@ Histogram2D::Hoverlabel& Histogram2D::Hoverlabel::bordercolorsrc(std::string f) 
     return *this;
 }
 
-Histogram2D::Hoverlabel& Histogram2D::Hoverlabel::font(class Font f) {
+Histogram2D::Hoverlabel& Histogram2D::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1316,7 +1316,7 @@ Histogram2D::Hoverlabel::Font& Histogram2D::Hoverlabel::Font::weightsrc(std::str
 }
 
 
-Histogram2D::Legendgrouptitle& Histogram2D::Legendgrouptitle::font(class Font f) {
+Histogram2D::Legendgrouptitle& Histogram2D::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }

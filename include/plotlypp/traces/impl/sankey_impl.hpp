@@ -54,7 +54,7 @@ Sankey& Sankey::customdatasrc(std::string f) {
     return *this;
 }
 
-Sankey& Sankey::domain(class Domain f) {
+Sankey& Sankey::domain(Domain f) {
     json["domain"] = std::move(f.json);
     return *this;
 }
@@ -64,7 +64,7 @@ Sankey& Sankey::hoverinfo(std::string f) {
     return *this;
 }
 
-Sankey& Sankey::hoverlabel(class Hoverlabel f) {
+Sankey& Sankey::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -85,7 +85,7 @@ Sankey& Sankey::legend(std::string f) {
     return *this;
 }
 
-Sankey& Sankey::legendgrouptitle(class Legendgrouptitle f) {
+Sankey& Sankey::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -100,7 +100,7 @@ Sankey& Sankey::legendwidth(double f) {
     return *this;
 }
 
-Sankey& Sankey::link(class Link f) {
+Sankey& Sankey::link(Link f) {
     json["link"] = std::move(f.json);
     return *this;
 }
@@ -126,7 +126,7 @@ Sankey& Sankey::name(std::string f) {
     return *this;
 }
 
-Sankey& Sankey::node(class Node f) {
+Sankey& Sankey::node(Node f) {
     json["node"] = std::move(f.json);
     return *this;
 }
@@ -142,12 +142,12 @@ Sankey& Sankey::selectedpoints(T f) {
     return *this;
 }
 
-Sankey& Sankey::stream(class Stream f) {
+Sankey& Sankey::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
 
-Sankey& Sankey::textfont(class Textfont f) {
+Sankey& Sankey::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -269,7 +269,7 @@ Sankey::Hoverlabel& Sankey::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Sankey::Hoverlabel& Sankey::Hoverlabel::font(class Font f) {
+Sankey::Hoverlabel& Sankey::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -460,7 +460,7 @@ Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::weightsrc(std::string f) {
 }
 
 
-Sankey::Legendgrouptitle& Sankey::Legendgrouptitle::font(class Font f) {
+Sankey::Legendgrouptitle& Sankey::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -582,7 +582,7 @@ Sankey::Link& Sankey::Link::color(std::vector<double> f) {
     return *this;
 }
 
-Sankey::Link& Sankey::Link::colorscales(class Colorscales f) {
+Sankey::Link& Sankey::Link::colorscales(Colorscales f) {
     json["colorscales"] = std::move(f.json);
     return *this;
 }
@@ -630,7 +630,7 @@ Sankey::Link& Sankey::Link::hoverinfo(enum Hoverinfo f) {
     return *this;
 }
 
-Sankey::Link& Sankey::Link::hoverlabel(class Hoverlabel f) {
+Sankey::Link& Sankey::Link::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -660,7 +660,7 @@ Sankey::Link& Sankey::Link::labelsrc(std::string f) {
     return *this;
 }
 
-Sankey::Link& Sankey::Link::line(class Line f) {
+Sankey::Link& Sankey::Link::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -699,7 +699,7 @@ Sankey::Link& Sankey::Link::valuesrc(std::string f) {
 }
 
 
-Sankey::Link::Colorscales& Sankey::Link::Colorscales::concentrationscales(class Concentrationscales f) {
+Sankey::Link::Colorscales& Sankey::Link::Colorscales::concentrationscales(Concentrationscales f) {
     json["concentrationscales"] = std::move(f.json);
     return *this;
 }
@@ -809,7 +809,7 @@ Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bordercolorsrc(std::string f
     return *this;
 }
 
-Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::font(class Font f) {
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1104,7 +1104,7 @@ Sankey::Node& Sankey::Node::hoverinfo(enum Hoverinfo f) {
     return *this;
 }
 
-Sankey::Node& Sankey::Node::hoverlabel(class Hoverlabel f) {
+Sankey::Node& Sankey::Node::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -1134,7 +1134,7 @@ Sankey::Node& Sankey::Node::labelsrc(std::string f) {
     return *this;
 }
 
-Sankey::Node& Sankey::Node::line(class Line f) {
+Sankey::Node& Sankey::Node::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -1241,7 +1241,7 @@ Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bordercolorsrc(std::string f
     return *this;
 }
 
-Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::font(class Font f) {
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }

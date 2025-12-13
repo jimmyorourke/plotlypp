@@ -40,7 +40,7 @@ Choropleth& Choropleth::coloraxis(std::string f) {
     return *this;
 }
 
-Choropleth& Choropleth::colorbar(class Colorbar f) {
+Choropleth& Choropleth::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -95,7 +95,7 @@ Choropleth& Choropleth::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Choropleth& Choropleth::hoverlabel(class Hoverlabel f) {
+Choropleth& Choropleth::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -149,7 +149,7 @@ Choropleth& Choropleth::legendgroup(std::string f) {
     return *this;
 }
 
-Choropleth& Choropleth::legendgrouptitle(class Legendgrouptitle f) {
+Choropleth& Choropleth::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -180,7 +180,7 @@ Choropleth& Choropleth::locationssrc(std::string f) {
     return *this;
 }
 
-Choropleth& Choropleth::marker(class Marker f) {
+Choropleth& Choropleth::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -211,7 +211,7 @@ Choropleth& Choropleth::reversescale(bool f) {
     return *this;
 }
 
-Choropleth& Choropleth::selected(class Selected f) {
+Choropleth& Choropleth::selected(Selected f) {
     json["selected"] = std::move(f.json);
     return *this;
 }
@@ -232,7 +232,7 @@ Choropleth& Choropleth::showscale(bool f) {
     return *this;
 }
 
-Choropleth& Choropleth::stream(class Stream f) {
+Choropleth& Choropleth::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -262,7 +262,7 @@ Choropleth& Choropleth::uirevision(T f) {
     return *this;
 }
 
-Choropleth& Choropleth::unselected(class Unselected f) {
+Choropleth& Choropleth::unselected(Unselected f) {
     json["unselected"] = std::move(f.json);
     return *this;
 }
@@ -580,7 +580,7 @@ Choropleth::Colorbar& Choropleth::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Choropleth::Colorbar& Choropleth::Colorbar::tickfont(class Tickfont f) {
+Choropleth::Colorbar& Choropleth::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -590,7 +590,7 @@ Choropleth::Colorbar& Choropleth::Colorbar::tickformat(std::string f) {
     return *this;
 }
 
-Choropleth::Colorbar& Choropleth::Colorbar::tickformatstops(class Tickformatstops f) {
+Choropleth::Colorbar& Choropleth::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -662,7 +662,7 @@ Choropleth::Colorbar& Choropleth::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Choropleth::Colorbar& Choropleth::Colorbar::title(class Title f) {
+Choropleth::Colorbar& Choropleth::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -788,7 +788,7 @@ Choropleth::Colorbar::Tickfont& Choropleth::Colorbar::Tickfont::weight(int f) {
 }
 
 
-Choropleth::Colorbar::Tickformatstops& Choropleth::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Choropleth::Colorbar::Tickformatstops& Choropleth::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -829,7 +829,7 @@ std::string Choropleth::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Choropleth::Colorbar::Title& Choropleth::Colorbar::Title::font(class Font f) {
+Choropleth::Colorbar::Title& Choropleth::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -994,7 +994,7 @@ Choropleth::Hoverlabel& Choropleth::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Choropleth::Hoverlabel& Choropleth::Hoverlabel::font(class Font f) {
+Choropleth::Hoverlabel& Choropleth::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1185,7 +1185,7 @@ Choropleth::Hoverlabel::Font& Choropleth::Hoverlabel::Font::weightsrc(std::strin
 }
 
 
-Choropleth::Legendgrouptitle& Choropleth::Legendgrouptitle::font(class Font f) {
+Choropleth::Legendgrouptitle& Choropleth::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1276,7 +1276,7 @@ Choropleth::Legendgrouptitle::Font& Choropleth::Legendgrouptitle::Font::weight(i
 }
 
 
-Choropleth::Marker& Choropleth::Marker::line(class Line f) {
+Choropleth::Marker& Choropleth::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -1333,7 +1333,7 @@ Choropleth::Marker::Line& Choropleth::Marker::Line::widthsrc(std::string f) {
 }
 
 
-Choropleth::Selected& Choropleth::Selected::marker(class Marker f) {
+Choropleth::Selected& Choropleth::Selected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -1356,7 +1356,7 @@ Choropleth::Stream& Choropleth::Stream::token(std::string f) {
 }
 
 
-Choropleth::Unselected& Choropleth::Unselected::marker(class Marker f) {
+Choropleth::Unselected& Choropleth::Unselected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }

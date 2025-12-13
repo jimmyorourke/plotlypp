@@ -20,7 +20,7 @@ std::string Table::to_string(Visible e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Table& Table::cells(class Cells f) {
+Table& Table::cells(Cells f) {
     json["cells"] = std::move(f.json);
     return *this;
 }
@@ -61,12 +61,12 @@ Table& Table::customdatasrc(std::string f) {
     return *this;
 }
 
-Table& Table::domain(class Domain f) {
+Table& Table::domain(Domain f) {
     json["domain"] = std::move(f.json);
     return *this;
 }
 
-Table& Table::header(class Header f) {
+Table& Table::header(Header f) {
     json["header"] = std::move(f.json);
     return *this;
 }
@@ -85,7 +85,7 @@ Table& Table::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Table& Table::hoverlabel(class Hoverlabel f) {
+Table& Table::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -106,7 +106,7 @@ Table& Table::legend(std::string f) {
     return *this;
 }
 
-Table& Table::legendgrouptitle(class Legendgrouptitle f) {
+Table& Table::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -142,7 +142,7 @@ Table& Table::name(std::string f) {
     return *this;
 }
 
-Table& Table::stream(class Stream f) {
+Table& Table::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -189,12 +189,12 @@ Table::Cells& Table::Cells::alignsrc(std::string f) {
     return *this;
 }
 
-Table::Cells& Table::Cells::fill(class Fill f) {
+Table::Cells& Table::Cells::fill(Fill f) {
     json["fill"] = std::move(f.json);
     return *this;
 }
 
-Table::Cells& Table::Cells::font(class Font f) {
+Table::Cells& Table::Cells::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -215,7 +215,7 @@ Table::Cells& Table::Cells::height(double f) {
     return *this;
 }
 
-Table::Cells& Table::Cells::line(class Line f) {
+Table::Cells& Table::Cells::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -537,12 +537,12 @@ Table::Header& Table::Header::alignsrc(std::string f) {
     return *this;
 }
 
-Table::Header& Table::Header::fill(class Fill f) {
+Table::Header& Table::Header::fill(Fill f) {
     json["fill"] = std::move(f.json);
     return *this;
 }
 
-Table::Header& Table::Header::font(class Font f) {
+Table::Header& Table::Header::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -563,7 +563,7 @@ Table::Header& Table::Header::height(double f) {
     return *this;
 }
 
-Table::Header& Table::Header::line(class Line f) {
+Table::Header& Table::Header::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -908,7 +908,7 @@ Table::Hoverlabel& Table::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Table::Hoverlabel& Table::Hoverlabel::font(class Font f) {
+Table::Hoverlabel& Table::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1099,7 +1099,7 @@ Table::Hoverlabel::Font& Table::Hoverlabel::Font::weightsrc(std::string f) {
 }
 
 
-Table::Legendgrouptitle& Table::Legendgrouptitle::font(class Font f) {
+Table::Legendgrouptitle& Table::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }

@@ -48,7 +48,7 @@ Scattermapbox& Scattermapbox::below(std::string f) {
     return *this;
 }
 
-Scattermapbox& Scattermapbox::cluster(class Cluster f) {
+Scattermapbox& Scattermapbox::cluster(Cluster f) {
     json["cluster"] = std::move(f.json);
     return *this;
 }
@@ -97,7 +97,7 @@ Scattermapbox& Scattermapbox::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Scattermapbox& Scattermapbox::hoverlabel(class Hoverlabel f) {
+Scattermapbox& Scattermapbox::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -162,7 +162,7 @@ Scattermapbox& Scattermapbox::legendgroup(std::string f) {
     return *this;
 }
 
-Scattermapbox& Scattermapbox::legendgrouptitle(class Legendgrouptitle f) {
+Scattermapbox& Scattermapbox::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -177,7 +177,7 @@ Scattermapbox& Scattermapbox::legendwidth(double f) {
     return *this;
 }
 
-Scattermapbox& Scattermapbox::line(class Line f) {
+Scattermapbox& Scattermapbox::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -193,7 +193,7 @@ Scattermapbox& Scattermapbox::lonsrc(std::string f) {
     return *this;
 }
 
-Scattermapbox& Scattermapbox::marker(class Marker f) {
+Scattermapbox& Scattermapbox::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -229,7 +229,7 @@ Scattermapbox& Scattermapbox::opacity(double f) {
     return *this;
 }
 
-Scattermapbox& Scattermapbox::selected(class Selected f) {
+Scattermapbox& Scattermapbox::selected(Selected f) {
     json["selected"] = std::move(f.json);
     return *this;
 }
@@ -245,7 +245,7 @@ Scattermapbox& Scattermapbox::showlegend(bool f) {
     return *this;
 }
 
-Scattermapbox& Scattermapbox::stream(class Stream f) {
+Scattermapbox& Scattermapbox::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -264,7 +264,7 @@ Scattermapbox& Scattermapbox::text(std::vector<std::string> f) {
     return *this;
 }
 
-Scattermapbox& Scattermapbox::textfont(class Textfont f) {
+Scattermapbox& Scattermapbox::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -304,7 +304,7 @@ Scattermapbox& Scattermapbox::uirevision(T f) {
     return *this;
 }
 
-Scattermapbox& Scattermapbox::unselected(class Unselected f) {
+Scattermapbox& Scattermapbox::unselected(Unselected f) {
     json["unselected"] = std::move(f.json);
     return *this;
 }
@@ -459,7 +459,7 @@ Scattermapbox::Hoverlabel& Scattermapbox::Hoverlabel::bordercolorsrc(std::string
     return *this;
 }
 
-Scattermapbox::Hoverlabel& Scattermapbox::Hoverlabel::font(class Font f) {
+Scattermapbox::Hoverlabel& Scattermapbox::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -650,7 +650,7 @@ Scattermapbox::Hoverlabel::Font& Scattermapbox::Hoverlabel::Font::weightsrc(std:
 }
 
 
-Scattermapbox::Legendgrouptitle& Scattermapbox::Legendgrouptitle::font(class Font f) {
+Scattermapbox::Legendgrouptitle& Scattermapbox::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -830,7 +830,7 @@ Scattermapbox::Marker& Scattermapbox::Marker::coloraxis(std::string f) {
     return *this;
 }
 
-Scattermapbox::Marker& Scattermapbox::Marker::colorbar(class Colorbar f) {
+Scattermapbox::Marker& Scattermapbox::Marker::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -1193,7 +1193,7 @@ Scattermapbox::Marker::Colorbar& Scattermapbox::Marker::Colorbar::tickcolor(doub
     return *this;
 }
 
-Scattermapbox::Marker::Colorbar& Scattermapbox::Marker::Colorbar::tickfont(class Tickfont f) {
+Scattermapbox::Marker::Colorbar& Scattermapbox::Marker::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -1203,7 +1203,7 @@ Scattermapbox::Marker::Colorbar& Scattermapbox::Marker::Colorbar::tickformat(std
     return *this;
 }
 
-Scattermapbox::Marker::Colorbar& Scattermapbox::Marker::Colorbar::tickformatstops(class Tickformatstops f) {
+Scattermapbox::Marker::Colorbar& Scattermapbox::Marker::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -1275,7 +1275,7 @@ Scattermapbox::Marker::Colorbar& Scattermapbox::Marker::Colorbar::tickwidth(doub
     return *this;
 }
 
-Scattermapbox::Marker::Colorbar& Scattermapbox::Marker::Colorbar::title(class Title f) {
+Scattermapbox::Marker::Colorbar& Scattermapbox::Marker::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -1401,7 +1401,7 @@ Scattermapbox::Marker::Colorbar::Tickfont& Scattermapbox::Marker::Colorbar::Tick
 }
 
 
-Scattermapbox::Marker::Colorbar::Tickformatstops& Scattermapbox::Marker::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Scattermapbox::Marker::Colorbar::Tickformatstops& Scattermapbox::Marker::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -1442,7 +1442,7 @@ std::string Scattermapbox::Marker::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Scattermapbox::Marker::Colorbar::Title& Scattermapbox::Marker::Colorbar::Title::font(class Font f) {
+Scattermapbox::Marker::Colorbar::Title& Scattermapbox::Marker::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1538,7 +1538,7 @@ Scattermapbox::Marker::Colorbar::Title::Font& Scattermapbox::Marker::Colorbar::T
 }
 
 
-Scattermapbox::Selected& Scattermapbox::Selected::marker(class Marker f) {
+Scattermapbox::Selected& Scattermapbox::Selected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -1613,7 +1613,7 @@ Scattermapbox::Textfont& Scattermapbox::Textfont::weight(int f) {
 }
 
 
-Scattermapbox::Unselected& Scattermapbox::Unselected::marker(class Marker f) {
+Scattermapbox::Unselected& Scattermapbox::Unselected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }

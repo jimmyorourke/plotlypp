@@ -83,7 +83,7 @@ class Sunburst : public Trace {
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Sunburst& customdatasrc(std::string f);
 
-    Sunburst& domain(class Domain f);
+    Sunburst& domain(Domain f);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -96,7 +96,7 @@ class Sunburst : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Sunburst& hoverinfosrc(std::string f);
 
-    Sunburst& hoverlabel(class Hoverlabel f);
+    Sunburst& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -136,7 +136,7 @@ class Sunburst : public Trace {
     Sunburst& idssrc(std::string f);
 
     // Sets the font used for `textinfo` lying inside the sector.
-    Sunburst& insidetextfont(class Insidetextfont f);
+    Sunburst& insidetextfont(Insidetextfont f);
 
     // Controls the orientation of the text inside chart sectors. When set to *auto*, text may be oriented in any
     // direction in order to be as big as possible in the middle of a sector. The *horizontal* option orients text to be
@@ -153,13 +153,13 @@ class Sunburst : public Trace {
     // Sets the source reference on Chart Studio Cloud for `labels`.
     Sunburst& labelssrc(std::string f);
 
-    Sunburst& leaf(class Leaf f);
+    Sunburst& leaf(Leaf f);
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
     Sunburst& legend(std::string f);
 
-    Sunburst& legendgrouptitle(class Legendgrouptitle f);
+    Sunburst& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -177,7 +177,7 @@ class Sunburst : public Trace {
     template <typename T>
     Sunburst& level(T f);
 
-    Sunburst& marker(class Marker f);
+    Sunburst& marker(Marker f);
 
     // Sets the number of rendered sectors from any given `level`. Set `maxdepth` to *-1* to render all the levels in
     // the hierarchy.
@@ -206,7 +206,7 @@ class Sunburst : public Trace {
     // Sets the font used for `textinfo` lying outside the sector. This option refers to the root of the hierarchy
     // presented at the center of a sunburst graph. Please note that if a hierarchy has multiple root nodes, this option
     // won't have any effect and `insidetextfont` would be used.
-    Sunburst& outsidetextfont(class Outsidetextfont f);
+    Sunburst& outsidetextfont(Outsidetextfont f);
 
     // Sets the parent sectors for each of the sectors. Empty string items '' are understood to reference the root node
     // in the hierarchy. If `ids` is filled, `parents` items are understood to be "ids" themselves. When `ids` is not
@@ -217,7 +217,7 @@ class Sunburst : public Trace {
     // Sets the source reference on Chart Studio Cloud for `parents`.
     Sunburst& parentssrc(std::string f);
 
-    Sunburst& root(class Root f);
+    Sunburst& root(Root f);
 
     // Rotates the whole diagram counterclockwise by some angle. By default the first slice starts at 3 o'clock.
     Sunburst& rotation(double f);
@@ -225,7 +225,7 @@ class Sunburst : public Trace {
     // Determines whether or not the sectors are reordered from largest to smallest.
     Sunburst& sort(bool f);
 
-    Sunburst& stream(class Stream f);
+    Sunburst& stream(Stream f);
 
     // Sets text elements associated with each sector. If trace `textinfo` contains a *text* flag, these elements will
     // be seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will
@@ -234,7 +234,7 @@ class Sunburst : public Trace {
     Sunburst& text(std::vector<T> f);
 
     // Sets the font used for `textinfo`.
-    Sunburst& textfont(class Textfont f);
+    Sunburst& textfont(Textfont f);
 
     // Determines which trace information appear on the graph.
     // - Flags: ['label', 'text', 'value', 'current path', 'percent root', 'percent entry', 'percent parent']
@@ -348,7 +348,7 @@ class Sunburst::Hoverlabel {
     Sunburst::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Sunburst::Hoverlabel& font(class Font f);
+    Sunburst::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -601,7 +601,7 @@ class Sunburst::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Sunburst::Legendgrouptitle& font(class Font f);
+    Sunburst::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Sunburst::Legendgrouptitle& text(std::string f);
@@ -720,7 +720,7 @@ class Sunburst::Marker {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Sunburst::Marker& coloraxis(std::string f);
 
-    Sunburst::Marker& colorbar(class Colorbar f);
+    Sunburst::Marker& colorbar(Colorbar f);
 
     // Sets the color of each sector of this trace. If not specified, the default trace color set is used to pick the
     // sector colors.
@@ -739,10 +739,10 @@ class Sunburst::Marker {
     // Sets the source reference on Chart Studio Cloud for `colors`.
     Sunburst::Marker& colorssrc(std::string f);
 
-    Sunburst::Marker& line(class Line f);
+    Sunburst::Marker& line(Line f);
 
     // Sets the pattern within the marker.
-    Sunburst::Marker& pattern(class Pattern f);
+    Sunburst::Marker& pattern(Pattern f);
 
     // Reverses the color mapping if true. Has an effect only if colors is set to a numerical array. If true,
     // `marker.cmin` will correspond to the last color in the array and `marker.cmax` will correspond to the first
@@ -989,7 +989,7 @@ class Sunburst::Marker::Colorbar {
     Sunburst::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Sunburst::Marker::Colorbar& tickfont(class Tickfont f);
+    Sunburst::Marker::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -998,7 +998,7 @@ class Sunburst::Marker::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Sunburst::Marker::Colorbar& tickformat(std::string f);
 
-    Sunburst::Marker::Colorbar& tickformatstops(class Tickformatstops f);
+    Sunburst::Marker::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -1054,7 +1054,7 @@ class Sunburst::Marker::Colorbar {
     // Sets the tick width (in px).
     Sunburst::Marker::Colorbar& tickwidth(double f);
 
-    Sunburst::Marker::Colorbar& title(class Title f);
+    Sunburst::Marker::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -1174,7 +1174,7 @@ class Sunburst::Marker::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Sunburst::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Sunburst::Marker::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1224,7 +1224,7 @@ class Sunburst::Marker::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Sunburst::Marker::Colorbar::Title& font(class Font f);
+    Sunburst::Marker::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.

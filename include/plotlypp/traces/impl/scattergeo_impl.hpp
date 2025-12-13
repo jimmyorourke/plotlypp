@@ -113,7 +113,7 @@ Scattergeo& Scattergeo::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Scattergeo& Scattergeo::hoverlabel(class Hoverlabel f) {
+Scattergeo& Scattergeo::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -178,7 +178,7 @@ Scattergeo& Scattergeo::legendgroup(std::string f) {
     return *this;
 }
 
-Scattergeo& Scattergeo::legendgrouptitle(class Legendgrouptitle f) {
+Scattergeo& Scattergeo::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -193,7 +193,7 @@ Scattergeo& Scattergeo::legendwidth(double f) {
     return *this;
 }
 
-Scattergeo& Scattergeo::line(class Line f) {
+Scattergeo& Scattergeo::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -225,7 +225,7 @@ Scattergeo& Scattergeo::lonsrc(std::string f) {
     return *this;
 }
 
-Scattergeo& Scattergeo::marker(class Marker f) {
+Scattergeo& Scattergeo::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -261,7 +261,7 @@ Scattergeo& Scattergeo::opacity(double f) {
     return *this;
 }
 
-Scattergeo& Scattergeo::selected(class Selected f) {
+Scattergeo& Scattergeo::selected(Selected f) {
     json["selected"] = std::move(f.json);
     return *this;
 }
@@ -277,7 +277,7 @@ Scattergeo& Scattergeo::showlegend(bool f) {
     return *this;
 }
 
-Scattergeo& Scattergeo::stream(class Stream f) {
+Scattergeo& Scattergeo::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -291,7 +291,7 @@ Scattergeo& Scattergeo::text(std::vector<std::string> f) {
     return *this;
 }
 
-Scattergeo& Scattergeo::textfont(class Textfont f) {
+Scattergeo& Scattergeo::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -342,7 +342,7 @@ Scattergeo& Scattergeo::uirevision(T f) {
     return *this;
 }
 
-Scattergeo& Scattergeo::unselected(class Unselected f) {
+Scattergeo& Scattergeo::unselected(Unselected f) {
     json["unselected"] = std::move(f.json);
     return *this;
 }
@@ -422,7 +422,7 @@ Scattergeo::Hoverlabel& Scattergeo::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Scattergeo::Hoverlabel& Scattergeo::Hoverlabel::font(class Font f) {
+Scattergeo::Hoverlabel& Scattergeo::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -613,7 +613,7 @@ Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::weightsrc(std::strin
 }
 
 
-Scattergeo::Legendgrouptitle& Scattergeo::Legendgrouptitle::font(class Font f) {
+Scattergeo::Legendgrouptitle& Scattergeo::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1137,7 +1137,7 @@ Scattergeo::Marker& Scattergeo::Marker::coloraxis(std::string f) {
     return *this;
 }
 
-Scattergeo::Marker& Scattergeo::Marker::colorbar(class Colorbar f) {
+Scattergeo::Marker& Scattergeo::Marker::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -1156,12 +1156,12 @@ Scattergeo::Marker& Scattergeo::Marker::colorsrc(std::string f) {
     return *this;
 }
 
-Scattergeo::Marker& Scattergeo::Marker::gradient(class Gradient f) {
+Scattergeo::Marker& Scattergeo::Marker::gradient(Gradient f) {
     json["gradient"] = std::move(f.json);
     return *this;
 }
 
-Scattergeo::Marker& Scattergeo::Marker::line(class Line f) {
+Scattergeo::Marker& Scattergeo::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -1526,7 +1526,7 @@ Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::tickcolor(double f) 
     return *this;
 }
 
-Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::tickfont(class Tickfont f) {
+Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -1536,7 +1536,7 @@ Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::tickformat(std::stri
     return *this;
 }
 
-Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::tickformatstops(class Tickformatstops f) {
+Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -1608,7 +1608,7 @@ Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::tickwidth(double f) 
     return *this;
 }
 
-Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::title(class Title f) {
+Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -1734,7 +1734,7 @@ Scattergeo::Marker::Colorbar::Tickfont& Scattergeo::Marker::Colorbar::Tickfont::
 }
 
 
-Scattergeo::Marker::Colorbar::Tickformatstops& Scattergeo::Marker::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Scattergeo::Marker::Colorbar::Tickformatstops& Scattergeo::Marker::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -1775,7 +1775,7 @@ std::string Scattergeo::Marker::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Scattergeo::Marker::Colorbar::Title& Scattergeo::Marker::Colorbar::Title::font(class Font f) {
+Scattergeo::Marker::Colorbar::Title& Scattergeo::Marker::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -2001,12 +2001,12 @@ Scattergeo::Marker::Line& Scattergeo::Marker::Line::widthsrc(std::string f) {
 }
 
 
-Scattergeo::Selected& Scattergeo::Selected::marker(class Marker f) {
+Scattergeo::Selected& Scattergeo::Selected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
 
-Scattergeo::Selected& Scattergeo::Selected::textfont(class Textfont f) {
+Scattergeo::Selected& Scattergeo::Selected::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -2224,12 +2224,12 @@ Scattergeo::Textfont& Scattergeo::Textfont::weightsrc(std::string f) {
 }
 
 
-Scattergeo::Unselected& Scattergeo::Unselected::marker(class Marker f) {
+Scattergeo::Unselected& Scattergeo::Unselected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
 
-Scattergeo::Unselected& Scattergeo::Unselected::textfont(class Textfont f) {
+Scattergeo::Unselected& Scattergeo::Unselected::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }

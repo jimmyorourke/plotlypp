@@ -117,7 +117,7 @@ class Scattergeo : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Scattergeo& hoverinfosrc(std::string f);
 
-    Scattergeo& hoverlabel(class Hoverlabel f);
+    Scattergeo& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -170,7 +170,7 @@ class Scattergeo : public Trace {
     // when toggling legend items.
     Scattergeo& legendgroup(std::string f);
 
-    Scattergeo& legendgrouptitle(class Legendgrouptitle f);
+    Scattergeo& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -182,7 +182,7 @@ class Scattergeo : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Scattergeo& legendwidth(double f);
 
-    Scattergeo& line(class Line f);
+    Scattergeo& line(Line f);
 
     // Determines the set of locations used to match entries in `locations` to regions on the map. Values *ISO-3*,
     // *USA-states*, *country names* correspond to features on the base map and value *geojson-id* corresponds to
@@ -205,7 +205,7 @@ class Scattergeo : public Trace {
     // Sets the source reference on Chart Studio Cloud for `lon`.
     Scattergeo& lonsrc(std::string f);
 
-    Scattergeo& marker(class Marker f);
+    Scattergeo& marker(Marker f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -235,7 +235,7 @@ class Scattergeo : public Trace {
     // Sets the opacity of the trace.
     Scattergeo& opacity(double f);
 
-    Scattergeo& selected(class Selected f);
+    Scattergeo& selected(Selected f);
 
     // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
@@ -246,7 +246,7 @@ class Scattergeo : public Trace {
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Scattergeo& showlegend(bool f);
 
-    Scattergeo& stream(class Stream f);
+    Scattergeo& stream(Stream f);
 
     // Sets text elements associated with each (lon,lat) pair or item in `locations`. If a single string, the same
     // string appears over all the data points. If an array of string, the items are mapped in order to the this trace's
@@ -256,7 +256,7 @@ class Scattergeo : public Trace {
     Scattergeo& text(std::vector<std::string> f);
 
     // Sets the text font.
-    Scattergeo& textfont(class Textfont f);
+    Scattergeo& textfont(Textfont f);
 
     // Sets the positions of the `text` elements with respects to the (x,y) coordinates.
     // - Default: middle center
@@ -298,7 +298,7 @@ class Scattergeo : public Trace {
     template <typename T>
     Scattergeo& uirevision(T f);
 
-    Scattergeo& unselected(class Unselected f);
+    Scattergeo& unselected(Unselected f);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -347,7 +347,7 @@ class Scattergeo::Hoverlabel {
     Scattergeo::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Scattergeo::Hoverlabel& font(class Font f);
+    Scattergeo::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -480,7 +480,7 @@ class Scattergeo::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Scattergeo::Legendgrouptitle& font(class Font f);
+    Scattergeo::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Scattergeo::Legendgrouptitle& text(std::string f);
@@ -977,7 +977,7 @@ class Scattergeo::Marker {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Scattergeo::Marker& coloraxis(std::string f);
 
-    Scattergeo::Marker& colorbar(class Colorbar f);
+    Scattergeo::Marker& colorbar(Colorbar f);
 
     // Sets the colorscale. Has an effect only if in `marker.color` is set to a numerical array. The colorscale must be
     // an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At
@@ -991,9 +991,9 @@ class Scattergeo::Marker {
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scattergeo::Marker& colorsrc(std::string f);
 
-    Scattergeo::Marker& gradient(class Gradient f);
+    Scattergeo::Marker& gradient(Gradient f);
 
-    Scattergeo::Marker& line(class Line f);
+    Scattergeo::Marker& line(Line f);
 
     // Sets the marker opacity.
     Scattergeo::Marker& opacity(double f);
@@ -1285,7 +1285,7 @@ class Scattergeo::Marker::Colorbar {
     Scattergeo::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Scattergeo::Marker::Colorbar& tickfont(class Tickfont f);
+    Scattergeo::Marker::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -1294,7 +1294,7 @@ class Scattergeo::Marker::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Scattergeo::Marker::Colorbar& tickformat(std::string f);
 
-    Scattergeo::Marker::Colorbar& tickformatstops(class Tickformatstops f);
+    Scattergeo::Marker::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -1350,7 +1350,7 @@ class Scattergeo::Marker::Colorbar {
     // Sets the tick width (in px).
     Scattergeo::Marker::Colorbar& tickwidth(double f);
 
-    Scattergeo::Marker::Colorbar& title(class Title f);
+    Scattergeo::Marker::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -1470,7 +1470,7 @@ class Scattergeo::Marker::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Scattergeo::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Scattergeo::Marker::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1520,7 +1520,7 @@ class Scattergeo::Marker::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Scattergeo::Marker::Colorbar::Title& font(class Font f);
+    Scattergeo::Marker::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -1717,9 +1717,9 @@ class Scattergeo::Selected {
     class Marker;
     class Textfont;
 
-    Scattergeo::Selected& marker(class Marker f);
+    Scattergeo::Selected& marker(Marker f);
 
-    Scattergeo::Selected& textfont(class Textfont f);
+    Scattergeo::Selected& textfont(Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1884,9 +1884,9 @@ class Scattergeo::Unselected {
     class Marker;
     class Textfont;
 
-    Scattergeo::Unselected& marker(class Marker f);
+    Scattergeo::Unselected& marker(Marker f);
 
-    Scattergeo::Unselected& textfont(class Textfont f);
+    Scattergeo::Unselected& textfont(Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

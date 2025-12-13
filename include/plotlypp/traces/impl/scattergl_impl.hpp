@@ -136,12 +136,12 @@ Scattergl& Scattergl::dy(double f) {
     return *this;
 }
 
-Scattergl& Scattergl::error_x(class Error_X f) {
+Scattergl& Scattergl::error_x(Error_X f) {
     json["error_x"] = std::move(f.json);
     return *this;
 }
 
-Scattergl& Scattergl::error_y(class Error_Y f) {
+Scattergl& Scattergl::error_y(Error_Y f) {
     json["error_y"] = std::move(f.json);
     return *this;
 }
@@ -174,7 +174,7 @@ Scattergl& Scattergl::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Scattergl& Scattergl::hoverlabel(class Hoverlabel f) {
+Scattergl& Scattergl::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -228,7 +228,7 @@ Scattergl& Scattergl::legendgroup(std::string f) {
     return *this;
 }
 
-Scattergl& Scattergl::legendgrouptitle(class Legendgrouptitle f) {
+Scattergl& Scattergl::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -243,12 +243,12 @@ Scattergl& Scattergl::legendwidth(double f) {
     return *this;
 }
 
-Scattergl& Scattergl::line(class Line f) {
+Scattergl& Scattergl::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
 
-Scattergl& Scattergl::marker(class Marker f) {
+Scattergl& Scattergl::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -284,7 +284,7 @@ Scattergl& Scattergl::opacity(double f) {
     return *this;
 }
 
-Scattergl& Scattergl::selected(class Selected f) {
+Scattergl& Scattergl::selected(Selected f) {
     json["selected"] = std::move(f.json);
     return *this;
 }
@@ -300,7 +300,7 @@ Scattergl& Scattergl::showlegend(bool f) {
     return *this;
 }
 
-Scattergl& Scattergl::stream(class Stream f) {
+Scattergl& Scattergl::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -314,7 +314,7 @@ Scattergl& Scattergl::text(std::vector<std::string> f) {
     return *this;
 }
 
-Scattergl& Scattergl::textfont(class Textfont f) {
+Scattergl& Scattergl::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -365,7 +365,7 @@ Scattergl& Scattergl::uirevision(T f) {
     return *this;
 }
 
-Scattergl& Scattergl::unselected(class Unselected f) {
+Scattergl& Scattergl::unselected(Unselected f) {
     json["unselected"] = std::move(f.json);
     return *this;
 }
@@ -722,7 +722,7 @@ Scattergl::Hoverlabel& Scattergl::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Scattergl::Hoverlabel& Scattergl::Hoverlabel::font(class Font f) {
+Scattergl::Hoverlabel& Scattergl::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -913,7 +913,7 @@ Scattergl::Hoverlabel::Font& Scattergl::Hoverlabel::Font::weightsrc(std::string 
 }
 
 
-Scattergl::Legendgrouptitle& Scattergl::Legendgrouptitle::font(class Font f) {
+Scattergl::Legendgrouptitle& Scattergl::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1451,7 +1451,7 @@ Scattergl::Marker& Scattergl::Marker::coloraxis(std::string f) {
     return *this;
 }
 
-Scattergl::Marker& Scattergl::Marker::colorbar(class Colorbar f) {
+Scattergl::Marker& Scattergl::Marker::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -1470,7 +1470,7 @@ Scattergl::Marker& Scattergl::Marker::colorsrc(std::string f) {
     return *this;
 }
 
-Scattergl::Marker& Scattergl::Marker::line(class Line f) {
+Scattergl::Marker& Scattergl::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -1821,7 +1821,7 @@ Scattergl::Marker::Colorbar& Scattergl::Marker::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Scattergl::Marker::Colorbar& Scattergl::Marker::Colorbar::tickfont(class Tickfont f) {
+Scattergl::Marker::Colorbar& Scattergl::Marker::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -1831,7 +1831,7 @@ Scattergl::Marker::Colorbar& Scattergl::Marker::Colorbar::tickformat(std::string
     return *this;
 }
 
-Scattergl::Marker::Colorbar& Scattergl::Marker::Colorbar::tickformatstops(class Tickformatstops f) {
+Scattergl::Marker::Colorbar& Scattergl::Marker::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -1903,7 +1903,7 @@ Scattergl::Marker::Colorbar& Scattergl::Marker::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Scattergl::Marker::Colorbar& Scattergl::Marker::Colorbar::title(class Title f) {
+Scattergl::Marker::Colorbar& Scattergl::Marker::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -2029,7 +2029,7 @@ Scattergl::Marker::Colorbar::Tickfont& Scattergl::Marker::Colorbar::Tickfont::we
 }
 
 
-Scattergl::Marker::Colorbar::Tickformatstops& Scattergl::Marker::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Scattergl::Marker::Colorbar::Tickformatstops& Scattergl::Marker::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -2070,7 +2070,7 @@ std::string Scattergl::Marker::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Scattergl::Marker::Colorbar::Title& Scattergl::Marker::Colorbar::Title::font(class Font f) {
+Scattergl::Marker::Colorbar::Title& Scattergl::Marker::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -2247,12 +2247,12 @@ Scattergl::Marker::Line& Scattergl::Marker::Line::widthsrc(std::string f) {
 }
 
 
-Scattergl::Selected& Scattergl::Selected::marker(class Marker f) {
+Scattergl::Selected& Scattergl::Selected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
 
-Scattergl::Selected& Scattergl::Selected::textfont(class Textfont f) {
+Scattergl::Selected& Scattergl::Selected::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -2422,12 +2422,12 @@ Scattergl::Textfont& Scattergl::Textfont::weightsrc(std::string f) {
 }
 
 
-Scattergl::Unselected& Scattergl::Unselected::marker(class Marker f) {
+Scattergl::Unselected& Scattergl::Unselected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
 
-Scattergl::Unselected& Scattergl::Unselected::textfont(class Textfont f) {
+Scattergl::Unselected& Scattergl::Unselected::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }

@@ -96,7 +96,7 @@ class Funnel : public Trace {
     // tick labels, make sure to set `xaxis.layer` and `yaxis.layer` to *below traces*.
     Funnel& cliponaxis(bool f);
 
-    Funnel& connector(class Connector f);
+    Funnel& connector(Connector f);
 
     // Constrain the size of text inside or outside a bar to be no larger than the bar itself.
     // - Default: both
@@ -127,7 +127,7 @@ class Funnel : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Funnel& hoverinfosrc(std::string f);
 
-    Funnel& hoverlabel(class Hoverlabel f);
+    Funnel& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -171,7 +171,7 @@ class Funnel : public Trace {
     Funnel& insidetextanchor(enum Insidetextanchor f);
 
     // Sets the font used for `text` lying inside the bar.
-    Funnel& insidetextfont(class Insidetextfont f);
+    Funnel& insidetextfont(Insidetextfont f);
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
@@ -181,7 +181,7 @@ class Funnel : public Trace {
     // when toggling legend items.
     Funnel& legendgroup(std::string f);
 
-    Funnel& legendgrouptitle(class Legendgrouptitle f);
+    Funnel& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -193,7 +193,7 @@ class Funnel : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Funnel& legendwidth(double f);
 
-    Funnel& marker(class Marker f);
+    Funnel& marker(Marker f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -230,7 +230,7 @@ class Funnel : public Trace {
     Funnel& orientation(enum Orientation f);
 
     // Sets the font used for `text` lying outside the bar.
-    Funnel& outsidetextfont(class Outsidetextfont f);
+    Funnel& outsidetextfont(Outsidetextfont f);
 
     // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
@@ -241,7 +241,7 @@ class Funnel : public Trace {
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Funnel& showlegend(bool f);
 
-    Funnel& stream(class Stream f);
+    Funnel& stream(Stream f);
 
     // Sets text elements associated with each (x,y) pair. If a single string, the same string appears over all the data
     // points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. If trace
@@ -254,7 +254,7 @@ class Funnel : public Trace {
     Funnel& textangle(double f);
 
     // Sets the font used for `text`.
-    Funnel& textfont(class Textfont f);
+    Funnel& textfont(Textfont f);
 
     // Determines which trace information appear on the graph. In the case of having multiple funnels, percentages &
     // totals are computed separately (per trace).
@@ -407,7 +407,7 @@ class Funnel::Connector {
     Funnel::Connector& fillcolor(std::string f);
     Funnel::Connector& fillcolor(double f);
 
-    Funnel::Connector& line(class Line f);
+    Funnel::Connector& line(Line f);
 
     // Determines if connector regions and lines are drawn.
     Funnel::Connector& visible(bool f);
@@ -475,7 +475,7 @@ class Funnel::Hoverlabel {
     Funnel::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Funnel::Hoverlabel& font(class Font f);
+    Funnel::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -718,7 +718,7 @@ class Funnel::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Funnel::Legendgrouptitle& font(class Font f);
+    Funnel::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Funnel::Legendgrouptitle& text(std::string f);
@@ -842,7 +842,7 @@ class Funnel::Marker {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Funnel::Marker& coloraxis(std::string f);
 
-    Funnel::Marker& colorbar(class Colorbar f);
+    Funnel::Marker& colorbar(Colorbar f);
 
     // Sets the colorscale. Has an effect only if in `marker.color` is set to a numerical array. The colorscale must be
     // an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At
@@ -856,7 +856,7 @@ class Funnel::Marker {
     // Sets the source reference on Chart Studio Cloud for `color`.
     Funnel::Marker& colorsrc(std::string f);
 
-    Funnel::Marker& line(class Line f);
+    Funnel::Marker& line(Line f);
 
     // Sets the opacity of the bars.
     Funnel::Marker& opacity(double f);
@@ -1110,7 +1110,7 @@ class Funnel::Marker::Colorbar {
     Funnel::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Funnel::Marker::Colorbar& tickfont(class Tickfont f);
+    Funnel::Marker::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -1119,7 +1119,7 @@ class Funnel::Marker::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Funnel::Marker::Colorbar& tickformat(std::string f);
 
-    Funnel::Marker::Colorbar& tickformatstops(class Tickformatstops f);
+    Funnel::Marker::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -1175,7 +1175,7 @@ class Funnel::Marker::Colorbar {
     // Sets the tick width (in px).
     Funnel::Marker::Colorbar& tickwidth(double f);
 
-    Funnel::Marker::Colorbar& title(class Title f);
+    Funnel::Marker::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -1295,7 +1295,7 @@ class Funnel::Marker::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Funnel::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Funnel::Marker::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1345,7 +1345,7 @@ class Funnel::Marker::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Funnel::Marker::Colorbar::Title& font(class Font f);
+    Funnel::Marker::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.

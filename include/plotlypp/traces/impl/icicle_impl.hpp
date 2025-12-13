@@ -64,7 +64,7 @@ Icicle& Icicle::customdatasrc(std::string f) {
     return *this;
 }
 
-Icicle& Icicle::domain(class Domain f) {
+Icicle& Icicle::domain(Domain f) {
     json["domain"] = std::move(f.json);
     return *this;
 }
@@ -83,7 +83,7 @@ Icicle& Icicle::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Icicle& Icicle::hoverlabel(class Hoverlabel f) {
+Icicle& Icicle::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -127,7 +127,7 @@ Icicle& Icicle::idssrc(std::string f) {
     return *this;
 }
 
-Icicle& Icicle::insidetextfont(class Insidetextfont f) {
+Icicle& Icicle::insidetextfont(Insidetextfont f) {
     json["insidetextfont"] = std::move(f.json);
     return *this;
 }
@@ -143,7 +143,7 @@ Icicle& Icicle::labelssrc(std::string f) {
     return *this;
 }
 
-Icicle& Icicle::leaf(class Leaf f) {
+Icicle& Icicle::leaf(Leaf f) {
     json["leaf"] = std::move(f.json);
     return *this;
 }
@@ -153,7 +153,7 @@ Icicle& Icicle::legend(std::string f) {
     return *this;
 }
 
-Icicle& Icicle::legendgrouptitle(class Legendgrouptitle f) {
+Icicle& Icicle::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -174,7 +174,7 @@ Icicle& Icicle::level(T f) {
     return *this;
 }
 
-Icicle& Icicle::marker(class Marker f) {
+Icicle& Icicle::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -210,7 +210,7 @@ Icicle& Icicle::opacity(double f) {
     return *this;
 }
 
-Icicle& Icicle::outsidetextfont(class Outsidetextfont f) {
+Icicle& Icicle::outsidetextfont(Outsidetextfont f) {
     json["outsidetextfont"] = std::move(f.json);
     return *this;
 }
@@ -226,12 +226,12 @@ Icicle& Icicle::parentssrc(std::string f) {
     return *this;
 }
 
-Icicle& Icicle::pathbar(class Pathbar f) {
+Icicle& Icicle::pathbar(Pathbar f) {
     json["pathbar"] = std::move(f.json);
     return *this;
 }
 
-Icicle& Icicle::root(class Root f) {
+Icicle& Icicle::root(Root f) {
     json["root"] = std::move(f.json);
     return *this;
 }
@@ -241,7 +241,7 @@ Icicle& Icicle::sort(bool f) {
     return *this;
 }
 
-Icicle& Icicle::stream(class Stream f) {
+Icicle& Icicle::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -252,7 +252,7 @@ Icicle& Icicle::text(std::vector<T> f) {
     return *this;
 }
 
-Icicle& Icicle::textfont(class Textfont f) {
+Icicle& Icicle::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -286,7 +286,7 @@ Icicle& Icicle::texttemplatesrc(std::string f) {
     return *this;
 }
 
-Icicle& Icicle::tiling(class Tiling f) {
+Icicle& Icicle::tiling(Tiling f) {
     json["tiling"] = std::move(f.json);
     return *this;
 }
@@ -409,7 +409,7 @@ Icicle::Hoverlabel& Icicle::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Icicle::Hoverlabel& Icicle::Hoverlabel::font(class Font f) {
+Icicle::Hoverlabel& Icicle::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -777,7 +777,7 @@ Icicle::Leaf& Icicle::Leaf::opacity(double f) {
 }
 
 
-Icicle::Legendgrouptitle& Icicle::Legendgrouptitle::font(class Font f) {
+Icicle::Legendgrouptitle& Icicle::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -898,7 +898,7 @@ Icicle::Marker& Icicle::Marker::coloraxis(std::string f) {
     return *this;
 }
 
-Icicle::Marker& Icicle::Marker::colorbar(class Colorbar f) {
+Icicle::Marker& Icicle::Marker::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -923,12 +923,12 @@ Icicle::Marker& Icicle::Marker::colorssrc(std::string f) {
     return *this;
 }
 
-Icicle::Marker& Icicle::Marker::line(class Line f) {
+Icicle::Marker& Icicle::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
 
-Icicle::Marker& Icicle::Marker::pattern(class Pattern f) {
+Icicle::Marker& Icicle::Marker::pattern(Pattern f) {
     json["pattern"] = std::move(f.json);
     return *this;
 }
@@ -1220,7 +1220,7 @@ Icicle::Marker::Colorbar& Icicle::Marker::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Icicle::Marker::Colorbar& Icicle::Marker::Colorbar::tickfont(class Tickfont f) {
+Icicle::Marker::Colorbar& Icicle::Marker::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -1230,7 +1230,7 @@ Icicle::Marker::Colorbar& Icicle::Marker::Colorbar::tickformat(std::string f) {
     return *this;
 }
 
-Icicle::Marker::Colorbar& Icicle::Marker::Colorbar::tickformatstops(class Tickformatstops f) {
+Icicle::Marker::Colorbar& Icicle::Marker::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -1302,7 +1302,7 @@ Icicle::Marker::Colorbar& Icicle::Marker::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Icicle::Marker::Colorbar& Icicle::Marker::Colorbar::title(class Title f) {
+Icicle::Marker::Colorbar& Icicle::Marker::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -1428,7 +1428,7 @@ Icicle::Marker::Colorbar::Tickfont& Icicle::Marker::Colorbar::Tickfont::weight(i
 }
 
 
-Icicle::Marker::Colorbar::Tickformatstops& Icicle::Marker::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Icicle::Marker::Colorbar::Tickformatstops& Icicle::Marker::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -1469,7 +1469,7 @@ std::string Icicle::Marker::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Icicle::Marker::Colorbar::Title& Icicle::Marker::Colorbar::Title::font(class Font f) {
+Icicle::Marker::Colorbar::Title& Icicle::Marker::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1923,7 +1923,7 @@ Icicle::Pathbar& Icicle::Pathbar::side(enum Side f) {
     return *this;
 }
 
-Icicle::Pathbar& Icicle::Pathbar::textfont(class Textfont f) {
+Icicle::Pathbar& Icicle::Pathbar::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }

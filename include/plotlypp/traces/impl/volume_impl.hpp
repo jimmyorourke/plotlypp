@@ -25,7 +25,7 @@ Volume& Volume::autocolorscale(bool f) {
     return *this;
 }
 
-Volume& Volume::caps(class Caps f) {
+Volume& Volume::caps(Caps f) {
     json["caps"] = std::move(f.json);
     return *this;
 }
@@ -55,7 +55,7 @@ Volume& Volume::coloraxis(std::string f) {
     return *this;
 }
 
-Volume& Volume::colorbar(class Colorbar f) {
+Volume& Volume::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -69,7 +69,7 @@ Volume& Volume::colorscale(std::vector<std::pair<double, std::string>> f) {
     return *this;
 }
 
-Volume& Volume::contour(class Contour f) {
+Volume& Volume::contour(Contour f) {
     json["contour"] = std::move(f.json);
     return *this;
 }
@@ -104,7 +104,7 @@ Volume& Volume::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Volume& Volume::hoverlabel(class Hoverlabel f) {
+Volume& Volume::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -168,7 +168,7 @@ Volume& Volume::legendgroup(std::string f) {
     return *this;
 }
 
-Volume& Volume::legendgrouptitle(class Legendgrouptitle f) {
+Volume& Volume::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -183,12 +183,12 @@ Volume& Volume::legendwidth(double f) {
     return *this;
 }
 
-Volume& Volume::lighting(class Lighting f) {
+Volume& Volume::lighting(Lighting f) {
     json["lighting"] = std::move(f.json);
     return *this;
 }
 
-Volume& Volume::lightposition(class Lightposition f) {
+Volume& Volume::lightposition(Lightposition f) {
     json["lightposition"] = std::move(f.json);
     return *this;
 }
@@ -245,22 +245,22 @@ Volume& Volume::showscale(bool f) {
     return *this;
 }
 
-Volume& Volume::slices(class Slices f) {
+Volume& Volume::slices(Slices f) {
     json["slices"] = std::move(f.json);
     return *this;
 }
 
-Volume& Volume::spaceframe(class Spaceframe f) {
+Volume& Volume::spaceframe(Spaceframe f) {
     json["spaceframe"] = std::move(f.json);
     return *this;
 }
 
-Volume& Volume::stream(class Stream f) {
+Volume& Volume::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
 
-Volume& Volume::surface(class Surface f) {
+Volume& Volume::surface(Surface f) {
     json["surface"] = std::move(f.json);
     return *this;
 }
@@ -360,17 +360,17 @@ Volume& Volume::zsrc(std::string f) {
 }
 
 
-Volume::Caps& Volume::Caps::x(class X f) {
+Volume::Caps& Volume::Caps::x(X f) {
     json["x"] = std::move(f.json);
     return *this;
 }
 
-Volume::Caps& Volume::Caps::y(class Y f) {
+Volume::Caps& Volume::Caps::y(Y f) {
     json["y"] = std::move(f.json);
     return *this;
 }
 
-Volume::Caps& Volume::Caps::z(class Z f) {
+Volume::Caps& Volume::Caps::z(Z f) {
     json["z"] = std::move(f.json);
     return *this;
 }
@@ -685,7 +685,7 @@ Volume::Colorbar& Volume::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Volume::Colorbar& Volume::Colorbar::tickfont(class Tickfont f) {
+Volume::Colorbar& Volume::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -695,7 +695,7 @@ Volume::Colorbar& Volume::Colorbar::tickformat(std::string f) {
     return *this;
 }
 
-Volume::Colorbar& Volume::Colorbar::tickformatstops(class Tickformatstops f) {
+Volume::Colorbar& Volume::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -767,7 +767,7 @@ Volume::Colorbar& Volume::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Volume::Colorbar& Volume::Colorbar::title(class Title f) {
+Volume::Colorbar& Volume::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -893,7 +893,7 @@ Volume::Colorbar::Tickfont& Volume::Colorbar::Tickfont::weight(int f) {
 }
 
 
-Volume::Colorbar::Tickformatstops& Volume::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Volume::Colorbar::Tickformatstops& Volume::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -934,7 +934,7 @@ std::string Volume::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Volume::Colorbar::Title& Volume::Colorbar::Title::font(class Font f) {
+Volume::Colorbar::Title& Volume::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1119,7 +1119,7 @@ Volume::Hoverlabel& Volume::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Volume::Hoverlabel& Volume::Hoverlabel::font(class Font f) {
+Volume::Hoverlabel& Volume::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1310,7 +1310,7 @@ Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::weightsrc(std::string f) {
 }
 
 
-Volume::Legendgrouptitle& Volume::Legendgrouptitle::font(class Font f) {
+Volume::Legendgrouptitle& Volume::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1453,17 +1453,17 @@ Volume::Lightposition& Volume::Lightposition::z(double f) {
 }
 
 
-Volume::Slices& Volume::Slices::x(class X f) {
+Volume::Slices& Volume::Slices::x(X f) {
     json["x"] = std::move(f.json);
     return *this;
 }
 
-Volume::Slices& Volume::Slices::y(class Y f) {
+Volume::Slices& Volume::Slices::y(Y f) {
     json["y"] = std::move(f.json);
     return *this;
 }
 
-Volume::Slices& Volume::Slices::z(class Z f) {
+Volume::Slices& Volume::Slices::z(Z f) {
     json["z"] = std::move(f.json);
     return *this;
 }

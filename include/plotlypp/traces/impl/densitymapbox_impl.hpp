@@ -35,7 +35,7 @@ Densitymapbox& Densitymapbox::coloraxis(std::string f) {
     return *this;
 }
 
-Densitymapbox& Densitymapbox::colorbar(class Colorbar f) {
+Densitymapbox& Densitymapbox::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -74,7 +74,7 @@ Densitymapbox& Densitymapbox::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Densitymapbox& Densitymapbox::hoverlabel(class Hoverlabel f) {
+Densitymapbox& Densitymapbox::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -139,7 +139,7 @@ Densitymapbox& Densitymapbox::legendgroup(std::string f) {
     return *this;
 }
 
-Densitymapbox& Densitymapbox::legendgrouptitle(class Legendgrouptitle f) {
+Densitymapbox& Densitymapbox::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -220,7 +220,7 @@ Densitymapbox& Densitymapbox::showscale(bool f) {
     return *this;
 }
 
-Densitymapbox& Densitymapbox::stream(class Stream f) {
+Densitymapbox& Densitymapbox::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -568,7 +568,7 @@ Densitymapbox::Colorbar& Densitymapbox::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Densitymapbox::Colorbar& Densitymapbox::Colorbar::tickfont(class Tickfont f) {
+Densitymapbox::Colorbar& Densitymapbox::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -578,7 +578,7 @@ Densitymapbox::Colorbar& Densitymapbox::Colorbar::tickformat(std::string f) {
     return *this;
 }
 
-Densitymapbox::Colorbar& Densitymapbox::Colorbar::tickformatstops(class Tickformatstops f) {
+Densitymapbox::Colorbar& Densitymapbox::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -650,7 +650,7 @@ Densitymapbox::Colorbar& Densitymapbox::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Densitymapbox::Colorbar& Densitymapbox::Colorbar::title(class Title f) {
+Densitymapbox::Colorbar& Densitymapbox::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -776,7 +776,7 @@ Densitymapbox::Colorbar::Tickfont& Densitymapbox::Colorbar::Tickfont::weight(int
 }
 
 
-Densitymapbox::Colorbar::Tickformatstops& Densitymapbox::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Densitymapbox::Colorbar::Tickformatstops& Densitymapbox::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -817,7 +817,7 @@ std::string Densitymapbox::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Densitymapbox::Colorbar::Title& Densitymapbox::Colorbar::Title::font(class Font f) {
+Densitymapbox::Colorbar::Title& Densitymapbox::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -982,7 +982,7 @@ Densitymapbox::Hoverlabel& Densitymapbox::Hoverlabel::bordercolorsrc(std::string
     return *this;
 }
 
-Densitymapbox::Hoverlabel& Densitymapbox::Hoverlabel::font(class Font f) {
+Densitymapbox::Hoverlabel& Densitymapbox::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1173,7 +1173,7 @@ Densitymapbox::Hoverlabel::Font& Densitymapbox::Hoverlabel::Font::weightsrc(std:
 }
 
 
-Densitymapbox::Legendgrouptitle& Densitymapbox::Legendgrouptitle::font(class Font f) {
+Densitymapbox::Legendgrouptitle& Densitymapbox::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }

@@ -83,7 +83,7 @@ Violin& Violin::bandwidth(double f) {
     return *this;
 }
 
-Violin& Violin::box(class Box f) {
+Violin& Violin::box(Box f) {
     json["box"] = std::move(f.json);
     return *this;
 }
@@ -122,7 +122,7 @@ Violin& Violin::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Violin& Violin::hoverlabel(class Hoverlabel f) {
+Violin& Violin::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -186,7 +186,7 @@ Violin& Violin::legendgroup(std::string f) {
     return *this;
 }
 
-Violin& Violin::legendgrouptitle(class Legendgrouptitle f) {
+Violin& Violin::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -201,17 +201,17 @@ Violin& Violin::legendwidth(double f) {
     return *this;
 }
 
-Violin& Violin::line(class Line f) {
+Violin& Violin::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
 
-Violin& Violin::marker(class Marker f) {
+Violin& Violin::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
 
-Violin& Violin::meanline(class Meanline f) {
+Violin& Violin::meanline(Meanline f) {
     json["meanline"] = std::move(f.json);
     return *this;
 }
@@ -277,7 +277,7 @@ Violin& Violin::scalemode(enum Scalemode f) {
     return *this;
 }
 
-Violin& Violin::selected(class Selected f) {
+Violin& Violin::selected(Selected f) {
     json["selected"] = std::move(f.json);
     return *this;
 }
@@ -308,7 +308,7 @@ Violin& Violin::spanmode(enum Spanmode f) {
     return *this;
 }
 
-Violin& Violin::stream(class Stream f) {
+Violin& Violin::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -338,7 +338,7 @@ Violin& Violin::uirevision(T f) {
     return *this;
 }
 
-Violin& Violin::unselected(class Unselected f) {
+Violin& Violin::unselected(Unselected f) {
     json["unselected"] = std::move(f.json);
     return *this;
 }
@@ -422,7 +422,7 @@ Violin::Box& Violin::Box::fillcolor(double f) {
     return *this;
 }
 
-Violin::Box& Violin::Box::line(class Line f) {
+Violin::Box& Violin::Box::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -522,7 +522,7 @@ Violin::Hoverlabel& Violin::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Violin::Hoverlabel& Violin::Hoverlabel::font(class Font f) {
+Violin::Hoverlabel& Violin::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -713,7 +713,7 @@ Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::weightsrc(std::string f) {
 }
 
 
-Violin::Legendgrouptitle& Violin::Legendgrouptitle::font(class Font f) {
+Violin::Legendgrouptitle& Violin::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1163,7 +1163,7 @@ Violin::Marker& Violin::Marker::color(double f) {
     return *this;
 }
 
-Violin::Marker& Violin::Marker::line(class Line f) {
+Violin::Marker& Violin::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -1242,7 +1242,7 @@ Violin::Meanline& Violin::Meanline::width(double f) {
 }
 
 
-Violin::Selected& Violin::Selected::marker(class Marker f) {
+Violin::Selected& Violin::Selected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -1279,7 +1279,7 @@ Violin::Stream& Violin::Stream::token(std::string f) {
 }
 
 
-Violin::Unselected& Violin::Unselected::marker(class Marker f) {
+Violin::Unselected& Violin::Unselected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }

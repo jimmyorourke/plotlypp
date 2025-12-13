@@ -73,7 +73,7 @@ class Sankey : public Trace {
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Sankey& customdatasrc(std::string f);
 
-    Sankey& domain(class Domain f);
+    Sankey& domain(Domain f);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired. Note that this attribute is superseded
@@ -83,7 +83,7 @@ class Sankey : public Trace {
     // - Extras ['all', 'none', 'skip']
     Sankey& hoverinfo(std::string f);
 
-    Sankey& hoverlabel(class Hoverlabel f);
+    Sankey& hoverlabel(Hoverlabel f);
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
@@ -97,7 +97,7 @@ class Sankey : public Trace {
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
     Sankey& legend(std::string f);
 
-    Sankey& legendgrouptitle(class Legendgrouptitle f);
+    Sankey& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -110,7 +110,7 @@ class Sankey : public Trace {
     Sankey& legendwidth(double f);
 
     // The links of the Sankey plot.
-    Sankey& link(class Link f);
+    Sankey& link(Link f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -130,7 +130,7 @@ class Sankey : public Trace {
     Sankey& name(std::string f);
 
     // The nodes of the Sankey plot.
-    Sankey& node(class Node f);
+    Sankey& node(Node f);
 
     // Sets the orientation of the Sankey diagram.
     // - Default: h
@@ -142,10 +142,10 @@ class Sankey : public Trace {
     template <typename T>
     Sankey& selectedpoints(T f);
 
-    Sankey& stream(class Stream f);
+    Sankey& stream(Stream f);
 
     // Sets the font for node labels
-    Sankey& textfont(class Textfont f);
+    Sankey& textfont(Textfont f);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
@@ -235,7 +235,7 @@ class Sankey::Hoverlabel {
     Sankey::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Sankey::Hoverlabel& font(class Font f);
+    Sankey::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -368,7 +368,7 @@ class Sankey::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Sankey::Legendgrouptitle& font(class Font f);
+    Sankey::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Sankey::Legendgrouptitle& text(std::string f);
@@ -475,7 +475,7 @@ class Sankey::Link {
     Sankey::Link& color(std::vector<std::string> f);
     Sankey::Link& color(std::vector<double> f);
 
-    Sankey::Link& colorscales(class Colorscales f);
+    Sankey::Link& colorscales(Colorscales f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sankey::Link& colorsrc(std::string f);
@@ -502,7 +502,7 @@ class Sankey::Link {
     // - Default: all
     Sankey::Link& hoverinfo(enum Hoverinfo f);
 
-    Sankey::Link& hoverlabel(class Hoverlabel f);
+    Sankey::Link& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -531,7 +531,7 @@ class Sankey::Link {
     // Sets the source reference on Chart Studio Cloud for `label`.
     Sankey::Link& labelsrc(std::string f);
 
-    Sankey::Link& line(class Line f);
+    Sankey::Link& line(Line f);
 
     // An integer number `[0..nodes.length - 1]` that represents the source node.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
@@ -563,7 +563,7 @@ class Sankey::Link::Colorscales {
 
     class Concentrationscales;
 
-    Sankey::Link::Colorscales& concentrationscales(class Concentrationscales f);
+    Sankey::Link::Colorscales& concentrationscales(Concentrationscales f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -648,7 +648,7 @@ class Sankey::Link::Hoverlabel {
     Sankey::Link::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Sankey::Link::Hoverlabel& font(class Font f);
+    Sankey::Link::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -850,7 +850,7 @@ class Sankey::Node {
     // - Default: all
     Sankey::Node& hoverinfo(enum Hoverinfo f);
 
-    Sankey::Node& hoverlabel(class Hoverlabel f);
+    Sankey::Node& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -879,7 +879,7 @@ class Sankey::Node {
     // Sets the source reference on Chart Studio Cloud for `label`.
     Sankey::Node& labelsrc(std::string f);
 
-    Sankey::Node& line(class Line f);
+    Sankey::Node& line(Line f);
 
     // Sets the padding (in px) between the `nodes`.
     Sankey::Node& pad(double f);
@@ -946,7 +946,7 @@ class Sankey::Node::Hoverlabel {
     Sankey::Node::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Sankey::Node::Hoverlabel& font(class Font f);
+    Sankey::Node::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole

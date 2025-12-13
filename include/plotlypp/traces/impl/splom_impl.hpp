@@ -31,12 +31,12 @@ Splom& Splom::customdatasrc(std::string f) {
     return *this;
 }
 
-Splom& Splom::diagonal(class Diagonal f) {
+Splom& Splom::diagonal(Diagonal f) {
     json["diagonal"] = std::move(f.json);
     return *this;
 }
 
-Splom& Splom::dimensions(class Dimensions f) {
+Splom& Splom::dimensions(Dimensions f) {
     json["dimensions"] = std::move(f.json);
     return *this;
 }
@@ -55,7 +55,7 @@ Splom& Splom::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Splom& Splom::hoverlabel(class Hoverlabel f) {
+Splom& Splom::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -109,7 +109,7 @@ Splom& Splom::legendgroup(std::string f) {
     return *this;
 }
 
-Splom& Splom::legendgrouptitle(class Legendgrouptitle f) {
+Splom& Splom::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -124,7 +124,7 @@ Splom& Splom::legendwidth(double f) {
     return *this;
 }
 
-Splom& Splom::marker(class Marker f) {
+Splom& Splom::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -155,7 +155,7 @@ Splom& Splom::opacity(double f) {
     return *this;
 }
 
-Splom& Splom::selected(class Selected f) {
+Splom& Splom::selected(Selected f) {
     json["selected"] = std::move(f.json);
     return *this;
 }
@@ -181,7 +181,7 @@ Splom& Splom::showupperhalf(bool f) {
     return *this;
 }
 
-Splom& Splom::stream(class Stream f) {
+Splom& Splom::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -211,7 +211,7 @@ Splom& Splom::uirevision(T f) {
     return *this;
 }
 
-Splom& Splom::unselected(class Unselected f) {
+Splom& Splom::unselected(Unselected f) {
     json["unselected"] = std::move(f.json);
     return *this;
 }
@@ -248,13 +248,13 @@ Splom::Diagonal& Splom::Diagonal::visible(bool f) {
 }
 
 
-Splom::Dimensions& Splom::Dimensions::dimension(class Dimension f) {
+Splom::Dimensions& Splom::Dimensions::dimension(Dimension f) {
     json["dimension"] = std::move(f.json);
     return *this;
 }
 
 
-Splom::Dimensions::Dimension& Splom::Dimensions::Dimension::axis(class Axis f) {
+Splom::Dimensions::Dimension& Splom::Dimensions::Dimension::axis(Axis f) {
     json["axis"] = std::move(f.json);
     return *this;
 }
@@ -381,7 +381,7 @@ Splom::Hoverlabel& Splom::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Splom::Hoverlabel& Splom::Hoverlabel::font(class Font f) {
+Splom::Hoverlabel& Splom::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -572,7 +572,7 @@ Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::weightsrc(std::string f) {
 }
 
 
-Splom::Legendgrouptitle& Splom::Legendgrouptitle::font(class Font f) {
+Splom::Legendgrouptitle& Splom::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1062,7 +1062,7 @@ Splom::Marker& Splom::Marker::coloraxis(std::string f) {
     return *this;
 }
 
-Splom::Marker& Splom::Marker::colorbar(class Colorbar f) {
+Splom::Marker& Splom::Marker::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -1081,7 +1081,7 @@ Splom::Marker& Splom::Marker::colorsrc(std::string f) {
     return *this;
 }
 
-Splom::Marker& Splom::Marker::line(class Line f) {
+Splom::Marker& Splom::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -1432,7 +1432,7 @@ Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickfont(class Tickfont f) {
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -1442,7 +1442,7 @@ Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickformat(std::string f) {
     return *this;
 }
 
-Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickformatstops(class Tickformatstops f) {
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -1514,7 +1514,7 @@ Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Splom::Marker::Colorbar& Splom::Marker::Colorbar::title(class Title f) {
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -1640,7 +1640,7 @@ Splom::Marker::Colorbar::Tickfont& Splom::Marker::Colorbar::Tickfont::weight(int
 }
 
 
-Splom::Marker::Colorbar::Tickformatstops& Splom::Marker::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Splom::Marker::Colorbar::Tickformatstops& Splom::Marker::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -1681,7 +1681,7 @@ std::string Splom::Marker::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Splom::Marker::Colorbar::Title& Splom::Marker::Colorbar::Title::font(class Font f) {
+Splom::Marker::Colorbar::Title& Splom::Marker::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1858,7 +1858,7 @@ Splom::Marker::Line& Splom::Marker::Line::widthsrc(std::string f) {
 }
 
 
-Splom::Selected& Splom::Selected::marker(class Marker f) {
+Splom::Selected& Splom::Selected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -1895,7 +1895,7 @@ Splom::Stream& Splom::Stream::token(std::string f) {
 }
 
 
-Splom::Unselected& Splom::Unselected::marker(class Marker f) {
+Splom::Unselected& Splom::Unselected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }

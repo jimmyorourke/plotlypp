@@ -73,7 +73,7 @@ Candlestick& Candlestick::customdatasrc(std::string f) {
     return *this;
 }
 
-Candlestick& Candlestick::decreasing(class Decreasing f) {
+Candlestick& Candlestick::decreasing(Decreasing f) {
     json["decreasing"] = std::move(f.json);
     return *this;
 }
@@ -103,7 +103,7 @@ Candlestick& Candlestick::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Candlestick& Candlestick::hoverlabel(class Hoverlabel f) {
+Candlestick& Candlestick::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -133,7 +133,7 @@ Candlestick& Candlestick::idssrc(std::string f) {
     return *this;
 }
 
-Candlestick& Candlestick::increasing(class Increasing f) {
+Candlestick& Candlestick::increasing(Increasing f) {
     json["increasing"] = std::move(f.json);
     return *this;
 }
@@ -148,7 +148,7 @@ Candlestick& Candlestick::legendgroup(std::string f) {
     return *this;
 }
 
-Candlestick& Candlestick::legendgrouptitle(class Legendgrouptitle f) {
+Candlestick& Candlestick::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -163,7 +163,7 @@ Candlestick& Candlestick::legendwidth(double f) {
     return *this;
 }
 
-Candlestick& Candlestick::line(class Line f) {
+Candlestick& Candlestick::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -227,7 +227,7 @@ Candlestick& Candlestick::showlegend(bool f) {
     return *this;
 }
 
-Candlestick& Candlestick::stream(class Stream f) {
+Candlestick& Candlestick::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -335,7 +335,7 @@ Candlestick::Decreasing& Candlestick::Decreasing::fillcolor(double f) {
     return *this;
 }
 
-Candlestick::Decreasing& Candlestick::Decreasing::line(class Line f) {
+Candlestick::Decreasing& Candlestick::Decreasing::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -425,7 +425,7 @@ Candlestick::Hoverlabel& Candlestick::Hoverlabel::bordercolorsrc(std::string f) 
     return *this;
 }
 
-Candlestick::Hoverlabel& Candlestick::Hoverlabel::font(class Font f) {
+Candlestick::Hoverlabel& Candlestick::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -630,7 +630,7 @@ Candlestick::Increasing& Candlestick::Increasing::fillcolor(double f) {
     return *this;
 }
 
-Candlestick::Increasing& Candlestick::Increasing::line(class Line f) {
+Candlestick::Increasing& Candlestick::Increasing::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -651,7 +651,7 @@ Candlestick::Increasing::Line& Candlestick::Increasing::Line::width(double f) {
 }
 
 
-Candlestick::Legendgrouptitle& Candlestick::Legendgrouptitle::font(class Font f) {
+Candlestick::Legendgrouptitle& Candlestick::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }

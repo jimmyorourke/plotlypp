@@ -82,7 +82,7 @@ class Ohlc : public Trace {
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Ohlc& customdatasrc(std::string f);
 
-    Ohlc& decreasing(class Decreasing f);
+    Ohlc& decreasing(Decreasing f);
 
     // Sets the high values.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
@@ -102,7 +102,7 @@ class Ohlc : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Ohlc& hoverinfosrc(std::string f);
 
-    Ohlc& hoverlabel(class Hoverlabel f);
+    Ohlc& hoverlabel(Hoverlabel f);
 
     // Same as `text`.
     Ohlc& hovertext(std::string f);
@@ -119,7 +119,7 @@ class Ohlc : public Trace {
     // Sets the source reference on Chart Studio Cloud for `ids`.
     Ohlc& idssrc(std::string f);
 
-    Ohlc& increasing(class Increasing f);
+    Ohlc& increasing(Increasing f);
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
@@ -129,7 +129,7 @@ class Ohlc : public Trace {
     // when toggling legend items.
     Ohlc& legendgroup(std::string f);
 
-    Ohlc& legendgrouptitle(class Legendgrouptitle f);
+    Ohlc& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -141,7 +141,7 @@ class Ohlc : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Ohlc& legendwidth(double f);
 
-    Ohlc& line(class Line f);
+    Ohlc& line(Line f);
 
     // Sets the low values.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
@@ -186,7 +186,7 @@ class Ohlc : public Trace {
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Ohlc& showlegend(bool f);
 
-    Ohlc& stream(class Stream f);
+    Ohlc& stream(Stream f);
 
     // Sets hover text elements associated with each sample point. If a single string, the same string appears over all
     // the data points. If an array of string, the items are mapped in order to this trace's sample points.
@@ -280,7 +280,7 @@ class Ohlc::Decreasing {
 
     class Line;
 
-    Ohlc::Decreasing& line(class Line f);
+    Ohlc::Decreasing& line(Line f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -345,7 +345,7 @@ class Ohlc::Hoverlabel {
     Ohlc::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Ohlc::Hoverlabel& font(class Font f);
+    Ohlc::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -479,7 +479,7 @@ class Ohlc::Increasing {
 
     class Line;
 
-    Ohlc::Increasing& line(class Line f);
+    Ohlc::Increasing& line(Line f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -510,7 +510,7 @@ class Ohlc::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Ohlc::Legendgrouptitle& font(class Font f);
+    Ohlc::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Ohlc::Legendgrouptitle& text(std::string f);

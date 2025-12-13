@@ -122,7 +122,7 @@ class Contour : public Trace {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Contour& coloraxis(std::string f);
 
-    Contour& colorbar(class Colorbar f);
+    Contour& colorbar(Colorbar f);
 
     // Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb,
     // rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are
@@ -137,7 +137,7 @@ class Contour : public Trace {
     // true if `z` is a one dimensional array otherwise it is defaulted to false.
     Contour& connectgaps(bool f);
 
-    Contour& contours(class Contours f);
+    Contour& contours(Contours f);
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
@@ -169,7 +169,7 @@ class Contour : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Contour& hoverinfosrc(std::string f);
 
-    Contour& hoverlabel(class Hoverlabel f);
+    Contour& hoverlabel(Hoverlabel f);
 
     // Determines whether or not gaps (i.e. {nan} or missing values) in the `z` data have hover labels associated with
     // them.
@@ -217,7 +217,7 @@ class Contour : public Trace {
     // when toggling legend items.
     Contour& legendgroup(std::string f);
 
-    Contour& legendgrouptitle(class Legendgrouptitle f);
+    Contour& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -229,7 +229,7 @@ class Contour : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Contour& legendwidth(double f);
 
-    Contour& line(class Line f);
+    Contour& line(Line f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -266,14 +266,14 @@ class Contour : public Trace {
     // Determines whether or not a colorbar is displayed for this trace.
     Contour& showscale(bool f);
 
-    Contour& stream(class Stream f);
+    Contour& stream(Stream f);
 
     // Sets the text elements associated with each z value.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Contour& text(std::vector<T> f);
 
     // For this trace it only has an effect if `coloring` is set to *heatmap*. Sets the text font.
-    Contour& textfont(class Textfont f);
+    Contour& textfont(Textfont f);
 
     // Sets the source reference on Chart Studio Cloud for `text`.
     Contour& textsrc(std::string f);
@@ -672,7 +672,7 @@ class Contour::Colorbar {
     Contour::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Contour::Colorbar& tickfont(class Tickfont f);
+    Contour::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -681,7 +681,7 @@ class Contour::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Contour::Colorbar& tickformat(std::string f);
 
-    Contour::Colorbar& tickformatstops(class Tickformatstops f);
+    Contour::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -737,7 +737,7 @@ class Contour::Colorbar {
     // Sets the tick width (in px).
     Contour::Colorbar& tickwidth(double f);
 
-    Contour::Colorbar& title(class Title f);
+    Contour::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -857,7 +857,7 @@ class Contour::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Contour::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Contour::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -907,7 +907,7 @@ class Contour::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Contour::Colorbar::Title& font(class Font f);
+    Contour::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -1041,11 +1041,11 @@ class Contour::Contours {
     // Sets the end contour level value. Must be more than `contours.start`
     Contour::Contours& end(double f);
 
-    Contour::Contours& impliedEdits(class Impliededits f);
+    Contour::Contours& impliedEdits(Impliededits f);
 
     // Sets the font used for labeling the contour levels. The default color comes from the lines, if shown. The default
     // family and size come from `layout.font`.
-    Contour::Contours& labelfont(class Labelfont f);
+    Contour::Contours& labelfont(Labelfont f);
 
     // Sets the contour label formatting rule using d3 formatting mini-languages which are very similar to those in
     // Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
@@ -1210,7 +1210,7 @@ class Contour::Hoverlabel {
     Contour::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Contour::Hoverlabel& font(class Font f);
+    Contour::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -1343,7 +1343,7 @@ class Contour::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Contour::Legendgrouptitle& font(class Font f);
+    Contour::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Contour::Legendgrouptitle& text(std::string f);

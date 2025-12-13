@@ -69,7 +69,7 @@ class Scattermap : public Trace {
     // other layer, set `below` to *''*.
     Scattermap& below(std::string f);
 
-    Scattermap& cluster(class Cluster f);
+    Scattermap& cluster(Cluster f);
 
     // Determines whether or not gaps (i.e. {nan} or missing values) in the provided data arrays are connected.
     Scattermap& connectgaps(bool f);
@@ -103,7 +103,7 @@ class Scattermap : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Scattermap& hoverinfosrc(std::string f);
 
-    Scattermap& hoverlabel(class Hoverlabel f);
+    Scattermap& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -156,7 +156,7 @@ class Scattermap : public Trace {
     // when toggling legend items.
     Scattermap& legendgroup(std::string f);
 
-    Scattermap& legendgrouptitle(class Legendgrouptitle f);
+    Scattermap& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -168,7 +168,7 @@ class Scattermap : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Scattermap& legendwidth(double f);
 
-    Scattermap& line(class Line f);
+    Scattermap& line(Line f);
 
     // Sets the longitude coordinates (in degrees East).
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
@@ -177,7 +177,7 @@ class Scattermap : public Trace {
     // Sets the source reference on Chart Studio Cloud for `lon`.
     Scattermap& lonsrc(std::string f);
 
-    Scattermap& marker(class Marker f);
+    Scattermap& marker(Marker f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -206,7 +206,7 @@ class Scattermap : public Trace {
     // Sets the opacity of the trace.
     Scattermap& opacity(double f);
 
-    Scattermap& selected(class Selected f);
+    Scattermap& selected(Selected f);
 
     // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
@@ -217,7 +217,7 @@ class Scattermap : public Trace {
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Scattermap& showlegend(bool f);
 
-    Scattermap& stream(class Stream f);
+    Scattermap& stream(Stream f);
 
     // Sets a reference between this trace's data coordinates and a map subplot. If *map* (the default value), the data
     // refer to `layout.map`. If *map2*, the data refer to `layout.map2`, and so on.
@@ -232,7 +232,7 @@ class Scattermap : public Trace {
 
     // Sets the icon text font (color=map.layer.paint.text-color, size=map.layer.layout.text-size). Has an effect only
     // when `type` is set to *symbol*.
-    Scattermap& textfont(class Textfont f);
+    Scattermap& textfont(Textfont f);
 
     // Sets the positions of the `text` elements with respects to the (x,y) coordinates.
     // - Default: middle center
@@ -270,7 +270,7 @@ class Scattermap : public Trace {
     template <typename T>
     Scattermap& uirevision(T f);
 
-    Scattermap& unselected(class Unselected f);
+    Scattermap& unselected(Unselected f);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -364,7 +364,7 @@ class Scattermap::Hoverlabel {
     Scattermap::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Scattermap::Hoverlabel& font(class Font f);
+    Scattermap::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -497,7 +497,7 @@ class Scattermap::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Scattermap::Legendgrouptitle& font(class Font f);
+    Scattermap::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Scattermap::Legendgrouptitle& text(std::string f);
@@ -651,7 +651,7 @@ class Scattermap::Marker {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Scattermap::Marker& coloraxis(std::string f);
 
-    Scattermap::Marker& colorbar(class Colorbar f);
+    Scattermap::Marker& colorbar(Colorbar f);
 
     // Sets the colorscale. Has an effect only if in `marker.color` is set to a numerical array. The colorscale must be
     // an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At
@@ -945,7 +945,7 @@ class Scattermap::Marker::Colorbar {
     Scattermap::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Scattermap::Marker::Colorbar& tickfont(class Tickfont f);
+    Scattermap::Marker::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -954,7 +954,7 @@ class Scattermap::Marker::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Scattermap::Marker::Colorbar& tickformat(std::string f);
 
-    Scattermap::Marker::Colorbar& tickformatstops(class Tickformatstops f);
+    Scattermap::Marker::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -1010,7 +1010,7 @@ class Scattermap::Marker::Colorbar {
     // Sets the tick width (in px).
     Scattermap::Marker::Colorbar& tickwidth(double f);
 
-    Scattermap::Marker::Colorbar& title(class Title f);
+    Scattermap::Marker::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -1130,7 +1130,7 @@ class Scattermap::Marker::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Scattermap::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Scattermap::Marker::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1180,7 +1180,7 @@ class Scattermap::Marker::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Scattermap::Marker::Colorbar::Title& font(class Font f);
+    Scattermap::Marker::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -1271,7 +1271,7 @@ class Scattermap::Selected {
 
     class Marker;
 
-    Scattermap::Selected& marker(class Marker f);
+    Scattermap::Selected& marker(Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1350,7 +1350,7 @@ class Scattermap::Unselected {
 
     class Marker;
 
-    Scattermap::Unselected& marker(class Marker f);
+    Scattermap::Unselected& marker(Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

@@ -60,9 +60,9 @@ class Parcoords : public Trace {
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Parcoords& customdatasrc(std::string f);
 
-    Parcoords& dimensions(class Dimensions f);
+    Parcoords& dimensions(Dimensions f);
 
-    Parcoords& domain(class Domain f);
+    Parcoords& domain(Domain f);
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
@@ -78,7 +78,7 @@ class Parcoords : public Trace {
     Parcoords& labelangle(double f);
 
     // Sets the font for the `dimension` labels.
-    Parcoords& labelfont(class Labelfont f);
+    Parcoords& labelfont(Labelfont f);
 
     // Specifies the location of the `label`. *top* positions labels above, next to the title *bottom* positions labels
     // below the graph Tilted labels with *labelangle* may be positioned better inside margins when `labelposition` is
@@ -90,7 +90,7 @@ class Parcoords : public Trace {
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
     Parcoords& legend(std::string f);
 
-    Parcoords& legendgrouptitle(class Legendgrouptitle f);
+    Parcoords& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -102,7 +102,7 @@ class Parcoords : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Parcoords& legendwidth(double f);
 
-    Parcoords& line(class Line f);
+    Parcoords& line(Line f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -122,12 +122,12 @@ class Parcoords : public Trace {
     Parcoords& name(std::string f);
 
     // Sets the font for the `dimension` range values.
-    Parcoords& rangefont(class Rangefont f);
+    Parcoords& rangefont(Rangefont f);
 
-    Parcoords& stream(class Stream f);
+    Parcoords& stream(Stream f);
 
     // Sets the font for the `dimension` tick values.
-    Parcoords& tickfont(class Tickfont f);
+    Parcoords& tickfont(Tickfont f);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
@@ -144,7 +144,7 @@ class Parcoords : public Trace {
     template <typename T>
     Parcoords& uirevision(T f);
 
-    Parcoords& unselected(class Unselected f);
+    Parcoords& unselected(Unselected f);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -159,7 +159,7 @@ class Parcoords::Dimensions {
     class Dimension;
 
     // The dimensions (variables) of the parallel coordinates chart. 2..60 dimensions are supported.
-    Parcoords::Dimensions& dimension(class Dimension f);
+    Parcoords::Dimensions& dimension(Dimension f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -333,7 +333,7 @@ class Parcoords::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Parcoords::Legendgrouptitle& font(class Font f);
+    Parcoords::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Parcoords::Legendgrouptitle& text(std::string f);
@@ -456,7 +456,7 @@ class Parcoords::Line {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Parcoords::Line& coloraxis(std::string f);
 
-    Parcoords::Line& colorbar(class Colorbar f);
+    Parcoords::Line& colorbar(Colorbar f);
 
     // Sets the colorscale. Has an effect only if in `line.color` is set to a numerical array. The colorscale must be an
     // array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At
@@ -714,7 +714,7 @@ class Parcoords::Line::Colorbar {
     Parcoords::Line::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Parcoords::Line::Colorbar& tickfont(class Tickfont f);
+    Parcoords::Line::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -723,7 +723,7 @@ class Parcoords::Line::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Parcoords::Line::Colorbar& tickformat(std::string f);
 
-    Parcoords::Line::Colorbar& tickformatstops(class Tickformatstops f);
+    Parcoords::Line::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -779,7 +779,7 @@ class Parcoords::Line::Colorbar {
     // Sets the tick width (in px).
     Parcoords::Line::Colorbar& tickwidth(double f);
 
-    Parcoords::Line::Colorbar& title(class Title f);
+    Parcoords::Line::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -899,7 +899,7 @@ class Parcoords::Line::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Parcoords::Line::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Parcoords::Line::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -949,7 +949,7 @@ class Parcoords::Line::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Parcoords::Line::Colorbar::Title& font(class Font f);
+    Parcoords::Line::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -1201,7 +1201,7 @@ class Parcoords::Unselected {
 
     class Line;
 
-    Parcoords::Unselected& line(class Line f);
+    Parcoords::Unselected& line(Line f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

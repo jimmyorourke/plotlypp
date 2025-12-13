@@ -130,7 +130,7 @@ class Histogram2D : public Trace {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Histogram2D& coloraxis(std::string f);
 
-    Histogram2D& colorbar(class Colorbar f);
+    Histogram2D& colorbar(Colorbar f);
 
     // Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb,
     // rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are
@@ -176,7 +176,7 @@ class Histogram2D : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Histogram2D& hoverinfosrc(std::string f);
 
-    Histogram2D& hoverlabel(class Hoverlabel f);
+    Histogram2D& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -213,7 +213,7 @@ class Histogram2D : public Trace {
     // when toggling legend items.
     Histogram2D& legendgroup(std::string f);
 
-    Histogram2D& legendgrouptitle(class Legendgrouptitle f);
+    Histogram2D& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -225,7 +225,7 @@ class Histogram2D : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Histogram2D& legendwidth(double f);
 
-    Histogram2D& marker(class Marker f);
+    Histogram2D& marker(Marker f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -267,10 +267,10 @@ class Histogram2D : public Trace {
     // Determines whether or not a colorbar is displayed for this trace.
     Histogram2D& showscale(bool f);
 
-    Histogram2D& stream(class Stream f);
+    Histogram2D& stream(Stream f);
 
     // Sets the text font.
-    Histogram2D& textfont(class Textfont f);
+    Histogram2D& textfont(Textfont f);
 
     // Template string used for rendering the information text that appear on points. Note that this will override
     // `textinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using
@@ -315,7 +315,7 @@ class Histogram2D : public Trace {
     // `xbingroup` value can be used to set (1D) histogram `bingroup`
     Histogram2D& xbingroup(std::string f);
 
-    Histogram2D& xbins(class Xbins f);
+    Histogram2D& xbins(Xbins f);
 
     // Sets the calendar system to use with `x` date data.
     // - Default: gregorian
@@ -348,7 +348,7 @@ class Histogram2D : public Trace {
     // `ybingroup` value can be used to set (1D) histogram `bingroup`
     Histogram2D& ybingroup(std::string f);
 
-    Histogram2D& ybins(class Ybins f);
+    Histogram2D& ybins(Ybins f);
 
     // Sets the calendar system to use with `y` date data.
     // - Default: gregorian
@@ -633,7 +633,7 @@ class Histogram2D::Colorbar {
     Histogram2D::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Histogram2D::Colorbar& tickfont(class Tickfont f);
+    Histogram2D::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -642,7 +642,7 @@ class Histogram2D::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Histogram2D::Colorbar& tickformat(std::string f);
 
-    Histogram2D::Colorbar& tickformatstops(class Tickformatstops f);
+    Histogram2D::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -698,7 +698,7 @@ class Histogram2D::Colorbar {
     // Sets the tick width (in px).
     Histogram2D::Colorbar& tickwidth(double f);
 
-    Histogram2D::Colorbar& title(class Title f);
+    Histogram2D::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -818,7 +818,7 @@ class Histogram2D::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Histogram2D::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Histogram2D::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -868,7 +868,7 @@ class Histogram2D::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Histogram2D::Colorbar::Title& font(class Font f);
+    Histogram2D::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -995,7 +995,7 @@ class Histogram2D::Hoverlabel {
     Histogram2D::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Histogram2D::Hoverlabel& font(class Font f);
+    Histogram2D::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -1128,7 +1128,7 @@ class Histogram2D::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Histogram2D::Legendgrouptitle& font(class Font f);
+    Histogram2D::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Histogram2D::Legendgrouptitle& text(std::string f);

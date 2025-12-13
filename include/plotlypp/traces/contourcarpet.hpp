@@ -100,7 +100,7 @@ class Contourcarpet : public Trace {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Contourcarpet& coloraxis(std::string f);
 
-    Contourcarpet& colorbar(class Colorbar f);
+    Contourcarpet& colorbar(Colorbar f);
 
     // Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb,
     // rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are
@@ -111,7 +111,7 @@ class Contourcarpet : public Trace {
     Contourcarpet& colorscale(std::string f);
     Contourcarpet& colorscale(std::vector<std::pair<double, std::string>> f);
 
-    Contourcarpet& contours(class Contours f);
+    Contourcarpet& contours(Contours f);
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
@@ -155,7 +155,7 @@ class Contourcarpet : public Trace {
     // when toggling legend items.
     Contourcarpet& legendgroup(std::string f);
 
-    Contourcarpet& legendgrouptitle(class Legendgrouptitle f);
+    Contourcarpet& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -167,7 +167,7 @@ class Contourcarpet : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Contourcarpet& legendwidth(double f);
 
-    Contourcarpet& line(class Line f);
+    Contourcarpet& line(Line f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -204,7 +204,7 @@ class Contourcarpet : public Trace {
     // Determines whether or not a colorbar is displayed for this trace.
     Contourcarpet& showscale(bool f);
 
-    Contourcarpet& stream(class Stream f);
+    Contourcarpet& stream(Stream f);
 
     // Sets the text elements associated with each z value.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
@@ -504,7 +504,7 @@ class Contourcarpet::Colorbar {
     Contourcarpet::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Contourcarpet::Colorbar& tickfont(class Tickfont f);
+    Contourcarpet::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -513,7 +513,7 @@ class Contourcarpet::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Contourcarpet::Colorbar& tickformat(std::string f);
 
-    Contourcarpet::Colorbar& tickformatstops(class Tickformatstops f);
+    Contourcarpet::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -569,7 +569,7 @@ class Contourcarpet::Colorbar {
     // Sets the tick width (in px).
     Contourcarpet::Colorbar& tickwidth(double f);
 
-    Contourcarpet::Colorbar& title(class Title f);
+    Contourcarpet::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -689,7 +689,7 @@ class Contourcarpet::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Contourcarpet::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Contourcarpet::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -739,7 +739,7 @@ class Contourcarpet::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Contourcarpet::Colorbar::Title& font(class Font f);
+    Contourcarpet::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -871,11 +871,11 @@ class Contourcarpet::Contours {
     // Sets the end contour level value. Must be more than `contours.start`
     Contourcarpet::Contours& end(double f);
 
-    Contourcarpet::Contours& impliedEdits(class Impliededits f);
+    Contourcarpet::Contours& impliedEdits(Impliededits f);
 
     // Sets the font used for labeling the contour levels. The default color comes from the lines, if shown. The default
     // family and size come from `layout.font`.
-    Contourcarpet::Contours& labelfont(class Labelfont f);
+    Contourcarpet::Contours& labelfont(Labelfont f);
 
     // Sets the contour label formatting rule using d3 formatting mini-languages which are very similar to those in
     // Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
@@ -1006,7 +1006,7 @@ class Contourcarpet::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Contourcarpet::Legendgrouptitle& font(class Font f);
+    Contourcarpet::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Contourcarpet::Legendgrouptitle& text(std::string f);

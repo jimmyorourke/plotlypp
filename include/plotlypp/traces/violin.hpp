@@ -92,7 +92,7 @@ class Violin : public Trace {
     // Silverman's rule of thumb.
     Violin& bandwidth(double f);
 
-    Violin& box(class Box f);
+    Violin& box(Box f);
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
@@ -118,7 +118,7 @@ class Violin : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Violin& hoverinfosrc(std::string f);
 
-    Violin& hoverlabel(class Hoverlabel f);
+    Violin& hoverlabel(Hoverlabel f);
 
     // Do the hover effects highlight individual violins or sample points or the kernel density estimate or any
     // combination of them?
@@ -173,7 +173,7 @@ class Violin : public Trace {
     // when toggling legend items.
     Violin& legendgroup(std::string f);
 
-    Violin& legendgrouptitle(class Legendgrouptitle f);
+    Violin& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -185,11 +185,11 @@ class Violin : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Violin& legendwidth(double f);
 
-    Violin& line(class Line f);
+    Violin& line(Line f);
 
-    Violin& marker(class Marker f);
+    Violin& marker(Marker f);
 
-    Violin& meanline(class Meanline f);
+    Violin& meanline(Meanline f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -254,7 +254,7 @@ class Violin : public Trace {
     // - Default: width
     Violin& scalemode(enum Scalemode f);
 
-    Violin& selected(class Selected f);
+    Violin& selected(Selected f);
 
     // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
@@ -282,7 +282,7 @@ class Violin : public Trace {
     // - Default: soft
     Violin& spanmode(enum Spanmode f);
 
-    Violin& stream(class Stream f);
+    Violin& stream(Stream f);
 
     // Sets the text elements associated with each sample value. If a single string, the same string appears over all
     // the data points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. To
@@ -308,7 +308,7 @@ class Violin : public Trace {
     template <typename T>
     Violin& uirevision(T f);
 
-    Violin& unselected(class Unselected f);
+    Violin& unselected(Unselected f);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -381,7 +381,7 @@ class Violin::Box {
     Violin::Box& fillcolor(std::string f);
     Violin::Box& fillcolor(double f);
 
-    Violin::Box& line(class Line f);
+    Violin::Box& line(Line f);
 
     // Determines if an miniature box plot is drawn inside the violins.
     Violin::Box& visible(bool f);
@@ -449,7 +449,7 @@ class Violin::Hoverlabel {
     Violin::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Violin::Hoverlabel& font(class Font f);
+    Violin::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -582,7 +582,7 @@ class Violin::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Violin::Legendgrouptitle& font(class Font f);
+    Violin::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Violin::Legendgrouptitle& text(std::string f);
@@ -1019,7 +1019,7 @@ class Violin::Marker {
     Violin::Marker& color(std::string f);
     Violin::Marker& color(double f);
 
-    Violin::Marker& line(class Line f);
+    Violin::Marker& line(Line f);
 
     // Sets the marker opacity.
     Violin::Marker& opacity(double f);
@@ -1088,7 +1088,7 @@ class Violin::Selected {
 
     class Marker;
 
-    Violin::Selected& marker(class Marker f);
+    Violin::Selected& marker(Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1131,7 +1131,7 @@ class Violin::Unselected {
 
     class Marker;
 
-    Violin::Unselected& marker(class Marker f);
+    Violin::Unselected& marker(Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

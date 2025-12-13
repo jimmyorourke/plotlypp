@@ -59,7 +59,7 @@ Sunburst& Sunburst::customdatasrc(std::string f) {
     return *this;
 }
 
-Sunburst& Sunburst::domain(class Domain f) {
+Sunburst& Sunburst::domain(Domain f) {
     json["domain"] = std::move(f.json);
     return *this;
 }
@@ -78,7 +78,7 @@ Sunburst& Sunburst::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Sunburst& Sunburst::hoverlabel(class Hoverlabel f) {
+Sunburst& Sunburst::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -122,7 +122,7 @@ Sunburst& Sunburst::idssrc(std::string f) {
     return *this;
 }
 
-Sunburst& Sunburst::insidetextfont(class Insidetextfont f) {
+Sunburst& Sunburst::insidetextfont(Insidetextfont f) {
     json["insidetextfont"] = std::move(f.json);
     return *this;
 }
@@ -143,7 +143,7 @@ Sunburst& Sunburst::labelssrc(std::string f) {
     return *this;
 }
 
-Sunburst& Sunburst::leaf(class Leaf f) {
+Sunburst& Sunburst::leaf(Leaf f) {
     json["leaf"] = std::move(f.json);
     return *this;
 }
@@ -153,7 +153,7 @@ Sunburst& Sunburst::legend(std::string f) {
     return *this;
 }
 
-Sunburst& Sunburst::legendgrouptitle(class Legendgrouptitle f) {
+Sunburst& Sunburst::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -174,7 +174,7 @@ Sunburst& Sunburst::level(T f) {
     return *this;
 }
 
-Sunburst& Sunburst::marker(class Marker f) {
+Sunburst& Sunburst::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -210,7 +210,7 @@ Sunburst& Sunburst::opacity(double f) {
     return *this;
 }
 
-Sunburst& Sunburst::outsidetextfont(class Outsidetextfont f) {
+Sunburst& Sunburst::outsidetextfont(Outsidetextfont f) {
     json["outsidetextfont"] = std::move(f.json);
     return *this;
 }
@@ -226,7 +226,7 @@ Sunburst& Sunburst::parentssrc(std::string f) {
     return *this;
 }
 
-Sunburst& Sunburst::root(class Root f) {
+Sunburst& Sunburst::root(Root f) {
     json["root"] = std::move(f.json);
     return *this;
 }
@@ -241,7 +241,7 @@ Sunburst& Sunburst::sort(bool f) {
     return *this;
 }
 
-Sunburst& Sunburst::stream(class Stream f) {
+Sunburst& Sunburst::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -252,7 +252,7 @@ Sunburst& Sunburst::text(std::vector<T> f) {
     return *this;
 }
 
-Sunburst& Sunburst::textfont(class Textfont f) {
+Sunburst& Sunburst::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -399,7 +399,7 @@ Sunburst::Hoverlabel& Sunburst::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Sunburst::Hoverlabel& Sunburst::Hoverlabel::font(class Font f) {
+Sunburst::Hoverlabel& Sunburst::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -767,7 +767,7 @@ Sunburst::Leaf& Sunburst::Leaf::opacity(double f) {
 }
 
 
-Sunburst::Legendgrouptitle& Sunburst::Legendgrouptitle::font(class Font f) {
+Sunburst::Legendgrouptitle& Sunburst::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -888,7 +888,7 @@ Sunburst::Marker& Sunburst::Marker::coloraxis(std::string f) {
     return *this;
 }
 
-Sunburst::Marker& Sunburst::Marker::colorbar(class Colorbar f) {
+Sunburst::Marker& Sunburst::Marker::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -913,12 +913,12 @@ Sunburst::Marker& Sunburst::Marker::colorssrc(std::string f) {
     return *this;
 }
 
-Sunburst::Marker& Sunburst::Marker::line(class Line f) {
+Sunburst::Marker& Sunburst::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
 
-Sunburst::Marker& Sunburst::Marker::pattern(class Pattern f) {
+Sunburst::Marker& Sunburst::Marker::pattern(Pattern f) {
     json["pattern"] = std::move(f.json);
     return *this;
 }
@@ -1210,7 +1210,7 @@ Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickfont(class Tickfont f) {
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -1220,7 +1220,7 @@ Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickformat(std::string f
     return *this;
 }
 
-Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickformatstops(class Tickformatstops f) {
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -1292,7 +1292,7 @@ Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::title(class Title f) {
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -1418,7 +1418,7 @@ Sunburst::Marker::Colorbar::Tickfont& Sunburst::Marker::Colorbar::Tickfont::weig
 }
 
 
-Sunburst::Marker::Colorbar::Tickformatstops& Sunburst::Marker::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Sunburst::Marker::Colorbar::Tickformatstops& Sunburst::Marker::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -1459,7 +1459,7 @@ std::string Sunburst::Marker::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Sunburst::Marker::Colorbar::Title& Sunburst::Marker::Colorbar::Title::font(class Font f) {
+Sunburst::Marker::Colorbar::Title& Sunburst::Marker::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }

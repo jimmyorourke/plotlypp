@@ -127,17 +127,17 @@ Scatter3D& Scatter3D::customdatasrc(std::string f) {
     return *this;
 }
 
-Scatter3D& Scatter3D::error_x(class Error_X f) {
+Scatter3D& Scatter3D::error_x(Error_X f) {
     json["error_x"] = std::move(f.json);
     return *this;
 }
 
-Scatter3D& Scatter3D::error_y(class Error_Y f) {
+Scatter3D& Scatter3D::error_y(Error_Y f) {
     json["error_y"] = std::move(f.json);
     return *this;
 }
 
-Scatter3D& Scatter3D::error_z(class Error_Z f) {
+Scatter3D& Scatter3D::error_z(Error_Z f) {
     json["error_z"] = std::move(f.json);
     return *this;
 }
@@ -156,7 +156,7 @@ Scatter3D& Scatter3D::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Scatter3D& Scatter3D::hoverlabel(class Hoverlabel f) {
+Scatter3D& Scatter3D::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -210,7 +210,7 @@ Scatter3D& Scatter3D::legendgroup(std::string f) {
     return *this;
 }
 
-Scatter3D& Scatter3D::legendgrouptitle(class Legendgrouptitle f) {
+Scatter3D& Scatter3D::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -225,12 +225,12 @@ Scatter3D& Scatter3D::legendwidth(double f) {
     return *this;
 }
 
-Scatter3D& Scatter3D::line(class Line f) {
+Scatter3D& Scatter3D::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
 
-Scatter3D& Scatter3D::marker(class Marker f) {
+Scatter3D& Scatter3D::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -266,7 +266,7 @@ Scatter3D& Scatter3D::opacity(double f) {
     return *this;
 }
 
-Scatter3D& Scatter3D::projection(class Projection f) {
+Scatter3D& Scatter3D::projection(Projection f) {
     json["projection"] = std::move(f.json);
     return *this;
 }
@@ -281,7 +281,7 @@ Scatter3D& Scatter3D::showlegend(bool f) {
     return *this;
 }
 
-Scatter3D& Scatter3D::stream(class Stream f) {
+Scatter3D& Scatter3D::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -309,7 +309,7 @@ Scatter3D& Scatter3D::text(std::vector<std::string> f) {
     return *this;
 }
 
-Scatter3D& Scatter3D::textfont(class Textfont f) {
+Scatter3D& Scatter3D::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -769,7 +769,7 @@ Scatter3D::Hoverlabel& Scatter3D::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Scatter3D::Hoverlabel& Scatter3D::Hoverlabel::font(class Font f) {
+Scatter3D::Hoverlabel& Scatter3D::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -960,7 +960,7 @@ Scatter3D::Hoverlabel::Font& Scatter3D::Hoverlabel::Font::weightsrc(std::string 
 }
 
 
-Scatter3D::Legendgrouptitle& Scatter3D::Legendgrouptitle::font(class Font f) {
+Scatter3D::Legendgrouptitle& Scatter3D::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1110,7 +1110,7 @@ Scatter3D::Line& Scatter3D::Line::coloraxis(std::string f) {
     return *this;
 }
 
-Scatter3D::Line& Scatter3D::Line::colorbar(class Colorbar f) {
+Scatter3D::Line& Scatter3D::Line::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -1426,7 +1426,7 @@ Scatter3D::Line::Colorbar& Scatter3D::Line::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Scatter3D::Line::Colorbar& Scatter3D::Line::Colorbar::tickfont(class Tickfont f) {
+Scatter3D::Line::Colorbar& Scatter3D::Line::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -1436,7 +1436,7 @@ Scatter3D::Line::Colorbar& Scatter3D::Line::Colorbar::tickformat(std::string f) 
     return *this;
 }
 
-Scatter3D::Line::Colorbar& Scatter3D::Line::Colorbar::tickformatstops(class Tickformatstops f) {
+Scatter3D::Line::Colorbar& Scatter3D::Line::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -1508,7 +1508,7 @@ Scatter3D::Line::Colorbar& Scatter3D::Line::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Scatter3D::Line::Colorbar& Scatter3D::Line::Colorbar::title(class Title f) {
+Scatter3D::Line::Colorbar& Scatter3D::Line::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -1634,7 +1634,7 @@ Scatter3D::Line::Colorbar::Tickfont& Scatter3D::Line::Colorbar::Tickfont::weight
 }
 
 
-Scatter3D::Line::Colorbar::Tickformatstops& Scatter3D::Line::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Scatter3D::Line::Colorbar::Tickformatstops& Scatter3D::Line::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -1675,7 +1675,7 @@ std::string Scatter3D::Line::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Scatter3D::Line::Colorbar::Title& Scatter3D::Line::Colorbar::Title::font(class Font f) {
+Scatter3D::Line::Colorbar::Title& Scatter3D::Line::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1840,7 +1840,7 @@ Scatter3D::Marker& Scatter3D::Marker::coloraxis(std::string f) {
     return *this;
 }
 
-Scatter3D::Marker& Scatter3D::Marker::colorbar(class Colorbar f) {
+Scatter3D::Marker& Scatter3D::Marker::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -1859,7 +1859,7 @@ Scatter3D::Marker& Scatter3D::Marker::colorsrc(std::string f) {
     return *this;
 }
 
-Scatter3D::Marker& Scatter3D::Marker::line(class Line f) {
+Scatter3D::Marker& Scatter3D::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -2201,7 +2201,7 @@ Scatter3D::Marker::Colorbar& Scatter3D::Marker::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Scatter3D::Marker::Colorbar& Scatter3D::Marker::Colorbar::tickfont(class Tickfont f) {
+Scatter3D::Marker::Colorbar& Scatter3D::Marker::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -2211,7 +2211,7 @@ Scatter3D::Marker::Colorbar& Scatter3D::Marker::Colorbar::tickformat(std::string
     return *this;
 }
 
-Scatter3D::Marker::Colorbar& Scatter3D::Marker::Colorbar::tickformatstops(class Tickformatstops f) {
+Scatter3D::Marker::Colorbar& Scatter3D::Marker::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -2283,7 +2283,7 @@ Scatter3D::Marker::Colorbar& Scatter3D::Marker::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Scatter3D::Marker::Colorbar& Scatter3D::Marker::Colorbar::title(class Title f) {
+Scatter3D::Marker::Colorbar& Scatter3D::Marker::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -2409,7 +2409,7 @@ Scatter3D::Marker::Colorbar::Tickfont& Scatter3D::Marker::Colorbar::Tickfont::we
 }
 
 
-Scatter3D::Marker::Colorbar::Tickformatstops& Scatter3D::Marker::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Scatter3D::Marker::Colorbar::Tickformatstops& Scatter3D::Marker::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -2450,7 +2450,7 @@ std::string Scatter3D::Marker::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Scatter3D::Marker::Colorbar::Title& Scatter3D::Marker::Colorbar::Title::font(class Font f) {
+Scatter3D::Marker::Colorbar::Title& Scatter3D::Marker::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -2618,17 +2618,17 @@ Scatter3D::Marker::Line& Scatter3D::Marker::Line::width(double f) {
 }
 
 
-Scatter3D::Projection& Scatter3D::Projection::x(class X f) {
+Scatter3D::Projection& Scatter3D::Projection::x(X f) {
     json["x"] = std::move(f.json);
     return *this;
 }
 
-Scatter3D::Projection& Scatter3D::Projection::y(class Y f) {
+Scatter3D::Projection& Scatter3D::Projection::y(Y f) {
     json["y"] = std::move(f.json);
     return *this;
 }
 
-Scatter3D::Projection& Scatter3D::Projection::z(class Z f) {
+Scatter3D::Projection& Scatter3D::Projection::z(Z f) {
     json["z"] = std::move(f.json);
     return *this;
 }

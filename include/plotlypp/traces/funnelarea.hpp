@@ -67,7 +67,7 @@ class Funnelarea : public Trace {
     // Sets the label step. See `label0` for more info.
     Funnelarea& dlabel(double f);
 
-    Funnelarea& domain(class Domain f);
+    Funnelarea& domain(Domain f);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -80,7 +80,7 @@ class Funnelarea : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Funnelarea& hoverinfosrc(std::string f);
 
-    Funnelarea& hoverlabel(class Hoverlabel f);
+    Funnelarea& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -120,7 +120,7 @@ class Funnelarea : public Trace {
     Funnelarea& idssrc(std::string f);
 
     // Sets the font used for `textinfo` lying inside the sector.
-    Funnelarea& insidetextfont(class Insidetextfont f);
+    Funnelarea& insidetextfont(Insidetextfont f);
 
     // Alternate to `labels`. Builds a numeric set of labels. Use with `dlabel` where `label0` is the starting label and
     // `dlabel` the step.
@@ -143,7 +143,7 @@ class Funnelarea : public Trace {
     // when toggling legend items.
     Funnelarea& legendgroup(std::string f);
 
-    Funnelarea& legendgrouptitle(class Legendgrouptitle f);
+    Funnelarea& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -155,7 +155,7 @@ class Funnelarea : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Funnelarea& legendwidth(double f);
 
-    Funnelarea& marker(class Marker f);
+    Funnelarea& marker(Marker f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -184,7 +184,7 @@ class Funnelarea : public Trace {
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Funnelarea& showlegend(bool f);
 
-    Funnelarea& stream(class Stream f);
+    Funnelarea& stream(Stream f);
 
     // Sets text elements associated with each sector. If trace `textinfo` contains a *text* flag, these elements will
     // be seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will
@@ -193,7 +193,7 @@ class Funnelarea : public Trace {
     Funnelarea& text(std::vector<T> f);
 
     // Sets the font used for `textinfo`.
-    Funnelarea& textfont(class Textfont f);
+    Funnelarea& textfont(Textfont f);
 
     // Determines which trace information appear on the graph.
     // - Flags: ['label', 'text', 'value', 'percent']
@@ -225,7 +225,7 @@ class Funnelarea : public Trace {
     // Sets the source reference on Chart Studio Cloud for `texttemplate`.
     Funnelarea& texttemplatesrc(std::string f);
 
-    Funnelarea& title(class Title f);
+    Funnelarea& title(Title f);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
@@ -315,7 +315,7 @@ class Funnelarea::Hoverlabel {
     Funnelarea::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Funnelarea::Hoverlabel& font(class Font f);
+    Funnelarea::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -558,7 +558,7 @@ class Funnelarea::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Funnelarea::Legendgrouptitle& font(class Font f);
+    Funnelarea::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Funnelarea::Legendgrouptitle& text(std::string f);
@@ -654,10 +654,10 @@ class Funnelarea::Marker {
     // Sets the source reference on Chart Studio Cloud for `colors`.
     Funnelarea::Marker& colorssrc(std::string f);
 
-    Funnelarea::Marker& line(class Line f);
+    Funnelarea::Marker& line(Line f);
 
     // Sets the pattern within the marker.
-    Funnelarea::Marker& pattern(class Pattern f);
+    Funnelarea::Marker& pattern(Pattern f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -904,7 +904,7 @@ class Funnelarea::Title {
     class Font;
 
     // Sets the font used for `title`.
-    Funnelarea::Title& font(class Font f);
+    Funnelarea::Title& font(Font f);
 
     // Specifies the location of the `title`.
     // - Default: top center

@@ -45,17 +45,17 @@ Indicator& Indicator::customdatasrc(std::string f) {
     return *this;
 }
 
-Indicator& Indicator::delta(class Delta f) {
+Indicator& Indicator::delta(Delta f) {
     json["delta"] = std::move(f.json);
     return *this;
 }
 
-Indicator& Indicator::domain(class Domain f) {
+Indicator& Indicator::domain(Domain f) {
     json["domain"] = std::move(f.json);
     return *this;
 }
 
-Indicator& Indicator::gauge(class Gauge f) {
+Indicator& Indicator::gauge(Gauge f) {
     json["gauge"] = std::move(f.json);
     return *this;
 }
@@ -76,7 +76,7 @@ Indicator& Indicator::legend(std::string f) {
     return *this;
 }
 
-Indicator& Indicator::legendgrouptitle(class Legendgrouptitle f) {
+Indicator& Indicator::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -117,17 +117,17 @@ Indicator& Indicator::name(std::string f) {
     return *this;
 }
 
-Indicator& Indicator::number(class Number f) {
+Indicator& Indicator::number(Number f) {
     json["number"] = std::move(f.json);
     return *this;
 }
 
-Indicator& Indicator::stream(class Stream f) {
+Indicator& Indicator::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
 
-Indicator& Indicator::title(class Title f) {
+Indicator& Indicator::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -164,17 +164,17 @@ std::string Indicator::Delta::to_string(Position e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Indicator::Delta& Indicator::Delta::decreasing(class Decreasing f) {
+Indicator::Delta& Indicator::Delta::decreasing(Decreasing f) {
     json["decreasing"] = std::move(f.json);
     return *this;
 }
 
-Indicator::Delta& Indicator::Delta::font(class Font f) {
+Indicator::Delta& Indicator::Delta::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
 
-Indicator::Delta& Indicator::Delta::increasing(class Increasing f) {
+Indicator::Delta& Indicator::Delta::increasing(Increasing f) {
     json["increasing"] = std::move(f.json);
     return *this;
 }
@@ -349,12 +349,12 @@ std::string Indicator::Gauge::to_string(Shape e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Indicator::Gauge& Indicator::Gauge::axis(class Axis f) {
+Indicator::Gauge& Indicator::Gauge::axis(Axis f) {
     json["axis"] = std::move(f.json);
     return *this;
 }
 
-Indicator::Gauge& Indicator::Gauge::bar(class Bar f) {
+Indicator::Gauge& Indicator::Gauge::bar(Bar f) {
     json["bar"] = std::move(f.json);
     return *this;
 }
@@ -387,12 +387,12 @@ Indicator::Gauge& Indicator::Gauge::shape(enum Shape f) {
     return *this;
 }
 
-Indicator::Gauge& Indicator::Gauge::steps(class Steps f) {
+Indicator::Gauge& Indicator::Gauge::steps(Steps f) {
     json["steps"] = std::move(f.json);
     return *this;
 }
 
-Indicator::Gauge& Indicator::Gauge::threshold(class Threshold f) {
+Indicator::Gauge& Indicator::Gauge::threshold(Threshold f) {
     json["threshold"] = std::move(f.json);
     return *this;
 }
@@ -534,7 +534,7 @@ Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickcolor(double f) {
     return *this;
 }
 
-Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickfont(class Tickfont f) {
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -544,7 +544,7 @@ Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickformat(std::string f) {
     return *this;
 }
 
-Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickformatstops(class Tickformatstops f) {
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -692,7 +692,7 @@ Indicator::Gauge::Axis::Tickfont& Indicator::Gauge::Axis::Tickfont::weight(int f
 }
 
 
-Indicator::Gauge::Axis::Tickformatstops& Indicator::Gauge::Axis::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Indicator::Gauge::Axis::Tickformatstops& Indicator::Gauge::Axis::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -733,7 +733,7 @@ Indicator::Gauge::Bar& Indicator::Gauge::Bar::color(double f) {
     return *this;
 }
 
-Indicator::Gauge::Bar& Indicator::Gauge::Bar::line(class Line f) {
+Indicator::Gauge::Bar& Indicator::Gauge::Bar::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -759,7 +759,7 @@ Indicator::Gauge::Bar::Line& Indicator::Gauge::Bar::Line::width(double f) {
 }
 
 
-Indicator::Gauge::Steps& Indicator::Gauge::Steps::step(class Step f) {
+Indicator::Gauge::Steps& Indicator::Gauge::Steps::step(Step f) {
     json["step"] = std::move(f.json);
     return *this;
 }
@@ -774,7 +774,7 @@ Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::color(double f) {
     return *this;
 }
 
-Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::line(class Line f) {
+Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -815,7 +815,7 @@ Indicator::Gauge::Steps::Step::Line& Indicator::Gauge::Steps::Step::Line::width(
 }
 
 
-Indicator::Gauge::Threshold& Indicator::Gauge::Threshold::line(class Line f) {
+Indicator::Gauge::Threshold& Indicator::Gauge::Threshold::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -846,7 +846,7 @@ Indicator::Gauge::Threshold::Line& Indicator::Gauge::Threshold::Line::width(doub
 }
 
 
-Indicator::Legendgrouptitle& Indicator::Legendgrouptitle::font(class Font f) {
+Indicator::Legendgrouptitle& Indicator::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -937,7 +937,7 @@ Indicator::Legendgrouptitle::Font& Indicator::Legendgrouptitle::Font::weight(int
 }
 
 
-Indicator::Number& Indicator::Number::font(class Font f) {
+Indicator::Number& Indicator::Number::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1063,7 +1063,7 @@ Indicator::Title& Indicator::Title::align(enum Align f) {
     return *this;
 }
 
-Indicator::Title& Indicator::Title::font(class Font f) {
+Indicator::Title& Indicator::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }

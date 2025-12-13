@@ -74,7 +74,7 @@ Pie& Pie::dlabel(double f) {
     return *this;
 }
 
-Pie& Pie::domain(class Domain f) {
+Pie& Pie::domain(Domain f) {
     json["domain"] = std::move(f.json);
     return *this;
 }
@@ -98,7 +98,7 @@ Pie& Pie::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Pie& Pie::hoverlabel(class Hoverlabel f) {
+Pie& Pie::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -142,7 +142,7 @@ Pie& Pie::idssrc(std::string f) {
     return *this;
 }
 
-Pie& Pie::insidetextfont(class Insidetextfont f) {
+Pie& Pie::insidetextfont(Insidetextfont f) {
     json["insidetextfont"] = std::move(f.json);
     return *this;
 }
@@ -178,7 +178,7 @@ Pie& Pie::legendgroup(std::string f) {
     return *this;
 }
 
-Pie& Pie::legendgrouptitle(class Legendgrouptitle f) {
+Pie& Pie::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -193,7 +193,7 @@ Pie& Pie::legendwidth(double f) {
     return *this;
 }
 
-Pie& Pie::marker(class Marker f) {
+Pie& Pie::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -224,7 +224,7 @@ Pie& Pie::opacity(double f) {
     return *this;
 }
 
-Pie& Pie::outsidetextfont(class Outsidetextfont f) {
+Pie& Pie::outsidetextfont(Outsidetextfont f) {
     json["outsidetextfont"] = std::move(f.json);
     return *this;
 }
@@ -263,7 +263,7 @@ Pie& Pie::sort(bool f) {
     return *this;
 }
 
-Pie& Pie::stream(class Stream f) {
+Pie& Pie::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -274,7 +274,7 @@ Pie& Pie::text(std::vector<T> f) {
     return *this;
 }
 
-Pie& Pie::textfont(class Textfont f) {
+Pie& Pie::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -319,7 +319,7 @@ Pie& Pie::texttemplatesrc(std::string f) {
     return *this;
 }
 
-Pie& Pie::title(class Title f) {
+Pie& Pie::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -442,7 +442,7 @@ Pie::Hoverlabel& Pie::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Pie::Hoverlabel& Pie::Hoverlabel::font(class Font f) {
+Pie::Hoverlabel& Pie::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -804,7 +804,7 @@ Pie::Insidetextfont& Pie::Insidetextfont::weightsrc(std::string f) {
 }
 
 
-Pie::Legendgrouptitle& Pie::Legendgrouptitle::font(class Font f) {
+Pie::Legendgrouptitle& Pie::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -906,12 +906,12 @@ Pie::Marker& Pie::Marker::colorssrc(std::string f) {
     return *this;
 }
 
-Pie::Marker& Pie::Marker::line(class Line f) {
+Pie::Marker& Pie::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
 
-Pie::Marker& Pie::Marker::pattern(class Pattern f) {
+Pie::Marker& Pie::Marker::pattern(Pattern f) {
     json["pattern"] = std::move(f.json);
     return *this;
 }
@@ -1441,7 +1441,7 @@ std::string Pie::Title::to_string(Position e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Pie::Title& Pie::Title::font(class Font f) {
+Pie::Title& Pie::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }

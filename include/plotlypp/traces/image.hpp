@@ -81,7 +81,7 @@ class Image : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Image& hoverinfosrc(std::string f);
 
-    Image& hoverlabel(class Hoverlabel f);
+    Image& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -122,7 +122,7 @@ class Image : public Trace {
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
     Image& legend(std::string f);
 
-    Image& legendgrouptitle(class Legendgrouptitle f);
+    Image& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -158,7 +158,7 @@ class Image : public Trace {
     // subtype>][;base64],<data>"
     Image& source(std::string f);
 
-    Image& stream(class Stream f);
+    Image& stream(Stream f);
 
     // Sets the text elements associated with each z value.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
@@ -277,7 +277,7 @@ class Image::Hoverlabel {
     Image::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Image::Hoverlabel& font(class Font f);
+    Image::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -410,7 +410,7 @@ class Image::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Image::Legendgrouptitle& font(class Font f);
+    Image::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Image::Legendgrouptitle& text(std::string f);

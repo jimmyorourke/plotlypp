@@ -126,7 +126,7 @@ Scatterternary& Scatterternary::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Scatterternary& Scatterternary::hoverlabel(class Hoverlabel f) {
+Scatterternary& Scatterternary::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -185,7 +185,7 @@ Scatterternary& Scatterternary::legendgroup(std::string f) {
     return *this;
 }
 
-Scatterternary& Scatterternary::legendgrouptitle(class Legendgrouptitle f) {
+Scatterternary& Scatterternary::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -200,12 +200,12 @@ Scatterternary& Scatterternary::legendwidth(double f) {
     return *this;
 }
 
-Scatterternary& Scatterternary::line(class Line f) {
+Scatterternary& Scatterternary::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
 
-Scatterternary& Scatterternary::marker(class Marker f) {
+Scatterternary& Scatterternary::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -241,7 +241,7 @@ Scatterternary& Scatterternary::opacity(double f) {
     return *this;
 }
 
-Scatterternary& Scatterternary::selected(class Selected f) {
+Scatterternary& Scatterternary::selected(Selected f) {
     json["selected"] = std::move(f.json);
     return *this;
 }
@@ -257,7 +257,7 @@ Scatterternary& Scatterternary::showlegend(bool f) {
     return *this;
 }
 
-Scatterternary& Scatterternary::stream(class Stream f) {
+Scatterternary& Scatterternary::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -281,7 +281,7 @@ Scatterternary& Scatterternary::text(std::vector<std::string> f) {
     return *this;
 }
 
-Scatterternary& Scatterternary::textfont(class Textfont f) {
+Scatterternary& Scatterternary::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -332,7 +332,7 @@ Scatterternary& Scatterternary::uirevision(T f) {
     return *this;
 }
 
-Scatterternary& Scatterternary::unselected(class Unselected f) {
+Scatterternary& Scatterternary::unselected(Unselected f) {
     json["unselected"] = std::move(f.json);
     return *this;
 }
@@ -412,7 +412,7 @@ Scatterternary::Hoverlabel& Scatterternary::Hoverlabel::bordercolorsrc(std::stri
     return *this;
 }
 
-Scatterternary::Hoverlabel& Scatterternary::Hoverlabel::font(class Font f) {
+Scatterternary::Hoverlabel& Scatterternary::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -603,7 +603,7 @@ Scatterternary::Hoverlabel::Font& Scatterternary::Hoverlabel::Font::weightsrc(st
 }
 
 
-Scatterternary::Legendgrouptitle& Scatterternary::Legendgrouptitle::font(class Font f) {
+Scatterternary::Legendgrouptitle& Scatterternary::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1158,7 +1158,7 @@ Scatterternary::Marker& Scatterternary::Marker::coloraxis(std::string f) {
     return *this;
 }
 
-Scatterternary::Marker& Scatterternary::Marker::colorbar(class Colorbar f) {
+Scatterternary::Marker& Scatterternary::Marker::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -1177,12 +1177,12 @@ Scatterternary::Marker& Scatterternary::Marker::colorsrc(std::string f) {
     return *this;
 }
 
-Scatterternary::Marker& Scatterternary::Marker::gradient(class Gradient f) {
+Scatterternary::Marker& Scatterternary::Marker::gradient(Gradient f) {
     json["gradient"] = std::move(f.json);
     return *this;
 }
 
-Scatterternary::Marker& Scatterternary::Marker::line(class Line f) {
+Scatterternary::Marker& Scatterternary::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -1552,7 +1552,7 @@ Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::tickcolor(do
     return *this;
 }
 
-Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::tickfont(class Tickfont f) {
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -1562,7 +1562,7 @@ Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::tickformat(s
     return *this;
 }
 
-Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::tickformatstops(class Tickformatstops f) {
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -1634,7 +1634,7 @@ Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::tickwidth(do
     return *this;
 }
 
-Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::title(class Title f) {
+Scatterternary::Marker::Colorbar& Scatterternary::Marker::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -1760,7 +1760,7 @@ Scatterternary::Marker::Colorbar::Tickfont& Scatterternary::Marker::Colorbar::Ti
 }
 
 
-Scatterternary::Marker::Colorbar::Tickformatstops& Scatterternary::Marker::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Scatterternary::Marker::Colorbar::Tickformatstops& Scatterternary::Marker::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -1801,7 +1801,7 @@ std::string Scatterternary::Marker::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Scatterternary::Marker::Colorbar::Title& Scatterternary::Marker::Colorbar::Title::font(class Font f) {
+Scatterternary::Marker::Colorbar::Title& Scatterternary::Marker::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -2027,12 +2027,12 @@ Scatterternary::Marker::Line& Scatterternary::Marker::Line::widthsrc(std::string
 }
 
 
-Scatterternary::Selected& Scatterternary::Selected::marker(class Marker f) {
+Scatterternary::Selected& Scatterternary::Selected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
 
-Scatterternary::Selected& Scatterternary::Selected::textfont(class Textfont f) {
+Scatterternary::Selected& Scatterternary::Selected::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -2250,12 +2250,12 @@ Scatterternary::Textfont& Scatterternary::Textfont::weightsrc(std::string f) {
 }
 
 
-Scatterternary::Unselected& Scatterternary::Unselected::marker(class Marker f) {
+Scatterternary::Unselected& Scatterternary::Unselected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
 
-Scatterternary::Unselected& Scatterternary::Unselected::textfont(class Textfont f) {
+Scatterternary::Unselected& Scatterternary::Unselected::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }

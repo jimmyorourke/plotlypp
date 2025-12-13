@@ -79,7 +79,7 @@ Image& Image::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Image& Image::hoverlabel(class Hoverlabel f) {
+Image& Image::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -125,7 +125,7 @@ Image& Image::legend(std::string f) {
     return *this;
 }
 
-Image& Image::legendgrouptitle(class Legendgrouptitle f) {
+Image& Image::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -171,7 +171,7 @@ Image& Image::source(std::string f) {
     return *this;
 }
 
-Image& Image::stream(class Stream f) {
+Image& Image::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -326,7 +326,7 @@ Image::Hoverlabel& Image::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Image::Hoverlabel& Image::Hoverlabel::font(class Font f) {
+Image::Hoverlabel& Image::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -517,7 +517,7 @@ Image::Hoverlabel::Font& Image::Hoverlabel::Font::weightsrc(std::string f) {
 }
 
 
-Image::Legendgrouptitle& Image::Legendgrouptitle::font(class Font f) {
+Image::Legendgrouptitle& Image::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }

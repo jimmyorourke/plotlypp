@@ -185,7 +185,7 @@ Box& Box::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Box& Box::hoverlabel(class Hoverlabel f) {
+Box& Box::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -249,7 +249,7 @@ Box& Box::legendgroup(std::string f) {
     return *this;
 }
 
-Box& Box::legendgrouptitle(class Legendgrouptitle f) {
+Box& Box::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -264,7 +264,7 @@ Box& Box::legendwidth(double f) {
     return *this;
 }
 
-Box& Box::line(class Line f) {
+Box& Box::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -280,7 +280,7 @@ Box& Box::lowerfencesrc(std::string f) {
     return *this;
 }
 
-Box& Box::marker(class Marker f) {
+Box& Box::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -412,7 +412,7 @@ Box& Box::sdsrc(std::string f) {
     return *this;
 }
 
-Box& Box::selected(class Selected f) {
+Box& Box::selected(Selected f) {
     json["selected"] = std::move(f.json);
     return *this;
 }
@@ -438,7 +438,7 @@ Box& Box::sizemode(enum Sizemode f) {
     return *this;
 }
 
-Box& Box::stream(class Stream f) {
+Box& Box::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -468,7 +468,7 @@ Box& Box::uirevision(T f) {
     return *this;
 }
 
-Box& Box::unselected(class Unselected f) {
+Box& Box::unselected(Unselected f) {
     json["unselected"] = std::move(f.json);
     return *this;
 }
@@ -672,7 +672,7 @@ Box::Hoverlabel& Box::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Box::Hoverlabel& Box::Hoverlabel::font(class Font f) {
+Box::Hoverlabel& Box::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -863,7 +863,7 @@ Box::Hoverlabel::Font& Box::Hoverlabel::Font::weightsrc(std::string f) {
 }
 
 
-Box::Legendgrouptitle& Box::Legendgrouptitle::font(class Font f) {
+Box::Legendgrouptitle& Box::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1313,7 +1313,7 @@ Box::Marker& Box::Marker::color(double f) {
     return *this;
 }
 
-Box::Marker& Box::Marker::line(class Line f) {
+Box::Marker& Box::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -1372,7 +1372,7 @@ Box::Marker::Line& Box::Marker::Line::width(double f) {
 }
 
 
-Box::Selected& Box::Selected::marker(class Marker f) {
+Box::Selected& Box::Selected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -1409,7 +1409,7 @@ Box::Stream& Box::Stream::token(std::string f) {
 }
 
 
-Box::Unselected& Box::Unselected::marker(class Marker f) {
+Box::Unselected& Box::Unselected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }

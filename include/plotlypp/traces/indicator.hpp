@@ -61,12 +61,12 @@ class Indicator : public Trace {
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Indicator& customdatasrc(std::string f);
 
-    Indicator& delta(class Delta f);
+    Indicator& delta(Delta f);
 
-    Indicator& domain(class Domain f);
+    Indicator& domain(Domain f);
 
     // The gauge of the Indicator plot.
-    Indicator& gauge(class Gauge f);
+    Indicator& gauge(Gauge f);
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
@@ -80,7 +80,7 @@ class Indicator : public Trace {
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
     Indicator& legend(std::string f);
 
-    Indicator& legendgrouptitle(class Legendgrouptitle f);
+    Indicator& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -115,11 +115,11 @@ class Indicator : public Trace {
     // Sets the trace name. The trace name appears as the legend item and on hover.
     Indicator& name(std::string f);
 
-    Indicator& number(class Number f);
+    Indicator& number(Number f);
 
-    Indicator& stream(class Stream f);
+    Indicator& stream(Stream f);
 
-    Indicator& title(class Title f);
+    Indicator& title(Title f);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
@@ -161,12 +161,12 @@ class Indicator::Delta {
     class Font;
     class Increasing;
 
-    Indicator::Delta& decreasing(class Decreasing f);
+    Indicator::Delta& decreasing(Decreasing f);
 
     // Set the font used to display the delta
-    Indicator::Delta& font(class Font f);
+    Indicator::Delta& font(Font f);
 
-    Indicator::Delta& increasing(class Increasing f);
+    Indicator::Delta& increasing(Increasing f);
 
     // Sets the position of delta with respect to the number.
     // - Default: bottom
@@ -328,10 +328,10 @@ class Indicator::Gauge {
     class Steps;
     class Threshold;
 
-    Indicator::Gauge& axis(class Axis f);
+    Indicator::Gauge& axis(Axis f);
 
     // Set the appearance of the gauge's value
-    Indicator::Gauge& bar(class Bar f);
+    Indicator::Gauge& bar(Bar f);
 
     // Sets the gauge background color.
     Indicator::Gauge& bgcolor(std::string f);
@@ -348,9 +348,9 @@ class Indicator::Gauge {
     // - Default: angular
     Indicator::Gauge& shape(enum Shape f);
 
-    Indicator::Gauge& steps(class Steps f);
+    Indicator::Gauge& steps(Steps f);
 
-    Indicator::Gauge& threshold(class Threshold f);
+    Indicator::Gauge& threshold(Threshold f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -486,7 +486,7 @@ class Indicator::Gauge::Axis {
     Indicator::Gauge::Axis& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Indicator::Gauge::Axis& tickfont(class Tickfont f);
+    Indicator::Gauge::Axis& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -495,7 +495,7 @@ class Indicator::Gauge::Axis {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Indicator::Gauge::Axis& tickformat(std::string f);
 
-    Indicator::Gauge::Axis& tickformatstops(class Tickformatstops f);
+    Indicator::Gauge::Axis& tickformatstops(Tickformatstops f);
 
     // Sets the spacing between tick labels as compared to the spacing between ticks. A value of 1 (default) means each
     // tick gets a label. A value of 2 means shows every 2nd label. A larger value n means only every nth tick is
@@ -628,7 +628,7 @@ class Indicator::Gauge::Axis::Tickformatstops {
 
     class Tickformatstop;
 
-    Indicator::Gauge::Axis::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Indicator::Gauge::Axis::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -674,7 +674,7 @@ class Indicator::Gauge::Bar {
     Indicator::Gauge::Bar& color(std::string f);
     Indicator::Gauge::Bar& color(double f);
 
-    Indicator::Gauge::Bar& line(class Line f);
+    Indicator::Gauge::Bar& line(Line f);
 
     // Sets the thickness of the bar as a fraction of the total thickness of the gauge.
     Indicator::Gauge::Bar& thickness(double f);
@@ -702,7 +702,7 @@ class Indicator::Gauge::Steps {
 
     class Step;
 
-    Indicator::Gauge::Steps& step(class Step f);
+    Indicator::Gauge::Steps& step(Step f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -717,7 +717,7 @@ class Indicator::Gauge::Steps::Step {
     Indicator::Gauge::Steps::Step& color(std::string f);
     Indicator::Gauge::Steps::Step& color(double f);
 
-    Indicator::Gauge::Steps::Step& line(class Line f);
+    Indicator::Gauge::Steps::Step& line(Line f);
 
     // When used in a template, named items are created in the output figure in addition to any items the figure already
     // has in this array. You can modify these items in the output figure by making your own item with
@@ -761,7 +761,7 @@ class Indicator::Gauge::Threshold {
 
     class Line;
 
-    Indicator::Gauge::Threshold& line(class Line f);
+    Indicator::Gauge::Threshold& line(Line f);
 
     // Sets the thickness of the threshold line as a fraction of the thickness of the gauge.
     Indicator::Gauge::Threshold& thickness(double f);
@@ -794,7 +794,7 @@ class Indicator::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Indicator::Legendgrouptitle& font(class Font f);
+    Indicator::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Indicator::Legendgrouptitle& text(std::string f);
@@ -883,7 +883,7 @@ class Indicator::Number {
     class Font;
 
     // Set the font used to display main number
-    Indicator::Number& font(class Font f);
+    Indicator::Number& font(Font f);
 
     // Sets a prefix appearing before the number.
     Indicator::Number& prefix(std::string f);
@@ -1005,7 +1005,7 @@ class Indicator::Title {
     Indicator::Title& align(enum Align f);
 
     // Set the font used to display the title
-    Indicator::Title& font(class Font f);
+    Indicator::Title& font(Font f);
 
     // Sets the title of this indicator.
     Indicator::Title& text(std::string f);

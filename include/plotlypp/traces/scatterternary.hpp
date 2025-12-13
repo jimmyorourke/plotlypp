@@ -129,7 +129,7 @@ class Scatterternary : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Scatterternary& hoverinfosrc(std::string f);
 
-    Scatterternary& hoverlabel(class Hoverlabel f);
+    Scatterternary& hoverlabel(Hoverlabel f);
 
     // Do the hover effects highlight individual points (markers or line points) or do they highlight filled regions? If
     // the fill is *toself* or *tonext* and there are no markers or text, then the default is *fills*, otherwise it is
@@ -181,7 +181,7 @@ class Scatterternary : public Trace {
     // when toggling legend items.
     Scatterternary& legendgroup(std::string f);
 
-    Scatterternary& legendgrouptitle(class Legendgrouptitle f);
+    Scatterternary& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -193,9 +193,9 @@ class Scatterternary : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Scatterternary& legendwidth(double f);
 
-    Scatterternary& line(class Line f);
+    Scatterternary& line(Line f);
 
-    Scatterternary& marker(class Marker f);
+    Scatterternary& marker(Marker f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -225,7 +225,7 @@ class Scatterternary : public Trace {
     // Sets the opacity of the trace.
     Scatterternary& opacity(double f);
 
-    Scatterternary& selected(class Selected f);
+    Scatterternary& selected(Selected f);
 
     // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
@@ -236,7 +236,7 @@ class Scatterternary : public Trace {
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Scatterternary& showlegend(bool f);
 
-    Scatterternary& stream(class Stream f);
+    Scatterternary& stream(Stream f);
 
     // Sets a reference between this trace's data coordinates and a ternary subplot. If *ternary* (the default value),
     // the data refer to `layout.ternary`. If *ternary2*, the data refer to `layout.ternary2`, and so on.
@@ -254,7 +254,7 @@ class Scatterternary : public Trace {
     Scatterternary& text(std::vector<std::string> f);
 
     // Sets the text font.
-    Scatterternary& textfont(class Textfont f);
+    Scatterternary& textfont(Textfont f);
 
     // Sets the positions of the `text` elements with respects to the (x,y) coordinates.
     // - Default: middle center
@@ -296,7 +296,7 @@ class Scatterternary : public Trace {
     template <typename T>
     Scatterternary& uirevision(T f);
 
-    Scatterternary& unselected(class Unselected f);
+    Scatterternary& unselected(Unselected f);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -345,7 +345,7 @@ class Scatterternary::Hoverlabel {
     Scatterternary::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Scatterternary::Hoverlabel& font(class Font f);
+    Scatterternary::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -478,7 +478,7 @@ class Scatterternary::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Scatterternary::Legendgrouptitle& font(class Font f);
+    Scatterternary::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Scatterternary::Legendgrouptitle& text(std::string f);
@@ -997,7 +997,7 @@ class Scatterternary::Marker {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Scatterternary::Marker& coloraxis(std::string f);
 
-    Scatterternary::Marker& colorbar(class Colorbar f);
+    Scatterternary::Marker& colorbar(Colorbar f);
 
     // Sets the colorscale. Has an effect only if in `marker.color` is set to a numerical array. The colorscale must be
     // an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At
@@ -1011,9 +1011,9 @@ class Scatterternary::Marker {
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scatterternary::Marker& colorsrc(std::string f);
 
-    Scatterternary::Marker& gradient(class Gradient f);
+    Scatterternary::Marker& gradient(Gradient f);
 
-    Scatterternary::Marker& line(class Line f);
+    Scatterternary::Marker& line(Line f);
 
     // Sets a maximum number of points to be drawn on the graph. *0* corresponds to no limit.
     Scatterternary::Marker& maxdisplayed(double f);
@@ -1308,7 +1308,7 @@ class Scatterternary::Marker::Colorbar {
     Scatterternary::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Scatterternary::Marker::Colorbar& tickfont(class Tickfont f);
+    Scatterternary::Marker::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -1317,7 +1317,7 @@ class Scatterternary::Marker::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Scatterternary::Marker::Colorbar& tickformat(std::string f);
 
-    Scatterternary::Marker::Colorbar& tickformatstops(class Tickformatstops f);
+    Scatterternary::Marker::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -1373,7 +1373,7 @@ class Scatterternary::Marker::Colorbar {
     // Sets the tick width (in px).
     Scatterternary::Marker::Colorbar& tickwidth(double f);
 
-    Scatterternary::Marker::Colorbar& title(class Title f);
+    Scatterternary::Marker::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -1493,7 +1493,7 @@ class Scatterternary::Marker::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Scatterternary::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Scatterternary::Marker::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1543,7 +1543,7 @@ class Scatterternary::Marker::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Scatterternary::Marker::Colorbar::Title& font(class Font f);
+    Scatterternary::Marker::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -1740,9 +1740,9 @@ class Scatterternary::Selected {
     class Marker;
     class Textfont;
 
-    Scatterternary::Selected& marker(class Marker f);
+    Scatterternary::Selected& marker(Marker f);
 
-    Scatterternary::Selected& textfont(class Textfont f);
+    Scatterternary::Selected& textfont(Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1907,9 +1907,9 @@ class Scatterternary::Unselected {
     class Marker;
     class Textfont;
 
-    Scatterternary::Unselected& marker(class Marker f);
+    Scatterternary::Unselected& marker(Marker f);
 
-    Scatterternary::Unselected& textfont(class Textfont f);
+    Scatterternary::Unselected& textfont(Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

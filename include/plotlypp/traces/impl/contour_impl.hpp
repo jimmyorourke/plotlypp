@@ -113,7 +113,7 @@ Contour& Contour::coloraxis(std::string f) {
     return *this;
 }
 
-Contour& Contour::colorbar(class Colorbar f) {
+Contour& Contour::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -132,7 +132,7 @@ Contour& Contour::connectgaps(bool f) {
     return *this;
 }
 
-Contour& Contour::contours(class Contours f) {
+Contour& Contour::contours(Contours f) {
     json["contours"] = std::move(f.json);
     return *this;
 }
@@ -181,7 +181,7 @@ Contour& Contour::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Contour& Contour::hoverlabel(class Hoverlabel f) {
+Contour& Contour::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -237,7 +237,7 @@ Contour& Contour::legendgroup(std::string f) {
     return *this;
 }
 
-Contour& Contour::legendgrouptitle(class Legendgrouptitle f) {
+Contour& Contour::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -252,7 +252,7 @@ Contour& Contour::legendwidth(double f) {
     return *this;
 }
 
-Contour& Contour::line(class Line f) {
+Contour& Contour::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -303,7 +303,7 @@ Contour& Contour::showscale(bool f) {
     return *this;
 }
 
-Contour& Contour::stream(class Stream f) {
+Contour& Contour::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -314,7 +314,7 @@ Contour& Contour::text(std::vector<T> f) {
     return *this;
 }
 
-Contour& Contour::textfont(class Textfont f) {
+Contour& Contour::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -776,7 +776,7 @@ Contour::Colorbar& Contour::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Contour::Colorbar& Contour::Colorbar::tickfont(class Tickfont f) {
+Contour::Colorbar& Contour::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -786,7 +786,7 @@ Contour::Colorbar& Contour::Colorbar::tickformat(std::string f) {
     return *this;
 }
 
-Contour::Colorbar& Contour::Colorbar::tickformatstops(class Tickformatstops f) {
+Contour::Colorbar& Contour::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -858,7 +858,7 @@ Contour::Colorbar& Contour::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Contour::Colorbar& Contour::Colorbar::title(class Title f) {
+Contour::Colorbar& Contour::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -984,7 +984,7 @@ Contour::Colorbar::Tickfont& Contour::Colorbar::Tickfont::weight(int f) {
 }
 
 
-Contour::Colorbar::Tickformatstops& Contour::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Contour::Colorbar::Tickformatstops& Contour::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -1025,7 +1025,7 @@ std::string Contour::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Contour::Colorbar::Title& Contour::Colorbar::Title::font(class Font f) {
+Contour::Colorbar::Title& Contour::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1168,12 +1168,12 @@ Contour::Contours& Contour::Contours::end(double f) {
     return *this;
 }
 
-Contour::Contours& Contour::Contours::impliedEdits(class Impliededits f) {
+Contour::Contours& Contour::Contours::impliedEdits(Impliededits f) {
     json["impliedEdits"] = std::move(f.json);
     return *this;
 }
 
-Contour::Contours& Contour::Contours::labelfont(class Labelfont f) {
+Contour::Contours& Contour::Contours::labelfont(Labelfont f) {
     json["labelfont"] = std::move(f.json);
     return *this;
 }
@@ -1370,7 +1370,7 @@ Contour::Hoverlabel& Contour::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Contour::Hoverlabel& Contour::Hoverlabel::font(class Font f) {
+Contour::Hoverlabel& Contour::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1561,7 +1561,7 @@ Contour::Hoverlabel::Font& Contour::Hoverlabel::Font::weightsrc(std::string f) {
 }
 
 
-Contour::Legendgrouptitle& Contour::Legendgrouptitle::font(class Font f) {
+Contour::Legendgrouptitle& Contour::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }

@@ -101,7 +101,7 @@ class Waterfall : public Trace {
     // tick labels, make sure to set `xaxis.layer` and `yaxis.layer` to *below traces*.
     Waterfall& cliponaxis(bool f);
 
-    Waterfall& connector(class Connector f);
+    Waterfall& connector(Connector f);
 
     // Constrain the size of text inside or outside a bar to be no larger than the bar itself.
     // - Default: both
@@ -115,7 +115,7 @@ class Waterfall : public Trace {
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Waterfall& customdatasrc(std::string f);
 
-    Waterfall& decreasing(class Decreasing f);
+    Waterfall& decreasing(Decreasing f);
 
     // Sets the x coordinate step. See `x0` for more info.
     Waterfall& dx(double f);
@@ -134,7 +134,7 @@ class Waterfall : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Waterfall& hoverinfosrc(std::string f);
 
-    Waterfall& hoverlabel(class Hoverlabel f);
+    Waterfall& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -173,14 +173,14 @@ class Waterfall : public Trace {
     // Sets the source reference on Chart Studio Cloud for `ids`.
     Waterfall& idssrc(std::string f);
 
-    Waterfall& increasing(class Increasing f);
+    Waterfall& increasing(Increasing f);
 
     // Determines if texts are kept at center or start/end points in `textposition` *inside* mode.
     // - Default: end
     Waterfall& insidetextanchor(enum Insidetextanchor f);
 
     // Sets the font used for `text` lying inside the bar.
-    Waterfall& insidetextfont(class Insidetextfont f);
+    Waterfall& insidetextfont(Insidetextfont f);
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
@@ -190,7 +190,7 @@ class Waterfall : public Trace {
     // when toggling legend items.
     Waterfall& legendgroup(std::string f);
 
-    Waterfall& legendgrouptitle(class Legendgrouptitle f);
+    Waterfall& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -248,7 +248,7 @@ class Waterfall : public Trace {
     Waterfall& orientation(enum Orientation f);
 
     // Sets the font used for `text` lying outside the bar.
-    Waterfall& outsidetextfont(class Outsidetextfont f);
+    Waterfall& outsidetextfont(Outsidetextfont f);
 
     // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
@@ -259,7 +259,7 @@ class Waterfall : public Trace {
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Waterfall& showlegend(bool f);
 
-    Waterfall& stream(class Stream f);
+    Waterfall& stream(Stream f);
 
     // Sets text elements associated with each (x,y) pair. If a single string, the same string appears over all the data
     // points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. If trace
@@ -272,7 +272,7 @@ class Waterfall : public Trace {
     Waterfall& textangle(double f);
 
     // Sets the font used for `text`.
-    Waterfall& textfont(class Textfont f);
+    Waterfall& textfont(Textfont f);
 
     // Determines which trace information appear on the graph. In the case of having multiple waterfalls, totals are
     // computed separately (per trace).
@@ -308,7 +308,7 @@ class Waterfall : public Trace {
     // Sets the source reference on Chart Studio Cloud for `texttemplate`.
     Waterfall& texttemplatesrc(std::string f);
 
-    Waterfall& totals(class Totals f);
+    Waterfall& totals(Totals f);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
@@ -433,7 +433,7 @@ class Waterfall::Connector {
 
     class Line;
 
-    Waterfall::Connector& line(class Line f);
+    Waterfall::Connector& line(Line f);
 
     // Sets the shape of connector lines.
     // - Default: between
@@ -469,7 +469,7 @@ class Waterfall::Decreasing {
 
     class Marker;
 
-    Waterfall::Decreasing& marker(class Marker f);
+    Waterfall::Decreasing& marker(Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -484,7 +484,7 @@ class Waterfall::Decreasing::Marker {
     Waterfall::Decreasing::Marker& color(std::string f);
     Waterfall::Decreasing::Marker& color(double f);
 
-    Waterfall::Decreasing::Marker& line(class Line f);
+    Waterfall::Decreasing::Marker& line(Line f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -545,7 +545,7 @@ class Waterfall::Hoverlabel {
     Waterfall::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Waterfall::Hoverlabel& font(class Font f);
+    Waterfall::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -676,7 +676,7 @@ class Waterfall::Increasing {
 
     class Marker;
 
-    Waterfall::Increasing& marker(class Marker f);
+    Waterfall::Increasing& marker(Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -691,7 +691,7 @@ class Waterfall::Increasing::Marker {
     Waterfall::Increasing::Marker& color(std::string f);
     Waterfall::Increasing::Marker& color(double f);
 
-    Waterfall::Increasing::Marker& line(class Line f);
+    Waterfall::Increasing::Marker& line(Line f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -828,7 +828,7 @@ class Waterfall::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Waterfall::Legendgrouptitle& font(class Font f);
+    Waterfall::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Waterfall::Legendgrouptitle& text(std::string f);
@@ -1150,7 +1150,7 @@ class Waterfall::Totals {
 
     class Marker;
 
-    Waterfall::Totals& marker(class Marker f);
+    Waterfall::Totals& marker(Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1165,7 +1165,7 @@ class Waterfall::Totals::Marker {
     Waterfall::Totals::Marker& color(std::string f);
     Waterfall::Totals::Marker& color(double f);
 
-    Waterfall::Totals::Marker& line(class Line f);
+    Waterfall::Totals::Marker& line(Line f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

@@ -164,7 +164,7 @@ class Histogram : public Trace {
     // - Default: both
     Histogram& constraintext(enum Constraintext f);
 
-    Histogram& cumulative(class Cumulative f);
+    Histogram& cumulative(Cumulative f);
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
@@ -174,9 +174,9 @@ class Histogram : public Trace {
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Histogram& customdatasrc(std::string f);
 
-    Histogram& error_x(class Error_X f);
+    Histogram& error_x(Error_X f);
 
-    Histogram& error_y(class Error_Y f);
+    Histogram& error_y(Error_Y f);
 
     // Specifies the binning function used for this histogram trace. If *count*, the histogram values are computed by
     // counting the number of values lying inside each bin. If *sum*, *avg*, *min*, *max*, the histogram values are
@@ -205,7 +205,7 @@ class Histogram : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Histogram& hoverinfosrc(std::string f);
 
-    Histogram& hoverlabel(class Hoverlabel f);
+    Histogram& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -246,7 +246,7 @@ class Histogram : public Trace {
     Histogram& insidetextanchor(enum Insidetextanchor f);
 
     // Sets the font used for `text` lying inside the bar.
-    Histogram& insidetextfont(class Insidetextfont f);
+    Histogram& insidetextfont(Insidetextfont f);
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
@@ -256,7 +256,7 @@ class Histogram : public Trace {
     // when toggling legend items.
     Histogram& legendgroup(std::string f);
 
-    Histogram& legendgrouptitle(class Legendgrouptitle f);
+    Histogram& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -268,7 +268,7 @@ class Histogram : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Histogram& legendwidth(double f);
 
-    Histogram& marker(class Marker f);
+    Histogram& marker(Marker f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -309,9 +309,9 @@ class Histogram : public Trace {
     Histogram& orientation(enum Orientation f);
 
     // Sets the font used for `text` lying outside the bar.
-    Histogram& outsidetextfont(class Outsidetextfont f);
+    Histogram& outsidetextfont(Outsidetextfont f);
 
-    Histogram& selected(class Selected f);
+    Histogram& selected(Selected f);
 
     // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
@@ -322,7 +322,7 @@ class Histogram : public Trace {
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Histogram& showlegend(bool f);
 
-    Histogram& stream(class Stream f);
+    Histogram& stream(Stream f);
 
     // Sets hover text elements associated with each bar. If a single string, the same string appears over all bars. If
     // an array of string, the items are mapped in order to the this trace's coordinates.
@@ -334,7 +334,7 @@ class Histogram : public Trace {
     Histogram& textangle(double f);
 
     // Sets the text font.
-    Histogram& textfont(class Textfont f);
+    Histogram& textfont(Textfont f);
 
     // Specifies the location of the `text`. *inside* positions `text` inside, next to the bar end (rotated and scaled
     // if needed). *outside* positions `text` outside, next to the bar end (scaled if needed), unless there is another
@@ -371,7 +371,7 @@ class Histogram : public Trace {
     template <typename T>
     Histogram& uirevision(T f);
 
-    Histogram& unselected(class Unselected f);
+    Histogram& unselected(Unselected f);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -386,7 +386,7 @@ class Histogram : public Trace {
     // coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
     Histogram& xaxis(std::string f);
 
-    Histogram& xbins(class Xbins f);
+    Histogram& xbins(Xbins f);
 
     // Sets the calendar system to use with `x` date data.
     // - Default: gregorian
@@ -411,7 +411,7 @@ class Histogram : public Trace {
     // coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
     Histogram& yaxis(std::string f);
 
-    Histogram& ybins(class Ybins f);
+    Histogram& ybins(Ybins f);
 
     // Sets the calendar system to use with `y` date data.
     // - Default: gregorian
@@ -646,7 +646,7 @@ class Histogram::Hoverlabel {
     Histogram::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Histogram::Hoverlabel& font(class Font f);
+    Histogram::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -852,7 +852,7 @@ class Histogram::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Histogram::Legendgrouptitle& font(class Font f);
+    Histogram::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Histogram::Legendgrouptitle& text(std::string f);
@@ -978,7 +978,7 @@ class Histogram::Marker {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Histogram::Marker& coloraxis(std::string f);
 
-    Histogram::Marker& colorbar(class Colorbar f);
+    Histogram::Marker& colorbar(Colorbar f);
 
     // Sets the colorscale. Has an effect only if in `marker.color` is set to a numerical array. The colorscale must be
     // an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At
@@ -998,7 +998,7 @@ class Histogram::Marker {
     template <typename T>
     Histogram::Marker& cornerradius(T f);
 
-    Histogram::Marker& line(class Line f);
+    Histogram::Marker& line(Line f);
 
     // Sets the opacity of the bars.
     Histogram::Marker& opacity(double f);
@@ -1008,7 +1008,7 @@ class Histogram::Marker {
     Histogram::Marker& opacitysrc(std::string f);
 
     // Sets the pattern within the marker.
-    Histogram::Marker& pattern(class Pattern f);
+    Histogram::Marker& pattern(Pattern f);
 
     // Reverses the color mapping if true. Has an effect only if in `marker.color` is set to a numerical array. If true,
     // `marker.cmin` will correspond to the last color in the array and `marker.cmax` will correspond to the first
@@ -1255,7 +1255,7 @@ class Histogram::Marker::Colorbar {
     Histogram::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Histogram::Marker::Colorbar& tickfont(class Tickfont f);
+    Histogram::Marker::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -1264,7 +1264,7 @@ class Histogram::Marker::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Histogram::Marker::Colorbar& tickformat(std::string f);
 
-    Histogram::Marker::Colorbar& tickformatstops(class Tickformatstops f);
+    Histogram::Marker::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -1320,7 +1320,7 @@ class Histogram::Marker::Colorbar {
     // Sets the tick width (in px).
     Histogram::Marker::Colorbar& tickwidth(double f);
 
-    Histogram::Marker::Colorbar& title(class Title f);
+    Histogram::Marker::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -1440,7 +1440,7 @@ class Histogram::Marker::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Histogram::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Histogram::Marker::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1490,7 +1490,7 @@ class Histogram::Marker::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Histogram::Marker::Colorbar::Title& font(class Font f);
+    Histogram::Marker::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -1806,9 +1806,9 @@ class Histogram::Selected {
     class Marker;
     class Textfont;
 
-    Histogram::Selected& marker(class Marker f);
+    Histogram::Selected& marker(Marker f);
 
-    Histogram::Selected& textfont(class Textfont f);
+    Histogram::Selected& textfont(Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1933,9 +1933,9 @@ class Histogram::Unselected {
     class Marker;
     class Textfont;
 
-    Histogram::Unselected& marker(class Marker f);
+    Histogram::Unselected& marker(Marker f);
 
-    Histogram::Unselected& textfont(class Textfont f);
+    Histogram::Unselected& textfont(Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

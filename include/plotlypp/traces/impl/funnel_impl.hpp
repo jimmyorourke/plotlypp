@@ -85,7 +85,7 @@ Funnel& Funnel::cliponaxis(bool f) {
     return *this;
 }
 
-Funnel& Funnel::connector(class Connector f) {
+Funnel& Funnel::connector(Connector f) {
     json["connector"] = std::move(f.json);
     return *this;
 }
@@ -130,7 +130,7 @@ Funnel& Funnel::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Funnel& Funnel::hoverlabel(class Hoverlabel f) {
+Funnel& Funnel::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -179,7 +179,7 @@ Funnel& Funnel::insidetextanchor(enum Insidetextanchor f) {
     return *this;
 }
 
-Funnel& Funnel::insidetextfont(class Insidetextfont f) {
+Funnel& Funnel::insidetextfont(Insidetextfont f) {
     json["insidetextfont"] = std::move(f.json);
     return *this;
 }
@@ -194,7 +194,7 @@ Funnel& Funnel::legendgroup(std::string f) {
     return *this;
 }
 
-Funnel& Funnel::legendgrouptitle(class Legendgrouptitle f) {
+Funnel& Funnel::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -209,7 +209,7 @@ Funnel& Funnel::legendwidth(double f) {
     return *this;
 }
 
-Funnel& Funnel::marker(class Marker f) {
+Funnel& Funnel::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -255,7 +255,7 @@ Funnel& Funnel::orientation(enum Orientation f) {
     return *this;
 }
 
-Funnel& Funnel::outsidetextfont(class Outsidetextfont f) {
+Funnel& Funnel::outsidetextfont(Outsidetextfont f) {
     json["outsidetextfont"] = std::move(f.json);
     return *this;
 }
@@ -271,7 +271,7 @@ Funnel& Funnel::showlegend(bool f) {
     return *this;
 }
 
-Funnel& Funnel::stream(class Stream f) {
+Funnel& Funnel::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -290,7 +290,7 @@ Funnel& Funnel::textangle(double f) {
     return *this;
 }
 
-Funnel& Funnel::textfont(class Textfont f) {
+Funnel& Funnel::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -459,7 +459,7 @@ Funnel::Connector& Funnel::Connector::fillcolor(double f) {
     return *this;
 }
 
-Funnel::Connector& Funnel::Connector::line(class Line f) {
+Funnel::Connector& Funnel::Connector::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -559,7 +559,7 @@ Funnel::Hoverlabel& Funnel::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Funnel::Hoverlabel& Funnel::Hoverlabel::font(class Font f) {
+Funnel::Hoverlabel& Funnel::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -921,7 +921,7 @@ Funnel::Insidetextfont& Funnel::Insidetextfont::weightsrc(std::string f) {
 }
 
 
-Funnel::Legendgrouptitle& Funnel::Legendgrouptitle::font(class Font f) {
+Funnel::Legendgrouptitle& Funnel::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1059,7 +1059,7 @@ Funnel::Marker& Funnel::Marker::coloraxis(std::string f) {
     return *this;
 }
 
-Funnel::Marker& Funnel::Marker::colorbar(class Colorbar f) {
+Funnel::Marker& Funnel::Marker::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -1078,7 +1078,7 @@ Funnel::Marker& Funnel::Marker::colorsrc(std::string f) {
     return *this;
 }
 
-Funnel::Marker& Funnel::Marker::line(class Line f) {
+Funnel::Marker& Funnel::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -1384,7 +1384,7 @@ Funnel::Marker::Colorbar& Funnel::Marker::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Funnel::Marker::Colorbar& Funnel::Marker::Colorbar::tickfont(class Tickfont f) {
+Funnel::Marker::Colorbar& Funnel::Marker::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -1394,7 +1394,7 @@ Funnel::Marker::Colorbar& Funnel::Marker::Colorbar::tickformat(std::string f) {
     return *this;
 }
 
-Funnel::Marker::Colorbar& Funnel::Marker::Colorbar::tickformatstops(class Tickformatstops f) {
+Funnel::Marker::Colorbar& Funnel::Marker::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -1466,7 +1466,7 @@ Funnel::Marker::Colorbar& Funnel::Marker::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Funnel::Marker::Colorbar& Funnel::Marker::Colorbar::title(class Title f) {
+Funnel::Marker::Colorbar& Funnel::Marker::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -1592,7 +1592,7 @@ Funnel::Marker::Colorbar::Tickfont& Funnel::Marker::Colorbar::Tickfont::weight(i
 }
 
 
-Funnel::Marker::Colorbar::Tickformatstops& Funnel::Marker::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Funnel::Marker::Colorbar::Tickformatstops& Funnel::Marker::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -1633,7 +1633,7 @@ std::string Funnel::Marker::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Funnel::Marker::Colorbar::Title& Funnel::Marker::Colorbar::Title::font(class Font f) {
+Funnel::Marker::Colorbar::Title& Funnel::Marker::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }

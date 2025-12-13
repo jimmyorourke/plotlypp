@@ -117,7 +117,7 @@ Heatmap& Heatmap::coloraxis(std::string f) {
     return *this;
 }
 
-Heatmap& Heatmap::colorbar(class Colorbar f) {
+Heatmap& Heatmap::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -171,7 +171,7 @@ Heatmap& Heatmap::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Heatmap& Heatmap::hoverlabel(class Hoverlabel f) {
+Heatmap& Heatmap::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -227,7 +227,7 @@ Heatmap& Heatmap::legendgroup(std::string f) {
     return *this;
 }
 
-Heatmap& Heatmap::legendgrouptitle(class Legendgrouptitle f) {
+Heatmap& Heatmap::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -283,7 +283,7 @@ Heatmap& Heatmap::showscale(bool f) {
     return *this;
 }
 
-Heatmap& Heatmap::stream(class Stream f) {
+Heatmap& Heatmap::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -294,7 +294,7 @@ Heatmap& Heatmap::text(std::vector<T> f) {
     return *this;
 }
 
-Heatmap& Heatmap::textfont(class Textfont f) {
+Heatmap& Heatmap::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -771,7 +771,7 @@ Heatmap::Colorbar& Heatmap::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Heatmap::Colorbar& Heatmap::Colorbar::tickfont(class Tickfont f) {
+Heatmap::Colorbar& Heatmap::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -781,7 +781,7 @@ Heatmap::Colorbar& Heatmap::Colorbar::tickformat(std::string f) {
     return *this;
 }
 
-Heatmap::Colorbar& Heatmap::Colorbar::tickformatstops(class Tickformatstops f) {
+Heatmap::Colorbar& Heatmap::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -853,7 +853,7 @@ Heatmap::Colorbar& Heatmap::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Heatmap::Colorbar& Heatmap::Colorbar::title(class Title f) {
+Heatmap::Colorbar& Heatmap::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -979,7 +979,7 @@ Heatmap::Colorbar::Tickfont& Heatmap::Colorbar::Tickfont::weight(int f) {
 }
 
 
-Heatmap::Colorbar::Tickformatstops& Heatmap::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Heatmap::Colorbar::Tickformatstops& Heatmap::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -1020,7 +1020,7 @@ std::string Heatmap::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Heatmap::Colorbar::Title& Heatmap::Colorbar::Title::font(class Font f) {
+Heatmap::Colorbar::Title& Heatmap::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1185,7 +1185,7 @@ Heatmap::Hoverlabel& Heatmap::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Heatmap::Hoverlabel& Heatmap::Hoverlabel::font(class Font f) {
+Heatmap::Hoverlabel& Heatmap::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1376,7 +1376,7 @@ Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::weightsrc(std::string f) {
 }
 
 
-Heatmap::Legendgrouptitle& Heatmap::Legendgrouptitle::font(class Font f) {
+Heatmap::Legendgrouptitle& Heatmap::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }

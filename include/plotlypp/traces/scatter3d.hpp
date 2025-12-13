@@ -137,11 +137,11 @@ class Scatter3D : public Trace {
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Scatter3D& customdatasrc(std::string f);
 
-    Scatter3D& error_x(class Error_X f);
+    Scatter3D& error_x(Error_X f);
 
-    Scatter3D& error_y(class Error_Y f);
+    Scatter3D& error_y(Error_Y f);
 
-    Scatter3D& error_z(class Error_Z f);
+    Scatter3D& error_z(Error_Z f);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -154,7 +154,7 @@ class Scatter3D : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Scatter3D& hoverinfosrc(std::string f);
 
-    Scatter3D& hoverlabel(class Hoverlabel f);
+    Scatter3D& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -200,7 +200,7 @@ class Scatter3D : public Trace {
     // when toggling legend items.
     Scatter3D& legendgroup(std::string f);
 
-    Scatter3D& legendgrouptitle(class Legendgrouptitle f);
+    Scatter3D& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -212,9 +212,9 @@ class Scatter3D : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Scatter3D& legendwidth(double f);
 
-    Scatter3D& line(class Line f);
+    Scatter3D& line(Line f);
 
-    Scatter3D& marker(class Marker f);
+    Scatter3D& marker(Marker f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -244,7 +244,7 @@ class Scatter3D : public Trace {
     // Sets the opacity of the trace.
     Scatter3D& opacity(double f);
 
-    Scatter3D& projection(class Projection f);
+    Scatter3D& projection(Projection f);
 
     // Sets a reference between this trace's 3D coordinate system and a 3D scene. If *scene* (the default value), the
     // (x,y,z) coordinates refer to `layout.scene`. If *scene2*, the (x,y,z) coordinates refer to `layout.scene2`, and
@@ -254,7 +254,7 @@ class Scatter3D : public Trace {
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Scatter3D& showlegend(bool f);
 
-    Scatter3D& stream(class Stream f);
+    Scatter3D& stream(Stream f);
 
     // If *-1*, the scatter points are not fill with a surface If *0*, *1*, *2*, the scatter points are filled with a
     // Delaunay surface about the x, y, z respectively.
@@ -273,7 +273,7 @@ class Scatter3D : public Trace {
     Scatter3D& text(std::vector<std::string> f);
 
     // Sets the text font.
-    Scatter3D& textfont(class Textfont f);
+    Scatter3D& textfont(Textfont f);
 
     // Sets the positions of the `text` elements with respects to the (x,y) coordinates.
     // - Default: top center
@@ -620,7 +620,7 @@ class Scatter3D::Hoverlabel {
     Scatter3D::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Scatter3D::Hoverlabel& font(class Font f);
+    Scatter3D::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -753,7 +753,7 @@ class Scatter3D::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Scatter3D::Legendgrouptitle& font(class Font f);
+    Scatter3D::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Scatter3D::Legendgrouptitle& text(std::string f);
@@ -886,7 +886,7 @@ class Scatter3D::Line {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Scatter3D::Line& coloraxis(std::string f);
 
-    Scatter3D::Line& colorbar(class Colorbar f);
+    Scatter3D::Line& colorbar(Colorbar f);
 
     // Sets the colorscale. Has an effect only if in `line.color` is set to a numerical array. The colorscale must be an
     // array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At
@@ -1151,7 +1151,7 @@ class Scatter3D::Line::Colorbar {
     Scatter3D::Line::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Scatter3D::Line::Colorbar& tickfont(class Tickfont f);
+    Scatter3D::Line::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -1160,7 +1160,7 @@ class Scatter3D::Line::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Scatter3D::Line::Colorbar& tickformat(std::string f);
 
-    Scatter3D::Line::Colorbar& tickformatstops(class Tickformatstops f);
+    Scatter3D::Line::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -1216,7 +1216,7 @@ class Scatter3D::Line::Colorbar {
     // Sets the tick width (in px).
     Scatter3D::Line::Colorbar& tickwidth(double f);
 
-    Scatter3D::Line::Colorbar& title(class Title f);
+    Scatter3D::Line::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -1336,7 +1336,7 @@ class Scatter3D::Line::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Scatter3D::Line::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Scatter3D::Line::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1386,7 +1386,7 @@ class Scatter3D::Line::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Scatter3D::Line::Colorbar::Title& font(class Font f);
+    Scatter3D::Line::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -1532,7 +1532,7 @@ class Scatter3D::Marker {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Scatter3D::Marker& coloraxis(std::string f);
 
-    Scatter3D::Marker& colorbar(class Colorbar f);
+    Scatter3D::Marker& colorbar(Colorbar f);
 
     // Sets the colorscale. Has an effect only if in `marker.color` is set to a numerical array. The colorscale must be
     // an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At
@@ -1546,7 +1546,7 @@ class Scatter3D::Marker {
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scatter3D::Marker& colorsrc(std::string f);
 
-    Scatter3D::Marker& line(class Line f);
+    Scatter3D::Marker& line(Line f);
 
     // Sets the marker opacity. Note that the marker opacity for scatter3d traces must be a scalar value for performance
     // reasons. To set a blending opacity value (i.e. which is not transparent), set *marker.color* to an rgba color and
@@ -1826,7 +1826,7 @@ class Scatter3D::Marker::Colorbar {
     Scatter3D::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Scatter3D::Marker::Colorbar& tickfont(class Tickfont f);
+    Scatter3D::Marker::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -1835,7 +1835,7 @@ class Scatter3D::Marker::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Scatter3D::Marker::Colorbar& tickformat(std::string f);
 
-    Scatter3D::Marker::Colorbar& tickformatstops(class Tickformatstops f);
+    Scatter3D::Marker::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -1891,7 +1891,7 @@ class Scatter3D::Marker::Colorbar {
     // Sets the tick width (in px).
     Scatter3D::Marker::Colorbar& tickwidth(double f);
 
-    Scatter3D::Marker::Colorbar& title(class Title f);
+    Scatter3D::Marker::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -2011,7 +2011,7 @@ class Scatter3D::Marker::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Scatter3D::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Scatter3D::Marker::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -2061,7 +2061,7 @@ class Scatter3D::Marker::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Scatter3D::Marker::Colorbar::Title& font(class Font f);
+    Scatter3D::Marker::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -2222,11 +2222,11 @@ class Scatter3D::Projection {
     class Y;
     class Z;
 
-    Scatter3D::Projection& x(class X f);
+    Scatter3D::Projection& x(X f);
 
-    Scatter3D::Projection& y(class Y f);
+    Scatter3D::Projection& y(Y f);
 
-    Scatter3D::Projection& z(class Z f);
+    Scatter3D::Projection& z(Z f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

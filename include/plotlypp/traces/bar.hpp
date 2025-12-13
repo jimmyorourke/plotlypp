@@ -167,9 +167,9 @@ class Bar : public Trace {
     // Sets the y coordinate step. See `y0` for more info.
     Bar& dy(double f);
 
-    Bar& error_x(class Error_X f);
+    Bar& error_x(Error_X f);
 
-    Bar& error_y(class Error_Y f);
+    Bar& error_y(Error_Y f);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -182,7 +182,7 @@ class Bar : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Bar& hoverinfosrc(std::string f);
 
-    Bar& hoverlabel(class Hoverlabel f);
+    Bar& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -225,7 +225,7 @@ class Bar : public Trace {
     Bar& insidetextanchor(enum Insidetextanchor f);
 
     // Sets the font used for `text` lying inside the bar.
-    Bar& insidetextfont(class Insidetextfont f);
+    Bar& insidetextfont(Insidetextfont f);
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
@@ -235,7 +235,7 @@ class Bar : public Trace {
     // when toggling legend items.
     Bar& legendgroup(std::string f);
 
-    Bar& legendgrouptitle(class Legendgrouptitle f);
+    Bar& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -247,7 +247,7 @@ class Bar : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Bar& legendwidth(double f);
 
-    Bar& marker(class Marker f);
+    Bar& marker(Marker f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -286,9 +286,9 @@ class Bar : public Trace {
     Bar& orientation(enum Orientation f);
 
     // Sets the font used for `text` lying outside the bar.
-    Bar& outsidetextfont(class Outsidetextfont f);
+    Bar& outsidetextfont(Outsidetextfont f);
 
-    Bar& selected(class Selected f);
+    Bar& selected(Selected f);
 
     // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
@@ -299,7 +299,7 @@ class Bar : public Trace {
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Bar& showlegend(bool f);
 
-    Bar& stream(class Stream f);
+    Bar& stream(Stream f);
 
     // Sets text elements associated with each (x,y) pair. If a single string, the same string appears over all the data
     // points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. If trace
@@ -312,7 +312,7 @@ class Bar : public Trace {
     Bar& textangle(double f);
 
     // Sets the font used for `text`.
-    Bar& textfont(class Textfont f);
+    Bar& textfont(Textfont f);
 
     // Specifies the location of the `text`. *inside* positions `text` inside, next to the bar end (rotated and scaled
     // if needed). *outside* positions `text` outside, next to the bar end (scaled if needed), unless there is another
@@ -357,7 +357,7 @@ class Bar : public Trace {
     template <typename T>
     Bar& uirevision(T f);
 
-    Bar& unselected(class Unselected f);
+    Bar& unselected(Unselected f);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -639,7 +639,7 @@ class Bar::Hoverlabel {
     Bar::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Bar::Hoverlabel& font(class Font f);
+    Bar::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -882,7 +882,7 @@ class Bar::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Bar::Legendgrouptitle& font(class Font f);
+    Bar::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Bar::Legendgrouptitle& text(std::string f);
@@ -1008,7 +1008,7 @@ class Bar::Marker {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Bar::Marker& coloraxis(std::string f);
 
-    Bar::Marker& colorbar(class Colorbar f);
+    Bar::Marker& colorbar(Colorbar f);
 
     // Sets the colorscale. Has an effect only if in `marker.color` is set to a numerical array. The colorscale must be
     // an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At
@@ -1028,7 +1028,7 @@ class Bar::Marker {
     template <typename T>
     Bar::Marker& cornerradius(T f);
 
-    Bar::Marker& line(class Line f);
+    Bar::Marker& line(Line f);
 
     // Sets the opacity of the bars.
     Bar::Marker& opacity(double f);
@@ -1038,7 +1038,7 @@ class Bar::Marker {
     Bar::Marker& opacitysrc(std::string f);
 
     // Sets the pattern within the marker.
-    Bar::Marker& pattern(class Pattern f);
+    Bar::Marker& pattern(Pattern f);
 
     // Reverses the color mapping if true. Has an effect only if in `marker.color` is set to a numerical array. If true,
     // `marker.cmin` will correspond to the last color in the array and `marker.cmax` will correspond to the first
@@ -1285,7 +1285,7 @@ class Bar::Marker::Colorbar {
     Bar::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Bar::Marker::Colorbar& tickfont(class Tickfont f);
+    Bar::Marker::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -1294,7 +1294,7 @@ class Bar::Marker::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Bar::Marker::Colorbar& tickformat(std::string f);
 
-    Bar::Marker::Colorbar& tickformatstops(class Tickformatstops f);
+    Bar::Marker::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -1350,7 +1350,7 @@ class Bar::Marker::Colorbar {
     // Sets the tick width (in px).
     Bar::Marker::Colorbar& tickwidth(double f);
 
-    Bar::Marker::Colorbar& title(class Title f);
+    Bar::Marker::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -1470,7 +1470,7 @@ class Bar::Marker::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Bar::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Bar::Marker::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1520,7 +1520,7 @@ class Bar::Marker::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Bar::Marker::Colorbar::Title& font(class Font f);
+    Bar::Marker::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -1873,9 +1873,9 @@ class Bar::Selected {
     class Marker;
     class Textfont;
 
-    Bar::Selected& marker(class Marker f);
+    Bar::Selected& marker(Marker f);
 
-    Bar::Selected& textfont(class Textfont f);
+    Bar::Selected& textfont(Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -2037,9 +2037,9 @@ class Bar::Unselected {
     class Marker;
     class Textfont;
 
-    Bar::Unselected& marker(class Marker f);
+    Bar::Unselected& marker(Marker f);
 
-    Bar::Unselected& textfont(class Textfont f);
+    Bar::Unselected& textfont(Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

@@ -153,7 +153,7 @@ Histogram& Histogram::constraintext(enum Constraintext f) {
     return *this;
 }
 
-Histogram& Histogram::cumulative(class Cumulative f) {
+Histogram& Histogram::cumulative(Cumulative f) {
     json["cumulative"] = std::move(f.json);
     return *this;
 }
@@ -169,12 +169,12 @@ Histogram& Histogram::customdatasrc(std::string f) {
     return *this;
 }
 
-Histogram& Histogram::error_x(class Error_X f) {
+Histogram& Histogram::error_x(Error_X f) {
     json["error_x"] = std::move(f.json);
     return *this;
 }
 
-Histogram& Histogram::error_y(class Error_Y f) {
+Histogram& Histogram::error_y(Error_Y f) {
     json["error_y"] = std::move(f.json);
     return *this;
 }
@@ -203,7 +203,7 @@ Histogram& Histogram::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Histogram& Histogram::hoverlabel(class Hoverlabel f) {
+Histogram& Histogram::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -252,7 +252,7 @@ Histogram& Histogram::insidetextanchor(enum Insidetextanchor f) {
     return *this;
 }
 
-Histogram& Histogram::insidetextfont(class Insidetextfont f) {
+Histogram& Histogram::insidetextfont(Insidetextfont f) {
     json["insidetextfont"] = std::move(f.json);
     return *this;
 }
@@ -267,7 +267,7 @@ Histogram& Histogram::legendgroup(std::string f) {
     return *this;
 }
 
-Histogram& Histogram::legendgrouptitle(class Legendgrouptitle f) {
+Histogram& Histogram::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -282,7 +282,7 @@ Histogram& Histogram::legendwidth(double f) {
     return *this;
 }
 
-Histogram& Histogram::marker(class Marker f) {
+Histogram& Histogram::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -333,12 +333,12 @@ Histogram& Histogram::orientation(enum Orientation f) {
     return *this;
 }
 
-Histogram& Histogram::outsidetextfont(class Outsidetextfont f) {
+Histogram& Histogram::outsidetextfont(Outsidetextfont f) {
     json["outsidetextfont"] = std::move(f.json);
     return *this;
 }
 
-Histogram& Histogram::selected(class Selected f) {
+Histogram& Histogram::selected(Selected f) {
     json["selected"] = std::move(f.json);
     return *this;
 }
@@ -354,7 +354,7 @@ Histogram& Histogram::showlegend(bool f) {
     return *this;
 }
 
-Histogram& Histogram::stream(class Stream f) {
+Histogram& Histogram::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -373,7 +373,7 @@ Histogram& Histogram::textangle(double f) {
     return *this;
 }
 
-Histogram& Histogram::textfont(class Textfont f) {
+Histogram& Histogram::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -404,7 +404,7 @@ Histogram& Histogram::uirevision(T f) {
     return *this;
 }
 
-Histogram& Histogram::unselected(class Unselected f) {
+Histogram& Histogram::unselected(Unselected f) {
     json["unselected"] = std::move(f.json);
     return *this;
 }
@@ -425,7 +425,7 @@ Histogram& Histogram::xaxis(std::string f) {
     return *this;
 }
 
-Histogram& Histogram::xbins(class Xbins f) {
+Histogram& Histogram::xbins(Xbins f) {
     json["xbins"] = std::move(f.json);
     return *this;
 }
@@ -456,7 +456,7 @@ Histogram& Histogram::yaxis(std::string f) {
     return *this;
 }
 
-Histogram& Histogram::ybins(class Ybins f) {
+Histogram& Histogram::ybins(Ybins f) {
     json["ybins"] = std::move(f.json);
     return *this;
 }
@@ -763,7 +763,7 @@ Histogram::Hoverlabel& Histogram::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Histogram::Hoverlabel& Histogram::Hoverlabel::font(class Font f) {
+Histogram::Hoverlabel& Histogram::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1034,7 +1034,7 @@ Histogram::Insidetextfont& Histogram::Insidetextfont::weight(int f) {
 }
 
 
-Histogram::Legendgrouptitle& Histogram::Legendgrouptitle::font(class Font f) {
+Histogram::Legendgrouptitle& Histogram::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1172,7 +1172,7 @@ Histogram::Marker& Histogram::Marker::coloraxis(std::string f) {
     return *this;
 }
 
-Histogram::Marker& Histogram::Marker::colorbar(class Colorbar f) {
+Histogram::Marker& Histogram::Marker::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -1197,7 +1197,7 @@ Histogram::Marker& Histogram::Marker::cornerradius(T f) {
     return *this;
 }
 
-Histogram::Marker& Histogram::Marker::line(class Line f) {
+Histogram::Marker& Histogram::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -1216,7 +1216,7 @@ Histogram::Marker& Histogram::Marker::opacitysrc(std::string f) {
     return *this;
 }
 
-Histogram::Marker& Histogram::Marker::pattern(class Pattern f) {
+Histogram::Marker& Histogram::Marker::pattern(Pattern f) {
     json["pattern"] = std::move(f.json);
     return *this;
 }
@@ -1508,7 +1508,7 @@ Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickfont(class Tickfont f) {
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -1518,7 +1518,7 @@ Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickformat(std::string
     return *this;
 }
 
-Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickformatstops(class Tickformatstops f) {
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -1590,7 +1590,7 @@ Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::title(class Title f) {
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -1716,7 +1716,7 @@ Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::we
 }
 
 
-Histogram::Marker::Colorbar::Tickformatstops& Histogram::Marker::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Histogram::Marker::Colorbar::Tickformatstops& Histogram::Marker::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -1757,7 +1757,7 @@ std::string Histogram::Marker::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Histogram::Marker::Colorbar::Title& Histogram::Marker::Colorbar::Title::font(class Font f) {
+Histogram::Marker::Colorbar::Title& Histogram::Marker::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -2135,12 +2135,12 @@ Histogram::Outsidetextfont& Histogram::Outsidetextfont::weight(int f) {
 }
 
 
-Histogram::Selected& Histogram::Selected::marker(class Marker f) {
+Histogram::Selected& Histogram::Selected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
 
-Histogram::Selected& Histogram::Selected::textfont(class Textfont f) {
+Histogram::Selected& Histogram::Selected::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -2262,12 +2262,12 @@ Histogram::Textfont& Histogram::Textfont::weight(int f) {
 }
 
 
-Histogram::Unselected& Histogram::Unselected::marker(class Marker f) {
+Histogram::Unselected& Histogram::Unselected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
 
-Histogram::Unselected& Histogram::Unselected::textfont(class Textfont f) {
+Histogram::Unselected& Histogram::Unselected::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }

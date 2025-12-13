@@ -54,7 +54,7 @@ Funnelarea& Funnelarea::dlabel(double f) {
     return *this;
 }
 
-Funnelarea& Funnelarea::domain(class Domain f) {
+Funnelarea& Funnelarea::domain(Domain f) {
     json["domain"] = std::move(f.json);
     return *this;
 }
@@ -73,7 +73,7 @@ Funnelarea& Funnelarea::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Funnelarea& Funnelarea::hoverlabel(class Hoverlabel f) {
+Funnelarea& Funnelarea::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -117,7 +117,7 @@ Funnelarea& Funnelarea::idssrc(std::string f) {
     return *this;
 }
 
-Funnelarea& Funnelarea::insidetextfont(class Insidetextfont f) {
+Funnelarea& Funnelarea::insidetextfont(Insidetextfont f) {
     json["insidetextfont"] = std::move(f.json);
     return *this;
 }
@@ -148,7 +148,7 @@ Funnelarea& Funnelarea::legendgroup(std::string f) {
     return *this;
 }
 
-Funnelarea& Funnelarea::legendgrouptitle(class Legendgrouptitle f) {
+Funnelarea& Funnelarea::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -163,7 +163,7 @@ Funnelarea& Funnelarea::legendwidth(double f) {
     return *this;
 }
 
-Funnelarea& Funnelarea::marker(class Marker f) {
+Funnelarea& Funnelarea::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -204,7 +204,7 @@ Funnelarea& Funnelarea::showlegend(bool f) {
     return *this;
 }
 
-Funnelarea& Funnelarea::stream(class Stream f) {
+Funnelarea& Funnelarea::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -215,7 +215,7 @@ Funnelarea& Funnelarea::text(std::vector<T> f) {
     return *this;
 }
 
-Funnelarea& Funnelarea::textfont(class Textfont f) {
+Funnelarea& Funnelarea::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -260,7 +260,7 @@ Funnelarea& Funnelarea::texttemplatesrc(std::string f) {
     return *this;
 }
 
-Funnelarea& Funnelarea::title(class Title f) {
+Funnelarea& Funnelarea::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -383,7 +383,7 @@ Funnelarea::Hoverlabel& Funnelarea::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Funnelarea::Hoverlabel& Funnelarea::Hoverlabel::font(class Font f) {
+Funnelarea::Hoverlabel& Funnelarea::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -745,7 +745,7 @@ Funnelarea::Insidetextfont& Funnelarea::Insidetextfont::weightsrc(std::string f)
 }
 
 
-Funnelarea::Legendgrouptitle& Funnelarea::Legendgrouptitle::font(class Font f) {
+Funnelarea::Legendgrouptitle& Funnelarea::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -847,12 +847,12 @@ Funnelarea::Marker& Funnelarea::Marker::colorssrc(std::string f) {
     return *this;
 }
 
-Funnelarea::Marker& Funnelarea::Marker::line(class Line f) {
+Funnelarea::Marker& Funnelarea::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
 
-Funnelarea::Marker& Funnelarea::Marker::pattern(class Pattern f) {
+Funnelarea::Marker& Funnelarea::Marker::pattern(Pattern f) {
     json["pattern"] = std::move(f.json);
     return *this;
 }
@@ -1207,7 +1207,7 @@ std::string Funnelarea::Title::to_string(Position e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Funnelarea::Title& Funnelarea::Title::font(class Font f) {
+Funnelarea::Title& Funnelarea::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }

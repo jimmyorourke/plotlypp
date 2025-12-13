@@ -56,7 +56,7 @@ class Choroplethmap : public Trace {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Choroplethmap& coloraxis(std::string f);
 
-    Choroplethmap& colorbar(class Colorbar f);
+    Choroplethmap& colorbar(Colorbar f);
 
     // Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb,
     // rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are
@@ -96,7 +96,7 @@ class Choroplethmap : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Choroplethmap& hoverinfosrc(std::string f);
 
-    Choroplethmap& hoverlabel(class Hoverlabel f);
+    Choroplethmap& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -140,7 +140,7 @@ class Choroplethmap : public Trace {
     // when toggling legend items.
     Choroplethmap& legendgroup(std::string f);
 
-    Choroplethmap& legendgrouptitle(class Legendgrouptitle f);
+    Choroplethmap& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -159,7 +159,7 @@ class Choroplethmap : public Trace {
     // Sets the source reference on Chart Studio Cloud for `locations`.
     Choroplethmap& locationssrc(std::string f);
 
-    Choroplethmap& marker(class Marker f);
+    Choroplethmap& marker(Marker f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -182,7 +182,7 @@ class Choroplethmap : public Trace {
     // will correspond to the first color.
     Choroplethmap& reversescale(bool f);
 
-    Choroplethmap& selected(class Selected f);
+    Choroplethmap& selected(Selected f);
 
     // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
@@ -196,7 +196,7 @@ class Choroplethmap : public Trace {
     // Determines whether or not a colorbar is displayed for this trace.
     Choroplethmap& showscale(bool f);
 
-    Choroplethmap& stream(class Stream f);
+    Choroplethmap& stream(Stream f);
 
     // Sets a reference between this trace's data coordinates and a map subplot. If *map* (the default value), the data
     // refer to `layout.map`. If *map2*, the data refer to `layout.map2`, and so on.
@@ -224,7 +224,7 @@ class Choroplethmap : public Trace {
     template <typename T>
     Choroplethmap& uirevision(T f);
 
-    Choroplethmap& unselected(class Unselected f);
+    Choroplethmap& unselected(Unselected f);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -487,7 +487,7 @@ class Choroplethmap::Colorbar {
     Choroplethmap::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Choroplethmap::Colorbar& tickfont(class Tickfont f);
+    Choroplethmap::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -496,7 +496,7 @@ class Choroplethmap::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Choroplethmap::Colorbar& tickformat(std::string f);
 
-    Choroplethmap::Colorbar& tickformatstops(class Tickformatstops f);
+    Choroplethmap::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -552,7 +552,7 @@ class Choroplethmap::Colorbar {
     // Sets the tick width (in px).
     Choroplethmap::Colorbar& tickwidth(double f);
 
-    Choroplethmap::Colorbar& title(class Title f);
+    Choroplethmap::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -672,7 +672,7 @@ class Choroplethmap::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Choroplethmap::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Choroplethmap::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -722,7 +722,7 @@ class Choroplethmap::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Choroplethmap::Colorbar::Title& font(class Font f);
+    Choroplethmap::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -849,7 +849,7 @@ class Choroplethmap::Hoverlabel {
     Choroplethmap::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Choroplethmap::Hoverlabel& font(class Font f);
+    Choroplethmap::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -982,7 +982,7 @@ class Choroplethmap::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Choroplethmap::Legendgrouptitle& font(class Font f);
+    Choroplethmap::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Choroplethmap::Legendgrouptitle& text(std::string f);
@@ -1069,7 +1069,7 @@ class Choroplethmap::Marker {
 
     class Line;
 
-    Choroplethmap::Marker& line(class Line f);
+    Choroplethmap::Marker& line(Line f);
 
     // Sets the opacity of the locations.
     Choroplethmap::Marker& opacity(double f);
@@ -1112,7 +1112,7 @@ class Choroplethmap::Selected {
 
     class Marker;
 
-    Choroplethmap::Selected& marker(class Marker f);
+    Choroplethmap::Selected& marker(Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1148,7 +1148,7 @@ class Choroplethmap::Unselected {
 
     class Marker;
 
-    Choroplethmap::Unselected& marker(class Marker f);
+    Choroplethmap::Unselected& marker(Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

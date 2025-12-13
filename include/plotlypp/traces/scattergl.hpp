@@ -140,9 +140,9 @@ class Scattergl : public Trace {
     // Sets the y coordinate step. See `y0` for more info.
     Scattergl& dy(double f);
 
-    Scattergl& error_x(class Error_X f);
+    Scattergl& error_x(Error_X f);
 
-    Scattergl& error_y(class Error_Y f);
+    Scattergl& error_y(Error_Y f);
 
     // Sets the area to fill with a solid color. Defaults to *none* unless this trace is stacked, then it gets *tonexty*
     // (*tonextx*) if `orientation` is *v* (*h*) Use with `fillcolor` if not *none*. *tozerox* and *tozeroy* fill to x=0
@@ -174,7 +174,7 @@ class Scattergl : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Scattergl& hoverinfosrc(std::string f);
 
-    Scattergl& hoverlabel(class Hoverlabel f);
+    Scattergl& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -220,7 +220,7 @@ class Scattergl : public Trace {
     // when toggling legend items.
     Scattergl& legendgroup(std::string f);
 
-    Scattergl& legendgrouptitle(class Legendgrouptitle f);
+    Scattergl& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -232,9 +232,9 @@ class Scattergl : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Scattergl& legendwidth(double f);
 
-    Scattergl& line(class Line f);
+    Scattergl& line(Line f);
 
-    Scattergl& marker(class Marker f);
+    Scattergl& marker(Marker f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -261,7 +261,7 @@ class Scattergl : public Trace {
     // Sets the opacity of the trace.
     Scattergl& opacity(double f);
 
-    Scattergl& selected(class Selected f);
+    Scattergl& selected(Selected f);
 
     // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
@@ -272,7 +272,7 @@ class Scattergl : public Trace {
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Scattergl& showlegend(bool f);
 
-    Scattergl& stream(class Stream f);
+    Scattergl& stream(Stream f);
 
     // Sets text elements associated with each (x,y) pair. If a single string, the same string appears over all the data
     // points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. If trace
@@ -281,7 +281,7 @@ class Scattergl : public Trace {
     Scattergl& text(std::vector<std::string> f);
 
     // Sets the text font.
-    Scattergl& textfont(class Textfont f);
+    Scattergl& textfont(Textfont f);
 
     // Sets the positions of the `text` elements with respects to the (x,y) coordinates.
     // - Default: middle center
@@ -322,7 +322,7 @@ class Scattergl : public Trace {
     template <typename T>
     Scattergl& uirevision(T f);
 
-    Scattergl& unselected(class Unselected f);
+    Scattergl& unselected(Unselected f);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -593,7 +593,7 @@ class Scattergl::Hoverlabel {
     Scattergl::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Scattergl::Hoverlabel& font(class Font f);
+    Scattergl::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -726,7 +726,7 @@ class Scattergl::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Scattergl::Legendgrouptitle& font(class Font f);
+    Scattergl::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Scattergl::Legendgrouptitle& text(std::string f);
@@ -1232,7 +1232,7 @@ class Scattergl::Marker {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Scattergl::Marker& coloraxis(std::string f);
 
-    Scattergl::Marker& colorbar(class Colorbar f);
+    Scattergl::Marker& colorbar(Colorbar f);
 
     // Sets the colorscale. Has an effect only if in `marker.color` is set to a numerical array. The colorscale must be
     // an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At
@@ -1246,7 +1246,7 @@ class Scattergl::Marker {
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scattergl::Marker& colorsrc(std::string f);
 
-    Scattergl::Marker& line(class Line f);
+    Scattergl::Marker& line(Line f);
 
     // Sets the marker opacity.
     Scattergl::Marker& opacity(double f);
@@ -1530,7 +1530,7 @@ class Scattergl::Marker::Colorbar {
     Scattergl::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Scattergl::Marker::Colorbar& tickfont(class Tickfont f);
+    Scattergl::Marker::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -1539,7 +1539,7 @@ class Scattergl::Marker::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Scattergl::Marker::Colorbar& tickformat(std::string f);
 
-    Scattergl::Marker::Colorbar& tickformatstops(class Tickformatstops f);
+    Scattergl::Marker::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -1595,7 +1595,7 @@ class Scattergl::Marker::Colorbar {
     // Sets the tick width (in px).
     Scattergl::Marker::Colorbar& tickwidth(double f);
 
-    Scattergl::Marker::Colorbar& title(class Title f);
+    Scattergl::Marker::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -1715,7 +1715,7 @@ class Scattergl::Marker::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Scattergl::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Scattergl::Marker::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1765,7 +1765,7 @@ class Scattergl::Marker::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Scattergl::Marker::Colorbar::Title& font(class Font f);
+    Scattergl::Marker::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -1929,9 +1929,9 @@ class Scattergl::Selected {
     class Marker;
     class Textfont;
 
-    Scattergl::Selected& marker(class Marker f);
+    Scattergl::Selected& marker(Marker f);
 
-    Scattergl::Selected& textfont(class Textfont f);
+    Scattergl::Selected& textfont(Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -2063,9 +2063,9 @@ class Scattergl::Unselected {
     class Marker;
     class Textfont;
 
-    Scattergl::Unselected& marker(class Marker f);
+    Scattergl::Unselected& marker(Marker f);
 
-    Scattergl::Unselected& textfont(class Textfont f);
+    Scattergl::Unselected& textfont(Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

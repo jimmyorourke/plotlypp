@@ -86,7 +86,7 @@ class Cone : public Trace {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Cone& coloraxis(std::string f);
 
-    Cone& colorbar(class Colorbar f);
+    Cone& colorbar(Colorbar f);
 
     // Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb,
     // rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are
@@ -116,7 +116,7 @@ class Cone : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Cone& hoverinfosrc(std::string f);
 
-    Cone& hoverlabel(class Hoverlabel f);
+    Cone& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -160,7 +160,7 @@ class Cone : public Trace {
     // when toggling legend items.
     Cone& legendgroup(std::string f);
 
-    Cone& legendgrouptitle(class Legendgrouptitle f);
+    Cone& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -172,9 +172,9 @@ class Cone : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Cone& legendwidth(double f);
 
-    Cone& lighting(class Lighting f);
+    Cone& lighting(Lighting f);
 
-    Cone& lightposition(class Lightposition f);
+    Cone& lightposition(Lightposition f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -228,7 +228,7 @@ class Cone : public Trace {
     // u/v/w vector field, its the default value is half the sample's maximum vector norm.
     Cone& sizeref(double f);
 
-    Cone& stream(class Stream f);
+    Cone& stream(Stream f);
 
     // Sets the text elements associated with the cones. If trace `hoverinfo` contains a *text* flag and *hovertext* is
     // not set, these elements will be seen in the hover labels.
@@ -572,7 +572,7 @@ class Cone::Colorbar {
     Cone::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Cone::Colorbar& tickfont(class Tickfont f);
+    Cone::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -581,7 +581,7 @@ class Cone::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Cone::Colorbar& tickformat(std::string f);
 
-    Cone::Colorbar& tickformatstops(class Tickformatstops f);
+    Cone::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -637,7 +637,7 @@ class Cone::Colorbar {
     // Sets the tick width (in px).
     Cone::Colorbar& tickwidth(double f);
 
-    Cone::Colorbar& title(class Title f);
+    Cone::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -757,7 +757,7 @@ class Cone::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Cone::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Cone::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -807,7 +807,7 @@ class Cone::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Cone::Colorbar::Title& font(class Font f);
+    Cone::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -934,7 +934,7 @@ class Cone::Hoverlabel {
     Cone::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Cone::Hoverlabel& font(class Font f);
+    Cone::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -1067,7 +1067,7 @@ class Cone::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Cone::Legendgrouptitle& font(class Font f);
+    Cone::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Cone::Legendgrouptitle& text(std::string f);

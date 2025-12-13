@@ -82,7 +82,7 @@ class Candlestick : public Trace {
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Candlestick& customdatasrc(std::string f);
 
-    Candlestick& decreasing(class Decreasing f);
+    Candlestick& decreasing(Decreasing f);
 
     // Sets the high values.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
@@ -102,7 +102,7 @@ class Candlestick : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Candlestick& hoverinfosrc(std::string f);
 
-    Candlestick& hoverlabel(class Hoverlabel f);
+    Candlestick& hoverlabel(Hoverlabel f);
 
     // Same as `text`.
     Candlestick& hovertext(std::string f);
@@ -119,7 +119,7 @@ class Candlestick : public Trace {
     // Sets the source reference on Chart Studio Cloud for `ids`.
     Candlestick& idssrc(std::string f);
 
-    Candlestick& increasing(class Increasing f);
+    Candlestick& increasing(Increasing f);
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
@@ -129,7 +129,7 @@ class Candlestick : public Trace {
     // when toggling legend items.
     Candlestick& legendgroup(std::string f);
 
-    Candlestick& legendgrouptitle(class Legendgrouptitle f);
+    Candlestick& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -141,7 +141,7 @@ class Candlestick : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Candlestick& legendwidth(double f);
 
-    Candlestick& line(class Line f);
+    Candlestick& line(Line f);
 
     // Sets the low values.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
@@ -186,7 +186,7 @@ class Candlestick : public Trace {
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Candlestick& showlegend(bool f);
 
-    Candlestick& stream(class Stream f);
+    Candlestick& stream(Stream f);
 
     // Sets hover text elements associated with each sample point. If a single string, the same string appears over all
     // the data points. If an array of string, the items are mapped in order to this trace's sample points.
@@ -286,7 +286,7 @@ class Candlestick::Decreasing {
     Candlestick::Decreasing& fillcolor(std::string f);
     Candlestick::Decreasing& fillcolor(double f);
 
-    Candlestick::Decreasing& line(class Line f);
+    Candlestick::Decreasing& line(Line f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -347,7 +347,7 @@ class Candlestick::Hoverlabel {
     Candlestick::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Candlestick::Hoverlabel& font(class Font f);
+    Candlestick::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -486,7 +486,7 @@ class Candlestick::Increasing {
     Candlestick::Increasing& fillcolor(std::string f);
     Candlestick::Increasing& fillcolor(double f);
 
-    Candlestick::Increasing& line(class Line f);
+    Candlestick::Increasing& line(Line f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -513,7 +513,7 @@ class Candlestick::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Candlestick::Legendgrouptitle& font(class Font f);
+    Candlestick::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Candlestick::Legendgrouptitle& text(std::string f);

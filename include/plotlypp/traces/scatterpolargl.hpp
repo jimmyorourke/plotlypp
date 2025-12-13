@@ -122,7 +122,7 @@ class Scatterpolargl : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Scatterpolargl& hoverinfosrc(std::string f);
 
-    Scatterpolargl& hoverlabel(class Hoverlabel f);
+    Scatterpolargl& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -168,7 +168,7 @@ class Scatterpolargl : public Trace {
     // when toggling legend items.
     Scatterpolargl& legendgroup(std::string f);
 
-    Scatterpolargl& legendgrouptitle(class Legendgrouptitle f);
+    Scatterpolargl& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -180,9 +180,9 @@ class Scatterpolargl : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Scatterpolargl& legendwidth(double f);
 
-    Scatterpolargl& line(class Line f);
+    Scatterpolargl& line(Line f);
 
-    Scatterpolargl& marker(class Marker f);
+    Scatterpolargl& marker(Marker f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -223,7 +223,7 @@ class Scatterpolargl : public Trace {
     // Sets the source reference on Chart Studio Cloud for `r`.
     Scatterpolargl& rsrc(std::string f);
 
-    Scatterpolargl& selected(class Selected f);
+    Scatterpolargl& selected(Selected f);
 
     // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
@@ -234,7 +234,7 @@ class Scatterpolargl : public Trace {
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Scatterpolargl& showlegend(bool f);
 
-    Scatterpolargl& stream(class Stream f);
+    Scatterpolargl& stream(Stream f);
 
     // Sets a reference between this trace's data coordinates and a polar subplot. If *polar* (the default value), the
     // data refer to `layout.polar`. If *polar2*, the data refer to `layout.polar2`, and so on.
@@ -247,7 +247,7 @@ class Scatterpolargl : public Trace {
     Scatterpolargl& text(std::vector<std::string> f);
 
     // Sets the text font.
-    Scatterpolargl& textfont(class Textfont f);
+    Scatterpolargl& textfont(Textfont f);
 
     // Sets the positions of the `text` elements with respects to the (x,y) coordinates.
     // - Default: middle center
@@ -305,7 +305,7 @@ class Scatterpolargl : public Trace {
     template <typename T>
     Scatterpolargl& uirevision(T f);
 
-    Scatterpolargl& unselected(class Unselected f);
+    Scatterpolargl& unselected(Unselected f);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -354,7 +354,7 @@ class Scatterpolargl::Hoverlabel {
     Scatterpolargl::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Scatterpolargl::Hoverlabel& font(class Font f);
+    Scatterpolargl::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -487,7 +487,7 @@ class Scatterpolargl::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Scatterpolargl::Legendgrouptitle& font(class Font f);
+    Scatterpolargl::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Scatterpolargl::Legendgrouptitle& text(std::string f);
@@ -980,7 +980,7 @@ class Scatterpolargl::Marker {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Scatterpolargl::Marker& coloraxis(std::string f);
 
-    Scatterpolargl::Marker& colorbar(class Colorbar f);
+    Scatterpolargl::Marker& colorbar(Colorbar f);
 
     // Sets the colorscale. Has an effect only if in `marker.color` is set to a numerical array. The colorscale must be
     // an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At
@@ -994,7 +994,7 @@ class Scatterpolargl::Marker {
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scatterpolargl::Marker& colorsrc(std::string f);
 
-    Scatterpolargl::Marker& line(class Line f);
+    Scatterpolargl::Marker& line(Line f);
 
     // Sets the marker opacity.
     Scatterpolargl::Marker& opacity(double f);
@@ -1278,7 +1278,7 @@ class Scatterpolargl::Marker::Colorbar {
     Scatterpolargl::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Scatterpolargl::Marker::Colorbar& tickfont(class Tickfont f);
+    Scatterpolargl::Marker::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -1287,7 +1287,7 @@ class Scatterpolargl::Marker::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Scatterpolargl::Marker::Colorbar& tickformat(std::string f);
 
-    Scatterpolargl::Marker::Colorbar& tickformatstops(class Tickformatstops f);
+    Scatterpolargl::Marker::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -1343,7 +1343,7 @@ class Scatterpolargl::Marker::Colorbar {
     // Sets the tick width (in px).
     Scatterpolargl::Marker::Colorbar& tickwidth(double f);
 
-    Scatterpolargl::Marker::Colorbar& title(class Title f);
+    Scatterpolargl::Marker::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -1463,7 +1463,7 @@ class Scatterpolargl::Marker::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Scatterpolargl::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Scatterpolargl::Marker::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1513,7 +1513,7 @@ class Scatterpolargl::Marker::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Scatterpolargl::Marker::Colorbar::Title& font(class Font f);
+    Scatterpolargl::Marker::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -1677,9 +1677,9 @@ class Scatterpolargl::Selected {
     class Marker;
     class Textfont;
 
-    Scatterpolargl::Selected& marker(class Marker f);
+    Scatterpolargl::Selected& marker(Marker f);
 
-    Scatterpolargl::Selected& textfont(class Textfont f);
+    Scatterpolargl::Selected& textfont(Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1811,9 +1811,9 @@ class Scatterpolargl::Unselected {
     class Marker;
     class Textfont;
 
-    Scatterpolargl::Unselected& marker(class Marker f);
+    Scatterpolargl::Unselected& marker(Marker f);
 
-    Scatterpolargl::Unselected& textfont(class Textfont f);
+    Scatterpolargl::Unselected& textfont(Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

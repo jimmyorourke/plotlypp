@@ -40,7 +40,7 @@ class Table : public Trace {
     class Legendgrouptitle;
     class Stream;
 
-    Table& cells(class Cells f);
+    Table& cells(Cells f);
 
     // Specifies the rendered order of the data columns; for example, a value `2` at position `0` means that column
     // index `0` in the data will be rendered as the third column, as columns have an index base of zero.
@@ -66,9 +66,9 @@ class Table : public Trace {
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Table& customdatasrc(std::string f);
 
-    Table& domain(class Domain f);
+    Table& domain(Domain f);
 
-    Table& header(class Header f);
+    Table& header(Header f);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -81,7 +81,7 @@ class Table : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Table& hoverinfosrc(std::string f);
 
-    Table& hoverlabel(class Hoverlabel f);
+    Table& hoverlabel(Hoverlabel f);
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
@@ -95,7 +95,7 @@ class Table : public Trace {
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
     Table& legend(std::string f);
 
-    Table& legendgrouptitle(class Legendgrouptitle f);
+    Table& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -124,7 +124,7 @@ class Table : public Trace {
     // Sets the trace name. The trace name appears as the legend item and on hover.
     Table& name(std::string f);
 
-    Table& stream(class Stream f);
+    Table& stream(Stream f);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
@@ -170,9 +170,9 @@ class Table::Cells {
     // Sets the source reference on Chart Studio Cloud for `align`.
     Table::Cells& alignsrc(std::string f);
 
-    Table::Cells& fill(class Fill f);
+    Table::Cells& fill(Fill f);
 
-    Table::Cells& font(class Font f);
+    Table::Cells& font(Font f);
 
     // Sets the cell value formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
@@ -185,7 +185,7 @@ class Table::Cells {
     // The height of cells.
     Table::Cells& height(double f);
 
-    Table::Cells& line(class Line f);
+    Table::Cells& line(Line f);
 
     // Prefix for cell values.
     Table::Cells& prefix(std::string f);
@@ -402,9 +402,9 @@ class Table::Header {
     // Sets the source reference on Chart Studio Cloud for `align`.
     Table::Header& alignsrc(std::string f);
 
-    Table::Header& fill(class Fill f);
+    Table::Header& fill(Fill f);
 
-    Table::Header& font(class Font f);
+    Table::Header& font(Font f);
 
     // Sets the cell value formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
@@ -417,7 +417,7 @@ class Table::Header {
     // The height of cells.
     Table::Header& height(double f);
 
-    Table::Header& line(class Line f);
+    Table::Header& line(Line f);
 
     // Prefix for cell values.
     Table::Header& prefix(std::string f);
@@ -633,7 +633,7 @@ class Table::Hoverlabel {
     Table::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Table::Hoverlabel& font(class Font f);
+    Table::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -766,7 +766,7 @@ class Table::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Table::Legendgrouptitle& font(class Font f);
+    Table::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Table::Legendgrouptitle& text(std::string f);

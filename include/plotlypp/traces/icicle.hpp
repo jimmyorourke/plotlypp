@@ -90,7 +90,7 @@ class Icicle : public Trace {
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Icicle& customdatasrc(std::string f);
 
-    Icicle& domain(class Domain f);
+    Icicle& domain(Domain f);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -103,7 +103,7 @@ class Icicle : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Icicle& hoverinfosrc(std::string f);
 
-    Icicle& hoverlabel(class Hoverlabel f);
+    Icicle& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -143,7 +143,7 @@ class Icicle : public Trace {
     Icicle& idssrc(std::string f);
 
     // Sets the font used for `textinfo` lying inside the sector.
-    Icicle& insidetextfont(class Insidetextfont f);
+    Icicle& insidetextfont(Insidetextfont f);
 
     // Sets the labels of each of the sectors.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
@@ -152,13 +152,13 @@ class Icicle : public Trace {
     // Sets the source reference on Chart Studio Cloud for `labels`.
     Icicle& labelssrc(std::string f);
 
-    Icicle& leaf(class Leaf f);
+    Icicle& leaf(Leaf f);
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
     Icicle& legend(std::string f);
 
-    Icicle& legendgrouptitle(class Legendgrouptitle f);
+    Icicle& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -176,7 +176,7 @@ class Icicle : public Trace {
     template <typename T>
     Icicle& level(T f);
 
-    Icicle& marker(class Marker f);
+    Icicle& marker(Marker f);
 
     // Sets the number of rendered sectors from any given `level`. Set `maxdepth` to *-1* to render all the levels in
     // the hierarchy.
@@ -205,7 +205,7 @@ class Icicle : public Trace {
     // Sets the font used for `textinfo` lying outside the sector. This option refers to the root of the hierarchy
     // presented on top left corner of a treemap graph. Please note that if a hierarchy has multiple root nodes, this
     // option won't have any effect and `insidetextfont` would be used.
-    Icicle& outsidetextfont(class Outsidetextfont f);
+    Icicle& outsidetextfont(Outsidetextfont f);
 
     // Sets the parent sectors for each of the sectors. Empty string items '' are understood to reference the root node
     // in the hierarchy. If `ids` is filled, `parents` items are understood to be "ids" themselves. When `ids` is not
@@ -216,14 +216,14 @@ class Icicle : public Trace {
     // Sets the source reference on Chart Studio Cloud for `parents`.
     Icicle& parentssrc(std::string f);
 
-    Icicle& pathbar(class Pathbar f);
+    Icicle& pathbar(Pathbar f);
 
-    Icicle& root(class Root f);
+    Icicle& root(Root f);
 
     // Determines whether or not the sectors are reordered from largest to smallest.
     Icicle& sort(bool f);
 
-    Icicle& stream(class Stream f);
+    Icicle& stream(Stream f);
 
     // Sets text elements associated with each sector. If trace `textinfo` contains a *text* flag, these elements will
     // be seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will
@@ -232,7 +232,7 @@ class Icicle : public Trace {
     Icicle& text(std::vector<T> f);
 
     // Sets the font used for `textinfo`.
-    Icicle& textfont(class Textfont f);
+    Icicle& textfont(Textfont f);
 
     // Determines which trace information appear on the graph.
     // - Flags: ['label', 'text', 'value', 'current path', 'percent root', 'percent entry', 'percent parent']
@@ -261,7 +261,7 @@ class Icicle : public Trace {
     // Sets the source reference on Chart Studio Cloud for `texttemplate`.
     Icicle& texttemplatesrc(std::string f);
 
-    Icicle& tiling(class Tiling f);
+    Icicle& tiling(Tiling f);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
@@ -352,7 +352,7 @@ class Icicle::Hoverlabel {
     Icicle::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Icicle::Hoverlabel& font(class Font f);
+    Icicle::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -605,7 +605,7 @@ class Icicle::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Icicle::Legendgrouptitle& font(class Font f);
+    Icicle::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Icicle::Legendgrouptitle& text(std::string f);
@@ -724,7 +724,7 @@ class Icicle::Marker {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Icicle::Marker& coloraxis(std::string f);
 
-    Icicle::Marker& colorbar(class Colorbar f);
+    Icicle::Marker& colorbar(Colorbar f);
 
     // Sets the color of each sector of this trace. If not specified, the default trace color set is used to pick the
     // sector colors.
@@ -743,10 +743,10 @@ class Icicle::Marker {
     // Sets the source reference on Chart Studio Cloud for `colors`.
     Icicle::Marker& colorssrc(std::string f);
 
-    Icicle::Marker& line(class Line f);
+    Icicle::Marker& line(Line f);
 
     // Sets the pattern within the marker.
-    Icicle::Marker& pattern(class Pattern f);
+    Icicle::Marker& pattern(Pattern f);
 
     // Reverses the color mapping if true. Has an effect only if colors is set to a numerical array. If true,
     // `marker.cmin` will correspond to the last color in the array and `marker.cmax` will correspond to the first
@@ -993,7 +993,7 @@ class Icicle::Marker::Colorbar {
     Icicle::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Icicle::Marker::Colorbar& tickfont(class Tickfont f);
+    Icicle::Marker::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -1002,7 +1002,7 @@ class Icicle::Marker::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Icicle::Marker::Colorbar& tickformat(std::string f);
 
-    Icicle::Marker::Colorbar& tickformatstops(class Tickformatstops f);
+    Icicle::Marker::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -1058,7 +1058,7 @@ class Icicle::Marker::Colorbar {
     // Sets the tick width (in px).
     Icicle::Marker::Colorbar& tickwidth(double f);
 
-    Icicle::Marker::Colorbar& title(class Title f);
+    Icicle::Marker::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -1178,7 +1178,7 @@ class Icicle::Marker::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Icicle::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Icicle::Marker::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1228,7 +1228,7 @@ class Icicle::Marker::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Icicle::Marker::Colorbar::Title& font(class Font f);
+    Icicle::Marker::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -1558,7 +1558,7 @@ class Icicle::Pathbar {
     Icicle::Pathbar& side(enum Side f);
 
     // Sets the font used inside `pathbar`.
-    Icicle::Pathbar& textfont(class Textfont f);
+    Icicle::Pathbar& textfont(Textfont f);
 
     // Sets the thickness of `pathbar` (in px). If not specified the `pathbar.textfont.size` is used with 3 pixles extra
     // padding on each side.

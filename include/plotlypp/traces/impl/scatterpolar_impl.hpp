@@ -112,7 +112,7 @@ Scatterpolar& Scatterpolar::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Scatterpolar& Scatterpolar::hoverlabel(class Hoverlabel f) {
+Scatterpolar& Scatterpolar::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -171,7 +171,7 @@ Scatterpolar& Scatterpolar::legendgroup(std::string f) {
     return *this;
 }
 
-Scatterpolar& Scatterpolar::legendgrouptitle(class Legendgrouptitle f) {
+Scatterpolar& Scatterpolar::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -186,12 +186,12 @@ Scatterpolar& Scatterpolar::legendwidth(double f) {
     return *this;
 }
 
-Scatterpolar& Scatterpolar::line(class Line f) {
+Scatterpolar& Scatterpolar::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
 
-Scatterpolar& Scatterpolar::marker(class Marker f) {
+Scatterpolar& Scatterpolar::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -244,7 +244,7 @@ Scatterpolar& Scatterpolar::rsrc(std::string f) {
     return *this;
 }
 
-Scatterpolar& Scatterpolar::selected(class Selected f) {
+Scatterpolar& Scatterpolar::selected(Selected f) {
     json["selected"] = std::move(f.json);
     return *this;
 }
@@ -260,7 +260,7 @@ Scatterpolar& Scatterpolar::showlegend(bool f) {
     return *this;
 }
 
-Scatterpolar& Scatterpolar::stream(class Stream f) {
+Scatterpolar& Scatterpolar::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -279,7 +279,7 @@ Scatterpolar& Scatterpolar::text(std::vector<std::string> f) {
     return *this;
 }
 
-Scatterpolar& Scatterpolar::textfont(class Textfont f) {
+Scatterpolar& Scatterpolar::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -352,7 +352,7 @@ Scatterpolar& Scatterpolar::uirevision(T f) {
     return *this;
 }
 
-Scatterpolar& Scatterpolar::unselected(class Unselected f) {
+Scatterpolar& Scatterpolar::unselected(Unselected f) {
     json["unselected"] = std::move(f.json);
     return *this;
 }
@@ -432,7 +432,7 @@ Scatterpolar::Hoverlabel& Scatterpolar::Hoverlabel::bordercolorsrc(std::string f
     return *this;
 }
 
-Scatterpolar::Hoverlabel& Scatterpolar::Hoverlabel::font(class Font f) {
+Scatterpolar::Hoverlabel& Scatterpolar::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -623,7 +623,7 @@ Scatterpolar::Hoverlabel::Font& Scatterpolar::Hoverlabel::Font::weightsrc(std::s
 }
 
 
-Scatterpolar::Legendgrouptitle& Scatterpolar::Legendgrouptitle::font(class Font f) {
+Scatterpolar::Legendgrouptitle& Scatterpolar::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1178,7 +1178,7 @@ Scatterpolar::Marker& Scatterpolar::Marker::coloraxis(std::string f) {
     return *this;
 }
 
-Scatterpolar::Marker& Scatterpolar::Marker::colorbar(class Colorbar f) {
+Scatterpolar::Marker& Scatterpolar::Marker::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -1197,12 +1197,12 @@ Scatterpolar::Marker& Scatterpolar::Marker::colorsrc(std::string f) {
     return *this;
 }
 
-Scatterpolar::Marker& Scatterpolar::Marker::gradient(class Gradient f) {
+Scatterpolar::Marker& Scatterpolar::Marker::gradient(Gradient f) {
     json["gradient"] = std::move(f.json);
     return *this;
 }
 
-Scatterpolar::Marker& Scatterpolar::Marker::line(class Line f) {
+Scatterpolar::Marker& Scatterpolar::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -1572,7 +1572,7 @@ Scatterpolar::Marker::Colorbar& Scatterpolar::Marker::Colorbar::tickcolor(double
     return *this;
 }
 
-Scatterpolar::Marker::Colorbar& Scatterpolar::Marker::Colorbar::tickfont(class Tickfont f) {
+Scatterpolar::Marker::Colorbar& Scatterpolar::Marker::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -1582,7 +1582,7 @@ Scatterpolar::Marker::Colorbar& Scatterpolar::Marker::Colorbar::tickformat(std::
     return *this;
 }
 
-Scatterpolar::Marker::Colorbar& Scatterpolar::Marker::Colorbar::tickformatstops(class Tickformatstops f) {
+Scatterpolar::Marker::Colorbar& Scatterpolar::Marker::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -1654,7 +1654,7 @@ Scatterpolar::Marker::Colorbar& Scatterpolar::Marker::Colorbar::tickwidth(double
     return *this;
 }
 
-Scatterpolar::Marker::Colorbar& Scatterpolar::Marker::Colorbar::title(class Title f) {
+Scatterpolar::Marker::Colorbar& Scatterpolar::Marker::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -1780,7 +1780,7 @@ Scatterpolar::Marker::Colorbar::Tickfont& Scatterpolar::Marker::Colorbar::Tickfo
 }
 
 
-Scatterpolar::Marker::Colorbar::Tickformatstops& Scatterpolar::Marker::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Scatterpolar::Marker::Colorbar::Tickformatstops& Scatterpolar::Marker::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -1821,7 +1821,7 @@ std::string Scatterpolar::Marker::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Scatterpolar::Marker::Colorbar::Title& Scatterpolar::Marker::Colorbar::Title::font(class Font f) {
+Scatterpolar::Marker::Colorbar::Title& Scatterpolar::Marker::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -2047,12 +2047,12 @@ Scatterpolar::Marker::Line& Scatterpolar::Marker::Line::widthsrc(std::string f) 
 }
 
 
-Scatterpolar::Selected& Scatterpolar::Selected::marker(class Marker f) {
+Scatterpolar::Selected& Scatterpolar::Selected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
 
-Scatterpolar::Selected& Scatterpolar::Selected::textfont(class Textfont f) {
+Scatterpolar::Selected& Scatterpolar::Selected::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -2270,12 +2270,12 @@ Scatterpolar::Textfont& Scatterpolar::Textfont::weightsrc(std::string f) {
 }
 
 
-Scatterpolar::Unselected& Scatterpolar::Unselected::marker(class Marker f) {
+Scatterpolar::Unselected& Scatterpolar::Unselected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
 
-Scatterpolar::Unselected& Scatterpolar::Unselected::textfont(class Textfont f) {
+Scatterpolar::Unselected& Scatterpolar::Unselected::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }

@@ -175,7 +175,7 @@ class Box : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Box& hoverinfosrc(std::string f);
 
-    Box& hoverlabel(class Hoverlabel f);
+    Box& hoverlabel(Hoverlabel f);
 
     // Do the hover effects highlight individual boxes  or sample points or both?
     // - Default: boxes+points
@@ -228,7 +228,7 @@ class Box : public Trace {
     // when toggling legend items.
     Box& legendgroup(std::string f);
 
-    Box& legendgrouptitle(class Legendgrouptitle f);
+    Box& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -240,7 +240,7 @@ class Box : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Box& legendwidth(double f);
 
-    Box& line(class Line f);
+    Box& line(Line f);
 
     // Sets the lower fence values. There should be as many items as the number of boxes desired. This attribute has
     // effect only under the q1/median/q3 signature. If `lowerfence` is not provided but a sample (in `y` or `x`) is
@@ -251,7 +251,7 @@ class Box : public Trace {
     // Sets the source reference on Chart Studio Cloud for `lowerfence`.
     Box& lowerfencesrc(std::string f);
 
-    Box& marker(class Marker f);
+    Box& marker(Marker f);
 
     // Sets the mean values. There should be as many items as the number of boxes desired. This attribute has effect
     // only under the q1/median/q3 signature. If `mean` is not provided but a sample (in `y` or `x`) is set, we compute
@@ -361,7 +361,7 @@ class Box : public Trace {
     // Sets the source reference on Chart Studio Cloud for `sd`.
     Box& sdsrc(std::string f);
 
-    Box& selected(class Selected f);
+    Box& selected(Selected f);
 
     // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
@@ -381,7 +381,7 @@ class Box : public Trace {
     // - Default: quartiles
     Box& sizemode(enum Sizemode f);
 
-    Box& stream(class Stream f);
+    Box& stream(Stream f);
 
     // Sets the text elements associated with each sample value. If a single string, the same string appears over all
     // the data points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. To
@@ -407,7 +407,7 @@ class Box : public Trace {
     template <typename T>
     Box& uirevision(T f);
 
-    Box& unselected(class Unselected f);
+    Box& unselected(Unselected f);
 
     // Sets the upper fence values. There should be as many items as the number of boxes desired. This attribute has
     // effect only under the q1/median/q3 signature. If `upperfence` is not provided but a sample (in `y` or `x`) is
@@ -565,7 +565,7 @@ class Box::Hoverlabel {
     Box::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Box::Hoverlabel& font(class Font f);
+    Box::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -698,7 +698,7 @@ class Box::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Box::Legendgrouptitle& font(class Font f);
+    Box::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Box::Legendgrouptitle& text(std::string f);
@@ -1135,7 +1135,7 @@ class Box::Marker {
     Box::Marker& color(std::string f);
     Box::Marker& color(double f);
 
-    Box::Marker& line(class Line f);
+    Box::Marker& line(Line f);
 
     // Sets the marker opacity.
     Box::Marker& opacity(double f);
@@ -1185,7 +1185,7 @@ class Box::Selected {
 
     class Marker;
 
-    Box::Selected& marker(class Marker f);
+    Box::Selected& marker(Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1228,7 +1228,7 @@ class Box::Unselected {
 
     class Marker;
 
-    Box::Unselected& marker(class Marker f);
+    Box::Unselected& marker(Marker f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

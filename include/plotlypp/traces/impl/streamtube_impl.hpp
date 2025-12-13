@@ -50,7 +50,7 @@ Streamtube& Streamtube::coloraxis(std::string f) {
     return *this;
 }
 
-Streamtube& Streamtube::colorbar(class Colorbar f) {
+Streamtube& Streamtube::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -89,7 +89,7 @@ Streamtube& Streamtube::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Streamtube& Streamtube::hoverlabel(class Hoverlabel f) {
+Streamtube& Streamtube::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -134,7 +134,7 @@ Streamtube& Streamtube::legendgroup(std::string f) {
     return *this;
 }
 
-Streamtube& Streamtube::legendgrouptitle(class Legendgrouptitle f) {
+Streamtube& Streamtube::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -149,12 +149,12 @@ Streamtube& Streamtube::legendwidth(double f) {
     return *this;
 }
 
-Streamtube& Streamtube::lighting(class Lighting f) {
+Streamtube& Streamtube::lighting(Lighting f) {
     json["lighting"] = std::move(f.json);
     return *this;
 }
 
-Streamtube& Streamtube::lightposition(class Lightposition f) {
+Streamtube& Streamtube::lightposition(Lightposition f) {
     json["lightposition"] = std::move(f.json);
     return *this;
 }
@@ -215,12 +215,12 @@ Streamtube& Streamtube::sizeref(double f) {
     return *this;
 }
 
-Streamtube& Streamtube::starts(class Starts f) {
+Streamtube& Streamtube::starts(Starts f) {
     json["starts"] = std::move(f.json);
     return *this;
 }
 
-Streamtube& Streamtube::stream(class Stream f) {
+Streamtube& Streamtube::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -619,7 +619,7 @@ Streamtube::Colorbar& Streamtube::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Streamtube::Colorbar& Streamtube::Colorbar::tickfont(class Tickfont f) {
+Streamtube::Colorbar& Streamtube::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -629,7 +629,7 @@ Streamtube::Colorbar& Streamtube::Colorbar::tickformat(std::string f) {
     return *this;
 }
 
-Streamtube::Colorbar& Streamtube::Colorbar::tickformatstops(class Tickformatstops f) {
+Streamtube::Colorbar& Streamtube::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -701,7 +701,7 @@ Streamtube::Colorbar& Streamtube::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Streamtube::Colorbar& Streamtube::Colorbar::title(class Title f) {
+Streamtube::Colorbar& Streamtube::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -827,7 +827,7 @@ Streamtube::Colorbar::Tickfont& Streamtube::Colorbar::Tickfont::weight(int f) {
 }
 
 
-Streamtube::Colorbar::Tickformatstops& Streamtube::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Streamtube::Colorbar::Tickformatstops& Streamtube::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -868,7 +868,7 @@ std::string Streamtube::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Streamtube::Colorbar::Title& Streamtube::Colorbar::Title::font(class Font f) {
+Streamtube::Colorbar::Title& Streamtube::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1033,7 +1033,7 @@ Streamtube::Hoverlabel& Streamtube::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Streamtube::Hoverlabel& Streamtube::Hoverlabel::font(class Font f) {
+Streamtube::Hoverlabel& Streamtube::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1224,7 +1224,7 @@ Streamtube::Hoverlabel::Font& Streamtube::Hoverlabel::Font::weightsrc(std::strin
 }
 
 
-Streamtube::Legendgrouptitle& Streamtube::Legendgrouptitle::font(class Font f) {
+Streamtube::Legendgrouptitle& Streamtube::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }

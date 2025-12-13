@@ -89,7 +89,7 @@ class Treemap : public Trace {
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Treemap& customdatasrc(std::string f);
 
-    Treemap& domain(class Domain f);
+    Treemap& domain(Domain f);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -102,7 +102,7 @@ class Treemap : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Treemap& hoverinfosrc(std::string f);
 
-    Treemap& hoverlabel(class Hoverlabel f);
+    Treemap& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -142,7 +142,7 @@ class Treemap : public Trace {
     Treemap& idssrc(std::string f);
 
     // Sets the font used for `textinfo` lying inside the sector.
-    Treemap& insidetextfont(class Insidetextfont f);
+    Treemap& insidetextfont(Insidetextfont f);
 
     // Sets the labels of each of the sectors.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
@@ -155,7 +155,7 @@ class Treemap : public Trace {
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
     Treemap& legend(std::string f);
 
-    Treemap& legendgrouptitle(class Legendgrouptitle f);
+    Treemap& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -173,7 +173,7 @@ class Treemap : public Trace {
     template <typename T>
     Treemap& level(T f);
 
-    Treemap& marker(class Marker f);
+    Treemap& marker(Marker f);
 
     // Sets the number of rendered sectors from any given `level`. Set `maxdepth` to *-1* to render all the levels in
     // the hierarchy.
@@ -202,7 +202,7 @@ class Treemap : public Trace {
     // Sets the font used for `textinfo` lying outside the sector. This option refers to the root of the hierarchy
     // presented on top left corner of a treemap graph. Please note that if a hierarchy has multiple root nodes, this
     // option won't have any effect and `insidetextfont` would be used.
-    Treemap& outsidetextfont(class Outsidetextfont f);
+    Treemap& outsidetextfont(Outsidetextfont f);
 
     // Sets the parent sectors for each of the sectors. Empty string items '' are understood to reference the root node
     // in the hierarchy. If `ids` is filled, `parents` items are understood to be "ids" themselves. When `ids` is not
@@ -213,14 +213,14 @@ class Treemap : public Trace {
     // Sets the source reference on Chart Studio Cloud for `parents`.
     Treemap& parentssrc(std::string f);
 
-    Treemap& pathbar(class Pathbar f);
+    Treemap& pathbar(Pathbar f);
 
-    Treemap& root(class Root f);
+    Treemap& root(Root f);
 
     // Determines whether or not the sectors are reordered from largest to smallest.
     Treemap& sort(bool f);
 
-    Treemap& stream(class Stream f);
+    Treemap& stream(Stream f);
 
     // Sets text elements associated with each sector. If trace `textinfo` contains a *text* flag, these elements will
     // be seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will
@@ -229,7 +229,7 @@ class Treemap : public Trace {
     Treemap& text(std::vector<T> f);
 
     // Sets the font used for `textinfo`.
-    Treemap& textfont(class Textfont f);
+    Treemap& textfont(Textfont f);
 
     // Determines which trace information appear on the graph.
     // - Flags: ['label', 'text', 'value', 'current path', 'percent root', 'percent entry', 'percent parent']
@@ -258,7 +258,7 @@ class Treemap : public Trace {
     // Sets the source reference on Chart Studio Cloud for `texttemplate`.
     Treemap& texttemplatesrc(std::string f);
 
-    Treemap& tiling(class Tiling f);
+    Treemap& tiling(Tiling f);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
@@ -349,7 +349,7 @@ class Treemap::Hoverlabel {
     Treemap::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Treemap::Hoverlabel& font(class Font f);
+    Treemap::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -592,7 +592,7 @@ class Treemap::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Treemap::Legendgrouptitle& font(class Font f);
+    Treemap::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Treemap::Legendgrouptitle& text(std::string f);
@@ -719,7 +719,7 @@ class Treemap::Marker {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Treemap::Marker& coloraxis(std::string f);
 
-    Treemap::Marker& colorbar(class Colorbar f);
+    Treemap::Marker& colorbar(Colorbar f);
 
     // Sets the color of each sector of this trace. If not specified, the default trace color set is used to pick the
     // sector colors.
@@ -747,12 +747,12 @@ class Treemap::Marker {
     // hierarchy are drawn with fully saturated colors while the leaves are faded towards the background color.
     Treemap::Marker& depthfade(enum Depthfade f);
 
-    Treemap::Marker& line(class Line f);
+    Treemap::Marker& line(Line f);
 
-    Treemap::Marker& pad(class Pad f);
+    Treemap::Marker& pad(Pad f);
 
     // Sets the pattern within the marker.
-    Treemap::Marker& pattern(class Pattern f);
+    Treemap::Marker& pattern(Pattern f);
 
     // Reverses the color mapping if true. Has an effect only if colors is set to a numerical array. If true,
     // `marker.cmin` will correspond to the last color in the array and `marker.cmax` will correspond to the first
@@ -999,7 +999,7 @@ class Treemap::Marker::Colorbar {
     Treemap::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Treemap::Marker::Colorbar& tickfont(class Tickfont f);
+    Treemap::Marker::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -1008,7 +1008,7 @@ class Treemap::Marker::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Treemap::Marker::Colorbar& tickformat(std::string f);
 
-    Treemap::Marker::Colorbar& tickformatstops(class Tickformatstops f);
+    Treemap::Marker::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -1064,7 +1064,7 @@ class Treemap::Marker::Colorbar {
     // Sets the tick width (in px).
     Treemap::Marker::Colorbar& tickwidth(double f);
 
-    Treemap::Marker::Colorbar& title(class Title f);
+    Treemap::Marker::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -1184,7 +1184,7 @@ class Treemap::Marker::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Treemap::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Treemap::Marker::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1234,7 +1234,7 @@ class Treemap::Marker::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Treemap::Marker::Colorbar::Title& font(class Font f);
+    Treemap::Marker::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -1583,7 +1583,7 @@ class Treemap::Pathbar {
     Treemap::Pathbar& side(enum Side f);
 
     // Sets the font used inside `pathbar`.
-    Treemap::Pathbar& textfont(class Textfont f);
+    Treemap::Pathbar& textfont(Textfont f);
 
     // Sets the thickness of `pathbar` (in px). If not specified the `pathbar.textfont.size` is used with 3 pixles extra
     // padding on each side.

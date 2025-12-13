@@ -39,12 +39,12 @@ Parcoords& Parcoords::customdatasrc(std::string f) {
     return *this;
 }
 
-Parcoords& Parcoords::dimensions(class Dimensions f) {
+Parcoords& Parcoords::dimensions(Dimensions f) {
     json["dimensions"] = std::move(f.json);
     return *this;
 }
 
-Parcoords& Parcoords::domain(class Domain f) {
+Parcoords& Parcoords::domain(Domain f) {
     json["domain"] = std::move(f.json);
     return *this;
 }
@@ -65,7 +65,7 @@ Parcoords& Parcoords::labelangle(double f) {
     return *this;
 }
 
-Parcoords& Parcoords::labelfont(class Labelfont f) {
+Parcoords& Parcoords::labelfont(Labelfont f) {
     json["labelfont"] = std::move(f.json);
     return *this;
 }
@@ -80,7 +80,7 @@ Parcoords& Parcoords::legend(std::string f) {
     return *this;
 }
 
-Parcoords& Parcoords::legendgrouptitle(class Legendgrouptitle f) {
+Parcoords& Parcoords::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -95,7 +95,7 @@ Parcoords& Parcoords::legendwidth(double f) {
     return *this;
 }
 
-Parcoords& Parcoords::line(class Line f) {
+Parcoords& Parcoords::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -121,17 +121,17 @@ Parcoords& Parcoords::name(std::string f) {
     return *this;
 }
 
-Parcoords& Parcoords::rangefont(class Rangefont f) {
+Parcoords& Parcoords::rangefont(Rangefont f) {
     json["rangefont"] = std::move(f.json);
     return *this;
 }
 
-Parcoords& Parcoords::stream(class Stream f) {
+Parcoords& Parcoords::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
 
-Parcoords& Parcoords::tickfont(class Tickfont f) {
+Parcoords& Parcoords::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -147,7 +147,7 @@ Parcoords& Parcoords::uirevision(T f) {
     return *this;
 }
 
-Parcoords& Parcoords::unselected(class Unselected f) {
+Parcoords& Parcoords::unselected(Unselected f) {
     json["unselected"] = std::move(f.json);
     return *this;
 }
@@ -158,7 +158,7 @@ Parcoords& Parcoords::visible(enum Visible f) {
 }
 
 
-Parcoords::Dimensions& Parcoords::Dimensions::dimension(class Dimension f) {
+Parcoords::Dimensions& Parcoords::Dimensions::dimension(Dimension f) {
     json["dimension"] = std::move(f.json);
     return *this;
 }
@@ -339,7 +339,7 @@ Parcoords::Labelfont& Parcoords::Labelfont::weight(int f) {
 }
 
 
-Parcoords::Legendgrouptitle& Parcoords::Legendgrouptitle::font(class Font f) {
+Parcoords::Legendgrouptitle& Parcoords::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -477,7 +477,7 @@ Parcoords::Line& Parcoords::Line::coloraxis(std::string f) {
     return *this;
 }
 
-Parcoords::Line& Parcoords::Line::colorbar(class Colorbar f) {
+Parcoords::Line& Parcoords::Line::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -783,7 +783,7 @@ Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::tickfont(class Tickfont f) {
+Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -793,7 +793,7 @@ Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::tickformat(std::string f) 
     return *this;
 }
 
-Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::tickformatstops(class Tickformatstops f) {
+Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -865,7 +865,7 @@ Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::title(class Title f) {
+Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -991,7 +991,7 @@ Parcoords::Line::Colorbar::Tickfont& Parcoords::Line::Colorbar::Tickfont::weight
 }
 
 
-Parcoords::Line::Colorbar::Tickformatstops& Parcoords::Line::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Parcoords::Line::Colorbar::Tickformatstops& Parcoords::Line::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -1032,7 +1032,7 @@ std::string Parcoords::Line::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Parcoords::Line::Colorbar::Title& Parcoords::Line::Colorbar::Title::font(class Font f) {
+Parcoords::Line::Colorbar::Title& Parcoords::Line::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1299,7 +1299,7 @@ Parcoords::Tickfont& Parcoords::Tickfont::weight(int f) {
 }
 
 
-Parcoords::Unselected& Parcoords::Unselected::line(class Line f) {
+Parcoords::Unselected& Parcoords::Unselected::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }

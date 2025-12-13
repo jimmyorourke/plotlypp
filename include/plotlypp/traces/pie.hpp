@@ -86,7 +86,7 @@ class Pie : public Trace {
     // Sets the label step. See `label0` for more info.
     Pie& dlabel(double f);
 
-    Pie& domain(class Domain f);
+    Pie& domain(Domain f);
 
     // Sets the fraction of the radius to cut out of the pie. Use this to make a donut chart.
     Pie& hole(double f);
@@ -102,7 +102,7 @@ class Pie : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Pie& hoverinfosrc(std::string f);
 
-    Pie& hoverlabel(class Hoverlabel f);
+    Pie& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -142,7 +142,7 @@ class Pie : public Trace {
     Pie& idssrc(std::string f);
 
     // Sets the font used for `textinfo` lying inside the sector.
-    Pie& insidetextfont(class Insidetextfont f);
+    Pie& insidetextfont(Insidetextfont f);
 
     // Controls the orientation of the text inside chart sectors. When set to *auto*, text may be oriented in any
     // direction in order to be as big as possible in the middle of a sector. The *horizontal* option orients text to be
@@ -173,7 +173,7 @@ class Pie : public Trace {
     // when toggling legend items.
     Pie& legendgroup(std::string f);
 
-    Pie& legendgrouptitle(class Legendgrouptitle f);
+    Pie& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -185,7 +185,7 @@ class Pie : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Pie& legendwidth(double f);
 
-    Pie& marker(class Marker f);
+    Pie& marker(Marker f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -208,7 +208,7 @@ class Pie : public Trace {
     Pie& opacity(double f);
 
     // Sets the font used for `textinfo` lying outside the sector.
-    Pie& outsidetextfont(class Outsidetextfont f);
+    Pie& outsidetextfont(Outsidetextfont f);
 
     // Sets the fraction of larger radius to pull the sectors out from the center. This can be a constant to pull all
     // slices apart from each other equally or an array to highlight one or more slices.
@@ -231,7 +231,7 @@ class Pie : public Trace {
     // Determines whether or not the sectors are reordered from largest to smallest.
     Pie& sort(bool f);
 
-    Pie& stream(class Stream f);
+    Pie& stream(Stream f);
 
     // Sets text elements associated with each sector. If trace `textinfo` contains a *text* flag, these elements will
     // be seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will
@@ -240,7 +240,7 @@ class Pie : public Trace {
     Pie& text(std::vector<T> f);
 
     // Sets the font used for `textinfo`.
-    Pie& textfont(class Textfont f);
+    Pie& textfont(Textfont f);
 
     // Determines which trace information appear on the graph.
     // - Flags: ['label', 'text', 'value', 'percent']
@@ -272,7 +272,7 @@ class Pie : public Trace {
     // Sets the source reference on Chart Studio Cloud for `texttemplate`.
     Pie& texttemplatesrc(std::string f);
 
-    Pie& title(class Title f);
+    Pie& title(Title f);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
@@ -362,7 +362,7 @@ class Pie::Hoverlabel {
     Pie::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Pie::Hoverlabel& font(class Font f);
+    Pie::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -605,7 +605,7 @@ class Pie::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Pie::Legendgrouptitle& font(class Font f);
+    Pie::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Pie::Legendgrouptitle& text(std::string f);
@@ -701,10 +701,10 @@ class Pie::Marker {
     // Sets the source reference on Chart Studio Cloud for `colors`.
     Pie::Marker& colorssrc(std::string f);
 
-    Pie::Marker& line(class Line f);
+    Pie::Marker& line(Line f);
 
     // Sets the pattern within the marker.
-    Pie::Marker& pattern(class Pattern f);
+    Pie::Marker& pattern(Pattern f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1065,7 +1065,7 @@ class Pie::Title {
     class Font;
 
     // Sets the font used for `title`.
-    Pie::Title& font(class Font f);
+    Pie::Title& font(Font f);
 
     // Specifies the location of the `title`.
     Pie::Title& position(enum Position f);

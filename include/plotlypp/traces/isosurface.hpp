@@ -50,7 +50,7 @@ class Isosurface : public Trace {
     // according to whether numbers in the `color` array are all positive, all negative or mixed.
     Isosurface& autocolorscale(bool f);
 
-    Isosurface& caps(class Caps f);
+    Isosurface& caps(Caps f);
 
     // Determines whether or not the color domain is computed with respect to the input data (here `value`) or the
     // bounds set in `cmin` and `cmax` Defaults to `false` when `cmin` and `cmax` are set by the user.
@@ -73,7 +73,7 @@ class Isosurface : public Trace {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Isosurface& coloraxis(std::string f);
 
-    Isosurface& colorbar(class Colorbar f);
+    Isosurface& colorbar(Colorbar f);
 
     // Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb,
     // rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are
@@ -84,7 +84,7 @@ class Isosurface : public Trace {
     Isosurface& colorscale(std::string f);
     Isosurface& colorscale(std::vector<std::pair<double, std::string>> f);
 
-    Isosurface& contour(class Contour f);
+    Isosurface& contour(Contour f);
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
@@ -109,7 +109,7 @@ class Isosurface : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Isosurface& hoverinfosrc(std::string f);
 
-    Isosurface& hoverlabel(class Hoverlabel f);
+    Isosurface& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -159,7 +159,7 @@ class Isosurface : public Trace {
     // when toggling legend items.
     Isosurface& legendgroup(std::string f);
 
-    Isosurface& legendgrouptitle(class Legendgrouptitle f);
+    Isosurface& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -171,9 +171,9 @@ class Isosurface : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Isosurface& legendwidth(double f);
 
-    Isosurface& lighting(class Lighting f);
+    Isosurface& lighting(Lighting f);
 
-    Isosurface& lightposition(class Lightposition f);
+    Isosurface& lightposition(Lightposition f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -213,13 +213,13 @@ class Isosurface : public Trace {
     // Determines whether or not a colorbar is displayed for this trace.
     Isosurface& showscale(bool f);
 
-    Isosurface& slices(class Slices f);
+    Isosurface& slices(Slices f);
 
-    Isosurface& spaceframe(class Spaceframe f);
+    Isosurface& spaceframe(Spaceframe f);
 
-    Isosurface& stream(class Stream f);
+    Isosurface& stream(Stream f);
 
-    Isosurface& surface(class Surface f);
+    Isosurface& surface(Surface f);
 
     // Sets the text elements associated with the vertices. If trace `hoverinfo` contains a *text* flag and *hovertext*
     // is not set, these elements will be seen in the hover labels.
@@ -314,11 +314,11 @@ class Isosurface::Caps {
     class Y;
     class Z;
 
-    Isosurface::Caps& x(class X f);
+    Isosurface::Caps& x(X f);
 
-    Isosurface::Caps& y(class Y f);
+    Isosurface::Caps& y(Y f);
 
-    Isosurface::Caps& z(class Z f);
+    Isosurface::Caps& z(Z f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -607,7 +607,7 @@ class Isosurface::Colorbar {
     Isosurface::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Isosurface::Colorbar& tickfont(class Tickfont f);
+    Isosurface::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -616,7 +616,7 @@ class Isosurface::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Isosurface::Colorbar& tickformat(std::string f);
 
-    Isosurface::Colorbar& tickformatstops(class Tickformatstops f);
+    Isosurface::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -672,7 +672,7 @@ class Isosurface::Colorbar {
     // Sets the tick width (in px).
     Isosurface::Colorbar& tickwidth(double f);
 
-    Isosurface::Colorbar& title(class Title f);
+    Isosurface::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -792,7 +792,7 @@ class Isosurface::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Isosurface::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Isosurface::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -842,7 +842,7 @@ class Isosurface::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Isosurface::Colorbar::Title& font(class Font f);
+    Isosurface::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -986,7 +986,7 @@ class Isosurface::Hoverlabel {
     Isosurface::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Isosurface::Hoverlabel& font(class Font f);
+    Isosurface::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -1119,7 +1119,7 @@ class Isosurface::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Isosurface::Legendgrouptitle& font(class Font f);
+    Isosurface::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Isosurface::Legendgrouptitle& text(std::string f);
@@ -1253,11 +1253,11 @@ class Isosurface::Slices {
     class Y;
     class Z;
 
-    Isosurface::Slices& x(class X f);
+    Isosurface::Slices& x(X f);
 
-    Isosurface::Slices& y(class Y f);
+    Isosurface::Slices& y(Y f);
 
-    Isosurface::Slices& z(class Z f);
+    Isosurface::Slices& z(Z f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

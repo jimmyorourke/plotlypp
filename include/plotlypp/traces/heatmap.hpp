@@ -123,7 +123,7 @@ class Heatmap : public Trace {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Heatmap& coloraxis(std::string f);
 
-    Heatmap& colorbar(class Colorbar f);
+    Heatmap& colorbar(Colorbar f);
 
     // Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb,
     // rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are
@@ -163,7 +163,7 @@ class Heatmap : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Heatmap& hoverinfosrc(std::string f);
 
-    Heatmap& hoverlabel(class Hoverlabel f);
+    Heatmap& hoverlabel(Hoverlabel f);
 
     // Determines whether or not gaps (i.e. {nan} or missing values) in the `z` data have hover labels associated with
     // them.
@@ -211,7 +211,7 @@ class Heatmap : public Trace {
     // when toggling legend items.
     Heatmap& legendgroup(std::string f);
 
-    Heatmap& legendgrouptitle(class Legendgrouptitle f);
+    Heatmap& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -253,14 +253,14 @@ class Heatmap : public Trace {
     // Determines whether or not a colorbar is displayed for this trace.
     Heatmap& showscale(bool f);
 
-    Heatmap& stream(class Stream f);
+    Heatmap& stream(Stream f);
 
     // Sets the text elements associated with each z value.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Heatmap& text(std::vector<T> f);
 
     // Sets the text font.
-    Heatmap& textfont(class Textfont f);
+    Heatmap& textfont(Textfont f);
 
     // Sets the source reference on Chart Studio Cloud for `text`.
     Heatmap& textsrc(std::string f);
@@ -669,7 +669,7 @@ class Heatmap::Colorbar {
     Heatmap::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Heatmap::Colorbar& tickfont(class Tickfont f);
+    Heatmap::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -678,7 +678,7 @@ class Heatmap::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Heatmap::Colorbar& tickformat(std::string f);
 
-    Heatmap::Colorbar& tickformatstops(class Tickformatstops f);
+    Heatmap::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -734,7 +734,7 @@ class Heatmap::Colorbar {
     // Sets the tick width (in px).
     Heatmap::Colorbar& tickwidth(double f);
 
-    Heatmap::Colorbar& title(class Title f);
+    Heatmap::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -854,7 +854,7 @@ class Heatmap::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Heatmap::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Heatmap::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -904,7 +904,7 @@ class Heatmap::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Heatmap::Colorbar::Title& font(class Font f);
+    Heatmap::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -1031,7 +1031,7 @@ class Heatmap::Hoverlabel {
     Heatmap::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Heatmap::Hoverlabel& font(class Font f);
+    Heatmap::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -1164,7 +1164,7 @@ class Heatmap::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Heatmap::Legendgrouptitle& font(class Font f);
+    Heatmap::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Heatmap::Legendgrouptitle& text(std::string f);

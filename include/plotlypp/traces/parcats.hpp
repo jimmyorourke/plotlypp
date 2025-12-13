@@ -79,9 +79,9 @@ class Parcats : public Trace {
     // Sets the source reference on Chart Studio Cloud for `counts`.
     Parcats& countssrc(std::string f);
 
-    Parcats& dimensions(class Dimensions f);
+    Parcats& dimensions(Dimensions f);
 
-    Parcats& domain(class Domain f);
+    Parcats& domain(Domain f);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -115,14 +115,14 @@ class Parcats : public Trace {
     Parcats& hovertemplate(std::string f);
 
     // Sets the font for the `dimension` labels.
-    Parcats& labelfont(class Labelfont f);
+    Parcats& labelfont(Labelfont f);
 
-    Parcats& legendgrouptitle(class Legendgrouptitle f);
+    Parcats& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the width (in px or fraction) of the legend for this trace.
     Parcats& legendwidth(double f);
 
-    Parcats& line(class Line f);
+    Parcats& line(Line f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -146,10 +146,10 @@ class Parcats : public Trace {
     // - Default: forward
     Parcats& sortpaths(enum Sortpaths f);
 
-    Parcats& stream(class Stream f);
+    Parcats& stream(Stream f);
 
     // Sets the font for the `category` labels.
-    Parcats& tickfont(class Tickfont f);
+    Parcats& tickfont(Tickfont f);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
@@ -179,7 +179,7 @@ class Parcats::Dimensions {
     class Dimension;
 
     // The dimensions (variables) of the parallel categories diagram.
-    Parcats::Dimensions& dimension(class Dimension f);
+    Parcats::Dimensions& dimension(Dimension f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -342,7 +342,7 @@ class Parcats::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Parcats::Legendgrouptitle& font(class Font f);
+    Parcats::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Parcats::Legendgrouptitle& text(std::string f);
@@ -471,7 +471,7 @@ class Parcats::Line {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Parcats::Line& coloraxis(std::string f);
 
-    Parcats::Line& colorbar(class Colorbar f);
+    Parcats::Line& colorbar(Colorbar f);
 
     // Sets the colorscale. Has an effect only if in `line.color` is set to a numerical array. The colorscale must be an
     // array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At
@@ -750,7 +750,7 @@ class Parcats::Line::Colorbar {
     Parcats::Line::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Parcats::Line::Colorbar& tickfont(class Tickfont f);
+    Parcats::Line::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -759,7 +759,7 @@ class Parcats::Line::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Parcats::Line::Colorbar& tickformat(std::string f);
 
-    Parcats::Line::Colorbar& tickformatstops(class Tickformatstops f);
+    Parcats::Line::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -815,7 +815,7 @@ class Parcats::Line::Colorbar {
     // Sets the tick width (in px).
     Parcats::Line::Colorbar& tickwidth(double f);
 
-    Parcats::Line::Colorbar& title(class Title f);
+    Parcats::Line::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -935,7 +935,7 @@ class Parcats::Line::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Parcats::Line::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Parcats::Line::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -985,7 +985,7 @@ class Parcats::Line::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Parcats::Line::Colorbar::Title& font(class Font f);
+    Parcats::Line::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.

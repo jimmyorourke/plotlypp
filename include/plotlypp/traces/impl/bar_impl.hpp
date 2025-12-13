@@ -171,12 +171,12 @@ Bar& Bar::dy(double f) {
     return *this;
 }
 
-Bar& Bar::error_x(class Error_X f) {
+Bar& Bar::error_x(Error_X f) {
     json["error_x"] = std::move(f.json);
     return *this;
 }
 
-Bar& Bar::error_y(class Error_Y f) {
+Bar& Bar::error_y(Error_Y f) {
     json["error_y"] = std::move(f.json);
     return *this;
 }
@@ -195,7 +195,7 @@ Bar& Bar::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Bar& Bar::hoverlabel(class Hoverlabel f) {
+Bar& Bar::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -244,7 +244,7 @@ Bar& Bar::insidetextanchor(enum Insidetextanchor f) {
     return *this;
 }
 
-Bar& Bar::insidetextfont(class Insidetextfont f) {
+Bar& Bar::insidetextfont(Insidetextfont f) {
     json["insidetextfont"] = std::move(f.json);
     return *this;
 }
@@ -259,7 +259,7 @@ Bar& Bar::legendgroup(std::string f) {
     return *this;
 }
 
-Bar& Bar::legendgrouptitle(class Legendgrouptitle f) {
+Bar& Bar::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -274,7 +274,7 @@ Bar& Bar::legendwidth(double f) {
     return *this;
 }
 
-Bar& Bar::marker(class Marker f) {
+Bar& Bar::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -329,12 +329,12 @@ Bar& Bar::orientation(enum Orientation f) {
     return *this;
 }
 
-Bar& Bar::outsidetextfont(class Outsidetextfont f) {
+Bar& Bar::outsidetextfont(Outsidetextfont f) {
     json["outsidetextfont"] = std::move(f.json);
     return *this;
 }
 
-Bar& Bar::selected(class Selected f) {
+Bar& Bar::selected(Selected f) {
     json["selected"] = std::move(f.json);
     return *this;
 }
@@ -350,7 +350,7 @@ Bar& Bar::showlegend(bool f) {
     return *this;
 }
 
-Bar& Bar::stream(class Stream f) {
+Bar& Bar::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -369,7 +369,7 @@ Bar& Bar::textangle(double f) {
     return *this;
 }
 
-Bar& Bar::textfont(class Textfont f) {
+Bar& Bar::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -420,7 +420,7 @@ Bar& Bar::uirevision(T f) {
     return *this;
 }
 
-Bar& Bar::unselected(class Unselected f) {
+Bar& Bar::unselected(Unselected f) {
     json["unselected"] = std::move(f.json);
     return *this;
 }
@@ -796,7 +796,7 @@ Bar::Hoverlabel& Bar::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Bar::Hoverlabel& Bar::Hoverlabel::font(class Font f) {
+Bar::Hoverlabel& Bar::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1158,7 +1158,7 @@ Bar::Insidetextfont& Bar::Insidetextfont::weightsrc(std::string f) {
 }
 
 
-Bar::Legendgrouptitle& Bar::Legendgrouptitle::font(class Font f) {
+Bar::Legendgrouptitle& Bar::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1296,7 +1296,7 @@ Bar::Marker& Bar::Marker::coloraxis(std::string f) {
     return *this;
 }
 
-Bar::Marker& Bar::Marker::colorbar(class Colorbar f) {
+Bar::Marker& Bar::Marker::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -1321,7 +1321,7 @@ Bar::Marker& Bar::Marker::cornerradius(T f) {
     return *this;
 }
 
-Bar::Marker& Bar::Marker::line(class Line f) {
+Bar::Marker& Bar::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -1340,7 +1340,7 @@ Bar::Marker& Bar::Marker::opacitysrc(std::string f) {
     return *this;
 }
 
-Bar::Marker& Bar::Marker::pattern(class Pattern f) {
+Bar::Marker& Bar::Marker::pattern(Pattern f) {
     json["pattern"] = std::move(f.json);
     return *this;
 }
@@ -1632,7 +1632,7 @@ Bar::Marker::Colorbar& Bar::Marker::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Bar::Marker::Colorbar& Bar::Marker::Colorbar::tickfont(class Tickfont f) {
+Bar::Marker::Colorbar& Bar::Marker::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -1642,7 +1642,7 @@ Bar::Marker::Colorbar& Bar::Marker::Colorbar::tickformat(std::string f) {
     return *this;
 }
 
-Bar::Marker::Colorbar& Bar::Marker::Colorbar::tickformatstops(class Tickformatstops f) {
+Bar::Marker::Colorbar& Bar::Marker::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -1714,7 +1714,7 @@ Bar::Marker::Colorbar& Bar::Marker::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Bar::Marker::Colorbar& Bar::Marker::Colorbar::title(class Title f) {
+Bar::Marker::Colorbar& Bar::Marker::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -1840,7 +1840,7 @@ Bar::Marker::Colorbar::Tickfont& Bar::Marker::Colorbar::Tickfont::weight(int f) 
 }
 
 
-Bar::Marker::Colorbar::Tickformatstops& Bar::Marker::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Bar::Marker::Colorbar::Tickformatstops& Bar::Marker::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -1881,7 +1881,7 @@ std::string Bar::Marker::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Bar::Marker::Colorbar::Title& Bar::Marker::Colorbar::Title::font(class Font f) {
+Bar::Marker::Colorbar::Title& Bar::Marker::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -2350,12 +2350,12 @@ Bar::Outsidetextfont& Bar::Outsidetextfont::weightsrc(std::string f) {
 }
 
 
-Bar::Selected& Bar::Selected::marker(class Marker f) {
+Bar::Selected& Bar::Selected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
 
-Bar::Selected& Bar::Selected::textfont(class Textfont f) {
+Bar::Selected& Bar::Selected::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -2568,12 +2568,12 @@ Bar::Textfont& Bar::Textfont::weightsrc(std::string f) {
 }
 
 
-Bar::Unselected& Bar::Unselected::marker(class Marker f) {
+Bar::Unselected& Bar::Unselected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
 
-Bar::Unselected& Bar::Unselected::textfont(class Textfont f) {
+Bar::Unselected& Bar::Unselected::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }

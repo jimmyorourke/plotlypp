@@ -48,7 +48,7 @@ class Carpet : public Trace {
     // `da` the step.
     Carpet& a0(double f);
 
-    Carpet& aaxis(class Aaxis f);
+    Carpet& aaxis(Aaxis f);
 
     // Sets the source reference on Chart Studio Cloud for `a`.
     Carpet& asrc(std::string f);
@@ -61,7 +61,7 @@ class Carpet : public Trace {
     // `db` the step.
     Carpet& b0(double f);
 
-    Carpet& baxis(class Baxis f);
+    Carpet& baxis(Baxis f);
 
     // Sets the source reference on Chart Studio Cloud for `b`.
     Carpet& bsrc(std::string f);
@@ -93,7 +93,7 @@ class Carpet : public Trace {
     Carpet& db(double f);
 
     // The default font used for axis & tick labels on this carpet
-    Carpet& font(class Font f);
+    Carpet& font(Font f);
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
@@ -107,7 +107,7 @@ class Carpet : public Trace {
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
     Carpet& legend(std::string f);
 
-    Carpet& legendgrouptitle(class Legendgrouptitle f);
+    Carpet& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -139,7 +139,7 @@ class Carpet : public Trace {
     // Sets the opacity of the trace.
     Carpet& opacity(double f);
 
-    Carpet& stream(class Stream f);
+    Carpet& stream(Stream f);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
@@ -468,7 +468,7 @@ class Carpet::Aaxis {
     Carpet::Aaxis& tickangle(double f);
 
     // Sets the tick font.
-    Carpet::Aaxis& tickfont(class Tickfont f);
+    Carpet::Aaxis& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -477,7 +477,7 @@ class Carpet::Aaxis {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Carpet::Aaxis& tickformat(std::string f);
 
-    Carpet::Aaxis& tickformatstops(class Tickformatstops f);
+    Carpet::Aaxis& tickformatstops(Tickformatstops f);
 
     //
     // - Default: array
@@ -505,7 +505,7 @@ class Carpet::Aaxis {
     // Sets the source reference on Chart Studio Cloud for `tickvals`.
     Carpet::Aaxis& tickvalssrc(std::string f);
 
-    Carpet::Aaxis& title(class Title f);
+    Carpet::Aaxis& title(Title f);
 
     // Sets the axis type. By default, plotly attempts to determined the axis type by looking into the data of the
     // traces that referenced the axis in question.
@@ -594,7 +594,7 @@ class Carpet::Aaxis::Tickformatstops {
 
     class Tickformatstop;
 
-    Carpet::Aaxis::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Carpet::Aaxis::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -637,7 +637,7 @@ class Carpet::Aaxis::Title {
     class Font;
 
     // Sets this axis' title font.
-    Carpet::Aaxis::Title& font(class Font f);
+    Carpet::Aaxis::Title& font(Font f);
 
     // An additional amount by which to offset the title from the tick labels, given in pixels.
     Carpet::Aaxis::Title& offset(double f);
@@ -1001,7 +1001,7 @@ class Carpet::Baxis {
     Carpet::Baxis& tickangle(double f);
 
     // Sets the tick font.
-    Carpet::Baxis& tickfont(class Tickfont f);
+    Carpet::Baxis& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -1010,7 +1010,7 @@ class Carpet::Baxis {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Carpet::Baxis& tickformat(std::string f);
 
-    Carpet::Baxis& tickformatstops(class Tickformatstops f);
+    Carpet::Baxis& tickformatstops(Tickformatstops f);
 
     //
     // - Default: array
@@ -1038,7 +1038,7 @@ class Carpet::Baxis {
     // Sets the source reference on Chart Studio Cloud for `tickvals`.
     Carpet::Baxis& tickvalssrc(std::string f);
 
-    Carpet::Baxis& title(class Title f);
+    Carpet::Baxis& title(Title f);
 
     // Sets the axis type. By default, plotly attempts to determined the axis type by looking into the data of the
     // traces that referenced the axis in question.
@@ -1127,7 +1127,7 @@ class Carpet::Baxis::Tickformatstops {
 
     class Tickformatstop;
 
-    Carpet::Baxis::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Carpet::Baxis::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1170,7 +1170,7 @@ class Carpet::Baxis::Title {
     class Font;
 
     // Sets this axis' title font.
-    Carpet::Baxis::Title& font(class Font f);
+    Carpet::Baxis::Title& font(Font f);
 
     // An additional amount by which to offset the title from the tick labels, given in pixels.
     Carpet::Baxis::Title& offset(double f);
@@ -1335,7 +1335,7 @@ class Carpet::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Carpet::Legendgrouptitle& font(class Font f);
+    Carpet::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Carpet::Legendgrouptitle& text(std::string f);

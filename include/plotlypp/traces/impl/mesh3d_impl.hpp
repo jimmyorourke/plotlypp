@@ -147,7 +147,7 @@ Mesh3D& Mesh3D::coloraxis(std::string f) {
     return *this;
 }
 
-Mesh3D& Mesh3D::colorbar(class Colorbar f) {
+Mesh3D& Mesh3D::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -161,7 +161,7 @@ Mesh3D& Mesh3D::colorscale(std::vector<std::pair<double, std::string>> f) {
     return *this;
 }
 
-Mesh3D& Mesh3D::contour(class Contour f) {
+Mesh3D& Mesh3D::contour(Contour f) {
     json["contour"] = std::move(f.json);
     return *this;
 }
@@ -212,7 +212,7 @@ Mesh3D& Mesh3D::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Mesh3D& Mesh3D::hoverlabel(class Hoverlabel f) {
+Mesh3D& Mesh3D::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -315,7 +315,7 @@ Mesh3D& Mesh3D::legendgroup(std::string f) {
     return *this;
 }
 
-Mesh3D& Mesh3D::legendgrouptitle(class Legendgrouptitle f) {
+Mesh3D& Mesh3D::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -330,12 +330,12 @@ Mesh3D& Mesh3D::legendwidth(double f) {
     return *this;
 }
 
-Mesh3D& Mesh3D::lighting(class Lighting f) {
+Mesh3D& Mesh3D::lighting(Lighting f) {
     json["lighting"] = std::move(f.json);
     return *this;
 }
 
-Mesh3D& Mesh3D::lightposition(class Lightposition f) {
+Mesh3D& Mesh3D::lightposition(Lightposition f) {
     json["lightposition"] = std::move(f.json);
     return *this;
 }
@@ -386,7 +386,7 @@ Mesh3D& Mesh3D::showscale(bool f) {
     return *this;
 }
 
-Mesh3D& Mesh3D::stream(class Stream f) {
+Mesh3D& Mesh3D::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -772,7 +772,7 @@ Mesh3D::Colorbar& Mesh3D::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Mesh3D::Colorbar& Mesh3D::Colorbar::tickfont(class Tickfont f) {
+Mesh3D::Colorbar& Mesh3D::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -782,7 +782,7 @@ Mesh3D::Colorbar& Mesh3D::Colorbar::tickformat(std::string f) {
     return *this;
 }
 
-Mesh3D::Colorbar& Mesh3D::Colorbar::tickformatstops(class Tickformatstops f) {
+Mesh3D::Colorbar& Mesh3D::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -854,7 +854,7 @@ Mesh3D::Colorbar& Mesh3D::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Mesh3D::Colorbar& Mesh3D::Colorbar::title(class Title f) {
+Mesh3D::Colorbar& Mesh3D::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -980,7 +980,7 @@ Mesh3D::Colorbar::Tickfont& Mesh3D::Colorbar::Tickfont::weight(int f) {
 }
 
 
-Mesh3D::Colorbar::Tickformatstops& Mesh3D::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Mesh3D::Colorbar::Tickformatstops& Mesh3D::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -1021,7 +1021,7 @@ std::string Mesh3D::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Mesh3D::Colorbar::Title& Mesh3D::Colorbar::Title::font(class Font f) {
+Mesh3D::Colorbar::Title& Mesh3D::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1206,7 +1206,7 @@ Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::font(class Font f) {
+Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1397,7 +1397,7 @@ Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::weightsrc(std::string f) {
 }
 
 
-Mesh3D::Legendgrouptitle& Mesh3D::Legendgrouptitle::font(class Font f) {
+Mesh3D::Legendgrouptitle& Mesh3D::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }

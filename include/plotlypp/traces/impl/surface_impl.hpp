@@ -116,7 +116,7 @@ Surface& Surface::coloraxis(std::string f) {
     return *this;
 }
 
-Surface& Surface::colorbar(class Colorbar f) {
+Surface& Surface::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -135,7 +135,7 @@ Surface& Surface::connectgaps(bool f) {
     return *this;
 }
 
-Surface& Surface::contours(class Contours f) {
+Surface& Surface::contours(Contours f) {
     json["contours"] = std::move(f.json);
     return *this;
 }
@@ -170,7 +170,7 @@ Surface& Surface::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Surface& Surface::hoverlabel(class Hoverlabel f) {
+Surface& Surface::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -224,7 +224,7 @@ Surface& Surface::legendgroup(std::string f) {
     return *this;
 }
 
-Surface& Surface::legendgrouptitle(class Legendgrouptitle f) {
+Surface& Surface::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -239,12 +239,12 @@ Surface& Surface::legendwidth(double f) {
     return *this;
 }
 
-Surface& Surface::lighting(class Lighting f) {
+Surface& Surface::lighting(Lighting f) {
     json["lighting"] = std::move(f.json);
     return *this;
 }
 
-Surface& Surface::lightposition(class Lightposition f) {
+Surface& Surface::lightposition(Lightposition f) {
     json["lightposition"] = std::move(f.json);
     return *this;
 }
@@ -301,7 +301,7 @@ Surface& Surface::showscale(bool f) {
     return *this;
 }
 
-Surface& Surface::stream(class Stream f) {
+Surface& Surface::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -687,7 +687,7 @@ Surface::Colorbar& Surface::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Surface::Colorbar& Surface::Colorbar::tickfont(class Tickfont f) {
+Surface::Colorbar& Surface::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -697,7 +697,7 @@ Surface::Colorbar& Surface::Colorbar::tickformat(std::string f) {
     return *this;
 }
 
-Surface::Colorbar& Surface::Colorbar::tickformatstops(class Tickformatstops f) {
+Surface::Colorbar& Surface::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -769,7 +769,7 @@ Surface::Colorbar& Surface::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Surface::Colorbar& Surface::Colorbar::title(class Title f) {
+Surface::Colorbar& Surface::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -895,7 +895,7 @@ Surface::Colorbar::Tickfont& Surface::Colorbar::Tickfont::weight(int f) {
 }
 
 
-Surface::Colorbar::Tickformatstops& Surface::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Surface::Colorbar::Tickformatstops& Surface::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -936,7 +936,7 @@ std::string Surface::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Surface::Colorbar::Title& Surface::Colorbar::Title::font(class Font f) {
+Surface::Colorbar::Title& Surface::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1032,17 +1032,17 @@ Surface::Colorbar::Title::Font& Surface::Colorbar::Title::Font::weight(int f) {
 }
 
 
-Surface::Contours& Surface::Contours::x(class X f) {
+Surface::Contours& Surface::Contours::x(X f) {
     json["x"] = std::move(f.json);
     return *this;
 }
 
-Surface::Contours& Surface::Contours::y(class Y f) {
+Surface::Contours& Surface::Contours::y(Y f) {
     json["y"] = std::move(f.json);
     return *this;
 }
 
-Surface::Contours& Surface::Contours::z(class Z f) {
+Surface::Contours& Surface::Contours::z(Z f) {
     json["z"] = std::move(f.json);
     return *this;
 }
@@ -1081,7 +1081,7 @@ Surface::Contours::X& Surface::Contours::X::highlightwidth(double f) {
     return *this;
 }
 
-Surface::Contours::X& Surface::Contours::X::project(class Project f) {
+Surface::Contours::X& Surface::Contours::X::project(Project f) {
     json["project"] = std::move(f.json);
     return *this;
 }
@@ -1161,7 +1161,7 @@ Surface::Contours::Y& Surface::Contours::Y::highlightwidth(double f) {
     return *this;
 }
 
-Surface::Contours::Y& Surface::Contours::Y::project(class Project f) {
+Surface::Contours::Y& Surface::Contours::Y::project(Project f) {
     json["project"] = std::move(f.json);
     return *this;
 }
@@ -1241,7 +1241,7 @@ Surface::Contours::Z& Surface::Contours::Z::highlightwidth(double f) {
     return *this;
 }
 
-Surface::Contours::Z& Surface::Contours::Z::project(class Project f) {
+Surface::Contours::Z& Surface::Contours::Z::project(Project f) {
     json["project"] = std::move(f.json);
     return *this;
 }
@@ -1357,7 +1357,7 @@ Surface::Hoverlabel& Surface::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Surface::Hoverlabel& Surface::Hoverlabel::font(class Font f) {
+Surface::Hoverlabel& Surface::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1548,7 +1548,7 @@ Surface::Hoverlabel::Font& Surface::Hoverlabel::Font::weightsrc(std::string f) {
 }
 
 
-Surface::Legendgrouptitle& Surface::Legendgrouptitle::font(class Font f) {
+Surface::Legendgrouptitle& Surface::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }

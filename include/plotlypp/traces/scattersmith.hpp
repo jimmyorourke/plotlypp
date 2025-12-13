@@ -102,7 +102,7 @@ class Scattersmith : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Scattersmith& hoverinfosrc(std::string f);
 
-    Scattersmith& hoverlabel(class Hoverlabel f);
+    Scattersmith& hoverlabel(Hoverlabel f);
 
     // Do the hover effects highlight individual points (markers or line points) or do they highlight filled regions? If
     // the fill is *toself* or *tonext* and there are no markers or text, then the default is *fills*, otherwise it is
@@ -162,7 +162,7 @@ class Scattersmith : public Trace {
     // when toggling legend items.
     Scattersmith& legendgroup(std::string f);
 
-    Scattersmith& legendgrouptitle(class Legendgrouptitle f);
+    Scattersmith& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -174,9 +174,9 @@ class Scattersmith : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Scattersmith& legendwidth(double f);
 
-    Scattersmith& line(class Line f);
+    Scattersmith& line(Line f);
 
-    Scattersmith& marker(class Marker f);
+    Scattersmith& marker(Marker f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -213,7 +213,7 @@ class Scattersmith : public Trace {
     // Sets the source reference on Chart Studio Cloud for `real`.
     Scattersmith& realsrc(std::string f);
 
-    Scattersmith& selected(class Selected f);
+    Scattersmith& selected(Selected f);
 
     // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
@@ -224,7 +224,7 @@ class Scattersmith : public Trace {
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Scattersmith& showlegend(bool f);
 
-    Scattersmith& stream(class Stream f);
+    Scattersmith& stream(Stream f);
 
     // Sets a reference between this trace's data coordinates and a smith subplot. If *smith* (the default value), the
     // data refer to `layout.smith`. If *smith2*, the data refer to `layout.smith2`, and so on.
@@ -237,7 +237,7 @@ class Scattersmith : public Trace {
     Scattersmith& text(std::vector<std::string> f);
 
     // Sets the text font.
-    Scattersmith& textfont(class Textfont f);
+    Scattersmith& textfont(Textfont f);
 
     // Sets the positions of the `text` elements with respects to the (x,y) coordinates.
     // - Default: middle center
@@ -279,7 +279,7 @@ class Scattersmith : public Trace {
     template <typename T>
     Scattersmith& uirevision(T f);
 
-    Scattersmith& unselected(class Unselected f);
+    Scattersmith& unselected(Unselected f);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -328,7 +328,7 @@ class Scattersmith::Hoverlabel {
     Scattersmith::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Scattersmith::Hoverlabel& font(class Font f);
+    Scattersmith::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -461,7 +461,7 @@ class Scattersmith::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Scattersmith::Legendgrouptitle& font(class Font f);
+    Scattersmith::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Scattersmith::Legendgrouptitle& text(std::string f);
@@ -980,7 +980,7 @@ class Scattersmith::Marker {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Scattersmith::Marker& coloraxis(std::string f);
 
-    Scattersmith::Marker& colorbar(class Colorbar f);
+    Scattersmith::Marker& colorbar(Colorbar f);
 
     // Sets the colorscale. Has an effect only if in `marker.color` is set to a numerical array. The colorscale must be
     // an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At
@@ -994,9 +994,9 @@ class Scattersmith::Marker {
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scattersmith::Marker& colorsrc(std::string f);
 
-    Scattersmith::Marker& gradient(class Gradient f);
+    Scattersmith::Marker& gradient(Gradient f);
 
-    Scattersmith::Marker& line(class Line f);
+    Scattersmith::Marker& line(Line f);
 
     // Sets a maximum number of points to be drawn on the graph. *0* corresponds to no limit.
     Scattersmith::Marker& maxdisplayed(double f);
@@ -1291,7 +1291,7 @@ class Scattersmith::Marker::Colorbar {
     Scattersmith::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Scattersmith::Marker::Colorbar& tickfont(class Tickfont f);
+    Scattersmith::Marker::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -1300,7 +1300,7 @@ class Scattersmith::Marker::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Scattersmith::Marker::Colorbar& tickformat(std::string f);
 
-    Scattersmith::Marker::Colorbar& tickformatstops(class Tickformatstops f);
+    Scattersmith::Marker::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -1356,7 +1356,7 @@ class Scattersmith::Marker::Colorbar {
     // Sets the tick width (in px).
     Scattersmith::Marker::Colorbar& tickwidth(double f);
 
-    Scattersmith::Marker::Colorbar& title(class Title f);
+    Scattersmith::Marker::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -1476,7 +1476,7 @@ class Scattersmith::Marker::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Scattersmith::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Scattersmith::Marker::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1526,7 +1526,7 @@ class Scattersmith::Marker::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Scattersmith::Marker::Colorbar::Title& font(class Font f);
+    Scattersmith::Marker::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -1723,9 +1723,9 @@ class Scattersmith::Selected {
     class Marker;
     class Textfont;
 
-    Scattersmith::Selected& marker(class Marker f);
+    Scattersmith::Selected& marker(Marker f);
 
-    Scattersmith::Selected& textfont(class Textfont f);
+    Scattersmith::Selected& textfont(Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1890,9 +1890,9 @@ class Scattersmith::Unselected {
     class Marker;
     class Textfont;
 
-    Scattersmith::Unselected& marker(class Marker f);
+    Scattersmith::Unselected& marker(Marker f);
 
-    Scattersmith::Unselected& textfont(class Textfont f);
+    Scattersmith::Unselected& textfont(Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

@@ -73,7 +73,7 @@ Ohlc& Ohlc::customdatasrc(std::string f) {
     return *this;
 }
 
-Ohlc& Ohlc::decreasing(class Decreasing f) {
+Ohlc& Ohlc::decreasing(Decreasing f) {
     json["decreasing"] = std::move(f.json);
     return *this;
 }
@@ -103,7 +103,7 @@ Ohlc& Ohlc::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Ohlc& Ohlc::hoverlabel(class Hoverlabel f) {
+Ohlc& Ohlc::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -133,7 +133,7 @@ Ohlc& Ohlc::idssrc(std::string f) {
     return *this;
 }
 
-Ohlc& Ohlc::increasing(class Increasing f) {
+Ohlc& Ohlc::increasing(Increasing f) {
     json["increasing"] = std::move(f.json);
     return *this;
 }
@@ -148,7 +148,7 @@ Ohlc& Ohlc::legendgroup(std::string f) {
     return *this;
 }
 
-Ohlc& Ohlc::legendgrouptitle(class Legendgrouptitle f) {
+Ohlc& Ohlc::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -163,7 +163,7 @@ Ohlc& Ohlc::legendwidth(double f) {
     return *this;
 }
 
-Ohlc& Ohlc::line(class Line f) {
+Ohlc& Ohlc::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -227,7 +227,7 @@ Ohlc& Ohlc::showlegend(bool f) {
     return *this;
 }
 
-Ohlc& Ohlc::stream(class Stream f) {
+Ohlc& Ohlc::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -326,7 +326,7 @@ Ohlc& Ohlc::zorder(int f) {
 }
 
 
-Ohlc::Decreasing& Ohlc::Decreasing::line(class Line f) {
+Ohlc::Decreasing& Ohlc::Decreasing::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -421,7 +421,7 @@ Ohlc::Hoverlabel& Ohlc::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Ohlc::Hoverlabel& Ohlc::Hoverlabel::font(class Font f) {
+Ohlc::Hoverlabel& Ohlc::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -617,7 +617,7 @@ Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::weightsrc(std::string f) {
 }
 
 
-Ohlc::Increasing& Ohlc::Increasing::line(class Line f) {
+Ohlc::Increasing& Ohlc::Increasing::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -643,7 +643,7 @@ Ohlc::Increasing::Line& Ohlc::Increasing::Line::width(double f) {
 }
 
 
-Ohlc::Legendgrouptitle& Ohlc::Legendgrouptitle::font(class Font f) {
+Ohlc::Legendgrouptitle& Ohlc::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }

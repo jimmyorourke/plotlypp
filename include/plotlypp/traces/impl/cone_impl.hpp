@@ -74,7 +74,7 @@ Cone& Cone::coloraxis(std::string f) {
     return *this;
 }
 
-Cone& Cone::colorbar(class Colorbar f) {
+Cone& Cone::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -113,7 +113,7 @@ Cone& Cone::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Cone& Cone::hoverlabel(class Hoverlabel f) {
+Cone& Cone::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -167,7 +167,7 @@ Cone& Cone::legendgroup(std::string f) {
     return *this;
 }
 
-Cone& Cone::legendgrouptitle(class Legendgrouptitle f) {
+Cone& Cone::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -182,12 +182,12 @@ Cone& Cone::legendwidth(double f) {
     return *this;
 }
 
-Cone& Cone::lighting(class Lighting f) {
+Cone& Cone::lighting(Lighting f) {
     json["lighting"] = std::move(f.json);
     return *this;
 }
 
-Cone& Cone::lightposition(class Lightposition f) {
+Cone& Cone::lightposition(Lightposition f) {
     json["lightposition"] = std::move(f.json);
     return *this;
 }
@@ -248,7 +248,7 @@ Cone& Cone::sizeref(double f) {
     return *this;
 }
 
-Cone& Cone::stream(class Stream f) {
+Cone& Cone::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -656,7 +656,7 @@ Cone::Colorbar& Cone::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Cone::Colorbar& Cone::Colorbar::tickfont(class Tickfont f) {
+Cone::Colorbar& Cone::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -666,7 +666,7 @@ Cone::Colorbar& Cone::Colorbar::tickformat(std::string f) {
     return *this;
 }
 
-Cone::Colorbar& Cone::Colorbar::tickformatstops(class Tickformatstops f) {
+Cone::Colorbar& Cone::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -738,7 +738,7 @@ Cone::Colorbar& Cone::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Cone::Colorbar& Cone::Colorbar::title(class Title f) {
+Cone::Colorbar& Cone::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -864,7 +864,7 @@ Cone::Colorbar::Tickfont& Cone::Colorbar::Tickfont::weight(int f) {
 }
 
 
-Cone::Colorbar::Tickformatstops& Cone::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Cone::Colorbar::Tickformatstops& Cone::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -905,7 +905,7 @@ std::string Cone::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Cone::Colorbar::Title& Cone::Colorbar::Title::font(class Font f) {
+Cone::Colorbar::Title& Cone::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1070,7 +1070,7 @@ Cone::Hoverlabel& Cone::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Cone::Hoverlabel& Cone::Hoverlabel::font(class Font f) {
+Cone::Hoverlabel& Cone::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1261,7 +1261,7 @@ Cone::Hoverlabel::Font& Cone::Hoverlabel::Font::weightsrc(std::string f) {
 }
 
 
-Cone::Legendgrouptitle& Cone::Legendgrouptitle::font(class Font f) {
+Cone::Legendgrouptitle& Cone::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }

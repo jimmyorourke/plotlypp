@@ -31,7 +31,7 @@ Carpet& Carpet::a0(double f) {
     return *this;
 }
 
-Carpet& Carpet::aaxis(class Aaxis f) {
+Carpet& Carpet::aaxis(Aaxis f) {
     json["aaxis"] = std::move(f.json);
     return *this;
 }
@@ -52,7 +52,7 @@ Carpet& Carpet::b0(double f) {
     return *this;
 }
 
-Carpet& Carpet::baxis(class Baxis f) {
+Carpet& Carpet::baxis(Baxis f) {
     json["baxis"] = std::move(f.json);
     return *this;
 }
@@ -102,7 +102,7 @@ Carpet& Carpet::db(double f) {
     return *this;
 }
 
-Carpet& Carpet::font(class Font f) {
+Carpet& Carpet::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -123,7 +123,7 @@ Carpet& Carpet::legend(std::string f) {
     return *this;
 }
 
-Carpet& Carpet::legendgrouptitle(class Legendgrouptitle f) {
+Carpet& Carpet::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -164,7 +164,7 @@ Carpet& Carpet::opacity(double f) {
     return *this;
 }
 
-Carpet& Carpet::stream(class Stream f) {
+Carpet& Carpet::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -587,7 +587,7 @@ Carpet::Aaxis& Carpet::Aaxis::tickangle(double f) {
     return *this;
 }
 
-Carpet::Aaxis& Carpet::Aaxis::tickfont(class Tickfont f) {
+Carpet::Aaxis& Carpet::Aaxis::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -597,7 +597,7 @@ Carpet::Aaxis& Carpet::Aaxis::tickformat(std::string f) {
     return *this;
 }
 
-Carpet::Aaxis& Carpet::Aaxis::tickformatstops(class Tickformatstops f) {
+Carpet::Aaxis& Carpet::Aaxis::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -639,7 +639,7 @@ Carpet::Aaxis& Carpet::Aaxis::tickvalssrc(std::string f) {
     return *this;
 }
 
-Carpet::Aaxis& Carpet::Aaxis::title(class Title f) {
+Carpet::Aaxis& Carpet::Aaxis::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -730,7 +730,7 @@ Carpet::Aaxis::Tickfont& Carpet::Aaxis::Tickfont::weight(int f) {
 }
 
 
-Carpet::Aaxis::Tickformatstops& Carpet::Aaxis::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Carpet::Aaxis::Tickformatstops& Carpet::Aaxis::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -762,7 +762,7 @@ Carpet::Aaxis::Tickformatstops::Tickformatstop& Carpet::Aaxis::Tickformatstops::
 }
 
 
-Carpet::Aaxis::Title& Carpet::Aaxis::Title::font(class Font f) {
+Carpet::Aaxis::Title& Carpet::Aaxis::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1222,7 +1222,7 @@ Carpet::Baxis& Carpet::Baxis::tickangle(double f) {
     return *this;
 }
 
-Carpet::Baxis& Carpet::Baxis::tickfont(class Tickfont f) {
+Carpet::Baxis& Carpet::Baxis::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -1232,7 +1232,7 @@ Carpet::Baxis& Carpet::Baxis::tickformat(std::string f) {
     return *this;
 }
 
-Carpet::Baxis& Carpet::Baxis::tickformatstops(class Tickformatstops f) {
+Carpet::Baxis& Carpet::Baxis::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -1274,7 +1274,7 @@ Carpet::Baxis& Carpet::Baxis::tickvalssrc(std::string f) {
     return *this;
 }
 
-Carpet::Baxis& Carpet::Baxis::title(class Title f) {
+Carpet::Baxis& Carpet::Baxis::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -1365,7 +1365,7 @@ Carpet::Baxis::Tickfont& Carpet::Baxis::Tickfont::weight(int f) {
 }
 
 
-Carpet::Baxis::Tickformatstops& Carpet::Baxis::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Carpet::Baxis::Tickformatstops& Carpet::Baxis::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -1397,7 +1397,7 @@ Carpet::Baxis::Tickformatstops::Tickformatstop& Carpet::Baxis::Tickformatstops::
 }
 
 
-Carpet::Baxis::Title& Carpet::Baxis::Title::font(class Font f) {
+Carpet::Baxis::Title& Carpet::Baxis::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1573,7 +1573,7 @@ Carpet::Font& Carpet::Font::weight(int f) {
 }
 
 
-Carpet::Legendgrouptitle& Carpet::Legendgrouptitle::font(class Font f) {
+Carpet::Legendgrouptitle& Carpet::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }

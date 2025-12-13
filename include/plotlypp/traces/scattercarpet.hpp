@@ -116,7 +116,7 @@ class Scattercarpet : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Scattercarpet& hoverinfosrc(std::string f);
 
-    Scattercarpet& hoverlabel(class Hoverlabel f);
+    Scattercarpet& hoverlabel(Hoverlabel f);
 
     // Do the hover effects highlight individual points (markers or line points) or do they highlight filled regions? If
     // the fill is *toself* or *tonext* and there are no markers or text, then the default is *fills*, otherwise it is
@@ -168,7 +168,7 @@ class Scattercarpet : public Trace {
     // when toggling legend items.
     Scattercarpet& legendgroup(std::string f);
 
-    Scattercarpet& legendgrouptitle(class Legendgrouptitle f);
+    Scattercarpet& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -180,9 +180,9 @@ class Scattercarpet : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Scattercarpet& legendwidth(double f);
 
-    Scattercarpet& line(class Line f);
+    Scattercarpet& line(Line f);
 
-    Scattercarpet& marker(class Marker f);
+    Scattercarpet& marker(Marker f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -212,7 +212,7 @@ class Scattercarpet : public Trace {
     // Sets the opacity of the trace.
     Scattercarpet& opacity(double f);
 
-    Scattercarpet& selected(class Selected f);
+    Scattercarpet& selected(Selected f);
 
     // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
@@ -223,7 +223,7 @@ class Scattercarpet : public Trace {
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Scattercarpet& showlegend(bool f);
 
-    Scattercarpet& stream(class Stream f);
+    Scattercarpet& stream(Stream f);
 
     // Sets text elements associated with each (a,b) point. If a single string, the same string appears over all the
     // data points. If an array of strings, the items are mapped in order to the the data points in (a,b). If trace
@@ -232,7 +232,7 @@ class Scattercarpet : public Trace {
     Scattercarpet& text(std::vector<std::string> f);
 
     // Sets the text font.
-    Scattercarpet& textfont(class Textfont f);
+    Scattercarpet& textfont(Textfont f);
 
     // Sets the positions of the `text` elements with respects to the (x,y) coordinates.
     // - Default: middle center
@@ -274,7 +274,7 @@ class Scattercarpet : public Trace {
     template <typename T>
     Scattercarpet& uirevision(T f);
 
-    Scattercarpet& unselected(class Unselected f);
+    Scattercarpet& unselected(Unselected f);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -335,7 +335,7 @@ class Scattercarpet::Hoverlabel {
     Scattercarpet::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Scattercarpet::Hoverlabel& font(class Font f);
+    Scattercarpet::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -468,7 +468,7 @@ class Scattercarpet::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Scattercarpet::Legendgrouptitle& font(class Font f);
+    Scattercarpet::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Scattercarpet::Legendgrouptitle& text(std::string f);
@@ -987,7 +987,7 @@ class Scattercarpet::Marker {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Scattercarpet::Marker& coloraxis(std::string f);
 
-    Scattercarpet::Marker& colorbar(class Colorbar f);
+    Scattercarpet::Marker& colorbar(Colorbar f);
 
     // Sets the colorscale. Has an effect only if in `marker.color` is set to a numerical array. The colorscale must be
     // an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At
@@ -1001,9 +1001,9 @@ class Scattercarpet::Marker {
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scattercarpet::Marker& colorsrc(std::string f);
 
-    Scattercarpet::Marker& gradient(class Gradient f);
+    Scattercarpet::Marker& gradient(Gradient f);
 
-    Scattercarpet::Marker& line(class Line f);
+    Scattercarpet::Marker& line(Line f);
 
     // Sets a maximum number of points to be drawn on the graph. *0* corresponds to no limit.
     Scattercarpet::Marker& maxdisplayed(double f);
@@ -1298,7 +1298,7 @@ class Scattercarpet::Marker::Colorbar {
     Scattercarpet::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Scattercarpet::Marker::Colorbar& tickfont(class Tickfont f);
+    Scattercarpet::Marker::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -1307,7 +1307,7 @@ class Scattercarpet::Marker::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Scattercarpet::Marker::Colorbar& tickformat(std::string f);
 
-    Scattercarpet::Marker::Colorbar& tickformatstops(class Tickformatstops f);
+    Scattercarpet::Marker::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -1363,7 +1363,7 @@ class Scattercarpet::Marker::Colorbar {
     // Sets the tick width (in px).
     Scattercarpet::Marker::Colorbar& tickwidth(double f);
 
-    Scattercarpet::Marker::Colorbar& title(class Title f);
+    Scattercarpet::Marker::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -1483,7 +1483,7 @@ class Scattercarpet::Marker::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Scattercarpet::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Scattercarpet::Marker::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1533,7 +1533,7 @@ class Scattercarpet::Marker::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Scattercarpet::Marker::Colorbar::Title& font(class Font f);
+    Scattercarpet::Marker::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -1730,9 +1730,9 @@ class Scattercarpet::Selected {
     class Marker;
     class Textfont;
 
-    Scattercarpet::Selected& marker(class Marker f);
+    Scattercarpet::Selected& marker(Marker f);
 
-    Scattercarpet::Selected& textfont(class Textfont f);
+    Scattercarpet::Selected& textfont(Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1897,9 +1897,9 @@ class Scattercarpet::Unselected {
     class Marker;
     class Textfont;
 
-    Scattercarpet::Unselected& marker(class Marker f);
+    Scattercarpet::Unselected& marker(Marker f);
 
-    Scattercarpet::Unselected& textfont(class Textfont f);
+    Scattercarpet::Unselected& textfont(Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

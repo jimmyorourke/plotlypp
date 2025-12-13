@@ -100,7 +100,7 @@ Contourcarpet& Contourcarpet::coloraxis(std::string f) {
     return *this;
 }
 
-Contourcarpet& Contourcarpet::colorbar(class Colorbar f) {
+Contourcarpet& Contourcarpet::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -114,7 +114,7 @@ Contourcarpet& Contourcarpet::colorscale(std::vector<std::pair<double, std::stri
     return *this;
 }
 
-Contourcarpet& Contourcarpet::contours(class Contours f) {
+Contourcarpet& Contourcarpet::contours(Contours f) {
     json["contours"] = std::move(f.json);
     return *this;
 }
@@ -181,7 +181,7 @@ Contourcarpet& Contourcarpet::legendgroup(std::string f) {
     return *this;
 }
 
-Contourcarpet& Contourcarpet::legendgrouptitle(class Legendgrouptitle f) {
+Contourcarpet& Contourcarpet::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -196,7 +196,7 @@ Contourcarpet& Contourcarpet::legendwidth(double f) {
     return *this;
 }
 
-Contourcarpet& Contourcarpet::line(class Line f) {
+Contourcarpet& Contourcarpet::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -247,7 +247,7 @@ Contourcarpet& Contourcarpet::showscale(bool f) {
     return *this;
 }
 
-Contourcarpet& Contourcarpet::stream(class Stream f) {
+Contourcarpet& Contourcarpet::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -607,7 +607,7 @@ Contourcarpet::Colorbar& Contourcarpet::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Contourcarpet::Colorbar& Contourcarpet::Colorbar::tickfont(class Tickfont f) {
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -617,7 +617,7 @@ Contourcarpet::Colorbar& Contourcarpet::Colorbar::tickformat(std::string f) {
     return *this;
 }
 
-Contourcarpet::Colorbar& Contourcarpet::Colorbar::tickformatstops(class Tickformatstops f) {
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -689,7 +689,7 @@ Contourcarpet::Colorbar& Contourcarpet::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Contourcarpet::Colorbar& Contourcarpet::Colorbar::title(class Title f) {
+Contourcarpet::Colorbar& Contourcarpet::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -815,7 +815,7 @@ Contourcarpet::Colorbar::Tickfont& Contourcarpet::Colorbar::Tickfont::weight(int
 }
 
 
-Contourcarpet::Colorbar::Tickformatstops& Contourcarpet::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Contourcarpet::Colorbar::Tickformatstops& Contourcarpet::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -856,7 +856,7 @@ std::string Contourcarpet::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Contourcarpet::Colorbar::Title& Contourcarpet::Colorbar::Title::font(class Font f) {
+Contourcarpet::Colorbar::Title& Contourcarpet::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -998,12 +998,12 @@ Contourcarpet::Contours& Contourcarpet::Contours::end(double f) {
     return *this;
 }
 
-Contourcarpet::Contours& Contourcarpet::Contours::impliedEdits(class Impliededits f) {
+Contourcarpet::Contours& Contourcarpet::Contours::impliedEdits(Impliededits f) {
     json["impliedEdits"] = std::move(f.json);
     return *this;
 }
 
-Contourcarpet::Contours& Contourcarpet::Contours::labelfont(class Labelfont f) {
+Contourcarpet::Contours& Contourcarpet::Contours::labelfont(Labelfont f) {
     json["labelfont"] = std::move(f.json);
     return *this;
 }
@@ -1131,7 +1131,7 @@ Contourcarpet::Contours::Labelfont& Contourcarpet::Contours::Labelfont::weight(i
 }
 
 
-Contourcarpet::Legendgrouptitle& Contourcarpet::Legendgrouptitle::font(class Font f) {
+Contourcarpet::Legendgrouptitle& Contourcarpet::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }

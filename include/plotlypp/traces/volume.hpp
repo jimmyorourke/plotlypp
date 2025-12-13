@@ -50,7 +50,7 @@ class Volume : public Trace {
     // according to whether numbers in the `color` array are all positive, all negative or mixed.
     Volume& autocolorscale(bool f);
 
-    Volume& caps(class Caps f);
+    Volume& caps(Caps f);
 
     // Determines whether or not the color domain is computed with respect to the input data (here `value`) or the
     // bounds set in `cmin` and `cmax` Defaults to `false` when `cmin` and `cmax` are set by the user.
@@ -73,7 +73,7 @@ class Volume : public Trace {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Volume& coloraxis(std::string f);
 
-    Volume& colorbar(class Colorbar f);
+    Volume& colorbar(Colorbar f);
 
     // Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb,
     // rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are
@@ -84,7 +84,7 @@ class Volume : public Trace {
     Volume& colorscale(std::string f);
     Volume& colorscale(std::vector<std::pair<double, std::string>> f);
 
-    Volume& contour(class Contour f);
+    Volume& contour(Contour f);
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
@@ -109,7 +109,7 @@ class Volume : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Volume& hoverinfosrc(std::string f);
 
-    Volume& hoverlabel(class Hoverlabel f);
+    Volume& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -159,7 +159,7 @@ class Volume : public Trace {
     // when toggling legend items.
     Volume& legendgroup(std::string f);
 
-    Volume& legendgrouptitle(class Legendgrouptitle f);
+    Volume& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -171,9 +171,9 @@ class Volume : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Volume& legendwidth(double f);
 
-    Volume& lighting(class Lighting f);
+    Volume& lighting(Lighting f);
 
-    Volume& lightposition(class Lightposition f);
+    Volume& lightposition(Lightposition f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -221,13 +221,13 @@ class Volume : public Trace {
     // Determines whether or not a colorbar is displayed for this trace.
     Volume& showscale(bool f);
 
-    Volume& slices(class Slices f);
+    Volume& slices(Slices f);
 
-    Volume& spaceframe(class Spaceframe f);
+    Volume& spaceframe(Spaceframe f);
 
-    Volume& stream(class Stream f);
+    Volume& stream(Stream f);
 
-    Volume& surface(class Surface f);
+    Volume& surface(Surface f);
 
     // Sets the text elements associated with the vertices. If trace `hoverinfo` contains a *text* flag and *hovertext*
     // is not set, these elements will be seen in the hover labels.
@@ -322,11 +322,11 @@ class Volume::Caps {
     class Y;
     class Z;
 
-    Volume::Caps& x(class X f);
+    Volume::Caps& x(X f);
 
-    Volume::Caps& y(class Y f);
+    Volume::Caps& y(Y f);
 
-    Volume::Caps& z(class Z f);
+    Volume::Caps& z(Z f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -615,7 +615,7 @@ class Volume::Colorbar {
     Volume::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Volume::Colorbar& tickfont(class Tickfont f);
+    Volume::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -624,7 +624,7 @@ class Volume::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Volume::Colorbar& tickformat(std::string f);
 
-    Volume::Colorbar& tickformatstops(class Tickformatstops f);
+    Volume::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -680,7 +680,7 @@ class Volume::Colorbar {
     // Sets the tick width (in px).
     Volume::Colorbar& tickwidth(double f);
 
-    Volume::Colorbar& title(class Title f);
+    Volume::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -800,7 +800,7 @@ class Volume::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Volume::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Volume::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -850,7 +850,7 @@ class Volume::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Volume::Colorbar::Title& font(class Font f);
+    Volume::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -994,7 +994,7 @@ class Volume::Hoverlabel {
     Volume::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Volume::Hoverlabel& font(class Font f);
+    Volume::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -1127,7 +1127,7 @@ class Volume::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Volume::Legendgrouptitle& font(class Font f);
+    Volume::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Volume::Legendgrouptitle& text(std::string f);
@@ -1261,11 +1261,11 @@ class Volume::Slices {
     class Y;
     class Z;
 
-    Volume::Slices& x(class X f);
+    Volume::Slices& x(X f);
 
-    Volume::Slices& y(class Y f);
+    Volume::Slices& y(Y f);
 
-    Volume::Slices& z(class Z f);
+    Volume::Slices& z(Z f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

@@ -83,7 +83,7 @@ class Barpolar : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Barpolar& hoverinfosrc(std::string f);
 
-    Barpolar& hoverlabel(class Hoverlabel f);
+    Barpolar& hoverlabel(Hoverlabel f);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -127,7 +127,7 @@ class Barpolar : public Trace {
     // when toggling legend items.
     Barpolar& legendgroup(std::string f);
 
-    Barpolar& legendgrouptitle(class Legendgrouptitle f);
+    Barpolar& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -139,7 +139,7 @@ class Barpolar : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Barpolar& legendwidth(double f);
 
-    Barpolar& marker(class Marker f);
+    Barpolar& marker(Marker f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -180,7 +180,7 @@ class Barpolar : public Trace {
     // Sets the source reference on Chart Studio Cloud for `r`.
     Barpolar& rsrc(std::string f);
 
-    Barpolar& selected(class Selected f);
+    Barpolar& selected(Selected f);
 
     // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
@@ -191,7 +191,7 @@ class Barpolar : public Trace {
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Barpolar& showlegend(bool f);
 
-    Barpolar& stream(class Stream f);
+    Barpolar& stream(Stream f);
 
     // Sets a reference between this trace's data coordinates and a polar subplot. If *polar* (the default value), the
     // data refer to `layout.polar`. If *polar2*, the data refer to `layout.polar2`, and so on.
@@ -236,7 +236,7 @@ class Barpolar : public Trace {
     template <typename T>
     Barpolar& uirevision(T f);
 
-    Barpolar& unselected(class Unselected f);
+    Barpolar& unselected(Unselected f);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -292,7 +292,7 @@ class Barpolar::Hoverlabel {
     Barpolar::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Barpolar::Hoverlabel& font(class Font f);
+    Barpolar::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -425,7 +425,7 @@ class Barpolar::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Barpolar::Legendgrouptitle& font(class Font f);
+    Barpolar::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Barpolar::Legendgrouptitle& text(std::string f);
@@ -551,7 +551,7 @@ class Barpolar::Marker {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Barpolar::Marker& coloraxis(std::string f);
 
-    Barpolar::Marker& colorbar(class Colorbar f);
+    Barpolar::Marker& colorbar(Colorbar f);
 
     // Sets the colorscale. Has an effect only if in `marker.color` is set to a numerical array. The colorscale must be
     // an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At
@@ -565,7 +565,7 @@ class Barpolar::Marker {
     // Sets the source reference on Chart Studio Cloud for `color`.
     Barpolar::Marker& colorsrc(std::string f);
 
-    Barpolar::Marker& line(class Line f);
+    Barpolar::Marker& line(Line f);
 
     // Sets the opacity of the bars.
     Barpolar::Marker& opacity(double f);
@@ -575,7 +575,7 @@ class Barpolar::Marker {
     Barpolar::Marker& opacitysrc(std::string f);
 
     // Sets the pattern within the marker.
-    Barpolar::Marker& pattern(class Pattern f);
+    Barpolar::Marker& pattern(Pattern f);
 
     // Reverses the color mapping if true. Has an effect only if in `marker.color` is set to a numerical array. If true,
     // `marker.cmin` will correspond to the last color in the array and `marker.cmax` will correspond to the first
@@ -822,7 +822,7 @@ class Barpolar::Marker::Colorbar {
     Barpolar::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Barpolar::Marker::Colorbar& tickfont(class Tickfont f);
+    Barpolar::Marker::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -831,7 +831,7 @@ class Barpolar::Marker::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Barpolar::Marker::Colorbar& tickformat(std::string f);
 
-    Barpolar::Marker::Colorbar& tickformatstops(class Tickformatstops f);
+    Barpolar::Marker::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -887,7 +887,7 @@ class Barpolar::Marker::Colorbar {
     // Sets the tick width (in px).
     Barpolar::Marker::Colorbar& tickwidth(double f);
 
-    Barpolar::Marker::Colorbar& title(class Title f);
+    Barpolar::Marker::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -1007,7 +1007,7 @@ class Barpolar::Marker::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Barpolar::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Barpolar::Marker::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1057,7 +1057,7 @@ class Barpolar::Marker::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Barpolar::Marker::Colorbar::Title& font(class Font f);
+    Barpolar::Marker::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -1300,9 +1300,9 @@ class Barpolar::Selected {
     class Marker;
     class Textfont;
 
-    Barpolar::Selected& marker(class Marker f);
+    Barpolar::Selected& marker(Marker f);
 
-    Barpolar::Selected& textfont(class Textfont f);
+    Barpolar::Selected& textfont(Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1354,9 +1354,9 @@ class Barpolar::Unselected {
     class Marker;
     class Textfont;
 
-    Barpolar::Unselected& marker(class Marker f);
+    Barpolar::Unselected& marker(Marker f);
 
-    Barpolar::Unselected& textfont(class Textfont f);
+    Barpolar::Unselected& textfont(Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

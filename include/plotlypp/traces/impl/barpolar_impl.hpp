@@ -80,7 +80,7 @@ Barpolar& Barpolar::hoverinfosrc(std::string f) {
     return *this;
 }
 
-Barpolar& Barpolar::hoverlabel(class Hoverlabel f) {
+Barpolar& Barpolar::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
@@ -134,7 +134,7 @@ Barpolar& Barpolar::legendgroup(std::string f) {
     return *this;
 }
 
-Barpolar& Barpolar::legendgrouptitle(class Legendgrouptitle f) {
+Barpolar& Barpolar::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -149,7 +149,7 @@ Barpolar& Barpolar::legendwidth(double f) {
     return *this;
 }
 
-Barpolar& Barpolar::marker(class Marker f) {
+Barpolar& Barpolar::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
@@ -211,7 +211,7 @@ Barpolar& Barpolar::rsrc(std::string f) {
     return *this;
 }
 
-Barpolar& Barpolar::selected(class Selected f) {
+Barpolar& Barpolar::selected(Selected f) {
     json["selected"] = std::move(f.json);
     return *this;
 }
@@ -227,7 +227,7 @@ Barpolar& Barpolar::showlegend(bool f) {
     return *this;
 }
 
-Barpolar& Barpolar::stream(class Stream f) {
+Barpolar& Barpolar::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
@@ -284,7 +284,7 @@ Barpolar& Barpolar::uirevision(T f) {
     return *this;
 }
 
-Barpolar& Barpolar::unselected(class Unselected f) {
+Barpolar& Barpolar::unselected(Unselected f) {
     json["unselected"] = std::move(f.json);
     return *this;
 }
@@ -378,7 +378,7 @@ Barpolar::Hoverlabel& Barpolar::Hoverlabel::bordercolorsrc(std::string f) {
     return *this;
 }
 
-Barpolar::Hoverlabel& Barpolar::Hoverlabel::font(class Font f) {
+Barpolar::Hoverlabel& Barpolar::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -569,7 +569,7 @@ Barpolar::Hoverlabel::Font& Barpolar::Hoverlabel::Font::weightsrc(std::string f)
 }
 
 
-Barpolar::Legendgrouptitle& Barpolar::Legendgrouptitle::font(class Font f) {
+Barpolar::Legendgrouptitle& Barpolar::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -707,7 +707,7 @@ Barpolar::Marker& Barpolar::Marker::coloraxis(std::string f) {
     return *this;
 }
 
-Barpolar::Marker& Barpolar::Marker::colorbar(class Colorbar f) {
+Barpolar::Marker& Barpolar::Marker::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -726,7 +726,7 @@ Barpolar::Marker& Barpolar::Marker::colorsrc(std::string f) {
     return *this;
 }
 
-Barpolar::Marker& Barpolar::Marker::line(class Line f) {
+Barpolar::Marker& Barpolar::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -745,7 +745,7 @@ Barpolar::Marker& Barpolar::Marker::opacitysrc(std::string f) {
     return *this;
 }
 
-Barpolar::Marker& Barpolar::Marker::pattern(class Pattern f) {
+Barpolar::Marker& Barpolar::Marker::pattern(Pattern f) {
     json["pattern"] = std::move(f.json);
     return *this;
 }
@@ -1037,7 +1037,7 @@ Barpolar::Marker::Colorbar& Barpolar::Marker::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Barpolar::Marker::Colorbar& Barpolar::Marker::Colorbar::tickfont(class Tickfont f) {
+Barpolar::Marker::Colorbar& Barpolar::Marker::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -1047,7 +1047,7 @@ Barpolar::Marker::Colorbar& Barpolar::Marker::Colorbar::tickformat(std::string f
     return *this;
 }
 
-Barpolar::Marker::Colorbar& Barpolar::Marker::Colorbar::tickformatstops(class Tickformatstops f) {
+Barpolar::Marker::Colorbar& Barpolar::Marker::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -1119,7 +1119,7 @@ Barpolar::Marker::Colorbar& Barpolar::Marker::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Barpolar::Marker::Colorbar& Barpolar::Marker::Colorbar::title(class Title f) {
+Barpolar::Marker::Colorbar& Barpolar::Marker::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -1245,7 +1245,7 @@ Barpolar::Marker::Colorbar::Tickfont& Barpolar::Marker::Colorbar::Tickfont::weig
 }
 
 
-Barpolar::Marker::Colorbar::Tickformatstops& Barpolar::Marker::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Barpolar::Marker::Colorbar::Tickformatstops& Barpolar::Marker::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -1286,7 +1286,7 @@ std::string Barpolar::Marker::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Barpolar::Marker::Colorbar::Title& Barpolar::Marker::Colorbar::Title::font(class Font f) {
+Barpolar::Marker::Colorbar::Title& Barpolar::Marker::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -1584,12 +1584,12 @@ Barpolar::Marker::Pattern& Barpolar::Marker::Pattern::soliditysrc(std::string f)
 }
 
 
-Barpolar::Selected& Barpolar::Selected::marker(class Marker f) {
+Barpolar::Selected& Barpolar::Selected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
 
-Barpolar::Selected& Barpolar::Selected::textfont(class Textfont f) {
+Barpolar::Selected& Barpolar::Selected::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
@@ -1631,12 +1631,12 @@ Barpolar::Stream& Barpolar::Stream::token(std::string f) {
 }
 
 
-Barpolar::Unselected& Barpolar::Unselected::marker(class Marker f) {
+Barpolar::Unselected& Barpolar::Unselected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
 
-Barpolar::Unselected& Barpolar::Unselected::textfont(class Textfont f) {
+Barpolar::Unselected& Barpolar::Unselected::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }

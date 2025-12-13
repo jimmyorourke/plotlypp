@@ -70,12 +70,12 @@ Parcats& Parcats::countssrc(std::string f) {
     return *this;
 }
 
-Parcats& Parcats::dimensions(class Dimensions f) {
+Parcats& Parcats::dimensions(Dimensions f) {
     json["dimensions"] = std::move(f.json);
     return *this;
 }
 
-Parcats& Parcats::domain(class Domain f) {
+Parcats& Parcats::domain(Domain f) {
     json["domain"] = std::move(f.json);
     return *this;
 }
@@ -95,12 +95,12 @@ Parcats& Parcats::hovertemplate(std::string f) {
     return *this;
 }
 
-Parcats& Parcats::labelfont(class Labelfont f) {
+Parcats& Parcats::labelfont(Labelfont f) {
     json["labelfont"] = std::move(f.json);
     return *this;
 }
 
-Parcats& Parcats::legendgrouptitle(class Legendgrouptitle f) {
+Parcats& Parcats::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
@@ -110,7 +110,7 @@ Parcats& Parcats::legendwidth(double f) {
     return *this;
 }
 
-Parcats& Parcats::line(class Line f) {
+Parcats& Parcats::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
@@ -141,12 +141,12 @@ Parcats& Parcats::sortpaths(enum Sortpaths f) {
     return *this;
 }
 
-Parcats& Parcats::stream(class Stream f) {
+Parcats& Parcats::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
 
-Parcats& Parcats::tickfont(class Tickfont f) {
+Parcats& Parcats::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -168,7 +168,7 @@ Parcats& Parcats::visible(enum Visible f) {
 }
 
 
-Parcats::Dimensions& Parcats::Dimensions::dimension(class Dimension f) {
+Parcats::Dimensions& Parcats::Dimensions::dimension(Dimension f) {
     json["dimension"] = std::move(f.json);
     return *this;
 }
@@ -339,7 +339,7 @@ Parcats::Labelfont& Parcats::Labelfont::weight(int f) {
 }
 
 
-Parcats::Legendgrouptitle& Parcats::Legendgrouptitle::font(class Font f) {
+Parcats::Legendgrouptitle& Parcats::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
@@ -485,7 +485,7 @@ Parcats::Line& Parcats::Line::coloraxis(std::string f) {
     return *this;
 }
 
-Parcats::Line& Parcats::Line::colorbar(class Colorbar f) {
+Parcats::Line& Parcats::Line::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
@@ -801,7 +801,7 @@ Parcats::Line::Colorbar& Parcats::Line::Colorbar::tickcolor(double f) {
     return *this;
 }
 
-Parcats::Line::Colorbar& Parcats::Line::Colorbar::tickfont(class Tickfont f) {
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
 }
@@ -811,7 +811,7 @@ Parcats::Line::Colorbar& Parcats::Line::Colorbar::tickformat(std::string f) {
     return *this;
 }
 
-Parcats::Line::Colorbar& Parcats::Line::Colorbar::tickformatstops(class Tickformatstops f) {
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
 }
@@ -883,7 +883,7 @@ Parcats::Line::Colorbar& Parcats::Line::Colorbar::tickwidth(double f) {
     return *this;
 }
 
-Parcats::Line::Colorbar& Parcats::Line::Colorbar::title(class Title f) {
+Parcats::Line::Colorbar& Parcats::Line::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
@@ -1009,7 +1009,7 @@ Parcats::Line::Colorbar::Tickfont& Parcats::Line::Colorbar::Tickfont::weight(int
 }
 
 
-Parcats::Line::Colorbar::Tickformatstops& Parcats::Line::Colorbar::Tickformatstops::tickformatstop(class Tickformatstop f) {
+Parcats::Line::Colorbar::Tickformatstops& Parcats::Line::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
 }
@@ -1050,7 +1050,7 @@ std::string Parcats::Line::Colorbar::Title::to_string(Side e) {
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Parcats::Line::Colorbar::Title& Parcats::Line::Colorbar::Title::font(class Font f) {
+Parcats::Line::Colorbar::Title& Parcats::Line::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }

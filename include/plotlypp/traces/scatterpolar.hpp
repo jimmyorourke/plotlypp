@@ -116,7 +116,7 @@ class Scatterpolar : public Trace {
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Scatterpolar& hoverinfosrc(std::string f);
 
-    Scatterpolar& hoverlabel(class Hoverlabel f);
+    Scatterpolar& hoverlabel(Hoverlabel f);
 
     // Do the hover effects highlight individual points (markers or line points) or do they highlight filled regions? If
     // the fill is *toself* or *tonext* and there are no markers or text, then the default is *fills*, otherwise it is
@@ -168,7 +168,7 @@ class Scatterpolar : public Trace {
     // when toggling legend items.
     Scatterpolar& legendgroup(std::string f);
 
-    Scatterpolar& legendgrouptitle(class Legendgrouptitle f);
+    Scatterpolar& legendgrouptitle(Legendgrouptitle f);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -180,9 +180,9 @@ class Scatterpolar : public Trace {
     // Sets the width (in px or fraction) of the legend for this trace.
     Scatterpolar& legendwidth(double f);
 
-    Scatterpolar& line(class Line f);
+    Scatterpolar& line(Line f);
 
-    Scatterpolar& marker(class Marker f);
+    Scatterpolar& marker(Marker f);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -223,7 +223,7 @@ class Scatterpolar : public Trace {
     // Sets the source reference on Chart Studio Cloud for `r`.
     Scatterpolar& rsrc(std::string f);
 
-    Scatterpolar& selected(class Selected f);
+    Scatterpolar& selected(Selected f);
 
     // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
@@ -234,7 +234,7 @@ class Scatterpolar : public Trace {
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Scatterpolar& showlegend(bool f);
 
-    Scatterpolar& stream(class Stream f);
+    Scatterpolar& stream(Stream f);
 
     // Sets a reference between this trace's data coordinates and a polar subplot. If *polar* (the default value), the
     // data refer to `layout.polar`. If *polar2*, the data refer to `layout.polar2`, and so on.
@@ -247,7 +247,7 @@ class Scatterpolar : public Trace {
     Scatterpolar& text(std::vector<std::string> f);
 
     // Sets the text font.
-    Scatterpolar& textfont(class Textfont f);
+    Scatterpolar& textfont(Textfont f);
 
     // Sets the positions of the `text` elements with respects to the (x,y) coordinates.
     // - Default: middle center
@@ -305,7 +305,7 @@ class Scatterpolar : public Trace {
     template <typename T>
     Scatterpolar& uirevision(T f);
 
-    Scatterpolar& unselected(class Unselected f);
+    Scatterpolar& unselected(Unselected f);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -354,7 +354,7 @@ class Scatterpolar::Hoverlabel {
     Scatterpolar::Hoverlabel& bordercolorsrc(std::string f);
 
     // Sets the font used in hover labels.
-    Scatterpolar::Hoverlabel& font(class Font f);
+    Scatterpolar::Hoverlabel& font(Font f);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
@@ -487,7 +487,7 @@ class Scatterpolar::Legendgrouptitle {
     class Font;
 
     // Sets this legend group's title font.
-    Scatterpolar::Legendgrouptitle& font(class Font f);
+    Scatterpolar::Legendgrouptitle& font(Font f);
 
     // Sets the title of the legend group.
     Scatterpolar::Legendgrouptitle& text(std::string f);
@@ -1006,7 +1006,7 @@ class Scatterpolar::Marker {
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Scatterpolar::Marker& coloraxis(std::string f);
 
-    Scatterpolar::Marker& colorbar(class Colorbar f);
+    Scatterpolar::Marker& colorbar(Colorbar f);
 
     // Sets the colorscale. Has an effect only if in `marker.color` is set to a numerical array. The colorscale must be
     // an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At
@@ -1020,9 +1020,9 @@ class Scatterpolar::Marker {
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scatterpolar::Marker& colorsrc(std::string f);
 
-    Scatterpolar::Marker& gradient(class Gradient f);
+    Scatterpolar::Marker& gradient(Gradient f);
 
-    Scatterpolar::Marker& line(class Line f);
+    Scatterpolar::Marker& line(Line f);
 
     // Sets a maximum number of points to be drawn on the graph. *0* corresponds to no limit.
     Scatterpolar::Marker& maxdisplayed(double f);
@@ -1317,7 +1317,7 @@ class Scatterpolar::Marker::Colorbar {
     Scatterpolar::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
-    Scatterpolar::Marker::Colorbar& tickfont(class Tickfont f);
+    Scatterpolar::Marker::Colorbar& tickfont(Tickfont f);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -1326,7 +1326,7 @@ class Scatterpolar::Marker::Colorbar {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Scatterpolar::Marker::Colorbar& tickformat(std::string f);
 
-    Scatterpolar::Marker::Colorbar& tickformatstops(class Tickformatstops f);
+    Scatterpolar::Marker::Colorbar& tickformatstops(Tickformatstops f);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -1382,7 +1382,7 @@ class Scatterpolar::Marker::Colorbar {
     // Sets the tick width (in px).
     Scatterpolar::Marker::Colorbar& tickwidth(double f);
 
-    Scatterpolar::Marker::Colorbar& title(class Title f);
+    Scatterpolar::Marker::Colorbar& title(Title f);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
@@ -1502,7 +1502,7 @@ class Scatterpolar::Marker::Colorbar::Tickformatstops {
 
     class Tickformatstop;
 
-    Scatterpolar::Marker::Colorbar::Tickformatstops& tickformatstop(class Tickformatstop f);
+    Scatterpolar::Marker::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1552,7 +1552,7 @@ class Scatterpolar::Marker::Colorbar::Title {
     class Font;
 
     // Sets this color bar's title font.
-    Scatterpolar::Marker::Colorbar::Title& font(class Font f);
+    Scatterpolar::Marker::Colorbar::Title& font(Font f);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -1749,9 +1749,9 @@ class Scatterpolar::Selected {
     class Marker;
     class Textfont;
 
-    Scatterpolar::Selected& marker(class Marker f);
+    Scatterpolar::Selected& marker(Marker f);
 
-    Scatterpolar::Selected& textfont(class Textfont f);
+    Scatterpolar::Selected& textfont(Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1916,9 +1916,9 @@ class Scatterpolar::Unselected {
     class Marker;
     class Textfont;
 
-    Scatterpolar::Unselected& marker(class Marker f);
+    Scatterpolar::Unselected& marker(Marker f);
 
-    Scatterpolar::Unselected& textfont(class Textfont f);
+    Scatterpolar::Unselected& textfont(Textfont f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
