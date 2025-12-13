@@ -25,33 +25,37 @@ class Figure {
     }
 
     void toHtml(std::ostream& os) {
-        os << "<meta charset=\"utf-8\">\n";
-        os << "<head>\n";
-        // Try to load plotly JS from CDN. If that fails, try to load a local copy from common pre-defined locations.
-        os << "    <script src=\"https://cdn.plot.ly/plotly-3.0.1.min.js1\"></script>\n";
-        os << "    <script>\n";
-        os << "        if (typeof Plotly === 'undefined') {\n";
-        os << "            document.write('<script src=\"./plotly.min.js\">\\x3C/script>')\n";
-        os << "            document.write('<script src=\"./js/plotly.min.js\">\\x3C/script>')\n";
-        os << "        }\n";
-        os << "    </script>\n";
-        os << "</head>\n";
-        os << "<body>\n";
-        os << "    <div id=\"plot\"></div>\n";
-        os << "    <script>\n";
-        os << "        function resizeDiv() {\n";
-        os << "            const div = document.getElementById('plot');\n";
-        os << "            div.style.width = window.innerWidth;\n";
-        os << "            div.style.height = window.innerHeight;\n";
-        os << "            data = JSON.parse('" << serialize(_json) << "')\n";
-        os << "            Plotly.newPlot('plot', data);\n";
-        os << "        }\n";
-        os << "        // Call resizeDiv initially to set the size on page load.\n";
-        os << "        resizeDiv();\n";
-        os << "        // Add an event listener to the window's resize event.\n";
-        os << "        window.addEventListener('resize', resizeDiv);\n";
-        os << "    </script>\n";
-        os << "</body>\n";
+        // clang-format off
+        os << "<meta charset=\"utf-8\">\n"
+              "<head>\n"
+              // Try to load plotly JS from a local pre-defined location. If that fails, try an alternate local
+              // location and fallback to a CDN.
+              "    <script src=\"./js/plotly.min.js\"></script>\n"
+              "    <script>\n"
+              "        if (typeof Plotly === 'undefined') {\n"
+              "            document.write('<script src=\"./plotly.min.js\">\\x3C/script>')\n"
+              "            document.write('<script src=\"https://cdn.plot.ly/plotly-3.0.1.min.js\">\\x3C/script>')\n"
+              "        }\n"
+              "    </script>\n"
+              "</head>\n"
+              "<body>\n"
+              "    <div id=\"plot\"></div>\n"
+              "    <script>\n"
+              "        function resizeDiv() {\n"
+              "            const div = document.getElementById('plot');\n"
+              "            div.style.width = window.innerWidth;\n"
+              "            div.style.height = window.innerHeight;\n"
+              "            data = JSON.parse('" << serialize(_json["data"]) << "')\n"
+              "            layout = JSON.parse('" << serialize(_json["layout"]) << "')\n"
+              "            Plotly.newPlot('plot', data, layout);\n"
+              "        }\n"
+              "        // Call resizeDiv initially to set the size on page load.\n"
+              "        resizeDiv();\n"
+              "        // Add an event listener to the window's resize event.\n"
+              "        window.addEventListener('resize', resizeDiv);\n"
+              "    </script>\n"
+              "</body>\n";
+        // clang-format on
     }
 
     void writePlotlyJsResourceFile(const std::filesystem::path& outputDir) {
@@ -92,7 +96,7 @@ class Figure {
     }
     void unimplementedPlatorm();
 
-    Json _json;
+    Json _json{{"data", {}}, {"layout", {}}};
     inline static int _showCount = 0;
 };
 
