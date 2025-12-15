@@ -25,6 +25,8 @@ class Parcoords : public Trace {
     : Trace() {
         json["type"] = "parcoords";
     }
+    Parcoords(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Labelside {
         TOP,
@@ -154,6 +156,9 @@ class Parcoords : public Trace {
 
 class Parcoords::Dimensions {
  public:
+    Dimensions() = default;
+    Dimensions(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // The dimensions (variables) of the parallel coordinates chart. 2..60 dimensions are supported.
     class Dimension;
@@ -168,11 +173,14 @@ class Parcoords::Dimensions {
 // The dimensions (variables) of the parallel coordinates chart. 2..60 dimensions are supported.
 class Parcoords::Dimensions::Dimension {
  public:
+    Dimension() = default;
+    Dimension(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // The domain range to which the filter on the dimension is constrained. Must be an array of `[fromValue, toValue]`
     // with `fromValue <= toValue`, or if `multiselect` is not disabled, you may give an array of arrays, where each
     // inner array is `[fromValue, toValue]`.
-    Parcoords::Dimensions::Dimension& constraintrange(std::vector<std::string> f);
+    Parcoords::Dimensions::Dimension& constraintrange(std::vector<double> f);
 
     // The shown name of the dimension.
     Parcoords::Dimensions::Dimension& label(std::string f);
@@ -188,7 +196,7 @@ class Parcoords::Dimensions::Dimension {
 
     // The domain range that represents the full, shown axis extent. Defaults to the `values` extent. Must be an array
     // of `[fromValue, toValue]` with finite numbers as elements.
-    Parcoords::Dimensions::Dimension& range(std::vector<std::string> f);
+    Parcoords::Dimensions::Dimension& range(std::vector<double> f);
 
     // Used to refer to a named item in this array in the template. Named items from the template will be created even
     // without a matching item in the input figure, but you can modify one by making an item with `templateitemname`
@@ -236,6 +244,9 @@ class Parcoords::Dimensions::Dimension {
 
 class Parcoords::Domain {
  public:
+    Domain() = default;
+    Domain(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // If there is a layout grid, use the domain for this column in the grid for this parcoords trace .
     Parcoords::Domain& column(int f);
@@ -244,10 +255,10 @@ class Parcoords::Domain {
     Parcoords::Domain& row(int f);
 
     // Sets the horizontal domain of this parcoords trace (in plot fraction).
-    Parcoords::Domain& x(std::vector<std::string> f);
+    Parcoords::Domain& x(std::vector<double> f);
 
     // Sets the vertical domain of this parcoords trace (in plot fraction).
-    Parcoords::Domain& y(std::vector<std::string> f);
+    Parcoords::Domain& y(std::vector<double> f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -256,6 +267,9 @@ class Parcoords::Domain {
 // Sets the font for the `dimension` labels.
 class Parcoords::Labelfont {
  public:
+    Labelfont() = default;
+    Labelfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -282,7 +296,6 @@ class Parcoords::Labelfont {
     static std::string to_string(Variant e);
 
     Parcoords::Labelfont& color(std::string f);
-    Parcoords::Labelfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -328,6 +341,9 @@ class Parcoords::Labelfont {
 
 class Parcoords::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -345,6 +361,9 @@ class Parcoords::Legendgrouptitle {
 // Sets this legend group's title font.
 class Parcoords::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -371,7 +390,6 @@ class Parcoords::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Parcoords::Legendgrouptitle::Font& color(std::string f);
-    Parcoords::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -417,6 +435,9 @@ class Parcoords::Legendgrouptitle::Font {
 
 class Parcoords::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Colorbar;
 
@@ -447,9 +468,7 @@ class Parcoords::Line {
     // Sets the line color. It accepts either a specific color or an array of numbers that are mapped to the colorscale
     // relative to the max and min values of the array or relative to `line.cmin` and `line.cmax` if set.
     Parcoords::Line& color(std::string f);
-    Parcoords::Line& color(double f);
     Parcoords::Line& color(std::vector<std::string> f);
-    Parcoords::Line& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -484,6 +503,9 @@ class Parcoords::Line {
 
 class Parcoords::Line::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -604,11 +626,9 @@ class Parcoords::Line::Colorbar {
 
     // Sets the color of padded area.
     Parcoords::Line::Colorbar& bgcolor(std::string f);
-    Parcoords::Line::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Parcoords::Line::Colorbar& bordercolor(std::string f);
-    Parcoords::Line::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Parcoords::Line::Colorbar& borderwidth(double f);
@@ -664,7 +684,6 @@ class Parcoords::Line::Colorbar {
 
     // Sets the axis line color.
     Parcoords::Line::Colorbar& outlinecolor(std::string f);
-    Parcoords::Line::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Parcoords::Line::Colorbar& outlinewidth(double f);
@@ -711,7 +730,6 @@ class Parcoords::Line::Colorbar {
 
     // Sets the tick color.
     Parcoords::Line::Colorbar& tickcolor(std::string f);
-    Parcoords::Line::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Parcoords::Line::Colorbar& tickfont(Tickfont f);
@@ -824,6 +842,9 @@ class Parcoords::Line::Colorbar {
 // Sets the color bar's tick label font
 class Parcoords::Line::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -850,7 +871,6 @@ class Parcoords::Line::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Parcoords::Line::Colorbar::Tickfont& color(std::string f);
-    Parcoords::Line::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -896,6 +916,9 @@ class Parcoords::Line::Colorbar::Tickfont {
 
 class Parcoords::Line::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -907,10 +930,13 @@ class Parcoords::Line::Colorbar::Tickformatstops {
 
 class Parcoords::Line::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Parcoords::Line::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Parcoords::Line::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Parcoords::Line::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -937,6 +963,9 @@ class Parcoords::Line::Colorbar::Tickformatstops::Tickformatstop {
 
 class Parcoords::Line::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -965,6 +994,9 @@ class Parcoords::Line::Colorbar::Title {
 // Sets this color bar's title font.
 class Parcoords::Line::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -991,7 +1023,6 @@ class Parcoords::Line::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Parcoords::Line::Colorbar::Title::Font& color(std::string f);
-    Parcoords::Line::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1038,6 +1069,9 @@ class Parcoords::Line::Colorbar::Title::Font {
 // Sets the font for the `dimension` range values.
 class Parcoords::Rangefont {
  public:
+    Rangefont() = default;
+    Rangefont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1064,7 +1098,6 @@ class Parcoords::Rangefont {
     static std::string to_string(Variant e);
 
     Parcoords::Rangefont& color(std::string f);
-    Parcoords::Rangefont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1110,6 +1143,9 @@ class Parcoords::Rangefont {
 
 class Parcoords::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -1126,6 +1162,9 @@ class Parcoords::Stream {
 // Sets the font for the `dimension` tick values.
 class Parcoords::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1152,7 +1191,6 @@ class Parcoords::Tickfont {
     static std::string to_string(Variant e);
 
     Parcoords::Tickfont& color(std::string f);
-    Parcoords::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1198,6 +1236,9 @@ class Parcoords::Tickfont {
 
 class Parcoords::Unselected {
  public:
+    Unselected() = default;
+    Unselected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Line;
 
@@ -1209,10 +1250,12 @@ class Parcoords::Unselected {
 
 class Parcoords::Unselected::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the base color of unselected lines. in connection with `unselected.line.opacity`.
     Parcoords::Unselected::Line& color(std::string f);
-    Parcoords::Unselected::Line& color(double f);
 
     // Sets the opacity of unselected lines. The default *auto* decreases the opacity smoothly as the number of lines
     // increases. Use *1* to achieve exact `unselected.line.color`.

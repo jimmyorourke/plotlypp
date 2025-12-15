@@ -555,16 +555,8 @@ Volume::Colorbar& Volume::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Volume::Colorbar& Volume::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Volume::Colorbar& Volume::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Volume::Colorbar& Volume::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -617,10 +609,6 @@ Volume::Colorbar& Volume::Colorbar::orientation(enum Orientation f) {
 }
 
 Volume::Colorbar& Volume::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Volume::Colorbar& Volume::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -677,10 +665,6 @@ Volume::Colorbar& Volume::Colorbar::tickangle(double f) {
 }
 
 Volume::Colorbar& Volume::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Volume::Colorbar& Volume::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -847,10 +831,6 @@ Volume::Colorbar::Tickfont& Volume::Colorbar::Tickfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Volume::Colorbar::Tickfont& Volume::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Volume::Colorbar::Tickfont& Volume::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -899,7 +879,7 @@ Volume::Colorbar::Tickformatstops& Volume::Colorbar::Tickformatstops::tickformat
 }
 
 
-Volume::Colorbar::Tickformatstops::Tickformatstop& Volume::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Volume::Colorbar::Tickformatstops::Tickformatstop& Volume::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -984,10 +964,6 @@ Volume::Colorbar::Title::Font& Volume::Colorbar::Title::Font::color(std::string 
     json["color"] = std::move(f);
     return *this;
 }
-Volume::Colorbar::Title::Font& Volume::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Volume::Colorbar::Title::Font& Volume::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1034,10 +1010,6 @@ Volume::Contour& Volume::Contour::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Volume::Contour& Volume::Contour::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Volume::Contour& Volume::Contour::show(bool f) {
     json["show"] = std::move(f);
@@ -1079,15 +1051,7 @@ Volume::Hoverlabel& Volume::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Volume::Hoverlabel& Volume::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Volume::Hoverlabel& Volume::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Volume::Hoverlabel& Volume::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -1101,15 +1065,7 @@ Volume::Hoverlabel& Volume::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Volume::Hoverlabel& Volume::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Volume::Hoverlabel& Volume::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Volume::Hoverlabel& Volume::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -1173,15 +1129,7 @@ Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1352,10 +1300,6 @@ std::string Volume::Legendgrouptitle::Font::to_string(Variant e) {
 }
 
 Volume::Legendgrouptitle::Font& Volume::Legendgrouptitle::Font::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Volume::Legendgrouptitle::Font& Volume::Legendgrouptitle::Font::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

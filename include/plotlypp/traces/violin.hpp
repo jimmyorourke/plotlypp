@@ -25,6 +25,8 @@ class Violin : public Trace {
     : Trace() {
         json["type"] = "violin";
     }
+    Violin(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Orientation {
         V,
@@ -105,7 +107,6 @@ class Violin : public Trace {
     // Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line
     // color, whichever is available.
     Violin& fillcolor(std::string f);
-    Violin& fillcolor(double f);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -273,7 +274,7 @@ class Violin : public Trace {
 
     // Sets the span in data space for which the density function will be computed. Has an effect only when `spanmode`
     // is set to *manual*.
-    Violin& span(std::vector<std::string> f);
+    Violin& span(std::vector<double> f);
 
     // Sets the method by which the span in data space where the density function will be computed. *soft* means the
     // span goes from the sample's minimum value minus two bandwidths to the sample's maximum value plus two bandwidths.
@@ -374,12 +375,14 @@ class Violin : public Trace {
 
 class Violin::Box {
  public:
+    Box() = default;
+    Box(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Line;
 
     // Sets the inner box plot fill color.
     Violin::Box& fillcolor(std::string f);
-    Violin::Box& fillcolor(double f);
 
     Violin::Box& line(Line f);
 
@@ -396,10 +399,12 @@ class Violin::Box {
 
 class Violin::Box::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the inner box plot bounding line color.
     Violin::Box::Line& color(std::string f);
-    Violin::Box::Line& color(double f);
 
     // Sets the inner box plot bounding line width.
     Violin::Box::Line& width(double f);
@@ -410,6 +415,9 @@ class Violin::Box::Line {
 
 class Violin::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -432,18 +440,14 @@ class Violin::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Violin::Hoverlabel& bgcolor(std::string f);
-    Violin::Hoverlabel& bgcolor(double f);
     Violin::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Violin::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Violin::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Violin::Hoverlabel& bordercolor(std::string f);
-    Violin::Hoverlabel& bordercolor(double f);
     Violin::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Violin::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Violin::Hoverlabel& bordercolorsrc(std::string f);
@@ -468,6 +472,9 @@ class Violin::Hoverlabel {
 // Sets the font used in hover labels.
 class Violin::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -494,9 +501,7 @@ class Violin::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Violin::Hoverlabel::Font& color(std::string f);
-    Violin::Hoverlabel::Font& color(double f);
     Violin::Hoverlabel::Font& color(std::vector<std::string> f);
-    Violin::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Violin::Hoverlabel::Font& colorsrc(std::string f);
@@ -577,6 +582,9 @@ class Violin::Hoverlabel::Font {
 
 class Violin::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -594,6 +602,9 @@ class Violin::Legendgrouptitle {
 // Sets this legend group's title font.
 class Violin::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -620,7 +631,6 @@ class Violin::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Violin::Legendgrouptitle::Font& color(std::string f);
-    Violin::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -666,10 +676,12 @@ class Violin::Legendgrouptitle::Font {
 
 class Violin::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the color of line bounding the violin(s).
     Violin::Line& color(std::string f);
-    Violin::Line& color(double f);
 
     // Sets the width (in px) of line bounding the violin(s).
     Violin::Line& width(double f);
@@ -680,6 +692,9 @@ class Violin::Line {
 
 class Violin::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Symbol {
         NUM_0,
@@ -1017,7 +1032,6 @@ class Violin::Marker {
     // Sets the marker color. It accepts either a specific color or an array of numbers that are mapped to the
     // colorscale relative to the max and min values of the array or relative to `marker.cmin` and `marker.cmax` if set.
     Violin::Marker& color(std::string f);
-    Violin::Marker& color(double f);
 
     Violin::Marker& line(Line f);
 
@@ -1026,7 +1040,6 @@ class Violin::Marker {
 
     // Sets the color of the outlier sample points.
     Violin::Marker& outliercolor(std::string f);
-    Violin::Marker& outliercolor(double f);
 
     // Sets the marker size (in px).
     Violin::Marker& size(double f);
@@ -1043,16 +1056,17 @@ class Violin::Marker {
 
 class Violin::Marker::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker.line color. It accepts either a specific color or an array of numbers that are mapped to the
     // colorscale relative to the max and min values of the array or relative to `marker.line.cmin` and
     // `marker.line.cmax` if set.
     Violin::Marker::Line& color(std::string f);
-    Violin::Marker::Line& color(double f);
 
     // Sets the border line color of the outlier sample points. Defaults to marker.color
     Violin::Marker::Line& outliercolor(std::string f);
-    Violin::Marker::Line& outliercolor(double f);
 
     // Sets the border line width (in px) of the outlier sample points.
     Violin::Marker::Line& outlierwidth(double f);
@@ -1066,10 +1080,12 @@ class Violin::Marker::Line {
 
 class Violin::Meanline {
  public:
+    Meanline() = default;
+    Meanline(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the mean line color.
     Violin::Meanline& color(std::string f);
-    Violin::Meanline& color(double f);
 
     // Determines if a line corresponding to the sample's mean is shown inside the violins. If `box.visible` is turned
     // on, the mean line is drawn inside the inner box. Otherwise, the mean line is drawn from one side of the violin to
@@ -1085,6 +1101,9 @@ class Violin::Meanline {
 
 class Violin::Selected {
  public:
+    Selected() = default;
+    Selected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
 
@@ -1096,10 +1115,12 @@ class Violin::Selected {
 
 class Violin::Selected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker color of selected points.
     Violin::Selected::Marker& color(std::string f);
-    Violin::Selected::Marker& color(double f);
 
     // Sets the marker opacity of selected points.
     Violin::Selected::Marker& opacity(double f);
@@ -1113,6 +1134,9 @@ class Violin::Selected::Marker {
 
 class Violin::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -1128,6 +1152,9 @@ class Violin::Stream {
 
 class Violin::Unselected {
  public:
+    Unselected() = default;
+    Unselected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
 
@@ -1139,10 +1166,12 @@ class Violin::Unselected {
 
 class Violin::Unselected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker color of unselected points, applied only when a selection exists.
     Violin::Unselected::Marker& color(std::string f);
-    Violin::Unselected::Marker& color(double f);
 
     // Sets the marker opacity of unselected points, applied only when a selection exists.
     Violin::Unselected::Marker& opacity(double f);

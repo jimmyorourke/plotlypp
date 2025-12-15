@@ -324,12 +324,12 @@ Treemap::Domain& Treemap::Domain::row(int f) {
     return *this;
 }
 
-Treemap::Domain& Treemap::Domain::x(std::vector<std::string> f) {
+Treemap::Domain& Treemap::Domain::x(std::vector<double> f) {
     json["x"] = std::move(f);
     return *this;
 }
 
-Treemap::Domain& Treemap::Domain::y(std::vector<std::string> f) {
+Treemap::Domain& Treemap::Domain::y(std::vector<double> f) {
     json["y"] = std::move(f);
     return *this;
 }
@@ -364,15 +364,7 @@ Treemap::Hoverlabel& Treemap::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Treemap::Hoverlabel& Treemap::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Treemap::Hoverlabel& Treemap::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Treemap::Hoverlabel& Treemap::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -386,15 +378,7 @@ Treemap::Hoverlabel& Treemap::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Treemap::Hoverlabel& Treemap::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Treemap::Hoverlabel& Treemap::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Treemap::Hoverlabel& Treemap::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -458,15 +442,7 @@ Treemap::Hoverlabel::Font& Treemap::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Treemap::Hoverlabel::Font& Treemap::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Treemap::Hoverlabel::Font& Treemap::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Treemap::Hoverlabel::Font& Treemap::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -629,15 +605,7 @@ Treemap::Insidetextfont& Treemap::Insidetextfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Treemap::Insidetextfont& Treemap::Insidetextfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Treemap::Insidetextfont& Treemap::Insidetextfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Treemap::Insidetextfont& Treemap::Insidetextfont::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -808,10 +776,6 @@ std::string Treemap::Legendgrouptitle::Font::to_string(Variant e) {
 }
 
 Treemap::Legendgrouptitle::Font& Treemap::Legendgrouptitle::Font::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Treemap::Legendgrouptitle::Font& Treemap::Legendgrouptitle::Font::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1103,16 +1067,8 @@ Treemap::Marker::Colorbar& Treemap::Marker::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Treemap::Marker::Colorbar& Treemap::Marker::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Treemap::Marker::Colorbar& Treemap::Marker::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Treemap::Marker::Colorbar& Treemap::Marker::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -1165,10 +1121,6 @@ Treemap::Marker::Colorbar& Treemap::Marker::Colorbar::orientation(enum Orientati
 }
 
 Treemap::Marker::Colorbar& Treemap::Marker::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Treemap::Marker::Colorbar& Treemap::Marker::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -1225,10 +1177,6 @@ Treemap::Marker::Colorbar& Treemap::Marker::Colorbar::tickangle(double f) {
 }
 
 Treemap::Marker::Colorbar& Treemap::Marker::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Treemap::Marker::Colorbar& Treemap::Marker::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -1395,10 +1343,6 @@ Treemap::Marker::Colorbar::Tickfont& Treemap::Marker::Colorbar::Tickfont::color(
     json["color"] = std::move(f);
     return *this;
 }
-Treemap::Marker::Colorbar::Tickfont& Treemap::Marker::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Treemap::Marker::Colorbar::Tickfont& Treemap::Marker::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -1447,7 +1391,7 @@ Treemap::Marker::Colorbar::Tickformatstops& Treemap::Marker::Colorbar::Tickforma
 }
 
 
-Treemap::Marker::Colorbar::Tickformatstops::Tickformatstop& Treemap::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Treemap::Marker::Colorbar::Tickformatstops::Tickformatstop& Treemap::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -1532,10 +1476,6 @@ Treemap::Marker::Colorbar::Title::Font& Treemap::Marker::Colorbar::Title::Font::
     json["color"] = std::move(f);
     return *this;
 }
-Treemap::Marker::Colorbar::Title::Font& Treemap::Marker::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Treemap::Marker::Colorbar::Title::Font& Treemap::Marker::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1582,15 +1522,7 @@ Treemap::Marker::Line& Treemap::Marker::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Treemap::Marker::Line& Treemap::Marker::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Treemap::Marker::Line& Treemap::Marker::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Treemap::Marker::Line& Treemap::Marker::Line::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1643,34 +1575,12 @@ std::string Treemap::Marker::Pattern::to_string(Fillmode e) {
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
-std::string Treemap::Marker::Pattern::to_string(Shape e) {
-    switch(e) {
-        case Shape::EMPTY: return "";
-        case Shape::SLASH: return "/";
-        case Shape::DOUBLEBACKSLASH: return "\\";
-        case Shape::X: return "x";
-        case Shape::HYPHEN: return "-";
-        case Shape::OR: return "|";
-        case Shape::PLUS: return "+";
-        case Shape::DOT: return ".";
-    }
-    // Should be unreachable.
-    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
-}
 
 Treemap::Marker::Pattern& Treemap::Marker::Pattern::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Treemap::Marker::Pattern& Treemap::Marker::Pattern::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Treemap::Marker::Pattern& Treemap::Marker::Pattern::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Treemap::Marker::Pattern& Treemap::Marker::Pattern::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -1684,15 +1594,7 @@ Treemap::Marker::Pattern& Treemap::Marker::Pattern::fgcolor(std::string f) {
     json["fgcolor"] = std::move(f);
     return *this;
 }
-Treemap::Marker::Pattern& Treemap::Marker::Pattern::fgcolor(double f) {
-    json["fgcolor"] = std::move(f);
-    return *this;
-}
 Treemap::Marker::Pattern& Treemap::Marker::Pattern::fgcolor(std::vector<std::string> f) {
-    json["fgcolor"] = std::move(f);
-    return *this;
-}
-Treemap::Marker::Pattern& Treemap::Marker::Pattern::fgcolor(std::vector<double> f) {
     json["fgcolor"] = std::move(f);
     return *this;
 }
@@ -1712,14 +1614,12 @@ Treemap::Marker::Pattern& Treemap::Marker::Pattern::fillmode(enum Fillmode f) {
     return *this;
 }
 
-Treemap::Marker::Pattern& Treemap::Marker::Pattern::shape(enum Shape f) {
-    json["shape"] = to_string(f);
+Treemap::Marker::Pattern& Treemap::Marker::Pattern::shape(std::string f) {
+    json["shape"] = std::move(f);
     return *this;
 }
-Treemap::Marker::Pattern& Treemap::Marker::Pattern::shape(const std::vector<enum Shape>& f) {
-    std::vector<std::string> stringified(f.size());
-    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
-    json["shape"] = std::move(stringified);
+Treemap::Marker::Pattern& Treemap::Marker::Pattern::shape(std::vector<std::string> f) {
+    json["shape"] = std::move(f);
     return *this;
 }
 
@@ -1791,15 +1691,7 @@ Treemap::Outsidetextfont& Treemap::Outsidetextfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Treemap::Outsidetextfont& Treemap::Outsidetextfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Treemap::Outsidetextfont& Treemap::Outsidetextfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Treemap::Outsidetextfont& Treemap::Outsidetextfont::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -2007,15 +1899,7 @@ Treemap::Pathbar::Textfont& Treemap::Pathbar::Textfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Treemap::Pathbar::Textfont& Treemap::Pathbar::Textfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Treemap::Pathbar::Textfont& Treemap::Pathbar::Textfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Treemap::Pathbar::Textfont& Treemap::Pathbar::Textfont::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -2148,10 +2032,6 @@ Treemap::Root& Treemap::Root::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Treemap::Root& Treemap::Root::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 
 Treemap::Stream& Treemap::Stream::maxpoints(double f) {
@@ -2199,15 +2079,7 @@ Treemap::Textfont& Treemap::Textfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Treemap::Textfont& Treemap::Textfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Treemap::Textfont& Treemap::Textfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Treemap::Textfont& Treemap::Textfont::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }

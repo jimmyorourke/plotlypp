@@ -577,16 +577,8 @@ Histogram2Dcontour::Colorbar& Histogram2Dcontour::Colorbar::bgcolor(std::string 
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Histogram2Dcontour::Colorbar& Histogram2Dcontour::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Histogram2Dcontour::Colorbar& Histogram2Dcontour::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Histogram2Dcontour::Colorbar& Histogram2Dcontour::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -639,10 +631,6 @@ Histogram2Dcontour::Colorbar& Histogram2Dcontour::Colorbar::orientation(enum Ori
 }
 
 Histogram2Dcontour::Colorbar& Histogram2Dcontour::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Histogram2Dcontour::Colorbar& Histogram2Dcontour::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -699,10 +687,6 @@ Histogram2Dcontour::Colorbar& Histogram2Dcontour::Colorbar::tickangle(double f) 
 }
 
 Histogram2Dcontour::Colorbar& Histogram2Dcontour::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Histogram2Dcontour::Colorbar& Histogram2Dcontour::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -869,10 +853,6 @@ Histogram2Dcontour::Colorbar::Tickfont& Histogram2Dcontour::Colorbar::Tickfont::
     json["color"] = std::move(f);
     return *this;
 }
-Histogram2Dcontour::Colorbar::Tickfont& Histogram2Dcontour::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Histogram2Dcontour::Colorbar::Tickfont& Histogram2Dcontour::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -921,7 +901,7 @@ Histogram2Dcontour::Colorbar::Tickformatstops& Histogram2Dcontour::Colorbar::Tic
 }
 
 
-Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop& Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop& Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -1006,10 +986,6 @@ Histogram2Dcontour::Colorbar::Title::Font& Histogram2Dcontour::Colorbar::Title::
     json["color"] = std::move(f);
     return *this;
 }
-Histogram2Dcontour::Colorbar::Title::Font& Histogram2Dcontour::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Histogram2Dcontour::Colorbar::Title::Font& Histogram2Dcontour::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1061,25 +1037,6 @@ std::string Histogram2Dcontour::Contours::to_string(Coloring e) {
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
-std::string Histogram2Dcontour::Contours::to_string(Operation e) {
-    switch(e) {
-        case Operation::EQ: return "=";
-        case Operation::LT: return "<";
-        case Operation::>=: return ">=";
-        case Operation::GT: return ">";
-        case Operation::<=: return "<=";
-        case Operation::[]: return "[]";
-        case Operation::(): return "()";
-        case Operation::[): return "[)";
-        case Operation::(]: return "(]";
-        case Operation::][: return "][";
-        case Operation::)(: return ")(";
-        case Operation::](: return "](";
-        case Operation::)[: return ")[";
-    }
-    // Should be unreachable.
-    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
-}
 std::string Histogram2Dcontour::Contours::to_string(Type e) {
     switch(e) {
         case Type::LEVELS: return "levels";
@@ -1114,8 +1071,8 @@ Histogram2Dcontour::Contours& Histogram2Dcontour::Contours::labelformat(std::str
     return *this;
 }
 
-Histogram2Dcontour::Contours& Histogram2Dcontour::Contours::operation(enum Operation f) {
-    json["operation"] = to_string(f);
+Histogram2Dcontour::Contours& Histogram2Dcontour::Contours::operation(std::string f) {
+    json["operation"] = std::move(f);
     return *this;
 }
 
@@ -1183,10 +1140,6 @@ std::string Histogram2Dcontour::Contours::Labelfont::to_string(Variant e) {
 }
 
 Histogram2Dcontour::Contours::Labelfont& Histogram2Dcontour::Contours::Labelfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Histogram2Dcontour::Contours::Labelfont& Histogram2Dcontour::Contours::Labelfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1261,15 +1214,7 @@ Histogram2Dcontour::Hoverlabel& Histogram2Dcontour::Hoverlabel::bgcolor(std::str
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Histogram2Dcontour::Hoverlabel& Histogram2Dcontour::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Histogram2Dcontour::Hoverlabel& Histogram2Dcontour::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Histogram2Dcontour::Hoverlabel& Histogram2Dcontour::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -1283,15 +1228,7 @@ Histogram2Dcontour::Hoverlabel& Histogram2Dcontour::Hoverlabel::bordercolor(std:
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Histogram2Dcontour::Hoverlabel& Histogram2Dcontour::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Histogram2Dcontour::Hoverlabel& Histogram2Dcontour::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Histogram2Dcontour::Hoverlabel& Histogram2Dcontour::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -1355,15 +1292,7 @@ Histogram2Dcontour::Hoverlabel::Font& Histogram2Dcontour::Hoverlabel::Font::colo
     json["color"] = std::move(f);
     return *this;
 }
-Histogram2Dcontour::Hoverlabel::Font& Histogram2Dcontour::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Histogram2Dcontour::Hoverlabel::Font& Histogram2Dcontour::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Histogram2Dcontour::Hoverlabel::Font& Histogram2Dcontour::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1537,10 +1466,6 @@ Histogram2Dcontour::Legendgrouptitle::Font& Histogram2Dcontour::Legendgrouptitle
     json["color"] = std::move(f);
     return *this;
 }
-Histogram2Dcontour::Legendgrouptitle::Font& Histogram2Dcontour::Legendgrouptitle::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Histogram2Dcontour::Legendgrouptitle::Font& Histogram2Dcontour::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1584,10 +1509,6 @@ Histogram2Dcontour::Legendgrouptitle::Font& Histogram2Dcontour::Legendgrouptitle
 
 
 Histogram2Dcontour::Line& Histogram2Dcontour::Line::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Histogram2Dcontour::Line& Histogram2Dcontour::Line::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1662,10 +1583,6 @@ std::string Histogram2Dcontour::Textfont::to_string(Variant e) {
 }
 
 Histogram2Dcontour::Textfont& Histogram2Dcontour::Textfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Histogram2Dcontour::Textfont& Histogram2Dcontour::Textfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

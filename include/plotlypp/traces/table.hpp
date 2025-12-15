@@ -25,6 +25,8 @@ class Table : public Trace {
     : Trace() {
         json["type"] = "table";
     }
+    Table(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Visible {
         TRUE,
@@ -149,6 +151,9 @@ class Table : public Trace {
 
 class Table::Cells {
  public:
+    Cells() = default;
+    Cells(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -216,12 +221,13 @@ class Table::Cells {
 
 class Table::Cells::Fill {
  public:
+    Fill() = default;
+    Fill(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the cell fill color. It accepts either a specific color or an array of colors or a 2D array of colors.
     Table::Cells::Fill& color(std::string f);
-    Table::Cells::Fill& color(double f);
     Table::Cells::Fill& color(std::vector<std::string> f);
-    Table::Cells::Fill& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Table::Cells::Fill& colorsrc(std::string f);
@@ -232,6 +238,9 @@ class Table::Cells::Fill {
 
 class Table::Cells::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -258,9 +267,7 @@ class Table::Cells::Font {
     static std::string to_string(Variant e);
 
     Table::Cells::Font& color(std::string f);
-    Table::Cells::Font& color(double f);
     Table::Cells::Font& color(std::vector<std::string> f);
-    Table::Cells::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Table::Cells::Font& colorsrc(std::string f);
@@ -341,11 +348,12 @@ class Table::Cells::Font {
 
 class Table::Cells::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     Table::Cells::Line& color(std::string f);
-    Table::Cells::Line& color(double f);
     Table::Cells::Line& color(std::vector<std::string> f);
-    Table::Cells::Line& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Table::Cells::Line& colorsrc(std::string f);
@@ -362,6 +370,9 @@ class Table::Cells::Line {
 
 class Table::Domain {
  public:
+    Domain() = default;
+    Domain(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // If there is a layout grid, use the domain for this column in the grid for this table trace .
     Table::Domain& column(int f);
@@ -370,10 +381,10 @@ class Table::Domain {
     Table::Domain& row(int f);
 
     // Sets the horizontal domain of this table trace (in plot fraction).
-    Table::Domain& x(std::vector<std::string> f);
+    Table::Domain& x(std::vector<double> f);
 
     // Sets the vertical domain of this table trace (in plot fraction).
-    Table::Domain& y(std::vector<std::string> f);
+    Table::Domain& y(std::vector<double> f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -381,6 +392,9 @@ class Table::Domain {
 
 class Table::Header {
  public:
+    Header() = default;
+    Header(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -448,12 +462,13 @@ class Table::Header {
 
 class Table::Header::Fill {
  public:
+    Fill() = default;
+    Fill(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the cell fill color. It accepts either a specific color or an array of colors or a 2D array of colors.
     Table::Header::Fill& color(std::string f);
-    Table::Header::Fill& color(double f);
     Table::Header::Fill& color(std::vector<std::string> f);
-    Table::Header::Fill& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Table::Header::Fill& colorsrc(std::string f);
@@ -464,6 +479,9 @@ class Table::Header::Fill {
 
 class Table::Header::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -490,9 +508,7 @@ class Table::Header::Font {
     static std::string to_string(Variant e);
 
     Table::Header::Font& color(std::string f);
-    Table::Header::Font& color(double f);
     Table::Header::Font& color(std::vector<std::string> f);
-    Table::Header::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Table::Header::Font& colorsrc(std::string f);
@@ -573,11 +589,12 @@ class Table::Header::Font {
 
 class Table::Header::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     Table::Header::Line& color(std::string f);
-    Table::Header::Line& color(double f);
     Table::Header::Line& color(std::vector<std::string> f);
-    Table::Header::Line& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Table::Header::Line& colorsrc(std::string f);
@@ -594,6 +611,9 @@ class Table::Header::Line {
 
 class Table::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -616,18 +636,14 @@ class Table::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Table::Hoverlabel& bgcolor(std::string f);
-    Table::Hoverlabel& bgcolor(double f);
     Table::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Table::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Table::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Table::Hoverlabel& bordercolor(std::string f);
-    Table::Hoverlabel& bordercolor(double f);
     Table::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Table::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Table::Hoverlabel& bordercolorsrc(std::string f);
@@ -652,6 +668,9 @@ class Table::Hoverlabel {
 // Sets the font used in hover labels.
 class Table::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -678,9 +697,7 @@ class Table::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Table::Hoverlabel::Font& color(std::string f);
-    Table::Hoverlabel::Font& color(double f);
     Table::Hoverlabel::Font& color(std::vector<std::string> f);
-    Table::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Table::Hoverlabel::Font& colorsrc(std::string f);
@@ -761,6 +778,9 @@ class Table::Hoverlabel::Font {
 
 class Table::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -778,6 +798,9 @@ class Table::Legendgrouptitle {
 // Sets this legend group's title font.
 class Table::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -804,7 +827,6 @@ class Table::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Table::Legendgrouptitle::Font& color(std::string f);
-    Table::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -850,6 +872,9 @@ class Table::Legendgrouptitle::Font {
 
 class Table::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.

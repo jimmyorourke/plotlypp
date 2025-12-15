@@ -25,6 +25,8 @@ class Contourcarpet : public Trace {
     : Trace() {
         json["type"] = "contourcarpet";
     }
+    Contourcarpet(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Atype {
         ARRAY,
@@ -130,7 +132,6 @@ class Contourcarpet : public Trace {
     // Sets the fill color if `contours.type` is *constraint*. Defaults to a half-transparent variant of the line color,
     // marker color, or marker line color, whichever is available.
     Contourcarpet& fillcolor(std::string f);
-    Contourcarpet& fillcolor(double f);
 
     // Same as `text`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
@@ -274,6 +275,9 @@ class Contourcarpet : public Trace {
 
 class Contourcarpet::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -394,11 +398,9 @@ class Contourcarpet::Colorbar {
 
     // Sets the color of padded area.
     Contourcarpet::Colorbar& bgcolor(std::string f);
-    Contourcarpet::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Contourcarpet::Colorbar& bordercolor(std::string f);
-    Contourcarpet::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Contourcarpet::Colorbar& borderwidth(double f);
@@ -454,7 +456,6 @@ class Contourcarpet::Colorbar {
 
     // Sets the axis line color.
     Contourcarpet::Colorbar& outlinecolor(std::string f);
-    Contourcarpet::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Contourcarpet::Colorbar& outlinewidth(double f);
@@ -501,7 +502,6 @@ class Contourcarpet::Colorbar {
 
     // Sets the tick color.
     Contourcarpet::Colorbar& tickcolor(std::string f);
-    Contourcarpet::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Contourcarpet::Colorbar& tickfont(Tickfont f);
@@ -614,6 +614,9 @@ class Contourcarpet::Colorbar {
 // Sets the color bar's tick label font
 class Contourcarpet::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -640,7 +643,6 @@ class Contourcarpet::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Contourcarpet::Colorbar::Tickfont& color(std::string f);
-    Contourcarpet::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -686,6 +688,9 @@ class Contourcarpet::Colorbar::Tickfont {
 
 class Contourcarpet::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -697,10 +702,13 @@ class Contourcarpet::Colorbar::Tickformatstops {
 
 class Contourcarpet::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Contourcarpet::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Contourcarpet::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Contourcarpet::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -727,6 +735,9 @@ class Contourcarpet::Colorbar::Tickformatstops::Tickformatstop {
 
 class Contourcarpet::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -755,6 +766,9 @@ class Contourcarpet::Colorbar::Title {
 // Sets this color bar's title font.
 class Contourcarpet::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -781,7 +795,6 @@ class Contourcarpet::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Contourcarpet::Colorbar::Title::Font& color(std::string f);
-    Contourcarpet::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -827,6 +840,9 @@ class Contourcarpet::Colorbar::Title::Font {
 
 class Contourcarpet::Contours {
  public:
+    Contours() = default;
+    Contours(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Coloring {
         FILL,
@@ -834,23 +850,6 @@ class Contourcarpet::Contours {
         NONE,
     };
     static std::string to_string(Coloring e);
-
-    enum class Operation {
-        EQ,
-        LT,
-        >=,
-        GT,
-        <=,
-        [],
-        (),
-        [),
-        (],
-        ][,
-        )(,
-        ](,
-        )[,
-    };
-    static std::string to_string(Operation e);
 
     enum class Type {
         LEVELS,
@@ -885,8 +884,7 @@ class Contourcarpet::Contours {
     // and *>=* keep regions greater than `value` *[]*, *()*, *[)*, and *(]* keep regions inside `value[0]` to
     // `value[1]` *][*, *)(*, *](*, *)[* keep regions outside `value[0]` to value[1]` Open vs. closed intervals make no
     // difference to constraint display, but all versions are allowed for consistency with filter transforms.
-    // - Default: =
-    Contourcarpet::Contours& operation(enum Operation f);
+    Contourcarpet::Contours& operation(std::string f);
 
     // Determines whether to label the contour lines with their values.
     Contourcarpet::Contours& showlabels(bool f);
@@ -920,6 +918,9 @@ class Contourcarpet::Contours {
 
 class Contourcarpet::Contours::Impliededits {
  public:
+    Impliededits() = default;
+    Impliededits(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -929,6 +930,9 @@ class Contourcarpet::Contours::Impliededits {
 // family and size come from `layout.font`.
 class Contourcarpet::Contours::Labelfont {
  public:
+    Labelfont() = default;
+    Labelfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -955,7 +959,6 @@ class Contourcarpet::Contours::Labelfont {
     static std::string to_string(Variant e);
 
     Contourcarpet::Contours::Labelfont& color(std::string f);
-    Contourcarpet::Contours::Labelfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1001,6 +1004,9 @@ class Contourcarpet::Contours::Labelfont {
 
 class Contourcarpet::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -1018,6 +1024,9 @@ class Contourcarpet::Legendgrouptitle {
 // Sets this legend group's title font.
 class Contourcarpet::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1044,7 +1053,6 @@ class Contourcarpet::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Contourcarpet::Legendgrouptitle::Font& color(std::string f);
-    Contourcarpet::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1090,10 +1098,12 @@ class Contourcarpet::Legendgrouptitle::Font {
 
 class Contourcarpet::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the color of the contour level. Has no effect if `contours.coloring` is set to *lines*.
     Contourcarpet::Line& color(std::string f);
-    Contourcarpet::Line& color(double f);
 
     // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
     // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
@@ -1112,6 +1122,9 @@ class Contourcarpet::Line {
 
 class Contourcarpet::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.

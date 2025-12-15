@@ -36,6 +36,7 @@ valtype_map = {
     #'color': ["std::string", "double"], # also need to json
     'color': ["std::string"], # also need to json
     'flaglist': ['std::string'], # also need to json, basically enum
+    #     "description": "A Plotly colorscale either picked by a name: (any of Greys, YlGnBu, Greens, YlOrRd, Bluered, RdBu, Reds, Blues, Picnic, Rainbow, Portland, Jet, Hot, Blackbody, Earth, Electric, Viridis, Cividis ) or customized as an {array} of 2-element {arrays} where the first element is the normalized color level value (starting at *0* and ending at *1*), and the second item is a valid color string.",
     'colorscale': ['std::string', 'std::vector<std::pair<double, std::string>>'], # also need to json, basically enum --- could be smarter
     # Not really, but it's useful to add here
     "object": ['OBJECT'],
@@ -70,9 +71,8 @@ class Writer:
 
 
 def emit_json_member(writer):
-    with IndentBlock(writer):
-        writer.write("// Advanced users may modify the JSON representation directly, at their own peril!")
-        writer.write("Json json{};")
+    writer.write("// Advanced users may modify the JSON representation directly, at their own peril!")
+    writer.write("Json json{};")
 
 
 def emit_array_field_setter_decl(class_object, field, output_val_type, writer):
@@ -199,54 +199,66 @@ def emit_class_public_members(class_object, writer):
 
 
 def emit_class_public_members_decl(class_object, writer):
-    with IndentBlock(writer):
-        for e in class_object.enums:
-            emit_enum_definition(e, writer)
-            emit_enum_to_string_decl(e, writer)
+    for e in class_object.enums:
+        emit_enum_definition(e, writer)
+        emit_enum_to_string_decl(e, writer)
 
-        writer.write("")
-        for obj in class_object.objects:
-            emit_forward_object_decl(obj, writer)
+    writer.write("")
+    for obj in class_object.objects:
+        emit_forward_object_decl(obj, writer)
 
-        writer.write("")
-        for field in class_object.fields:
-            if field.description:
-                lines = field.description.split("\n")
-                # Dumb hack for clang-format not respecting existing newlines in comments.
-                writer.write(f"// {lines[0]}")
-                for line in lines[1:]:
-                    writer.write(f"// - {line}")
-            if field.is_enum:
-                emit_enum_field_setter_decl(class_object, field, writer)
-                if field.array_ok:
-                    emit_enum_array_field_setter_decl(class_object, field, writer)
+    writer.write("")
+    for field in class_object.fields:
+        if field.description:
+            lines = field.description.split("\n")
+            # Dumb hack for clang-format not respecting existing newlines in comments.
+            writer.write(f"// {lines[0]}")
+            for line in lines[1:]:
+                writer.write(f"// - {line}")
+        if field.is_enum:
+            emit_enum_field_setter_decl(class_object, field, writer)
+            if field.array_ok:
+                emit_enum_array_field_setter_decl(class_object, field, writer)
+        else:
+            if field.is_object:
+                output_val_types = [f"{field.name.title()}"]
             else:
-                if field.is_object:
-                    output_val_types = [f"{field.name.title()}"]
-                else:
-                    output_val_types = valtype_map[field.json_val_type]
+                output_val_types = valtype_map[field.json_val_type]
+            for output_val_type_overload in output_val_types:
+                emit_field_setter_decl(class_object, field, output_val_type_overload, writer)
+            if field.array_ok:
                 for output_val_type_overload in output_val_types:
-                    emit_field_setter_decl(class_object, field, output_val_type_overload, writer)
-                if field.array_ok:
-                    for output_val_type_overload in output_val_types:
-                        emit_array_field_setter_decl(class_object, field, output_val_type_overload, writer)
+                    emit_array_field_setter_decl(class_object, field, output_val_type_overload, writer)
 
-            writer.write("")
+        writer.write("")
 
 
 def emit_forward_object_decl(class_object, writer):
     if class_object.description:
         writer.write(f"// {class_object.description}")
     writer.write(f"class {class_object.name.split("::")[-1].title()};")
+ 
 
+def emit_default_constructor(class_object, writer):
+    writer.write(f"{class_object.name.split("::")[-1].title()}() = default;")
+
+def emit_json_constructor(class_object, writer):
+    # Converting constructor
+    writer.write(f"{class_object.name.split("::")[-1].title()}(std::string jsonStr)")
+    # https://json.nlohmann.me/home/faq/#brace-initialization-yields-arrays
+    writer.write(": json(parse(std::move(jsonStr))) {}")
+    
 
 def emit_object_decl(class_object, writer):
     if class_object.description:
         writer.write(f"// {class_object.description}")
     writer.write(f"class {class_object.name.title()} {{")
     writer.write("public:")
-    emit_class_public_members_decl(class_object, writer)
-    emit_json_member(writer)
+    with IndentBlock(writer):
+        emit_default_constructor(class_object, writer)
+        emit_json_constructor(class_object, writer)
+        emit_class_public_members_decl(class_object, writer)
+        emit_json_member(writer)
     writer.write("};")
     writer.write("")
 
@@ -296,7 +308,10 @@ def emit_trace(trace, out_dir, impl_subdir):
         with IndentBlock(writer):
             writer.write(f"json[\"type\"] = \"{trace.name}\";")
         writer.write("}")
-    emit_class_public_members_decl(trace, writer)
+        # Converting constructor
+        writer.write(f"{trace.name.split("::")[-1].title()}(std::string jsonStr)")
+        writer.write(": Trace(std::move(jsonStr)) {}")
+        emit_class_public_members_decl(trace, writer)
     writer.write("};")
     writer.write("")
 
@@ -378,11 +393,10 @@ def safe_field_name(name: str) -> str:
     return name
 
 def looks_like_regex(name: str) -> bool:
-    #regex_chars = {'^', '(', ')', '[', ']', '*', '$', '+'}
-    print("checking", name)
+    regex_chars = {'^', '(', ')', '[', ']', '*', '$', '+'}
     for c in name:
-        if not c.isalnum() and c != '_':
-        #if c in regex_chars:
+        #if not c.isalnum() and c != '_':
+        if c in regex_chars:
             return True
     return False
 
@@ -648,8 +662,8 @@ def main():
     #CreateFrames(graphObjectsOuput)
 
     
-    # create_traces(schema)
-    #package_js();
+    create_traces(schema)
+    package_js();
     
     # for k, v in schema['layout'].items():
     #     print(k) 

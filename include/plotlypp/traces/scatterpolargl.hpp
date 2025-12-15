@@ -25,6 +25,8 @@ class Scatterpolargl : public Trace {
     : Trace() {
         json["type"] = "scatterpolargl";
     }
+    Scatterpolargl(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Fill {
         NONE,
@@ -109,7 +111,6 @@ class Scatterpolargl : public Trace {
     // Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line
     // color, whichever is available.
     Scatterpolargl& fillcolor(std::string f);
-    Scatterpolargl& fillcolor(double f);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -315,6 +316,9 @@ class Scatterpolargl : public Trace {
 
 class Scatterpolargl::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -337,18 +341,14 @@ class Scatterpolargl::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Scatterpolargl::Hoverlabel& bgcolor(std::string f);
-    Scatterpolargl::Hoverlabel& bgcolor(double f);
     Scatterpolargl::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Scatterpolargl::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Scatterpolargl::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Scatterpolargl::Hoverlabel& bordercolor(std::string f);
-    Scatterpolargl::Hoverlabel& bordercolor(double f);
     Scatterpolargl::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Scatterpolargl::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Scatterpolargl::Hoverlabel& bordercolorsrc(std::string f);
@@ -373,6 +373,9 @@ class Scatterpolargl::Hoverlabel {
 // Sets the font used in hover labels.
 class Scatterpolargl::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -399,9 +402,7 @@ class Scatterpolargl::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Scatterpolargl::Hoverlabel::Font& color(std::string f);
-    Scatterpolargl::Hoverlabel::Font& color(double f);
     Scatterpolargl::Hoverlabel::Font& color(std::vector<std::string> f);
-    Scatterpolargl::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scatterpolargl::Hoverlabel::Font& colorsrc(std::string f);
@@ -482,6 +483,9 @@ class Scatterpolargl::Hoverlabel::Font {
 
 class Scatterpolargl::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -499,6 +503,9 @@ class Scatterpolargl::Legendgrouptitle {
 // Sets this legend group's title font.
 class Scatterpolargl::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -525,7 +532,6 @@ class Scatterpolargl::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Scatterpolargl::Legendgrouptitle::Font& color(std::string f);
-    Scatterpolargl::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -571,6 +577,9 @@ class Scatterpolargl::Legendgrouptitle::Font {
 
 class Scatterpolargl::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Dash {
         DASH,
@@ -584,7 +593,6 @@ class Scatterpolargl::Line {
 
     // Sets the line color.
     Scatterpolargl::Line& color(std::string f);
-    Scatterpolargl::Line& color(double f);
 
     // Sets the style of the lines.
     // - Default: solid
@@ -599,6 +607,9 @@ class Scatterpolargl::Line {
 
 class Scatterpolargl::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Sizemode {
         DIAMETER,
@@ -971,9 +982,7 @@ class Scatterpolargl::Marker {
     // Sets the marker color. It accepts either a specific color or an array of numbers that are mapped to the
     // colorscale relative to the max and min values of the array or relative to `marker.cmin` and `marker.cmax` if set.
     Scatterpolargl::Marker& color(std::string f);
-    Scatterpolargl::Marker& color(double f);
     Scatterpolargl::Marker& color(std::vector<std::string> f);
-    Scatterpolargl::Marker& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -1048,6 +1057,9 @@ class Scatterpolargl::Marker {
 
 class Scatterpolargl::Marker::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -1168,11 +1180,9 @@ class Scatterpolargl::Marker::Colorbar {
 
     // Sets the color of padded area.
     Scatterpolargl::Marker::Colorbar& bgcolor(std::string f);
-    Scatterpolargl::Marker::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Scatterpolargl::Marker::Colorbar& bordercolor(std::string f);
-    Scatterpolargl::Marker::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Scatterpolargl::Marker::Colorbar& borderwidth(double f);
@@ -1228,7 +1238,6 @@ class Scatterpolargl::Marker::Colorbar {
 
     // Sets the axis line color.
     Scatterpolargl::Marker::Colorbar& outlinecolor(std::string f);
-    Scatterpolargl::Marker::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Scatterpolargl::Marker::Colorbar& outlinewidth(double f);
@@ -1275,7 +1284,6 @@ class Scatterpolargl::Marker::Colorbar {
 
     // Sets the tick color.
     Scatterpolargl::Marker::Colorbar& tickcolor(std::string f);
-    Scatterpolargl::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Scatterpolargl::Marker::Colorbar& tickfont(Tickfont f);
@@ -1388,6 +1396,9 @@ class Scatterpolargl::Marker::Colorbar {
 // Sets the color bar's tick label font
 class Scatterpolargl::Marker::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1414,7 +1425,6 @@ class Scatterpolargl::Marker::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Scatterpolargl::Marker::Colorbar::Tickfont& color(std::string f);
-    Scatterpolargl::Marker::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1460,6 +1470,9 @@ class Scatterpolargl::Marker::Colorbar::Tickfont {
 
 class Scatterpolargl::Marker::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -1471,10 +1484,13 @@ class Scatterpolargl::Marker::Colorbar::Tickformatstops {
 
 class Scatterpolargl::Marker::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Scatterpolargl::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Scatterpolargl::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Scatterpolargl::Marker::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -1501,6 +1517,9 @@ class Scatterpolargl::Marker::Colorbar::Tickformatstops::Tickformatstop {
 
 class Scatterpolargl::Marker::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -1529,6 +1548,9 @@ class Scatterpolargl::Marker::Colorbar::Title {
 // Sets this color bar's title font.
 class Scatterpolargl::Marker::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1555,7 +1577,6 @@ class Scatterpolargl::Marker::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Scatterpolargl::Marker::Colorbar::Title::Font& color(std::string f);
-    Scatterpolargl::Marker::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1601,6 +1622,9 @@ class Scatterpolargl::Marker::Colorbar::Title::Font {
 
 class Scatterpolargl::Marker::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by
     // `marker.line.colorscale`. Has an effect only if in `marker.line.color` is set to a numerical array. In case
@@ -1633,9 +1657,7 @@ class Scatterpolargl::Marker::Line {
     // colorscale relative to the max and min values of the array or relative to `marker.line.cmin` and
     // `marker.line.cmax` if set.
     Scatterpolargl::Marker::Line& color(std::string f);
-    Scatterpolargl::Marker::Line& color(double f);
     Scatterpolargl::Marker::Line& color(std::vector<std::string> f);
-    Scatterpolargl::Marker::Line& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -1673,6 +1695,9 @@ class Scatterpolargl::Marker::Line {
 
 class Scatterpolargl::Selected {
  public:
+    Selected() = default;
+    Selected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
     class Textfont;
@@ -1687,10 +1712,12 @@ class Scatterpolargl::Selected {
 
 class Scatterpolargl::Selected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker color of selected points.
     Scatterpolargl::Selected::Marker& color(std::string f);
-    Scatterpolargl::Selected::Marker& color(double f);
 
     // Sets the marker opacity of selected points.
     Scatterpolargl::Selected::Marker& opacity(double f);
@@ -1704,10 +1731,12 @@ class Scatterpolargl::Selected::Marker {
 
 class Scatterpolargl::Selected::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the text font color of selected points.
     Scatterpolargl::Selected::Textfont& color(std::string f);
-    Scatterpolargl::Selected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1715,6 +1744,9 @@ class Scatterpolargl::Selected::Textfont {
 
 class Scatterpolargl::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -1731,6 +1763,9 @@ class Scatterpolargl::Stream {
 // Sets the text font.
 class Scatterpolargl::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1751,9 +1786,7 @@ class Scatterpolargl::Textfont {
     static std::string to_string(Weight e);
 
     Scatterpolargl::Textfont& color(std::string f);
-    Scatterpolargl::Textfont& color(double f);
     Scatterpolargl::Textfont& color(std::vector<std::string> f);
-    Scatterpolargl::Textfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scatterpolargl::Textfont& colorsrc(std::string f);
@@ -1807,6 +1840,9 @@ class Scatterpolargl::Textfont {
 
 class Scatterpolargl::Unselected {
  public:
+    Unselected() = default;
+    Unselected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
     class Textfont;
@@ -1821,10 +1857,12 @@ class Scatterpolargl::Unselected {
 
 class Scatterpolargl::Unselected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker color of unselected points, applied only when a selection exists.
     Scatterpolargl::Unselected::Marker& color(std::string f);
-    Scatterpolargl::Unselected::Marker& color(double f);
 
     // Sets the marker opacity of unselected points, applied only when a selection exists.
     Scatterpolargl::Unselected::Marker& opacity(double f);
@@ -1838,10 +1876,12 @@ class Scatterpolargl::Unselected::Marker {
 
 class Scatterpolargl::Unselected::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the text font color of unselected points, applied only when a selection exists.
     Scatterpolargl::Unselected::Textfont& color(std::string f);
-    Scatterpolargl::Unselected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

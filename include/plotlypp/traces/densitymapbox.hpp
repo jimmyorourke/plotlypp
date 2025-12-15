@@ -25,6 +25,8 @@ class Densitymapbox : public Trace {
     : Trace() {
         json["type"] = "densitymapbox";
     }
+    Densitymapbox(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Visible {
         TRUE,
@@ -258,6 +260,9 @@ class Densitymapbox : public Trace {
 
 class Densitymapbox::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -378,11 +383,9 @@ class Densitymapbox::Colorbar {
 
     // Sets the color of padded area.
     Densitymapbox::Colorbar& bgcolor(std::string f);
-    Densitymapbox::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Densitymapbox::Colorbar& bordercolor(std::string f);
-    Densitymapbox::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Densitymapbox::Colorbar& borderwidth(double f);
@@ -438,7 +441,6 @@ class Densitymapbox::Colorbar {
 
     // Sets the axis line color.
     Densitymapbox::Colorbar& outlinecolor(std::string f);
-    Densitymapbox::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Densitymapbox::Colorbar& outlinewidth(double f);
@@ -485,7 +487,6 @@ class Densitymapbox::Colorbar {
 
     // Sets the tick color.
     Densitymapbox::Colorbar& tickcolor(std::string f);
-    Densitymapbox::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Densitymapbox::Colorbar& tickfont(Tickfont f);
@@ -598,6 +599,9 @@ class Densitymapbox::Colorbar {
 // Sets the color bar's tick label font
 class Densitymapbox::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -624,7 +628,6 @@ class Densitymapbox::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Densitymapbox::Colorbar::Tickfont& color(std::string f);
-    Densitymapbox::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -670,6 +673,9 @@ class Densitymapbox::Colorbar::Tickfont {
 
 class Densitymapbox::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -681,10 +687,13 @@ class Densitymapbox::Colorbar::Tickformatstops {
 
 class Densitymapbox::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Densitymapbox::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Densitymapbox::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Densitymapbox::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -711,6 +720,9 @@ class Densitymapbox::Colorbar::Tickformatstops::Tickformatstop {
 
 class Densitymapbox::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -739,6 +751,9 @@ class Densitymapbox::Colorbar::Title {
 // Sets this color bar's title font.
 class Densitymapbox::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -765,7 +780,6 @@ class Densitymapbox::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Densitymapbox::Colorbar::Title::Font& color(std::string f);
-    Densitymapbox::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -811,6 +825,9 @@ class Densitymapbox::Colorbar::Title::Font {
 
 class Densitymapbox::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -833,18 +850,14 @@ class Densitymapbox::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Densitymapbox::Hoverlabel& bgcolor(std::string f);
-    Densitymapbox::Hoverlabel& bgcolor(double f);
     Densitymapbox::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Densitymapbox::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Densitymapbox::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Densitymapbox::Hoverlabel& bordercolor(std::string f);
-    Densitymapbox::Hoverlabel& bordercolor(double f);
     Densitymapbox::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Densitymapbox::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Densitymapbox::Hoverlabel& bordercolorsrc(std::string f);
@@ -869,6 +882,9 @@ class Densitymapbox::Hoverlabel {
 // Sets the font used in hover labels.
 class Densitymapbox::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -895,9 +911,7 @@ class Densitymapbox::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Densitymapbox::Hoverlabel::Font& color(std::string f);
-    Densitymapbox::Hoverlabel::Font& color(double f);
     Densitymapbox::Hoverlabel::Font& color(std::vector<std::string> f);
-    Densitymapbox::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Densitymapbox::Hoverlabel::Font& colorsrc(std::string f);
@@ -978,6 +992,9 @@ class Densitymapbox::Hoverlabel::Font {
 
 class Densitymapbox::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -995,6 +1012,9 @@ class Densitymapbox::Legendgrouptitle {
 // Sets this legend group's title font.
 class Densitymapbox::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1021,7 +1041,6 @@ class Densitymapbox::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Densitymapbox::Legendgrouptitle::Font& color(std::string f);
-    Densitymapbox::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1067,6 +1086,9 @@ class Densitymapbox::Legendgrouptitle::Font {
 
 class Densitymapbox::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.

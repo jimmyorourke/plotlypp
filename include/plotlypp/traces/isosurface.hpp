@@ -25,6 +25,8 @@ class Isosurface : public Trace {
     : Trace() {
         json["type"] = "isosurface";
     }
+    Isosurface(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Visible {
         TRUE,
@@ -309,6 +311,9 @@ class Isosurface : public Trace {
 
 class Isosurface::Caps {
  public:
+    Caps() = default;
+    Caps(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class X;
     class Y;
@@ -326,6 +331,9 @@ class Isosurface::Caps {
 
 class Isosurface::Caps::X {
  public:
+    X() = default;
+    X(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the fill ratio of the `caps`. The default fill value of the `caps` is 1 meaning that they are entirely
     // shaded. On the other hand Applying a `fill` ratio less than one would allow the creation of openings parallel to
@@ -343,6 +351,9 @@ class Isosurface::Caps::X {
 
 class Isosurface::Caps::Y {
  public:
+    Y() = default;
+    Y(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the fill ratio of the `caps`. The default fill value of the `caps` is 1 meaning that they are entirely
     // shaded. On the other hand Applying a `fill` ratio less than one would allow the creation of openings parallel to
@@ -360,6 +371,9 @@ class Isosurface::Caps::Y {
 
 class Isosurface::Caps::Z {
  public:
+    Z() = default;
+    Z(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the fill ratio of the `caps`. The default fill value of the `caps` is 1 meaning that they are entirely
     // shaded. On the other hand Applying a `fill` ratio less than one would allow the creation of openings parallel to
@@ -377,6 +391,9 @@ class Isosurface::Caps::Z {
 
 class Isosurface::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -497,11 +514,9 @@ class Isosurface::Colorbar {
 
     // Sets the color of padded area.
     Isosurface::Colorbar& bgcolor(std::string f);
-    Isosurface::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Isosurface::Colorbar& bordercolor(std::string f);
-    Isosurface::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Isosurface::Colorbar& borderwidth(double f);
@@ -557,7 +572,6 @@ class Isosurface::Colorbar {
 
     // Sets the axis line color.
     Isosurface::Colorbar& outlinecolor(std::string f);
-    Isosurface::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Isosurface::Colorbar& outlinewidth(double f);
@@ -604,7 +618,6 @@ class Isosurface::Colorbar {
 
     // Sets the tick color.
     Isosurface::Colorbar& tickcolor(std::string f);
-    Isosurface::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Isosurface::Colorbar& tickfont(Tickfont f);
@@ -717,6 +730,9 @@ class Isosurface::Colorbar {
 // Sets the color bar's tick label font
 class Isosurface::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -743,7 +759,6 @@ class Isosurface::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Isosurface::Colorbar::Tickfont& color(std::string f);
-    Isosurface::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -789,6 +804,9 @@ class Isosurface::Colorbar::Tickfont {
 
 class Isosurface::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -800,10 +818,13 @@ class Isosurface::Colorbar::Tickformatstops {
 
 class Isosurface::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Isosurface::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Isosurface::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Isosurface::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -830,6 +851,9 @@ class Isosurface::Colorbar::Tickformatstops::Tickformatstop {
 
 class Isosurface::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -858,6 +882,9 @@ class Isosurface::Colorbar::Title {
 // Sets this color bar's title font.
 class Isosurface::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -884,7 +911,6 @@ class Isosurface::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Isosurface::Colorbar::Title::Font& color(std::string f);
-    Isosurface::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -930,10 +956,12 @@ class Isosurface::Colorbar::Title::Font {
 
 class Isosurface::Contour {
  public:
+    Contour() = default;
+    Contour(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the color of the contour lines.
     Isosurface::Contour& color(std::string f);
-    Isosurface::Contour& color(double f);
 
     // Sets whether or not dynamic contours are shown on hover
     Isosurface::Contour& show(bool f);
@@ -947,6 +975,9 @@ class Isosurface::Contour {
 
 class Isosurface::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -969,18 +1000,14 @@ class Isosurface::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Isosurface::Hoverlabel& bgcolor(std::string f);
-    Isosurface::Hoverlabel& bgcolor(double f);
     Isosurface::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Isosurface::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Isosurface::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Isosurface::Hoverlabel& bordercolor(std::string f);
-    Isosurface::Hoverlabel& bordercolor(double f);
     Isosurface::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Isosurface::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Isosurface::Hoverlabel& bordercolorsrc(std::string f);
@@ -1005,6 +1032,9 @@ class Isosurface::Hoverlabel {
 // Sets the font used in hover labels.
 class Isosurface::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1031,9 +1061,7 @@ class Isosurface::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Isosurface::Hoverlabel::Font& color(std::string f);
-    Isosurface::Hoverlabel::Font& color(double f);
     Isosurface::Hoverlabel::Font& color(std::vector<std::string> f);
-    Isosurface::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Isosurface::Hoverlabel::Font& colorsrc(std::string f);
@@ -1114,6 +1142,9 @@ class Isosurface::Hoverlabel::Font {
 
 class Isosurface::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -1131,6 +1162,9 @@ class Isosurface::Legendgrouptitle {
 // Sets this legend group's title font.
 class Isosurface::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1157,7 +1191,6 @@ class Isosurface::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Isosurface::Legendgrouptitle::Font& color(std::string f);
-    Isosurface::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1203,6 +1236,9 @@ class Isosurface::Legendgrouptitle::Font {
 
 class Isosurface::Lighting {
  public:
+    Lighting() = default;
+    Lighting(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Ambient light increases overall color visibility but can wash out the image.
     Isosurface::Lighting& ambient(double f);
@@ -1232,6 +1268,9 @@ class Isosurface::Lighting {
 
 class Isosurface::Lightposition {
  public:
+    Lightposition() = default;
+    Lightposition(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Numeric vector, representing the X coordinate for each vertex.
     Isosurface::Lightposition& x(double f);
@@ -1248,6 +1287,9 @@ class Isosurface::Lightposition {
 
 class Isosurface::Slices {
  public:
+    Slices() = default;
+    Slices(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class X;
     class Y;
@@ -1265,6 +1307,9 @@ class Isosurface::Slices {
 
 class Isosurface::Slices::X {
  public:
+    X() = default;
+    X(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the fill ratio of the `slices`. The default fill value of the `slices` is 1 meaning that they are entirely
     // shaded. On the other hand Applying a `fill` ratio less than one would allow the creation of openings parallel to
@@ -1288,6 +1333,9 @@ class Isosurface::Slices::X {
 
 class Isosurface::Slices::Y {
  public:
+    Y() = default;
+    Y(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the fill ratio of the `slices`. The default fill value of the `slices` is 1 meaning that they are entirely
     // shaded. On the other hand Applying a `fill` ratio less than one would allow the creation of openings parallel to
@@ -1311,6 +1359,9 @@ class Isosurface::Slices::Y {
 
 class Isosurface::Slices::Z {
  public:
+    Z() = default;
+    Z(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the fill ratio of the `slices`. The default fill value of the `slices` is 1 meaning that they are entirely
     // shaded. On the other hand Applying a `fill` ratio less than one would allow the creation of openings parallel to
@@ -1334,6 +1385,9 @@ class Isosurface::Slices::Z {
 
 class Isosurface::Spaceframe {
  public:
+    Spaceframe() = default;
+    Spaceframe(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the fill ratio of the `spaceframe` elements. The default fill value is 0.15 meaning that only 15% of the
     // area of every faces of tetras would be shaded. Applying a greater `fill` ratio would allow the creation of
@@ -1350,6 +1404,9 @@ class Isosurface::Spaceframe {
 
 class Isosurface::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -1365,6 +1422,9 @@ class Isosurface::Stream {
 
 class Isosurface::Surface {
  public:
+    Surface() = default;
+    Surface(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the number of iso-surfaces between minimum and maximum iso-values. By default this value is 2 meaning that
     // only minimum and maximum surfaces would be drawn.

@@ -454,10 +454,6 @@ Funnel::Connector& Funnel::Connector::fillcolor(std::string f) {
     json["fillcolor"] = std::move(f);
     return *this;
 }
-Funnel::Connector& Funnel::Connector::fillcolor(double f) {
-    json["fillcolor"] = std::move(f);
-    return *this;
-}
 
 Funnel::Connector& Funnel::Connector::line(Line f) {
     json["line"] = std::move(f.json);
@@ -471,10 +467,6 @@ Funnel::Connector& Funnel::Connector::visible(bool f) {
 
 
 Funnel::Connector::Line& Funnel::Connector::Line::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Funnel::Connector::Line& Funnel::Connector::Line::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -519,15 +511,7 @@ Funnel::Hoverlabel& Funnel::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Funnel::Hoverlabel& Funnel::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Funnel::Hoverlabel& Funnel::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Funnel::Hoverlabel& Funnel::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -541,15 +525,7 @@ Funnel::Hoverlabel& Funnel::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Funnel::Hoverlabel& Funnel::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Funnel::Hoverlabel& Funnel::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Funnel::Hoverlabel& Funnel::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -613,15 +589,7 @@ Funnel::Hoverlabel::Font& Funnel::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Funnel::Hoverlabel::Font& Funnel::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Funnel::Hoverlabel::Font& Funnel::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Funnel::Hoverlabel::Font& Funnel::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -784,15 +752,7 @@ Funnel::Insidetextfont& Funnel::Insidetextfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Funnel::Insidetextfont& Funnel::Insidetextfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Funnel::Insidetextfont& Funnel::Insidetextfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Funnel::Insidetextfont& Funnel::Insidetextfont::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -966,10 +926,6 @@ Funnel::Legendgrouptitle::Font& Funnel::Legendgrouptitle::Font::color(std::strin
     json["color"] = std::move(f);
     return *this;
 }
-Funnel::Legendgrouptitle::Font& Funnel::Legendgrouptitle::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Funnel::Legendgrouptitle::Font& Funnel::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1041,15 +997,7 @@ Funnel::Marker& Funnel::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Funnel::Marker& Funnel::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Funnel::Marker& Funnel::Marker::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Funnel::Marker& Funnel::Marker::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1254,16 +1202,8 @@ Funnel::Marker::Colorbar& Funnel::Marker::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Funnel::Marker::Colorbar& Funnel::Marker::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Funnel::Marker::Colorbar& Funnel::Marker::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Funnel::Marker::Colorbar& Funnel::Marker::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -1316,10 +1256,6 @@ Funnel::Marker::Colorbar& Funnel::Marker::Colorbar::orientation(enum Orientation
 }
 
 Funnel::Marker::Colorbar& Funnel::Marker::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Funnel::Marker::Colorbar& Funnel::Marker::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -1376,10 +1312,6 @@ Funnel::Marker::Colorbar& Funnel::Marker::Colorbar::tickangle(double f) {
 }
 
 Funnel::Marker::Colorbar& Funnel::Marker::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Funnel::Marker::Colorbar& Funnel::Marker::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -1546,10 +1478,6 @@ Funnel::Marker::Colorbar::Tickfont& Funnel::Marker::Colorbar::Tickfont::color(st
     json["color"] = std::move(f);
     return *this;
 }
-Funnel::Marker::Colorbar::Tickfont& Funnel::Marker::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Funnel::Marker::Colorbar::Tickfont& Funnel::Marker::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -1598,7 +1526,7 @@ Funnel::Marker::Colorbar::Tickformatstops& Funnel::Marker::Colorbar::Tickformats
 }
 
 
-Funnel::Marker::Colorbar::Tickformatstops::Tickformatstop& Funnel::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Funnel::Marker::Colorbar::Tickformatstops::Tickformatstop& Funnel::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -1683,10 +1611,6 @@ Funnel::Marker::Colorbar::Title::Font& Funnel::Marker::Colorbar::Title::Font::co
     json["color"] = std::move(f);
     return *this;
 }
-Funnel::Marker::Colorbar::Title::Font& Funnel::Marker::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Funnel::Marker::Colorbar::Title::Font& Funnel::Marker::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1758,15 +1682,7 @@ Funnel::Marker::Line& Funnel::Marker::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Funnel::Marker::Line& Funnel::Marker::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Funnel::Marker::Line& Funnel::Marker::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Funnel::Marker::Line& Funnel::Marker::Line::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1844,15 +1760,7 @@ Funnel::Outsidetextfont& Funnel::Outsidetextfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Funnel::Outsidetextfont& Funnel::Outsidetextfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Funnel::Outsidetextfont& Funnel::Outsidetextfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Funnel::Outsidetextfont& Funnel::Outsidetextfont::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -2026,15 +1934,7 @@ Funnel::Textfont& Funnel::Textfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Funnel::Textfont& Funnel::Textfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Funnel::Textfont& Funnel::Textfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Funnel::Textfont& Funnel::Textfont::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }

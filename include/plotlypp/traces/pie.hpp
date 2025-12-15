@@ -25,6 +25,8 @@ class Pie : public Trace {
     : Trace() {
         json["type"] = "pie";
     }
+    Pie(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Direction {
         CLOCKWISE,
@@ -304,6 +306,9 @@ class Pie : public Trace {
 
 class Pie::Domain {
  public:
+    Domain() = default;
+    Domain(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // If there is a layout grid, use the domain for this column in the grid for this pie trace .
     Pie::Domain& column(int f);
@@ -312,10 +317,10 @@ class Pie::Domain {
     Pie::Domain& row(int f);
 
     // Sets the horizontal domain of this pie trace (in plot fraction).
-    Pie::Domain& x(std::vector<std::string> f);
+    Pie::Domain& x(std::vector<double> f);
 
     // Sets the vertical domain of this pie trace (in plot fraction).
-    Pie::Domain& y(std::vector<std::string> f);
+    Pie::Domain& y(std::vector<double> f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -323,6 +328,9 @@ class Pie::Domain {
 
 class Pie::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -345,18 +353,14 @@ class Pie::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Pie::Hoverlabel& bgcolor(std::string f);
-    Pie::Hoverlabel& bgcolor(double f);
     Pie::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Pie::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Pie::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Pie::Hoverlabel& bordercolor(std::string f);
-    Pie::Hoverlabel& bordercolor(double f);
     Pie::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Pie::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Pie::Hoverlabel& bordercolorsrc(std::string f);
@@ -381,6 +385,9 @@ class Pie::Hoverlabel {
 // Sets the font used in hover labels.
 class Pie::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -407,9 +414,7 @@ class Pie::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Pie::Hoverlabel::Font& color(std::string f);
-    Pie::Hoverlabel::Font& color(double f);
     Pie::Hoverlabel::Font& color(std::vector<std::string> f);
-    Pie::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Pie::Hoverlabel::Font& colorsrc(std::string f);
@@ -491,6 +496,9 @@ class Pie::Hoverlabel::Font {
 // Sets the font used for `textinfo` lying inside the sector.
 class Pie::Insidetextfont {
  public:
+    Insidetextfont() = default;
+    Insidetextfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -517,9 +525,7 @@ class Pie::Insidetextfont {
     static std::string to_string(Variant e);
 
     Pie::Insidetextfont& color(std::string f);
-    Pie::Insidetextfont& color(double f);
     Pie::Insidetextfont& color(std::vector<std::string> f);
-    Pie::Insidetextfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Pie::Insidetextfont& colorsrc(std::string f);
@@ -600,6 +606,9 @@ class Pie::Insidetextfont {
 
 class Pie::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -617,6 +626,9 @@ class Pie::Legendgrouptitle {
 // Sets this legend group's title font.
 class Pie::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -643,7 +655,6 @@ class Pie::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Pie::Legendgrouptitle::Font& color(std::string f);
-    Pie::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -689,6 +700,9 @@ class Pie::Legendgrouptitle::Font {
 
 class Pie::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Line;
     // Sets the pattern within the marker.
@@ -712,12 +726,13 @@ class Pie::Marker {
 
 class Pie::Marker::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the color of the line enclosing each sector.
     Pie::Marker::Line& color(std::string f);
-    Pie::Marker::Line& color(double f);
     Pie::Marker::Line& color(std::vector<std::string> f);
-    Pie::Marker::Line& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Pie::Marker::Line& colorsrc(std::string f);
@@ -736,6 +751,9 @@ class Pie::Marker::Line {
 // Sets the pattern within the marker.
 class Pie::Marker::Pattern {
  public:
+    Pattern() = default;
+    Pattern(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Fillmode {
         REPLACE,
@@ -743,24 +761,10 @@ class Pie::Marker::Pattern {
     };
     static std::string to_string(Fillmode e);
 
-    enum class Shape {
-        EMPTY,
-        SLASH,
-        DOUBLEBACKSLASH,
-        X,
-        HYPHEN,
-        OR,
-        PLUS,
-        DOT,
-    };
-    static std::string to_string(Shape e);
-
     // When there is no colorscale sets the color of background pattern fill. Defaults to a `marker.color` background
     // when `fillmode` is *overlay*. Otherwise, defaults to a transparent background.
     Pie::Marker::Pattern& bgcolor(std::string f);
-    Pie::Marker::Pattern& bgcolor(double f);
     Pie::Marker::Pattern& bgcolor(std::vector<std::string> f);
-    Pie::Marker::Pattern& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Pie::Marker::Pattern& bgcolorsrc(std::string f);
@@ -768,9 +772,7 @@ class Pie::Marker::Pattern {
     // When there is no colorscale sets the color of foreground pattern fill. Defaults to a `marker.color` background
     // when `fillmode` is *replace*. Otherwise, defaults to dark grey or white to increase contrast with the `bgcolor`.
     Pie::Marker::Pattern& fgcolor(std::string f);
-    Pie::Marker::Pattern& fgcolor(double f);
     Pie::Marker::Pattern& fgcolor(std::vector<std::string> f);
-    Pie::Marker::Pattern& fgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `fgcolor`.
     Pie::Marker::Pattern& fgcolorsrc(std::string f);
@@ -784,9 +786,8 @@ class Pie::Marker::Pattern {
     Pie::Marker::Pattern& fillmode(enum Fillmode f);
 
     // Sets the shape of the pattern fill. By default, no pattern is used for filling the area.
-    // - Default:
-    Pie::Marker::Pattern& shape(enum Shape f);
-    Pie::Marker::Pattern& shape(const std::vector<enum Shape>& f);
+    Pie::Marker::Pattern& shape(std::string f);
+    Pie::Marker::Pattern& shape(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `shape`.
     Pie::Marker::Pattern& shapesrc(std::string f);
@@ -815,6 +816,9 @@ class Pie::Marker::Pattern {
 // Sets the font used for `textinfo` lying outside the sector.
 class Pie::Outsidetextfont {
  public:
+    Outsidetextfont() = default;
+    Outsidetextfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -841,9 +845,7 @@ class Pie::Outsidetextfont {
     static std::string to_string(Variant e);
 
     Pie::Outsidetextfont& color(std::string f);
-    Pie::Outsidetextfont& color(double f);
     Pie::Outsidetextfont& color(std::vector<std::string> f);
-    Pie::Outsidetextfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Pie::Outsidetextfont& colorsrc(std::string f);
@@ -924,6 +926,9 @@ class Pie::Outsidetextfont {
 
 class Pie::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -940,6 +945,9 @@ class Pie::Stream {
 // Sets the font used for `textinfo`.
 class Pie::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -966,9 +974,7 @@ class Pie::Textfont {
     static std::string to_string(Variant e);
 
     Pie::Textfont& color(std::string f);
-    Pie::Textfont& color(double f);
     Pie::Textfont& color(std::vector<std::string> f);
-    Pie::Textfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Pie::Textfont& colorsrc(std::string f);
@@ -1049,6 +1055,9 @@ class Pie::Textfont {
 
 class Pie::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Position {
         TOP_LEFT,
@@ -1080,6 +1089,9 @@ class Pie::Title {
 // Sets the font used for `title`.
 class Pie::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1106,9 +1118,7 @@ class Pie::Title::Font {
     static std::string to_string(Variant e);
 
     Pie::Title::Font& color(std::string f);
-    Pie::Title::Font& color(double f);
     Pie::Title::Font& color(std::vector<std::string> f);
-    Pie::Title::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Pie::Title::Font& colorsrc(std::string f);

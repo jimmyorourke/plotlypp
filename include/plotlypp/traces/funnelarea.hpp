@@ -25,6 +25,8 @@ class Funnelarea : public Trace {
     : Trace() {
         json["type"] = "funnelarea";
     }
+    Funnelarea(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Textposition {
         INSIDE,
@@ -257,6 +259,9 @@ class Funnelarea : public Trace {
 
 class Funnelarea::Domain {
  public:
+    Domain() = default;
+    Domain(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // If there is a layout grid, use the domain for this column in the grid for this funnelarea trace .
     Funnelarea::Domain& column(int f);
@@ -265,10 +270,10 @@ class Funnelarea::Domain {
     Funnelarea::Domain& row(int f);
 
     // Sets the horizontal domain of this funnelarea trace (in plot fraction).
-    Funnelarea::Domain& x(std::vector<std::string> f);
+    Funnelarea::Domain& x(std::vector<double> f);
 
     // Sets the vertical domain of this funnelarea trace (in plot fraction).
-    Funnelarea::Domain& y(std::vector<std::string> f);
+    Funnelarea::Domain& y(std::vector<double> f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -276,6 +281,9 @@ class Funnelarea::Domain {
 
 class Funnelarea::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -298,18 +306,14 @@ class Funnelarea::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Funnelarea::Hoverlabel& bgcolor(std::string f);
-    Funnelarea::Hoverlabel& bgcolor(double f);
     Funnelarea::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Funnelarea::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Funnelarea::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Funnelarea::Hoverlabel& bordercolor(std::string f);
-    Funnelarea::Hoverlabel& bordercolor(double f);
     Funnelarea::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Funnelarea::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Funnelarea::Hoverlabel& bordercolorsrc(std::string f);
@@ -334,6 +338,9 @@ class Funnelarea::Hoverlabel {
 // Sets the font used in hover labels.
 class Funnelarea::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -360,9 +367,7 @@ class Funnelarea::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Funnelarea::Hoverlabel::Font& color(std::string f);
-    Funnelarea::Hoverlabel::Font& color(double f);
     Funnelarea::Hoverlabel::Font& color(std::vector<std::string> f);
-    Funnelarea::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Funnelarea::Hoverlabel::Font& colorsrc(std::string f);
@@ -444,6 +449,9 @@ class Funnelarea::Hoverlabel::Font {
 // Sets the font used for `textinfo` lying inside the sector.
 class Funnelarea::Insidetextfont {
  public:
+    Insidetextfont() = default;
+    Insidetextfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -470,9 +478,7 @@ class Funnelarea::Insidetextfont {
     static std::string to_string(Variant e);
 
     Funnelarea::Insidetextfont& color(std::string f);
-    Funnelarea::Insidetextfont& color(double f);
     Funnelarea::Insidetextfont& color(std::vector<std::string> f);
-    Funnelarea::Insidetextfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Funnelarea::Insidetextfont& colorsrc(std::string f);
@@ -553,6 +559,9 @@ class Funnelarea::Insidetextfont {
 
 class Funnelarea::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -570,6 +579,9 @@ class Funnelarea::Legendgrouptitle {
 // Sets this legend group's title font.
 class Funnelarea::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -596,7 +608,6 @@ class Funnelarea::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Funnelarea::Legendgrouptitle::Font& color(std::string f);
-    Funnelarea::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -642,6 +653,9 @@ class Funnelarea::Legendgrouptitle::Font {
 
 class Funnelarea::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Line;
     // Sets the pattern within the marker.
@@ -665,12 +679,13 @@ class Funnelarea::Marker {
 
 class Funnelarea::Marker::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the color of the line enclosing each sector. Defaults to the `paper_bgcolor` value.
     Funnelarea::Marker::Line& color(std::string f);
-    Funnelarea::Marker::Line& color(double f);
     Funnelarea::Marker::Line& color(std::vector<std::string> f);
-    Funnelarea::Marker::Line& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Funnelarea::Marker::Line& colorsrc(std::string f);
@@ -689,6 +704,9 @@ class Funnelarea::Marker::Line {
 // Sets the pattern within the marker.
 class Funnelarea::Marker::Pattern {
  public:
+    Pattern() = default;
+    Pattern(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Fillmode {
         REPLACE,
@@ -696,24 +714,10 @@ class Funnelarea::Marker::Pattern {
     };
     static std::string to_string(Fillmode e);
 
-    enum class Shape {
-        EMPTY,
-        SLASH,
-        DOUBLEBACKSLASH,
-        X,
-        HYPHEN,
-        OR,
-        PLUS,
-        DOT,
-    };
-    static std::string to_string(Shape e);
-
     // When there is no colorscale sets the color of background pattern fill. Defaults to a `marker.color` background
     // when `fillmode` is *overlay*. Otherwise, defaults to a transparent background.
     Funnelarea::Marker::Pattern& bgcolor(std::string f);
-    Funnelarea::Marker::Pattern& bgcolor(double f);
     Funnelarea::Marker::Pattern& bgcolor(std::vector<std::string> f);
-    Funnelarea::Marker::Pattern& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Funnelarea::Marker::Pattern& bgcolorsrc(std::string f);
@@ -721,9 +725,7 @@ class Funnelarea::Marker::Pattern {
     // When there is no colorscale sets the color of foreground pattern fill. Defaults to a `marker.color` background
     // when `fillmode` is *replace*. Otherwise, defaults to dark grey or white to increase contrast with the `bgcolor`.
     Funnelarea::Marker::Pattern& fgcolor(std::string f);
-    Funnelarea::Marker::Pattern& fgcolor(double f);
     Funnelarea::Marker::Pattern& fgcolor(std::vector<std::string> f);
-    Funnelarea::Marker::Pattern& fgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `fgcolor`.
     Funnelarea::Marker::Pattern& fgcolorsrc(std::string f);
@@ -737,9 +739,8 @@ class Funnelarea::Marker::Pattern {
     Funnelarea::Marker::Pattern& fillmode(enum Fillmode f);
 
     // Sets the shape of the pattern fill. By default, no pattern is used for filling the area.
-    // - Default:
-    Funnelarea::Marker::Pattern& shape(enum Shape f);
-    Funnelarea::Marker::Pattern& shape(const std::vector<enum Shape>& f);
+    Funnelarea::Marker::Pattern& shape(std::string f);
+    Funnelarea::Marker::Pattern& shape(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `shape`.
     Funnelarea::Marker::Pattern& shapesrc(std::string f);
@@ -767,6 +768,9 @@ class Funnelarea::Marker::Pattern {
 
 class Funnelarea::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -783,6 +787,9 @@ class Funnelarea::Stream {
 // Sets the font used for `textinfo`.
 class Funnelarea::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -809,9 +816,7 @@ class Funnelarea::Textfont {
     static std::string to_string(Variant e);
 
     Funnelarea::Textfont& color(std::string f);
-    Funnelarea::Textfont& color(double f);
     Funnelarea::Textfont& color(std::vector<std::string> f);
-    Funnelarea::Textfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Funnelarea::Textfont& colorsrc(std::string f);
@@ -892,6 +897,9 @@ class Funnelarea::Textfont {
 
 class Funnelarea::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Position {
         TOP_LEFT,
@@ -920,6 +928,9 @@ class Funnelarea::Title {
 // Sets the font used for `title`.
 class Funnelarea::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -946,9 +957,7 @@ class Funnelarea::Title::Font {
     static std::string to_string(Variant e);
 
     Funnelarea::Title::Font& color(std::string f);
-    Funnelarea::Title::Font& color(double f);
     Funnelarea::Title::Font& color(std::vector<std::string> f);
-    Funnelarea::Title::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Funnelarea::Title::Font& colorsrc(std::string f);

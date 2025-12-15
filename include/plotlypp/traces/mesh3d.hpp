@@ -25,6 +25,8 @@ class Mesh3D : public Trace {
     : Trace() {
         json["type"] = "mesh3d";
     }
+    Mesh3D(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Delaunayaxis {
         X,
@@ -148,7 +150,6 @@ class Mesh3D : public Trace {
 
     // Sets the color of the whole mesh
     Mesh3D& color(std::string f);
-    Mesh3D& color(double f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -445,6 +446,9 @@ class Mesh3D : public Trace {
 
 class Mesh3D::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -565,11 +569,9 @@ class Mesh3D::Colorbar {
 
     // Sets the color of padded area.
     Mesh3D::Colorbar& bgcolor(std::string f);
-    Mesh3D::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Mesh3D::Colorbar& bordercolor(std::string f);
-    Mesh3D::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Mesh3D::Colorbar& borderwidth(double f);
@@ -625,7 +627,6 @@ class Mesh3D::Colorbar {
 
     // Sets the axis line color.
     Mesh3D::Colorbar& outlinecolor(std::string f);
-    Mesh3D::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Mesh3D::Colorbar& outlinewidth(double f);
@@ -672,7 +673,6 @@ class Mesh3D::Colorbar {
 
     // Sets the tick color.
     Mesh3D::Colorbar& tickcolor(std::string f);
-    Mesh3D::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Mesh3D::Colorbar& tickfont(Tickfont f);
@@ -785,6 +785,9 @@ class Mesh3D::Colorbar {
 // Sets the color bar's tick label font
 class Mesh3D::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -811,7 +814,6 @@ class Mesh3D::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Mesh3D::Colorbar::Tickfont& color(std::string f);
-    Mesh3D::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -857,6 +859,9 @@ class Mesh3D::Colorbar::Tickfont {
 
 class Mesh3D::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -868,10 +873,13 @@ class Mesh3D::Colorbar::Tickformatstops {
 
 class Mesh3D::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Mesh3D::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Mesh3D::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Mesh3D::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -898,6 +906,9 @@ class Mesh3D::Colorbar::Tickformatstops::Tickformatstop {
 
 class Mesh3D::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -926,6 +937,9 @@ class Mesh3D::Colorbar::Title {
 // Sets this color bar's title font.
 class Mesh3D::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -952,7 +966,6 @@ class Mesh3D::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Mesh3D::Colorbar::Title::Font& color(std::string f);
-    Mesh3D::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -998,10 +1011,12 @@ class Mesh3D::Colorbar::Title::Font {
 
 class Mesh3D::Contour {
  public:
+    Contour() = default;
+    Contour(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the color of the contour lines.
     Mesh3D::Contour& color(std::string f);
-    Mesh3D::Contour& color(double f);
 
     // Sets whether or not dynamic contours are shown on hover
     Mesh3D::Contour& show(bool f);
@@ -1015,6 +1030,9 @@ class Mesh3D::Contour {
 
 class Mesh3D::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -1037,18 +1055,14 @@ class Mesh3D::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Mesh3D::Hoverlabel& bgcolor(std::string f);
-    Mesh3D::Hoverlabel& bgcolor(double f);
     Mesh3D::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Mesh3D::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Mesh3D::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Mesh3D::Hoverlabel& bordercolor(std::string f);
-    Mesh3D::Hoverlabel& bordercolor(double f);
     Mesh3D::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Mesh3D::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Mesh3D::Hoverlabel& bordercolorsrc(std::string f);
@@ -1073,6 +1087,9 @@ class Mesh3D::Hoverlabel {
 // Sets the font used in hover labels.
 class Mesh3D::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1099,9 +1116,7 @@ class Mesh3D::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Mesh3D::Hoverlabel::Font& color(std::string f);
-    Mesh3D::Hoverlabel::Font& color(double f);
     Mesh3D::Hoverlabel::Font& color(std::vector<std::string> f);
-    Mesh3D::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Mesh3D::Hoverlabel::Font& colorsrc(std::string f);
@@ -1182,6 +1197,9 @@ class Mesh3D::Hoverlabel::Font {
 
 class Mesh3D::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -1199,6 +1217,9 @@ class Mesh3D::Legendgrouptitle {
 // Sets this legend group's title font.
 class Mesh3D::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1225,7 +1246,6 @@ class Mesh3D::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Mesh3D::Legendgrouptitle::Font& color(std::string f);
-    Mesh3D::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1271,6 +1291,9 @@ class Mesh3D::Legendgrouptitle::Font {
 
 class Mesh3D::Lighting {
  public:
+    Lighting() = default;
+    Lighting(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Ambient light increases overall color visibility but can wash out the image.
     Mesh3D::Lighting& ambient(double f);
@@ -1300,6 +1323,9 @@ class Mesh3D::Lighting {
 
 class Mesh3D::Lightposition {
  public:
+    Lightposition() = default;
+    Lightposition(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Numeric vector, representing the X coordinate for each vertex.
     Mesh3D::Lightposition& x(double f);
@@ -1316,6 +1342,9 @@ class Mesh3D::Lightposition {
 
 class Mesh3D::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.

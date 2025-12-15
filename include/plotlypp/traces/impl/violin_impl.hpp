@@ -103,10 +103,6 @@ Violin& Violin::fillcolor(std::string f) {
     json["fillcolor"] = std::move(f);
     return *this;
 }
-Violin& Violin::fillcolor(double f) {
-    json["fillcolor"] = std::move(f);
-    return *this;
-}
 
 Violin& Violin::hoverinfo(std::string f) {
     json["hoverinfo"] = std::move(f);
@@ -298,7 +294,7 @@ Violin& Violin::side(enum Side f) {
     return *this;
 }
 
-Violin& Violin::span(std::vector<std::string> f) {
+Violin& Violin::span(std::vector<double> f) {
     json["span"] = std::move(f);
     return *this;
 }
@@ -417,10 +413,6 @@ Violin::Box& Violin::Box::fillcolor(std::string f) {
     json["fillcolor"] = std::move(f);
     return *this;
 }
-Violin::Box& Violin::Box::fillcolor(double f) {
-    json["fillcolor"] = std::move(f);
-    return *this;
-}
 
 Violin::Box& Violin::Box::line(Line f) {
     json["line"] = std::move(f.json);
@@ -439,10 +431,6 @@ Violin::Box& Violin::Box::width(double f) {
 
 
 Violin::Box::Line& Violin::Box::Line::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Violin::Box::Line& Violin::Box::Line::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -482,15 +470,7 @@ Violin::Hoverlabel& Violin::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Violin::Hoverlabel& Violin::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Violin::Hoverlabel& Violin::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Violin::Hoverlabel& Violin::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -504,15 +484,7 @@ Violin::Hoverlabel& Violin::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Violin::Hoverlabel& Violin::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Violin::Hoverlabel& Violin::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Violin::Hoverlabel& Violin::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -576,15 +548,7 @@ Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Violin::Hoverlabel::Font& Violin::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -758,10 +722,6 @@ Violin::Legendgrouptitle::Font& Violin::Legendgrouptitle::Font::color(std::strin
     json["color"] = std::move(f);
     return *this;
 }
-Violin::Legendgrouptitle::Font& Violin::Legendgrouptitle::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Violin::Legendgrouptitle::Font& Violin::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -805,10 +765,6 @@ Violin::Legendgrouptitle::Font& Violin::Legendgrouptitle::Font::weight(int f) {
 
 
 Violin::Line& Violin::Line::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Violin::Line& Violin::Line::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1158,10 +1114,6 @@ Violin::Marker& Violin::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Violin::Marker& Violin::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Violin::Marker& Violin::Marker::line(Line f) {
     json["line"] = std::move(f.json);
@@ -1174,10 +1126,6 @@ Violin::Marker& Violin::Marker::opacity(double f) {
 }
 
 Violin::Marker& Violin::Marker::outliercolor(std::string f) {
-    json["outliercolor"] = std::move(f);
-    return *this;
-}
-Violin::Marker& Violin::Marker::outliercolor(double f) {
     json["outliercolor"] = std::move(f);
     return *this;
 }
@@ -1197,16 +1145,8 @@ Violin::Marker::Line& Violin::Marker::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Violin::Marker::Line& Violin::Marker::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Violin::Marker::Line& Violin::Marker::Line::outliercolor(std::string f) {
-    json["outliercolor"] = std::move(f);
-    return *this;
-}
-Violin::Marker::Line& Violin::Marker::Line::outliercolor(double f) {
     json["outliercolor"] = std::move(f);
     return *this;
 }
@@ -1223,10 +1163,6 @@ Violin::Marker::Line& Violin::Marker::Line::width(double f) {
 
 
 Violin::Meanline& Violin::Meanline::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Violin::Meanline& Violin::Meanline::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1249,10 +1185,6 @@ Violin::Selected& Violin::Selected::marker(Marker f) {
 
 
 Violin::Selected::Marker& Violin::Selected::Marker::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Violin::Selected::Marker& Violin::Selected::Marker::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1286,10 +1218,6 @@ Violin::Unselected& Violin::Unselected::marker(Marker f) {
 
 
 Violin::Unselected::Marker& Violin::Unselected::Marker::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Violin::Unselected::Marker& Violin::Unselected::Marker::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

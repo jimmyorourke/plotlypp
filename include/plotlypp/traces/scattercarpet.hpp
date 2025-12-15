@@ -25,6 +25,8 @@ class Scattercarpet : public Trace {
     : Trace() {
         json["type"] = "scattercarpet";
     }
+    Scattercarpet(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Fill {
         NONE,
@@ -103,7 +105,6 @@ class Scattercarpet : public Trace {
     // Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line
     // color, whichever is available.
     Scattercarpet& fillcolor(std::string f);
-    Scattercarpet& fillcolor(double f);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -296,6 +297,9 @@ class Scattercarpet : public Trace {
 
 class Scattercarpet::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -318,18 +322,14 @@ class Scattercarpet::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Scattercarpet::Hoverlabel& bgcolor(std::string f);
-    Scattercarpet::Hoverlabel& bgcolor(double f);
     Scattercarpet::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Scattercarpet::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Scattercarpet::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Scattercarpet::Hoverlabel& bordercolor(std::string f);
-    Scattercarpet::Hoverlabel& bordercolor(double f);
     Scattercarpet::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Scattercarpet::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Scattercarpet::Hoverlabel& bordercolorsrc(std::string f);
@@ -354,6 +354,9 @@ class Scattercarpet::Hoverlabel {
 // Sets the font used in hover labels.
 class Scattercarpet::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -380,9 +383,7 @@ class Scattercarpet::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Scattercarpet::Hoverlabel::Font& color(std::string f);
-    Scattercarpet::Hoverlabel::Font& color(double f);
     Scattercarpet::Hoverlabel::Font& color(std::vector<std::string> f);
-    Scattercarpet::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scattercarpet::Hoverlabel::Font& colorsrc(std::string f);
@@ -463,6 +464,9 @@ class Scattercarpet::Hoverlabel::Font {
 
 class Scattercarpet::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -480,6 +484,9 @@ class Scattercarpet::Legendgrouptitle {
 // Sets this legend group's title font.
 class Scattercarpet::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -506,7 +513,6 @@ class Scattercarpet::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Scattercarpet::Legendgrouptitle::Font& color(std::string f);
-    Scattercarpet::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -552,6 +558,9 @@ class Scattercarpet::Legendgrouptitle::Font {
 
 class Scattercarpet::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Shape {
         LINEAR,
@@ -570,7 +579,6 @@ class Scattercarpet::Line {
 
     // Sets the line color.
     Scattercarpet::Line& color(std::string f);
-    Scattercarpet::Line& color(double f);
 
     // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
     // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
@@ -594,6 +602,9 @@ class Scattercarpet::Line {
 
 class Scattercarpet::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Angleref {
         PREVIOUS,
@@ -978,9 +989,7 @@ class Scattercarpet::Marker {
     // Sets the marker color. It accepts either a specific color or an array of numbers that are mapped to the
     // colorscale relative to the max and min values of the array or relative to `marker.cmin` and `marker.cmax` if set.
     Scattercarpet::Marker& color(std::string f);
-    Scattercarpet::Marker& color(double f);
     Scattercarpet::Marker& color(std::vector<std::string> f);
-    Scattercarpet::Marker& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -1068,6 +1077,9 @@ class Scattercarpet::Marker {
 
 class Scattercarpet::Marker::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -1188,11 +1200,9 @@ class Scattercarpet::Marker::Colorbar {
 
     // Sets the color of padded area.
     Scattercarpet::Marker::Colorbar& bgcolor(std::string f);
-    Scattercarpet::Marker::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Scattercarpet::Marker::Colorbar& bordercolor(std::string f);
-    Scattercarpet::Marker::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Scattercarpet::Marker::Colorbar& borderwidth(double f);
@@ -1248,7 +1258,6 @@ class Scattercarpet::Marker::Colorbar {
 
     // Sets the axis line color.
     Scattercarpet::Marker::Colorbar& outlinecolor(std::string f);
-    Scattercarpet::Marker::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Scattercarpet::Marker::Colorbar& outlinewidth(double f);
@@ -1295,7 +1304,6 @@ class Scattercarpet::Marker::Colorbar {
 
     // Sets the tick color.
     Scattercarpet::Marker::Colorbar& tickcolor(std::string f);
-    Scattercarpet::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Scattercarpet::Marker::Colorbar& tickfont(Tickfont f);
@@ -1408,6 +1416,9 @@ class Scattercarpet::Marker::Colorbar {
 // Sets the color bar's tick label font
 class Scattercarpet::Marker::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1434,7 +1445,6 @@ class Scattercarpet::Marker::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Scattercarpet::Marker::Colorbar::Tickfont& color(std::string f);
-    Scattercarpet::Marker::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1480,6 +1490,9 @@ class Scattercarpet::Marker::Colorbar::Tickfont {
 
 class Scattercarpet::Marker::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -1491,10 +1504,13 @@ class Scattercarpet::Marker::Colorbar::Tickformatstops {
 
 class Scattercarpet::Marker::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Scattercarpet::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Scattercarpet::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Scattercarpet::Marker::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -1521,6 +1537,9 @@ class Scattercarpet::Marker::Colorbar::Tickformatstops::Tickformatstop {
 
 class Scattercarpet::Marker::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -1549,6 +1568,9 @@ class Scattercarpet::Marker::Colorbar::Title {
 // Sets this color bar's title font.
 class Scattercarpet::Marker::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1575,7 +1597,6 @@ class Scattercarpet::Marker::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Scattercarpet::Marker::Colorbar::Title::Font& color(std::string f);
-    Scattercarpet::Marker::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1621,6 +1642,9 @@ class Scattercarpet::Marker::Colorbar::Title::Font {
 
 class Scattercarpet::Marker::Gradient {
  public:
+    Gradient() = default;
+    Gradient(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Type {
         RADIAL,
@@ -1633,9 +1657,7 @@ class Scattercarpet::Marker::Gradient {
     // Sets the final color of the gradient fill: the center color for radial, the right for horizontal, or the bottom
     // for vertical.
     Scattercarpet::Marker::Gradient& color(std::string f);
-    Scattercarpet::Marker::Gradient& color(double f);
     Scattercarpet::Marker::Gradient& color(std::vector<std::string> f);
-    Scattercarpet::Marker::Gradient& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scattercarpet::Marker::Gradient& colorsrc(std::string f);
@@ -1654,6 +1676,9 @@ class Scattercarpet::Marker::Gradient {
 
 class Scattercarpet::Marker::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by
     // `marker.line.colorscale`. Has an effect only if in `marker.line.color` is set to a numerical array. In case
@@ -1686,9 +1711,7 @@ class Scattercarpet::Marker::Line {
     // colorscale relative to the max and min values of the array or relative to `marker.line.cmin` and
     // `marker.line.cmax` if set.
     Scattercarpet::Marker::Line& color(std::string f);
-    Scattercarpet::Marker::Line& color(double f);
     Scattercarpet::Marker::Line& color(std::vector<std::string> f);
-    Scattercarpet::Marker::Line& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -1726,6 +1749,9 @@ class Scattercarpet::Marker::Line {
 
 class Scattercarpet::Selected {
  public:
+    Selected() = default;
+    Selected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
     class Textfont;
@@ -1740,10 +1766,12 @@ class Scattercarpet::Selected {
 
 class Scattercarpet::Selected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker color of selected points.
     Scattercarpet::Selected::Marker& color(std::string f);
-    Scattercarpet::Selected::Marker& color(double f);
 
     // Sets the marker opacity of selected points.
     Scattercarpet::Selected::Marker& opacity(double f);
@@ -1757,10 +1785,12 @@ class Scattercarpet::Selected::Marker {
 
 class Scattercarpet::Selected::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the text font color of selected points.
     Scattercarpet::Selected::Textfont& color(std::string f);
-    Scattercarpet::Selected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1768,6 +1798,9 @@ class Scattercarpet::Selected::Textfont {
 
 class Scattercarpet::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -1784,6 +1817,9 @@ class Scattercarpet::Stream {
 // Sets the text font.
 class Scattercarpet::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1810,9 +1846,7 @@ class Scattercarpet::Textfont {
     static std::string to_string(Variant e);
 
     Scattercarpet::Textfont& color(std::string f);
-    Scattercarpet::Textfont& color(double f);
     Scattercarpet::Textfont& color(std::vector<std::string> f);
-    Scattercarpet::Textfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scattercarpet::Textfont& colorsrc(std::string f);
@@ -1893,6 +1927,9 @@ class Scattercarpet::Textfont {
 
 class Scattercarpet::Unselected {
  public:
+    Unselected() = default;
+    Unselected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
     class Textfont;
@@ -1907,10 +1944,12 @@ class Scattercarpet::Unselected {
 
 class Scattercarpet::Unselected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker color of unselected points, applied only when a selection exists.
     Scattercarpet::Unselected::Marker& color(std::string f);
-    Scattercarpet::Unselected::Marker& color(double f);
 
     // Sets the marker opacity of unselected points, applied only when a selection exists.
     Scattercarpet::Unselected::Marker& opacity(double f);
@@ -1924,10 +1963,12 @@ class Scattercarpet::Unselected::Marker {
 
 class Scattercarpet::Unselected::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the text font color of unselected points, applied only when a selection exists.
     Scattercarpet::Unselected::Textfont& color(std::string f);
-    Scattercarpet::Unselected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

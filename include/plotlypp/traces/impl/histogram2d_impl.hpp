@@ -581,16 +581,8 @@ Histogram2D::Colorbar& Histogram2D::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Histogram2D::Colorbar& Histogram2D::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Histogram2D::Colorbar& Histogram2D::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Histogram2D::Colorbar& Histogram2D::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -643,10 +635,6 @@ Histogram2D::Colorbar& Histogram2D::Colorbar::orientation(enum Orientation f) {
 }
 
 Histogram2D::Colorbar& Histogram2D::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Histogram2D::Colorbar& Histogram2D::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -703,10 +691,6 @@ Histogram2D::Colorbar& Histogram2D::Colorbar::tickangle(double f) {
 }
 
 Histogram2D::Colorbar& Histogram2D::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Histogram2D::Colorbar& Histogram2D::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -873,10 +857,6 @@ Histogram2D::Colorbar::Tickfont& Histogram2D::Colorbar::Tickfont::color(std::str
     json["color"] = std::move(f);
     return *this;
 }
-Histogram2D::Colorbar::Tickfont& Histogram2D::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Histogram2D::Colorbar::Tickfont& Histogram2D::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -925,7 +905,7 @@ Histogram2D::Colorbar::Tickformatstops& Histogram2D::Colorbar::Tickformatstops::
 }
 
 
-Histogram2D::Colorbar::Tickformatstops::Tickformatstop& Histogram2D::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Histogram2D::Colorbar::Tickformatstops::Tickformatstop& Histogram2D::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -1010,10 +990,6 @@ Histogram2D::Colorbar::Title::Font& Histogram2D::Colorbar::Title::Font::color(st
     json["color"] = std::move(f);
     return *this;
 }
-Histogram2D::Colorbar::Title::Font& Histogram2D::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Histogram2D::Colorbar::Title::Font& Histogram2D::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1085,15 +1061,7 @@ Histogram2D::Hoverlabel& Histogram2D::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Histogram2D::Hoverlabel& Histogram2D::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Histogram2D::Hoverlabel& Histogram2D::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Histogram2D::Hoverlabel& Histogram2D::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -1107,15 +1075,7 @@ Histogram2D::Hoverlabel& Histogram2D::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Histogram2D::Hoverlabel& Histogram2D::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Histogram2D::Hoverlabel& Histogram2D::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Histogram2D::Hoverlabel& Histogram2D::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -1179,15 +1139,7 @@ Histogram2D::Hoverlabel::Font& Histogram2D::Hoverlabel::Font::color(std::string 
     json["color"] = std::move(f);
     return *this;
 }
-Histogram2D::Hoverlabel::Font& Histogram2D::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Histogram2D::Hoverlabel::Font& Histogram2D::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Histogram2D::Hoverlabel::Font& Histogram2D::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1361,10 +1313,6 @@ Histogram2D::Legendgrouptitle::Font& Histogram2D::Legendgrouptitle::Font::color(
     json["color"] = std::move(f);
     return *this;
 }
-Histogram2D::Legendgrouptitle::Font& Histogram2D::Legendgrouptitle::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Histogram2D::Legendgrouptitle::Font& Histogram2D::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1461,10 +1409,6 @@ std::string Histogram2D::Textfont::to_string(Variant e) {
 }
 
 Histogram2D::Textfont& Histogram2D::Textfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Histogram2D::Textfont& Histogram2D::Textfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

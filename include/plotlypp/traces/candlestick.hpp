@@ -25,6 +25,8 @@ class Candlestick : public Trace {
     : Trace() {
         json["type"] = "candlestick";
     }
+    Candlestick(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Visible {
         TRUE,
@@ -278,13 +280,15 @@ class Candlestick : public Trace {
 
 class Candlestick::Decreasing {
  public:
+    Decreasing() = default;
+    Decreasing(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Line;
 
     // Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line
     // color, whichever is available.
     Candlestick::Decreasing& fillcolor(std::string f);
-    Candlestick::Decreasing& fillcolor(double f);
 
     Candlestick::Decreasing& line(Line f);
 
@@ -294,10 +298,12 @@ class Candlestick::Decreasing {
 
 class Candlestick::Decreasing::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the color of line bounding the box(es).
     Candlestick::Decreasing::Line& color(std::string f);
-    Candlestick::Decreasing::Line& color(double f);
 
     // Sets the width (in px) of line bounding the box(es).
     Candlestick::Decreasing::Line& width(double f);
@@ -308,6 +314,9 @@ class Candlestick::Decreasing::Line {
 
 class Candlestick::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -330,18 +339,14 @@ class Candlestick::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Candlestick::Hoverlabel& bgcolor(std::string f);
-    Candlestick::Hoverlabel& bgcolor(double f);
     Candlestick::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Candlestick::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Candlestick::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Candlestick::Hoverlabel& bordercolor(std::string f);
-    Candlestick::Hoverlabel& bordercolor(double f);
     Candlestick::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Candlestick::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Candlestick::Hoverlabel& bordercolorsrc(std::string f);
@@ -369,6 +374,9 @@ class Candlestick::Hoverlabel {
 // Sets the font used in hover labels.
 class Candlestick::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -395,9 +403,7 @@ class Candlestick::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Candlestick::Hoverlabel::Font& color(std::string f);
-    Candlestick::Hoverlabel::Font& color(double f);
     Candlestick::Hoverlabel::Font& color(std::vector<std::string> f);
-    Candlestick::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Candlestick::Hoverlabel::Font& colorsrc(std::string f);
@@ -478,13 +484,15 @@ class Candlestick::Hoverlabel::Font {
 
 class Candlestick::Increasing {
  public:
+    Increasing() = default;
+    Increasing(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Line;
 
     // Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line
     // color, whichever is available.
     Candlestick::Increasing& fillcolor(std::string f);
-    Candlestick::Increasing& fillcolor(double f);
 
     Candlestick::Increasing& line(Line f);
 
@@ -494,10 +502,12 @@ class Candlestick::Increasing {
 
 class Candlestick::Increasing::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the color of line bounding the box(es).
     Candlestick::Increasing::Line& color(std::string f);
-    Candlestick::Increasing::Line& color(double f);
 
     // Sets the width (in px) of line bounding the box(es).
     Candlestick::Increasing::Line& width(double f);
@@ -508,6 +518,9 @@ class Candlestick::Increasing::Line {
 
 class Candlestick::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -525,6 +538,9 @@ class Candlestick::Legendgrouptitle {
 // Sets this legend group's title font.
 class Candlestick::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -551,7 +567,6 @@ class Candlestick::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Candlestick::Legendgrouptitle::Font& color(std::string f);
-    Candlestick::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -597,6 +612,9 @@ class Candlestick::Legendgrouptitle::Font {
 
 class Candlestick::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the width (in px) of line bounding the box(es). Note that this style setting can also be set per direction
     // via `increasing.line.width` and `decreasing.line.width`.
@@ -608,6 +626,9 @@ class Candlestick::Line {
 
 class Candlestick::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.

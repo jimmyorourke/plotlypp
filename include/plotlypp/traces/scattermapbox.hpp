@@ -25,6 +25,8 @@ class Scattermapbox : public Trace {
     : Trace() {
         json["type"] = "scattermapbox";
     }
+    Scattermapbox(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Fill {
         NONE,
@@ -90,7 +92,6 @@ class Scattermapbox : public Trace {
     // Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line
     // color, whichever is available.
     Scattermapbox& fillcolor(std::string f);
-    Scattermapbox& fillcolor(double f);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -282,12 +283,13 @@ class Scattermapbox : public Trace {
 
 class Scattermapbox::Cluster {
  public:
+    Cluster() = default;
+    Cluster(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the color for each cluster step.
     Scattermapbox::Cluster& color(std::string f);
-    Scattermapbox::Cluster& color(double f);
     Scattermapbox::Cluster& color(std::vector<std::string> f);
-    Scattermapbox::Cluster& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scattermapbox::Cluster& colorsrc(std::string f);
@@ -327,6 +329,9 @@ class Scattermapbox::Cluster {
 
 class Scattermapbox::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -349,18 +354,14 @@ class Scattermapbox::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Scattermapbox::Hoverlabel& bgcolor(std::string f);
-    Scattermapbox::Hoverlabel& bgcolor(double f);
     Scattermapbox::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Scattermapbox::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Scattermapbox::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Scattermapbox::Hoverlabel& bordercolor(std::string f);
-    Scattermapbox::Hoverlabel& bordercolor(double f);
     Scattermapbox::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Scattermapbox::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Scattermapbox::Hoverlabel& bordercolorsrc(std::string f);
@@ -385,6 +386,9 @@ class Scattermapbox::Hoverlabel {
 // Sets the font used in hover labels.
 class Scattermapbox::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -411,9 +415,7 @@ class Scattermapbox::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Scattermapbox::Hoverlabel::Font& color(std::string f);
-    Scattermapbox::Hoverlabel::Font& color(double f);
     Scattermapbox::Hoverlabel::Font& color(std::vector<std::string> f);
-    Scattermapbox::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scattermapbox::Hoverlabel::Font& colorsrc(std::string f);
@@ -494,6 +496,9 @@ class Scattermapbox::Hoverlabel::Font {
 
 class Scattermapbox::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -511,6 +516,9 @@ class Scattermapbox::Legendgrouptitle {
 // Sets this legend group's title font.
 class Scattermapbox::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -537,7 +545,6 @@ class Scattermapbox::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Scattermapbox::Legendgrouptitle::Font& color(std::string f);
-    Scattermapbox::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -583,10 +590,12 @@ class Scattermapbox::Legendgrouptitle::Font {
 
 class Scattermapbox::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the line color.
     Scattermapbox::Line& color(std::string f);
-    Scattermapbox::Line& color(double f);
 
     // Sets the line width (in px).
     Scattermapbox::Line& width(double f);
@@ -597,6 +606,9 @@ class Scattermapbox::Line {
 
 class Scattermapbox::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Sizemode {
         DIAMETER,
@@ -644,9 +656,7 @@ class Scattermapbox::Marker {
     // Sets the marker color. It accepts either a specific color or an array of numbers that are mapped to the
     // colorscale relative to the max and min values of the array or relative to `marker.cmin` and `marker.cmax` if set.
     Scattermapbox::Marker& color(std::string f);
-    Scattermapbox::Marker& color(double f);
     Scattermapbox::Marker& color(std::vector<std::string> f);
-    Scattermapbox::Marker& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -717,6 +727,9 @@ class Scattermapbox::Marker {
 
 class Scattermapbox::Marker::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -837,11 +850,9 @@ class Scattermapbox::Marker::Colorbar {
 
     // Sets the color of padded area.
     Scattermapbox::Marker::Colorbar& bgcolor(std::string f);
-    Scattermapbox::Marker::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Scattermapbox::Marker::Colorbar& bordercolor(std::string f);
-    Scattermapbox::Marker::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Scattermapbox::Marker::Colorbar& borderwidth(double f);
@@ -897,7 +908,6 @@ class Scattermapbox::Marker::Colorbar {
 
     // Sets the axis line color.
     Scattermapbox::Marker::Colorbar& outlinecolor(std::string f);
-    Scattermapbox::Marker::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Scattermapbox::Marker::Colorbar& outlinewidth(double f);
@@ -944,7 +954,6 @@ class Scattermapbox::Marker::Colorbar {
 
     // Sets the tick color.
     Scattermapbox::Marker::Colorbar& tickcolor(std::string f);
-    Scattermapbox::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Scattermapbox::Marker::Colorbar& tickfont(Tickfont f);
@@ -1057,6 +1066,9 @@ class Scattermapbox::Marker::Colorbar {
 // Sets the color bar's tick label font
 class Scattermapbox::Marker::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1083,7 +1095,6 @@ class Scattermapbox::Marker::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Scattermapbox::Marker::Colorbar::Tickfont& color(std::string f);
-    Scattermapbox::Marker::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1129,6 +1140,9 @@ class Scattermapbox::Marker::Colorbar::Tickfont {
 
 class Scattermapbox::Marker::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -1140,10 +1154,13 @@ class Scattermapbox::Marker::Colorbar::Tickformatstops {
 
 class Scattermapbox::Marker::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Scattermapbox::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Scattermapbox::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Scattermapbox::Marker::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -1170,6 +1187,9 @@ class Scattermapbox::Marker::Colorbar::Tickformatstops::Tickformatstop {
 
 class Scattermapbox::Marker::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -1198,6 +1218,9 @@ class Scattermapbox::Marker::Colorbar::Title {
 // Sets this color bar's title font.
 class Scattermapbox::Marker::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1224,7 +1247,6 @@ class Scattermapbox::Marker::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Scattermapbox::Marker::Colorbar::Title::Font& color(std::string f);
-    Scattermapbox::Marker::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1270,6 +1292,9 @@ class Scattermapbox::Marker::Colorbar::Title::Font {
 
 class Scattermapbox::Selected {
  public:
+    Selected() = default;
+    Selected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
 
@@ -1281,10 +1306,12 @@ class Scattermapbox::Selected {
 
 class Scattermapbox::Selected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker color of selected points.
     Scattermapbox::Selected::Marker& color(std::string f);
-    Scattermapbox::Selected::Marker& color(double f);
 
     // Sets the marker opacity of selected points.
     Scattermapbox::Selected::Marker& opacity(double f);
@@ -1298,6 +1325,9 @@ class Scattermapbox::Selected::Marker {
 
 class Scattermapbox::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -1315,6 +1345,9 @@ class Scattermapbox::Stream {
 // when `type` is set to *symbol*.
 class Scattermapbox::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1323,7 +1356,6 @@ class Scattermapbox::Textfont {
     static std::string to_string(Style e);
 
     Scattermapbox::Textfont& color(std::string f);
-    Scattermapbox::Textfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1349,6 +1381,9 @@ class Scattermapbox::Textfont {
 
 class Scattermapbox::Unselected {
  public:
+    Unselected() = default;
+    Unselected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
 
@@ -1360,10 +1395,12 @@ class Scattermapbox::Unselected {
 
 class Scattermapbox::Unselected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker color of unselected points, applied only when a selection exists.
     Scattermapbox::Unselected::Marker& color(std::string f);
-    Scattermapbox::Unselected::Marker& color(double f);
 
     // Sets the marker opacity of unselected points, applied only when a selection exists.
     Scattermapbox::Unselected::Marker& opacity(double f);

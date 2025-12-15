@@ -438,16 +438,8 @@ Densitymap::Colorbar& Densitymap::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Densitymap::Colorbar& Densitymap::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Densitymap::Colorbar& Densitymap::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Densitymap::Colorbar& Densitymap::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -500,10 +492,6 @@ Densitymap::Colorbar& Densitymap::Colorbar::orientation(enum Orientation f) {
 }
 
 Densitymap::Colorbar& Densitymap::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Densitymap::Colorbar& Densitymap::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -560,10 +548,6 @@ Densitymap::Colorbar& Densitymap::Colorbar::tickangle(double f) {
 }
 
 Densitymap::Colorbar& Densitymap::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Densitymap::Colorbar& Densitymap::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -730,10 +714,6 @@ Densitymap::Colorbar::Tickfont& Densitymap::Colorbar::Tickfont::color(std::strin
     json["color"] = std::move(f);
     return *this;
 }
-Densitymap::Colorbar::Tickfont& Densitymap::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Densitymap::Colorbar::Tickfont& Densitymap::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -782,7 +762,7 @@ Densitymap::Colorbar::Tickformatstops& Densitymap::Colorbar::Tickformatstops::ti
 }
 
 
-Densitymap::Colorbar::Tickformatstops::Tickformatstop& Densitymap::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Densitymap::Colorbar::Tickformatstops::Tickformatstop& Densitymap::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -867,10 +847,6 @@ Densitymap::Colorbar::Title::Font& Densitymap::Colorbar::Title::Font::color(std:
     json["color"] = std::move(f);
     return *this;
 }
-Densitymap::Colorbar::Title::Font& Densitymap::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Densitymap::Colorbar::Title::Font& Densitymap::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -942,15 +918,7 @@ Densitymap::Hoverlabel& Densitymap::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Densitymap::Hoverlabel& Densitymap::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Densitymap::Hoverlabel& Densitymap::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Densitymap::Hoverlabel& Densitymap::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -964,15 +932,7 @@ Densitymap::Hoverlabel& Densitymap::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Densitymap::Hoverlabel& Densitymap::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Densitymap::Hoverlabel& Densitymap::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Densitymap::Hoverlabel& Densitymap::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -1036,15 +996,7 @@ Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::color(std::string f)
     json["color"] = std::move(f);
     return *this;
 }
-Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1215,10 +1167,6 @@ std::string Densitymap::Legendgrouptitle::Font::to_string(Variant e) {
 }
 
 Densitymap::Legendgrouptitle::Font& Densitymap::Legendgrouptitle::Font::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Densitymap::Legendgrouptitle::Font& Densitymap::Legendgrouptitle::Font::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

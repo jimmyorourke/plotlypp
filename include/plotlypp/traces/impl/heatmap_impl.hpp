@@ -641,16 +641,8 @@ Heatmap::Colorbar& Heatmap::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Heatmap::Colorbar& Heatmap::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Heatmap::Colorbar& Heatmap::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Heatmap::Colorbar& Heatmap::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -703,10 +695,6 @@ Heatmap::Colorbar& Heatmap::Colorbar::orientation(enum Orientation f) {
 }
 
 Heatmap::Colorbar& Heatmap::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Heatmap::Colorbar& Heatmap::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -763,10 +751,6 @@ Heatmap::Colorbar& Heatmap::Colorbar::tickangle(double f) {
 }
 
 Heatmap::Colorbar& Heatmap::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Heatmap::Colorbar& Heatmap::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -933,10 +917,6 @@ Heatmap::Colorbar::Tickfont& Heatmap::Colorbar::Tickfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Heatmap::Colorbar::Tickfont& Heatmap::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Heatmap::Colorbar::Tickfont& Heatmap::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -985,7 +965,7 @@ Heatmap::Colorbar::Tickformatstops& Heatmap::Colorbar::Tickformatstops::tickform
 }
 
 
-Heatmap::Colorbar::Tickformatstops::Tickformatstop& Heatmap::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Heatmap::Colorbar::Tickformatstops::Tickformatstop& Heatmap::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -1070,10 +1050,6 @@ Heatmap::Colorbar::Title::Font& Heatmap::Colorbar::Title::Font::color(std::strin
     json["color"] = std::move(f);
     return *this;
 }
-Heatmap::Colorbar::Title::Font& Heatmap::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Heatmap::Colorbar::Title::Font& Heatmap::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1145,15 +1121,7 @@ Heatmap::Hoverlabel& Heatmap::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Heatmap::Hoverlabel& Heatmap::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Heatmap::Hoverlabel& Heatmap::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Heatmap::Hoverlabel& Heatmap::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -1167,15 +1135,7 @@ Heatmap::Hoverlabel& Heatmap::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Heatmap::Hoverlabel& Heatmap::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Heatmap::Hoverlabel& Heatmap::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Heatmap::Hoverlabel& Heatmap::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -1239,15 +1199,7 @@ Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Heatmap::Hoverlabel::Font& Heatmap::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1421,10 +1373,6 @@ Heatmap::Legendgrouptitle::Font& Heatmap::Legendgrouptitle::Font::color(std::str
     json["color"] = std::move(f);
     return *this;
 }
-Heatmap::Legendgrouptitle::Font& Heatmap::Legendgrouptitle::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Heatmap::Legendgrouptitle::Font& Heatmap::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1509,10 +1457,6 @@ std::string Heatmap::Textfont::to_string(Variant e) {
 }
 
 Heatmap::Textfont& Heatmap::Textfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Heatmap::Textfont& Heatmap::Textfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

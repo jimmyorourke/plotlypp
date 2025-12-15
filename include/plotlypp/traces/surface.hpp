@@ -25,6 +25,8 @@ class Surface : public Trace {
     : Trace() {
         json["type"] = "surface";
     }
+    Surface(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Visible {
         TRUE,
@@ -369,6 +371,9 @@ class Surface : public Trace {
 
 class Surface::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -489,11 +494,9 @@ class Surface::Colorbar {
 
     // Sets the color of padded area.
     Surface::Colorbar& bgcolor(std::string f);
-    Surface::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Surface::Colorbar& bordercolor(std::string f);
-    Surface::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Surface::Colorbar& borderwidth(double f);
@@ -549,7 +552,6 @@ class Surface::Colorbar {
 
     // Sets the axis line color.
     Surface::Colorbar& outlinecolor(std::string f);
-    Surface::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Surface::Colorbar& outlinewidth(double f);
@@ -596,7 +598,6 @@ class Surface::Colorbar {
 
     // Sets the tick color.
     Surface::Colorbar& tickcolor(std::string f);
-    Surface::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Surface::Colorbar& tickfont(Tickfont f);
@@ -709,6 +710,9 @@ class Surface::Colorbar {
 // Sets the color bar's tick label font
 class Surface::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -735,7 +739,6 @@ class Surface::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Surface::Colorbar::Tickfont& color(std::string f);
-    Surface::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -781,6 +784,9 @@ class Surface::Colorbar::Tickfont {
 
 class Surface::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -792,10 +798,13 @@ class Surface::Colorbar::Tickformatstops {
 
 class Surface::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Surface::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Surface::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Surface::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -822,6 +831,9 @@ class Surface::Colorbar::Tickformatstops::Tickformatstop {
 
 class Surface::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -850,6 +862,9 @@ class Surface::Colorbar::Title {
 // Sets this color bar's title font.
 class Surface::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -876,7 +891,6 @@ class Surface::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Surface::Colorbar::Title::Font& color(std::string f);
-    Surface::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -922,6 +936,9 @@ class Surface::Colorbar::Title::Font {
 
 class Surface::Contours {
  public:
+    Contours() = default;
+    Contours(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class X;
     class Y;
@@ -939,12 +956,14 @@ class Surface::Contours {
 
 class Surface::Contours::X {
  public:
+    X() = default;
+    X(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Project;
 
     // Sets the color of the contour lines.
     Surface::Contours::X& color(std::string f);
-    Surface::Contours::X& color(double f);
 
     // Sets the end contour level value. Must be more than `contours.start`
     Surface::Contours::X& end(double f);
@@ -954,7 +973,6 @@ class Surface::Contours::X {
 
     // Sets the color of the highlighted contour lines.
     Surface::Contours::X& highlightcolor(std::string f);
-    Surface::Contours::X& highlightcolor(double f);
 
     // Sets the width of the highlighted contour lines.
     Surface::Contours::X& highlightwidth(double f);
@@ -982,6 +1000,9 @@ class Surface::Contours::X {
 
 class Surface::Contours::X::Project {
  public:
+    Project() = default;
+    Project(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Determines whether or not these contour lines are projected on the x plane. If `highlight` is set to *true* (the
     // default), the projected lines are shown on hover. If `show` is set to *true*, the projected lines are shown in
@@ -1004,12 +1025,14 @@ class Surface::Contours::X::Project {
 
 class Surface::Contours::Y {
  public:
+    Y() = default;
+    Y(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Project;
 
     // Sets the color of the contour lines.
     Surface::Contours::Y& color(std::string f);
-    Surface::Contours::Y& color(double f);
 
     // Sets the end contour level value. Must be more than `contours.start`
     Surface::Contours::Y& end(double f);
@@ -1019,7 +1042,6 @@ class Surface::Contours::Y {
 
     // Sets the color of the highlighted contour lines.
     Surface::Contours::Y& highlightcolor(std::string f);
-    Surface::Contours::Y& highlightcolor(double f);
 
     // Sets the width of the highlighted contour lines.
     Surface::Contours::Y& highlightwidth(double f);
@@ -1047,6 +1069,9 @@ class Surface::Contours::Y {
 
 class Surface::Contours::Y::Project {
  public:
+    Project() = default;
+    Project(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Determines whether or not these contour lines are projected on the x plane. If `highlight` is set to *true* (the
     // default), the projected lines are shown on hover. If `show` is set to *true*, the projected lines are shown in
@@ -1069,12 +1094,14 @@ class Surface::Contours::Y::Project {
 
 class Surface::Contours::Z {
  public:
+    Z() = default;
+    Z(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Project;
 
     // Sets the color of the contour lines.
     Surface::Contours::Z& color(std::string f);
-    Surface::Contours::Z& color(double f);
 
     // Sets the end contour level value. Must be more than `contours.start`
     Surface::Contours::Z& end(double f);
@@ -1084,7 +1111,6 @@ class Surface::Contours::Z {
 
     // Sets the color of the highlighted contour lines.
     Surface::Contours::Z& highlightcolor(std::string f);
-    Surface::Contours::Z& highlightcolor(double f);
 
     // Sets the width of the highlighted contour lines.
     Surface::Contours::Z& highlightwidth(double f);
@@ -1112,6 +1138,9 @@ class Surface::Contours::Z {
 
 class Surface::Contours::Z::Project {
  public:
+    Project() = default;
+    Project(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Determines whether or not these contour lines are projected on the x plane. If `highlight` is set to *true* (the
     // default), the projected lines are shown on hover. If `show` is set to *true*, the projected lines are shown in
@@ -1134,6 +1163,9 @@ class Surface::Contours::Z::Project {
 
 class Surface::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -1156,18 +1188,14 @@ class Surface::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Surface::Hoverlabel& bgcolor(std::string f);
-    Surface::Hoverlabel& bgcolor(double f);
     Surface::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Surface::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Surface::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Surface::Hoverlabel& bordercolor(std::string f);
-    Surface::Hoverlabel& bordercolor(double f);
     Surface::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Surface::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Surface::Hoverlabel& bordercolorsrc(std::string f);
@@ -1192,6 +1220,9 @@ class Surface::Hoverlabel {
 // Sets the font used in hover labels.
 class Surface::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1218,9 +1249,7 @@ class Surface::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Surface::Hoverlabel::Font& color(std::string f);
-    Surface::Hoverlabel::Font& color(double f);
     Surface::Hoverlabel::Font& color(std::vector<std::string> f);
-    Surface::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Surface::Hoverlabel::Font& colorsrc(std::string f);
@@ -1301,6 +1330,9 @@ class Surface::Hoverlabel::Font {
 
 class Surface::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -1318,6 +1350,9 @@ class Surface::Legendgrouptitle {
 // Sets this legend group's title font.
 class Surface::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1344,7 +1379,6 @@ class Surface::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Surface::Legendgrouptitle::Font& color(std::string f);
-    Surface::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1390,6 +1424,9 @@ class Surface::Legendgrouptitle::Font {
 
 class Surface::Lighting {
  public:
+    Lighting() = default;
+    Lighting(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Ambient light increases overall color visibility but can wash out the image.
     Surface::Lighting& ambient(double f);
@@ -1413,6 +1450,9 @@ class Surface::Lighting {
 
 class Surface::Lightposition {
  public:
+    Lightposition() = default;
+    Lightposition(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Numeric vector, representing the X coordinate for each vertex.
     Surface::Lightposition& x(double f);
@@ -1429,6 +1469,9 @@ class Surface::Lightposition {
 
 class Surface::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.

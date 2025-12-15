@@ -25,6 +25,8 @@ class Scatter3D : public Trace {
     : Trace() {
         json["type"] = "scatter3d";
     }
+    Scatter3D(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Surfaceaxis {
         _1,
@@ -263,7 +265,6 @@ class Scatter3D : public Trace {
 
     // Sets the surface fill color.
     Scatter3D& surfacecolor(std::string f);
-    Scatter3D& surfacecolor(double f);
 
     // Sets text elements associated with each (x,y,z) triplet. If a single string, the same string appears over all the
     // data points. If an array of string, the items are mapped in order to the this trace's (x,y,z) coordinates. If
@@ -379,6 +380,9 @@ class Scatter3D : public Trace {
 
 class Scatter3D::Error_X {
  public:
+    Error_X() = default;
+    Error_X(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Type {
         PERCENT,
@@ -405,7 +409,6 @@ class Scatter3D::Error_X {
 
     // Sets the stroke color of the error bars.
     Scatter3D::Error_X& color(std::string f);
-    Scatter3D::Error_X& color(double f);
 
     Scatter3D::Error_X& copy_zstyle(bool f);
 
@@ -447,6 +450,9 @@ class Scatter3D::Error_X {
 
 class Scatter3D::Error_Y {
  public:
+    Error_Y() = default;
+    Error_Y(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Type {
         PERCENT,
@@ -473,7 +479,6 @@ class Scatter3D::Error_Y {
 
     // Sets the stroke color of the error bars.
     Scatter3D::Error_Y& color(std::string f);
-    Scatter3D::Error_Y& color(double f);
 
     Scatter3D::Error_Y& copy_zstyle(bool f);
 
@@ -515,6 +520,9 @@ class Scatter3D::Error_Y {
 
 class Scatter3D::Error_Z {
  public:
+    Error_Z() = default;
+    Error_Z(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Type {
         PERCENT,
@@ -541,7 +549,6 @@ class Scatter3D::Error_Z {
 
     // Sets the stroke color of the error bars.
     Scatter3D::Error_Z& color(std::string f);
-    Scatter3D::Error_Z& color(double f);
 
     // Determines whether or not the error bars have the same length in both direction (top/bottom for vertical bars,
     // left/right for horizontal bars.
@@ -581,6 +588,9 @@ class Scatter3D::Error_Z {
 
 class Scatter3D::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -603,18 +613,14 @@ class Scatter3D::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Scatter3D::Hoverlabel& bgcolor(std::string f);
-    Scatter3D::Hoverlabel& bgcolor(double f);
     Scatter3D::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Scatter3D::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Scatter3D::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Scatter3D::Hoverlabel& bordercolor(std::string f);
-    Scatter3D::Hoverlabel& bordercolor(double f);
     Scatter3D::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Scatter3D::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Scatter3D::Hoverlabel& bordercolorsrc(std::string f);
@@ -639,6 +645,9 @@ class Scatter3D::Hoverlabel {
 // Sets the font used in hover labels.
 class Scatter3D::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -665,9 +674,7 @@ class Scatter3D::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Scatter3D::Hoverlabel::Font& color(std::string f);
-    Scatter3D::Hoverlabel::Font& color(double f);
     Scatter3D::Hoverlabel::Font& color(std::vector<std::string> f);
-    Scatter3D::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scatter3D::Hoverlabel::Font& colorsrc(std::string f);
@@ -748,6 +755,9 @@ class Scatter3D::Hoverlabel::Font {
 
 class Scatter3D::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -765,6 +775,9 @@ class Scatter3D::Legendgrouptitle {
 // Sets this legend group's title font.
 class Scatter3D::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -791,7 +804,6 @@ class Scatter3D::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Scatter3D::Legendgrouptitle::Font& color(std::string f);
-    Scatter3D::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -837,6 +849,9 @@ class Scatter3D::Legendgrouptitle::Font {
 
 class Scatter3D::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Dash {
         DASH,
@@ -877,9 +892,7 @@ class Scatter3D::Line {
     // Sets the line color. It accepts either a specific color or an array of numbers that are mapped to the colorscale
     // relative to the max and min values of the array or relative to `line.cmin` and `line.cmax` if set.
     Scatter3D::Line& color(std::string f);
-    Scatter3D::Line& color(double f);
     Scatter3D::Line& color(std::vector<std::string> f);
-    Scatter3D::Line& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -921,6 +934,9 @@ class Scatter3D::Line {
 
 class Scatter3D::Line::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -1041,11 +1057,9 @@ class Scatter3D::Line::Colorbar {
 
     // Sets the color of padded area.
     Scatter3D::Line::Colorbar& bgcolor(std::string f);
-    Scatter3D::Line::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Scatter3D::Line::Colorbar& bordercolor(std::string f);
-    Scatter3D::Line::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Scatter3D::Line::Colorbar& borderwidth(double f);
@@ -1101,7 +1115,6 @@ class Scatter3D::Line::Colorbar {
 
     // Sets the axis line color.
     Scatter3D::Line::Colorbar& outlinecolor(std::string f);
-    Scatter3D::Line::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Scatter3D::Line::Colorbar& outlinewidth(double f);
@@ -1148,7 +1161,6 @@ class Scatter3D::Line::Colorbar {
 
     // Sets the tick color.
     Scatter3D::Line::Colorbar& tickcolor(std::string f);
-    Scatter3D::Line::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Scatter3D::Line::Colorbar& tickfont(Tickfont f);
@@ -1261,6 +1273,9 @@ class Scatter3D::Line::Colorbar {
 // Sets the color bar's tick label font
 class Scatter3D::Line::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1287,7 +1302,6 @@ class Scatter3D::Line::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Scatter3D::Line::Colorbar::Tickfont& color(std::string f);
-    Scatter3D::Line::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1333,6 +1347,9 @@ class Scatter3D::Line::Colorbar::Tickfont {
 
 class Scatter3D::Line::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -1344,10 +1361,13 @@ class Scatter3D::Line::Colorbar::Tickformatstops {
 
 class Scatter3D::Line::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Scatter3D::Line::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Scatter3D::Line::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Scatter3D::Line::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -1374,6 +1394,9 @@ class Scatter3D::Line::Colorbar::Tickformatstops::Tickformatstop {
 
 class Scatter3D::Line::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -1402,6 +1425,9 @@ class Scatter3D::Line::Colorbar::Title {
 // Sets this color bar's title font.
 class Scatter3D::Line::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1428,7 +1454,6 @@ class Scatter3D::Line::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Scatter3D::Line::Colorbar::Title::Font& color(std::string f);
-    Scatter3D::Line::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1474,6 +1499,9 @@ class Scatter3D::Line::Colorbar::Title::Font {
 
 class Scatter3D::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Sizemode {
         DIAMETER,
@@ -1523,9 +1551,7 @@ class Scatter3D::Marker {
     // Sets the marker color. It accepts either a specific color or an array of numbers that are mapped to the
     // colorscale relative to the max and min values of the array or relative to `marker.cmin` and `marker.cmax` if set.
     Scatter3D::Marker& color(std::string f);
-    Scatter3D::Marker& color(double f);
     Scatter3D::Marker& color(std::vector<std::string> f);
-    Scatter3D::Marker& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -1596,6 +1622,9 @@ class Scatter3D::Marker {
 
 class Scatter3D::Marker::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -1716,11 +1745,9 @@ class Scatter3D::Marker::Colorbar {
 
     // Sets the color of padded area.
     Scatter3D::Marker::Colorbar& bgcolor(std::string f);
-    Scatter3D::Marker::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Scatter3D::Marker::Colorbar& bordercolor(std::string f);
-    Scatter3D::Marker::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Scatter3D::Marker::Colorbar& borderwidth(double f);
@@ -1776,7 +1803,6 @@ class Scatter3D::Marker::Colorbar {
 
     // Sets the axis line color.
     Scatter3D::Marker::Colorbar& outlinecolor(std::string f);
-    Scatter3D::Marker::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Scatter3D::Marker::Colorbar& outlinewidth(double f);
@@ -1823,7 +1849,6 @@ class Scatter3D::Marker::Colorbar {
 
     // Sets the tick color.
     Scatter3D::Marker::Colorbar& tickcolor(std::string f);
-    Scatter3D::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Scatter3D::Marker::Colorbar& tickfont(Tickfont f);
@@ -1936,6 +1961,9 @@ class Scatter3D::Marker::Colorbar {
 // Sets the color bar's tick label font
 class Scatter3D::Marker::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1962,7 +1990,6 @@ class Scatter3D::Marker::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Scatter3D::Marker::Colorbar::Tickfont& color(std::string f);
-    Scatter3D::Marker::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -2008,6 +2035,9 @@ class Scatter3D::Marker::Colorbar::Tickfont {
 
 class Scatter3D::Marker::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -2019,10 +2049,13 @@ class Scatter3D::Marker::Colorbar::Tickformatstops {
 
 class Scatter3D::Marker::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Scatter3D::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Scatter3D::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Scatter3D::Marker::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -2049,6 +2082,9 @@ class Scatter3D::Marker::Colorbar::Tickformatstops::Tickformatstop {
 
 class Scatter3D::Marker::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -2077,6 +2113,9 @@ class Scatter3D::Marker::Colorbar::Title {
 // Sets this color bar's title font.
 class Scatter3D::Marker::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -2103,7 +2142,6 @@ class Scatter3D::Marker::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Scatter3D::Marker::Colorbar::Title::Font& color(std::string f);
-    Scatter3D::Marker::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -2149,6 +2187,9 @@ class Scatter3D::Marker::Colorbar::Title::Font {
 
 class Scatter3D::Marker::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by
     // `marker.line.colorscale`. Has an effect only if in `marker.line.color` is set to a numerical array. In case
@@ -2181,9 +2222,7 @@ class Scatter3D::Marker::Line {
     // colorscale relative to the max and min values of the array or relative to `marker.line.cmin` and
     // `marker.line.cmax` if set.
     Scatter3D::Marker::Line& color(std::string f);
-    Scatter3D::Marker::Line& color(double f);
     Scatter3D::Marker::Line& color(std::vector<std::string> f);
-    Scatter3D::Marker::Line& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -2217,6 +2256,9 @@ class Scatter3D::Marker::Line {
 
 class Scatter3D::Projection {
  public:
+    Projection() = default;
+    Projection(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class X;
     class Y;
@@ -2234,6 +2276,9 @@ class Scatter3D::Projection {
 
 class Scatter3D::Projection::X {
  public:
+    X() = default;
+    X(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the projection color.
     Scatter3D::Projection::X& opacity(double f);
@@ -2250,6 +2295,9 @@ class Scatter3D::Projection::X {
 
 class Scatter3D::Projection::Y {
  public:
+    Y() = default;
+    Y(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the projection color.
     Scatter3D::Projection::Y& opacity(double f);
@@ -2266,6 +2314,9 @@ class Scatter3D::Projection::Y {
 
 class Scatter3D::Projection::Z {
  public:
+    Z() = default;
+    Z(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the projection color.
     Scatter3D::Projection::Z& opacity(double f);
@@ -2282,6 +2333,9 @@ class Scatter3D::Projection::Z {
 
 class Scatter3D::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -2298,6 +2352,9 @@ class Scatter3D::Stream {
 // Sets the text font.
 class Scatter3D::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -2312,9 +2369,7 @@ class Scatter3D::Textfont {
     static std::string to_string(Variant e);
 
     Scatter3D::Textfont& color(std::string f);
-    Scatter3D::Textfont& color(double f);
     Scatter3D::Textfont& color(std::vector<std::string> f);
-    Scatter3D::Textfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scatter3D::Textfont& colorsrc(std::string f);

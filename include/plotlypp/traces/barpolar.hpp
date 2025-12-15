@@ -25,6 +25,8 @@ class Barpolar : public Trace {
     : Trace() {
         json["type"] = "barpolar";
     }
+    Barpolar(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Thetaunit {
         RADIANS,
@@ -253,6 +255,9 @@ class Barpolar : public Trace {
 
 class Barpolar::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -275,18 +280,14 @@ class Barpolar::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Barpolar::Hoverlabel& bgcolor(std::string f);
-    Barpolar::Hoverlabel& bgcolor(double f);
     Barpolar::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Barpolar::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Barpolar::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Barpolar::Hoverlabel& bordercolor(std::string f);
-    Barpolar::Hoverlabel& bordercolor(double f);
     Barpolar::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Barpolar::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Barpolar::Hoverlabel& bordercolorsrc(std::string f);
@@ -311,6 +312,9 @@ class Barpolar::Hoverlabel {
 // Sets the font used in hover labels.
 class Barpolar::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -337,9 +341,7 @@ class Barpolar::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Barpolar::Hoverlabel::Font& color(std::string f);
-    Barpolar::Hoverlabel::Font& color(double f);
     Barpolar::Hoverlabel::Font& color(std::vector<std::string> f);
-    Barpolar::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Barpolar::Hoverlabel::Font& colorsrc(std::string f);
@@ -420,6 +422,9 @@ class Barpolar::Hoverlabel::Font {
 
 class Barpolar::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -437,6 +442,9 @@ class Barpolar::Legendgrouptitle {
 // Sets this legend group's title font.
 class Barpolar::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -463,7 +471,6 @@ class Barpolar::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Barpolar::Legendgrouptitle::Font& color(std::string f);
-    Barpolar::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -509,6 +516,9 @@ class Barpolar::Legendgrouptitle::Font {
 
 class Barpolar::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Colorbar;
     class Line;
@@ -542,9 +552,7 @@ class Barpolar::Marker {
     // Sets the marker color. It accepts either a specific color or an array of numbers that are mapped to the
     // colorscale relative to the max and min values of the array or relative to `marker.cmin` and `marker.cmax` if set.
     Barpolar::Marker& color(std::string f);
-    Barpolar::Marker& color(double f);
     Barpolar::Marker& color(std::vector<std::string> f);
-    Barpolar::Marker& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -592,6 +600,9 @@ class Barpolar::Marker {
 
 class Barpolar::Marker::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -712,11 +723,9 @@ class Barpolar::Marker::Colorbar {
 
     // Sets the color of padded area.
     Barpolar::Marker::Colorbar& bgcolor(std::string f);
-    Barpolar::Marker::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Barpolar::Marker::Colorbar& bordercolor(std::string f);
-    Barpolar::Marker::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Barpolar::Marker::Colorbar& borderwidth(double f);
@@ -772,7 +781,6 @@ class Barpolar::Marker::Colorbar {
 
     // Sets the axis line color.
     Barpolar::Marker::Colorbar& outlinecolor(std::string f);
-    Barpolar::Marker::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Barpolar::Marker::Colorbar& outlinewidth(double f);
@@ -819,7 +827,6 @@ class Barpolar::Marker::Colorbar {
 
     // Sets the tick color.
     Barpolar::Marker::Colorbar& tickcolor(std::string f);
-    Barpolar::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Barpolar::Marker::Colorbar& tickfont(Tickfont f);
@@ -932,6 +939,9 @@ class Barpolar::Marker::Colorbar {
 // Sets the color bar's tick label font
 class Barpolar::Marker::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -958,7 +968,6 @@ class Barpolar::Marker::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Barpolar::Marker::Colorbar::Tickfont& color(std::string f);
-    Barpolar::Marker::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1004,6 +1013,9 @@ class Barpolar::Marker::Colorbar::Tickfont {
 
 class Barpolar::Marker::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -1015,10 +1027,13 @@ class Barpolar::Marker::Colorbar::Tickformatstops {
 
 class Barpolar::Marker::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Barpolar::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Barpolar::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Barpolar::Marker::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -1045,6 +1060,9 @@ class Barpolar::Marker::Colorbar::Tickformatstops::Tickformatstop {
 
 class Barpolar::Marker::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -1073,6 +1091,9 @@ class Barpolar::Marker::Colorbar::Title {
 // Sets this color bar's title font.
 class Barpolar::Marker::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1099,7 +1120,6 @@ class Barpolar::Marker::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Barpolar::Marker::Colorbar::Title::Font& color(std::string f);
-    Barpolar::Marker::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1145,6 +1165,9 @@ class Barpolar::Marker::Colorbar::Title::Font {
 
 class Barpolar::Marker::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by
     // `marker.line.colorscale`. Has an effect only if in `marker.line.color` is set to a numerical array. In case
@@ -1177,9 +1200,7 @@ class Barpolar::Marker::Line {
     // colorscale relative to the max and min values of the array or relative to `marker.line.cmin` and
     // `marker.line.cmax` if set.
     Barpolar::Marker::Line& color(std::string f);
-    Barpolar::Marker::Line& color(double f);
     Barpolar::Marker::Line& color(std::vector<std::string> f);
-    Barpolar::Marker::Line& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -1218,6 +1239,9 @@ class Barpolar::Marker::Line {
 // Sets the pattern within the marker.
 class Barpolar::Marker::Pattern {
  public:
+    Pattern() = default;
+    Pattern(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Fillmode {
         REPLACE,
@@ -1225,24 +1249,10 @@ class Barpolar::Marker::Pattern {
     };
     static std::string to_string(Fillmode e);
 
-    enum class Shape {
-        EMPTY,
-        SLASH,
-        DOUBLEBACKSLASH,
-        X,
-        HYPHEN,
-        OR,
-        PLUS,
-        DOT,
-    };
-    static std::string to_string(Shape e);
-
     // When there is no colorscale sets the color of background pattern fill. Defaults to a `marker.color` background
     // when `fillmode` is *overlay*. Otherwise, defaults to a transparent background.
     Barpolar::Marker::Pattern& bgcolor(std::string f);
-    Barpolar::Marker::Pattern& bgcolor(double f);
     Barpolar::Marker::Pattern& bgcolor(std::vector<std::string> f);
-    Barpolar::Marker::Pattern& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Barpolar::Marker::Pattern& bgcolorsrc(std::string f);
@@ -1250,9 +1260,7 @@ class Barpolar::Marker::Pattern {
     // When there is no colorscale sets the color of foreground pattern fill. Defaults to a `marker.color` background
     // when `fillmode` is *replace*. Otherwise, defaults to dark grey or white to increase contrast with the `bgcolor`.
     Barpolar::Marker::Pattern& fgcolor(std::string f);
-    Barpolar::Marker::Pattern& fgcolor(double f);
     Barpolar::Marker::Pattern& fgcolor(std::vector<std::string> f);
-    Barpolar::Marker::Pattern& fgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `fgcolor`.
     Barpolar::Marker::Pattern& fgcolorsrc(std::string f);
@@ -1266,9 +1274,8 @@ class Barpolar::Marker::Pattern {
     Barpolar::Marker::Pattern& fillmode(enum Fillmode f);
 
     // Sets the shape of the pattern fill. By default, no pattern is used for filling the area.
-    // - Default:
-    Barpolar::Marker::Pattern& shape(enum Shape f);
-    Barpolar::Marker::Pattern& shape(const std::vector<enum Shape>& f);
+    Barpolar::Marker::Pattern& shape(std::string f);
+    Barpolar::Marker::Pattern& shape(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `shape`.
     Barpolar::Marker::Pattern& shapesrc(std::string f);
@@ -1296,6 +1303,9 @@ class Barpolar::Marker::Pattern {
 
 class Barpolar::Selected {
  public:
+    Selected() = default;
+    Selected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
     class Textfont;
@@ -1310,10 +1320,12 @@ class Barpolar::Selected {
 
 class Barpolar::Selected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker color of selected points.
     Barpolar::Selected::Marker& color(std::string f);
-    Barpolar::Selected::Marker& color(double f);
 
     // Sets the marker opacity of selected points.
     Barpolar::Selected::Marker& opacity(double f);
@@ -1324,10 +1336,12 @@ class Barpolar::Selected::Marker {
 
 class Barpolar::Selected::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the text font color of selected points.
     Barpolar::Selected::Textfont& color(std::string f);
-    Barpolar::Selected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1335,6 +1349,9 @@ class Barpolar::Selected::Textfont {
 
 class Barpolar::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -1350,6 +1367,9 @@ class Barpolar::Stream {
 
 class Barpolar::Unselected {
  public:
+    Unselected() = default;
+    Unselected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
     class Textfont;
@@ -1364,10 +1384,12 @@ class Barpolar::Unselected {
 
 class Barpolar::Unselected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker color of unselected points, applied only when a selection exists.
     Barpolar::Unselected::Marker& color(std::string f);
-    Barpolar::Unselected::Marker& color(double f);
 
     // Sets the marker opacity of unselected points, applied only when a selection exists.
     Barpolar::Unselected::Marker& opacity(double f);
@@ -1378,10 +1400,12 @@ class Barpolar::Unselected::Marker {
 
 class Barpolar::Unselected::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the text font color of unselected points, applied only when a selection exists.
     Barpolar::Unselected::Textfont& color(std::string f);
-    Barpolar::Unselected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

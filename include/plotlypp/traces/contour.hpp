@@ -25,6 +25,8 @@ class Contour : public Trace {
     : Trace() {
         json["type"] = "contour";
     }
+    Contour(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Visible {
         TRUE,
@@ -156,7 +158,6 @@ class Contour : public Trace {
     // Sets the fill color if `contours.type` is *constraint*. Defaults to a half-transparent variant of the line color,
     // marker color, or marker line color, whichever is available.
     Contour& fillcolor(std::string f);
-    Contour& fillcolor(double f);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -442,6 +443,9 @@ class Contour : public Trace {
 
 class Contour::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -562,11 +566,9 @@ class Contour::Colorbar {
 
     // Sets the color of padded area.
     Contour::Colorbar& bgcolor(std::string f);
-    Contour::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Contour::Colorbar& bordercolor(std::string f);
-    Contour::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Contour::Colorbar& borderwidth(double f);
@@ -622,7 +624,6 @@ class Contour::Colorbar {
 
     // Sets the axis line color.
     Contour::Colorbar& outlinecolor(std::string f);
-    Contour::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Contour::Colorbar& outlinewidth(double f);
@@ -669,7 +670,6 @@ class Contour::Colorbar {
 
     // Sets the tick color.
     Contour::Colorbar& tickcolor(std::string f);
-    Contour::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Contour::Colorbar& tickfont(Tickfont f);
@@ -782,6 +782,9 @@ class Contour::Colorbar {
 // Sets the color bar's tick label font
 class Contour::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -808,7 +811,6 @@ class Contour::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Contour::Colorbar::Tickfont& color(std::string f);
-    Contour::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -854,6 +856,9 @@ class Contour::Colorbar::Tickfont {
 
 class Contour::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -865,10 +870,13 @@ class Contour::Colorbar::Tickformatstops {
 
 class Contour::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Contour::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Contour::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Contour::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -895,6 +903,9 @@ class Contour::Colorbar::Tickformatstops::Tickformatstop {
 
 class Contour::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -923,6 +934,9 @@ class Contour::Colorbar::Title {
 // Sets this color bar's title font.
 class Contour::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -949,7 +963,6 @@ class Contour::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Contour::Colorbar::Title::Font& color(std::string f);
-    Contour::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -995,6 +1008,9 @@ class Contour::Colorbar::Title::Font {
 
 class Contour::Contours {
  public:
+    Contours() = default;
+    Contours(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Coloring {
         FILL,
@@ -1003,23 +1019,6 @@ class Contour::Contours {
         NONE,
     };
     static std::string to_string(Coloring e);
-
-    enum class Operation {
-        EQ,
-        LT,
-        >=,
-        GT,
-        <=,
-        [],
-        (),
-        [),
-        (],
-        ][,
-        )(,
-        ](,
-        )[,
-    };
-    static std::string to_string(Operation e);
 
     enum class Type {
         LEVELS,
@@ -1055,8 +1054,7 @@ class Contour::Contours {
     // and *>=* keep regions greater than `value` *[]*, *()*, *[)*, and *(]* keep regions inside `value[0]` to
     // `value[1]` *][*, *)(*, *](*, *)[* keep regions outside `value[0]` to value[1]` Open vs. closed intervals make no
     // difference to constraint display, but all versions are allowed for consistency with filter transforms.
-    // - Default: =
-    Contour::Contours& operation(enum Operation f);
+    Contour::Contours& operation(std::string f);
 
     // Determines whether to label the contour lines with their values.
     Contour::Contours& showlabels(bool f);
@@ -1090,6 +1088,9 @@ class Contour::Contours {
 
 class Contour::Contours::Impliededits {
  public:
+    Impliededits() = default;
+    Impliededits(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1099,6 +1100,9 @@ class Contour::Contours::Impliededits {
 // family and size come from `layout.font`.
 class Contour::Contours::Labelfont {
  public:
+    Labelfont() = default;
+    Labelfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1125,7 +1129,6 @@ class Contour::Contours::Labelfont {
     static std::string to_string(Variant e);
 
     Contour::Contours::Labelfont& color(std::string f);
-    Contour::Contours::Labelfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1171,6 +1174,9 @@ class Contour::Contours::Labelfont {
 
 class Contour::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -1193,18 +1199,14 @@ class Contour::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Contour::Hoverlabel& bgcolor(std::string f);
-    Contour::Hoverlabel& bgcolor(double f);
     Contour::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Contour::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Contour::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Contour::Hoverlabel& bordercolor(std::string f);
-    Contour::Hoverlabel& bordercolor(double f);
     Contour::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Contour::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Contour::Hoverlabel& bordercolorsrc(std::string f);
@@ -1229,6 +1231,9 @@ class Contour::Hoverlabel {
 // Sets the font used in hover labels.
 class Contour::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1255,9 +1260,7 @@ class Contour::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Contour::Hoverlabel::Font& color(std::string f);
-    Contour::Hoverlabel::Font& color(double f);
     Contour::Hoverlabel::Font& color(std::vector<std::string> f);
-    Contour::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Contour::Hoverlabel::Font& colorsrc(std::string f);
@@ -1338,6 +1341,9 @@ class Contour::Hoverlabel::Font {
 
 class Contour::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -1355,6 +1361,9 @@ class Contour::Legendgrouptitle {
 // Sets this legend group's title font.
 class Contour::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1381,7 +1390,6 @@ class Contour::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Contour::Legendgrouptitle::Font& color(std::string f);
-    Contour::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1427,10 +1435,12 @@ class Contour::Legendgrouptitle::Font {
 
 class Contour::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the color of the contour level. Has no effect if `contours.coloring` is set to *lines*.
     Contour::Line& color(std::string f);
-    Contour::Line& color(double f);
 
     // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
     // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
@@ -1449,6 +1459,9 @@ class Contour::Line {
 
 class Contour::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -1465,6 +1478,9 @@ class Contour::Stream {
 // For this trace it only has an effect if `coloring` is set to *heatmap*. Sets the text font.
 class Contour::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1491,7 +1507,6 @@ class Contour::Textfont {
     static std::string to_string(Variant e);
 
     Contour::Textfont& color(std::string f);
-    Contour::Textfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by

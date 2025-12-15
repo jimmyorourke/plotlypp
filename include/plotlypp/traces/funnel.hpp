@@ -25,6 +25,8 @@ class Funnel : public Trace {
     : Trace() {
         json["type"] = "funnel";
     }
+    Funnel(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Constraintext {
         INSIDE,
@@ -400,12 +402,14 @@ class Funnel : public Trace {
 
 class Funnel::Connector {
  public:
+    Connector() = default;
+    Connector(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Line;
 
     // Sets the fill color.
     Funnel::Connector& fillcolor(std::string f);
-    Funnel::Connector& fillcolor(double f);
 
     Funnel::Connector& line(Line f);
 
@@ -418,10 +422,12 @@ class Funnel::Connector {
 
 class Funnel::Connector::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the line color.
     Funnel::Connector::Line& color(std::string f);
-    Funnel::Connector::Line& color(double f);
 
     // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
     // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
@@ -436,6 +442,9 @@ class Funnel::Connector::Line {
 
 class Funnel::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -458,18 +467,14 @@ class Funnel::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Funnel::Hoverlabel& bgcolor(std::string f);
-    Funnel::Hoverlabel& bgcolor(double f);
     Funnel::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Funnel::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Funnel::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Funnel::Hoverlabel& bordercolor(std::string f);
-    Funnel::Hoverlabel& bordercolor(double f);
     Funnel::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Funnel::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Funnel::Hoverlabel& bordercolorsrc(std::string f);
@@ -494,6 +499,9 @@ class Funnel::Hoverlabel {
 // Sets the font used in hover labels.
 class Funnel::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -520,9 +528,7 @@ class Funnel::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Funnel::Hoverlabel::Font& color(std::string f);
-    Funnel::Hoverlabel::Font& color(double f);
     Funnel::Hoverlabel::Font& color(std::vector<std::string> f);
-    Funnel::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Funnel::Hoverlabel::Font& colorsrc(std::string f);
@@ -604,6 +610,9 @@ class Funnel::Hoverlabel::Font {
 // Sets the font used for `text` lying inside the bar.
 class Funnel::Insidetextfont {
  public:
+    Insidetextfont() = default;
+    Insidetextfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -630,9 +639,7 @@ class Funnel::Insidetextfont {
     static std::string to_string(Variant e);
 
     Funnel::Insidetextfont& color(std::string f);
-    Funnel::Insidetextfont& color(double f);
     Funnel::Insidetextfont& color(std::vector<std::string> f);
-    Funnel::Insidetextfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Funnel::Insidetextfont& colorsrc(std::string f);
@@ -713,6 +720,9 @@ class Funnel::Insidetextfont {
 
 class Funnel::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -730,6 +740,9 @@ class Funnel::Legendgrouptitle {
 // Sets this legend group's title font.
 class Funnel::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -756,7 +769,6 @@ class Funnel::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Funnel::Legendgrouptitle::Font& color(std::string f);
-    Funnel::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -802,6 +814,9 @@ class Funnel::Legendgrouptitle::Font {
 
 class Funnel::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Colorbar;
     class Line;
@@ -833,9 +848,7 @@ class Funnel::Marker {
     // Sets the marker color. It accepts either a specific color or an array of numbers that are mapped to the
     // colorscale relative to the max and min values of the array or relative to `marker.cmin` and `marker.cmax` if set.
     Funnel::Marker& color(std::string f);
-    Funnel::Marker& color(double f);
     Funnel::Marker& color(std::vector<std::string> f);
-    Funnel::Marker& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -880,6 +893,9 @@ class Funnel::Marker {
 
 class Funnel::Marker::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -1000,11 +1016,9 @@ class Funnel::Marker::Colorbar {
 
     // Sets the color of padded area.
     Funnel::Marker::Colorbar& bgcolor(std::string f);
-    Funnel::Marker::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Funnel::Marker::Colorbar& bordercolor(std::string f);
-    Funnel::Marker::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Funnel::Marker::Colorbar& borderwidth(double f);
@@ -1060,7 +1074,6 @@ class Funnel::Marker::Colorbar {
 
     // Sets the axis line color.
     Funnel::Marker::Colorbar& outlinecolor(std::string f);
-    Funnel::Marker::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Funnel::Marker::Colorbar& outlinewidth(double f);
@@ -1107,7 +1120,6 @@ class Funnel::Marker::Colorbar {
 
     // Sets the tick color.
     Funnel::Marker::Colorbar& tickcolor(std::string f);
-    Funnel::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Funnel::Marker::Colorbar& tickfont(Tickfont f);
@@ -1220,6 +1232,9 @@ class Funnel::Marker::Colorbar {
 // Sets the color bar's tick label font
 class Funnel::Marker::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1246,7 +1261,6 @@ class Funnel::Marker::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Funnel::Marker::Colorbar::Tickfont& color(std::string f);
-    Funnel::Marker::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1292,6 +1306,9 @@ class Funnel::Marker::Colorbar::Tickfont {
 
 class Funnel::Marker::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -1303,10 +1320,13 @@ class Funnel::Marker::Colorbar::Tickformatstops {
 
 class Funnel::Marker::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Funnel::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Funnel::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Funnel::Marker::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -1333,6 +1353,9 @@ class Funnel::Marker::Colorbar::Tickformatstops::Tickformatstop {
 
 class Funnel::Marker::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -1361,6 +1384,9 @@ class Funnel::Marker::Colorbar::Title {
 // Sets this color bar's title font.
 class Funnel::Marker::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1387,7 +1413,6 @@ class Funnel::Marker::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Funnel::Marker::Colorbar::Title::Font& color(std::string f);
-    Funnel::Marker::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1433,6 +1458,9 @@ class Funnel::Marker::Colorbar::Title::Font {
 
 class Funnel::Marker::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by
     // `marker.line.colorscale`. Has an effect only if in `marker.line.color` is set to a numerical array. In case
@@ -1465,9 +1493,7 @@ class Funnel::Marker::Line {
     // colorscale relative to the max and min values of the array or relative to `marker.line.cmin` and
     // `marker.line.cmax` if set.
     Funnel::Marker::Line& color(std::string f);
-    Funnel::Marker::Line& color(double f);
     Funnel::Marker::Line& color(std::vector<std::string> f);
-    Funnel::Marker::Line& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -1506,6 +1532,9 @@ class Funnel::Marker::Line {
 // Sets the font used for `text` lying outside the bar.
 class Funnel::Outsidetextfont {
  public:
+    Outsidetextfont() = default;
+    Outsidetextfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1532,9 +1561,7 @@ class Funnel::Outsidetextfont {
     static std::string to_string(Variant e);
 
     Funnel::Outsidetextfont& color(std::string f);
-    Funnel::Outsidetextfont& color(double f);
     Funnel::Outsidetextfont& color(std::vector<std::string> f);
-    Funnel::Outsidetextfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Funnel::Outsidetextfont& colorsrc(std::string f);
@@ -1615,6 +1642,9 @@ class Funnel::Outsidetextfont {
 
 class Funnel::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -1631,6 +1661,9 @@ class Funnel::Stream {
 // Sets the font used for `text`.
 class Funnel::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1657,9 +1690,7 @@ class Funnel::Textfont {
     static std::string to_string(Variant e);
 
     Funnel::Textfont& color(std::string f);
-    Funnel::Textfont& color(double f);
     Funnel::Textfont& color(std::vector<std::string> f);
-    Funnel::Textfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Funnel::Textfont& colorsrc(std::string f);

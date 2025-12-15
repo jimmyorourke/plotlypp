@@ -25,6 +25,8 @@ class Scatterternary : public Trace {
     : Trace() {
         json["type"] = "scatterternary";
     }
+    Scatterternary(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Fill {
         NONE,
@@ -116,7 +118,6 @@ class Scatterternary : public Trace {
     // Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line
     // color, whichever is available.
     Scatterternary& fillcolor(std::string f);
-    Scatterternary& fillcolor(double f);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -306,6 +307,9 @@ class Scatterternary : public Trace {
 
 class Scatterternary::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -328,18 +332,14 @@ class Scatterternary::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Scatterternary::Hoverlabel& bgcolor(std::string f);
-    Scatterternary::Hoverlabel& bgcolor(double f);
     Scatterternary::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Scatterternary::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Scatterternary::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Scatterternary::Hoverlabel& bordercolor(std::string f);
-    Scatterternary::Hoverlabel& bordercolor(double f);
     Scatterternary::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Scatterternary::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Scatterternary::Hoverlabel& bordercolorsrc(std::string f);
@@ -364,6 +364,9 @@ class Scatterternary::Hoverlabel {
 // Sets the font used in hover labels.
 class Scatterternary::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -390,9 +393,7 @@ class Scatterternary::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Scatterternary::Hoverlabel::Font& color(std::string f);
-    Scatterternary::Hoverlabel::Font& color(double f);
     Scatterternary::Hoverlabel::Font& color(std::vector<std::string> f);
-    Scatterternary::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scatterternary::Hoverlabel::Font& colorsrc(std::string f);
@@ -473,6 +474,9 @@ class Scatterternary::Hoverlabel::Font {
 
 class Scatterternary::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -490,6 +494,9 @@ class Scatterternary::Legendgrouptitle {
 // Sets this legend group's title font.
 class Scatterternary::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -516,7 +523,6 @@ class Scatterternary::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Scatterternary::Legendgrouptitle::Font& color(std::string f);
-    Scatterternary::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -562,6 +568,9 @@ class Scatterternary::Legendgrouptitle::Font {
 
 class Scatterternary::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Shape {
         LINEAR,
@@ -580,7 +589,6 @@ class Scatterternary::Line {
 
     // Sets the line color.
     Scatterternary::Line& color(std::string f);
-    Scatterternary::Line& color(double f);
 
     // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
     // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
@@ -604,6 +612,9 @@ class Scatterternary::Line {
 
 class Scatterternary::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Angleref {
         PREVIOUS,
@@ -988,9 +999,7 @@ class Scatterternary::Marker {
     // Sets the marker color. It accepts either a specific color or an array of numbers that are mapped to the
     // colorscale relative to the max and min values of the array or relative to `marker.cmin` and `marker.cmax` if set.
     Scatterternary::Marker& color(std::string f);
-    Scatterternary::Marker& color(double f);
     Scatterternary::Marker& color(std::vector<std::string> f);
-    Scatterternary::Marker& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -1078,6 +1087,9 @@ class Scatterternary::Marker {
 
 class Scatterternary::Marker::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -1198,11 +1210,9 @@ class Scatterternary::Marker::Colorbar {
 
     // Sets the color of padded area.
     Scatterternary::Marker::Colorbar& bgcolor(std::string f);
-    Scatterternary::Marker::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Scatterternary::Marker::Colorbar& bordercolor(std::string f);
-    Scatterternary::Marker::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Scatterternary::Marker::Colorbar& borderwidth(double f);
@@ -1258,7 +1268,6 @@ class Scatterternary::Marker::Colorbar {
 
     // Sets the axis line color.
     Scatterternary::Marker::Colorbar& outlinecolor(std::string f);
-    Scatterternary::Marker::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Scatterternary::Marker::Colorbar& outlinewidth(double f);
@@ -1305,7 +1314,6 @@ class Scatterternary::Marker::Colorbar {
 
     // Sets the tick color.
     Scatterternary::Marker::Colorbar& tickcolor(std::string f);
-    Scatterternary::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Scatterternary::Marker::Colorbar& tickfont(Tickfont f);
@@ -1418,6 +1426,9 @@ class Scatterternary::Marker::Colorbar {
 // Sets the color bar's tick label font
 class Scatterternary::Marker::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1444,7 +1455,6 @@ class Scatterternary::Marker::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Scatterternary::Marker::Colorbar::Tickfont& color(std::string f);
-    Scatterternary::Marker::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1490,6 +1500,9 @@ class Scatterternary::Marker::Colorbar::Tickfont {
 
 class Scatterternary::Marker::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -1501,10 +1514,13 @@ class Scatterternary::Marker::Colorbar::Tickformatstops {
 
 class Scatterternary::Marker::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Scatterternary::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Scatterternary::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Scatterternary::Marker::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -1531,6 +1547,9 @@ class Scatterternary::Marker::Colorbar::Tickformatstops::Tickformatstop {
 
 class Scatterternary::Marker::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -1559,6 +1578,9 @@ class Scatterternary::Marker::Colorbar::Title {
 // Sets this color bar's title font.
 class Scatterternary::Marker::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1585,7 +1607,6 @@ class Scatterternary::Marker::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Scatterternary::Marker::Colorbar::Title::Font& color(std::string f);
-    Scatterternary::Marker::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1631,6 +1652,9 @@ class Scatterternary::Marker::Colorbar::Title::Font {
 
 class Scatterternary::Marker::Gradient {
  public:
+    Gradient() = default;
+    Gradient(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Type {
         RADIAL,
@@ -1643,9 +1667,7 @@ class Scatterternary::Marker::Gradient {
     // Sets the final color of the gradient fill: the center color for radial, the right for horizontal, or the bottom
     // for vertical.
     Scatterternary::Marker::Gradient& color(std::string f);
-    Scatterternary::Marker::Gradient& color(double f);
     Scatterternary::Marker::Gradient& color(std::vector<std::string> f);
-    Scatterternary::Marker::Gradient& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scatterternary::Marker::Gradient& colorsrc(std::string f);
@@ -1664,6 +1686,9 @@ class Scatterternary::Marker::Gradient {
 
 class Scatterternary::Marker::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by
     // `marker.line.colorscale`. Has an effect only if in `marker.line.color` is set to a numerical array. In case
@@ -1696,9 +1721,7 @@ class Scatterternary::Marker::Line {
     // colorscale relative to the max and min values of the array or relative to `marker.line.cmin` and
     // `marker.line.cmax` if set.
     Scatterternary::Marker::Line& color(std::string f);
-    Scatterternary::Marker::Line& color(double f);
     Scatterternary::Marker::Line& color(std::vector<std::string> f);
-    Scatterternary::Marker::Line& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -1736,6 +1759,9 @@ class Scatterternary::Marker::Line {
 
 class Scatterternary::Selected {
  public:
+    Selected() = default;
+    Selected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
     class Textfont;
@@ -1750,10 +1776,12 @@ class Scatterternary::Selected {
 
 class Scatterternary::Selected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker color of selected points.
     Scatterternary::Selected::Marker& color(std::string f);
-    Scatterternary::Selected::Marker& color(double f);
 
     // Sets the marker opacity of selected points.
     Scatterternary::Selected::Marker& opacity(double f);
@@ -1767,10 +1795,12 @@ class Scatterternary::Selected::Marker {
 
 class Scatterternary::Selected::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the text font color of selected points.
     Scatterternary::Selected::Textfont& color(std::string f);
-    Scatterternary::Selected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1778,6 +1808,9 @@ class Scatterternary::Selected::Textfont {
 
 class Scatterternary::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -1794,6 +1827,9 @@ class Scatterternary::Stream {
 // Sets the text font.
 class Scatterternary::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1820,9 +1856,7 @@ class Scatterternary::Textfont {
     static std::string to_string(Variant e);
 
     Scatterternary::Textfont& color(std::string f);
-    Scatterternary::Textfont& color(double f);
     Scatterternary::Textfont& color(std::vector<std::string> f);
-    Scatterternary::Textfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scatterternary::Textfont& colorsrc(std::string f);
@@ -1903,6 +1937,9 @@ class Scatterternary::Textfont {
 
 class Scatterternary::Unselected {
  public:
+    Unselected() = default;
+    Unselected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
     class Textfont;
@@ -1917,10 +1954,12 @@ class Scatterternary::Unselected {
 
 class Scatterternary::Unselected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker color of unselected points, applied only when a selection exists.
     Scatterternary::Unselected::Marker& color(std::string f);
-    Scatterternary::Unselected::Marker& color(double f);
 
     // Sets the marker opacity of unselected points, applied only when a selection exists.
     Scatterternary::Unselected::Marker& opacity(double f);
@@ -1934,10 +1973,12 @@ class Scatterternary::Unselected::Marker {
 
 class Scatterternary::Unselected::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the text font color of unselected points, applied only when a selection exists.
     Scatterternary::Unselected::Textfont& color(std::string f);
-    Scatterternary::Unselected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

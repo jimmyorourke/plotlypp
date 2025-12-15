@@ -25,6 +25,8 @@ class Sankey : public Trace {
     : Trace() {
         json["type"] = "sankey";
     }
+    Sankey(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Arrangement {
         SNAP,
@@ -177,6 +179,9 @@ class Sankey : public Trace {
 
 class Sankey::Domain {
  public:
+    Domain() = default;
+    Domain(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // If there is a layout grid, use the domain for this column in the grid for this sankey trace .
     Sankey::Domain& column(int f);
@@ -185,10 +190,10 @@ class Sankey::Domain {
     Sankey::Domain& row(int f);
 
     // Sets the horizontal domain of this sankey trace (in plot fraction).
-    Sankey::Domain& x(std::vector<std::string> f);
+    Sankey::Domain& x(std::vector<double> f);
 
     // Sets the vertical domain of this sankey trace (in plot fraction).
-    Sankey::Domain& y(std::vector<std::string> f);
+    Sankey::Domain& y(std::vector<double> f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -196,6 +201,9 @@ class Sankey::Domain {
 
 class Sankey::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -218,18 +226,14 @@ class Sankey::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Sankey::Hoverlabel& bgcolor(std::string f);
-    Sankey::Hoverlabel& bgcolor(double f);
     Sankey::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Sankey::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Sankey::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Sankey::Hoverlabel& bordercolor(std::string f);
-    Sankey::Hoverlabel& bordercolor(double f);
     Sankey::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Sankey::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Sankey::Hoverlabel& bordercolorsrc(std::string f);
@@ -254,6 +258,9 @@ class Sankey::Hoverlabel {
 // Sets the font used in hover labels.
 class Sankey::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -280,9 +287,7 @@ class Sankey::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Sankey::Hoverlabel::Font& color(std::string f);
-    Sankey::Hoverlabel::Font& color(double f);
     Sankey::Hoverlabel::Font& color(std::vector<std::string> f);
-    Sankey::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sankey::Hoverlabel::Font& colorsrc(std::string f);
@@ -363,6 +368,9 @@ class Sankey::Hoverlabel::Font {
 
 class Sankey::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -380,6 +388,9 @@ class Sankey::Legendgrouptitle {
 // Sets this legend group's title font.
 class Sankey::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -406,7 +417,6 @@ class Sankey::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Sankey::Legendgrouptitle::Font& color(std::string f);
-    Sankey::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -453,6 +463,9 @@ class Sankey::Legendgrouptitle::Font {
 // The links of the Sankey plot.
 class Sankey::Link {
  public:
+    Link() = default;
+    Link(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Hoverinfo {
         ALL,
@@ -471,9 +484,7 @@ class Sankey::Link {
     // Sets the `link` color. It can be a single value, or an array for specifying color for each `link`. If
     // `link.color` is omitted, then by default, a translucent grey link will be used.
     Sankey::Link& color(std::string f);
-    Sankey::Link& color(double f);
     Sankey::Link& color(std::vector<std::string> f);
-    Sankey::Link& color(std::vector<double> f);
 
     Sankey::Link& colorscales(Colorscales f);
 
@@ -490,9 +501,7 @@ class Sankey::Link {
     // Sets the `link` hover color. It can be a single value, or an array for specifying hover colors for each `link`.
     // If `link.hovercolor` is omitted, then by default, links will become slightly more opaque when hovered over.
     Sankey::Link& hovercolor(std::string f);
-    Sankey::Link& hovercolor(double f);
     Sankey::Link& hovercolor(std::vector<std::string> f);
-    Sankey::Link& hovercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `hovercolor`.
     Sankey::Link& hovercolorsrc(std::string f);
@@ -560,6 +569,9 @@ class Sankey::Link {
 
 class Sankey::Link::Colorscales {
  public:
+    Colorscales() = default;
+    Colorscales(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Concentrationscales;
 
@@ -571,6 +583,9 @@ class Sankey::Link::Colorscales {
 
 class Sankey::Link::Colorscales::Concentrationscales {
  public:
+    Concentrationscales() = default;
+    Concentrationscales(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the upper bound of the color domain.
     Sankey::Link::Colorscales::Concentrationscales& cmax(double f);
@@ -609,6 +624,9 @@ class Sankey::Link::Colorscales::Concentrationscales {
 
 class Sankey::Link::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -631,18 +649,14 @@ class Sankey::Link::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Sankey::Link::Hoverlabel& bgcolor(std::string f);
-    Sankey::Link::Hoverlabel& bgcolor(double f);
     Sankey::Link::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Sankey::Link::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Sankey::Link::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Sankey::Link::Hoverlabel& bordercolor(std::string f);
-    Sankey::Link::Hoverlabel& bordercolor(double f);
     Sankey::Link::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Sankey::Link::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Sankey::Link::Hoverlabel& bordercolorsrc(std::string f);
@@ -667,6 +681,9 @@ class Sankey::Link::Hoverlabel {
 // Sets the font used in hover labels.
 class Sankey::Link::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -693,9 +710,7 @@ class Sankey::Link::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Sankey::Link::Hoverlabel::Font& color(std::string f);
-    Sankey::Link::Hoverlabel::Font& color(double f);
     Sankey::Link::Hoverlabel::Font& color(std::vector<std::string> f);
-    Sankey::Link::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sankey::Link::Hoverlabel::Font& colorsrc(std::string f);
@@ -776,12 +791,13 @@ class Sankey::Link::Hoverlabel::Font {
 
 class Sankey::Link::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the color of the `line` around each `link`.
     Sankey::Link::Line& color(std::string f);
-    Sankey::Link::Line& color(double f);
     Sankey::Link::Line& color(std::vector<std::string> f);
-    Sankey::Link::Line& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sankey::Link::Line& colorsrc(std::string f);
@@ -800,6 +816,9 @@ class Sankey::Link::Line {
 // The nodes of the Sankey plot.
 class Sankey::Node {
  public:
+    Node() = default;
+    Node(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         JUSTIFY,
@@ -827,9 +846,7 @@ class Sankey::Node {
     // `node.color` is omitted, then the default `Plotly` color palette will be cycled through to have a variety of
     // colors. These defaults are not fully opaque, to allow some visibility of what is beneath the node.
     Sankey::Node& color(std::string f);
-    Sankey::Node& color(double f);
     Sankey::Node& color(std::vector<std::string> f);
-    Sankey::Node& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sankey::Node& colorsrc(std::string f);
@@ -843,7 +860,7 @@ class Sankey::Node {
 
     // Groups of nodes. Each group is defined by an array with the indices of the nodes it contains. Multiple groups can
     // be specified.
-    Sankey::Node& groups(std::vector<std::string> f);
+    Sankey::Node& groups(std::vector<double> f);
 
     // Determines which trace information appear when hovering nodes. If `none` or `skip` are set, no information is
     // displayed upon hovering. But, if `none` is set, click and hover events are still fired.
@@ -907,6 +924,9 @@ class Sankey::Node {
 
 class Sankey::Node::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -929,18 +949,14 @@ class Sankey::Node::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Sankey::Node::Hoverlabel& bgcolor(std::string f);
-    Sankey::Node::Hoverlabel& bgcolor(double f);
     Sankey::Node::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Sankey::Node::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Sankey::Node::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Sankey::Node::Hoverlabel& bordercolor(std::string f);
-    Sankey::Node::Hoverlabel& bordercolor(double f);
     Sankey::Node::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Sankey::Node::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Sankey::Node::Hoverlabel& bordercolorsrc(std::string f);
@@ -965,6 +981,9 @@ class Sankey::Node::Hoverlabel {
 // Sets the font used in hover labels.
 class Sankey::Node::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -991,9 +1010,7 @@ class Sankey::Node::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Sankey::Node::Hoverlabel::Font& color(std::string f);
-    Sankey::Node::Hoverlabel::Font& color(double f);
     Sankey::Node::Hoverlabel::Font& color(std::vector<std::string> f);
-    Sankey::Node::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sankey::Node::Hoverlabel::Font& colorsrc(std::string f);
@@ -1074,12 +1091,13 @@ class Sankey::Node::Hoverlabel::Font {
 
 class Sankey::Node::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the color of the `line` around each `node`.
     Sankey::Node::Line& color(std::string f);
-    Sankey::Node::Line& color(double f);
     Sankey::Node::Line& color(std::vector<std::string> f);
-    Sankey::Node::Line& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sankey::Node::Line& colorsrc(std::string f);
@@ -1097,6 +1115,9 @@ class Sankey::Node::Line {
 
 class Sankey::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -1113,6 +1134,9 @@ class Sankey::Stream {
 // Sets the font for node labels
 class Sankey::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1139,7 +1163,6 @@ class Sankey::Textfont {
     static std::string to_string(Variant e);
 
     Sankey::Textfont& color(std::string f);
-    Sankey::Textfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by

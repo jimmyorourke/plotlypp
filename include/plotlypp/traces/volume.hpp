@@ -25,6 +25,8 @@ class Volume : public Trace {
     : Trace() {
         json["type"] = "volume";
     }
+    Volume(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Visible {
         TRUE,
@@ -317,6 +319,9 @@ class Volume : public Trace {
 
 class Volume::Caps {
  public:
+    Caps() = default;
+    Caps(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class X;
     class Y;
@@ -334,6 +339,9 @@ class Volume::Caps {
 
 class Volume::Caps::X {
  public:
+    X() = default;
+    X(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the fill ratio of the `caps`. The default fill value of the `caps` is 1 meaning that they are entirely
     // shaded. On the other hand Applying a `fill` ratio less than one would allow the creation of openings parallel to
@@ -351,6 +359,9 @@ class Volume::Caps::X {
 
 class Volume::Caps::Y {
  public:
+    Y() = default;
+    Y(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the fill ratio of the `caps`. The default fill value of the `caps` is 1 meaning that they are entirely
     // shaded. On the other hand Applying a `fill` ratio less than one would allow the creation of openings parallel to
@@ -368,6 +379,9 @@ class Volume::Caps::Y {
 
 class Volume::Caps::Z {
  public:
+    Z() = default;
+    Z(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the fill ratio of the `caps`. The default fill value of the `caps` is 1 meaning that they are entirely
     // shaded. On the other hand Applying a `fill` ratio less than one would allow the creation of openings parallel to
@@ -385,6 +399,9 @@ class Volume::Caps::Z {
 
 class Volume::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -505,11 +522,9 @@ class Volume::Colorbar {
 
     // Sets the color of padded area.
     Volume::Colorbar& bgcolor(std::string f);
-    Volume::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Volume::Colorbar& bordercolor(std::string f);
-    Volume::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Volume::Colorbar& borderwidth(double f);
@@ -565,7 +580,6 @@ class Volume::Colorbar {
 
     // Sets the axis line color.
     Volume::Colorbar& outlinecolor(std::string f);
-    Volume::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Volume::Colorbar& outlinewidth(double f);
@@ -612,7 +626,6 @@ class Volume::Colorbar {
 
     // Sets the tick color.
     Volume::Colorbar& tickcolor(std::string f);
-    Volume::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Volume::Colorbar& tickfont(Tickfont f);
@@ -725,6 +738,9 @@ class Volume::Colorbar {
 // Sets the color bar's tick label font
 class Volume::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -751,7 +767,6 @@ class Volume::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Volume::Colorbar::Tickfont& color(std::string f);
-    Volume::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -797,6 +812,9 @@ class Volume::Colorbar::Tickfont {
 
 class Volume::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -808,10 +826,13 @@ class Volume::Colorbar::Tickformatstops {
 
 class Volume::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Volume::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Volume::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Volume::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -838,6 +859,9 @@ class Volume::Colorbar::Tickformatstops::Tickformatstop {
 
 class Volume::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -866,6 +890,9 @@ class Volume::Colorbar::Title {
 // Sets this color bar's title font.
 class Volume::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -892,7 +919,6 @@ class Volume::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Volume::Colorbar::Title::Font& color(std::string f);
-    Volume::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -938,10 +964,12 @@ class Volume::Colorbar::Title::Font {
 
 class Volume::Contour {
  public:
+    Contour() = default;
+    Contour(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the color of the contour lines.
     Volume::Contour& color(std::string f);
-    Volume::Contour& color(double f);
 
     // Sets whether or not dynamic contours are shown on hover
     Volume::Contour& show(bool f);
@@ -955,6 +983,9 @@ class Volume::Contour {
 
 class Volume::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -977,18 +1008,14 @@ class Volume::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Volume::Hoverlabel& bgcolor(std::string f);
-    Volume::Hoverlabel& bgcolor(double f);
     Volume::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Volume::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Volume::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Volume::Hoverlabel& bordercolor(std::string f);
-    Volume::Hoverlabel& bordercolor(double f);
     Volume::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Volume::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Volume::Hoverlabel& bordercolorsrc(std::string f);
@@ -1013,6 +1040,9 @@ class Volume::Hoverlabel {
 // Sets the font used in hover labels.
 class Volume::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1039,9 +1069,7 @@ class Volume::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Volume::Hoverlabel::Font& color(std::string f);
-    Volume::Hoverlabel::Font& color(double f);
     Volume::Hoverlabel::Font& color(std::vector<std::string> f);
-    Volume::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Volume::Hoverlabel::Font& colorsrc(std::string f);
@@ -1122,6 +1150,9 @@ class Volume::Hoverlabel::Font {
 
 class Volume::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -1139,6 +1170,9 @@ class Volume::Legendgrouptitle {
 // Sets this legend group's title font.
 class Volume::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1165,7 +1199,6 @@ class Volume::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Volume::Legendgrouptitle::Font& color(std::string f);
-    Volume::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1211,6 +1244,9 @@ class Volume::Legendgrouptitle::Font {
 
 class Volume::Lighting {
  public:
+    Lighting() = default;
+    Lighting(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Ambient light increases overall color visibility but can wash out the image.
     Volume::Lighting& ambient(double f);
@@ -1240,6 +1276,9 @@ class Volume::Lighting {
 
 class Volume::Lightposition {
  public:
+    Lightposition() = default;
+    Lightposition(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Numeric vector, representing the X coordinate for each vertex.
     Volume::Lightposition& x(double f);
@@ -1256,6 +1295,9 @@ class Volume::Lightposition {
 
 class Volume::Slices {
  public:
+    Slices() = default;
+    Slices(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class X;
     class Y;
@@ -1273,6 +1315,9 @@ class Volume::Slices {
 
 class Volume::Slices::X {
  public:
+    X() = default;
+    X(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the fill ratio of the `slices`. The default fill value of the `slices` is 1 meaning that they are entirely
     // shaded. On the other hand Applying a `fill` ratio less than one would allow the creation of openings parallel to
@@ -1296,6 +1341,9 @@ class Volume::Slices::X {
 
 class Volume::Slices::Y {
  public:
+    Y() = default;
+    Y(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the fill ratio of the `slices`. The default fill value of the `slices` is 1 meaning that they are entirely
     // shaded. On the other hand Applying a `fill` ratio less than one would allow the creation of openings parallel to
@@ -1319,6 +1367,9 @@ class Volume::Slices::Y {
 
 class Volume::Slices::Z {
  public:
+    Z() = default;
+    Z(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the fill ratio of the `slices`. The default fill value of the `slices` is 1 meaning that they are entirely
     // shaded. On the other hand Applying a `fill` ratio less than one would allow the creation of openings parallel to
@@ -1342,6 +1393,9 @@ class Volume::Slices::Z {
 
 class Volume::Spaceframe {
  public:
+    Spaceframe() = default;
+    Spaceframe(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the fill ratio of the `spaceframe` elements. The default fill value is 1 meaning that they are entirely
     // shaded. Applying a `fill` ratio less than one would allow the creation of openings parallel to the edges.
@@ -1357,6 +1411,9 @@ class Volume::Spaceframe {
 
 class Volume::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -1372,6 +1429,9 @@ class Volume::Stream {
 
 class Volume::Surface {
  public:
+    Surface() = default;
+    Surface(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the number of iso-surfaces between minimum and maximum iso-values. By default this value is 2 meaning that
     // only minimum and maximum surfaces would be drawn.

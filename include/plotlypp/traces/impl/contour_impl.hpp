@@ -162,10 +162,6 @@ Contour& Contour::fillcolor(std::string f) {
     json["fillcolor"] = std::move(f);
     return *this;
 }
-Contour& Contour::fillcolor(double f) {
-    json["fillcolor"] = std::move(f);
-    return *this;
-}
 
 Contour& Contour::hoverinfo(std::string f) {
     json["hoverinfo"] = std::move(f);
@@ -646,16 +642,8 @@ Contour::Colorbar& Contour::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Contour::Colorbar& Contour::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Contour::Colorbar& Contour::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Contour::Colorbar& Contour::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -708,10 +696,6 @@ Contour::Colorbar& Contour::Colorbar::orientation(enum Orientation f) {
 }
 
 Contour::Colorbar& Contour::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Contour::Colorbar& Contour::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -768,10 +752,6 @@ Contour::Colorbar& Contour::Colorbar::tickangle(double f) {
 }
 
 Contour::Colorbar& Contour::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Contour::Colorbar& Contour::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -938,10 +918,6 @@ Contour::Colorbar::Tickfont& Contour::Colorbar::Tickfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Contour::Colorbar::Tickfont& Contour::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Contour::Colorbar::Tickfont& Contour::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -990,7 +966,7 @@ Contour::Colorbar::Tickformatstops& Contour::Colorbar::Tickformatstops::tickform
 }
 
 
-Contour::Colorbar::Tickformatstops::Tickformatstop& Contour::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Contour::Colorbar::Tickformatstops::Tickformatstop& Contour::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -1075,10 +1051,6 @@ Contour::Colorbar::Title::Font& Contour::Colorbar::Title::Font::color(std::strin
     json["color"] = std::move(f);
     return *this;
 }
-Contour::Colorbar::Title::Font& Contour::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Contour::Colorbar::Title::Font& Contour::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1130,25 +1102,6 @@ std::string Contour::Contours::to_string(Coloring e) {
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
-std::string Contour::Contours::to_string(Operation e) {
-    switch(e) {
-        case Operation::EQ: return "=";
-        case Operation::LT: return "<";
-        case Operation::>=: return ">=";
-        case Operation::GT: return ">";
-        case Operation::<=: return "<=";
-        case Operation::[]: return "[]";
-        case Operation::(): return "()";
-        case Operation::[): return "[)";
-        case Operation::(]: return "(]";
-        case Operation::][: return "][";
-        case Operation::)(: return ")(";
-        case Operation::](: return "](";
-        case Operation::)[: return ")[";
-    }
-    // Should be unreachable.
-    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
-}
 std::string Contour::Contours::to_string(Type e) {
     switch(e) {
         case Type::LEVELS: return "levels";
@@ -1183,8 +1136,8 @@ Contour::Contours& Contour::Contours::labelformat(std::string f) {
     return *this;
 }
 
-Contour::Contours& Contour::Contours::operation(enum Operation f) {
-    json["operation"] = to_string(f);
+Contour::Contours& Contour::Contours::operation(std::string f) {
+    json["operation"] = std::move(f);
     return *this;
 }
 
@@ -1252,10 +1205,6 @@ std::string Contour::Contours::Labelfont::to_string(Variant e) {
 }
 
 Contour::Contours::Labelfont& Contour::Contours::Labelfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Contour::Contours::Labelfont& Contour::Contours::Labelfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1330,15 +1279,7 @@ Contour::Hoverlabel& Contour::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Contour::Hoverlabel& Contour::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Contour::Hoverlabel& Contour::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Contour::Hoverlabel& Contour::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -1352,15 +1293,7 @@ Contour::Hoverlabel& Contour::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Contour::Hoverlabel& Contour::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Contour::Hoverlabel& Contour::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Contour::Hoverlabel& Contour::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -1424,15 +1357,7 @@ Contour::Hoverlabel::Font& Contour::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Contour::Hoverlabel::Font& Contour::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Contour::Hoverlabel::Font& Contour::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Contour::Hoverlabel::Font& Contour::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1606,10 +1531,6 @@ Contour::Legendgrouptitle::Font& Contour::Legendgrouptitle::Font::color(std::str
     json["color"] = std::move(f);
     return *this;
 }
-Contour::Legendgrouptitle::Font& Contour::Legendgrouptitle::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Contour::Legendgrouptitle::Font& Contour::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1653,10 +1574,6 @@ Contour::Legendgrouptitle::Font& Contour::Legendgrouptitle::Font::weight(int f) 
 
 
 Contour::Line& Contour::Line::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Contour::Line& Contour::Line::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1719,10 +1636,6 @@ std::string Contour::Textfont::to_string(Variant e) {
 }
 
 Contour::Textfont& Contour::Textfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Contour::Textfont& Contour::Textfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

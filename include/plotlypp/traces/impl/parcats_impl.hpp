@@ -248,12 +248,12 @@ Parcats::Domain& Parcats::Domain::row(int f) {
     return *this;
 }
 
-Parcats::Domain& Parcats::Domain::x(std::vector<std::string> f) {
+Parcats::Domain& Parcats::Domain::x(std::vector<double> f) {
     json["x"] = std::move(f);
     return *this;
 }
 
-Parcats::Domain& Parcats::Domain::y(std::vector<std::string> f) {
+Parcats::Domain& Parcats::Domain::y(std::vector<double> f) {
     json["y"] = std::move(f);
     return *this;
 }
@@ -290,10 +290,6 @@ std::string Parcats::Labelfont::to_string(Variant e) {
 }
 
 Parcats::Labelfont& Parcats::Labelfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Parcats::Labelfont& Parcats::Labelfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -384,10 +380,6 @@ Parcats::Legendgrouptitle::Font& Parcats::Legendgrouptitle::Font::color(std::str
     json["color"] = std::move(f);
     return *this;
 }
-Parcats::Legendgrouptitle::Font& Parcats::Legendgrouptitle::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Parcats::Legendgrouptitle::Font& Parcats::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -467,15 +459,7 @@ Parcats::Line& Parcats::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Parcats::Line& Parcats::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Parcats::Line& Parcats::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Parcats::Line& Parcats::Line::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -671,16 +655,8 @@ Parcats::Line::Colorbar& Parcats::Line::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Parcats::Line::Colorbar& Parcats::Line::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Parcats::Line::Colorbar& Parcats::Line::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Parcats::Line::Colorbar& Parcats::Line::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -733,10 +709,6 @@ Parcats::Line::Colorbar& Parcats::Line::Colorbar::orientation(enum Orientation f
 }
 
 Parcats::Line::Colorbar& Parcats::Line::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Parcats::Line::Colorbar& Parcats::Line::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -793,10 +765,6 @@ Parcats::Line::Colorbar& Parcats::Line::Colorbar::tickangle(double f) {
 }
 
 Parcats::Line::Colorbar& Parcats::Line::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Parcats::Line::Colorbar& Parcats::Line::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -963,10 +931,6 @@ Parcats::Line::Colorbar::Tickfont& Parcats::Line::Colorbar::Tickfont::color(std:
     json["color"] = std::move(f);
     return *this;
 }
-Parcats::Line::Colorbar::Tickfont& Parcats::Line::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Parcats::Line::Colorbar::Tickfont& Parcats::Line::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -1015,7 +979,7 @@ Parcats::Line::Colorbar::Tickformatstops& Parcats::Line::Colorbar::Tickformatsto
 }
 
 
-Parcats::Line::Colorbar::Tickformatstops::Tickformatstop& Parcats::Line::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Parcats::Line::Colorbar::Tickformatstops::Tickformatstop& Parcats::Line::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -1097,10 +1061,6 @@ std::string Parcats::Line::Colorbar::Title::Font::to_string(Variant e) {
 }
 
 Parcats::Line::Colorbar::Title::Font& Parcats::Line::Colorbar::Title::Font::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Parcats::Line::Colorbar::Title::Font& Parcats::Line::Colorbar::Title::Font::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1188,10 +1148,6 @@ std::string Parcats::Tickfont::to_string(Variant e) {
 }
 
 Parcats::Tickfont& Parcats::Tickfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Parcats::Tickfont& Parcats::Tickfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

@@ -25,6 +25,8 @@ class Scattersmith : public Trace {
     : Trace() {
         json["type"] = "scattersmith";
     }
+    Scattersmith(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Fill {
         NONE,
@@ -89,7 +91,6 @@ class Scattersmith : public Trace {
     // Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line
     // color, whichever is available.
     Scattersmith& fillcolor(std::string f);
-    Scattersmith& fillcolor(double f);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -289,6 +290,9 @@ class Scattersmith : public Trace {
 
 class Scattersmith::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -311,18 +315,14 @@ class Scattersmith::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Scattersmith::Hoverlabel& bgcolor(std::string f);
-    Scattersmith::Hoverlabel& bgcolor(double f);
     Scattersmith::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Scattersmith::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Scattersmith::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Scattersmith::Hoverlabel& bordercolor(std::string f);
-    Scattersmith::Hoverlabel& bordercolor(double f);
     Scattersmith::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Scattersmith::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Scattersmith::Hoverlabel& bordercolorsrc(std::string f);
@@ -347,6 +347,9 @@ class Scattersmith::Hoverlabel {
 // Sets the font used in hover labels.
 class Scattersmith::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -373,9 +376,7 @@ class Scattersmith::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Scattersmith::Hoverlabel::Font& color(std::string f);
-    Scattersmith::Hoverlabel::Font& color(double f);
     Scattersmith::Hoverlabel::Font& color(std::vector<std::string> f);
-    Scattersmith::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scattersmith::Hoverlabel::Font& colorsrc(std::string f);
@@ -456,6 +457,9 @@ class Scattersmith::Hoverlabel::Font {
 
 class Scattersmith::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -473,6 +477,9 @@ class Scattersmith::Legendgrouptitle {
 // Sets this legend group's title font.
 class Scattersmith::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -499,7 +506,6 @@ class Scattersmith::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Scattersmith::Legendgrouptitle::Font& color(std::string f);
-    Scattersmith::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -545,6 +551,9 @@ class Scattersmith::Legendgrouptitle::Font {
 
 class Scattersmith::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Shape {
         LINEAR,
@@ -563,7 +572,6 @@ class Scattersmith::Line {
 
     // Sets the line color.
     Scattersmith::Line& color(std::string f);
-    Scattersmith::Line& color(double f);
 
     // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
     // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
@@ -587,6 +595,9 @@ class Scattersmith::Line {
 
 class Scattersmith::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Angleref {
         PREVIOUS,
@@ -971,9 +982,7 @@ class Scattersmith::Marker {
     // Sets the marker color. It accepts either a specific color or an array of numbers that are mapped to the
     // colorscale relative to the max and min values of the array or relative to `marker.cmin` and `marker.cmax` if set.
     Scattersmith::Marker& color(std::string f);
-    Scattersmith::Marker& color(double f);
     Scattersmith::Marker& color(std::vector<std::string> f);
-    Scattersmith::Marker& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -1061,6 +1070,9 @@ class Scattersmith::Marker {
 
 class Scattersmith::Marker::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -1181,11 +1193,9 @@ class Scattersmith::Marker::Colorbar {
 
     // Sets the color of padded area.
     Scattersmith::Marker::Colorbar& bgcolor(std::string f);
-    Scattersmith::Marker::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Scattersmith::Marker::Colorbar& bordercolor(std::string f);
-    Scattersmith::Marker::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Scattersmith::Marker::Colorbar& borderwidth(double f);
@@ -1241,7 +1251,6 @@ class Scattersmith::Marker::Colorbar {
 
     // Sets the axis line color.
     Scattersmith::Marker::Colorbar& outlinecolor(std::string f);
-    Scattersmith::Marker::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Scattersmith::Marker::Colorbar& outlinewidth(double f);
@@ -1288,7 +1297,6 @@ class Scattersmith::Marker::Colorbar {
 
     // Sets the tick color.
     Scattersmith::Marker::Colorbar& tickcolor(std::string f);
-    Scattersmith::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Scattersmith::Marker::Colorbar& tickfont(Tickfont f);
@@ -1401,6 +1409,9 @@ class Scattersmith::Marker::Colorbar {
 // Sets the color bar's tick label font
 class Scattersmith::Marker::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1427,7 +1438,6 @@ class Scattersmith::Marker::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Scattersmith::Marker::Colorbar::Tickfont& color(std::string f);
-    Scattersmith::Marker::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1473,6 +1483,9 @@ class Scattersmith::Marker::Colorbar::Tickfont {
 
 class Scattersmith::Marker::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -1484,10 +1497,13 @@ class Scattersmith::Marker::Colorbar::Tickformatstops {
 
 class Scattersmith::Marker::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Scattersmith::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Scattersmith::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Scattersmith::Marker::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -1514,6 +1530,9 @@ class Scattersmith::Marker::Colorbar::Tickformatstops::Tickformatstop {
 
 class Scattersmith::Marker::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -1542,6 +1561,9 @@ class Scattersmith::Marker::Colorbar::Title {
 // Sets this color bar's title font.
 class Scattersmith::Marker::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1568,7 +1590,6 @@ class Scattersmith::Marker::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Scattersmith::Marker::Colorbar::Title::Font& color(std::string f);
-    Scattersmith::Marker::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1614,6 +1635,9 @@ class Scattersmith::Marker::Colorbar::Title::Font {
 
 class Scattersmith::Marker::Gradient {
  public:
+    Gradient() = default;
+    Gradient(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Type {
         RADIAL,
@@ -1626,9 +1650,7 @@ class Scattersmith::Marker::Gradient {
     // Sets the final color of the gradient fill: the center color for radial, the right for horizontal, or the bottom
     // for vertical.
     Scattersmith::Marker::Gradient& color(std::string f);
-    Scattersmith::Marker::Gradient& color(double f);
     Scattersmith::Marker::Gradient& color(std::vector<std::string> f);
-    Scattersmith::Marker::Gradient& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scattersmith::Marker::Gradient& colorsrc(std::string f);
@@ -1647,6 +1669,9 @@ class Scattersmith::Marker::Gradient {
 
 class Scattersmith::Marker::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by
     // `marker.line.colorscale`. Has an effect only if in `marker.line.color` is set to a numerical array. In case
@@ -1679,9 +1704,7 @@ class Scattersmith::Marker::Line {
     // colorscale relative to the max and min values of the array or relative to `marker.line.cmin` and
     // `marker.line.cmax` if set.
     Scattersmith::Marker::Line& color(std::string f);
-    Scattersmith::Marker::Line& color(double f);
     Scattersmith::Marker::Line& color(std::vector<std::string> f);
-    Scattersmith::Marker::Line& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -1719,6 +1742,9 @@ class Scattersmith::Marker::Line {
 
 class Scattersmith::Selected {
  public:
+    Selected() = default;
+    Selected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
     class Textfont;
@@ -1733,10 +1759,12 @@ class Scattersmith::Selected {
 
 class Scattersmith::Selected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker color of selected points.
     Scattersmith::Selected::Marker& color(std::string f);
-    Scattersmith::Selected::Marker& color(double f);
 
     // Sets the marker opacity of selected points.
     Scattersmith::Selected::Marker& opacity(double f);
@@ -1750,10 +1778,12 @@ class Scattersmith::Selected::Marker {
 
 class Scattersmith::Selected::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the text font color of selected points.
     Scattersmith::Selected::Textfont& color(std::string f);
-    Scattersmith::Selected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1761,6 +1791,9 @@ class Scattersmith::Selected::Textfont {
 
 class Scattersmith::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -1777,6 +1810,9 @@ class Scattersmith::Stream {
 // Sets the text font.
 class Scattersmith::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1803,9 +1839,7 @@ class Scattersmith::Textfont {
     static std::string to_string(Variant e);
 
     Scattersmith::Textfont& color(std::string f);
-    Scattersmith::Textfont& color(double f);
     Scattersmith::Textfont& color(std::vector<std::string> f);
-    Scattersmith::Textfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scattersmith::Textfont& colorsrc(std::string f);
@@ -1886,6 +1920,9 @@ class Scattersmith::Textfont {
 
 class Scattersmith::Unselected {
  public:
+    Unselected() = default;
+    Unselected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
     class Textfont;
@@ -1900,10 +1937,12 @@ class Scattersmith::Unselected {
 
 class Scattersmith::Unselected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker color of unselected points, applied only when a selection exists.
     Scattersmith::Unselected::Marker& color(std::string f);
-    Scattersmith::Unselected::Marker& color(double f);
 
     // Sets the marker opacity of unselected points, applied only when a selection exists.
     Scattersmith::Unselected::Marker& opacity(double f);
@@ -1917,10 +1956,12 @@ class Scattersmith::Unselected::Marker {
 
 class Scattersmith::Unselected::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the text font color of unselected points, applied only when a selection exists.
     Scattersmith::Unselected::Textfont& color(std::string f);
-    Scattersmith::Unselected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

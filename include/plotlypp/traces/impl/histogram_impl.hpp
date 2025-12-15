@@ -551,10 +551,6 @@ Histogram::Error_X& Histogram::Error_X::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Histogram::Error_X& Histogram::Error_X::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Histogram::Error_X& Histogram::Error_X::copy_ystyle(bool f) {
     json["copy_ystyle"] = std::move(f);
@@ -643,10 +639,6 @@ Histogram::Error_Y& Histogram::Error_Y::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Histogram::Error_Y& Histogram::Error_Y::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Histogram::Error_Y& Histogram::Error_Y::symmetric(bool f) {
     json["symmetric"] = std::move(f);
@@ -723,15 +715,7 @@ Histogram::Hoverlabel& Histogram::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Histogram::Hoverlabel& Histogram::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Histogram::Hoverlabel& Histogram::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Histogram::Hoverlabel& Histogram::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -745,15 +729,7 @@ Histogram::Hoverlabel& Histogram::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Histogram::Hoverlabel& Histogram::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Histogram::Hoverlabel& Histogram::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Histogram::Hoverlabel& Histogram::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -817,15 +793,7 @@ Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -988,10 +956,6 @@ Histogram::Insidetextfont& Histogram::Insidetextfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Histogram::Insidetextfont& Histogram::Insidetextfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Histogram::Insidetextfont& Histogram::Insidetextfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -1079,10 +1043,6 @@ Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::color(std:
     json["color"] = std::move(f);
     return *this;
 }
-Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1154,15 +1114,7 @@ Histogram::Marker& Histogram::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Histogram::Marker& Histogram::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Histogram::Marker& Histogram::Marker::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Histogram::Marker& Histogram::Marker::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1378,16 +1330,8 @@ Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::bgcolor(std::string f)
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -1440,10 +1384,6 @@ Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::orientation(enum Orien
 }
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -1500,10 +1440,6 @@ Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickangle(double f) {
 }
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -1670,10 +1606,6 @@ Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::co
     json["color"] = std::move(f);
     return *this;
 }
-Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -1722,7 +1654,7 @@ Histogram::Marker::Colorbar::Tickformatstops& Histogram::Marker::Colorbar::Tickf
 }
 
 
-Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -1807,10 +1739,6 @@ Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Fo
     json["color"] = std::move(f);
     return *this;
 }
-Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1882,15 +1810,7 @@ Histogram::Marker::Line& Histogram::Marker::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Histogram::Marker::Line& Histogram::Marker::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Histogram::Marker::Line& Histogram::Marker::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Histogram::Marker::Line& Histogram::Marker::Line::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1941,34 +1861,12 @@ std::string Histogram::Marker::Pattern::to_string(Fillmode e) {
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
-std::string Histogram::Marker::Pattern::to_string(Shape e) {
-    switch(e) {
-        case Shape::EMPTY: return "";
-        case Shape::SLASH: return "/";
-        case Shape::DOUBLEBACKSLASH: return "\\";
-        case Shape::X: return "x";
-        case Shape::HYPHEN: return "-";
-        case Shape::OR: return "|";
-        case Shape::PLUS: return "+";
-        case Shape::DOT: return ".";
-    }
-    // Should be unreachable.
-    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
-}
 
 Histogram::Marker::Pattern& Histogram::Marker::Pattern::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Histogram::Marker::Pattern& Histogram::Marker::Pattern::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Histogram::Marker::Pattern& Histogram::Marker::Pattern::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Histogram::Marker::Pattern& Histogram::Marker::Pattern::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -1982,15 +1880,7 @@ Histogram::Marker::Pattern& Histogram::Marker::Pattern::fgcolor(std::string f) {
     json["fgcolor"] = std::move(f);
     return *this;
 }
-Histogram::Marker::Pattern& Histogram::Marker::Pattern::fgcolor(double f) {
-    json["fgcolor"] = std::move(f);
-    return *this;
-}
 Histogram::Marker::Pattern& Histogram::Marker::Pattern::fgcolor(std::vector<std::string> f) {
-    json["fgcolor"] = std::move(f);
-    return *this;
-}
-Histogram::Marker::Pattern& Histogram::Marker::Pattern::fgcolor(std::vector<double> f) {
     json["fgcolor"] = std::move(f);
     return *this;
 }
@@ -2010,14 +1900,12 @@ Histogram::Marker::Pattern& Histogram::Marker::Pattern::fillmode(enum Fillmode f
     return *this;
 }
 
-Histogram::Marker::Pattern& Histogram::Marker::Pattern::shape(enum Shape f) {
-    json["shape"] = to_string(f);
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::shape(std::string f) {
+    json["shape"] = std::move(f);
     return *this;
 }
-Histogram::Marker::Pattern& Histogram::Marker::Pattern::shape(const std::vector<enum Shape>& f) {
-    std::vector<std::string> stringified(f.size());
-    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
-    json["shape"] = std::move(stringified);
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::shape(std::vector<std::string> f) {
+    json["shape"] = std::move(f);
     return *this;
 }
 
@@ -2089,10 +1977,6 @@ Histogram::Outsidetextfont& Histogram::Outsidetextfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Histogram::Outsidetextfont& Histogram::Outsidetextfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Histogram::Outsidetextfont& Histogram::Outsidetextfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -2150,10 +2034,6 @@ Histogram::Selected::Marker& Histogram::Selected::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Histogram::Selected::Marker& Histogram::Selected::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Histogram::Selected::Marker& Histogram::Selected::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
@@ -2162,10 +2042,6 @@ Histogram::Selected::Marker& Histogram::Selected::Marker::opacity(double f) {
 
 
 Histogram::Selected::Textfont& Histogram::Selected::Textfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Histogram::Selected::Textfont& Histogram::Selected::Textfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -2213,10 +2089,6 @@ std::string Histogram::Textfont::to_string(Variant e) {
 }
 
 Histogram::Textfont& Histogram::Textfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Histogram::Textfont& Histogram::Textfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -2277,10 +2149,6 @@ Histogram::Unselected::Marker& Histogram::Unselected::Marker::color(std::string 
     json["color"] = std::move(f);
     return *this;
 }
-Histogram::Unselected::Marker& Histogram::Unselected::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Histogram::Unselected::Marker& Histogram::Unselected::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
@@ -2289,10 +2157,6 @@ Histogram::Unselected::Marker& Histogram::Unselected::Marker::opacity(double f) 
 
 
 Histogram::Unselected::Textfont& Histogram::Unselected::Textfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Histogram::Unselected::Textfont& Histogram::Unselected::Textfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

@@ -18,6 +18,15 @@ namespace plotlypp {
 
 class Layout {
  public:
+    Layout() = default;
+    Layout(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
+
+    enum class Autotypenumbers {
+        CONVERT_TYPES,
+        STRICT,
+    };
+    static std::string to_string(Autotypenumbers e);
 
     enum class Calendar {
         CHINESE,
@@ -54,6 +63,16 @@ class Layout {
         FALSE,
     };
     static std::string to_string(Dragmode e);
+
+    enum class Hovermode {
+        X,
+        Y,
+        CLOSEST,
+        FALSE,
+        X_UNIFIED,
+        Y_UNIFIED,
+    };
+    static std::string to_string(Hovermode e);
 
     enum class Hoversubplots {
         SINGLE,
@@ -117,7 +136,8 @@ class Layout {
     // Using *strict* a numeric string in trace data is not converted to a number. Using *convert types* a numeric
     // string in trace data may be treated as a number during automatic axis `type` detection. This is the default
     // value; however it could be overridden for individual axes.
-    Layout& autotypenumbers(std::string f);
+    // - Default: convert types
+    Layout& autotypenumbers(enum Autotypenumbers f);
 
     // Sets the default calendar system to use for interpreting and displaying dates throughout the plot.
     // - Default: gregorian
@@ -194,7 +214,8 @@ class Layout {
     // x- (or y-) coordinate within the `hoverdistance` with the caveat that no more than one hoverlabel will appear per
     // trace. In this mode, spikelines are enabled by default perpendicular to the specified axis. If false, hover
     // interactions are disabled.
-    Layout& hovermode(std::string f);
+    // - Default: closest
+    Layout& hovermode(enum Hovermode f);
 
     // Determines expansion of hover effects to other subplots If *single* just the axis pair of the primary point is
     // included without overlaying subplots. If *overlaying* all subplots using the main axis and occupying the same
@@ -328,6 +349,9 @@ class Layout {
 
 class Layout::Activeselection {
  public:
+    Activeselection() = default;
+    Activeselection(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the color filling the active selection' interior.
     Layout::Activeselection& fillcolor(std::string f);
@@ -341,6 +365,9 @@ class Layout::Activeselection {
 
 class Layout::Activeshape {
  public:
+    Activeshape() = default;
+    Activeshape(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the color filling the active shape' interior.
     Layout::Activeshape& fillcolor(std::string f);
@@ -354,6 +381,9 @@ class Layout::Activeshape {
 
 class Layout::Annotations {
  public:
+    Annotations() = default;
+    Annotations(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Annotation;
 
@@ -365,6 +395,9 @@ class Layout::Annotations {
 
 class Layout::Annotations::Annotation {
  public:
+    Annotation() = default;
+    Annotation(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -640,12 +673,33 @@ class Layout::Annotations::Annotation {
 // Sets the annotation text font.
 class Layout::Annotations::Annotation::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Annotations::Annotation::Font& color(std::string f);
 
@@ -677,10 +731,12 @@ class Layout::Annotations::Annotation::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Annotations::Annotation::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Annotations::Annotation::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Annotations::Annotation::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Annotations::Annotation::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Annotations::Annotation::Font& weight(int f);
@@ -691,6 +747,9 @@ class Layout::Annotations::Annotation::Font {
 
 class Layout::Annotations::Annotation::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the hover label text font. By default uses the global hover font and size, with color from
     // `hoverlabel.bordercolor`.
@@ -716,12 +775,33 @@ class Layout::Annotations::Annotation::Hoverlabel {
 // `hoverlabel.bordercolor`.
 class Layout::Annotations::Annotation::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Annotations::Annotation::Hoverlabel::Font& color(std::string f);
 
@@ -753,10 +833,12 @@ class Layout::Annotations::Annotation::Hoverlabel::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Annotations::Annotation::Hoverlabel::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Annotations::Annotation::Hoverlabel::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Annotations::Annotation::Hoverlabel::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Annotations::Annotation::Hoverlabel::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Annotations::Annotation::Hoverlabel::Font& weight(int f);
@@ -767,6 +849,9 @@ class Layout::Annotations::Annotation::Hoverlabel::Font {
 
 class Layout::Coloraxis {
  public:
+    Coloraxis() = default;
+    Coloraxis(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Colorbar;
 
@@ -816,6 +901,9 @@ class Layout::Coloraxis {
 
 class Layout::Coloraxis::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -867,6 +955,27 @@ class Layout::Coloraxis::Colorbar {
         PIXELS,
     };
     static std::string to_string(Thicknessmode e);
+
+    enum class Ticklabeloverflow {
+        ALLOW,
+        HIDE_PAST_DIV,
+        HIDE_PAST_DOMAIN,
+    };
+    static std::string to_string(Ticklabeloverflow e);
+
+    enum class Ticklabelposition {
+        OUTSIDE,
+        INSIDE,
+        OUTSIDE_TOP,
+        INSIDE_TOP,
+        OUTSIDE_LEFT,
+        INSIDE_LEFT,
+        OUTSIDE_RIGHT,
+        INSIDE_RIGHT,
+        OUTSIDE_BOTTOM,
+        INSIDE_BOTTOM,
+    };
+    static std::string to_string(Ticklabelposition e);
 
     enum class Tickmode {
         AUTO,
@@ -1034,11 +1143,12 @@ class Layout::Coloraxis::Colorbar {
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
-    Layout::Coloraxis::Colorbar& ticklabeloverflow(std::string f);
+    Layout::Coloraxis::Colorbar& ticklabeloverflow(enum Ticklabeloverflow f);
 
     // Determines where tick labels are drawn relative to the ticks. Left and right options are used when `orientation`
     // is *h*, top and bottom when `orientation` is *v*.
-    Layout::Coloraxis::Colorbar& ticklabelposition(std::string f);
+    // - Default: outside
+    Layout::Coloraxis::Colorbar& ticklabelposition(enum Ticklabelposition f);
 
     // Sets the spacing between tick labels as compared to the spacing between ticks. A value of 1 (default) means each
     // tick gets a label. A value of 2 means shows every 2nd label. A larger value n means only every nth tick is
@@ -1130,12 +1240,33 @@ class Layout::Coloraxis::Colorbar {
 // Sets the color bar's tick label font
 class Layout::Coloraxis::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Coloraxis::Colorbar::Tickfont& color(std::string f);
 
@@ -1167,10 +1298,12 @@ class Layout::Coloraxis::Colorbar::Tickfont {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Coloraxis::Colorbar::Tickfont& textcase(std::string f);
+    // - Default: normal
+    Layout::Coloraxis::Colorbar::Tickfont& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Coloraxis::Colorbar::Tickfont& variant(std::string f);
+    // - Default: normal
+    Layout::Coloraxis::Colorbar::Tickfont& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Coloraxis::Colorbar::Tickfont& weight(int f);
@@ -1181,6 +1314,9 @@ class Layout::Coloraxis::Colorbar::Tickfont {
 
 class Layout::Coloraxis::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -1192,6 +1328,9 @@ class Layout::Coloraxis::Colorbar::Tickformatstops {
 
 class Layout::Coloraxis::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
@@ -1222,6 +1361,9 @@ class Layout::Coloraxis::Colorbar::Tickformatstops::Tickformatstop {
 
 class Layout::Coloraxis::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -1250,12 +1392,33 @@ class Layout::Coloraxis::Colorbar::Title {
 // Sets this color bar's title font.
 class Layout::Coloraxis::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Coloraxis::Colorbar::Title::Font& color(std::string f);
 
@@ -1287,10 +1450,12 @@ class Layout::Coloraxis::Colorbar::Title::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Coloraxis::Colorbar::Title::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Coloraxis::Colorbar::Title::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Coloraxis::Colorbar::Title::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Coloraxis::Colorbar::Title::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Coloraxis::Colorbar::Title::Font& weight(int f);
@@ -1301,6 +1466,9 @@ class Layout::Coloraxis::Colorbar::Title::Font {
 
 class Layout::Colorscale {
  public:
+    Colorscale() = default;
+    Colorscale(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the default diverging colorscale. Note that `autocolorscale` must be true for this attribute to work.
     Layout::Colorscale& diverging(std::string f);
@@ -1323,12 +1491,33 @@ class Layout::Colorscale {
 // Sets the global font. Note that fonts used in traces and other layout components inherit from the global font.
 class Layout::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Font& color(std::string f);
 
@@ -1360,10 +1549,12 @@ class Layout::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Font& weight(int f);
@@ -1374,6 +1565,9 @@ class Layout::Font {
 
 class Layout::Geo {
  public:
+    Geo() = default;
+    Geo(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Fitbounds {
         FALSE,
@@ -1387,6 +1581,17 @@ class Layout::Geo {
         NUM_50,
     };
     static std::string to_string(Resolution e);
+
+    enum class Scope {
+        AFRICA,
+        ASIA,
+        EUROPE,
+        NORTH_AMERICA,
+        SOUTH_AMERICA,
+        USA,
+        WORLD,
+    };
+    static std::string to_string(Scope e);
 
     class Center;
     class Domain;
@@ -1456,7 +1661,8 @@ class Layout::Geo {
     Layout::Geo& riverwidth(double f);
 
     // Set the scope of the map.
-    Layout::Geo& scope(std::string f);
+    // - Default: world
+    Layout::Geo& scope(enum Scope f);
 
     // Sets whether or not the coastlines are drawn.
     Layout::Geo& showcoastlines(bool f);
@@ -1501,6 +1707,9 @@ class Layout::Geo {
 
 class Layout::Geo::Center {
  public:
+    Center() = default;
+    Center(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the latitude of the map's center. For all projection types, the map's latitude center lies at the middle of
     // the latitude range by default.
@@ -1516,6 +1725,9 @@ class Layout::Geo::Center {
 
 class Layout::Geo::Domain {
  public:
+    Domain() = default;
+    Domain(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // If there is a layout grid, use the domain for this column in the grid for this geo subplot . Note that geo
     // subplots are constrained by domain. In general, when `projection.scale` is set to 1. a map will fit either its x
@@ -1541,6 +1753,9 @@ class Layout::Geo::Domain {
 
 class Layout::Geo::Lataxis {
  public:
+    Lataxis() = default;
+    Lataxis(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the graticule's longitude/latitude tick step.
     Layout::Geo::Lataxis& dtick(double f);
@@ -1570,6 +1785,9 @@ class Layout::Geo::Lataxis {
 
 class Layout::Geo::Lonaxis {
  public:
+    Lonaxis() = default;
+    Lonaxis(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the graticule's longitude/latitude tick step.
     Layout::Geo::Lonaxis& dtick(double f);
@@ -1599,6 +1817,97 @@ class Layout::Geo::Lonaxis {
 
 class Layout::Geo::Projection {
  public:
+    Projection() = default;
+    Projection(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
+
+    enum class Type {
+        AIRY,
+        AITOFF,
+        ALBERS,
+        ALBERS_USA,
+        AUGUST,
+        AZIMUTHAL_EQUAL_AREA,
+        AZIMUTHAL_EQUIDISTANT,
+        BAKER,
+        BERTIN1953,
+        BOGGS,
+        BONNE,
+        BOTTOMLEY,
+        BROMLEY,
+        COLLIGNON,
+        CONIC_CONFORMAL,
+        CONIC_EQUAL_AREA,
+        CONIC_EQUIDISTANT,
+        CRAIG,
+        CRASTER,
+        CYLINDRICAL_EQUAL_AREA,
+        CYLINDRICAL_STEREOGRAPHIC,
+        ECKERT1,
+        ECKERT2,
+        ECKERT3,
+        ECKERT4,
+        ECKERT5,
+        ECKERT6,
+        EISENLOHR,
+        EQUAL_EARTH,
+        EQUIRECTANGULAR,
+        FAHEY,
+        FOUCAUT,
+        FOUCAUT_SINUSOIDAL,
+        GINZBURG4,
+        GINZBURG5,
+        GINZBURG6,
+        GINZBURG8,
+        GINZBURG9,
+        GNOMONIC,
+        GRINGORTEN,
+        GRINGORTEN_QUINCUNCIAL,
+        GUYOU,
+        HAMMER,
+        HILL,
+        HOMOLOSINE,
+        HUFNAGEL,
+        HYPERELLIPTICAL,
+        KAVRAYSKIY7,
+        LAGRANGE,
+        LARRIVEE,
+        LASKOWSKI,
+        LOXIMUTHAL,
+        MERCATOR,
+        MILLER,
+        MOLLWEIDE,
+        MT_FLAT_POLAR_PARABOLIC,
+        MT_FLAT_POLAR_QUARTIC,
+        MT_FLAT_POLAR_SINUSOIDAL,
+        NATURAL_EARTH,
+        NATURAL_EARTH1,
+        NATURAL_EARTH2,
+        NELL_HAMMER,
+        NICOLOSI,
+        ORTHOGRAPHIC,
+        PATTERSON,
+        PEIRCE_QUINCUNCIAL,
+        POLYCONIC,
+        RECTANGULAR_POLYCONIC,
+        ROBINSON,
+        SATELLITE,
+        SINU_MOLLWEIDE,
+        SINUSOIDAL,
+        STEREOGRAPHIC,
+        TIMES,
+        TRANSVERSE_MERCATOR,
+        VAN_DER_GRINTEN,
+        VAN_DER_GRINTEN2,
+        VAN_DER_GRINTEN3,
+        VAN_DER_GRINTEN4,
+        WAGNER4,
+        WAGNER6,
+        WIECHEL,
+        WINKEL_TRIPEL,
+        WINKEL3,
+    };
+    static std::string to_string(Type e);
 
     class Rotation;
 
@@ -1619,7 +1928,7 @@ class Layout::Geo::Projection {
     Layout::Geo::Projection& tilt(double f);
 
     // Sets the projection type.
-    Layout::Geo::Projection& type(std::string f);
+    Layout::Geo::Projection& type(enum Type f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1627,6 +1936,9 @@ class Layout::Geo::Projection {
 
 class Layout::Geo::Projection::Rotation {
  public:
+    Rotation() = default;
+    Rotation(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Rotates the map along meridians (in degrees North).
     Layout::Geo::Projection::Rotation& lat(double f);
@@ -1643,12 +1955,37 @@ class Layout::Geo::Projection::Rotation {
 
 class Layout::Grid {
  public:
+    Grid() = default;
+    Grid(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Pattern {
         INDEPENDENT,
         COUPLED,
     };
     static std::string to_string(Pattern e);
+
+    enum class Roworder {
+        TOP_TO_BOTTOM,
+        BOTTOM_TO_TOP,
+    };
+    static std::string to_string(Roworder e);
+
+    enum class Xside {
+        BOTTOM,
+        BOTTOM_PLOT,
+        TOP_PLOT,
+        TOP,
+    };
+    static std::string to_string(Xside e);
+
+    enum class Yside {
+        LEFT,
+        LEFT_PLOT,
+        RIGHT_PLOT,
+        RIGHT,
+    };
+    static std::string to_string(Yside e);
 
     class Domain;
 
@@ -1667,7 +2004,8 @@ class Layout::Grid {
     Layout::Grid& pattern(enum Pattern f);
 
     // Is the first row the top or the bottom? Note that columns are always enumerated from left to right.
-    Layout::Grid& roworder(std::string f);
+    // - Default: top to bottom
+    Layout::Grid& roworder(enum Roworder f);
 
     // The number of rows in the grid. If you provide a 2D `subplots` array or a `yaxes` array, its length is used as
     // the default. But it's also possible to have a different length, if you want to leave a row at the end for
@@ -1691,7 +2029,8 @@ class Layout::Grid {
 
     // Sets where the x axis labels and titles go. *bottom* means the very bottom of the grid. *bottom plot* is the
     // lowest plot that each x axis is used in. *top* and *top plot* are similar.
-    Layout::Grid& xside(std::string f);
+    // - Default: bottom plot
+    Layout::Grid& xside(enum Xside f);
 
     // Used with `yaxes` when the x and y axes are shared across columns and rows. Each entry should be an y axis id
     // like *y*, *y2*, etc., or ** to not put a y axis in that row. Entries other than ** must be unique. Ignored if
@@ -1704,7 +2043,8 @@ class Layout::Grid {
 
     // Sets where the y axis labels and titles go. *left* means the very left edge of the grid. *left plot* is the
     // leftmost plot that each y axis is used in. *right* and *right plot* are similar.
-    Layout::Grid& yside(std::string f);
+    // - Default: left plot
+    Layout::Grid& yside(enum Yside f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1712,6 +2052,9 @@ class Layout::Grid {
 
 class Layout::Grid::Domain {
  public:
+    Domain() = default;
+    Domain(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the horizontal domain of this grid subplot (in plot fraction). The first and last cells end exactly at the
     // domain edges, with no grout around the edges.
@@ -1727,6 +2070,9 @@ class Layout::Grid::Domain {
 
 class Layout::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -1770,12 +2116,33 @@ class Layout::Hoverlabel {
 // Sets the default hover label font used by all traces on the graph.
 class Layout::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Hoverlabel::Font& color(std::string f);
 
@@ -1807,10 +2174,12 @@ class Layout::Hoverlabel::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Hoverlabel::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Hoverlabel::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Hoverlabel::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Hoverlabel::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Hoverlabel::Font& weight(int f);
@@ -1822,12 +2191,33 @@ class Layout::Hoverlabel::Font {
 // Sets the font for group titles in hover (unified modes). Defaults to `hoverlabel.font`.
 class Layout::Hoverlabel::Grouptitlefont {
  public:
+    Grouptitlefont() = default;
+    Grouptitlefont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Hoverlabel::Grouptitlefont& color(std::string f);
 
@@ -1859,10 +2249,12 @@ class Layout::Hoverlabel::Grouptitlefont {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Hoverlabel::Grouptitlefont& textcase(std::string f);
+    // - Default: normal
+    Layout::Hoverlabel::Grouptitlefont& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Hoverlabel::Grouptitlefont& variant(std::string f);
+    // - Default: normal
+    Layout::Hoverlabel::Grouptitlefont& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Hoverlabel::Grouptitlefont& weight(int f);
@@ -1873,6 +2265,9 @@ class Layout::Hoverlabel::Grouptitlefont {
 
 class Layout::Images {
  public:
+    Images() = default;
+    Images(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Image;
 
@@ -1884,6 +2279,9 @@ class Layout::Images {
 
 class Layout::Images::Image {
  public:
+    Image() = default;
+    Image(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Layer {
         BELOW,
@@ -1996,6 +2394,9 @@ class Layout::Images::Image {
 
 class Layout::Legend {
  public:
+    Legend() = default;
+    Legend(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Entrywidthmode {
         FRACTION,
@@ -2199,12 +2600,33 @@ class Layout::Legend {
 // Sets the font used to text the legend items.
 class Layout::Legend::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Legend::Font& color(std::string f);
 
@@ -2236,10 +2658,12 @@ class Layout::Legend::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Legend::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Legend::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Legend::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Legend::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Legend::Font& weight(int f);
@@ -2251,12 +2675,33 @@ class Layout::Legend::Font {
 // Sets the font for group titles in legend. Defaults to `legend.font` with its size increased about 10%.
 class Layout::Legend::Grouptitlefont {
  public:
+    Grouptitlefont() = default;
+    Grouptitlefont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Legend::Grouptitlefont& color(std::string f);
 
@@ -2288,10 +2733,12 @@ class Layout::Legend::Grouptitlefont {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Legend::Grouptitlefont& textcase(std::string f);
+    // - Default: normal
+    Layout::Legend::Grouptitlefont& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Legend::Grouptitlefont& variant(std::string f);
+    // - Default: normal
+    Layout::Legend::Grouptitlefont& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Legend::Grouptitlefont& weight(int f);
@@ -2302,6 +2749,18 @@ class Layout::Legend::Grouptitlefont {
 
 class Layout::Legend::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
+
+    enum class Side {
+        TOP,
+        LEFT,
+        TOP_LEFT,
+        TOP_CENTER,
+        TOP_RIGHT,
+    };
+    static std::string to_string(Side e);
 
     // Sets this legend's title font. Defaults to `legend.font` with its size increased about 20%.
     class Font;
@@ -2312,7 +2771,7 @@ class Layout::Legend::Title {
     // Determines the location of legend's title with respect to the legend items. Defaulted to *top* with `orientation`
     // is *h*. Defaulted to *left* with `orientation` is *v*. The *top left* options could be used to expand top center
     // and top right are for horizontal alignment legend area in both x and y sides.
-    Layout::Legend::Title& side(std::string f);
+    Layout::Legend::Title& side(enum Side f);
 
     // Sets the title of the legend.
     Layout::Legend::Title& text(std::string f);
@@ -2324,12 +2783,33 @@ class Layout::Legend::Title {
 // Sets this legend's title font. Defaults to `legend.font` with its size increased about 20%.
 class Layout::Legend::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Legend::Title::Font& color(std::string f);
 
@@ -2361,10 +2841,12 @@ class Layout::Legend::Title::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Legend::Title::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Legend::Title::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Legend::Title::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Legend::Title::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Legend::Title::Font& weight(int f);
@@ -2375,6 +2857,9 @@ class Layout::Legend::Title::Font {
 
 class Layout::Map {
  public:
+    Map() = default;
+    Map(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Bounds;
     class Center;
@@ -2422,6 +2907,9 @@ class Layout::Map {
 
 class Layout::Map::Bounds {
  public:
+    Bounds() = default;
+    Bounds(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum longitude of the map (in degrees East) if `west`, `south` and `north` are declared.
     Layout::Map::Bounds& east(double f);
@@ -2441,6 +2929,9 @@ class Layout::Map::Bounds {
 
 class Layout::Map::Center {
  public:
+    Center() = default;
+    Center(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the latitude of the center of the map (in degrees North).
     Layout::Map::Center& lat(double f);
@@ -2454,6 +2945,9 @@ class Layout::Map::Center {
 
 class Layout::Map::Domain {
  public:
+    Domain() = default;
+    Domain(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // If there is a layout grid, use the domain for this column in the grid for this map subplot .
     Layout::Map::Domain& column(int f);
@@ -2473,6 +2967,9 @@ class Layout::Map::Domain {
 
 class Layout::Map::Layers {
  public:
+    Layers() = default;
+    Layers(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Layer;
 
@@ -2484,6 +2981,9 @@ class Layout::Map::Layers {
 
 class Layout::Map::Layers::Layer {
  public:
+    Layer() = default;
+    Layer(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Sourcetype {
         GEOJSON,
@@ -2592,6 +3092,9 @@ class Layout::Map::Layers::Layer {
 
 class Layout::Map::Layers::Layer::Circle {
  public:
+    Circle() = default;
+    Circle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the circle radius (map.layer.paint.circle-radius). Has an effect only when `type` is set to *circle*.
     Layout::Map::Layers::Layer::Circle& radius(double f);
@@ -2602,6 +3105,9 @@ class Layout::Map::Layers::Layer::Circle {
 
 class Layout::Map::Layers::Layer::Fill {
  public:
+    Fill() = default;
+    Fill(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the fill outline color (map.layer.paint.fill-outline-color). Has an effect only when `type` is set to
     // *fill*.
@@ -2613,6 +3119,9 @@ class Layout::Map::Layers::Layer::Fill {
 
 class Layout::Map::Layers::Layer::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the length of dashes and gaps (map.layer.paint.line-dasharray). Has an effect only when `type` is set to
     // *line*.
@@ -2631,6 +3140,29 @@ class Layout::Map::Layers::Layer::Line {
 
 class Layout::Map::Layers::Layer::Symbol {
  public:
+    Symbol() = default;
+    Symbol(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
+
+    enum class Placement {
+        POINT,
+        LINE,
+        LINE_CENTER,
+    };
+    static std::string to_string(Placement e);
+
+    enum class Textposition {
+        TOP_LEFT,
+        TOP_CENTER,
+        TOP_RIGHT,
+        MIDDLE_LEFT,
+        MIDDLE_CENTER,
+        MIDDLE_RIGHT,
+        BOTTOM_LEFT,
+        BOTTOM_CENTER,
+        BOTTOM_RIGHT,
+    };
+    static std::string to_string(Textposition e);
 
     // Sets the icon text font (color=map.layer.paint.text-color, size=map.layer.layout.text-size). Has an effect only
     // when `type` is set to *symbol*.
@@ -2645,7 +3177,8 @@ class Layout::Map::Layers::Layer::Symbol {
     // Sets the symbol and/or text placement (map.layer.layout.symbol-placement). If `placement` is *point*, the label
     // is placed where the geometry is located If `placement` is *line*, the label is placed along the line of the
     // geometry If `placement` is *line-center*, the label is placed on the center of the geometry
-    Layout::Map::Layers::Layer::Symbol& placement(std::string f);
+    // - Default: point
+    Layout::Map::Layers::Layer::Symbol& placement(enum Placement f);
 
     // Sets the symbol text (map.layer.layout.text-field).
     Layout::Map::Layers::Layer::Symbol& text(std::string f);
@@ -2655,7 +3188,8 @@ class Layout::Map::Layers::Layer::Symbol {
     Layout::Map::Layers::Layer::Symbol& textfont(Textfont f);
 
     // Sets the positions of the `text` elements with respects to the (x,y) coordinates.
-    Layout::Map::Layers::Layer::Symbol& textposition(std::string f);
+    // - Default: middle center
+    Layout::Map::Layers::Layer::Symbol& textposition(enum Textposition f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -2665,6 +3199,9 @@ class Layout::Map::Layers::Layer::Symbol {
 // `type` is set to *symbol*.
 class Layout::Map::Layers::Layer::Symbol::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -2698,6 +3235,9 @@ class Layout::Map::Layers::Layer::Symbol::Textfont {
 
 class Layout::Mapbox {
  public:
+    Mapbox() = default;
+    Mapbox(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Bounds;
     class Center;
@@ -2753,6 +3293,9 @@ class Layout::Mapbox {
 
 class Layout::Mapbox::Bounds {
  public:
+    Bounds() = default;
+    Bounds(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum longitude of the map (in degrees East) if `west`, `south` and `north` are declared.
     Layout::Mapbox::Bounds& east(double f);
@@ -2772,6 +3315,9 @@ class Layout::Mapbox::Bounds {
 
 class Layout::Mapbox::Center {
  public:
+    Center() = default;
+    Center(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the latitude of the center of the map (in degrees North).
     Layout::Mapbox::Center& lat(double f);
@@ -2785,6 +3331,9 @@ class Layout::Mapbox::Center {
 
 class Layout::Mapbox::Domain {
  public:
+    Domain() = default;
+    Domain(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // If there is a layout grid, use the domain for this column in the grid for this mapbox subplot .
     Layout::Mapbox::Domain& column(int f);
@@ -2804,6 +3353,9 @@ class Layout::Mapbox::Domain {
 
 class Layout::Mapbox::Layers {
  public:
+    Layers() = default;
+    Layers(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Layer;
 
@@ -2815,6 +3367,9 @@ class Layout::Mapbox::Layers {
 
 class Layout::Mapbox::Layers::Layer {
  public:
+    Layer() = default;
+    Layer(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Sourcetype {
         GEOJSON,
@@ -2924,6 +3479,9 @@ class Layout::Mapbox::Layers::Layer {
 
 class Layout::Mapbox::Layers::Layer::Circle {
  public:
+    Circle() = default;
+    Circle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the circle radius (mapbox.layer.paint.circle-radius). Has an effect only when `type` is set to *circle*.
     Layout::Mapbox::Layers::Layer::Circle& radius(double f);
@@ -2934,6 +3492,9 @@ class Layout::Mapbox::Layers::Layer::Circle {
 
 class Layout::Mapbox::Layers::Layer::Fill {
  public:
+    Fill() = default;
+    Fill(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the fill outline color (mapbox.layer.paint.fill-outline-color). Has an effect only when `type` is set to
     // *fill*.
@@ -2945,6 +3506,9 @@ class Layout::Mapbox::Layers::Layer::Fill {
 
 class Layout::Mapbox::Layers::Layer::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the length of dashes and gaps (mapbox.layer.paint.line-dasharray). Has an effect only when `type` is set to
     // *line*.
@@ -2963,6 +3527,29 @@ class Layout::Mapbox::Layers::Layer::Line {
 
 class Layout::Mapbox::Layers::Layer::Symbol {
  public:
+    Symbol() = default;
+    Symbol(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
+
+    enum class Placement {
+        POINT,
+        LINE,
+        LINE_CENTER,
+    };
+    static std::string to_string(Placement e);
+
+    enum class Textposition {
+        TOP_LEFT,
+        TOP_CENTER,
+        TOP_RIGHT,
+        MIDDLE_LEFT,
+        MIDDLE_CENTER,
+        MIDDLE_RIGHT,
+        BOTTOM_LEFT,
+        BOTTOM_CENTER,
+        BOTTOM_RIGHT,
+    };
+    static std::string to_string(Textposition e);
 
     // Sets the icon text font (color=mapbox.layer.paint.text-color, size=mapbox.layer.layout.text-size). Has an effect
     // only when `type` is set to *symbol*.
@@ -2977,7 +3564,8 @@ class Layout::Mapbox::Layers::Layer::Symbol {
     // Sets the symbol and/or text placement (mapbox.layer.layout.symbol-placement). If `placement` is *point*, the
     // label is placed where the geometry is located If `placement` is *line*, the label is placed along the line of the
     // geometry If `placement` is *line-center*, the label is placed on the center of the geometry
-    Layout::Mapbox::Layers::Layer::Symbol& placement(std::string f);
+    // - Default: point
+    Layout::Mapbox::Layers::Layer::Symbol& placement(enum Placement f);
 
     // Sets the symbol text (mapbox.layer.layout.text-field).
     Layout::Mapbox::Layers::Layer::Symbol& text(std::string f);
@@ -2987,7 +3575,8 @@ class Layout::Mapbox::Layers::Layer::Symbol {
     Layout::Mapbox::Layers::Layer::Symbol& textfont(Textfont f);
 
     // Sets the positions of the `text` elements with respects to the (x,y) coordinates.
-    Layout::Mapbox::Layers::Layer::Symbol& textposition(std::string f);
+    // - Default: middle center
+    Layout::Mapbox::Layers::Layer::Symbol& textposition(enum Textposition f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -2997,6 +3586,9 @@ class Layout::Mapbox::Layers::Layer::Symbol {
 // when `type` is set to *symbol*.
 class Layout::Mapbox::Layers::Layer::Symbol::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -3030,6 +3622,9 @@ class Layout::Mapbox::Layers::Layer::Symbol::Textfont {
 
 class Layout::Margin {
  public:
+    Margin() = default;
+    Margin(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Turns on/off margin expansion computations. Legends, colorbars, updatemenus, sliders, axis rangeselector and
     // rangeslider are allowed to push the margins by defaults.
@@ -3056,6 +3651,9 @@ class Layout::Margin {
 
 class Layout::Modebar {
  public:
+    Modebar() = default;
+    Modebar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Orientation {
         V,
@@ -3112,6 +3710,9 @@ class Layout::Modebar {
 
 class Layout::Newselection {
  public:
+    Newselection() = default;
+    Newselection(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Mode {
         IMMEDIATE,
@@ -3135,6 +3736,9 @@ class Layout::Newselection {
 
 class Layout::Newselection::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the line color. By default uses either dark grey or white to increase contrast with background color.
     Layout::Newselection::Line& color(std::string f);
@@ -3152,6 +3756,9 @@ class Layout::Newselection::Line {
 
 class Layout::Newshape {
  public:
+    Newshape() = default;
+    Newshape(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Drawdirection {
         ORTHO,
@@ -3248,6 +3855,25 @@ class Layout::Newshape {
 
 class Layout::Newshape::Label {
  public:
+    Label() = default;
+    Label(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
+
+    enum class Textposition {
+        TOP_LEFT,
+        TOP_CENTER,
+        TOP_RIGHT,
+        MIDDLE_LEFT,
+        MIDDLE_CENTER,
+        MIDDLE_RIGHT,
+        BOTTOM_LEFT,
+        BOTTOM_CENTER,
+        BOTTOM_RIGHT,
+        START,
+        MIDDLE,
+        END,
+    };
+    static std::string to_string(Textposition e);
 
     enum class Xanchor {
         AUTO,
@@ -3284,7 +3910,7 @@ class Layout::Newshape::Label {
     // are *top left*, *top center*, *top right*, *middle left*, *middle center*, *middle right*, *bottom left*, *bottom
     // center*, and *bottom right*. Supported values for lines are *start*, *middle*, and *end*. Default: *middle
     // center* for rectangles, circles, and paths; *middle* for lines.
-    Layout::Newshape::Label& textposition(std::string f);
+    Layout::Newshape::Label& textposition(enum Textposition f);
 
     // Template string used for rendering the new shape's label. Note that this will override `text`. Variables are
     // inserted using %{variable}, for example "x0: %{x0}". Numbers are formatted using d3-format's syntax
@@ -3317,12 +3943,33 @@ class Layout::Newshape::Label {
 // Sets the new shape label text font.
 class Layout::Newshape::Label::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Newshape::Label::Font& color(std::string f);
 
@@ -3354,10 +4001,12 @@ class Layout::Newshape::Label::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Newshape::Label::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Newshape::Label::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Newshape::Label::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Newshape::Label::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Newshape::Label::Font& weight(int f);
@@ -3368,6 +4017,9 @@ class Layout::Newshape::Label::Font {
 
 class Layout::Newshape::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -3385,12 +4037,33 @@ class Layout::Newshape::Legendgrouptitle {
 // Sets this legend group's title font.
 class Layout::Newshape::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Newshape::Legendgrouptitle::Font& color(std::string f);
 
@@ -3422,10 +4095,12 @@ class Layout::Newshape::Legendgrouptitle::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Newshape::Legendgrouptitle::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Newshape::Legendgrouptitle::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Newshape::Legendgrouptitle::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Newshape::Legendgrouptitle::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Newshape::Legendgrouptitle::Font& weight(int f);
@@ -3436,6 +4111,9 @@ class Layout::Newshape::Legendgrouptitle::Font {
 
 class Layout::Newshape::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the line color. By default uses either dark grey or white to increase contrast with background color.
     Layout::Newshape::Line& color(std::string f);
@@ -3453,6 +4131,9 @@ class Layout::Newshape::Line {
 
 class Layout::Polar {
  public:
+    Polar() = default;
+    Polar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Gridshape {
         CIRCULAR,
@@ -3498,6 +4179,37 @@ class Layout::Polar {
 
 class Layout::Polar::Angularaxis {
  public:
+    Angularaxis() = default;
+    Angularaxis(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
+
+    enum class Autotypenumbers {
+        CONVERT_TYPES,
+        STRICT,
+    };
+    static std::string to_string(Autotypenumbers e);
+
+    enum class Categoryorder {
+        TRACE,
+        CATEGORY_ASCENDING,
+        CATEGORY_DESCENDING,
+        ARRAY,
+        TOTAL_ASCENDING,
+        TOTAL_DESCENDING,
+        MIN_ASCENDING,
+        MIN_DESCENDING,
+        MAX_ASCENDING,
+        MAX_DESCENDING,
+        SUM_ASCENDING,
+        SUM_DESCENDING,
+        MEAN_ASCENDING,
+        MEAN_DESCENDING,
+        GEOMETRIC_MEAN_ASCENDING,
+        GEOMETRIC_MEAN_DESCENDING,
+        MEDIAN_ASCENDING,
+        MEDIAN_DESCENDING,
+    };
+    static std::string to_string(Categoryorder e);
 
     enum class Direction {
         COUNTERCLOCKWISE,
@@ -3513,6 +4225,12 @@ class Layout::Polar::Angularaxis {
         B,
     };
     static std::string to_string(Exponentformat e);
+
+    enum class Layer {
+        ABOVE_TRACES,
+        BELOW_TRACES,
+    };
+    static std::string to_string(Layer e);
 
     enum class Showexponent {
         ALL,
@@ -3558,6 +4276,13 @@ class Layout::Polar::Angularaxis {
     };
     static std::string to_string(Ticks e);
 
+    enum class Type {
+        HYPHEN,
+        LINEAR,
+        CATEGORY,
+    };
+    static std::string to_string(Type e);
+
     // Sets the tick font.
     class Tickfont;
     class Tickformatstops;
@@ -3565,7 +4290,8 @@ class Layout::Polar::Angularaxis {
     // Using *strict* a numeric string in trace data is not converted to a number. Using *convert types* a numeric
     // string in trace data may be treated as a number during automatic axis `type` detection. Defaults to
     // layout.autotypenumbers.
-    Layout::Polar::Angularaxis& autotypenumbers(std::string f);
+    // - Default: convert types
+    Layout::Polar::Angularaxis& autotypenumbers(enum Autotypenumbers f);
 
     // Sets the order in which categories on this axis appear. Only has an effect if `categoryorder` is set to *array*.
     // Used with `categoryorder`.
@@ -3583,7 +4309,8 @@ class Layout::Polar::Angularaxis {
     // unspecified categories will follow the categories in `categoryarray`. Set `categoryorder` to *total ascending* or
     // *total descending* if order should be determined by the numerical order of the values. Similarly, the order can
     // be determined by the min, max, sum, mean, geometric mean or median of all the values.
-    Layout::Polar::Angularaxis& categoryorder(std::string f);
+    // - Default: trace
+    Layout::Polar::Angularaxis& categoryorder(enum Categoryorder f);
 
     // Sets default for all colors associated with this axis all at once: line, font, tick, and grid colors. Grid color
     // is lightened by blending this with the plot background Individual pieces can override this.
@@ -3643,7 +4370,8 @@ class Layout::Polar::Angularaxis {
     // traces If *below traces*, this axis is displayed below all the subplot's traces, but above the grid lines. Useful
     // when used together with scatter-like traces with `cliponaxis` set to *false* to show markers and/or text nodes
     // above this axis.
-    Layout::Polar::Angularaxis& layer(std::string f);
+    // - Default: above traces
+    Layout::Polar::Angularaxis& layer(enum Layer f);
 
     // Sets the axis line color.
     Layout::Polar::Angularaxis& linecolor(std::string f);
@@ -3770,7 +4498,8 @@ class Layout::Polar::Angularaxis {
 
     // Sets the angular axis type. If *linear*, set `thetaunit` to determine the unit in which axis value are shown. If
     // *category, use `period` to set the number of integer coordinates around polar axis.
-    Layout::Polar::Angularaxis& type(std::string f);
+    // - Default: -
+    Layout::Polar::Angularaxis& type(enum Type f);
 
     // Controls persistence of user-driven changes in axis `rotation`. Defaults to `polar<N>.uirevision`.
     template <typename T>
@@ -3787,12 +4516,33 @@ class Layout::Polar::Angularaxis {
 // Sets the tick font.
 class Layout::Polar::Angularaxis::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Polar::Angularaxis::Tickfont& color(std::string f);
 
@@ -3824,10 +4574,12 @@ class Layout::Polar::Angularaxis::Tickfont {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Polar::Angularaxis::Tickfont& textcase(std::string f);
+    // - Default: normal
+    Layout::Polar::Angularaxis::Tickfont& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Polar::Angularaxis::Tickfont& variant(std::string f);
+    // - Default: normal
+    Layout::Polar::Angularaxis::Tickfont& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Polar::Angularaxis::Tickfont& weight(int f);
@@ -3838,6 +4590,9 @@ class Layout::Polar::Angularaxis::Tickfont {
 
 class Layout::Polar::Angularaxis::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -3849,6 +4604,9 @@ class Layout::Polar::Angularaxis::Tickformatstops {
 
 class Layout::Polar::Angularaxis::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
@@ -3879,6 +4637,9 @@ class Layout::Polar::Angularaxis::Tickformatstops::Tickformatstop {
 
 class Layout::Polar::Domain {
  public:
+    Domain() = default;
+    Domain(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // If there is a layout grid, use the domain for this column in the grid for this polar subplot .
     Layout::Polar::Domain& column(int f);
@@ -3898,6 +4659,26 @@ class Layout::Polar::Domain {
 
 class Layout::Polar::Radialaxis {
  public:
+    Radialaxis() = default;
+    Radialaxis(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
+
+    enum class Autorange {
+        TRUE,
+        FALSE,
+        REVERSED,
+        MIN_REVERSED,
+        MAX_REVERSED,
+        MIN,
+        MAX,
+    };
+    static std::string to_string(Autorange e);
+
+    enum class Autotypenumbers {
+        CONVERT_TYPES,
+        STRICT,
+    };
+    static std::string to_string(Autotypenumbers e);
 
     enum class Calendar {
         CHINESE,
@@ -3919,6 +4700,28 @@ class Layout::Polar::Radialaxis {
     };
     static std::string to_string(Calendar e);
 
+    enum class Categoryorder {
+        TRACE,
+        CATEGORY_ASCENDING,
+        CATEGORY_DESCENDING,
+        ARRAY,
+        TOTAL_ASCENDING,
+        TOTAL_DESCENDING,
+        MIN_ASCENDING,
+        MIN_DESCENDING,
+        MAX_ASCENDING,
+        MAX_DESCENDING,
+        SUM_ASCENDING,
+        SUM_DESCENDING,
+        MEAN_ASCENDING,
+        MEAN_DESCENDING,
+        GEOMETRIC_MEAN_ASCENDING,
+        GEOMETRIC_MEAN_DESCENDING,
+        MEDIAN_ASCENDING,
+        MEDIAN_DESCENDING,
+    };
+    static std::string to_string(Categoryorder e);
+
     enum class Exponentformat {
         NONE,
         E,
@@ -3927,6 +4730,12 @@ class Layout::Polar::Radialaxis {
         B,
     };
     static std::string to_string(Exponentformat e);
+
+    enum class Layer {
+        ABOVE_TRACES,
+        BELOW_TRACES,
+    };
+    static std::string to_string(Layer e);
 
     enum class Rangemode {
         TOZERO,
@@ -3979,6 +4788,15 @@ class Layout::Polar::Radialaxis {
     };
     static std::string to_string(Ticks e);
 
+    enum class Type {
+        HYPHEN,
+        LINEAR,
+        LOG,
+        DATE,
+        CATEGORY,
+    };
+    static std::string to_string(Type e);
+
     class Autorangeoptions;
     // Sets the tick font.
     class Tickfont;
@@ -3996,7 +4814,8 @@ class Layout::Polar::Radialaxis {
     // maximum. Using *min reversed* applies autorange only to set the minimum on a reversed axis. Using *max reversed*
     // applies autorange only to set the maximum on a reversed axis. Using *reversed* applies autorange on both ends and
     // reverses the axis direction.
-    Layout::Polar::Radialaxis& autorange(std::string f);
+    // - Default: True
+    Layout::Polar::Radialaxis& autorange(enum Autorange f);
 
     Layout::Polar::Radialaxis& autorangeoptions(Autorangeoptions f);
 
@@ -4007,7 +4826,8 @@ class Layout::Polar::Radialaxis {
     // Using *strict* a numeric string in trace data is not converted to a number. Using *convert types* a numeric
     // string in trace data may be treated as a number during automatic axis `type` detection. Defaults to
     // layout.autotypenumbers.
-    Layout::Polar::Radialaxis& autotypenumbers(std::string f);
+    // - Default: convert types
+    Layout::Polar::Radialaxis& autotypenumbers(enum Autotypenumbers f);
 
     // Sets the calendar system to use for `range` and `tick0` if this is a date axis. This does not set the calendar
     // for interpreting data on this axis, that's specified in the trace or via the global `layout.calendar`
@@ -4030,7 +4850,8 @@ class Layout::Polar::Radialaxis {
     // unspecified categories will follow the categories in `categoryarray`. Set `categoryorder` to *total ascending* or
     // *total descending* if order should be determined by the numerical order of the values. Similarly, the order can
     // be determined by the min, max, sum, mean, geometric mean or median of all the values.
-    Layout::Polar::Radialaxis& categoryorder(std::string f);
+    // - Default: trace
+    Layout::Polar::Radialaxis& categoryorder(enum Categoryorder f);
 
     // Sets default for all colors associated with this axis all at once: line, font, tick, and grid colors. Grid color
     // is lightened by blending this with the plot background Individual pieces can override this.
@@ -4086,7 +4907,8 @@ class Layout::Polar::Radialaxis {
     // traces If *below traces*, this axis is displayed below all the subplot's traces, but above the grid lines. Useful
     // when used together with scatter-like traces with `cliponaxis` set to *false* to show markers and/or text nodes
     // above this axis.
-    Layout::Polar::Radialaxis& layer(std::string f);
+    // - Default: above traces
+    Layout::Polar::Radialaxis& layer(enum Layer f);
 
     // Sets the axis line color.
     Layout::Polar::Radialaxis& linecolor(std::string f);
@@ -4227,7 +5049,8 @@ class Layout::Polar::Radialaxis {
 
     // Sets the axis type. By default, plotly attempts to determined the axis type by looking into the data of the
     // traces that referenced the axis in question.
-    Layout::Polar::Radialaxis& type(std::string f);
+    // - Default: -
+    Layout::Polar::Radialaxis& type(enum Type f);
 
     // Controls persistence of user-driven changes in axis `range`, `autorange`, `angle`, and `title` if in `editable:
     // true` configuration. Defaults to `polar<N>.uirevision`.
@@ -4244,6 +5067,9 @@ class Layout::Polar::Radialaxis {
 
 class Layout::Polar::Radialaxis::Autorangeoptions {
  public:
+    Autorangeoptions() = default;
+    Autorangeoptions(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Clip autorange maximum if it goes beyond this value. Has no effect when `autorangeoptions.maxallowed` is
     // provided.
@@ -4279,12 +5105,33 @@ class Layout::Polar::Radialaxis::Autorangeoptions {
 // Sets the tick font.
 class Layout::Polar::Radialaxis::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Polar::Radialaxis::Tickfont& color(std::string f);
 
@@ -4316,10 +5163,12 @@ class Layout::Polar::Radialaxis::Tickfont {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Polar::Radialaxis::Tickfont& textcase(std::string f);
+    // - Default: normal
+    Layout::Polar::Radialaxis::Tickfont& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Polar::Radialaxis::Tickfont& variant(std::string f);
+    // - Default: normal
+    Layout::Polar::Radialaxis::Tickfont& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Polar::Radialaxis::Tickfont& weight(int f);
@@ -4330,6 +5179,9 @@ class Layout::Polar::Radialaxis::Tickfont {
 
 class Layout::Polar::Radialaxis::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -4341,6 +5193,9 @@ class Layout::Polar::Radialaxis::Tickformatstops {
 
 class Layout::Polar::Radialaxis::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
@@ -4371,6 +5226,9 @@ class Layout::Polar::Radialaxis::Tickformatstops::Tickformatstop {
 
 class Layout::Polar::Radialaxis::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this axis' title font.
     class Font;
@@ -4388,12 +5246,33 @@ class Layout::Polar::Radialaxis::Title {
 // Sets this axis' title font.
 class Layout::Polar::Radialaxis::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Polar::Radialaxis::Title::Font& color(std::string f);
 
@@ -4425,10 +5304,12 @@ class Layout::Polar::Radialaxis::Title::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Polar::Radialaxis::Title::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Polar::Radialaxis::Title::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Polar::Radialaxis::Title::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Polar::Radialaxis::Title::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Polar::Radialaxis::Title::Font& weight(int f);
@@ -4439,6 +5320,9 @@ class Layout::Polar::Radialaxis::Title::Font {
 
 class Layout::Scene {
  public:
+    Scene() = default;
+    Scene(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Aspectmode {
         AUTO,
@@ -4514,6 +5398,9 @@ class Layout::Scene {
 
 class Layout::Scene::Annotations {
  public:
+    Annotations() = default;
+    Annotations(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Annotation;
 
@@ -4525,6 +5412,9 @@ class Layout::Scene::Annotations {
 
 class Layout::Scene::Annotations::Annotation {
  public:
+    Annotation() = default;
+    Annotation(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -4719,12 +5609,33 @@ class Layout::Scene::Annotations::Annotation {
 // Sets the annotation text font.
 class Layout::Scene::Annotations::Annotation::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Scene::Annotations::Annotation::Font& color(std::string f);
 
@@ -4756,10 +5667,12 @@ class Layout::Scene::Annotations::Annotation::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Scene::Annotations::Annotation::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Scene::Annotations::Annotation::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Scene::Annotations::Annotation::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Scene::Annotations::Annotation::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Scene::Annotations::Annotation::Font& weight(int f);
@@ -4770,6 +5683,9 @@ class Layout::Scene::Annotations::Annotation::Font {
 
 class Layout::Scene::Annotations::Annotation::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the hover label text font. By default uses the global hover font and size, with color from
     // `hoverlabel.bordercolor`.
@@ -4795,12 +5711,33 @@ class Layout::Scene::Annotations::Annotation::Hoverlabel {
 // `hoverlabel.bordercolor`.
 class Layout::Scene::Annotations::Annotation::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Scene::Annotations::Annotation::Hoverlabel::Font& color(std::string f);
 
@@ -4832,10 +5769,12 @@ class Layout::Scene::Annotations::Annotation::Hoverlabel::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Scene::Annotations::Annotation::Hoverlabel::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Scene::Annotations::Annotation::Hoverlabel::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Scene::Annotations::Annotation::Hoverlabel::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Scene::Annotations::Annotation::Hoverlabel::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Scene::Annotations::Annotation::Hoverlabel::Font& weight(int f);
@@ -4847,6 +5786,9 @@ class Layout::Scene::Annotations::Annotation::Hoverlabel::Font {
 // Sets this scene's axis aspectratio.
 class Layout::Scene::Aspectratio {
  public:
+    Aspectratio() = default;
+    Aspectratio(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Impliededits;
 
@@ -4864,6 +5806,9 @@ class Layout::Scene::Aspectratio {
 
 class Layout::Scene::Aspectratio::Impliededits {
  public:
+    Impliededits() = default;
+    Impliededits(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -4871,6 +5816,9 @@ class Layout::Scene::Aspectratio::Impliededits {
 
 class Layout::Scene::Camera {
  public:
+    Camera() = default;
+    Camera(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the (x,y,z) components of the 'center' camera vector This vector determines the translation (x,y,z) space
     // about the center of this scene. By default, there is no such translation.
@@ -4905,6 +5853,9 @@ class Layout::Scene::Camera {
 // the center of this scene. By default, there is no such translation.
 class Layout::Scene::Camera::Center {
  public:
+    Center() = default;
+    Center(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     Layout::Scene::Camera::Center& x(double f);
 
@@ -4920,6 +5871,9 @@ class Layout::Scene::Camera::Center {
 // this scene.
 class Layout::Scene::Camera::Eye {
  public:
+    Eye() = default;
+    Eye(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     Layout::Scene::Camera::Eye& x(double f);
 
@@ -4933,6 +5887,9 @@ class Layout::Scene::Camera::Eye {
 
 class Layout::Scene::Camera::Projection {
  public:
+    Projection() = default;
+    Projection(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Type {
         PERSPECTIVE,
@@ -4953,6 +5910,9 @@ class Layout::Scene::Camera::Projection {
 // respect to the page. The default is *{x: 0, y: 0, z: 1}* which means that the z axis points up.
 class Layout::Scene::Camera::Up {
  public:
+    Up() = default;
+    Up(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     Layout::Scene::Camera::Up& x(double f);
 
@@ -4966,6 +5926,9 @@ class Layout::Scene::Camera::Up {
 
 class Layout::Scene::Domain {
  public:
+    Domain() = default;
+    Domain(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // If there is a layout grid, use the domain for this column in the grid for this scene subplot .
     Layout::Scene::Domain& column(int f);
@@ -4985,6 +5948,26 @@ class Layout::Scene::Domain {
 
 class Layout::Scene::Xaxis {
  public:
+    Xaxis() = default;
+    Xaxis(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
+
+    enum class Autorange {
+        TRUE,
+        FALSE,
+        REVERSED,
+        MIN_REVERSED,
+        MAX_REVERSED,
+        MIN,
+        MAX,
+    };
+    static std::string to_string(Autorange e);
+
+    enum class Autotypenumbers {
+        CONVERT_TYPES,
+        STRICT,
+    };
+    static std::string to_string(Autotypenumbers e);
 
     enum class Calendar {
         CHINESE,
@@ -5005,6 +5988,28 @@ class Layout::Scene::Xaxis {
         UMMALQURA,
     };
     static std::string to_string(Calendar e);
+
+    enum class Categoryorder {
+        TRACE,
+        CATEGORY_ASCENDING,
+        CATEGORY_DESCENDING,
+        ARRAY,
+        TOTAL_ASCENDING,
+        TOTAL_DESCENDING,
+        MIN_ASCENDING,
+        MIN_DESCENDING,
+        MAX_ASCENDING,
+        MAX_DESCENDING,
+        SUM_ASCENDING,
+        SUM_DESCENDING,
+        MEAN_ASCENDING,
+        MEAN_DESCENDING,
+        GEOMETRIC_MEAN_ASCENDING,
+        GEOMETRIC_MEAN_DESCENDING,
+        MEDIAN_ASCENDING,
+        MEDIAN_DESCENDING,
+    };
+    static std::string to_string(Categoryorder e);
 
     enum class Exponentformat {
         NONE,
@@ -5069,6 +6074,15 @@ class Layout::Scene::Xaxis {
     };
     static std::string to_string(Ticks e);
 
+    enum class Type {
+        HYPHEN,
+        LINEAR,
+        LOG,
+        DATE,
+        CATEGORY,
+    };
+    static std::string to_string(Type e);
+
     class Autorangeoptions;
     // Sets the tick font.
     class Tickfont;
@@ -5081,14 +6095,16 @@ class Layout::Scene::Xaxis {
     // maximum. Using *min reversed* applies autorange only to set the minimum on a reversed axis. Using *max reversed*
     // applies autorange only to set the maximum on a reversed axis. Using *reversed* applies autorange on both ends and
     // reverses the axis direction.
-    Layout::Scene::Xaxis& autorange(std::string f);
+    // - Default: True
+    Layout::Scene::Xaxis& autorange(enum Autorange f);
 
     Layout::Scene::Xaxis& autorangeoptions(Autorangeoptions f);
 
     // Using *strict* a numeric string in trace data is not converted to a number. Using *convert types* a numeric
     // string in trace data may be treated as a number during automatic axis `type` detection. Defaults to
     // layout.autotypenumbers.
-    Layout::Scene::Xaxis& autotypenumbers(std::string f);
+    // - Default: convert types
+    Layout::Scene::Xaxis& autotypenumbers(enum Autotypenumbers f);
 
     // Sets the background color of this axis' wall.
     Layout::Scene::Xaxis& backgroundcolor(std::string f);
@@ -5114,7 +6130,8 @@ class Layout::Scene::Xaxis {
     // unspecified categories will follow the categories in `categoryarray`. Set `categoryorder` to *total ascending* or
     // *total descending* if order should be determined by the numerical order of the values. Similarly, the order can
     // be determined by the min, max, sum, mean, geometric mean or median of all the values.
-    Layout::Scene::Xaxis& categoryorder(std::string f);
+    // - Default: trace
+    Layout::Scene::Xaxis& categoryorder(enum Categoryorder f);
 
     // Sets default for all colors associated with this axis all at once: line, font, tick, and grid colors. Grid color
     // is lightened by blending this with the plot background Individual pieces can override this.
@@ -5317,7 +6334,8 @@ class Layout::Scene::Xaxis {
 
     // Sets the axis type. By default, plotly attempts to determined the axis type by looking into the data of the
     // traces that referenced the axis in question.
-    Layout::Scene::Xaxis& type(std::string f);
+    // - Default: -
+    Layout::Scene::Xaxis& type(enum Type f);
 
     // A single toggle to hide the axis while preserving interaction like dragging. Default is true when a cheater plot
     // is present on the axis, otherwise false
@@ -5339,6 +6357,9 @@ class Layout::Scene::Xaxis {
 
 class Layout::Scene::Xaxis::Autorangeoptions {
  public:
+    Autorangeoptions() = default;
+    Autorangeoptions(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Clip autorange maximum if it goes beyond this value. Has no effect when `autorangeoptions.maxallowed` is
     // provided.
@@ -5374,12 +6395,33 @@ class Layout::Scene::Xaxis::Autorangeoptions {
 // Sets the tick font.
 class Layout::Scene::Xaxis::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Scene::Xaxis::Tickfont& color(std::string f);
 
@@ -5411,10 +6453,12 @@ class Layout::Scene::Xaxis::Tickfont {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Scene::Xaxis::Tickfont& textcase(std::string f);
+    // - Default: normal
+    Layout::Scene::Xaxis::Tickfont& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Scene::Xaxis::Tickfont& variant(std::string f);
+    // - Default: normal
+    Layout::Scene::Xaxis::Tickfont& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Scene::Xaxis::Tickfont& weight(int f);
@@ -5425,6 +6469,9 @@ class Layout::Scene::Xaxis::Tickfont {
 
 class Layout::Scene::Xaxis::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -5436,6 +6483,9 @@ class Layout::Scene::Xaxis::Tickformatstops {
 
 class Layout::Scene::Xaxis::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
@@ -5466,6 +6516,9 @@ class Layout::Scene::Xaxis::Tickformatstops::Tickformatstop {
 
 class Layout::Scene::Xaxis::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this axis' title font.
     class Font;
@@ -5483,12 +6536,33 @@ class Layout::Scene::Xaxis::Title {
 // Sets this axis' title font.
 class Layout::Scene::Xaxis::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Scene::Xaxis::Title::Font& color(std::string f);
 
@@ -5520,10 +6594,12 @@ class Layout::Scene::Xaxis::Title::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Scene::Xaxis::Title::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Scene::Xaxis::Title::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Scene::Xaxis::Title::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Scene::Xaxis::Title::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Scene::Xaxis::Title::Font& weight(int f);
@@ -5534,6 +6610,26 @@ class Layout::Scene::Xaxis::Title::Font {
 
 class Layout::Scene::Yaxis {
  public:
+    Yaxis() = default;
+    Yaxis(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
+
+    enum class Autorange {
+        TRUE,
+        FALSE,
+        REVERSED,
+        MIN_REVERSED,
+        MAX_REVERSED,
+        MIN,
+        MAX,
+    };
+    static std::string to_string(Autorange e);
+
+    enum class Autotypenumbers {
+        CONVERT_TYPES,
+        STRICT,
+    };
+    static std::string to_string(Autotypenumbers e);
 
     enum class Calendar {
         CHINESE,
@@ -5554,6 +6650,28 @@ class Layout::Scene::Yaxis {
         UMMALQURA,
     };
     static std::string to_string(Calendar e);
+
+    enum class Categoryorder {
+        TRACE,
+        CATEGORY_ASCENDING,
+        CATEGORY_DESCENDING,
+        ARRAY,
+        TOTAL_ASCENDING,
+        TOTAL_DESCENDING,
+        MIN_ASCENDING,
+        MIN_DESCENDING,
+        MAX_ASCENDING,
+        MAX_DESCENDING,
+        SUM_ASCENDING,
+        SUM_DESCENDING,
+        MEAN_ASCENDING,
+        MEAN_DESCENDING,
+        GEOMETRIC_MEAN_ASCENDING,
+        GEOMETRIC_MEAN_DESCENDING,
+        MEDIAN_ASCENDING,
+        MEDIAN_DESCENDING,
+    };
+    static std::string to_string(Categoryorder e);
 
     enum class Exponentformat {
         NONE,
@@ -5618,6 +6736,15 @@ class Layout::Scene::Yaxis {
     };
     static std::string to_string(Ticks e);
 
+    enum class Type {
+        HYPHEN,
+        LINEAR,
+        LOG,
+        DATE,
+        CATEGORY,
+    };
+    static std::string to_string(Type e);
+
     class Autorangeoptions;
     // Sets the tick font.
     class Tickfont;
@@ -5630,14 +6757,16 @@ class Layout::Scene::Yaxis {
     // maximum. Using *min reversed* applies autorange only to set the minimum on a reversed axis. Using *max reversed*
     // applies autorange only to set the maximum on a reversed axis. Using *reversed* applies autorange on both ends and
     // reverses the axis direction.
-    Layout::Scene::Yaxis& autorange(std::string f);
+    // - Default: True
+    Layout::Scene::Yaxis& autorange(enum Autorange f);
 
     Layout::Scene::Yaxis& autorangeoptions(Autorangeoptions f);
 
     // Using *strict* a numeric string in trace data is not converted to a number. Using *convert types* a numeric
     // string in trace data may be treated as a number during automatic axis `type` detection. Defaults to
     // layout.autotypenumbers.
-    Layout::Scene::Yaxis& autotypenumbers(std::string f);
+    // - Default: convert types
+    Layout::Scene::Yaxis& autotypenumbers(enum Autotypenumbers f);
 
     // Sets the background color of this axis' wall.
     Layout::Scene::Yaxis& backgroundcolor(std::string f);
@@ -5663,7 +6792,8 @@ class Layout::Scene::Yaxis {
     // unspecified categories will follow the categories in `categoryarray`. Set `categoryorder` to *total ascending* or
     // *total descending* if order should be determined by the numerical order of the values. Similarly, the order can
     // be determined by the min, max, sum, mean, geometric mean or median of all the values.
-    Layout::Scene::Yaxis& categoryorder(std::string f);
+    // - Default: trace
+    Layout::Scene::Yaxis& categoryorder(enum Categoryorder f);
 
     // Sets default for all colors associated with this axis all at once: line, font, tick, and grid colors. Grid color
     // is lightened by blending this with the plot background Individual pieces can override this.
@@ -5866,7 +6996,8 @@ class Layout::Scene::Yaxis {
 
     // Sets the axis type. By default, plotly attempts to determined the axis type by looking into the data of the
     // traces that referenced the axis in question.
-    Layout::Scene::Yaxis& type(std::string f);
+    // - Default: -
+    Layout::Scene::Yaxis& type(enum Type f);
 
     // A single toggle to hide the axis while preserving interaction like dragging. Default is true when a cheater plot
     // is present on the axis, otherwise false
@@ -5888,6 +7019,9 @@ class Layout::Scene::Yaxis {
 
 class Layout::Scene::Yaxis::Autorangeoptions {
  public:
+    Autorangeoptions() = default;
+    Autorangeoptions(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Clip autorange maximum if it goes beyond this value. Has no effect when `autorangeoptions.maxallowed` is
     // provided.
@@ -5923,12 +7057,33 @@ class Layout::Scene::Yaxis::Autorangeoptions {
 // Sets the tick font.
 class Layout::Scene::Yaxis::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Scene::Yaxis::Tickfont& color(std::string f);
 
@@ -5960,10 +7115,12 @@ class Layout::Scene::Yaxis::Tickfont {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Scene::Yaxis::Tickfont& textcase(std::string f);
+    // - Default: normal
+    Layout::Scene::Yaxis::Tickfont& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Scene::Yaxis::Tickfont& variant(std::string f);
+    // - Default: normal
+    Layout::Scene::Yaxis::Tickfont& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Scene::Yaxis::Tickfont& weight(int f);
@@ -5974,6 +7131,9 @@ class Layout::Scene::Yaxis::Tickfont {
 
 class Layout::Scene::Yaxis::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -5985,6 +7145,9 @@ class Layout::Scene::Yaxis::Tickformatstops {
 
 class Layout::Scene::Yaxis::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
@@ -6015,6 +7178,9 @@ class Layout::Scene::Yaxis::Tickformatstops::Tickformatstop {
 
 class Layout::Scene::Yaxis::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this axis' title font.
     class Font;
@@ -6032,12 +7198,33 @@ class Layout::Scene::Yaxis::Title {
 // Sets this axis' title font.
 class Layout::Scene::Yaxis::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Scene::Yaxis::Title::Font& color(std::string f);
 
@@ -6069,10 +7256,12 @@ class Layout::Scene::Yaxis::Title::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Scene::Yaxis::Title::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Scene::Yaxis::Title::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Scene::Yaxis::Title::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Scene::Yaxis::Title::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Scene::Yaxis::Title::Font& weight(int f);
@@ -6083,6 +7272,26 @@ class Layout::Scene::Yaxis::Title::Font {
 
 class Layout::Scene::Zaxis {
  public:
+    Zaxis() = default;
+    Zaxis(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
+
+    enum class Autorange {
+        TRUE,
+        FALSE,
+        REVERSED,
+        MIN_REVERSED,
+        MAX_REVERSED,
+        MIN,
+        MAX,
+    };
+    static std::string to_string(Autorange e);
+
+    enum class Autotypenumbers {
+        CONVERT_TYPES,
+        STRICT,
+    };
+    static std::string to_string(Autotypenumbers e);
 
     enum class Calendar {
         CHINESE,
@@ -6103,6 +7312,28 @@ class Layout::Scene::Zaxis {
         UMMALQURA,
     };
     static std::string to_string(Calendar e);
+
+    enum class Categoryorder {
+        TRACE,
+        CATEGORY_ASCENDING,
+        CATEGORY_DESCENDING,
+        ARRAY,
+        TOTAL_ASCENDING,
+        TOTAL_DESCENDING,
+        MIN_ASCENDING,
+        MIN_DESCENDING,
+        MAX_ASCENDING,
+        MAX_DESCENDING,
+        SUM_ASCENDING,
+        SUM_DESCENDING,
+        MEAN_ASCENDING,
+        MEAN_DESCENDING,
+        GEOMETRIC_MEAN_ASCENDING,
+        GEOMETRIC_MEAN_DESCENDING,
+        MEDIAN_ASCENDING,
+        MEDIAN_DESCENDING,
+    };
+    static std::string to_string(Categoryorder e);
 
     enum class Exponentformat {
         NONE,
@@ -6167,6 +7398,15 @@ class Layout::Scene::Zaxis {
     };
     static std::string to_string(Ticks e);
 
+    enum class Type {
+        HYPHEN,
+        LINEAR,
+        LOG,
+        DATE,
+        CATEGORY,
+    };
+    static std::string to_string(Type e);
+
     class Autorangeoptions;
     // Sets the tick font.
     class Tickfont;
@@ -6179,14 +7419,16 @@ class Layout::Scene::Zaxis {
     // maximum. Using *min reversed* applies autorange only to set the minimum on a reversed axis. Using *max reversed*
     // applies autorange only to set the maximum on a reversed axis. Using *reversed* applies autorange on both ends and
     // reverses the axis direction.
-    Layout::Scene::Zaxis& autorange(std::string f);
+    // - Default: True
+    Layout::Scene::Zaxis& autorange(enum Autorange f);
 
     Layout::Scene::Zaxis& autorangeoptions(Autorangeoptions f);
 
     // Using *strict* a numeric string in trace data is not converted to a number. Using *convert types* a numeric
     // string in trace data may be treated as a number during automatic axis `type` detection. Defaults to
     // layout.autotypenumbers.
-    Layout::Scene::Zaxis& autotypenumbers(std::string f);
+    // - Default: convert types
+    Layout::Scene::Zaxis& autotypenumbers(enum Autotypenumbers f);
 
     // Sets the background color of this axis' wall.
     Layout::Scene::Zaxis& backgroundcolor(std::string f);
@@ -6212,7 +7454,8 @@ class Layout::Scene::Zaxis {
     // unspecified categories will follow the categories in `categoryarray`. Set `categoryorder` to *total ascending* or
     // *total descending* if order should be determined by the numerical order of the values. Similarly, the order can
     // be determined by the min, max, sum, mean, geometric mean or median of all the values.
-    Layout::Scene::Zaxis& categoryorder(std::string f);
+    // - Default: trace
+    Layout::Scene::Zaxis& categoryorder(enum Categoryorder f);
 
     // Sets default for all colors associated with this axis all at once: line, font, tick, and grid colors. Grid color
     // is lightened by blending this with the plot background Individual pieces can override this.
@@ -6415,7 +7658,8 @@ class Layout::Scene::Zaxis {
 
     // Sets the axis type. By default, plotly attempts to determined the axis type by looking into the data of the
     // traces that referenced the axis in question.
-    Layout::Scene::Zaxis& type(std::string f);
+    // - Default: -
+    Layout::Scene::Zaxis& type(enum Type f);
 
     // A single toggle to hide the axis while preserving interaction like dragging. Default is true when a cheater plot
     // is present on the axis, otherwise false
@@ -6437,6 +7681,9 @@ class Layout::Scene::Zaxis {
 
 class Layout::Scene::Zaxis::Autorangeoptions {
  public:
+    Autorangeoptions() = default;
+    Autorangeoptions(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Clip autorange maximum if it goes beyond this value. Has no effect when `autorangeoptions.maxallowed` is
     // provided.
@@ -6472,12 +7719,33 @@ class Layout::Scene::Zaxis::Autorangeoptions {
 // Sets the tick font.
 class Layout::Scene::Zaxis::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Scene::Zaxis::Tickfont& color(std::string f);
 
@@ -6509,10 +7777,12 @@ class Layout::Scene::Zaxis::Tickfont {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Scene::Zaxis::Tickfont& textcase(std::string f);
+    // - Default: normal
+    Layout::Scene::Zaxis::Tickfont& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Scene::Zaxis::Tickfont& variant(std::string f);
+    // - Default: normal
+    Layout::Scene::Zaxis::Tickfont& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Scene::Zaxis::Tickfont& weight(int f);
@@ -6523,6 +7793,9 @@ class Layout::Scene::Zaxis::Tickfont {
 
 class Layout::Scene::Zaxis::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -6534,6 +7807,9 @@ class Layout::Scene::Zaxis::Tickformatstops {
 
 class Layout::Scene::Zaxis::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
@@ -6564,6 +7840,9 @@ class Layout::Scene::Zaxis::Tickformatstops::Tickformatstop {
 
 class Layout::Scene::Zaxis::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this axis' title font.
     class Font;
@@ -6581,12 +7860,33 @@ class Layout::Scene::Zaxis::Title {
 // Sets this axis' title font.
 class Layout::Scene::Zaxis::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Scene::Zaxis::Title::Font& color(std::string f);
 
@@ -6618,10 +7918,12 @@ class Layout::Scene::Zaxis::Title::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Scene::Zaxis::Title::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Scene::Zaxis::Title::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Scene::Zaxis::Title::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Scene::Zaxis::Title::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Scene::Zaxis::Title::Font& weight(int f);
@@ -6632,6 +7934,9 @@ class Layout::Scene::Zaxis::Title::Font {
 
 class Layout::Selections {
  public:
+    Selections() = default;
+    Selections(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Selection;
 
@@ -6643,6 +7948,9 @@ class Layout::Selections {
 
 class Layout::Selections::Selection {
  public:
+    Selection() = default;
+    Selection(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Type {
         RECT,
@@ -6718,6 +8026,9 @@ class Layout::Selections::Selection {
 
 class Layout::Selections::Selection::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the line color.
     Layout::Selections::Selection::Line& color(std::string f);
@@ -6735,6 +8046,9 @@ class Layout::Selections::Selection::Line {
 
 class Layout::Shapes {
  public:
+    Shapes() = default;
+    Shapes(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Shape;
 
@@ -6746,6 +8060,9 @@ class Layout::Shapes {
 
 class Layout::Shapes::Shape {
  public:
+    Shape() = default;
+    Shape(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Fillrule {
         EVENODD,
@@ -6960,6 +8277,25 @@ class Layout::Shapes::Shape {
 
 class Layout::Shapes::Shape::Label {
  public:
+    Label() = default;
+    Label(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
+
+    enum class Textposition {
+        TOP_LEFT,
+        TOP_CENTER,
+        TOP_RIGHT,
+        MIDDLE_LEFT,
+        MIDDLE_CENTER,
+        MIDDLE_RIGHT,
+        BOTTOM_LEFT,
+        BOTTOM_CENTER,
+        BOTTOM_RIGHT,
+        START,
+        MIDDLE,
+        END,
+    };
+    static std::string to_string(Textposition e);
 
     enum class Xanchor {
         AUTO,
@@ -6996,7 +8332,7 @@ class Layout::Shapes::Shape::Label {
     // *top left*, *top center*, *top right*, *middle left*, *middle center*, *middle right*, *bottom left*, *bottom
     // center*, and *bottom right*. Supported values for lines are *start*, *middle*, and *end*. Default: *middle
     // center* for rectangles, circles, and paths; *middle* for lines.
-    Layout::Shapes::Shape::Label& textposition(std::string f);
+    Layout::Shapes::Shape::Label& textposition(enum Textposition f);
 
     // Template string used for rendering the shape's label. Note that this will override `text`. Variables are inserted
     // using %{variable}, for example "x0: %{x0}". Numbers are formatted using d3-format's syntax %{variable:d3-format},
@@ -7029,12 +8365,33 @@ class Layout::Shapes::Shape::Label {
 // Sets the shape label text font.
 class Layout::Shapes::Shape::Label::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Shapes::Shape::Label::Font& color(std::string f);
 
@@ -7066,10 +8423,12 @@ class Layout::Shapes::Shape::Label::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Shapes::Shape::Label::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Shapes::Shape::Label::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Shapes::Shape::Label::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Shapes::Shape::Label::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Shapes::Shape::Label::Font& weight(int f);
@@ -7080,6 +8439,9 @@ class Layout::Shapes::Shape::Label::Font {
 
 class Layout::Shapes::Shape::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -7097,12 +8459,33 @@ class Layout::Shapes::Shape::Legendgrouptitle {
 // Sets this legend group's title font.
 class Layout::Shapes::Shape::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Shapes::Shape::Legendgrouptitle::Font& color(std::string f);
 
@@ -7134,10 +8517,12 @@ class Layout::Shapes::Shape::Legendgrouptitle::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Shapes::Shape::Legendgrouptitle::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Shapes::Shape::Legendgrouptitle::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Shapes::Shape::Legendgrouptitle::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Shapes::Shape::Legendgrouptitle::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Shapes::Shape::Legendgrouptitle::Font& weight(int f);
@@ -7148,6 +8533,9 @@ class Layout::Shapes::Shape::Legendgrouptitle::Font {
 
 class Layout::Shapes::Shape::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the line color.
     Layout::Shapes::Shape::Line& color(std::string f);
@@ -7165,6 +8553,9 @@ class Layout::Shapes::Shape::Line {
 
 class Layout::Sliders {
  public:
+    Sliders() = default;
+    Sliders(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Slider;
 
@@ -7176,6 +8567,9 @@ class Layout::Sliders {
 
 class Layout::Sliders::Slider {
  public:
+    Slider() = default;
+    Slider(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Lenmode {
         FRACTION,
@@ -7293,6 +8687,9 @@ class Layout::Sliders::Slider {
 
 class Layout::Sliders::Slider::Currentvalue {
  public:
+    Currentvalue() = default;
+    Currentvalue(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Xanchor {
         LEFT,
@@ -7330,12 +8727,33 @@ class Layout::Sliders::Slider::Currentvalue {
 // Sets the font of the current value label text.
 class Layout::Sliders::Slider::Currentvalue::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Sliders::Slider::Currentvalue::Font& color(std::string f);
 
@@ -7367,10 +8785,12 @@ class Layout::Sliders::Slider::Currentvalue::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Sliders::Slider::Currentvalue::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Sliders::Slider::Currentvalue::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Sliders::Slider::Currentvalue::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Sliders::Slider::Currentvalue::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Sliders::Slider::Currentvalue::Font& weight(int f);
@@ -7382,12 +8802,33 @@ class Layout::Sliders::Slider::Currentvalue::Font {
 // Sets the font of the slider step labels.
 class Layout::Sliders::Slider::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Sliders::Slider::Font& color(std::string f);
 
@@ -7419,10 +8860,12 @@ class Layout::Sliders::Slider::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Sliders::Slider::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Sliders::Slider::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Sliders::Slider::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Sliders::Slider::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Sliders::Slider::Font& weight(int f);
@@ -7434,6 +8877,9 @@ class Layout::Sliders::Slider::Font {
 // Set the padding of the slider component along each side.
 class Layout::Sliders::Slider::Pad {
  public:
+    Pad() = default;
+    Pad(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // The amount of padding (in px) along the bottom of the component.
     Layout::Sliders::Slider::Pad& b(double f);
@@ -7453,6 +8899,9 @@ class Layout::Sliders::Slider::Pad {
 
 class Layout::Sliders::Slider::Steps {
  public:
+    Steps() = default;
+    Steps(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Step;
 
@@ -7464,6 +8913,9 @@ class Layout::Sliders::Slider::Steps {
 
 class Layout::Sliders::Slider::Steps::Step {
  public:
+    Step() = default;
+    Step(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Method {
         RESTYLE,
@@ -7518,12 +8970,56 @@ class Layout::Sliders::Slider::Steps::Step {
 
 class Layout::Sliders::Slider::Transition {
  public:
+    Transition() = default;
+    Transition(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
+
+    enum class Easing {
+        LINEAR,
+        QUAD,
+        CUBIC,
+        SIN,
+        EXP,
+        CIRCLE,
+        ELASTIC,
+        BACK,
+        BOUNCE,
+        LINEAR_IN,
+        QUAD_IN,
+        CUBIC_IN,
+        SIN_IN,
+        EXP_IN,
+        CIRCLE_IN,
+        ELASTIC_IN,
+        BACK_IN,
+        BOUNCE_IN,
+        LINEAR_OUT,
+        QUAD_OUT,
+        CUBIC_OUT,
+        SIN_OUT,
+        EXP_OUT,
+        CIRCLE_OUT,
+        ELASTIC_OUT,
+        BACK_OUT,
+        BOUNCE_OUT,
+        LINEAR_IN_OUT,
+        QUAD_IN_OUT,
+        CUBIC_IN_OUT,
+        SIN_IN_OUT,
+        EXP_IN_OUT,
+        CIRCLE_IN_OUT,
+        ELASTIC_IN_OUT,
+        BACK_IN_OUT,
+        BOUNCE_IN_OUT,
+    };
+    static std::string to_string(Easing e);
 
     // Sets the duration of the slider transition
     Layout::Sliders::Slider::Transition& duration(double f);
 
     // Sets the easing function of the slider transition
-    Layout::Sliders::Slider::Transition& easing(std::string f);
+    // - Default: cubic-in-out
+    Layout::Sliders::Slider::Transition& easing(enum Easing f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -7531,6 +9027,9 @@ class Layout::Sliders::Slider::Transition {
 
 class Layout::Smith {
  public:
+    Smith() = default;
+    Smith(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Domain;
     class Imaginaryaxis;
@@ -7551,6 +9050,9 @@ class Layout::Smith {
 
 class Layout::Smith::Domain {
  public:
+    Domain() = default;
+    Domain(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // If there is a layout grid, use the domain for this column in the grid for this smith subplot .
     Layout::Smith::Domain& column(int f);
@@ -7570,6 +9072,15 @@ class Layout::Smith::Domain {
 
 class Layout::Smith::Imaginaryaxis {
  public:
+    Imaginaryaxis() = default;
+    Imaginaryaxis(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
+
+    enum class Layer {
+        ABOVE_TRACES,
+        BELOW_TRACES,
+    };
+    static std::string to_string(Layer e);
 
     enum class Showtickprefix {
         ALL,
@@ -7630,7 +9141,8 @@ class Layout::Smith::Imaginaryaxis {
     // traces If *below traces*, this axis is displayed below all the subplot's traces, but above the grid lines. Useful
     // when used together with scatter-like traces with `cliponaxis` set to *false* to show markers and/or text nodes
     // above this axis.
-    Layout::Smith::Imaginaryaxis& layer(std::string f);
+    // - Default: above traces
+    Layout::Smith::Imaginaryaxis& layer(enum Layer f);
 
     // Sets the axis line color.
     Layout::Smith::Imaginaryaxis& linecolor(std::string f);
@@ -7704,12 +9216,33 @@ class Layout::Smith::Imaginaryaxis {
 // Sets the tick font.
 class Layout::Smith::Imaginaryaxis::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Smith::Imaginaryaxis::Tickfont& color(std::string f);
 
@@ -7741,10 +9274,12 @@ class Layout::Smith::Imaginaryaxis::Tickfont {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Smith::Imaginaryaxis::Tickfont& textcase(std::string f);
+    // - Default: normal
+    Layout::Smith::Imaginaryaxis::Tickfont& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Smith::Imaginaryaxis::Tickfont& variant(std::string f);
+    // - Default: normal
+    Layout::Smith::Imaginaryaxis::Tickfont& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Smith::Imaginaryaxis::Tickfont& weight(int f);
@@ -7755,6 +9290,15 @@ class Layout::Smith::Imaginaryaxis::Tickfont {
 
 class Layout::Smith::Realaxis {
  public:
+    Realaxis() = default;
+    Realaxis(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
+
+    enum class Layer {
+        ABOVE_TRACES,
+        BELOW_TRACES,
+    };
+    static std::string to_string(Layer e);
 
     enum class Showtickprefix {
         ALL,
@@ -7821,7 +9365,8 @@ class Layout::Smith::Realaxis {
     // traces If *below traces*, this axis is displayed below all the subplot's traces, but above the grid lines. Useful
     // when used together with scatter-like traces with `cliponaxis` set to *false* to show markers and/or text nodes
     // above this axis.
-    Layout::Smith::Realaxis& layer(std::string f);
+    // - Default: above traces
+    Layout::Smith::Realaxis& layer(enum Layer f);
 
     // Sets the axis line color.
     Layout::Smith::Realaxis& linecolor(std::string f);
@@ -7902,12 +9447,33 @@ class Layout::Smith::Realaxis {
 // Sets the tick font.
 class Layout::Smith::Realaxis::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Smith::Realaxis::Tickfont& color(std::string f);
 
@@ -7939,10 +9505,12 @@ class Layout::Smith::Realaxis::Tickfont {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Smith::Realaxis::Tickfont& textcase(std::string f);
+    // - Default: normal
+    Layout::Smith::Realaxis::Tickfont& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Smith::Realaxis::Tickfont& variant(std::string f);
+    // - Default: normal
+    Layout::Smith::Realaxis::Tickfont& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Smith::Realaxis::Tickfont& weight(int f);
@@ -7953,6 +9521,9 @@ class Layout::Smith::Realaxis::Tickfont {
 
 class Layout::Ternary {
  public:
+    Ternary() = default;
+    Ternary(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Aaxis;
     class Baxis;
@@ -7984,6 +9555,9 @@ class Layout::Ternary {
 
 class Layout::Ternary::Aaxis {
  public:
+    Aaxis() = default;
+    Aaxis(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -7993,6 +9567,12 @@ class Layout::Ternary::Aaxis {
         B,
     };
     static std::string to_string(Exponentformat e);
+
+    enum class Layer {
+        ABOVE_TRACES,
+        BELOW_TRACES,
+    };
+    static std::string to_string(Layer e);
 
     enum class Showexponent {
         ALL,
@@ -8091,7 +9671,8 @@ class Layout::Ternary::Aaxis {
     // traces If *below traces*, this axis is displayed below all the subplot's traces, but above the grid lines. Useful
     // when used together with scatter-like traces with `cliponaxis` set to *false* to show markers and/or text nodes
     // above this axis.
-    Layout::Ternary::Aaxis& layer(std::string f);
+    // - Default: above traces
+    Layout::Ternary::Aaxis& layer(enum Layer f);
 
     // Sets the axis line color.
     Layout::Ternary::Aaxis& linecolor(std::string f);
@@ -8221,12 +9802,33 @@ class Layout::Ternary::Aaxis {
 // Sets the tick font.
 class Layout::Ternary::Aaxis::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Ternary::Aaxis::Tickfont& color(std::string f);
 
@@ -8258,10 +9860,12 @@ class Layout::Ternary::Aaxis::Tickfont {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Ternary::Aaxis::Tickfont& textcase(std::string f);
+    // - Default: normal
+    Layout::Ternary::Aaxis::Tickfont& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Ternary::Aaxis::Tickfont& variant(std::string f);
+    // - Default: normal
+    Layout::Ternary::Aaxis::Tickfont& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Ternary::Aaxis::Tickfont& weight(int f);
@@ -8272,6 +9876,9 @@ class Layout::Ternary::Aaxis::Tickfont {
 
 class Layout::Ternary::Aaxis::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -8283,6 +9890,9 @@ class Layout::Ternary::Aaxis::Tickformatstops {
 
 class Layout::Ternary::Aaxis::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
@@ -8313,6 +9923,9 @@ class Layout::Ternary::Aaxis::Tickformatstops::Tickformatstop {
 
 class Layout::Ternary::Aaxis::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this axis' title font.
     class Font;
@@ -8330,12 +9943,33 @@ class Layout::Ternary::Aaxis::Title {
 // Sets this axis' title font.
 class Layout::Ternary::Aaxis::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Ternary::Aaxis::Title::Font& color(std::string f);
 
@@ -8367,10 +10001,12 @@ class Layout::Ternary::Aaxis::Title::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Ternary::Aaxis::Title::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Ternary::Aaxis::Title::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Ternary::Aaxis::Title::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Ternary::Aaxis::Title::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Ternary::Aaxis::Title::Font& weight(int f);
@@ -8381,6 +10017,9 @@ class Layout::Ternary::Aaxis::Title::Font {
 
 class Layout::Ternary::Baxis {
  public:
+    Baxis() = default;
+    Baxis(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -8390,6 +10029,12 @@ class Layout::Ternary::Baxis {
         B,
     };
     static std::string to_string(Exponentformat e);
+
+    enum class Layer {
+        ABOVE_TRACES,
+        BELOW_TRACES,
+    };
+    static std::string to_string(Layer e);
 
     enum class Showexponent {
         ALL,
@@ -8488,7 +10133,8 @@ class Layout::Ternary::Baxis {
     // traces If *below traces*, this axis is displayed below all the subplot's traces, but above the grid lines. Useful
     // when used together with scatter-like traces with `cliponaxis` set to *false* to show markers and/or text nodes
     // above this axis.
-    Layout::Ternary::Baxis& layer(std::string f);
+    // - Default: above traces
+    Layout::Ternary::Baxis& layer(enum Layer f);
 
     // Sets the axis line color.
     Layout::Ternary::Baxis& linecolor(std::string f);
@@ -8618,12 +10264,33 @@ class Layout::Ternary::Baxis {
 // Sets the tick font.
 class Layout::Ternary::Baxis::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Ternary::Baxis::Tickfont& color(std::string f);
 
@@ -8655,10 +10322,12 @@ class Layout::Ternary::Baxis::Tickfont {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Ternary::Baxis::Tickfont& textcase(std::string f);
+    // - Default: normal
+    Layout::Ternary::Baxis::Tickfont& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Ternary::Baxis::Tickfont& variant(std::string f);
+    // - Default: normal
+    Layout::Ternary::Baxis::Tickfont& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Ternary::Baxis::Tickfont& weight(int f);
@@ -8669,6 +10338,9 @@ class Layout::Ternary::Baxis::Tickfont {
 
 class Layout::Ternary::Baxis::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -8680,6 +10352,9 @@ class Layout::Ternary::Baxis::Tickformatstops {
 
 class Layout::Ternary::Baxis::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
@@ -8710,6 +10385,9 @@ class Layout::Ternary::Baxis::Tickformatstops::Tickformatstop {
 
 class Layout::Ternary::Baxis::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this axis' title font.
     class Font;
@@ -8727,12 +10405,33 @@ class Layout::Ternary::Baxis::Title {
 // Sets this axis' title font.
 class Layout::Ternary::Baxis::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Ternary::Baxis::Title::Font& color(std::string f);
 
@@ -8764,10 +10463,12 @@ class Layout::Ternary::Baxis::Title::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Ternary::Baxis::Title::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Ternary::Baxis::Title::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Ternary::Baxis::Title::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Ternary::Baxis::Title::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Ternary::Baxis::Title::Font& weight(int f);
@@ -8778,6 +10479,9 @@ class Layout::Ternary::Baxis::Title::Font {
 
 class Layout::Ternary::Caxis {
  public:
+    Caxis() = default;
+    Caxis(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -8787,6 +10491,12 @@ class Layout::Ternary::Caxis {
         B,
     };
     static std::string to_string(Exponentformat e);
+
+    enum class Layer {
+        ABOVE_TRACES,
+        BELOW_TRACES,
+    };
+    static std::string to_string(Layer e);
 
     enum class Showexponent {
         ALL,
@@ -8885,7 +10595,8 @@ class Layout::Ternary::Caxis {
     // traces If *below traces*, this axis is displayed below all the subplot's traces, but above the grid lines. Useful
     // when used together with scatter-like traces with `cliponaxis` set to *false* to show markers and/or text nodes
     // above this axis.
-    Layout::Ternary::Caxis& layer(std::string f);
+    // - Default: above traces
+    Layout::Ternary::Caxis& layer(enum Layer f);
 
     // Sets the axis line color.
     Layout::Ternary::Caxis& linecolor(std::string f);
@@ -9015,12 +10726,33 @@ class Layout::Ternary::Caxis {
 // Sets the tick font.
 class Layout::Ternary::Caxis::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Ternary::Caxis::Tickfont& color(std::string f);
 
@@ -9052,10 +10784,12 @@ class Layout::Ternary::Caxis::Tickfont {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Ternary::Caxis::Tickfont& textcase(std::string f);
+    // - Default: normal
+    Layout::Ternary::Caxis::Tickfont& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Ternary::Caxis::Tickfont& variant(std::string f);
+    // - Default: normal
+    Layout::Ternary::Caxis::Tickfont& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Ternary::Caxis::Tickfont& weight(int f);
@@ -9066,6 +10800,9 @@ class Layout::Ternary::Caxis::Tickfont {
 
 class Layout::Ternary::Caxis::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -9077,6 +10814,9 @@ class Layout::Ternary::Caxis::Tickformatstops {
 
 class Layout::Ternary::Caxis::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
@@ -9107,6 +10847,9 @@ class Layout::Ternary::Caxis::Tickformatstops::Tickformatstop {
 
 class Layout::Ternary::Caxis::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this axis' title font.
     class Font;
@@ -9124,12 +10867,33 @@ class Layout::Ternary::Caxis::Title {
 // Sets this axis' title font.
 class Layout::Ternary::Caxis::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Ternary::Caxis::Title::Font& color(std::string f);
 
@@ -9161,10 +10925,12 @@ class Layout::Ternary::Caxis::Title::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Ternary::Caxis::Title::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Ternary::Caxis::Title::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Ternary::Caxis::Title::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Ternary::Caxis::Title::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Ternary::Caxis::Title::Font& weight(int f);
@@ -9175,6 +10941,9 @@ class Layout::Ternary::Caxis::Title::Font {
 
 class Layout::Ternary::Domain {
  public:
+    Domain() = default;
+    Domain(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // If there is a layout grid, use the domain for this column in the grid for this ternary subplot .
     Layout::Ternary::Domain& column(int f);
@@ -9194,6 +10963,9 @@ class Layout::Ternary::Domain {
 
 class Layout::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Xanchor {
         AUTO,
@@ -9290,12 +11062,33 @@ class Layout::Title {
 // Sets the title font.
 class Layout::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Title::Font& color(std::string f);
 
@@ -9327,10 +11120,12 @@ class Layout::Title::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Title::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Title::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Title::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Title::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Title::Font& weight(int f);
@@ -9345,6 +11140,9 @@ class Layout::Title::Font {
 // *middle*/*center*.
 class Layout::Title::Pad {
  public:
+    Pad() = default;
+    Pad(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // The amount of padding (in px) along the bottom of the component.
     Layout::Title::Pad& b(double f);
@@ -9364,6 +11162,9 @@ class Layout::Title::Pad {
 
 class Layout::Title::Subtitle {
  public:
+    Subtitle() = default;
+    Subtitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the subtitle font.
     class Font;
@@ -9381,12 +11182,33 @@ class Layout::Title::Subtitle {
 // Sets the subtitle font.
 class Layout::Title::Subtitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Title::Subtitle::Font& color(std::string f);
 
@@ -9418,10 +11240,12 @@ class Layout::Title::Subtitle::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Title::Subtitle::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Title::Subtitle::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Title::Subtitle::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Title::Subtitle::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Title::Subtitle::Font& weight(int f);
@@ -9433,16 +11257,67 @@ class Layout::Title::Subtitle::Font {
 // Sets transition options used during Plotly.react updates.
 class Layout::Transition {
  public:
+    Transition() = default;
+    Transition(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
+
+    enum class Easing {
+        LINEAR,
+        QUAD,
+        CUBIC,
+        SIN,
+        EXP,
+        CIRCLE,
+        ELASTIC,
+        BACK,
+        BOUNCE,
+        LINEAR_IN,
+        QUAD_IN,
+        CUBIC_IN,
+        SIN_IN,
+        EXP_IN,
+        CIRCLE_IN,
+        ELASTIC_IN,
+        BACK_IN,
+        BOUNCE_IN,
+        LINEAR_OUT,
+        QUAD_OUT,
+        CUBIC_OUT,
+        SIN_OUT,
+        EXP_OUT,
+        CIRCLE_OUT,
+        ELASTIC_OUT,
+        BACK_OUT,
+        BOUNCE_OUT,
+        LINEAR_IN_OUT,
+        QUAD_IN_OUT,
+        CUBIC_IN_OUT,
+        SIN_IN_OUT,
+        EXP_IN_OUT,
+        CIRCLE_IN_OUT,
+        ELASTIC_IN_OUT,
+        BACK_IN_OUT,
+        BOUNCE_IN_OUT,
+    };
+    static std::string to_string(Easing e);
+
+    enum class Ordering {
+        LAYOUT_FIRST,
+        TRACES_FIRST,
+    };
+    static std::string to_string(Ordering e);
 
     // The duration of the transition, in milliseconds. If equal to zero, updates are synchronous.
     Layout::Transition& duration(double f);
 
     // The easing function used for the transition
-    Layout::Transition& easing(std::string f);
+    // - Default: cubic-in-out
+    Layout::Transition& easing(enum Easing f);
 
     // Determines whether the figure's layout or traces smoothly transitions during updates that make both traces and
     // layout change.
-    Layout::Transition& ordering(std::string f);
+    // - Default: layout first
+    Layout::Transition& ordering(enum Ordering f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -9450,6 +11325,9 @@ class Layout::Transition {
 
 class Layout::Uniformtext {
  public:
+    Uniformtext() = default;
+    Uniformtext(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Mode {
         FALSE,
@@ -9474,6 +11352,9 @@ class Layout::Uniformtext {
 
 class Layout::Updatemenus {
  public:
+    Updatemenus() = default;
+    Updatemenus(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Updatemenu;
 
@@ -9485,6 +11366,9 @@ class Layout::Updatemenus {
 
 class Layout::Updatemenus::Updatemenu {
  public:
+    Updatemenu() = default;
+    Updatemenu(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Direction {
         LEFT,
@@ -9593,6 +11477,9 @@ class Layout::Updatemenus::Updatemenu {
 
 class Layout::Updatemenus::Updatemenu::Buttons {
  public:
+    Buttons() = default;
+    Buttons(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Button;
 
@@ -9604,6 +11491,9 @@ class Layout::Updatemenus::Updatemenu::Buttons {
 
 class Layout::Updatemenus::Updatemenu::Buttons::Button {
  public:
+    Button() = default;
+    Button(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Method {
         RESTYLE,
@@ -9659,12 +11549,33 @@ class Layout::Updatemenus::Updatemenu::Buttons::Button {
 // Sets the font of the update menu button text.
 class Layout::Updatemenus::Updatemenu::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Updatemenus::Updatemenu::Font& color(std::string f);
 
@@ -9696,10 +11607,12 @@ class Layout::Updatemenus::Updatemenu::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Updatemenus::Updatemenu::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Updatemenus::Updatemenu::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Updatemenus::Updatemenu::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Updatemenus::Updatemenu::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Updatemenus::Updatemenu::Font& weight(int f);
@@ -9711,6 +11624,9 @@ class Layout::Updatemenus::Updatemenu::Font {
 // Sets the padding around the buttons or dropdown menu.
 class Layout::Updatemenus::Updatemenu::Pad {
  public:
+    Pad() = default;
+    Pad(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // The amount of padding (in px) along the bottom of the component.
     Layout::Updatemenus::Updatemenu::Pad& b(double f);
@@ -9730,6 +11646,26 @@ class Layout::Updatemenus::Updatemenu::Pad {
 
 class Layout::Xaxis {
  public:
+    Xaxis() = default;
+    Xaxis(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
+
+    enum class Autorange {
+        TRUE,
+        FALSE,
+        REVERSED,
+        MIN_REVERSED,
+        MAX_REVERSED,
+        MIN,
+        MAX,
+    };
+    static std::string to_string(Autorange e);
+
+    enum class Autotypenumbers {
+        CONVERT_TYPES,
+        STRICT,
+    };
+    static std::string to_string(Autotypenumbers e);
 
     enum class Calendar {
         CHINESE,
@@ -9750,6 +11686,28 @@ class Layout::Xaxis {
         UMMALQURA,
     };
     static std::string to_string(Calendar e);
+
+    enum class Categoryorder {
+        TRACE,
+        CATEGORY_ASCENDING,
+        CATEGORY_DESCENDING,
+        ARRAY,
+        TOTAL_ASCENDING,
+        TOTAL_DESCENDING,
+        MIN_ASCENDING,
+        MIN_DESCENDING,
+        MAX_ASCENDING,
+        MAX_DESCENDING,
+        SUM_ASCENDING,
+        SUM_DESCENDING,
+        MEAN_ASCENDING,
+        MEAN_DESCENDING,
+        GEOMETRIC_MEAN_ASCENDING,
+        GEOMETRIC_MEAN_DESCENDING,
+        MEDIAN_ASCENDING,
+        MEDIAN_DESCENDING,
+    };
+    static std::string to_string(Categoryorder e);
 
     enum class Constrain {
         RANGE,
@@ -9775,6 +11733,12 @@ class Layout::Xaxis {
         B,
     };
     static std::string to_string(Exponentformat e);
+
+    enum class Layer {
+        ABOVE_TRACES,
+        BELOW_TRACES,
+    };
+    static std::string to_string(Layer e);
 
     enum class Mirror {
         TRUE,
@@ -9824,11 +11788,39 @@ class Layout::Xaxis {
     };
     static std::string to_string(Side e);
 
+    enum class Spikesnap {
+        DATA,
+        CURSOR,
+        HOVERED_DATA,
+    };
+    static std::string to_string(Spikesnap e);
+
     enum class Ticklabelmode {
         INSTANT,
         PERIOD,
     };
     static std::string to_string(Ticklabelmode e);
+
+    enum class Ticklabeloverflow {
+        ALLOW,
+        HIDE_PAST_DIV,
+        HIDE_PAST_DOMAIN,
+    };
+    static std::string to_string(Ticklabeloverflow e);
+
+    enum class Ticklabelposition {
+        OUTSIDE,
+        INSIDE,
+        OUTSIDE_TOP,
+        INSIDE_TOP,
+        OUTSIDE_LEFT,
+        INSIDE_LEFT,
+        OUTSIDE_RIGHT,
+        INSIDE_RIGHT,
+        OUTSIDE_BOTTOM,
+        INSIDE_BOTTOM,
+    };
+    static std::string to_string(Ticklabelposition e);
 
     enum class Tickmode {
         AUTO,
@@ -9850,6 +11842,16 @@ class Layout::Xaxis {
         BOUNDARIES,
     };
     static std::string to_string(Tickson e);
+
+    enum class Type {
+        HYPHEN,
+        LINEAR,
+        LOG,
+        DATE,
+        CATEGORY,
+        MULTICATEGORY,
+    };
+    static std::string to_string(Type e);
 
     class Autorangeoptions;
     class Minor;
@@ -9877,7 +11879,8 @@ class Layout::Xaxis {
     // maximum. Using *min reversed* applies autorange only to set the minimum on a reversed axis. Using *max reversed*
     // applies autorange only to set the maximum on a reversed axis. Using *reversed* applies autorange on both ends and
     // reverses the axis direction.
-    Layout::Xaxis& autorange(std::string f);
+    // - Default: True
+    Layout::Xaxis& autorange(enum Autorange f);
 
     Layout::Xaxis& autorangeoptions(Autorangeoptions f);
 
@@ -9888,7 +11891,8 @@ class Layout::Xaxis {
     // Using *strict* a numeric string in trace data is not converted to a number. Using *convert types* a numeric
     // string in trace data may be treated as a number during automatic axis `type` detection. Defaults to
     // layout.autotypenumbers.
-    Layout::Xaxis& autotypenumbers(std::string f);
+    // - Default: convert types
+    Layout::Xaxis& autotypenumbers(enum Autotypenumbers f);
 
     // Sets the calendar system to use for `range` and `tick0` if this is a date axis. This does not set the calendar
     // for interpreting data on this axis, that's specified in the trace or via the global `layout.calendar`
@@ -9911,7 +11915,8 @@ class Layout::Xaxis {
     // unspecified categories will follow the categories in `categoryarray`. Set `categoryorder` to *total ascending* or
     // *total descending* if order should be determined by the numerical order of the values. Similarly, the order can
     // be determined by the min, max, sum, mean, geometric mean or median of all the values.
-    Layout::Xaxis& categoryorder(std::string f);
+    // - Default: trace
+    Layout::Xaxis& categoryorder(enum Categoryorder f);
 
     // Sets default for all colors associated with this axis all at once: line, font, tick, and grid colors. Grid color
     // is lightened by blending this with the plot background Individual pieces can override this.
@@ -9994,7 +11999,8 @@ class Layout::Xaxis {
     // traces If *below traces*, this axis is displayed below all the subplot's traces, but above the grid lines. Useful
     // when used together with scatter-like traces with `cliponaxis` set to *false* to show markers and/or text nodes
     // above this axis.
-    Layout::Xaxis& layer(std::string f);
+    // - Default: above traces
+    Layout::Xaxis& layer(enum Layer f);
 
     // Sets the axis line color.
     Layout::Xaxis& linecolor(std::string f);
@@ -10132,7 +12138,8 @@ class Layout::Xaxis {
     Layout::Xaxis& spikemode(std::string f);
 
     // Determines whether spikelines are stuck to the cursor or to the closest datapoints.
-    Layout::Xaxis& spikesnap(std::string f);
+    // - Default: hovered data
+    Layout::Xaxis& spikesnap(enum Spikesnap f);
 
     // Sets the width (in px) of the zero line.
     Layout::Xaxis& spikethickness(double f);
@@ -10183,14 +12190,15 @@ class Layout::Xaxis {
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. Otherwise on *category* and *multicategory* axes the
     // default is *allow*. In other cases the default is *hide past div*.
-    Layout::Xaxis& ticklabeloverflow(std::string f);
+    Layout::Xaxis& ticklabeloverflow(enum Ticklabeloverflow f);
 
     // Determines where tick labels are drawn with respect to the axis Please note that top or bottom has no effect on x
     // axes or when `ticklabelmode` is set to *period*. Similarly left or right has no effect on y axes or when
     // `ticklabelmode` is set to *period*. Has no effect on *multicategory* axes or when `tickson` is set to
     // *boundaries*. When used on axes linked by `matches` or `scaleanchor`, no extra padding for inside labels would be
     // added by autorange, so that the scales could match.
-    Layout::Xaxis& ticklabelposition(std::string f);
+    // - Default: outside
+    Layout::Xaxis& ticklabelposition(enum Ticklabelposition f);
 
     // Shifts the tick labels by the specified number of pixels in parallel to the axis. Positive values move the labels
     // in the positive direction of the axis.
@@ -10258,7 +12266,8 @@ class Layout::Xaxis {
 
     // Sets the axis type. By default, plotly attempts to determined the axis type by looking into the data of the
     // traces that referenced the axis in question.
-    Layout::Xaxis& type(std::string f);
+    // - Default: -
+    Layout::Xaxis& type(enum Type f);
 
     // Controls persistence of user-driven changes in axis `range`, `autorange`, and `title` if in `editable: true`
     // configuration. Defaults to `layout.uirevision`.
@@ -10285,6 +12294,9 @@ class Layout::Xaxis {
 
 class Layout::Xaxis::Autorangeoptions {
  public:
+    Autorangeoptions() = default;
+    Autorangeoptions(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Clip autorange maximum if it goes beyond this value. Has no effect when `autorangeoptions.maxallowed` is
     // provided.
@@ -10319,6 +12331,9 @@ class Layout::Xaxis::Autorangeoptions {
 
 class Layout::Xaxis::Minor {
  public:
+    Minor() = default;
+    Minor(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Tickmode {
         AUTO,
@@ -10407,6 +12422,9 @@ class Layout::Xaxis::Minor {
 
 class Layout::Xaxis::Rangebreaks {
  public:
+    Rangebreaks() = default;
+    Rangebreaks(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Rangebreak;
 
@@ -10418,6 +12436,16 @@ class Layout::Xaxis::Rangebreaks {
 
 class Layout::Xaxis::Rangebreaks::Rangebreak {
  public:
+    Rangebreak() = default;
+    Rangebreak(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
+
+    enum class Pattern {
+        DAY_OF_WEEK,
+        HOUR,
+        EMPTY,
+    };
+    static std::string to_string(Pattern e);
 
     // Sets the lower and upper bounds of this axis rangebreak. Can be used with `pattern`.
     Layout::Xaxis::Rangebreaks::Rangebreak& bounds(std::vector<double> f);
@@ -10441,7 +12469,7 @@ class Layout::Xaxis::Rangebreaks::Rangebreak {
     // more info. Examples: - { pattern: 'day of week', bounds: [6, 1] }  or simply { bounds: ['sat', 'mon'] }   breaks
     // from Saturday to Monday (i.e. skips the weekends). - { pattern: 'hour', bounds: [17, 8] }   breaks from 5pm to
     // 8am (i.e. skips non-work hours).
-    Layout::Xaxis::Rangebreaks::Rangebreak& pattern(std::string f);
+    Layout::Xaxis::Rangebreaks::Rangebreak& pattern(enum Pattern f);
 
     // Used to refer to a named item in this array in the template. Named items from the template will be created even
     // without a matching item in the input figure, but you can modify one by making an item with `templateitemname`
@@ -10460,6 +12488,9 @@ class Layout::Xaxis::Rangebreaks::Rangebreak {
 
 class Layout::Xaxis::Rangeselector {
  public:
+    Rangeselector() = default;
+    Rangeselector(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Xanchor {
         AUTO,
@@ -10524,6 +12555,9 @@ class Layout::Xaxis::Rangeselector {
 
 class Layout::Xaxis::Rangeselector::Buttons {
  public:
+    Buttons() = default;
+    Buttons(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the specifications for each buttons. By default, a range selector comes with no buttons.
     class Button;
@@ -10538,6 +12572,9 @@ class Layout::Xaxis::Rangeselector::Buttons {
 // Sets the specifications for each buttons. By default, a range selector comes with no buttons.
 class Layout::Xaxis::Rangeselector::Buttons::Button {
  public:
+    Button() = default;
+    Button(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Step {
         MONTH,
@@ -10597,12 +12634,33 @@ class Layout::Xaxis::Rangeselector::Buttons::Button {
 // Sets the font of the range selector button text.
 class Layout::Xaxis::Rangeselector::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Xaxis::Rangeselector::Font& color(std::string f);
 
@@ -10634,10 +12692,12 @@ class Layout::Xaxis::Rangeselector::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Xaxis::Rangeselector::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Xaxis::Rangeselector::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Xaxis::Rangeselector::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Xaxis::Rangeselector::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Xaxis::Rangeselector::Font& weight(int f);
@@ -10648,6 +12708,9 @@ class Layout::Xaxis::Rangeselector::Font {
 
 class Layout::Xaxis::Rangeslider {
  public:
+    Rangeslider() = default;
+    Rangeslider(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Yaxis;
 
@@ -10686,6 +12749,9 @@ class Layout::Xaxis::Rangeslider {
 
 class Layout::Xaxis::Rangeslider::Yaxis {
  public:
+    Yaxis() = default;
+    Yaxis(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Rangemode {
         AUTO,
@@ -10710,12 +12776,33 @@ class Layout::Xaxis::Rangeslider::Yaxis {
 // Sets the tick font.
 class Layout::Xaxis::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Xaxis::Tickfont& color(std::string f);
 
@@ -10747,10 +12834,12 @@ class Layout::Xaxis::Tickfont {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Xaxis::Tickfont& textcase(std::string f);
+    // - Default: normal
+    Layout::Xaxis::Tickfont& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Xaxis::Tickfont& variant(std::string f);
+    // - Default: normal
+    Layout::Xaxis::Tickfont& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Xaxis::Tickfont& weight(int f);
@@ -10761,6 +12850,9 @@ class Layout::Xaxis::Tickfont {
 
 class Layout::Xaxis::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -10772,6 +12864,9 @@ class Layout::Xaxis::Tickformatstops {
 
 class Layout::Xaxis::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
@@ -10802,6 +12897,9 @@ class Layout::Xaxis::Tickformatstops::Tickformatstop {
 
 class Layout::Xaxis::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this axis' title font.
     class Font;
@@ -10826,12 +12924,33 @@ class Layout::Xaxis::Title {
 // Sets this axis' title font.
 class Layout::Xaxis::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Xaxis::Title::Font& color(std::string f);
 
@@ -10863,10 +12982,12 @@ class Layout::Xaxis::Title::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Xaxis::Title::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Xaxis::Title::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Xaxis::Title::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Xaxis::Title::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Xaxis::Title::Font& weight(int f);
@@ -10877,6 +12998,26 @@ class Layout::Xaxis::Title::Font {
 
 class Layout::Yaxis {
  public:
+    Yaxis() = default;
+    Yaxis(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
+
+    enum class Autorange {
+        TRUE,
+        FALSE,
+        REVERSED,
+        MIN_REVERSED,
+        MAX_REVERSED,
+        MIN,
+        MAX,
+    };
+    static std::string to_string(Autorange e);
+
+    enum class Autotypenumbers {
+        CONVERT_TYPES,
+        STRICT,
+    };
+    static std::string to_string(Autotypenumbers e);
 
     enum class Calendar {
         CHINESE,
@@ -10897,6 +13038,28 @@ class Layout::Yaxis {
         UMMALQURA,
     };
     static std::string to_string(Calendar e);
+
+    enum class Categoryorder {
+        TRACE,
+        CATEGORY_ASCENDING,
+        CATEGORY_DESCENDING,
+        ARRAY,
+        TOTAL_ASCENDING,
+        TOTAL_DESCENDING,
+        MIN_ASCENDING,
+        MIN_DESCENDING,
+        MAX_ASCENDING,
+        MAX_DESCENDING,
+        SUM_ASCENDING,
+        SUM_DESCENDING,
+        MEAN_ASCENDING,
+        MEAN_DESCENDING,
+        GEOMETRIC_MEAN_ASCENDING,
+        GEOMETRIC_MEAN_DESCENDING,
+        MEDIAN_ASCENDING,
+        MEDIAN_DESCENDING,
+    };
+    static std::string to_string(Categoryorder e);
 
     enum class Constrain {
         RANGE,
@@ -10922,6 +13085,12 @@ class Layout::Yaxis {
         B,
     };
     static std::string to_string(Exponentformat e);
+
+    enum class Layer {
+        ABOVE_TRACES,
+        BELOW_TRACES,
+    };
+    static std::string to_string(Layer e);
 
     enum class Mirror {
         TRUE,
@@ -10971,11 +13140,39 @@ class Layout::Yaxis {
     };
     static std::string to_string(Side e);
 
+    enum class Spikesnap {
+        DATA,
+        CURSOR,
+        HOVERED_DATA,
+    };
+    static std::string to_string(Spikesnap e);
+
     enum class Ticklabelmode {
         INSTANT,
         PERIOD,
     };
     static std::string to_string(Ticklabelmode e);
+
+    enum class Ticklabeloverflow {
+        ALLOW,
+        HIDE_PAST_DIV,
+        HIDE_PAST_DOMAIN,
+    };
+    static std::string to_string(Ticklabeloverflow e);
+
+    enum class Ticklabelposition {
+        OUTSIDE,
+        INSIDE,
+        OUTSIDE_TOP,
+        INSIDE_TOP,
+        OUTSIDE_LEFT,
+        INSIDE_LEFT,
+        OUTSIDE_RIGHT,
+        INSIDE_RIGHT,
+        OUTSIDE_BOTTOM,
+        INSIDE_BOTTOM,
+    };
+    static std::string to_string(Ticklabelposition e);
 
     enum class Tickmode {
         AUTO,
@@ -10997,6 +13194,16 @@ class Layout::Yaxis {
         BOUNDARIES,
     };
     static std::string to_string(Tickson e);
+
+    enum class Type {
+        HYPHEN,
+        LINEAR,
+        LOG,
+        DATE,
+        CATEGORY,
+        MULTICATEGORY,
+    };
+    static std::string to_string(Type e);
 
     class Autorangeoptions;
     class Minor;
@@ -11022,7 +13229,8 @@ class Layout::Yaxis {
     // maximum. Using *min reversed* applies autorange only to set the minimum on a reversed axis. Using *max reversed*
     // applies autorange only to set the maximum on a reversed axis. Using *reversed* applies autorange on both ends and
     // reverses the axis direction.
-    Layout::Yaxis& autorange(std::string f);
+    // - Default: True
+    Layout::Yaxis& autorange(enum Autorange f);
 
     Layout::Yaxis& autorangeoptions(Autorangeoptions f);
 
@@ -11038,7 +13246,8 @@ class Layout::Yaxis {
     // Using *strict* a numeric string in trace data is not converted to a number. Using *convert types* a numeric
     // string in trace data may be treated as a number during automatic axis `type` detection. Defaults to
     // layout.autotypenumbers.
-    Layout::Yaxis& autotypenumbers(std::string f);
+    // - Default: convert types
+    Layout::Yaxis& autotypenumbers(enum Autotypenumbers f);
 
     // Sets the calendar system to use for `range` and `tick0` if this is a date axis. This does not set the calendar
     // for interpreting data on this axis, that's specified in the trace or via the global `layout.calendar`
@@ -11061,7 +13270,8 @@ class Layout::Yaxis {
     // unspecified categories will follow the categories in `categoryarray`. Set `categoryorder` to *total ascending* or
     // *total descending* if order should be determined by the numerical order of the values. Similarly, the order can
     // be determined by the min, max, sum, mean, geometric mean or median of all the values.
-    Layout::Yaxis& categoryorder(std::string f);
+    // - Default: trace
+    Layout::Yaxis& categoryorder(enum Categoryorder f);
 
     // Sets default for all colors associated with this axis all at once: line, font, tick, and grid colors. Grid color
     // is lightened by blending this with the plot background Individual pieces can override this.
@@ -11144,7 +13354,8 @@ class Layout::Yaxis {
     // traces If *below traces*, this axis is displayed below all the subplot's traces, but above the grid lines. Useful
     // when used together with scatter-like traces with `cliponaxis` set to *false* to show markers and/or text nodes
     // above this axis.
-    Layout::Yaxis& layer(std::string f);
+    // - Default: above traces
+    Layout::Yaxis& layer(enum Layer f);
 
     // Sets the axis line color.
     Layout::Yaxis& linecolor(std::string f);
@@ -11284,7 +13495,8 @@ class Layout::Yaxis {
     Layout::Yaxis& spikemode(std::string f);
 
     // Determines whether spikelines are stuck to the cursor or to the closest datapoints.
-    Layout::Yaxis& spikesnap(std::string f);
+    // - Default: hovered data
+    Layout::Yaxis& spikesnap(enum Spikesnap f);
 
     // Sets the width (in px) of the zero line.
     Layout::Yaxis& spikethickness(double f);
@@ -11335,14 +13547,15 @@ class Layout::Yaxis {
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. Otherwise on *category* and *multicategory* axes the
     // default is *allow*. In other cases the default is *hide past div*.
-    Layout::Yaxis& ticklabeloverflow(std::string f);
+    Layout::Yaxis& ticklabeloverflow(enum Ticklabeloverflow f);
 
     // Determines where tick labels are drawn with respect to the axis Please note that top or bottom has no effect on x
     // axes or when `ticklabelmode` is set to *period*. Similarly left or right has no effect on y axes or when
     // `ticklabelmode` is set to *period*. Has no effect on *multicategory* axes or when `tickson` is set to
     // *boundaries*. When used on axes linked by `matches` or `scaleanchor`, no extra padding for inside labels would be
     // added by autorange, so that the scales could match.
-    Layout::Yaxis& ticklabelposition(std::string f);
+    // - Default: outside
+    Layout::Yaxis& ticklabelposition(enum Ticklabelposition f);
 
     // Shifts the tick labels by the specified number of pixels in parallel to the axis. Positive values move the labels
     // in the positive direction of the axis.
@@ -11410,7 +13623,8 @@ class Layout::Yaxis {
 
     // Sets the axis type. By default, plotly attempts to determined the axis type by looking into the data of the
     // traces that referenced the axis in question.
-    Layout::Yaxis& type(std::string f);
+    // - Default: -
+    Layout::Yaxis& type(enum Type f);
 
     // Controls persistence of user-driven changes in axis `range`, `autorange`, and `title` if in `editable: true`
     // configuration. Defaults to `layout.uirevision`.
@@ -11437,6 +13651,9 @@ class Layout::Yaxis {
 
 class Layout::Yaxis::Autorangeoptions {
  public:
+    Autorangeoptions() = default;
+    Autorangeoptions(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Clip autorange maximum if it goes beyond this value. Has no effect when `autorangeoptions.maxallowed` is
     // provided.
@@ -11471,6 +13688,9 @@ class Layout::Yaxis::Autorangeoptions {
 
 class Layout::Yaxis::Minor {
  public:
+    Minor() = default;
+    Minor(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Tickmode {
         AUTO,
@@ -11559,6 +13779,9 @@ class Layout::Yaxis::Minor {
 
 class Layout::Yaxis::Rangebreaks {
  public:
+    Rangebreaks() = default;
+    Rangebreaks(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Rangebreak;
 
@@ -11570,6 +13793,16 @@ class Layout::Yaxis::Rangebreaks {
 
 class Layout::Yaxis::Rangebreaks::Rangebreak {
  public:
+    Rangebreak() = default;
+    Rangebreak(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
+
+    enum class Pattern {
+        DAY_OF_WEEK,
+        HOUR,
+        EMPTY,
+    };
+    static std::string to_string(Pattern e);
 
     // Sets the lower and upper bounds of this axis rangebreak. Can be used with `pattern`.
     Layout::Yaxis::Rangebreaks::Rangebreak& bounds(std::vector<double> f);
@@ -11593,7 +13826,7 @@ class Layout::Yaxis::Rangebreaks::Rangebreak {
     // more info. Examples: - { pattern: 'day of week', bounds: [6, 1] }  or simply { bounds: ['sat', 'mon'] }   breaks
     // from Saturday to Monday (i.e. skips the weekends). - { pattern: 'hour', bounds: [17, 8] }   breaks from 5pm to
     // 8am (i.e. skips non-work hours).
-    Layout::Yaxis::Rangebreaks::Rangebreak& pattern(std::string f);
+    Layout::Yaxis::Rangebreaks::Rangebreak& pattern(enum Pattern f);
 
     // Used to refer to a named item in this array in the template. Named items from the template will be created even
     // without a matching item in the input figure, but you can modify one by making an item with `templateitemname`
@@ -11613,12 +13846,33 @@ class Layout::Yaxis::Rangebreaks::Rangebreak {
 // Sets the tick font.
 class Layout::Yaxis::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Yaxis::Tickfont& color(std::string f);
 
@@ -11650,10 +13904,12 @@ class Layout::Yaxis::Tickfont {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Yaxis::Tickfont& textcase(std::string f);
+    // - Default: normal
+    Layout::Yaxis::Tickfont& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Yaxis::Tickfont& variant(std::string f);
+    // - Default: normal
+    Layout::Yaxis::Tickfont& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Yaxis::Tickfont& weight(int f);
@@ -11664,6 +13920,9 @@ class Layout::Yaxis::Tickfont {
 
 class Layout::Yaxis::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -11675,6 +13934,9 @@ class Layout::Yaxis::Tickformatstops {
 
 class Layout::Yaxis::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
@@ -11705,6 +13967,9 @@ class Layout::Yaxis::Tickformatstops::Tickformatstop {
 
 class Layout::Yaxis::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this axis' title font.
     class Font;
@@ -11729,12 +13994,33 @@ class Layout::Yaxis::Title {
 // Sets this axis' title font.
 class Layout::Yaxis::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
         ITALIC,
     };
     static std::string to_string(Style e);
+
+    enum class Textcase {
+        NORMAL,
+        WORD_CAPS,
+        UPPER,
+        LOWER,
+    };
+    static std::string to_string(Textcase e);
+
+    enum class Variant {
+        NORMAL,
+        SMALL_CAPS,
+        ALL_SMALL_CAPS,
+        ALL_PETITE_CAPS,
+        PETITE_CAPS,
+        UNICASE,
+    };
+    static std::string to_string(Variant e);
 
     Layout::Yaxis::Title::Font& color(std::string f);
 
@@ -11766,10 +14052,12 @@ class Layout::Yaxis::Title::Font {
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
-    Layout::Yaxis::Title::Font& textcase(std::string f);
+    // - Default: normal
+    Layout::Yaxis::Title::Font& textcase(enum Textcase f);
 
     // Sets the variant of the font.
-    Layout::Yaxis::Title::Font& variant(std::string f);
+    // - Default: normal
+    Layout::Yaxis::Title::Font& variant(enum Variant f);
 
     // Sets the weight (or boldness) of the font.
     Layout::Yaxis::Title::Font& weight(int f);

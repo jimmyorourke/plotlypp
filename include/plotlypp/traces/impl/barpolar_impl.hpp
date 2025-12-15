@@ -338,15 +338,7 @@ Barpolar::Hoverlabel& Barpolar::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Barpolar::Hoverlabel& Barpolar::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Barpolar::Hoverlabel& Barpolar::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Barpolar::Hoverlabel& Barpolar::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -360,15 +352,7 @@ Barpolar::Hoverlabel& Barpolar::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Barpolar::Hoverlabel& Barpolar::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Barpolar::Hoverlabel& Barpolar::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Barpolar::Hoverlabel& Barpolar::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -432,15 +416,7 @@ Barpolar::Hoverlabel::Font& Barpolar::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Barpolar::Hoverlabel::Font& Barpolar::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Barpolar::Hoverlabel::Font& Barpolar::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Barpolar::Hoverlabel::Font& Barpolar::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -614,10 +590,6 @@ Barpolar::Legendgrouptitle::Font& Barpolar::Legendgrouptitle::Font::color(std::s
     json["color"] = std::move(f);
     return *this;
 }
-Barpolar::Legendgrouptitle::Font& Barpolar::Legendgrouptitle::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Barpolar::Legendgrouptitle::Font& Barpolar::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -689,15 +661,7 @@ Barpolar::Marker& Barpolar::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Barpolar::Marker& Barpolar::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Barpolar::Marker& Barpolar::Marker::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Barpolar::Marker& Barpolar::Marker::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -907,16 +871,8 @@ Barpolar::Marker::Colorbar& Barpolar::Marker::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Barpolar::Marker::Colorbar& Barpolar::Marker::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Barpolar::Marker::Colorbar& Barpolar::Marker::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Barpolar::Marker::Colorbar& Barpolar::Marker::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -969,10 +925,6 @@ Barpolar::Marker::Colorbar& Barpolar::Marker::Colorbar::orientation(enum Orienta
 }
 
 Barpolar::Marker::Colorbar& Barpolar::Marker::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Barpolar::Marker::Colorbar& Barpolar::Marker::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -1029,10 +981,6 @@ Barpolar::Marker::Colorbar& Barpolar::Marker::Colorbar::tickangle(double f) {
 }
 
 Barpolar::Marker::Colorbar& Barpolar::Marker::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Barpolar::Marker::Colorbar& Barpolar::Marker::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -1199,10 +1147,6 @@ Barpolar::Marker::Colorbar::Tickfont& Barpolar::Marker::Colorbar::Tickfont::colo
     json["color"] = std::move(f);
     return *this;
 }
-Barpolar::Marker::Colorbar::Tickfont& Barpolar::Marker::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Barpolar::Marker::Colorbar::Tickfont& Barpolar::Marker::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -1251,7 +1195,7 @@ Barpolar::Marker::Colorbar::Tickformatstops& Barpolar::Marker::Colorbar::Tickfor
 }
 
 
-Barpolar::Marker::Colorbar::Tickformatstops::Tickformatstop& Barpolar::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Barpolar::Marker::Colorbar::Tickformatstops::Tickformatstop& Barpolar::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -1336,10 +1280,6 @@ Barpolar::Marker::Colorbar::Title::Font& Barpolar::Marker::Colorbar::Title::Font
     json["color"] = std::move(f);
     return *this;
 }
-Barpolar::Marker::Colorbar::Title::Font& Barpolar::Marker::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Barpolar::Marker::Colorbar::Title::Font& Barpolar::Marker::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1411,15 +1351,7 @@ Barpolar::Marker::Line& Barpolar::Marker::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Barpolar::Marker::Line& Barpolar::Marker::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Barpolar::Marker::Line& Barpolar::Marker::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Barpolar::Marker::Line& Barpolar::Marker::Line::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1470,34 +1402,12 @@ std::string Barpolar::Marker::Pattern::to_string(Fillmode e) {
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
-std::string Barpolar::Marker::Pattern::to_string(Shape e) {
-    switch(e) {
-        case Shape::EMPTY: return "";
-        case Shape::SLASH: return "/";
-        case Shape::DOUBLEBACKSLASH: return "\\";
-        case Shape::X: return "x";
-        case Shape::HYPHEN: return "-";
-        case Shape::OR: return "|";
-        case Shape::PLUS: return "+";
-        case Shape::DOT: return ".";
-    }
-    // Should be unreachable.
-    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
-}
 
 Barpolar::Marker::Pattern& Barpolar::Marker::Pattern::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Barpolar::Marker::Pattern& Barpolar::Marker::Pattern::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Barpolar::Marker::Pattern& Barpolar::Marker::Pattern::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Barpolar::Marker::Pattern& Barpolar::Marker::Pattern::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -1511,15 +1421,7 @@ Barpolar::Marker::Pattern& Barpolar::Marker::Pattern::fgcolor(std::string f) {
     json["fgcolor"] = std::move(f);
     return *this;
 }
-Barpolar::Marker::Pattern& Barpolar::Marker::Pattern::fgcolor(double f) {
-    json["fgcolor"] = std::move(f);
-    return *this;
-}
 Barpolar::Marker::Pattern& Barpolar::Marker::Pattern::fgcolor(std::vector<std::string> f) {
-    json["fgcolor"] = std::move(f);
-    return *this;
-}
-Barpolar::Marker::Pattern& Barpolar::Marker::Pattern::fgcolor(std::vector<double> f) {
     json["fgcolor"] = std::move(f);
     return *this;
 }
@@ -1539,14 +1441,12 @@ Barpolar::Marker::Pattern& Barpolar::Marker::Pattern::fillmode(enum Fillmode f) 
     return *this;
 }
 
-Barpolar::Marker::Pattern& Barpolar::Marker::Pattern::shape(enum Shape f) {
-    json["shape"] = to_string(f);
+Barpolar::Marker::Pattern& Barpolar::Marker::Pattern::shape(std::string f) {
+    json["shape"] = std::move(f);
     return *this;
 }
-Barpolar::Marker::Pattern& Barpolar::Marker::Pattern::shape(const std::vector<enum Shape>& f) {
-    std::vector<std::string> stringified(f.size());
-    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
-    json["shape"] = std::move(stringified);
+Barpolar::Marker::Pattern& Barpolar::Marker::Pattern::shape(std::vector<std::string> f) {
+    json["shape"] = std::move(f);
     return *this;
 }
 
@@ -1599,10 +1499,6 @@ Barpolar::Selected::Marker& Barpolar::Selected::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Barpolar::Selected::Marker& Barpolar::Selected::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Barpolar::Selected::Marker& Barpolar::Selected::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
@@ -1611,10 +1507,6 @@ Barpolar::Selected::Marker& Barpolar::Selected::Marker::opacity(double f) {
 
 
 Barpolar::Selected::Textfont& Barpolar::Selected::Textfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Barpolar::Selected::Textfont& Barpolar::Selected::Textfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1646,10 +1538,6 @@ Barpolar::Unselected::Marker& Barpolar::Unselected::Marker::color(std::string f)
     json["color"] = std::move(f);
     return *this;
 }
-Barpolar::Unselected::Marker& Barpolar::Unselected::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Barpolar::Unselected::Marker& Barpolar::Unselected::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
@@ -1658,10 +1546,6 @@ Barpolar::Unselected::Marker& Barpolar::Unselected::Marker::opacity(double f) {
 
 
 Barpolar::Unselected::Textfont& Barpolar::Unselected::Textfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Barpolar::Unselected::Textfont& Barpolar::Unselected::Textfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

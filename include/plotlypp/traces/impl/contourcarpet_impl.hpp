@@ -144,10 +144,6 @@ Contourcarpet& Contourcarpet::fillcolor(std::string f) {
     json["fillcolor"] = std::move(f);
     return *this;
 }
-Contourcarpet& Contourcarpet::fillcolor(double f) {
-    json["fillcolor"] = std::move(f);
-    return *this;
-}
 
 template <typename T, typename>
 Contourcarpet& Contourcarpet::hovertext(std::vector<T> f) {
@@ -477,16 +473,8 @@ Contourcarpet::Colorbar& Contourcarpet::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Contourcarpet::Colorbar& Contourcarpet::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Contourcarpet::Colorbar& Contourcarpet::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Contourcarpet::Colorbar& Contourcarpet::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -539,10 +527,6 @@ Contourcarpet::Colorbar& Contourcarpet::Colorbar::orientation(enum Orientation f
 }
 
 Contourcarpet::Colorbar& Contourcarpet::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Contourcarpet::Colorbar& Contourcarpet::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -599,10 +583,6 @@ Contourcarpet::Colorbar& Contourcarpet::Colorbar::tickangle(double f) {
 }
 
 Contourcarpet::Colorbar& Contourcarpet::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Contourcarpet::Colorbar& Contourcarpet::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -769,10 +749,6 @@ Contourcarpet::Colorbar::Tickfont& Contourcarpet::Colorbar::Tickfont::color(std:
     json["color"] = std::move(f);
     return *this;
 }
-Contourcarpet::Colorbar::Tickfont& Contourcarpet::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Contourcarpet::Colorbar::Tickfont& Contourcarpet::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -821,7 +797,7 @@ Contourcarpet::Colorbar::Tickformatstops& Contourcarpet::Colorbar::Tickformatsto
 }
 
 
-Contourcarpet::Colorbar::Tickformatstops::Tickformatstop& Contourcarpet::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Contourcarpet::Colorbar::Tickformatstops::Tickformatstop& Contourcarpet::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -906,10 +882,6 @@ Contourcarpet::Colorbar::Title::Font& Contourcarpet::Colorbar::Title::Font::colo
     json["color"] = std::move(f);
     return *this;
 }
-Contourcarpet::Colorbar::Title::Font& Contourcarpet::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Contourcarpet::Colorbar::Title::Font& Contourcarpet::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -960,25 +932,6 @@ std::string Contourcarpet::Contours::to_string(Coloring e) {
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
-std::string Contourcarpet::Contours::to_string(Operation e) {
-    switch(e) {
-        case Operation::EQ: return "=";
-        case Operation::LT: return "<";
-        case Operation::>=: return ">=";
-        case Operation::GT: return ">";
-        case Operation::<=: return "<=";
-        case Operation::[]: return "[]";
-        case Operation::(): return "()";
-        case Operation::[): return "[)";
-        case Operation::(]: return "(]";
-        case Operation::][: return "][";
-        case Operation::)(: return ")(";
-        case Operation::](: return "](";
-        case Operation::)[: return ")[";
-    }
-    // Should be unreachable.
-    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
-}
 std::string Contourcarpet::Contours::to_string(Type e) {
     switch(e) {
         case Type::LEVELS: return "levels";
@@ -1013,8 +966,8 @@ Contourcarpet::Contours& Contourcarpet::Contours::labelformat(std::string f) {
     return *this;
 }
 
-Contourcarpet::Contours& Contourcarpet::Contours::operation(enum Operation f) {
-    json["operation"] = to_string(f);
+Contourcarpet::Contours& Contourcarpet::Contours::operation(std::string f) {
+    json["operation"] = std::move(f);
     return *this;
 }
 
@@ -1082,10 +1035,6 @@ std::string Contourcarpet::Contours::Labelfont::to_string(Variant e) {
 }
 
 Contourcarpet::Contours::Labelfont& Contourcarpet::Contours::Labelfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Contourcarpet::Contours::Labelfont& Contourcarpet::Contours::Labelfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1176,10 +1125,6 @@ Contourcarpet::Legendgrouptitle::Font& Contourcarpet::Legendgrouptitle::Font::co
     json["color"] = std::move(f);
     return *this;
 }
-Contourcarpet::Legendgrouptitle::Font& Contourcarpet::Legendgrouptitle::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Contourcarpet::Legendgrouptitle::Font& Contourcarpet::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1223,10 +1168,6 @@ Contourcarpet::Legendgrouptitle::Font& Contourcarpet::Legendgrouptitle::Font::we
 
 
 Contourcarpet::Line& Contourcarpet::Line::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Contourcarpet::Line& Contourcarpet::Line::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

@@ -155,10 +155,6 @@ Scattergl& Scattergl::fillcolor(std::string f) {
     json["fillcolor"] = std::move(f);
     return *this;
 }
-Scattergl& Scattergl::fillcolor(double f) {
-    json["fillcolor"] = std::move(f);
-    return *this;
-}
 
 Scattergl& Scattergl::hoverinfo(std::string f) {
     json["hoverinfo"] = std::move(f);
@@ -510,10 +506,6 @@ Scattergl::Error_X& Scattergl::Error_X::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scattergl::Error_X& Scattergl::Error_X::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scattergl::Error_X& Scattergl::Error_X::copy_ystyle(bool f) {
     json["copy_ystyle"] = std::move(f);
@@ -602,10 +594,6 @@ Scattergl::Error_Y& Scattergl::Error_Y::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scattergl::Error_Y& Scattergl::Error_Y::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scattergl::Error_Y& Scattergl::Error_Y::symmetric(bool f) {
     json["symmetric"] = std::move(f);
@@ -682,15 +670,7 @@ Scattergl::Hoverlabel& Scattergl::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Scattergl::Hoverlabel& Scattergl::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Scattergl::Hoverlabel& Scattergl::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Scattergl::Hoverlabel& Scattergl::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -704,15 +684,7 @@ Scattergl::Hoverlabel& Scattergl::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Scattergl::Hoverlabel& Scattergl::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Scattergl::Hoverlabel& Scattergl::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Scattergl::Hoverlabel& Scattergl::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -776,15 +748,7 @@ Scattergl::Hoverlabel::Font& Scattergl::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scattergl::Hoverlabel::Font& Scattergl::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scattergl::Hoverlabel::Font& Scattergl::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattergl::Hoverlabel::Font& Scattergl::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -958,10 +922,6 @@ Scattergl::Legendgrouptitle::Font& Scattergl::Legendgrouptitle::Font::color(std:
     json["color"] = std::move(f);
     return *this;
 }
-Scattergl::Legendgrouptitle::Font& Scattergl::Legendgrouptitle::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scattergl::Legendgrouptitle::Font& Scattergl::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1028,10 +988,6 @@ std::string Scattergl::Line::to_string(Shape e) {
 }
 
 Scattergl::Line& Scattergl::Line::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattergl::Line& Scattergl::Line::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1433,15 +1389,7 @@ Scattergl::Marker& Scattergl::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scattergl::Marker& Scattergl::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scattergl::Marker& Scattergl::Marker::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattergl::Marker& Scattergl::Marker::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1691,16 +1639,8 @@ Scattergl::Marker::Colorbar& Scattergl::Marker::Colorbar::bgcolor(std::string f)
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Scattergl::Marker::Colorbar& Scattergl::Marker::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Scattergl::Marker::Colorbar& Scattergl::Marker::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Scattergl::Marker::Colorbar& Scattergl::Marker::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -1753,10 +1693,6 @@ Scattergl::Marker::Colorbar& Scattergl::Marker::Colorbar::orientation(enum Orien
 }
 
 Scattergl::Marker::Colorbar& Scattergl::Marker::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Scattergl::Marker::Colorbar& Scattergl::Marker::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -1813,10 +1749,6 @@ Scattergl::Marker::Colorbar& Scattergl::Marker::Colorbar::tickangle(double f) {
 }
 
 Scattergl::Marker::Colorbar& Scattergl::Marker::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Scattergl::Marker::Colorbar& Scattergl::Marker::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -1983,10 +1915,6 @@ Scattergl::Marker::Colorbar::Tickfont& Scattergl::Marker::Colorbar::Tickfont::co
     json["color"] = std::move(f);
     return *this;
 }
-Scattergl::Marker::Colorbar::Tickfont& Scattergl::Marker::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scattergl::Marker::Colorbar::Tickfont& Scattergl::Marker::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -2035,7 +1963,7 @@ Scattergl::Marker::Colorbar::Tickformatstops& Scattergl::Marker::Colorbar::Tickf
 }
 
 
-Scattergl::Marker::Colorbar::Tickformatstops::Tickformatstop& Scattergl::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Scattergl::Marker::Colorbar::Tickformatstops::Tickformatstop& Scattergl::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -2120,10 +2048,6 @@ Scattergl::Marker::Colorbar::Title::Font& Scattergl::Marker::Colorbar::Title::Fo
     json["color"] = std::move(f);
     return *this;
 }
-Scattergl::Marker::Colorbar::Title::Font& Scattergl::Marker::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scattergl::Marker::Colorbar::Title::Font& Scattergl::Marker::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -2195,15 +2119,7 @@ Scattergl::Marker::Line& Scattergl::Marker::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scattergl::Marker::Line& Scattergl::Marker::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scattergl::Marker::Line& Scattergl::Marker::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattergl::Marker::Line& Scattergl::Marker::Line::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -2262,10 +2178,6 @@ Scattergl::Selected::Marker& Scattergl::Selected::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scattergl::Selected::Marker& Scattergl::Selected::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scattergl::Selected::Marker& Scattergl::Selected::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
@@ -2279,10 +2191,6 @@ Scattergl::Selected::Marker& Scattergl::Selected::Marker::size(double f) {
 
 
 Scattergl::Selected::Textfont& Scattergl::Selected::Textfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattergl::Selected::Textfont& Scattergl::Selected::Textfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -2327,15 +2235,7 @@ Scattergl::Textfont& Scattergl::Textfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scattergl::Textfont& Scattergl::Textfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scattergl::Textfont& Scattergl::Textfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattergl::Textfont& Scattergl::Textfont::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -2437,10 +2337,6 @@ Scattergl::Unselected::Marker& Scattergl::Unselected::Marker::color(std::string 
     json["color"] = std::move(f);
     return *this;
 }
-Scattergl::Unselected::Marker& Scattergl::Unselected::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scattergl::Unselected::Marker& Scattergl::Unselected::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
@@ -2454,10 +2350,6 @@ Scattergl::Unselected::Marker& Scattergl::Unselected::Marker::size(double f) {
 
 
 Scattergl::Unselected::Textfont& Scattergl::Unselected::Textfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattergl::Unselected::Textfont& Scattergl::Unselected::Textfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

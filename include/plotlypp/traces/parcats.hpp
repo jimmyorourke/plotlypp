@@ -25,6 +25,8 @@ class Parcats : public Trace {
     : Trace() {
         json["type"] = "parcats";
     }
+    Parcats(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Arrangement {
         PERPENDICULAR,
@@ -174,6 +176,9 @@ class Parcats : public Trace {
 
 class Parcats::Dimensions {
  public:
+    Dimensions() = default;
+    Dimensions(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // The dimensions (variables) of the parallel categories diagram.
     class Dimension;
@@ -188,6 +193,9 @@ class Parcats::Dimensions {
 // The dimensions (variables) of the parallel categories diagram.
 class Parcats::Dimensions::Dimension {
  public:
+    Dimension() = default;
+    Dimension(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Categoryorder {
         TRACE,
@@ -245,6 +253,9 @@ class Parcats::Dimensions::Dimension {
 
 class Parcats::Domain {
  public:
+    Domain() = default;
+    Domain(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // If there is a layout grid, use the domain for this column in the grid for this parcats trace .
     Parcats::Domain& column(int f);
@@ -253,10 +264,10 @@ class Parcats::Domain {
     Parcats::Domain& row(int f);
 
     // Sets the horizontal domain of this parcats trace (in plot fraction).
-    Parcats::Domain& x(std::vector<std::string> f);
+    Parcats::Domain& x(std::vector<double> f);
 
     // Sets the vertical domain of this parcats trace (in plot fraction).
-    Parcats::Domain& y(std::vector<std::string> f);
+    Parcats::Domain& y(std::vector<double> f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -265,6 +276,9 @@ class Parcats::Domain {
 // Sets the font for the `dimension` labels.
 class Parcats::Labelfont {
  public:
+    Labelfont() = default;
+    Labelfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -291,7 +305,6 @@ class Parcats::Labelfont {
     static std::string to_string(Variant e);
 
     Parcats::Labelfont& color(std::string f);
-    Parcats::Labelfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -337,6 +350,9 @@ class Parcats::Labelfont {
 
 class Parcats::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -354,6 +370,9 @@ class Parcats::Legendgrouptitle {
 // Sets this legend group's title font.
 class Parcats::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -380,7 +399,6 @@ class Parcats::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Parcats::Legendgrouptitle::Font& color(std::string f);
-    Parcats::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -426,6 +444,9 @@ class Parcats::Legendgrouptitle::Font {
 
 class Parcats::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Shape {
         LINEAR,
@@ -462,9 +483,7 @@ class Parcats::Line {
     // Sets the line color. It accepts either a specific color or an array of numbers that are mapped to the colorscale
     // relative to the max and min values of the array or relative to `line.cmin` and `line.cmax` if set.
     Parcats::Line& color(std::string f);
-    Parcats::Line& color(double f);
     Parcats::Line& color(std::vector<std::string> f);
-    Parcats::Line& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -520,6 +539,9 @@ class Parcats::Line {
 
 class Parcats::Line::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -640,11 +662,9 @@ class Parcats::Line::Colorbar {
 
     // Sets the color of padded area.
     Parcats::Line::Colorbar& bgcolor(std::string f);
-    Parcats::Line::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Parcats::Line::Colorbar& bordercolor(std::string f);
-    Parcats::Line::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Parcats::Line::Colorbar& borderwidth(double f);
@@ -700,7 +720,6 @@ class Parcats::Line::Colorbar {
 
     // Sets the axis line color.
     Parcats::Line::Colorbar& outlinecolor(std::string f);
-    Parcats::Line::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Parcats::Line::Colorbar& outlinewidth(double f);
@@ -747,7 +766,6 @@ class Parcats::Line::Colorbar {
 
     // Sets the tick color.
     Parcats::Line::Colorbar& tickcolor(std::string f);
-    Parcats::Line::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Parcats::Line::Colorbar& tickfont(Tickfont f);
@@ -860,6 +878,9 @@ class Parcats::Line::Colorbar {
 // Sets the color bar's tick label font
 class Parcats::Line::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -886,7 +907,6 @@ class Parcats::Line::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Parcats::Line::Colorbar::Tickfont& color(std::string f);
-    Parcats::Line::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -932,6 +952,9 @@ class Parcats::Line::Colorbar::Tickfont {
 
 class Parcats::Line::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -943,10 +966,13 @@ class Parcats::Line::Colorbar::Tickformatstops {
 
 class Parcats::Line::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Parcats::Line::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Parcats::Line::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Parcats::Line::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -973,6 +999,9 @@ class Parcats::Line::Colorbar::Tickformatstops::Tickformatstop {
 
 class Parcats::Line::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -1001,6 +1030,9 @@ class Parcats::Line::Colorbar::Title {
 // Sets this color bar's title font.
 class Parcats::Line::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1027,7 +1059,6 @@ class Parcats::Line::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Parcats::Line::Colorbar::Title::Font& color(std::string f);
-    Parcats::Line::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1073,6 +1104,9 @@ class Parcats::Line::Colorbar::Title::Font {
 
 class Parcats::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -1089,6 +1123,9 @@ class Parcats::Stream {
 // Sets the font for the `category` labels.
 class Parcats::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1115,7 +1152,6 @@ class Parcats::Tickfont {
     static std::string to_string(Variant e);
 
     Parcats::Tickfont& color(std::string f);
-    Parcats::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by

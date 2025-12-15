@@ -76,10 +76,6 @@ Carpet& Carpet::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Carpet& Carpet::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 template <typename T, typename>
 Carpet& Carpet::customdata(std::vector<T> f) {
@@ -381,10 +377,6 @@ Carpet::Aaxis& Carpet::Aaxis::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Carpet::Aaxis& Carpet::Aaxis::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Carpet::Aaxis& Carpet::Aaxis::dtick(double f) {
     json["dtick"] = std::move(f);
@@ -397,10 +389,6 @@ Carpet::Aaxis& Carpet::Aaxis::endline(bool f) {
 }
 
 Carpet::Aaxis& Carpet::Aaxis::endlinecolor(std::string f) {
-    json["endlinecolor"] = std::move(f);
-    return *this;
-}
-Carpet::Aaxis& Carpet::Aaxis::endlinecolor(double f) {
     json["endlinecolor"] = std::move(f);
     return *this;
 }
@@ -421,10 +409,6 @@ Carpet::Aaxis& Carpet::Aaxis::fixedrange(bool f) {
 }
 
 Carpet::Aaxis& Carpet::Aaxis::gridcolor(std::string f) {
-    json["gridcolor"] = std::move(f);
-    return *this;
-}
-Carpet::Aaxis& Carpet::Aaxis::gridcolor(double f) {
     json["gridcolor"] = std::move(f);
     return *this;
 }
@@ -464,10 +448,6 @@ Carpet::Aaxis& Carpet::Aaxis::linecolor(std::string f) {
     json["linecolor"] = std::move(f);
     return *this;
 }
-Carpet::Aaxis& Carpet::Aaxis::linecolor(double f) {
-    json["linecolor"] = std::move(f);
-    return *this;
-}
 
 Carpet::Aaxis& Carpet::Aaxis::linewidth(double f) {
     json["linewidth"] = std::move(f);
@@ -480,10 +460,6 @@ Carpet::Aaxis& Carpet::Aaxis::minexponent(double f) {
 }
 
 Carpet::Aaxis& Carpet::Aaxis::minorgridcolor(std::string f) {
-    json["minorgridcolor"] = std::move(f);
-    return *this;
-}
-Carpet::Aaxis& Carpet::Aaxis::minorgridcolor(double f) {
     json["minorgridcolor"] = std::move(f);
     return *this;
 }
@@ -508,7 +484,7 @@ Carpet::Aaxis& Carpet::Aaxis::nticks(int f) {
     return *this;
 }
 
-Carpet::Aaxis& Carpet::Aaxis::range(std::vector<std::string> f) {
+Carpet::Aaxis& Carpet::Aaxis::range(std::vector<double> f) {
     json["range"] = std::move(f);
     return *this;
 }
@@ -564,10 +540,6 @@ Carpet::Aaxis& Carpet::Aaxis::startline(bool f) {
 }
 
 Carpet::Aaxis& Carpet::Aaxis::startlinecolor(std::string f) {
-    json["startlinecolor"] = std::move(f);
-    return *this;
-}
-Carpet::Aaxis& Carpet::Aaxis::startlinecolor(double f) {
     json["startlinecolor"] = std::move(f);
     return *this;
 }
@@ -684,10 +656,6 @@ Carpet::Aaxis::Tickfont& Carpet::Aaxis::Tickfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Carpet::Aaxis::Tickfont& Carpet::Aaxis::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Carpet::Aaxis::Tickfont& Carpet::Aaxis::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -736,7 +704,7 @@ Carpet::Aaxis::Tickformatstops& Carpet::Aaxis::Tickformatstops::tickformatstop(T
 }
 
 
-Carpet::Aaxis::Tickformatstops::Tickformatstop& Carpet::Aaxis::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Carpet::Aaxis::Tickformatstops::Tickformatstop& Carpet::Aaxis::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -809,10 +777,6 @@ std::string Carpet::Aaxis::Title::Font::to_string(Variant e) {
 }
 
 Carpet::Aaxis::Title::Font& Carpet::Aaxis::Title::Font::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Carpet::Aaxis::Title::Font& Carpet::Aaxis::Title::Font::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1016,10 +980,6 @@ Carpet::Baxis& Carpet::Baxis::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Carpet::Baxis& Carpet::Baxis::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Carpet::Baxis& Carpet::Baxis::dtick(double f) {
     json["dtick"] = std::move(f);
@@ -1032,10 +992,6 @@ Carpet::Baxis& Carpet::Baxis::endline(bool f) {
 }
 
 Carpet::Baxis& Carpet::Baxis::endlinecolor(std::string f) {
-    json["endlinecolor"] = std::move(f);
-    return *this;
-}
-Carpet::Baxis& Carpet::Baxis::endlinecolor(double f) {
     json["endlinecolor"] = std::move(f);
     return *this;
 }
@@ -1056,10 +1012,6 @@ Carpet::Baxis& Carpet::Baxis::fixedrange(bool f) {
 }
 
 Carpet::Baxis& Carpet::Baxis::gridcolor(std::string f) {
-    json["gridcolor"] = std::move(f);
-    return *this;
-}
-Carpet::Baxis& Carpet::Baxis::gridcolor(double f) {
     json["gridcolor"] = std::move(f);
     return *this;
 }
@@ -1099,10 +1051,6 @@ Carpet::Baxis& Carpet::Baxis::linecolor(std::string f) {
     json["linecolor"] = std::move(f);
     return *this;
 }
-Carpet::Baxis& Carpet::Baxis::linecolor(double f) {
-    json["linecolor"] = std::move(f);
-    return *this;
-}
 
 Carpet::Baxis& Carpet::Baxis::linewidth(double f) {
     json["linewidth"] = std::move(f);
@@ -1115,10 +1063,6 @@ Carpet::Baxis& Carpet::Baxis::minexponent(double f) {
 }
 
 Carpet::Baxis& Carpet::Baxis::minorgridcolor(std::string f) {
-    json["minorgridcolor"] = std::move(f);
-    return *this;
-}
-Carpet::Baxis& Carpet::Baxis::minorgridcolor(double f) {
     json["minorgridcolor"] = std::move(f);
     return *this;
 }
@@ -1143,7 +1087,7 @@ Carpet::Baxis& Carpet::Baxis::nticks(int f) {
     return *this;
 }
 
-Carpet::Baxis& Carpet::Baxis::range(std::vector<std::string> f) {
+Carpet::Baxis& Carpet::Baxis::range(std::vector<double> f) {
     json["range"] = std::move(f);
     return *this;
 }
@@ -1199,10 +1143,6 @@ Carpet::Baxis& Carpet::Baxis::startline(bool f) {
 }
 
 Carpet::Baxis& Carpet::Baxis::startlinecolor(std::string f) {
-    json["startlinecolor"] = std::move(f);
-    return *this;
-}
-Carpet::Baxis& Carpet::Baxis::startlinecolor(double f) {
     json["startlinecolor"] = std::move(f);
     return *this;
 }
@@ -1319,10 +1259,6 @@ Carpet::Baxis::Tickfont& Carpet::Baxis::Tickfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Carpet::Baxis::Tickfont& Carpet::Baxis::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Carpet::Baxis::Tickfont& Carpet::Baxis::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -1371,7 +1307,7 @@ Carpet::Baxis::Tickformatstops& Carpet::Baxis::Tickformatstops::tickformatstop(T
 }
 
 
-Carpet::Baxis::Tickformatstops::Tickformatstop& Carpet::Baxis::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Carpet::Baxis::Tickformatstops::Tickformatstop& Carpet::Baxis::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -1444,10 +1380,6 @@ std::string Carpet::Baxis::Title::Font::to_string(Variant e) {
 }
 
 Carpet::Baxis::Title::Font& Carpet::Baxis::Title::Font::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Carpet::Baxis::Title::Font& Carpet::Baxis::Title::Font::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1524,10 +1456,6 @@ std::string Carpet::Font::to_string(Variant e) {
 }
 
 Carpet::Font& Carpet::Font::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Carpet::Font& Carpet::Font::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1615,10 +1543,6 @@ std::string Carpet::Legendgrouptitle::Font::to_string(Variant e) {
 }
 
 Carpet::Legendgrouptitle::Font& Carpet::Legendgrouptitle::Font::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Carpet::Legendgrouptitle::Font& Carpet::Legendgrouptitle::Font::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

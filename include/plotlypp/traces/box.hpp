@@ -25,6 +25,8 @@ class Box : public Trace {
     : Trace() {
         json["type"] = "box";
     }
+    Box(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Boxmean {
         TRUE,
@@ -162,7 +164,6 @@ class Box : public Trace {
     // Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line
     // color, whichever is available.
     Box& fillcolor(std::string f);
-    Box& fillcolor(double f);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -526,6 +527,9 @@ class Box : public Trace {
 
 class Box::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -548,18 +552,14 @@ class Box::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Box::Hoverlabel& bgcolor(std::string f);
-    Box::Hoverlabel& bgcolor(double f);
     Box::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Box::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Box::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Box::Hoverlabel& bordercolor(std::string f);
-    Box::Hoverlabel& bordercolor(double f);
     Box::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Box::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Box::Hoverlabel& bordercolorsrc(std::string f);
@@ -584,6 +584,9 @@ class Box::Hoverlabel {
 // Sets the font used in hover labels.
 class Box::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -610,9 +613,7 @@ class Box::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Box::Hoverlabel::Font& color(std::string f);
-    Box::Hoverlabel::Font& color(double f);
     Box::Hoverlabel::Font& color(std::vector<std::string> f);
-    Box::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Box::Hoverlabel::Font& colorsrc(std::string f);
@@ -693,6 +694,9 @@ class Box::Hoverlabel::Font {
 
 class Box::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -710,6 +714,9 @@ class Box::Legendgrouptitle {
 // Sets this legend group's title font.
 class Box::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -736,7 +743,6 @@ class Box::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Box::Legendgrouptitle::Font& color(std::string f);
-    Box::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -782,10 +788,12 @@ class Box::Legendgrouptitle::Font {
 
 class Box::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the color of line bounding the box(es).
     Box::Line& color(std::string f);
-    Box::Line& color(double f);
 
     // Sets the width (in px) of line bounding the box(es).
     Box::Line& width(double f);
@@ -796,6 +804,9 @@ class Box::Line {
 
 class Box::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Symbol {
         NUM_0,
@@ -1133,7 +1144,6 @@ class Box::Marker {
     // Sets the marker color. It accepts either a specific color or an array of numbers that are mapped to the
     // colorscale relative to the max and min values of the array or relative to `marker.cmin` and `marker.cmax` if set.
     Box::Marker& color(std::string f);
-    Box::Marker& color(double f);
 
     Box::Marker& line(Line f);
 
@@ -1142,7 +1152,6 @@ class Box::Marker {
 
     // Sets the color of the outlier sample points.
     Box::Marker& outliercolor(std::string f);
-    Box::Marker& outliercolor(double f);
 
     // Sets the marker size (in px).
     Box::Marker& size(double f);
@@ -1159,16 +1168,17 @@ class Box::Marker {
 
 class Box::Marker::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker.line color. It accepts either a specific color or an array of numbers that are mapped to the
     // colorscale relative to the max and min values of the array or relative to `marker.line.cmin` and
     // `marker.line.cmax` if set.
     Box::Marker::Line& color(std::string f);
-    Box::Marker::Line& color(double f);
 
     // Sets the border line color of the outlier sample points. Defaults to marker.color
     Box::Marker::Line& outliercolor(std::string f);
-    Box::Marker::Line& outliercolor(double f);
 
     // Sets the border line width (in px) of the outlier sample points.
     Box::Marker::Line& outlierwidth(double f);
@@ -1182,6 +1192,9 @@ class Box::Marker::Line {
 
 class Box::Selected {
  public:
+    Selected() = default;
+    Selected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
 
@@ -1193,10 +1206,12 @@ class Box::Selected {
 
 class Box::Selected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker color of selected points.
     Box::Selected::Marker& color(std::string f);
-    Box::Selected::Marker& color(double f);
 
     // Sets the marker opacity of selected points.
     Box::Selected::Marker& opacity(double f);
@@ -1210,6 +1225,9 @@ class Box::Selected::Marker {
 
 class Box::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -1225,6 +1243,9 @@ class Box::Stream {
 
 class Box::Unselected {
  public:
+    Unselected() = default;
+    Unselected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
 
@@ -1236,10 +1257,12 @@ class Box::Unselected {
 
 class Box::Unselected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker color of unselected points, applied only when a selection exists.
     Box::Unselected::Marker& color(std::string f);
-    Box::Unselected::Marker& color(double f);
 
     // Sets the marker opacity of unselected points, applied only when a selection exists.
     Box::Unselected::Marker& opacity(double f);

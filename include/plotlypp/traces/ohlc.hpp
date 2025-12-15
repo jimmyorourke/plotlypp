@@ -25,6 +25,8 @@ class Ohlc : public Trace {
     : Trace() {
         json["type"] = "ohlc";
     }
+    Ohlc(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Visible {
         TRUE,
@@ -277,6 +279,9 @@ class Ohlc : public Trace {
 
 class Ohlc::Decreasing {
  public:
+    Decreasing() = default;
+    Decreasing(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Line;
 
@@ -288,10 +293,12 @@ class Ohlc::Decreasing {
 
 class Ohlc::Decreasing::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the line color.
     Ohlc::Decreasing::Line& color(std::string f);
-    Ohlc::Decreasing::Line& color(double f);
 
     // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
     // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
@@ -306,6 +313,9 @@ class Ohlc::Decreasing::Line {
 
 class Ohlc::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -328,18 +338,14 @@ class Ohlc::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Ohlc::Hoverlabel& bgcolor(std::string f);
-    Ohlc::Hoverlabel& bgcolor(double f);
     Ohlc::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Ohlc::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Ohlc::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Ohlc::Hoverlabel& bordercolor(std::string f);
-    Ohlc::Hoverlabel& bordercolor(double f);
     Ohlc::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Ohlc::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Ohlc::Hoverlabel& bordercolorsrc(std::string f);
@@ -367,6 +373,9 @@ class Ohlc::Hoverlabel {
 // Sets the font used in hover labels.
 class Ohlc::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -393,9 +402,7 @@ class Ohlc::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Ohlc::Hoverlabel::Font& color(std::string f);
-    Ohlc::Hoverlabel::Font& color(double f);
     Ohlc::Hoverlabel::Font& color(std::vector<std::string> f);
-    Ohlc::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Ohlc::Hoverlabel::Font& colorsrc(std::string f);
@@ -476,6 +483,9 @@ class Ohlc::Hoverlabel::Font {
 
 class Ohlc::Increasing {
  public:
+    Increasing() = default;
+    Increasing(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Line;
 
@@ -487,10 +497,12 @@ class Ohlc::Increasing {
 
 class Ohlc::Increasing::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the line color.
     Ohlc::Increasing::Line& color(std::string f);
-    Ohlc::Increasing::Line& color(double f);
 
     // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
     // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
@@ -505,6 +517,9 @@ class Ohlc::Increasing::Line {
 
 class Ohlc::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -522,6 +537,9 @@ class Ohlc::Legendgrouptitle {
 // Sets this legend group's title font.
 class Ohlc::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -548,7 +566,6 @@ class Ohlc::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Ohlc::Legendgrouptitle::Font& color(std::string f);
-    Ohlc::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -594,6 +611,9 @@ class Ohlc::Legendgrouptitle::Font {
 
 class Ohlc::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
     // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*). Note that this style setting can also be set
@@ -610,6 +630,9 @@ class Ohlc::Line {
 
 class Ohlc::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.

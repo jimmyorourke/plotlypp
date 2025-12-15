@@ -25,6 +25,8 @@ class Sunburst : public Trace {
     : Trace() {
         json["type"] = "sunburst";
     }
+    Sunburst(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Branchvalues {
         REMAINDER,
@@ -290,6 +292,9 @@ class Sunburst : public Trace {
 
 class Sunburst::Domain {
  public:
+    Domain() = default;
+    Domain(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // If there is a layout grid, use the domain for this column in the grid for this sunburst trace .
     Sunburst::Domain& column(int f);
@@ -298,10 +303,10 @@ class Sunburst::Domain {
     Sunburst::Domain& row(int f);
 
     // Sets the horizontal domain of this sunburst trace (in plot fraction).
-    Sunburst::Domain& x(std::vector<std::string> f);
+    Sunburst::Domain& x(std::vector<double> f);
 
     // Sets the vertical domain of this sunburst trace (in plot fraction).
-    Sunburst::Domain& y(std::vector<std::string> f);
+    Sunburst::Domain& y(std::vector<double> f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -309,6 +314,9 @@ class Sunburst::Domain {
 
 class Sunburst::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -331,18 +339,14 @@ class Sunburst::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Sunburst::Hoverlabel& bgcolor(std::string f);
-    Sunburst::Hoverlabel& bgcolor(double f);
     Sunburst::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Sunburst::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Sunburst::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Sunburst::Hoverlabel& bordercolor(std::string f);
-    Sunburst::Hoverlabel& bordercolor(double f);
     Sunburst::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Sunburst::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Sunburst::Hoverlabel& bordercolorsrc(std::string f);
@@ -367,6 +371,9 @@ class Sunburst::Hoverlabel {
 // Sets the font used in hover labels.
 class Sunburst::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -393,9 +400,7 @@ class Sunburst::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Sunburst::Hoverlabel::Font& color(std::string f);
-    Sunburst::Hoverlabel::Font& color(double f);
     Sunburst::Hoverlabel::Font& color(std::vector<std::string> f);
-    Sunburst::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sunburst::Hoverlabel::Font& colorsrc(std::string f);
@@ -477,6 +482,9 @@ class Sunburst::Hoverlabel::Font {
 // Sets the font used for `textinfo` lying inside the sector.
 class Sunburst::Insidetextfont {
  public:
+    Insidetextfont() = default;
+    Insidetextfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -503,9 +511,7 @@ class Sunburst::Insidetextfont {
     static std::string to_string(Variant e);
 
     Sunburst::Insidetextfont& color(std::string f);
-    Sunburst::Insidetextfont& color(double f);
     Sunburst::Insidetextfont& color(std::vector<std::string> f);
-    Sunburst::Insidetextfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sunburst::Insidetextfont& colorsrc(std::string f);
@@ -586,6 +592,9 @@ class Sunburst::Insidetextfont {
 
 class Sunburst::Leaf {
  public:
+    Leaf() = default;
+    Leaf(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the opacity of the leaves. With colorscale it is defaulted to 1; otherwise it is defaulted to 0.7
     Sunburst::Leaf& opacity(double f);
@@ -596,6 +605,9 @@ class Sunburst::Leaf {
 
 class Sunburst::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -613,6 +625,9 @@ class Sunburst::Legendgrouptitle {
 // Sets this legend group's title font.
 class Sunburst::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -639,7 +654,6 @@ class Sunburst::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Sunburst::Legendgrouptitle::Font& color(std::string f);
-    Sunburst::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -685,6 +699,9 @@ class Sunburst::Legendgrouptitle::Font {
 
 class Sunburst::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Colorbar;
     class Line;
@@ -759,6 +776,9 @@ class Sunburst::Marker {
 
 class Sunburst::Marker::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -879,11 +899,9 @@ class Sunburst::Marker::Colorbar {
 
     // Sets the color of padded area.
     Sunburst::Marker::Colorbar& bgcolor(std::string f);
-    Sunburst::Marker::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Sunburst::Marker::Colorbar& bordercolor(std::string f);
-    Sunburst::Marker::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Sunburst::Marker::Colorbar& borderwidth(double f);
@@ -939,7 +957,6 @@ class Sunburst::Marker::Colorbar {
 
     // Sets the axis line color.
     Sunburst::Marker::Colorbar& outlinecolor(std::string f);
-    Sunburst::Marker::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Sunburst::Marker::Colorbar& outlinewidth(double f);
@@ -986,7 +1003,6 @@ class Sunburst::Marker::Colorbar {
 
     // Sets the tick color.
     Sunburst::Marker::Colorbar& tickcolor(std::string f);
-    Sunburst::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Sunburst::Marker::Colorbar& tickfont(Tickfont f);
@@ -1099,6 +1115,9 @@ class Sunburst::Marker::Colorbar {
 // Sets the color bar's tick label font
 class Sunburst::Marker::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1125,7 +1144,6 @@ class Sunburst::Marker::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Sunburst::Marker::Colorbar::Tickfont& color(std::string f);
-    Sunburst::Marker::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1171,6 +1189,9 @@ class Sunburst::Marker::Colorbar::Tickfont {
 
 class Sunburst::Marker::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -1182,10 +1203,13 @@ class Sunburst::Marker::Colorbar::Tickformatstops {
 
 class Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -1212,6 +1236,9 @@ class Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop {
 
 class Sunburst::Marker::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -1240,6 +1267,9 @@ class Sunburst::Marker::Colorbar::Title {
 // Sets this color bar's title font.
 class Sunburst::Marker::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1266,7 +1296,6 @@ class Sunburst::Marker::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Sunburst::Marker::Colorbar::Title::Font& color(std::string f);
-    Sunburst::Marker::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1312,12 +1341,13 @@ class Sunburst::Marker::Colorbar::Title::Font {
 
 class Sunburst::Marker::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the color of the line enclosing each sector. Defaults to the `paper_bgcolor` value.
     Sunburst::Marker::Line& color(std::string f);
-    Sunburst::Marker::Line& color(double f);
     Sunburst::Marker::Line& color(std::vector<std::string> f);
-    Sunburst::Marker::Line& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sunburst::Marker::Line& colorsrc(std::string f);
@@ -1336,6 +1366,9 @@ class Sunburst::Marker::Line {
 // Sets the pattern within the marker.
 class Sunburst::Marker::Pattern {
  public:
+    Pattern() = default;
+    Pattern(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Fillmode {
         REPLACE,
@@ -1343,24 +1376,10 @@ class Sunburst::Marker::Pattern {
     };
     static std::string to_string(Fillmode e);
 
-    enum class Shape {
-        EMPTY,
-        SLASH,
-        DOUBLEBACKSLASH,
-        X,
-        HYPHEN,
-        OR,
-        PLUS,
-        DOT,
-    };
-    static std::string to_string(Shape e);
-
     // When there is no colorscale sets the color of background pattern fill. Defaults to a `marker.color` background
     // when `fillmode` is *overlay*. Otherwise, defaults to a transparent background.
     Sunburst::Marker::Pattern& bgcolor(std::string f);
-    Sunburst::Marker::Pattern& bgcolor(double f);
     Sunburst::Marker::Pattern& bgcolor(std::vector<std::string> f);
-    Sunburst::Marker::Pattern& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Sunburst::Marker::Pattern& bgcolorsrc(std::string f);
@@ -1368,9 +1387,7 @@ class Sunburst::Marker::Pattern {
     // When there is no colorscale sets the color of foreground pattern fill. Defaults to a `marker.color` background
     // when `fillmode` is *replace*. Otherwise, defaults to dark grey or white to increase contrast with the `bgcolor`.
     Sunburst::Marker::Pattern& fgcolor(std::string f);
-    Sunburst::Marker::Pattern& fgcolor(double f);
     Sunburst::Marker::Pattern& fgcolor(std::vector<std::string> f);
-    Sunburst::Marker::Pattern& fgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `fgcolor`.
     Sunburst::Marker::Pattern& fgcolorsrc(std::string f);
@@ -1384,9 +1401,8 @@ class Sunburst::Marker::Pattern {
     Sunburst::Marker::Pattern& fillmode(enum Fillmode f);
 
     // Sets the shape of the pattern fill. By default, no pattern is used for filling the area.
-    // - Default:
-    Sunburst::Marker::Pattern& shape(enum Shape f);
-    Sunburst::Marker::Pattern& shape(const std::vector<enum Shape>& f);
+    Sunburst::Marker::Pattern& shape(std::string f);
+    Sunburst::Marker::Pattern& shape(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `shape`.
     Sunburst::Marker::Pattern& shapesrc(std::string f);
@@ -1417,6 +1433,9 @@ class Sunburst::Marker::Pattern {
 // any effect and `insidetextfont` would be used.
 class Sunburst::Outsidetextfont {
  public:
+    Outsidetextfont() = default;
+    Outsidetextfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1443,9 +1462,7 @@ class Sunburst::Outsidetextfont {
     static std::string to_string(Variant e);
 
     Sunburst::Outsidetextfont& color(std::string f);
-    Sunburst::Outsidetextfont& color(double f);
     Sunburst::Outsidetextfont& color(std::vector<std::string> f);
-    Sunburst::Outsidetextfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sunburst::Outsidetextfont& colorsrc(std::string f);
@@ -1526,11 +1543,13 @@ class Sunburst::Outsidetextfont {
 
 class Sunburst::Root {
  public:
+    Root() = default;
+    Root(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // sets the color of the root node for a sunburst/treemap/icicle trace. this has no effect when a colorscale is used
     // to set the markers.
     Sunburst::Root& color(std::string f);
-    Sunburst::Root& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1538,6 +1557,9 @@ class Sunburst::Root {
 
 class Sunburst::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -1554,6 +1576,9 @@ class Sunburst::Stream {
 // Sets the font used for `textinfo`.
 class Sunburst::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1580,9 +1605,7 @@ class Sunburst::Textfont {
     static std::string to_string(Variant e);
 
     Sunburst::Textfont& color(std::string f);
-    Sunburst::Textfont& color(double f);
     Sunburst::Textfont& color(std::vector<std::string> f);
-    Sunburst::Textfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sunburst::Textfont& colorsrc(std::string f);

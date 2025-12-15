@@ -295,10 +295,6 @@ Scatter3D& Scatter3D::surfacecolor(std::string f) {
     json["surfacecolor"] = std::move(f);
     return *this;
 }
-Scatter3D& Scatter3D::surfacecolor(double f) {
-    json["surfacecolor"] = std::move(f);
-    return *this;
-}
 
 Scatter3D& Scatter3D::text(std::string f) {
     json["text"] = std::move(f);
@@ -465,10 +461,6 @@ Scatter3D::Error_X& Scatter3D::Error_X::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scatter3D::Error_X& Scatter3D::Error_X::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scatter3D::Error_X& Scatter3D::Error_X::copy_zstyle(bool f) {
     json["copy_zstyle"] = std::move(f);
@@ -554,10 +546,6 @@ Scatter3D::Error_Y& Scatter3D::Error_Y::arraysrc(std::string f) {
 }
 
 Scatter3D::Error_Y& Scatter3D::Error_Y::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scatter3D::Error_Y& Scatter3D::Error_Y::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -649,10 +637,6 @@ Scatter3D::Error_Z& Scatter3D::Error_Z::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scatter3D::Error_Z& Scatter3D::Error_Z::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scatter3D::Error_Z& Scatter3D::Error_Z::symmetric(bool f) {
     json["symmetric"] = std::move(f);
@@ -729,15 +713,7 @@ Scatter3D::Hoverlabel& Scatter3D::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Scatter3D::Hoverlabel& Scatter3D::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Scatter3D::Hoverlabel& Scatter3D::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Scatter3D::Hoverlabel& Scatter3D::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -751,15 +727,7 @@ Scatter3D::Hoverlabel& Scatter3D::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Scatter3D::Hoverlabel& Scatter3D::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Scatter3D::Hoverlabel& Scatter3D::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Scatter3D::Hoverlabel& Scatter3D::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -823,15 +791,7 @@ Scatter3D::Hoverlabel::Font& Scatter3D::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scatter3D::Hoverlabel::Font& Scatter3D::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scatter3D::Hoverlabel::Font& Scatter3D::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scatter3D::Hoverlabel::Font& Scatter3D::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1005,10 +965,6 @@ Scatter3D::Legendgrouptitle::Font& Scatter3D::Legendgrouptitle::Font::color(std:
     json["color"] = std::move(f);
     return *this;
 }
-Scatter3D::Legendgrouptitle::Font& Scatter3D::Legendgrouptitle::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scatter3D::Legendgrouptitle::Font& Scatter3D::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1092,15 +1048,7 @@ Scatter3D::Line& Scatter3D::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scatter3D::Line& Scatter3D::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scatter3D::Line& Scatter3D::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scatter3D::Line& Scatter3D::Line::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1296,16 +1244,8 @@ Scatter3D::Line::Colorbar& Scatter3D::Line::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Scatter3D::Line::Colorbar& Scatter3D::Line::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Scatter3D::Line::Colorbar& Scatter3D::Line::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Scatter3D::Line::Colorbar& Scatter3D::Line::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -1358,10 +1298,6 @@ Scatter3D::Line::Colorbar& Scatter3D::Line::Colorbar::orientation(enum Orientati
 }
 
 Scatter3D::Line::Colorbar& Scatter3D::Line::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Scatter3D::Line::Colorbar& Scatter3D::Line::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -1418,10 +1354,6 @@ Scatter3D::Line::Colorbar& Scatter3D::Line::Colorbar::tickangle(double f) {
 }
 
 Scatter3D::Line::Colorbar& Scatter3D::Line::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Scatter3D::Line::Colorbar& Scatter3D::Line::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -1588,10 +1520,6 @@ Scatter3D::Line::Colorbar::Tickfont& Scatter3D::Line::Colorbar::Tickfont::color(
     json["color"] = std::move(f);
     return *this;
 }
-Scatter3D::Line::Colorbar::Tickfont& Scatter3D::Line::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scatter3D::Line::Colorbar::Tickfont& Scatter3D::Line::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -1640,7 +1568,7 @@ Scatter3D::Line::Colorbar::Tickformatstops& Scatter3D::Line::Colorbar::Tickforma
 }
 
 
-Scatter3D::Line::Colorbar::Tickformatstops::Tickformatstop& Scatter3D::Line::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Scatter3D::Line::Colorbar::Tickformatstops::Tickformatstop& Scatter3D::Line::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -1722,10 +1650,6 @@ std::string Scatter3D::Line::Colorbar::Title::Font::to_string(Variant e) {
 }
 
 Scatter3D::Line::Colorbar::Title::Font& Scatter3D::Line::Colorbar::Title::Font::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scatter3D::Line::Colorbar::Title::Font& Scatter3D::Line::Colorbar::Title::Font::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1822,15 +1746,7 @@ Scatter3D::Marker& Scatter3D::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scatter3D::Marker& Scatter3D::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scatter3D::Marker& Scatter3D::Marker::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scatter3D::Marker& Scatter3D::Marker::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -2071,16 +1987,8 @@ Scatter3D::Marker::Colorbar& Scatter3D::Marker::Colorbar::bgcolor(std::string f)
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Scatter3D::Marker::Colorbar& Scatter3D::Marker::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Scatter3D::Marker::Colorbar& Scatter3D::Marker::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Scatter3D::Marker::Colorbar& Scatter3D::Marker::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -2133,10 +2041,6 @@ Scatter3D::Marker::Colorbar& Scatter3D::Marker::Colorbar::orientation(enum Orien
 }
 
 Scatter3D::Marker::Colorbar& Scatter3D::Marker::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Scatter3D::Marker::Colorbar& Scatter3D::Marker::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -2193,10 +2097,6 @@ Scatter3D::Marker::Colorbar& Scatter3D::Marker::Colorbar::tickangle(double f) {
 }
 
 Scatter3D::Marker::Colorbar& Scatter3D::Marker::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Scatter3D::Marker::Colorbar& Scatter3D::Marker::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -2363,10 +2263,6 @@ Scatter3D::Marker::Colorbar::Tickfont& Scatter3D::Marker::Colorbar::Tickfont::co
     json["color"] = std::move(f);
     return *this;
 }
-Scatter3D::Marker::Colorbar::Tickfont& Scatter3D::Marker::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scatter3D::Marker::Colorbar::Tickfont& Scatter3D::Marker::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -2415,7 +2311,7 @@ Scatter3D::Marker::Colorbar::Tickformatstops& Scatter3D::Marker::Colorbar::Tickf
 }
 
 
-Scatter3D::Marker::Colorbar::Tickformatstops::Tickformatstop& Scatter3D::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Scatter3D::Marker::Colorbar::Tickformatstops::Tickformatstop& Scatter3D::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -2500,10 +2396,6 @@ Scatter3D::Marker::Colorbar::Title::Font& Scatter3D::Marker::Colorbar::Title::Fo
     json["color"] = std::move(f);
     return *this;
 }
-Scatter3D::Marker::Colorbar::Title::Font& Scatter3D::Marker::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scatter3D::Marker::Colorbar::Title::Font& Scatter3D::Marker::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -2575,15 +2467,7 @@ Scatter3D::Marker::Line& Scatter3D::Marker::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scatter3D::Marker::Line& Scatter3D::Marker::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scatter3D::Marker::Line& Scatter3D::Marker::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scatter3D::Marker::Line& Scatter3D::Marker::Line::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -2713,15 +2597,7 @@ Scatter3D::Textfont& Scatter3D::Textfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scatter3D::Textfont& Scatter3D::Textfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scatter3D::Textfont& Scatter3D::Textfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scatter3D::Textfont& Scatter3D::Textfont::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }

@@ -189,12 +189,12 @@ Sankey::Domain& Sankey::Domain::row(int f) {
     return *this;
 }
 
-Sankey::Domain& Sankey::Domain::x(std::vector<std::string> f) {
+Sankey::Domain& Sankey::Domain::x(std::vector<double> f) {
     json["x"] = std::move(f);
     return *this;
 }
 
-Sankey::Domain& Sankey::Domain::y(std::vector<std::string> f) {
+Sankey::Domain& Sankey::Domain::y(std::vector<double> f) {
     json["y"] = std::move(f);
     return *this;
 }
@@ -229,15 +229,7 @@ Sankey::Hoverlabel& Sankey::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Sankey::Hoverlabel& Sankey::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Sankey::Hoverlabel& Sankey::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Sankey::Hoverlabel& Sankey::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -251,15 +243,7 @@ Sankey::Hoverlabel& Sankey::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Sankey::Hoverlabel& Sankey::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Sankey::Hoverlabel& Sankey::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Sankey::Hoverlabel& Sankey::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -323,15 +307,7 @@ Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -505,10 +481,6 @@ Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::color(std::strin
     json["color"] = std::move(f);
     return *this;
 }
-Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -569,15 +541,7 @@ Sankey::Link& Sankey::Link::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Sankey::Link& Sankey::Link::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Sankey::Link& Sankey::Link::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Sankey::Link& Sankey::Link::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -607,15 +571,7 @@ Sankey::Link& Sankey::Link::hovercolor(std::string f) {
     json["hovercolor"] = std::move(f);
     return *this;
 }
-Sankey::Link& Sankey::Link::hovercolor(double f) {
-    json["hovercolor"] = std::move(f);
-    return *this;
-}
 Sankey::Link& Sankey::Link::hovercolor(std::vector<std::string> f) {
-    json["hovercolor"] = std::move(f);
-    return *this;
-}
-Sankey::Link& Sankey::Link::hovercolor(std::vector<double> f) {
     json["hovercolor"] = std::move(f);
     return *this;
 }
@@ -769,15 +725,7 @@ Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -791,15 +739,7 @@ Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -863,15 +803,7 @@ Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::color(std::strin
     json["color"] = std::move(f);
     return *this;
 }
-Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1004,15 +936,7 @@ Sankey::Link::Line& Sankey::Link::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Sankey::Link::Line& Sankey::Link::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Sankey::Link::Line& Sankey::Link::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Sankey::Link::Line& Sankey::Link::Line::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1065,15 +989,7 @@ Sankey::Node& Sankey::Node::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Sankey::Node& Sankey::Node::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Sankey::Node& Sankey::Node::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Sankey::Node& Sankey::Node::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1094,7 +1010,7 @@ Sankey::Node& Sankey::Node::customdatasrc(std::string f) {
     return *this;
 }
 
-Sankey::Node& Sankey::Node::groups(std::vector<std::string> f) {
+Sankey::Node& Sankey::Node::groups(std::vector<double> f) {
     json["groups"] = std::move(f);
     return *this;
 }
@@ -1201,15 +1117,7 @@ Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -1223,15 +1131,7 @@ Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -1295,15 +1195,7 @@ Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::color(std::strin
     json["color"] = std::move(f);
     return *this;
 }
-Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1436,15 +1328,7 @@ Sankey::Node::Line& Sankey::Node::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Sankey::Node::Line& Sankey::Node::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Sankey::Node::Line& Sankey::Node::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Sankey::Node::Line& Sankey::Node::Line::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1511,10 +1395,6 @@ std::string Sankey::Textfont::to_string(Variant e) {
 }
 
 Sankey::Textfont& Sankey::Textfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Sankey::Textfont& Sankey::Textfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

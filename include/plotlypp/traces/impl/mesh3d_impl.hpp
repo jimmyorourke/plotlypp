@@ -137,10 +137,6 @@ Mesh3D& Mesh3D::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Mesh3D& Mesh3D::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Mesh3D& Mesh3D::coloraxis(std::string f) {
     json["coloraxis"] = std::move(f);
@@ -642,16 +638,8 @@ Mesh3D::Colorbar& Mesh3D::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Mesh3D::Colorbar& Mesh3D::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Mesh3D::Colorbar& Mesh3D::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -704,10 +692,6 @@ Mesh3D::Colorbar& Mesh3D::Colorbar::orientation(enum Orientation f) {
 }
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Mesh3D::Colorbar& Mesh3D::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -764,10 +748,6 @@ Mesh3D::Colorbar& Mesh3D::Colorbar::tickangle(double f) {
 }
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Mesh3D::Colorbar& Mesh3D::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -934,10 +914,6 @@ Mesh3D::Colorbar::Tickfont& Mesh3D::Colorbar::Tickfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Mesh3D::Colorbar::Tickfont& Mesh3D::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Mesh3D::Colorbar::Tickfont& Mesh3D::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -986,7 +962,7 @@ Mesh3D::Colorbar::Tickformatstops& Mesh3D::Colorbar::Tickformatstops::tickformat
 }
 
 
-Mesh3D::Colorbar::Tickformatstops::Tickformatstop& Mesh3D::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Mesh3D::Colorbar::Tickformatstops::Tickformatstop& Mesh3D::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -1071,10 +1047,6 @@ Mesh3D::Colorbar::Title::Font& Mesh3D::Colorbar::Title::Font::color(std::string 
     json["color"] = std::move(f);
     return *this;
 }
-Mesh3D::Colorbar::Title::Font& Mesh3D::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Mesh3D::Colorbar::Title::Font& Mesh3D::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1121,10 +1093,6 @@ Mesh3D::Contour& Mesh3D::Contour::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Mesh3D::Contour& Mesh3D::Contour::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Mesh3D::Contour& Mesh3D::Contour::show(bool f) {
     json["show"] = std::move(f);
@@ -1166,15 +1134,7 @@ Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -1188,15 +1148,7 @@ Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -1260,15 +1212,7 @@ Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1439,10 +1383,6 @@ std::string Mesh3D::Legendgrouptitle::Font::to_string(Variant e) {
 }
 
 Mesh3D::Legendgrouptitle::Font& Mesh3D::Legendgrouptitle::Font::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Mesh3D::Legendgrouptitle::Font& Mesh3D::Legendgrouptitle::Font::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

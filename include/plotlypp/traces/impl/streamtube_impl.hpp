@@ -489,16 +489,8 @@ Streamtube::Colorbar& Streamtube::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Streamtube::Colorbar& Streamtube::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Streamtube::Colorbar& Streamtube::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Streamtube::Colorbar& Streamtube::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -551,10 +543,6 @@ Streamtube::Colorbar& Streamtube::Colorbar::orientation(enum Orientation f) {
 }
 
 Streamtube::Colorbar& Streamtube::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Streamtube::Colorbar& Streamtube::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -611,10 +599,6 @@ Streamtube::Colorbar& Streamtube::Colorbar::tickangle(double f) {
 }
 
 Streamtube::Colorbar& Streamtube::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Streamtube::Colorbar& Streamtube::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -781,10 +765,6 @@ Streamtube::Colorbar::Tickfont& Streamtube::Colorbar::Tickfont::color(std::strin
     json["color"] = std::move(f);
     return *this;
 }
-Streamtube::Colorbar::Tickfont& Streamtube::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Streamtube::Colorbar::Tickfont& Streamtube::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -833,7 +813,7 @@ Streamtube::Colorbar::Tickformatstops& Streamtube::Colorbar::Tickformatstops::ti
 }
 
 
-Streamtube::Colorbar::Tickformatstops::Tickformatstop& Streamtube::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Streamtube::Colorbar::Tickformatstops::Tickformatstop& Streamtube::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -918,10 +898,6 @@ Streamtube::Colorbar::Title::Font& Streamtube::Colorbar::Title::Font::color(std:
     json["color"] = std::move(f);
     return *this;
 }
-Streamtube::Colorbar::Title::Font& Streamtube::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Streamtube::Colorbar::Title::Font& Streamtube::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -993,15 +969,7 @@ Streamtube::Hoverlabel& Streamtube::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Streamtube::Hoverlabel& Streamtube::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Streamtube::Hoverlabel& Streamtube::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Streamtube::Hoverlabel& Streamtube::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -1015,15 +983,7 @@ Streamtube::Hoverlabel& Streamtube::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Streamtube::Hoverlabel& Streamtube::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Streamtube::Hoverlabel& Streamtube::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Streamtube::Hoverlabel& Streamtube::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -1087,15 +1047,7 @@ Streamtube::Hoverlabel::Font& Streamtube::Hoverlabel::Font::color(std::string f)
     json["color"] = std::move(f);
     return *this;
 }
-Streamtube::Hoverlabel::Font& Streamtube::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Streamtube::Hoverlabel::Font& Streamtube::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Streamtube::Hoverlabel::Font& Streamtube::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1266,10 +1218,6 @@ std::string Streamtube::Legendgrouptitle::Font::to_string(Variant e) {
 }
 
 Streamtube::Legendgrouptitle::Font& Streamtube::Legendgrouptitle::Font::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Streamtube::Legendgrouptitle::Font& Streamtube::Legendgrouptitle::Font::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

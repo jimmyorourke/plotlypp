@@ -74,10 +74,6 @@ Scattersmith& Scattersmith::fillcolor(std::string f) {
     json["fillcolor"] = std::move(f);
     return *this;
 }
-Scattersmith& Scattersmith::fillcolor(double f) {
-    json["fillcolor"] = std::move(f);
-    return *this;
-}
 
 Scattersmith& Scattersmith::hoverinfo(std::string f) {
     json["hoverinfo"] = std::move(f);
@@ -356,15 +352,7 @@ Scattersmith::Hoverlabel& Scattersmith::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Scattersmith::Hoverlabel& Scattersmith::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Scattersmith::Hoverlabel& Scattersmith::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Scattersmith::Hoverlabel& Scattersmith::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -378,15 +366,7 @@ Scattersmith::Hoverlabel& Scattersmith::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Scattersmith::Hoverlabel& Scattersmith::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Scattersmith::Hoverlabel& Scattersmith::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Scattersmith::Hoverlabel& Scattersmith::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -450,15 +430,7 @@ Scattersmith::Hoverlabel::Font& Scattersmith::Hoverlabel::Font::color(std::strin
     json["color"] = std::move(f);
     return *this;
 }
-Scattersmith::Hoverlabel::Font& Scattersmith::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scattersmith::Hoverlabel::Font& Scattersmith::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattersmith::Hoverlabel::Font& Scattersmith::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -632,10 +604,6 @@ Scattersmith::Legendgrouptitle::Font& Scattersmith::Legendgrouptitle::Font::colo
     json["color"] = std::move(f);
     return *this;
 }
-Scattersmith::Legendgrouptitle::Font& Scattersmith::Legendgrouptitle::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scattersmith::Legendgrouptitle::Font& Scattersmith::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -701,10 +669,6 @@ Scattersmith::Line& Scattersmith::Line::backoffsrc(std::string f) {
 }
 
 Scattersmith::Line& Scattersmith::Line::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattersmith::Line& Scattersmith::Line::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1124,15 +1088,7 @@ Scattersmith::Marker& Scattersmith::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scattersmith::Marker& Scattersmith::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scattersmith::Marker& Scattersmith::Marker::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattersmith::Marker& Scattersmith::Marker::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1406,16 +1362,8 @@ Scattersmith::Marker::Colorbar& Scattersmith::Marker::Colorbar::bgcolor(std::str
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Scattersmith::Marker::Colorbar& Scattersmith::Marker::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Scattersmith::Marker::Colorbar& Scattersmith::Marker::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Scattersmith::Marker::Colorbar& Scattersmith::Marker::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -1468,10 +1416,6 @@ Scattersmith::Marker::Colorbar& Scattersmith::Marker::Colorbar::orientation(enum
 }
 
 Scattersmith::Marker::Colorbar& Scattersmith::Marker::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Scattersmith::Marker::Colorbar& Scattersmith::Marker::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -1528,10 +1472,6 @@ Scattersmith::Marker::Colorbar& Scattersmith::Marker::Colorbar::tickangle(double
 }
 
 Scattersmith::Marker::Colorbar& Scattersmith::Marker::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Scattersmith::Marker::Colorbar& Scattersmith::Marker::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -1698,10 +1638,6 @@ Scattersmith::Marker::Colorbar::Tickfont& Scattersmith::Marker::Colorbar::Tickfo
     json["color"] = std::move(f);
     return *this;
 }
-Scattersmith::Marker::Colorbar::Tickfont& Scattersmith::Marker::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scattersmith::Marker::Colorbar::Tickfont& Scattersmith::Marker::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -1750,7 +1686,7 @@ Scattersmith::Marker::Colorbar::Tickformatstops& Scattersmith::Marker::Colorbar:
 }
 
 
-Scattersmith::Marker::Colorbar::Tickformatstops::Tickformatstop& Scattersmith::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Scattersmith::Marker::Colorbar::Tickformatstops::Tickformatstop& Scattersmith::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -1835,10 +1771,6 @@ Scattersmith::Marker::Colorbar::Title::Font& Scattersmith::Marker::Colorbar::Tit
     json["color"] = std::move(f);
     return *this;
 }
-Scattersmith::Marker::Colorbar::Title::Font& Scattersmith::Marker::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scattersmith::Marker::Colorbar::Title::Font& Scattersmith::Marker::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1895,15 +1827,7 @@ Scattersmith::Marker::Gradient& Scattersmith::Marker::Gradient::color(std::strin
     json["color"] = std::move(f);
     return *this;
 }
-Scattersmith::Marker::Gradient& Scattersmith::Marker::Gradient::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scattersmith::Marker::Gradient& Scattersmith::Marker::Gradient::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattersmith::Marker::Gradient& Scattersmith::Marker::Gradient::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1959,15 +1883,7 @@ Scattersmith::Marker::Line& Scattersmith::Marker::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scattersmith::Marker::Line& Scattersmith::Marker::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scattersmith::Marker::Line& Scattersmith::Marker::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattersmith::Marker::Line& Scattersmith::Marker::Line::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -2026,10 +1942,6 @@ Scattersmith::Selected::Marker& Scattersmith::Selected::Marker::color(std::strin
     json["color"] = std::move(f);
     return *this;
 }
-Scattersmith::Selected::Marker& Scattersmith::Selected::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scattersmith::Selected::Marker& Scattersmith::Selected::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
@@ -2043,10 +1955,6 @@ Scattersmith::Selected::Marker& Scattersmith::Selected::Marker::size(double f) {
 
 
 Scattersmith::Selected::Textfont& Scattersmith::Selected::Textfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattersmith::Selected::Textfont& Scattersmith::Selected::Textfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -2097,15 +2005,7 @@ Scattersmith::Textfont& Scattersmith::Textfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scattersmith::Textfont& Scattersmith::Textfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scattersmith::Textfont& Scattersmith::Textfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattersmith::Textfont& Scattersmith::Textfont::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -2249,10 +2149,6 @@ Scattersmith::Unselected::Marker& Scattersmith::Unselected::Marker::color(std::s
     json["color"] = std::move(f);
     return *this;
 }
-Scattersmith::Unselected::Marker& Scattersmith::Unselected::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scattersmith::Unselected::Marker& Scattersmith::Unselected::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
@@ -2266,10 +2162,6 @@ Scattersmith::Unselected::Marker& Scattersmith::Unselected::Marker::size(double 
 
 
 Scattersmith::Unselected::Textfont& Scattersmith::Unselected::Textfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattersmith::Unselected::Textfont& Scattersmith::Unselected::Textfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

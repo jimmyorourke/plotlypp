@@ -362,12 +362,12 @@ Pie::Domain& Pie::Domain::row(int f) {
     return *this;
 }
 
-Pie::Domain& Pie::Domain::x(std::vector<std::string> f) {
+Pie::Domain& Pie::Domain::x(std::vector<double> f) {
     json["x"] = std::move(f);
     return *this;
 }
 
-Pie::Domain& Pie::Domain::y(std::vector<std::string> f) {
+Pie::Domain& Pie::Domain::y(std::vector<double> f) {
     json["y"] = std::move(f);
     return *this;
 }
@@ -402,15 +402,7 @@ Pie::Hoverlabel& Pie::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Pie::Hoverlabel& Pie::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Pie::Hoverlabel& Pie::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Pie::Hoverlabel& Pie::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -424,15 +416,7 @@ Pie::Hoverlabel& Pie::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Pie::Hoverlabel& Pie::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Pie::Hoverlabel& Pie::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Pie::Hoverlabel& Pie::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -496,15 +480,7 @@ Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -667,15 +643,7 @@ Pie::Insidetextfont& Pie::Insidetextfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Pie::Insidetextfont& Pie::Insidetextfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Pie::Insidetextfont& Pie::Insidetextfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Pie::Insidetextfont& Pie::Insidetextfont::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -849,10 +817,6 @@ Pie::Legendgrouptitle::Font& Pie::Legendgrouptitle::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Pie::Legendgrouptitle::Font& Pie::Legendgrouptitle::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Pie::Legendgrouptitle::Font& Pie::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -921,15 +885,7 @@ Pie::Marker::Line& Pie::Marker::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Pie::Marker::Line& Pie::Marker::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Pie::Marker::Line& Pie::Marker::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Pie::Marker::Line& Pie::Marker::Line::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -961,34 +917,12 @@ std::string Pie::Marker::Pattern::to_string(Fillmode e) {
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
-std::string Pie::Marker::Pattern::to_string(Shape e) {
-    switch(e) {
-        case Shape::EMPTY: return "";
-        case Shape::SLASH: return "/";
-        case Shape::DOUBLEBACKSLASH: return "\\";
-        case Shape::X: return "x";
-        case Shape::HYPHEN: return "-";
-        case Shape::OR: return "|";
-        case Shape::PLUS: return "+";
-        case Shape::DOT: return ".";
-    }
-    // Should be unreachable.
-    throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
-}
 
 Pie::Marker::Pattern& Pie::Marker::Pattern::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Pie::Marker::Pattern& Pie::Marker::Pattern::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Pie::Marker::Pattern& Pie::Marker::Pattern::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Pie::Marker::Pattern& Pie::Marker::Pattern::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -1002,15 +936,7 @@ Pie::Marker::Pattern& Pie::Marker::Pattern::fgcolor(std::string f) {
     json["fgcolor"] = std::move(f);
     return *this;
 }
-Pie::Marker::Pattern& Pie::Marker::Pattern::fgcolor(double f) {
-    json["fgcolor"] = std::move(f);
-    return *this;
-}
 Pie::Marker::Pattern& Pie::Marker::Pattern::fgcolor(std::vector<std::string> f) {
-    json["fgcolor"] = std::move(f);
-    return *this;
-}
-Pie::Marker::Pattern& Pie::Marker::Pattern::fgcolor(std::vector<double> f) {
     json["fgcolor"] = std::move(f);
     return *this;
 }
@@ -1030,14 +956,12 @@ Pie::Marker::Pattern& Pie::Marker::Pattern::fillmode(enum Fillmode f) {
     return *this;
 }
 
-Pie::Marker::Pattern& Pie::Marker::Pattern::shape(enum Shape f) {
-    json["shape"] = to_string(f);
+Pie::Marker::Pattern& Pie::Marker::Pattern::shape(std::string f) {
+    json["shape"] = std::move(f);
     return *this;
 }
-Pie::Marker::Pattern& Pie::Marker::Pattern::shape(const std::vector<enum Shape>& f) {
-    std::vector<std::string> stringified(f.size());
-    std::transform(f.begin(), f.end(), stringified.begin(), [this](const auto& e){return to_string(e);});
-    json["shape"] = std::move(stringified);
+Pie::Marker::Pattern& Pie::Marker::Pattern::shape(std::vector<std::string> f) {
+    json["shape"] = std::move(f);
     return *this;
 }
 
@@ -1109,15 +1033,7 @@ Pie::Outsidetextfont& Pie::Outsidetextfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Pie::Outsidetextfont& Pie::Outsidetextfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Pie::Outsidetextfont& Pie::Outsidetextfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Pie::Outsidetextfont& Pie::Outsidetextfont::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1291,15 +1207,7 @@ Pie::Textfont& Pie::Textfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Pie::Textfont& Pie::Textfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Pie::Textfont& Pie::Textfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Pie::Textfont& Pie::Textfont::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1491,15 +1399,7 @@ Pie::Title::Font& Pie::Title::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Pie::Title::Font& Pie::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Pie::Title::Font& Pie::Title::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Pie::Title::Font& Pie::Title::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }

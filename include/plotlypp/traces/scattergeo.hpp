@@ -25,6 +25,8 @@ class Scattergeo : public Trace {
     : Trace() {
         json["type"] = "scattergeo";
     }
+    Scattergeo(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Fill {
         NONE,
@@ -93,7 +95,6 @@ class Scattergeo : public Trace {
     // Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line
     // color, whichever is available.
     Scattergeo& fillcolor(std::string f);
-    Scattergeo& fillcolor(double f);
 
     // Sets a reference between this trace's geospatial coordinates and a geographic map. If *geo* (the default value),
     // the geospatial coordinates refer to `layout.geo`. If *geo2*, the geospatial coordinates refer to `layout.geo2`,
@@ -308,6 +309,9 @@ class Scattergeo : public Trace {
 
 class Scattergeo::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -330,18 +334,14 @@ class Scattergeo::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Scattergeo::Hoverlabel& bgcolor(std::string f);
-    Scattergeo::Hoverlabel& bgcolor(double f);
     Scattergeo::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Scattergeo::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Scattergeo::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Scattergeo::Hoverlabel& bordercolor(std::string f);
-    Scattergeo::Hoverlabel& bordercolor(double f);
     Scattergeo::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Scattergeo::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Scattergeo::Hoverlabel& bordercolorsrc(std::string f);
@@ -366,6 +366,9 @@ class Scattergeo::Hoverlabel {
 // Sets the font used in hover labels.
 class Scattergeo::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -392,9 +395,7 @@ class Scattergeo::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Scattergeo::Hoverlabel::Font& color(std::string f);
-    Scattergeo::Hoverlabel::Font& color(double f);
     Scattergeo::Hoverlabel::Font& color(std::vector<std::string> f);
-    Scattergeo::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scattergeo::Hoverlabel::Font& colorsrc(std::string f);
@@ -475,6 +476,9 @@ class Scattergeo::Hoverlabel::Font {
 
 class Scattergeo::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -492,6 +496,9 @@ class Scattergeo::Legendgrouptitle {
 // Sets this legend group's title font.
 class Scattergeo::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -518,7 +525,6 @@ class Scattergeo::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Scattergeo::Legendgrouptitle::Font& color(std::string f);
-    Scattergeo::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -564,10 +570,12 @@ class Scattergeo::Legendgrouptitle::Font {
 
 class Scattergeo::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the line color.
     Scattergeo::Line& color(std::string f);
-    Scattergeo::Line& color(double f);
 
     // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
     // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
@@ -582,6 +590,9 @@ class Scattergeo::Line {
 
 class Scattergeo::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Angleref {
         PREVIOUS,
@@ -968,9 +979,7 @@ class Scattergeo::Marker {
     // Sets the marker color. It accepts either a specific color or an array of numbers that are mapped to the
     // colorscale relative to the max and min values of the array or relative to `marker.cmin` and `marker.cmax` if set.
     Scattergeo::Marker& color(std::string f);
-    Scattergeo::Marker& color(double f);
     Scattergeo::Marker& color(std::vector<std::string> f);
-    Scattergeo::Marker& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -1055,6 +1064,9 @@ class Scattergeo::Marker {
 
 class Scattergeo::Marker::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -1175,11 +1187,9 @@ class Scattergeo::Marker::Colorbar {
 
     // Sets the color of padded area.
     Scattergeo::Marker::Colorbar& bgcolor(std::string f);
-    Scattergeo::Marker::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Scattergeo::Marker::Colorbar& bordercolor(std::string f);
-    Scattergeo::Marker::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Scattergeo::Marker::Colorbar& borderwidth(double f);
@@ -1235,7 +1245,6 @@ class Scattergeo::Marker::Colorbar {
 
     // Sets the axis line color.
     Scattergeo::Marker::Colorbar& outlinecolor(std::string f);
-    Scattergeo::Marker::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Scattergeo::Marker::Colorbar& outlinewidth(double f);
@@ -1282,7 +1291,6 @@ class Scattergeo::Marker::Colorbar {
 
     // Sets the tick color.
     Scattergeo::Marker::Colorbar& tickcolor(std::string f);
-    Scattergeo::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Scattergeo::Marker::Colorbar& tickfont(Tickfont f);
@@ -1395,6 +1403,9 @@ class Scattergeo::Marker::Colorbar {
 // Sets the color bar's tick label font
 class Scattergeo::Marker::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1421,7 +1432,6 @@ class Scattergeo::Marker::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Scattergeo::Marker::Colorbar::Tickfont& color(std::string f);
-    Scattergeo::Marker::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1467,6 +1477,9 @@ class Scattergeo::Marker::Colorbar::Tickfont {
 
 class Scattergeo::Marker::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -1478,10 +1491,13 @@ class Scattergeo::Marker::Colorbar::Tickformatstops {
 
 class Scattergeo::Marker::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Scattergeo::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Scattergeo::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Scattergeo::Marker::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -1508,6 +1524,9 @@ class Scattergeo::Marker::Colorbar::Tickformatstops::Tickformatstop {
 
 class Scattergeo::Marker::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -1536,6 +1555,9 @@ class Scattergeo::Marker::Colorbar::Title {
 // Sets this color bar's title font.
 class Scattergeo::Marker::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1562,7 +1584,6 @@ class Scattergeo::Marker::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Scattergeo::Marker::Colorbar::Title::Font& color(std::string f);
-    Scattergeo::Marker::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1608,6 +1629,9 @@ class Scattergeo::Marker::Colorbar::Title::Font {
 
 class Scattergeo::Marker::Gradient {
  public:
+    Gradient() = default;
+    Gradient(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Type {
         RADIAL,
@@ -1620,9 +1644,7 @@ class Scattergeo::Marker::Gradient {
     // Sets the final color of the gradient fill: the center color for radial, the right for horizontal, or the bottom
     // for vertical.
     Scattergeo::Marker::Gradient& color(std::string f);
-    Scattergeo::Marker::Gradient& color(double f);
     Scattergeo::Marker::Gradient& color(std::vector<std::string> f);
-    Scattergeo::Marker::Gradient& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scattergeo::Marker::Gradient& colorsrc(std::string f);
@@ -1641,6 +1663,9 @@ class Scattergeo::Marker::Gradient {
 
 class Scattergeo::Marker::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by
     // `marker.line.colorscale`. Has an effect only if in `marker.line.color` is set to a numerical array. In case
@@ -1673,9 +1698,7 @@ class Scattergeo::Marker::Line {
     // colorscale relative to the max and min values of the array or relative to `marker.line.cmin` and
     // `marker.line.cmax` if set.
     Scattergeo::Marker::Line& color(std::string f);
-    Scattergeo::Marker::Line& color(double f);
     Scattergeo::Marker::Line& color(std::vector<std::string> f);
-    Scattergeo::Marker::Line& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -1713,6 +1736,9 @@ class Scattergeo::Marker::Line {
 
 class Scattergeo::Selected {
  public:
+    Selected() = default;
+    Selected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
     class Textfont;
@@ -1727,10 +1753,12 @@ class Scattergeo::Selected {
 
 class Scattergeo::Selected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker color of selected points.
     Scattergeo::Selected::Marker& color(std::string f);
-    Scattergeo::Selected::Marker& color(double f);
 
     // Sets the marker opacity of selected points.
     Scattergeo::Selected::Marker& opacity(double f);
@@ -1744,10 +1772,12 @@ class Scattergeo::Selected::Marker {
 
 class Scattergeo::Selected::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the text font color of selected points.
     Scattergeo::Selected::Textfont& color(std::string f);
-    Scattergeo::Selected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1755,6 +1785,9 @@ class Scattergeo::Selected::Textfont {
 
 class Scattergeo::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -1771,6 +1804,9 @@ class Scattergeo::Stream {
 // Sets the text font.
 class Scattergeo::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1797,9 +1833,7 @@ class Scattergeo::Textfont {
     static std::string to_string(Variant e);
 
     Scattergeo::Textfont& color(std::string f);
-    Scattergeo::Textfont& color(double f);
     Scattergeo::Textfont& color(std::vector<std::string> f);
-    Scattergeo::Textfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scattergeo::Textfont& colorsrc(std::string f);
@@ -1880,6 +1914,9 @@ class Scattergeo::Textfont {
 
 class Scattergeo::Unselected {
  public:
+    Unselected() = default;
+    Unselected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
     class Textfont;
@@ -1894,10 +1931,12 @@ class Scattergeo::Unselected {
 
 class Scattergeo::Unselected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker color of unselected points, applied only when a selection exists.
     Scattergeo::Unselected::Marker& color(std::string f);
-    Scattergeo::Unselected::Marker& color(double f);
 
     // Sets the marker opacity of unselected points, applied only when a selection exists.
     Scattergeo::Unselected::Marker& opacity(double f);
@@ -1911,10 +1950,12 @@ class Scattergeo::Unselected::Marker {
 
 class Scattergeo::Unselected::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the text font color of unselected points, applied only when a selection exists.
     Scattergeo::Unselected::Textfont& color(std::string f);
-    Scattergeo::Unselected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

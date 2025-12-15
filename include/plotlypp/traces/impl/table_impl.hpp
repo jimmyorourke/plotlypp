@@ -264,15 +264,7 @@ Table::Cells::Fill& Table::Cells::Fill::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Table::Cells::Fill& Table::Cells::Fill::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Table::Cells::Fill& Table::Cells::Fill::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Table::Cells::Fill& Table::Cells::Fill::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -317,15 +309,7 @@ Table::Cells::Font& Table::Cells::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Table::Cells::Font& Table::Cells::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Table::Cells::Font& Table::Cells::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Table::Cells::Font& Table::Cells::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -458,15 +442,7 @@ Table::Cells::Line& Table::Cells::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Table::Cells::Line& Table::Cells::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Table::Cells::Line& Table::Cells::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Table::Cells::Line& Table::Cells::Line::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -501,12 +477,12 @@ Table::Domain& Table::Domain::row(int f) {
     return *this;
 }
 
-Table::Domain& Table::Domain::x(std::vector<std::string> f) {
+Table::Domain& Table::Domain::x(std::vector<double> f) {
     json["x"] = std::move(f);
     return *this;
 }
 
-Table::Domain& Table::Domain::y(std::vector<std::string> f) {
+Table::Domain& Table::Domain::y(std::vector<double> f) {
     json["y"] = std::move(f);
     return *this;
 }
@@ -612,15 +588,7 @@ Table::Header::Fill& Table::Header::Fill::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Table::Header::Fill& Table::Header::Fill::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Table::Header::Fill& Table::Header::Fill::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Table::Header::Fill& Table::Header::Fill::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -665,15 +633,7 @@ Table::Header::Font& Table::Header::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Table::Header::Font& Table::Header::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Table::Header::Font& Table::Header::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Table::Header::Font& Table::Header::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -806,15 +766,7 @@ Table::Header::Line& Table::Header::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Table::Header::Line& Table::Header::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Table::Header::Line& Table::Header::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Table::Header::Line& Table::Header::Line::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -868,15 +820,7 @@ Table::Hoverlabel& Table::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Table::Hoverlabel& Table::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Table::Hoverlabel& Table::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Table::Hoverlabel& Table::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -890,15 +834,7 @@ Table::Hoverlabel& Table::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Table::Hoverlabel& Table::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Table::Hoverlabel& Table::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Table::Hoverlabel& Table::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -962,15 +898,7 @@ Table::Hoverlabel::Font& Table::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Table::Hoverlabel::Font& Table::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Table::Hoverlabel::Font& Table::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Table::Hoverlabel::Font& Table::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1141,10 +1069,6 @@ std::string Table::Legendgrouptitle::Font::to_string(Variant e) {
 }
 
 Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

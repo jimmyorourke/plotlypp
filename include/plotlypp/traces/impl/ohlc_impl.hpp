@@ -336,10 +336,6 @@ Ohlc::Decreasing::Line& Ohlc::Decreasing::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Ohlc::Decreasing::Line& Ohlc::Decreasing::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Ohlc::Decreasing::Line& Ohlc::Decreasing::Line::dash(std::string f) {
     json["dash"] = std::move(f);
@@ -381,15 +377,7 @@ Ohlc::Hoverlabel& Ohlc::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Ohlc::Hoverlabel& Ohlc::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Ohlc::Hoverlabel& Ohlc::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Ohlc::Hoverlabel& Ohlc::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -403,15 +391,7 @@ Ohlc::Hoverlabel& Ohlc::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Ohlc::Hoverlabel& Ohlc::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Ohlc::Hoverlabel& Ohlc::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Ohlc::Hoverlabel& Ohlc::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -480,15 +460,7 @@ Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -627,10 +599,6 @@ Ohlc::Increasing::Line& Ohlc::Increasing::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Ohlc::Increasing::Line& Ohlc::Increasing::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Ohlc::Increasing::Line& Ohlc::Increasing::Line::dash(std::string f) {
     json["dash"] = std::move(f);
@@ -685,10 +653,6 @@ std::string Ohlc::Legendgrouptitle::Font::to_string(Variant e) {
 }
 
 Ohlc::Legendgrouptitle::Font& Ohlc::Legendgrouptitle::Font::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Ohlc::Legendgrouptitle::Font& Ohlc::Legendgrouptitle::Font::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

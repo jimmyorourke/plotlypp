@@ -25,6 +25,8 @@ class Indicator : public Trace {
     : Trace() {
         json["type"] = "indicator";
     }
+    Indicator(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Align {
         LEFT,
@@ -147,6 +149,9 @@ class Indicator : public Trace {
 
 class Indicator::Delta {
  public:
+    Delta() = default;
+    Delta(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Position {
         TOP,
@@ -194,10 +199,12 @@ class Indicator::Delta {
 
 class Indicator::Delta::Decreasing {
  public:
+    Decreasing() = default;
+    Decreasing(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the color for increasing value.
     Indicator::Delta::Decreasing& color(std::string f);
-    Indicator::Delta::Decreasing& color(double f);
 
     // Sets the symbol to display for increasing value
     Indicator::Delta::Decreasing& symbol(std::string f);
@@ -209,6 +216,9 @@ class Indicator::Delta::Decreasing {
 // Set the font used to display the delta
 class Indicator::Delta::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -235,7 +245,6 @@ class Indicator::Delta::Font {
     static std::string to_string(Variant e);
 
     Indicator::Delta::Font& color(std::string f);
-    Indicator::Delta::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -281,10 +290,12 @@ class Indicator::Delta::Font {
 
 class Indicator::Delta::Increasing {
  public:
+    Increasing() = default;
+    Increasing(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the color for increasing value.
     Indicator::Delta::Increasing& color(std::string f);
-    Indicator::Delta::Increasing& color(double f);
 
     // Sets the symbol to display for increasing value
     Indicator::Delta::Increasing& symbol(std::string f);
@@ -295,6 +306,9 @@ class Indicator::Delta::Increasing {
 
 class Indicator::Domain {
  public:
+    Domain() = default;
+    Domain(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // If there is a layout grid, use the domain for this column in the grid for this indicator trace .
     Indicator::Domain& column(int f);
@@ -303,10 +317,10 @@ class Indicator::Domain {
     Indicator::Domain& row(int f);
 
     // Sets the horizontal domain of this indicator trace (in plot fraction).
-    Indicator::Domain& x(std::vector<std::string> f);
+    Indicator::Domain& x(std::vector<double> f);
 
     // Sets the vertical domain of this indicator trace (in plot fraction).
-    Indicator::Domain& y(std::vector<std::string> f);
+    Indicator::Domain& y(std::vector<double> f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -315,6 +329,9 @@ class Indicator::Domain {
 // The gauge of the Indicator plot.
 class Indicator::Gauge {
  public:
+    Gauge() = default;
+    Gauge(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Shape {
         ANGULAR,
@@ -335,11 +352,9 @@ class Indicator::Gauge {
 
     // Sets the gauge background color.
     Indicator::Gauge& bgcolor(std::string f);
-    Indicator::Gauge& bgcolor(double f);
 
     // Sets the color of the border enclosing the gauge.
     Indicator::Gauge& bordercolor(std::string f);
-    Indicator::Gauge& bordercolor(double f);
 
     // Sets the width (in px) of the border enclosing the gauge.
     Indicator::Gauge& borderwidth(double f);
@@ -358,6 +373,9 @@ class Indicator::Gauge {
 
 class Indicator::Gauge::Axis {
  public:
+    Axis() = default;
+    Axis(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -447,7 +465,7 @@ class Indicator::Gauge::Axis {
     Indicator::Gauge::Axis& nticks(int f);
 
     // Sets the range of this axis.
-    Indicator::Gauge::Axis& range(std::vector<std::string> f);
+    Indicator::Gauge::Axis& range(std::vector<double> f);
 
     // If "true", even 4-digit integers are separated
     Indicator::Gauge::Axis& separatethousands(bool f);
@@ -483,7 +501,6 @@ class Indicator::Gauge::Axis {
 
     // Sets the tick color.
     Indicator::Gauge::Axis& tickcolor(std::string f);
-    Indicator::Gauge::Axis& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Indicator::Gauge::Axis& tickfont(Tickfont f);
@@ -553,6 +570,9 @@ class Indicator::Gauge::Axis {
 // Sets the color bar's tick label font
 class Indicator::Gauge::Axis::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -579,7 +599,6 @@ class Indicator::Gauge::Axis::Tickfont {
     static std::string to_string(Variant e);
 
     Indicator::Gauge::Axis::Tickfont& color(std::string f);
-    Indicator::Gauge::Axis::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -625,6 +644,9 @@ class Indicator::Gauge::Axis::Tickfont {
 
 class Indicator::Gauge::Axis::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -636,10 +658,13 @@ class Indicator::Gauge::Axis::Tickformatstops {
 
 class Indicator::Gauge::Axis::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -667,12 +692,14 @@ class Indicator::Gauge::Axis::Tickformatstops::Tickformatstop {
 // Set the appearance of the gauge's value
 class Indicator::Gauge::Bar {
  public:
+    Bar() = default;
+    Bar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Line;
 
     // Sets the background color of the arc.
     Indicator::Gauge::Bar& color(std::string f);
-    Indicator::Gauge::Bar& color(double f);
 
     Indicator::Gauge::Bar& line(Line f);
 
@@ -685,10 +712,12 @@ class Indicator::Gauge::Bar {
 
 class Indicator::Gauge::Bar::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the color of the line enclosing each sector.
     Indicator::Gauge::Bar::Line& color(std::string f);
-    Indicator::Gauge::Bar::Line& color(double f);
 
     // Sets the width (in px) of the line enclosing each sector.
     Indicator::Gauge::Bar::Line& width(double f);
@@ -699,6 +728,9 @@ class Indicator::Gauge::Bar::Line {
 
 class Indicator::Gauge::Steps {
  public:
+    Steps() = default;
+    Steps(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Step;
 
@@ -710,12 +742,14 @@ class Indicator::Gauge::Steps {
 
 class Indicator::Gauge::Steps::Step {
  public:
+    Step() = default;
+    Step(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Line;
 
     // Sets the background color of the arc.
     Indicator::Gauge::Steps::Step& color(std::string f);
-    Indicator::Gauge::Steps::Step& color(double f);
 
     Indicator::Gauge::Steps::Step& line(Line f);
 
@@ -726,7 +760,7 @@ class Indicator::Gauge::Steps::Step {
     Indicator::Gauge::Steps::Step& name(std::string f);
 
     // Sets the range of this axis.
-    Indicator::Gauge::Steps::Step& range(std::vector<std::string> f);
+    Indicator::Gauge::Steps::Step& range(std::vector<double> f);
 
     // Used to refer to a named item in this array in the template. Named items from the template will be created even
     // without a matching item in the input figure, but you can modify one by making an item with `templateitemname`
@@ -744,10 +778,12 @@ class Indicator::Gauge::Steps::Step {
 
 class Indicator::Gauge::Steps::Step::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the color of the line enclosing each sector.
     Indicator::Gauge::Steps::Step::Line& color(std::string f);
-    Indicator::Gauge::Steps::Step::Line& color(double f);
 
     // Sets the width (in px) of the line enclosing each sector.
     Indicator::Gauge::Steps::Step::Line& width(double f);
@@ -758,6 +794,9 @@ class Indicator::Gauge::Steps::Step::Line {
 
 class Indicator::Gauge::Threshold {
  public:
+    Threshold() = default;
+    Threshold(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Line;
 
@@ -775,10 +814,12 @@ class Indicator::Gauge::Threshold {
 
 class Indicator::Gauge::Threshold::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the color of the threshold line.
     Indicator::Gauge::Threshold::Line& color(std::string f);
-    Indicator::Gauge::Threshold::Line& color(double f);
 
     // Sets the width (in px) of the threshold line.
     Indicator::Gauge::Threshold::Line& width(double f);
@@ -789,6 +830,9 @@ class Indicator::Gauge::Threshold::Line {
 
 class Indicator::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -806,6 +850,9 @@ class Indicator::Legendgrouptitle {
 // Sets this legend group's title font.
 class Indicator::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -832,7 +879,6 @@ class Indicator::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Indicator::Legendgrouptitle::Font& color(std::string f);
-    Indicator::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -878,6 +924,9 @@ class Indicator::Legendgrouptitle::Font {
 
 class Indicator::Number {
  public:
+    Number() = default;
+    Number(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Set the font used to display main number
     class Font;
@@ -902,6 +951,9 @@ class Indicator::Number {
 // Set the font used to display main number
 class Indicator::Number::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -928,7 +980,6 @@ class Indicator::Number::Font {
     static std::string to_string(Variant e);
 
     Indicator::Number::Font& color(std::string f);
-    Indicator::Number::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -974,6 +1025,9 @@ class Indicator::Number::Font {
 
 class Indicator::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -989,6 +1043,9 @@ class Indicator::Stream {
 
 class Indicator::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -1017,6 +1074,9 @@ class Indicator::Title {
 // Set the font used to display the title
 class Indicator::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1043,7 +1103,6 @@ class Indicator::Title::Font {
     static std::string to_string(Variant e);
 
     Indicator::Title::Font& color(std::string f);
-    Indicator::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by

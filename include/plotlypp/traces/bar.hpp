@@ -25,6 +25,8 @@ class Bar : public Trace {
     : Trace() {
         json["type"] = "bar";
     }
+    Bar(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Constraintext {
         INSIDE,
@@ -466,6 +468,9 @@ class Bar : public Trace {
 
 class Bar::Error_X {
  public:
+    Error_X() = default;
+    Error_X(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Type {
         PERCENT,
@@ -492,7 +497,6 @@ class Bar::Error_X {
 
     // Sets the stroke color of the error bars.
     Bar::Error_X& color(std::string f);
-    Bar::Error_X& color(double f);
 
     Bar::Error_X& copy_ystyle(bool f);
 
@@ -534,6 +538,9 @@ class Bar::Error_X {
 
 class Bar::Error_Y {
  public:
+    Error_Y() = default;
+    Error_Y(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Type {
         PERCENT,
@@ -560,7 +567,6 @@ class Bar::Error_Y {
 
     // Sets the stroke color of the error bars.
     Bar::Error_Y& color(std::string f);
-    Bar::Error_Y& color(double f);
 
     // Determines whether or not the error bars have the same length in both direction (top/bottom for vertical bars,
     // left/right for horizontal bars.
@@ -600,6 +606,9 @@ class Bar::Error_Y {
 
 class Bar::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -622,18 +631,14 @@ class Bar::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Bar::Hoverlabel& bgcolor(std::string f);
-    Bar::Hoverlabel& bgcolor(double f);
     Bar::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Bar::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Bar::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Bar::Hoverlabel& bordercolor(std::string f);
-    Bar::Hoverlabel& bordercolor(double f);
     Bar::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Bar::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Bar::Hoverlabel& bordercolorsrc(std::string f);
@@ -658,6 +663,9 @@ class Bar::Hoverlabel {
 // Sets the font used in hover labels.
 class Bar::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -684,9 +692,7 @@ class Bar::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Bar::Hoverlabel::Font& color(std::string f);
-    Bar::Hoverlabel::Font& color(double f);
     Bar::Hoverlabel::Font& color(std::vector<std::string> f);
-    Bar::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Bar::Hoverlabel::Font& colorsrc(std::string f);
@@ -768,6 +774,9 @@ class Bar::Hoverlabel::Font {
 // Sets the font used for `text` lying inside the bar.
 class Bar::Insidetextfont {
  public:
+    Insidetextfont() = default;
+    Insidetextfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -794,9 +803,7 @@ class Bar::Insidetextfont {
     static std::string to_string(Variant e);
 
     Bar::Insidetextfont& color(std::string f);
-    Bar::Insidetextfont& color(double f);
     Bar::Insidetextfont& color(std::vector<std::string> f);
-    Bar::Insidetextfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Bar::Insidetextfont& colorsrc(std::string f);
@@ -877,6 +884,9 @@ class Bar::Insidetextfont {
 
 class Bar::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -894,6 +904,9 @@ class Bar::Legendgrouptitle {
 // Sets this legend group's title font.
 class Bar::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -920,7 +933,6 @@ class Bar::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Bar::Legendgrouptitle::Font& color(std::string f);
-    Bar::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -966,6 +978,9 @@ class Bar::Legendgrouptitle::Font {
 
 class Bar::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Colorbar;
     class Line;
@@ -999,9 +1014,7 @@ class Bar::Marker {
     // Sets the marker color. It accepts either a specific color or an array of numbers that are mapped to the
     // colorscale relative to the max and min values of the array or relative to `marker.cmin` and `marker.cmax` if set.
     Bar::Marker& color(std::string f);
-    Bar::Marker& color(double f);
     Bar::Marker& color(std::vector<std::string> f);
-    Bar::Marker& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -1055,6 +1068,9 @@ class Bar::Marker {
 
 class Bar::Marker::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -1175,11 +1191,9 @@ class Bar::Marker::Colorbar {
 
     // Sets the color of padded area.
     Bar::Marker::Colorbar& bgcolor(std::string f);
-    Bar::Marker::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Bar::Marker::Colorbar& bordercolor(std::string f);
-    Bar::Marker::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Bar::Marker::Colorbar& borderwidth(double f);
@@ -1235,7 +1249,6 @@ class Bar::Marker::Colorbar {
 
     // Sets the axis line color.
     Bar::Marker::Colorbar& outlinecolor(std::string f);
-    Bar::Marker::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Bar::Marker::Colorbar& outlinewidth(double f);
@@ -1282,7 +1295,6 @@ class Bar::Marker::Colorbar {
 
     // Sets the tick color.
     Bar::Marker::Colorbar& tickcolor(std::string f);
-    Bar::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Bar::Marker::Colorbar& tickfont(Tickfont f);
@@ -1395,6 +1407,9 @@ class Bar::Marker::Colorbar {
 // Sets the color bar's tick label font
 class Bar::Marker::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1421,7 +1436,6 @@ class Bar::Marker::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Bar::Marker::Colorbar::Tickfont& color(std::string f);
-    Bar::Marker::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1467,6 +1481,9 @@ class Bar::Marker::Colorbar::Tickfont {
 
 class Bar::Marker::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -1478,10 +1495,13 @@ class Bar::Marker::Colorbar::Tickformatstops {
 
 class Bar::Marker::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Bar::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Bar::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Bar::Marker::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -1508,6 +1528,9 @@ class Bar::Marker::Colorbar::Tickformatstops::Tickformatstop {
 
 class Bar::Marker::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -1536,6 +1559,9 @@ class Bar::Marker::Colorbar::Title {
 // Sets this color bar's title font.
 class Bar::Marker::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1562,7 +1588,6 @@ class Bar::Marker::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Bar::Marker::Colorbar::Title::Font& color(std::string f);
-    Bar::Marker::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1608,6 +1633,9 @@ class Bar::Marker::Colorbar::Title::Font {
 
 class Bar::Marker::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by
     // `marker.line.colorscale`. Has an effect only if in `marker.line.color` is set to a numerical array. In case
@@ -1640,9 +1668,7 @@ class Bar::Marker::Line {
     // colorscale relative to the max and min values of the array or relative to `marker.line.cmin` and
     // `marker.line.cmax` if set.
     Bar::Marker::Line& color(std::string f);
-    Bar::Marker::Line& color(double f);
     Bar::Marker::Line& color(std::vector<std::string> f);
-    Bar::Marker::Line& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -1681,6 +1707,9 @@ class Bar::Marker::Line {
 // Sets the pattern within the marker.
 class Bar::Marker::Pattern {
  public:
+    Pattern() = default;
+    Pattern(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Fillmode {
         REPLACE,
@@ -1688,24 +1717,10 @@ class Bar::Marker::Pattern {
     };
     static std::string to_string(Fillmode e);
 
-    enum class Shape {
-        EMPTY,
-        SLASH,
-        DOUBLEBACKSLASH,
-        X,
-        HYPHEN,
-        OR,
-        PLUS,
-        DOT,
-    };
-    static std::string to_string(Shape e);
-
     // When there is no colorscale sets the color of background pattern fill. Defaults to a `marker.color` background
     // when `fillmode` is *overlay*. Otherwise, defaults to a transparent background.
     Bar::Marker::Pattern& bgcolor(std::string f);
-    Bar::Marker::Pattern& bgcolor(double f);
     Bar::Marker::Pattern& bgcolor(std::vector<std::string> f);
-    Bar::Marker::Pattern& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Bar::Marker::Pattern& bgcolorsrc(std::string f);
@@ -1713,9 +1728,7 @@ class Bar::Marker::Pattern {
     // When there is no colorscale sets the color of foreground pattern fill. Defaults to a `marker.color` background
     // when `fillmode` is *replace*. Otherwise, defaults to dark grey or white to increase contrast with the `bgcolor`.
     Bar::Marker::Pattern& fgcolor(std::string f);
-    Bar::Marker::Pattern& fgcolor(double f);
     Bar::Marker::Pattern& fgcolor(std::vector<std::string> f);
-    Bar::Marker::Pattern& fgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `fgcolor`.
     Bar::Marker::Pattern& fgcolorsrc(std::string f);
@@ -1729,9 +1742,8 @@ class Bar::Marker::Pattern {
     Bar::Marker::Pattern& fillmode(enum Fillmode f);
 
     // Sets the shape of the pattern fill. By default, no pattern is used for filling the area.
-    // - Default:
-    Bar::Marker::Pattern& shape(enum Shape f);
-    Bar::Marker::Pattern& shape(const std::vector<enum Shape>& f);
+    Bar::Marker::Pattern& shape(std::string f);
+    Bar::Marker::Pattern& shape(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `shape`.
     Bar::Marker::Pattern& shapesrc(std::string f);
@@ -1760,6 +1772,9 @@ class Bar::Marker::Pattern {
 // Sets the font used for `text` lying outside the bar.
 class Bar::Outsidetextfont {
  public:
+    Outsidetextfont() = default;
+    Outsidetextfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1786,9 +1801,7 @@ class Bar::Outsidetextfont {
     static std::string to_string(Variant e);
 
     Bar::Outsidetextfont& color(std::string f);
-    Bar::Outsidetextfont& color(double f);
     Bar::Outsidetextfont& color(std::vector<std::string> f);
-    Bar::Outsidetextfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Bar::Outsidetextfont& colorsrc(std::string f);
@@ -1869,6 +1882,9 @@ class Bar::Outsidetextfont {
 
 class Bar::Selected {
  public:
+    Selected() = default;
+    Selected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
     class Textfont;
@@ -1883,10 +1899,12 @@ class Bar::Selected {
 
 class Bar::Selected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker color of selected points.
     Bar::Selected::Marker& color(std::string f);
-    Bar::Selected::Marker& color(double f);
 
     // Sets the marker opacity of selected points.
     Bar::Selected::Marker& opacity(double f);
@@ -1897,10 +1915,12 @@ class Bar::Selected::Marker {
 
 class Bar::Selected::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the text font color of selected points.
     Bar::Selected::Textfont& color(std::string f);
-    Bar::Selected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1908,6 +1928,9 @@ class Bar::Selected::Textfont {
 
 class Bar::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -1924,6 +1947,9 @@ class Bar::Stream {
 // Sets the font used for `text`.
 class Bar::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1950,9 +1976,7 @@ class Bar::Textfont {
     static std::string to_string(Variant e);
 
     Bar::Textfont& color(std::string f);
-    Bar::Textfont& color(double f);
     Bar::Textfont& color(std::vector<std::string> f);
-    Bar::Textfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Bar::Textfont& colorsrc(std::string f);
@@ -2033,6 +2057,9 @@ class Bar::Textfont {
 
 class Bar::Unselected {
  public:
+    Unselected() = default;
+    Unselected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
     class Textfont;
@@ -2047,10 +2074,12 @@ class Bar::Unselected {
 
 class Bar::Unselected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker color of unselected points, applied only when a selection exists.
     Bar::Unselected::Marker& color(std::string f);
-    Bar::Unselected::Marker& color(double f);
 
     // Sets the marker opacity of unselected points, applied only when a selection exists.
     Bar::Unselected::Marker& opacity(double f);
@@ -2061,10 +2090,12 @@ class Bar::Unselected::Marker {
 
 class Bar::Unselected::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the text font color of unselected points, applied only when a selection exists.
     Bar::Unselected::Textfont& color(std::string f);
-    Bar::Unselected::Textfont& color(double f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

@@ -440,16 +440,8 @@ Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -502,10 +494,6 @@ Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::orientation(enum Orienta
 }
 
 Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -562,10 +550,6 @@ Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::tickangle(double f) {
 }
 
 Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Choroplethmapbox::Colorbar& Choroplethmapbox::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -732,10 +716,6 @@ Choroplethmapbox::Colorbar::Tickfont& Choroplethmapbox::Colorbar::Tickfont::colo
     json["color"] = std::move(f);
     return *this;
 }
-Choroplethmapbox::Colorbar::Tickfont& Choroplethmapbox::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Choroplethmapbox::Colorbar::Tickfont& Choroplethmapbox::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -784,7 +764,7 @@ Choroplethmapbox::Colorbar::Tickformatstops& Choroplethmapbox::Colorbar::Tickfor
 }
 
 
-Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop& Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop& Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -869,10 +849,6 @@ Choroplethmapbox::Colorbar::Title::Font& Choroplethmapbox::Colorbar::Title::Font
     json["color"] = std::move(f);
     return *this;
 }
-Choroplethmapbox::Colorbar::Title::Font& Choroplethmapbox::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Choroplethmapbox::Colorbar::Title::Font& Choroplethmapbox::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -944,15 +920,7 @@ Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::bgcolor(std::string 
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -966,15 +934,7 @@ Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::bordercolor(std::str
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Choroplethmapbox::Hoverlabel& Choroplethmapbox::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -1038,15 +998,7 @@ Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::color(st
     json["color"] = std::move(f);
     return *this;
 }
-Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Choroplethmapbox::Hoverlabel::Font& Choroplethmapbox::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1220,10 +1172,6 @@ Choroplethmapbox::Legendgrouptitle::Font& Choroplethmapbox::Legendgrouptitle::Fo
     json["color"] = std::move(f);
     return *this;
 }
-Choroplethmapbox::Legendgrouptitle::Font& Choroplethmapbox::Legendgrouptitle::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Choroplethmapbox::Legendgrouptitle::Font& Choroplethmapbox::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1290,15 +1238,7 @@ Choroplethmapbox::Marker::Line& Choroplethmapbox::Marker::Line::color(std::strin
     json["color"] = std::move(f);
     return *this;
 }
-Choroplethmapbox::Marker::Line& Choroplethmapbox::Marker::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Choroplethmapbox::Marker::Line& Choroplethmapbox::Marker::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Choroplethmapbox::Marker::Line& Choroplethmapbox::Marker::Line::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }

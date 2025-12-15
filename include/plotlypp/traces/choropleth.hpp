@@ -25,6 +25,8 @@ class Choropleth : public Trace {
     : Trace() {
         json["type"] = "choropleth";
     }
+    Choropleth(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Locationmode {
         ISO_3,
@@ -267,6 +269,9 @@ class Choropleth : public Trace {
 
 class Choropleth::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -387,11 +392,9 @@ class Choropleth::Colorbar {
 
     // Sets the color of padded area.
     Choropleth::Colorbar& bgcolor(std::string f);
-    Choropleth::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Choropleth::Colorbar& bordercolor(std::string f);
-    Choropleth::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Choropleth::Colorbar& borderwidth(double f);
@@ -447,7 +450,6 @@ class Choropleth::Colorbar {
 
     // Sets the axis line color.
     Choropleth::Colorbar& outlinecolor(std::string f);
-    Choropleth::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Choropleth::Colorbar& outlinewidth(double f);
@@ -494,7 +496,6 @@ class Choropleth::Colorbar {
 
     // Sets the tick color.
     Choropleth::Colorbar& tickcolor(std::string f);
-    Choropleth::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Choropleth::Colorbar& tickfont(Tickfont f);
@@ -607,6 +608,9 @@ class Choropleth::Colorbar {
 // Sets the color bar's tick label font
 class Choropleth::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -633,7 +637,6 @@ class Choropleth::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Choropleth::Colorbar::Tickfont& color(std::string f);
-    Choropleth::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -679,6 +682,9 @@ class Choropleth::Colorbar::Tickfont {
 
 class Choropleth::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -690,10 +696,13 @@ class Choropleth::Colorbar::Tickformatstops {
 
 class Choropleth::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Choropleth::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Choropleth::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Choropleth::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -720,6 +729,9 @@ class Choropleth::Colorbar::Tickformatstops::Tickformatstop {
 
 class Choropleth::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -748,6 +760,9 @@ class Choropleth::Colorbar::Title {
 // Sets this color bar's title font.
 class Choropleth::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -774,7 +789,6 @@ class Choropleth::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Choropleth::Colorbar::Title::Font& color(std::string f);
-    Choropleth::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -820,6 +834,9 @@ class Choropleth::Colorbar::Title::Font {
 
 class Choropleth::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -842,18 +859,14 @@ class Choropleth::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Choropleth::Hoverlabel& bgcolor(std::string f);
-    Choropleth::Hoverlabel& bgcolor(double f);
     Choropleth::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Choropleth::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Choropleth::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Choropleth::Hoverlabel& bordercolor(std::string f);
-    Choropleth::Hoverlabel& bordercolor(double f);
     Choropleth::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Choropleth::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Choropleth::Hoverlabel& bordercolorsrc(std::string f);
@@ -878,6 +891,9 @@ class Choropleth::Hoverlabel {
 // Sets the font used in hover labels.
 class Choropleth::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -904,9 +920,7 @@ class Choropleth::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Choropleth::Hoverlabel::Font& color(std::string f);
-    Choropleth::Hoverlabel::Font& color(double f);
     Choropleth::Hoverlabel::Font& color(std::vector<std::string> f);
-    Choropleth::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Choropleth::Hoverlabel::Font& colorsrc(std::string f);
@@ -987,6 +1001,9 @@ class Choropleth::Hoverlabel::Font {
 
 class Choropleth::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -1004,6 +1021,9 @@ class Choropleth::Legendgrouptitle {
 // Sets this legend group's title font.
 class Choropleth::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1030,7 +1050,6 @@ class Choropleth::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Choropleth::Legendgrouptitle::Font& color(std::string f);
-    Choropleth::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1076,6 +1095,9 @@ class Choropleth::Legendgrouptitle::Font {
 
 class Choropleth::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Line;
 
@@ -1094,14 +1116,15 @@ class Choropleth::Marker {
 
 class Choropleth::Marker::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker.line color. It accepts either a specific color or an array of numbers that are mapped to the
     // colorscale relative to the max and min values of the array or relative to `marker.line.cmin` and
     // `marker.line.cmax` if set.
     Choropleth::Marker::Line& color(std::string f);
-    Choropleth::Marker::Line& color(double f);
     Choropleth::Marker::Line& color(std::vector<std::string> f);
-    Choropleth::Marker::Line& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Choropleth::Marker::Line& colorsrc(std::string f);
@@ -1119,6 +1142,9 @@ class Choropleth::Marker::Line {
 
 class Choropleth::Selected {
  public:
+    Selected() = default;
+    Selected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
 
@@ -1130,6 +1156,9 @@ class Choropleth::Selected {
 
 class Choropleth::Selected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker opacity of selected points.
     Choropleth::Selected::Marker& opacity(double f);
@@ -1140,6 +1169,9 @@ class Choropleth::Selected::Marker {
 
 class Choropleth::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -1155,6 +1187,9 @@ class Choropleth::Stream {
 
 class Choropleth::Unselected {
  public:
+    Unselected() = default;
+    Unselected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
 
@@ -1166,6 +1201,9 @@ class Choropleth::Unselected {
 
 class Choropleth::Unselected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker opacity of unselected points, applied only when a selection exists.
     Choropleth::Unselected::Marker& opacity(double f);

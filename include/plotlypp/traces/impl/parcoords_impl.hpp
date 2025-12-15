@@ -164,7 +164,7 @@ Parcoords::Dimensions& Parcoords::Dimensions::dimension(Dimension f) {
 }
 
 
-Parcoords::Dimensions::Dimension& Parcoords::Dimensions::Dimension::constraintrange(std::vector<std::string> f) {
+Parcoords::Dimensions::Dimension& Parcoords::Dimensions::Dimension::constraintrange(std::vector<double> f) {
     json["constraintrange"] = std::move(f);
     return *this;
 }
@@ -184,7 +184,7 @@ Parcoords::Dimensions::Dimension& Parcoords::Dimensions::Dimension::name(std::st
     return *this;
 }
 
-Parcoords::Dimensions::Dimension& Parcoords::Dimensions::Dimension::range(std::vector<std::string> f) {
+Parcoords::Dimensions::Dimension& Parcoords::Dimensions::Dimension::range(std::vector<double> f) {
     json["range"] = std::move(f);
     return *this;
 }
@@ -248,12 +248,12 @@ Parcoords::Domain& Parcoords::Domain::row(int f) {
     return *this;
 }
 
-Parcoords::Domain& Parcoords::Domain::x(std::vector<std::string> f) {
+Parcoords::Domain& Parcoords::Domain::x(std::vector<double> f) {
     json["x"] = std::move(f);
     return *this;
 }
 
-Parcoords::Domain& Parcoords::Domain::y(std::vector<std::string> f) {
+Parcoords::Domain& Parcoords::Domain::y(std::vector<double> f) {
     json["y"] = std::move(f);
     return *this;
 }
@@ -290,10 +290,6 @@ std::string Parcoords::Labelfont::to_string(Variant e) {
 }
 
 Parcoords::Labelfont& Parcoords::Labelfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Parcoords::Labelfont& Parcoords::Labelfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -384,10 +380,6 @@ Parcoords::Legendgrouptitle::Font& Parcoords::Legendgrouptitle::Font::color(std:
     json["color"] = std::move(f);
     return *this;
 }
-Parcoords::Legendgrouptitle::Font& Parcoords::Legendgrouptitle::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Parcoords::Legendgrouptitle::Font& Parcoords::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -459,15 +451,7 @@ Parcoords::Line& Parcoords::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Parcoords::Line& Parcoords::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Parcoords::Line& Parcoords::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Parcoords::Line& Parcoords::Line::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -653,16 +637,8 @@ Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -715,10 +691,6 @@ Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::orientation(enum Orientati
 }
 
 Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -775,10 +747,6 @@ Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::tickangle(double f) {
 }
 
 Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -945,10 +913,6 @@ Parcoords::Line::Colorbar::Tickfont& Parcoords::Line::Colorbar::Tickfont::color(
     json["color"] = std::move(f);
     return *this;
 }
-Parcoords::Line::Colorbar::Tickfont& Parcoords::Line::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Parcoords::Line::Colorbar::Tickfont& Parcoords::Line::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -997,7 +961,7 @@ Parcoords::Line::Colorbar::Tickformatstops& Parcoords::Line::Colorbar::Tickforma
 }
 
 
-Parcoords::Line::Colorbar::Tickformatstops::Tickformatstop& Parcoords::Line::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Parcoords::Line::Colorbar::Tickformatstops::Tickformatstop& Parcoords::Line::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -1082,10 +1046,6 @@ Parcoords::Line::Colorbar::Title::Font& Parcoords::Line::Colorbar::Title::Font::
     json["color"] = std::move(f);
     return *this;
 }
-Parcoords::Line::Colorbar::Title::Font& Parcoords::Line::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Parcoords::Line::Colorbar::Title::Font& Parcoords::Line::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1159,10 +1119,6 @@ std::string Parcoords::Rangefont::to_string(Variant e) {
 }
 
 Parcoords::Rangefont& Parcoords::Rangefont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Parcoords::Rangefont& Parcoords::Rangefont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1253,10 +1209,6 @@ Parcoords::Tickfont& Parcoords::Tickfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Parcoords::Tickfont& Parcoords::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Parcoords::Tickfont& Parcoords::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -1306,10 +1258,6 @@ Parcoords::Unselected& Parcoords::Unselected::line(Line f) {
 
 
 Parcoords::Unselected::Line& Parcoords::Unselected::Line::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Parcoords::Unselected::Line& Parcoords::Unselected::Line::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

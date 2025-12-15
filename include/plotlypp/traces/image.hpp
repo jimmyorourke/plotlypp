@@ -25,6 +25,8 @@ class Image : public Trace {
     : Trace() {
         json["type"] = "image";
     }
+    Image(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Colormodel {
         RGB,
@@ -215,13 +217,13 @@ class Image : public Trace {
     // colormodel. For the `rgb` colormodel, it is [255, 255, 255]. For the `rgba` colormodel, it is [255, 255, 255, 1].
     // For the `rgba256` colormodel, it is [255, 255, 255, 255]. For the `hsl` colormodel, it is [360, 100, 100]. For
     // the `hsla` colormodel, it is [360, 100, 100, 1].
-    Image& zmax(std::vector<std::string> f);
+    Image& zmax(std::vector<double> f);
 
     // Array defining the lower bound for each color component. Note that the default value will depend on the
     // colormodel. For the `rgb` colormodel, it is [0, 0, 0]. For the `rgba` colormodel, it is [0, 0, 0, 0]. For the
     // `rgba256` colormodel, it is [0, 0, 0, 0]. For the `hsl` colormodel, it is [0, 0, 0]. For the `hsla` colormodel,
     // it is [0, 0, 0, 0].
-    Image& zmin(std::vector<std::string> f);
+    Image& zmin(std::vector<double> f);
 
     // Sets the layer on which this trace is displayed, relative to other SVG traces on the same subplot. SVG traces
     // with higher `zorder` appear in front of those with lower `zorder`.
@@ -238,6 +240,9 @@ class Image : public Trace {
 
 class Image::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -260,18 +265,14 @@ class Image::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Image::Hoverlabel& bgcolor(std::string f);
-    Image::Hoverlabel& bgcolor(double f);
     Image::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Image::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Image::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Image::Hoverlabel& bordercolor(std::string f);
-    Image::Hoverlabel& bordercolor(double f);
     Image::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Image::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Image::Hoverlabel& bordercolorsrc(std::string f);
@@ -296,6 +297,9 @@ class Image::Hoverlabel {
 // Sets the font used in hover labels.
 class Image::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -322,9 +326,7 @@ class Image::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Image::Hoverlabel::Font& color(std::string f);
-    Image::Hoverlabel::Font& color(double f);
     Image::Hoverlabel::Font& color(std::vector<std::string> f);
-    Image::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Image::Hoverlabel::Font& colorsrc(std::string f);
@@ -405,6 +407,9 @@ class Image::Hoverlabel::Font {
 
 class Image::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -422,6 +427,9 @@ class Image::Legendgrouptitle {
 // Sets this legend group's title font.
 class Image::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -448,7 +456,6 @@ class Image::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Image::Legendgrouptitle::Font& color(std::string f);
-    Image::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -494,6 +501,9 @@ class Image::Legendgrouptitle::Font {
 
 class Image::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.

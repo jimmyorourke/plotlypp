@@ -166,10 +166,6 @@ Box& Box::fillcolor(std::string f) {
     json["fillcolor"] = std::move(f);
     return *this;
 }
-Box& Box::fillcolor(double f) {
-    json["fillcolor"] = std::move(f);
-    return *this;
-}
 
 Box& Box::hoverinfo(std::string f) {
     json["hoverinfo"] = std::move(f);
@@ -632,15 +628,7 @@ Box::Hoverlabel& Box::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Box::Hoverlabel& Box::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Box::Hoverlabel& Box::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Box::Hoverlabel& Box::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -654,15 +642,7 @@ Box::Hoverlabel& Box::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Box::Hoverlabel& Box::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Box::Hoverlabel& Box::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Box::Hoverlabel& Box::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -726,15 +706,7 @@ Box::Hoverlabel::Font& Box::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Box::Hoverlabel::Font& Box::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Box::Hoverlabel::Font& Box::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Box::Hoverlabel::Font& Box::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -908,10 +880,6 @@ Box::Legendgrouptitle::Font& Box::Legendgrouptitle::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Box::Legendgrouptitle::Font& Box::Legendgrouptitle::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Box::Legendgrouptitle::Font& Box::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -955,10 +923,6 @@ Box::Legendgrouptitle::Font& Box::Legendgrouptitle::Font::weight(int f) {
 
 
 Box::Line& Box::Line::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Box::Line& Box::Line::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1308,10 +1272,6 @@ Box::Marker& Box::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Box::Marker& Box::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Box::Marker& Box::Marker::line(Line f) {
     json["line"] = std::move(f.json);
@@ -1324,10 +1284,6 @@ Box::Marker& Box::Marker::opacity(double f) {
 }
 
 Box::Marker& Box::Marker::outliercolor(std::string f) {
-    json["outliercolor"] = std::move(f);
-    return *this;
-}
-Box::Marker& Box::Marker::outliercolor(double f) {
     json["outliercolor"] = std::move(f);
     return *this;
 }
@@ -1347,16 +1303,8 @@ Box::Marker::Line& Box::Marker::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Box::Marker::Line& Box::Marker::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Box::Marker::Line& Box::Marker::Line::outliercolor(std::string f) {
-    json["outliercolor"] = std::move(f);
-    return *this;
-}
-Box::Marker::Line& Box::Marker::Line::outliercolor(double f) {
     json["outliercolor"] = std::move(f);
     return *this;
 }
@@ -1379,10 +1327,6 @@ Box::Selected& Box::Selected::marker(Marker f) {
 
 
 Box::Selected::Marker& Box::Selected::Marker::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Box::Selected::Marker& Box::Selected::Marker::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1416,10 +1360,6 @@ Box::Unselected& Box::Unselected::marker(Marker f) {
 
 
 Box::Unselected::Marker& Box::Unselected::Marker::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Box::Unselected::Marker& Box::Unselected::Marker::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

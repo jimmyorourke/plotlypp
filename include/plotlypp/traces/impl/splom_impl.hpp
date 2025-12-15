@@ -221,7 +221,7 @@ Splom& Splom::visible(enum Visible f) {
     return *this;
 }
 
-Splom& Splom::xaxes(std::vector<std::string> f) {
+Splom& Splom::xaxes(std::vector<double> f) {
     json["xaxes"] = std::move(f);
     return *this;
 }
@@ -231,7 +231,7 @@ Splom& Splom::xhoverformat(std::string f) {
     return *this;
 }
 
-Splom& Splom::yaxes(std::vector<std::string> f) {
+Splom& Splom::yaxes(std::vector<double> f) {
     json["yaxes"] = std::move(f);
     return *this;
 }
@@ -341,15 +341,7 @@ Splom::Hoverlabel& Splom::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Splom::Hoverlabel& Splom::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Splom::Hoverlabel& Splom::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Splom::Hoverlabel& Splom::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -363,15 +355,7 @@ Splom::Hoverlabel& Splom::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Splom::Hoverlabel& Splom::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Splom::Hoverlabel& Splom::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Splom::Hoverlabel& Splom::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -435,15 +419,7 @@ Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -614,10 +590,6 @@ std::string Splom::Legendgrouptitle::Font::to_string(Variant e) {
 }
 
 Splom::Legendgrouptitle::Font& Splom::Legendgrouptitle::Font::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Splom::Legendgrouptitle::Font& Splom::Legendgrouptitle::Font::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1044,15 +1016,7 @@ Splom::Marker& Splom::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Splom::Marker& Splom::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Splom::Marker& Splom::Marker::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Splom::Marker& Splom::Marker::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1302,16 +1266,8 @@ Splom::Marker::Colorbar& Splom::Marker::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Splom::Marker::Colorbar& Splom::Marker::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Splom::Marker::Colorbar& Splom::Marker::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -1364,10 +1320,6 @@ Splom::Marker::Colorbar& Splom::Marker::Colorbar::orientation(enum Orientation f
 }
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Splom::Marker::Colorbar& Splom::Marker::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -1424,10 +1376,6 @@ Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickangle(double f) {
 }
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -1594,10 +1542,6 @@ Splom::Marker::Colorbar::Tickfont& Splom::Marker::Colorbar::Tickfont::color(std:
     json["color"] = std::move(f);
     return *this;
 }
-Splom::Marker::Colorbar::Tickfont& Splom::Marker::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Splom::Marker::Colorbar::Tickfont& Splom::Marker::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -1646,7 +1590,7 @@ Splom::Marker::Colorbar::Tickformatstops& Splom::Marker::Colorbar::Tickformatsto
 }
 
 
-Splom::Marker::Colorbar::Tickformatstops::Tickformatstop& Splom::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Splom::Marker::Colorbar::Tickformatstops::Tickformatstop& Splom::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -1731,10 +1675,6 @@ Splom::Marker::Colorbar::Title::Font& Splom::Marker::Colorbar::Title::Font::colo
     json["color"] = std::move(f);
     return *this;
 }
-Splom::Marker::Colorbar::Title::Font& Splom::Marker::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Splom::Marker::Colorbar::Title::Font& Splom::Marker::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1806,15 +1746,7 @@ Splom::Marker::Line& Splom::Marker::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Splom::Marker::Line& Splom::Marker::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Splom::Marker::Line& Splom::Marker::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Splom::Marker::Line& Splom::Marker::Line::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1868,10 +1800,6 @@ Splom::Selected::Marker& Splom::Selected::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Splom::Selected::Marker& Splom::Selected::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Splom::Selected::Marker& Splom::Selected::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
@@ -1902,10 +1830,6 @@ Splom::Unselected& Splom::Unselected::marker(Marker f) {
 
 
 Splom::Unselected::Marker& Splom::Unselected::Marker::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Splom::Unselected::Marker& Splom::Unselected::Marker::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

@@ -25,6 +25,8 @@ class Carpet : public Trace {
     : Trace() {
         json["type"] = "carpet";
     }
+    Carpet(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Visible {
         TRUE,
@@ -76,7 +78,6 @@ class Carpet : public Trace {
     // Sets default for all colors associated with this axis all at once: line, font, tick, and grid colors. Grid color
     // is lightened by blending this with the plot background Individual pieces can override this.
     Carpet& color(std::string f);
-    Carpet& color(double f);
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
@@ -191,6 +192,9 @@ class Carpet : public Trace {
 
 class Carpet::Aaxis {
  public:
+    Aaxis() = default;
+    Aaxis(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Autorange {
         TRUE,
@@ -327,7 +331,6 @@ class Carpet::Aaxis {
     // Sets default for all colors associated with this axis all at once: line, font, tick, and grid colors. Grid color
     // is lightened by blending this with the plot background Individual pieces can override this.
     Carpet::Aaxis& color(std::string f);
-    Carpet::Aaxis& color(double f);
 
     // The stride between grid lines along the axis
     Carpet::Aaxis& dtick(double f);
@@ -338,7 +341,6 @@ class Carpet::Aaxis {
 
     // Sets the line color of the end line.
     Carpet::Aaxis& endlinecolor(std::string f);
-    Carpet::Aaxis& endlinecolor(double f);
 
     // Sets the width (in px) of the end line.
     Carpet::Aaxis& endlinewidth(double f);
@@ -354,7 +356,6 @@ class Carpet::Aaxis {
 
     // Sets the axis line color.
     Carpet::Aaxis& gridcolor(std::string f);
-    Carpet::Aaxis& gridcolor(double f);
 
     // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
     // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
@@ -382,7 +383,6 @@ class Carpet::Aaxis {
 
     // Sets the axis line color.
     Carpet::Aaxis& linecolor(std::string f);
-    Carpet::Aaxis& linecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Carpet::Aaxis& linewidth(double f);
@@ -392,7 +392,6 @@ class Carpet::Aaxis {
 
     // Sets the color of the grid lines.
     Carpet::Aaxis& minorgridcolor(std::string f);
-    Carpet::Aaxis& minorgridcolor(double f);
 
     // Sets the number of minor grid ticks per major grid tick
     Carpet::Aaxis& minorgridcount(int f);
@@ -413,7 +412,7 @@ class Carpet::Aaxis {
     // strings, like date data, though Date objects and unix milliseconds will be accepted and converted to strings. If
     // the axis `type` is *category*, it should be numbers, using the scale where each category is assigned a serial
     // number from zero in the order it appears.
-    Carpet::Aaxis& range(std::vector<std::string> f);
+    Carpet::Aaxis& range(std::vector<double> f);
 
     // If *normal*, the range is computed in relation to the extrema of the input data. If *tozero*`, the range extends
     // to 0, regardless of the input data If *nonnegative*, the range is non-negative, regardless of the input data.
@@ -455,7 +454,6 @@ class Carpet::Aaxis {
 
     // Sets the line color of the start line.
     Carpet::Aaxis& startlinecolor(std::string f);
-    Carpet::Aaxis& startlinecolor(double f);
 
     // Sets the width (in px) of the start line.
     Carpet::Aaxis& startlinewidth(double f);
@@ -519,6 +517,9 @@ class Carpet::Aaxis {
 // Sets the tick font.
 class Carpet::Aaxis::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -545,7 +546,6 @@ class Carpet::Aaxis::Tickfont {
     static std::string to_string(Variant e);
 
     Carpet::Aaxis::Tickfont& color(std::string f);
-    Carpet::Aaxis::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -591,6 +591,9 @@ class Carpet::Aaxis::Tickfont {
 
 class Carpet::Aaxis::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -602,10 +605,13 @@ class Carpet::Aaxis::Tickformatstops {
 
 class Carpet::Aaxis::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Carpet::Aaxis::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Carpet::Aaxis::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Carpet::Aaxis::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -632,6 +638,9 @@ class Carpet::Aaxis::Tickformatstops::Tickformatstop {
 
 class Carpet::Aaxis::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this axis' title font.
     class Font;
@@ -652,6 +661,9 @@ class Carpet::Aaxis::Title {
 // Sets this axis' title font.
 class Carpet::Aaxis::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -678,7 +690,6 @@ class Carpet::Aaxis::Title::Font {
     static std::string to_string(Variant e);
 
     Carpet::Aaxis::Title::Font& color(std::string f);
-    Carpet::Aaxis::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -724,6 +735,9 @@ class Carpet::Aaxis::Title::Font {
 
 class Carpet::Baxis {
  public:
+    Baxis() = default;
+    Baxis(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Autorange {
         TRUE,
@@ -860,7 +874,6 @@ class Carpet::Baxis {
     // Sets default for all colors associated with this axis all at once: line, font, tick, and grid colors. Grid color
     // is lightened by blending this with the plot background Individual pieces can override this.
     Carpet::Baxis& color(std::string f);
-    Carpet::Baxis& color(double f);
 
     // The stride between grid lines along the axis
     Carpet::Baxis& dtick(double f);
@@ -871,7 +884,6 @@ class Carpet::Baxis {
 
     // Sets the line color of the end line.
     Carpet::Baxis& endlinecolor(std::string f);
-    Carpet::Baxis& endlinecolor(double f);
 
     // Sets the width (in px) of the end line.
     Carpet::Baxis& endlinewidth(double f);
@@ -887,7 +899,6 @@ class Carpet::Baxis {
 
     // Sets the axis line color.
     Carpet::Baxis& gridcolor(std::string f);
-    Carpet::Baxis& gridcolor(double f);
 
     // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
     // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
@@ -915,7 +926,6 @@ class Carpet::Baxis {
 
     // Sets the axis line color.
     Carpet::Baxis& linecolor(std::string f);
-    Carpet::Baxis& linecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Carpet::Baxis& linewidth(double f);
@@ -925,7 +935,6 @@ class Carpet::Baxis {
 
     // Sets the color of the grid lines.
     Carpet::Baxis& minorgridcolor(std::string f);
-    Carpet::Baxis& minorgridcolor(double f);
 
     // Sets the number of minor grid ticks per major grid tick
     Carpet::Baxis& minorgridcount(int f);
@@ -946,7 +955,7 @@ class Carpet::Baxis {
     // strings, like date data, though Date objects and unix milliseconds will be accepted and converted to strings. If
     // the axis `type` is *category*, it should be numbers, using the scale where each category is assigned a serial
     // number from zero in the order it appears.
-    Carpet::Baxis& range(std::vector<std::string> f);
+    Carpet::Baxis& range(std::vector<double> f);
 
     // If *normal*, the range is computed in relation to the extrema of the input data. If *tozero*`, the range extends
     // to 0, regardless of the input data If *nonnegative*, the range is non-negative, regardless of the input data.
@@ -988,7 +997,6 @@ class Carpet::Baxis {
 
     // Sets the line color of the start line.
     Carpet::Baxis& startlinecolor(std::string f);
-    Carpet::Baxis& startlinecolor(double f);
 
     // Sets the width (in px) of the start line.
     Carpet::Baxis& startlinewidth(double f);
@@ -1052,6 +1060,9 @@ class Carpet::Baxis {
 // Sets the tick font.
 class Carpet::Baxis::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1078,7 +1089,6 @@ class Carpet::Baxis::Tickfont {
     static std::string to_string(Variant e);
 
     Carpet::Baxis::Tickfont& color(std::string f);
-    Carpet::Baxis::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1124,6 +1134,9 @@ class Carpet::Baxis::Tickfont {
 
 class Carpet::Baxis::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -1135,10 +1148,13 @@ class Carpet::Baxis::Tickformatstops {
 
 class Carpet::Baxis::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Carpet::Baxis::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Carpet::Baxis::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Carpet::Baxis::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -1165,6 +1181,9 @@ class Carpet::Baxis::Tickformatstops::Tickformatstop {
 
 class Carpet::Baxis::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this axis' title font.
     class Font;
@@ -1185,6 +1204,9 @@ class Carpet::Baxis::Title {
 // Sets this axis' title font.
 class Carpet::Baxis::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1211,7 +1233,6 @@ class Carpet::Baxis::Title::Font {
     static std::string to_string(Variant e);
 
     Carpet::Baxis::Title::Font& color(std::string f);
-    Carpet::Baxis::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1258,6 +1279,9 @@ class Carpet::Baxis::Title::Font {
 // The default font used for axis & tick labels on this carpet
 class Carpet::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1284,7 +1308,6 @@ class Carpet::Font {
     static std::string to_string(Variant e);
 
     Carpet::Font& color(std::string f);
-    Carpet::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1330,6 +1353,9 @@ class Carpet::Font {
 
 class Carpet::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -1347,6 +1373,9 @@ class Carpet::Legendgrouptitle {
 // Sets this legend group's title font.
 class Carpet::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1373,7 +1402,6 @@ class Carpet::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Carpet::Legendgrouptitle::Font& color(std::string f);
-    Carpet::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1419,6 +1447,9 @@ class Carpet::Legendgrouptitle::Font {
 
 class Carpet::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.

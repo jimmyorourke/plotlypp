@@ -526,16 +526,8 @@ Cone::Colorbar& Cone::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Cone::Colorbar& Cone::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Cone::Colorbar& Cone::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Cone::Colorbar& Cone::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -588,10 +580,6 @@ Cone::Colorbar& Cone::Colorbar::orientation(enum Orientation f) {
 }
 
 Cone::Colorbar& Cone::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Cone::Colorbar& Cone::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -648,10 +636,6 @@ Cone::Colorbar& Cone::Colorbar::tickangle(double f) {
 }
 
 Cone::Colorbar& Cone::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Cone::Colorbar& Cone::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -818,10 +802,6 @@ Cone::Colorbar::Tickfont& Cone::Colorbar::Tickfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Cone::Colorbar::Tickfont& Cone::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Cone::Colorbar::Tickfont& Cone::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -870,7 +850,7 @@ Cone::Colorbar::Tickformatstops& Cone::Colorbar::Tickformatstops::tickformatstop
 }
 
 
-Cone::Colorbar::Tickformatstops::Tickformatstop& Cone::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Cone::Colorbar::Tickformatstops::Tickformatstop& Cone::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -955,10 +935,6 @@ Cone::Colorbar::Title::Font& Cone::Colorbar::Title::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Cone::Colorbar::Title::Font& Cone::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Cone::Colorbar::Title::Font& Cone::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1030,15 +1006,7 @@ Cone::Hoverlabel& Cone::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Cone::Hoverlabel& Cone::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Cone::Hoverlabel& Cone::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Cone::Hoverlabel& Cone::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -1052,15 +1020,7 @@ Cone::Hoverlabel& Cone::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Cone::Hoverlabel& Cone::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Cone::Hoverlabel& Cone::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Cone::Hoverlabel& Cone::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -1124,15 +1084,7 @@ Cone::Hoverlabel::Font& Cone::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Cone::Hoverlabel::Font& Cone::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Cone::Hoverlabel::Font& Cone::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Cone::Hoverlabel::Font& Cone::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1303,10 +1255,6 @@ std::string Cone::Legendgrouptitle::Font::to_string(Variant e) {
 }
 
 Cone::Legendgrouptitle::Font& Cone::Legendgrouptitle::Font::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Cone::Legendgrouptitle::Font& Cone::Legendgrouptitle::Font::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

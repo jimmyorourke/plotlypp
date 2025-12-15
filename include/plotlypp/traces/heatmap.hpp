@@ -25,6 +25,8 @@ class Heatmap : public Trace {
     : Trace() {
         json["type"] = "heatmap";
     }
+    Heatmap(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Visible {
         TRUE,
@@ -439,6 +441,9 @@ class Heatmap : public Trace {
 
 class Heatmap::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -559,11 +564,9 @@ class Heatmap::Colorbar {
 
     // Sets the color of padded area.
     Heatmap::Colorbar& bgcolor(std::string f);
-    Heatmap::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Heatmap::Colorbar& bordercolor(std::string f);
-    Heatmap::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Heatmap::Colorbar& borderwidth(double f);
@@ -619,7 +622,6 @@ class Heatmap::Colorbar {
 
     // Sets the axis line color.
     Heatmap::Colorbar& outlinecolor(std::string f);
-    Heatmap::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Heatmap::Colorbar& outlinewidth(double f);
@@ -666,7 +668,6 @@ class Heatmap::Colorbar {
 
     // Sets the tick color.
     Heatmap::Colorbar& tickcolor(std::string f);
-    Heatmap::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Heatmap::Colorbar& tickfont(Tickfont f);
@@ -779,6 +780,9 @@ class Heatmap::Colorbar {
 // Sets the color bar's tick label font
 class Heatmap::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -805,7 +809,6 @@ class Heatmap::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Heatmap::Colorbar::Tickfont& color(std::string f);
-    Heatmap::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -851,6 +854,9 @@ class Heatmap::Colorbar::Tickfont {
 
 class Heatmap::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -862,10 +868,13 @@ class Heatmap::Colorbar::Tickformatstops {
 
 class Heatmap::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Heatmap::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Heatmap::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Heatmap::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -892,6 +901,9 @@ class Heatmap::Colorbar::Tickformatstops::Tickformatstop {
 
 class Heatmap::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -920,6 +932,9 @@ class Heatmap::Colorbar::Title {
 // Sets this color bar's title font.
 class Heatmap::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -946,7 +961,6 @@ class Heatmap::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Heatmap::Colorbar::Title::Font& color(std::string f);
-    Heatmap::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -992,6 +1006,9 @@ class Heatmap::Colorbar::Title::Font {
 
 class Heatmap::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -1014,18 +1031,14 @@ class Heatmap::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Heatmap::Hoverlabel& bgcolor(std::string f);
-    Heatmap::Hoverlabel& bgcolor(double f);
     Heatmap::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Heatmap::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Heatmap::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Heatmap::Hoverlabel& bordercolor(std::string f);
-    Heatmap::Hoverlabel& bordercolor(double f);
     Heatmap::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Heatmap::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Heatmap::Hoverlabel& bordercolorsrc(std::string f);
@@ -1050,6 +1063,9 @@ class Heatmap::Hoverlabel {
 // Sets the font used in hover labels.
 class Heatmap::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1076,9 +1092,7 @@ class Heatmap::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Heatmap::Hoverlabel::Font& color(std::string f);
-    Heatmap::Hoverlabel::Font& color(double f);
     Heatmap::Hoverlabel::Font& color(std::vector<std::string> f);
-    Heatmap::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Heatmap::Hoverlabel::Font& colorsrc(std::string f);
@@ -1159,6 +1173,9 @@ class Heatmap::Hoverlabel::Font {
 
 class Heatmap::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -1176,6 +1193,9 @@ class Heatmap::Legendgrouptitle {
 // Sets this legend group's title font.
 class Heatmap::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1202,7 +1222,6 @@ class Heatmap::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Heatmap::Legendgrouptitle::Font& color(std::string f);
-    Heatmap::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1248,6 +1267,9 @@ class Heatmap::Legendgrouptitle::Font {
 
 class Heatmap::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -1264,6 +1286,9 @@ class Heatmap::Stream {
 // Sets the text font.
 class Heatmap::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1290,7 +1315,6 @@ class Heatmap::Textfont {
     static std::string to_string(Variant e);
 
     Heatmap::Textfont& color(std::string f);
-    Heatmap::Textfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by

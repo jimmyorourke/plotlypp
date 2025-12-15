@@ -25,6 +25,8 @@ class Splom : public Trace {
     : Trace() {
         json["type"] = "splom";
     }
+    Splom(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Visible {
         TRUE,
@@ -196,7 +198,7 @@ class Splom : public Trace {
     // Sets the list of x axes corresponding to dimensions of this splom trace. By default, a splom will match the first
     // N xaxes where N is the number of input dimensions. Note that, in case where `diagonal.visible` is false and
     // `showupperhalf` or `showlowerhalf` is false, this splom trace will generate one less x-axis and one less y-axis.
-    Splom& xaxes(std::vector<std::string> f);
+    Splom& xaxes(std::vector<double> f);
 
     // Sets the hover text formatting rulefor `x`  using d3 formatting mini-languages which are very similar to those in
     // Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -209,7 +211,7 @@ class Splom : public Trace {
     // Sets the list of y axes corresponding to dimensions of this splom trace. By default, a splom will match the first
     // N yaxes where N is the number of input dimensions. Note that, in case where `diagonal.visible` is false and
     // `showupperhalf` or `showlowerhalf` is false, this splom trace will generate one less x-axis and one less y-axis.
-    Splom& yaxes(std::vector<std::string> f);
+    Splom& yaxes(std::vector<double> f);
 
     // Sets the hover text formatting rulefor `y`  using d3 formatting mini-languages which are very similar to those in
     // Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -222,6 +224,9 @@ class Splom : public Trace {
 
 class Splom::Diagonal {
  public:
+    Diagonal() = default;
+    Diagonal(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Determines whether or not subplots on the diagonal are displayed.
     Splom::Diagonal& visible(bool f);
@@ -232,6 +237,9 @@ class Splom::Diagonal {
 
 class Splom::Dimensions {
  public:
+    Dimensions() = default;
+    Dimensions(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Dimension;
 
@@ -243,6 +251,9 @@ class Splom::Dimensions {
 
 class Splom::Dimensions::Dimension {
  public:
+    Dimension() = default;
+    Dimension(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Axis;
 
@@ -281,6 +292,9 @@ class Splom::Dimensions::Dimension {
 
 class Splom::Dimensions::Dimension::Axis {
  public:
+    Axis() = default;
+    Axis(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Type {
         LINEAR,
@@ -304,6 +318,9 @@ class Splom::Dimensions::Dimension::Axis {
 
 class Splom::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -326,18 +343,14 @@ class Splom::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Splom::Hoverlabel& bgcolor(std::string f);
-    Splom::Hoverlabel& bgcolor(double f);
     Splom::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Splom::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Splom::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Splom::Hoverlabel& bordercolor(std::string f);
-    Splom::Hoverlabel& bordercolor(double f);
     Splom::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Splom::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Splom::Hoverlabel& bordercolorsrc(std::string f);
@@ -362,6 +375,9 @@ class Splom::Hoverlabel {
 // Sets the font used in hover labels.
 class Splom::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -388,9 +404,7 @@ class Splom::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Splom::Hoverlabel::Font& color(std::string f);
-    Splom::Hoverlabel::Font& color(double f);
     Splom::Hoverlabel::Font& color(std::vector<std::string> f);
-    Splom::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Splom::Hoverlabel::Font& colorsrc(std::string f);
@@ -471,6 +485,9 @@ class Splom::Hoverlabel::Font {
 
 class Splom::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -488,6 +505,9 @@ class Splom::Legendgrouptitle {
 // Sets this legend group's title font.
 class Splom::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -514,7 +534,6 @@ class Splom::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Splom::Legendgrouptitle::Font& color(std::string f);
-    Splom::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -560,6 +579,9 @@ class Splom::Legendgrouptitle::Font {
 
 class Splom::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Sizemode {
         DIAMETER,
@@ -932,9 +954,7 @@ class Splom::Marker {
     // Sets the marker color. It accepts either a specific color or an array of numbers that are mapped to the
     // colorscale relative to the max and min values of the array or relative to `marker.cmin` and `marker.cmax` if set.
     Splom::Marker& color(std::string f);
-    Splom::Marker& color(double f);
     Splom::Marker& color(std::vector<std::string> f);
-    Splom::Marker& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -1009,6 +1029,9 @@ class Splom::Marker {
 
 class Splom::Marker::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -1129,11 +1152,9 @@ class Splom::Marker::Colorbar {
 
     // Sets the color of padded area.
     Splom::Marker::Colorbar& bgcolor(std::string f);
-    Splom::Marker::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Splom::Marker::Colorbar& bordercolor(std::string f);
-    Splom::Marker::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Splom::Marker::Colorbar& borderwidth(double f);
@@ -1189,7 +1210,6 @@ class Splom::Marker::Colorbar {
 
     // Sets the axis line color.
     Splom::Marker::Colorbar& outlinecolor(std::string f);
-    Splom::Marker::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Splom::Marker::Colorbar& outlinewidth(double f);
@@ -1236,7 +1256,6 @@ class Splom::Marker::Colorbar {
 
     // Sets the tick color.
     Splom::Marker::Colorbar& tickcolor(std::string f);
-    Splom::Marker::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Splom::Marker::Colorbar& tickfont(Tickfont f);
@@ -1349,6 +1368,9 @@ class Splom::Marker::Colorbar {
 // Sets the color bar's tick label font
 class Splom::Marker::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1375,7 +1397,6 @@ class Splom::Marker::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Splom::Marker::Colorbar::Tickfont& color(std::string f);
-    Splom::Marker::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1421,6 +1442,9 @@ class Splom::Marker::Colorbar::Tickfont {
 
 class Splom::Marker::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -1432,10 +1456,13 @@ class Splom::Marker::Colorbar::Tickformatstops {
 
 class Splom::Marker::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Splom::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Splom::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Splom::Marker::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -1462,6 +1489,9 @@ class Splom::Marker::Colorbar::Tickformatstops::Tickformatstop {
 
 class Splom::Marker::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -1490,6 +1520,9 @@ class Splom::Marker::Colorbar::Title {
 // Sets this color bar's title font.
 class Splom::Marker::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1516,7 +1549,6 @@ class Splom::Marker::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Splom::Marker::Colorbar::Title::Font& color(std::string f);
-    Splom::Marker::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1562,6 +1594,9 @@ class Splom::Marker::Colorbar::Title::Font {
 
 class Splom::Marker::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by
     // `marker.line.colorscale`. Has an effect only if in `marker.line.color` is set to a numerical array. In case
@@ -1594,9 +1629,7 @@ class Splom::Marker::Line {
     // colorscale relative to the max and min values of the array or relative to `marker.line.cmin` and
     // `marker.line.cmax` if set.
     Splom::Marker::Line& color(std::string f);
-    Splom::Marker::Line& color(double f);
     Splom::Marker::Line& color(std::vector<std::string> f);
-    Splom::Marker::Line& color(std::vector<double> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -1634,6 +1667,9 @@ class Splom::Marker::Line {
 
 class Splom::Selected {
  public:
+    Selected() = default;
+    Selected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
 
@@ -1645,10 +1681,12 @@ class Splom::Selected {
 
 class Splom::Selected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker color of selected points.
     Splom::Selected::Marker& color(std::string f);
-    Splom::Selected::Marker& color(double f);
 
     // Sets the marker opacity of selected points.
     Splom::Selected::Marker& opacity(double f);
@@ -1662,6 +1700,9 @@ class Splom::Selected::Marker {
 
 class Splom::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -1677,6 +1718,9 @@ class Splom::Stream {
 
 class Splom::Unselected {
  public:
+    Unselected() = default;
+    Unselected(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
 
@@ -1688,10 +1732,12 @@ class Splom::Unselected {
 
 class Splom::Unselected::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the marker color of unselected points, applied only when a selection exists.
     Splom::Unselected::Marker& color(std::string f);
-    Splom::Unselected::Marker& color(double f);
 
     // Sets the marker opacity of unselected points, applied only when a selection exists.
     Splom::Unselected::Marker& opacity(double f);

@@ -549,16 +549,8 @@ Isosurface::Colorbar& Isosurface::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Isosurface::Colorbar& Isosurface::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Isosurface::Colorbar& Isosurface::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Isosurface::Colorbar& Isosurface::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -611,10 +603,6 @@ Isosurface::Colorbar& Isosurface::Colorbar::orientation(enum Orientation f) {
 }
 
 Isosurface::Colorbar& Isosurface::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Isosurface::Colorbar& Isosurface::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -671,10 +659,6 @@ Isosurface::Colorbar& Isosurface::Colorbar::tickangle(double f) {
 }
 
 Isosurface::Colorbar& Isosurface::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Isosurface::Colorbar& Isosurface::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -841,10 +825,6 @@ Isosurface::Colorbar::Tickfont& Isosurface::Colorbar::Tickfont::color(std::strin
     json["color"] = std::move(f);
     return *this;
 }
-Isosurface::Colorbar::Tickfont& Isosurface::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Isosurface::Colorbar::Tickfont& Isosurface::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -893,7 +873,7 @@ Isosurface::Colorbar::Tickformatstops& Isosurface::Colorbar::Tickformatstops::ti
 }
 
 
-Isosurface::Colorbar::Tickformatstops::Tickformatstop& Isosurface::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Isosurface::Colorbar::Tickformatstops::Tickformatstop& Isosurface::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -978,10 +958,6 @@ Isosurface::Colorbar::Title::Font& Isosurface::Colorbar::Title::Font::color(std:
     json["color"] = std::move(f);
     return *this;
 }
-Isosurface::Colorbar::Title::Font& Isosurface::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Isosurface::Colorbar::Title::Font& Isosurface::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1028,10 +1004,6 @@ Isosurface::Contour& Isosurface::Contour::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Isosurface::Contour& Isosurface::Contour::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Isosurface::Contour& Isosurface::Contour::show(bool f) {
     json["show"] = std::move(f);
@@ -1073,15 +1045,7 @@ Isosurface::Hoverlabel& Isosurface::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Isosurface::Hoverlabel& Isosurface::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Isosurface::Hoverlabel& Isosurface::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Isosurface::Hoverlabel& Isosurface::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -1095,15 +1059,7 @@ Isosurface::Hoverlabel& Isosurface::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Isosurface::Hoverlabel& Isosurface::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Isosurface::Hoverlabel& Isosurface::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Isosurface::Hoverlabel& Isosurface::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -1167,15 +1123,7 @@ Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::color(std::string f)
     json["color"] = std::move(f);
     return *this;
 }
-Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Isosurface::Hoverlabel::Font& Isosurface::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1346,10 +1294,6 @@ std::string Isosurface::Legendgrouptitle::Font::to_string(Variant e) {
 }
 
 Isosurface::Legendgrouptitle::Font& Isosurface::Legendgrouptitle::Font::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Isosurface::Legendgrouptitle::Font& Isosurface::Legendgrouptitle::Font::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

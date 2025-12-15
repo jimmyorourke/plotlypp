@@ -231,12 +231,12 @@ Image& Image::z(std::vector<T> f) {
     return *this;
 }
 
-Image& Image::zmax(std::vector<std::string> f) {
+Image& Image::zmax(std::vector<double> f) {
     json["zmax"] = std::move(f);
     return *this;
 }
 
-Image& Image::zmin(std::vector<std::string> f) {
+Image& Image::zmin(std::vector<double> f) {
     json["zmin"] = std::move(f);
     return *this;
 }
@@ -286,15 +286,7 @@ Image::Hoverlabel& Image::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Image::Hoverlabel& Image::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Image::Hoverlabel& Image::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Image::Hoverlabel& Image::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -308,15 +300,7 @@ Image::Hoverlabel& Image::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Image::Hoverlabel& Image::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Image::Hoverlabel& Image::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Image::Hoverlabel& Image::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -380,15 +364,7 @@ Image::Hoverlabel::Font& Image::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Image::Hoverlabel::Font& Image::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Image::Hoverlabel::Font& Image::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Image::Hoverlabel::Font& Image::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -559,10 +535,6 @@ std::string Image::Legendgrouptitle::Font::to_string(Variant e) {
 }
 
 Image::Legendgrouptitle::Font& Image::Legendgrouptitle::Font::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Image::Legendgrouptitle::Font& Image::Legendgrouptitle::Font::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

@@ -25,6 +25,8 @@ class Streamtube : public Trace {
     : Trace() {
         json["type"] = "streamtube";
     }
+    Streamtube(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Visible {
         TRUE,
@@ -311,6 +313,9 @@ class Streamtube : public Trace {
 
 class Streamtube::Colorbar {
  public:
+    Colorbar() = default;
+    Colorbar(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
         NONE,
@@ -431,11 +436,9 @@ class Streamtube::Colorbar {
 
     // Sets the color of padded area.
     Streamtube::Colorbar& bgcolor(std::string f);
-    Streamtube::Colorbar& bgcolor(double f);
 
     // Sets the axis line color.
     Streamtube::Colorbar& bordercolor(std::string f);
-    Streamtube::Colorbar& bordercolor(double f);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Streamtube::Colorbar& borderwidth(double f);
@@ -491,7 +494,6 @@ class Streamtube::Colorbar {
 
     // Sets the axis line color.
     Streamtube::Colorbar& outlinecolor(std::string f);
-    Streamtube::Colorbar& outlinecolor(double f);
 
     // Sets the width (in px) of the axis line.
     Streamtube::Colorbar& outlinewidth(double f);
@@ -538,7 +540,6 @@ class Streamtube::Colorbar {
 
     // Sets the tick color.
     Streamtube::Colorbar& tickcolor(std::string f);
-    Streamtube::Colorbar& tickcolor(double f);
 
     // Sets the color bar's tick label font
     Streamtube::Colorbar& tickfont(Tickfont f);
@@ -651,6 +652,9 @@ class Streamtube::Colorbar {
 // Sets the color bar's tick label font
 class Streamtube::Colorbar::Tickfont {
  public:
+    Tickfont() = default;
+    Tickfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -677,7 +681,6 @@ class Streamtube::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Streamtube::Colorbar::Tickfont& color(std::string f);
-    Streamtube::Colorbar::Tickfont& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -723,6 +726,9 @@ class Streamtube::Colorbar::Tickfont {
 
 class Streamtube::Colorbar::Tickformatstops {
  public:
+    Tickformatstops() = default;
+    Tickformatstops(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Tickformatstop;
 
@@ -734,10 +740,13 @@ class Streamtube::Colorbar::Tickformatstops {
 
 class Streamtube::Colorbar::Tickformatstops::Tickformatstop {
  public:
+    Tickformatstop() = default;
+    Tickformatstop(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Streamtube::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<std::string> f);
+    Streamtube::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Streamtube::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
@@ -764,6 +773,9 @@ class Streamtube::Colorbar::Tickformatstops::Tickformatstop {
 
 class Streamtube::Colorbar::Title {
  public:
+    Title() = default;
+    Title(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
         RIGHT,
@@ -792,6 +804,9 @@ class Streamtube::Colorbar::Title {
 // Sets this color bar's title font.
 class Streamtube::Colorbar::Title::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -818,7 +833,6 @@ class Streamtube::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Streamtube::Colorbar::Title::Font& color(std::string f);
-    Streamtube::Colorbar::Title::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -864,6 +878,9 @@ class Streamtube::Colorbar::Title::Font {
 
 class Streamtube::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -886,18 +903,14 @@ class Streamtube::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Streamtube::Hoverlabel& bgcolor(std::string f);
-    Streamtube::Hoverlabel& bgcolor(double f);
     Streamtube::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Streamtube::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Streamtube::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Streamtube::Hoverlabel& bordercolor(std::string f);
-    Streamtube::Hoverlabel& bordercolor(double f);
     Streamtube::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Streamtube::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Streamtube::Hoverlabel& bordercolorsrc(std::string f);
@@ -922,6 +935,9 @@ class Streamtube::Hoverlabel {
 // Sets the font used in hover labels.
 class Streamtube::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -948,9 +964,7 @@ class Streamtube::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Streamtube::Hoverlabel::Font& color(std::string f);
-    Streamtube::Hoverlabel::Font& color(double f);
     Streamtube::Hoverlabel::Font& color(std::vector<std::string> f);
-    Streamtube::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Streamtube::Hoverlabel::Font& colorsrc(std::string f);
@@ -1031,6 +1045,9 @@ class Streamtube::Hoverlabel::Font {
 
 class Streamtube::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -1048,6 +1065,9 @@ class Streamtube::Legendgrouptitle {
 // Sets this legend group's title font.
 class Streamtube::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1074,7 +1094,6 @@ class Streamtube::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Streamtube::Legendgrouptitle::Font& color(std::string f);
-    Streamtube::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1120,6 +1139,9 @@ class Streamtube::Legendgrouptitle::Font {
 
 class Streamtube::Lighting {
  public:
+    Lighting() = default;
+    Lighting(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Ambient light increases overall color visibility but can wash out the image.
     Streamtube::Lighting& ambient(double f);
@@ -1149,6 +1171,9 @@ class Streamtube::Lighting {
 
 class Streamtube::Lightposition {
  public:
+    Lightposition() = default;
+    Lightposition(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Numeric vector, representing the X coordinate for each vertex.
     Streamtube::Lightposition& x(double f);
@@ -1165,6 +1190,9 @@ class Streamtube::Lightposition {
 
 class Streamtube::Starts {
  public:
+    Starts() = default;
+    Starts(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the x components of the starting position of the streamtubes
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
@@ -1193,6 +1221,9 @@ class Streamtube::Starts {
 
 class Streamtube::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.

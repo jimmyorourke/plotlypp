@@ -96,10 +96,6 @@ Scattercarpet& Scattercarpet::fillcolor(std::string f) {
     json["fillcolor"] = std::move(f);
     return *this;
 }
-Scattercarpet& Scattercarpet::fillcolor(double f) {
-    json["fillcolor"] = std::move(f);
-    return *this;
-}
 
 Scattercarpet& Scattercarpet::hoverinfo(std::string f) {
     json["hoverinfo"] = std::move(f);
@@ -366,15 +362,7 @@ Scattercarpet::Hoverlabel& Scattercarpet::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Scattercarpet::Hoverlabel& Scattercarpet::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Scattercarpet::Hoverlabel& Scattercarpet::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Scattercarpet::Hoverlabel& Scattercarpet::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -388,15 +376,7 @@ Scattercarpet::Hoverlabel& Scattercarpet::Hoverlabel::bordercolor(std::string f)
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Scattercarpet::Hoverlabel& Scattercarpet::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Scattercarpet::Hoverlabel& Scattercarpet::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Scattercarpet::Hoverlabel& Scattercarpet::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -460,15 +440,7 @@ Scattercarpet::Hoverlabel::Font& Scattercarpet::Hoverlabel::Font::color(std::str
     json["color"] = std::move(f);
     return *this;
 }
-Scattercarpet::Hoverlabel::Font& Scattercarpet::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scattercarpet::Hoverlabel::Font& Scattercarpet::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattercarpet::Hoverlabel::Font& Scattercarpet::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -642,10 +614,6 @@ Scattercarpet::Legendgrouptitle::Font& Scattercarpet::Legendgrouptitle::Font::co
     json["color"] = std::move(f);
     return *this;
 }
-Scattercarpet::Legendgrouptitle::Font& Scattercarpet::Legendgrouptitle::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scattercarpet::Legendgrouptitle::Font& Scattercarpet::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -711,10 +679,6 @@ Scattercarpet::Line& Scattercarpet::Line::backoffsrc(std::string f) {
 }
 
 Scattercarpet::Line& Scattercarpet::Line::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattercarpet::Line& Scattercarpet::Line::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1134,15 +1098,7 @@ Scattercarpet::Marker& Scattercarpet::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scattercarpet::Marker& Scattercarpet::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scattercarpet::Marker& Scattercarpet::Marker::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattercarpet::Marker& Scattercarpet::Marker::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1416,16 +1372,8 @@ Scattercarpet::Marker::Colorbar& Scattercarpet::Marker::Colorbar::bgcolor(std::s
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Scattercarpet::Marker::Colorbar& Scattercarpet::Marker::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Scattercarpet::Marker::Colorbar& Scattercarpet::Marker::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Scattercarpet::Marker::Colorbar& Scattercarpet::Marker::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -1478,10 +1426,6 @@ Scattercarpet::Marker::Colorbar& Scattercarpet::Marker::Colorbar::orientation(en
 }
 
 Scattercarpet::Marker::Colorbar& Scattercarpet::Marker::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Scattercarpet::Marker::Colorbar& Scattercarpet::Marker::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -1538,10 +1482,6 @@ Scattercarpet::Marker::Colorbar& Scattercarpet::Marker::Colorbar::tickangle(doub
 }
 
 Scattercarpet::Marker::Colorbar& Scattercarpet::Marker::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Scattercarpet::Marker::Colorbar& Scattercarpet::Marker::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -1708,10 +1648,6 @@ Scattercarpet::Marker::Colorbar::Tickfont& Scattercarpet::Marker::Colorbar::Tick
     json["color"] = std::move(f);
     return *this;
 }
-Scattercarpet::Marker::Colorbar::Tickfont& Scattercarpet::Marker::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scattercarpet::Marker::Colorbar::Tickfont& Scattercarpet::Marker::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -1760,7 +1696,7 @@ Scattercarpet::Marker::Colorbar::Tickformatstops& Scattercarpet::Marker::Colorba
 }
 
 
-Scattercarpet::Marker::Colorbar::Tickformatstops::Tickformatstop& Scattercarpet::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Scattercarpet::Marker::Colorbar::Tickformatstops::Tickformatstop& Scattercarpet::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -1845,10 +1781,6 @@ Scattercarpet::Marker::Colorbar::Title::Font& Scattercarpet::Marker::Colorbar::T
     json["color"] = std::move(f);
     return *this;
 }
-Scattercarpet::Marker::Colorbar::Title::Font& Scattercarpet::Marker::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scattercarpet::Marker::Colorbar::Title::Font& Scattercarpet::Marker::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1905,15 +1837,7 @@ Scattercarpet::Marker::Gradient& Scattercarpet::Marker::Gradient::color(std::str
     json["color"] = std::move(f);
     return *this;
 }
-Scattercarpet::Marker::Gradient& Scattercarpet::Marker::Gradient::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scattercarpet::Marker::Gradient& Scattercarpet::Marker::Gradient::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattercarpet::Marker::Gradient& Scattercarpet::Marker::Gradient::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1969,15 +1893,7 @@ Scattercarpet::Marker::Line& Scattercarpet::Marker::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scattercarpet::Marker::Line& Scattercarpet::Marker::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scattercarpet::Marker::Line& Scattercarpet::Marker::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattercarpet::Marker::Line& Scattercarpet::Marker::Line::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -2036,10 +1952,6 @@ Scattercarpet::Selected::Marker& Scattercarpet::Selected::Marker::color(std::str
     json["color"] = std::move(f);
     return *this;
 }
-Scattercarpet::Selected::Marker& Scattercarpet::Selected::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scattercarpet::Selected::Marker& Scattercarpet::Selected::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
@@ -2053,10 +1965,6 @@ Scattercarpet::Selected::Marker& Scattercarpet::Selected::Marker::size(double f)
 
 
 Scattercarpet::Selected::Textfont& Scattercarpet::Selected::Textfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattercarpet::Selected::Textfont& Scattercarpet::Selected::Textfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -2107,15 +2015,7 @@ Scattercarpet::Textfont& Scattercarpet::Textfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scattercarpet::Textfont& Scattercarpet::Textfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scattercarpet::Textfont& Scattercarpet::Textfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattercarpet::Textfont& Scattercarpet::Textfont::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -2259,10 +2159,6 @@ Scattercarpet::Unselected::Marker& Scattercarpet::Unselected::Marker::color(std:
     json["color"] = std::move(f);
     return *this;
 }
-Scattercarpet::Unselected::Marker& Scattercarpet::Unselected::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scattercarpet::Unselected::Marker& Scattercarpet::Unselected::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
@@ -2276,10 +2172,6 @@ Scattercarpet::Unselected::Marker& Scattercarpet::Unselected::Marker::size(doubl
 
 
 Scattercarpet::Unselected::Textfont& Scattercarpet::Unselected::Textfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattercarpet::Unselected::Textfont& Scattercarpet::Unselected::Textfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

@@ -522,10 +522,6 @@ Waterfall::Connector::Line& Waterfall::Connector::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Waterfall::Connector::Line& Waterfall::Connector::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Waterfall::Connector::Line& Waterfall::Connector::Line::dash(std::string f) {
     json["dash"] = std::move(f);
@@ -548,10 +544,6 @@ Waterfall::Decreasing::Marker& Waterfall::Decreasing::Marker::color(std::string 
     json["color"] = std::move(f);
     return *this;
 }
-Waterfall::Decreasing::Marker& Waterfall::Decreasing::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Waterfall::Decreasing::Marker& Waterfall::Decreasing::Marker::line(Line f) {
     json["line"] = std::move(f.json);
@@ -560,10 +552,6 @@ Waterfall::Decreasing::Marker& Waterfall::Decreasing::Marker::line(Line f) {
 
 
 Waterfall::Decreasing::Marker::Line& Waterfall::Decreasing::Marker::Line::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Waterfall::Decreasing::Marker::Line& Waterfall::Decreasing::Marker::Line::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -603,15 +591,7 @@ Waterfall::Hoverlabel& Waterfall::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Waterfall::Hoverlabel& Waterfall::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Waterfall::Hoverlabel& Waterfall::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Waterfall::Hoverlabel& Waterfall::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -625,15 +605,7 @@ Waterfall::Hoverlabel& Waterfall::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Waterfall::Hoverlabel& Waterfall::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Waterfall::Hoverlabel& Waterfall::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Waterfall::Hoverlabel& Waterfall::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -697,15 +669,7 @@ Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -844,10 +808,6 @@ Waterfall::Increasing::Marker& Waterfall::Increasing::Marker::color(std::string 
     json["color"] = std::move(f);
     return *this;
 }
-Waterfall::Increasing::Marker& Waterfall::Increasing::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Waterfall::Increasing::Marker& Waterfall::Increasing::Marker::line(Line f) {
     json["line"] = std::move(f.json);
@@ -856,10 +816,6 @@ Waterfall::Increasing::Marker& Waterfall::Increasing::Marker::line(Line f) {
 
 
 Waterfall::Increasing::Marker::Line& Waterfall::Increasing::Marker::Line::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Waterfall::Increasing::Marker::Line& Waterfall::Increasing::Marker::Line::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -904,15 +860,7 @@ Waterfall::Insidetextfont& Waterfall::Insidetextfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Waterfall::Insidetextfont& Waterfall::Insidetextfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Waterfall::Insidetextfont& Waterfall::Insidetextfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Waterfall::Insidetextfont& Waterfall::Insidetextfont::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1086,10 +1034,6 @@ Waterfall::Legendgrouptitle::Font& Waterfall::Legendgrouptitle::Font::color(std:
     json["color"] = std::move(f);
     return *this;
 }
-Waterfall::Legendgrouptitle::Font& Waterfall::Legendgrouptitle::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Waterfall::Legendgrouptitle::Font& Waterfall::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1166,15 +1110,7 @@ Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1348,15 +1284,7 @@ Waterfall::Textfont& Waterfall::Textfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Waterfall::Textfont& Waterfall::Textfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Waterfall::Textfont& Waterfall::Textfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Waterfall::Textfont& Waterfall::Textfont::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1495,10 +1423,6 @@ Waterfall::Totals::Marker& Waterfall::Totals::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Waterfall::Totals::Marker& Waterfall::Totals::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Waterfall::Totals::Marker& Waterfall::Totals::Marker::line(Line f) {
     json["line"] = std::move(f.json);
@@ -1507,10 +1431,6 @@ Waterfall::Totals::Marker& Waterfall::Totals::Marker::line(Line f) {
 
 
 Waterfall::Totals::Marker::Line& Waterfall::Totals::Marker::Line::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Waterfall::Totals::Marker::Line& Waterfall::Totals::Marker::Line::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

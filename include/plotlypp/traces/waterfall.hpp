@@ -25,6 +25,8 @@ class Waterfall : public Trace {
     : Trace() {
         json["type"] = "waterfall";
     }
+    Waterfall(std::string jsonStr)
+    : Trace(std::move(jsonStr)) {}
 
     enum class Constraintext {
         INSIDE,
@@ -424,6 +426,9 @@ class Waterfall : public Trace {
 
 class Waterfall::Connector {
  public:
+    Connector() = default;
+    Connector(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Mode {
         SPANNING,
@@ -448,10 +453,12 @@ class Waterfall::Connector {
 
 class Waterfall::Connector::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the line color.
     Waterfall::Connector::Line& color(std::string f);
-    Waterfall::Connector::Line& color(double f);
 
     // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
     // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
@@ -466,6 +473,9 @@ class Waterfall::Connector::Line {
 
 class Waterfall::Decreasing {
  public:
+    Decreasing() = default;
+    Decreasing(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
 
@@ -477,12 +487,14 @@ class Waterfall::Decreasing {
 
 class Waterfall::Decreasing::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Line;
 
     // Sets the marker color of all decreasing values.
     Waterfall::Decreasing::Marker& color(std::string f);
-    Waterfall::Decreasing::Marker& color(double f);
 
     Waterfall::Decreasing::Marker& line(Line f);
 
@@ -492,10 +504,12 @@ class Waterfall::Decreasing::Marker {
 
 class Waterfall::Decreasing::Marker::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the line color of all decreasing values.
     Waterfall::Decreasing::Marker::Line& color(std::string f);
-    Waterfall::Decreasing::Marker::Line& color(double f);
 
     // Sets the line width of all decreasing values.
     Waterfall::Decreasing::Marker::Line& width(double f);
@@ -506,6 +520,9 @@ class Waterfall::Decreasing::Marker::Line {
 
 class Waterfall::Hoverlabel {
  public:
+    Hoverlabel() = default;
+    Hoverlabel(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
         LEFT,
@@ -528,18 +545,14 @@ class Waterfall::Hoverlabel {
 
     // Sets the background color of the hover labels for this trace
     Waterfall::Hoverlabel& bgcolor(std::string f);
-    Waterfall::Hoverlabel& bgcolor(double f);
     Waterfall::Hoverlabel& bgcolor(std::vector<std::string> f);
-    Waterfall::Hoverlabel& bgcolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Waterfall::Hoverlabel& bgcolorsrc(std::string f);
 
     // Sets the border color of the hover labels for this trace.
     Waterfall::Hoverlabel& bordercolor(std::string f);
-    Waterfall::Hoverlabel& bordercolor(double f);
     Waterfall::Hoverlabel& bordercolor(std::vector<std::string> f);
-    Waterfall::Hoverlabel& bordercolor(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Waterfall::Hoverlabel& bordercolorsrc(std::string f);
@@ -564,6 +577,9 @@ class Waterfall::Hoverlabel {
 // Sets the font used in hover labels.
 class Waterfall::Hoverlabel::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -590,9 +606,7 @@ class Waterfall::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Waterfall::Hoverlabel::Font& color(std::string f);
-    Waterfall::Hoverlabel::Font& color(double f);
     Waterfall::Hoverlabel::Font& color(std::vector<std::string> f);
-    Waterfall::Hoverlabel::Font& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Waterfall::Hoverlabel::Font& colorsrc(std::string f);
@@ -673,6 +687,9 @@ class Waterfall::Hoverlabel::Font {
 
 class Waterfall::Increasing {
  public:
+    Increasing() = default;
+    Increasing(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
 
@@ -684,12 +701,14 @@ class Waterfall::Increasing {
 
 class Waterfall::Increasing::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Line;
 
     // Sets the marker color of all increasing values.
     Waterfall::Increasing::Marker& color(std::string f);
-    Waterfall::Increasing::Marker& color(double f);
 
     Waterfall::Increasing::Marker& line(Line f);
 
@@ -699,10 +718,12 @@ class Waterfall::Increasing::Marker {
 
 class Waterfall::Increasing::Marker::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the line color of all increasing values.
     Waterfall::Increasing::Marker::Line& color(std::string f);
-    Waterfall::Increasing::Marker::Line& color(double f);
 
     // Sets the line width of all increasing values.
     Waterfall::Increasing::Marker::Line& width(double f);
@@ -714,6 +735,9 @@ class Waterfall::Increasing::Marker::Line {
 // Sets the font used for `text` lying inside the bar.
 class Waterfall::Insidetextfont {
  public:
+    Insidetextfont() = default;
+    Insidetextfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -740,9 +764,7 @@ class Waterfall::Insidetextfont {
     static std::string to_string(Variant e);
 
     Waterfall::Insidetextfont& color(std::string f);
-    Waterfall::Insidetextfont& color(double f);
     Waterfall::Insidetextfont& color(std::vector<std::string> f);
-    Waterfall::Insidetextfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Waterfall::Insidetextfont& colorsrc(std::string f);
@@ -823,6 +845,9 @@ class Waterfall::Insidetextfont {
 
 class Waterfall::Legendgrouptitle {
  public:
+    Legendgrouptitle() = default;
+    Legendgrouptitle(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets this legend group's title font.
     class Font;
@@ -840,6 +865,9 @@ class Waterfall::Legendgrouptitle {
 // Sets this legend group's title font.
 class Waterfall::Legendgrouptitle::Font {
  public:
+    Font() = default;
+    Font(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -866,7 +894,6 @@ class Waterfall::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Waterfall::Legendgrouptitle::Font& color(std::string f);
-    Waterfall::Legendgrouptitle::Font& color(double f);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -913,6 +940,9 @@ class Waterfall::Legendgrouptitle::Font {
 // Sets the font used for `text` lying outside the bar.
 class Waterfall::Outsidetextfont {
  public:
+    Outsidetextfont() = default;
+    Outsidetextfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -939,9 +969,7 @@ class Waterfall::Outsidetextfont {
     static std::string to_string(Variant e);
 
     Waterfall::Outsidetextfont& color(std::string f);
-    Waterfall::Outsidetextfont& color(double f);
     Waterfall::Outsidetextfont& color(std::vector<std::string> f);
-    Waterfall::Outsidetextfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Waterfall::Outsidetextfont& colorsrc(std::string f);
@@ -1022,6 +1050,9 @@ class Waterfall::Outsidetextfont {
 
 class Waterfall::Stream {
  public:
+    Stream() = default;
+    Stream(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
@@ -1038,6 +1069,9 @@ class Waterfall::Stream {
 // Sets the font used for `text`.
 class Waterfall::Textfont {
  public:
+    Textfont() = default;
+    Textfont(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
         NORMAL,
@@ -1064,9 +1098,7 @@ class Waterfall::Textfont {
     static std::string to_string(Variant e);
 
     Waterfall::Textfont& color(std::string f);
-    Waterfall::Textfont& color(double f);
     Waterfall::Textfont& color(std::vector<std::string> f);
-    Waterfall::Textfont& color(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Waterfall::Textfont& colorsrc(std::string f);
@@ -1147,6 +1179,9 @@ class Waterfall::Textfont {
 
 class Waterfall::Totals {
  public:
+    Totals() = default;
+    Totals(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Marker;
 
@@ -1158,12 +1193,14 @@ class Waterfall::Totals {
 
 class Waterfall::Totals::Marker {
  public:
+    Marker() = default;
+    Marker(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     class Line;
 
     // Sets the marker color of all intermediate sums and total values.
     Waterfall::Totals::Marker& color(std::string f);
-    Waterfall::Totals::Marker& color(double f);
 
     Waterfall::Totals::Marker& line(Line f);
 
@@ -1173,10 +1210,12 @@ class Waterfall::Totals::Marker {
 
 class Waterfall::Totals::Marker::Line {
  public:
+    Line() = default;
+    Line(std::string jsonStr)
+    : json(parse(std::move(jsonStr))) {}
 
     // Sets the line color of all intermediate sums and total values.
     Waterfall::Totals::Marker::Line& color(std::string f);
-    Waterfall::Totals::Marker::Line& color(double f);
 
     // Sets the line width of all intermediate sums and total values.
     Waterfall::Totals::Marker::Line& width(double f);

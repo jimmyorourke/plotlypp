@@ -83,10 +83,6 @@ Scattergeo& Scattergeo::fillcolor(std::string f) {
     json["fillcolor"] = std::move(f);
     return *this;
 }
-Scattergeo& Scattergeo::fillcolor(double f) {
-    json["fillcolor"] = std::move(f);
-    return *this;
-}
 
 Scattergeo& Scattergeo::geo(std::string f) {
     json["geo"] = std::move(f);
@@ -382,15 +378,7 @@ Scattergeo::Hoverlabel& Scattergeo::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Scattergeo::Hoverlabel& Scattergeo::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Scattergeo::Hoverlabel& Scattergeo::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Scattergeo::Hoverlabel& Scattergeo::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -404,15 +392,7 @@ Scattergeo::Hoverlabel& Scattergeo::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Scattergeo::Hoverlabel& Scattergeo::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Scattergeo::Hoverlabel& Scattergeo::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Scattergeo::Hoverlabel& Scattergeo::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -476,15 +456,7 @@ Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::color(std::string f)
     json["color"] = std::move(f);
     return *this;
 }
-Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -658,10 +630,6 @@ Scattergeo::Legendgrouptitle::Font& Scattergeo::Legendgrouptitle::Font::color(st
     json["color"] = std::move(f);
     return *this;
 }
-Scattergeo::Legendgrouptitle::Font& Scattergeo::Legendgrouptitle::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scattergeo::Legendgrouptitle::Font& Scattergeo::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -705,10 +673,6 @@ Scattergeo::Legendgrouptitle::Font& Scattergeo::Legendgrouptitle::Font::weight(i
 
 
 Scattergeo::Line& Scattergeo::Line::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattergeo::Line& Scattergeo::Line::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1119,15 +1083,7 @@ Scattergeo::Marker& Scattergeo::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scattergeo::Marker& Scattergeo::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scattergeo::Marker& Scattergeo::Marker::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattergeo::Marker& Scattergeo::Marker::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1396,16 +1352,8 @@ Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::bgcolor(std::string 
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -1458,10 +1406,6 @@ Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::orientation(enum Ori
 }
 
 Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::outlinecolor(std::string f) {
-    json["outlinecolor"] = std::move(f);
-    return *this;
-}
-Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::outlinecolor(double f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
@@ -1518,10 +1462,6 @@ Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::tickangle(double f) 
 }
 
 Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -1688,10 +1628,6 @@ Scattergeo::Marker::Colorbar::Tickfont& Scattergeo::Marker::Colorbar::Tickfont::
     json["color"] = std::move(f);
     return *this;
 }
-Scattergeo::Marker::Colorbar::Tickfont& Scattergeo::Marker::Colorbar::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scattergeo::Marker::Colorbar::Tickfont& Scattergeo::Marker::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -1740,7 +1676,7 @@ Scattergeo::Marker::Colorbar::Tickformatstops& Scattergeo::Marker::Colorbar::Tic
 }
 
 
-Scattergeo::Marker::Colorbar::Tickformatstops::Tickformatstop& Scattergeo::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Scattergeo::Marker::Colorbar::Tickformatstops::Tickformatstop& Scattergeo::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -1825,10 +1761,6 @@ Scattergeo::Marker::Colorbar::Title::Font& Scattergeo::Marker::Colorbar::Title::
     json["color"] = std::move(f);
     return *this;
 }
-Scattergeo::Marker::Colorbar::Title::Font& Scattergeo::Marker::Colorbar::Title::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scattergeo::Marker::Colorbar::Title::Font& Scattergeo::Marker::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
@@ -1885,15 +1817,7 @@ Scattergeo::Marker::Gradient& Scattergeo::Marker::Gradient::color(std::string f)
     json["color"] = std::move(f);
     return *this;
 }
-Scattergeo::Marker::Gradient& Scattergeo::Marker::Gradient::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scattergeo::Marker::Gradient& Scattergeo::Marker::Gradient::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattergeo::Marker::Gradient& Scattergeo::Marker::Gradient::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1949,15 +1873,7 @@ Scattergeo::Marker::Line& Scattergeo::Marker::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scattergeo::Marker::Line& Scattergeo::Marker::Line::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scattergeo::Marker::Line& Scattergeo::Marker::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattergeo::Marker::Line& Scattergeo::Marker::Line::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -2016,10 +1932,6 @@ Scattergeo::Selected::Marker& Scattergeo::Selected::Marker::color(std::string f)
     json["color"] = std::move(f);
     return *this;
 }
-Scattergeo::Selected::Marker& Scattergeo::Selected::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scattergeo::Selected::Marker& Scattergeo::Selected::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
@@ -2033,10 +1945,6 @@ Scattergeo::Selected::Marker& Scattergeo::Selected::Marker::size(double f) {
 
 
 Scattergeo::Selected::Textfont& Scattergeo::Selected::Textfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattergeo::Selected::Textfont& Scattergeo::Selected::Textfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -2087,15 +1995,7 @@ Scattergeo::Textfont& Scattergeo::Textfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Scattergeo::Textfont& Scattergeo::Textfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Scattergeo::Textfont& Scattergeo::Textfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattergeo::Textfont& Scattergeo::Textfont::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -2239,10 +2139,6 @@ Scattergeo::Unselected::Marker& Scattergeo::Unselected::Marker::color(std::strin
     json["color"] = std::move(f);
     return *this;
 }
-Scattergeo::Unselected::Marker& Scattergeo::Unselected::Marker::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Scattergeo::Unselected::Marker& Scattergeo::Unselected::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
@@ -2256,10 +2152,6 @@ Scattergeo::Unselected::Marker& Scattergeo::Unselected::Marker::size(double f) {
 
 
 Scattergeo::Unselected::Textfont& Scattergeo::Unselected::Textfont::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Scattergeo::Unselected::Textfont& Scattergeo::Unselected::Textfont::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

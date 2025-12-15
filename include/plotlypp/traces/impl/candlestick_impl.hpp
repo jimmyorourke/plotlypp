@@ -330,10 +330,6 @@ Candlestick::Decreasing& Candlestick::Decreasing::fillcolor(std::string f) {
     json["fillcolor"] = std::move(f);
     return *this;
 }
-Candlestick::Decreasing& Candlestick::Decreasing::fillcolor(double f) {
-    json["fillcolor"] = std::move(f);
-    return *this;
-}
 
 Candlestick::Decreasing& Candlestick::Decreasing::line(Line f) {
     json["line"] = std::move(f.json);
@@ -342,10 +338,6 @@ Candlestick::Decreasing& Candlestick::Decreasing::line(Line f) {
 
 
 Candlestick::Decreasing::Line& Candlestick::Decreasing::Line::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Candlestick::Decreasing::Line& Candlestick::Decreasing::Line::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -385,15 +377,7 @@ Candlestick::Hoverlabel& Candlestick::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Candlestick::Hoverlabel& Candlestick::Hoverlabel::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 Candlestick::Hoverlabel& Candlestick::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
-Candlestick::Hoverlabel& Candlestick::Hoverlabel::bgcolor(std::vector<double> f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
@@ -407,15 +391,7 @@ Candlestick::Hoverlabel& Candlestick::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
-Candlestick::Hoverlabel& Candlestick::Hoverlabel::bordercolor(double f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
 Candlestick::Hoverlabel& Candlestick::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Candlestick::Hoverlabel& Candlestick::Hoverlabel::bordercolor(std::vector<double> f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -484,15 +460,7 @@ Candlestick::Hoverlabel::Font& Candlestick::Hoverlabel::Font::color(std::string 
     json["color"] = std::move(f);
     return *this;
 }
-Candlestick::Hoverlabel::Font& Candlestick::Hoverlabel::Font::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 Candlestick::Hoverlabel::Font& Candlestick::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Candlestick::Hoverlabel::Font& Candlestick::Hoverlabel::Font::color(std::vector<double> f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -625,10 +593,6 @@ Candlestick::Increasing& Candlestick::Increasing::fillcolor(std::string f) {
     json["fillcolor"] = std::move(f);
     return *this;
 }
-Candlestick::Increasing& Candlestick::Increasing::fillcolor(double f) {
-    json["fillcolor"] = std::move(f);
-    return *this;
-}
 
 Candlestick::Increasing& Candlestick::Increasing::line(Line f) {
     json["line"] = std::move(f.json);
@@ -637,10 +601,6 @@ Candlestick::Increasing& Candlestick::Increasing::line(Line f) {
 
 
 Candlestick::Increasing::Line& Candlestick::Increasing::Line::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Candlestick::Increasing::Line& Candlestick::Increasing::Line::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -693,10 +653,6 @@ std::string Candlestick::Legendgrouptitle::Font::to_string(Variant e) {
 }
 
 Candlestick::Legendgrouptitle::Font& Candlestick::Legendgrouptitle::Font::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Candlestick::Legendgrouptitle::Font& Candlestick::Legendgrouptitle::Font::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

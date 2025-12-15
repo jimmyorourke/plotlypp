@@ -58,12 +58,16 @@ plotlypp::Figure gen3dScatterHelix() {
         y.push_back(std::sin(t_val));
     }
 
-    return Figure().addTrace(Scatter3D()
-                                 .x(std::move(x))
-                                 .y(std::move(y))
-                                 .z(t)
-                                 .mode("markers")
-                                 .marker(Scatter3D::Marker().size(12).color(t).colorscale("Viridis").opacity(0.8)));
+    std::vector<std::string> colors(t.size());
+    std::transform(t.begin(), t.end(), colors.begin(), [](auto e) { return std::to_string(e); });
+
+    return Figure().addTrace(
+        Scatter3D()
+            .x(std::move(x))
+            .y(std::move(y))
+            .z(t)
+            .mode("markers")
+            .marker(Scatter3D::Marker().size(12).color(colors).colorscale("Viridis").opacity(0.8)));
 }
 
 plotlypp::Figure gen3dScatterBubblePlanets() {
@@ -243,10 +247,17 @@ plotlypp::Figure genMultipleScatter() {
                         .error_x(std::move(error_x))
                         .error_y(std::move(error_y));
 
+    // return plotlypp::Figure()
+    //     .addTrace(std::move(scatter))
+    //     .addTrace(std::move(scatter2))
+    //     .setLayout(Layout{}.title(Layout::Title{}.text("Multi Scatter")));
+    using namespace std::string_literals;
     return plotlypp::Figure()
         .addTrace(std::move(scatter))
         .addTrace(std::move(scatter2))
-        .setLayout(Layout{}.title(Layout::Title{}.text("Multi Scatter")));
+        .setLayout(R"json({"title": {"text": "Multi Scatter"}})json"s);
+
+    // Layout.setAsJson(R"json({"title": "Multi Scatter"})json")
 
     // return plotlypp::Figure().addTrace(std::move(scatter)).addTrace(std::move(scatter2)).setLayout([](auto& l) {
     //     l.title([](auto& t) { t.text("Multi Scatter"); })

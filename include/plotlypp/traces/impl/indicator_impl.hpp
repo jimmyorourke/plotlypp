@@ -214,10 +214,6 @@ Indicator::Delta::Decreasing& Indicator::Delta::Decreasing::color(std::string f)
     json["color"] = std::move(f);
     return *this;
 }
-Indicator::Delta::Decreasing& Indicator::Delta::Decreasing::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Indicator::Delta::Decreasing& Indicator::Delta::Decreasing::symbol(std::string f) {
     json["symbol"] = std::move(f);
@@ -256,10 +252,6 @@ std::string Indicator::Delta::Font::to_string(Variant e) {
 }
 
 Indicator::Delta::Font& Indicator::Delta::Font::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Indicator::Delta::Font& Indicator::Delta::Font::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -309,10 +301,6 @@ Indicator::Delta::Increasing& Indicator::Delta::Increasing::color(std::string f)
     json["color"] = std::move(f);
     return *this;
 }
-Indicator::Delta::Increasing& Indicator::Delta::Increasing::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Indicator::Delta::Increasing& Indicator::Delta::Increasing::symbol(std::string f) {
     json["symbol"] = std::move(f);
@@ -330,12 +318,12 @@ Indicator::Domain& Indicator::Domain::row(int f) {
     return *this;
 }
 
-Indicator::Domain& Indicator::Domain::x(std::vector<std::string> f) {
+Indicator::Domain& Indicator::Domain::x(std::vector<double> f) {
     json["x"] = std::move(f);
     return *this;
 }
 
-Indicator::Domain& Indicator::Domain::y(std::vector<std::string> f) {
+Indicator::Domain& Indicator::Domain::y(std::vector<double> f) {
     json["y"] = std::move(f);
     return *this;
 }
@@ -363,16 +351,8 @@ Indicator::Gauge& Indicator::Gauge::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
-Indicator::Gauge& Indicator::Gauge::bgcolor(double f) {
-    json["bgcolor"] = std::move(f);
-    return *this;
-}
 
 Indicator::Gauge& Indicator::Gauge::bordercolor(std::string f) {
-    json["bordercolor"] = std::move(f);
-    return *this;
-}
-Indicator::Gauge& Indicator::Gauge::bordercolor(double f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
@@ -484,7 +464,7 @@ Indicator::Gauge::Axis& Indicator::Gauge::Axis::nticks(int f) {
     return *this;
 }
 
-Indicator::Gauge::Axis& Indicator::Gauge::Axis::range(std::vector<std::string> f) {
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::range(std::vector<double> f) {
     json["range"] = std::move(f);
     return *this;
 }
@@ -526,10 +506,6 @@ Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickangle(double f) {
 }
 
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickcolor(std::string f) {
-    json["tickcolor"] = std::move(f);
-    return *this;
-}
-Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickcolor(double f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
@@ -646,10 +622,6 @@ Indicator::Gauge::Axis::Tickfont& Indicator::Gauge::Axis::Tickfont::color(std::s
     json["color"] = std::move(f);
     return *this;
 }
-Indicator::Gauge::Axis::Tickfont& Indicator::Gauge::Axis::Tickfont::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Indicator::Gauge::Axis::Tickfont& Indicator::Gauge::Axis::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
@@ -698,7 +670,7 @@ Indicator::Gauge::Axis::Tickformatstops& Indicator::Gauge::Axis::Tickformatstops
 }
 
 
-Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& Indicator::Gauge::Axis::Tickformatstops::Tickformatstop::dtickrange(std::vector<std::string> f) {
+Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& Indicator::Gauge::Axis::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
     json["dtickrange"] = std::move(f);
     return *this;
 }
@@ -728,10 +700,6 @@ Indicator::Gauge::Bar& Indicator::Gauge::Bar::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
-Indicator::Gauge::Bar& Indicator::Gauge::Bar::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Indicator::Gauge::Bar& Indicator::Gauge::Bar::line(Line f) {
     json["line"] = std::move(f.json);
@@ -745,10 +713,6 @@ Indicator::Gauge::Bar& Indicator::Gauge::Bar::thickness(double f) {
 
 
 Indicator::Gauge::Bar::Line& Indicator::Gauge::Bar::Line::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Indicator::Gauge::Bar::Line& Indicator::Gauge::Bar::Line::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -769,10 +733,6 @@ Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::color(std::string 
     json["color"] = std::move(f);
     return *this;
 }
-Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::color(double f) {
-    json["color"] = std::move(f);
-    return *this;
-}
 
 Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::line(Line f) {
     json["line"] = std::move(f.json);
@@ -784,7 +744,7 @@ Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::name(std::string f
     return *this;
 }
 
-Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::range(std::vector<std::string> f) {
+Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::range(std::vector<double> f) {
     json["range"] = std::move(f);
     return *this;
 }
@@ -801,10 +761,6 @@ Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::thickness(double f
 
 
 Indicator::Gauge::Steps::Step::Line& Indicator::Gauge::Steps::Step::Line::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Indicator::Gauge::Steps::Step::Line& Indicator::Gauge::Steps::Step::Line::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -832,10 +788,6 @@ Indicator::Gauge::Threshold& Indicator::Gauge::Threshold::value(double f) {
 
 
 Indicator::Gauge::Threshold::Line& Indicator::Gauge::Threshold::Line::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Indicator::Gauge::Threshold::Line& Indicator::Gauge::Threshold::Line::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -888,10 +840,6 @@ std::string Indicator::Legendgrouptitle::Font::to_string(Variant e) {
 }
 
 Indicator::Legendgrouptitle::Font& Indicator::Legendgrouptitle::Font::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Indicator::Legendgrouptitle::Font& Indicator::Legendgrouptitle::Font::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -989,10 +937,6 @@ std::string Indicator::Number::Font::to_string(Variant e) {
 }
 
 Indicator::Number::Font& Indicator::Number::Font::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Indicator::Number::Font& Indicator::Number::Font::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }
@@ -1105,10 +1049,6 @@ std::string Indicator::Title::Font::to_string(Variant e) {
 }
 
 Indicator::Title::Font& Indicator::Title::Font::color(std::string f) {
-    json["color"] = std::move(f);
-    return *this;
-}
-Indicator::Title::Font& Indicator::Title::Font::color(double f) {
     json["color"] = std::move(f);
     return *this;
 }

@@ -14,4 +14,6 @@ using Json = nlohmann::json;
 
 inline std::string serialize(const Json& json) { return json.dump(); }
 
+inline Json parse(std::string content) { return Json::parse(std::move(content)); }
+
 } // namespace plotlypp
