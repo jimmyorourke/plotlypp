@@ -11,6 +11,7 @@
 #include <string>
 
 #include <plotlypp/json.hpp>
+#include <plotlypp/layout/layout.hpp>
 #include <plotlypp/plotly_min_js.hpp>
 #include <plotlypp/trace.hpp>
 
@@ -21,6 +22,11 @@ class Figure {
     template <typename T, typename = std::enable_if_t<std::is_base_of_v<Trace, T>>>
     Figure& addTrace(T trace) {
         _json["data"].push_back(std::move(trace.json));
+        return *this;
+    }
+
+    Figure& setLayout(Layout layout) {
+        _json["layout"] = std::move(layout.json);
         return *this;
     }
 

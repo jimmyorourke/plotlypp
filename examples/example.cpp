@@ -243,7 +243,14 @@ plotlypp::Figure genMultipleScatter() {
                         .error_x(std::move(error_x))
                         .error_y(std::move(error_y));
 
-    return plotlypp::Figure().addTrace(std::move(scatter)).addTrace(std::move(scatter2));
+    return plotlypp::Figure()
+        .addTrace(std::move(scatter))
+        .addTrace(std::move(scatter2))
+        .setLayout(Layout{}.title(Layout::Title{}.text("Multi Scatter")));
+
+    // return plotlypp::Figure().addTrace(std::move(scatter)).addTrace(std::move(scatter2)).setLayout([](auto& l) {
+    //     l.title([](auto& t) { t.text("Multi Scatter"); })
+    // });
 }
 
 void WaitForEnter() {
