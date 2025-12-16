@@ -129,6 +129,10 @@ Layout& Layout::coloraxis(Coloraxis f) {
     json["coloraxis"] = std::move(f.json);
     return *this;
 }
+Layout& Layout::coloraxis(int index, Coloraxis f) {
+    json["coloraxis" + std::to_string(index)] = std::move(f.json);
+    return *this;
+}
 
 Layout& Layout::colorscale(Colorscale f) {
     json["colorscale"] = std::move(f.json);
@@ -170,6 +174,10 @@ Layout& Layout::font(Font f) {
 
 Layout& Layout::geo(Geo f) {
     json["geo"] = std::move(f.json);
+    return *this;
+}
+Layout& Layout::geo(int index, Geo f) {
+    json["geo" + std::to_string(index)] = std::move(f.json);
     return *this;
 }
 
@@ -217,14 +225,26 @@ Layout& Layout::legend(Legend f) {
     json["legend"] = std::move(f.json);
     return *this;
 }
+Layout& Layout::legend(int index, Legend f) {
+    json["legend" + std::to_string(index)] = std::move(f.json);
+    return *this;
+}
 
 Layout& Layout::map(Map f) {
     json["map"] = std::move(f.json);
     return *this;
 }
+Layout& Layout::map(int index, Map f) {
+    json["map" + std::to_string(index)] = std::move(f.json);
+    return *this;
+}
 
 Layout& Layout::mapbox(Mapbox f) {
     json["mapbox"] = std::move(f.json);
+    return *this;
+}
+Layout& Layout::mapbox(int index, Mapbox f) {
+    json["mapbox" + std::to_string(index)] = std::move(f.json);
     return *this;
 }
 
@@ -288,9 +308,17 @@ Layout& Layout::polar(Polar f) {
     json["polar"] = std::move(f.json);
     return *this;
 }
+Layout& Layout::polar(int index, Polar f) {
+    json["polar" + std::to_string(index)] = std::move(f.json);
+    return *this;
+}
 
 Layout& Layout::scene(Scene f) {
     json["scene"] = std::move(f.json);
+    return *this;
+}
+Layout& Layout::scene(int index, Scene f) {
+    json["scene" + std::to_string(index)] = std::move(f.json);
     return *this;
 }
 
@@ -334,6 +362,10 @@ Layout& Layout::smith(Smith f) {
     json["smith"] = std::move(f.json);
     return *this;
 }
+Layout& Layout::smith(int index, Smith f) {
+    json["smith" + std::to_string(index)] = std::move(f.json);
+    return *this;
+}
 
 Layout& Layout::spikedistance(int f) {
     json["spikedistance"] = std::move(f);
@@ -341,13 +373,17 @@ Layout& Layout::spikedistance(int f) {
 }
 
 template <typename T>
-Layout& Layout::platoly_template(T f) {
-    json["platoly_template"] = std::move(f);
+Layout& Layout::plotly_template(T f) {
+    json["plotly_template"] = std::move(f);
     return *this;
 }
 
 Layout& Layout::ternary(Ternary f) {
     json["ternary"] = std::move(f.json);
+    return *this;
+}
+Layout& Layout::ternary(int index, Ternary f) {
+    json["ternary" + std::to_string(index)] = std::move(f.json);
     return *this;
 }
 
@@ -386,9 +422,17 @@ Layout& Layout::xaxis(Xaxis f) {
     json["xaxis"] = std::move(f.json);
     return *this;
 }
+Layout& Layout::xaxis(int index, Xaxis f) {
+    json["xaxis" + std::to_string(index)] = std::move(f.json);
+    return *this;
+}
 
 Layout& Layout::yaxis(Yaxis f) {
     json["yaxis"] = std::move(f.json);
+    return *this;
+}
+Layout& Layout::yaxis(int index, Yaxis f) {
+    json["yaxis" + std::to_string(index)] = std::move(f.json);
     return *this;
 }
 
@@ -12924,6 +12968,10 @@ Layout::Xaxis::Rangeslider& Layout::Xaxis::Rangeslider::visible(bool f) {
 
 Layout::Xaxis::Rangeslider& Layout::Xaxis::Rangeslider::yaxis(Yaxis f) {
     json["yaxis"] = std::move(f.json);
+    return *this;
+}
+Layout::Xaxis::Rangeslider& Layout::Xaxis::Rangeslider::yaxis(int index, Yaxis f) {
+    json["yaxis" + std::to_string(index)] = std::move(f.json);
     return *this;
 }
 

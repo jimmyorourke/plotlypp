@@ -97,18 +97,31 @@ def emit_array_field_setter(class_object, field, output_val_type, writer):
 
 
 def emit_field_setter_decl(class_object, field, output_val_type, writer):
-    if output_val_type == 'T':
-        writer.write(f"template <typename T>")
-    elif field.json_val_type == 'data_array':
-        writer.write(f"template <typename T, typename=std::enable_if_t<is_data_array_element_v<T>>>")
+    def write_template_signature():
+        if output_val_type == 'T':
+            writer.write(f"template <typename T>")
+        elif field.json_val_type == 'data_array':
+            writer.write(f"template <typename T, typename=std::enable_if_t<is_data_array_element_v<T>>>")
+
+    write_template_signature()
     writer.write(f"{class_object.name.title()}& {field.name}({output_val_type} f);")
+
+    if field.is_subplot_object:
+        # Add an index-first overload. Putting the index last we could default it and not need an overload but that
+        # makes it less readable and less consistent with plotly.js.
+        write_template_signature()
+        writer.write(f"{class_object.name.title()}& {field.name}(int index, {output_val_type} f);")
+
 
 
 def emit_field_setter(class_object, field, output_val_type, writer):
-    if output_val_type == 'T':
-        writer.write(f"template <typename T>")
-    elif field.json_val_type == 'data_array':
-        writer.write(f"template <typename T, typename>")
+    def write_template_signature():
+        if output_val_type == 'T':
+            writer.write(f"template <typename T>")
+        elif field.json_val_type == 'data_array':
+            writer.write(f"template <typename T, typename>")
+
+    write_template_signature()
     writer.write(f"{class_object.name.title()}& {class_object.name.title()}::{field.name}({output_val_type} f) {{")
     with IndentBlock(writer):
         if field.is_object:
@@ -117,6 +130,19 @@ def emit_field_setter(class_object, field, output_val_type, writer):
             writer.write(f"json[\"{field.name}\"] = std::move(f);")
         writer.write("return *this;")
     writer.write("}")
+
+    if field.is_subplot_object:
+        # Add an index-first overload. Putting the index last we could default it and not need an overload but that
+        # makes it less readable and less consistent with plotly.js.
+        write_template_signature()
+        writer.write(f"{class_object.name.title()}& {class_object.name.title()}::{field.name}(int index, {output_val_type} f) {{")
+        with IndentBlock(writer):
+            if field.is_object:
+                writer.write(f"json[\"{field.name}\" + std::to_string(index)] = std::move(f.json);")
+            else:
+                writer.write(f"json[\"{field.name}\"+ std::to_string(index)] = std::move(f);")
+            writer.write("return *this;")
+        writer.write("}")
 
 
 def emit_enum_field_setter_decl(class_object, field, writer):
@@ -237,7 +263,7 @@ def emit_forward_object_decl(class_object, writer):
     if class_object.description:
         writer.write(f"// {class_object.description}")
     writer.write(f"class {class_object.name.split("::")[-1].title()};")
- 
+
 
 def emit_default_constructor(class_object, writer):
     writer.write(f"{class_object.name.split("::")[-1].title()}() = default;")
@@ -247,7 +273,7 @@ def emit_json_constructor(class_object, writer):
     writer.write(f"{class_object.name.split("::")[-1].title()}(std::string jsonStr)")
     # https://json.nlohmann.me/home/faq/#brace-initialization-yields-arrays
     writer.write(": json(parse(std::move(jsonStr))) {}")
-    
+
 
 def emit_object_decl(class_object, writer):
     if class_object.description:
@@ -347,14 +373,15 @@ class Object:
         self.objects = []
 
 class Field:
-    def __init__(self):
-        self.name = "" # name vs JSON name for CamelCase classes?
+    def __init__(self, name: str):
+        self.name = name # name vs JSON name for CamelCase classes?
         self.description = ""
         #self.val_type = None
         self.json_val_type = None
         self.array_ok = False
         self.is_enum = False
         self.is_object = False
+        self.is_subplot_object = False
 
 class StringEnum:
     def __init__(self):
@@ -386,11 +413,13 @@ json_name_escape_map = {
     "\\" : "\\\\"
 }
 
+
 def safe_field_name(name: str) -> str:
     """Filter reserved keywords"""
     if name == "template":
-        return "platoly_template"
+        return "plotly_template"
     return name
+
 
 def looks_like_regex(name: str) -> bool:
     regex_chars = {'^', '(', ')', '[', ']', '*', '$', '+'}
@@ -401,23 +430,24 @@ def looks_like_regex(name: str) -> bool:
     return False
 
 
-def output(text: str, indent_level):
-        """Outputs input text with a newline at current indent level"""
-        indent = " " * 4 * indent_level
-        print(f"{indent}{text}")
+# def output(text: str, indent_level):
+#         """Outputs input text with a newline at current indent level"""
+#         indent = " " * 4 * indent_level
+#         print(f"{indent}{text}")
 
-def print_obj_structure(obj, indent=0):
-    output(f"{obj.name}", indent)
-    indent+=1
-    output("::enums::", indent)
-    for e in obj.enums:
-        output(f"{e.name}", indent)
-    output("::objects::", indent)
-    for o in obj.objects:
-        print_obj_structure(o, indent+1)
-    output("::fields::", indent)
-    for f in obj.fields:
-        output(f"{f.name}", indent)
+
+# def print_obj_structure(obj, indent=0):
+#     output(f"{obj.name}", indent)
+#     indent+=1
+#     output("::enums::", indent)
+#     for e in obj.enums:
+#         output(f"{e.name}", indent)
+#     output("::objects::", indent)
+#     for o in obj.objects:
+#         print_obj_structure(o, indent+1)
+#     output("::fields::", indent)
+#     for f in obj.fields:
+#         output(f"{f.name}", indent)
 
 
 
@@ -431,12 +461,16 @@ def parse_attributes(parent, attributes_node):
             continue
 
         # Every node is a field that can be set.
-        f = Field()
-        f.name = safe_field_name(name)
+        f = Field(safe_field_name(name))
         #print(name)
         # objects don't have description. Some random valType nodes also don't
         if "description" in node:
             f.description = node["description"]
+
+        if node.get("_isSubplotObj", False):
+            print(name)
+            f.is_subplot_object = True
+
 
         if "role" in node and node["role"] == "object":
             #  Nested structure.
@@ -534,7 +568,6 @@ def parse_meta(trace, meta_node):
 def create_trace(name, trace_node):
     trace = Object()
     trace.name = name # TODO: convert case
-    print("Parsing trace", name)
 
     for node_name, node in trace_node.items():
         if node_name == "meta":
@@ -594,7 +627,7 @@ def emit_layout(layout, out_dir, impl_subdir):
     writer.write("")
     writer.write("namespace plotlypp {")
     writer.write("")
-    
+
     emit_object_decl(layout, writer)
 
     unnested_objects = []
@@ -635,7 +668,7 @@ def create_layout(layout_node):
     layout_dir = top_level_src_dir / "layout"
     impl_subdir = Path("impl")
     os.makedirs(layout_dir / impl_subdir, exist_ok=True)
-    
+
     emit_layout(layout, layout_dir, impl_subdir)
     # We did our best with formatting, but let's auto format to catch long comments, etc.
     subprocess.run(["clang-format", "--style=file", "-i", str(layout_dir/f"{layout.name}.hpp")])
@@ -661,12 +694,12 @@ def main():
 
     #CreateFrames(graphObjectsOuput)
 
-    
+
     create_traces(schema)
     package_js();
-    
+
     # for k, v in schema['layout'].items():
-    #     print(k) 
+    #     print(k)
     #     for kk, vv in schema['layout']['layoutAttributes'].items():
     #         print(kk)
     #     print(schema['layout']['layoutAttributes']['title'])

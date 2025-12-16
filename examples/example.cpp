@@ -264,6 +264,21 @@ plotlypp::Figure genMultipleScatter() {
     // });
 }
 
+plotlypp::Figure genSubPlotsGrid() {
+    using namespace plotlypp;
+
+    auto trace1 = Scatter().x(std::vector{1, 2, 3}).y(std::vector{4, 5, 6});
+    auto trace2 = Scatter().x(std::vector{20, 30, 40}).y(std::vector{50, 60, 70}).xaxis("x2").yaxis("y2");
+
+    auto gridLayout = Layout{}.grid(Layout::Grid().rows(1).columns(2).pattern(Layout::Grid::Pattern::INDEPENDENT));
+    auto domanLayout = Layout{}
+                           .xaxis(Layout::Xaxis().domain(std::vector{0, 0.7}))
+                           .yaxis(2, Layout::Yaxis().anchor("x2"))
+                           .xaxis(2, Layout::Xaxis().domain(std::vector{0.8, 1.0}));
+
+    return Figure().addTrace(std::move(trace1)).addTrace(std::move(trace2)).setLayout(std::move(domanLayout));
+}
+
 void WaitForEnter() {
     std::cout << "Press Enter to generate next plot...\n";
     std::cin.get();
@@ -271,6 +286,9 @@ void WaitForEnter() {
 
 int main() {
     using namespace plotlypp;
+
+    genSubPlotsGrid().show();
+    WaitForEnter();
 
     genMultipleScatter().show();
     WaitForEnter();

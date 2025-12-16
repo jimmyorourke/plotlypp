@@ -156,6 +156,7 @@ class Layout {
     Layout& clickmode(std::string f);
 
     Layout& coloraxis(Coloraxis f);
+    Layout& coloraxis(int index, Coloraxis f);
 
     Layout& colorscale(Colorscale f);
 
@@ -188,6 +189,7 @@ class Layout {
     Layout& font(Font f);
 
     Layout& geo(Geo f);
+    Layout& geo(int index, Geo f);
 
     Layout& grid(Grid f);
 
@@ -227,10 +229,13 @@ class Layout {
     Layout& images(Images f);
 
     Layout& legend(Legend f);
+    Layout& legend(int index, Legend f);
 
     Layout& map(Map f);
+    Layout& map(int index, Map f);
 
     Layout& mapbox(Mapbox f);
+    Layout& mapbox(int index, Mapbox f);
 
     Layout& margin(Margin f);
 
@@ -266,8 +271,10 @@ class Layout {
     Layout& plot_bgcolor(std::string f);
 
     Layout& polar(Polar f);
+    Layout& polar(int index, Polar f);
 
     Layout& scene(Scene f);
+    Layout& scene(int index, Scene f);
 
     // When `dragmode` is set to *select*, this limits the selection of the drag to horizontal, vertical or diagonal.
     // *h* only allows horizontal selection, *v* only vertical, *d* only diagonal and *any* sets no limit.
@@ -294,6 +301,7 @@ class Layout {
     Layout& sliders(Sliders f);
 
     Layout& smith(Smith f);
+    Layout& smith(int index, Smith f);
 
     // Sets the default distance (in pixels) to look for data to draw spikelines to (-1 means no cutoff, 0 means no
     // looking for data). As with hoverdistance, distance does not apply to area-like objects. In addition, some objects
@@ -311,9 +319,10 @@ class Layout {
     // or a logo image, for example. To omit one of these items on the plot, make an item with matching
     // `templateitemname` and `visible: false`.
     template <typename T>
-    Layout& platoly_template(T f);
+    Layout& plotly_template(T f);
 
     Layout& ternary(Ternary f);
+    Layout& ternary(int index, Ternary f);
 
     Layout& title(Title f);
 
@@ -340,8 +349,10 @@ class Layout {
     Layout& width(double f);
 
     Layout& xaxis(Xaxis f);
+    Layout& xaxis(int index, Xaxis f);
 
     Layout& yaxis(Yaxis f);
+    Layout& yaxis(int index, Yaxis f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -12742,6 +12753,7 @@ class Layout::Xaxis::Rangeslider {
     Layout::Xaxis::Rangeslider& visible(bool f);
 
     Layout::Xaxis::Rangeslider& yaxis(Yaxis f);
+    Layout::Xaxis::Rangeslider& yaxis(int index, Yaxis f);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
