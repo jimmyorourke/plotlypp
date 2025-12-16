@@ -35,6 +35,7 @@ set(JSON_TARGET nlohmann_json::nlohmann_json)
 add_library(plotlypp INTERFACE)
 target_link_libraries(plotlypp INTERFACE ${JSON_TARGET})
 target_include_directories(plotlypp INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+# Require at least C++17. Depending executables can override with a newer version.
 target_compile_features(plotlypp INTERFACE cxx_std_17)
 
 if(PLOTLYPP_BUILD_EXAMPLES)
