@@ -107,29 +107,43 @@ class Surface : public Trace {
     // `colorscale`. In case `colorscale` is unspecified or `autocolorscale` is true, the default palette will be chosen
     // according to whether numbers in the `color` array are all positive, all negative or mixed.
     Surface& autocolorscale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface& autocolorscale(Callable&& c);
 
     // Determines whether or not the color domain is computed with respect to the input data (here z or surfacecolor) or
     // the bounds set in `cmin` and `cmax` Defaults to `false` when `cmin` and `cmax` are set by the user.
     Surface& cauto(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface& cauto(Callable&& c);
 
     // Sets the upper bound of the color domain. Value should have the same units as z or surfacecolor and if set,
     // `cmin` must be set as well.
     Surface& cmax(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface& cmax(Callable&& c);
 
     // Sets the mid-point of the color domain by scaling `cmin` and/or `cmax` to be equidistant to this point. Value
     // should have the same units as z or surfacecolor. Has no effect when `cauto` is `false`.
     Surface& cmid(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface& cmid(Callable&& c);
 
     // Sets the lower bound of the color domain. Value should have the same units as z or surfacecolor and if set,
     // `cmax` must be set as well.
     Surface& cmin(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface& cmin(Callable&& c);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Surface& coloraxis(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& coloraxis(Callable&& c);
 
     Surface& colorbar(Colorbar f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Colorbar&>>>
+    Surface& colorbar(Callable&& c);
 
     // Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb,
     // rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are
@@ -139,23 +153,39 @@ class Surface : public Trace {
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Surface& colorscale(std::string f);
     Surface& colorscale(std::vector<std::pair<double, std::string>> f);
+    template <typename Callable,
+              typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
+                                          std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
+    Surface& colorscale(Callable&& c);
 
     // Determines whether or not gaps (i.e. {nan} or missing values) in the `z` data are filled in.
     Surface& connectgaps(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface& connectgaps(Callable&& c);
 
     Surface& contours(Contours f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Contours&>>>
+    Surface& contours(Callable&& c);
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Surface& customdata(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Surface& customdata(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Surface& customdatasrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& customdatasrc(Callable&& c);
 
     // Determines whether or not a surface is drawn. For example, set `hidesurface` to *false* `contours.x.show` to
     // *true* and `contours.y.show` to *true* to draw a wire frame plot.
     Surface& hidesurface(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface& hidesurface(Callable&& c);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -163,12 +193,18 @@ class Surface : public Trace {
     // - Flags: ['x', 'y', 'z', 'text', 'name']
     // - Extras ['all', 'none', 'skip']
     Surface& hoverinfo(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& hoverinfo(Callable&& c);
     Surface& hoverinfo(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Surface& hoverinfosrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& hoverinfosrc(Callable&& c);
 
     Surface& hoverlabel(Hoverlabel f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Hoverlabel&>>>
+    Surface& hoverlabel(Callable&& c);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -184,35 +220,55 @@ class Surface : public Trace {
     // displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box
     // completely, use an empty tag `<extra></extra>`.
     Surface& hovertemplate(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& hovertemplate(Callable&& c);
     Surface& hovertemplate(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Surface& hovertemplatesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& hovertemplatesrc(Callable&& c);
 
     // Same as `text`.
     Surface& hovertext(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& hovertext(Callable&& c);
     Surface& hovertext(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Surface& hovertextsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& hovertextsrc(Callable&& c);
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Surface& ids(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Surface& ids(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `ids`.
     Surface& idssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& idssrc(Callable&& c);
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
     Surface& legend(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& legend(Callable&& c);
 
     // Sets the legend group for this trace. Traces and shapes part of the same legend group hide/show at the same time
     // when toggling legend items.
     Surface& legendgroup(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& legendgroup(Callable&& c);
 
     Surface& legendgrouptitle(Legendgrouptitle f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Legendgrouptitle&>>>
+    Surface& legendgrouptitle(Callable&& c);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -220,13 +276,21 @@ class Surface : public Trace {
     // after all unranked items. When having unranked or equal rank items shapes would be displayed after traces i.e.
     // according to their order in data and layout.
     Surface& legendrank(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface& legendrank(Callable&& c);
 
     // Sets the width (in px or fraction) of the legend for this trace.
     Surface& legendwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface& legendwidth(Callable&& c);
 
     Surface& lighting(Lighting f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Lighting&>>>
+    Surface& lighting(Callable&& c);
 
     Surface& lightposition(Lightposition f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Lightposition&>>>
+    Surface& lightposition(Callable&& c);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -236,20 +300,28 @@ class Surface : public Trace {
     // trace index.
     template <typename T>
     Surface& meta(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Surface& meta(Callable&& c);
     template <typename T>
     Surface& meta(std::vector<T> f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Surface& metasrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& metasrc(Callable&& c);
 
     // Sets the trace name. The trace name appears as the legend item and on hover.
     Surface& name(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& name(Callable&& c);
 
     // Sets the opacity of the surface. Please note that in the case of using high `opacity` values for example a value
     // greater than or equal to 0.5 on two surfaces (and 0.25 with four surfaces), an overlay of multiple transparent
     // surfaces may not perfectly be sorted in depth by the webgl API. This behavior may be improved in the near future
     // and is subject to change.
     Surface& opacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface& opacity(Callable&& c);
 
     // Sets the opacityscale. The opacityscale must be an array containing arrays mapping a normalized value to an
     // opacity value. At minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0,
@@ -258,42 +330,66 @@ class Surface : public Trace {
     // 'min', 'max', 'extremes' and 'uniform'. The default is 'uniform'.
     template <typename T>
     Surface& opacityscale(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Surface& opacityscale(Callable&& c);
 
     // Reverses the color mapping if true. If true, `cmin` will correspond to the last color in the array and `cmax`
     // will correspond to the first color.
     Surface& reversescale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface& reversescale(Callable&& c);
 
     // Sets a reference between this trace's 3D coordinate system and a 3D scene. If *scene* (the default value), the
     // (x,y,z) coordinates refer to `layout.scene`. If *scene2*, the (x,y,z) coordinates refer to `layout.scene2`, and
     // so on.
     Surface& scene(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& scene(Callable&& c);
 
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Surface& showlegend(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface& showlegend(Callable&& c);
 
     // Determines whether or not a colorbar is displayed for this trace.
     Surface& showscale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface& showscale(Callable&& c);
 
     Surface& stream(Stream f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Stream&>>>
+    Surface& stream(Callable&& c);
 
     // Sets the surface color values, used for setting a color scale independent of `z`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Surface& surfacecolor(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Surface& surfacecolor(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `surfacecolor`.
     Surface& surfacecolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& surfacecolorsrc(Callable&& c);
 
     // Sets the text elements associated with each z value. If trace `hoverinfo` contains a *text* flag and *hovertext*
     // is not set, these elements will be seen in the hover labels.
     Surface& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& text(Callable&& c);
     Surface& text(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `text`.
     Surface& textsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& textsrc(Callable&& c);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
     Surface& uid(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& uid(Callable&& c);
 
     // Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well
     // as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note
@@ -305,6 +401,8 @@ class Surface : public Trace {
     // still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
     template <typename T>
     Surface& uirevision(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Surface& uirevision(Callable&& c);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -314,6 +412,10 @@ class Surface : public Trace {
     // Sets the x coordinates.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Surface& x(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Surface& x(Callable&& c);
 
     // Sets the calendar system to use with `x` date data.
     // - Default: gregorian
@@ -326,13 +428,21 @@ class Surface : public Trace {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `xaxis.hoverformat`.
     Surface& xhoverformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& xhoverformat(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `x`.
     Surface& xsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& xsrc(Callable&& c);
 
     // Sets the y coordinates.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Surface& y(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Surface& y(Callable&& c);
 
     // Sets the calendar system to use with `y` date data.
     // - Default: gregorian
@@ -345,13 +455,21 @@ class Surface : public Trace {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `yaxis.hoverformat`.
     Surface& yhoverformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& yhoverformat(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `y`.
     Surface& ysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& ysrc(Callable&& c);
 
     // Sets the z coordinates.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Surface& z(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Surface& z(Callable&& c);
 
     // Sets the calendar system to use with `z` date data.
     // - Default: gregorian
@@ -364,9 +482,13 @@ class Surface : public Trace {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `zaxis.hoverformat`.
     Surface& zhoverformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& zhoverformat(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `z`.
     Surface& zsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface& zsrc(Callable&& c);
 };
 
 class Surface::Colorbar {
@@ -494,12 +616,18 @@ class Surface::Colorbar {
 
     // Sets the color of padded area.
     Surface::Colorbar& bgcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Colorbar& bgcolor(Callable&& c);
 
     // Sets the axis line color.
     Surface::Colorbar& bordercolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Colorbar& bordercolor(Callable&& c);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Surface::Colorbar& borderwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Colorbar& borderwidth(Callable&& c);
 
     // Sets the step in-between ticks on this axis. Use with `tick0`. Must be a positive number, or special strings
     // available to *log* and *date* axes. If the axis `type` is *log*, then ticks are set every 10^(n*dtick) where n is
@@ -515,6 +643,8 @@ class Surface::Colorbar {
     // set `dtick` to *M48*
     template <typename T>
     Surface::Colorbar& dtick(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Surface::Colorbar& dtick(Callable&& c);
 
     // Determines a formatting rule for the tick exponents. For example, consider the number 1,000,000,000. If *none*,
     // it appears as 1,000,000,000. If *e*, 1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super script). If *SI*,
@@ -529,10 +659,14 @@ class Surface::Colorbar {
     // values (if desired) can include html-like tags or MathJax.
     template <typename T>
     Surface::Colorbar& labelalias(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Surface::Colorbar& labelalias(Callable&& c);
 
     // Sets the length of the color bar This measure excludes the padding of both ends. That is, the color bar length is
     // this length minus the padding on both ends.
     Surface::Colorbar& len(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Colorbar& len(Callable&& c);
 
     // Determines whether this color bar's length (i.e. the measure in the color variation direction) is set in units of
     // plot *fraction* or in *pixels. Use `len` to set the value.
@@ -541,10 +675,14 @@ class Surface::Colorbar {
 
     // Hide SI prefix for 10^n if |n| is below this number. This only has an effect when `tickformat` is *SI* or *B*.
     Surface::Colorbar& minexponent(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Colorbar& minexponent(Callable&& c);
 
     // Specifies the maximum number of ticks for the particular axis. The actual number of ticks will be chosen
     // automatically to be less than or equal to `nticks`. Has an effect only if `tickmode` is set to *auto*.
     Surface::Colorbar& nticks(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Surface::Colorbar& nticks(Callable&& c);
 
     // Sets the orientation of the colorbar.
     // - Default: v
@@ -552,12 +690,18 @@ class Surface::Colorbar {
 
     // Sets the axis line color.
     Surface::Colorbar& outlinecolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Colorbar& outlinecolor(Callable&& c);
 
     // Sets the width (in px) of the axis line.
     Surface::Colorbar& outlinewidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Colorbar& outlinewidth(Callable&& c);
 
     // If "true", even 4-digit integers are separated
     Surface::Colorbar& separatethousands(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface::Colorbar& separatethousands(Callable&& c);
 
     // If *all*, all exponents are shown besides their significands. If *first*, only the exponent of the first tick is
     // shown. If *last*, only the exponent of the last tick is shown. If *none*, no exponents appear.
@@ -566,6 +710,8 @@ class Surface::Colorbar {
 
     // Determines whether or not the tick labels are drawn.
     Surface::Colorbar& showticklabels(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface::Colorbar& showticklabels(Callable&& c);
 
     // If *all*, all tick labels are displayed with a prefix. If *first*, only the first tick is displayed with a
     // prefix. If *last*, only the last tick is displayed with a suffix. If *none*, tick prefixes are hidden.
@@ -578,6 +724,8 @@ class Surface::Colorbar {
 
     // Sets the thickness of the color bar This measure excludes the size of the padding, ticks and labels.
     Surface::Colorbar& thickness(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Colorbar& thickness(Callable&& c);
 
     // Determines whether this color bar's thickness (i.e. the measure in the constant color direction) is set in units
     // of plot *fraction* or in *pixels*. Use `thickness` to set the value.
@@ -591,16 +739,24 @@ class Surface::Colorbar {
     // serial number from zero in the order it appears.
     template <typename T>
     Surface::Colorbar& tick0(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Surface::Colorbar& tick0(Callable&& c);
 
     // Sets the angle of the tick labels with respect to the horizontal. For example, a `tickangle` of -90 draws the
     // tick labels vertically.
     Surface::Colorbar& tickangle(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Colorbar& tickangle(Callable&& c);
 
     // Sets the tick color.
     Surface::Colorbar& tickcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Colorbar& tickcolor(Callable&& c);
 
     // Sets the color bar's tick label font
     Surface::Colorbar& tickfont(Tickfont f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickfont&>>>
+    Surface::Colorbar& tickfont(Callable&& c);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -608,8 +764,12 @@ class Surface::Colorbar {
     // half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example,
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Surface::Colorbar& tickformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Colorbar& tickformat(Callable&& c);
 
     Surface::Colorbar& tickformatstops(Tickformatstops f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickformatstops&>>>
+    Surface::Colorbar& tickformatstops(Callable&& c);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -625,9 +785,13 @@ class Surface::Colorbar {
     // labeled. `tick0` determines which labels are shown. Not implemented for axes with `type` *log* or
     // *multicategory*, or when `tickmode` is *array*.
     Surface::Colorbar& ticklabelstep(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Surface::Colorbar& ticklabelstep(Callable&& c);
 
     // Sets the tick length (in px).
     Surface::Colorbar& ticklen(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Colorbar& ticklen(Callable&& c);
 
     // Sets the tick mode for this axis. If *auto*, the number of ticks is set via `nticks`. If *linear*, the placement
     // of the ticks is determined by a starting position `tick0` and a tick step `dtick` (*linear* is the default value
@@ -637,6 +801,8 @@ class Surface::Colorbar {
 
     // Sets a tick label prefix.
     Surface::Colorbar& tickprefix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Colorbar& tickprefix(Callable&& c);
 
     // Determines whether ticks are drawn or not. If **, this axis' ticks are not drawn. If *outside* (*inside*), this
     // axis' are drawn outside (inside) the axis lines.
@@ -645,33 +811,53 @@ class Surface::Colorbar {
 
     // Sets a tick label suffix.
     Surface::Colorbar& ticksuffix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Colorbar& ticksuffix(Callable&& c);
 
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Surface::Colorbar& ticktext(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Surface::Colorbar& ticktext(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `ticktext`.
     Surface::Colorbar& ticktextsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Colorbar& ticktextsrc(Callable&& c);
 
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Surface::Colorbar& tickvals(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Surface::Colorbar& tickvals(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `tickvals`.
     Surface::Colorbar& tickvalssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Colorbar& tickvalssrc(Callable&& c);
 
     // Sets the tick width (in px).
     Surface::Colorbar& tickwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Colorbar& tickwidth(Callable&& c);
 
     Surface::Colorbar& title(Title f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Title&>>>
+    Surface::Colorbar& title(Callable&& c);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
     // when `orientation` is *v* and 0.5 when `orientation` is *h*. Must be between *0* and *1* if `xref` is *container*
     // and between *-2* and *3* if `xref` is *paper*.
     Surface::Colorbar& x(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Colorbar& x(Callable&& c);
 
     // Sets this color bar's horizontal position anchor. This anchor binds the `x` position to the *left*, *center* or
     // *right* of the color bar. Defaults to *left* when `orientation` is *v* and *center* when `orientation` is *h*.
@@ -679,6 +865,8 @@ class Surface::Colorbar {
 
     // Sets the amount of padding (in px) along the x direction.
     Surface::Colorbar& xpad(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Colorbar& xpad(Callable&& c);
 
     // Sets the container `x` refers to. *container* spans the entire `width` of the plot. *paper* refers to the width
     // of the plotting area only.
@@ -690,6 +878,8 @@ class Surface::Colorbar {
     // when `orientation` is *v* and 1 when `orientation` is *h*. Must be between *0* and *1* if `yref` is *container*
     // and between *-2* and *3* if `yref` is *paper*.
     Surface::Colorbar& y(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Colorbar& y(Callable&& c);
 
     // Sets this color bar's vertical position anchor This anchor binds the `y` position to the *top*, *middle* or
     // *bottom* of the color bar. Defaults to *middle* when `orientation` is *v* and *bottom* when `orientation` is *h*.
@@ -697,6 +887,8 @@ class Surface::Colorbar {
 
     // Sets the amount of padding (in px) along the y direction.
     Surface::Colorbar& ypad(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Colorbar& ypad(Callable&& c);
 
     // Sets the container `y` refers to. *container* spans the entire `height` of the plot. *paper* refers to the height
     // of the plotting area only.
@@ -739,6 +931,8 @@ class Surface::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Surface::Colorbar::Tickfont& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Colorbar::Tickfont& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -748,6 +942,8 @@ class Surface::Colorbar::Tickfont {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Surface::Colorbar::Tickfont& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Colorbar::Tickfont& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -755,12 +951,18 @@ class Surface::Colorbar::Tickfont {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Surface::Colorbar::Tickfont& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Colorbar::Tickfont& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Surface::Colorbar::Tickfont& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Colorbar::Tickfont& shadow(Callable&& c);
 
     Surface::Colorbar::Tickfont& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Colorbar::Tickfont& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -777,6 +979,8 @@ class Surface::Colorbar::Tickfont {
 
     // Sets the weight (or boldness) of the font.
     Surface::Colorbar::Tickfont& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Surface::Colorbar::Tickfont& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -791,6 +995,8 @@ class Surface::Colorbar::Tickformatstops {
     class Tickformatstop;
 
     Surface::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickformatstop&>>>
+    Surface::Colorbar::Tickformatstops& tickformatstop(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -805,15 +1011,21 @@ class Surface::Colorbar::Tickformatstops::Tickformatstop {
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
     Surface::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
+    Surface::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Surface::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface::Colorbar::Tickformatstops::Tickformatstop& enabled(Callable&& c);
 
     // When used in a template, named items are created in the output figure in addition to any items the figure already
     // has in this array. You can modify these items in the output figure by making your own item with
     // `templateitemname` matching this `name` alongside your modifications (including `visible: false` or `enabled:
     // false` to hide it). Has no effect outside of a template.
     Surface::Colorbar::Tickformatstops::Tickformatstop& name(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Colorbar::Tickformatstops::Tickformatstop& name(Callable&& c);
 
     // Used to refer to a named item in this array in the template. Named items from the template will be created even
     // without a matching item in the input figure, but you can modify one by making an item with `templateitemname`
@@ -821,9 +1033,13 @@ class Surface::Colorbar::Tickformatstops::Tickformatstop {
     // there is no template or no matching item, this item will be hidden unless you explicitly show it with `visible:
     // true`.
     Surface::Colorbar::Tickformatstops::Tickformatstop& templateitemname(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Colorbar::Tickformatstops::Tickformatstop& templateitemname(Callable&& c);
 
     // string - dtickformat for described zoom level, the same as *tickformat*
     Surface::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Colorbar::Tickformatstops::Tickformatstop& value(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -847,6 +1063,8 @@ class Surface::Colorbar::Title {
 
     // Sets this color bar's title font.
     Surface::Colorbar::Title& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Surface::Colorbar::Title& font(Callable&& c);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -854,6 +1072,8 @@ class Surface::Colorbar::Title {
 
     // Sets the title of the color bar.
     Surface::Colorbar::Title& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Colorbar::Title& text(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -891,6 +1111,8 @@ class Surface::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Surface::Colorbar::Title::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Colorbar::Title::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -900,6 +1122,8 @@ class Surface::Colorbar::Title::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Surface::Colorbar::Title::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Colorbar::Title::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -907,12 +1131,18 @@ class Surface::Colorbar::Title::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Surface::Colorbar::Title::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Colorbar::Title::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Surface::Colorbar::Title::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Colorbar::Title::Font& shadow(Callable&& c);
 
     Surface::Colorbar::Title::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Colorbar::Title::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -929,6 +1159,8 @@ class Surface::Colorbar::Title::Font {
 
     // Sets the weight (or boldness) of the font.
     Surface::Colorbar::Title::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Surface::Colorbar::Title::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -945,10 +1177,16 @@ class Surface::Contours {
     class Z;
 
     Surface::Contours& x(X f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, X&>>>
+    Surface::Contours& x(Callable&& c);
 
     Surface::Contours& y(Y f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Y&>>>
+    Surface::Contours& y(Callable&& c);
 
     Surface::Contours& z(Z f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Z&>>>
+    Surface::Contours& z(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -964,35 +1202,57 @@ class Surface::Contours::X {
 
     // Sets the color of the contour lines.
     Surface::Contours::X& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Contours::X& color(Callable&& c);
 
     // Sets the end contour level value. Must be more than `contours.start`
     Surface::Contours::X& end(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Contours::X& end(Callable&& c);
 
     // Determines whether or not contour lines about the x dimension are highlighted on hover.
     Surface::Contours::X& highlight(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface::Contours::X& highlight(Callable&& c);
 
     // Sets the color of the highlighted contour lines.
     Surface::Contours::X& highlightcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Contours::X& highlightcolor(Callable&& c);
 
     // Sets the width of the highlighted contour lines.
     Surface::Contours::X& highlightwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Contours::X& highlightwidth(Callable&& c);
 
     Surface::Contours::X& project(Project f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Project&>>>
+    Surface::Contours::X& project(Callable&& c);
 
     // Determines whether or not contour lines about the x dimension are drawn.
     Surface::Contours::X& show(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface::Contours::X& show(Callable&& c);
 
     // Sets the step between each contour level. Must be positive.
     Surface::Contours::X& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Contours::X& size(Callable&& c);
 
     // Sets the starting contour level value. Must be less than `contours.end`
     Surface::Contours::X& start(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Contours::X& start(Callable&& c);
 
     // An alternate to *color*. Determines whether or not the contour lines are colored using the trace *colorscale*.
     Surface::Contours::X& usecolormap(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface::Contours::X& usecolormap(Callable&& c);
 
     // Sets the width of the contour lines.
     Surface::Contours::X& width(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Contours::X& width(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1008,16 +1268,22 @@ class Surface::Contours::X::Project {
     // default), the projected lines are shown on hover. If `show` is set to *true*, the projected lines are shown in
     // permanence.
     Surface::Contours::X::Project& x(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface::Contours::X::Project& x(Callable&& c);
 
     // Determines whether or not these contour lines are projected on the y plane. If `highlight` is set to *true* (the
     // default), the projected lines are shown on hover. If `show` is set to *true*, the projected lines are shown in
     // permanence.
     Surface::Contours::X::Project& y(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface::Contours::X::Project& y(Callable&& c);
 
     // Determines whether or not these contour lines are projected on the z plane. If `highlight` is set to *true* (the
     // default), the projected lines are shown on hover. If `show` is set to *true*, the projected lines are shown in
     // permanence.
     Surface::Contours::X::Project& z(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface::Contours::X::Project& z(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1033,35 +1299,57 @@ class Surface::Contours::Y {
 
     // Sets the color of the contour lines.
     Surface::Contours::Y& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Contours::Y& color(Callable&& c);
 
     // Sets the end contour level value. Must be more than `contours.start`
     Surface::Contours::Y& end(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Contours::Y& end(Callable&& c);
 
     // Determines whether or not contour lines about the y dimension are highlighted on hover.
     Surface::Contours::Y& highlight(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface::Contours::Y& highlight(Callable&& c);
 
     // Sets the color of the highlighted contour lines.
     Surface::Contours::Y& highlightcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Contours::Y& highlightcolor(Callable&& c);
 
     // Sets the width of the highlighted contour lines.
     Surface::Contours::Y& highlightwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Contours::Y& highlightwidth(Callable&& c);
 
     Surface::Contours::Y& project(Project f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Project&>>>
+    Surface::Contours::Y& project(Callable&& c);
 
     // Determines whether or not contour lines about the y dimension are drawn.
     Surface::Contours::Y& show(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface::Contours::Y& show(Callable&& c);
 
     // Sets the step between each contour level. Must be positive.
     Surface::Contours::Y& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Contours::Y& size(Callable&& c);
 
     // Sets the starting contour level value. Must be less than `contours.end`
     Surface::Contours::Y& start(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Contours::Y& start(Callable&& c);
 
     // An alternate to *color*. Determines whether or not the contour lines are colored using the trace *colorscale*.
     Surface::Contours::Y& usecolormap(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface::Contours::Y& usecolormap(Callable&& c);
 
     // Sets the width of the contour lines.
     Surface::Contours::Y& width(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Contours::Y& width(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1077,16 +1365,22 @@ class Surface::Contours::Y::Project {
     // default), the projected lines are shown on hover. If `show` is set to *true*, the projected lines are shown in
     // permanence.
     Surface::Contours::Y::Project& x(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface::Contours::Y::Project& x(Callable&& c);
 
     // Determines whether or not these contour lines are projected on the y plane. If `highlight` is set to *true* (the
     // default), the projected lines are shown on hover. If `show` is set to *true*, the projected lines are shown in
     // permanence.
     Surface::Contours::Y::Project& y(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface::Contours::Y::Project& y(Callable&& c);
 
     // Determines whether or not these contour lines are projected on the z plane. If `highlight` is set to *true* (the
     // default), the projected lines are shown on hover. If `show` is set to *true*, the projected lines are shown in
     // permanence.
     Surface::Contours::Y::Project& z(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface::Contours::Y::Project& z(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1102,35 +1396,57 @@ class Surface::Contours::Z {
 
     // Sets the color of the contour lines.
     Surface::Contours::Z& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Contours::Z& color(Callable&& c);
 
     // Sets the end contour level value. Must be more than `contours.start`
     Surface::Contours::Z& end(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Contours::Z& end(Callable&& c);
 
     // Determines whether or not contour lines about the z dimension are highlighted on hover.
     Surface::Contours::Z& highlight(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface::Contours::Z& highlight(Callable&& c);
 
     // Sets the color of the highlighted contour lines.
     Surface::Contours::Z& highlightcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Contours::Z& highlightcolor(Callable&& c);
 
     // Sets the width of the highlighted contour lines.
     Surface::Contours::Z& highlightwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Contours::Z& highlightwidth(Callable&& c);
 
     Surface::Contours::Z& project(Project f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Project&>>>
+    Surface::Contours::Z& project(Callable&& c);
 
     // Determines whether or not contour lines about the z dimension are drawn.
     Surface::Contours::Z& show(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface::Contours::Z& show(Callable&& c);
 
     // Sets the step between each contour level. Must be positive.
     Surface::Contours::Z& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Contours::Z& size(Callable&& c);
 
     // Sets the starting contour level value. Must be less than `contours.end`
     Surface::Contours::Z& start(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Contours::Z& start(Callable&& c);
 
     // An alternate to *color*. Determines whether or not the contour lines are colored using the trace *colorscale*.
     Surface::Contours::Z& usecolormap(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface::Contours::Z& usecolormap(Callable&& c);
 
     // Sets the width of the contour lines.
     Surface::Contours::Z& width(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Contours::Z& width(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1146,16 +1462,22 @@ class Surface::Contours::Z::Project {
     // default), the projected lines are shown on hover. If `show` is set to *true*, the projected lines are shown in
     // permanence.
     Surface::Contours::Z::Project& x(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface::Contours::Z::Project& x(Callable&& c);
 
     // Determines whether or not these contour lines are projected on the y plane. If `highlight` is set to *true* (the
     // default), the projected lines are shown on hover. If `show` is set to *true*, the projected lines are shown in
     // permanence.
     Surface::Contours::Z::Project& y(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface::Contours::Z::Project& y(Callable&& c);
 
     // Determines whether or not these contour lines are projected on the z plane. If `highlight` is set to *true* (the
     // default), the projected lines are shown on hover. If `show` is set to *true*, the projected lines are shown in
     // permanence.
     Surface::Contours::Z::Project& z(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Surface::Contours::Z::Project& z(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1185,33 +1507,49 @@ class Surface::Hoverlabel {
 
     // Sets the source reference on Chart Studio Cloud for `align`.
     Surface::Hoverlabel& alignsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Hoverlabel& alignsrc(Callable&& c);
 
     // Sets the background color of the hover labels for this trace
     Surface::Hoverlabel& bgcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Hoverlabel& bgcolor(Callable&& c);
     Surface::Hoverlabel& bgcolor(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Surface::Hoverlabel& bgcolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Hoverlabel& bgcolorsrc(Callable&& c);
 
     // Sets the border color of the hover labels for this trace.
     Surface::Hoverlabel& bordercolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Hoverlabel& bordercolor(Callable&& c);
     Surface::Hoverlabel& bordercolor(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Surface::Hoverlabel& bordercolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Hoverlabel& bordercolorsrc(Callable&& c);
 
     // Sets the font used in hover labels.
     Surface::Hoverlabel& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Surface::Hoverlabel& font(Callable&& c);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
     // name if it is less than that many characters, but if it is longer, will truncate to `namelength - 3` characters
     // and add an ellipsis.
     Surface::Hoverlabel& namelength(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Surface::Hoverlabel& namelength(Callable&& c);
     Surface::Hoverlabel& namelength(std::vector<int> f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Surface::Hoverlabel& namelengthsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Hoverlabel& namelengthsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1249,10 +1587,14 @@ class Surface::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Surface::Hoverlabel::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Hoverlabel::Font& color(Callable&& c);
     Surface::Hoverlabel::Font& color(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Surface::Hoverlabel::Font& colorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Hoverlabel::Font& colorsrc(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1262,10 +1604,14 @@ class Surface::Hoverlabel::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Surface::Hoverlabel::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Hoverlabel::Font& family(Callable&& c);
     Surface::Hoverlabel::Font& family(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Surface::Hoverlabel::Font& familysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Hoverlabel::Font& familysrc(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -1273,24 +1619,36 @@ class Surface::Hoverlabel::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Surface::Hoverlabel::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Hoverlabel::Font& lineposition(Callable&& c);
     Surface::Hoverlabel::Font& lineposition(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Surface::Hoverlabel::Font& linepositionsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Hoverlabel::Font& linepositionsrc(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Surface::Hoverlabel::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Hoverlabel::Font& shadow(Callable&& c);
     Surface::Hoverlabel::Font& shadow(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Surface::Hoverlabel::Font& shadowsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Hoverlabel::Font& shadowsrc(Callable&& c);
 
     Surface::Hoverlabel::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Hoverlabel::Font& size(Callable&& c);
     Surface::Hoverlabel::Font& size(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Surface::Hoverlabel::Font& sizesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Hoverlabel::Font& sizesrc(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1299,6 +1657,8 @@ class Surface::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `style`.
     Surface::Hoverlabel::Font& stylesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Hoverlabel::Font& stylesrc(Callable&& c);
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
@@ -1308,6 +1668,8 @@ class Surface::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `textcase`.
     Surface::Hoverlabel::Font& textcasesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Hoverlabel::Font& textcasesrc(Callable&& c);
 
     // Sets the variant of the font.
     // - Default: normal
@@ -1316,13 +1678,19 @@ class Surface::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `variant`.
     Surface::Hoverlabel::Font& variantsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Hoverlabel::Font& variantsrc(Callable&& c);
 
     // Sets the weight (or boldness) of the font.
     Surface::Hoverlabel::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Surface::Hoverlabel::Font& weight(Callable&& c);
     Surface::Hoverlabel::Font& weight(std::vector<int> f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Surface::Hoverlabel::Font& weightsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Hoverlabel::Font& weightsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1339,9 +1707,13 @@ class Surface::Legendgrouptitle {
 
     // Sets this legend group's title font.
     Surface::Legendgrouptitle& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Surface::Legendgrouptitle& font(Callable&& c);
 
     // Sets the title of the legend group.
     Surface::Legendgrouptitle& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Legendgrouptitle& text(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1379,6 +1751,8 @@ class Surface::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Surface::Legendgrouptitle::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Legendgrouptitle::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1388,6 +1762,8 @@ class Surface::Legendgrouptitle::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Surface::Legendgrouptitle::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Legendgrouptitle::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -1395,12 +1771,18 @@ class Surface::Legendgrouptitle::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Surface::Legendgrouptitle::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Legendgrouptitle::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Surface::Legendgrouptitle::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Legendgrouptitle::Font& shadow(Callable&& c);
 
     Surface::Legendgrouptitle::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Legendgrouptitle::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1417,6 +1799,8 @@ class Surface::Legendgrouptitle::Font {
 
     // Sets the weight (or boldness) of the font.
     Surface::Legendgrouptitle::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Surface::Legendgrouptitle::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1430,19 +1814,29 @@ class Surface::Lighting {
 
     // Ambient light increases overall color visibility but can wash out the image.
     Surface::Lighting& ambient(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Lighting& ambient(Callable&& c);
 
     // Represents the extent that incident rays are reflected in a range of angles.
     Surface::Lighting& diffuse(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Lighting& diffuse(Callable&& c);
 
     // Represents the reflectance as a dependency of the viewing angle; e.g. paper is reflective when viewing it from
     // the edge of the paper (almost 90 degrees), causing shine.
     Surface::Lighting& fresnel(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Lighting& fresnel(Callable&& c);
 
     // Alters specular reflection; the rougher the surface, the wider and less contrasty the shine.
     Surface::Lighting& roughness(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Lighting& roughness(Callable&& c);
 
     // Represents the level that incident rays are reflected in a single direction, causing shine.
     Surface::Lighting& specular(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Lighting& specular(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1456,12 +1850,18 @@ class Surface::Lightposition {
 
     // Numeric vector, representing the X coordinate for each vertex.
     Surface::Lightposition& x(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Lightposition& x(Callable&& c);
 
     // Numeric vector, representing the Y coordinate for each vertex.
     Surface::Lightposition& y(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Lightposition& y(Callable&& c);
 
     // Numeric vector, representing the Z coordinate for each vertex.
     Surface::Lightposition& z(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Lightposition& z(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1476,10 +1876,14 @@ class Surface::Stream {
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
     Surface::Stream& maxpoints(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Surface::Stream& maxpoints(Callable&& c);
 
     // The stream id number links a data trace on a plot with a stream. See https://chart-studio.plotly.com/settings for
     // more details.
     Surface::Stream& token(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Surface::Stream& token(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

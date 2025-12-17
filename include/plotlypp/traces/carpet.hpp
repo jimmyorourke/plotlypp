@@ -45,70 +45,118 @@ class Carpet : public Trace {
     // An array containing values of the first parameter value
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Carpet& a(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Carpet& a(Callable&& c);
 
     // Alternate to `a`. Builds a linear space of a coordinates. Use with `da` where `a0` is the starting coordinate and
     // `da` the step.
     Carpet& a0(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet& a0(Callable&& c);
 
     Carpet& aaxis(Aaxis f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Aaxis&>>>
+    Carpet& aaxis(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `a`.
     Carpet& asrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet& asrc(Callable&& c);
 
     // A two dimensional array of y coordinates at each carpet point.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Carpet& b(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Carpet& b(Callable&& c);
 
     // Alternate to `b`. Builds a linear space of a coordinates. Use with `db` where `b0` is the starting coordinate and
     // `db` the step.
     Carpet& b0(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet& b0(Callable&& c);
 
     Carpet& baxis(Baxis f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Baxis&>>>
+    Carpet& baxis(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `b`.
     Carpet& bsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet& bsrc(Callable&& c);
 
     // An identifier for this carpet, so that `scattercarpet` and `contourcarpet` traces can specify a carpet plot on
     // which they lie
     Carpet& carpet(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet& carpet(Callable&& c);
 
     // The shift applied to each successive row of data in creating a cheater plot. Only used if `x` is been omitted.
     Carpet& cheaterslope(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet& cheaterslope(Callable&& c);
 
     // Sets default for all colors associated with this axis all at once: line, font, tick, and grid colors. Grid color
     // is lightened by blending this with the plot background Individual pieces can override this.
     Carpet& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet& color(Callable&& c);
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Carpet& customdata(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Carpet& customdata(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Carpet& customdatasrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet& customdatasrc(Callable&& c);
 
     // Sets the a coordinate step. See `a0` for more info.
     Carpet& da(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet& da(Callable&& c);
 
     // Sets the b coordinate step. See `b0` for more info.
     Carpet& db(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet& db(Callable&& c);
 
     // The default font used for axis & tick labels on this carpet
     Carpet& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Carpet& font(Callable&& c);
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Carpet& ids(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Carpet& ids(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `ids`.
     Carpet& idssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet& idssrc(Callable&& c);
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
     Carpet& legend(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet& legend(Callable&& c);
 
     Carpet& legendgrouptitle(Legendgrouptitle f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Legendgrouptitle&>>>
+    Carpet& legendgrouptitle(Callable&& c);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -116,9 +164,13 @@ class Carpet : public Trace {
     // after all unranked items. When having unranked or equal rank items shapes would be displayed after traces i.e.
     // according to their order in data and layout.
     Carpet& legendrank(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet& legendrank(Callable&& c);
 
     // Sets the width (in px or fraction) of the legend for this trace.
     Carpet& legendwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet& legendwidth(Callable&& c);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -128,23 +180,35 @@ class Carpet : public Trace {
     // trace index.
     template <typename T>
     Carpet& meta(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Carpet& meta(Callable&& c);
     template <typename T>
     Carpet& meta(std::vector<T> f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Carpet& metasrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet& metasrc(Callable&& c);
 
     // Sets the trace name. The trace name appears as the legend item and on hover.
     Carpet& name(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet& name(Callable&& c);
 
     // Sets the opacity of the trace.
     Carpet& opacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet& opacity(Callable&& c);
 
     Carpet& stream(Stream f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Stream&>>>
+    Carpet& stream(Callable&& c);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
     Carpet& uid(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet& uid(Callable&& c);
 
     // Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well
     // as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note
@@ -156,6 +220,8 @@ class Carpet : public Trace {
     // still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
     template <typename T>
     Carpet& uirevision(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Carpet& uirevision(Callable&& c);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -166,28 +232,46 @@ class Carpet : public Trace {
     // xaxis is hidden by default.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Carpet& x(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Carpet& x(Callable&& c);
 
     // Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x
     // coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
     Carpet& xaxis(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet& xaxis(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `x`.
     Carpet& xsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet& xsrc(Callable&& c);
 
     // A two dimensional array of y coordinates at each carpet point.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Carpet& y(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Carpet& y(Callable&& c);
 
     // Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y
     // coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
     Carpet& yaxis(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet& yaxis(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `y`.
     Carpet& ysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet& ysrc(Callable&& c);
 
     // Sets the layer on which this trace is displayed, relative to other SVG traces on the same subplot. SVG traces
     // with higher `zorder` appear in front of those with lower `zorder`.
     Carpet& zorder(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Carpet& zorder(Callable&& c);
 };
 
 class Carpet::Aaxis {
@@ -292,9 +376,13 @@ class Carpet::Aaxis {
 
     // The stride between grid lines along the axis
     Carpet::Aaxis& arraydtick(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Carpet::Aaxis& arraydtick(Callable&& c);
 
     // The starting index of grid lines along the axis
     Carpet::Aaxis& arraytick0(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Carpet::Aaxis& arraytick0(Callable&& c);
 
     // Determines whether or not the range of this axis is computed in relation to the input data. See `rangemode` for
     // more info. If `range` is provided, then `autorange` is set to *false*.
@@ -311,9 +399,15 @@ class Carpet::Aaxis {
     // Used with `categoryorder`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Carpet::Aaxis& categoryarray(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Carpet::Aaxis& categoryarray(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `categoryarray`.
     Carpet::Aaxis& categoryarraysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis& categoryarraysrc(Callable&& c);
 
     // Specifies the ordering logic for the case of categorical variables. By default, plotly uses *trace*, which
     // specifies the order that is present in the data supplied. Set `categoryorder` to *category ascending* or
@@ -331,19 +425,29 @@ class Carpet::Aaxis {
     // Sets default for all colors associated with this axis all at once: line, font, tick, and grid colors. Grid color
     // is lightened by blending this with the plot background Individual pieces can override this.
     Carpet::Aaxis& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis& color(Callable&& c);
 
     // The stride between grid lines along the axis
     Carpet::Aaxis& dtick(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Aaxis& dtick(Callable&& c);
 
     // Determines whether or not a line is drawn at along the final value of this axis. If *true*, the end line is drawn
     // on top of the grid lines.
     Carpet::Aaxis& endline(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Carpet::Aaxis& endline(Callable&& c);
 
     // Sets the line color of the end line.
     Carpet::Aaxis& endlinecolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis& endlinecolor(Callable&& c);
 
     // Sets the width (in px) of the end line.
     Carpet::Aaxis& endlinewidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Aaxis& endlinewidth(Callable&& c);
 
     // Determines a formatting rule for the tick exponents. For example, consider the number 1,000,000,000. If *none*,
     // it appears as 1,000,000,000. If *e*, 1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super script). If *SI*,
@@ -353,16 +457,24 @@ class Carpet::Aaxis {
 
     // Determines whether or not this axis is zoom-able. If true, then zoom is disabled.
     Carpet::Aaxis& fixedrange(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Carpet::Aaxis& fixedrange(Callable&& c);
 
     // Sets the axis line color.
     Carpet::Aaxis& gridcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis& gridcolor(Callable&& c);
 
     // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
     // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
     Carpet::Aaxis& griddash(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis& griddash(Callable&& c);
 
     // Sets the width (in px) of the axis line.
     Carpet::Aaxis& gridwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Aaxis& gridwidth(Callable&& c);
 
     // Replacement text for specific tick or hover labels. For example using {US: 'USA', CA: 'Canada'} changes US to USA
     // and CA to Canada. The labels we would have shown must match the keys exactly, after adding any tickprefix or
@@ -371,41 +483,65 @@ class Carpet::Aaxis {
     // values (if desired) can include html-like tags or MathJax.
     template <typename T>
     Carpet::Aaxis& labelalias(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Carpet::Aaxis& labelalias(Callable&& c);
 
     // Extra padding between label and the axis
     Carpet::Aaxis& labelpadding(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Carpet::Aaxis& labelpadding(Callable&& c);
 
     // Sets a axis label prefix.
     Carpet::Aaxis& labelprefix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis& labelprefix(Callable&& c);
 
     // Sets a axis label suffix.
     Carpet::Aaxis& labelsuffix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis& labelsuffix(Callable&& c);
 
     // Sets the axis line color.
     Carpet::Aaxis& linecolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis& linecolor(Callable&& c);
 
     // Sets the width (in px) of the axis line.
     Carpet::Aaxis& linewidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Aaxis& linewidth(Callable&& c);
 
     // Hide SI prefix for 10^n if |n| is below this number
     Carpet::Aaxis& minexponent(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Aaxis& minexponent(Callable&& c);
 
     // Sets the color of the grid lines.
     Carpet::Aaxis& minorgridcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis& minorgridcolor(Callable&& c);
 
     // Sets the number of minor grid ticks per major grid tick
     Carpet::Aaxis& minorgridcount(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Carpet::Aaxis& minorgridcount(Callable&& c);
 
     // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
     // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
     Carpet::Aaxis& minorgriddash(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis& minorgriddash(Callable&& c);
 
     // Sets the width (in px) of the grid lines.
     Carpet::Aaxis& minorgridwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Aaxis& minorgridwidth(Callable&& c);
 
     // Specifies the maximum number of ticks for the particular axis. The actual number of ticks will be chosen
     // automatically to be less than or equal to `nticks`. Has an effect only if `tickmode` is set to *auto*.
     Carpet::Aaxis& nticks(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Carpet::Aaxis& nticks(Callable&& c);
 
     // Sets the range of this axis. If the axis `type` is *log*, then you must take the log of your desired range (e.g.
     // to set the range from 1 to 100, set the range from 0 to 2). If the axis `type` is *date*, it should be date
@@ -413,6 +549,8 @@ class Carpet::Aaxis {
     // the axis `type` is *category*, it should be numbers, using the scale where each category is assigned a serial
     // number from zero in the order it appears.
     Carpet::Aaxis& range(std::vector<double> f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
+    Carpet::Aaxis& range(Callable&& c);
 
     // If *normal*, the range is computed in relation to the extrema of the input data. If *tozero*`, the range extends
     // to 0, regardless of the input data If *nonnegative*, the range is non-negative, regardless of the input data.
@@ -421,6 +559,8 @@ class Carpet::Aaxis {
 
     // If "true", even 4-digit integers are separated
     Carpet::Aaxis& separatethousands(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Carpet::Aaxis& separatethousands(Callable&& c);
 
     // If *all*, all exponents are shown besides their significands. If *first*, only the exponent of the first tick is
     // shown. If *last*, only the exponent of the last tick is shown. If *none*, no exponents appear.
@@ -429,9 +569,13 @@ class Carpet::Aaxis {
 
     // Determines whether or not grid lines are drawn. If *true*, the grid lines are drawn at every tick mark.
     Carpet::Aaxis& showgrid(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Carpet::Aaxis& showgrid(Callable&& c);
 
     // Determines whether or not a line bounding this axis is drawn.
     Carpet::Aaxis& showline(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Carpet::Aaxis& showline(Callable&& c);
 
     // Determines whether axis labels are drawn on the low side, the high side, both, or neither side of the axis.
     // - Default: start
@@ -447,26 +591,40 @@ class Carpet::Aaxis {
     Carpet::Aaxis& showticksuffix(enum Showticksuffix f);
 
     Carpet::Aaxis& smoothing(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Aaxis& smoothing(Callable&& c);
 
     // Determines whether or not a line is drawn at along the starting value of this axis. If *true*, the start line is
     // drawn on top of the grid lines.
     Carpet::Aaxis& startline(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Carpet::Aaxis& startline(Callable&& c);
 
     // Sets the line color of the start line.
     Carpet::Aaxis& startlinecolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis& startlinecolor(Callable&& c);
 
     // Sets the width (in px) of the start line.
     Carpet::Aaxis& startlinewidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Aaxis& startlinewidth(Callable&& c);
 
     // The starting index of grid lines along the axis
     Carpet::Aaxis& tick0(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Aaxis& tick0(Callable&& c);
 
     // Sets the angle of the tick labels with respect to the horizontal. For example, a `tickangle` of -90 draws the
     // tick labels vertically.
     Carpet::Aaxis& tickangle(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Aaxis& tickangle(Callable&& c);
 
     // Sets the tick font.
     Carpet::Aaxis& tickfont(Tickfont f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickfont&>>>
+    Carpet::Aaxis& tickfont(Callable&& c);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -474,8 +632,12 @@ class Carpet::Aaxis {
     // half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example,
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Carpet::Aaxis& tickformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis& tickformat(Callable&& c);
 
     Carpet::Aaxis& tickformatstops(Tickformatstops f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickformatstops&>>>
+    Carpet::Aaxis& tickformatstops(Callable&& c);
 
     //
     // - Default: array
@@ -483,27 +645,45 @@ class Carpet::Aaxis {
 
     // Sets a tick label prefix.
     Carpet::Aaxis& tickprefix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis& tickprefix(Callable&& c);
 
     // Sets a tick label suffix.
     Carpet::Aaxis& ticksuffix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis& ticksuffix(Callable&& c);
 
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Carpet::Aaxis& ticktext(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Carpet::Aaxis& ticktext(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `ticktext`.
     Carpet::Aaxis& ticktextsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis& ticktextsrc(Callable&& c);
 
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Carpet::Aaxis& tickvals(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Carpet::Aaxis& tickvals(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `tickvals`.
     Carpet::Aaxis& tickvalssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis& tickvalssrc(Callable&& c);
 
     Carpet::Aaxis& title(Title f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Title&>>>
+    Carpet::Aaxis& title(Callable&& c);
 
     // Sets the axis type. By default, plotly attempts to determined the axis type by looking into the data of the
     // traces that referenced the axis in question.
@@ -546,6 +726,8 @@ class Carpet::Aaxis::Tickfont {
     static std::string to_string(Variant e);
 
     Carpet::Aaxis::Tickfont& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis::Tickfont& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -555,6 +737,8 @@ class Carpet::Aaxis::Tickfont {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Carpet::Aaxis::Tickfont& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis::Tickfont& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -562,12 +746,18 @@ class Carpet::Aaxis::Tickfont {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Carpet::Aaxis::Tickfont& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis::Tickfont& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Carpet::Aaxis::Tickfont& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis::Tickfont& shadow(Callable&& c);
 
     Carpet::Aaxis::Tickfont& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Aaxis::Tickfont& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -584,6 +774,8 @@ class Carpet::Aaxis::Tickfont {
 
     // Sets the weight (or boldness) of the font.
     Carpet::Aaxis::Tickfont& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Carpet::Aaxis::Tickfont& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -598,6 +790,8 @@ class Carpet::Aaxis::Tickformatstops {
     class Tickformatstop;
 
     Carpet::Aaxis::Tickformatstops& tickformatstop(Tickformatstop f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickformatstop&>>>
+    Carpet::Aaxis::Tickformatstops& tickformatstop(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -612,15 +806,21 @@ class Carpet::Aaxis::Tickformatstops::Tickformatstop {
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
     Carpet::Aaxis::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
+    Carpet::Aaxis::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Carpet::Aaxis::Tickformatstops::Tickformatstop& enabled(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Carpet::Aaxis::Tickformatstops::Tickformatstop& enabled(Callable&& c);
 
     // When used in a template, named items are created in the output figure in addition to any items the figure already
     // has in this array. You can modify these items in the output figure by making your own item with
     // `templateitemname` matching this `name` alongside your modifications (including `visible: false` or `enabled:
     // false` to hide it). Has no effect outside of a template.
     Carpet::Aaxis::Tickformatstops::Tickformatstop& name(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis::Tickformatstops::Tickformatstop& name(Callable&& c);
 
     // Used to refer to a named item in this array in the template. Named items from the template will be created even
     // without a matching item in the input figure, but you can modify one by making an item with `templateitemname`
@@ -628,9 +828,13 @@ class Carpet::Aaxis::Tickformatstops::Tickformatstop {
     // there is no template or no matching item, this item will be hidden unless you explicitly show it with `visible:
     // true`.
     Carpet::Aaxis::Tickformatstops::Tickformatstop& templateitemname(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis::Tickformatstops::Tickformatstop& templateitemname(Callable&& c);
 
     // string - dtickformat for described zoom level, the same as *tickformat*
     Carpet::Aaxis::Tickformatstops::Tickformatstop& value(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis::Tickformatstops::Tickformatstop& value(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -647,12 +851,18 @@ class Carpet::Aaxis::Title {
 
     // Sets this axis' title font.
     Carpet::Aaxis::Title& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Carpet::Aaxis::Title& font(Callable&& c);
 
     // An additional amount by which to offset the title from the tick labels, given in pixels.
     Carpet::Aaxis::Title& offset(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Aaxis::Title& offset(Callable&& c);
 
     // Sets the title of this axis.
     Carpet::Aaxis::Title& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis::Title& text(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -690,6 +900,8 @@ class Carpet::Aaxis::Title::Font {
     static std::string to_string(Variant e);
 
     Carpet::Aaxis::Title::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis::Title::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -699,6 +911,8 @@ class Carpet::Aaxis::Title::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Carpet::Aaxis::Title::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis::Title::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -706,12 +920,18 @@ class Carpet::Aaxis::Title::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Carpet::Aaxis::Title::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis::Title::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Carpet::Aaxis::Title::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Aaxis::Title::Font& shadow(Callable&& c);
 
     Carpet::Aaxis::Title::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Aaxis::Title::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -728,6 +948,8 @@ class Carpet::Aaxis::Title::Font {
 
     // Sets the weight (or boldness) of the font.
     Carpet::Aaxis::Title::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Carpet::Aaxis::Title::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -835,9 +1057,13 @@ class Carpet::Baxis {
 
     // The stride between grid lines along the axis
     Carpet::Baxis& arraydtick(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Carpet::Baxis& arraydtick(Callable&& c);
 
     // The starting index of grid lines along the axis
     Carpet::Baxis& arraytick0(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Carpet::Baxis& arraytick0(Callable&& c);
 
     // Determines whether or not the range of this axis is computed in relation to the input data. See `rangemode` for
     // more info. If `range` is provided, then `autorange` is set to *false*.
@@ -854,9 +1080,15 @@ class Carpet::Baxis {
     // Used with `categoryorder`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Carpet::Baxis& categoryarray(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Carpet::Baxis& categoryarray(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `categoryarray`.
     Carpet::Baxis& categoryarraysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis& categoryarraysrc(Callable&& c);
 
     // Specifies the ordering logic for the case of categorical variables. By default, plotly uses *trace*, which
     // specifies the order that is present in the data supplied. Set `categoryorder` to *category ascending* or
@@ -874,19 +1106,29 @@ class Carpet::Baxis {
     // Sets default for all colors associated with this axis all at once: line, font, tick, and grid colors. Grid color
     // is lightened by blending this with the plot background Individual pieces can override this.
     Carpet::Baxis& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis& color(Callable&& c);
 
     // The stride between grid lines along the axis
     Carpet::Baxis& dtick(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Baxis& dtick(Callable&& c);
 
     // Determines whether or not a line is drawn at along the final value of this axis. If *true*, the end line is drawn
     // on top of the grid lines.
     Carpet::Baxis& endline(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Carpet::Baxis& endline(Callable&& c);
 
     // Sets the line color of the end line.
     Carpet::Baxis& endlinecolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis& endlinecolor(Callable&& c);
 
     // Sets the width (in px) of the end line.
     Carpet::Baxis& endlinewidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Baxis& endlinewidth(Callable&& c);
 
     // Determines a formatting rule for the tick exponents. For example, consider the number 1,000,000,000. If *none*,
     // it appears as 1,000,000,000. If *e*, 1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super script). If *SI*,
@@ -896,16 +1138,24 @@ class Carpet::Baxis {
 
     // Determines whether or not this axis is zoom-able. If true, then zoom is disabled.
     Carpet::Baxis& fixedrange(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Carpet::Baxis& fixedrange(Callable&& c);
 
     // Sets the axis line color.
     Carpet::Baxis& gridcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis& gridcolor(Callable&& c);
 
     // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
     // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
     Carpet::Baxis& griddash(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis& griddash(Callable&& c);
 
     // Sets the width (in px) of the axis line.
     Carpet::Baxis& gridwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Baxis& gridwidth(Callable&& c);
 
     // Replacement text for specific tick or hover labels. For example using {US: 'USA', CA: 'Canada'} changes US to USA
     // and CA to Canada. The labels we would have shown must match the keys exactly, after adding any tickprefix or
@@ -914,41 +1164,65 @@ class Carpet::Baxis {
     // values (if desired) can include html-like tags or MathJax.
     template <typename T>
     Carpet::Baxis& labelalias(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Carpet::Baxis& labelalias(Callable&& c);
 
     // Extra padding between label and the axis
     Carpet::Baxis& labelpadding(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Carpet::Baxis& labelpadding(Callable&& c);
 
     // Sets a axis label prefix.
     Carpet::Baxis& labelprefix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis& labelprefix(Callable&& c);
 
     // Sets a axis label suffix.
     Carpet::Baxis& labelsuffix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis& labelsuffix(Callable&& c);
 
     // Sets the axis line color.
     Carpet::Baxis& linecolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis& linecolor(Callable&& c);
 
     // Sets the width (in px) of the axis line.
     Carpet::Baxis& linewidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Baxis& linewidth(Callable&& c);
 
     // Hide SI prefix for 10^n if |n| is below this number
     Carpet::Baxis& minexponent(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Baxis& minexponent(Callable&& c);
 
     // Sets the color of the grid lines.
     Carpet::Baxis& minorgridcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis& minorgridcolor(Callable&& c);
 
     // Sets the number of minor grid ticks per major grid tick
     Carpet::Baxis& minorgridcount(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Carpet::Baxis& minorgridcount(Callable&& c);
 
     // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
     // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
     Carpet::Baxis& minorgriddash(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis& minorgriddash(Callable&& c);
 
     // Sets the width (in px) of the grid lines.
     Carpet::Baxis& minorgridwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Baxis& minorgridwidth(Callable&& c);
 
     // Specifies the maximum number of ticks for the particular axis. The actual number of ticks will be chosen
     // automatically to be less than or equal to `nticks`. Has an effect only if `tickmode` is set to *auto*.
     Carpet::Baxis& nticks(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Carpet::Baxis& nticks(Callable&& c);
 
     // Sets the range of this axis. If the axis `type` is *log*, then you must take the log of your desired range (e.g.
     // to set the range from 1 to 100, set the range from 0 to 2). If the axis `type` is *date*, it should be date
@@ -956,6 +1230,8 @@ class Carpet::Baxis {
     // the axis `type` is *category*, it should be numbers, using the scale where each category is assigned a serial
     // number from zero in the order it appears.
     Carpet::Baxis& range(std::vector<double> f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
+    Carpet::Baxis& range(Callable&& c);
 
     // If *normal*, the range is computed in relation to the extrema of the input data. If *tozero*`, the range extends
     // to 0, regardless of the input data If *nonnegative*, the range is non-negative, regardless of the input data.
@@ -964,6 +1240,8 @@ class Carpet::Baxis {
 
     // If "true", even 4-digit integers are separated
     Carpet::Baxis& separatethousands(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Carpet::Baxis& separatethousands(Callable&& c);
 
     // If *all*, all exponents are shown besides their significands. If *first*, only the exponent of the first tick is
     // shown. If *last*, only the exponent of the last tick is shown. If *none*, no exponents appear.
@@ -972,9 +1250,13 @@ class Carpet::Baxis {
 
     // Determines whether or not grid lines are drawn. If *true*, the grid lines are drawn at every tick mark.
     Carpet::Baxis& showgrid(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Carpet::Baxis& showgrid(Callable&& c);
 
     // Determines whether or not a line bounding this axis is drawn.
     Carpet::Baxis& showline(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Carpet::Baxis& showline(Callable&& c);
 
     // Determines whether axis labels are drawn on the low side, the high side, both, or neither side of the axis.
     // - Default: start
@@ -990,26 +1272,40 @@ class Carpet::Baxis {
     Carpet::Baxis& showticksuffix(enum Showticksuffix f);
 
     Carpet::Baxis& smoothing(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Baxis& smoothing(Callable&& c);
 
     // Determines whether or not a line is drawn at along the starting value of this axis. If *true*, the start line is
     // drawn on top of the grid lines.
     Carpet::Baxis& startline(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Carpet::Baxis& startline(Callable&& c);
 
     // Sets the line color of the start line.
     Carpet::Baxis& startlinecolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis& startlinecolor(Callable&& c);
 
     // Sets the width (in px) of the start line.
     Carpet::Baxis& startlinewidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Baxis& startlinewidth(Callable&& c);
 
     // The starting index of grid lines along the axis
     Carpet::Baxis& tick0(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Baxis& tick0(Callable&& c);
 
     // Sets the angle of the tick labels with respect to the horizontal. For example, a `tickangle` of -90 draws the
     // tick labels vertically.
     Carpet::Baxis& tickangle(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Baxis& tickangle(Callable&& c);
 
     // Sets the tick font.
     Carpet::Baxis& tickfont(Tickfont f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickfont&>>>
+    Carpet::Baxis& tickfont(Callable&& c);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -1017,8 +1313,12 @@ class Carpet::Baxis {
     // half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example,
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Carpet::Baxis& tickformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis& tickformat(Callable&& c);
 
     Carpet::Baxis& tickformatstops(Tickformatstops f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickformatstops&>>>
+    Carpet::Baxis& tickformatstops(Callable&& c);
 
     //
     // - Default: array
@@ -1026,27 +1326,45 @@ class Carpet::Baxis {
 
     // Sets a tick label prefix.
     Carpet::Baxis& tickprefix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis& tickprefix(Callable&& c);
 
     // Sets a tick label suffix.
     Carpet::Baxis& ticksuffix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis& ticksuffix(Callable&& c);
 
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Carpet::Baxis& ticktext(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Carpet::Baxis& ticktext(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `ticktext`.
     Carpet::Baxis& ticktextsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis& ticktextsrc(Callable&& c);
 
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Carpet::Baxis& tickvals(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Carpet::Baxis& tickvals(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `tickvals`.
     Carpet::Baxis& tickvalssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis& tickvalssrc(Callable&& c);
 
     Carpet::Baxis& title(Title f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Title&>>>
+    Carpet::Baxis& title(Callable&& c);
 
     // Sets the axis type. By default, plotly attempts to determined the axis type by looking into the data of the
     // traces that referenced the axis in question.
@@ -1089,6 +1407,8 @@ class Carpet::Baxis::Tickfont {
     static std::string to_string(Variant e);
 
     Carpet::Baxis::Tickfont& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis::Tickfont& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1098,6 +1418,8 @@ class Carpet::Baxis::Tickfont {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Carpet::Baxis::Tickfont& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis::Tickfont& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -1105,12 +1427,18 @@ class Carpet::Baxis::Tickfont {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Carpet::Baxis::Tickfont& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis::Tickfont& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Carpet::Baxis::Tickfont& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis::Tickfont& shadow(Callable&& c);
 
     Carpet::Baxis::Tickfont& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Baxis::Tickfont& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1127,6 +1455,8 @@ class Carpet::Baxis::Tickfont {
 
     // Sets the weight (or boldness) of the font.
     Carpet::Baxis::Tickfont& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Carpet::Baxis::Tickfont& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1141,6 +1471,8 @@ class Carpet::Baxis::Tickformatstops {
     class Tickformatstop;
 
     Carpet::Baxis::Tickformatstops& tickformatstop(Tickformatstop f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickformatstop&>>>
+    Carpet::Baxis::Tickformatstops& tickformatstop(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1155,15 +1487,21 @@ class Carpet::Baxis::Tickformatstops::Tickformatstop {
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
     Carpet::Baxis::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
+    Carpet::Baxis::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Carpet::Baxis::Tickformatstops::Tickformatstop& enabled(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Carpet::Baxis::Tickformatstops::Tickformatstop& enabled(Callable&& c);
 
     // When used in a template, named items are created in the output figure in addition to any items the figure already
     // has in this array. You can modify these items in the output figure by making your own item with
     // `templateitemname` matching this `name` alongside your modifications (including `visible: false` or `enabled:
     // false` to hide it). Has no effect outside of a template.
     Carpet::Baxis::Tickformatstops::Tickformatstop& name(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis::Tickformatstops::Tickformatstop& name(Callable&& c);
 
     // Used to refer to a named item in this array in the template. Named items from the template will be created even
     // without a matching item in the input figure, but you can modify one by making an item with `templateitemname`
@@ -1171,9 +1509,13 @@ class Carpet::Baxis::Tickformatstops::Tickformatstop {
     // there is no template or no matching item, this item will be hidden unless you explicitly show it with `visible:
     // true`.
     Carpet::Baxis::Tickformatstops::Tickformatstop& templateitemname(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis::Tickformatstops::Tickformatstop& templateitemname(Callable&& c);
 
     // string - dtickformat for described zoom level, the same as *tickformat*
     Carpet::Baxis::Tickformatstops::Tickformatstop& value(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis::Tickformatstops::Tickformatstop& value(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1190,12 +1532,18 @@ class Carpet::Baxis::Title {
 
     // Sets this axis' title font.
     Carpet::Baxis::Title& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Carpet::Baxis::Title& font(Callable&& c);
 
     // An additional amount by which to offset the title from the tick labels, given in pixels.
     Carpet::Baxis::Title& offset(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Baxis::Title& offset(Callable&& c);
 
     // Sets the title of this axis.
     Carpet::Baxis::Title& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis::Title& text(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1233,6 +1581,8 @@ class Carpet::Baxis::Title::Font {
     static std::string to_string(Variant e);
 
     Carpet::Baxis::Title::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis::Title::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1242,6 +1592,8 @@ class Carpet::Baxis::Title::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Carpet::Baxis::Title::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis::Title::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -1249,12 +1601,18 @@ class Carpet::Baxis::Title::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Carpet::Baxis::Title::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis::Title::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Carpet::Baxis::Title::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Baxis::Title::Font& shadow(Callable&& c);
 
     Carpet::Baxis::Title::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Baxis::Title::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1271,6 +1629,8 @@ class Carpet::Baxis::Title::Font {
 
     // Sets the weight (or boldness) of the font.
     Carpet::Baxis::Title::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Carpet::Baxis::Title::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1308,6 +1668,8 @@ class Carpet::Font {
     static std::string to_string(Variant e);
 
     Carpet::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1317,6 +1679,8 @@ class Carpet::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Carpet::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -1324,12 +1688,18 @@ class Carpet::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Carpet::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Carpet::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Font& shadow(Callable&& c);
 
     Carpet::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1346,6 +1716,8 @@ class Carpet::Font {
 
     // Sets the weight (or boldness) of the font.
     Carpet::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Carpet::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1362,9 +1734,13 @@ class Carpet::Legendgrouptitle {
 
     // Sets this legend group's title font.
     Carpet::Legendgrouptitle& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Carpet::Legendgrouptitle& font(Callable&& c);
 
     // Sets the title of the legend group.
     Carpet::Legendgrouptitle& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Legendgrouptitle& text(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1402,6 +1778,8 @@ class Carpet::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Carpet::Legendgrouptitle::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Legendgrouptitle::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1411,6 +1789,8 @@ class Carpet::Legendgrouptitle::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Carpet::Legendgrouptitle::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Legendgrouptitle::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -1418,12 +1798,18 @@ class Carpet::Legendgrouptitle::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Carpet::Legendgrouptitle::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Legendgrouptitle::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Carpet::Legendgrouptitle::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Legendgrouptitle::Font& shadow(Callable&& c);
 
     Carpet::Legendgrouptitle::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Legendgrouptitle::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1440,6 +1826,8 @@ class Carpet::Legendgrouptitle::Font {
 
     // Sets the weight (or boldness) of the font.
     Carpet::Legendgrouptitle::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Carpet::Legendgrouptitle::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1454,10 +1842,14 @@ class Carpet::Stream {
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
     Carpet::Stream& maxpoints(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Carpet::Stream& maxpoints(Callable&& c);
 
     // The stream id number links a data trace on a plot with a stream. See https://chart-studio.plotly.com/settings for
     // more details.
     Carpet::Stream& token(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Carpet::Stream& token(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

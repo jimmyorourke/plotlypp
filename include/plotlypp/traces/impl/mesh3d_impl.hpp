@@ -107,45 +107,99 @@ Mesh3D& Mesh3D::alphahull(double f) {
     json["alphahull"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::alphahull(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return alphahull(std::move(f));
+}
 
 Mesh3D& Mesh3D::autocolorscale(bool f) {
     json["autocolorscale"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::autocolorscale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return autocolorscale(std::move(f));
 }
 
 Mesh3D& Mesh3D::cauto(bool f) {
     json["cauto"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::cauto(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return cauto(std::move(f));
+}
 
 Mesh3D& Mesh3D::cmax(double f) {
     json["cmax"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::cmax(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmax(std::move(f));
 }
 
 Mesh3D& Mesh3D::cmid(double f) {
     json["cmid"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::cmid(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmid(std::move(f));
+}
 
 Mesh3D& Mesh3D::cmin(double f) {
     json["cmin"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::cmin(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmin(std::move(f));
 }
 
 Mesh3D& Mesh3D::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Mesh3D& Mesh3D::coloraxis(std::string f) {
     json["coloraxis"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::coloraxis(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return coloraxis(std::move(f));
+}
 
 Mesh3D& Mesh3D::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::colorbar(Callable&& c) {
+    Colorbar f{};
+    std::forward<Callable>(c)(f);
+    return colorbar(std::move(f));
 }
 
 Mesh3D& Mesh3D::colorscale(std::string f) {
@@ -156,10 +210,22 @@ Mesh3D& Mesh3D::colorscale(std::vector<std::pair<double, std::string>> f) {
     json["colorscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::colorscale(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorscale(std::move(f));
+}
 
 Mesh3D& Mesh3D::contour(Contour f) {
     json["contour"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::contour(Callable&& c) {
+    Contour f{};
+    std::forward<Callable>(c)(f);
+    return contour(std::move(f));
 }
 
 template <typename T, typename>
@@ -167,10 +233,22 @@ Mesh3D& Mesh3D::customdata(std::vector<T> f) {
     json["customdata"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Mesh3D& Mesh3D::customdata(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return customdata(std::move(f));
+}
 
 Mesh3D& Mesh3D::customdatasrc(std::string f) {
     json["customdatasrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::customdatasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return customdatasrc(std::move(f));
 }
 
 Mesh3D& Mesh3D::delaunayaxis(enum Delaunayaxis f) {
@@ -183,20 +261,44 @@ Mesh3D& Mesh3D::facecolor(std::vector<T> f) {
     json["facecolor"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Mesh3D& Mesh3D::facecolor(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return facecolor(std::move(f));
+}
 
 Mesh3D& Mesh3D::facecolorsrc(std::string f) {
     json["facecolorsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::facecolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return facecolorsrc(std::move(f));
 }
 
 Mesh3D& Mesh3D::flatshading(bool f) {
     json["flatshading"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::flatshading(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return flatshading(std::move(f));
+}
 
 Mesh3D& Mesh3D::hoverinfo(std::string f) {
     json["hoverinfo"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::hoverinfo(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hoverinfo(std::move(f));
 }
 Mesh3D& Mesh3D::hoverinfo(std::vector<std::string> f) {
     json["hoverinfo"] = std::move(f);
@@ -207,15 +309,33 @@ Mesh3D& Mesh3D::hoverinfosrc(std::string f) {
     json["hoverinfosrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::hoverinfosrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hoverinfosrc(std::move(f));
+}
 
 Mesh3D& Mesh3D::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::hoverlabel(Callable&& c) {
+    Hoverlabel f{};
+    std::forward<Callable>(c)(f);
+    return hoverlabel(std::move(f));
+}
 
 Mesh3D& Mesh3D::hovertemplate(std::string f) {
     json["hovertemplate"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::hovertemplate(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertemplate(std::move(f));
 }
 Mesh3D& Mesh3D::hovertemplate(std::vector<std::string> f) {
     json["hovertemplate"] = std::move(f);
@@ -226,10 +346,22 @@ Mesh3D& Mesh3D::hovertemplatesrc(std::string f) {
     json["hovertemplatesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::hovertemplatesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertemplatesrc(std::move(f));
+}
 
 Mesh3D& Mesh3D::hovertext(std::string f) {
     json["hovertext"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::hovertext(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertext(std::move(f));
 }
 Mesh3D& Mesh3D::hovertext(std::vector<std::string> f) {
     json["hovertext"] = std::move(f);
@@ -240,11 +372,23 @@ Mesh3D& Mesh3D::hovertextsrc(std::string f) {
     json["hovertextsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::hovertextsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertextsrc(std::move(f));
+}
 
 template <typename T, typename>
 Mesh3D& Mesh3D::i(std::vector<T> f) {
     json["i"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Mesh3D& Mesh3D::i(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return i(std::move(f));
 }
 
 template <typename T, typename>
@@ -252,16 +396,34 @@ Mesh3D& Mesh3D::ids(std::vector<T> f) {
     json["ids"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Mesh3D& Mesh3D::ids(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return ids(std::move(f));
+}
 
 Mesh3D& Mesh3D::idssrc(std::string f) {
     json["idssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::idssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return idssrc(std::move(f));
 }
 
 template <typename T, typename>
 Mesh3D& Mesh3D::intensity(std::vector<T> f) {
     json["intensity"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Mesh3D& Mesh3D::intensity(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return intensity(std::move(f));
 }
 
 Mesh3D& Mesh3D::intensitymode(enum Intensitymode f) {
@@ -273,10 +435,22 @@ Mesh3D& Mesh3D::intensitysrc(std::string f) {
     json["intensitysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::intensitysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return intensitysrc(std::move(f));
+}
 
 Mesh3D& Mesh3D::isrc(std::string f) {
     json["isrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::isrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return isrc(std::move(f));
 }
 
 template <typename T, typename>
@@ -284,10 +458,22 @@ Mesh3D& Mesh3D::j(std::vector<T> f) {
     json["j"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Mesh3D& Mesh3D::j(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return j(std::move(f));
+}
 
 Mesh3D& Mesh3D::jsrc(std::string f) {
     json["jsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::jsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return jsrc(std::move(f));
 }
 
 template <typename T, typename>
@@ -295,51 +481,111 @@ Mesh3D& Mesh3D::k(std::vector<T> f) {
     json["k"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Mesh3D& Mesh3D::k(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return k(std::move(f));
+}
 
 Mesh3D& Mesh3D::ksrc(std::string f) {
     json["ksrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::ksrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ksrc(std::move(f));
 }
 
 Mesh3D& Mesh3D::legend(std::string f) {
     json["legend"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::legend(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return legend(std::move(f));
+}
 
 Mesh3D& Mesh3D::legendgroup(std::string f) {
     json["legendgroup"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::legendgroup(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return legendgroup(std::move(f));
 }
 
 Mesh3D& Mesh3D::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::legendgrouptitle(Callable&& c) {
+    Legendgrouptitle f{};
+    std::forward<Callable>(c)(f);
+    return legendgrouptitle(std::move(f));
+}
 
 Mesh3D& Mesh3D::legendrank(double f) {
     json["legendrank"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::legendrank(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendrank(std::move(f));
 }
 
 Mesh3D& Mesh3D::legendwidth(double f) {
     json["legendwidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::legendwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendwidth(std::move(f));
+}
 
 Mesh3D& Mesh3D::lighting(Lighting f) {
     json["lighting"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::lighting(Callable&& c) {
+    Lighting f{};
+    std::forward<Callable>(c)(f);
+    return lighting(std::move(f));
 }
 
 Mesh3D& Mesh3D::lightposition(Lightposition f) {
     json["lightposition"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::lightposition(Callable&& c) {
+    Lightposition f{};
+    std::forward<Callable>(c)(f);
+    return lightposition(std::move(f));
+}
 
 template <typename T>
 Mesh3D& Mesh3D::meta(T f) {
     json["meta"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Mesh3D& Mesh3D::meta(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return meta(std::move(f));
 }
 template <typename T>
 Mesh3D& Mesh3D::meta(std::vector<T> f) {
@@ -351,45 +597,99 @@ Mesh3D& Mesh3D::metasrc(std::string f) {
     json["metasrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::metasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return metasrc(std::move(f));
+}
 
 Mesh3D& Mesh3D::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
 }
 
 Mesh3D& Mesh3D::opacity(double f) {
     json["opacity"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::opacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return opacity(std::move(f));
+}
 
 Mesh3D& Mesh3D::reversescale(bool f) {
     json["reversescale"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::reversescale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return reversescale(std::move(f));
 }
 
 Mesh3D& Mesh3D::scene(std::string f) {
     json["scene"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::scene(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return scene(std::move(f));
+}
 
 Mesh3D& Mesh3D::showlegend(bool f) {
     json["showlegend"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::showlegend(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showlegend(std::move(f));
 }
 
 Mesh3D& Mesh3D::showscale(bool f) {
     json["showscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::showscale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showscale(std::move(f));
+}
 
 Mesh3D& Mesh3D::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::stream(Callable&& c) {
+    Stream f{};
+    std::forward<Callable>(c)(f);
+    return stream(std::move(f));
+}
 
 Mesh3D& Mesh3D::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 Mesh3D& Mesh3D::text(std::vector<std::string> f) {
     json["text"] = std::move(f);
@@ -400,10 +700,22 @@ Mesh3D& Mesh3D::textsrc(std::string f) {
     json["textsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::textsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textsrc(std::move(f));
+}
 
 Mesh3D& Mesh3D::uid(std::string f) {
     json["uid"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::uid(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return uid(std::move(f));
 }
 
 template <typename T>
@@ -411,16 +723,34 @@ Mesh3D& Mesh3D::uirevision(T f) {
     json["uirevision"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Mesh3D& Mesh3D::uirevision(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return uirevision(std::move(f));
+}
 
 template <typename T, typename>
 Mesh3D& Mesh3D::vertexcolor(std::vector<T> f) {
     json["vertexcolor"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Mesh3D& Mesh3D::vertexcolor(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return vertexcolor(std::move(f));
+}
 
 Mesh3D& Mesh3D::vertexcolorsrc(std::string f) {
     json["vertexcolorsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::vertexcolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return vertexcolorsrc(std::move(f));
 }
 
 Mesh3D& Mesh3D::visible(enum Visible f) {
@@ -433,6 +763,12 @@ Mesh3D& Mesh3D::x(std::vector<T> f) {
     json["x"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Mesh3D& Mesh3D::x(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return x(std::move(f));
+}
 
 Mesh3D& Mesh3D::xcalendar(enum Xcalendar f) {
     json["xcalendar"] = to_string(f);
@@ -443,16 +779,34 @@ Mesh3D& Mesh3D::xhoverformat(std::string f) {
     json["xhoverformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::xhoverformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return xhoverformat(std::move(f));
+}
 
 Mesh3D& Mesh3D::xsrc(std::string f) {
     json["xsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::xsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return xsrc(std::move(f));
 }
 
 template <typename T, typename>
 Mesh3D& Mesh3D::y(std::vector<T> f) {
     json["y"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Mesh3D& Mesh3D::y(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return y(std::move(f));
 }
 
 Mesh3D& Mesh3D::ycalendar(enum Ycalendar f) {
@@ -464,16 +818,34 @@ Mesh3D& Mesh3D::yhoverformat(std::string f) {
     json["yhoverformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::yhoverformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return yhoverformat(std::move(f));
+}
 
 Mesh3D& Mesh3D::ysrc(std::string f) {
     json["ysrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::ysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ysrc(std::move(f));
 }
 
 template <typename T, typename>
 Mesh3D& Mesh3D::z(std::vector<T> f) {
     json["z"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Mesh3D& Mesh3D::z(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return z(std::move(f));
 }
 
 Mesh3D& Mesh3D::zcalendar(enum Zcalendar f) {
@@ -485,10 +857,22 @@ Mesh3D& Mesh3D::zhoverformat(std::string f) {
     json["zhoverformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D& Mesh3D::zhoverformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return zhoverformat(std::move(f));
+}
 
 Mesh3D& Mesh3D::zsrc(std::string f) {
     json["zsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D& Mesh3D::zsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return zsrc(std::move(f));
 }
 
 std::string Mesh3D::Colorbar::to_string(Exponentformat e) {
@@ -638,21 +1022,45 @@ Mesh3D::Colorbar& Mesh3D::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
+}
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::bordercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolor(std::move(f));
 }
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::borderwidth(double f) {
     json["borderwidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::borderwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return borderwidth(std::move(f));
+}
 
 template <typename T>
 Mesh3D::Colorbar& Mesh3D::Colorbar::dtick(T f) {
     json["dtick"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::dtick(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return dtick(std::move(f));
 }
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::exponentformat(enum Exponentformat f) {
@@ -665,10 +1073,22 @@ Mesh3D::Colorbar& Mesh3D::Colorbar::labelalias(T f) {
     json["labelalias"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::labelalias(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return labelalias(std::move(f));
+}
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::len(double f) {
     json["len"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::len(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return len(std::move(f));
 }
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::lenmode(enum Lenmode f) {
@@ -680,10 +1100,22 @@ Mesh3D::Colorbar& Mesh3D::Colorbar::minexponent(double f) {
     json["minexponent"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::minexponent(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return minexponent(std::move(f));
+}
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::nticks(int f) {
     json["nticks"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::nticks(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return nticks(std::move(f));
 }
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::orientation(enum Orientation f) {
@@ -695,15 +1127,33 @@ Mesh3D::Colorbar& Mesh3D::Colorbar::outlinecolor(std::string f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::outlinecolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return outlinecolor(std::move(f));
+}
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::outlinewidth(double f) {
     json["outlinewidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::outlinewidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return outlinewidth(std::move(f));
+}
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::separatethousands(bool f) {
     json["separatethousands"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::separatethousands(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return separatethousands(std::move(f));
 }
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::showexponent(enum Showexponent f) {
@@ -714,6 +1164,12 @@ Mesh3D::Colorbar& Mesh3D::Colorbar::showexponent(enum Showexponent f) {
 Mesh3D::Colorbar& Mesh3D::Colorbar::showticklabels(bool f) {
     json["showticklabels"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::showticklabels(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showticklabels(std::move(f));
 }
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::showtickprefix(enum Showtickprefix f) {
@@ -730,6 +1186,12 @@ Mesh3D::Colorbar& Mesh3D::Colorbar::thickness(double f) {
     json["thickness"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::thickness(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return thickness(std::move(f));
+}
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::thicknessmode(enum Thicknessmode f) {
     json["thicknessmode"] = to_string(f);
@@ -741,30 +1203,66 @@ Mesh3D::Colorbar& Mesh3D::Colorbar::tick0(T f) {
     json["tick0"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::tick0(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return tick0(std::move(f));
+}
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::tickangle(double f) {
     json["tickangle"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::tickangle(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return tickangle(std::move(f));
 }
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::tickcolor(std::string f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::tickcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickcolor(std::move(f));
+}
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::tickfont(Callable&& c) {
+    Tickfont f{};
+    std::forward<Callable>(c)(f);
+    return tickfont(std::move(f));
 }
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::tickformat(std::string f) {
     json["tickformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::tickformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickformat(std::move(f));
+}
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::tickformatstops(Callable&& c) {
+    Tickformatstops f{};
+    std::forward<Callable>(c)(f);
+    return tickformatstops(std::move(f));
 }
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::ticklabeloverflow(enum Ticklabeloverflow f) {
@@ -781,10 +1279,22 @@ Mesh3D::Colorbar& Mesh3D::Colorbar::ticklabelstep(int f) {
     json["ticklabelstep"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::ticklabelstep(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return ticklabelstep(std::move(f));
+}
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::ticklen(double f) {
     json["ticklen"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::ticklen(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return ticklen(std::move(f));
 }
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::tickmode(enum Tickmode f) {
@@ -796,6 +1306,12 @@ Mesh3D::Colorbar& Mesh3D::Colorbar::tickprefix(std::string f) {
     json["tickprefix"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::tickprefix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickprefix(std::move(f));
+}
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::ticks(enum Ticks f) {
     json["ticks"] = to_string(f);
@@ -806,16 +1322,34 @@ Mesh3D::Colorbar& Mesh3D::Colorbar::ticksuffix(std::string f) {
     json["ticksuffix"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::ticksuffix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ticksuffix(std::move(f));
+}
 
 template <typename T, typename>
 Mesh3D::Colorbar& Mesh3D::Colorbar::ticktext(std::vector<T> f) {
     json["ticktext"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::ticktext(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return ticktext(std::move(f));
+}
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::ticktextsrc(std::string f) {
     json["ticktextsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::ticktextsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ticktextsrc(std::move(f));
 }
 
 template <typename T, typename>
@@ -823,25 +1357,55 @@ Mesh3D::Colorbar& Mesh3D::Colorbar::tickvals(std::vector<T> f) {
     json["tickvals"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::tickvals(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return tickvals(std::move(f));
+}
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::tickvalssrc(std::string f) {
     json["tickvalssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::tickvalssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickvalssrc(std::move(f));
 }
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::tickwidth(double f) {
     json["tickwidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::tickwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return tickwidth(std::move(f));
+}
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::title(Callable&& c) {
+    Title f{};
+    std::forward<Callable>(c)(f);
+    return title(std::move(f));
+}
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::x(double f) {
     json["x"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::x(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return x(std::move(f));
 }
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::xanchor(enum Xanchor f) {
@@ -853,6 +1417,12 @@ Mesh3D::Colorbar& Mesh3D::Colorbar::xpad(double f) {
     json["xpad"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::xpad(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return xpad(std::move(f));
+}
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::xref(enum Xref f) {
     json["xref"] = to_string(f);
@@ -863,6 +1433,12 @@ Mesh3D::Colorbar& Mesh3D::Colorbar::y(double f) {
     json["y"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::y(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return y(std::move(f));
+}
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::yanchor(enum Yanchor f) {
     json["yanchor"] = to_string(f);
@@ -872,6 +1448,12 @@ Mesh3D::Colorbar& Mesh3D::Colorbar::yanchor(enum Yanchor f) {
 Mesh3D::Colorbar& Mesh3D::Colorbar::ypad(double f) {
     json["ypad"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Colorbar& Mesh3D::Colorbar::ypad(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return ypad(std::move(f));
 }
 
 Mesh3D::Colorbar& Mesh3D::Colorbar::yref(enum Yref f) {
@@ -914,25 +1496,55 @@ Mesh3D::Colorbar::Tickfont& Mesh3D::Colorbar::Tickfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar::Tickfont& Mesh3D::Colorbar::Tickfont::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Mesh3D::Colorbar::Tickfont& Mesh3D::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Colorbar::Tickfont& Mesh3D::Colorbar::Tickfont::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Mesh3D::Colorbar::Tickfont& Mesh3D::Colorbar::Tickfont::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar::Tickfont& Mesh3D::Colorbar::Tickfont::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Mesh3D::Colorbar::Tickfont& Mesh3D::Colorbar::Tickfont::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar::Tickfont& Mesh3D::Colorbar::Tickfont::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Mesh3D::Colorbar::Tickfont& Mesh3D::Colorbar::Tickfont::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Colorbar::Tickfont& Mesh3D::Colorbar::Tickfont::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Mesh3D::Colorbar::Tickfont& Mesh3D::Colorbar::Tickfont::style(enum Style f) {
@@ -954,11 +1566,23 @@ Mesh3D::Colorbar::Tickfont& Mesh3D::Colorbar::Tickfont::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar::Tickfont& Mesh3D::Colorbar::Tickfont::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Mesh3D::Colorbar::Tickformatstops& Mesh3D::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Colorbar::Tickformatstops& Mesh3D::Colorbar::Tickformatstops::tickformatstop(Callable&& c) {
+    Tickformatstop f{};
+    std::forward<Callable>(c)(f);
+    return tickformatstop(std::move(f));
 }
 
 
@@ -966,25 +1590,55 @@ Mesh3D::Colorbar::Tickformatstops::Tickformatstop& Mesh3D::Colorbar::Tickformats
     json["dtickrange"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar::Tickformatstops::Tickformatstop& Mesh3D::Colorbar::Tickformatstops::Tickformatstop::dtickrange(Callable&& c) {
+    std::vector<double> f{};
+    std::forward<Callable>(c)(f);
+    return dtickrange(std::move(f));
+}
 
 Mesh3D::Colorbar::Tickformatstops::Tickformatstop& Mesh3D::Colorbar::Tickformatstops::Tickformatstop::enabled(bool f) {
     json["enabled"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Colorbar::Tickformatstops::Tickformatstop& Mesh3D::Colorbar::Tickformatstops::Tickformatstop::enabled(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return enabled(std::move(f));
 }
 
 Mesh3D::Colorbar::Tickformatstops::Tickformatstop& Mesh3D::Colorbar::Tickformatstops::Tickformatstop::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar::Tickformatstops::Tickformatstop& Mesh3D::Colorbar::Tickformatstops::Tickformatstop::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
+}
 
 Mesh3D::Colorbar::Tickformatstops::Tickformatstop& Mesh3D::Colorbar::Tickformatstops::Tickformatstop::templateitemname(std::string f) {
     json["templateitemname"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar::Tickformatstops::Tickformatstop& Mesh3D::Colorbar::Tickformatstops::Tickformatstop::templateitemname(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return templateitemname(std::move(f));
+}
 
 Mesh3D::Colorbar::Tickformatstops::Tickformatstop& Mesh3D::Colorbar::Tickformatstops::Tickformatstop::value(std::string f) {
     json["value"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Colorbar::Tickformatstops::Tickformatstop& Mesh3D::Colorbar::Tickformatstops::Tickformatstop::value(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return value(std::move(f));
 }
 
 std::string Mesh3D::Colorbar::Title::to_string(Side e) {
@@ -1001,6 +1655,12 @@ Mesh3D::Colorbar::Title& Mesh3D::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar::Title& Mesh3D::Colorbar::Title::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Mesh3D::Colorbar::Title& Mesh3D::Colorbar::Title::side(enum Side f) {
     json["side"] = to_string(f);
@@ -1010,6 +1670,12 @@ Mesh3D::Colorbar::Title& Mesh3D::Colorbar::Title::side(enum Side f) {
 Mesh3D::Colorbar::Title& Mesh3D::Colorbar::Title::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Colorbar::Title& Mesh3D::Colorbar::Title::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 
 std::string Mesh3D::Colorbar::Title::Font::to_string(Style e) {
@@ -1047,25 +1713,55 @@ Mesh3D::Colorbar::Title::Font& Mesh3D::Colorbar::Title::Font::color(std::string 
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar::Title::Font& Mesh3D::Colorbar::Title::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Mesh3D::Colorbar::Title::Font& Mesh3D::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Colorbar::Title::Font& Mesh3D::Colorbar::Title::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Mesh3D::Colorbar::Title::Font& Mesh3D::Colorbar::Title::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar::Title::Font& Mesh3D::Colorbar::Title::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Mesh3D::Colorbar::Title::Font& Mesh3D::Colorbar::Title::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar::Title::Font& Mesh3D::Colorbar::Title::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Mesh3D::Colorbar::Title::Font& Mesh3D::Colorbar::Title::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Colorbar::Title::Font& Mesh3D::Colorbar::Title::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Mesh3D::Colorbar::Title::Font& Mesh3D::Colorbar::Title::Font::style(enum Style f) {
@@ -1087,21 +1783,45 @@ Mesh3D::Colorbar::Title::Font& Mesh3D::Colorbar::Title::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Colorbar::Title::Font& Mesh3D::Colorbar::Title::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Mesh3D::Contour& Mesh3D::Contour::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Contour& Mesh3D::Contour::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Mesh3D::Contour& Mesh3D::Contour::show(bool f) {
     json["show"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Contour& Mesh3D::Contour::show(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return show(std::move(f));
+}
 
 Mesh3D::Contour& Mesh3D::Contour::width(double f) {
     json["width"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Contour& Mesh3D::Contour::width(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return width(std::move(f));
 }
 
 std::string Mesh3D::Hoverlabel::to_string(Align e) {
@@ -1129,10 +1849,22 @@ Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::alignsrc(std::string f) {
     json["alignsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::alignsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return alignsrc(std::move(f));
+}
 
 Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
 }
 Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::bgcolor(std::vector<std::string> f) {
     json["bgcolor"] = std::move(f);
@@ -1143,10 +1875,22 @@ Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::bgcolorsrc(std::string f) {
     json["bgcolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::bgcolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolorsrc(std::move(f));
+}
 
 Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::bordercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolor(std::move(f));
 }
 Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::bordercolor(std::vector<std::string> f) {
     json["bordercolor"] = std::move(f);
@@ -1157,15 +1901,33 @@ Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::bordercolorsrc(std::string f) {
     json["bordercolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::bordercolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolorsrc(std::move(f));
+}
 
 Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::namelength(int f) {
     json["namelength"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::namelength(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return namelength(std::move(f));
 }
 Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::namelength(std::vector<int> f) {
     json["namelength"] = std::move(f);
@@ -1175,6 +1937,12 @@ Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::namelength(std::vector<int> f) {
 Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::namelengthsrc(std::string f) {
     json["namelengthsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Hoverlabel& Mesh3D::Hoverlabel::namelengthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return namelengthsrc(std::move(f));
 }
 
 std::string Mesh3D::Hoverlabel::Font::to_string(Style e) {
@@ -1212,6 +1980,12 @@ Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
     return *this;
@@ -1221,10 +1995,22 @@ Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::family(std::vector<std::string> f) {
     json["family"] = std::move(f);
@@ -1235,10 +2021,22 @@ Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::familysrc(std::string f) {
     json["familysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::familysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return familysrc(std::move(f));
+}
 
 Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
 }
 Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
     json["lineposition"] = std::move(f);
@@ -1249,10 +2047,22 @@ Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::linepositionsrc(std::string 
     json["linepositionsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::linepositionsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return linepositionsrc(std::move(f));
+}
 
 Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
 }
 Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::shadow(std::vector<std::string> f) {
     json["shadow"] = std::move(f);
@@ -1263,10 +2073,22 @@ Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::shadowsrc(std::string f) {
     json["shadowsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::shadowsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadowsrc(std::move(f));
+}
 
 Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -1276,6 +2098,12 @@ Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::size(std::vector<double> f) 
 Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
 }
 
 Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::style(enum Style f) {
@@ -1293,6 +2121,12 @@ Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::stylesrc(std::string f) {
     json["stylesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::stylesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return stylesrc(std::move(f));
+}
 
 Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::textcase(enum Textcase f) {
     json["textcase"] = to_string(f);
@@ -1308,6 +2142,12 @@ Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::textcase(const std::vector<e
 Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::textcasesrc(std::string f) {
     json["textcasesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::textcasesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textcasesrc(std::move(f));
 }
 
 Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::variant(enum Variant f) {
@@ -1325,10 +2165,22 @@ Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::variantsrc(std::string f) {
     json["variantsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::variantsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return variantsrc(std::move(f));
+}
 
 Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::weight(std::vector<int> f) {
     json["weight"] = std::move(f);
@@ -1339,16 +2191,34 @@ Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::weightsrc(std::string f) {
     json["weightsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Hoverlabel::Font& Mesh3D::Hoverlabel::Font::weightsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return weightsrc(std::move(f));
+}
 
 
 Mesh3D::Legendgrouptitle& Mesh3D::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Legendgrouptitle& Mesh3D::Legendgrouptitle::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Mesh3D::Legendgrouptitle& Mesh3D::Legendgrouptitle::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Legendgrouptitle& Mesh3D::Legendgrouptitle::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 
 std::string Mesh3D::Legendgrouptitle::Font::to_string(Style e) {
@@ -1386,25 +2256,55 @@ Mesh3D::Legendgrouptitle::Font& Mesh3D::Legendgrouptitle::Font::color(std::strin
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Legendgrouptitle::Font& Mesh3D::Legendgrouptitle::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Mesh3D::Legendgrouptitle::Font& Mesh3D::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Legendgrouptitle::Font& Mesh3D::Legendgrouptitle::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Mesh3D::Legendgrouptitle::Font& Mesh3D::Legendgrouptitle::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Legendgrouptitle::Font& Mesh3D::Legendgrouptitle::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Mesh3D::Legendgrouptitle::Font& Mesh3D::Legendgrouptitle::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Legendgrouptitle::Font& Mesh3D::Legendgrouptitle::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Mesh3D::Legendgrouptitle::Font& Mesh3D::Legendgrouptitle::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Legendgrouptitle::Font& Mesh3D::Legendgrouptitle::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Mesh3D::Legendgrouptitle::Font& Mesh3D::Legendgrouptitle::Font::style(enum Style f) {
@@ -1426,41 +2326,89 @@ Mesh3D::Legendgrouptitle::Font& Mesh3D::Legendgrouptitle::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Legendgrouptitle::Font& Mesh3D::Legendgrouptitle::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Mesh3D::Lighting& Mesh3D::Lighting::ambient(double f) {
     json["ambient"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Lighting& Mesh3D::Lighting::ambient(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return ambient(std::move(f));
+}
 
 Mesh3D::Lighting& Mesh3D::Lighting::diffuse(double f) {
     json["diffuse"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Lighting& Mesh3D::Lighting::diffuse(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return diffuse(std::move(f));
 }
 
 Mesh3D::Lighting& Mesh3D::Lighting::facenormalsepsilon(double f) {
     json["facenormalsepsilon"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Lighting& Mesh3D::Lighting::facenormalsepsilon(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return facenormalsepsilon(std::move(f));
+}
 
 Mesh3D::Lighting& Mesh3D::Lighting::fresnel(double f) {
     json["fresnel"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Lighting& Mesh3D::Lighting::fresnel(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return fresnel(std::move(f));
 }
 
 Mesh3D::Lighting& Mesh3D::Lighting::roughness(double f) {
     json["roughness"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Lighting& Mesh3D::Lighting::roughness(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return roughness(std::move(f));
+}
 
 Mesh3D::Lighting& Mesh3D::Lighting::specular(double f) {
     json["specular"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Lighting& Mesh3D::Lighting::specular(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return specular(std::move(f));
+}
 
 Mesh3D::Lighting& Mesh3D::Lighting::vertexnormalsepsilon(double f) {
     json["vertexnormalsepsilon"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Lighting& Mesh3D::Lighting::vertexnormalsepsilon(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return vertexnormalsepsilon(std::move(f));
 }
 
 
@@ -1468,15 +2416,33 @@ Mesh3D::Lightposition& Mesh3D::Lightposition::x(double f) {
     json["x"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Lightposition& Mesh3D::Lightposition::x(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return x(std::move(f));
+}
 
 Mesh3D::Lightposition& Mesh3D::Lightposition::y(double f) {
     json["y"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Lightposition& Mesh3D::Lightposition::y(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return y(std::move(f));
+}
 
 Mesh3D::Lightposition& Mesh3D::Lightposition::z(double f) {
     json["z"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Lightposition& Mesh3D::Lightposition::z(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return z(std::move(f));
 }
 
 
@@ -1484,10 +2450,22 @@ Mesh3D::Stream& Mesh3D::Stream::maxpoints(double f) {
     json["maxpoints"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Mesh3D::Stream& Mesh3D::Stream::maxpoints(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return maxpoints(std::move(f));
+}
 
 Mesh3D::Stream& Mesh3D::Stream::token(std::string f) {
     json["token"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Mesh3D::Stream& Mesh3D::Stream::token(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return token(std::move(f));
 }
 
 } // namespace plotlypp

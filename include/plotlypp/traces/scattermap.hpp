@@ -70,19 +70,31 @@ class Scattermap : public Trace {
     // default, scattermap layers are inserted above all the base layers. To place the scattermap layers above every
     // other layer, set `below` to *''*.
     Scattermap& below(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& below(Callable&& c);
 
     Scattermap& cluster(Cluster f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Cluster&>>>
+    Scattermap& cluster(Callable&& c);
 
     // Determines whether or not gaps (i.e. {nan} or missing values) in the provided data arrays are connected.
     Scattermap& connectgaps(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Scattermap& connectgaps(Callable&& c);
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Scattermap& customdata(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Scattermap& customdata(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Scattermap& customdatasrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& customdatasrc(Callable&& c);
 
     // Sets the area to fill with a solid color. Use with `fillcolor` if not *none*. *toself* connects the endpoints of
     // the trace (or each segment of the trace if it has gaps) into a closed shape.
@@ -92,6 +104,8 @@ class Scattermap : public Trace {
     // Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line
     // color, whichever is available.
     Scattermap& fillcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& fillcolor(Callable&& c);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -99,12 +113,18 @@ class Scattermap : public Trace {
     // - Flags: ['lon', 'lat', 'text', 'name']
     // - Extras ['all', 'none', 'skip']
     Scattermap& hoverinfo(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& hoverinfo(Callable&& c);
     Scattermap& hoverinfo(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Scattermap& hoverinfosrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& hoverinfosrc(Callable&& c);
 
     Scattermap& hoverlabel(Hoverlabel f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Hoverlabel&>>>
+    Scattermap& hoverlabel(Callable&& c);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -120,44 +140,70 @@ class Scattermap : public Trace {
     // displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box
     // completely, use an empty tag `<extra></extra>`.
     Scattermap& hovertemplate(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& hovertemplate(Callable&& c);
     Scattermap& hovertemplate(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Scattermap& hovertemplatesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& hovertemplatesrc(Callable&& c);
 
     // Sets hover text elements associated with each (lon,lat) pair If a single string, the same string appears over all
     // the data points. If an array of string, the items are mapped in order to the this trace's (lon,lat) coordinates.
     // To be seen, trace `hoverinfo` must contain a *text* flag.
     Scattermap& hovertext(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& hovertext(Callable&& c);
     Scattermap& hovertext(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Scattermap& hovertextsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& hovertextsrc(Callable&& c);
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Scattermap& ids(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Scattermap& ids(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `ids`.
     Scattermap& idssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& idssrc(Callable&& c);
 
     // Sets the latitude coordinates (in degrees North).
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Scattermap& lat(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Scattermap& lat(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `lat`.
     Scattermap& latsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& latsrc(Callable&& c);
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
     Scattermap& legend(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& legend(Callable&& c);
 
     // Sets the legend group for this trace. Traces and shapes part of the same legend group hide/show at the same time
     // when toggling legend items.
     Scattermap& legendgroup(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& legendgroup(Callable&& c);
 
     Scattermap& legendgrouptitle(Legendgrouptitle f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Legendgrouptitle&>>>
+    Scattermap& legendgrouptitle(Callable&& c);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -165,20 +211,34 @@ class Scattermap : public Trace {
     // after all unranked items. When having unranked or equal rank items shapes would be displayed after traces i.e.
     // according to their order in data and layout.
     Scattermap& legendrank(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap& legendrank(Callable&& c);
 
     // Sets the width (in px or fraction) of the legend for this trace.
     Scattermap& legendwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap& legendwidth(Callable&& c);
 
     Scattermap& line(Line f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Line&>>>
+    Scattermap& line(Callable&& c);
 
     // Sets the longitude coordinates (in degrees East).
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Scattermap& lon(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Scattermap& lon(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `lon`.
     Scattermap& lonsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& lonsrc(Callable&& c);
 
     Scattermap& marker(Marker f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Marker&>>>
+    Scattermap& marker(Callable&& c);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -188,11 +248,15 @@ class Scattermap : public Trace {
     // trace index.
     template <typename T>
     Scattermap& meta(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Scattermap& meta(Callable&& c);
     template <typename T>
     Scattermap& meta(std::vector<T> f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Scattermap& metasrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& metasrc(Callable&& c);
 
     // Determines the drawing mode for this scatter trace. If the provided `mode` includes *text* then the `text`
     // elements appear at the coordinates. Otherwise, the `text` elements appear on hover.
@@ -200,40 +264,60 @@ class Scattermap : public Trace {
     // - Flags: ['lines', 'markers', 'text']
     // - Extras ['none']
     Scattermap& mode(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& mode(Callable&& c);
 
     // Sets the trace name. The trace name appears as the legend item and on hover.
     Scattermap& name(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& name(Callable&& c);
 
     // Sets the opacity of the trace.
     Scattermap& opacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap& opacity(Callable&& c);
 
     Scattermap& selected(Selected f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Selected&>>>
+    Scattermap& selected(Callable&& c);
 
     // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
     // other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
     template <typename T>
     Scattermap& selectedpoints(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Scattermap& selectedpoints(Callable&& c);
 
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Scattermap& showlegend(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Scattermap& showlegend(Callable&& c);
 
     Scattermap& stream(Stream f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Stream&>>>
+    Scattermap& stream(Callable&& c);
 
     // Sets a reference between this trace's data coordinates and a map subplot. If *map* (the default value), the data
     // refer to `layout.map`. If *map2*, the data refer to `layout.map2`, and so on.
     Scattermap& subplot(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& subplot(Callable&& c);
 
     // Sets text elements associated with each (lon,lat) pair If a single string, the same string appears over all the
     // data points. If an array of string, the items are mapped in order to the this trace's (lon,lat) coordinates. If
     // trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover
     // labels.
     Scattermap& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& text(Callable&& c);
     Scattermap& text(std::vector<std::string> f);
 
     // Sets the icon text font (color=map.layer.paint.text-color, size=map.layer.layout.text-size). Has an effect only
     // when `type` is set to *symbol*.
     Scattermap& textfont(Textfont f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Textfont&>>>
+    Scattermap& textfont(Callable&& c);
 
     // Sets the positions of the `text` elements with respects to the (x,y) coordinates.
     // - Default: middle center
@@ -241,6 +325,8 @@ class Scattermap : public Trace {
 
     // Sets the source reference on Chart Studio Cloud for `text`.
     Scattermap& textsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& textsrc(Callable&& c);
 
     // Template string used for rendering the information text that appear on points. Note that this will override
     // `textinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using
@@ -251,14 +337,20 @@ class Scattermap : public Trace {
     // attributes that can be specified per-point (the ones that are `arrayOk: true`) are available. Finally, the
     // template string has access to variables `lat`, `lon` and `text`.
     Scattermap& texttemplate(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& texttemplate(Callable&& c);
     Scattermap& texttemplate(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `texttemplate`.
     Scattermap& texttemplatesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& texttemplatesrc(Callable&& c);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
     Scattermap& uid(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap& uid(Callable&& c);
 
     // Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well
     // as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note
@@ -270,8 +362,12 @@ class Scattermap : public Trace {
     // still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
     template <typename T>
     Scattermap& uirevision(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Scattermap& uirevision(Callable&& c);
 
     Scattermap& unselected(Unselected f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Unselected&>>>
+    Scattermap& unselected(Callable&& c);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -287,39 +383,59 @@ class Scattermap::Cluster {
 
     // Sets the color for each cluster step.
     Scattermap::Cluster& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Cluster& color(Callable&& c);
     Scattermap::Cluster& color(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scattermap::Cluster& colorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Cluster& colorsrc(Callable&& c);
 
     // Determines whether clustering is enabled or disabled.
     Scattermap::Cluster& enabled(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Scattermap::Cluster& enabled(Callable&& c);
 
     // Sets the maximum zoom level. At zoom levels equal to or greater than this, points will never be clustered.
     Scattermap::Cluster& maxzoom(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Cluster& maxzoom(Callable&& c);
 
     // Sets the marker opacity.
     Scattermap::Cluster& opacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Cluster& opacity(Callable&& c);
     Scattermap::Cluster& opacity(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `opacity`.
     Scattermap::Cluster& opacitysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Cluster& opacitysrc(Callable&& c);
 
     // Sets the size for each cluster step.
     Scattermap::Cluster& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Cluster& size(Callable&& c);
     Scattermap::Cluster& size(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Scattermap::Cluster& sizesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Cluster& sizesrc(Callable&& c);
 
     // Sets how many points it takes to create a cluster or advance to the next cluster step. Use this in conjunction
     // with arrays for `size` and / or `color`. If an integer, steps start at multiples of this number. If an array,
     // each step extends from the given value until one less than the next value.
     Scattermap::Cluster& step(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Cluster& step(Callable&& c);
     Scattermap::Cluster& step(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `step`.
     Scattermap::Cluster& stepsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Cluster& stepsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -349,33 +465,49 @@ class Scattermap::Hoverlabel {
 
     // Sets the source reference on Chart Studio Cloud for `align`.
     Scattermap::Hoverlabel& alignsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Hoverlabel& alignsrc(Callable&& c);
 
     // Sets the background color of the hover labels for this trace
     Scattermap::Hoverlabel& bgcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Hoverlabel& bgcolor(Callable&& c);
     Scattermap::Hoverlabel& bgcolor(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Scattermap::Hoverlabel& bgcolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Hoverlabel& bgcolorsrc(Callable&& c);
 
     // Sets the border color of the hover labels for this trace.
     Scattermap::Hoverlabel& bordercolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Hoverlabel& bordercolor(Callable&& c);
     Scattermap::Hoverlabel& bordercolor(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Scattermap::Hoverlabel& bordercolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Hoverlabel& bordercolorsrc(Callable&& c);
 
     // Sets the font used in hover labels.
     Scattermap::Hoverlabel& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Scattermap::Hoverlabel& font(Callable&& c);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
     // name if it is less than that many characters, but if it is longer, will truncate to `namelength - 3` characters
     // and add an ellipsis.
     Scattermap::Hoverlabel& namelength(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Scattermap::Hoverlabel& namelength(Callable&& c);
     Scattermap::Hoverlabel& namelength(std::vector<int> f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Scattermap::Hoverlabel& namelengthsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Hoverlabel& namelengthsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -413,10 +545,14 @@ class Scattermap::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Scattermap::Hoverlabel::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Hoverlabel::Font& color(Callable&& c);
     Scattermap::Hoverlabel::Font& color(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scattermap::Hoverlabel::Font& colorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Hoverlabel::Font& colorsrc(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -426,10 +562,14 @@ class Scattermap::Hoverlabel::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Scattermap::Hoverlabel::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Hoverlabel::Font& family(Callable&& c);
     Scattermap::Hoverlabel::Font& family(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Scattermap::Hoverlabel::Font& familysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Hoverlabel::Font& familysrc(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -437,24 +577,36 @@ class Scattermap::Hoverlabel::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Scattermap::Hoverlabel::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Hoverlabel::Font& lineposition(Callable&& c);
     Scattermap::Hoverlabel::Font& lineposition(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Scattermap::Hoverlabel::Font& linepositionsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Hoverlabel::Font& linepositionsrc(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Scattermap::Hoverlabel::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Hoverlabel::Font& shadow(Callable&& c);
     Scattermap::Hoverlabel::Font& shadow(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Scattermap::Hoverlabel::Font& shadowsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Hoverlabel::Font& shadowsrc(Callable&& c);
 
     Scattermap::Hoverlabel::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Hoverlabel::Font& size(Callable&& c);
     Scattermap::Hoverlabel::Font& size(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Scattermap::Hoverlabel::Font& sizesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Hoverlabel::Font& sizesrc(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -463,6 +615,8 @@ class Scattermap::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `style`.
     Scattermap::Hoverlabel::Font& stylesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Hoverlabel::Font& stylesrc(Callable&& c);
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
@@ -472,6 +626,8 @@ class Scattermap::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `textcase`.
     Scattermap::Hoverlabel::Font& textcasesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Hoverlabel::Font& textcasesrc(Callable&& c);
 
     // Sets the variant of the font.
     // - Default: normal
@@ -480,13 +636,19 @@ class Scattermap::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `variant`.
     Scattermap::Hoverlabel::Font& variantsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Hoverlabel::Font& variantsrc(Callable&& c);
 
     // Sets the weight (or boldness) of the font.
     Scattermap::Hoverlabel::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Scattermap::Hoverlabel::Font& weight(Callable&& c);
     Scattermap::Hoverlabel::Font& weight(std::vector<int> f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Scattermap::Hoverlabel::Font& weightsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Hoverlabel::Font& weightsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -503,9 +665,13 @@ class Scattermap::Legendgrouptitle {
 
     // Sets this legend group's title font.
     Scattermap::Legendgrouptitle& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Scattermap::Legendgrouptitle& font(Callable&& c);
 
     // Sets the title of the legend group.
     Scattermap::Legendgrouptitle& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Legendgrouptitle& text(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -543,6 +709,8 @@ class Scattermap::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Scattermap::Legendgrouptitle::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Legendgrouptitle::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -552,6 +720,8 @@ class Scattermap::Legendgrouptitle::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Scattermap::Legendgrouptitle::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Legendgrouptitle::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -559,12 +729,18 @@ class Scattermap::Legendgrouptitle::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Scattermap::Legendgrouptitle::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Legendgrouptitle::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Scattermap::Legendgrouptitle::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Legendgrouptitle::Font& shadow(Callable&& c);
 
     Scattermap::Legendgrouptitle::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Legendgrouptitle::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -581,6 +757,8 @@ class Scattermap::Legendgrouptitle::Font {
 
     // Sets the weight (or boldness) of the font.
     Scattermap::Legendgrouptitle::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Scattermap::Legendgrouptitle::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -594,9 +772,13 @@ class Scattermap::Line {
 
     // Sets the line color.
     Scattermap::Line& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Line& color(Callable&& c);
 
     // Sets the line width (in px).
     Scattermap::Line& width(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Line& width(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -618,50 +800,72 @@ class Scattermap::Marker {
 
     // Flag to draw all symbols, even if they overlap.
     Scattermap::Marker& allowoverlap(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Scattermap::Marker& allowoverlap(Callable&& c);
 
     // Sets the marker orientation from true North, in degrees clockwise. When using the *auto* default, no rotation
     // would be applied in perspective views which is different from using a zero angle.
     Scattermap::Marker& angle(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Marker& angle(Callable&& c);
     Scattermap::Marker& angle(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `angle`.
     Scattermap::Marker& anglesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker& anglesrc(Callable&& c);
 
     // Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by
     // `marker.colorscale`. Has an effect only if in `marker.color` is set to a numerical array. In case `colorscale` is
     // unspecified or `autocolorscale` is true, the default palette will be chosen according to whether numbers in the
     // `color` array are all positive, all negative or mixed.
     Scattermap::Marker& autocolorscale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Scattermap::Marker& autocolorscale(Callable&& c);
 
     // Determines whether or not the color domain is computed with respect to the input data (here in `marker.color`) or
     // the bounds set in `marker.cmin` and `marker.cmax` Has an effect only if in `marker.color` is set to a numerical
     // array. Defaults to `false` when `marker.cmin` and `marker.cmax` are set by the user.
     Scattermap::Marker& cauto(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Scattermap::Marker& cauto(Callable&& c);
 
     // Sets the upper bound of the color domain. Has an effect only if in `marker.color` is set to a numerical array.
     // Value should have the same units as in `marker.color` and if set, `marker.cmin` must be set as well.
     Scattermap::Marker& cmax(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Marker& cmax(Callable&& c);
 
     // Sets the mid-point of the color domain by scaling `marker.cmin` and/or `marker.cmax` to be equidistant to this
     // point. Has an effect only if in `marker.color` is set to a numerical array. Value should have the same units as
     // in `marker.color`. Has no effect when `marker.cauto` is `false`.
     Scattermap::Marker& cmid(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Marker& cmid(Callable&& c);
 
     // Sets the lower bound of the color domain. Has an effect only if in `marker.color` is set to a numerical array.
     // Value should have the same units as in `marker.color` and if set, `marker.cmax` must be set as well.
     Scattermap::Marker& cmin(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Marker& cmin(Callable&& c);
 
     // Sets the marker color. It accepts either a specific color or an array of numbers that are mapped to the
     // colorscale relative to the max and min values of the array or relative to `marker.cmin` and `marker.cmax` if set.
     Scattermap::Marker& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker& color(Callable&& c);
     Scattermap::Marker& color(std::vector<std::string> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Scattermap::Marker& coloraxis(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker& coloraxis(Callable&& c);
 
     Scattermap::Marker& colorbar(Colorbar f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Colorbar&>>>
+    Scattermap::Marker& colorbar(Callable&& c);
 
     // Sets the colorscale. Has an effect only if in `marker.color` is set to a numerical array. The colorscale must be
     // an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At
@@ -671,33 +875,51 @@ class Scattermap::Marker {
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Scattermap::Marker& colorscale(std::string f);
     Scattermap::Marker& colorscale(std::vector<std::pair<double, std::string>> f);
+    template <typename Callable,
+              typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
+                                          std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
+    Scattermap::Marker& colorscale(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scattermap::Marker& colorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker& colorsrc(Callable&& c);
 
     // Sets the marker opacity.
     Scattermap::Marker& opacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Marker& opacity(Callable&& c);
     Scattermap::Marker& opacity(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `opacity`.
     Scattermap::Marker& opacitysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker& opacitysrc(Callable&& c);
 
     // Reverses the color mapping if true. Has an effect only if in `marker.color` is set to a numerical array. If true,
     // `marker.cmin` will correspond to the last color in the array and `marker.cmax` will correspond to the first
     // color.
     Scattermap::Marker& reversescale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Scattermap::Marker& reversescale(Callable&& c);
 
     // Determines whether or not a colorbar is displayed for this trace. Has an effect only if in `marker.color` is set
     // to a numerical array.
     Scattermap::Marker& showscale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Scattermap::Marker& showscale(Callable&& c);
 
     // Sets the marker size (in px).
     Scattermap::Marker& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Marker& size(Callable&& c);
     Scattermap::Marker& size(std::vector<double> f);
 
     // Has an effect only if `marker.size` is set to a numerical array. Sets the minimum size (in px) of the rendered
     // marker points.
     Scattermap::Marker& sizemin(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Marker& sizemin(Callable&& c);
 
     // Has an effect only if `marker.size` is set to a numerical array. Sets the rule for which the data in `size` is
     // converted to pixels.
@@ -707,17 +929,25 @@ class Scattermap::Marker {
     // Has an effect only if `marker.size` is set to a numerical array. Sets the scale factor used to determine the
     // rendered size of marker points. Use with `sizemin` and `sizemode`.
     Scattermap::Marker& sizeref(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Marker& sizeref(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Scattermap::Marker& sizesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker& sizesrc(Callable&& c);
 
     // Sets the marker symbol. Full list: https://www.map.com/maki-icons/ Note that the array `marker.color` and
     // `marker.size` are only available for *circle* symbols.
     Scattermap::Marker& symbol(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker& symbol(Callable&& c);
     Scattermap::Marker& symbol(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `symbol`.
     Scattermap::Marker& symbolsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker& symbolsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -848,12 +1078,18 @@ class Scattermap::Marker::Colorbar {
 
     // Sets the color of padded area.
     Scattermap::Marker::Colorbar& bgcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker::Colorbar& bgcolor(Callable&& c);
 
     // Sets the axis line color.
     Scattermap::Marker::Colorbar& bordercolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker::Colorbar& bordercolor(Callable&& c);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Scattermap::Marker::Colorbar& borderwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Marker::Colorbar& borderwidth(Callable&& c);
 
     // Sets the step in-between ticks on this axis. Use with `tick0`. Must be a positive number, or special strings
     // available to *log* and *date* axes. If the axis `type` is *log*, then ticks are set every 10^(n*dtick) where n is
@@ -869,6 +1105,8 @@ class Scattermap::Marker::Colorbar {
     // set `dtick` to *M48*
     template <typename T>
     Scattermap::Marker::Colorbar& dtick(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Scattermap::Marker::Colorbar& dtick(Callable&& c);
 
     // Determines a formatting rule for the tick exponents. For example, consider the number 1,000,000,000. If *none*,
     // it appears as 1,000,000,000. If *e*, 1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super script). If *SI*,
@@ -883,10 +1121,14 @@ class Scattermap::Marker::Colorbar {
     // values (if desired) can include html-like tags or MathJax.
     template <typename T>
     Scattermap::Marker::Colorbar& labelalias(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Scattermap::Marker::Colorbar& labelalias(Callable&& c);
 
     // Sets the length of the color bar This measure excludes the padding of both ends. That is, the color bar length is
     // this length minus the padding on both ends.
     Scattermap::Marker::Colorbar& len(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Marker::Colorbar& len(Callable&& c);
 
     // Determines whether this color bar's length (i.e. the measure in the color variation direction) is set in units of
     // plot *fraction* or in *pixels. Use `len` to set the value.
@@ -895,10 +1137,14 @@ class Scattermap::Marker::Colorbar {
 
     // Hide SI prefix for 10^n if |n| is below this number. This only has an effect when `tickformat` is *SI* or *B*.
     Scattermap::Marker::Colorbar& minexponent(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Marker::Colorbar& minexponent(Callable&& c);
 
     // Specifies the maximum number of ticks for the particular axis. The actual number of ticks will be chosen
     // automatically to be less than or equal to `nticks`. Has an effect only if `tickmode` is set to *auto*.
     Scattermap::Marker::Colorbar& nticks(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Scattermap::Marker::Colorbar& nticks(Callable&& c);
 
     // Sets the orientation of the colorbar.
     // - Default: v
@@ -906,12 +1152,18 @@ class Scattermap::Marker::Colorbar {
 
     // Sets the axis line color.
     Scattermap::Marker::Colorbar& outlinecolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker::Colorbar& outlinecolor(Callable&& c);
 
     // Sets the width (in px) of the axis line.
     Scattermap::Marker::Colorbar& outlinewidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Marker::Colorbar& outlinewidth(Callable&& c);
 
     // If "true", even 4-digit integers are separated
     Scattermap::Marker::Colorbar& separatethousands(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Scattermap::Marker::Colorbar& separatethousands(Callable&& c);
 
     // If *all*, all exponents are shown besides their significands. If *first*, only the exponent of the first tick is
     // shown. If *last*, only the exponent of the last tick is shown. If *none*, no exponents appear.
@@ -920,6 +1172,8 @@ class Scattermap::Marker::Colorbar {
 
     // Determines whether or not the tick labels are drawn.
     Scattermap::Marker::Colorbar& showticklabels(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Scattermap::Marker::Colorbar& showticklabels(Callable&& c);
 
     // If *all*, all tick labels are displayed with a prefix. If *first*, only the first tick is displayed with a
     // prefix. If *last*, only the last tick is displayed with a suffix. If *none*, tick prefixes are hidden.
@@ -932,6 +1186,8 @@ class Scattermap::Marker::Colorbar {
 
     // Sets the thickness of the color bar This measure excludes the size of the padding, ticks and labels.
     Scattermap::Marker::Colorbar& thickness(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Marker::Colorbar& thickness(Callable&& c);
 
     // Determines whether this color bar's thickness (i.e. the measure in the constant color direction) is set in units
     // of plot *fraction* or in *pixels*. Use `thickness` to set the value.
@@ -945,16 +1201,24 @@ class Scattermap::Marker::Colorbar {
     // serial number from zero in the order it appears.
     template <typename T>
     Scattermap::Marker::Colorbar& tick0(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Scattermap::Marker::Colorbar& tick0(Callable&& c);
 
     // Sets the angle of the tick labels with respect to the horizontal. For example, a `tickangle` of -90 draws the
     // tick labels vertically.
     Scattermap::Marker::Colorbar& tickangle(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Marker::Colorbar& tickangle(Callable&& c);
 
     // Sets the tick color.
     Scattermap::Marker::Colorbar& tickcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker::Colorbar& tickcolor(Callable&& c);
 
     // Sets the color bar's tick label font
     Scattermap::Marker::Colorbar& tickfont(Tickfont f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickfont&>>>
+    Scattermap::Marker::Colorbar& tickfont(Callable&& c);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -962,8 +1226,12 @@ class Scattermap::Marker::Colorbar {
     // half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example,
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Scattermap::Marker::Colorbar& tickformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker::Colorbar& tickformat(Callable&& c);
 
     Scattermap::Marker::Colorbar& tickformatstops(Tickformatstops f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickformatstops&>>>
+    Scattermap::Marker::Colorbar& tickformatstops(Callable&& c);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -979,9 +1247,13 @@ class Scattermap::Marker::Colorbar {
     // labeled. `tick0` determines which labels are shown. Not implemented for axes with `type` *log* or
     // *multicategory*, or when `tickmode` is *array*.
     Scattermap::Marker::Colorbar& ticklabelstep(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Scattermap::Marker::Colorbar& ticklabelstep(Callable&& c);
 
     // Sets the tick length (in px).
     Scattermap::Marker::Colorbar& ticklen(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Marker::Colorbar& ticklen(Callable&& c);
 
     // Sets the tick mode for this axis. If *auto*, the number of ticks is set via `nticks`. If *linear*, the placement
     // of the ticks is determined by a starting position `tick0` and a tick step `dtick` (*linear* is the default value
@@ -991,6 +1263,8 @@ class Scattermap::Marker::Colorbar {
 
     // Sets a tick label prefix.
     Scattermap::Marker::Colorbar& tickprefix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker::Colorbar& tickprefix(Callable&& c);
 
     // Determines whether ticks are drawn or not. If **, this axis' ticks are not drawn. If *outside* (*inside*), this
     // axis' are drawn outside (inside) the axis lines.
@@ -999,33 +1273,53 @@ class Scattermap::Marker::Colorbar {
 
     // Sets a tick label suffix.
     Scattermap::Marker::Colorbar& ticksuffix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker::Colorbar& ticksuffix(Callable&& c);
 
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Scattermap::Marker::Colorbar& ticktext(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Scattermap::Marker::Colorbar& ticktext(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `ticktext`.
     Scattermap::Marker::Colorbar& ticktextsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker::Colorbar& ticktextsrc(Callable&& c);
 
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Scattermap::Marker::Colorbar& tickvals(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Scattermap::Marker::Colorbar& tickvals(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `tickvals`.
     Scattermap::Marker::Colorbar& tickvalssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker::Colorbar& tickvalssrc(Callable&& c);
 
     // Sets the tick width (in px).
     Scattermap::Marker::Colorbar& tickwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Marker::Colorbar& tickwidth(Callable&& c);
 
     Scattermap::Marker::Colorbar& title(Title f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Title&>>>
+    Scattermap::Marker::Colorbar& title(Callable&& c);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
     // when `orientation` is *v* and 0.5 when `orientation` is *h*. Must be between *0* and *1* if `xref` is *container*
     // and between *-2* and *3* if `xref` is *paper*.
     Scattermap::Marker::Colorbar& x(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Marker::Colorbar& x(Callable&& c);
 
     // Sets this color bar's horizontal position anchor. This anchor binds the `x` position to the *left*, *center* or
     // *right* of the color bar. Defaults to *left* when `orientation` is *v* and *center* when `orientation` is *h*.
@@ -1033,6 +1327,8 @@ class Scattermap::Marker::Colorbar {
 
     // Sets the amount of padding (in px) along the x direction.
     Scattermap::Marker::Colorbar& xpad(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Marker::Colorbar& xpad(Callable&& c);
 
     // Sets the container `x` refers to. *container* spans the entire `width` of the plot. *paper* refers to the width
     // of the plotting area only.
@@ -1044,6 +1340,8 @@ class Scattermap::Marker::Colorbar {
     // when `orientation` is *v* and 1 when `orientation` is *h*. Must be between *0* and *1* if `yref` is *container*
     // and between *-2* and *3* if `yref` is *paper*.
     Scattermap::Marker::Colorbar& y(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Marker::Colorbar& y(Callable&& c);
 
     // Sets this color bar's vertical position anchor This anchor binds the `y` position to the *top*, *middle* or
     // *bottom* of the color bar. Defaults to *middle* when `orientation` is *v* and *bottom* when `orientation` is *h*.
@@ -1051,6 +1349,8 @@ class Scattermap::Marker::Colorbar {
 
     // Sets the amount of padding (in px) along the y direction.
     Scattermap::Marker::Colorbar& ypad(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Marker::Colorbar& ypad(Callable&& c);
 
     // Sets the container `y` refers to. *container* spans the entire `height` of the plot. *paper* refers to the height
     // of the plotting area only.
@@ -1093,6 +1393,8 @@ class Scattermap::Marker::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Scattermap::Marker::Colorbar::Tickfont& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker::Colorbar::Tickfont& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1102,6 +1404,8 @@ class Scattermap::Marker::Colorbar::Tickfont {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Scattermap::Marker::Colorbar::Tickfont& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker::Colorbar::Tickfont& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -1109,12 +1413,18 @@ class Scattermap::Marker::Colorbar::Tickfont {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Scattermap::Marker::Colorbar::Tickfont& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker::Colorbar::Tickfont& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Scattermap::Marker::Colorbar::Tickfont& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker::Colorbar::Tickfont& shadow(Callable&& c);
 
     Scattermap::Marker::Colorbar::Tickfont& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Marker::Colorbar::Tickfont& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1131,6 +1441,8 @@ class Scattermap::Marker::Colorbar::Tickfont {
 
     // Sets the weight (or boldness) of the font.
     Scattermap::Marker::Colorbar::Tickfont& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Scattermap::Marker::Colorbar::Tickfont& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1145,6 +1457,8 @@ class Scattermap::Marker::Colorbar::Tickformatstops {
     class Tickformatstop;
 
     Scattermap::Marker::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickformatstop&>>>
+    Scattermap::Marker::Colorbar::Tickformatstops& tickformatstop(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1159,15 +1473,21 @@ class Scattermap::Marker::Colorbar::Tickformatstops::Tickformatstop {
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
     Scattermap::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
+    Scattermap::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Scattermap::Marker::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Scattermap::Marker::Colorbar::Tickformatstops::Tickformatstop& enabled(Callable&& c);
 
     // When used in a template, named items are created in the output figure in addition to any items the figure already
     // has in this array. You can modify these items in the output figure by making your own item with
     // `templateitemname` matching this `name` alongside your modifications (including `visible: false` or `enabled:
     // false` to hide it). Has no effect outside of a template.
     Scattermap::Marker::Colorbar::Tickformatstops::Tickformatstop& name(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker::Colorbar::Tickformatstops::Tickformatstop& name(Callable&& c);
 
     // Used to refer to a named item in this array in the template. Named items from the template will be created even
     // without a matching item in the input figure, but you can modify one by making an item with `templateitemname`
@@ -1175,9 +1495,13 @@ class Scattermap::Marker::Colorbar::Tickformatstops::Tickformatstop {
     // there is no template or no matching item, this item will be hidden unless you explicitly show it with `visible:
     // true`.
     Scattermap::Marker::Colorbar::Tickformatstops::Tickformatstop& templateitemname(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker::Colorbar::Tickformatstops::Tickformatstop& templateitemname(Callable&& c);
 
     // string - dtickformat for described zoom level, the same as *tickformat*
     Scattermap::Marker::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker::Colorbar::Tickformatstops::Tickformatstop& value(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1201,6 +1525,8 @@ class Scattermap::Marker::Colorbar::Title {
 
     // Sets this color bar's title font.
     Scattermap::Marker::Colorbar::Title& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Scattermap::Marker::Colorbar::Title& font(Callable&& c);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -1208,6 +1534,8 @@ class Scattermap::Marker::Colorbar::Title {
 
     // Sets the title of the color bar.
     Scattermap::Marker::Colorbar::Title& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker::Colorbar::Title& text(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1245,6 +1573,8 @@ class Scattermap::Marker::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Scattermap::Marker::Colorbar::Title::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker::Colorbar::Title::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1254,6 +1584,8 @@ class Scattermap::Marker::Colorbar::Title::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Scattermap::Marker::Colorbar::Title::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker::Colorbar::Title::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -1261,12 +1593,18 @@ class Scattermap::Marker::Colorbar::Title::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Scattermap::Marker::Colorbar::Title::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker::Colorbar::Title::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Scattermap::Marker::Colorbar::Title::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Marker::Colorbar::Title::Font& shadow(Callable&& c);
 
     Scattermap::Marker::Colorbar::Title::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Marker::Colorbar::Title::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1283,6 +1621,8 @@ class Scattermap::Marker::Colorbar::Title::Font {
 
     // Sets the weight (or boldness) of the font.
     Scattermap::Marker::Colorbar::Title::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Scattermap::Marker::Colorbar::Title::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1297,6 +1637,8 @@ class Scattermap::Selected {
     class Marker;
 
     Scattermap::Selected& marker(Marker f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Marker&>>>
+    Scattermap::Selected& marker(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1310,12 +1652,18 @@ class Scattermap::Selected::Marker {
 
     // Sets the marker color of selected points.
     Scattermap::Selected::Marker& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Selected::Marker& color(Callable&& c);
 
     // Sets the marker opacity of selected points.
     Scattermap::Selected::Marker& opacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Selected::Marker& opacity(Callable&& c);
 
     // Sets the marker size of selected points.
     Scattermap::Selected::Marker& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Selected::Marker& size(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1330,10 +1678,14 @@ class Scattermap::Stream {
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
     Scattermap::Stream& maxpoints(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Stream& maxpoints(Callable&& c);
 
     // The stream id number links a data trace on a plot with a stream. See https://chart-studio.plotly.com/settings for
     // more details.
     Scattermap::Stream& token(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Stream& token(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1354,6 +1706,8 @@ class Scattermap::Textfont {
     static std::string to_string(Style e);
 
     Scattermap::Textfont& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Textfont& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1363,8 +1717,12 @@ class Scattermap::Textfont {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Scattermap::Textfont& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Textfont& family(Callable&& c);
 
     Scattermap::Textfont& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Textfont& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1372,6 +1730,8 @@ class Scattermap::Textfont {
 
     // Sets the weight (or boldness) of the font.
     Scattermap::Textfont& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Scattermap::Textfont& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1386,6 +1746,8 @@ class Scattermap::Unselected {
     class Marker;
 
     Scattermap::Unselected& marker(Marker f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Marker&>>>
+    Scattermap::Unselected& marker(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1399,12 +1761,18 @@ class Scattermap::Unselected::Marker {
 
     // Sets the marker color of unselected points, applied only when a selection exists.
     Scattermap::Unselected::Marker& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Scattermap::Unselected::Marker& color(Callable&& c);
 
     // Sets the marker opacity of unselected points, applied only when a selection exists.
     Scattermap::Unselected::Marker& opacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Unselected::Marker& opacity(Callable&& c);
 
     // Sets the marker size of unselected points, applied only when a selection exists.
     Scattermap::Unselected::Marker& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Scattermap::Unselected::Marker& size(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

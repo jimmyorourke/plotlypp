@@ -126,37 +126,55 @@ class Mesh3D : public Trace {
     // the convex-hull algorithm is used. It is suitable for convex bodies or if the intention is to enclose the `x`,
     // `y` and `z` point set into a convex hull.
     Mesh3D& alphahull(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D& alphahull(Callable&& c);
 
     // Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by
     // `colorscale`. In case `colorscale` is unspecified or `autocolorscale` is true, the default palette will be chosen
     // according to whether numbers in the `color` array are all positive, all negative or mixed.
     Mesh3D& autocolorscale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Mesh3D& autocolorscale(Callable&& c);
 
     // Determines whether or not the color domain is computed with respect to the input data (here `intensity`) or the
     // bounds set in `cmin` and `cmax` Defaults to `false` when `cmin` and `cmax` are set by the user.
     Mesh3D& cauto(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Mesh3D& cauto(Callable&& c);
 
     // Sets the upper bound of the color domain. Value should have the same units as `intensity` and if set, `cmin` must
     // be set as well.
     Mesh3D& cmax(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D& cmax(Callable&& c);
 
     // Sets the mid-point of the color domain by scaling `cmin` and/or `cmax` to be equidistant to this point. Value
     // should have the same units as `intensity`. Has no effect when `cauto` is `false`.
     Mesh3D& cmid(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D& cmid(Callable&& c);
 
     // Sets the lower bound of the color domain. Value should have the same units as `intensity` and if set, `cmax` must
     // be set as well.
     Mesh3D& cmin(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D& cmin(Callable&& c);
 
     // Sets the color of the whole mesh
     Mesh3D& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& color(Callable&& c);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Mesh3D& coloraxis(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& coloraxis(Callable&& c);
 
     Mesh3D& colorbar(Colorbar f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Colorbar&>>>
+    Mesh3D& colorbar(Callable&& c);
 
     // Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb,
     // rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are
@@ -166,16 +184,28 @@ class Mesh3D : public Trace {
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Mesh3D& colorscale(std::string f);
     Mesh3D& colorscale(std::vector<std::pair<double, std::string>> f);
+    template <typename Callable,
+              typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
+                                          std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
+    Mesh3D& colorscale(Callable&& c);
 
     Mesh3D& contour(Contour f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Contour&>>>
+    Mesh3D& contour(Callable&& c);
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3D& customdata(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Mesh3D& customdata(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Mesh3D& customdatasrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& customdatasrc(Callable&& c);
 
     // Sets the Delaunay axis, which is the axis that is perpendicular to the surface of the Delaunay triangulation. It
     // has an effect if `i`, `j`, `k` are not provided and `alphahull` is set to indicate Delaunay triangulation.
@@ -185,13 +215,21 @@ class Mesh3D : public Trace {
     // Sets the color of each face Overrides *color* and *vertexcolor*.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3D& facecolor(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Mesh3D& facecolor(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `facecolor`.
     Mesh3D& facecolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& facecolorsrc(Callable&& c);
 
     // Determines whether or not normal smoothing is applied to the meshes, creating meshes with an angular, low-poly
     // look via flat reflections.
     Mesh3D& flatshading(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Mesh3D& flatshading(Callable&& c);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -199,12 +237,18 @@ class Mesh3D : public Trace {
     // - Flags: ['x', 'y', 'z', 'text', 'name']
     // - Extras ['all', 'none', 'skip']
     Mesh3D& hoverinfo(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& hoverinfo(Callable&& c);
     Mesh3D& hoverinfo(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Mesh3D& hoverinfosrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& hoverinfosrc(Callable&& c);
 
     Mesh3D& hoverlabel(Hoverlabel f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Hoverlabel&>>>
+    Mesh3D& hoverlabel(Callable&& c);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -220,17 +264,25 @@ class Mesh3D : public Trace {
     // displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box
     // completely, use an empty tag `<extra></extra>`.
     Mesh3D& hovertemplate(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& hovertemplate(Callable&& c);
     Mesh3D& hovertemplate(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Mesh3D& hovertemplatesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& hovertemplatesrc(Callable&& c);
 
     // Same as `text`.
     Mesh3D& hovertext(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& hovertext(Callable&& c);
     Mesh3D& hovertext(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Mesh3D& hovertextsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& hovertextsrc(Callable&& c);
 
     // A vector of vertex indices, i.e. integer values between 0 and the length of the vertex vectors, representing the
     // *first* vertex of a triangle. For example, `{i[m], j[m], k[m]}` together represent face m (triangle m) in the
@@ -238,19 +290,33 @@ class Mesh3D : public Trace {
     // in `i` represents a point in space, which is the first vertex of a triangle.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3D& i(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Mesh3D& i(Callable&& c);
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3D& ids(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Mesh3D& ids(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `ids`.
     Mesh3D& idssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& idssrc(Callable&& c);
 
     // Sets the intensity values for vertices or cells as defined by `intensitymode`. It can be used for plotting fields
     // on meshes.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3D& intensity(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Mesh3D& intensity(Callable&& c);
 
     // Determines the source of `intensity` values.
     // - Default: vertex
@@ -258,9 +324,13 @@ class Mesh3D : public Trace {
 
     // Sets the source reference on Chart Studio Cloud for `intensity`.
     Mesh3D& intensitysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& intensitysrc(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `i`.
     Mesh3D& isrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& isrc(Callable&& c);
 
     // A vector of vertex indices, i.e. integer values between 0 and the length of the vertex vectors, representing the
     // *second* vertex of a triangle. For example, `{i[m], j[m], k[m]}`  together represent face m (triangle m) in the
@@ -268,9 +338,15 @@ class Mesh3D : public Trace {
     // in `j` represents a point in space, which is the second vertex of a triangle.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3D& j(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Mesh3D& j(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `j`.
     Mesh3D& jsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& jsrc(Callable&& c);
 
     // A vector of vertex indices, i.e. integer values between 0 and the length of the vertex vectors, representing the
     // *third* vertex of a triangle. For example, `{i[m], j[m], k[m]}` together represent face m (triangle m) in the
@@ -278,19 +354,31 @@ class Mesh3D : public Trace {
     // in `k` represents a point in space, which is the third vertex of a triangle.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3D& k(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Mesh3D& k(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `k`.
     Mesh3D& ksrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& ksrc(Callable&& c);
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
     Mesh3D& legend(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& legend(Callable&& c);
 
     // Sets the legend group for this trace. Traces and shapes part of the same legend group hide/show at the same time
     // when toggling legend items.
     Mesh3D& legendgroup(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& legendgroup(Callable&& c);
 
     Mesh3D& legendgrouptitle(Legendgrouptitle f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Legendgrouptitle&>>>
+    Mesh3D& legendgrouptitle(Callable&& c);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -298,13 +386,21 @@ class Mesh3D : public Trace {
     // after all unranked items. When having unranked or equal rank items shapes would be displayed after traces i.e.
     // according to their order in data and layout.
     Mesh3D& legendrank(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D& legendrank(Callable&& c);
 
     // Sets the width (in px or fraction) of the legend for this trace.
     Mesh3D& legendwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D& legendwidth(Callable&& c);
 
     Mesh3D& lighting(Lighting f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Lighting&>>>
+    Mesh3D& lighting(Callable&& c);
 
     Mesh3D& lightposition(Lightposition f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Lightposition&>>>
+    Mesh3D& lightposition(Callable&& c);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -314,49 +410,73 @@ class Mesh3D : public Trace {
     // trace index.
     template <typename T>
     Mesh3D& meta(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Mesh3D& meta(Callable&& c);
     template <typename T>
     Mesh3D& meta(std::vector<T> f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Mesh3D& metasrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& metasrc(Callable&& c);
 
     // Sets the trace name. The trace name appears as the legend item and on hover.
     Mesh3D& name(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& name(Callable&& c);
 
     // Sets the opacity of the surface. Please note that in the case of using high `opacity` values for example a value
     // greater than or equal to 0.5 on two surfaces (and 0.25 with four surfaces), an overlay of multiple transparent
     // surfaces may not perfectly be sorted in depth by the webgl API. This behavior may be improved in the near future
     // and is subject to change.
     Mesh3D& opacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D& opacity(Callable&& c);
 
     // Reverses the color mapping if true. If true, `cmin` will correspond to the last color in the array and `cmax`
     // will correspond to the first color.
     Mesh3D& reversescale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Mesh3D& reversescale(Callable&& c);
 
     // Sets a reference between this trace's 3D coordinate system and a 3D scene. If *scene* (the default value), the
     // (x,y,z) coordinates refer to `layout.scene`. If *scene2*, the (x,y,z) coordinates refer to `layout.scene2`, and
     // so on.
     Mesh3D& scene(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& scene(Callable&& c);
 
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Mesh3D& showlegend(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Mesh3D& showlegend(Callable&& c);
 
     // Determines whether or not a colorbar is displayed for this trace.
     Mesh3D& showscale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Mesh3D& showscale(Callable&& c);
 
     Mesh3D& stream(Stream f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Stream&>>>
+    Mesh3D& stream(Callable&& c);
 
     // Sets the text elements associated with the vertices. If trace `hoverinfo` contains a *text* flag and *hovertext*
     // is not set, these elements will be seen in the hover labels.
     Mesh3D& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& text(Callable&& c);
     Mesh3D& text(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `text`.
     Mesh3D& textsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& textsrc(Callable&& c);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
     Mesh3D& uid(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& uid(Callable&& c);
 
     // Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well
     // as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note
@@ -368,15 +488,23 @@ class Mesh3D : public Trace {
     // still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
     template <typename T>
     Mesh3D& uirevision(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Mesh3D& uirevision(Callable&& c);
 
     // Sets the color of each vertex Overrides *color*. While Red, green and blue colors are in the range of 0 and 255;
     // in the case of having vertex color data in RGBA format, the alpha color should be normalized to be between 0
     // and 1.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3D& vertexcolor(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Mesh3D& vertexcolor(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `vertexcolor`.
     Mesh3D& vertexcolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& vertexcolorsrc(Callable&& c);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -387,6 +515,10 @@ class Mesh3D : public Trace {
     // and Z coordinates of the nth vertex.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3D& x(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Mesh3D& x(Callable&& c);
 
     // Sets the calendar system to use with `x` date data.
     // - Default: gregorian
@@ -399,14 +531,22 @@ class Mesh3D : public Trace {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `xaxis.hoverformat`.
     Mesh3D& xhoverformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& xhoverformat(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `x`.
     Mesh3D& xsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& xsrc(Callable&& c);
 
     // Sets the Y coordinates of the vertices. The nth element of vectors `x`, `y` and `z` jointly represent the X, Y
     // and Z coordinates of the nth vertex.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3D& y(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Mesh3D& y(Callable&& c);
 
     // Sets the calendar system to use with `y` date data.
     // - Default: gregorian
@@ -419,14 +559,22 @@ class Mesh3D : public Trace {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `yaxis.hoverformat`.
     Mesh3D& yhoverformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& yhoverformat(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `y`.
     Mesh3D& ysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& ysrc(Callable&& c);
 
     // Sets the Z coordinates of the vertices. The nth element of vectors `x`, `y` and `z` jointly represent the X, Y
     // and Z coordinates of the nth vertex.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3D& z(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Mesh3D& z(Callable&& c);
 
     // Sets the calendar system to use with `z` date data.
     // - Default: gregorian
@@ -439,9 +587,13 @@ class Mesh3D : public Trace {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `zaxis.hoverformat`.
     Mesh3D& zhoverformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& zhoverformat(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `z`.
     Mesh3D& zsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D& zsrc(Callable&& c);
 };
 
 class Mesh3D::Colorbar {
@@ -569,12 +721,18 @@ class Mesh3D::Colorbar {
 
     // Sets the color of padded area.
     Mesh3D::Colorbar& bgcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Colorbar& bgcolor(Callable&& c);
 
     // Sets the axis line color.
     Mesh3D::Colorbar& bordercolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Colorbar& bordercolor(Callable&& c);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Mesh3D::Colorbar& borderwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Colorbar& borderwidth(Callable&& c);
 
     // Sets the step in-between ticks on this axis. Use with `tick0`. Must be a positive number, or special strings
     // available to *log* and *date* axes. If the axis `type` is *log*, then ticks are set every 10^(n*dtick) where n is
@@ -590,6 +748,8 @@ class Mesh3D::Colorbar {
     // set `dtick` to *M48*
     template <typename T>
     Mesh3D::Colorbar& dtick(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Mesh3D::Colorbar& dtick(Callable&& c);
 
     // Determines a formatting rule for the tick exponents. For example, consider the number 1,000,000,000. If *none*,
     // it appears as 1,000,000,000. If *e*, 1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super script). If *SI*,
@@ -604,10 +764,14 @@ class Mesh3D::Colorbar {
     // values (if desired) can include html-like tags or MathJax.
     template <typename T>
     Mesh3D::Colorbar& labelalias(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Mesh3D::Colorbar& labelalias(Callable&& c);
 
     // Sets the length of the color bar This measure excludes the padding of both ends. That is, the color bar length is
     // this length minus the padding on both ends.
     Mesh3D::Colorbar& len(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Colorbar& len(Callable&& c);
 
     // Determines whether this color bar's length (i.e. the measure in the color variation direction) is set in units of
     // plot *fraction* or in *pixels. Use `len` to set the value.
@@ -616,10 +780,14 @@ class Mesh3D::Colorbar {
 
     // Hide SI prefix for 10^n if |n| is below this number. This only has an effect when `tickformat` is *SI* or *B*.
     Mesh3D::Colorbar& minexponent(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Colorbar& minexponent(Callable&& c);
 
     // Specifies the maximum number of ticks for the particular axis. The actual number of ticks will be chosen
     // automatically to be less than or equal to `nticks`. Has an effect only if `tickmode` is set to *auto*.
     Mesh3D::Colorbar& nticks(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Mesh3D::Colorbar& nticks(Callable&& c);
 
     // Sets the orientation of the colorbar.
     // - Default: v
@@ -627,12 +795,18 @@ class Mesh3D::Colorbar {
 
     // Sets the axis line color.
     Mesh3D::Colorbar& outlinecolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Colorbar& outlinecolor(Callable&& c);
 
     // Sets the width (in px) of the axis line.
     Mesh3D::Colorbar& outlinewidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Colorbar& outlinewidth(Callable&& c);
 
     // If "true", even 4-digit integers are separated
     Mesh3D::Colorbar& separatethousands(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Mesh3D::Colorbar& separatethousands(Callable&& c);
 
     // If *all*, all exponents are shown besides their significands. If *first*, only the exponent of the first tick is
     // shown. If *last*, only the exponent of the last tick is shown. If *none*, no exponents appear.
@@ -641,6 +815,8 @@ class Mesh3D::Colorbar {
 
     // Determines whether or not the tick labels are drawn.
     Mesh3D::Colorbar& showticklabels(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Mesh3D::Colorbar& showticklabels(Callable&& c);
 
     // If *all*, all tick labels are displayed with a prefix. If *first*, only the first tick is displayed with a
     // prefix. If *last*, only the last tick is displayed with a suffix. If *none*, tick prefixes are hidden.
@@ -653,6 +829,8 @@ class Mesh3D::Colorbar {
 
     // Sets the thickness of the color bar This measure excludes the size of the padding, ticks and labels.
     Mesh3D::Colorbar& thickness(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Colorbar& thickness(Callable&& c);
 
     // Determines whether this color bar's thickness (i.e. the measure in the constant color direction) is set in units
     // of plot *fraction* or in *pixels*. Use `thickness` to set the value.
@@ -666,16 +844,24 @@ class Mesh3D::Colorbar {
     // serial number from zero in the order it appears.
     template <typename T>
     Mesh3D::Colorbar& tick0(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Mesh3D::Colorbar& tick0(Callable&& c);
 
     // Sets the angle of the tick labels with respect to the horizontal. For example, a `tickangle` of -90 draws the
     // tick labels vertically.
     Mesh3D::Colorbar& tickangle(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Colorbar& tickangle(Callable&& c);
 
     // Sets the tick color.
     Mesh3D::Colorbar& tickcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Colorbar& tickcolor(Callable&& c);
 
     // Sets the color bar's tick label font
     Mesh3D::Colorbar& tickfont(Tickfont f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickfont&>>>
+    Mesh3D::Colorbar& tickfont(Callable&& c);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -683,8 +869,12 @@ class Mesh3D::Colorbar {
     // half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example,
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Mesh3D::Colorbar& tickformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Colorbar& tickformat(Callable&& c);
 
     Mesh3D::Colorbar& tickformatstops(Tickformatstops f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickformatstops&>>>
+    Mesh3D::Colorbar& tickformatstops(Callable&& c);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -700,9 +890,13 @@ class Mesh3D::Colorbar {
     // labeled. `tick0` determines which labels are shown. Not implemented for axes with `type` *log* or
     // *multicategory*, or when `tickmode` is *array*.
     Mesh3D::Colorbar& ticklabelstep(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Mesh3D::Colorbar& ticklabelstep(Callable&& c);
 
     // Sets the tick length (in px).
     Mesh3D::Colorbar& ticklen(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Colorbar& ticklen(Callable&& c);
 
     // Sets the tick mode for this axis. If *auto*, the number of ticks is set via `nticks`. If *linear*, the placement
     // of the ticks is determined by a starting position `tick0` and a tick step `dtick` (*linear* is the default value
@@ -712,6 +906,8 @@ class Mesh3D::Colorbar {
 
     // Sets a tick label prefix.
     Mesh3D::Colorbar& tickprefix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Colorbar& tickprefix(Callable&& c);
 
     // Determines whether ticks are drawn or not. If **, this axis' ticks are not drawn. If *outside* (*inside*), this
     // axis' are drawn outside (inside) the axis lines.
@@ -720,33 +916,53 @@ class Mesh3D::Colorbar {
 
     // Sets a tick label suffix.
     Mesh3D::Colorbar& ticksuffix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Colorbar& ticksuffix(Callable&& c);
 
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3D::Colorbar& ticktext(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Mesh3D::Colorbar& ticktext(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `ticktext`.
     Mesh3D::Colorbar& ticktextsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Colorbar& ticktextsrc(Callable&& c);
 
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Mesh3D::Colorbar& tickvals(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Mesh3D::Colorbar& tickvals(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `tickvals`.
     Mesh3D::Colorbar& tickvalssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Colorbar& tickvalssrc(Callable&& c);
 
     // Sets the tick width (in px).
     Mesh3D::Colorbar& tickwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Colorbar& tickwidth(Callable&& c);
 
     Mesh3D::Colorbar& title(Title f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Title&>>>
+    Mesh3D::Colorbar& title(Callable&& c);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
     // when `orientation` is *v* and 0.5 when `orientation` is *h*. Must be between *0* and *1* if `xref` is *container*
     // and between *-2* and *3* if `xref` is *paper*.
     Mesh3D::Colorbar& x(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Colorbar& x(Callable&& c);
 
     // Sets this color bar's horizontal position anchor. This anchor binds the `x` position to the *left*, *center* or
     // *right* of the color bar. Defaults to *left* when `orientation` is *v* and *center* when `orientation` is *h*.
@@ -754,6 +970,8 @@ class Mesh3D::Colorbar {
 
     // Sets the amount of padding (in px) along the x direction.
     Mesh3D::Colorbar& xpad(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Colorbar& xpad(Callable&& c);
 
     // Sets the container `x` refers to. *container* spans the entire `width` of the plot. *paper* refers to the width
     // of the plotting area only.
@@ -765,6 +983,8 @@ class Mesh3D::Colorbar {
     // when `orientation` is *v* and 1 when `orientation` is *h*. Must be between *0* and *1* if `yref` is *container*
     // and between *-2* and *3* if `yref` is *paper*.
     Mesh3D::Colorbar& y(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Colorbar& y(Callable&& c);
 
     // Sets this color bar's vertical position anchor This anchor binds the `y` position to the *top*, *middle* or
     // *bottom* of the color bar. Defaults to *middle* when `orientation` is *v* and *bottom* when `orientation` is *h*.
@@ -772,6 +992,8 @@ class Mesh3D::Colorbar {
 
     // Sets the amount of padding (in px) along the y direction.
     Mesh3D::Colorbar& ypad(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Colorbar& ypad(Callable&& c);
 
     // Sets the container `y` refers to. *container* spans the entire `height` of the plot. *paper* refers to the height
     // of the plotting area only.
@@ -814,6 +1036,8 @@ class Mesh3D::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Mesh3D::Colorbar::Tickfont& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Colorbar::Tickfont& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -823,6 +1047,8 @@ class Mesh3D::Colorbar::Tickfont {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Mesh3D::Colorbar::Tickfont& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Colorbar::Tickfont& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -830,12 +1056,18 @@ class Mesh3D::Colorbar::Tickfont {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Mesh3D::Colorbar::Tickfont& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Colorbar::Tickfont& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Mesh3D::Colorbar::Tickfont& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Colorbar::Tickfont& shadow(Callable&& c);
 
     Mesh3D::Colorbar::Tickfont& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Colorbar::Tickfont& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -852,6 +1084,8 @@ class Mesh3D::Colorbar::Tickfont {
 
     // Sets the weight (or boldness) of the font.
     Mesh3D::Colorbar::Tickfont& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Mesh3D::Colorbar::Tickfont& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -866,6 +1100,8 @@ class Mesh3D::Colorbar::Tickformatstops {
     class Tickformatstop;
 
     Mesh3D::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickformatstop&>>>
+    Mesh3D::Colorbar::Tickformatstops& tickformatstop(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -880,15 +1116,21 @@ class Mesh3D::Colorbar::Tickformatstops::Tickformatstop {
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
     Mesh3D::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
+    Mesh3D::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Mesh3D::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Mesh3D::Colorbar::Tickformatstops::Tickformatstop& enabled(Callable&& c);
 
     // When used in a template, named items are created in the output figure in addition to any items the figure already
     // has in this array. You can modify these items in the output figure by making your own item with
     // `templateitemname` matching this `name` alongside your modifications (including `visible: false` or `enabled:
     // false` to hide it). Has no effect outside of a template.
     Mesh3D::Colorbar::Tickformatstops::Tickformatstop& name(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Colorbar::Tickformatstops::Tickformatstop& name(Callable&& c);
 
     // Used to refer to a named item in this array in the template. Named items from the template will be created even
     // without a matching item in the input figure, but you can modify one by making an item with `templateitemname`
@@ -896,9 +1138,13 @@ class Mesh3D::Colorbar::Tickformatstops::Tickformatstop {
     // there is no template or no matching item, this item will be hidden unless you explicitly show it with `visible:
     // true`.
     Mesh3D::Colorbar::Tickformatstops::Tickformatstop& templateitemname(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Colorbar::Tickformatstops::Tickformatstop& templateitemname(Callable&& c);
 
     // string - dtickformat for described zoom level, the same as *tickformat*
     Mesh3D::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Colorbar::Tickformatstops::Tickformatstop& value(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -922,6 +1168,8 @@ class Mesh3D::Colorbar::Title {
 
     // Sets this color bar's title font.
     Mesh3D::Colorbar::Title& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Mesh3D::Colorbar::Title& font(Callable&& c);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -929,6 +1177,8 @@ class Mesh3D::Colorbar::Title {
 
     // Sets the title of the color bar.
     Mesh3D::Colorbar::Title& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Colorbar::Title& text(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -966,6 +1216,8 @@ class Mesh3D::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Mesh3D::Colorbar::Title::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Colorbar::Title::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -975,6 +1227,8 @@ class Mesh3D::Colorbar::Title::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Mesh3D::Colorbar::Title::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Colorbar::Title::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -982,12 +1236,18 @@ class Mesh3D::Colorbar::Title::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Mesh3D::Colorbar::Title::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Colorbar::Title::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Mesh3D::Colorbar::Title::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Colorbar::Title::Font& shadow(Callable&& c);
 
     Mesh3D::Colorbar::Title::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Colorbar::Title::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1004,6 +1264,8 @@ class Mesh3D::Colorbar::Title::Font {
 
     // Sets the weight (or boldness) of the font.
     Mesh3D::Colorbar::Title::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Mesh3D::Colorbar::Title::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1017,12 +1279,18 @@ class Mesh3D::Contour {
 
     // Sets the color of the contour lines.
     Mesh3D::Contour& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Contour& color(Callable&& c);
 
     // Sets whether or not dynamic contours are shown on hover
     Mesh3D::Contour& show(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Mesh3D::Contour& show(Callable&& c);
 
     // Sets the width of the contour lines.
     Mesh3D::Contour& width(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Contour& width(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1052,33 +1320,49 @@ class Mesh3D::Hoverlabel {
 
     // Sets the source reference on Chart Studio Cloud for `align`.
     Mesh3D::Hoverlabel& alignsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Hoverlabel& alignsrc(Callable&& c);
 
     // Sets the background color of the hover labels for this trace
     Mesh3D::Hoverlabel& bgcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Hoverlabel& bgcolor(Callable&& c);
     Mesh3D::Hoverlabel& bgcolor(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Mesh3D::Hoverlabel& bgcolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Hoverlabel& bgcolorsrc(Callable&& c);
 
     // Sets the border color of the hover labels for this trace.
     Mesh3D::Hoverlabel& bordercolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Hoverlabel& bordercolor(Callable&& c);
     Mesh3D::Hoverlabel& bordercolor(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Mesh3D::Hoverlabel& bordercolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Hoverlabel& bordercolorsrc(Callable&& c);
 
     // Sets the font used in hover labels.
     Mesh3D::Hoverlabel& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Mesh3D::Hoverlabel& font(Callable&& c);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
     // name if it is less than that many characters, but if it is longer, will truncate to `namelength - 3` characters
     // and add an ellipsis.
     Mesh3D::Hoverlabel& namelength(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Mesh3D::Hoverlabel& namelength(Callable&& c);
     Mesh3D::Hoverlabel& namelength(std::vector<int> f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Mesh3D::Hoverlabel& namelengthsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Hoverlabel& namelengthsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1116,10 +1400,14 @@ class Mesh3D::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Mesh3D::Hoverlabel::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Hoverlabel::Font& color(Callable&& c);
     Mesh3D::Hoverlabel::Font& color(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Mesh3D::Hoverlabel::Font& colorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Hoverlabel::Font& colorsrc(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1129,10 +1417,14 @@ class Mesh3D::Hoverlabel::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Mesh3D::Hoverlabel::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Hoverlabel::Font& family(Callable&& c);
     Mesh3D::Hoverlabel::Font& family(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Mesh3D::Hoverlabel::Font& familysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Hoverlabel::Font& familysrc(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -1140,24 +1432,36 @@ class Mesh3D::Hoverlabel::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Mesh3D::Hoverlabel::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Hoverlabel::Font& lineposition(Callable&& c);
     Mesh3D::Hoverlabel::Font& lineposition(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Mesh3D::Hoverlabel::Font& linepositionsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Hoverlabel::Font& linepositionsrc(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Mesh3D::Hoverlabel::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Hoverlabel::Font& shadow(Callable&& c);
     Mesh3D::Hoverlabel::Font& shadow(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Mesh3D::Hoverlabel::Font& shadowsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Hoverlabel::Font& shadowsrc(Callable&& c);
 
     Mesh3D::Hoverlabel::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Hoverlabel::Font& size(Callable&& c);
     Mesh3D::Hoverlabel::Font& size(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Mesh3D::Hoverlabel::Font& sizesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Hoverlabel::Font& sizesrc(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1166,6 +1470,8 @@ class Mesh3D::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `style`.
     Mesh3D::Hoverlabel::Font& stylesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Hoverlabel::Font& stylesrc(Callable&& c);
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
@@ -1175,6 +1481,8 @@ class Mesh3D::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `textcase`.
     Mesh3D::Hoverlabel::Font& textcasesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Hoverlabel::Font& textcasesrc(Callable&& c);
 
     // Sets the variant of the font.
     // - Default: normal
@@ -1183,13 +1491,19 @@ class Mesh3D::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `variant`.
     Mesh3D::Hoverlabel::Font& variantsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Hoverlabel::Font& variantsrc(Callable&& c);
 
     // Sets the weight (or boldness) of the font.
     Mesh3D::Hoverlabel::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Mesh3D::Hoverlabel::Font& weight(Callable&& c);
     Mesh3D::Hoverlabel::Font& weight(std::vector<int> f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Mesh3D::Hoverlabel::Font& weightsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Hoverlabel::Font& weightsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1206,9 +1520,13 @@ class Mesh3D::Legendgrouptitle {
 
     // Sets this legend group's title font.
     Mesh3D::Legendgrouptitle& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Mesh3D::Legendgrouptitle& font(Callable&& c);
 
     // Sets the title of the legend group.
     Mesh3D::Legendgrouptitle& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Legendgrouptitle& text(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1246,6 +1564,8 @@ class Mesh3D::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Mesh3D::Legendgrouptitle::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Legendgrouptitle::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1255,6 +1575,8 @@ class Mesh3D::Legendgrouptitle::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Mesh3D::Legendgrouptitle::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Legendgrouptitle::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -1262,12 +1584,18 @@ class Mesh3D::Legendgrouptitle::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Mesh3D::Legendgrouptitle::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Legendgrouptitle::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Mesh3D::Legendgrouptitle::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Legendgrouptitle::Font& shadow(Callable&& c);
 
     Mesh3D::Legendgrouptitle::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Legendgrouptitle::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1284,6 +1612,8 @@ class Mesh3D::Legendgrouptitle::Font {
 
     // Sets the weight (or boldness) of the font.
     Mesh3D::Legendgrouptitle::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Mesh3D::Legendgrouptitle::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1297,25 +1627,39 @@ class Mesh3D::Lighting {
 
     // Ambient light increases overall color visibility but can wash out the image.
     Mesh3D::Lighting& ambient(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Lighting& ambient(Callable&& c);
 
     // Represents the extent that incident rays are reflected in a range of angles.
     Mesh3D::Lighting& diffuse(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Lighting& diffuse(Callable&& c);
 
     // Epsilon for face normals calculation avoids math issues arising from degenerate geometry.
     Mesh3D::Lighting& facenormalsepsilon(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Lighting& facenormalsepsilon(Callable&& c);
 
     // Represents the reflectance as a dependency of the viewing angle; e.g. paper is reflective when viewing it from
     // the edge of the paper (almost 90 degrees), causing shine.
     Mesh3D::Lighting& fresnel(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Lighting& fresnel(Callable&& c);
 
     // Alters specular reflection; the rougher the surface, the wider and less contrasty the shine.
     Mesh3D::Lighting& roughness(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Lighting& roughness(Callable&& c);
 
     // Represents the level that incident rays are reflected in a single direction, causing shine.
     Mesh3D::Lighting& specular(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Lighting& specular(Callable&& c);
 
     // Epsilon for vertex normals calculation avoids math issues arising from degenerate geometry.
     Mesh3D::Lighting& vertexnormalsepsilon(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Lighting& vertexnormalsepsilon(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1329,12 +1673,18 @@ class Mesh3D::Lightposition {
 
     // Numeric vector, representing the X coordinate for each vertex.
     Mesh3D::Lightposition& x(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Lightposition& x(Callable&& c);
 
     // Numeric vector, representing the Y coordinate for each vertex.
     Mesh3D::Lightposition& y(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Lightposition& y(Callable&& c);
 
     // Numeric vector, representing the Z coordinate for each vertex.
     Mesh3D::Lightposition& z(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Lightposition& z(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1349,10 +1699,14 @@ class Mesh3D::Stream {
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
     Mesh3D::Stream& maxpoints(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Mesh3D::Stream& maxpoints(Callable&& c);
 
     // The stream id number links a data trace on a plot with a stream. See https://chart-studio.plotly.com/settings for
     // more details.
     Mesh3D::Stream& token(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Mesh3D::Stream& token(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

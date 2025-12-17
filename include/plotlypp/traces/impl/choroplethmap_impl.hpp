@@ -24,20 +24,44 @@ Choroplethmap& Choroplethmap::autocolorscale(bool f) {
     json["autocolorscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::autocolorscale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return autocolorscale(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::below(std::string f) {
     json["below"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::below(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return below(std::move(f));
 }
 
 Choroplethmap& Choroplethmap::coloraxis(std::string f) {
     json["coloraxis"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::coloraxis(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return coloraxis(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::colorbar(Callable&& c) {
+    Colorbar f{};
+    std::forward<Callable>(c)(f);
+    return colorbar(std::move(f));
 }
 
 Choroplethmap& Choroplethmap::colorscale(std::string f) {
@@ -48,21 +72,45 @@ Choroplethmap& Choroplethmap::colorscale(std::vector<std::pair<double, std::stri
     json["colorscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::colorscale(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorscale(std::move(f));
+}
 
 template <typename T, typename>
 Choroplethmap& Choroplethmap::customdata(std::vector<T> f) {
     json["customdata"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Choroplethmap& Choroplethmap::customdata(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return customdata(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::customdatasrc(std::string f) {
     json["customdatasrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::customdatasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return customdatasrc(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::featureidkey(std::string f) {
     json["featureidkey"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::featureidkey(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return featureidkey(std::move(f));
 }
 
 template <typename T>
@@ -70,10 +118,22 @@ Choroplethmap& Choroplethmap::geojson(T f) {
     json["geojson"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Choroplethmap& Choroplethmap::geojson(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return geojson(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::hoverinfo(std::string f) {
     json["hoverinfo"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::hoverinfo(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hoverinfo(std::move(f));
 }
 Choroplethmap& Choroplethmap::hoverinfo(std::vector<std::string> f) {
     json["hoverinfo"] = std::move(f);
@@ -84,15 +144,33 @@ Choroplethmap& Choroplethmap::hoverinfosrc(std::string f) {
     json["hoverinfosrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::hoverinfosrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hoverinfosrc(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::hoverlabel(Callable&& c) {
+    Hoverlabel f{};
+    std::forward<Callable>(c)(f);
+    return hoverlabel(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::hovertemplate(std::string f) {
     json["hovertemplate"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::hovertemplate(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertemplate(std::move(f));
 }
 Choroplethmap& Choroplethmap::hovertemplate(std::vector<std::string> f) {
     json["hovertemplate"] = std::move(f);
@@ -103,10 +181,22 @@ Choroplethmap& Choroplethmap::hovertemplatesrc(std::string f) {
     json["hovertemplatesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::hovertemplatesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertemplatesrc(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::hovertext(std::string f) {
     json["hovertext"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::hovertext(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertext(std::move(f));
 }
 Choroplethmap& Choroplethmap::hovertext(std::vector<std::string> f) {
     json["hovertext"] = std::move(f);
@@ -117,41 +207,89 @@ Choroplethmap& Choroplethmap::hovertextsrc(std::string f) {
     json["hovertextsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::hovertextsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertextsrc(std::move(f));
+}
 
 template <typename T, typename>
 Choroplethmap& Choroplethmap::ids(std::vector<T> f) {
     json["ids"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Choroplethmap& Choroplethmap::ids(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return ids(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::idssrc(std::string f) {
     json["idssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::idssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return idssrc(std::move(f));
 }
 
 Choroplethmap& Choroplethmap::legend(std::string f) {
     json["legend"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::legend(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return legend(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::legendgroup(std::string f) {
     json["legendgroup"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::legendgroup(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return legendgroup(std::move(f));
 }
 
 Choroplethmap& Choroplethmap::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::legendgrouptitle(Callable&& c) {
+    Legendgrouptitle f{};
+    std::forward<Callable>(c)(f);
+    return legendgrouptitle(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::legendrank(double f) {
     json["legendrank"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::legendrank(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendrank(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::legendwidth(double f) {
     json["legendwidth"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::legendwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendwidth(std::move(f));
 }
 
 template <typename T, typename>
@@ -159,21 +297,45 @@ Choroplethmap& Choroplethmap::locations(std::vector<T> f) {
     json["locations"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Choroplethmap& Choroplethmap::locations(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return locations(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::locationssrc(std::string f) {
     json["locationssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::locationssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return locationssrc(std::move(f));
 }
 
 Choroplethmap& Choroplethmap::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::marker(Callable&& c) {
+    Marker f{};
+    std::forward<Callable>(c)(f);
+    return marker(std::move(f));
+}
 
 template <typename T>
 Choroplethmap& Choroplethmap::meta(T f) {
     json["meta"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Choroplethmap& Choroplethmap::meta(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return meta(std::move(f));
 }
 template <typename T>
 Choroplethmap& Choroplethmap::meta(std::vector<T> f) {
@@ -185,20 +347,44 @@ Choroplethmap& Choroplethmap::metasrc(std::string f) {
     json["metasrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::metasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return metasrc(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
 }
 
 Choroplethmap& Choroplethmap::reversescale(bool f) {
     json["reversescale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::reversescale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return reversescale(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::selected(Selected f) {
     json["selected"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::selected(Callable&& c) {
+    Selected f{};
+    std::forward<Callable>(c)(f);
+    return selected(std::move(f));
 }
 
 template <typename T>
@@ -206,30 +392,66 @@ Choroplethmap& Choroplethmap::selectedpoints(T f) {
     json["selectedpoints"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Choroplethmap& Choroplethmap::selectedpoints(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return selectedpoints(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::showlegend(bool f) {
     json["showlegend"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::showlegend(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showlegend(std::move(f));
 }
 
 Choroplethmap& Choroplethmap::showscale(bool f) {
     json["showscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::showscale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showscale(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::stream(Callable&& c) {
+    Stream f{};
+    std::forward<Callable>(c)(f);
+    return stream(std::move(f));
 }
 
 Choroplethmap& Choroplethmap::subplot(std::string f) {
     json["subplot"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::subplot(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return subplot(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 Choroplethmap& Choroplethmap::text(std::vector<std::string> f) {
     json["text"] = std::move(f);
@@ -240,10 +462,22 @@ Choroplethmap& Choroplethmap::textsrc(std::string f) {
     json["textsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::textsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textsrc(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::uid(std::string f) {
     json["uid"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::uid(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return uid(std::move(f));
 }
 
 template <typename T>
@@ -251,10 +485,22 @@ Choroplethmap& Choroplethmap::uirevision(T f) {
     json["uirevision"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Choroplethmap& Choroplethmap::uirevision(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return uirevision(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::unselected(Unselected f) {
     json["unselected"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::unselected(Callable&& c) {
+    Unselected f{};
+    std::forward<Callable>(c)(f);
+    return unselected(std::move(f));
 }
 
 Choroplethmap& Choroplethmap::visible(enum Visible f) {
@@ -267,30 +513,66 @@ Choroplethmap& Choroplethmap::z(std::vector<T> f) {
     json["z"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Choroplethmap& Choroplethmap::z(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return z(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::zauto(bool f) {
     json["zauto"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::zauto(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return zauto(std::move(f));
 }
 
 Choroplethmap& Choroplethmap::zmax(double f) {
     json["zmax"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::zmax(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return zmax(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::zmid(double f) {
     json["zmid"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::zmid(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return zmid(std::move(f));
 }
 
 Choroplethmap& Choroplethmap::zmin(double f) {
     json["zmin"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::zmin(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return zmin(std::move(f));
+}
 
 Choroplethmap& Choroplethmap::zsrc(std::string f) {
     json["zsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap& Choroplethmap::zsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return zsrc(std::move(f));
 }
 
 std::string Choroplethmap::Colorbar::to_string(Exponentformat e) {
@@ -440,21 +722,45 @@ Choroplethmap::Colorbar& Choroplethmap::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
+}
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::bordercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolor(std::move(f));
 }
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::borderwidth(double f) {
     json["borderwidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::borderwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return borderwidth(std::move(f));
+}
 
 template <typename T>
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::dtick(T f) {
     json["dtick"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::dtick(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return dtick(std::move(f));
 }
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::exponentformat(enum Exponentformat f) {
@@ -467,10 +773,22 @@ Choroplethmap::Colorbar& Choroplethmap::Colorbar::labelalias(T f) {
     json["labelalias"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::labelalias(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return labelalias(std::move(f));
+}
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::len(double f) {
     json["len"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::len(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return len(std::move(f));
 }
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::lenmode(enum Lenmode f) {
@@ -482,10 +800,22 @@ Choroplethmap::Colorbar& Choroplethmap::Colorbar::minexponent(double f) {
     json["minexponent"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::minexponent(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return minexponent(std::move(f));
+}
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::nticks(int f) {
     json["nticks"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::nticks(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return nticks(std::move(f));
 }
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::orientation(enum Orientation f) {
@@ -497,15 +827,33 @@ Choroplethmap::Colorbar& Choroplethmap::Colorbar::outlinecolor(std::string f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::outlinecolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return outlinecolor(std::move(f));
+}
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::outlinewidth(double f) {
     json["outlinewidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::outlinewidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return outlinewidth(std::move(f));
+}
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::separatethousands(bool f) {
     json["separatethousands"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::separatethousands(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return separatethousands(std::move(f));
 }
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::showexponent(enum Showexponent f) {
@@ -516,6 +864,12 @@ Choroplethmap::Colorbar& Choroplethmap::Colorbar::showexponent(enum Showexponent
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::showticklabels(bool f) {
     json["showticklabels"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::showticklabels(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showticklabels(std::move(f));
 }
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::showtickprefix(enum Showtickprefix f) {
@@ -532,6 +886,12 @@ Choroplethmap::Colorbar& Choroplethmap::Colorbar::thickness(double f) {
     json["thickness"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::thickness(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return thickness(std::move(f));
+}
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::thicknessmode(enum Thicknessmode f) {
     json["thicknessmode"] = to_string(f);
@@ -543,30 +903,66 @@ Choroplethmap::Colorbar& Choroplethmap::Colorbar::tick0(T f) {
     json["tick0"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::tick0(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return tick0(std::move(f));
+}
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::tickangle(double f) {
     json["tickangle"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::tickangle(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return tickangle(std::move(f));
 }
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::tickcolor(std::string f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::tickcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickcolor(std::move(f));
+}
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::tickfont(Callable&& c) {
+    Tickfont f{};
+    std::forward<Callable>(c)(f);
+    return tickfont(std::move(f));
 }
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::tickformat(std::string f) {
     json["tickformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::tickformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickformat(std::move(f));
+}
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::tickformatstops(Callable&& c) {
+    Tickformatstops f{};
+    std::forward<Callable>(c)(f);
+    return tickformatstops(std::move(f));
 }
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::ticklabeloverflow(enum Ticklabeloverflow f) {
@@ -583,10 +979,22 @@ Choroplethmap::Colorbar& Choroplethmap::Colorbar::ticklabelstep(int f) {
     json["ticklabelstep"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::ticklabelstep(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return ticklabelstep(std::move(f));
+}
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::ticklen(double f) {
     json["ticklen"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::ticklen(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return ticklen(std::move(f));
 }
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::tickmode(enum Tickmode f) {
@@ -598,6 +1006,12 @@ Choroplethmap::Colorbar& Choroplethmap::Colorbar::tickprefix(std::string f) {
     json["tickprefix"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::tickprefix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickprefix(std::move(f));
+}
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::ticks(enum Ticks f) {
     json["ticks"] = to_string(f);
@@ -608,16 +1022,34 @@ Choroplethmap::Colorbar& Choroplethmap::Colorbar::ticksuffix(std::string f) {
     json["ticksuffix"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::ticksuffix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ticksuffix(std::move(f));
+}
 
 template <typename T, typename>
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::ticktext(std::vector<T> f) {
     json["ticktext"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::ticktext(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return ticktext(std::move(f));
+}
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::ticktextsrc(std::string f) {
     json["ticktextsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::ticktextsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ticktextsrc(std::move(f));
 }
 
 template <typename T, typename>
@@ -625,25 +1057,55 @@ Choroplethmap::Colorbar& Choroplethmap::Colorbar::tickvals(std::vector<T> f) {
     json["tickvals"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::tickvals(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return tickvals(std::move(f));
+}
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::tickvalssrc(std::string f) {
     json["tickvalssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::tickvalssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickvalssrc(std::move(f));
 }
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::tickwidth(double f) {
     json["tickwidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::tickwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return tickwidth(std::move(f));
+}
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::title(Callable&& c) {
+    Title f{};
+    std::forward<Callable>(c)(f);
+    return title(std::move(f));
+}
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::x(double f) {
     json["x"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::x(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return x(std::move(f));
 }
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::xanchor(enum Xanchor f) {
@@ -655,6 +1117,12 @@ Choroplethmap::Colorbar& Choroplethmap::Colorbar::xpad(double f) {
     json["xpad"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::xpad(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return xpad(std::move(f));
+}
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::xref(enum Xref f) {
     json["xref"] = to_string(f);
@@ -665,6 +1133,12 @@ Choroplethmap::Colorbar& Choroplethmap::Colorbar::y(double f) {
     json["y"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::y(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return y(std::move(f));
+}
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::yanchor(enum Yanchor f) {
     json["yanchor"] = to_string(f);
@@ -674,6 +1148,12 @@ Choroplethmap::Colorbar& Choroplethmap::Colorbar::yanchor(enum Yanchor f) {
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::ypad(double f) {
     json["ypad"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::ypad(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return ypad(std::move(f));
 }
 
 Choroplethmap::Colorbar& Choroplethmap::Colorbar::yref(enum Yref f) {
@@ -716,25 +1196,55 @@ Choroplethmap::Colorbar::Tickfont& Choroplethmap::Colorbar::Tickfont::color(std:
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar::Tickfont& Choroplethmap::Colorbar::Tickfont::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Choroplethmap::Colorbar::Tickfont& Choroplethmap::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Colorbar::Tickfont& Choroplethmap::Colorbar::Tickfont::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Choroplethmap::Colorbar::Tickfont& Choroplethmap::Colorbar::Tickfont::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar::Tickfont& Choroplethmap::Colorbar::Tickfont::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Choroplethmap::Colorbar::Tickfont& Choroplethmap::Colorbar::Tickfont::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar::Tickfont& Choroplethmap::Colorbar::Tickfont::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Choroplethmap::Colorbar::Tickfont& Choroplethmap::Colorbar::Tickfont::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Colorbar::Tickfont& Choroplethmap::Colorbar::Tickfont::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Choroplethmap::Colorbar::Tickfont& Choroplethmap::Colorbar::Tickfont::style(enum Style f) {
@@ -756,11 +1266,23 @@ Choroplethmap::Colorbar::Tickfont& Choroplethmap::Colorbar::Tickfont::weight(int
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar::Tickfont& Choroplethmap::Colorbar::Tickfont::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Choroplethmap::Colorbar::Tickformatstops& Choroplethmap::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Colorbar::Tickformatstops& Choroplethmap::Colorbar::Tickformatstops::tickformatstop(Callable&& c) {
+    Tickformatstop f{};
+    std::forward<Callable>(c)(f);
+    return tickformatstop(std::move(f));
 }
 
 
@@ -768,25 +1290,55 @@ Choroplethmap::Colorbar::Tickformatstops::Tickformatstop& Choroplethmap::Colorba
     json["dtickrange"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar::Tickformatstops::Tickformatstop& Choroplethmap::Colorbar::Tickformatstops::Tickformatstop::dtickrange(Callable&& c) {
+    std::vector<double> f{};
+    std::forward<Callable>(c)(f);
+    return dtickrange(std::move(f));
+}
 
 Choroplethmap::Colorbar::Tickformatstops::Tickformatstop& Choroplethmap::Colorbar::Tickformatstops::Tickformatstop::enabled(bool f) {
     json["enabled"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Colorbar::Tickformatstops::Tickformatstop& Choroplethmap::Colorbar::Tickformatstops::Tickformatstop::enabled(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return enabled(std::move(f));
 }
 
 Choroplethmap::Colorbar::Tickformatstops::Tickformatstop& Choroplethmap::Colorbar::Tickformatstops::Tickformatstop::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar::Tickformatstops::Tickformatstop& Choroplethmap::Colorbar::Tickformatstops::Tickformatstop::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
+}
 
 Choroplethmap::Colorbar::Tickformatstops::Tickformatstop& Choroplethmap::Colorbar::Tickformatstops::Tickformatstop::templateitemname(std::string f) {
     json["templateitemname"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar::Tickformatstops::Tickformatstop& Choroplethmap::Colorbar::Tickformatstops::Tickformatstop::templateitemname(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return templateitemname(std::move(f));
+}
 
 Choroplethmap::Colorbar::Tickformatstops::Tickformatstop& Choroplethmap::Colorbar::Tickformatstops::Tickformatstop::value(std::string f) {
     json["value"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Colorbar::Tickformatstops::Tickformatstop& Choroplethmap::Colorbar::Tickformatstops::Tickformatstop::value(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return value(std::move(f));
 }
 
 std::string Choroplethmap::Colorbar::Title::to_string(Side e) {
@@ -803,6 +1355,12 @@ Choroplethmap::Colorbar::Title& Choroplethmap::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar::Title& Choroplethmap::Colorbar::Title::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Choroplethmap::Colorbar::Title& Choroplethmap::Colorbar::Title::side(enum Side f) {
     json["side"] = to_string(f);
@@ -812,6 +1370,12 @@ Choroplethmap::Colorbar::Title& Choroplethmap::Colorbar::Title::side(enum Side f
 Choroplethmap::Colorbar::Title& Choroplethmap::Colorbar::Title::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Colorbar::Title& Choroplethmap::Colorbar::Title::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 
 std::string Choroplethmap::Colorbar::Title::Font::to_string(Style e) {
@@ -849,25 +1413,55 @@ Choroplethmap::Colorbar::Title::Font& Choroplethmap::Colorbar::Title::Font::colo
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar::Title::Font& Choroplethmap::Colorbar::Title::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Choroplethmap::Colorbar::Title::Font& Choroplethmap::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Colorbar::Title::Font& Choroplethmap::Colorbar::Title::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Choroplethmap::Colorbar::Title::Font& Choroplethmap::Colorbar::Title::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar::Title::Font& Choroplethmap::Colorbar::Title::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Choroplethmap::Colorbar::Title::Font& Choroplethmap::Colorbar::Title::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Colorbar::Title::Font& Choroplethmap::Colorbar::Title::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Choroplethmap::Colorbar::Title::Font& Choroplethmap::Colorbar::Title::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Colorbar::Title::Font& Choroplethmap::Colorbar::Title::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Choroplethmap::Colorbar::Title::Font& Choroplethmap::Colorbar::Title::Font::style(enum Style f) {
@@ -888,6 +1482,12 @@ Choroplethmap::Colorbar::Title::Font& Choroplethmap::Colorbar::Title::Font::vari
 Choroplethmap::Colorbar::Title::Font& Choroplethmap::Colorbar::Title::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Colorbar::Title::Font& Choroplethmap::Colorbar::Title::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 
 std::string Choroplethmap::Hoverlabel::to_string(Align e) {
@@ -915,10 +1515,22 @@ Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::alignsrc(std::string f) {
     json["alignsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::alignsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return alignsrc(std::move(f));
+}
 
 Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
 }
 Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::bgcolor(std::vector<std::string> f) {
     json["bgcolor"] = std::move(f);
@@ -929,10 +1541,22 @@ Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::bgcolorsrc(std::string f) 
     json["bgcolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::bgcolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolorsrc(std::move(f));
+}
 
 Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::bordercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolor(std::move(f));
 }
 Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::bordercolor(std::vector<std::string> f) {
     json["bordercolor"] = std::move(f);
@@ -943,15 +1567,33 @@ Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::bordercolorsrc(std::string
     json["bordercolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::bordercolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolorsrc(std::move(f));
+}
 
 Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::namelength(int f) {
     json["namelength"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::namelength(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return namelength(std::move(f));
 }
 Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::namelength(std::vector<int> f) {
     json["namelength"] = std::move(f);
@@ -961,6 +1603,12 @@ Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::namelength(std::vector<int
 Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::namelengthsrc(std::string f) {
     json["namelengthsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::namelengthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return namelengthsrc(std::move(f));
 }
 
 std::string Choroplethmap::Hoverlabel::Font::to_string(Style e) {
@@ -998,6 +1646,12 @@ Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::color(std::str
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
     return *this;
@@ -1007,10 +1661,22 @@ Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::colorsrc(std::
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::family(std::vector<std::string> f) {
     json["family"] = std::move(f);
@@ -1021,10 +1687,22 @@ Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::familysrc(std:
     json["familysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::familysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return familysrc(std::move(f));
+}
 
 Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
 }
 Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
     json["lineposition"] = std::move(f);
@@ -1035,10 +1713,22 @@ Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::linepositionsr
     json["linepositionsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::linepositionsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return linepositionsrc(std::move(f));
+}
 
 Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
 }
 Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::shadow(std::vector<std::string> f) {
     json["shadow"] = std::move(f);
@@ -1049,10 +1739,22 @@ Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::shadowsrc(std:
     json["shadowsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::shadowsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadowsrc(std::move(f));
+}
 
 Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -1062,6 +1764,12 @@ Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::size(std::vect
 Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
 }
 
 Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::style(enum Style f) {
@@ -1079,6 +1787,12 @@ Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::stylesrc(std::
     json["stylesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::stylesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return stylesrc(std::move(f));
+}
 
 Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::textcase(enum Textcase f) {
     json["textcase"] = to_string(f);
@@ -1094,6 +1808,12 @@ Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::textcase(const
 Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::textcasesrc(std::string f) {
     json["textcasesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::textcasesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textcasesrc(std::move(f));
 }
 
 Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::variant(enum Variant f) {
@@ -1111,10 +1831,22 @@ Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::variantsrc(std
     json["variantsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::variantsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return variantsrc(std::move(f));
+}
 
 Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::weight(std::vector<int> f) {
     json["weight"] = std::move(f);
@@ -1125,16 +1857,34 @@ Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::weightsrc(std:
     json["weightsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::weightsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return weightsrc(std::move(f));
+}
 
 
 Choroplethmap::Legendgrouptitle& Choroplethmap::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Legendgrouptitle& Choroplethmap::Legendgrouptitle::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Choroplethmap::Legendgrouptitle& Choroplethmap::Legendgrouptitle::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Legendgrouptitle& Choroplethmap::Legendgrouptitle::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 
 std::string Choroplethmap::Legendgrouptitle::Font::to_string(Style e) {
@@ -1172,25 +1922,55 @@ Choroplethmap::Legendgrouptitle::Font& Choroplethmap::Legendgrouptitle::Font::co
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Legendgrouptitle::Font& Choroplethmap::Legendgrouptitle::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Choroplethmap::Legendgrouptitle::Font& Choroplethmap::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Legendgrouptitle::Font& Choroplethmap::Legendgrouptitle::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Choroplethmap::Legendgrouptitle::Font& Choroplethmap::Legendgrouptitle::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Legendgrouptitle::Font& Choroplethmap::Legendgrouptitle::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Choroplethmap::Legendgrouptitle::Font& Choroplethmap::Legendgrouptitle::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Legendgrouptitle::Font& Choroplethmap::Legendgrouptitle::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Choroplethmap::Legendgrouptitle::Font& Choroplethmap::Legendgrouptitle::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Legendgrouptitle::Font& Choroplethmap::Legendgrouptitle::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Choroplethmap::Legendgrouptitle::Font& Choroplethmap::Legendgrouptitle::Font::style(enum Style f) {
@@ -1212,16 +1992,34 @@ Choroplethmap::Legendgrouptitle::Font& Choroplethmap::Legendgrouptitle::Font::we
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Legendgrouptitle::Font& Choroplethmap::Legendgrouptitle::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Choroplethmap::Marker& Choroplethmap::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Marker& Choroplethmap::Marker::line(Callable&& c) {
+    Line f{};
+    std::forward<Callable>(c)(f);
+    return line(std::move(f));
+}
 
 Choroplethmap::Marker& Choroplethmap::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Marker& Choroplethmap::Marker::opacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return opacity(std::move(f));
 }
 Choroplethmap::Marker& Choroplethmap::Marker::opacity(std::vector<double> f) {
     json["opacity"] = std::move(f);
@@ -1232,11 +2030,23 @@ Choroplethmap::Marker& Choroplethmap::Marker::opacitysrc(std::string f) {
     json["opacitysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Marker& Choroplethmap::Marker::opacitysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return opacitysrc(std::move(f));
+}
 
 
 Choroplethmap::Marker::Line& Choroplethmap::Marker::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Marker::Line& Choroplethmap::Marker::Line::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
 }
 Choroplethmap::Marker::Line& Choroplethmap::Marker::Line::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
@@ -1247,10 +2057,22 @@ Choroplethmap::Marker::Line& Choroplethmap::Marker::Line::colorsrc(std::string f
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Marker::Line& Choroplethmap::Marker::Line::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Choroplethmap::Marker::Line& Choroplethmap::Marker::Line::width(double f) {
     json["width"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Marker::Line& Choroplethmap::Marker::Line::width(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return width(std::move(f));
 }
 Choroplethmap::Marker::Line& Choroplethmap::Marker::Line::width(std::vector<double> f) {
     json["width"] = std::move(f);
@@ -1261,11 +2083,23 @@ Choroplethmap::Marker::Line& Choroplethmap::Marker::Line::widthsrc(std::string f
     json["widthsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Marker::Line& Choroplethmap::Marker::Line::widthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return widthsrc(std::move(f));
+}
 
 
 Choroplethmap::Selected& Choroplethmap::Selected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Selected& Choroplethmap::Selected::marker(Callable&& c) {
+    Marker f{};
+    std::forward<Callable>(c)(f);
+    return marker(std::move(f));
 }
 
 
@@ -1273,16 +2107,34 @@ Choroplethmap::Selected::Marker& Choroplethmap::Selected::Marker::opacity(double
     json["opacity"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Selected::Marker& Choroplethmap::Selected::Marker::opacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return opacity(std::move(f));
+}
 
 
 Choroplethmap::Stream& Choroplethmap::Stream::maxpoints(double f) {
     json["maxpoints"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Stream& Choroplethmap::Stream::maxpoints(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return maxpoints(std::move(f));
+}
 
 Choroplethmap::Stream& Choroplethmap::Stream::token(std::string f) {
     json["token"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Stream& Choroplethmap::Stream::token(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return token(std::move(f));
 }
 
 
@@ -1290,11 +2142,23 @@ Choroplethmap::Unselected& Choroplethmap::Unselected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Choroplethmap::Unselected& Choroplethmap::Unselected::marker(Callable&& c) {
+    Marker f{};
+    std::forward<Callable>(c)(f);
+    return marker(std::move(f));
+}
 
 
 Choroplethmap::Unselected::Marker& Choroplethmap::Unselected::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Choroplethmap::Unselected::Marker& Choroplethmap::Unselected::Marker::opacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return opacity(std::move(f));
 }
 
 } // namespace plotlypp

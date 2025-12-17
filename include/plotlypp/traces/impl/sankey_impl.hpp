@@ -48,25 +48,55 @@ Sankey& Sankey::customdata(std::vector<T> f) {
     json["customdata"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sankey& Sankey::customdata(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return customdata(std::move(f));
+}
 
 Sankey& Sankey::customdatasrc(std::string f) {
     json["customdatasrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey& Sankey::customdatasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return customdatasrc(std::move(f));
 }
 
 Sankey& Sankey::domain(Domain f) {
     json["domain"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sankey& Sankey::domain(Callable&& c) {
+    Domain f{};
+    std::forward<Callable>(c)(f);
+    return domain(std::move(f));
+}
 
 Sankey& Sankey::hoverinfo(std::string f) {
     json["hoverinfo"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey& Sankey::hoverinfo(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hoverinfo(std::move(f));
+}
 
 Sankey& Sankey::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Sankey& Sankey::hoverlabel(Callable&& c) {
+    Hoverlabel f{};
+    std::forward<Callable>(c)(f);
+    return hoverlabel(std::move(f));
 }
 
 template <typename T, typename>
@@ -74,41 +104,89 @@ Sankey& Sankey::ids(std::vector<T> f) {
     json["ids"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sankey& Sankey::ids(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return ids(std::move(f));
+}
 
 Sankey& Sankey::idssrc(std::string f) {
     json["idssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey& Sankey::idssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return idssrc(std::move(f));
 }
 
 Sankey& Sankey::legend(std::string f) {
     json["legend"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey& Sankey::legend(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return legend(std::move(f));
+}
 
 Sankey& Sankey::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Sankey& Sankey::legendgrouptitle(Callable&& c) {
+    Legendgrouptitle f{};
+    std::forward<Callable>(c)(f);
+    return legendgrouptitle(std::move(f));
 }
 
 Sankey& Sankey::legendrank(double f) {
     json["legendrank"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey& Sankey::legendrank(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendrank(std::move(f));
+}
 
 Sankey& Sankey::legendwidth(double f) {
     json["legendwidth"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey& Sankey::legendwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendwidth(std::move(f));
 }
 
 Sankey& Sankey::link(Link f) {
     json["link"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sankey& Sankey::link(Callable&& c) {
+    Link f{};
+    std::forward<Callable>(c)(f);
+    return link(std::move(f));
+}
 
 template <typename T>
 Sankey& Sankey::meta(T f) {
     json["meta"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Sankey& Sankey::meta(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return meta(std::move(f));
 }
 template <typename T>
 Sankey& Sankey::meta(std::vector<T> f) {
@@ -120,15 +198,33 @@ Sankey& Sankey::metasrc(std::string f) {
     json["metasrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey& Sankey::metasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return metasrc(std::move(f));
+}
 
 Sankey& Sankey::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey& Sankey::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
+}
 
 Sankey& Sankey::node(Node f) {
     json["node"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Sankey& Sankey::node(Callable&& c) {
+    Node f{};
+    std::forward<Callable>(c)(f);
+    return node(std::move(f));
 }
 
 Sankey& Sankey::orientation(enum Orientation f) {
@@ -141,20 +237,44 @@ Sankey& Sankey::selectedpoints(T f) {
     json["selectedpoints"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sankey& Sankey::selectedpoints(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return selectedpoints(std::move(f));
+}
 
 Sankey& Sankey::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Sankey& Sankey::stream(Callable&& c) {
+    Stream f{};
+    std::forward<Callable>(c)(f);
+    return stream(std::move(f));
 }
 
 Sankey& Sankey::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sankey& Sankey::textfont(Callable&& c) {
+    Textfont f{};
+    std::forward<Callable>(c)(f);
+    return textfont(std::move(f));
+}
 
 Sankey& Sankey::uid(std::string f) {
     json["uid"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey& Sankey::uid(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return uid(std::move(f));
 }
 
 template <typename T>
@@ -162,15 +282,33 @@ Sankey& Sankey::uirevision(T f) {
     json["uirevision"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sankey& Sankey::uirevision(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return uirevision(std::move(f));
+}
 
 Sankey& Sankey::valueformat(std::string f) {
     json["valueformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey& Sankey::valueformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return valueformat(std::move(f));
+}
 
 Sankey& Sankey::valuesuffix(std::string f) {
     json["valuesuffix"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey& Sankey::valuesuffix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return valuesuffix(std::move(f));
 }
 
 Sankey& Sankey::visible(enum Visible f) {
@@ -183,20 +321,44 @@ Sankey::Domain& Sankey::Domain::column(int f) {
     json["column"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Domain& Sankey::Domain::column(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return column(std::move(f));
+}
 
 Sankey::Domain& Sankey::Domain::row(int f) {
     json["row"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Domain& Sankey::Domain::row(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return row(std::move(f));
 }
 
 Sankey::Domain& Sankey::Domain::x(std::vector<double> f) {
     json["x"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Domain& Sankey::Domain::x(Callable&& c) {
+    std::vector<double> f{};
+    std::forward<Callable>(c)(f);
+    return x(std::move(f));
+}
 
 Sankey::Domain& Sankey::Domain::y(std::vector<double> f) {
     json["y"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Domain& Sankey::Domain::y(Callable&& c) {
+    std::vector<double> f{};
+    std::forward<Callable>(c)(f);
+    return y(std::move(f));
 }
 
 std::string Sankey::Hoverlabel::to_string(Align e) {
@@ -224,10 +386,22 @@ Sankey::Hoverlabel& Sankey::Hoverlabel::alignsrc(std::string f) {
     json["alignsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Hoverlabel& Sankey::Hoverlabel::alignsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return alignsrc(std::move(f));
+}
 
 Sankey::Hoverlabel& Sankey::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Hoverlabel& Sankey::Hoverlabel::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
 }
 Sankey::Hoverlabel& Sankey::Hoverlabel::bgcolor(std::vector<std::string> f) {
     json["bgcolor"] = std::move(f);
@@ -238,10 +412,22 @@ Sankey::Hoverlabel& Sankey::Hoverlabel::bgcolorsrc(std::string f) {
     json["bgcolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Hoverlabel& Sankey::Hoverlabel::bgcolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolorsrc(std::move(f));
+}
 
 Sankey::Hoverlabel& Sankey::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Hoverlabel& Sankey::Hoverlabel::bordercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolor(std::move(f));
 }
 Sankey::Hoverlabel& Sankey::Hoverlabel::bordercolor(std::vector<std::string> f) {
     json["bordercolor"] = std::move(f);
@@ -252,15 +438,33 @@ Sankey::Hoverlabel& Sankey::Hoverlabel::bordercolorsrc(std::string f) {
     json["bordercolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Hoverlabel& Sankey::Hoverlabel::bordercolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolorsrc(std::move(f));
+}
 
 Sankey::Hoverlabel& Sankey::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Hoverlabel& Sankey::Hoverlabel::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Sankey::Hoverlabel& Sankey::Hoverlabel::namelength(int f) {
     json["namelength"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Hoverlabel& Sankey::Hoverlabel::namelength(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return namelength(std::move(f));
 }
 Sankey::Hoverlabel& Sankey::Hoverlabel::namelength(std::vector<int> f) {
     json["namelength"] = std::move(f);
@@ -270,6 +474,12 @@ Sankey::Hoverlabel& Sankey::Hoverlabel::namelength(std::vector<int> f) {
 Sankey::Hoverlabel& Sankey::Hoverlabel::namelengthsrc(std::string f) {
     json["namelengthsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Hoverlabel& Sankey::Hoverlabel::namelengthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return namelengthsrc(std::move(f));
 }
 
 std::string Sankey::Hoverlabel::Font::to_string(Style e) {
@@ -307,6 +517,12 @@ Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
     return *this;
@@ -316,10 +532,22 @@ Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::family(std::vector<std::string> f) {
     json["family"] = std::move(f);
@@ -330,10 +558,22 @@ Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::familysrc(std::string f) {
     json["familysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::familysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return familysrc(std::move(f));
+}
 
 Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
 }
 Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
     json["lineposition"] = std::move(f);
@@ -344,10 +584,22 @@ Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::linepositionsrc(std::string 
     json["linepositionsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::linepositionsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return linepositionsrc(std::move(f));
+}
 
 Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
 }
 Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::shadow(std::vector<std::string> f) {
     json["shadow"] = std::move(f);
@@ -358,10 +610,22 @@ Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::shadowsrc(std::string f) {
     json["shadowsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::shadowsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadowsrc(std::move(f));
+}
 
 Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -371,6 +635,12 @@ Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::size(std::vector<double> f) 
 Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
 }
 
 Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::style(enum Style f) {
@@ -388,6 +658,12 @@ Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::stylesrc(std::string f) {
     json["stylesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::stylesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return stylesrc(std::move(f));
+}
 
 Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::textcase(enum Textcase f) {
     json["textcase"] = to_string(f);
@@ -403,6 +679,12 @@ Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::textcase(const std::vector<e
 Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::textcasesrc(std::string f) {
     json["textcasesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::textcasesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textcasesrc(std::move(f));
 }
 
 Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::variant(enum Variant f) {
@@ -420,10 +702,22 @@ Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::variantsrc(std::string f) {
     json["variantsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::variantsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return variantsrc(std::move(f));
+}
 
 Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::weight(std::vector<int> f) {
     json["weight"] = std::move(f);
@@ -434,16 +728,34 @@ Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::weightsrc(std::string f) {
     json["weightsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Hoverlabel::Font& Sankey::Hoverlabel::Font::weightsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return weightsrc(std::move(f));
+}
 
 
 Sankey::Legendgrouptitle& Sankey::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Legendgrouptitle& Sankey::Legendgrouptitle::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Sankey::Legendgrouptitle& Sankey::Legendgrouptitle::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Legendgrouptitle& Sankey::Legendgrouptitle::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 
 std::string Sankey::Legendgrouptitle::Font::to_string(Style e) {
@@ -481,25 +793,55 @@ Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::color(std::strin
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::style(enum Style f) {
@@ -521,6 +863,12 @@ Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Legendgrouptitle::Font& Sankey::Legendgrouptitle::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 std::string Sankey::Link::to_string(Hoverinfo e) {
     switch(e) {
@@ -536,10 +884,22 @@ Sankey::Link& Sankey::Link::arrowlen(double f) {
     json["arrowlen"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link& Sankey::Link::arrowlen(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return arrowlen(std::move(f));
+}
 
 Sankey::Link& Sankey::Link::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link& Sankey::Link::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
 }
 Sankey::Link& Sankey::Link::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
@@ -550,10 +910,22 @@ Sankey::Link& Sankey::Link::colorscales(Colorscales f) {
     json["colorscales"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link& Sankey::Link::colorscales(Callable&& c) {
+    Colorscales f{};
+    std::forward<Callable>(c)(f);
+    return colorscales(std::move(f));
+}
 
 Sankey::Link& Sankey::Link::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link& Sankey::Link::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
 }
 
 template <typename T, typename>
@@ -561,15 +933,33 @@ Sankey::Link& Sankey::Link::customdata(std::vector<T> f) {
     json["customdata"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sankey::Link& Sankey::Link::customdata(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return customdata(std::move(f));
+}
 
 Sankey::Link& Sankey::Link::customdatasrc(std::string f) {
     json["customdatasrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link& Sankey::Link::customdatasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return customdatasrc(std::move(f));
+}
 
 Sankey::Link& Sankey::Link::hovercolor(std::string f) {
     json["hovercolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link& Sankey::Link::hovercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovercolor(std::move(f));
 }
 Sankey::Link& Sankey::Link::hovercolor(std::vector<std::string> f) {
     json["hovercolor"] = std::move(f);
@@ -579,6 +969,12 @@ Sankey::Link& Sankey::Link::hovercolor(std::vector<std::string> f) {
 Sankey::Link& Sankey::Link::hovercolorsrc(std::string f) {
     json["hovercolorsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link& Sankey::Link::hovercolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovercolorsrc(std::move(f));
 }
 
 Sankey::Link& Sankey::Link::hoverinfo(enum Hoverinfo f) {
@@ -590,10 +986,22 @@ Sankey::Link& Sankey::Link::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link& Sankey::Link::hoverlabel(Callable&& c) {
+    Hoverlabel f{};
+    std::forward<Callable>(c)(f);
+    return hoverlabel(std::move(f));
+}
 
 Sankey::Link& Sankey::Link::hovertemplate(std::string f) {
     json["hovertemplate"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link& Sankey::Link::hovertemplate(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertemplate(std::move(f));
 }
 Sankey::Link& Sankey::Link::hovertemplate(std::vector<std::string> f) {
     json["hovertemplate"] = std::move(f);
@@ -604,21 +1012,45 @@ Sankey::Link& Sankey::Link::hovertemplatesrc(std::string f) {
     json["hovertemplatesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link& Sankey::Link::hovertemplatesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertemplatesrc(std::move(f));
+}
 
 template <typename T, typename>
 Sankey::Link& Sankey::Link::label(std::vector<T> f) {
     json["label"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sankey::Link& Sankey::Link::label(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return label(std::move(f));
+}
 
 Sankey::Link& Sankey::Link::labelsrc(std::string f) {
     json["labelsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link& Sankey::Link::labelsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return labelsrc(std::move(f));
+}
 
 Sankey::Link& Sankey::Link::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link& Sankey::Link::line(Callable&& c) {
+    Line f{};
+    std::forward<Callable>(c)(f);
+    return line(std::move(f));
 }
 
 template <typename T, typename>
@@ -626,10 +1058,22 @@ Sankey::Link& Sankey::Link::source(std::vector<T> f) {
     json["source"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sankey::Link& Sankey::Link::source(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return source(std::move(f));
+}
 
 Sankey::Link& Sankey::Link::sourcesrc(std::string f) {
     json["sourcesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link& Sankey::Link::sourcesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sourcesrc(std::move(f));
 }
 
 template <typename T, typename>
@@ -637,10 +1081,22 @@ Sankey::Link& Sankey::Link::target(std::vector<T> f) {
     json["target"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sankey::Link& Sankey::Link::target(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return target(std::move(f));
+}
 
 Sankey::Link& Sankey::Link::targetsrc(std::string f) {
     json["targetsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link& Sankey::Link::targetsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return targetsrc(std::move(f));
 }
 
 template <typename T, typename>
@@ -648,10 +1104,22 @@ Sankey::Link& Sankey::Link::value(std::vector<T> f) {
     json["value"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sankey::Link& Sankey::Link::value(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return value(std::move(f));
+}
 
 Sankey::Link& Sankey::Link::valuesrc(std::string f) {
     json["valuesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link& Sankey::Link::valuesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return valuesrc(std::move(f));
 }
 
 
@@ -659,16 +1127,34 @@ Sankey::Link::Colorscales& Sankey::Link::Colorscales::concentrationscales(Concen
     json["concentrationscales"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link::Colorscales& Sankey::Link::Colorscales::concentrationscales(Callable&& c) {
+    Concentrationscales f{};
+    std::forward<Callable>(c)(f);
+    return concentrationscales(std::move(f));
+}
 
 
 Sankey::Link::Colorscales::Concentrationscales& Sankey::Link::Colorscales::Concentrationscales::cmax(double f) {
     json["cmax"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link::Colorscales::Concentrationscales& Sankey::Link::Colorscales::Concentrationscales::cmax(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmax(std::move(f));
+}
 
 Sankey::Link::Colorscales::Concentrationscales& Sankey::Link::Colorscales::Concentrationscales::cmin(double f) {
     json["cmin"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link::Colorscales::Concentrationscales& Sankey::Link::Colorscales::Concentrationscales::cmin(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmin(std::move(f));
 }
 
 Sankey::Link::Colorscales::Concentrationscales& Sankey::Link::Colorscales::Concentrationscales::colorscale(std::string f) {
@@ -679,20 +1165,44 @@ Sankey::Link::Colorscales::Concentrationscales& Sankey::Link::Colorscales::Conce
     json["colorscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link::Colorscales::Concentrationscales& Sankey::Link::Colorscales::Concentrationscales::colorscale(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorscale(std::move(f));
+}
 
 Sankey::Link::Colorscales::Concentrationscales& Sankey::Link::Colorscales::Concentrationscales::label(std::string f) {
     json["label"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link::Colorscales::Concentrationscales& Sankey::Link::Colorscales::Concentrationscales::label(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return label(std::move(f));
 }
 
 Sankey::Link::Colorscales::Concentrationscales& Sankey::Link::Colorscales::Concentrationscales::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link::Colorscales::Concentrationscales& Sankey::Link::Colorscales::Concentrationscales::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
+}
 
 Sankey::Link::Colorscales::Concentrationscales& Sankey::Link::Colorscales::Concentrationscales::templateitemname(std::string f) {
     json["templateitemname"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link::Colorscales::Concentrationscales& Sankey::Link::Colorscales::Concentrationscales::templateitemname(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return templateitemname(std::move(f));
 }
 
 std::string Sankey::Link::Hoverlabel::to_string(Align e) {
@@ -720,10 +1230,22 @@ Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::alignsrc(std::string f) {
     json["alignsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::alignsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return alignsrc(std::move(f));
+}
 
 Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
 }
 Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bgcolor(std::vector<std::string> f) {
     json["bgcolor"] = std::move(f);
@@ -734,10 +1256,22 @@ Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bgcolorsrc(std::string f) {
     json["bgcolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bgcolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolorsrc(std::move(f));
+}
 
 Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bordercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolor(std::move(f));
 }
 Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bordercolor(std::vector<std::string> f) {
     json["bordercolor"] = std::move(f);
@@ -748,15 +1282,33 @@ Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bordercolorsrc(std::string f
     json["bordercolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::bordercolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolorsrc(std::move(f));
+}
 
 Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::namelength(int f) {
     json["namelength"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::namelength(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return namelength(std::move(f));
 }
 Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::namelength(std::vector<int> f) {
     json["namelength"] = std::move(f);
@@ -766,6 +1318,12 @@ Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::namelength(std::vector<int> 
 Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::namelengthsrc(std::string f) {
     json["namelengthsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel& Sankey::Link::Hoverlabel::namelengthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return namelengthsrc(std::move(f));
 }
 
 std::string Sankey::Link::Hoverlabel::Font::to_string(Style e) {
@@ -803,6 +1361,12 @@ Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::color(std::strin
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
     return *this;
@@ -812,10 +1376,22 @@ Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::colorsrc(std::st
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::family(std::vector<std::string> f) {
     json["family"] = std::move(f);
@@ -826,10 +1402,22 @@ Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::familysrc(std::s
     json["familysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::familysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return familysrc(std::move(f));
+}
 
 Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
 }
 Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
     json["lineposition"] = std::move(f);
@@ -840,10 +1428,22 @@ Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::linepositionsrc(
     json["linepositionsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::linepositionsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return linepositionsrc(std::move(f));
+}
 
 Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
 }
 Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::shadow(std::vector<std::string> f) {
     json["shadow"] = std::move(f);
@@ -854,10 +1454,22 @@ Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::shadowsrc(std::s
     json["shadowsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::shadowsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadowsrc(std::move(f));
+}
 
 Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -867,6 +1479,12 @@ Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::size(std::vector
 Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
 }
 
 Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::style(enum Style f) {
@@ -884,6 +1502,12 @@ Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::stylesrc(std::st
     json["stylesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::stylesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return stylesrc(std::move(f));
+}
 
 Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::textcase(enum Textcase f) {
     json["textcase"] = to_string(f);
@@ -899,6 +1523,12 @@ Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::textcase(const s
 Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::textcasesrc(std::string f) {
     json["textcasesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::textcasesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textcasesrc(std::move(f));
 }
 
 Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::variant(enum Variant f) {
@@ -916,10 +1546,22 @@ Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::variantsrc(std::
     json["variantsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::variantsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return variantsrc(std::move(f));
+}
 
 Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::weight(std::vector<int> f) {
     json["weight"] = std::move(f);
@@ -930,11 +1572,23 @@ Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::weightsrc(std::s
     json["weightsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link::Hoverlabel::Font& Sankey::Link::Hoverlabel::Font::weightsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return weightsrc(std::move(f));
+}
 
 
 Sankey::Link::Line& Sankey::Link::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link::Line& Sankey::Link::Line::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
 }
 Sankey::Link::Line& Sankey::Link::Line::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
@@ -945,10 +1599,22 @@ Sankey::Link::Line& Sankey::Link::Line::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Link::Line& Sankey::Link::Line::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Sankey::Link::Line& Sankey::Link::Line::width(double f) {
     json["width"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link::Line& Sankey::Link::Line::width(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return width(std::move(f));
 }
 Sankey::Link::Line& Sankey::Link::Line::width(std::vector<double> f) {
     json["width"] = std::move(f);
@@ -958,6 +1624,12 @@ Sankey::Link::Line& Sankey::Link::Line::width(std::vector<double> f) {
 Sankey::Link::Line& Sankey::Link::Line::widthsrc(std::string f) {
     json["widthsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Link::Line& Sankey::Link::Line::widthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return widthsrc(std::move(f));
 }
 
 std::string Sankey::Node::to_string(Align e) {
@@ -989,6 +1661,12 @@ Sankey::Node& Sankey::Node::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Node& Sankey::Node::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 Sankey::Node& Sankey::Node::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
     return *this;
@@ -998,21 +1676,45 @@ Sankey::Node& Sankey::Node::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Node& Sankey::Node::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 template <typename T, typename>
 Sankey::Node& Sankey::Node::customdata(std::vector<T> f) {
     json["customdata"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sankey::Node& Sankey::Node::customdata(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return customdata(std::move(f));
+}
 
 Sankey::Node& Sankey::Node::customdatasrc(std::string f) {
     json["customdatasrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Node& Sankey::Node::customdatasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return customdatasrc(std::move(f));
+}
 
 Sankey::Node& Sankey::Node::groups(std::vector<double> f) {
     json["groups"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Node& Sankey::Node::groups(Callable&& c) {
+    std::vector<double> f{};
+    std::forward<Callable>(c)(f);
+    return groups(std::move(f));
 }
 
 Sankey::Node& Sankey::Node::hoverinfo(enum Hoverinfo f) {
@@ -1024,10 +1726,22 @@ Sankey::Node& Sankey::Node::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Node& Sankey::Node::hoverlabel(Callable&& c) {
+    Hoverlabel f{};
+    std::forward<Callable>(c)(f);
+    return hoverlabel(std::move(f));
+}
 
 Sankey::Node& Sankey::Node::hovertemplate(std::string f) {
     json["hovertemplate"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Node& Sankey::Node::hovertemplate(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertemplate(std::move(f));
 }
 Sankey::Node& Sankey::Node::hovertemplate(std::vector<std::string> f) {
     json["hovertemplate"] = std::move(f);
@@ -1038,31 +1752,67 @@ Sankey::Node& Sankey::Node::hovertemplatesrc(std::string f) {
     json["hovertemplatesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Node& Sankey::Node::hovertemplatesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertemplatesrc(std::move(f));
+}
 
 template <typename T, typename>
 Sankey::Node& Sankey::Node::label(std::vector<T> f) {
     json["label"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sankey::Node& Sankey::Node::label(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return label(std::move(f));
+}
 
 Sankey::Node& Sankey::Node::labelsrc(std::string f) {
     json["labelsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Node& Sankey::Node::labelsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return labelsrc(std::move(f));
 }
 
 Sankey::Node& Sankey::Node::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Node& Sankey::Node::line(Callable&& c) {
+    Line f{};
+    std::forward<Callable>(c)(f);
+    return line(std::move(f));
+}
 
 Sankey::Node& Sankey::Node::pad(double f) {
     json["pad"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Node& Sankey::Node::pad(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return pad(std::move(f));
+}
 
 Sankey::Node& Sankey::Node::thickness(double f) {
     json["thickness"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Node& Sankey::Node::thickness(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return thickness(std::move(f));
 }
 
 template <typename T, typename>
@@ -1070,10 +1820,22 @@ Sankey::Node& Sankey::Node::x(std::vector<T> f) {
     json["x"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sankey::Node& Sankey::Node::x(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return x(std::move(f));
+}
 
 Sankey::Node& Sankey::Node::xsrc(std::string f) {
     json["xsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Node& Sankey::Node::xsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return xsrc(std::move(f));
 }
 
 template <typename T, typename>
@@ -1081,10 +1843,22 @@ Sankey::Node& Sankey::Node::y(std::vector<T> f) {
     json["y"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sankey::Node& Sankey::Node::y(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return y(std::move(f));
+}
 
 Sankey::Node& Sankey::Node::ysrc(std::string f) {
     json["ysrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Node& Sankey::Node::ysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ysrc(std::move(f));
 }
 
 std::string Sankey::Node::Hoverlabel::to_string(Align e) {
@@ -1112,10 +1886,22 @@ Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::alignsrc(std::string f) {
     json["alignsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::alignsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return alignsrc(std::move(f));
+}
 
 Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
 }
 Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bgcolor(std::vector<std::string> f) {
     json["bgcolor"] = std::move(f);
@@ -1126,10 +1912,22 @@ Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bgcolorsrc(std::string f) {
     json["bgcolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bgcolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolorsrc(std::move(f));
+}
 
 Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bordercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolor(std::move(f));
 }
 Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bordercolor(std::vector<std::string> f) {
     json["bordercolor"] = std::move(f);
@@ -1140,15 +1938,33 @@ Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bordercolorsrc(std::string f
     json["bordercolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::bordercolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolorsrc(std::move(f));
+}
 
 Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::namelength(int f) {
     json["namelength"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::namelength(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return namelength(std::move(f));
 }
 Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::namelength(std::vector<int> f) {
     json["namelength"] = std::move(f);
@@ -1158,6 +1974,12 @@ Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::namelength(std::vector<int> 
 Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::namelengthsrc(std::string f) {
     json["namelengthsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel& Sankey::Node::Hoverlabel::namelengthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return namelengthsrc(std::move(f));
 }
 
 std::string Sankey::Node::Hoverlabel::Font::to_string(Style e) {
@@ -1195,6 +2017,12 @@ Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::color(std::strin
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
     return *this;
@@ -1204,10 +2032,22 @@ Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::colorsrc(std::st
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::family(std::vector<std::string> f) {
     json["family"] = std::move(f);
@@ -1218,10 +2058,22 @@ Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::familysrc(std::s
     json["familysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::familysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return familysrc(std::move(f));
+}
 
 Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
 }
 Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
     json["lineposition"] = std::move(f);
@@ -1232,10 +2084,22 @@ Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::linepositionsrc(
     json["linepositionsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::linepositionsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return linepositionsrc(std::move(f));
+}
 
 Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
 }
 Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::shadow(std::vector<std::string> f) {
     json["shadow"] = std::move(f);
@@ -1246,10 +2110,22 @@ Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::shadowsrc(std::s
     json["shadowsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::shadowsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadowsrc(std::move(f));
+}
 
 Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -1259,6 +2135,12 @@ Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::size(std::vector
 Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
 }
 
 Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::style(enum Style f) {
@@ -1276,6 +2158,12 @@ Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::stylesrc(std::st
     json["stylesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::stylesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return stylesrc(std::move(f));
+}
 
 Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::textcase(enum Textcase f) {
     json["textcase"] = to_string(f);
@@ -1291,6 +2179,12 @@ Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::textcase(const s
 Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::textcasesrc(std::string f) {
     json["textcasesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::textcasesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textcasesrc(std::move(f));
 }
 
 Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::variant(enum Variant f) {
@@ -1308,10 +2202,22 @@ Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::variantsrc(std::
     json["variantsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::variantsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return variantsrc(std::move(f));
+}
 
 Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::weight(std::vector<int> f) {
     json["weight"] = std::move(f);
@@ -1322,11 +2228,23 @@ Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::weightsrc(std::s
     json["weightsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Node::Hoverlabel::Font& Sankey::Node::Hoverlabel::Font::weightsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return weightsrc(std::move(f));
+}
 
 
 Sankey::Node::Line& Sankey::Node::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Node::Line& Sankey::Node::Line::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
 }
 Sankey::Node::Line& Sankey::Node::Line::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
@@ -1337,10 +2255,22 @@ Sankey::Node::Line& Sankey::Node::Line::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Node::Line& Sankey::Node::Line::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Sankey::Node::Line& Sankey::Node::Line::width(double f) {
     json["width"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Node::Line& Sankey::Node::Line::width(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return width(std::move(f));
 }
 Sankey::Node::Line& Sankey::Node::Line::width(std::vector<double> f) {
     json["width"] = std::move(f);
@@ -1351,16 +2281,34 @@ Sankey::Node::Line& Sankey::Node::Line::widthsrc(std::string f) {
     json["widthsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Node::Line& Sankey::Node::Line::widthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return widthsrc(std::move(f));
+}
 
 
 Sankey::Stream& Sankey::Stream::maxpoints(double f) {
     json["maxpoints"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Stream& Sankey::Stream::maxpoints(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return maxpoints(std::move(f));
+}
 
 Sankey::Stream& Sankey::Stream::token(std::string f) {
     json["token"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Stream& Sankey::Stream::token(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return token(std::move(f));
 }
 
 std::string Sankey::Textfont::to_string(Style e) {
@@ -1398,25 +2346,55 @@ Sankey::Textfont& Sankey::Textfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Textfont& Sankey::Textfont::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Sankey::Textfont& Sankey::Textfont::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Textfont& Sankey::Textfont::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Sankey::Textfont& Sankey::Textfont::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Textfont& Sankey::Textfont::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Sankey::Textfont& Sankey::Textfont::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sankey::Textfont& Sankey::Textfont::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Sankey::Textfont& Sankey::Textfont::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Textfont& Sankey::Textfont::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Sankey::Textfont& Sankey::Textfont::style(enum Style f) {
@@ -1437,6 +2415,12 @@ Sankey::Textfont& Sankey::Textfont::variant(enum Variant f) {
 Sankey::Textfont& Sankey::Textfont::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sankey::Textfont& Sankey::Textfont::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 
 } // namespace plotlypp

@@ -47,18 +47,26 @@ class Choroplethmapbox : public Trace {
     // `colorscale`. In case `colorscale` is unspecified or `autocolorscale` is true, the default palette will be chosen
     // according to whether numbers in the `color` array are all positive, all negative or mixed.
     Choroplethmapbox& autocolorscale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Choroplethmapbox& autocolorscale(Callable&& c);
 
     // Determines if the choropleth polygons will be inserted before the layer with the specified ID. By default,
     // choroplethmapbox traces are placed above the water layers. If set to '', the layer will be inserted above every
     // existing layer.
     Choroplethmapbox& below(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox& below(Callable&& c);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Choroplethmapbox& coloraxis(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox& coloraxis(Callable&& c);
 
     Choroplethmapbox& colorbar(Colorbar f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Colorbar&>>>
+    Choroplethmapbox& colorbar(Callable&& c);
 
     // Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb,
     // rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are
@@ -68,24 +76,38 @@ class Choroplethmapbox : public Trace {
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Choroplethmapbox& colorscale(std::string f);
     Choroplethmapbox& colorscale(std::vector<std::pair<double, std::string>> f);
+    template <typename Callable,
+              typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
+                                          std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
+    Choroplethmapbox& colorscale(Callable&& c);
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Choroplethmapbox& customdata(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Choroplethmapbox& customdata(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Choroplethmapbox& customdatasrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox& customdatasrc(Callable&& c);
 
     // Sets the key in GeoJSON features which is used as id to match the items included in the `locations` array.
     // Support nested property, for example *properties.name*.
     Choroplethmapbox& featureidkey(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox& featureidkey(Callable&& c);
 
     // Sets the GeoJSON data associated with this trace. It can be set as a valid GeoJSON object or as a URL string.
     // Note that we only accept GeoJSONs of type *FeatureCollection* or *Feature* with geometries of type *Polygon* or
     // *MultiPolygon*.
     template <typename T>
     Choroplethmapbox& geojson(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Choroplethmapbox& geojson(Callable&& c);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -93,12 +115,18 @@ class Choroplethmapbox : public Trace {
     // - Flags: ['location', 'z', 'text', 'name']
     // - Extras ['all', 'none', 'skip']
     Choroplethmapbox& hoverinfo(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox& hoverinfo(Callable&& c);
     Choroplethmapbox& hoverinfo(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Choroplethmapbox& hoverinfosrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox& hoverinfosrc(Callable&& c);
 
     Choroplethmapbox& hoverlabel(Hoverlabel f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Hoverlabel&>>>
+    Choroplethmapbox& hoverlabel(Callable&& c);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -114,35 +142,55 @@ class Choroplethmapbox : public Trace {
     // variable `properties` Anything contained in tag `<extra>` is displayed in the secondary box, for example
     // "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an empty tag `<extra></extra>`.
     Choroplethmapbox& hovertemplate(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox& hovertemplate(Callable&& c);
     Choroplethmapbox& hovertemplate(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Choroplethmapbox& hovertemplatesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox& hovertemplatesrc(Callable&& c);
 
     // Same as `text`.
     Choroplethmapbox& hovertext(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox& hovertext(Callable&& c);
     Choroplethmapbox& hovertext(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Choroplethmapbox& hovertextsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox& hovertextsrc(Callable&& c);
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Choroplethmapbox& ids(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Choroplethmapbox& ids(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `ids`.
     Choroplethmapbox& idssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox& idssrc(Callable&& c);
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
     Choroplethmapbox& legend(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox& legend(Callable&& c);
 
     // Sets the legend group for this trace. Traces and shapes part of the same legend group hide/show at the same time
     // when toggling legend items.
     Choroplethmapbox& legendgroup(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox& legendgroup(Callable&& c);
 
     Choroplethmapbox& legendgrouptitle(Legendgrouptitle f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Legendgrouptitle&>>>
+    Choroplethmapbox& legendgrouptitle(Callable&& c);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -150,18 +198,30 @@ class Choroplethmapbox : public Trace {
     // after all unranked items. When having unranked or equal rank items shapes would be displayed after traces i.e.
     // according to their order in data and layout.
     Choroplethmapbox& legendrank(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox& legendrank(Callable&& c);
 
     // Sets the width (in px or fraction) of the legend for this trace.
     Choroplethmapbox& legendwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox& legendwidth(Callable&& c);
 
     // Sets which features found in *geojson* to plot using their feature `id` field.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Choroplethmapbox& locations(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Choroplethmapbox& locations(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `locations`.
     Choroplethmapbox& locationssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox& locationssrc(Callable&& c);
 
     Choroplethmapbox& marker(Marker f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Marker&>>>
+    Choroplethmapbox& marker(Callable&& c);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -171,51 +231,77 @@ class Choroplethmapbox : public Trace {
     // trace index.
     template <typename T>
     Choroplethmapbox& meta(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Choroplethmapbox& meta(Callable&& c);
     template <typename T>
     Choroplethmapbox& meta(std::vector<T> f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Choroplethmapbox& metasrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox& metasrc(Callable&& c);
 
     // Sets the trace name. The trace name appears as the legend item and on hover.
     Choroplethmapbox& name(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox& name(Callable&& c);
 
     // Reverses the color mapping if true. If true, `zmin` will correspond to the last color in the array and `zmax`
     // will correspond to the first color.
     Choroplethmapbox& reversescale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Choroplethmapbox& reversescale(Callable&& c);
 
     Choroplethmapbox& selected(Selected f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Selected&>>>
+    Choroplethmapbox& selected(Callable&& c);
 
     // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
     // other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
     template <typename T>
     Choroplethmapbox& selectedpoints(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Choroplethmapbox& selectedpoints(Callable&& c);
 
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Choroplethmapbox& showlegend(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Choroplethmapbox& showlegend(Callable&& c);
 
     // Determines whether or not a colorbar is displayed for this trace.
     Choroplethmapbox& showscale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Choroplethmapbox& showscale(Callable&& c);
 
     Choroplethmapbox& stream(Stream f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Stream&>>>
+    Choroplethmapbox& stream(Callable&& c);
 
     // mapbox subplots and traces are deprecated! Please consider switching to `map` subplots and traces. Learn more at:
     // https://plotly.com/python/maplibre-migration/ as well as https://plotly.com/javascript/maplibre-migration/ Sets a
     // reference between this trace's data coordinates and a mapbox subplot. If *mapbox* (the default value), the data
     // refer to `layout.mapbox`. If *mapbox2*, the data refer to `layout.mapbox2`, and so on.
     Choroplethmapbox& subplot(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox& subplot(Callable&& c);
 
     // Sets the text elements associated with each location.
     Choroplethmapbox& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox& text(Callable&& c);
     Choroplethmapbox& text(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `text`.
     Choroplethmapbox& textsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox& textsrc(Callable&& c);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
     Choroplethmapbox& uid(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox& uid(Callable&& c);
 
     // Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well
     // as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note
@@ -227,8 +313,12 @@ class Choroplethmapbox : public Trace {
     // still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
     template <typename T>
     Choroplethmapbox& uirevision(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Choroplethmapbox& uirevision(Callable&& c);
 
     Choroplethmapbox& unselected(Unselected f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Unselected&>>>
+    Choroplethmapbox& unselected(Callable&& c);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -238,25 +328,39 @@ class Choroplethmapbox : public Trace {
     // Sets the color values.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Choroplethmapbox& z(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Choroplethmapbox& z(Callable&& c);
 
     // Determines whether or not the color domain is computed with respect to the input data (here in `z`) or the bounds
     // set in `zmin` and `zmax` Defaults to `false` when `zmin` and `zmax` are set by the user.
     Choroplethmapbox& zauto(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Choroplethmapbox& zauto(Callable&& c);
 
     // Sets the upper bound of the color domain. Value should have the same units as in `z` and if set, `zmin` must be
     // set as well.
     Choroplethmapbox& zmax(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox& zmax(Callable&& c);
 
     // Sets the mid-point of the color domain by scaling `zmin` and/or `zmax` to be equidistant to this point. Value
     // should have the same units as in `z`. Has no effect when `zauto` is `false`.
     Choroplethmapbox& zmid(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox& zmid(Callable&& c);
 
     // Sets the lower bound of the color domain. Value should have the same units as in `z` and if set, `zmax` must be
     // set as well.
     Choroplethmapbox& zmin(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox& zmin(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `z`.
     Choroplethmapbox& zsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox& zsrc(Callable&& c);
 };
 
 class Choroplethmapbox::Colorbar {
@@ -384,12 +488,18 @@ class Choroplethmapbox::Colorbar {
 
     // Sets the color of padded area.
     Choroplethmapbox::Colorbar& bgcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Colorbar& bgcolor(Callable&& c);
 
     // Sets the axis line color.
     Choroplethmapbox::Colorbar& bordercolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Colorbar& bordercolor(Callable&& c);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Choroplethmapbox::Colorbar& borderwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox::Colorbar& borderwidth(Callable&& c);
 
     // Sets the step in-between ticks on this axis. Use with `tick0`. Must be a positive number, or special strings
     // available to *log* and *date* axes. If the axis `type` is *log*, then ticks are set every 10^(n*dtick) where n is
@@ -405,6 +515,8 @@ class Choroplethmapbox::Colorbar {
     // set `dtick` to *M48*
     template <typename T>
     Choroplethmapbox::Colorbar& dtick(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Choroplethmapbox::Colorbar& dtick(Callable&& c);
 
     // Determines a formatting rule for the tick exponents. For example, consider the number 1,000,000,000. If *none*,
     // it appears as 1,000,000,000. If *e*, 1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super script). If *SI*,
@@ -419,10 +531,14 @@ class Choroplethmapbox::Colorbar {
     // values (if desired) can include html-like tags or MathJax.
     template <typename T>
     Choroplethmapbox::Colorbar& labelalias(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Choroplethmapbox::Colorbar& labelalias(Callable&& c);
 
     // Sets the length of the color bar This measure excludes the padding of both ends. That is, the color bar length is
     // this length minus the padding on both ends.
     Choroplethmapbox::Colorbar& len(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox::Colorbar& len(Callable&& c);
 
     // Determines whether this color bar's length (i.e. the measure in the color variation direction) is set in units of
     // plot *fraction* or in *pixels. Use `len` to set the value.
@@ -431,10 +547,14 @@ class Choroplethmapbox::Colorbar {
 
     // Hide SI prefix for 10^n if |n| is below this number. This only has an effect when `tickformat` is *SI* or *B*.
     Choroplethmapbox::Colorbar& minexponent(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox::Colorbar& minexponent(Callable&& c);
 
     // Specifies the maximum number of ticks for the particular axis. The actual number of ticks will be chosen
     // automatically to be less than or equal to `nticks`. Has an effect only if `tickmode` is set to *auto*.
     Choroplethmapbox::Colorbar& nticks(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Choroplethmapbox::Colorbar& nticks(Callable&& c);
 
     // Sets the orientation of the colorbar.
     // - Default: v
@@ -442,12 +562,18 @@ class Choroplethmapbox::Colorbar {
 
     // Sets the axis line color.
     Choroplethmapbox::Colorbar& outlinecolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Colorbar& outlinecolor(Callable&& c);
 
     // Sets the width (in px) of the axis line.
     Choroplethmapbox::Colorbar& outlinewidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox::Colorbar& outlinewidth(Callable&& c);
 
     // If "true", even 4-digit integers are separated
     Choroplethmapbox::Colorbar& separatethousands(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Choroplethmapbox::Colorbar& separatethousands(Callable&& c);
 
     // If *all*, all exponents are shown besides their significands. If *first*, only the exponent of the first tick is
     // shown. If *last*, only the exponent of the last tick is shown. If *none*, no exponents appear.
@@ -456,6 +582,8 @@ class Choroplethmapbox::Colorbar {
 
     // Determines whether or not the tick labels are drawn.
     Choroplethmapbox::Colorbar& showticklabels(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Choroplethmapbox::Colorbar& showticklabels(Callable&& c);
 
     // If *all*, all tick labels are displayed with a prefix. If *first*, only the first tick is displayed with a
     // prefix. If *last*, only the last tick is displayed with a suffix. If *none*, tick prefixes are hidden.
@@ -468,6 +596,8 @@ class Choroplethmapbox::Colorbar {
 
     // Sets the thickness of the color bar This measure excludes the size of the padding, ticks and labels.
     Choroplethmapbox::Colorbar& thickness(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox::Colorbar& thickness(Callable&& c);
 
     // Determines whether this color bar's thickness (i.e. the measure in the constant color direction) is set in units
     // of plot *fraction* or in *pixels*. Use `thickness` to set the value.
@@ -481,16 +611,24 @@ class Choroplethmapbox::Colorbar {
     // serial number from zero in the order it appears.
     template <typename T>
     Choroplethmapbox::Colorbar& tick0(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Choroplethmapbox::Colorbar& tick0(Callable&& c);
 
     // Sets the angle of the tick labels with respect to the horizontal. For example, a `tickangle` of -90 draws the
     // tick labels vertically.
     Choroplethmapbox::Colorbar& tickangle(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox::Colorbar& tickangle(Callable&& c);
 
     // Sets the tick color.
     Choroplethmapbox::Colorbar& tickcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Colorbar& tickcolor(Callable&& c);
 
     // Sets the color bar's tick label font
     Choroplethmapbox::Colorbar& tickfont(Tickfont f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickfont&>>>
+    Choroplethmapbox::Colorbar& tickfont(Callable&& c);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -498,8 +636,12 @@ class Choroplethmapbox::Colorbar {
     // half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example,
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Choroplethmapbox::Colorbar& tickformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Colorbar& tickformat(Callable&& c);
 
     Choroplethmapbox::Colorbar& tickformatstops(Tickformatstops f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickformatstops&>>>
+    Choroplethmapbox::Colorbar& tickformatstops(Callable&& c);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -515,9 +657,13 @@ class Choroplethmapbox::Colorbar {
     // labeled. `tick0` determines which labels are shown. Not implemented for axes with `type` *log* or
     // *multicategory*, or when `tickmode` is *array*.
     Choroplethmapbox::Colorbar& ticklabelstep(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Choroplethmapbox::Colorbar& ticklabelstep(Callable&& c);
 
     // Sets the tick length (in px).
     Choroplethmapbox::Colorbar& ticklen(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox::Colorbar& ticklen(Callable&& c);
 
     // Sets the tick mode for this axis. If *auto*, the number of ticks is set via `nticks`. If *linear*, the placement
     // of the ticks is determined by a starting position `tick0` and a tick step `dtick` (*linear* is the default value
@@ -527,6 +673,8 @@ class Choroplethmapbox::Colorbar {
 
     // Sets a tick label prefix.
     Choroplethmapbox::Colorbar& tickprefix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Colorbar& tickprefix(Callable&& c);
 
     // Determines whether ticks are drawn or not. If **, this axis' ticks are not drawn. If *outside* (*inside*), this
     // axis' are drawn outside (inside) the axis lines.
@@ -535,33 +683,53 @@ class Choroplethmapbox::Colorbar {
 
     // Sets a tick label suffix.
     Choroplethmapbox::Colorbar& ticksuffix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Colorbar& ticksuffix(Callable&& c);
 
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Choroplethmapbox::Colorbar& ticktext(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Choroplethmapbox::Colorbar& ticktext(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `ticktext`.
     Choroplethmapbox::Colorbar& ticktextsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Colorbar& ticktextsrc(Callable&& c);
 
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Choroplethmapbox::Colorbar& tickvals(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Choroplethmapbox::Colorbar& tickvals(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `tickvals`.
     Choroplethmapbox::Colorbar& tickvalssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Colorbar& tickvalssrc(Callable&& c);
 
     // Sets the tick width (in px).
     Choroplethmapbox::Colorbar& tickwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox::Colorbar& tickwidth(Callable&& c);
 
     Choroplethmapbox::Colorbar& title(Title f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Title&>>>
+    Choroplethmapbox::Colorbar& title(Callable&& c);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
     // when `orientation` is *v* and 0.5 when `orientation` is *h*. Must be between *0* and *1* if `xref` is *container*
     // and between *-2* and *3* if `xref` is *paper*.
     Choroplethmapbox::Colorbar& x(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox::Colorbar& x(Callable&& c);
 
     // Sets this color bar's horizontal position anchor. This anchor binds the `x` position to the *left*, *center* or
     // *right* of the color bar. Defaults to *left* when `orientation` is *v* and *center* when `orientation` is *h*.
@@ -569,6 +737,8 @@ class Choroplethmapbox::Colorbar {
 
     // Sets the amount of padding (in px) along the x direction.
     Choroplethmapbox::Colorbar& xpad(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox::Colorbar& xpad(Callable&& c);
 
     // Sets the container `x` refers to. *container* spans the entire `width` of the plot. *paper* refers to the width
     // of the plotting area only.
@@ -580,6 +750,8 @@ class Choroplethmapbox::Colorbar {
     // when `orientation` is *v* and 1 when `orientation` is *h*. Must be between *0* and *1* if `yref` is *container*
     // and between *-2* and *3* if `yref` is *paper*.
     Choroplethmapbox::Colorbar& y(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox::Colorbar& y(Callable&& c);
 
     // Sets this color bar's vertical position anchor This anchor binds the `y` position to the *top*, *middle* or
     // *bottom* of the color bar. Defaults to *middle* when `orientation` is *v* and *bottom* when `orientation` is *h*.
@@ -587,6 +759,8 @@ class Choroplethmapbox::Colorbar {
 
     // Sets the amount of padding (in px) along the y direction.
     Choroplethmapbox::Colorbar& ypad(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox::Colorbar& ypad(Callable&& c);
 
     // Sets the container `y` refers to. *container* spans the entire `height` of the plot. *paper* refers to the height
     // of the plotting area only.
@@ -629,6 +803,8 @@ class Choroplethmapbox::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Choroplethmapbox::Colorbar::Tickfont& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Colorbar::Tickfont& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -638,6 +814,8 @@ class Choroplethmapbox::Colorbar::Tickfont {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Choroplethmapbox::Colorbar::Tickfont& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Colorbar::Tickfont& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -645,12 +823,18 @@ class Choroplethmapbox::Colorbar::Tickfont {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Choroplethmapbox::Colorbar::Tickfont& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Colorbar::Tickfont& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Choroplethmapbox::Colorbar::Tickfont& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Colorbar::Tickfont& shadow(Callable&& c);
 
     Choroplethmapbox::Colorbar::Tickfont& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox::Colorbar::Tickfont& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -667,6 +851,8 @@ class Choroplethmapbox::Colorbar::Tickfont {
 
     // Sets the weight (or boldness) of the font.
     Choroplethmapbox::Colorbar::Tickfont& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Choroplethmapbox::Colorbar::Tickfont& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -681,6 +867,8 @@ class Choroplethmapbox::Colorbar::Tickformatstops {
     class Tickformatstop;
 
     Choroplethmapbox::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickformatstop&>>>
+    Choroplethmapbox::Colorbar::Tickformatstops& tickformatstop(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -695,15 +883,21 @@ class Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop {
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
     Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
+    Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop& enabled(Callable&& c);
 
     // When used in a template, named items are created in the output figure in addition to any items the figure already
     // has in this array. You can modify these items in the output figure by making your own item with
     // `templateitemname` matching this `name` alongside your modifications (including `visible: false` or `enabled:
     // false` to hide it). Has no effect outside of a template.
     Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop& name(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop& name(Callable&& c);
 
     // Used to refer to a named item in this array in the template. Named items from the template will be created even
     // without a matching item in the input figure, but you can modify one by making an item with `templateitemname`
@@ -711,9 +905,13 @@ class Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop {
     // there is no template or no matching item, this item will be hidden unless you explicitly show it with `visible:
     // true`.
     Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop& templateitemname(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop& templateitemname(Callable&& c);
 
     // string - dtickformat for described zoom level, the same as *tickformat*
     Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Colorbar::Tickformatstops::Tickformatstop& value(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -737,6 +935,8 @@ class Choroplethmapbox::Colorbar::Title {
 
     // Sets this color bar's title font.
     Choroplethmapbox::Colorbar::Title& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Choroplethmapbox::Colorbar::Title& font(Callable&& c);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -744,6 +944,8 @@ class Choroplethmapbox::Colorbar::Title {
 
     // Sets the title of the color bar.
     Choroplethmapbox::Colorbar::Title& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Colorbar::Title& text(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -781,6 +983,8 @@ class Choroplethmapbox::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Choroplethmapbox::Colorbar::Title::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Colorbar::Title::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -790,6 +994,8 @@ class Choroplethmapbox::Colorbar::Title::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Choroplethmapbox::Colorbar::Title::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Colorbar::Title::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -797,12 +1003,18 @@ class Choroplethmapbox::Colorbar::Title::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Choroplethmapbox::Colorbar::Title::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Colorbar::Title::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Choroplethmapbox::Colorbar::Title::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Colorbar::Title::Font& shadow(Callable&& c);
 
     Choroplethmapbox::Colorbar::Title::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox::Colorbar::Title::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -819,6 +1031,8 @@ class Choroplethmapbox::Colorbar::Title::Font {
 
     // Sets the weight (or boldness) of the font.
     Choroplethmapbox::Colorbar::Title::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Choroplethmapbox::Colorbar::Title::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -848,33 +1062,49 @@ class Choroplethmapbox::Hoverlabel {
 
     // Sets the source reference on Chart Studio Cloud for `align`.
     Choroplethmapbox::Hoverlabel& alignsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Hoverlabel& alignsrc(Callable&& c);
 
     // Sets the background color of the hover labels for this trace
     Choroplethmapbox::Hoverlabel& bgcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Hoverlabel& bgcolor(Callable&& c);
     Choroplethmapbox::Hoverlabel& bgcolor(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Choroplethmapbox::Hoverlabel& bgcolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Hoverlabel& bgcolorsrc(Callable&& c);
 
     // Sets the border color of the hover labels for this trace.
     Choroplethmapbox::Hoverlabel& bordercolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Hoverlabel& bordercolor(Callable&& c);
     Choroplethmapbox::Hoverlabel& bordercolor(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Choroplethmapbox::Hoverlabel& bordercolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Hoverlabel& bordercolorsrc(Callable&& c);
 
     // Sets the font used in hover labels.
     Choroplethmapbox::Hoverlabel& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Choroplethmapbox::Hoverlabel& font(Callable&& c);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
     // name if it is less than that many characters, but if it is longer, will truncate to `namelength - 3` characters
     // and add an ellipsis.
     Choroplethmapbox::Hoverlabel& namelength(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Choroplethmapbox::Hoverlabel& namelength(Callable&& c);
     Choroplethmapbox::Hoverlabel& namelength(std::vector<int> f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Choroplethmapbox::Hoverlabel& namelengthsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Hoverlabel& namelengthsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -912,10 +1142,14 @@ class Choroplethmapbox::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Choroplethmapbox::Hoverlabel::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Hoverlabel::Font& color(Callable&& c);
     Choroplethmapbox::Hoverlabel::Font& color(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Choroplethmapbox::Hoverlabel::Font& colorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Hoverlabel::Font& colorsrc(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -925,10 +1159,14 @@ class Choroplethmapbox::Hoverlabel::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Choroplethmapbox::Hoverlabel::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Hoverlabel::Font& family(Callable&& c);
     Choroplethmapbox::Hoverlabel::Font& family(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Choroplethmapbox::Hoverlabel::Font& familysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Hoverlabel::Font& familysrc(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -936,24 +1174,36 @@ class Choroplethmapbox::Hoverlabel::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Choroplethmapbox::Hoverlabel::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Hoverlabel::Font& lineposition(Callable&& c);
     Choroplethmapbox::Hoverlabel::Font& lineposition(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Choroplethmapbox::Hoverlabel::Font& linepositionsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Hoverlabel::Font& linepositionsrc(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Choroplethmapbox::Hoverlabel::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Hoverlabel::Font& shadow(Callable&& c);
     Choroplethmapbox::Hoverlabel::Font& shadow(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Choroplethmapbox::Hoverlabel::Font& shadowsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Hoverlabel::Font& shadowsrc(Callable&& c);
 
     Choroplethmapbox::Hoverlabel::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox::Hoverlabel::Font& size(Callable&& c);
     Choroplethmapbox::Hoverlabel::Font& size(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Choroplethmapbox::Hoverlabel::Font& sizesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Hoverlabel::Font& sizesrc(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -962,6 +1212,8 @@ class Choroplethmapbox::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `style`.
     Choroplethmapbox::Hoverlabel::Font& stylesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Hoverlabel::Font& stylesrc(Callable&& c);
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
@@ -971,6 +1223,8 @@ class Choroplethmapbox::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `textcase`.
     Choroplethmapbox::Hoverlabel::Font& textcasesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Hoverlabel::Font& textcasesrc(Callable&& c);
 
     // Sets the variant of the font.
     // - Default: normal
@@ -979,13 +1233,19 @@ class Choroplethmapbox::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `variant`.
     Choroplethmapbox::Hoverlabel::Font& variantsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Hoverlabel::Font& variantsrc(Callable&& c);
 
     // Sets the weight (or boldness) of the font.
     Choroplethmapbox::Hoverlabel::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Choroplethmapbox::Hoverlabel::Font& weight(Callable&& c);
     Choroplethmapbox::Hoverlabel::Font& weight(std::vector<int> f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Choroplethmapbox::Hoverlabel::Font& weightsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Hoverlabel::Font& weightsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1002,9 +1262,13 @@ class Choroplethmapbox::Legendgrouptitle {
 
     // Sets this legend group's title font.
     Choroplethmapbox::Legendgrouptitle& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Choroplethmapbox::Legendgrouptitle& font(Callable&& c);
 
     // Sets the title of the legend group.
     Choroplethmapbox::Legendgrouptitle& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Legendgrouptitle& text(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1042,6 +1306,8 @@ class Choroplethmapbox::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Choroplethmapbox::Legendgrouptitle::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Legendgrouptitle::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1051,6 +1317,8 @@ class Choroplethmapbox::Legendgrouptitle::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Choroplethmapbox::Legendgrouptitle::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Legendgrouptitle::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -1058,12 +1326,18 @@ class Choroplethmapbox::Legendgrouptitle::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Choroplethmapbox::Legendgrouptitle::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Legendgrouptitle::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Choroplethmapbox::Legendgrouptitle::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Legendgrouptitle::Font& shadow(Callable&& c);
 
     Choroplethmapbox::Legendgrouptitle::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox::Legendgrouptitle::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1080,6 +1354,8 @@ class Choroplethmapbox::Legendgrouptitle::Font {
 
     // Sets the weight (or boldness) of the font.
     Choroplethmapbox::Legendgrouptitle::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Choroplethmapbox::Legendgrouptitle::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1094,13 +1370,19 @@ class Choroplethmapbox::Marker {
     class Line;
 
     Choroplethmapbox::Marker& line(Line f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Line&>>>
+    Choroplethmapbox::Marker& line(Callable&& c);
 
     // Sets the opacity of the locations.
     Choroplethmapbox::Marker& opacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox::Marker& opacity(Callable&& c);
     Choroplethmapbox::Marker& opacity(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `opacity`.
     Choroplethmapbox::Marker& opacitysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Marker& opacitysrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1116,17 +1398,25 @@ class Choroplethmapbox::Marker::Line {
     // colorscale relative to the max and min values of the array or relative to `marker.line.cmin` and
     // `marker.line.cmax` if set.
     Choroplethmapbox::Marker::Line& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Marker::Line& color(Callable&& c);
     Choroplethmapbox::Marker::Line& color(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Choroplethmapbox::Marker::Line& colorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Marker::Line& colorsrc(Callable&& c);
 
     // Sets the width (in px) of the lines bounding the marker points.
     Choroplethmapbox::Marker::Line& width(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox::Marker::Line& width(Callable&& c);
     Choroplethmapbox::Marker::Line& width(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `width`.
     Choroplethmapbox::Marker::Line& widthsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Marker::Line& widthsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1141,6 +1431,8 @@ class Choroplethmapbox::Selected {
     class Marker;
 
     Choroplethmapbox::Selected& marker(Marker f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Marker&>>>
+    Choroplethmapbox::Selected& marker(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1154,6 +1446,8 @@ class Choroplethmapbox::Selected::Marker {
 
     // Sets the marker opacity of selected points.
     Choroplethmapbox::Selected::Marker& opacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox::Selected::Marker& opacity(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1168,10 +1462,14 @@ class Choroplethmapbox::Stream {
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
     Choroplethmapbox::Stream& maxpoints(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox::Stream& maxpoints(Callable&& c);
 
     // The stream id number links a data trace on a plot with a stream. See https://chart-studio.plotly.com/settings for
     // more details.
     Choroplethmapbox::Stream& token(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Choroplethmapbox::Stream& token(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1186,6 +1484,8 @@ class Choroplethmapbox::Unselected {
     class Marker;
 
     Choroplethmapbox::Unselected& marker(Marker f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Marker&>>>
+    Choroplethmapbox::Unselected& marker(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1199,6 +1499,8 @@ class Choroplethmapbox::Unselected::Marker {
 
     // Sets the marker opacity of unselected points, applied only when a selection exists.
     Choroplethmapbox::Unselected::Marker& opacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Choroplethmapbox::Unselected::Marker& opacity(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

@@ -134,6 +134,8 @@ class Box : public Trace {
     // Set several traces linked to the same position axis or matching axes to the same alignmentgroup. This controls
     // whether bars compute their positional range dependently or independently.
     Box& alignmentgroup(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& alignmentgroup(Callable&& c);
 
     // If *true*, the mean of the box(es)' underlying distribution is drawn as a dashed line inside the box(es). If *sd*
     // the standard deviation is also drawn. Defaults to *true* when `mean` is set. Defaults to *sd* when `sd` is set
@@ -151,19 +153,31 @@ class Box : public Trace {
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& customdata(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Box& customdata(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Box& customdatasrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& customdatasrc(Callable&& c);
 
     // Sets the x coordinate step for multi-box traces set using q1/median/q3.
     Box& dx(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box& dx(Callable&& c);
 
     // Sets the y coordinate step for multi-box traces set using q1/median/q3.
     Box& dy(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box& dy(Callable&& c);
 
     // Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line
     // color, whichever is available.
     Box& fillcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& fillcolor(Callable&& c);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -171,17 +185,25 @@ class Box : public Trace {
     // - Flags: ['x', 'y', 'z', 'text', 'name']
     // - Extras ['all', 'none', 'skip']
     Box& hoverinfo(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& hoverinfo(Callable&& c);
     Box& hoverinfo(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Box& hoverinfosrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& hoverinfosrc(Callable&& c);
 
     Box& hoverlabel(Hoverlabel f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Hoverlabel&>>>
+    Box& hoverlabel(Callable&& c);
 
     // Do the hover effects highlight individual boxes  or sample points or both?
     // - Default: boxes+points
     // - Flags: ['boxes', 'points']
     Box& hoveron(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& hoveron(Callable&& c);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -197,39 +219,61 @@ class Box : public Trace {
     // displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box
     // completely, use an empty tag `<extra></extra>`.
     Box& hovertemplate(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& hovertemplate(Callable&& c);
     Box& hovertemplate(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Box& hovertemplatesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& hovertemplatesrc(Callable&& c);
 
     // Same as `text`.
     Box& hovertext(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& hovertext(Callable&& c);
     Box& hovertext(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Box& hovertextsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& hovertextsrc(Callable&& c);
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& ids(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Box& ids(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `ids`.
     Box& idssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& idssrc(Callable&& c);
 
     // Sets the amount of jitter in the sample points drawn. If *0*, the sample points align along the distribution
     // axis. If *1*, the sample points are drawn in a random jitter of width equal to the width of the box(es).
     Box& jitter(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box& jitter(Callable&& c);
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
     Box& legend(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& legend(Callable&& c);
 
     // Sets the legend group for this trace. Traces and shapes part of the same legend group hide/show at the same time
     // when toggling legend items.
     Box& legendgroup(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& legendgroup(Callable&& c);
 
     Box& legendgrouptitle(Legendgrouptitle f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Legendgrouptitle&>>>
+    Box& legendgrouptitle(Callable&& c);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -237,38 +281,64 @@ class Box : public Trace {
     // after all unranked items. When having unranked or equal rank items shapes would be displayed after traces i.e.
     // according to their order in data and layout.
     Box& legendrank(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box& legendrank(Callable&& c);
 
     // Sets the width (in px or fraction) of the legend for this trace.
     Box& legendwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box& legendwidth(Callable&& c);
 
     Box& line(Line f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Line&>>>
+    Box& line(Callable&& c);
 
     // Sets the lower fence values. There should be as many items as the number of boxes desired. This attribute has
     // effect only under the q1/median/q3 signature. If `lowerfence` is not provided but a sample (in `y` or `x`) is
     // set, we compute the lower as the last sample point below 1.5 times the IQR.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& lowerfence(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Box& lowerfence(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `lowerfence`.
     Box& lowerfencesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& lowerfencesrc(Callable&& c);
 
     Box& marker(Marker f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Marker&>>>
+    Box& marker(Callable&& c);
 
     // Sets the mean values. There should be as many items as the number of boxes desired. This attribute has effect
     // only under the q1/median/q3 signature. If `mean` is not provided but a sample (in `y` or `x`) is set, we compute
     // the mean for each box using the sample values.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& mean(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Box& mean(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `mean`.
     Box& meansrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& meansrc(Callable&& c);
 
     // Sets the median values. There should be as many items as the number of boxes desired.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& median(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Box& median(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `median`.
     Box& mediansrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& mediansrc(Callable&& c);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -278,16 +348,22 @@ class Box : public Trace {
     // trace index.
     template <typename T>
     Box& meta(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Box& meta(Callable&& c);
     template <typename T>
     Box& meta(std::vector<T> f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Box& metasrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& metasrc(Callable&& c);
 
     // Sets the trace name. The trace name appears as the legend item and on hover. For box traces, the name will also
     // be used for the position coordinate, if `x` and `x0` (`y` and `y0` if horizontal) are missing and the position
     // axis is categorical
     Box& name(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& name(Callable&& c);
 
     // Determines whether or not notches are drawn. Notches displays a confidence interval around the median. We compute
     // the confidence interval as median +/- 1.57 * IQR / sqrt(N), where IQR is the interquartile range and N is the
@@ -295,26 +371,40 @@ class Box : public Trace {
     // https://sites.google.com/site/davidsstatistics/home/notched-box-plots for more info. Defaults to *false* unless
     // `notchwidth` or `notchspan` is set.
     Box& notched(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Box& notched(Callable&& c);
 
     // Sets the notch span from the boxes' `median` values. There should be as many items as the number of boxes
     // desired. This attribute has effect only under the q1/median/q3 signature. If `notchspan` is not provided but a
     // sample (in `y` or `x`) is set, we compute it as 1.57 * IQR / sqrt(N), where N is the sample size.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& notchspan(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Box& notchspan(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `notchspan`.
     Box& notchspansrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& notchspansrc(Callable&& c);
 
     // Sets the width of the notches relative to the box' width. For example, with 0, the notches are as wide as the
     // box(es).
     Box& notchwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box& notchwidth(Callable&& c);
 
     // Set several traces linked to the same position axis or matching axes to the same offsetgroup where bars of the
     // same position coordinate will line up.
     Box& offsetgroup(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& offsetgroup(Callable&& c);
 
     // Sets the opacity of the trace.
     Box& opacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box& opacity(Callable&& c);
 
     // Sets the orientation of the box(es). If *v* (*h*), the distribution is visualized along the vertical
     // (horizontal).
@@ -324,20 +414,34 @@ class Box : public Trace {
     // center of the box(es). Positive (negative) values correspond to positions to the right (left) for vertical boxes
     // and above (below) for horizontal boxes
     Box& pointpos(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box& pointpos(Callable&& c);
 
     // Sets the Quartile 1 values. There should be as many items as the number of boxes desired.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& q1(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Box& q1(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `q1`.
     Box& q1src(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& q1src(Callable&& c);
 
     // Sets the Quartile 3 values. There should be as many items as the number of boxes desired.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& q3(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Box& q3(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `q3`.
     Box& q3src(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& q3src(Callable&& c);
 
     // Sets the method used to compute the sample's Q1 and Q3 quartiles. The *linear* method uses the 25th percentile
     // for Q1 and 75th percentile for Q3 as computed using method #10 (listed on
@@ -354,27 +458,43 @@ class Box : public Trace {
     // compute the standard deviation for each box using the sample values.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& sd(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Box& sd(Callable&& c);
 
     // Scales the box size when sizemode=sd Allowing boxes to be drawn across any stddev range For example 1-stddev,
     // 3-stddev, 5-stddev
     Box& sdmultiple(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box& sdmultiple(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `sd`.
     Box& sdsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& sdsrc(Callable&& c);
 
     Box& selected(Selected f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Selected&>>>
+    Box& selected(Callable&& c);
 
     // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
     // other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
     template <typename T>
     Box& selectedpoints(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Box& selectedpoints(Callable&& c);
 
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Box& showlegend(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Box& showlegend(Callable&& c);
 
     // Determines whether or not whiskers are visible. Defaults to true for `sizemode` *quartiles*, false for *sd*.
     Box& showwhiskers(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Box& showwhiskers(Callable&& c);
 
     // Sets the upper and lower bound for the boxes quartiles means box is drawn between Q1 and Q3 SD means the box is
     // drawn between Mean +- Standard Deviation Argument sdmultiple (default 1) to scale the box size So it could be
@@ -383,19 +503,27 @@ class Box : public Trace {
     Box& sizemode(enum Sizemode f);
 
     Box& stream(Stream f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Stream&>>>
+    Box& stream(Callable&& c);
 
     // Sets the text elements associated with each sample value. If a single string, the same string appears over all
     // the data points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. To
     // be seen, trace `hoverinfo` must contain a *text* flag.
     Box& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& text(Callable&& c);
     Box& text(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `text`.
     Box& textsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& textsrc(Callable&& c);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
     Box& uid(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& uid(Callable&& c);
 
     // Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well
     // as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note
@@ -407,17 +535,27 @@ class Box : public Trace {
     // still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
     template <typename T>
     Box& uirevision(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Box& uirevision(Callable&& c);
 
     Box& unselected(Unselected f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Unselected&>>>
+    Box& unselected(Callable&& c);
 
     // Sets the upper fence values. There should be as many items as the number of boxes desired. This attribute has
     // effect only under the q1/median/q3 signature. If `upperfence` is not provided but a sample (in `y` or `x`) is
     // set, we compute the upper as the last sample point above 1.5 times the IQR.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& upperfence(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Box& upperfence(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `upperfence`.
     Box& upperfencesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& upperfencesrc(Callable&& c);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -427,23 +565,35 @@ class Box : public Trace {
     // Sets the width of the whiskers relative to the box' width. For example, with 1, the whiskers are as wide as the
     // box(es).
     Box& whiskerwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box& whiskerwidth(Callable&& c);
 
     // Sets the width of the box in data coordinate If *0* (default value) the width is automatically selected based on
     // the positions of other box traces in the same subplot.
     Box& width(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box& width(Callable&& c);
 
     // Sets the x sample data or coordinates. See overview for more info.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& x(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Box& x(Callable&& c);
 
     // Sets the x coordinate for single-box traces or the starting coordinate for multi-box traces set using
     // q1/median/q3. See overview for more info.
     template <typename T>
     Box& x0(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Box& x0(Callable&& c);
 
     // Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x
     // coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
     Box& xaxis(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& xaxis(Callable&& c);
 
     // Sets the calendar system to use with `x` date data.
     // - Default: gregorian
@@ -456,18 +606,24 @@ class Box : public Trace {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `xaxis.hoverformat`.
     Box& xhoverformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& xhoverformat(Callable&& c);
 
     // Only relevant when the axis `type` is *date*. Sets the period positioning in milliseconds or *M<n>* on the x
     // axis. Special values in the form of *M<n>* could be used to declare the number of months. In this case `n` must
     // be a positive integer.
     template <typename T>
     Box& xperiod(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Box& xperiod(Callable&& c);
 
     // Only relevant when the axis `type` is *date*. Sets the base for period positioning in milliseconds or date string
     // on the x0 axis. When `x0period` is round number of weeks, the `x0period0` by default would be on a Sunday i.e.
     // 2000-01-02, otherwise it would be at 2000-01-01.
     template <typename T>
     Box& xperiod0(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Box& xperiod0(Callable&& c);
 
     // Only relevant when the axis `type` is *date*. Sets the alignment of data points on the x axis.
     // - Default: middle
@@ -475,19 +631,29 @@ class Box : public Trace {
 
     // Sets the source reference on Chart Studio Cloud for `x`.
     Box& xsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& xsrc(Callable&& c);
 
     // Sets the y sample data or coordinates. See overview for more info.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Box& y(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Box& y(Callable&& c);
 
     // Sets the y coordinate for single-box traces or the starting coordinate for multi-box traces set using
     // q1/median/q3. See overview for more info.
     template <typename T>
     Box& y0(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Box& y0(Callable&& c);
 
     // Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y
     // coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
     Box& yaxis(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& yaxis(Callable&& c);
 
     // Sets the calendar system to use with `y` date data.
     // - Default: gregorian
@@ -500,18 +666,24 @@ class Box : public Trace {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `yaxis.hoverformat`.
     Box& yhoverformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& yhoverformat(Callable&& c);
 
     // Only relevant when the axis `type` is *date*. Sets the period positioning in milliseconds or *M<n>* on the y
     // axis. Special values in the form of *M<n>* could be used to declare the number of months. In this case `n` must
     // be a positive integer.
     template <typename T>
     Box& yperiod(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Box& yperiod(Callable&& c);
 
     // Only relevant when the axis `type` is *date*. Sets the base for period positioning in milliseconds or date string
     // on the y0 axis. When `y0period` is round number of weeks, the `y0period0` by default would be on a Sunday i.e.
     // 2000-01-02, otherwise it would be at 2000-01-01.
     template <typename T>
     Box& yperiod0(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Box& yperiod0(Callable&& c);
 
     // Only relevant when the axis `type` is *date*. Sets the alignment of data points on the y axis.
     // - Default: middle
@@ -519,10 +691,14 @@ class Box : public Trace {
 
     // Sets the source reference on Chart Studio Cloud for `y`.
     Box& ysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box& ysrc(Callable&& c);
 
     // Sets the layer on which this trace is displayed, relative to other SVG traces on the same subplot. SVG traces
     // with higher `zorder` appear in front of those with lower `zorder`.
     Box& zorder(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Box& zorder(Callable&& c);
 };
 
 class Box::Hoverlabel {
@@ -549,33 +725,49 @@ class Box::Hoverlabel {
 
     // Sets the source reference on Chart Studio Cloud for `align`.
     Box::Hoverlabel& alignsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Hoverlabel& alignsrc(Callable&& c);
 
     // Sets the background color of the hover labels for this trace
     Box::Hoverlabel& bgcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Hoverlabel& bgcolor(Callable&& c);
     Box::Hoverlabel& bgcolor(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Box::Hoverlabel& bgcolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Hoverlabel& bgcolorsrc(Callable&& c);
 
     // Sets the border color of the hover labels for this trace.
     Box::Hoverlabel& bordercolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Hoverlabel& bordercolor(Callable&& c);
     Box::Hoverlabel& bordercolor(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Box::Hoverlabel& bordercolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Hoverlabel& bordercolorsrc(Callable&& c);
 
     // Sets the font used in hover labels.
     Box::Hoverlabel& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Box::Hoverlabel& font(Callable&& c);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
     // name if it is less than that many characters, but if it is longer, will truncate to `namelength - 3` characters
     // and add an ellipsis.
     Box::Hoverlabel& namelength(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Box::Hoverlabel& namelength(Callable&& c);
     Box::Hoverlabel& namelength(std::vector<int> f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Box::Hoverlabel& namelengthsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Hoverlabel& namelengthsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -613,10 +805,14 @@ class Box::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Box::Hoverlabel::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Hoverlabel::Font& color(Callable&& c);
     Box::Hoverlabel::Font& color(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Box::Hoverlabel::Font& colorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Hoverlabel::Font& colorsrc(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -626,10 +822,14 @@ class Box::Hoverlabel::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Box::Hoverlabel::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Hoverlabel::Font& family(Callable&& c);
     Box::Hoverlabel::Font& family(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Box::Hoverlabel::Font& familysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Hoverlabel::Font& familysrc(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -637,24 +837,36 @@ class Box::Hoverlabel::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Box::Hoverlabel::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Hoverlabel::Font& lineposition(Callable&& c);
     Box::Hoverlabel::Font& lineposition(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Box::Hoverlabel::Font& linepositionsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Hoverlabel::Font& linepositionsrc(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Box::Hoverlabel::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Hoverlabel::Font& shadow(Callable&& c);
     Box::Hoverlabel::Font& shadow(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Box::Hoverlabel::Font& shadowsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Hoverlabel::Font& shadowsrc(Callable&& c);
 
     Box::Hoverlabel::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box::Hoverlabel::Font& size(Callable&& c);
     Box::Hoverlabel::Font& size(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Box::Hoverlabel::Font& sizesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Hoverlabel::Font& sizesrc(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -663,6 +875,8 @@ class Box::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `style`.
     Box::Hoverlabel::Font& stylesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Hoverlabel::Font& stylesrc(Callable&& c);
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
@@ -672,6 +886,8 @@ class Box::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `textcase`.
     Box::Hoverlabel::Font& textcasesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Hoverlabel::Font& textcasesrc(Callable&& c);
 
     // Sets the variant of the font.
     // - Default: normal
@@ -680,13 +896,19 @@ class Box::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `variant`.
     Box::Hoverlabel::Font& variantsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Hoverlabel::Font& variantsrc(Callable&& c);
 
     // Sets the weight (or boldness) of the font.
     Box::Hoverlabel::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Box::Hoverlabel::Font& weight(Callable&& c);
     Box::Hoverlabel::Font& weight(std::vector<int> f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Box::Hoverlabel::Font& weightsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Hoverlabel::Font& weightsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -703,9 +925,13 @@ class Box::Legendgrouptitle {
 
     // Sets this legend group's title font.
     Box::Legendgrouptitle& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Box::Legendgrouptitle& font(Callable&& c);
 
     // Sets the title of the legend group.
     Box::Legendgrouptitle& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Legendgrouptitle& text(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -743,6 +969,8 @@ class Box::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Box::Legendgrouptitle::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Legendgrouptitle::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -752,6 +980,8 @@ class Box::Legendgrouptitle::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Box::Legendgrouptitle::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Legendgrouptitle::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -759,12 +989,18 @@ class Box::Legendgrouptitle::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Box::Legendgrouptitle::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Legendgrouptitle::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Box::Legendgrouptitle::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Legendgrouptitle::Font& shadow(Callable&& c);
 
     Box::Legendgrouptitle::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box::Legendgrouptitle::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -781,6 +1017,8 @@ class Box::Legendgrouptitle::Font {
 
     // Sets the weight (or boldness) of the font.
     Box::Legendgrouptitle::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Box::Legendgrouptitle::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -794,9 +1032,13 @@ class Box::Line {
 
     // Sets the color of line bounding the box(es).
     Box::Line& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Line& color(Callable&& c);
 
     // Sets the width (in px) of line bounding the box(es).
     Box::Line& width(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box::Line& width(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1140,21 +1382,33 @@ class Box::Marker {
 
     // Sets the marker angle in respect to `angleref`.
     Box::Marker& angle(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box::Marker& angle(Callable&& c);
 
     // Sets the marker color. It accepts either a specific color or an array of numbers that are mapped to the
     // colorscale relative to the max and min values of the array or relative to `marker.cmin` and `marker.cmax` if set.
     Box::Marker& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Marker& color(Callable&& c);
 
     Box::Marker& line(Line f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Line&>>>
+    Box::Marker& line(Callable&& c);
 
     // Sets the marker opacity.
     Box::Marker& opacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box::Marker& opacity(Callable&& c);
 
     // Sets the color of the outlier sample points.
     Box::Marker& outliercolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Marker& outliercolor(Callable&& c);
 
     // Sets the marker size (in px).
     Box::Marker& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box::Marker& size(Callable&& c);
 
     // Sets the marker symbol type. Adding 100 is equivalent to appending *-open* to a symbol name. Adding 200 is
     // equivalent to appending *-dot* to a symbol name. Adding 300 is equivalent to appending *-open-dot* or *dot-open*
@@ -1176,15 +1430,23 @@ class Box::Marker::Line {
     // colorscale relative to the max and min values of the array or relative to `marker.line.cmin` and
     // `marker.line.cmax` if set.
     Box::Marker::Line& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Marker::Line& color(Callable&& c);
 
     // Sets the border line color of the outlier sample points. Defaults to marker.color
     Box::Marker::Line& outliercolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Marker::Line& outliercolor(Callable&& c);
 
     // Sets the border line width (in px) of the outlier sample points.
     Box::Marker::Line& outlierwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box::Marker::Line& outlierwidth(Callable&& c);
 
     // Sets the width (in px) of the lines bounding the marker points.
     Box::Marker::Line& width(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box::Marker::Line& width(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1199,6 +1461,8 @@ class Box::Selected {
     class Marker;
 
     Box::Selected& marker(Marker f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Marker&>>>
+    Box::Selected& marker(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1212,12 +1476,18 @@ class Box::Selected::Marker {
 
     // Sets the marker color of selected points.
     Box::Selected::Marker& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Selected::Marker& color(Callable&& c);
 
     // Sets the marker opacity of selected points.
     Box::Selected::Marker& opacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box::Selected::Marker& opacity(Callable&& c);
 
     // Sets the marker size of selected points.
     Box::Selected::Marker& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box::Selected::Marker& size(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1232,10 +1502,14 @@ class Box::Stream {
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
     Box::Stream& maxpoints(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box::Stream& maxpoints(Callable&& c);
 
     // The stream id number links a data trace on a plot with a stream. See https://chart-studio.plotly.com/settings for
     // more details.
     Box::Stream& token(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Stream& token(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1250,6 +1524,8 @@ class Box::Unselected {
     class Marker;
 
     Box::Unselected& marker(Marker f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Marker&>>>
+    Box::Unselected& marker(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1263,12 +1539,18 @@ class Box::Unselected::Marker {
 
     // Sets the marker color of unselected points, applied only when a selection exists.
     Box::Unselected::Marker& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Box::Unselected::Marker& color(Callable&& c);
 
     // Sets the marker opacity of unselected points, applied only when a selection exists.
     Box::Unselected::Marker& opacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box::Unselected::Marker& opacity(Callable&& c);
 
     // Sets the marker size of unselected points, applied only when a selection exists.
     Box::Unselected::Marker& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Box::Unselected::Marker& size(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

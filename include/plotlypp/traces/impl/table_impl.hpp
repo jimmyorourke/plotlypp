@@ -24,21 +24,45 @@ Table& Table::cells(Cells f) {
     json["cells"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Table& Table::cells(Callable&& c) {
+    Cells f{};
+    std::forward<Callable>(c)(f);
+    return cells(std::move(f));
+}
 
 template <typename T, typename>
 Table& Table::columnorder(std::vector<T> f) {
     json["columnorder"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Table& Table::columnorder(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return columnorder(std::move(f));
+}
 
 Table& Table::columnordersrc(std::string f) {
     json["columnordersrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table& Table::columnordersrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return columnordersrc(std::move(f));
+}
 
 Table& Table::columnwidth(double f) {
     json["columnwidth"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table& Table::columnwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return columnwidth(std::move(f));
 }
 Table& Table::columnwidth(std::vector<double> f) {
     json["columnwidth"] = std::move(f);
@@ -49,31 +73,67 @@ Table& Table::columnwidthsrc(std::string f) {
     json["columnwidthsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table& Table::columnwidthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return columnwidthsrc(std::move(f));
+}
 
 template <typename T, typename>
 Table& Table::customdata(std::vector<T> f) {
     json["customdata"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Table& Table::customdata(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return customdata(std::move(f));
+}
 
 Table& Table::customdatasrc(std::string f) {
     json["customdatasrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table& Table::customdatasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return customdatasrc(std::move(f));
 }
 
 Table& Table::domain(Domain f) {
     json["domain"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Table& Table::domain(Callable&& c) {
+    Domain f{};
+    std::forward<Callable>(c)(f);
+    return domain(std::move(f));
+}
 
 Table& Table::header(Header f) {
     json["header"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Table& Table::header(Callable&& c) {
+    Header f{};
+    std::forward<Callable>(c)(f);
+    return header(std::move(f));
+}
 
 Table& Table::hoverinfo(std::string f) {
     json["hoverinfo"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table& Table::hoverinfo(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hoverinfo(std::move(f));
 }
 Table& Table::hoverinfo(std::vector<std::string> f) {
     json["hoverinfo"] = std::move(f);
@@ -84,10 +144,22 @@ Table& Table::hoverinfosrc(std::string f) {
     json["hoverinfosrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table& Table::hoverinfosrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hoverinfosrc(std::move(f));
+}
 
 Table& Table::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Table& Table::hoverlabel(Callable&& c) {
+    Hoverlabel f{};
+    std::forward<Callable>(c)(f);
+    return hoverlabel(std::move(f));
 }
 
 template <typename T, typename>
@@ -95,36 +167,78 @@ Table& Table::ids(std::vector<T> f) {
     json["ids"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Table& Table::ids(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return ids(std::move(f));
+}
 
 Table& Table::idssrc(std::string f) {
     json["idssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table& Table::idssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return idssrc(std::move(f));
 }
 
 Table& Table::legend(std::string f) {
     json["legend"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table& Table::legend(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return legend(std::move(f));
+}
 
 Table& Table::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Table& Table::legendgrouptitle(Callable&& c) {
+    Legendgrouptitle f{};
+    std::forward<Callable>(c)(f);
+    return legendgrouptitle(std::move(f));
 }
 
 Table& Table::legendrank(double f) {
     json["legendrank"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table& Table::legendrank(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendrank(std::move(f));
+}
 
 Table& Table::legendwidth(double f) {
     json["legendwidth"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table& Table::legendwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendwidth(std::move(f));
 }
 
 template <typename T>
 Table& Table::meta(T f) {
     json["meta"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Table& Table::meta(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return meta(std::move(f));
 }
 template <typename T>
 Table& Table::meta(std::vector<T> f) {
@@ -136,26 +250,56 @@ Table& Table::metasrc(std::string f) {
     json["metasrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table& Table::metasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return metasrc(std::move(f));
+}
 
 Table& Table::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table& Table::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
 }
 
 Table& Table::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Table& Table::stream(Callable&& c) {
+    Stream f{};
+    std::forward<Callable>(c)(f);
+    return stream(std::move(f));
+}
 
 Table& Table::uid(std::string f) {
     json["uid"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table& Table::uid(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return uid(std::move(f));
 }
 
 template <typename T>
 Table& Table::uirevision(T f) {
     json["uirevision"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Table& Table::uirevision(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return uirevision(std::move(f));
 }
 
 Table& Table::visible(enum Visible f) {
@@ -188,15 +332,33 @@ Table::Cells& Table::Cells::alignsrc(std::string f) {
     json["alignsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Cells& Table::Cells::alignsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return alignsrc(std::move(f));
+}
 
 Table::Cells& Table::Cells::fill(Fill f) {
     json["fill"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Table::Cells& Table::Cells::fill(Callable&& c) {
+    Fill f{};
+    std::forward<Callable>(c)(f);
+    return fill(std::move(f));
+}
 
 Table::Cells& Table::Cells::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Table::Cells& Table::Cells::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
 }
 
 template <typename T, typename>
@@ -204,25 +366,55 @@ Table::Cells& Table::Cells::format(std::vector<T> f) {
     json["format"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Table::Cells& Table::Cells::format(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return format(std::move(f));
+}
 
 Table::Cells& Table::Cells::formatsrc(std::string f) {
     json["formatsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Cells& Table::Cells::formatsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return formatsrc(std::move(f));
 }
 
 Table::Cells& Table::Cells::height(double f) {
     json["height"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Cells& Table::Cells::height(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return height(std::move(f));
+}
 
 Table::Cells& Table::Cells::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Table::Cells& Table::Cells::line(Callable&& c) {
+    Line f{};
+    std::forward<Callable>(c)(f);
+    return line(std::move(f));
+}
 
 Table::Cells& Table::Cells::prefix(std::string f) {
     json["prefix"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Cells& Table::Cells::prefix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return prefix(std::move(f));
 }
 Table::Cells& Table::Cells::prefix(std::vector<std::string> f) {
     json["prefix"] = std::move(f);
@@ -233,10 +425,22 @@ Table::Cells& Table::Cells::prefixsrc(std::string f) {
     json["prefixsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Cells& Table::Cells::prefixsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return prefixsrc(std::move(f));
+}
 
 Table::Cells& Table::Cells::suffix(std::string f) {
     json["suffix"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Cells& Table::Cells::suffix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return suffix(std::move(f));
 }
 Table::Cells& Table::Cells::suffix(std::vector<std::string> f) {
     json["suffix"] = std::move(f);
@@ -247,22 +451,46 @@ Table::Cells& Table::Cells::suffixsrc(std::string f) {
     json["suffixsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Cells& Table::Cells::suffixsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return suffixsrc(std::move(f));
+}
 
 template <typename T, typename>
 Table::Cells& Table::Cells::values(std::vector<T> f) {
     json["values"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Table::Cells& Table::Cells::values(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return values(std::move(f));
+}
 
 Table::Cells& Table::Cells::valuessrc(std::string f) {
     json["valuessrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Cells& Table::Cells::valuessrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return valuessrc(std::move(f));
 }
 
 
 Table::Cells::Fill& Table::Cells::Fill::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Cells::Fill& Table::Cells::Fill::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
 }
 Table::Cells::Fill& Table::Cells::Fill::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
@@ -272,6 +500,12 @@ Table::Cells::Fill& Table::Cells::Fill::color(std::vector<std::string> f) {
 Table::Cells::Fill& Table::Cells::Fill::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Cells::Fill& Table::Cells::Fill::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
 }
 
 std::string Table::Cells::Font::to_string(Style e) {
@@ -309,6 +543,12 @@ Table::Cells::Font& Table::Cells::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Cells::Font& Table::Cells::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 Table::Cells::Font& Table::Cells::Font::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
     return *this;
@@ -318,10 +558,22 @@ Table::Cells::Font& Table::Cells::Font::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Cells::Font& Table::Cells::Font::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Table::Cells::Font& Table::Cells::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Cells::Font& Table::Cells::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 Table::Cells::Font& Table::Cells::Font::family(std::vector<std::string> f) {
     json["family"] = std::move(f);
@@ -332,10 +584,22 @@ Table::Cells::Font& Table::Cells::Font::familysrc(std::string f) {
     json["familysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Cells::Font& Table::Cells::Font::familysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return familysrc(std::move(f));
+}
 
 Table::Cells::Font& Table::Cells::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Cells::Font& Table::Cells::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
 }
 Table::Cells::Font& Table::Cells::Font::lineposition(std::vector<std::string> f) {
     json["lineposition"] = std::move(f);
@@ -346,10 +610,22 @@ Table::Cells::Font& Table::Cells::Font::linepositionsrc(std::string f) {
     json["linepositionsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Cells::Font& Table::Cells::Font::linepositionsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return linepositionsrc(std::move(f));
+}
 
 Table::Cells::Font& Table::Cells::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Cells::Font& Table::Cells::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
 }
 Table::Cells::Font& Table::Cells::Font::shadow(std::vector<std::string> f) {
     json["shadow"] = std::move(f);
@@ -360,10 +636,22 @@ Table::Cells::Font& Table::Cells::Font::shadowsrc(std::string f) {
     json["shadowsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Cells::Font& Table::Cells::Font::shadowsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadowsrc(std::move(f));
+}
 
 Table::Cells::Font& Table::Cells::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Cells::Font& Table::Cells::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Table::Cells::Font& Table::Cells::Font::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -373,6 +661,12 @@ Table::Cells::Font& Table::Cells::Font::size(std::vector<double> f) {
 Table::Cells::Font& Table::Cells::Font::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Cells::Font& Table::Cells::Font::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
 }
 
 Table::Cells::Font& Table::Cells::Font::style(enum Style f) {
@@ -390,6 +684,12 @@ Table::Cells::Font& Table::Cells::Font::stylesrc(std::string f) {
     json["stylesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Cells::Font& Table::Cells::Font::stylesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return stylesrc(std::move(f));
+}
 
 Table::Cells::Font& Table::Cells::Font::textcase(enum Textcase f) {
     json["textcase"] = to_string(f);
@@ -405,6 +705,12 @@ Table::Cells::Font& Table::Cells::Font::textcase(const std::vector<enum Textcase
 Table::Cells::Font& Table::Cells::Font::textcasesrc(std::string f) {
     json["textcasesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Cells::Font& Table::Cells::Font::textcasesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textcasesrc(std::move(f));
 }
 
 Table::Cells::Font& Table::Cells::Font::variant(enum Variant f) {
@@ -422,10 +728,22 @@ Table::Cells::Font& Table::Cells::Font::variantsrc(std::string f) {
     json["variantsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Cells::Font& Table::Cells::Font::variantsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return variantsrc(std::move(f));
+}
 
 Table::Cells::Font& Table::Cells::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Cells::Font& Table::Cells::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 Table::Cells::Font& Table::Cells::Font::weight(std::vector<int> f) {
     json["weight"] = std::move(f);
@@ -436,11 +754,23 @@ Table::Cells::Font& Table::Cells::Font::weightsrc(std::string f) {
     json["weightsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Cells::Font& Table::Cells::Font::weightsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return weightsrc(std::move(f));
+}
 
 
 Table::Cells::Line& Table::Cells::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Cells::Line& Table::Cells::Line::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
 }
 Table::Cells::Line& Table::Cells::Line::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
@@ -451,10 +781,22 @@ Table::Cells::Line& Table::Cells::Line::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Cells::Line& Table::Cells::Line::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Table::Cells::Line& Table::Cells::Line::width(double f) {
     json["width"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Cells::Line& Table::Cells::Line::width(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return width(std::move(f));
 }
 Table::Cells::Line& Table::Cells::Line::width(std::vector<double> f) {
     json["width"] = std::move(f);
@@ -465,26 +807,56 @@ Table::Cells::Line& Table::Cells::Line::widthsrc(std::string f) {
     json["widthsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Cells::Line& Table::Cells::Line::widthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return widthsrc(std::move(f));
+}
 
 
 Table::Domain& Table::Domain::column(int f) {
     json["column"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Domain& Table::Domain::column(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return column(std::move(f));
+}
 
 Table::Domain& Table::Domain::row(int f) {
     json["row"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Domain& Table::Domain::row(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return row(std::move(f));
 }
 
 Table::Domain& Table::Domain::x(std::vector<double> f) {
     json["x"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Domain& Table::Domain::x(Callable&& c) {
+    std::vector<double> f{};
+    std::forward<Callable>(c)(f);
+    return x(std::move(f));
+}
 
 Table::Domain& Table::Domain::y(std::vector<double> f) {
     json["y"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Domain& Table::Domain::y(Callable&& c) {
+    std::vector<double> f{};
+    std::forward<Callable>(c)(f);
+    return y(std::move(f));
 }
 
 std::string Table::Header::to_string(Align e) {
@@ -512,15 +884,33 @@ Table::Header& Table::Header::alignsrc(std::string f) {
     json["alignsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Header& Table::Header::alignsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return alignsrc(std::move(f));
+}
 
 Table::Header& Table::Header::fill(Fill f) {
     json["fill"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Table::Header& Table::Header::fill(Callable&& c) {
+    Fill f{};
+    std::forward<Callable>(c)(f);
+    return fill(std::move(f));
+}
 
 Table::Header& Table::Header::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Table::Header& Table::Header::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
 }
 
 template <typename T, typename>
@@ -528,25 +918,55 @@ Table::Header& Table::Header::format(std::vector<T> f) {
     json["format"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Table::Header& Table::Header::format(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return format(std::move(f));
+}
 
 Table::Header& Table::Header::formatsrc(std::string f) {
     json["formatsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Header& Table::Header::formatsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return formatsrc(std::move(f));
 }
 
 Table::Header& Table::Header::height(double f) {
     json["height"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Header& Table::Header::height(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return height(std::move(f));
+}
 
 Table::Header& Table::Header::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Table::Header& Table::Header::line(Callable&& c) {
+    Line f{};
+    std::forward<Callable>(c)(f);
+    return line(std::move(f));
+}
 
 Table::Header& Table::Header::prefix(std::string f) {
     json["prefix"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Header& Table::Header::prefix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return prefix(std::move(f));
 }
 Table::Header& Table::Header::prefix(std::vector<std::string> f) {
     json["prefix"] = std::move(f);
@@ -557,10 +977,22 @@ Table::Header& Table::Header::prefixsrc(std::string f) {
     json["prefixsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Header& Table::Header::prefixsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return prefixsrc(std::move(f));
+}
 
 Table::Header& Table::Header::suffix(std::string f) {
     json["suffix"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Header& Table::Header::suffix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return suffix(std::move(f));
 }
 Table::Header& Table::Header::suffix(std::vector<std::string> f) {
     json["suffix"] = std::move(f);
@@ -571,22 +1003,46 @@ Table::Header& Table::Header::suffixsrc(std::string f) {
     json["suffixsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Header& Table::Header::suffixsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return suffixsrc(std::move(f));
+}
 
 template <typename T, typename>
 Table::Header& Table::Header::values(std::vector<T> f) {
     json["values"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Table::Header& Table::Header::values(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return values(std::move(f));
+}
 
 Table::Header& Table::Header::valuessrc(std::string f) {
     json["valuessrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Header& Table::Header::valuessrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return valuessrc(std::move(f));
 }
 
 
 Table::Header::Fill& Table::Header::Fill::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Header::Fill& Table::Header::Fill::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
 }
 Table::Header::Fill& Table::Header::Fill::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
@@ -596,6 +1052,12 @@ Table::Header::Fill& Table::Header::Fill::color(std::vector<std::string> f) {
 Table::Header::Fill& Table::Header::Fill::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Header::Fill& Table::Header::Fill::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
 }
 
 std::string Table::Header::Font::to_string(Style e) {
@@ -633,6 +1095,12 @@ Table::Header::Font& Table::Header::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Header::Font& Table::Header::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 Table::Header::Font& Table::Header::Font::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
     return *this;
@@ -642,10 +1110,22 @@ Table::Header::Font& Table::Header::Font::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Header::Font& Table::Header::Font::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Table::Header::Font& Table::Header::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Header::Font& Table::Header::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 Table::Header::Font& Table::Header::Font::family(std::vector<std::string> f) {
     json["family"] = std::move(f);
@@ -656,10 +1136,22 @@ Table::Header::Font& Table::Header::Font::familysrc(std::string f) {
     json["familysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Header::Font& Table::Header::Font::familysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return familysrc(std::move(f));
+}
 
 Table::Header::Font& Table::Header::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Header::Font& Table::Header::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
 }
 Table::Header::Font& Table::Header::Font::lineposition(std::vector<std::string> f) {
     json["lineposition"] = std::move(f);
@@ -670,10 +1162,22 @@ Table::Header::Font& Table::Header::Font::linepositionsrc(std::string f) {
     json["linepositionsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Header::Font& Table::Header::Font::linepositionsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return linepositionsrc(std::move(f));
+}
 
 Table::Header::Font& Table::Header::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Header::Font& Table::Header::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
 }
 Table::Header::Font& Table::Header::Font::shadow(std::vector<std::string> f) {
     json["shadow"] = std::move(f);
@@ -684,10 +1188,22 @@ Table::Header::Font& Table::Header::Font::shadowsrc(std::string f) {
     json["shadowsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Header::Font& Table::Header::Font::shadowsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadowsrc(std::move(f));
+}
 
 Table::Header::Font& Table::Header::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Header::Font& Table::Header::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Table::Header::Font& Table::Header::Font::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -697,6 +1213,12 @@ Table::Header::Font& Table::Header::Font::size(std::vector<double> f) {
 Table::Header::Font& Table::Header::Font::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Header::Font& Table::Header::Font::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
 }
 
 Table::Header::Font& Table::Header::Font::style(enum Style f) {
@@ -714,6 +1236,12 @@ Table::Header::Font& Table::Header::Font::stylesrc(std::string f) {
     json["stylesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Header::Font& Table::Header::Font::stylesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return stylesrc(std::move(f));
+}
 
 Table::Header::Font& Table::Header::Font::textcase(enum Textcase f) {
     json["textcase"] = to_string(f);
@@ -729,6 +1257,12 @@ Table::Header::Font& Table::Header::Font::textcase(const std::vector<enum Textca
 Table::Header::Font& Table::Header::Font::textcasesrc(std::string f) {
     json["textcasesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Header::Font& Table::Header::Font::textcasesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textcasesrc(std::move(f));
 }
 
 Table::Header::Font& Table::Header::Font::variant(enum Variant f) {
@@ -746,10 +1280,22 @@ Table::Header::Font& Table::Header::Font::variantsrc(std::string f) {
     json["variantsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Header::Font& Table::Header::Font::variantsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return variantsrc(std::move(f));
+}
 
 Table::Header::Font& Table::Header::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Header::Font& Table::Header::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 Table::Header::Font& Table::Header::Font::weight(std::vector<int> f) {
     json["weight"] = std::move(f);
@@ -760,11 +1306,23 @@ Table::Header::Font& Table::Header::Font::weightsrc(std::string f) {
     json["weightsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Header::Font& Table::Header::Font::weightsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return weightsrc(std::move(f));
+}
 
 
 Table::Header::Line& Table::Header::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Header::Line& Table::Header::Line::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
 }
 Table::Header::Line& Table::Header::Line::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
@@ -775,10 +1333,22 @@ Table::Header::Line& Table::Header::Line::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Header::Line& Table::Header::Line::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Table::Header::Line& Table::Header::Line::width(double f) {
     json["width"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Header::Line& Table::Header::Line::width(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return width(std::move(f));
 }
 Table::Header::Line& Table::Header::Line::width(std::vector<double> f) {
     json["width"] = std::move(f);
@@ -788,6 +1358,12 @@ Table::Header::Line& Table::Header::Line::width(std::vector<double> f) {
 Table::Header::Line& Table::Header::Line::widthsrc(std::string f) {
     json["widthsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Header::Line& Table::Header::Line::widthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return widthsrc(std::move(f));
 }
 
 std::string Table::Hoverlabel::to_string(Align e) {
@@ -815,10 +1391,22 @@ Table::Hoverlabel& Table::Hoverlabel::alignsrc(std::string f) {
     json["alignsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Hoverlabel& Table::Hoverlabel::alignsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return alignsrc(std::move(f));
+}
 
 Table::Hoverlabel& Table::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Hoverlabel& Table::Hoverlabel::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
 }
 Table::Hoverlabel& Table::Hoverlabel::bgcolor(std::vector<std::string> f) {
     json["bgcolor"] = std::move(f);
@@ -829,10 +1417,22 @@ Table::Hoverlabel& Table::Hoverlabel::bgcolorsrc(std::string f) {
     json["bgcolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Hoverlabel& Table::Hoverlabel::bgcolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolorsrc(std::move(f));
+}
 
 Table::Hoverlabel& Table::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Hoverlabel& Table::Hoverlabel::bordercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolor(std::move(f));
 }
 Table::Hoverlabel& Table::Hoverlabel::bordercolor(std::vector<std::string> f) {
     json["bordercolor"] = std::move(f);
@@ -843,15 +1443,33 @@ Table::Hoverlabel& Table::Hoverlabel::bordercolorsrc(std::string f) {
     json["bordercolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Hoverlabel& Table::Hoverlabel::bordercolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolorsrc(std::move(f));
+}
 
 Table::Hoverlabel& Table::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Table::Hoverlabel& Table::Hoverlabel::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Table::Hoverlabel& Table::Hoverlabel::namelength(int f) {
     json["namelength"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Hoverlabel& Table::Hoverlabel::namelength(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return namelength(std::move(f));
 }
 Table::Hoverlabel& Table::Hoverlabel::namelength(std::vector<int> f) {
     json["namelength"] = std::move(f);
@@ -861,6 +1479,12 @@ Table::Hoverlabel& Table::Hoverlabel::namelength(std::vector<int> f) {
 Table::Hoverlabel& Table::Hoverlabel::namelengthsrc(std::string f) {
     json["namelengthsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Hoverlabel& Table::Hoverlabel::namelengthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return namelengthsrc(std::move(f));
 }
 
 std::string Table::Hoverlabel::Font::to_string(Style e) {
@@ -898,6 +1522,12 @@ Table::Hoverlabel::Font& Table::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 Table::Hoverlabel::Font& Table::Hoverlabel::Font::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
     return *this;
@@ -907,10 +1537,22 @@ Table::Hoverlabel::Font& Table::Hoverlabel::Font::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Table::Hoverlabel::Font& Table::Hoverlabel::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 Table::Hoverlabel::Font& Table::Hoverlabel::Font::family(std::vector<std::string> f) {
     json["family"] = std::move(f);
@@ -921,10 +1563,22 @@ Table::Hoverlabel::Font& Table::Hoverlabel::Font::familysrc(std::string f) {
     json["familysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::familysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return familysrc(std::move(f));
+}
 
 Table::Hoverlabel::Font& Table::Hoverlabel::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
 }
 Table::Hoverlabel::Font& Table::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
     json["lineposition"] = std::move(f);
@@ -935,10 +1589,22 @@ Table::Hoverlabel::Font& Table::Hoverlabel::Font::linepositionsrc(std::string f)
     json["linepositionsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::linepositionsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return linepositionsrc(std::move(f));
+}
 
 Table::Hoverlabel::Font& Table::Hoverlabel::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
 }
 Table::Hoverlabel::Font& Table::Hoverlabel::Font::shadow(std::vector<std::string> f) {
     json["shadow"] = std::move(f);
@@ -949,10 +1615,22 @@ Table::Hoverlabel::Font& Table::Hoverlabel::Font::shadowsrc(std::string f) {
     json["shadowsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::shadowsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadowsrc(std::move(f));
+}
 
 Table::Hoverlabel::Font& Table::Hoverlabel::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Table::Hoverlabel::Font& Table::Hoverlabel::Font::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -962,6 +1640,12 @@ Table::Hoverlabel::Font& Table::Hoverlabel::Font::size(std::vector<double> f) {
 Table::Hoverlabel::Font& Table::Hoverlabel::Font::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
 }
 
 Table::Hoverlabel::Font& Table::Hoverlabel::Font::style(enum Style f) {
@@ -979,6 +1663,12 @@ Table::Hoverlabel::Font& Table::Hoverlabel::Font::stylesrc(std::string f) {
     json["stylesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::stylesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return stylesrc(std::move(f));
+}
 
 Table::Hoverlabel::Font& Table::Hoverlabel::Font::textcase(enum Textcase f) {
     json["textcase"] = to_string(f);
@@ -994,6 +1684,12 @@ Table::Hoverlabel::Font& Table::Hoverlabel::Font::textcase(const std::vector<enu
 Table::Hoverlabel::Font& Table::Hoverlabel::Font::textcasesrc(std::string f) {
     json["textcasesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::textcasesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textcasesrc(std::move(f));
 }
 
 Table::Hoverlabel::Font& Table::Hoverlabel::Font::variant(enum Variant f) {
@@ -1011,10 +1707,22 @@ Table::Hoverlabel::Font& Table::Hoverlabel::Font::variantsrc(std::string f) {
     json["variantsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::variantsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return variantsrc(std::move(f));
+}
 
 Table::Hoverlabel::Font& Table::Hoverlabel::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 Table::Hoverlabel::Font& Table::Hoverlabel::Font::weight(std::vector<int> f) {
     json["weight"] = std::move(f);
@@ -1025,16 +1733,34 @@ Table::Hoverlabel::Font& Table::Hoverlabel::Font::weightsrc(std::string f) {
     json["weightsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::weightsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return weightsrc(std::move(f));
+}
 
 
 Table::Legendgrouptitle& Table::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Table::Legendgrouptitle& Table::Legendgrouptitle::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Table::Legendgrouptitle& Table::Legendgrouptitle::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Legendgrouptitle& Table::Legendgrouptitle::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 
 std::string Table::Legendgrouptitle::Font::to_string(Style e) {
@@ -1072,25 +1798,55 @@ Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::color(std::string 
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::style(enum Style f) {
@@ -1112,16 +1868,34 @@ Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Legendgrouptitle::Font& Table::Legendgrouptitle::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Table::Stream& Table::Stream::maxpoints(double f) {
     json["maxpoints"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Table::Stream& Table::Stream::maxpoints(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return maxpoints(std::move(f));
+}
 
 Table::Stream& Table::Stream::token(std::string f) {
     json["token"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Table::Stream& Table::Stream::token(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return token(std::move(f));
 }
 
 } // namespace plotlypp

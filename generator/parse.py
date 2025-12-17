@@ -96,6 +96,18 @@ def emit_array_field_setter(class_object, field, output_val_type, writer):
     writer.write("}")
 
 
+def emit_lambda_setter_decl(class_object, field, output_val_types, writer):
+    enable_if_cond = " || ".join([f"std::is_invocable_v<Callable, {t}&>" for t in output_val_types])
+
+    if "T" in output_val_types:
+        writer.write(f"template <typename T, typename Callable, typename=std::enable_if_t<{enable_if_cond}>>")
+    elif field.json_val_type == 'data_array':
+        writer.write(f"template <typename T, typename Callable, typename=std::enable_if_t<is_data_array_element_v<T> && ({enable_if_cond})>>")
+    else:
+        writer.write(f"template <typename Callable, typename=std::enable_if_t<{enable_if_cond}>>")
+    writer.write(f"{class_object.name.title()}& {field.name}(Callable&& c);")
+
+
 def emit_field_setter_decl(class_object, field, output_val_type, writer):
     def write_template_signature():
         if output_val_type == 'T':
@@ -143,6 +155,19 @@ def emit_field_setter(class_object, field, output_val_type, writer):
                 writer.write(f"json[\"{field.name}\"+ std::to_string(index)] = std::move(f);")
             writer.write("return *this;")
         writer.write("}")
+
+def emit_lambda_setter(class_object, field, output_val_types, writer):
+    if "T" in output_val_types or field.json_val_type == 'data_array':
+        writer.write(f"template <typename T, typename Callable, typename>")
+    else:
+        writer.write(f"template <typename Callable, typename>")
+    writer.write(f"{class_object.name.title()}& {class_object.name.title()}::{field.name}(Callable&& c) {{")
+    with IndentBlock(writer):
+        writer.write(f"{output_val_types[0]} f{{}};")
+        writer.write(f"std::forward<Callable>(c)(f);")
+        writer.write(f"return {field.name}(std::move(f));")
+    writer.write("}")
+
 
 
 def emit_enum_field_setter_decl(class_object, field, writer):
@@ -217,6 +242,7 @@ def emit_class_public_members(class_object, writer):
                 output_val_types = valtype_map[field.json_val_type]
             for output_val_type_overload in output_val_types:
                 emit_field_setter(class_object, field, output_val_type_overload, writer)
+            emit_lambda_setter(class_object, field, output_val_types, writer)
             if field.array_ok:
                 for output_val_type_overload in output_val_types:
                     emit_array_field_setter(class_object, field, output_val_type_overload, writer)
@@ -252,6 +278,7 @@ def emit_class_public_members_decl(class_object, writer):
                 output_val_types = valtype_map[field.json_val_type]
             for output_val_type_overload in output_val_types:
                 emit_field_setter_decl(class_object, field, output_val_type_overload, writer)
+            emit_lambda_setter_decl(class_object, field, output_val_types, writer)
             if field.array_ok:
                 for output_val_type_overload in output_val_types:
                     emit_array_field_setter_decl(class_object, field, output_val_type_overload, writer)

@@ -139,15 +139,33 @@ Scatter& Scatter::alignmentgroup(std::string f) {
     json["alignmentgroup"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::alignmentgroup(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return alignmentgroup(std::move(f));
+}
 
 Scatter& Scatter::cliponaxis(bool f) {
     json["cliponaxis"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::cliponaxis(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return cliponaxis(std::move(f));
+}
 
 Scatter& Scatter::connectgaps(bool f) {
     json["connectgaps"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::connectgaps(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return connectgaps(std::move(f));
 }
 
 template <typename T, typename>
@@ -155,30 +173,66 @@ Scatter& Scatter::customdata(std::vector<T> f) {
     json["customdata"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Scatter& Scatter::customdata(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return customdata(std::move(f));
+}
 
 Scatter& Scatter::customdatasrc(std::string f) {
     json["customdatasrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::customdatasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return customdatasrc(std::move(f));
 }
 
 Scatter& Scatter::dx(double f) {
     json["dx"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::dx(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return dx(std::move(f));
+}
 
 Scatter& Scatter::dy(double f) {
     json["dy"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::dy(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return dy(std::move(f));
 }
 
 Scatter& Scatter::error_x(Error_X f) {
     json["error_x"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::error_x(Callable&& c) {
+    Error_X f{};
+    std::forward<Callable>(c)(f);
+    return error_x(std::move(f));
+}
 
 Scatter& Scatter::error_y(Error_Y f) {
     json["error_y"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::error_y(Callable&& c) {
+    Error_Y f{};
+    std::forward<Callable>(c)(f);
+    return error_y(std::move(f));
 }
 
 Scatter& Scatter::fill(enum Fill f) {
@@ -190,15 +244,33 @@ Scatter& Scatter::fillcolor(std::string f) {
     json["fillcolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::fillcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return fillcolor(std::move(f));
+}
 
 Scatter& Scatter::fillgradient(Fillgradient f) {
     json["fillgradient"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::fillgradient(Callable&& c) {
+    Fillgradient f{};
+    std::forward<Callable>(c)(f);
+    return fillgradient(std::move(f));
+}
 
 Scatter& Scatter::fillpattern(Fillpattern f) {
     json["fillpattern"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::fillpattern(Callable&& c) {
+    Fillpattern f{};
+    std::forward<Callable>(c)(f);
+    return fillpattern(std::move(f));
 }
 
 Scatter& Scatter::groupnorm(enum Groupnorm f) {
@@ -210,6 +282,12 @@ Scatter& Scatter::hoverinfo(std::string f) {
     json["hoverinfo"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::hoverinfo(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hoverinfo(std::move(f));
+}
 Scatter& Scatter::hoverinfo(std::vector<std::string> f) {
     json["hoverinfo"] = std::move(f);
     return *this;
@@ -219,20 +297,44 @@ Scatter& Scatter::hoverinfosrc(std::string f) {
     json["hoverinfosrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::hoverinfosrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hoverinfosrc(std::move(f));
+}
 
 Scatter& Scatter::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::hoverlabel(Callable&& c) {
+    Hoverlabel f{};
+    std::forward<Callable>(c)(f);
+    return hoverlabel(std::move(f));
 }
 
 Scatter& Scatter::hoveron(std::string f) {
     json["hoveron"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::hoveron(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hoveron(std::move(f));
+}
 
 Scatter& Scatter::hovertemplate(std::string f) {
     json["hovertemplate"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::hovertemplate(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertemplate(std::move(f));
 }
 Scatter& Scatter::hovertemplate(std::vector<std::string> f) {
     json["hovertemplate"] = std::move(f);
@@ -243,10 +345,22 @@ Scatter& Scatter::hovertemplatesrc(std::string f) {
     json["hovertemplatesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::hovertemplatesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertemplatesrc(std::move(f));
+}
 
 Scatter& Scatter::hovertext(std::string f) {
     json["hovertext"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::hovertext(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertext(std::move(f));
 }
 Scatter& Scatter::hovertext(std::vector<std::string> f) {
     json["hovertext"] = std::move(f);
@@ -257,57 +371,123 @@ Scatter& Scatter::hovertextsrc(std::string f) {
     json["hovertextsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::hovertextsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertextsrc(std::move(f));
+}
 
 template <typename T, typename>
 Scatter& Scatter::ids(std::vector<T> f) {
     json["ids"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Scatter& Scatter::ids(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return ids(std::move(f));
+}
 
 Scatter& Scatter::idssrc(std::string f) {
     json["idssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::idssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return idssrc(std::move(f));
 }
 
 Scatter& Scatter::legend(std::string f) {
     json["legend"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::legend(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return legend(std::move(f));
+}
 
 Scatter& Scatter::legendgroup(std::string f) {
     json["legendgroup"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::legendgroup(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return legendgroup(std::move(f));
 }
 
 Scatter& Scatter::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::legendgrouptitle(Callable&& c) {
+    Legendgrouptitle f{};
+    std::forward<Callable>(c)(f);
+    return legendgrouptitle(std::move(f));
+}
 
 Scatter& Scatter::legendrank(double f) {
     json["legendrank"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::legendrank(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendrank(std::move(f));
 }
 
 Scatter& Scatter::legendwidth(double f) {
     json["legendwidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::legendwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendwidth(std::move(f));
+}
 
 Scatter& Scatter::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::line(Callable&& c) {
+    Line f{};
+    std::forward<Callable>(c)(f);
+    return line(std::move(f));
 }
 
 Scatter& Scatter::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::marker(Callable&& c) {
+    Marker f{};
+    std::forward<Callable>(c)(f);
+    return marker(std::move(f));
+}
 
 template <typename T>
 Scatter& Scatter::meta(T f) {
     json["meta"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Scatter& Scatter::meta(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return meta(std::move(f));
 }
 template <typename T>
 Scatter& Scatter::meta(std::vector<T> f) {
@@ -319,25 +499,55 @@ Scatter& Scatter::metasrc(std::string f) {
     json["metasrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::metasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return metasrc(std::move(f));
+}
 
 Scatter& Scatter::mode(std::string f) {
     json["mode"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::mode(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return mode(std::move(f));
 }
 
 Scatter& Scatter::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
+}
 
 Scatter& Scatter::offsetgroup(std::string f) {
     json["offsetgroup"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::offsetgroup(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return offsetgroup(std::move(f));
+}
 
 Scatter& Scatter::opacity(double f) {
     json["opacity"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::opacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return opacity(std::move(f));
 }
 
 Scatter& Scatter::orientation(enum Orientation f) {
@@ -349,16 +559,34 @@ Scatter& Scatter::selected(Selected f) {
     json["selected"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::selected(Callable&& c) {
+    Selected f{};
+    std::forward<Callable>(c)(f);
+    return selected(std::move(f));
+}
 
 template <typename T>
 Scatter& Scatter::selectedpoints(T f) {
     json["selectedpoints"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Scatter& Scatter::selectedpoints(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return selectedpoints(std::move(f));
+}
 
 Scatter& Scatter::showlegend(bool f) {
     json["showlegend"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::showlegend(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showlegend(std::move(f));
 }
 
 Scatter& Scatter::stackgaps(enum Stackgaps f) {
@@ -370,15 +598,33 @@ Scatter& Scatter::stackgroup(std::string f) {
     json["stackgroup"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::stackgroup(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return stackgroup(std::move(f));
+}
 
 Scatter& Scatter::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::stream(Callable&& c) {
+    Stream f{};
+    std::forward<Callable>(c)(f);
+    return stream(std::move(f));
+}
 
 Scatter& Scatter::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 Scatter& Scatter::text(std::vector<std::string> f) {
     json["text"] = std::move(f);
@@ -388,6 +634,12 @@ Scatter& Scatter::text(std::vector<std::string> f) {
 Scatter& Scatter::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::textfont(Callable&& c) {
+    Textfont f{};
+    std::forward<Callable>(c)(f);
+    return textfont(std::move(f));
 }
 
 Scatter& Scatter::textposition(enum Textposition f) {
@@ -405,15 +657,33 @@ Scatter& Scatter::textpositionsrc(std::string f) {
     json["textpositionsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::textpositionsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textpositionsrc(std::move(f));
+}
 
 Scatter& Scatter::textsrc(std::string f) {
     json["textsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::textsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textsrc(std::move(f));
+}
 
 Scatter& Scatter::texttemplate(std::string f) {
     json["texttemplate"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::texttemplate(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return texttemplate(std::move(f));
 }
 Scatter& Scatter::texttemplate(std::vector<std::string> f) {
     json["texttemplate"] = std::move(f);
@@ -424,10 +694,22 @@ Scatter& Scatter::texttemplatesrc(std::string f) {
     json["texttemplatesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::texttemplatesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return texttemplatesrc(std::move(f));
+}
 
 Scatter& Scatter::uid(std::string f) {
     json["uid"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::uid(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return uid(std::move(f));
 }
 
 template <typename T>
@@ -435,10 +717,22 @@ Scatter& Scatter::uirevision(T f) {
     json["uirevision"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Scatter& Scatter::uirevision(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return uirevision(std::move(f));
+}
 
 Scatter& Scatter::unselected(Unselected f) {
     json["unselected"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::unselected(Callable&& c) {
+    Unselected f{};
+    std::forward<Callable>(c)(f);
+    return unselected(std::move(f));
 }
 
 Scatter& Scatter::visible(enum Visible f) {
@@ -451,16 +745,34 @@ Scatter& Scatter::x(std::vector<T> f) {
     json["x"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Scatter& Scatter::x(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return x(std::move(f));
+}
 
 template <typename T>
 Scatter& Scatter::x0(T f) {
     json["x0"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Scatter& Scatter::x0(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return x0(std::move(f));
+}
 
 Scatter& Scatter::xaxis(std::string f) {
     json["xaxis"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::xaxis(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return xaxis(std::move(f));
 }
 
 Scatter& Scatter::xcalendar(enum Xcalendar f) {
@@ -472,17 +784,35 @@ Scatter& Scatter::xhoverformat(std::string f) {
     json["xhoverformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::xhoverformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return xhoverformat(std::move(f));
+}
 
 template <typename T>
 Scatter& Scatter::xperiod(T f) {
     json["xperiod"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Scatter& Scatter::xperiod(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return xperiod(std::move(f));
+}
 
 template <typename T>
 Scatter& Scatter::xperiod0(T f) {
     json["xperiod0"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Scatter& Scatter::xperiod0(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return xperiod0(std::move(f));
 }
 
 Scatter& Scatter::xperiodalignment(enum Xperiodalignment f) {
@@ -494,11 +824,23 @@ Scatter& Scatter::xsrc(std::string f) {
     json["xsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::xsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return xsrc(std::move(f));
+}
 
 template <typename T, typename>
 Scatter& Scatter::y(std::vector<T> f) {
     json["y"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Scatter& Scatter::y(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return y(std::move(f));
 }
 
 template <typename T>
@@ -506,10 +848,22 @@ Scatter& Scatter::y0(T f) {
     json["y0"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Scatter& Scatter::y0(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return y0(std::move(f));
+}
 
 Scatter& Scatter::yaxis(std::string f) {
     json["yaxis"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::yaxis(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return yaxis(std::move(f));
 }
 
 Scatter& Scatter::ycalendar(enum Ycalendar f) {
@@ -521,17 +875,35 @@ Scatter& Scatter::yhoverformat(std::string f) {
     json["yhoverformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::yhoverformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return yhoverformat(std::move(f));
+}
 
 template <typename T>
 Scatter& Scatter::yperiod(T f) {
     json["yperiod"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Scatter& Scatter::yperiod(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return yperiod(std::move(f));
+}
 
 template <typename T>
 Scatter& Scatter::yperiod0(T f) {
     json["yperiod0"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Scatter& Scatter::yperiod0(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return yperiod0(std::move(f));
 }
 
 Scatter& Scatter::yperiodalignment(enum Yperiodalignment f) {
@@ -543,10 +915,22 @@ Scatter& Scatter::ysrc(std::string f) {
     json["ysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter& Scatter::ysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ysrc(std::move(f));
+}
 
 Scatter& Scatter::zorder(int f) {
     json["zorder"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter& Scatter::zorder(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return zorder(std::move(f));
 }
 
 std::string Scatter::Error_X::to_string(Type e) {
@@ -565,51 +949,111 @@ Scatter::Error_X& Scatter::Error_X::array(std::vector<T> f) {
     json["array"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Scatter::Error_X& Scatter::Error_X::array(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return array(std::move(f));
+}
 
 template <typename T, typename>
 Scatter::Error_X& Scatter::Error_X::arrayminus(std::vector<T> f) {
     json["arrayminus"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Scatter::Error_X& Scatter::Error_X::arrayminus(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return arrayminus(std::move(f));
+}
 
 Scatter::Error_X& Scatter::Error_X::arrayminussrc(std::string f) {
     json["arrayminussrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Error_X& Scatter::Error_X::arrayminussrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return arrayminussrc(std::move(f));
 }
 
 Scatter::Error_X& Scatter::Error_X::arraysrc(std::string f) {
     json["arraysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Error_X& Scatter::Error_X::arraysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return arraysrc(std::move(f));
+}
 
 Scatter::Error_X& Scatter::Error_X::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Error_X& Scatter::Error_X::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
 }
 
 Scatter::Error_X& Scatter::Error_X::copy_ystyle(bool f) {
     json["copy_ystyle"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Error_X& Scatter::Error_X::copy_ystyle(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return copy_ystyle(std::move(f));
+}
 
 Scatter::Error_X& Scatter::Error_X::symmetric(bool f) {
     json["symmetric"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Error_X& Scatter::Error_X::symmetric(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return symmetric(std::move(f));
 }
 
 Scatter::Error_X& Scatter::Error_X::thickness(double f) {
     json["thickness"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Error_X& Scatter::Error_X::thickness(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return thickness(std::move(f));
+}
 
 Scatter::Error_X& Scatter::Error_X::traceref(int f) {
     json["traceref"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Error_X& Scatter::Error_X::traceref(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return traceref(std::move(f));
+}
 
 Scatter::Error_X& Scatter::Error_X::tracerefminus(int f) {
     json["tracerefminus"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Error_X& Scatter::Error_X::tracerefminus(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return tracerefminus(std::move(f));
 }
 
 Scatter::Error_X& Scatter::Error_X::type(enum Type f) {
@@ -621,20 +1065,44 @@ Scatter::Error_X& Scatter::Error_X::value(double f) {
     json["value"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Error_X& Scatter::Error_X::value(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return value(std::move(f));
+}
 
 Scatter::Error_X& Scatter::Error_X::valueminus(double f) {
     json["valueminus"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Error_X& Scatter::Error_X::valueminus(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return valueminus(std::move(f));
 }
 
 Scatter::Error_X& Scatter::Error_X::visible(bool f) {
     json["visible"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Error_X& Scatter::Error_X::visible(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return visible(std::move(f));
+}
 
 Scatter::Error_X& Scatter::Error_X::width(double f) {
     json["width"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Error_X& Scatter::Error_X::width(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return width(std::move(f));
 }
 
 std::string Scatter::Error_Y::to_string(Type e) {
@@ -653,46 +1121,100 @@ Scatter::Error_Y& Scatter::Error_Y::array(std::vector<T> f) {
     json["array"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Scatter::Error_Y& Scatter::Error_Y::array(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return array(std::move(f));
+}
 
 template <typename T, typename>
 Scatter::Error_Y& Scatter::Error_Y::arrayminus(std::vector<T> f) {
     json["arrayminus"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Scatter::Error_Y& Scatter::Error_Y::arrayminus(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return arrayminus(std::move(f));
+}
 
 Scatter::Error_Y& Scatter::Error_Y::arrayminussrc(std::string f) {
     json["arrayminussrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Error_Y& Scatter::Error_Y::arrayminussrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return arrayminussrc(std::move(f));
 }
 
 Scatter::Error_Y& Scatter::Error_Y::arraysrc(std::string f) {
     json["arraysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Error_Y& Scatter::Error_Y::arraysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return arraysrc(std::move(f));
+}
 
 Scatter::Error_Y& Scatter::Error_Y::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Error_Y& Scatter::Error_Y::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
 }
 
 Scatter::Error_Y& Scatter::Error_Y::symmetric(bool f) {
     json["symmetric"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Error_Y& Scatter::Error_Y::symmetric(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return symmetric(std::move(f));
+}
 
 Scatter::Error_Y& Scatter::Error_Y::thickness(double f) {
     json["thickness"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Error_Y& Scatter::Error_Y::thickness(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return thickness(std::move(f));
 }
 
 Scatter::Error_Y& Scatter::Error_Y::traceref(int f) {
     json["traceref"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Error_Y& Scatter::Error_Y::traceref(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return traceref(std::move(f));
+}
 
 Scatter::Error_Y& Scatter::Error_Y::tracerefminus(int f) {
     json["tracerefminus"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Error_Y& Scatter::Error_Y::tracerefminus(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return tracerefminus(std::move(f));
 }
 
 Scatter::Error_Y& Scatter::Error_Y::type(enum Type f) {
@@ -704,20 +1226,44 @@ Scatter::Error_Y& Scatter::Error_Y::value(double f) {
     json["value"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Error_Y& Scatter::Error_Y::value(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return value(std::move(f));
+}
 
 Scatter::Error_Y& Scatter::Error_Y::valueminus(double f) {
     json["valueminus"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Error_Y& Scatter::Error_Y::valueminus(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return valueminus(std::move(f));
 }
 
 Scatter::Error_Y& Scatter::Error_Y::visible(bool f) {
     json["visible"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Error_Y& Scatter::Error_Y::visible(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return visible(std::move(f));
+}
 
 Scatter::Error_Y& Scatter::Error_Y::width(double f) {
     json["width"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Error_Y& Scatter::Error_Y::width(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return width(std::move(f));
 }
 
 std::string Scatter::Fillgradient::to_string(Type e) {
@@ -739,15 +1285,33 @@ Scatter::Fillgradient& Scatter::Fillgradient::colorscale(std::vector<std::pair<d
     json["colorscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Fillgradient& Scatter::Fillgradient::colorscale(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorscale(std::move(f));
+}
 
 Scatter::Fillgradient& Scatter::Fillgradient::start(double f) {
     json["start"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Fillgradient& Scatter::Fillgradient::start(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return start(std::move(f));
+}
 
 Scatter::Fillgradient& Scatter::Fillgradient::stop(double f) {
     json["stop"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Fillgradient& Scatter::Fillgradient::stop(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return stop(std::move(f));
 }
 
 Scatter::Fillgradient& Scatter::Fillgradient::type(enum Type f) {
@@ -768,6 +1332,12 @@ Scatter::Fillpattern& Scatter::Fillpattern::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Fillpattern& Scatter::Fillpattern::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
+}
 Scatter::Fillpattern& Scatter::Fillpattern::bgcolor(std::vector<std::string> f) {
     json["bgcolor"] = std::move(f);
     return *this;
@@ -777,10 +1347,22 @@ Scatter::Fillpattern& Scatter::Fillpattern::bgcolorsrc(std::string f) {
     json["bgcolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Fillpattern& Scatter::Fillpattern::bgcolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolorsrc(std::move(f));
+}
 
 Scatter::Fillpattern& Scatter::Fillpattern::fgcolor(std::string f) {
     json["fgcolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Fillpattern& Scatter::Fillpattern::fgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return fgcolor(std::move(f));
 }
 Scatter::Fillpattern& Scatter::Fillpattern::fgcolor(std::vector<std::string> f) {
     json["fgcolor"] = std::move(f);
@@ -791,10 +1373,22 @@ Scatter::Fillpattern& Scatter::Fillpattern::fgcolorsrc(std::string f) {
     json["fgcolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Fillpattern& Scatter::Fillpattern::fgcolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return fgcolorsrc(std::move(f));
+}
 
 Scatter::Fillpattern& Scatter::Fillpattern::fgopacity(double f) {
     json["fgopacity"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Fillpattern& Scatter::Fillpattern::fgopacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return fgopacity(std::move(f));
 }
 
 Scatter::Fillpattern& Scatter::Fillpattern::fillmode(enum Fillmode f) {
@@ -806,6 +1400,12 @@ Scatter::Fillpattern& Scatter::Fillpattern::shape(std::string f) {
     json["shape"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Fillpattern& Scatter::Fillpattern::shape(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shape(std::move(f));
+}
 Scatter::Fillpattern& Scatter::Fillpattern::shape(std::vector<std::string> f) {
     json["shape"] = std::move(f);
     return *this;
@@ -815,10 +1415,22 @@ Scatter::Fillpattern& Scatter::Fillpattern::shapesrc(std::string f) {
     json["shapesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Fillpattern& Scatter::Fillpattern::shapesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shapesrc(std::move(f));
+}
 
 Scatter::Fillpattern& Scatter::Fillpattern::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Fillpattern& Scatter::Fillpattern::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Scatter::Fillpattern& Scatter::Fillpattern::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -829,10 +1441,22 @@ Scatter::Fillpattern& Scatter::Fillpattern::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Fillpattern& Scatter::Fillpattern::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
+}
 
 Scatter::Fillpattern& Scatter::Fillpattern::solidity(double f) {
     json["solidity"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Fillpattern& Scatter::Fillpattern::solidity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return solidity(std::move(f));
 }
 Scatter::Fillpattern& Scatter::Fillpattern::solidity(std::vector<double> f) {
     json["solidity"] = std::move(f);
@@ -842,6 +1466,12 @@ Scatter::Fillpattern& Scatter::Fillpattern::solidity(std::vector<double> f) {
 Scatter::Fillpattern& Scatter::Fillpattern::soliditysrc(std::string f) {
     json["soliditysrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Fillpattern& Scatter::Fillpattern::soliditysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return soliditysrc(std::move(f));
 }
 
 std::string Scatter::Hoverlabel::to_string(Align e) {
@@ -869,10 +1499,22 @@ Scatter::Hoverlabel& Scatter::Hoverlabel::alignsrc(std::string f) {
     json["alignsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Hoverlabel& Scatter::Hoverlabel::alignsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return alignsrc(std::move(f));
+}
 
 Scatter::Hoverlabel& Scatter::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Hoverlabel& Scatter::Hoverlabel::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
 }
 Scatter::Hoverlabel& Scatter::Hoverlabel::bgcolor(std::vector<std::string> f) {
     json["bgcolor"] = std::move(f);
@@ -883,10 +1525,22 @@ Scatter::Hoverlabel& Scatter::Hoverlabel::bgcolorsrc(std::string f) {
     json["bgcolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Hoverlabel& Scatter::Hoverlabel::bgcolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolorsrc(std::move(f));
+}
 
 Scatter::Hoverlabel& Scatter::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Hoverlabel& Scatter::Hoverlabel::bordercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolor(std::move(f));
 }
 Scatter::Hoverlabel& Scatter::Hoverlabel::bordercolor(std::vector<std::string> f) {
     json["bordercolor"] = std::move(f);
@@ -897,15 +1551,33 @@ Scatter::Hoverlabel& Scatter::Hoverlabel::bordercolorsrc(std::string f) {
     json["bordercolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Hoverlabel& Scatter::Hoverlabel::bordercolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolorsrc(std::move(f));
+}
 
 Scatter::Hoverlabel& Scatter::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Hoverlabel& Scatter::Hoverlabel::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Scatter::Hoverlabel& Scatter::Hoverlabel::namelength(int f) {
     json["namelength"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Hoverlabel& Scatter::Hoverlabel::namelength(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return namelength(std::move(f));
 }
 Scatter::Hoverlabel& Scatter::Hoverlabel::namelength(std::vector<int> f) {
     json["namelength"] = std::move(f);
@@ -915,6 +1587,12 @@ Scatter::Hoverlabel& Scatter::Hoverlabel::namelength(std::vector<int> f) {
 Scatter::Hoverlabel& Scatter::Hoverlabel::namelengthsrc(std::string f) {
     json["namelengthsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Hoverlabel& Scatter::Hoverlabel::namelengthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return namelengthsrc(std::move(f));
 }
 
 std::string Scatter::Hoverlabel::Font::to_string(Style e) {
@@ -952,6 +1630,12 @@ Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
     return *this;
@@ -961,10 +1645,22 @@ Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::family(std::vector<std::string> f) {
     json["family"] = std::move(f);
@@ -975,10 +1671,22 @@ Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::familysrc(std::string f) {
     json["familysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::familysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return familysrc(std::move(f));
+}
 
 Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
 }
 Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
     json["lineposition"] = std::move(f);
@@ -989,10 +1697,22 @@ Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::linepositionsrc(std::strin
     json["linepositionsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::linepositionsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return linepositionsrc(std::move(f));
+}
 
 Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
 }
 Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::shadow(std::vector<std::string> f) {
     json["shadow"] = std::move(f);
@@ -1003,10 +1723,22 @@ Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::shadowsrc(std::string f) {
     json["shadowsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::shadowsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadowsrc(std::move(f));
+}
 
 Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -1016,6 +1748,12 @@ Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::size(std::vector<double> f
 Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
 }
 
 Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::style(enum Style f) {
@@ -1033,6 +1771,12 @@ Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::stylesrc(std::string f) {
     json["stylesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::stylesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return stylesrc(std::move(f));
+}
 
 Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::textcase(enum Textcase f) {
     json["textcase"] = to_string(f);
@@ -1048,6 +1792,12 @@ Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::textcase(const std::vector
 Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::textcasesrc(std::string f) {
     json["textcasesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::textcasesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textcasesrc(std::move(f));
 }
 
 Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::variant(enum Variant f) {
@@ -1065,10 +1815,22 @@ Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::variantsrc(std::string f) 
     json["variantsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::variantsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return variantsrc(std::move(f));
+}
 
 Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::weight(std::vector<int> f) {
     json["weight"] = std::move(f);
@@ -1079,16 +1841,34 @@ Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::weightsrc(std::string f) {
     json["weightsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Hoverlabel::Font& Scatter::Hoverlabel::Font::weightsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return weightsrc(std::move(f));
+}
 
 
 Scatter::Legendgrouptitle& Scatter::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Legendgrouptitle& Scatter::Legendgrouptitle::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Scatter::Legendgrouptitle& Scatter::Legendgrouptitle::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Legendgrouptitle& Scatter::Legendgrouptitle::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 
 std::string Scatter::Legendgrouptitle::Font::to_string(Style e) {
@@ -1126,25 +1906,55 @@ Scatter::Legendgrouptitle::Font& Scatter::Legendgrouptitle::Font::color(std::str
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Legendgrouptitle::Font& Scatter::Legendgrouptitle::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Scatter::Legendgrouptitle::Font& Scatter::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Legendgrouptitle::Font& Scatter::Legendgrouptitle::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Scatter::Legendgrouptitle::Font& Scatter::Legendgrouptitle::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Legendgrouptitle::Font& Scatter::Legendgrouptitle::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Scatter::Legendgrouptitle::Font& Scatter::Legendgrouptitle::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Legendgrouptitle::Font& Scatter::Legendgrouptitle::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Scatter::Legendgrouptitle::Font& Scatter::Legendgrouptitle::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Legendgrouptitle::Font& Scatter::Legendgrouptitle::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Scatter::Legendgrouptitle::Font& Scatter::Legendgrouptitle::Font::style(enum Style f) {
@@ -1166,6 +1976,12 @@ Scatter::Legendgrouptitle::Font& Scatter::Legendgrouptitle::Font::weight(int f) 
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Legendgrouptitle::Font& Scatter::Legendgrouptitle::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 std::string Scatter::Line::to_string(Shape e) {
     switch(e) {
@@ -1184,6 +2000,12 @@ Scatter::Line& Scatter::Line::backoff(double f) {
     json["backoff"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Line& Scatter::Line::backoff(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return backoff(std::move(f));
+}
 Scatter::Line& Scatter::Line::backoff(std::vector<double> f) {
     json["backoff"] = std::move(f);
     return *this;
@@ -1193,15 +2015,33 @@ Scatter::Line& Scatter::Line::backoffsrc(std::string f) {
     json["backoffsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Line& Scatter::Line::backoffsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return backoffsrc(std::move(f));
+}
 
 Scatter::Line& Scatter::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Line& Scatter::Line::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Scatter::Line& Scatter::Line::dash(std::string f) {
     json["dash"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Line& Scatter::Line::dash(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return dash(std::move(f));
 }
 
 Scatter::Line& Scatter::Line::shape(enum Shape f) {
@@ -1213,15 +2053,33 @@ Scatter::Line& Scatter::Line::simplify(bool f) {
     json["simplify"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Line& Scatter::Line::simplify(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return simplify(std::move(f));
+}
 
 Scatter::Line& Scatter::Line::smoothing(double f) {
     json["smoothing"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Line& Scatter::Line::smoothing(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return smoothing(std::move(f));
+}
 
 Scatter::Line& Scatter::Line::width(double f) {
     json["width"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Line& Scatter::Line::width(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return width(std::move(f));
 }
 
 std::string Scatter::Marker::to_string(Angleref e) {
@@ -1575,6 +2433,12 @@ Scatter::Marker& Scatter::Marker::angle(double f) {
     json["angle"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::angle(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return angle(std::move(f));
+}
 Scatter::Marker& Scatter::Marker::angle(std::vector<double> f) {
     json["angle"] = std::move(f);
     return *this;
@@ -1589,35 +2453,77 @@ Scatter::Marker& Scatter::Marker::anglesrc(std::string f) {
     json["anglesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::anglesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return anglesrc(std::move(f));
+}
 
 Scatter::Marker& Scatter::Marker::autocolorscale(bool f) {
     json["autocolorscale"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::autocolorscale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return autocolorscale(std::move(f));
 }
 
 Scatter::Marker& Scatter::Marker::cauto(bool f) {
     json["cauto"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::cauto(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return cauto(std::move(f));
+}
 
 Scatter::Marker& Scatter::Marker::cmax(double f) {
     json["cmax"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::cmax(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmax(std::move(f));
 }
 
 Scatter::Marker& Scatter::Marker::cmid(double f) {
     json["cmid"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::cmid(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmid(std::move(f));
+}
 
 Scatter::Marker& Scatter::Marker::cmin(double f) {
     json["cmin"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::cmin(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmin(std::move(f));
+}
 
 Scatter::Marker& Scatter::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
 }
 Scatter::Marker& Scatter::Marker::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
@@ -1628,10 +2534,22 @@ Scatter::Marker& Scatter::Marker::coloraxis(std::string f) {
     json["coloraxis"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::coloraxis(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return coloraxis(std::move(f));
+}
 
 Scatter::Marker& Scatter::Marker::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::colorbar(Callable&& c) {
+    Colorbar f{};
+    std::forward<Callable>(c)(f);
+    return colorbar(std::move(f));
 }
 
 Scatter::Marker& Scatter::Marker::colorscale(std::string f) {
@@ -1642,30 +2560,66 @@ Scatter::Marker& Scatter::Marker::colorscale(std::vector<std::pair<double, std::
     json["colorscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::colorscale(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorscale(std::move(f));
+}
 
 Scatter::Marker& Scatter::Marker::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
 }
 
 Scatter::Marker& Scatter::Marker::gradient(Gradient f) {
     json["gradient"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::gradient(Callable&& c) {
+    Gradient f{};
+    std::forward<Callable>(c)(f);
+    return gradient(std::move(f));
+}
 
 Scatter::Marker& Scatter::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::line(Callable&& c) {
+    Line f{};
+    std::forward<Callable>(c)(f);
+    return line(std::move(f));
 }
 
 Scatter::Marker& Scatter::Marker::maxdisplayed(double f) {
     json["maxdisplayed"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::maxdisplayed(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return maxdisplayed(std::move(f));
+}
 
 Scatter::Marker& Scatter::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::opacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return opacity(std::move(f));
 }
 Scatter::Marker& Scatter::Marker::opacity(std::vector<double> f) {
     json["opacity"] = std::move(f);
@@ -1676,20 +2630,44 @@ Scatter::Marker& Scatter::Marker::opacitysrc(std::string f) {
     json["opacitysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::opacitysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return opacitysrc(std::move(f));
+}
 
 Scatter::Marker& Scatter::Marker::reversescale(bool f) {
     json["reversescale"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::reversescale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return reversescale(std::move(f));
 }
 
 Scatter::Marker& Scatter::Marker::showscale(bool f) {
     json["showscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::showscale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showscale(std::move(f));
+}
 
 Scatter::Marker& Scatter::Marker::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Scatter::Marker& Scatter::Marker::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -1699,6 +2677,12 @@ Scatter::Marker& Scatter::Marker::size(std::vector<double> f) {
 Scatter::Marker& Scatter::Marker::sizemin(double f) {
     json["sizemin"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::sizemin(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return sizemin(std::move(f));
 }
 
 Scatter::Marker& Scatter::Marker::sizemode(enum Sizemode f) {
@@ -1710,15 +2694,33 @@ Scatter::Marker& Scatter::Marker::sizeref(double f) {
     json["sizeref"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::sizeref(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return sizeref(std::move(f));
+}
 
 Scatter::Marker& Scatter::Marker::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
+}
 
 Scatter::Marker& Scatter::Marker::standoff(double f) {
     json["standoff"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::standoff(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return standoff(std::move(f));
 }
 Scatter::Marker& Scatter::Marker::standoff(std::vector<double> f) {
     json["standoff"] = std::move(f);
@@ -1728,6 +2730,12 @@ Scatter::Marker& Scatter::Marker::standoff(std::vector<double> f) {
 Scatter::Marker& Scatter::Marker::standoffsrc(std::string f) {
     json["standoffsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::standoffsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return standoffsrc(std::move(f));
 }
 
 Scatter::Marker& Scatter::Marker::symbol(enum Symbol f) {
@@ -1744,6 +2752,12 @@ Scatter::Marker& Scatter::Marker::symbol(const std::vector<enum Symbol>& f) {
 Scatter::Marker& Scatter::Marker::symbolsrc(std::string f) {
     json["symbolsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker& Scatter::Marker::symbolsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return symbolsrc(std::move(f));
 }
 
 std::string Scatter::Marker::Colorbar::to_string(Exponentformat e) {
@@ -1893,21 +2907,45 @@ Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
+}
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::bordercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolor(std::move(f));
 }
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::borderwidth(double f) {
     json["borderwidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::borderwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return borderwidth(std::move(f));
+}
 
 template <typename T>
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::dtick(T f) {
     json["dtick"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::dtick(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return dtick(std::move(f));
 }
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::exponentformat(enum Exponentformat f) {
@@ -1920,10 +2958,22 @@ Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::labelalias(T f) {
     json["labelalias"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::labelalias(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return labelalias(std::move(f));
+}
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::len(double f) {
     json["len"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::len(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return len(std::move(f));
 }
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::lenmode(enum Lenmode f) {
@@ -1935,10 +2985,22 @@ Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::minexponent(double f) {
     json["minexponent"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::minexponent(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return minexponent(std::move(f));
+}
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::nticks(int f) {
     json["nticks"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::nticks(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return nticks(std::move(f));
 }
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::orientation(enum Orientation f) {
@@ -1950,15 +3012,33 @@ Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::outlinecolor(std::string f
     json["outlinecolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::outlinecolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return outlinecolor(std::move(f));
+}
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::outlinewidth(double f) {
     json["outlinewidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::outlinewidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return outlinewidth(std::move(f));
+}
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::separatethousands(bool f) {
     json["separatethousands"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::separatethousands(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return separatethousands(std::move(f));
 }
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::showexponent(enum Showexponent f) {
@@ -1969,6 +3049,12 @@ Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::showexponent(enum Showexpo
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::showticklabels(bool f) {
     json["showticklabels"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::showticklabels(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showticklabels(std::move(f));
 }
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::showtickprefix(enum Showtickprefix f) {
@@ -1985,6 +3071,12 @@ Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::thickness(double f) {
     json["thickness"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::thickness(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return thickness(std::move(f));
+}
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::thicknessmode(enum Thicknessmode f) {
     json["thicknessmode"] = to_string(f);
@@ -1996,30 +3088,66 @@ Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::tick0(T f) {
     json["tick0"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::tick0(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return tick0(std::move(f));
+}
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::tickangle(double f) {
     json["tickangle"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::tickangle(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return tickangle(std::move(f));
 }
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::tickcolor(std::string f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::tickcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickcolor(std::move(f));
+}
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::tickfont(Callable&& c) {
+    Tickfont f{};
+    std::forward<Callable>(c)(f);
+    return tickfont(std::move(f));
 }
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::tickformat(std::string f) {
     json["tickformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::tickformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickformat(std::move(f));
+}
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::tickformatstops(Callable&& c) {
+    Tickformatstops f{};
+    std::forward<Callable>(c)(f);
+    return tickformatstops(std::move(f));
 }
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::ticklabeloverflow(enum Ticklabeloverflow f) {
@@ -2036,10 +3164,22 @@ Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::ticklabelstep(int f) {
     json["ticklabelstep"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::ticklabelstep(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return ticklabelstep(std::move(f));
+}
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::ticklen(double f) {
     json["ticklen"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::ticklen(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return ticklen(std::move(f));
 }
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::tickmode(enum Tickmode f) {
@@ -2051,6 +3191,12 @@ Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::tickprefix(std::string f) 
     json["tickprefix"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::tickprefix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickprefix(std::move(f));
+}
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::ticks(enum Ticks f) {
     json["ticks"] = to_string(f);
@@ -2061,16 +3207,34 @@ Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::ticksuffix(std::string f) 
     json["ticksuffix"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::ticksuffix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ticksuffix(std::move(f));
+}
 
 template <typename T, typename>
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::ticktext(std::vector<T> f) {
     json["ticktext"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::ticktext(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return ticktext(std::move(f));
+}
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::ticktextsrc(std::string f) {
     json["ticktextsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::ticktextsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ticktextsrc(std::move(f));
 }
 
 template <typename T, typename>
@@ -2078,25 +3242,55 @@ Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::tickvals(std::vector<T> f)
     json["tickvals"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::tickvals(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return tickvals(std::move(f));
+}
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::tickvalssrc(std::string f) {
     json["tickvalssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::tickvalssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickvalssrc(std::move(f));
 }
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::tickwidth(double f) {
     json["tickwidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::tickwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return tickwidth(std::move(f));
+}
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::title(Callable&& c) {
+    Title f{};
+    std::forward<Callable>(c)(f);
+    return title(std::move(f));
+}
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::x(double f) {
     json["x"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::x(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return x(std::move(f));
 }
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::xanchor(enum Xanchor f) {
@@ -2108,6 +3302,12 @@ Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::xpad(double f) {
     json["xpad"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::xpad(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return xpad(std::move(f));
+}
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::xref(enum Xref f) {
     json["xref"] = to_string(f);
@@ -2118,6 +3318,12 @@ Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::y(double f) {
     json["y"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::y(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return y(std::move(f));
+}
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::yanchor(enum Yanchor f) {
     json["yanchor"] = to_string(f);
@@ -2127,6 +3333,12 @@ Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::yanchor(enum Yanchor f) {
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::ypad(double f) {
     json["ypad"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::ypad(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return ypad(std::move(f));
 }
 
 Scatter::Marker::Colorbar& Scatter::Marker::Colorbar::yref(enum Yref f) {
@@ -2169,25 +3381,55 @@ Scatter::Marker::Colorbar::Tickfont& Scatter::Marker::Colorbar::Tickfont::color(
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar::Tickfont& Scatter::Marker::Colorbar::Tickfont::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Scatter::Marker::Colorbar::Tickfont& Scatter::Marker::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Colorbar::Tickfont& Scatter::Marker::Colorbar::Tickfont::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Scatter::Marker::Colorbar::Tickfont& Scatter::Marker::Colorbar::Tickfont::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar::Tickfont& Scatter::Marker::Colorbar::Tickfont::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Scatter::Marker::Colorbar::Tickfont& Scatter::Marker::Colorbar::Tickfont::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar::Tickfont& Scatter::Marker::Colorbar::Tickfont::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Scatter::Marker::Colorbar::Tickfont& Scatter::Marker::Colorbar::Tickfont::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Colorbar::Tickfont& Scatter::Marker::Colorbar::Tickfont::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Scatter::Marker::Colorbar::Tickfont& Scatter::Marker::Colorbar::Tickfont::style(enum Style f) {
@@ -2209,11 +3451,23 @@ Scatter::Marker::Colorbar::Tickfont& Scatter::Marker::Colorbar::Tickfont::weight
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar::Tickfont& Scatter::Marker::Colorbar::Tickfont::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Scatter::Marker::Colorbar::Tickformatstops& Scatter::Marker::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Colorbar::Tickformatstops& Scatter::Marker::Colorbar::Tickformatstops::tickformatstop(Callable&& c) {
+    Tickformatstop f{};
+    std::forward<Callable>(c)(f);
+    return tickformatstop(std::move(f));
 }
 
 
@@ -2221,25 +3475,55 @@ Scatter::Marker::Colorbar::Tickformatstops::Tickformatstop& Scatter::Marker::Col
     json["dtickrange"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar::Tickformatstops::Tickformatstop& Scatter::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(Callable&& c) {
+    std::vector<double> f{};
+    std::forward<Callable>(c)(f);
+    return dtickrange(std::move(f));
+}
 
 Scatter::Marker::Colorbar::Tickformatstops::Tickformatstop& Scatter::Marker::Colorbar::Tickformatstops::Tickformatstop::enabled(bool f) {
     json["enabled"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Colorbar::Tickformatstops::Tickformatstop& Scatter::Marker::Colorbar::Tickformatstops::Tickformatstop::enabled(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return enabled(std::move(f));
 }
 
 Scatter::Marker::Colorbar::Tickformatstops::Tickformatstop& Scatter::Marker::Colorbar::Tickformatstops::Tickformatstop::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar::Tickformatstops::Tickformatstop& Scatter::Marker::Colorbar::Tickformatstops::Tickformatstop::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
+}
 
 Scatter::Marker::Colorbar::Tickformatstops::Tickformatstop& Scatter::Marker::Colorbar::Tickformatstops::Tickformatstop::templateitemname(std::string f) {
     json["templateitemname"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar::Tickformatstops::Tickformatstop& Scatter::Marker::Colorbar::Tickformatstops::Tickformatstop::templateitemname(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return templateitemname(std::move(f));
+}
 
 Scatter::Marker::Colorbar::Tickformatstops::Tickformatstop& Scatter::Marker::Colorbar::Tickformatstops::Tickformatstop::value(std::string f) {
     json["value"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Colorbar::Tickformatstops::Tickformatstop& Scatter::Marker::Colorbar::Tickformatstops::Tickformatstop::value(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return value(std::move(f));
 }
 
 std::string Scatter::Marker::Colorbar::Title::to_string(Side e) {
@@ -2256,6 +3540,12 @@ Scatter::Marker::Colorbar::Title& Scatter::Marker::Colorbar::Title::font(Font f)
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar::Title& Scatter::Marker::Colorbar::Title::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Scatter::Marker::Colorbar::Title& Scatter::Marker::Colorbar::Title::side(enum Side f) {
     json["side"] = to_string(f);
@@ -2265,6 +3555,12 @@ Scatter::Marker::Colorbar::Title& Scatter::Marker::Colorbar::Title::side(enum Si
 Scatter::Marker::Colorbar::Title& Scatter::Marker::Colorbar::Title::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Colorbar::Title& Scatter::Marker::Colorbar::Title::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 
 std::string Scatter::Marker::Colorbar::Title::Font::to_string(Style e) {
@@ -2302,25 +3598,55 @@ Scatter::Marker::Colorbar::Title::Font& Scatter::Marker::Colorbar::Title::Font::
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar::Title::Font& Scatter::Marker::Colorbar::Title::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Scatter::Marker::Colorbar::Title::Font& Scatter::Marker::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Colorbar::Title::Font& Scatter::Marker::Colorbar::Title::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Scatter::Marker::Colorbar::Title::Font& Scatter::Marker::Colorbar::Title::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar::Title::Font& Scatter::Marker::Colorbar::Title::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Scatter::Marker::Colorbar::Title::Font& Scatter::Marker::Colorbar::Title::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar::Title::Font& Scatter::Marker::Colorbar::Title::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Scatter::Marker::Colorbar::Title::Font& Scatter::Marker::Colorbar::Title::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Colorbar::Title::Font& Scatter::Marker::Colorbar::Title::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Scatter::Marker::Colorbar::Title::Font& Scatter::Marker::Colorbar::Title::Font::style(enum Style f) {
@@ -2342,6 +3668,12 @@ Scatter::Marker::Colorbar::Title::Font& Scatter::Marker::Colorbar::Title::Font::
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Colorbar::Title::Font& Scatter::Marker::Colorbar::Title::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 std::string Scatter::Marker::Gradient::to_string(Type e) {
     switch(e) {
@@ -2358,6 +3690,12 @@ Scatter::Marker::Gradient& Scatter::Marker::Gradient::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Gradient& Scatter::Marker::Gradient::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 Scatter::Marker::Gradient& Scatter::Marker::Gradient::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
     return *this;
@@ -2366,6 +3704,12 @@ Scatter::Marker::Gradient& Scatter::Marker::Gradient::color(std::vector<std::str
 Scatter::Marker::Gradient& Scatter::Marker::Gradient::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Gradient& Scatter::Marker::Gradient::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
 }
 
 Scatter::Marker::Gradient& Scatter::Marker::Gradient::type(enum Type f) {
@@ -2383,36 +3727,78 @@ Scatter::Marker::Gradient& Scatter::Marker::Gradient::typesrc(std::string f) {
     json["typesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Gradient& Scatter::Marker::Gradient::typesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return typesrc(std::move(f));
+}
 
 
 Scatter::Marker::Line& Scatter::Marker::Line::autocolorscale(bool f) {
     json["autocolorscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Line& Scatter::Marker::Line::autocolorscale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return autocolorscale(std::move(f));
+}
 
 Scatter::Marker::Line& Scatter::Marker::Line::cauto(bool f) {
     json["cauto"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Line& Scatter::Marker::Line::cauto(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return cauto(std::move(f));
 }
 
 Scatter::Marker::Line& Scatter::Marker::Line::cmax(double f) {
     json["cmax"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Line& Scatter::Marker::Line::cmax(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmax(std::move(f));
+}
 
 Scatter::Marker::Line& Scatter::Marker::Line::cmid(double f) {
     json["cmid"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Line& Scatter::Marker::Line::cmid(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmid(std::move(f));
 }
 
 Scatter::Marker::Line& Scatter::Marker::Line::cmin(double f) {
     json["cmin"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Line& Scatter::Marker::Line::cmin(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmin(std::move(f));
+}
 
 Scatter::Marker::Line& Scatter::Marker::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Line& Scatter::Marker::Line::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
 }
 Scatter::Marker::Line& Scatter::Marker::Line::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
@@ -2423,6 +3809,12 @@ Scatter::Marker::Line& Scatter::Marker::Line::coloraxis(std::string f) {
     json["coloraxis"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Line& Scatter::Marker::Line::coloraxis(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return coloraxis(std::move(f));
+}
 
 Scatter::Marker::Line& Scatter::Marker::Line::colorscale(std::string f) {
     json["colorscale"] = std::move(f);
@@ -2432,20 +3824,44 @@ Scatter::Marker::Line& Scatter::Marker::Line::colorscale(std::vector<std::pair<d
     json["colorscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Line& Scatter::Marker::Line::colorscale(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorscale(std::move(f));
+}
 
 Scatter::Marker::Line& Scatter::Marker::Line::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Line& Scatter::Marker::Line::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
 }
 
 Scatter::Marker::Line& Scatter::Marker::Line::reversescale(bool f) {
     json["reversescale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Line& Scatter::Marker::Line::reversescale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return reversescale(std::move(f));
+}
 
 Scatter::Marker::Line& Scatter::Marker::Line::width(double f) {
     json["width"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Marker::Line& Scatter::Marker::Line::width(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return width(std::move(f));
 }
 Scatter::Marker::Line& Scatter::Marker::Line::width(std::vector<double> f) {
     json["width"] = std::move(f);
@@ -2456,16 +3872,34 @@ Scatter::Marker::Line& Scatter::Marker::Line::widthsrc(std::string f) {
     json["widthsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Marker::Line& Scatter::Marker::Line::widthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return widthsrc(std::move(f));
+}
 
 
 Scatter::Selected& Scatter::Selected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Selected& Scatter::Selected::marker(Callable&& c) {
+    Marker f{};
+    std::forward<Callable>(c)(f);
+    return marker(std::move(f));
+}
 
 Scatter::Selected& Scatter::Selected::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Selected& Scatter::Selected::textfont(Callable&& c) {
+    Textfont f{};
+    std::forward<Callable>(c)(f);
+    return textfont(std::move(f));
 }
 
 
@@ -2473,15 +3907,33 @@ Scatter::Selected::Marker& Scatter::Selected::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Selected::Marker& Scatter::Selected::Marker::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Scatter::Selected::Marker& Scatter::Selected::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Selected::Marker& Scatter::Selected::Marker::opacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return opacity(std::move(f));
+}
 
 Scatter::Selected::Marker& Scatter::Selected::Marker::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Selected::Marker& Scatter::Selected::Marker::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 
@@ -2489,16 +3941,34 @@ Scatter::Selected::Textfont& Scatter::Selected::Textfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Selected::Textfont& Scatter::Selected::Textfont::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 
 Scatter::Stream& Scatter::Stream::maxpoints(double f) {
     json["maxpoints"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Stream& Scatter::Stream::maxpoints(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return maxpoints(std::move(f));
+}
 
 Scatter::Stream& Scatter::Stream::token(std::string f) {
     json["token"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Stream& Scatter::Stream::token(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return token(std::move(f));
 }
 
 std::string Scatter::Textfont::to_string(Style e) {
@@ -2536,6 +4006,12 @@ Scatter::Textfont& Scatter::Textfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Textfont& Scatter::Textfont::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 Scatter::Textfont& Scatter::Textfont::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
     return *this;
@@ -2545,10 +4021,22 @@ Scatter::Textfont& Scatter::Textfont::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Textfont& Scatter::Textfont::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Scatter::Textfont& Scatter::Textfont::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Textfont& Scatter::Textfont::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 Scatter::Textfont& Scatter::Textfont::family(std::vector<std::string> f) {
     json["family"] = std::move(f);
@@ -2559,10 +4047,22 @@ Scatter::Textfont& Scatter::Textfont::familysrc(std::string f) {
     json["familysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Textfont& Scatter::Textfont::familysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return familysrc(std::move(f));
+}
 
 Scatter::Textfont& Scatter::Textfont::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Textfont& Scatter::Textfont::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
 }
 Scatter::Textfont& Scatter::Textfont::lineposition(std::vector<std::string> f) {
     json["lineposition"] = std::move(f);
@@ -2573,10 +4073,22 @@ Scatter::Textfont& Scatter::Textfont::linepositionsrc(std::string f) {
     json["linepositionsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Textfont& Scatter::Textfont::linepositionsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return linepositionsrc(std::move(f));
+}
 
 Scatter::Textfont& Scatter::Textfont::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Textfont& Scatter::Textfont::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
 }
 Scatter::Textfont& Scatter::Textfont::shadow(std::vector<std::string> f) {
     json["shadow"] = std::move(f);
@@ -2587,10 +4099,22 @@ Scatter::Textfont& Scatter::Textfont::shadowsrc(std::string f) {
     json["shadowsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Textfont& Scatter::Textfont::shadowsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadowsrc(std::move(f));
+}
 
 Scatter::Textfont& Scatter::Textfont::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Textfont& Scatter::Textfont::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Scatter::Textfont& Scatter::Textfont::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -2600,6 +4124,12 @@ Scatter::Textfont& Scatter::Textfont::size(std::vector<double> f) {
 Scatter::Textfont& Scatter::Textfont::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Textfont& Scatter::Textfont::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
 }
 
 Scatter::Textfont& Scatter::Textfont::style(enum Style f) {
@@ -2617,6 +4147,12 @@ Scatter::Textfont& Scatter::Textfont::stylesrc(std::string f) {
     json["stylesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Textfont& Scatter::Textfont::stylesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return stylesrc(std::move(f));
+}
 
 Scatter::Textfont& Scatter::Textfont::textcase(enum Textcase f) {
     json["textcase"] = to_string(f);
@@ -2632,6 +4168,12 @@ Scatter::Textfont& Scatter::Textfont::textcase(const std::vector<enum Textcase>&
 Scatter::Textfont& Scatter::Textfont::textcasesrc(std::string f) {
     json["textcasesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Textfont& Scatter::Textfont::textcasesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textcasesrc(std::move(f));
 }
 
 Scatter::Textfont& Scatter::Textfont::variant(enum Variant f) {
@@ -2649,10 +4191,22 @@ Scatter::Textfont& Scatter::Textfont::variantsrc(std::string f) {
     json["variantsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Textfont& Scatter::Textfont::variantsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return variantsrc(std::move(f));
+}
 
 Scatter::Textfont& Scatter::Textfont::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Textfont& Scatter::Textfont::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 Scatter::Textfont& Scatter::Textfont::weight(std::vector<int> f) {
     json["weight"] = std::move(f);
@@ -2663,16 +4217,34 @@ Scatter::Textfont& Scatter::Textfont::weightsrc(std::string f) {
     json["weightsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Textfont& Scatter::Textfont::weightsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return weightsrc(std::move(f));
+}
 
 
 Scatter::Unselected& Scatter::Unselected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Unselected& Scatter::Unselected::marker(Callable&& c) {
+    Marker f{};
+    std::forward<Callable>(c)(f);
+    return marker(std::move(f));
+}
 
 Scatter::Unselected& Scatter::Unselected::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Unselected& Scatter::Unselected::textfont(Callable&& c) {
+    Textfont f{};
+    std::forward<Callable>(c)(f);
+    return textfont(std::move(f));
 }
 
 
@@ -2680,21 +4252,45 @@ Scatter::Unselected::Marker& Scatter::Unselected::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Unselected::Marker& Scatter::Unselected::Marker::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Scatter::Unselected::Marker& Scatter::Unselected::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Unselected::Marker& Scatter::Unselected::Marker::opacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return opacity(std::move(f));
 }
 
 Scatter::Unselected::Marker& Scatter::Unselected::Marker::size(double f) {
     json["size"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Scatter::Unselected::Marker& Scatter::Unselected::Marker::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
+}
 
 
 Scatter::Unselected::Textfont& Scatter::Unselected::Textfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Scatter::Unselected::Textfont& Scatter::Unselected::Textfont::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
 }
 
 } // namespace plotlypp

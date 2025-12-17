@@ -251,15 +251,26 @@ plotlypp::Figure genMultipleScatter() {
     //     .addTrace(std::move(scatter))
     //     .addTrace(std::move(scatter2))
     //     .setLayout(Layout{}.title(Layout::Title{}.text("Multi Scatter")));
-    using namespace std::string_literals;
-    return plotlypp::Figure()
-        .addTrace(std::move(scatter))
-        .addTrace(std::move(scatter2))
-        .setLayout(R"json({"title": {"text": "Multi Scatter"}})json"s);
+    // using namespace std::string_literals;
+    // return plotlypp::Figure()
+    //     .addTrace(std::move(scatter))
+    //     .addTrace(std::move(scatter2))
+    //     .setLayout(R"json({"title": {"text": "Multi Scatter"}})json"s);
+
+    return plotlypp::Figure().addTrace(std::move(scatter)).addTrace(std::move(scatter2)).setLayout([](auto& l) {
+        l.title([](auto& t) { t.text("Multi Scatter"); });
+    });
+
+    // return plotlypp::Figure()
+    //     .addTrace(std::move(scatter))
+    //     .addTrace(std::move(scatter2))
+    // .setLayout(Layout{}.title([](auto& t) { t.text("Multi Scatter"); }));
 
     // Layout.setAsJson(R"json({"title": "Multi Scatter"})json")
 
-    // return plotlypp::Figure().addTrace(std::move(scatter)).addTrace(std::move(scatter2)).setLayout([](auto& l) {
+    // return
+    // plotlypp::Figure().addTrace(std::move(scatter)).addTrace(std::move(scatter2)).setLayout([](auto&
+    // l) {
     //     l.title([](auto& t) { t.text("Multi Scatter"); })
     // });
 }

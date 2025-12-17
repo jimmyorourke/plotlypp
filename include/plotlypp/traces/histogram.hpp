@@ -143,42 +143,64 @@ class Histogram : public Trace {
     // Set several traces linked to the same position axis or matching axes to the same alignmentgroup. This controls
     // whether bars compute their positional range dependently or independently.
     Histogram& alignmentgroup(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& alignmentgroup(Callable&& c);
 
     // Obsolete: since v1.42 each bin attribute is auto-determined separately and `autobinx` is not needed. However, we
     // accept `autobinx: true` or `false` and will update `xbins` accordingly before deleting `autobinx` from the trace.
     Histogram& autobinx(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram& autobinx(Callable&& c);
 
     // Obsolete: since v1.42 each bin attribute is auto-determined separately and `autobiny` is not needed. However, we
     // accept `autobiny: true` or `false` and will update `ybins` accordingly before deleting `autobiny` from the trace.
     Histogram& autobiny(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram& autobiny(Callable&& c);
 
     // Set a group of histogram traces which will have compatible bin settings. Note that traces on the same subplot and
     // with the same *orientation* under `barmode` *stack*, *relative* and *group* are forced into the same bingroup,
     // Using `bingroup`, traces under `barmode` *overlay* and on different axes (of the same axis type) can have
     // compatible bin settings. Note that histogram and histogram2d* trace can share the same `bingroup`
     Histogram& bingroup(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& bingroup(Callable&& c);
 
     // Determines whether the text nodes are clipped about the subplot axes. To show the text nodes above axis lines and
     // tick labels, make sure to set `xaxis.layer` and `yaxis.layer` to *below traces*.
     Histogram& cliponaxis(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram& cliponaxis(Callable&& c);
 
     // Constrain the size of text inside or outside a bar to be no larger than the bar itself.
     // - Default: both
     Histogram& constraintext(enum Constraintext f);
 
     Histogram& cumulative(Cumulative f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Cumulative&>>>
+    Histogram& cumulative(Callable&& c);
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram& customdata(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Histogram& customdata(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Histogram& customdatasrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& customdatasrc(Callable&& c);
 
     Histogram& error_x(Error_X f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Error_X&>>>
+    Histogram& error_x(Callable&& c);
 
     Histogram& error_y(Error_Y f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Error_Y&>>>
+    Histogram& error_y(Callable&& c);
 
     // Specifies the binning function used for this histogram trace. If *count*, the histogram values are computed by
     // counting the number of values lying inside each bin. If *sum*, *avg*, *min*, *max*, the histogram values are
@@ -202,12 +224,18 @@ class Histogram : public Trace {
     // - Flags: ['x', 'y', 'z', 'text', 'name']
     // - Extras ['all', 'none', 'skip']
     Histogram& hoverinfo(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& hoverinfo(Callable&& c);
     Histogram& hoverinfo(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Histogram& hoverinfosrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& hoverinfosrc(Callable&& c);
 
     Histogram& hoverlabel(Hoverlabel f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Hoverlabel&>>>
+    Histogram& hoverlabel(Callable&& c);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -223,25 +251,39 @@ class Histogram : public Trace {
     // variable `binNumber` Anything contained in tag `<extra>` is displayed in the secondary box, for example
     // "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an empty tag `<extra></extra>`.
     Histogram& hovertemplate(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& hovertemplate(Callable&& c);
     Histogram& hovertemplate(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Histogram& hovertemplatesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& hovertemplatesrc(Callable&& c);
 
     // Same as `text`.
     Histogram& hovertext(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& hovertext(Callable&& c);
     Histogram& hovertext(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Histogram& hovertextsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& hovertextsrc(Callable&& c);
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram& ids(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Histogram& ids(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `ids`.
     Histogram& idssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& idssrc(Callable&& c);
 
     // Determines if texts are kept at center or start/end points in `textposition` *inside* mode.
     // - Default: end
@@ -249,16 +291,24 @@ class Histogram : public Trace {
 
     // Sets the font used for `text` lying inside the bar.
     Histogram& insidetextfont(Insidetextfont f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Insidetextfont&>>>
+    Histogram& insidetextfont(Callable&& c);
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
     Histogram& legend(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& legend(Callable&& c);
 
     // Sets the legend group for this trace. Traces and shapes part of the same legend group hide/show at the same time
     // when toggling legend items.
     Histogram& legendgroup(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& legendgroup(Callable&& c);
 
     Histogram& legendgrouptitle(Legendgrouptitle f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Legendgrouptitle&>>>
+    Histogram& legendgrouptitle(Callable&& c);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -266,11 +316,17 @@ class Histogram : public Trace {
     // after all unranked items. When having unranked or equal rank items shapes would be displayed after traces i.e.
     // according to their order in data and layout.
     Histogram& legendrank(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram& legendrank(Callable&& c);
 
     // Sets the width (in px or fraction) of the legend for this trace.
     Histogram& legendwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram& legendwidth(Callable&& c);
 
     Histogram& marker(Marker f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Marker&>>>
+    Histogram& marker(Callable&& c);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -280,31 +336,45 @@ class Histogram : public Trace {
     // trace index.
     template <typename T>
     Histogram& meta(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram& meta(Callable&& c);
     template <typename T>
     Histogram& meta(std::vector<T> f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Histogram& metasrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& metasrc(Callable&& c);
 
     // Sets the trace name. The trace name appears as the legend item and on hover.
     Histogram& name(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& name(Callable&& c);
 
     // Specifies the maximum number of desired bins. This value will be used in an algorithm that will decide the
     // optimal bin size such that the histogram best visualizes the distribution of the data. Ignored if `xbins.size` is
     // provided.
     Histogram& nbinsx(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram& nbinsx(Callable&& c);
 
     // Specifies the maximum number of desired bins. This value will be used in an algorithm that will decide the
     // optimal bin size such that the histogram best visualizes the distribution of the data. Ignored if `ybins.size` is
     // provided.
     Histogram& nbinsy(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram& nbinsy(Callable&& c);
 
     // Set several traces linked to the same position axis or matching axes to the same offsetgroup where bars of the
     // same position coordinate will line up.
     Histogram& offsetgroup(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& offsetgroup(Callable&& c);
 
     // Sets the opacity of the trace.
     Histogram& opacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram& opacity(Callable&& c);
 
     // Sets the orientation of the bars. With *v* (*h*), the value of the each bar spans along the vertical
     // (horizontal).
@@ -312,31 +382,47 @@ class Histogram : public Trace {
 
     // Sets the font used for `text` lying outside the bar.
     Histogram& outsidetextfont(Outsidetextfont f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Outsidetextfont&>>>
+    Histogram& outsidetextfont(Callable&& c);
 
     Histogram& selected(Selected f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Selected&>>>
+    Histogram& selected(Callable&& c);
 
     // Array containing integer indices of selected points. Has an effect only for traces that support selections. Note
     // that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any
     // other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
     template <typename T>
     Histogram& selectedpoints(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram& selectedpoints(Callable&& c);
 
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Histogram& showlegend(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram& showlegend(Callable&& c);
 
     Histogram& stream(Stream f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Stream&>>>
+    Histogram& stream(Callable&& c);
 
     // Sets hover text elements associated with each bar. If a single string, the same string appears over all bars. If
     // an array of string, the items are mapped in order to the this trace's coordinates.
     Histogram& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& text(Callable&& c);
     Histogram& text(std::vector<std::string> f);
 
     // Sets the angle of the tick labels with respect to the bar. For example, a `tickangle` of -90 draws the tick
     // labels vertically. With *auto* the texts may automatically be rotated to fit with the maximum size in bars.
     Histogram& textangle(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram& textangle(Callable&& c);
 
     // Sets the text font.
     Histogram& textfont(Textfont f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Textfont&>>>
+    Histogram& textfont(Callable&& c);
 
     // Specifies the location of the `text`. *inside* positions `text` inside, next to the bar end (rotated and scaled
     // if needed). *outside* positions `text` outside, next to the bar end (scaled if needed), unless there is another
@@ -347,6 +433,8 @@ class Histogram : public Trace {
 
     // Sets the source reference on Chart Studio Cloud for `text`.
     Histogram& textsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& textsrc(Callable&& c);
 
     // Template string used for rendering the information text that appear on points. Note that this will override
     // `textinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using
@@ -357,10 +445,14 @@ class Histogram : public Trace {
     // attributes that can be specified per-point (the ones that are `arrayOk: true`) are available. Finally, the
     // template string has access to variables `label` and `value`.
     Histogram& texttemplate(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& texttemplate(Callable&& c);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
     Histogram& uid(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& uid(Callable&& c);
 
     // Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well
     // as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note
@@ -372,8 +464,12 @@ class Histogram : public Trace {
     // still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
     template <typename T>
     Histogram& uirevision(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram& uirevision(Callable&& c);
 
     Histogram& unselected(Unselected f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Unselected&>>>
+    Histogram& unselected(Callable&& c);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -383,12 +479,20 @@ class Histogram : public Trace {
     // Sets the sample data to be binned on the x axis.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram& x(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Histogram& x(Callable&& c);
 
     // Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x
     // coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
     Histogram& xaxis(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& xaxis(Callable&& c);
 
     Histogram& xbins(Xbins f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Xbins&>>>
+    Histogram& xbins(Callable&& c);
 
     // Sets the calendar system to use with `x` date data.
     // - Default: gregorian
@@ -401,19 +505,31 @@ class Histogram : public Trace {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `xaxis.hoverformat`.
     Histogram& xhoverformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& xhoverformat(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `x`.
     Histogram& xsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& xsrc(Callable&& c);
 
     // Sets the sample data to be binned on the y axis.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram& y(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Histogram& y(Callable&& c);
 
     // Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y
     // coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
     Histogram& yaxis(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& yaxis(Callable&& c);
 
     Histogram& ybins(Ybins f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Ybins&>>>
+    Histogram& ybins(Callable&& c);
 
     // Sets the calendar system to use with `y` date data.
     // - Default: gregorian
@@ -426,13 +542,19 @@ class Histogram : public Trace {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `yaxis.hoverformat`.
     Histogram& yhoverformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& yhoverformat(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `y`.
     Histogram& ysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram& ysrc(Callable&& c);
 
     // Sets the layer on which this trace is displayed, relative to other SVG traces on the same subplot. SVG traces
     // with higher `zorder` appear in front of those with lower `zorder`.
     Histogram& zorder(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram& zorder(Callable&& c);
 };
 
 class Histogram::Cumulative {
@@ -471,6 +593,8 @@ class Histogram::Cumulative {
     // as their equivalents without *density*: ** and *density* both rise to the number of data points, and
     // *probability* and *probability density* both rise to the number of sample points.
     Histogram::Cumulative& enabled(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram::Cumulative& enabled(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -493,33 +617,57 @@ class Histogram::Error_X {
     // Sets the data corresponding the length of each error bar. Values are plotted relative to the underlying data.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram::Error_X& array(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Histogram::Error_X& array(Callable&& c);
 
     // Sets the data corresponding the length of each error bar in the bottom (left) direction for vertical (horizontal)
     // bars Values are plotted relative to the underlying data.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram::Error_X& arrayminus(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Histogram::Error_X& arrayminus(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `arrayminus`.
     Histogram::Error_X& arrayminussrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Error_X& arrayminussrc(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `array`.
     Histogram::Error_X& arraysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Error_X& arraysrc(Callable&& c);
 
     // Sets the stroke color of the error bars.
     Histogram::Error_X& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Error_X& color(Callable&& c);
 
     Histogram::Error_X& copy_ystyle(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram::Error_X& copy_ystyle(Callable&& c);
 
     // Determines whether or not the error bars have the same length in both direction (top/bottom for vertical bars,
     // left/right for horizontal bars.
     Histogram::Error_X& symmetric(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram::Error_X& symmetric(Callable&& c);
 
     // Sets the thickness (in px) of the error bars.
     Histogram::Error_X& thickness(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Error_X& thickness(Callable&& c);
 
     Histogram::Error_X& traceref(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram::Error_X& traceref(Callable&& c);
 
     Histogram::Error_X& tracerefminus(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram::Error_X& tracerefminus(Callable&& c);
 
     // Determines the rule used to generate the error bars. If *constant`, the bar lengths are of a constant value. Set
     // this constant in `value`. If *percent*, the bar lengths correspond to a percentage of underlying data. Set this
@@ -530,17 +678,25 @@ class Histogram::Error_X {
     // Sets the value of either the percentage (if `type` is set to *percent*) or the constant (if `type` is set to
     // *constant*) corresponding to the lengths of the error bars.
     Histogram::Error_X& value(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Error_X& value(Callable&& c);
 
     // Sets the value of either the percentage (if `type` is set to *percent*) or the constant (if `type` is set to
     // *constant*) corresponding to the lengths of the error bars in the bottom (left) direction for vertical
     // (horizontal) bars
     Histogram::Error_X& valueminus(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Error_X& valueminus(Callable&& c);
 
     // Determines whether or not this set of error bars is visible.
     Histogram::Error_X& visible(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram::Error_X& visible(Callable&& c);
 
     // Sets the width (in px) of the cross-bar at both ends of the error bars.
     Histogram::Error_X& width(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Error_X& width(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -563,31 +719,53 @@ class Histogram::Error_Y {
     // Sets the data corresponding the length of each error bar. Values are plotted relative to the underlying data.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram::Error_Y& array(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Histogram::Error_Y& array(Callable&& c);
 
     // Sets the data corresponding the length of each error bar in the bottom (left) direction for vertical (horizontal)
     // bars Values are plotted relative to the underlying data.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram::Error_Y& arrayminus(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Histogram::Error_Y& arrayminus(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `arrayminus`.
     Histogram::Error_Y& arrayminussrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Error_Y& arrayminussrc(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `array`.
     Histogram::Error_Y& arraysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Error_Y& arraysrc(Callable&& c);
 
     // Sets the stroke color of the error bars.
     Histogram::Error_Y& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Error_Y& color(Callable&& c);
 
     // Determines whether or not the error bars have the same length in both direction (top/bottom for vertical bars,
     // left/right for horizontal bars.
     Histogram::Error_Y& symmetric(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram::Error_Y& symmetric(Callable&& c);
 
     // Sets the thickness (in px) of the error bars.
     Histogram::Error_Y& thickness(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Error_Y& thickness(Callable&& c);
 
     Histogram::Error_Y& traceref(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram::Error_Y& traceref(Callable&& c);
 
     Histogram::Error_Y& tracerefminus(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram::Error_Y& tracerefminus(Callable&& c);
 
     // Determines the rule used to generate the error bars. If *constant`, the bar lengths are of a constant value. Set
     // this constant in `value`. If *percent*, the bar lengths correspond to a percentage of underlying data. Set this
@@ -598,17 +776,25 @@ class Histogram::Error_Y {
     // Sets the value of either the percentage (if `type` is set to *percent*) or the constant (if `type` is set to
     // *constant*) corresponding to the lengths of the error bars.
     Histogram::Error_Y& value(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Error_Y& value(Callable&& c);
 
     // Sets the value of either the percentage (if `type` is set to *percent*) or the constant (if `type` is set to
     // *constant*) corresponding to the lengths of the error bars in the bottom (left) direction for vertical
     // (horizontal) bars
     Histogram::Error_Y& valueminus(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Error_Y& valueminus(Callable&& c);
 
     // Determines whether or not this set of error bars is visible.
     Histogram::Error_Y& visible(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram::Error_Y& visible(Callable&& c);
 
     // Sets the width (in px) of the cross-bar at both ends of the error bars.
     Histogram::Error_Y& width(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Error_Y& width(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -638,33 +824,49 @@ class Histogram::Hoverlabel {
 
     // Sets the source reference on Chart Studio Cloud for `align`.
     Histogram::Hoverlabel& alignsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Hoverlabel& alignsrc(Callable&& c);
 
     // Sets the background color of the hover labels for this trace
     Histogram::Hoverlabel& bgcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Hoverlabel& bgcolor(Callable&& c);
     Histogram::Hoverlabel& bgcolor(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Histogram::Hoverlabel& bgcolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Hoverlabel& bgcolorsrc(Callable&& c);
 
     // Sets the border color of the hover labels for this trace.
     Histogram::Hoverlabel& bordercolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Hoverlabel& bordercolor(Callable&& c);
     Histogram::Hoverlabel& bordercolor(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Histogram::Hoverlabel& bordercolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Hoverlabel& bordercolorsrc(Callable&& c);
 
     // Sets the font used in hover labels.
     Histogram::Hoverlabel& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Histogram::Hoverlabel& font(Callable&& c);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
     // name if it is less than that many characters, but if it is longer, will truncate to `namelength - 3` characters
     // and add an ellipsis.
     Histogram::Hoverlabel& namelength(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram::Hoverlabel& namelength(Callable&& c);
     Histogram::Hoverlabel& namelength(std::vector<int> f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Histogram::Hoverlabel& namelengthsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Hoverlabel& namelengthsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -702,10 +904,14 @@ class Histogram::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Histogram::Hoverlabel::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Hoverlabel::Font& color(Callable&& c);
     Histogram::Hoverlabel::Font& color(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Histogram::Hoverlabel::Font& colorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Hoverlabel::Font& colorsrc(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -715,10 +921,14 @@ class Histogram::Hoverlabel::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Histogram::Hoverlabel::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Hoverlabel::Font& family(Callable&& c);
     Histogram::Hoverlabel::Font& family(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Histogram::Hoverlabel::Font& familysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Hoverlabel::Font& familysrc(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -726,24 +936,36 @@ class Histogram::Hoverlabel::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Histogram::Hoverlabel::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Hoverlabel::Font& lineposition(Callable&& c);
     Histogram::Hoverlabel::Font& lineposition(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Histogram::Hoverlabel::Font& linepositionsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Hoverlabel::Font& linepositionsrc(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Histogram::Hoverlabel::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Hoverlabel::Font& shadow(Callable&& c);
     Histogram::Hoverlabel::Font& shadow(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Histogram::Hoverlabel::Font& shadowsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Hoverlabel::Font& shadowsrc(Callable&& c);
 
     Histogram::Hoverlabel::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Hoverlabel::Font& size(Callable&& c);
     Histogram::Hoverlabel::Font& size(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Histogram::Hoverlabel::Font& sizesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Hoverlabel::Font& sizesrc(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -752,6 +974,8 @@ class Histogram::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `style`.
     Histogram::Hoverlabel::Font& stylesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Hoverlabel::Font& stylesrc(Callable&& c);
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
@@ -761,6 +985,8 @@ class Histogram::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `textcase`.
     Histogram::Hoverlabel::Font& textcasesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Hoverlabel::Font& textcasesrc(Callable&& c);
 
     // Sets the variant of the font.
     // - Default: normal
@@ -769,13 +995,19 @@ class Histogram::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `variant`.
     Histogram::Hoverlabel::Font& variantsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Hoverlabel::Font& variantsrc(Callable&& c);
 
     // Sets the weight (or boldness) of the font.
     Histogram::Hoverlabel::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram::Hoverlabel::Font& weight(Callable&& c);
     Histogram::Hoverlabel::Font& weight(std::vector<int> f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Histogram::Hoverlabel::Font& weightsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Hoverlabel::Font& weightsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -813,6 +1045,8 @@ class Histogram::Insidetextfont {
     static std::string to_string(Variant e);
 
     Histogram::Insidetextfont& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Insidetextfont& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -822,6 +1056,8 @@ class Histogram::Insidetextfont {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Histogram::Insidetextfont& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Insidetextfont& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -829,12 +1065,18 @@ class Histogram::Insidetextfont {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Histogram::Insidetextfont& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Insidetextfont& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Histogram::Insidetextfont& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Insidetextfont& shadow(Callable&& c);
 
     Histogram::Insidetextfont& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Insidetextfont& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -851,6 +1093,8 @@ class Histogram::Insidetextfont {
 
     // Sets the weight (or boldness) of the font.
     Histogram::Insidetextfont& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram::Insidetextfont& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -867,9 +1111,13 @@ class Histogram::Legendgrouptitle {
 
     // Sets this legend group's title font.
     Histogram::Legendgrouptitle& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Histogram::Legendgrouptitle& font(Callable&& c);
 
     // Sets the title of the legend group.
     Histogram::Legendgrouptitle& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Legendgrouptitle& text(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -907,6 +1155,8 @@ class Histogram::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Histogram::Legendgrouptitle::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Legendgrouptitle::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -916,6 +1166,8 @@ class Histogram::Legendgrouptitle::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Histogram::Legendgrouptitle::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Legendgrouptitle::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -923,12 +1175,18 @@ class Histogram::Legendgrouptitle::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Histogram::Legendgrouptitle::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Legendgrouptitle::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Histogram::Legendgrouptitle::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Legendgrouptitle::Font& shadow(Callable&& c);
 
     Histogram::Legendgrouptitle::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Legendgrouptitle::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -945,6 +1203,8 @@ class Histogram::Legendgrouptitle::Font {
 
     // Sets the weight (or boldness) of the font.
     Histogram::Legendgrouptitle::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram::Legendgrouptitle::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -966,36 +1226,52 @@ class Histogram::Marker {
     // unspecified or `autocolorscale` is true, the default palette will be chosen according to whether numbers in the
     // `color` array are all positive, all negative or mixed.
     Histogram::Marker& autocolorscale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram::Marker& autocolorscale(Callable&& c);
 
     // Determines whether or not the color domain is computed with respect to the input data (here in `marker.color`) or
     // the bounds set in `marker.cmin` and `marker.cmax` Has an effect only if in `marker.color` is set to a numerical
     // array. Defaults to `false` when `marker.cmin` and `marker.cmax` are set by the user.
     Histogram::Marker& cauto(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram::Marker& cauto(Callable&& c);
 
     // Sets the upper bound of the color domain. Has an effect only if in `marker.color` is set to a numerical array.
     // Value should have the same units as in `marker.color` and if set, `marker.cmin` must be set as well.
     Histogram::Marker& cmax(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker& cmax(Callable&& c);
 
     // Sets the mid-point of the color domain by scaling `marker.cmin` and/or `marker.cmax` to be equidistant to this
     // point. Has an effect only if in `marker.color` is set to a numerical array. Value should have the same units as
     // in `marker.color`. Has no effect when `marker.cauto` is `false`.
     Histogram::Marker& cmid(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker& cmid(Callable&& c);
 
     // Sets the lower bound of the color domain. Has an effect only if in `marker.color` is set to a numerical array.
     // Value should have the same units as in `marker.color` and if set, `marker.cmax` must be set as well.
     Histogram::Marker& cmin(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker& cmin(Callable&& c);
 
     // Sets the marker color. It accepts either a specific color or an array of numbers that are mapped to the
     // colorscale relative to the max and min values of the array or relative to `marker.cmin` and `marker.cmax` if set.
     Histogram::Marker& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker& color(Callable&& c);
     Histogram::Marker& color(std::vector<std::string> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Histogram::Marker& coloraxis(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker& coloraxis(Callable&& c);
 
     Histogram::Marker& colorbar(Colorbar f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Colorbar&>>>
+    Histogram::Marker& colorbar(Callable&& c);
 
     // Sets the colorscale. Has an effect only if in `marker.color` is set to a numerical array. The colorscale must be
     // an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At
@@ -1005,36 +1281,56 @@ class Histogram::Marker {
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Histogram::Marker& colorscale(std::string f);
     Histogram::Marker& colorscale(std::vector<std::pair<double, std::string>> f);
+    template <typename Callable,
+              typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
+                                          std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
+    Histogram::Marker& colorscale(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Histogram::Marker& colorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker& colorsrc(Callable&& c);
 
     // Sets the rounding of corners. May be an integer number of pixels, or a percentage of bar width (as a string
     // ending in %). Defaults to `layout.barcornerradius`. In stack or relative barmode, the first trace to set
     // cornerradius is used for the whole stack.
     template <typename T>
     Histogram::Marker& cornerradius(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram::Marker& cornerradius(Callable&& c);
 
     Histogram::Marker& line(Line f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Line&>>>
+    Histogram::Marker& line(Callable&& c);
 
     // Sets the opacity of the bars.
     Histogram::Marker& opacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker& opacity(Callable&& c);
     Histogram::Marker& opacity(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `opacity`.
     Histogram::Marker& opacitysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker& opacitysrc(Callable&& c);
 
     // Sets the pattern within the marker.
     Histogram::Marker& pattern(Pattern f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Pattern&>>>
+    Histogram::Marker& pattern(Callable&& c);
 
     // Reverses the color mapping if true. Has an effect only if in `marker.color` is set to a numerical array. If true,
     // `marker.cmin` will correspond to the last color in the array and `marker.cmax` will correspond to the first
     // color.
     Histogram::Marker& reversescale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram::Marker& reversescale(Callable&& c);
 
     // Determines whether or not a colorbar is displayed for this trace. Has an effect only if in `marker.color` is set
     // to a numerical array.
     Histogram::Marker& showscale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram::Marker& showscale(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1165,12 +1461,18 @@ class Histogram::Marker::Colorbar {
 
     // Sets the color of padded area.
     Histogram::Marker::Colorbar& bgcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Colorbar& bgcolor(Callable&& c);
 
     // Sets the axis line color.
     Histogram::Marker::Colorbar& bordercolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Colorbar& bordercolor(Callable&& c);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Histogram::Marker::Colorbar& borderwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker::Colorbar& borderwidth(Callable&& c);
 
     // Sets the step in-between ticks on this axis. Use with `tick0`. Must be a positive number, or special strings
     // available to *log* and *date* axes. If the axis `type` is *log*, then ticks are set every 10^(n*dtick) where n is
@@ -1186,6 +1488,8 @@ class Histogram::Marker::Colorbar {
     // set `dtick` to *M48*
     template <typename T>
     Histogram::Marker::Colorbar& dtick(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram::Marker::Colorbar& dtick(Callable&& c);
 
     // Determines a formatting rule for the tick exponents. For example, consider the number 1,000,000,000. If *none*,
     // it appears as 1,000,000,000. If *e*, 1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super script). If *SI*,
@@ -1200,10 +1504,14 @@ class Histogram::Marker::Colorbar {
     // values (if desired) can include html-like tags or MathJax.
     template <typename T>
     Histogram::Marker::Colorbar& labelalias(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram::Marker::Colorbar& labelalias(Callable&& c);
 
     // Sets the length of the color bar This measure excludes the padding of both ends. That is, the color bar length is
     // this length minus the padding on both ends.
     Histogram::Marker::Colorbar& len(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker::Colorbar& len(Callable&& c);
 
     // Determines whether this color bar's length (i.e. the measure in the color variation direction) is set in units of
     // plot *fraction* or in *pixels. Use `len` to set the value.
@@ -1212,10 +1520,14 @@ class Histogram::Marker::Colorbar {
 
     // Hide SI prefix for 10^n if |n| is below this number. This only has an effect when `tickformat` is *SI* or *B*.
     Histogram::Marker::Colorbar& minexponent(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker::Colorbar& minexponent(Callable&& c);
 
     // Specifies the maximum number of ticks for the particular axis. The actual number of ticks will be chosen
     // automatically to be less than or equal to `nticks`. Has an effect only if `tickmode` is set to *auto*.
     Histogram::Marker::Colorbar& nticks(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram::Marker::Colorbar& nticks(Callable&& c);
 
     // Sets the orientation of the colorbar.
     // - Default: v
@@ -1223,12 +1535,18 @@ class Histogram::Marker::Colorbar {
 
     // Sets the axis line color.
     Histogram::Marker::Colorbar& outlinecolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Colorbar& outlinecolor(Callable&& c);
 
     // Sets the width (in px) of the axis line.
     Histogram::Marker::Colorbar& outlinewidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker::Colorbar& outlinewidth(Callable&& c);
 
     // If "true", even 4-digit integers are separated
     Histogram::Marker::Colorbar& separatethousands(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram::Marker::Colorbar& separatethousands(Callable&& c);
 
     // If *all*, all exponents are shown besides their significands. If *first*, only the exponent of the first tick is
     // shown. If *last*, only the exponent of the last tick is shown. If *none*, no exponents appear.
@@ -1237,6 +1555,8 @@ class Histogram::Marker::Colorbar {
 
     // Determines whether or not the tick labels are drawn.
     Histogram::Marker::Colorbar& showticklabels(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram::Marker::Colorbar& showticklabels(Callable&& c);
 
     // If *all*, all tick labels are displayed with a prefix. If *first*, only the first tick is displayed with a
     // prefix. If *last*, only the last tick is displayed with a suffix. If *none*, tick prefixes are hidden.
@@ -1249,6 +1569,8 @@ class Histogram::Marker::Colorbar {
 
     // Sets the thickness of the color bar This measure excludes the size of the padding, ticks and labels.
     Histogram::Marker::Colorbar& thickness(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker::Colorbar& thickness(Callable&& c);
 
     // Determines whether this color bar's thickness (i.e. the measure in the constant color direction) is set in units
     // of plot *fraction* or in *pixels*. Use `thickness` to set the value.
@@ -1262,16 +1584,24 @@ class Histogram::Marker::Colorbar {
     // serial number from zero in the order it appears.
     template <typename T>
     Histogram::Marker::Colorbar& tick0(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram::Marker::Colorbar& tick0(Callable&& c);
 
     // Sets the angle of the tick labels with respect to the horizontal. For example, a `tickangle` of -90 draws the
     // tick labels vertically.
     Histogram::Marker::Colorbar& tickangle(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker::Colorbar& tickangle(Callable&& c);
 
     // Sets the tick color.
     Histogram::Marker::Colorbar& tickcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Colorbar& tickcolor(Callable&& c);
 
     // Sets the color bar's tick label font
     Histogram::Marker::Colorbar& tickfont(Tickfont f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickfont&>>>
+    Histogram::Marker::Colorbar& tickfont(Callable&& c);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -1279,8 +1609,12 @@ class Histogram::Marker::Colorbar {
     // half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example,
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Histogram::Marker::Colorbar& tickformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Colorbar& tickformat(Callable&& c);
 
     Histogram::Marker::Colorbar& tickformatstops(Tickformatstops f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickformatstops&>>>
+    Histogram::Marker::Colorbar& tickformatstops(Callable&& c);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -1296,9 +1630,13 @@ class Histogram::Marker::Colorbar {
     // labeled. `tick0` determines which labels are shown. Not implemented for axes with `type` *log* or
     // *multicategory*, or when `tickmode` is *array*.
     Histogram::Marker::Colorbar& ticklabelstep(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram::Marker::Colorbar& ticklabelstep(Callable&& c);
 
     // Sets the tick length (in px).
     Histogram::Marker::Colorbar& ticklen(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker::Colorbar& ticklen(Callable&& c);
 
     // Sets the tick mode for this axis. If *auto*, the number of ticks is set via `nticks`. If *linear*, the placement
     // of the ticks is determined by a starting position `tick0` and a tick step `dtick` (*linear* is the default value
@@ -1308,6 +1646,8 @@ class Histogram::Marker::Colorbar {
 
     // Sets a tick label prefix.
     Histogram::Marker::Colorbar& tickprefix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Colorbar& tickprefix(Callable&& c);
 
     // Determines whether ticks are drawn or not. If **, this axis' ticks are not drawn. If *outside* (*inside*), this
     // axis' are drawn outside (inside) the axis lines.
@@ -1316,33 +1656,53 @@ class Histogram::Marker::Colorbar {
 
     // Sets a tick label suffix.
     Histogram::Marker::Colorbar& ticksuffix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Colorbar& ticksuffix(Callable&& c);
 
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram::Marker::Colorbar& ticktext(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Histogram::Marker::Colorbar& ticktext(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `ticktext`.
     Histogram::Marker::Colorbar& ticktextsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Colorbar& ticktextsrc(Callable&& c);
 
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram::Marker::Colorbar& tickvals(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Histogram::Marker::Colorbar& tickvals(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `tickvals`.
     Histogram::Marker::Colorbar& tickvalssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Colorbar& tickvalssrc(Callable&& c);
 
     // Sets the tick width (in px).
     Histogram::Marker::Colorbar& tickwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker::Colorbar& tickwidth(Callable&& c);
 
     Histogram::Marker::Colorbar& title(Title f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Title&>>>
+    Histogram::Marker::Colorbar& title(Callable&& c);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
     // when `orientation` is *v* and 0.5 when `orientation` is *h*. Must be between *0* and *1* if `xref` is *container*
     // and between *-2* and *3* if `xref` is *paper*.
     Histogram::Marker::Colorbar& x(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker::Colorbar& x(Callable&& c);
 
     // Sets this color bar's horizontal position anchor. This anchor binds the `x` position to the *left*, *center* or
     // *right* of the color bar. Defaults to *left* when `orientation` is *v* and *center* when `orientation` is *h*.
@@ -1350,6 +1710,8 @@ class Histogram::Marker::Colorbar {
 
     // Sets the amount of padding (in px) along the x direction.
     Histogram::Marker::Colorbar& xpad(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker::Colorbar& xpad(Callable&& c);
 
     // Sets the container `x` refers to. *container* spans the entire `width` of the plot. *paper* refers to the width
     // of the plotting area only.
@@ -1361,6 +1723,8 @@ class Histogram::Marker::Colorbar {
     // when `orientation` is *v* and 1 when `orientation` is *h*. Must be between *0* and *1* if `yref` is *container*
     // and between *-2* and *3* if `yref` is *paper*.
     Histogram::Marker::Colorbar& y(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker::Colorbar& y(Callable&& c);
 
     // Sets this color bar's vertical position anchor This anchor binds the `y` position to the *top*, *middle* or
     // *bottom* of the color bar. Defaults to *middle* when `orientation` is *v* and *bottom* when `orientation` is *h*.
@@ -1368,6 +1732,8 @@ class Histogram::Marker::Colorbar {
 
     // Sets the amount of padding (in px) along the y direction.
     Histogram::Marker::Colorbar& ypad(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker::Colorbar& ypad(Callable&& c);
 
     // Sets the container `y` refers to. *container* spans the entire `height` of the plot. *paper* refers to the height
     // of the plotting area only.
@@ -1410,6 +1776,8 @@ class Histogram::Marker::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Histogram::Marker::Colorbar::Tickfont& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Colorbar::Tickfont& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1419,6 +1787,8 @@ class Histogram::Marker::Colorbar::Tickfont {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Histogram::Marker::Colorbar::Tickfont& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Colorbar::Tickfont& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -1426,12 +1796,18 @@ class Histogram::Marker::Colorbar::Tickfont {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Histogram::Marker::Colorbar::Tickfont& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Colorbar::Tickfont& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Histogram::Marker::Colorbar::Tickfont& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Colorbar::Tickfont& shadow(Callable&& c);
 
     Histogram::Marker::Colorbar::Tickfont& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker::Colorbar::Tickfont& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1448,6 +1824,8 @@ class Histogram::Marker::Colorbar::Tickfont {
 
     // Sets the weight (or boldness) of the font.
     Histogram::Marker::Colorbar::Tickfont& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram::Marker::Colorbar::Tickfont& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1462,6 +1840,8 @@ class Histogram::Marker::Colorbar::Tickformatstops {
     class Tickformatstop;
 
     Histogram::Marker::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickformatstop&>>>
+    Histogram::Marker::Colorbar::Tickformatstops& tickformatstop(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1476,15 +1856,21 @@ class Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop {
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
     Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
+    Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& enabled(Callable&& c);
 
     // When used in a template, named items are created in the output figure in addition to any items the figure already
     // has in this array. You can modify these items in the output figure by making your own item with
     // `templateitemname` matching this `name` alongside your modifications (including `visible: false` or `enabled:
     // false` to hide it). Has no effect outside of a template.
     Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& name(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& name(Callable&& c);
 
     // Used to refer to a named item in this array in the template. Named items from the template will be created even
     // without a matching item in the input figure, but you can modify one by making an item with `templateitemname`
@@ -1492,9 +1878,13 @@ class Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop {
     // there is no template or no matching item, this item will be hidden unless you explicitly show it with `visible:
     // true`.
     Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& templateitemname(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& templateitemname(Callable&& c);
 
     // string - dtickformat for described zoom level, the same as *tickformat*
     Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& value(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1518,6 +1908,8 @@ class Histogram::Marker::Colorbar::Title {
 
     // Sets this color bar's title font.
     Histogram::Marker::Colorbar::Title& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Histogram::Marker::Colorbar::Title& font(Callable&& c);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -1525,6 +1917,8 @@ class Histogram::Marker::Colorbar::Title {
 
     // Sets the title of the color bar.
     Histogram::Marker::Colorbar::Title& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Colorbar::Title& text(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1562,6 +1956,8 @@ class Histogram::Marker::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Histogram::Marker::Colorbar::Title::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Colorbar::Title::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1571,6 +1967,8 @@ class Histogram::Marker::Colorbar::Title::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Histogram::Marker::Colorbar::Title::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Colorbar::Title::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -1578,12 +1976,18 @@ class Histogram::Marker::Colorbar::Title::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Histogram::Marker::Colorbar::Title::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Colorbar::Title::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Histogram::Marker::Colorbar::Title::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Colorbar::Title::Font& shadow(Callable&& c);
 
     Histogram::Marker::Colorbar::Title::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker::Colorbar::Title::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1600,6 +2004,8 @@ class Histogram::Marker::Colorbar::Title::Font {
 
     // Sets the weight (or boldness) of the font.
     Histogram::Marker::Colorbar::Title::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram::Marker::Colorbar::Title::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1616,38 +2022,52 @@ class Histogram::Marker::Line {
     // `colorscale` is unspecified or `autocolorscale` is true, the default palette will be chosen according to whether
     // numbers in the `color` array are all positive, all negative or mixed.
     Histogram::Marker::Line& autocolorscale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram::Marker::Line& autocolorscale(Callable&& c);
 
     // Determines whether or not the color domain is computed with respect to the input data (here in
     // `marker.line.color`) or the bounds set in `marker.line.cmin` and `marker.line.cmax` Has an effect only if in
     // `marker.line.color` is set to a numerical array. Defaults to `false` when `marker.line.cmin` and
     // `marker.line.cmax` are set by the user.
     Histogram::Marker::Line& cauto(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram::Marker::Line& cauto(Callable&& c);
 
     // Sets the upper bound of the color domain. Has an effect only if in `marker.line.color` is set to a numerical
     // array. Value should have the same units as in `marker.line.color` and if set, `marker.line.cmin` must be set as
     // well.
     Histogram::Marker::Line& cmax(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker::Line& cmax(Callable&& c);
 
     // Sets the mid-point of the color domain by scaling `marker.line.cmin` and/or `marker.line.cmax` to be equidistant
     // to this point. Has an effect only if in `marker.line.color` is set to a numerical array. Value should have the
     // same units as in `marker.line.color`. Has no effect when `marker.line.cauto` is `false`.
     Histogram::Marker::Line& cmid(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker::Line& cmid(Callable&& c);
 
     // Sets the lower bound of the color domain. Has an effect only if in `marker.line.color` is set to a numerical
     // array. Value should have the same units as in `marker.line.color` and if set, `marker.line.cmax` must be set as
     // well.
     Histogram::Marker::Line& cmin(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker::Line& cmin(Callable&& c);
 
     // Sets the marker.line color. It accepts either a specific color or an array of numbers that are mapped to the
     // colorscale relative to the max and min values of the array or relative to `marker.line.cmin` and
     // `marker.line.cmax` if set.
     Histogram::Marker::Line& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Line& color(Callable&& c);
     Histogram::Marker::Line& color(std::vector<std::string> f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Histogram::Marker::Line& coloraxis(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Line& coloraxis(Callable&& c);
 
     // Sets the colorscale. Has an effect only if in `marker.line.color` is set to a numerical array. The colorscale
     // must be an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color
@@ -1658,21 +2078,33 @@ class Histogram::Marker::Line {
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Histogram::Marker::Line& colorscale(std::string f);
     Histogram::Marker::Line& colorscale(std::vector<std::pair<double, std::string>> f);
+    template <typename Callable,
+              typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
+                                          std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
+    Histogram::Marker::Line& colorscale(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Histogram::Marker::Line& colorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Line& colorsrc(Callable&& c);
 
     // Reverses the color mapping if true. Has an effect only if in `marker.line.color` is set to a numerical array. If
     // true, `marker.line.cmin` will correspond to the last color in the array and `marker.line.cmax` will correspond to
     // the first color.
     Histogram::Marker::Line& reversescale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram::Marker::Line& reversescale(Callable&& c);
 
     // Sets the width (in px) of the lines bounding the marker points.
     Histogram::Marker::Line& width(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker::Line& width(Callable&& c);
     Histogram::Marker::Line& width(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `width`.
     Histogram::Marker::Line& widthsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Line& widthsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1694,22 +2126,32 @@ class Histogram::Marker::Pattern {
     // When there is no colorscale sets the color of background pattern fill. Defaults to a `marker.color` background
     // when `fillmode` is *overlay*. Otherwise, defaults to a transparent background.
     Histogram::Marker::Pattern& bgcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Pattern& bgcolor(Callable&& c);
     Histogram::Marker::Pattern& bgcolor(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Histogram::Marker::Pattern& bgcolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Pattern& bgcolorsrc(Callable&& c);
 
     // When there is no colorscale sets the color of foreground pattern fill. Defaults to a `marker.color` background
     // when `fillmode` is *replace*. Otherwise, defaults to dark grey or white to increase contrast with the `bgcolor`.
     Histogram::Marker::Pattern& fgcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Pattern& fgcolor(Callable&& c);
     Histogram::Marker::Pattern& fgcolor(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `fgcolor`.
     Histogram::Marker::Pattern& fgcolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Pattern& fgcolorsrc(Callable&& c);
 
     // Sets the opacity of the foreground pattern fill. Defaults to a 0.5 when `fillmode` is *overlay*. Otherwise,
     // defaults to 1.
     Histogram::Marker::Pattern& fgopacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker::Pattern& fgopacity(Callable&& c);
 
     // Determines whether `marker.color` should be used as a default to `bgcolor` or a `fgcolor`.
     // - Default: replace
@@ -1717,27 +2159,39 @@ class Histogram::Marker::Pattern {
 
     // Sets the shape of the pattern fill. By default, no pattern is used for filling the area.
     Histogram::Marker::Pattern& shape(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Pattern& shape(Callable&& c);
     Histogram::Marker::Pattern& shape(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `shape`.
     Histogram::Marker::Pattern& shapesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Pattern& shapesrc(Callable&& c);
 
     // Sets the size of unit squares of the pattern fill in pixels, which corresponds to the interval of repetition of
     // the pattern.
     Histogram::Marker::Pattern& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker::Pattern& size(Callable&& c);
     Histogram::Marker::Pattern& size(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Histogram::Marker::Pattern& sizesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Pattern& sizesrc(Callable&& c);
 
     // Sets the solidity of the pattern fill. Solidity is roughly the fraction of the area filled by the pattern.
     // Solidity of 0 shows only the background color without pattern and solidty of 1 shows only the foreground color
     // without pattern.
     Histogram::Marker::Pattern& solidity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Marker::Pattern& solidity(Callable&& c);
     Histogram::Marker::Pattern& solidity(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `solidity`.
     Histogram::Marker::Pattern& soliditysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Marker::Pattern& soliditysrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1775,6 +2229,8 @@ class Histogram::Outsidetextfont {
     static std::string to_string(Variant e);
 
     Histogram::Outsidetextfont& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Outsidetextfont& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1784,6 +2240,8 @@ class Histogram::Outsidetextfont {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Histogram::Outsidetextfont& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Outsidetextfont& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -1791,12 +2249,18 @@ class Histogram::Outsidetextfont {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Histogram::Outsidetextfont& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Outsidetextfont& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Histogram::Outsidetextfont& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Outsidetextfont& shadow(Callable&& c);
 
     Histogram::Outsidetextfont& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Outsidetextfont& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1813,6 +2277,8 @@ class Histogram::Outsidetextfont {
 
     // Sets the weight (or boldness) of the font.
     Histogram::Outsidetextfont& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram::Outsidetextfont& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1828,8 +2294,12 @@ class Histogram::Selected {
     class Textfont;
 
     Histogram::Selected& marker(Marker f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Marker&>>>
+    Histogram::Selected& marker(Callable&& c);
 
     Histogram::Selected& textfont(Textfont f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Textfont&>>>
+    Histogram::Selected& textfont(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1843,9 +2313,13 @@ class Histogram::Selected::Marker {
 
     // Sets the marker color of selected points.
     Histogram::Selected::Marker& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Selected::Marker& color(Callable&& c);
 
     // Sets the marker opacity of selected points.
     Histogram::Selected::Marker& opacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Selected::Marker& opacity(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1859,6 +2333,8 @@ class Histogram::Selected::Textfont {
 
     // Sets the text font color of selected points.
     Histogram::Selected::Textfont& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Selected::Textfont& color(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1873,10 +2349,14 @@ class Histogram::Stream {
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
     Histogram::Stream& maxpoints(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Stream& maxpoints(Callable&& c);
 
     // The stream id number links a data trace on a plot with a stream. See https://chart-studio.plotly.com/settings for
     // more details.
     Histogram::Stream& token(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Stream& token(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1914,6 +2394,8 @@ class Histogram::Textfont {
     static std::string to_string(Variant e);
 
     Histogram::Textfont& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Textfont& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1923,6 +2405,8 @@ class Histogram::Textfont {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Histogram::Textfont& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Textfont& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -1930,12 +2414,18 @@ class Histogram::Textfont {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Histogram::Textfont& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Textfont& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Histogram::Textfont& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Textfont& shadow(Callable&& c);
 
     Histogram::Textfont& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Textfont& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1952,6 +2442,8 @@ class Histogram::Textfont {
 
     // Sets the weight (or boldness) of the font.
     Histogram::Textfont& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram::Textfont& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1967,8 +2459,12 @@ class Histogram::Unselected {
     class Textfont;
 
     Histogram::Unselected& marker(Marker f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Marker&>>>
+    Histogram::Unselected& marker(Callable&& c);
 
     Histogram::Unselected& textfont(Textfont f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Textfont&>>>
+    Histogram::Unselected& textfont(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1982,9 +2478,13 @@ class Histogram::Unselected::Marker {
 
     // Sets the marker color of unselected points, applied only when a selection exists.
     Histogram::Unselected::Marker& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Unselected::Marker& color(Callable&& c);
 
     // Sets the marker opacity of unselected points, applied only when a selection exists.
     Histogram::Unselected::Marker& opacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram::Unselected::Marker& opacity(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1998,6 +2498,8 @@ class Histogram::Unselected::Textfont {
 
     // Sets the text font color of unselected points, applied only when a selection exists.
     Histogram::Unselected::Textfont& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram::Unselected::Textfont& color(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -2014,6 +2516,8 @@ class Histogram::Xbins {
     // dates use a date string, and for category data `end` is based on the category serial numbers.
     template <typename T>
     Histogram::Xbins& end(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram::Xbins& end(Callable&& c);
 
     // Sets the size of each x axis bin. Default behavior: If `nbinsx` is 0 or omitted, we choose a nice round bin size
     // such that the number of bins is about the same as the typical number of samples in each bin. If `nbinsx` is
@@ -2024,6 +2528,8 @@ class Histogram::Xbins {
     // described above.
     template <typename T>
     Histogram::Xbins& size(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram::Xbins& size(Callable&& c);
 
     // Sets the starting value for the x axis bins. Defaults to the minimum data value, shifted down if necessary to
     // make nice round values and to remove ambiguous bin edges. For example, if most of the data is integers we shift
@@ -2035,6 +2541,8 @@ class Histogram::Xbins {
     // bins.
     template <typename T>
     Histogram::Xbins& start(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram::Xbins& start(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -2051,6 +2559,8 @@ class Histogram::Ybins {
     // dates use a date string, and for category data `end` is based on the category serial numbers.
     template <typename T>
     Histogram::Ybins& end(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram::Ybins& end(Callable&& c);
 
     // Sets the size of each y axis bin. Default behavior: If `nbinsy` is 0 or omitted, we choose a nice round bin size
     // such that the number of bins is about the same as the typical number of samples in each bin. If `nbinsy` is
@@ -2061,6 +2571,8 @@ class Histogram::Ybins {
     // described above.
     template <typename T>
     Histogram::Ybins& size(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram::Ybins& size(Callable&& c);
 
     // Sets the starting value for the y axis bins. Defaults to the minimum data value, shifted down if necessary to
     // make nice round values and to remove ambiguous bin edges. For example, if most of the data is integers we shift
@@ -2072,6 +2584,8 @@ class Histogram::Ybins {
     // bins.
     template <typename T>
     Histogram::Ybins& start(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram::Ybins& start(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

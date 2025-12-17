@@ -51,31 +51,47 @@ class Volume : public Trace {
     // `colorscale`. In case `colorscale` is unspecified or `autocolorscale` is true, the default palette will be chosen
     // according to whether numbers in the `color` array are all positive, all negative or mixed.
     Volume& autocolorscale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Volume& autocolorscale(Callable&& c);
 
     Volume& caps(Caps f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Caps&>>>
+    Volume& caps(Callable&& c);
 
     // Determines whether or not the color domain is computed with respect to the input data (here `value`) or the
     // bounds set in `cmin` and `cmax` Defaults to `false` when `cmin` and `cmax` are set by the user.
     Volume& cauto(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Volume& cauto(Callable&& c);
 
     // Sets the upper bound of the color domain. Value should have the same units as `value` and if set, `cmin` must be
     // set as well.
     Volume& cmax(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume& cmax(Callable&& c);
 
     // Sets the mid-point of the color domain by scaling `cmin` and/or `cmax` to be equidistant to this point. Value
     // should have the same units as `value`. Has no effect when `cauto` is `false`.
     Volume& cmid(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume& cmid(Callable&& c);
 
     // Sets the lower bound of the color domain. Value should have the same units as `value` and if set, `cmax` must be
     // set as well.
     Volume& cmin(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume& cmin(Callable&& c);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Volume& coloraxis(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& coloraxis(Callable&& c);
 
     Volume& colorbar(Colorbar f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Colorbar&>>>
+    Volume& colorbar(Callable&& c);
 
     // Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb,
     // rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are
@@ -85,20 +101,34 @@ class Volume : public Trace {
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Volume& colorscale(std::string f);
     Volume& colorscale(std::vector<std::pair<double, std::string>> f);
+    template <typename Callable,
+              typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
+                                          std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
+    Volume& colorscale(Callable&& c);
 
     Volume& contour(Contour f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Contour&>>>
+    Volume& contour(Callable&& c);
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Volume& customdata(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Volume& customdata(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Volume& customdatasrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& customdatasrc(Callable&& c);
 
     // Determines whether or not normal smoothing is applied to the meshes, creating meshes with an angular, low-poly
     // look via flat reflections.
     Volume& flatshading(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Volume& flatshading(Callable&& c);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -106,12 +136,18 @@ class Volume : public Trace {
     // - Flags: ['x', 'y', 'z', 'text', 'name']
     // - Extras ['all', 'none', 'skip']
     Volume& hoverinfo(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& hoverinfo(Callable&& c);
     Volume& hoverinfo(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Volume& hoverinfosrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& hoverinfosrc(Callable&& c);
 
     Volume& hoverlabel(Hoverlabel f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Hoverlabel&>>>
+    Volume& hoverlabel(Callable&& c);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -127,41 +163,65 @@ class Volume : public Trace {
     // displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box
     // completely, use an empty tag `<extra></extra>`.
     Volume& hovertemplate(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& hovertemplate(Callable&& c);
     Volume& hovertemplate(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Volume& hovertemplatesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& hovertemplatesrc(Callable&& c);
 
     // Same as `text`.
     Volume& hovertext(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& hovertext(Callable&& c);
     Volume& hovertext(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Volume& hovertextsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& hovertextsrc(Callable&& c);
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Volume& ids(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Volume& ids(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `ids`.
     Volume& idssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& idssrc(Callable&& c);
 
     // Sets the maximum boundary for iso-surface plot.
     Volume& isomax(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume& isomax(Callable&& c);
 
     // Sets the minimum boundary for iso-surface plot.
     Volume& isomin(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume& isomin(Callable&& c);
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
     Volume& legend(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& legend(Callable&& c);
 
     // Sets the legend group for this trace. Traces and shapes part of the same legend group hide/show at the same time
     // when toggling legend items.
     Volume& legendgroup(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& legendgroup(Callable&& c);
 
     Volume& legendgrouptitle(Legendgrouptitle f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Legendgrouptitle&>>>
+    Volume& legendgrouptitle(Callable&& c);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -169,13 +229,21 @@ class Volume : public Trace {
     // after all unranked items. When having unranked or equal rank items shapes would be displayed after traces i.e.
     // according to their order in data and layout.
     Volume& legendrank(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume& legendrank(Callable&& c);
 
     // Sets the width (in px or fraction) of the legend for this trace.
     Volume& legendwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume& legendwidth(Callable&& c);
 
     Volume& lighting(Lighting f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Lighting&>>>
+    Volume& lighting(Callable&& c);
 
     Volume& lightposition(Lightposition f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Lightposition&>>>
+    Volume& lightposition(Callable&& c);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -185,20 +253,28 @@ class Volume : public Trace {
     // trace index.
     template <typename T>
     Volume& meta(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Volume& meta(Callable&& c);
     template <typename T>
     Volume& meta(std::vector<T> f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Volume& metasrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& metasrc(Callable&& c);
 
     // Sets the trace name. The trace name appears as the legend item and on hover.
     Volume& name(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& name(Callable&& c);
 
     // Sets the opacity of the surface. Please note that in the case of using high `opacity` values for example a value
     // greater than or equal to 0.5 on two surfaces (and 0.25 with four surfaces), an overlay of multiple transparent
     // surfaces may not perfectly be sorted in depth by the webgl API. This behavior may be improved in the near future
     // and is subject to change.
     Volume& opacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume& opacity(Callable&& c);
 
     // Sets the opacityscale. The opacityscale must be an array containing arrays mapping a normalized value to an
     // opacity value. At minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0,
@@ -207,41 +283,65 @@ class Volume : public Trace {
     // 'min', 'max', 'extremes' and 'uniform'. The default is 'uniform'.
     template <typename T>
     Volume& opacityscale(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Volume& opacityscale(Callable&& c);
 
     // Reverses the color mapping if true. If true, `cmin` will correspond to the last color in the array and `cmax`
     // will correspond to the first color.
     Volume& reversescale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Volume& reversescale(Callable&& c);
 
     // Sets a reference between this trace's 3D coordinate system and a 3D scene. If *scene* (the default value), the
     // (x,y,z) coordinates refer to `layout.scene`. If *scene2*, the (x,y,z) coordinates refer to `layout.scene2`, and
     // so on.
     Volume& scene(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& scene(Callable&& c);
 
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Volume& showlegend(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Volume& showlegend(Callable&& c);
 
     // Determines whether or not a colorbar is displayed for this trace.
     Volume& showscale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Volume& showscale(Callable&& c);
 
     Volume& slices(Slices f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Slices&>>>
+    Volume& slices(Callable&& c);
 
     Volume& spaceframe(Spaceframe f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Spaceframe&>>>
+    Volume& spaceframe(Callable&& c);
 
     Volume& stream(Stream f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Stream&>>>
+    Volume& stream(Callable&& c);
 
     Volume& surface(Surface f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Surface&>>>
+    Volume& surface(Callable&& c);
 
     // Sets the text elements associated with the vertices. If trace `hoverinfo` contains a *text* flag and *hovertext*
     // is not set, these elements will be seen in the hover labels.
     Volume& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& text(Callable&& c);
     Volume& text(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `text`.
     Volume& textsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& textsrc(Callable&& c);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
     Volume& uid(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& uid(Callable&& c);
 
     // Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well
     // as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note
@@ -253,18 +353,28 @@ class Volume : public Trace {
     // still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
     template <typename T>
     Volume& uirevision(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Volume& uirevision(Callable&& c);
 
     // Sets the 4th dimension (value) of the vertices.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Volume& value(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Volume& value(Callable&& c);
 
     // Sets the hover text formatting rulefor `value`  using d3 formatting mini-languages which are very similar to
     // those in Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format.By default the values
     // are formatted using generic number format.
     Volume& valuehoverformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& valuehoverformat(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `value`.
     Volume& valuesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& valuesrc(Callable&& c);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -274,6 +384,10 @@ class Volume : public Trace {
     // Sets the X coordinates of the vertices on X axis.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Volume& x(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Volume& x(Callable&& c);
 
     // Sets the hover text formatting rulefor `x`  using d3 formatting mini-languages which are very similar to those in
     // Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -282,13 +396,21 @@ class Volume : public Trace {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `xaxis.hoverformat`.
     Volume& xhoverformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& xhoverformat(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `x`.
     Volume& xsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& xsrc(Callable&& c);
 
     // Sets the Y coordinates of the vertices on Y axis.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Volume& y(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Volume& y(Callable&& c);
 
     // Sets the hover text formatting rulefor `y`  using d3 formatting mini-languages which are very similar to those in
     // Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -297,13 +419,21 @@ class Volume : public Trace {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `yaxis.hoverformat`.
     Volume& yhoverformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& yhoverformat(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `y`.
     Volume& ysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& ysrc(Callable&& c);
 
     // Sets the Z coordinates of the vertices on Z axis.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Volume& z(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Volume& z(Callable&& c);
 
     // Sets the hover text formatting rulefor `z`  using d3 formatting mini-languages which are very similar to those in
     // Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -312,9 +442,13 @@ class Volume : public Trace {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `zaxis.hoverformat`.
     Volume& zhoverformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& zhoverformat(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `z`.
     Volume& zsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume& zsrc(Callable&& c);
 };
 
 class Volume::Caps {
@@ -328,10 +462,16 @@ class Volume::Caps {
     class Z;
 
     Volume::Caps& x(X f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, X&>>>
+    Volume::Caps& x(Callable&& c);
 
     Volume::Caps& y(Y f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Y&>>>
+    Volume::Caps& y(Callable&& c);
 
     Volume::Caps& z(Z f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Z&>>>
+    Volume::Caps& z(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -347,11 +487,15 @@ class Volume::Caps::X {
     // shaded. On the other hand Applying a `fill` ratio less than one would allow the creation of openings parallel to
     // the edges.
     Volume::Caps::X& fill(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Caps::X& fill(Callable&& c);
 
     // Sets the fill ratio of the `slices`. The default fill value of the x `slices` is 1 meaning that they are entirely
     // shaded. On the other hand Applying a `fill` ratio less than one would allow the creation of openings parallel to
     // the edges.
     Volume::Caps::X& show(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Volume::Caps::X& show(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -367,11 +511,15 @@ class Volume::Caps::Y {
     // shaded. On the other hand Applying a `fill` ratio less than one would allow the creation of openings parallel to
     // the edges.
     Volume::Caps::Y& fill(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Caps::Y& fill(Callable&& c);
 
     // Sets the fill ratio of the `slices`. The default fill value of the y `slices` is 1 meaning that they are entirely
     // shaded. On the other hand Applying a `fill` ratio less than one would allow the creation of openings parallel to
     // the edges.
     Volume::Caps::Y& show(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Volume::Caps::Y& show(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -387,11 +535,15 @@ class Volume::Caps::Z {
     // shaded. On the other hand Applying a `fill` ratio less than one would allow the creation of openings parallel to
     // the edges.
     Volume::Caps::Z& fill(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Caps::Z& fill(Callable&& c);
 
     // Sets the fill ratio of the `slices`. The default fill value of the z `slices` is 1 meaning that they are entirely
     // shaded. On the other hand Applying a `fill` ratio less than one would allow the creation of openings parallel to
     // the edges.
     Volume::Caps::Z& show(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Volume::Caps::Z& show(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -522,12 +674,18 @@ class Volume::Colorbar {
 
     // Sets the color of padded area.
     Volume::Colorbar& bgcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Colorbar& bgcolor(Callable&& c);
 
     // Sets the axis line color.
     Volume::Colorbar& bordercolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Colorbar& bordercolor(Callable&& c);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Volume::Colorbar& borderwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Colorbar& borderwidth(Callable&& c);
 
     // Sets the step in-between ticks on this axis. Use with `tick0`. Must be a positive number, or special strings
     // available to *log* and *date* axes. If the axis `type` is *log*, then ticks are set every 10^(n*dtick) where n is
@@ -543,6 +701,8 @@ class Volume::Colorbar {
     // set `dtick` to *M48*
     template <typename T>
     Volume::Colorbar& dtick(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Volume::Colorbar& dtick(Callable&& c);
 
     // Determines a formatting rule for the tick exponents. For example, consider the number 1,000,000,000. If *none*,
     // it appears as 1,000,000,000. If *e*, 1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super script). If *SI*,
@@ -557,10 +717,14 @@ class Volume::Colorbar {
     // values (if desired) can include html-like tags or MathJax.
     template <typename T>
     Volume::Colorbar& labelalias(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Volume::Colorbar& labelalias(Callable&& c);
 
     // Sets the length of the color bar This measure excludes the padding of both ends. That is, the color bar length is
     // this length minus the padding on both ends.
     Volume::Colorbar& len(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Colorbar& len(Callable&& c);
 
     // Determines whether this color bar's length (i.e. the measure in the color variation direction) is set in units of
     // plot *fraction* or in *pixels. Use `len` to set the value.
@@ -569,10 +733,14 @@ class Volume::Colorbar {
 
     // Hide SI prefix for 10^n if |n| is below this number. This only has an effect when `tickformat` is *SI* or *B*.
     Volume::Colorbar& minexponent(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Colorbar& minexponent(Callable&& c);
 
     // Specifies the maximum number of ticks for the particular axis. The actual number of ticks will be chosen
     // automatically to be less than or equal to `nticks`. Has an effect only if `tickmode` is set to *auto*.
     Volume::Colorbar& nticks(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Volume::Colorbar& nticks(Callable&& c);
 
     // Sets the orientation of the colorbar.
     // - Default: v
@@ -580,12 +748,18 @@ class Volume::Colorbar {
 
     // Sets the axis line color.
     Volume::Colorbar& outlinecolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Colorbar& outlinecolor(Callable&& c);
 
     // Sets the width (in px) of the axis line.
     Volume::Colorbar& outlinewidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Colorbar& outlinewidth(Callable&& c);
 
     // If "true", even 4-digit integers are separated
     Volume::Colorbar& separatethousands(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Volume::Colorbar& separatethousands(Callable&& c);
 
     // If *all*, all exponents are shown besides their significands. If *first*, only the exponent of the first tick is
     // shown. If *last*, only the exponent of the last tick is shown. If *none*, no exponents appear.
@@ -594,6 +768,8 @@ class Volume::Colorbar {
 
     // Determines whether or not the tick labels are drawn.
     Volume::Colorbar& showticklabels(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Volume::Colorbar& showticklabels(Callable&& c);
 
     // If *all*, all tick labels are displayed with a prefix. If *first*, only the first tick is displayed with a
     // prefix. If *last*, only the last tick is displayed with a suffix. If *none*, tick prefixes are hidden.
@@ -606,6 +782,8 @@ class Volume::Colorbar {
 
     // Sets the thickness of the color bar This measure excludes the size of the padding, ticks and labels.
     Volume::Colorbar& thickness(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Colorbar& thickness(Callable&& c);
 
     // Determines whether this color bar's thickness (i.e. the measure in the constant color direction) is set in units
     // of plot *fraction* or in *pixels*. Use `thickness` to set the value.
@@ -619,16 +797,24 @@ class Volume::Colorbar {
     // serial number from zero in the order it appears.
     template <typename T>
     Volume::Colorbar& tick0(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Volume::Colorbar& tick0(Callable&& c);
 
     // Sets the angle of the tick labels with respect to the horizontal. For example, a `tickangle` of -90 draws the
     // tick labels vertically.
     Volume::Colorbar& tickangle(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Colorbar& tickangle(Callable&& c);
 
     // Sets the tick color.
     Volume::Colorbar& tickcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Colorbar& tickcolor(Callable&& c);
 
     // Sets the color bar's tick label font
     Volume::Colorbar& tickfont(Tickfont f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickfont&>>>
+    Volume::Colorbar& tickfont(Callable&& c);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -636,8 +822,12 @@ class Volume::Colorbar {
     // half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example,
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Volume::Colorbar& tickformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Colorbar& tickformat(Callable&& c);
 
     Volume::Colorbar& tickformatstops(Tickformatstops f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickformatstops&>>>
+    Volume::Colorbar& tickformatstops(Callable&& c);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -653,9 +843,13 @@ class Volume::Colorbar {
     // labeled. `tick0` determines which labels are shown. Not implemented for axes with `type` *log* or
     // *multicategory*, or when `tickmode` is *array*.
     Volume::Colorbar& ticklabelstep(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Volume::Colorbar& ticklabelstep(Callable&& c);
 
     // Sets the tick length (in px).
     Volume::Colorbar& ticklen(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Colorbar& ticklen(Callable&& c);
 
     // Sets the tick mode for this axis. If *auto*, the number of ticks is set via `nticks`. If *linear*, the placement
     // of the ticks is determined by a starting position `tick0` and a tick step `dtick` (*linear* is the default value
@@ -665,6 +859,8 @@ class Volume::Colorbar {
 
     // Sets a tick label prefix.
     Volume::Colorbar& tickprefix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Colorbar& tickprefix(Callable&& c);
 
     // Determines whether ticks are drawn or not. If **, this axis' ticks are not drawn. If *outside* (*inside*), this
     // axis' are drawn outside (inside) the axis lines.
@@ -673,33 +869,53 @@ class Volume::Colorbar {
 
     // Sets a tick label suffix.
     Volume::Colorbar& ticksuffix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Colorbar& ticksuffix(Callable&& c);
 
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Volume::Colorbar& ticktext(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Volume::Colorbar& ticktext(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `ticktext`.
     Volume::Colorbar& ticktextsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Colorbar& ticktextsrc(Callable&& c);
 
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Volume::Colorbar& tickvals(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Volume::Colorbar& tickvals(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `tickvals`.
     Volume::Colorbar& tickvalssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Colorbar& tickvalssrc(Callable&& c);
 
     // Sets the tick width (in px).
     Volume::Colorbar& tickwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Colorbar& tickwidth(Callable&& c);
 
     Volume::Colorbar& title(Title f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Title&>>>
+    Volume::Colorbar& title(Callable&& c);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
     // when `orientation` is *v* and 0.5 when `orientation` is *h*. Must be between *0* and *1* if `xref` is *container*
     // and between *-2* and *3* if `xref` is *paper*.
     Volume::Colorbar& x(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Colorbar& x(Callable&& c);
 
     // Sets this color bar's horizontal position anchor. This anchor binds the `x` position to the *left*, *center* or
     // *right* of the color bar. Defaults to *left* when `orientation` is *v* and *center* when `orientation` is *h*.
@@ -707,6 +923,8 @@ class Volume::Colorbar {
 
     // Sets the amount of padding (in px) along the x direction.
     Volume::Colorbar& xpad(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Colorbar& xpad(Callable&& c);
 
     // Sets the container `x` refers to. *container* spans the entire `width` of the plot. *paper* refers to the width
     // of the plotting area only.
@@ -718,6 +936,8 @@ class Volume::Colorbar {
     // when `orientation` is *v* and 1 when `orientation` is *h*. Must be between *0* and *1* if `yref` is *container*
     // and between *-2* and *3* if `yref` is *paper*.
     Volume::Colorbar& y(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Colorbar& y(Callable&& c);
 
     // Sets this color bar's vertical position anchor This anchor binds the `y` position to the *top*, *middle* or
     // *bottom* of the color bar. Defaults to *middle* when `orientation` is *v* and *bottom* when `orientation` is *h*.
@@ -725,6 +945,8 @@ class Volume::Colorbar {
 
     // Sets the amount of padding (in px) along the y direction.
     Volume::Colorbar& ypad(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Colorbar& ypad(Callable&& c);
 
     // Sets the container `y` refers to. *container* spans the entire `height` of the plot. *paper* refers to the height
     // of the plotting area only.
@@ -767,6 +989,8 @@ class Volume::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Volume::Colorbar::Tickfont& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Colorbar::Tickfont& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -776,6 +1000,8 @@ class Volume::Colorbar::Tickfont {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Volume::Colorbar::Tickfont& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Colorbar::Tickfont& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -783,12 +1009,18 @@ class Volume::Colorbar::Tickfont {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Volume::Colorbar::Tickfont& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Colorbar::Tickfont& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Volume::Colorbar::Tickfont& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Colorbar::Tickfont& shadow(Callable&& c);
 
     Volume::Colorbar::Tickfont& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Colorbar::Tickfont& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -805,6 +1037,8 @@ class Volume::Colorbar::Tickfont {
 
     // Sets the weight (or boldness) of the font.
     Volume::Colorbar::Tickfont& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Volume::Colorbar::Tickfont& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -819,6 +1053,8 @@ class Volume::Colorbar::Tickformatstops {
     class Tickformatstop;
 
     Volume::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickformatstop&>>>
+    Volume::Colorbar::Tickformatstops& tickformatstop(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -833,15 +1069,21 @@ class Volume::Colorbar::Tickformatstops::Tickformatstop {
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
     Volume::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
+    Volume::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Volume::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Volume::Colorbar::Tickformatstops::Tickformatstop& enabled(Callable&& c);
 
     // When used in a template, named items are created in the output figure in addition to any items the figure already
     // has in this array. You can modify these items in the output figure by making your own item with
     // `templateitemname` matching this `name` alongside your modifications (including `visible: false` or `enabled:
     // false` to hide it). Has no effect outside of a template.
     Volume::Colorbar::Tickformatstops::Tickformatstop& name(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Colorbar::Tickformatstops::Tickformatstop& name(Callable&& c);
 
     // Used to refer to a named item in this array in the template. Named items from the template will be created even
     // without a matching item in the input figure, but you can modify one by making an item with `templateitemname`
@@ -849,9 +1091,13 @@ class Volume::Colorbar::Tickformatstops::Tickformatstop {
     // there is no template or no matching item, this item will be hidden unless you explicitly show it with `visible:
     // true`.
     Volume::Colorbar::Tickformatstops::Tickformatstop& templateitemname(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Colorbar::Tickformatstops::Tickformatstop& templateitemname(Callable&& c);
 
     // string - dtickformat for described zoom level, the same as *tickformat*
     Volume::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Colorbar::Tickformatstops::Tickformatstop& value(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -875,6 +1121,8 @@ class Volume::Colorbar::Title {
 
     // Sets this color bar's title font.
     Volume::Colorbar::Title& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Volume::Colorbar::Title& font(Callable&& c);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -882,6 +1130,8 @@ class Volume::Colorbar::Title {
 
     // Sets the title of the color bar.
     Volume::Colorbar::Title& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Colorbar::Title& text(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -919,6 +1169,8 @@ class Volume::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Volume::Colorbar::Title::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Colorbar::Title::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -928,6 +1180,8 @@ class Volume::Colorbar::Title::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Volume::Colorbar::Title::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Colorbar::Title::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -935,12 +1189,18 @@ class Volume::Colorbar::Title::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Volume::Colorbar::Title::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Colorbar::Title::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Volume::Colorbar::Title::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Colorbar::Title::Font& shadow(Callable&& c);
 
     Volume::Colorbar::Title::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Colorbar::Title::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -957,6 +1217,8 @@ class Volume::Colorbar::Title::Font {
 
     // Sets the weight (or boldness) of the font.
     Volume::Colorbar::Title::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Volume::Colorbar::Title::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -970,12 +1232,18 @@ class Volume::Contour {
 
     // Sets the color of the contour lines.
     Volume::Contour& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Contour& color(Callable&& c);
 
     // Sets whether or not dynamic contours are shown on hover
     Volume::Contour& show(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Volume::Contour& show(Callable&& c);
 
     // Sets the width of the contour lines.
     Volume::Contour& width(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Contour& width(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1005,33 +1273,49 @@ class Volume::Hoverlabel {
 
     // Sets the source reference on Chart Studio Cloud for `align`.
     Volume::Hoverlabel& alignsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Hoverlabel& alignsrc(Callable&& c);
 
     // Sets the background color of the hover labels for this trace
     Volume::Hoverlabel& bgcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Hoverlabel& bgcolor(Callable&& c);
     Volume::Hoverlabel& bgcolor(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Volume::Hoverlabel& bgcolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Hoverlabel& bgcolorsrc(Callable&& c);
 
     // Sets the border color of the hover labels for this trace.
     Volume::Hoverlabel& bordercolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Hoverlabel& bordercolor(Callable&& c);
     Volume::Hoverlabel& bordercolor(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Volume::Hoverlabel& bordercolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Hoverlabel& bordercolorsrc(Callable&& c);
 
     // Sets the font used in hover labels.
     Volume::Hoverlabel& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Volume::Hoverlabel& font(Callable&& c);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
     // name if it is less than that many characters, but if it is longer, will truncate to `namelength - 3` characters
     // and add an ellipsis.
     Volume::Hoverlabel& namelength(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Volume::Hoverlabel& namelength(Callable&& c);
     Volume::Hoverlabel& namelength(std::vector<int> f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Volume::Hoverlabel& namelengthsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Hoverlabel& namelengthsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1069,10 +1353,14 @@ class Volume::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Volume::Hoverlabel::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Hoverlabel::Font& color(Callable&& c);
     Volume::Hoverlabel::Font& color(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Volume::Hoverlabel::Font& colorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Hoverlabel::Font& colorsrc(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1082,10 +1370,14 @@ class Volume::Hoverlabel::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Volume::Hoverlabel::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Hoverlabel::Font& family(Callable&& c);
     Volume::Hoverlabel::Font& family(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Volume::Hoverlabel::Font& familysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Hoverlabel::Font& familysrc(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -1093,24 +1385,36 @@ class Volume::Hoverlabel::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Volume::Hoverlabel::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Hoverlabel::Font& lineposition(Callable&& c);
     Volume::Hoverlabel::Font& lineposition(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Volume::Hoverlabel::Font& linepositionsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Hoverlabel::Font& linepositionsrc(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Volume::Hoverlabel::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Hoverlabel::Font& shadow(Callable&& c);
     Volume::Hoverlabel::Font& shadow(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Volume::Hoverlabel::Font& shadowsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Hoverlabel::Font& shadowsrc(Callable&& c);
 
     Volume::Hoverlabel::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Hoverlabel::Font& size(Callable&& c);
     Volume::Hoverlabel::Font& size(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Volume::Hoverlabel::Font& sizesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Hoverlabel::Font& sizesrc(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1119,6 +1423,8 @@ class Volume::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `style`.
     Volume::Hoverlabel::Font& stylesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Hoverlabel::Font& stylesrc(Callable&& c);
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
@@ -1128,6 +1434,8 @@ class Volume::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `textcase`.
     Volume::Hoverlabel::Font& textcasesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Hoverlabel::Font& textcasesrc(Callable&& c);
 
     // Sets the variant of the font.
     // - Default: normal
@@ -1136,13 +1444,19 @@ class Volume::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `variant`.
     Volume::Hoverlabel::Font& variantsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Hoverlabel::Font& variantsrc(Callable&& c);
 
     // Sets the weight (or boldness) of the font.
     Volume::Hoverlabel::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Volume::Hoverlabel::Font& weight(Callable&& c);
     Volume::Hoverlabel::Font& weight(std::vector<int> f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Volume::Hoverlabel::Font& weightsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Hoverlabel::Font& weightsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1159,9 +1473,13 @@ class Volume::Legendgrouptitle {
 
     // Sets this legend group's title font.
     Volume::Legendgrouptitle& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Volume::Legendgrouptitle& font(Callable&& c);
 
     // Sets the title of the legend group.
     Volume::Legendgrouptitle& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Legendgrouptitle& text(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1199,6 +1517,8 @@ class Volume::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Volume::Legendgrouptitle::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Legendgrouptitle::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1208,6 +1528,8 @@ class Volume::Legendgrouptitle::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Volume::Legendgrouptitle::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Legendgrouptitle::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -1215,12 +1537,18 @@ class Volume::Legendgrouptitle::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Volume::Legendgrouptitle::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Legendgrouptitle::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Volume::Legendgrouptitle::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Legendgrouptitle::Font& shadow(Callable&& c);
 
     Volume::Legendgrouptitle::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Legendgrouptitle::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1237,6 +1565,8 @@ class Volume::Legendgrouptitle::Font {
 
     // Sets the weight (or boldness) of the font.
     Volume::Legendgrouptitle::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Volume::Legendgrouptitle::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1250,25 +1580,39 @@ class Volume::Lighting {
 
     // Ambient light increases overall color visibility but can wash out the image.
     Volume::Lighting& ambient(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Lighting& ambient(Callable&& c);
 
     // Represents the extent that incident rays are reflected in a range of angles.
     Volume::Lighting& diffuse(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Lighting& diffuse(Callable&& c);
 
     // Epsilon for face normals calculation avoids math issues arising from degenerate geometry.
     Volume::Lighting& facenormalsepsilon(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Lighting& facenormalsepsilon(Callable&& c);
 
     // Represents the reflectance as a dependency of the viewing angle; e.g. paper is reflective when viewing it from
     // the edge of the paper (almost 90 degrees), causing shine.
     Volume::Lighting& fresnel(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Lighting& fresnel(Callable&& c);
 
     // Alters specular reflection; the rougher the surface, the wider and less contrasty the shine.
     Volume::Lighting& roughness(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Lighting& roughness(Callable&& c);
 
     // Represents the level that incident rays are reflected in a single direction, causing shine.
     Volume::Lighting& specular(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Lighting& specular(Callable&& c);
 
     // Epsilon for vertex normals calculation avoids math issues arising from degenerate geometry.
     Volume::Lighting& vertexnormalsepsilon(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Lighting& vertexnormalsepsilon(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1282,12 +1626,18 @@ class Volume::Lightposition {
 
     // Numeric vector, representing the X coordinate for each vertex.
     Volume::Lightposition& x(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Lightposition& x(Callable&& c);
 
     // Numeric vector, representing the Y coordinate for each vertex.
     Volume::Lightposition& y(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Lightposition& y(Callable&& c);
 
     // Numeric vector, representing the Z coordinate for each vertex.
     Volume::Lightposition& z(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Lightposition& z(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1304,10 +1654,16 @@ class Volume::Slices {
     class Z;
 
     Volume::Slices& x(X f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, X&>>>
+    Volume::Slices& x(Callable&& c);
 
     Volume::Slices& y(Y f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Y&>>>
+    Volume::Slices& y(Callable&& c);
 
     Volume::Slices& z(Z f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Z&>>>
+    Volume::Slices& z(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1323,17 +1679,27 @@ class Volume::Slices::X {
     // shaded. On the other hand Applying a `fill` ratio less than one would allow the creation of openings parallel to
     // the edges.
     Volume::Slices::X& fill(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Slices::X& fill(Callable&& c);
 
     // Specifies the location(s) of slices on the axis. When not specified slices would be created for all points of the
     // axis x except start and end.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Volume::Slices::X& locations(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Volume::Slices::X& locations(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `locations`.
     Volume::Slices::X& locationssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Slices::X& locationssrc(Callable&& c);
 
     // Determines whether or not slice planes about the x dimension are drawn.
     Volume::Slices::X& show(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Volume::Slices::X& show(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1349,17 +1715,27 @@ class Volume::Slices::Y {
     // shaded. On the other hand Applying a `fill` ratio less than one would allow the creation of openings parallel to
     // the edges.
     Volume::Slices::Y& fill(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Slices::Y& fill(Callable&& c);
 
     // Specifies the location(s) of slices on the axis. When not specified slices would be created for all points of the
     // axis y except start and end.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Volume::Slices::Y& locations(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Volume::Slices::Y& locations(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `locations`.
     Volume::Slices::Y& locationssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Slices::Y& locationssrc(Callable&& c);
 
     // Determines whether or not slice planes about the y dimension are drawn.
     Volume::Slices::Y& show(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Volume::Slices::Y& show(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1375,17 +1751,27 @@ class Volume::Slices::Z {
     // shaded. On the other hand Applying a `fill` ratio less than one would allow the creation of openings parallel to
     // the edges.
     Volume::Slices::Z& fill(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Slices::Z& fill(Callable&& c);
 
     // Specifies the location(s) of slices on the axis. When not specified slices would be created for all points of the
     // axis z except start and end.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Volume::Slices::Z& locations(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Volume::Slices::Z& locations(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `locations`.
     Volume::Slices::Z& locationssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Slices::Z& locationssrc(Callable&& c);
 
     // Determines whether or not slice planes about the z dimension are drawn.
     Volume::Slices::Z& show(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Volume::Slices::Z& show(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1400,10 +1786,14 @@ class Volume::Spaceframe {
     // Sets the fill ratio of the `spaceframe` elements. The default fill value is 1 meaning that they are entirely
     // shaded. Applying a `fill` ratio less than one would allow the creation of openings parallel to the edges.
     Volume::Spaceframe& fill(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Spaceframe& fill(Callable&& c);
 
     // Displays/hides tetrahedron shapes between minimum and maximum iso-values. Often useful when either caps or
     // surfaces are disabled or filled with values less than 1.
     Volume::Spaceframe& show(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Volume::Spaceframe& show(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1418,10 +1808,14 @@ class Volume::Stream {
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
     Volume::Stream& maxpoints(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Stream& maxpoints(Callable&& c);
 
     // The stream id number links a data trace on a plot with a stream. See https://chart-studio.plotly.com/settings for
     // more details.
     Volume::Stream& token(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Stream& token(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1436,11 +1830,15 @@ class Volume::Surface {
     // Sets the number of iso-surfaces between minimum and maximum iso-values. By default this value is 2 meaning that
     // only minimum and maximum surfaces would be drawn.
     Volume::Surface& count(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Volume::Surface& count(Callable&& c);
 
     // Sets the fill ratio of the iso-surface. The default fill value of the surface is 1 meaning that they are entirely
     // shaded. On the other hand Applying a `fill` ratio less than one would allow the creation of openings parallel to
     // the edges.
     Volume::Surface& fill(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Volume::Surface& fill(Callable&& c);
 
     // Sets the surface pattern of the iso-surface 3-D sections. The default pattern of the surface is `all` meaning
     // that the rest of surface elements would be shaded. The check options (either 1 or 2) could be used to draw half
@@ -1450,9 +1848,13 @@ class Volume::Surface {
     // - Flags: ['A', 'B', 'C', 'D', 'E']
     // - Extras ['all', 'odd', 'even']
     Volume::Surface& pattern(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Volume::Surface& pattern(Callable&& c);
 
     // Hides/displays surfaces between minimum and maximum iso-values.
     Volume::Surface& show(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Volume::Surface& show(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

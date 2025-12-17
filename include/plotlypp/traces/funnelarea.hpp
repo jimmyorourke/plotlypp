@@ -54,22 +54,36 @@ class Funnelarea : public Trace {
 
     // Sets the ratio between height and width
     Funnelarea& aspectratio(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Funnelarea& aspectratio(Callable&& c);
 
     // Sets the ratio between bottom length and maximum top length.
     Funnelarea& baseratio(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Funnelarea& baseratio(Callable&& c);
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Funnelarea& customdata(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Funnelarea& customdata(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Funnelarea& customdatasrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea& customdatasrc(Callable&& c);
 
     // Sets the label step. See `label0` for more info.
     Funnelarea& dlabel(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Funnelarea& dlabel(Callable&& c);
 
     Funnelarea& domain(Domain f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Domain&>>>
+    Funnelarea& domain(Callable&& c);
 
     // Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon
     // hovering. But, if `none` is set, click and hover events are still fired.
@@ -77,12 +91,18 @@ class Funnelarea : public Trace {
     // - Flags: ['label', 'text', 'value', 'percent', 'name']
     // - Extras ['all', 'none', 'skip']
     Funnelarea& hoverinfo(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea& hoverinfo(Callable&& c);
     Funnelarea& hoverinfo(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Funnelarea& hoverinfosrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea& hoverinfosrc(Callable&& c);
 
     Funnelarea& hoverlabel(Hoverlabel f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Hoverlabel&>>>
+    Funnelarea& hoverlabel(Callable&& c);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -99,53 +119,83 @@ class Funnelarea : public Trace {
     // the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an
     // empty tag `<extra></extra>`.
     Funnelarea& hovertemplate(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea& hovertemplate(Callable&& c);
     Funnelarea& hovertemplate(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Funnelarea& hovertemplatesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea& hovertemplatesrc(Callable&& c);
 
     // Sets hover text elements associated with each sector. If a single string, the same string appears for all data
     // points. If an array of string, the items are mapped in order of this trace's sectors. To be seen, trace
     // `hoverinfo` must contain a *text* flag.
     Funnelarea& hovertext(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea& hovertext(Callable&& c);
     Funnelarea& hovertext(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Funnelarea& hovertextsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea& hovertextsrc(Callable&& c);
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Funnelarea& ids(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Funnelarea& ids(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `ids`.
     Funnelarea& idssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea& idssrc(Callable&& c);
 
     // Sets the font used for `textinfo` lying inside the sector.
     Funnelarea& insidetextfont(Insidetextfont f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Insidetextfont&>>>
+    Funnelarea& insidetextfont(Callable&& c);
 
     // Alternate to `labels`. Builds a numeric set of labels. Use with `dlabel` where `label0` is the starting label and
     // `dlabel` the step.
     Funnelarea& label0(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Funnelarea& label0(Callable&& c);
 
     // Sets the sector labels. If `labels` entries are duplicated, we sum associated `values` or simply count
     // occurrences if `values` is not provided. For other array attributes (including color) we use the first non-empty
     // entry among all occurrences of the label.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Funnelarea& labels(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Funnelarea& labels(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `labels`.
     Funnelarea& labelssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea& labelssrc(Callable&& c);
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
     Funnelarea& legend(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea& legend(Callable&& c);
 
     // Sets the legend group for this trace. Traces and shapes part of the same legend group hide/show at the same time
     // when toggling legend items.
     Funnelarea& legendgroup(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea& legendgroup(Callable&& c);
 
     Funnelarea& legendgrouptitle(Legendgrouptitle f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Legendgrouptitle&>>>
+    Funnelarea& legendgrouptitle(Callable&& c);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -153,11 +203,17 @@ class Funnelarea : public Trace {
     // after all unranked items. When having unranked or equal rank items shapes would be displayed after traces i.e.
     // according to their order in data and layout.
     Funnelarea& legendrank(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Funnelarea& legendrank(Callable&& c);
 
     // Sets the width (in px or fraction) of the legend for this trace.
     Funnelarea& legendwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Funnelarea& legendwidth(Callable&& c);
 
     Funnelarea& marker(Marker f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Marker&>>>
+    Funnelarea& marker(Callable&& c);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -167,40 +223,62 @@ class Funnelarea : public Trace {
     // trace index.
     template <typename T>
     Funnelarea& meta(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Funnelarea& meta(Callable&& c);
     template <typename T>
     Funnelarea& meta(std::vector<T> f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Funnelarea& metasrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea& metasrc(Callable&& c);
 
     // Sets the trace name. The trace name appears as the legend item and on hover.
     Funnelarea& name(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea& name(Callable&& c);
 
     // Sets the opacity of the trace.
     Funnelarea& opacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Funnelarea& opacity(Callable&& c);
 
     // If there are multiple funnelareas that should be sized according to their totals, link them by providing a
     // non-empty group id here shared by every trace in the same group.
     Funnelarea& scalegroup(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea& scalegroup(Callable&& c);
 
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Funnelarea& showlegend(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Funnelarea& showlegend(Callable&& c);
 
     Funnelarea& stream(Stream f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Stream&>>>
+    Funnelarea& stream(Callable&& c);
 
     // Sets text elements associated with each sector. If trace `textinfo` contains a *text* flag, these elements will
     // be seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will
     // be seen in the hover labels.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Funnelarea& text(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Funnelarea& text(Callable&& c);
 
     // Sets the font used for `textinfo`.
     Funnelarea& textfont(Textfont f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Textfont&>>>
+    Funnelarea& textfont(Callable&& c);
 
     // Determines which trace information appear on the graph.
     // - Flags: ['label', 'text', 'value', 'percent']
     // - Extras ['none']
     Funnelarea& textinfo(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea& textinfo(Callable&& c);
 
     // Specifies the location of the `textinfo`.
     // - Default: inside
@@ -209,9 +287,13 @@ class Funnelarea : public Trace {
 
     // Sets the source reference on Chart Studio Cloud for `textposition`.
     Funnelarea& textpositionsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea& textpositionsrc(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `text`.
     Funnelarea& textsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea& textsrc(Callable&& c);
 
     // Template string used for rendering the information text that appear on points. Note that this will override
     // `textinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using
@@ -222,16 +304,24 @@ class Funnelarea : public Trace {
     // attributes that can be specified per-point (the ones that are `arrayOk: true`) are available. Finally, the
     // template string has access to variables `label`, `color`, `value`, `text` and `percent`.
     Funnelarea& texttemplate(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea& texttemplate(Callable&& c);
     Funnelarea& texttemplate(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `texttemplate`.
     Funnelarea& texttemplatesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea& texttemplatesrc(Callable&& c);
 
     Funnelarea& title(Title f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Title&>>>
+    Funnelarea& title(Callable&& c);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
     Funnelarea& uid(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea& uid(Callable&& c);
 
     // Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well
     // as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note
@@ -243,13 +333,21 @@ class Funnelarea : public Trace {
     // still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
     template <typename T>
     Funnelarea& uirevision(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Funnelarea& uirevision(Callable&& c);
 
     // Sets the values of the sectors. If omitted, we count occurrences of each label.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Funnelarea& values(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Funnelarea& values(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `values`.
     Funnelarea& valuessrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea& valuessrc(Callable&& c);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -265,15 +363,23 @@ class Funnelarea::Domain {
 
     // If there is a layout grid, use the domain for this column in the grid for this funnelarea trace .
     Funnelarea::Domain& column(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Funnelarea::Domain& column(Callable&& c);
 
     // If there is a layout grid, use the domain for this row in the grid for this funnelarea trace .
     Funnelarea::Domain& row(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Funnelarea::Domain& row(Callable&& c);
 
     // Sets the horizontal domain of this funnelarea trace (in plot fraction).
     Funnelarea::Domain& x(std::vector<double> f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
+    Funnelarea::Domain& x(Callable&& c);
 
     // Sets the vertical domain of this funnelarea trace (in plot fraction).
     Funnelarea::Domain& y(std::vector<double> f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
+    Funnelarea::Domain& y(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -303,33 +409,49 @@ class Funnelarea::Hoverlabel {
 
     // Sets the source reference on Chart Studio Cloud for `align`.
     Funnelarea::Hoverlabel& alignsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Hoverlabel& alignsrc(Callable&& c);
 
     // Sets the background color of the hover labels for this trace
     Funnelarea::Hoverlabel& bgcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Hoverlabel& bgcolor(Callable&& c);
     Funnelarea::Hoverlabel& bgcolor(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Funnelarea::Hoverlabel& bgcolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Hoverlabel& bgcolorsrc(Callable&& c);
 
     // Sets the border color of the hover labels for this trace.
     Funnelarea::Hoverlabel& bordercolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Hoverlabel& bordercolor(Callable&& c);
     Funnelarea::Hoverlabel& bordercolor(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Funnelarea::Hoverlabel& bordercolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Hoverlabel& bordercolorsrc(Callable&& c);
 
     // Sets the font used in hover labels.
     Funnelarea::Hoverlabel& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Funnelarea::Hoverlabel& font(Callable&& c);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
     // name if it is less than that many characters, but if it is longer, will truncate to `namelength - 3` characters
     // and add an ellipsis.
     Funnelarea::Hoverlabel& namelength(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Funnelarea::Hoverlabel& namelength(Callable&& c);
     Funnelarea::Hoverlabel& namelength(std::vector<int> f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Funnelarea::Hoverlabel& namelengthsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Hoverlabel& namelengthsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -367,10 +489,14 @@ class Funnelarea::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Funnelarea::Hoverlabel::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Hoverlabel::Font& color(Callable&& c);
     Funnelarea::Hoverlabel::Font& color(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Funnelarea::Hoverlabel::Font& colorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Hoverlabel::Font& colorsrc(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -380,10 +506,14 @@ class Funnelarea::Hoverlabel::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Funnelarea::Hoverlabel::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Hoverlabel::Font& family(Callable&& c);
     Funnelarea::Hoverlabel::Font& family(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Funnelarea::Hoverlabel::Font& familysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Hoverlabel::Font& familysrc(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -391,24 +521,36 @@ class Funnelarea::Hoverlabel::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Funnelarea::Hoverlabel::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Hoverlabel::Font& lineposition(Callable&& c);
     Funnelarea::Hoverlabel::Font& lineposition(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Funnelarea::Hoverlabel::Font& linepositionsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Hoverlabel::Font& linepositionsrc(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Funnelarea::Hoverlabel::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Hoverlabel::Font& shadow(Callable&& c);
     Funnelarea::Hoverlabel::Font& shadow(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Funnelarea::Hoverlabel::Font& shadowsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Hoverlabel::Font& shadowsrc(Callable&& c);
 
     Funnelarea::Hoverlabel::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Funnelarea::Hoverlabel::Font& size(Callable&& c);
     Funnelarea::Hoverlabel::Font& size(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Funnelarea::Hoverlabel::Font& sizesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Hoverlabel::Font& sizesrc(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -417,6 +559,8 @@ class Funnelarea::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `style`.
     Funnelarea::Hoverlabel::Font& stylesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Hoverlabel::Font& stylesrc(Callable&& c);
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
@@ -426,6 +570,8 @@ class Funnelarea::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `textcase`.
     Funnelarea::Hoverlabel::Font& textcasesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Hoverlabel::Font& textcasesrc(Callable&& c);
 
     // Sets the variant of the font.
     // - Default: normal
@@ -434,13 +580,19 @@ class Funnelarea::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `variant`.
     Funnelarea::Hoverlabel::Font& variantsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Hoverlabel::Font& variantsrc(Callable&& c);
 
     // Sets the weight (or boldness) of the font.
     Funnelarea::Hoverlabel::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Funnelarea::Hoverlabel::Font& weight(Callable&& c);
     Funnelarea::Hoverlabel::Font& weight(std::vector<int> f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Funnelarea::Hoverlabel::Font& weightsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Hoverlabel::Font& weightsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -478,10 +630,14 @@ class Funnelarea::Insidetextfont {
     static std::string to_string(Variant e);
 
     Funnelarea::Insidetextfont& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Insidetextfont& color(Callable&& c);
     Funnelarea::Insidetextfont& color(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Funnelarea::Insidetextfont& colorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Insidetextfont& colorsrc(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -491,10 +647,14 @@ class Funnelarea::Insidetextfont {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Funnelarea::Insidetextfont& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Insidetextfont& family(Callable&& c);
     Funnelarea::Insidetextfont& family(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Funnelarea::Insidetextfont& familysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Insidetextfont& familysrc(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -502,24 +662,36 @@ class Funnelarea::Insidetextfont {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Funnelarea::Insidetextfont& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Insidetextfont& lineposition(Callable&& c);
     Funnelarea::Insidetextfont& lineposition(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Funnelarea::Insidetextfont& linepositionsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Insidetextfont& linepositionsrc(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Funnelarea::Insidetextfont& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Insidetextfont& shadow(Callable&& c);
     Funnelarea::Insidetextfont& shadow(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Funnelarea::Insidetextfont& shadowsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Insidetextfont& shadowsrc(Callable&& c);
 
     Funnelarea::Insidetextfont& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Funnelarea::Insidetextfont& size(Callable&& c);
     Funnelarea::Insidetextfont& size(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Funnelarea::Insidetextfont& sizesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Insidetextfont& sizesrc(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -528,6 +700,8 @@ class Funnelarea::Insidetextfont {
 
     // Sets the source reference on Chart Studio Cloud for `style`.
     Funnelarea::Insidetextfont& stylesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Insidetextfont& stylesrc(Callable&& c);
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
@@ -537,6 +711,8 @@ class Funnelarea::Insidetextfont {
 
     // Sets the source reference on Chart Studio Cloud for `textcase`.
     Funnelarea::Insidetextfont& textcasesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Insidetextfont& textcasesrc(Callable&& c);
 
     // Sets the variant of the font.
     // - Default: normal
@@ -545,13 +721,19 @@ class Funnelarea::Insidetextfont {
 
     // Sets the source reference on Chart Studio Cloud for `variant`.
     Funnelarea::Insidetextfont& variantsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Insidetextfont& variantsrc(Callable&& c);
 
     // Sets the weight (or boldness) of the font.
     Funnelarea::Insidetextfont& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Funnelarea::Insidetextfont& weight(Callable&& c);
     Funnelarea::Insidetextfont& weight(std::vector<int> f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Funnelarea::Insidetextfont& weightsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Insidetextfont& weightsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -568,9 +750,13 @@ class Funnelarea::Legendgrouptitle {
 
     // Sets this legend group's title font.
     Funnelarea::Legendgrouptitle& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Funnelarea::Legendgrouptitle& font(Callable&& c);
 
     // Sets the title of the legend group.
     Funnelarea::Legendgrouptitle& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Legendgrouptitle& text(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -608,6 +794,8 @@ class Funnelarea::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Funnelarea::Legendgrouptitle::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Legendgrouptitle::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -617,6 +805,8 @@ class Funnelarea::Legendgrouptitle::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Funnelarea::Legendgrouptitle::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Legendgrouptitle::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -624,12 +814,18 @@ class Funnelarea::Legendgrouptitle::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Funnelarea::Legendgrouptitle::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Legendgrouptitle::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Funnelarea::Legendgrouptitle::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Legendgrouptitle::Font& shadow(Callable&& c);
 
     Funnelarea::Legendgrouptitle::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Funnelarea::Legendgrouptitle::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -646,6 +842,8 @@ class Funnelarea::Legendgrouptitle::Font {
 
     // Sets the weight (or boldness) of the font.
     Funnelarea::Legendgrouptitle::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Funnelarea::Legendgrouptitle::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -664,14 +862,24 @@ class Funnelarea::Marker {
     // Sets the color of each sector. If not specified, the default trace color set is used to pick the sector colors.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Funnelarea::Marker& colors(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Funnelarea::Marker& colors(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `colors`.
     Funnelarea::Marker& colorssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Marker& colorssrc(Callable&& c);
 
     Funnelarea::Marker& line(Line f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Line&>>>
+    Funnelarea::Marker& line(Callable&& c);
 
     // Sets the pattern within the marker.
     Funnelarea::Marker& pattern(Pattern f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Pattern&>>>
+    Funnelarea::Marker& pattern(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -685,17 +893,25 @@ class Funnelarea::Marker::Line {
 
     // Sets the color of the line enclosing each sector. Defaults to the `paper_bgcolor` value.
     Funnelarea::Marker::Line& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Marker::Line& color(Callable&& c);
     Funnelarea::Marker::Line& color(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Funnelarea::Marker::Line& colorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Marker::Line& colorsrc(Callable&& c);
 
     // Sets the width (in px) of the line enclosing each sector.
     Funnelarea::Marker::Line& width(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Funnelarea::Marker::Line& width(Callable&& c);
     Funnelarea::Marker::Line& width(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `width`.
     Funnelarea::Marker::Line& widthsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Marker::Line& widthsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -717,22 +933,32 @@ class Funnelarea::Marker::Pattern {
     // When there is no colorscale sets the color of background pattern fill. Defaults to a `marker.color` background
     // when `fillmode` is *overlay*. Otherwise, defaults to a transparent background.
     Funnelarea::Marker::Pattern& bgcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Marker::Pattern& bgcolor(Callable&& c);
     Funnelarea::Marker::Pattern& bgcolor(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Funnelarea::Marker::Pattern& bgcolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Marker::Pattern& bgcolorsrc(Callable&& c);
 
     // When there is no colorscale sets the color of foreground pattern fill. Defaults to a `marker.color` background
     // when `fillmode` is *replace*. Otherwise, defaults to dark grey or white to increase contrast with the `bgcolor`.
     Funnelarea::Marker::Pattern& fgcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Marker::Pattern& fgcolor(Callable&& c);
     Funnelarea::Marker::Pattern& fgcolor(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `fgcolor`.
     Funnelarea::Marker::Pattern& fgcolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Marker::Pattern& fgcolorsrc(Callable&& c);
 
     // Sets the opacity of the foreground pattern fill. Defaults to a 0.5 when `fillmode` is *overlay*. Otherwise,
     // defaults to 1.
     Funnelarea::Marker::Pattern& fgopacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Funnelarea::Marker::Pattern& fgopacity(Callable&& c);
 
     // Determines whether `marker.color` should be used as a default to `bgcolor` or a `fgcolor`.
     // - Default: replace
@@ -740,27 +966,39 @@ class Funnelarea::Marker::Pattern {
 
     // Sets the shape of the pattern fill. By default, no pattern is used for filling the area.
     Funnelarea::Marker::Pattern& shape(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Marker::Pattern& shape(Callable&& c);
     Funnelarea::Marker::Pattern& shape(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `shape`.
     Funnelarea::Marker::Pattern& shapesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Marker::Pattern& shapesrc(Callable&& c);
 
     // Sets the size of unit squares of the pattern fill in pixels, which corresponds to the interval of repetition of
     // the pattern.
     Funnelarea::Marker::Pattern& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Funnelarea::Marker::Pattern& size(Callable&& c);
     Funnelarea::Marker::Pattern& size(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Funnelarea::Marker::Pattern& sizesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Marker::Pattern& sizesrc(Callable&& c);
 
     // Sets the solidity of the pattern fill. Solidity is roughly the fraction of the area filled by the pattern.
     // Solidity of 0 shows only the background color without pattern and solidty of 1 shows only the foreground color
     // without pattern.
     Funnelarea::Marker::Pattern& solidity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Funnelarea::Marker::Pattern& solidity(Callable&& c);
     Funnelarea::Marker::Pattern& solidity(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `solidity`.
     Funnelarea::Marker::Pattern& soliditysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Marker::Pattern& soliditysrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -775,10 +1013,14 @@ class Funnelarea::Stream {
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
     Funnelarea::Stream& maxpoints(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Funnelarea::Stream& maxpoints(Callable&& c);
 
     // The stream id number links a data trace on a plot with a stream. See https://chart-studio.plotly.com/settings for
     // more details.
     Funnelarea::Stream& token(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Stream& token(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -816,10 +1058,14 @@ class Funnelarea::Textfont {
     static std::string to_string(Variant e);
 
     Funnelarea::Textfont& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Textfont& color(Callable&& c);
     Funnelarea::Textfont& color(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Funnelarea::Textfont& colorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Textfont& colorsrc(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -829,10 +1075,14 @@ class Funnelarea::Textfont {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Funnelarea::Textfont& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Textfont& family(Callable&& c);
     Funnelarea::Textfont& family(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Funnelarea::Textfont& familysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Textfont& familysrc(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -840,24 +1090,36 @@ class Funnelarea::Textfont {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Funnelarea::Textfont& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Textfont& lineposition(Callable&& c);
     Funnelarea::Textfont& lineposition(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Funnelarea::Textfont& linepositionsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Textfont& linepositionsrc(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Funnelarea::Textfont& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Textfont& shadow(Callable&& c);
     Funnelarea::Textfont& shadow(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Funnelarea::Textfont& shadowsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Textfont& shadowsrc(Callable&& c);
 
     Funnelarea::Textfont& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Funnelarea::Textfont& size(Callable&& c);
     Funnelarea::Textfont& size(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Funnelarea::Textfont& sizesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Textfont& sizesrc(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -866,6 +1128,8 @@ class Funnelarea::Textfont {
 
     // Sets the source reference on Chart Studio Cloud for `style`.
     Funnelarea::Textfont& stylesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Textfont& stylesrc(Callable&& c);
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
@@ -875,6 +1139,8 @@ class Funnelarea::Textfont {
 
     // Sets the source reference on Chart Studio Cloud for `textcase`.
     Funnelarea::Textfont& textcasesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Textfont& textcasesrc(Callable&& c);
 
     // Sets the variant of the font.
     // - Default: normal
@@ -883,13 +1149,19 @@ class Funnelarea::Textfont {
 
     // Sets the source reference on Chart Studio Cloud for `variant`.
     Funnelarea::Textfont& variantsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Textfont& variantsrc(Callable&& c);
 
     // Sets the weight (or boldness) of the font.
     Funnelarea::Textfont& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Funnelarea::Textfont& weight(Callable&& c);
     Funnelarea::Textfont& weight(std::vector<int> f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Funnelarea::Textfont& weightsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Textfont& weightsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -913,6 +1185,8 @@ class Funnelarea::Title {
 
     // Sets the font used for `title`.
     Funnelarea::Title& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Funnelarea::Title& font(Callable&& c);
 
     // Specifies the location of the `title`.
     // - Default: top center
@@ -920,6 +1194,8 @@ class Funnelarea::Title {
 
     // Sets the title of the chart. If it is empty, no title is displayed.
     Funnelarea::Title& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Title& text(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -957,10 +1233,14 @@ class Funnelarea::Title::Font {
     static std::string to_string(Variant e);
 
     Funnelarea::Title::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Title::Font& color(Callable&& c);
     Funnelarea::Title::Font& color(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Funnelarea::Title::Font& colorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Title::Font& colorsrc(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -970,10 +1250,14 @@ class Funnelarea::Title::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Funnelarea::Title::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Title::Font& family(Callable&& c);
     Funnelarea::Title::Font& family(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Funnelarea::Title::Font& familysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Title::Font& familysrc(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -981,24 +1265,36 @@ class Funnelarea::Title::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Funnelarea::Title::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Title::Font& lineposition(Callable&& c);
     Funnelarea::Title::Font& lineposition(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Funnelarea::Title::Font& linepositionsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Title::Font& linepositionsrc(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Funnelarea::Title::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Title::Font& shadow(Callable&& c);
     Funnelarea::Title::Font& shadow(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Funnelarea::Title::Font& shadowsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Title::Font& shadowsrc(Callable&& c);
 
     Funnelarea::Title::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Funnelarea::Title::Font& size(Callable&& c);
     Funnelarea::Title::Font& size(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Funnelarea::Title::Font& sizesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Title::Font& sizesrc(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1007,6 +1303,8 @@ class Funnelarea::Title::Font {
 
     // Sets the source reference on Chart Studio Cloud for `style`.
     Funnelarea::Title::Font& stylesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Title::Font& stylesrc(Callable&& c);
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
@@ -1016,6 +1314,8 @@ class Funnelarea::Title::Font {
 
     // Sets the source reference on Chart Studio Cloud for `textcase`.
     Funnelarea::Title::Font& textcasesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Title::Font& textcasesrc(Callable&& c);
 
     // Sets the variant of the font.
     // - Default: normal
@@ -1024,13 +1324,19 @@ class Funnelarea::Title::Font {
 
     // Sets the source reference on Chart Studio Cloud for `variant`.
     Funnelarea::Title::Font& variantsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Title::Font& variantsrc(Callable&& c);
 
     // Sets the weight (or boldness) of the font.
     Funnelarea::Title::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Funnelarea::Title::Font& weight(Callable&& c);
     Funnelarea::Title::Font& weight(std::vector<int> f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Funnelarea::Title::Font& weightsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Funnelarea::Title::Font& weightsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

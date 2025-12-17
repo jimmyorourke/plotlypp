@@ -30,6 +30,13 @@ class Figure {
         return *this;
     }
 
+    template <typename C, typename = std::enable_if_t<std::is_invocable_v<C, Layout&>>>
+    Figure& setLayout(C&& c) {
+        Layout layout{};
+        std::forward<C>(c)(layout);
+        return setLayout(std::move(layout));
+    }
+
     void toHtml(std::ostream& os) {
         // clang-format off
         os << "<meta charset=\"utf-8\">\n"

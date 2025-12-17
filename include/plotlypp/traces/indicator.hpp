@@ -59,30 +59,52 @@ class Indicator : public Trace {
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Indicator& customdata(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Indicator& customdata(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Indicator& customdatasrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator& customdatasrc(Callable&& c);
 
     Indicator& delta(Delta f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Delta&>>>
+    Indicator& delta(Callable&& c);
 
     Indicator& domain(Domain f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Domain&>>>
+    Indicator& domain(Callable&& c);
 
     // The gauge of the Indicator plot.
     Indicator& gauge(Gauge f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Gauge&>>>
+    Indicator& gauge(Callable&& c);
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Indicator& ids(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Indicator& ids(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `ids`.
     Indicator& idssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator& idssrc(Callable&& c);
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
     Indicator& legend(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator& legend(Callable&& c);
 
     Indicator& legendgrouptitle(Legendgrouptitle f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Legendgrouptitle&>>>
+    Indicator& legendgrouptitle(Callable&& c);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -90,9 +112,13 @@ class Indicator : public Trace {
     // after all unranked items. When having unranked or equal rank items shapes would be displayed after traces i.e.
     // according to their order in data and layout.
     Indicator& legendrank(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Indicator& legendrank(Callable&& c);
 
     // Sets the width (in px or fraction) of the legend for this trace.
     Indicator& legendwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Indicator& legendwidth(Callable&& c);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -102,30 +128,46 @@ class Indicator : public Trace {
     // trace index.
     template <typename T>
     Indicator& meta(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Indicator& meta(Callable&& c);
     template <typename T>
     Indicator& meta(std::vector<T> f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Indicator& metasrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator& metasrc(Callable&& c);
 
     // Determines how the value is displayed on the graph. `number` displays the value numerically in text. `delta`
     // displays the difference to a reference value in text. Finally, `gauge` displays the value graphically on an axis.
     // - Default: number
     // - Flags: ['number', 'delta', 'gauge']
     Indicator& mode(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator& mode(Callable&& c);
 
     // Sets the trace name. The trace name appears as the legend item and on hover.
     Indicator& name(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator& name(Callable&& c);
 
     Indicator& number(Number f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Number&>>>
+    Indicator& number(Callable&& c);
 
     Indicator& stream(Stream f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Stream&>>>
+    Indicator& stream(Callable&& c);
 
     Indicator& title(Title f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Title&>>>
+    Indicator& title(Callable&& c);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
     Indicator& uid(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator& uid(Callable&& c);
 
     // Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well
     // as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note
@@ -137,9 +179,13 @@ class Indicator : public Trace {
     // still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
     template <typename T>
     Indicator& uirevision(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Indicator& uirevision(Callable&& c);
 
     // Sets the number to be displayed.
     Indicator& value(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Indicator& value(Callable&& c);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -167,11 +213,17 @@ class Indicator::Delta {
     class Increasing;
 
     Indicator::Delta& decreasing(Decreasing f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Decreasing&>>>
+    Indicator::Delta& decreasing(Callable&& c);
 
     // Set the font used to display the delta
     Indicator::Delta& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Indicator::Delta& font(Callable&& c);
 
     Indicator::Delta& increasing(Increasing f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Increasing&>>>
+    Indicator::Delta& increasing(Callable&& c);
 
     // Sets the position of delta with respect to the number.
     // - Default: bottom
@@ -179,19 +231,29 @@ class Indicator::Delta {
 
     // Sets a prefix appearing before the delta.
     Indicator::Delta& prefix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Delta& prefix(Callable&& c);
 
     // Sets the reference value to compute the delta. By default, it is set to the current value.
     Indicator::Delta& reference(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Indicator::Delta& reference(Callable&& c);
 
     // Show relative change
     Indicator::Delta& relative(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Indicator::Delta& relative(Callable&& c);
 
     // Sets a suffix appearing next to the delta.
     Indicator::Delta& suffix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Delta& suffix(Callable&& c);
 
     // Sets the value formatting rule using d3 formatting mini-languages which are very similar to those in Python. For
     // numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
     Indicator::Delta& valueformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Delta& valueformat(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -205,9 +267,13 @@ class Indicator::Delta::Decreasing {
 
     // Sets the color for increasing value.
     Indicator::Delta::Decreasing& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Delta::Decreasing& color(Callable&& c);
 
     // Sets the symbol to display for increasing value
     Indicator::Delta::Decreasing& symbol(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Delta::Decreasing& symbol(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -245,6 +311,8 @@ class Indicator::Delta::Font {
     static std::string to_string(Variant e);
 
     Indicator::Delta::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Delta::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -254,6 +322,8 @@ class Indicator::Delta::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Indicator::Delta::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Delta::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -261,12 +331,18 @@ class Indicator::Delta::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Indicator::Delta::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Delta::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Indicator::Delta::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Delta::Font& shadow(Callable&& c);
 
     Indicator::Delta::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Indicator::Delta::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -283,6 +359,8 @@ class Indicator::Delta::Font {
 
     // Sets the weight (or boldness) of the font.
     Indicator::Delta::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Indicator::Delta::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -296,9 +374,13 @@ class Indicator::Delta::Increasing {
 
     // Sets the color for increasing value.
     Indicator::Delta::Increasing& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Delta::Increasing& color(Callable&& c);
 
     // Sets the symbol to display for increasing value
     Indicator::Delta::Increasing& symbol(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Delta::Increasing& symbol(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -312,15 +394,23 @@ class Indicator::Domain {
 
     // If there is a layout grid, use the domain for this column in the grid for this indicator trace .
     Indicator::Domain& column(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Indicator::Domain& column(Callable&& c);
 
     // If there is a layout grid, use the domain for this row in the grid for this indicator trace .
     Indicator::Domain& row(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Indicator::Domain& row(Callable&& c);
 
     // Sets the horizontal domain of this indicator trace (in plot fraction).
     Indicator::Domain& x(std::vector<double> f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
+    Indicator::Domain& x(Callable&& c);
 
     // Sets the vertical domain of this indicator trace (in plot fraction).
     Indicator::Domain& y(std::vector<double> f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
+    Indicator::Domain& y(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -346,26 +436,40 @@ class Indicator::Gauge {
     class Threshold;
 
     Indicator::Gauge& axis(Axis f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Axis&>>>
+    Indicator::Gauge& axis(Callable&& c);
 
     // Set the appearance of the gauge's value
     Indicator::Gauge& bar(Bar f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Bar&>>>
+    Indicator::Gauge& bar(Callable&& c);
 
     // Sets the gauge background color.
     Indicator::Gauge& bgcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Gauge& bgcolor(Callable&& c);
 
     // Sets the color of the border enclosing the gauge.
     Indicator::Gauge& bordercolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Gauge& bordercolor(Callable&& c);
 
     // Sets the width (in px) of the border enclosing the gauge.
     Indicator::Gauge& borderwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Indicator::Gauge& borderwidth(Callable&& c);
 
     // Set the shape of the gauge
     // - Default: angular
     Indicator::Gauge& shape(enum Shape f);
 
     Indicator::Gauge& steps(Steps f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Steps&>>>
+    Indicator::Gauge& steps(Callable&& c);
 
     Indicator::Gauge& threshold(Threshold f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Threshold&>>>
+    Indicator::Gauge& threshold(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -442,6 +546,8 @@ class Indicator::Gauge::Axis {
     // set `dtick` to *M48*
     template <typename T>
     Indicator::Gauge::Axis& dtick(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Indicator::Gauge::Axis& dtick(Callable&& c);
 
     // Determines a formatting rule for the tick exponents. For example, consider the number 1,000,000,000. If *none*,
     // it appears as 1,000,000,000. If *e*, 1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super script). If *SI*,
@@ -456,19 +562,29 @@ class Indicator::Gauge::Axis {
     // values (if desired) can include html-like tags or MathJax.
     template <typename T>
     Indicator::Gauge::Axis& labelalias(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Indicator::Gauge::Axis& labelalias(Callable&& c);
 
     // Hide SI prefix for 10^n if |n| is below this number. This only has an effect when `tickformat` is *SI* or *B*.
     Indicator::Gauge::Axis& minexponent(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Indicator::Gauge::Axis& minexponent(Callable&& c);
 
     // Specifies the maximum number of ticks for the particular axis. The actual number of ticks will be chosen
     // automatically to be less than or equal to `nticks`. Has an effect only if `tickmode` is set to *auto*.
     Indicator::Gauge::Axis& nticks(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Indicator::Gauge::Axis& nticks(Callable&& c);
 
     // Sets the range of this axis.
     Indicator::Gauge::Axis& range(std::vector<double> f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
+    Indicator::Gauge::Axis& range(Callable&& c);
 
     // If "true", even 4-digit integers are separated
     Indicator::Gauge::Axis& separatethousands(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Indicator::Gauge::Axis& separatethousands(Callable&& c);
 
     // If *all*, all exponents are shown besides their significands. If *first*, only the exponent of the first tick is
     // shown. If *last*, only the exponent of the last tick is shown. If *none*, no exponents appear.
@@ -477,6 +593,8 @@ class Indicator::Gauge::Axis {
 
     // Determines whether or not the tick labels are drawn.
     Indicator::Gauge::Axis& showticklabels(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Indicator::Gauge::Axis& showticklabels(Callable&& c);
 
     // If *all*, all tick labels are displayed with a prefix. If *first*, only the first tick is displayed with a
     // prefix. If *last*, only the last tick is displayed with a suffix. If *none*, tick prefixes are hidden.
@@ -494,16 +612,24 @@ class Indicator::Gauge::Axis {
     // serial number from zero in the order it appears.
     template <typename T>
     Indicator::Gauge::Axis& tick0(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Indicator::Gauge::Axis& tick0(Callable&& c);
 
     // Sets the angle of the tick labels with respect to the horizontal. For example, a `tickangle` of -90 draws the
     // tick labels vertically.
     Indicator::Gauge::Axis& tickangle(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Indicator::Gauge::Axis& tickangle(Callable&& c);
 
     // Sets the tick color.
     Indicator::Gauge::Axis& tickcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Gauge::Axis& tickcolor(Callable&& c);
 
     // Sets the color bar's tick label font
     Indicator::Gauge::Axis& tickfont(Tickfont f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickfont&>>>
+    Indicator::Gauge::Axis& tickfont(Callable&& c);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -511,17 +637,25 @@ class Indicator::Gauge::Axis {
     // half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example,
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Indicator::Gauge::Axis& tickformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Gauge::Axis& tickformat(Callable&& c);
 
     Indicator::Gauge::Axis& tickformatstops(Tickformatstops f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickformatstops&>>>
+    Indicator::Gauge::Axis& tickformatstops(Callable&& c);
 
     // Sets the spacing between tick labels as compared to the spacing between ticks. A value of 1 (default) means each
     // tick gets a label. A value of 2 means shows every 2nd label. A larger value n means only every nth tick is
     // labeled. `tick0` determines which labels are shown. Not implemented for axes with `type` *log* or
     // *multicategory*, or when `tickmode` is *array*.
     Indicator::Gauge::Axis& ticklabelstep(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Indicator::Gauge::Axis& ticklabelstep(Callable&& c);
 
     // Sets the tick length (in px).
     Indicator::Gauge::Axis& ticklen(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Indicator::Gauge::Axis& ticklen(Callable&& c);
 
     // Sets the tick mode for this axis. If *auto*, the number of ticks is set via `nticks`. If *linear*, the placement
     // of the ticks is determined by a starting position `tick0` and a tick step `dtick` (*linear* is the default value
@@ -531,6 +665,8 @@ class Indicator::Gauge::Axis {
 
     // Sets a tick label prefix.
     Indicator::Gauge::Axis& tickprefix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Gauge::Axis& tickprefix(Callable&& c);
 
     // Determines whether ticks are drawn or not. If **, this axis' ticks are not drawn. If *outside* (*inside*), this
     // axis' are drawn outside (inside) the axis lines.
@@ -539,29 +675,47 @@ class Indicator::Gauge::Axis {
 
     // Sets a tick label suffix.
     Indicator::Gauge::Axis& ticksuffix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Gauge::Axis& ticksuffix(Callable&& c);
 
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Indicator::Gauge::Axis& ticktext(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Indicator::Gauge::Axis& ticktext(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `ticktext`.
     Indicator::Gauge::Axis& ticktextsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Gauge::Axis& ticktextsrc(Callable&& c);
 
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Indicator::Gauge::Axis& tickvals(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Indicator::Gauge::Axis& tickvals(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `tickvals`.
     Indicator::Gauge::Axis& tickvalssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Gauge::Axis& tickvalssrc(Callable&& c);
 
     // Sets the tick width (in px).
     Indicator::Gauge::Axis& tickwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Indicator::Gauge::Axis& tickwidth(Callable&& c);
 
     // A single toggle to hide the axis while preserving interaction like dragging. Default is true when a cheater plot
     // is present on the axis, otherwise false
     Indicator::Gauge::Axis& visible(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Indicator::Gauge::Axis& visible(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -599,6 +753,8 @@ class Indicator::Gauge::Axis::Tickfont {
     static std::string to_string(Variant e);
 
     Indicator::Gauge::Axis::Tickfont& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Gauge::Axis::Tickfont& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -608,6 +764,8 @@ class Indicator::Gauge::Axis::Tickfont {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Indicator::Gauge::Axis::Tickfont& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Gauge::Axis::Tickfont& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -615,12 +773,18 @@ class Indicator::Gauge::Axis::Tickfont {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Indicator::Gauge::Axis::Tickfont& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Gauge::Axis::Tickfont& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Indicator::Gauge::Axis::Tickfont& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Gauge::Axis::Tickfont& shadow(Callable&& c);
 
     Indicator::Gauge::Axis::Tickfont& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Indicator::Gauge::Axis::Tickfont& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -637,6 +801,8 @@ class Indicator::Gauge::Axis::Tickfont {
 
     // Sets the weight (or boldness) of the font.
     Indicator::Gauge::Axis::Tickfont& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Indicator::Gauge::Axis::Tickfont& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -651,6 +817,8 @@ class Indicator::Gauge::Axis::Tickformatstops {
     class Tickformatstop;
 
     Indicator::Gauge::Axis::Tickformatstops& tickformatstop(Tickformatstop f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickformatstop&>>>
+    Indicator::Gauge::Axis::Tickformatstops& tickformatstop(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -665,15 +833,21 @@ class Indicator::Gauge::Axis::Tickformatstops::Tickformatstop {
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
     Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
+    Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& enabled(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& enabled(Callable&& c);
 
     // When used in a template, named items are created in the output figure in addition to any items the figure already
     // has in this array. You can modify these items in the output figure by making your own item with
     // `templateitemname` matching this `name` alongside your modifications (including `visible: false` or `enabled:
     // false` to hide it). Has no effect outside of a template.
     Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& name(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& name(Callable&& c);
 
     // Used to refer to a named item in this array in the template. Named items from the template will be created even
     // without a matching item in the input figure, but you can modify one by making an item with `templateitemname`
@@ -681,9 +855,13 @@ class Indicator::Gauge::Axis::Tickformatstops::Tickformatstop {
     // there is no template or no matching item, this item will be hidden unless you explicitly show it with `visible:
     // true`.
     Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& templateitemname(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& templateitemname(Callable&& c);
 
     // string - dtickformat for described zoom level, the same as *tickformat*
     Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& value(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& value(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -700,11 +878,17 @@ class Indicator::Gauge::Bar {
 
     // Sets the background color of the arc.
     Indicator::Gauge::Bar& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Gauge::Bar& color(Callable&& c);
 
     Indicator::Gauge::Bar& line(Line f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Line&>>>
+    Indicator::Gauge::Bar& line(Callable&& c);
 
     // Sets the thickness of the bar as a fraction of the total thickness of the gauge.
     Indicator::Gauge::Bar& thickness(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Indicator::Gauge::Bar& thickness(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -718,9 +902,13 @@ class Indicator::Gauge::Bar::Line {
 
     // Sets the color of the line enclosing each sector.
     Indicator::Gauge::Bar::Line& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Gauge::Bar::Line& color(Callable&& c);
 
     // Sets the width (in px) of the line enclosing each sector.
     Indicator::Gauge::Bar::Line& width(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Indicator::Gauge::Bar::Line& width(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -735,6 +923,8 @@ class Indicator::Gauge::Steps {
     class Step;
 
     Indicator::Gauge::Steps& step(Step f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Step&>>>
+    Indicator::Gauge::Steps& step(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -750,17 +940,25 @@ class Indicator::Gauge::Steps::Step {
 
     // Sets the background color of the arc.
     Indicator::Gauge::Steps::Step& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Gauge::Steps::Step& color(Callable&& c);
 
     Indicator::Gauge::Steps::Step& line(Line f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Line&>>>
+    Indicator::Gauge::Steps::Step& line(Callable&& c);
 
     // When used in a template, named items are created in the output figure in addition to any items the figure already
     // has in this array. You can modify these items in the output figure by making your own item with
     // `templateitemname` matching this `name` alongside your modifications (including `visible: false` or `enabled:
     // false` to hide it). Has no effect outside of a template.
     Indicator::Gauge::Steps::Step& name(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Gauge::Steps::Step& name(Callable&& c);
 
     // Sets the range of this axis.
     Indicator::Gauge::Steps::Step& range(std::vector<double> f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
+    Indicator::Gauge::Steps::Step& range(Callable&& c);
 
     // Used to refer to a named item in this array in the template. Named items from the template will be created even
     // without a matching item in the input figure, but you can modify one by making an item with `templateitemname`
@@ -768,9 +966,13 @@ class Indicator::Gauge::Steps::Step {
     // there is no template or no matching item, this item will be hidden unless you explicitly show it with `visible:
     // true`.
     Indicator::Gauge::Steps::Step& templateitemname(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Gauge::Steps::Step& templateitemname(Callable&& c);
 
     // Sets the thickness of the bar as a fraction of the total thickness of the gauge.
     Indicator::Gauge::Steps::Step& thickness(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Indicator::Gauge::Steps::Step& thickness(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -784,9 +986,13 @@ class Indicator::Gauge::Steps::Step::Line {
 
     // Sets the color of the line enclosing each sector.
     Indicator::Gauge::Steps::Step::Line& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Gauge::Steps::Step::Line& color(Callable&& c);
 
     // Sets the width (in px) of the line enclosing each sector.
     Indicator::Gauge::Steps::Step::Line& width(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Indicator::Gauge::Steps::Step::Line& width(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -801,12 +1007,18 @@ class Indicator::Gauge::Threshold {
     class Line;
 
     Indicator::Gauge::Threshold& line(Line f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Line&>>>
+    Indicator::Gauge::Threshold& line(Callable&& c);
 
     // Sets the thickness of the threshold line as a fraction of the thickness of the gauge.
     Indicator::Gauge::Threshold& thickness(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Indicator::Gauge::Threshold& thickness(Callable&& c);
 
     // Sets a treshold value drawn as a line.
     Indicator::Gauge::Threshold& value(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Indicator::Gauge::Threshold& value(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -820,9 +1032,13 @@ class Indicator::Gauge::Threshold::Line {
 
     // Sets the color of the threshold line.
     Indicator::Gauge::Threshold::Line& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Gauge::Threshold::Line& color(Callable&& c);
 
     // Sets the width (in px) of the threshold line.
     Indicator::Gauge::Threshold::Line& width(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Indicator::Gauge::Threshold::Line& width(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -839,9 +1055,13 @@ class Indicator::Legendgrouptitle {
 
     // Sets this legend group's title font.
     Indicator::Legendgrouptitle& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Indicator::Legendgrouptitle& font(Callable&& c);
 
     // Sets the title of the legend group.
     Indicator::Legendgrouptitle& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Legendgrouptitle& text(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -879,6 +1099,8 @@ class Indicator::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Indicator::Legendgrouptitle::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Legendgrouptitle::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -888,6 +1110,8 @@ class Indicator::Legendgrouptitle::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Indicator::Legendgrouptitle::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Legendgrouptitle::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -895,12 +1119,18 @@ class Indicator::Legendgrouptitle::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Indicator::Legendgrouptitle::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Legendgrouptitle::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Indicator::Legendgrouptitle::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Legendgrouptitle::Font& shadow(Callable&& c);
 
     Indicator::Legendgrouptitle::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Indicator::Legendgrouptitle::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -917,6 +1147,8 @@ class Indicator::Legendgrouptitle::Font {
 
     // Sets the weight (or boldness) of the font.
     Indicator::Legendgrouptitle::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Indicator::Legendgrouptitle::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -933,16 +1165,24 @@ class Indicator::Number {
 
     // Set the font used to display main number
     Indicator::Number& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Indicator::Number& font(Callable&& c);
 
     // Sets a prefix appearing before the number.
     Indicator::Number& prefix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Number& prefix(Callable&& c);
 
     // Sets a suffix appearing next to the number.
     Indicator::Number& suffix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Number& suffix(Callable&& c);
 
     // Sets the value formatting rule using d3 formatting mini-languages which are very similar to those in Python. For
     // numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
     Indicator::Number& valueformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Number& valueformat(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -980,6 +1220,8 @@ class Indicator::Number::Font {
     static std::string to_string(Variant e);
 
     Indicator::Number::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Number::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -989,6 +1231,8 @@ class Indicator::Number::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Indicator::Number::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Number::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -996,12 +1240,18 @@ class Indicator::Number::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Indicator::Number::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Number::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Indicator::Number::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Number::Font& shadow(Callable&& c);
 
     Indicator::Number::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Indicator::Number::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1018,6 +1268,8 @@ class Indicator::Number::Font {
 
     // Sets the weight (or boldness) of the font.
     Indicator::Number::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Indicator::Number::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1032,10 +1284,14 @@ class Indicator::Stream {
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
     Indicator::Stream& maxpoints(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Indicator::Stream& maxpoints(Callable&& c);
 
     // The stream id number links a data trace on a plot with a stream. See https://chart-studio.plotly.com/settings for
     // more details.
     Indicator::Stream& token(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Stream& token(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1063,9 +1319,13 @@ class Indicator::Title {
 
     // Set the font used to display the title
     Indicator::Title& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Indicator::Title& font(Callable&& c);
 
     // Sets the title of this indicator.
     Indicator::Title& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Title& text(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1103,6 +1363,8 @@ class Indicator::Title::Font {
     static std::string to_string(Variant e);
 
     Indicator::Title::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Title::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1112,6 +1374,8 @@ class Indicator::Title::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Indicator::Title::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Title::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -1119,12 +1383,18 @@ class Indicator::Title::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Indicator::Title::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Title::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Indicator::Title::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Indicator::Title::Font& shadow(Callable&& c);
 
     Indicator::Title::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Indicator::Title::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1141,6 +1411,8 @@ class Indicator::Title::Font {
 
     // Sets the weight (or boldness) of the font.
     Indicator::Title::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Indicator::Title::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

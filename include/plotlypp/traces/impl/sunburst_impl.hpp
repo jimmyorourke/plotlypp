@@ -47,26 +47,56 @@ Sunburst& Sunburst::count(std::string f) {
     json["count"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst& Sunburst::count(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return count(std::move(f));
+}
 
 template <typename T, typename>
 Sunburst& Sunburst::customdata(std::vector<T> f) {
     json["customdata"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sunburst& Sunburst::customdata(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return customdata(std::move(f));
+}
 
 Sunburst& Sunburst::customdatasrc(std::string f) {
     json["customdatasrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst& Sunburst::customdatasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return customdatasrc(std::move(f));
 }
 
 Sunburst& Sunburst::domain(Domain f) {
     json["domain"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst& Sunburst::domain(Callable&& c) {
+    Domain f{};
+    std::forward<Callable>(c)(f);
+    return domain(std::move(f));
+}
 
 Sunburst& Sunburst::hoverinfo(std::string f) {
     json["hoverinfo"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst& Sunburst::hoverinfo(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hoverinfo(std::move(f));
 }
 Sunburst& Sunburst::hoverinfo(std::vector<std::string> f) {
     json["hoverinfo"] = std::move(f);
@@ -77,15 +107,33 @@ Sunburst& Sunburst::hoverinfosrc(std::string f) {
     json["hoverinfosrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst& Sunburst::hoverinfosrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hoverinfosrc(std::move(f));
+}
 
 Sunburst& Sunburst::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst& Sunburst::hoverlabel(Callable&& c) {
+    Hoverlabel f{};
+    std::forward<Callable>(c)(f);
+    return hoverlabel(std::move(f));
+}
 
 Sunburst& Sunburst::hovertemplate(std::string f) {
     json["hovertemplate"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst& Sunburst::hovertemplate(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertemplate(std::move(f));
 }
 Sunburst& Sunburst::hovertemplate(std::vector<std::string> f) {
     json["hovertemplate"] = std::move(f);
@@ -96,10 +144,22 @@ Sunburst& Sunburst::hovertemplatesrc(std::string f) {
     json["hovertemplatesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst& Sunburst::hovertemplatesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertemplatesrc(std::move(f));
+}
 
 Sunburst& Sunburst::hovertext(std::string f) {
     json["hovertext"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst& Sunburst::hovertext(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertext(std::move(f));
 }
 Sunburst& Sunburst::hovertext(std::vector<std::string> f) {
     json["hovertext"] = std::move(f);
@@ -110,21 +170,45 @@ Sunburst& Sunburst::hovertextsrc(std::string f) {
     json["hovertextsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst& Sunburst::hovertextsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertextsrc(std::move(f));
+}
 
 template <typename T, typename>
 Sunburst& Sunburst::ids(std::vector<T> f) {
     json["ids"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sunburst& Sunburst::ids(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return ids(std::move(f));
+}
 
 Sunburst& Sunburst::idssrc(std::string f) {
     json["idssrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst& Sunburst::idssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return idssrc(std::move(f));
+}
 
 Sunburst& Sunburst::insidetextfont(Insidetextfont f) {
     json["insidetextfont"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst& Sunburst::insidetextfont(Callable&& c) {
+    Insidetextfont f{};
+    std::forward<Callable>(c)(f);
+    return insidetextfont(std::move(f));
 }
 
 Sunburst& Sunburst::insidetextorientation(enum Insidetextorientation f) {
@@ -137,35 +221,77 @@ Sunburst& Sunburst::labels(std::vector<T> f) {
     json["labels"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sunburst& Sunburst::labels(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return labels(std::move(f));
+}
 
 Sunburst& Sunburst::labelssrc(std::string f) {
     json["labelssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst& Sunburst::labelssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return labelssrc(std::move(f));
 }
 
 Sunburst& Sunburst::leaf(Leaf f) {
     json["leaf"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst& Sunburst::leaf(Callable&& c) {
+    Leaf f{};
+    std::forward<Callable>(c)(f);
+    return leaf(std::move(f));
+}
 
 Sunburst& Sunburst::legend(std::string f) {
     json["legend"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst& Sunburst::legend(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return legend(std::move(f));
 }
 
 Sunburst& Sunburst::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst& Sunburst::legendgrouptitle(Callable&& c) {
+    Legendgrouptitle f{};
+    std::forward<Callable>(c)(f);
+    return legendgrouptitle(std::move(f));
+}
 
 Sunburst& Sunburst::legendrank(double f) {
     json["legendrank"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst& Sunburst::legendrank(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendrank(std::move(f));
+}
 
 Sunburst& Sunburst::legendwidth(double f) {
     json["legendwidth"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst& Sunburst::legendwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendwidth(std::move(f));
 }
 
 template <typename T>
@@ -173,21 +299,45 @@ Sunburst& Sunburst::level(T f) {
     json["level"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sunburst& Sunburst::level(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return level(std::move(f));
+}
 
 Sunburst& Sunburst::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst& Sunburst::marker(Callable&& c) {
+    Marker f{};
+    std::forward<Callable>(c)(f);
+    return marker(std::move(f));
 }
 
 Sunburst& Sunburst::maxdepth(int f) {
     json["maxdepth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst& Sunburst::maxdepth(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return maxdepth(std::move(f));
+}
 
 template <typename T>
 Sunburst& Sunburst::meta(T f) {
     json["meta"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Sunburst& Sunburst::meta(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return meta(std::move(f));
 }
 template <typename T>
 Sunburst& Sunburst::meta(std::vector<T> f) {
@@ -199,20 +349,44 @@ Sunburst& Sunburst::metasrc(std::string f) {
     json["metasrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst& Sunburst::metasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return metasrc(std::move(f));
+}
 
 Sunburst& Sunburst::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst& Sunburst::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
 }
 
 Sunburst& Sunburst::opacity(double f) {
     json["opacity"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst& Sunburst::opacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return opacity(std::move(f));
+}
 
 Sunburst& Sunburst::outsidetextfont(Outsidetextfont f) {
     json["outsidetextfont"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst& Sunburst::outsidetextfont(Callable&& c) {
+    Outsidetextfont f{};
+    std::forward<Callable>(c)(f);
+    return outsidetextfont(std::move(f));
 }
 
 template <typename T, typename>
@@ -220,30 +394,66 @@ Sunburst& Sunburst::parents(std::vector<T> f) {
     json["parents"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sunburst& Sunburst::parents(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return parents(std::move(f));
+}
 
 Sunburst& Sunburst::parentssrc(std::string f) {
     json["parentssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst& Sunburst::parentssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return parentssrc(std::move(f));
 }
 
 Sunburst& Sunburst::root(Root f) {
     json["root"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst& Sunburst::root(Callable&& c) {
+    Root f{};
+    std::forward<Callable>(c)(f);
+    return root(std::move(f));
+}
 
 Sunburst& Sunburst::rotation(double f) {
     json["rotation"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst& Sunburst::rotation(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return rotation(std::move(f));
 }
 
 Sunburst& Sunburst::sort(bool f) {
     json["sort"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst& Sunburst::sort(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return sort(std::move(f));
+}
 
 Sunburst& Sunburst::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst& Sunburst::stream(Callable&& c) {
+    Stream f{};
+    std::forward<Callable>(c)(f);
+    return stream(std::move(f));
 }
 
 template <typename T, typename>
@@ -251,25 +461,55 @@ Sunburst& Sunburst::text(std::vector<T> f) {
     json["text"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sunburst& Sunburst::text(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
+}
 
 Sunburst& Sunburst::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst& Sunburst::textfont(Callable&& c) {
+    Textfont f{};
+    std::forward<Callable>(c)(f);
+    return textfont(std::move(f));
 }
 
 Sunburst& Sunburst::textinfo(std::string f) {
     json["textinfo"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst& Sunburst::textinfo(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textinfo(std::move(f));
+}
 
 Sunburst& Sunburst::textsrc(std::string f) {
     json["textsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst& Sunburst::textsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textsrc(std::move(f));
+}
 
 Sunburst& Sunburst::texttemplate(std::string f) {
     json["texttemplate"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst& Sunburst::texttemplate(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return texttemplate(std::move(f));
 }
 Sunburst& Sunburst::texttemplate(std::vector<std::string> f) {
     json["texttemplate"] = std::move(f);
@@ -280,10 +520,22 @@ Sunburst& Sunburst::texttemplatesrc(std::string f) {
     json["texttemplatesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst& Sunburst::texttemplatesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return texttemplatesrc(std::move(f));
+}
 
 Sunburst& Sunburst::uid(std::string f) {
     json["uid"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst& Sunburst::uid(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return uid(std::move(f));
 }
 
 template <typename T>
@@ -291,16 +543,34 @@ Sunburst& Sunburst::uirevision(T f) {
     json["uirevision"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sunburst& Sunburst::uirevision(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return uirevision(std::move(f));
+}
 
 template <typename T, typename>
 Sunburst& Sunburst::values(std::vector<T> f) {
     json["values"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sunburst& Sunburst::values(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return values(std::move(f));
+}
 
 Sunburst& Sunburst::valuessrc(std::string f) {
     json["valuessrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst& Sunburst::valuessrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return valuessrc(std::move(f));
 }
 
 Sunburst& Sunburst::visible(enum Visible f) {
@@ -313,20 +583,44 @@ Sunburst::Domain& Sunburst::Domain::column(int f) {
     json["column"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Domain& Sunburst::Domain::column(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return column(std::move(f));
+}
 
 Sunburst::Domain& Sunburst::Domain::row(int f) {
     json["row"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Domain& Sunburst::Domain::row(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return row(std::move(f));
 }
 
 Sunburst::Domain& Sunburst::Domain::x(std::vector<double> f) {
     json["x"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Domain& Sunburst::Domain::x(Callable&& c) {
+    std::vector<double> f{};
+    std::forward<Callable>(c)(f);
+    return x(std::move(f));
+}
 
 Sunburst::Domain& Sunburst::Domain::y(std::vector<double> f) {
     json["y"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Domain& Sunburst::Domain::y(Callable&& c) {
+    std::vector<double> f{};
+    std::forward<Callable>(c)(f);
+    return y(std::move(f));
 }
 
 std::string Sunburst::Hoverlabel::to_string(Align e) {
@@ -354,10 +648,22 @@ Sunburst::Hoverlabel& Sunburst::Hoverlabel::alignsrc(std::string f) {
     json["alignsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Hoverlabel& Sunburst::Hoverlabel::alignsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return alignsrc(std::move(f));
+}
 
 Sunburst::Hoverlabel& Sunburst::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Hoverlabel& Sunburst::Hoverlabel::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
 }
 Sunburst::Hoverlabel& Sunburst::Hoverlabel::bgcolor(std::vector<std::string> f) {
     json["bgcolor"] = std::move(f);
@@ -368,10 +674,22 @@ Sunburst::Hoverlabel& Sunburst::Hoverlabel::bgcolorsrc(std::string f) {
     json["bgcolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Hoverlabel& Sunburst::Hoverlabel::bgcolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolorsrc(std::move(f));
+}
 
 Sunburst::Hoverlabel& Sunburst::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Hoverlabel& Sunburst::Hoverlabel::bordercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolor(std::move(f));
 }
 Sunburst::Hoverlabel& Sunburst::Hoverlabel::bordercolor(std::vector<std::string> f) {
     json["bordercolor"] = std::move(f);
@@ -382,15 +700,33 @@ Sunburst::Hoverlabel& Sunburst::Hoverlabel::bordercolorsrc(std::string f) {
     json["bordercolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Hoverlabel& Sunburst::Hoverlabel::bordercolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolorsrc(std::move(f));
+}
 
 Sunburst::Hoverlabel& Sunburst::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Hoverlabel& Sunburst::Hoverlabel::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Sunburst::Hoverlabel& Sunburst::Hoverlabel::namelength(int f) {
     json["namelength"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Hoverlabel& Sunburst::Hoverlabel::namelength(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return namelength(std::move(f));
 }
 Sunburst::Hoverlabel& Sunburst::Hoverlabel::namelength(std::vector<int> f) {
     json["namelength"] = std::move(f);
@@ -400,6 +736,12 @@ Sunburst::Hoverlabel& Sunburst::Hoverlabel::namelength(std::vector<int> f) {
 Sunburst::Hoverlabel& Sunburst::Hoverlabel::namelengthsrc(std::string f) {
     json["namelengthsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Hoverlabel& Sunburst::Hoverlabel::namelengthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return namelengthsrc(std::move(f));
 }
 
 std::string Sunburst::Hoverlabel::Font::to_string(Style e) {
@@ -437,6 +779,12 @@ Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
     return *this;
@@ -446,10 +794,22 @@ Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::colorsrc(std::string f) 
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::family(std::vector<std::string> f) {
     json["family"] = std::move(f);
@@ -460,10 +820,22 @@ Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::familysrc(std::string f)
     json["familysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::familysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return familysrc(std::move(f));
+}
 
 Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
 }
 Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
     json["lineposition"] = std::move(f);
@@ -474,10 +846,22 @@ Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::linepositionsrc(std::str
     json["linepositionsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::linepositionsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return linepositionsrc(std::move(f));
+}
 
 Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
 }
 Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::shadow(std::vector<std::string> f) {
     json["shadow"] = std::move(f);
@@ -488,10 +872,22 @@ Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::shadowsrc(std::string f)
     json["shadowsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::shadowsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadowsrc(std::move(f));
+}
 
 Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -501,6 +897,12 @@ Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::size(std::vector<double>
 Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
 }
 
 Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::style(enum Style f) {
@@ -518,6 +920,12 @@ Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::stylesrc(std::string f) 
     json["stylesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::stylesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return stylesrc(std::move(f));
+}
 
 Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::textcase(enum Textcase f) {
     json["textcase"] = to_string(f);
@@ -533,6 +941,12 @@ Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::textcase(const std::vect
 Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::textcasesrc(std::string f) {
     json["textcasesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::textcasesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textcasesrc(std::move(f));
 }
 
 Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::variant(enum Variant f) {
@@ -550,10 +964,22 @@ Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::variantsrc(std::string f
     json["variantsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::variantsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return variantsrc(std::move(f));
+}
 
 Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::weight(std::vector<int> f) {
     json["weight"] = std::move(f);
@@ -563,6 +989,12 @@ Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::weight(std::vector<int> 
 Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::weightsrc(std::string f) {
     json["weightsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Hoverlabel::Font& Sunburst::Hoverlabel::Font::weightsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return weightsrc(std::move(f));
 }
 
 std::string Sunburst::Insidetextfont::to_string(Style e) {
@@ -600,6 +1032,12 @@ Sunburst::Insidetextfont& Sunburst::Insidetextfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Insidetextfont& Sunburst::Insidetextfont::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 Sunburst::Insidetextfont& Sunburst::Insidetextfont::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
     return *this;
@@ -609,10 +1047,22 @@ Sunburst::Insidetextfont& Sunburst::Insidetextfont::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Insidetextfont& Sunburst::Insidetextfont::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Sunburst::Insidetextfont& Sunburst::Insidetextfont::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Insidetextfont& Sunburst::Insidetextfont::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 Sunburst::Insidetextfont& Sunburst::Insidetextfont::family(std::vector<std::string> f) {
     json["family"] = std::move(f);
@@ -623,10 +1073,22 @@ Sunburst::Insidetextfont& Sunburst::Insidetextfont::familysrc(std::string f) {
     json["familysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Insidetextfont& Sunburst::Insidetextfont::familysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return familysrc(std::move(f));
+}
 
 Sunburst::Insidetextfont& Sunburst::Insidetextfont::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Insidetextfont& Sunburst::Insidetextfont::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
 }
 Sunburst::Insidetextfont& Sunburst::Insidetextfont::lineposition(std::vector<std::string> f) {
     json["lineposition"] = std::move(f);
@@ -637,10 +1099,22 @@ Sunburst::Insidetextfont& Sunburst::Insidetextfont::linepositionsrc(std::string 
     json["linepositionsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Insidetextfont& Sunburst::Insidetextfont::linepositionsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return linepositionsrc(std::move(f));
+}
 
 Sunburst::Insidetextfont& Sunburst::Insidetextfont::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Insidetextfont& Sunburst::Insidetextfont::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
 }
 Sunburst::Insidetextfont& Sunburst::Insidetextfont::shadow(std::vector<std::string> f) {
     json["shadow"] = std::move(f);
@@ -651,10 +1125,22 @@ Sunburst::Insidetextfont& Sunburst::Insidetextfont::shadowsrc(std::string f) {
     json["shadowsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Insidetextfont& Sunburst::Insidetextfont::shadowsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadowsrc(std::move(f));
+}
 
 Sunburst::Insidetextfont& Sunburst::Insidetextfont::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Insidetextfont& Sunburst::Insidetextfont::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Sunburst::Insidetextfont& Sunburst::Insidetextfont::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -664,6 +1150,12 @@ Sunburst::Insidetextfont& Sunburst::Insidetextfont::size(std::vector<double> f) 
 Sunburst::Insidetextfont& Sunburst::Insidetextfont::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Insidetextfont& Sunburst::Insidetextfont::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
 }
 
 Sunburst::Insidetextfont& Sunburst::Insidetextfont::style(enum Style f) {
@@ -681,6 +1173,12 @@ Sunburst::Insidetextfont& Sunburst::Insidetextfont::stylesrc(std::string f) {
     json["stylesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Insidetextfont& Sunburst::Insidetextfont::stylesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return stylesrc(std::move(f));
+}
 
 Sunburst::Insidetextfont& Sunburst::Insidetextfont::textcase(enum Textcase f) {
     json["textcase"] = to_string(f);
@@ -696,6 +1194,12 @@ Sunburst::Insidetextfont& Sunburst::Insidetextfont::textcase(const std::vector<e
 Sunburst::Insidetextfont& Sunburst::Insidetextfont::textcasesrc(std::string f) {
     json["textcasesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Insidetextfont& Sunburst::Insidetextfont::textcasesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textcasesrc(std::move(f));
 }
 
 Sunburst::Insidetextfont& Sunburst::Insidetextfont::variant(enum Variant f) {
@@ -713,10 +1217,22 @@ Sunburst::Insidetextfont& Sunburst::Insidetextfont::variantsrc(std::string f) {
     json["variantsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Insidetextfont& Sunburst::Insidetextfont::variantsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return variantsrc(std::move(f));
+}
 
 Sunburst::Insidetextfont& Sunburst::Insidetextfont::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Insidetextfont& Sunburst::Insidetextfont::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 Sunburst::Insidetextfont& Sunburst::Insidetextfont::weight(std::vector<int> f) {
     json["weight"] = std::move(f);
@@ -727,11 +1243,23 @@ Sunburst::Insidetextfont& Sunburst::Insidetextfont::weightsrc(std::string f) {
     json["weightsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Insidetextfont& Sunburst::Insidetextfont::weightsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return weightsrc(std::move(f));
+}
 
 
 Sunburst::Leaf& Sunburst::Leaf::opacity(double f) {
     json["opacity"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Leaf& Sunburst::Leaf::opacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return opacity(std::move(f));
 }
 
 
@@ -739,10 +1267,22 @@ Sunburst::Legendgrouptitle& Sunburst::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Legendgrouptitle& Sunburst::Legendgrouptitle::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Sunburst::Legendgrouptitle& Sunburst::Legendgrouptitle::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Legendgrouptitle& Sunburst::Legendgrouptitle::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 
 std::string Sunburst::Legendgrouptitle::Font::to_string(Style e) {
@@ -780,25 +1320,55 @@ Sunburst::Legendgrouptitle::Font& Sunburst::Legendgrouptitle::Font::color(std::s
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Legendgrouptitle::Font& Sunburst::Legendgrouptitle::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Sunburst::Legendgrouptitle::Font& Sunburst::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Legendgrouptitle::Font& Sunburst::Legendgrouptitle::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Sunburst::Legendgrouptitle::Font& Sunburst::Legendgrouptitle::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Legendgrouptitle::Font& Sunburst::Legendgrouptitle::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Sunburst::Legendgrouptitle::Font& Sunburst::Legendgrouptitle::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Legendgrouptitle::Font& Sunburst::Legendgrouptitle::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Sunburst::Legendgrouptitle::Font& Sunburst::Legendgrouptitle::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Legendgrouptitle::Font& Sunburst::Legendgrouptitle::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Sunburst::Legendgrouptitle::Font& Sunburst::Legendgrouptitle::Font::style(enum Style f) {
@@ -820,47 +1390,101 @@ Sunburst::Legendgrouptitle::Font& Sunburst::Legendgrouptitle::Font::weight(int f
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Legendgrouptitle::Font& Sunburst::Legendgrouptitle::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Sunburst::Marker& Sunburst::Marker::autocolorscale(bool f) {
     json["autocolorscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker& Sunburst::Marker::autocolorscale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return autocolorscale(std::move(f));
+}
 
 Sunburst::Marker& Sunburst::Marker::cauto(bool f) {
     json["cauto"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker& Sunburst::Marker::cauto(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return cauto(std::move(f));
 }
 
 Sunburst::Marker& Sunburst::Marker::cmax(double f) {
     json["cmax"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker& Sunburst::Marker::cmax(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmax(std::move(f));
+}
 
 Sunburst::Marker& Sunburst::Marker::cmid(double f) {
     json["cmid"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker& Sunburst::Marker::cmid(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmid(std::move(f));
 }
 
 Sunburst::Marker& Sunburst::Marker::cmin(double f) {
     json["cmin"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker& Sunburst::Marker::cmin(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmin(std::move(f));
+}
 
 Sunburst::Marker& Sunburst::Marker::coloraxis(std::string f) {
     json["coloraxis"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker& Sunburst::Marker::coloraxis(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return coloraxis(std::move(f));
 }
 
 Sunburst::Marker& Sunburst::Marker::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker& Sunburst::Marker::colorbar(Callable&& c) {
+    Colorbar f{};
+    std::forward<Callable>(c)(f);
+    return colorbar(std::move(f));
+}
 
 template <typename T, typename>
 Sunburst::Marker& Sunburst::Marker::colors(std::vector<T> f) {
     json["colors"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Sunburst::Marker& Sunburst::Marker::colors(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return colors(std::move(f));
 }
 
 Sunburst::Marker& Sunburst::Marker::colorscale(std::string f) {
@@ -871,30 +1495,66 @@ Sunburst::Marker& Sunburst::Marker::colorscale(std::vector<std::pair<double, std
     json["colorscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker& Sunburst::Marker::colorscale(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorscale(std::move(f));
+}
 
 Sunburst::Marker& Sunburst::Marker::colorssrc(std::string f) {
     json["colorssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker& Sunburst::Marker::colorssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorssrc(std::move(f));
 }
 
 Sunburst::Marker& Sunburst::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker& Sunburst::Marker::line(Callable&& c) {
+    Line f{};
+    std::forward<Callable>(c)(f);
+    return line(std::move(f));
+}
 
 Sunburst::Marker& Sunburst::Marker::pattern(Pattern f) {
     json["pattern"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker& Sunburst::Marker::pattern(Callable&& c) {
+    Pattern f{};
+    std::forward<Callable>(c)(f);
+    return pattern(std::move(f));
 }
 
 Sunburst::Marker& Sunburst::Marker::reversescale(bool f) {
     json["reversescale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker& Sunburst::Marker::reversescale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return reversescale(std::move(f));
+}
 
 Sunburst::Marker& Sunburst::Marker::showscale(bool f) {
     json["showscale"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker& Sunburst::Marker::showscale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showscale(std::move(f));
 }
 
 std::string Sunburst::Marker::Colorbar::to_string(Exponentformat e) {
@@ -1044,21 +1704,45 @@ Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
+}
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::bordercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolor(std::move(f));
 }
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::borderwidth(double f) {
     json["borderwidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::borderwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return borderwidth(std::move(f));
+}
 
 template <typename T>
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::dtick(T f) {
     json["dtick"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::dtick(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return dtick(std::move(f));
 }
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::exponentformat(enum Exponentformat f) {
@@ -1071,10 +1755,22 @@ Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::labelalias(T f) {
     json["labelalias"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::labelalias(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return labelalias(std::move(f));
+}
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::len(double f) {
     json["len"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::len(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return len(std::move(f));
 }
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::lenmode(enum Lenmode f) {
@@ -1086,10 +1782,22 @@ Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::minexponent(double f) {
     json["minexponent"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::minexponent(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return minexponent(std::move(f));
+}
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::nticks(int f) {
     json["nticks"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::nticks(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return nticks(std::move(f));
 }
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::orientation(enum Orientation f) {
@@ -1101,15 +1809,33 @@ Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::outlinecolor(std::string
     json["outlinecolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::outlinecolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return outlinecolor(std::move(f));
+}
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::outlinewidth(double f) {
     json["outlinewidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::outlinewidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return outlinewidth(std::move(f));
+}
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::separatethousands(bool f) {
     json["separatethousands"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::separatethousands(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return separatethousands(std::move(f));
 }
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::showexponent(enum Showexponent f) {
@@ -1120,6 +1846,12 @@ Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::showexponent(enum Showex
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::showticklabels(bool f) {
     json["showticklabels"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::showticklabels(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showticklabels(std::move(f));
 }
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::showtickprefix(enum Showtickprefix f) {
@@ -1136,6 +1868,12 @@ Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::thickness(double f) {
     json["thickness"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::thickness(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return thickness(std::move(f));
+}
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::thicknessmode(enum Thicknessmode f) {
     json["thicknessmode"] = to_string(f);
@@ -1147,30 +1885,66 @@ Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tick0(T f) {
     json["tick0"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tick0(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return tick0(std::move(f));
+}
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickangle(double f) {
     json["tickangle"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickangle(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return tickangle(std::move(f));
 }
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickcolor(std::string f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickcolor(std::move(f));
+}
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickfont(Callable&& c) {
+    Tickfont f{};
+    std::forward<Callable>(c)(f);
+    return tickfont(std::move(f));
 }
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickformat(std::string f) {
     json["tickformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickformat(std::move(f));
+}
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickformatstops(Callable&& c) {
+    Tickformatstops f{};
+    std::forward<Callable>(c)(f);
+    return tickformatstops(std::move(f));
 }
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::ticklabeloverflow(enum Ticklabeloverflow f) {
@@ -1187,10 +1961,22 @@ Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::ticklabelstep(int f) {
     json["ticklabelstep"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::ticklabelstep(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return ticklabelstep(std::move(f));
+}
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::ticklen(double f) {
     json["ticklen"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::ticklen(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return ticklen(std::move(f));
 }
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickmode(enum Tickmode f) {
@@ -1202,6 +1988,12 @@ Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickprefix(std::string f
     json["tickprefix"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickprefix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickprefix(std::move(f));
+}
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::ticks(enum Ticks f) {
     json["ticks"] = to_string(f);
@@ -1212,16 +2004,34 @@ Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::ticksuffix(std::string f
     json["ticksuffix"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::ticksuffix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ticksuffix(std::move(f));
+}
 
 template <typename T, typename>
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::ticktext(std::vector<T> f) {
     json["ticktext"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::ticktext(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return ticktext(std::move(f));
+}
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::ticktextsrc(std::string f) {
     json["ticktextsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::ticktextsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ticktextsrc(std::move(f));
 }
 
 template <typename T, typename>
@@ -1229,25 +2039,55 @@ Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickvals(std::vector<T> 
     json["tickvals"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickvals(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return tickvals(std::move(f));
+}
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickvalssrc(std::string f) {
     json["tickvalssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickvalssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickvalssrc(std::move(f));
 }
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickwidth(double f) {
     json["tickwidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::tickwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return tickwidth(std::move(f));
+}
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::title(Callable&& c) {
+    Title f{};
+    std::forward<Callable>(c)(f);
+    return title(std::move(f));
+}
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::x(double f) {
     json["x"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::x(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return x(std::move(f));
 }
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::xanchor(enum Xanchor f) {
@@ -1259,6 +2099,12 @@ Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::xpad(double f) {
     json["xpad"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::xpad(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return xpad(std::move(f));
+}
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::xref(enum Xref f) {
     json["xref"] = to_string(f);
@@ -1269,6 +2115,12 @@ Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::y(double f) {
     json["y"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::y(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return y(std::move(f));
+}
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::yanchor(enum Yanchor f) {
     json["yanchor"] = to_string(f);
@@ -1278,6 +2130,12 @@ Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::yanchor(enum Yanchor f) 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::ypad(double f) {
     json["ypad"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::ypad(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return ypad(std::move(f));
 }
 
 Sunburst::Marker::Colorbar& Sunburst::Marker::Colorbar::yref(enum Yref f) {
@@ -1320,25 +2178,55 @@ Sunburst::Marker::Colorbar::Tickfont& Sunburst::Marker::Colorbar::Tickfont::colo
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar::Tickfont& Sunburst::Marker::Colorbar::Tickfont::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Sunburst::Marker::Colorbar::Tickfont& Sunburst::Marker::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar::Tickfont& Sunburst::Marker::Colorbar::Tickfont::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Sunburst::Marker::Colorbar::Tickfont& Sunburst::Marker::Colorbar::Tickfont::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar::Tickfont& Sunburst::Marker::Colorbar::Tickfont::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Sunburst::Marker::Colorbar::Tickfont& Sunburst::Marker::Colorbar::Tickfont::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar::Tickfont& Sunburst::Marker::Colorbar::Tickfont::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Sunburst::Marker::Colorbar::Tickfont& Sunburst::Marker::Colorbar::Tickfont::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar::Tickfont& Sunburst::Marker::Colorbar::Tickfont::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Sunburst::Marker::Colorbar::Tickfont& Sunburst::Marker::Colorbar::Tickfont::style(enum Style f) {
@@ -1360,11 +2248,23 @@ Sunburst::Marker::Colorbar::Tickfont& Sunburst::Marker::Colorbar::Tickfont::weig
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar::Tickfont& Sunburst::Marker::Colorbar::Tickfont::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Sunburst::Marker::Colorbar::Tickformatstops& Sunburst::Marker::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar::Tickformatstops& Sunburst::Marker::Colorbar::Tickformatstops::tickformatstop(Callable&& c) {
+    Tickformatstop f{};
+    std::forward<Callable>(c)(f);
+    return tickformatstop(std::move(f));
 }
 
 
@@ -1372,25 +2272,55 @@ Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop& Sunburst::Marker::C
     json["dtickrange"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop& Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(Callable&& c) {
+    std::vector<double> f{};
+    std::forward<Callable>(c)(f);
+    return dtickrange(std::move(f));
+}
 
 Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop& Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop::enabled(bool f) {
     json["enabled"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop& Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop::enabled(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return enabled(std::move(f));
 }
 
 Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop& Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop& Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
+}
 
 Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop& Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop::templateitemname(std::string f) {
     json["templateitemname"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop& Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop::templateitemname(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return templateitemname(std::move(f));
+}
 
 Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop& Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop::value(std::string f) {
     json["value"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop& Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop::value(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return value(std::move(f));
 }
 
 std::string Sunburst::Marker::Colorbar::Title::to_string(Side e) {
@@ -1407,6 +2337,12 @@ Sunburst::Marker::Colorbar::Title& Sunburst::Marker::Colorbar::Title::font(Font 
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar::Title& Sunburst::Marker::Colorbar::Title::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Sunburst::Marker::Colorbar::Title& Sunburst::Marker::Colorbar::Title::side(enum Side f) {
     json["side"] = to_string(f);
@@ -1416,6 +2352,12 @@ Sunburst::Marker::Colorbar::Title& Sunburst::Marker::Colorbar::Title::side(enum 
 Sunburst::Marker::Colorbar::Title& Sunburst::Marker::Colorbar::Title::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar::Title& Sunburst::Marker::Colorbar::Title::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 
 std::string Sunburst::Marker::Colorbar::Title::Font::to_string(Style e) {
@@ -1453,25 +2395,55 @@ Sunburst::Marker::Colorbar::Title::Font& Sunburst::Marker::Colorbar::Title::Font
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar::Title::Font& Sunburst::Marker::Colorbar::Title::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Sunburst::Marker::Colorbar::Title::Font& Sunburst::Marker::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar::Title::Font& Sunburst::Marker::Colorbar::Title::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Sunburst::Marker::Colorbar::Title::Font& Sunburst::Marker::Colorbar::Title::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar::Title::Font& Sunburst::Marker::Colorbar::Title::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Sunburst::Marker::Colorbar::Title::Font& Sunburst::Marker::Colorbar::Title::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar::Title::Font& Sunburst::Marker::Colorbar::Title::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Sunburst::Marker::Colorbar::Title::Font& Sunburst::Marker::Colorbar::Title::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar::Title::Font& Sunburst::Marker::Colorbar::Title::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Sunburst::Marker::Colorbar::Title::Font& Sunburst::Marker::Colorbar::Title::Font::style(enum Style f) {
@@ -1493,11 +2465,23 @@ Sunburst::Marker::Colorbar::Title::Font& Sunburst::Marker::Colorbar::Title::Font
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Colorbar::Title::Font& Sunburst::Marker::Colorbar::Title::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Sunburst::Marker::Line& Sunburst::Marker::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Line& Sunburst::Marker::Line::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
 }
 Sunburst::Marker::Line& Sunburst::Marker::Line::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
@@ -1508,10 +2492,22 @@ Sunburst::Marker::Line& Sunburst::Marker::Line::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Line& Sunburst::Marker::Line::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Sunburst::Marker::Line& Sunburst::Marker::Line::width(double f) {
     json["width"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Line& Sunburst::Marker::Line::width(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return width(std::move(f));
 }
 Sunburst::Marker::Line& Sunburst::Marker::Line::width(std::vector<double> f) {
     json["width"] = std::move(f);
@@ -1521,6 +2517,12 @@ Sunburst::Marker::Line& Sunburst::Marker::Line::width(std::vector<double> f) {
 Sunburst::Marker::Line& Sunburst::Marker::Line::widthsrc(std::string f) {
     json["widthsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Line& Sunburst::Marker::Line::widthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return widthsrc(std::move(f));
 }
 
 std::string Sunburst::Marker::Pattern::to_string(Fillmode e) {
@@ -1536,6 +2538,12 @@ Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
+}
 Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::bgcolor(std::vector<std::string> f) {
     json["bgcolor"] = std::move(f);
     return *this;
@@ -1545,10 +2553,22 @@ Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::bgcolorsrc(std::string f) 
     json["bgcolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::bgcolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolorsrc(std::move(f));
+}
 
 Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::fgcolor(std::string f) {
     json["fgcolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::fgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return fgcolor(std::move(f));
 }
 Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::fgcolor(std::vector<std::string> f) {
     json["fgcolor"] = std::move(f);
@@ -1559,10 +2579,22 @@ Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::fgcolorsrc(std::string f) 
     json["fgcolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::fgcolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return fgcolorsrc(std::move(f));
+}
 
 Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::fgopacity(double f) {
     json["fgopacity"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::fgopacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return fgopacity(std::move(f));
 }
 
 Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::fillmode(enum Fillmode f) {
@@ -1574,6 +2606,12 @@ Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::shape(std::string f) {
     json["shape"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::shape(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shape(std::move(f));
+}
 Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::shape(std::vector<std::string> f) {
     json["shape"] = std::move(f);
     return *this;
@@ -1583,10 +2621,22 @@ Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::shapesrc(std::string f) {
     json["shapesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::shapesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shapesrc(std::move(f));
+}
 
 Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -1597,10 +2647,22 @@ Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
+}
 
 Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::solidity(double f) {
     json["solidity"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::solidity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return solidity(std::move(f));
 }
 Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::solidity(std::vector<double> f) {
     json["solidity"] = std::move(f);
@@ -1610,6 +2672,12 @@ Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::solidity(std::vector<doubl
 Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::soliditysrc(std::string f) {
     json["soliditysrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Marker::Pattern& Sunburst::Marker::Pattern::soliditysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return soliditysrc(std::move(f));
 }
 
 std::string Sunburst::Outsidetextfont::to_string(Style e) {
@@ -1647,6 +2715,12 @@ Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
     return *this;
@@ -1656,10 +2730,22 @@ Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::family(std::vector<std::string> f) {
     json["family"] = std::move(f);
@@ -1670,10 +2756,22 @@ Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::familysrc(std::string f) {
     json["familysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::familysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return familysrc(std::move(f));
+}
 
 Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
 }
 Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::lineposition(std::vector<std::string> f) {
     json["lineposition"] = std::move(f);
@@ -1684,10 +2782,22 @@ Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::linepositionsrc(std::strin
     json["linepositionsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::linepositionsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return linepositionsrc(std::move(f));
+}
 
 Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
 }
 Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::shadow(std::vector<std::string> f) {
     json["shadow"] = std::move(f);
@@ -1698,10 +2808,22 @@ Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::shadowsrc(std::string f) {
     json["shadowsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::shadowsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadowsrc(std::move(f));
+}
 
 Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -1711,6 +2833,12 @@ Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::size(std::vector<double> f
 Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
 }
 
 Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::style(enum Style f) {
@@ -1728,6 +2856,12 @@ Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::stylesrc(std::string f) {
     json["stylesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::stylesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return stylesrc(std::move(f));
+}
 
 Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::textcase(enum Textcase f) {
     json["textcase"] = to_string(f);
@@ -1743,6 +2877,12 @@ Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::textcase(const std::vector
 Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::textcasesrc(std::string f) {
     json["textcasesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::textcasesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textcasesrc(std::move(f));
 }
 
 Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::variant(enum Variant f) {
@@ -1760,10 +2900,22 @@ Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::variantsrc(std::string f) 
     json["variantsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::variantsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return variantsrc(std::move(f));
+}
 
 Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::weight(std::vector<int> f) {
     json["weight"] = std::move(f);
@@ -1774,11 +2926,23 @@ Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::weightsrc(std::string f) {
     json["weightsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Outsidetextfont& Sunburst::Outsidetextfont::weightsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return weightsrc(std::move(f));
+}
 
 
 Sunburst::Root& Sunburst::Root::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Root& Sunburst::Root::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
 }
 
 
@@ -1786,10 +2950,22 @@ Sunburst::Stream& Sunburst::Stream::maxpoints(double f) {
     json["maxpoints"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Stream& Sunburst::Stream::maxpoints(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return maxpoints(std::move(f));
+}
 
 Sunburst::Stream& Sunburst::Stream::token(std::string f) {
     json["token"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Stream& Sunburst::Stream::token(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return token(std::move(f));
 }
 
 std::string Sunburst::Textfont::to_string(Style e) {
@@ -1827,6 +3003,12 @@ Sunburst::Textfont& Sunburst::Textfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Textfont& Sunburst::Textfont::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 Sunburst::Textfont& Sunburst::Textfont::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
     return *this;
@@ -1836,10 +3018,22 @@ Sunburst::Textfont& Sunburst::Textfont::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Textfont& Sunburst::Textfont::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Sunburst::Textfont& Sunburst::Textfont::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Textfont& Sunburst::Textfont::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 Sunburst::Textfont& Sunburst::Textfont::family(std::vector<std::string> f) {
     json["family"] = std::move(f);
@@ -1850,10 +3044,22 @@ Sunburst::Textfont& Sunburst::Textfont::familysrc(std::string f) {
     json["familysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Textfont& Sunburst::Textfont::familysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return familysrc(std::move(f));
+}
 
 Sunburst::Textfont& Sunburst::Textfont::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Textfont& Sunburst::Textfont::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
 }
 Sunburst::Textfont& Sunburst::Textfont::lineposition(std::vector<std::string> f) {
     json["lineposition"] = std::move(f);
@@ -1864,10 +3070,22 @@ Sunburst::Textfont& Sunburst::Textfont::linepositionsrc(std::string f) {
     json["linepositionsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Textfont& Sunburst::Textfont::linepositionsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return linepositionsrc(std::move(f));
+}
 
 Sunburst::Textfont& Sunburst::Textfont::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Textfont& Sunburst::Textfont::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
 }
 Sunburst::Textfont& Sunburst::Textfont::shadow(std::vector<std::string> f) {
     json["shadow"] = std::move(f);
@@ -1878,10 +3096,22 @@ Sunburst::Textfont& Sunburst::Textfont::shadowsrc(std::string f) {
     json["shadowsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Textfont& Sunburst::Textfont::shadowsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadowsrc(std::move(f));
+}
 
 Sunburst::Textfont& Sunburst::Textfont::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Textfont& Sunburst::Textfont::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Sunburst::Textfont& Sunburst::Textfont::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -1891,6 +3121,12 @@ Sunburst::Textfont& Sunburst::Textfont::size(std::vector<double> f) {
 Sunburst::Textfont& Sunburst::Textfont::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Textfont& Sunburst::Textfont::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
 }
 
 Sunburst::Textfont& Sunburst::Textfont::style(enum Style f) {
@@ -1908,6 +3144,12 @@ Sunburst::Textfont& Sunburst::Textfont::stylesrc(std::string f) {
     json["stylesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Textfont& Sunburst::Textfont::stylesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return stylesrc(std::move(f));
+}
 
 Sunburst::Textfont& Sunburst::Textfont::textcase(enum Textcase f) {
     json["textcase"] = to_string(f);
@@ -1923,6 +3165,12 @@ Sunburst::Textfont& Sunburst::Textfont::textcase(const std::vector<enum Textcase
 Sunburst::Textfont& Sunburst::Textfont::textcasesrc(std::string f) {
     json["textcasesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Textfont& Sunburst::Textfont::textcasesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textcasesrc(std::move(f));
 }
 
 Sunburst::Textfont& Sunburst::Textfont::variant(enum Variant f) {
@@ -1940,10 +3188,22 @@ Sunburst::Textfont& Sunburst::Textfont::variantsrc(std::string f) {
     json["variantsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Sunburst::Textfont& Sunburst::Textfont::variantsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return variantsrc(std::move(f));
+}
 
 Sunburst::Textfont& Sunburst::Textfont::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Textfont& Sunburst::Textfont::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 Sunburst::Textfont& Sunburst::Textfont::weight(std::vector<int> f) {
     json["weight"] = std::move(f);
@@ -1953,6 +3213,12 @@ Sunburst::Textfont& Sunburst::Textfont::weight(std::vector<int> f) {
 Sunburst::Textfont& Sunburst::Textfont::weightsrc(std::string f) {
     json["weightsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Sunburst::Textfont& Sunburst::Textfont::weightsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return weightsrc(std::move(f));
 }
 
 } // namespace plotlypp

@@ -108,30 +108,44 @@ class Histogram2Dcontour : public Trace {
     // Obsolete: since v1.42 each bin attribute is auto-determined separately and `autobinx` is not needed. However, we
     // accept `autobinx: true` or `false` and will update `xbins` accordingly before deleting `autobinx` from the trace.
     Histogram2Dcontour& autobinx(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram2Dcontour& autobinx(Callable&& c);
 
     // Obsolete: since v1.42 each bin attribute is auto-determined separately and `autobiny` is not needed. However, we
     // accept `autobiny: true` or `false` and will update `ybins` accordingly before deleting `autobiny` from the trace.
     Histogram2Dcontour& autobiny(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram2Dcontour& autobiny(Callable&& c);
 
     // Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by
     // `colorscale`. In case `colorscale` is unspecified or `autocolorscale` is true, the default palette will be chosen
     // according to whether numbers in the `color` array are all positive, all negative or mixed.
     Histogram2Dcontour& autocolorscale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram2Dcontour& autocolorscale(Callable&& c);
 
     // Determines whether or not the contour level attributes are picked by an algorithm. If *true*, the number of
     // contour levels can be set in `ncontours`. If *false*, set the contour level attributes in `contours`.
     Histogram2Dcontour& autocontour(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram2Dcontour& autocontour(Callable&& c);
 
     // Set the `xbingroup` and `ybingroup` default prefix For example, setting a `bingroup` of *1* on two histogram2d
     // traces will make them their x-bins and y-bins match separately.
     Histogram2Dcontour& bingroup(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& bingroup(Callable&& c);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
     // `layout.coloraxis2`, etc. Note that multiple color scales can be linked to the same color axis.
     Histogram2Dcontour& coloraxis(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& coloraxis(Callable&& c);
 
     Histogram2Dcontour& colorbar(Colorbar f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Colorbar&>>>
+    Histogram2Dcontour& colorbar(Callable&& c);
 
     // Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb,
     // rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are
@@ -141,16 +155,28 @@ class Histogram2Dcontour : public Trace {
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Histogram2Dcontour& colorscale(std::string f);
     Histogram2Dcontour& colorscale(std::vector<std::pair<double, std::string>> f);
+    template <typename Callable,
+              typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
+                                          std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
+    Histogram2Dcontour& colorscale(Callable&& c);
 
     Histogram2Dcontour& contours(Contours f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Contours&>>>
+    Histogram2Dcontour& contours(Callable&& c);
 
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram2Dcontour& customdata(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Histogram2Dcontour& customdata(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `customdata`.
     Histogram2Dcontour& customdatasrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& customdatasrc(Callable&& c);
 
     // Specifies the binning function used for this histogram trace. If *count*, the histogram values are computed by
     // counting the number of values lying inside each bin. If *sum*, *avg*, *min*, *max*, the histogram values are
@@ -174,12 +200,18 @@ class Histogram2Dcontour : public Trace {
     // - Flags: ['x', 'y', 'z', 'text', 'name']
     // - Extras ['all', 'none', 'skip']
     Histogram2Dcontour& hoverinfo(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& hoverinfo(Callable&& c);
     Histogram2Dcontour& hoverinfo(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Histogram2Dcontour& hoverinfosrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& hoverinfosrc(Callable&& c);
 
     Histogram2Dcontour& hoverlabel(Hoverlabel f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Hoverlabel&>>>
+    Histogram2Dcontour& hoverlabel(Callable&& c);
 
     // Template string used for rendering the information that appear on hover box. Note that this will override
     // `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}" as well as %{xother}, {%_xother},
@@ -195,28 +227,44 @@ class Histogram2Dcontour : public Trace {
     // variable `z` Anything contained in tag `<extra>` is displayed in the secondary box, for example
     // "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an empty tag `<extra></extra>`.
     Histogram2Dcontour& hovertemplate(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& hovertemplate(Callable&& c);
     Histogram2Dcontour& hovertemplate(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Histogram2Dcontour& hovertemplatesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& hovertemplatesrc(Callable&& c);
 
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram2Dcontour& ids(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Histogram2Dcontour& ids(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `ids`.
     Histogram2Dcontour& idssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& idssrc(Callable&& c);
 
     // Sets the reference to a legend to show this trace in. References to these legends are *legend*, *legend2*,
     // *legend3*, etc. Settings for these legends are set in the layout, under `layout.legend`, `layout.legend2`, etc.
     Histogram2Dcontour& legend(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& legend(Callable&& c);
 
     // Sets the legend group for this trace. Traces and shapes part of the same legend group hide/show at the same time
     // when toggling legend items.
     Histogram2Dcontour& legendgroup(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& legendgroup(Callable&& c);
 
     Histogram2Dcontour& legendgrouptitle(Legendgrouptitle f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Legendgrouptitle&>>>
+    Histogram2Dcontour& legendgrouptitle(Callable&& c);
 
     // Sets the legend rank for this trace. Items and groups with smaller ranks are presented on top/left side while
     // with *reversed* `legend.traceorder` they are on bottom/right side. The default legendrank is 1000, so that you
@@ -224,13 +272,21 @@ class Histogram2Dcontour : public Trace {
     // after all unranked items. When having unranked or equal rank items shapes would be displayed after traces i.e.
     // according to their order in data and layout.
     Histogram2Dcontour& legendrank(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour& legendrank(Callable&& c);
 
     // Sets the width (in px or fraction) of the legend for this trace.
     Histogram2Dcontour& legendwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour& legendwidth(Callable&& c);
 
     Histogram2Dcontour& line(Line f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Line&>>>
+    Histogram2Dcontour& line(Callable&& c);
 
     Histogram2Dcontour& marker(Marker f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Marker&>>>
+    Histogram2Dcontour& marker(Callable&& c);
 
     // Assigns extra meta information associated with this trace that can be used in various text attributes. Attributes
     // such as trace `name`, graph, axis and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
@@ -240,47 +296,71 @@ class Histogram2Dcontour : public Trace {
     // trace index.
     template <typename T>
     Histogram2Dcontour& meta(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram2Dcontour& meta(Callable&& c);
     template <typename T>
     Histogram2Dcontour& meta(std::vector<T> f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Histogram2Dcontour& metasrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& metasrc(Callable&& c);
 
     // Sets the trace name. The trace name appears as the legend item and on hover.
     Histogram2Dcontour& name(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& name(Callable&& c);
 
     // Specifies the maximum number of desired bins. This value will be used in an algorithm that will decide the
     // optimal bin size such that the histogram best visualizes the distribution of the data. Ignored if `xbins.size` is
     // provided.
     Histogram2Dcontour& nbinsx(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram2Dcontour& nbinsx(Callable&& c);
 
     // Specifies the maximum number of desired bins. This value will be used in an algorithm that will decide the
     // optimal bin size such that the histogram best visualizes the distribution of the data. Ignored if `ybins.size` is
     // provided.
     Histogram2Dcontour& nbinsy(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram2Dcontour& nbinsy(Callable&& c);
 
     // Sets the maximum number of contour levels. The actual number of contours will be chosen automatically to be less
     // than or equal to the value of `ncontours`. Has an effect only if `autocontour` is *true* or if `contours.size` is
     // missing.
     Histogram2Dcontour& ncontours(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram2Dcontour& ncontours(Callable&& c);
 
     // Sets the opacity of the trace.
     Histogram2Dcontour& opacity(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour& opacity(Callable&& c);
 
     // Reverses the color mapping if true. If true, `zmin` will correspond to the last color in the array and `zmax`
     // will correspond to the first color.
     Histogram2Dcontour& reversescale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram2Dcontour& reversescale(Callable&& c);
 
     // Determines whether or not an item corresponding to this trace is shown in the legend.
     Histogram2Dcontour& showlegend(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram2Dcontour& showlegend(Callable&& c);
 
     // Determines whether or not a colorbar is displayed for this trace.
     Histogram2Dcontour& showscale(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram2Dcontour& showscale(Callable&& c);
 
     Histogram2Dcontour& stream(Stream f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Stream&>>>
+    Histogram2Dcontour& stream(Callable&& c);
 
     // For this trace it only has an effect if `coloring` is set to *heatmap*. Sets the text font.
     Histogram2Dcontour& textfont(Textfont f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Textfont&>>>
+    Histogram2Dcontour& textfont(Callable&& c);
 
     // For this trace it only has an effect if `coloring` is set to *heatmap*. Template string used for rendering the
     // information text that appear on points. Note that this will override `textinfo`. Variables are inserted using
@@ -291,10 +371,14 @@ class Histogram2Dcontour : public Trace {
     // formatting syntax. Every attributes that can be specified per-point (the ones that are `arrayOk: true`) are
     // available. Finally, the template string has access to variables `x`, `y`, `z` and `text`.
     Histogram2Dcontour& texttemplate(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& texttemplate(Callable&& c);
 
     // Assign an id to this trace, Use this to provide object constancy between traces during animations and
     // transitions.
     Histogram2Dcontour& uid(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& uid(Callable&& c);
 
     // Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well
     // as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note
@@ -306,6 +390,8 @@ class Histogram2Dcontour : public Trace {
     // still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
     template <typename T>
     Histogram2Dcontour& uirevision(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram2Dcontour& uirevision(Callable&& c);
 
     // Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a
     // legend item (provided that the legend itself is visible).
@@ -315,17 +401,27 @@ class Histogram2Dcontour : public Trace {
     // Sets the sample data to be binned on the x axis.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram2Dcontour& x(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Histogram2Dcontour& x(Callable&& c);
 
     // Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x
     // coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
     Histogram2Dcontour& xaxis(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& xaxis(Callable&& c);
 
     // Set a group of histogram traces which will have compatible x-bin settings. Using `xbingroup`, histogram2d and
     // histogram2dcontour traces  (on axes of the same axis type) can have compatible x-bin settings. Note that the same
     // `xbingroup` value can be used to set (1D) histogram `bingroup`
     Histogram2Dcontour& xbingroup(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& xbingroup(Callable&& c);
 
     Histogram2Dcontour& xbins(Xbins f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Xbins&>>>
+    Histogram2Dcontour& xbins(Callable&& c);
 
     // Sets the calendar system to use with `x` date data.
     // - Default: gregorian
@@ -338,24 +434,38 @@ class Histogram2Dcontour : public Trace {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `xaxis.hoverformat`.
     Histogram2Dcontour& xhoverformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& xhoverformat(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `x`.
     Histogram2Dcontour& xsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& xsrc(Callable&& c);
 
     // Sets the sample data to be binned on the y axis.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram2Dcontour& y(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Histogram2Dcontour& y(Callable&& c);
 
     // Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y
     // coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
     Histogram2Dcontour& yaxis(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& yaxis(Callable&& c);
 
     // Set a group of histogram traces which will have compatible y-bin settings. Using `ybingroup`, histogram2d and
     // histogram2dcontour traces  (on axes of the same axis type) can have compatible y-bin settings. Note that the same
     // `ybingroup` value can be used to set (1D) histogram `bingroup`
     Histogram2Dcontour& ybingroup(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& ybingroup(Callable&& c);
 
     Histogram2Dcontour& ybins(Ybins f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Ybins&>>>
+    Histogram2Dcontour& ybins(Callable&& c);
 
     // Sets the calendar system to use with `y` date data.
     // - Default: gregorian
@@ -368,37 +478,57 @@ class Histogram2Dcontour : public Trace {
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*By default the values are
     // formatted using `yaxis.hoverformat`.
     Histogram2Dcontour& yhoverformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& yhoverformat(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `y`.
     Histogram2Dcontour& ysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& ysrc(Callable&& c);
 
     // Sets the aggregation data.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram2Dcontour& z(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Histogram2Dcontour& z(Callable&& c);
 
     // Determines whether or not the color domain is computed with respect to the input data (here in `z`) or the bounds
     // set in `zmin` and `zmax` Defaults to `false` when `zmin` and `zmax` are set by the user.
     Histogram2Dcontour& zauto(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram2Dcontour& zauto(Callable&& c);
 
     // Sets the hover text formatting rulefor `z`  using d3 formatting mini-languages which are very similar to those in
     // Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format.By default the values are
     // formatted using generic number format.
     Histogram2Dcontour& zhoverformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& zhoverformat(Callable&& c);
 
     // Sets the upper bound of the color domain. Value should have the same units as in `z` and if set, `zmin` must be
     // set as well.
     Histogram2Dcontour& zmax(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour& zmax(Callable&& c);
 
     // Sets the mid-point of the color domain by scaling `zmin` and/or `zmax` to be equidistant to this point. Value
     // should have the same units as in `z`. Has no effect when `zauto` is `false`.
     Histogram2Dcontour& zmid(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour& zmid(Callable&& c);
 
     // Sets the lower bound of the color domain. Value should have the same units as in `z` and if set, `zmax` must be
     // set as well.
     Histogram2Dcontour& zmin(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour& zmin(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `z`.
     Histogram2Dcontour& zsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour& zsrc(Callable&& c);
 };
 
 class Histogram2Dcontour::Colorbar {
@@ -526,12 +656,18 @@ class Histogram2Dcontour::Colorbar {
 
     // Sets the color of padded area.
     Histogram2Dcontour::Colorbar& bgcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Colorbar& bgcolor(Callable&& c);
 
     // Sets the axis line color.
     Histogram2Dcontour::Colorbar& bordercolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Colorbar& bordercolor(Callable&& c);
 
     // Sets the width (in px) or the border enclosing this color bar.
     Histogram2Dcontour::Colorbar& borderwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Colorbar& borderwidth(Callable&& c);
 
     // Sets the step in-between ticks on this axis. Use with `tick0`. Must be a positive number, or special strings
     // available to *log* and *date* axes. If the axis `type` is *log*, then ticks are set every 10^(n*dtick) where n is
@@ -547,6 +683,8 @@ class Histogram2Dcontour::Colorbar {
     // set `dtick` to *M48*
     template <typename T>
     Histogram2Dcontour::Colorbar& dtick(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram2Dcontour::Colorbar& dtick(Callable&& c);
 
     // Determines a formatting rule for the tick exponents. For example, consider the number 1,000,000,000. If *none*,
     // it appears as 1,000,000,000. If *e*, 1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super script). If *SI*,
@@ -561,10 +699,14 @@ class Histogram2Dcontour::Colorbar {
     // values (if desired) can include html-like tags or MathJax.
     template <typename T>
     Histogram2Dcontour::Colorbar& labelalias(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram2Dcontour::Colorbar& labelalias(Callable&& c);
 
     // Sets the length of the color bar This measure excludes the padding of both ends. That is, the color bar length is
     // this length minus the padding on both ends.
     Histogram2Dcontour::Colorbar& len(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Colorbar& len(Callable&& c);
 
     // Determines whether this color bar's length (i.e. the measure in the color variation direction) is set in units of
     // plot *fraction* or in *pixels. Use `len` to set the value.
@@ -573,10 +715,14 @@ class Histogram2Dcontour::Colorbar {
 
     // Hide SI prefix for 10^n if |n| is below this number. This only has an effect when `tickformat` is *SI* or *B*.
     Histogram2Dcontour::Colorbar& minexponent(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Colorbar& minexponent(Callable&& c);
 
     // Specifies the maximum number of ticks for the particular axis. The actual number of ticks will be chosen
     // automatically to be less than or equal to `nticks`. Has an effect only if `tickmode` is set to *auto*.
     Histogram2Dcontour::Colorbar& nticks(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram2Dcontour::Colorbar& nticks(Callable&& c);
 
     // Sets the orientation of the colorbar.
     // - Default: v
@@ -584,12 +730,18 @@ class Histogram2Dcontour::Colorbar {
 
     // Sets the axis line color.
     Histogram2Dcontour::Colorbar& outlinecolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Colorbar& outlinecolor(Callable&& c);
 
     // Sets the width (in px) of the axis line.
     Histogram2Dcontour::Colorbar& outlinewidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Colorbar& outlinewidth(Callable&& c);
 
     // If "true", even 4-digit integers are separated
     Histogram2Dcontour::Colorbar& separatethousands(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram2Dcontour::Colorbar& separatethousands(Callable&& c);
 
     // If *all*, all exponents are shown besides their significands. If *first*, only the exponent of the first tick is
     // shown. If *last*, only the exponent of the last tick is shown. If *none*, no exponents appear.
@@ -598,6 +750,8 @@ class Histogram2Dcontour::Colorbar {
 
     // Determines whether or not the tick labels are drawn.
     Histogram2Dcontour::Colorbar& showticklabels(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram2Dcontour::Colorbar& showticklabels(Callable&& c);
 
     // If *all*, all tick labels are displayed with a prefix. If *first*, only the first tick is displayed with a
     // prefix. If *last*, only the last tick is displayed with a suffix. If *none*, tick prefixes are hidden.
@@ -610,6 +764,8 @@ class Histogram2Dcontour::Colorbar {
 
     // Sets the thickness of the color bar This measure excludes the size of the padding, ticks and labels.
     Histogram2Dcontour::Colorbar& thickness(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Colorbar& thickness(Callable&& c);
 
     // Determines whether this color bar's thickness (i.e. the measure in the constant color direction) is set in units
     // of plot *fraction* or in *pixels*. Use `thickness` to set the value.
@@ -623,16 +779,24 @@ class Histogram2Dcontour::Colorbar {
     // serial number from zero in the order it appears.
     template <typename T>
     Histogram2Dcontour::Colorbar& tick0(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram2Dcontour::Colorbar& tick0(Callable&& c);
 
     // Sets the angle of the tick labels with respect to the horizontal. For example, a `tickangle` of -90 draws the
     // tick labels vertically.
     Histogram2Dcontour::Colorbar& tickangle(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Colorbar& tickangle(Callable&& c);
 
     // Sets the tick color.
     Histogram2Dcontour::Colorbar& tickcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Colorbar& tickcolor(Callable&& c);
 
     // Sets the color bar's tick label font
     Histogram2Dcontour::Colorbar& tickfont(Tickfont f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickfont&>>>
+    Histogram2Dcontour::Colorbar& tickfont(Callable&& c);
 
     // Sets the tick label formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format. And for dates see:
@@ -640,8 +804,12 @@ class Histogram2Dcontour::Colorbar {
     // half of the year as a decimal number as well as *%{n}f* for fractional seconds with n digits. For example,
     // *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
     Histogram2Dcontour::Colorbar& tickformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Colorbar& tickformat(Callable&& c);
 
     Histogram2Dcontour::Colorbar& tickformatstops(Tickformatstops f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickformatstops&>>>
+    Histogram2Dcontour::Colorbar& tickformatstops(Callable&& c);
 
     // Determines how we handle tick labels that would overflow either the graph div or the domain of the axis. The
     // default value for inside tick labels is *hide past domain*. In other cases the default is *hide past div*.
@@ -657,9 +825,13 @@ class Histogram2Dcontour::Colorbar {
     // labeled. `tick0` determines which labels are shown. Not implemented for axes with `type` *log* or
     // *multicategory*, or when `tickmode` is *array*.
     Histogram2Dcontour::Colorbar& ticklabelstep(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram2Dcontour::Colorbar& ticklabelstep(Callable&& c);
 
     // Sets the tick length (in px).
     Histogram2Dcontour::Colorbar& ticklen(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Colorbar& ticklen(Callable&& c);
 
     // Sets the tick mode for this axis. If *auto*, the number of ticks is set via `nticks`. If *linear*, the placement
     // of the ticks is determined by a starting position `tick0` and a tick step `dtick` (*linear* is the default value
@@ -669,6 +841,8 @@ class Histogram2Dcontour::Colorbar {
 
     // Sets a tick label prefix.
     Histogram2Dcontour::Colorbar& tickprefix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Colorbar& tickprefix(Callable&& c);
 
     // Determines whether ticks are drawn or not. If **, this axis' ticks are not drawn. If *outside* (*inside*), this
     // axis' are drawn outside (inside) the axis lines.
@@ -677,33 +851,53 @@ class Histogram2Dcontour::Colorbar {
 
     // Sets a tick label suffix.
     Histogram2Dcontour::Colorbar& ticksuffix(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Colorbar& ticksuffix(Callable&& c);
 
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram2Dcontour::Colorbar& ticktext(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Histogram2Dcontour::Colorbar& ticktext(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `ticktext`.
     Histogram2Dcontour::Colorbar& ticktextsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Colorbar& ticktextsrc(Callable&& c);
 
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram2Dcontour::Colorbar& tickvals(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Histogram2Dcontour::Colorbar& tickvals(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `tickvals`.
     Histogram2Dcontour::Colorbar& tickvalssrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Colorbar& tickvalssrc(Callable&& c);
 
     // Sets the tick width (in px).
     Histogram2Dcontour::Colorbar& tickwidth(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Colorbar& tickwidth(Callable&& c);
 
     Histogram2Dcontour::Colorbar& title(Title f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Title&>>>
+    Histogram2Dcontour::Colorbar& title(Callable&& c);
 
     // Sets the x position with respect to `xref` of the color bar (in plot fraction). When `xref` is *paper*, defaults
     // to 1.02 when `orientation` is *v* and 0.5 when `orientation` is *h*. When `xref` is *container*, defaults to *1*
     // when `orientation` is *v* and 0.5 when `orientation` is *h*. Must be between *0* and *1* if `xref` is *container*
     // and between *-2* and *3* if `xref` is *paper*.
     Histogram2Dcontour::Colorbar& x(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Colorbar& x(Callable&& c);
 
     // Sets this color bar's horizontal position anchor. This anchor binds the `x` position to the *left*, *center* or
     // *right* of the color bar. Defaults to *left* when `orientation` is *v* and *center* when `orientation` is *h*.
@@ -711,6 +905,8 @@ class Histogram2Dcontour::Colorbar {
 
     // Sets the amount of padding (in px) along the x direction.
     Histogram2Dcontour::Colorbar& xpad(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Colorbar& xpad(Callable&& c);
 
     // Sets the container `x` refers to. *container* spans the entire `width` of the plot. *paper* refers to the width
     // of the plotting area only.
@@ -722,6 +918,8 @@ class Histogram2Dcontour::Colorbar {
     // when `orientation` is *v* and 1 when `orientation` is *h*. Must be between *0* and *1* if `yref` is *container*
     // and between *-2* and *3* if `yref` is *paper*.
     Histogram2Dcontour::Colorbar& y(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Colorbar& y(Callable&& c);
 
     // Sets this color bar's vertical position anchor This anchor binds the `y` position to the *top*, *middle* or
     // *bottom* of the color bar. Defaults to *middle* when `orientation` is *v* and *bottom* when `orientation` is *h*.
@@ -729,6 +927,8 @@ class Histogram2Dcontour::Colorbar {
 
     // Sets the amount of padding (in px) along the y direction.
     Histogram2Dcontour::Colorbar& ypad(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Colorbar& ypad(Callable&& c);
 
     // Sets the container `y` refers to. *container* spans the entire `height` of the plot. *paper* refers to the height
     // of the plotting area only.
@@ -771,6 +971,8 @@ class Histogram2Dcontour::Colorbar::Tickfont {
     static std::string to_string(Variant e);
 
     Histogram2Dcontour::Colorbar::Tickfont& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Colorbar::Tickfont& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -780,6 +982,8 @@ class Histogram2Dcontour::Colorbar::Tickfont {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Histogram2Dcontour::Colorbar::Tickfont& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Colorbar::Tickfont& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -787,12 +991,18 @@ class Histogram2Dcontour::Colorbar::Tickfont {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Histogram2Dcontour::Colorbar::Tickfont& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Colorbar::Tickfont& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Histogram2Dcontour::Colorbar::Tickfont& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Colorbar::Tickfont& shadow(Callable&& c);
 
     Histogram2Dcontour::Colorbar::Tickfont& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Colorbar::Tickfont& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -809,6 +1019,8 @@ class Histogram2Dcontour::Colorbar::Tickfont {
 
     // Sets the weight (or boldness) of the font.
     Histogram2Dcontour::Colorbar::Tickfont& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram2Dcontour::Colorbar::Tickfont& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -823,6 +1035,8 @@ class Histogram2Dcontour::Colorbar::Tickformatstops {
     class Tickformatstop;
 
     Histogram2Dcontour::Colorbar::Tickformatstops& tickformatstop(Tickformatstop f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Tickformatstop&>>>
+    Histogram2Dcontour::Colorbar::Tickformatstops& tickformatstop(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -837,15 +1051,21 @@ class Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop {
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
     Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
+    Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
     // Determines whether or not this stop is used. If `false`, this stop is ignored even within its `dtickrange`.
     Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop& enabled(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop& enabled(Callable&& c);
 
     // When used in a template, named items are created in the output figure in addition to any items the figure already
     // has in this array. You can modify these items in the output figure by making your own item with
     // `templateitemname` matching this `name` alongside your modifications (including `visible: false` or `enabled:
     // false` to hide it). Has no effect outside of a template.
     Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop& name(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop& name(Callable&& c);
 
     // Used to refer to a named item in this array in the template. Named items from the template will be created even
     // without a matching item in the input figure, but you can modify one by making an item with `templateitemname`
@@ -853,9 +1073,13 @@ class Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop {
     // there is no template or no matching item, this item will be hidden unless you explicitly show it with `visible:
     // true`.
     Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop& templateitemname(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop& templateitemname(Callable&& c);
 
     // string - dtickformat for described zoom level, the same as *tickformat*
     Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop& value(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop& value(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -879,6 +1103,8 @@ class Histogram2Dcontour::Colorbar::Title {
 
     // Sets this color bar's title font.
     Histogram2Dcontour::Colorbar::Title& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Histogram2Dcontour::Colorbar::Title& font(Callable&& c);
 
     // Determines the location of color bar's title with respect to the color bar. Defaults to *top* when `orientation`
     // if *v* and  defaults to *right* when `orientation` if *h*.
@@ -886,6 +1112,8 @@ class Histogram2Dcontour::Colorbar::Title {
 
     // Sets the title of the color bar.
     Histogram2Dcontour::Colorbar::Title& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Colorbar::Title& text(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -923,6 +1151,8 @@ class Histogram2Dcontour::Colorbar::Title::Font {
     static std::string to_string(Variant e);
 
     Histogram2Dcontour::Colorbar::Title::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Colorbar::Title::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -932,6 +1162,8 @@ class Histogram2Dcontour::Colorbar::Title::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Histogram2Dcontour::Colorbar::Title::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Colorbar::Title::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -939,12 +1171,18 @@ class Histogram2Dcontour::Colorbar::Title::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Histogram2Dcontour::Colorbar::Title::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Colorbar::Title::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Histogram2Dcontour::Colorbar::Title::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Colorbar::Title::Font& shadow(Callable&& c);
 
     Histogram2Dcontour::Colorbar::Title::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Colorbar::Title::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -961,6 +1199,8 @@ class Histogram2Dcontour::Colorbar::Title::Font {
 
     // Sets the weight (or boldness) of the font.
     Histogram2Dcontour::Colorbar::Title::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram2Dcontour::Colorbar::Title::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -999,35 +1239,53 @@ class Histogram2Dcontour::Contours {
 
     // Sets the end contour level value. Must be more than `contours.start`
     Histogram2Dcontour::Contours& end(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Contours& end(Callable&& c);
 
     Histogram2Dcontour::Contours& impliedEdits(Impliededits f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Impliededits&>>>
+    Histogram2Dcontour::Contours& impliedEdits(Callable&& c);
 
     // Sets the font used for labeling the contour levels. The default color comes from the lines, if shown. The default
     // family and size come from `layout.font`.
     Histogram2Dcontour::Contours& labelfont(Labelfont f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Labelfont&>>>
+    Histogram2Dcontour::Contours& labelfont(Callable&& c);
 
     // Sets the contour label formatting rule using d3 formatting mini-languages which are very similar to those in
     // Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
     Histogram2Dcontour::Contours& labelformat(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Contours& labelformat(Callable&& c);
 
     // Sets the constraint operation. *=* keeps regions equal to `value` *<* and *<=* keep regions less than `value` *>*
     // and *>=* keep regions greater than `value` *[]*, *()*, *[)*, and *(]* keep regions inside `value[0]` to
     // `value[1]` *][*, *)(*, *](*, *)[* keep regions outside `value[0]` to value[1]` Open vs. closed intervals make no
     // difference to constraint display, but all versions are allowed for consistency with filter transforms.
     Histogram2Dcontour::Contours& operation(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Contours& operation(Callable&& c);
 
     // Determines whether to label the contour lines with their values.
     Histogram2Dcontour::Contours& showlabels(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram2Dcontour::Contours& showlabels(Callable&& c);
 
     // Determines whether or not the contour lines are drawn. Has an effect only if `contours.coloring` is set to
     // *fill*.
     Histogram2Dcontour::Contours& showlines(bool f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, bool&>>>
+    Histogram2Dcontour::Contours& showlines(Callable&& c);
 
     // Sets the step between each contour level. Must be positive.
     Histogram2Dcontour::Contours& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Contours& size(Callable&& c);
 
     // Sets the starting contour level value. Must be less than `contours.end`
     Histogram2Dcontour::Contours& start(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Contours& start(Callable&& c);
 
     // If `levels`, the data is represented as a contour plot with multiple levels displayed. If `constraint`, the data
     // is represented as constraints with the invalid region shaded as specified by the `operation` and `value`
@@ -1041,6 +1299,8 @@ class Histogram2Dcontour::Contours {
     // and the second is the upper bound.
     template <typename T>
     Histogram2Dcontour::Contours& value(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram2Dcontour::Contours& value(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1089,6 +1349,8 @@ class Histogram2Dcontour::Contours::Labelfont {
     static std::string to_string(Variant e);
 
     Histogram2Dcontour::Contours::Labelfont& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Contours::Labelfont& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1098,6 +1360,8 @@ class Histogram2Dcontour::Contours::Labelfont {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Histogram2Dcontour::Contours::Labelfont& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Contours::Labelfont& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -1105,12 +1369,18 @@ class Histogram2Dcontour::Contours::Labelfont {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Histogram2Dcontour::Contours::Labelfont& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Contours::Labelfont& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Histogram2Dcontour::Contours::Labelfont& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Contours::Labelfont& shadow(Callable&& c);
 
     Histogram2Dcontour::Contours::Labelfont& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Contours::Labelfont& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1127,6 +1397,8 @@ class Histogram2Dcontour::Contours::Labelfont {
 
     // Sets the weight (or boldness) of the font.
     Histogram2Dcontour::Contours::Labelfont& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram2Dcontour::Contours::Labelfont& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1156,33 +1428,49 @@ class Histogram2Dcontour::Hoverlabel {
 
     // Sets the source reference on Chart Studio Cloud for `align`.
     Histogram2Dcontour::Hoverlabel& alignsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Hoverlabel& alignsrc(Callable&& c);
 
     // Sets the background color of the hover labels for this trace
     Histogram2Dcontour::Hoverlabel& bgcolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Hoverlabel& bgcolor(Callable&& c);
     Histogram2Dcontour::Hoverlabel& bgcolor(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Histogram2Dcontour::Hoverlabel& bgcolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Hoverlabel& bgcolorsrc(Callable&& c);
 
     // Sets the border color of the hover labels for this trace.
     Histogram2Dcontour::Hoverlabel& bordercolor(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Hoverlabel& bordercolor(Callable&& c);
     Histogram2Dcontour::Hoverlabel& bordercolor(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Histogram2Dcontour::Hoverlabel& bordercolorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Hoverlabel& bordercolorsrc(Callable&& c);
 
     // Sets the font used in hover labels.
     Histogram2Dcontour::Hoverlabel& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Histogram2Dcontour::Hoverlabel& font(Callable&& c);
 
     // Sets the default length (in number of characters) of the trace name in the hover labels for all traces. -1 shows
     // the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole
     // name if it is less than that many characters, but if it is longer, will truncate to `namelength - 3` characters
     // and add an ellipsis.
     Histogram2Dcontour::Hoverlabel& namelength(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram2Dcontour::Hoverlabel& namelength(Callable&& c);
     Histogram2Dcontour::Hoverlabel& namelength(std::vector<int> f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Histogram2Dcontour::Hoverlabel& namelengthsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Hoverlabel& namelengthsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1220,10 +1508,14 @@ class Histogram2Dcontour::Hoverlabel::Font {
     static std::string to_string(Variant e);
 
     Histogram2Dcontour::Hoverlabel::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Hoverlabel::Font& color(Callable&& c);
     Histogram2Dcontour::Hoverlabel::Font& color(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Histogram2Dcontour::Hoverlabel::Font& colorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Hoverlabel::Font& colorsrc(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1233,10 +1525,14 @@ class Histogram2Dcontour::Hoverlabel::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Histogram2Dcontour::Hoverlabel::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Hoverlabel::Font& family(Callable&& c);
     Histogram2Dcontour::Hoverlabel::Font& family(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Histogram2Dcontour::Hoverlabel::Font& familysrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Hoverlabel::Font& familysrc(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -1244,24 +1540,36 @@ class Histogram2Dcontour::Hoverlabel::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Histogram2Dcontour::Hoverlabel::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Hoverlabel::Font& lineposition(Callable&& c);
     Histogram2Dcontour::Hoverlabel::Font& lineposition(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Histogram2Dcontour::Hoverlabel::Font& linepositionsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Hoverlabel::Font& linepositionsrc(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Histogram2Dcontour::Hoverlabel::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Hoverlabel::Font& shadow(Callable&& c);
     Histogram2Dcontour::Hoverlabel::Font& shadow(std::vector<std::string> f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Histogram2Dcontour::Hoverlabel::Font& shadowsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Hoverlabel::Font& shadowsrc(Callable&& c);
 
     Histogram2Dcontour::Hoverlabel::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Hoverlabel::Font& size(Callable&& c);
     Histogram2Dcontour::Hoverlabel::Font& size(std::vector<double> f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Histogram2Dcontour::Hoverlabel::Font& sizesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Hoverlabel::Font& sizesrc(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1270,6 +1578,8 @@ class Histogram2Dcontour::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `style`.
     Histogram2Dcontour::Hoverlabel::Font& stylesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Hoverlabel::Font& stylesrc(Callable&& c);
 
     // Sets capitalization of text. It can be used to make text appear in all-uppercase or all-lowercase, or with each
     // word capitalized.
@@ -1279,6 +1589,8 @@ class Histogram2Dcontour::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `textcase`.
     Histogram2Dcontour::Hoverlabel::Font& textcasesrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Hoverlabel::Font& textcasesrc(Callable&& c);
 
     // Sets the variant of the font.
     // - Default: normal
@@ -1287,13 +1599,19 @@ class Histogram2Dcontour::Hoverlabel::Font {
 
     // Sets the source reference on Chart Studio Cloud for `variant`.
     Histogram2Dcontour::Hoverlabel::Font& variantsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Hoverlabel::Font& variantsrc(Callable&& c);
 
     // Sets the weight (or boldness) of the font.
     Histogram2Dcontour::Hoverlabel::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram2Dcontour::Hoverlabel::Font& weight(Callable&& c);
     Histogram2Dcontour::Hoverlabel::Font& weight(std::vector<int> f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Histogram2Dcontour::Hoverlabel::Font& weightsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Hoverlabel::Font& weightsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1310,9 +1628,13 @@ class Histogram2Dcontour::Legendgrouptitle {
 
     // Sets this legend group's title font.
     Histogram2Dcontour::Legendgrouptitle& font(Font f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Font&>>>
+    Histogram2Dcontour::Legendgrouptitle& font(Callable&& c);
 
     // Sets the title of the legend group.
     Histogram2Dcontour::Legendgrouptitle& text(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Legendgrouptitle& text(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1350,6 +1672,8 @@ class Histogram2Dcontour::Legendgrouptitle::Font {
     static std::string to_string(Variant e);
 
     Histogram2Dcontour::Legendgrouptitle::Font& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Legendgrouptitle::Font& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1359,6 +1683,8 @@ class Histogram2Dcontour::Legendgrouptitle::Font {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Histogram2Dcontour::Legendgrouptitle::Font& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Legendgrouptitle::Font& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -1366,12 +1692,18 @@ class Histogram2Dcontour::Legendgrouptitle::Font {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Histogram2Dcontour::Legendgrouptitle::Font& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Legendgrouptitle::Font& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Histogram2Dcontour::Legendgrouptitle::Font& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Legendgrouptitle::Font& shadow(Callable&& c);
 
     Histogram2Dcontour::Legendgrouptitle::Font& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Legendgrouptitle::Font& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1388,6 +1720,8 @@ class Histogram2Dcontour::Legendgrouptitle::Font {
 
     // Sets the weight (or boldness) of the font.
     Histogram2Dcontour::Legendgrouptitle::Font& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram2Dcontour::Legendgrouptitle::Font& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1401,16 +1735,24 @@ class Histogram2Dcontour::Line {
 
     // Sets the color of the contour level. Has no effect if `contours.coloring` is set to *lines*.
     Histogram2Dcontour::Line& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Line& color(Callable&& c);
 
     // Sets the dash style of lines. Set to a dash type string (*solid*, *dot*, *dash*, *longdash*, *dashdot*, or
     // *longdashdot*) or a dash length list in px (eg *5px,10px,2px,2px*).
     Histogram2Dcontour::Line& dash(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Line& dash(Callable&& c);
 
     // Sets the amount of smoothing for the contour lines, where *0* corresponds to no smoothing.
     Histogram2Dcontour::Line& smoothing(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Line& smoothing(Callable&& c);
 
     // Sets the contour line width in (in px)
     Histogram2Dcontour::Line& width(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Line& width(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1425,9 +1767,15 @@ class Histogram2Dcontour::Marker {
     // Sets the aggregation data.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
     Histogram2Dcontour::Marker& color(std::vector<T> f);
+    template <
+        typename T, typename Callable,
+        typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
+    Histogram2Dcontour::Marker& color(Callable&& c);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Histogram2Dcontour::Marker& colorsrc(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Marker& colorsrc(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1442,10 +1790,14 @@ class Histogram2Dcontour::Stream {
     // Sets the maximum number of points to keep on the plots from an incoming stream. If `maxpoints` is set to *50*,
     // only the newest 50 points will be displayed on the plot.
     Histogram2Dcontour::Stream& maxpoints(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Stream& maxpoints(Callable&& c);
 
     // The stream id number links a data trace on a plot with a stream. See https://chart-studio.plotly.com/settings for
     // more details.
     Histogram2Dcontour::Stream& token(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Stream& token(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1483,6 +1835,8 @@ class Histogram2Dcontour::Textfont {
     static std::string to_string(Variant e);
 
     Histogram2Dcontour::Textfont& color(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Textfont& color(Callable&& c);
 
     // HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to
     // apply a font if it is available on the system which it operates. Provide multiple font families, separated by
@@ -1492,6 +1846,8 @@ class Histogram2Dcontour::Textfont {
     // Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*,
     // *Raleway*, *Times New Roman*.
     Histogram2Dcontour::Textfont& family(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Textfont& family(Callable&& c);
 
     // Sets the kind of decoration line(s) with text, such as an *under*, *over* or *through* as well as combinations
     // e.g. *under+over*, etc.
@@ -1499,12 +1855,18 @@ class Histogram2Dcontour::Textfont {
     // - Flags: ['under', 'over', 'through']
     // - Extras ['none']
     Histogram2Dcontour::Textfont& lineposition(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Textfont& lineposition(Callable&& c);
 
     // Sets the shape and color of the shadow behind text. *auto* places minimal shadow and applies contrast text font
     // color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow for additional options.
     Histogram2Dcontour::Textfont& shadow(std::string f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
+    Histogram2Dcontour::Textfont& shadow(Callable&& c);
 
     Histogram2Dcontour::Textfont& size(double f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
+    Histogram2Dcontour::Textfont& size(Callable&& c);
 
     // Sets whether a font should be styled with a normal or italic face from its family.
     // - Default: normal
@@ -1521,6 +1883,8 @@ class Histogram2Dcontour::Textfont {
 
     // Sets the weight (or boldness) of the font.
     Histogram2Dcontour::Textfont& weight(int f);
+    template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
+    Histogram2Dcontour::Textfont& weight(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1537,6 +1901,8 @@ class Histogram2Dcontour::Xbins {
     // dates use a date string, and for category data `end` is based on the category serial numbers.
     template <typename T>
     Histogram2Dcontour::Xbins& end(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram2Dcontour::Xbins& end(Callable&& c);
 
     // Sets the size of each x axis bin. Default behavior: If `nbinsx` is 0 or omitted, we choose a nice round bin size
     // such that the number of bins is about the same as the typical number of samples in each bin. If `nbinsx` is
@@ -1545,6 +1911,8 @@ class Histogram2Dcontour::Xbins {
     // defaults to 1).
     template <typename T>
     Histogram2Dcontour::Xbins& size(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram2Dcontour::Xbins& size(Callable&& c);
 
     // Sets the starting value for the x axis bins. Defaults to the minimum data value, shifted down if necessary to
     // make nice round values and to remove ambiguous bin edges. For example, if most of the data is integers we shift
@@ -1554,6 +1922,8 @@ class Histogram2Dcontour::Xbins {
     // numbers, and defaults to -0.5.
     template <typename T>
     Histogram2Dcontour::Xbins& start(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram2Dcontour::Xbins& start(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};
@@ -1570,6 +1940,8 @@ class Histogram2Dcontour::Ybins {
     // dates use a date string, and for category data `end` is based on the category serial numbers.
     template <typename T>
     Histogram2Dcontour::Ybins& end(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram2Dcontour::Ybins& end(Callable&& c);
 
     // Sets the size of each y axis bin. Default behavior: If `nbinsy` is 0 or omitted, we choose a nice round bin size
     // such that the number of bins is about the same as the typical number of samples in each bin. If `nbinsy` is
@@ -1578,6 +1950,8 @@ class Histogram2Dcontour::Ybins {
     // defaults to 1).
     template <typename T>
     Histogram2Dcontour::Ybins& size(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram2Dcontour::Ybins& size(Callable&& c);
 
     // Sets the starting value for the y axis bins. Defaults to the minimum data value, shifted down if necessary to
     // make nice round values and to remove ambiguous bin edges. For example, if most of the data is integers we shift
@@ -1587,6 +1961,8 @@ class Histogram2Dcontour::Ybins {
     // numbers, and defaults to -0.5.
     template <typename T>
     Histogram2Dcontour::Ybins& start(T f);
+    template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
+    Histogram2Dcontour::Ybins& start(Callable&& c);
 
     // Advanced users may modify the JSON representation directly, at their own peril!
     Json json{};

@@ -56,10 +56,22 @@ Ohlc& Ohlc::close(std::vector<T> f) {
     json["close"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Ohlc& Ohlc::close(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return close(std::move(f));
+}
 
 Ohlc& Ohlc::closesrc(std::string f) {
     json["closesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc& Ohlc::closesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return closesrc(std::move(f));
 }
 
 template <typename T, typename>
@@ -67,15 +79,33 @@ Ohlc& Ohlc::customdata(std::vector<T> f) {
     json["customdata"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Ohlc& Ohlc::customdata(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return customdata(std::move(f));
+}
 
 Ohlc& Ohlc::customdatasrc(std::string f) {
     json["customdatasrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc& Ohlc::customdatasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return customdatasrc(std::move(f));
+}
 
 Ohlc& Ohlc::decreasing(Decreasing f) {
     json["decreasing"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc& Ohlc::decreasing(Callable&& c) {
+    Decreasing f{};
+    std::forward<Callable>(c)(f);
+    return decreasing(std::move(f));
 }
 
 template <typename T, typename>
@@ -83,15 +113,33 @@ Ohlc& Ohlc::high(std::vector<T> f) {
     json["high"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Ohlc& Ohlc::high(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return high(std::move(f));
+}
 
 Ohlc& Ohlc::highsrc(std::string f) {
     json["highsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc& Ohlc::highsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return highsrc(std::move(f));
+}
 
 Ohlc& Ohlc::hoverinfo(std::string f) {
     json["hoverinfo"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc& Ohlc::hoverinfo(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hoverinfo(std::move(f));
 }
 Ohlc& Ohlc::hoverinfo(std::vector<std::string> f) {
     json["hoverinfo"] = std::move(f);
@@ -102,15 +150,33 @@ Ohlc& Ohlc::hoverinfosrc(std::string f) {
     json["hoverinfosrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc& Ohlc::hoverinfosrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hoverinfosrc(std::move(f));
+}
 
 Ohlc& Ohlc::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc& Ohlc::hoverlabel(Callable&& c) {
+    Hoverlabel f{};
+    std::forward<Callable>(c)(f);
+    return hoverlabel(std::move(f));
+}
 
 Ohlc& Ohlc::hovertext(std::string f) {
     json["hovertext"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc& Ohlc::hovertext(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertext(std::move(f));
 }
 Ohlc& Ohlc::hovertext(std::vector<std::string> f) {
     json["hovertext"] = std::move(f);
@@ -121,51 +187,111 @@ Ohlc& Ohlc::hovertextsrc(std::string f) {
     json["hovertextsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc& Ohlc::hovertextsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertextsrc(std::move(f));
+}
 
 template <typename T, typename>
 Ohlc& Ohlc::ids(std::vector<T> f) {
     json["ids"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Ohlc& Ohlc::ids(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return ids(std::move(f));
+}
 
 Ohlc& Ohlc::idssrc(std::string f) {
     json["idssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc& Ohlc::idssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return idssrc(std::move(f));
 }
 
 Ohlc& Ohlc::increasing(Increasing f) {
     json["increasing"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc& Ohlc::increasing(Callable&& c) {
+    Increasing f{};
+    std::forward<Callable>(c)(f);
+    return increasing(std::move(f));
+}
 
 Ohlc& Ohlc::legend(std::string f) {
     json["legend"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc& Ohlc::legend(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return legend(std::move(f));
 }
 
 Ohlc& Ohlc::legendgroup(std::string f) {
     json["legendgroup"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc& Ohlc::legendgroup(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return legendgroup(std::move(f));
+}
 
 Ohlc& Ohlc::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc& Ohlc::legendgrouptitle(Callable&& c) {
+    Legendgrouptitle f{};
+    std::forward<Callable>(c)(f);
+    return legendgrouptitle(std::move(f));
 }
 
 Ohlc& Ohlc::legendrank(double f) {
     json["legendrank"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc& Ohlc::legendrank(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendrank(std::move(f));
+}
 
 Ohlc& Ohlc::legendwidth(double f) {
     json["legendwidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc& Ohlc::legendwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendwidth(std::move(f));
+}
 
 Ohlc& Ohlc::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc& Ohlc::line(Callable&& c) {
+    Line f{};
+    std::forward<Callable>(c)(f);
+    return line(std::move(f));
 }
 
 template <typename T, typename>
@@ -173,16 +299,34 @@ Ohlc& Ohlc::low(std::vector<T> f) {
     json["low"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Ohlc& Ohlc::low(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return low(std::move(f));
+}
 
 Ohlc& Ohlc::lowsrc(std::string f) {
     json["lowsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc& Ohlc::lowsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lowsrc(std::move(f));
 }
 
 template <typename T>
 Ohlc& Ohlc::meta(T f) {
     json["meta"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Ohlc& Ohlc::meta(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return meta(std::move(f));
 }
 template <typename T>
 Ohlc& Ohlc::meta(std::vector<T> f) {
@@ -194,15 +338,33 @@ Ohlc& Ohlc::metasrc(std::string f) {
     json["metasrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc& Ohlc::metasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return metasrc(std::move(f));
+}
 
 Ohlc& Ohlc::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc& Ohlc::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
+}
 
 Ohlc& Ohlc::opacity(double f) {
     json["opacity"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc& Ohlc::opacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return opacity(std::move(f));
 }
 
 template <typename T, typename>
@@ -210,10 +372,22 @@ Ohlc& Ohlc::open(std::vector<T> f) {
     json["open"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Ohlc& Ohlc::open(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return open(std::move(f));
+}
 
 Ohlc& Ohlc::opensrc(std::string f) {
     json["opensrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc& Ohlc::opensrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return opensrc(std::move(f));
 }
 
 template <typename T>
@@ -221,20 +395,44 @@ Ohlc& Ohlc::selectedpoints(T f) {
     json["selectedpoints"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Ohlc& Ohlc::selectedpoints(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return selectedpoints(std::move(f));
+}
 
 Ohlc& Ohlc::showlegend(bool f) {
     json["showlegend"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc& Ohlc::showlegend(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showlegend(std::move(f));
 }
 
 Ohlc& Ohlc::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc& Ohlc::stream(Callable&& c) {
+    Stream f{};
+    std::forward<Callable>(c)(f);
+    return stream(std::move(f));
+}
 
 Ohlc& Ohlc::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc& Ohlc::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 Ohlc& Ohlc::text(std::vector<std::string> f) {
     json["text"] = std::move(f);
@@ -245,21 +443,45 @@ Ohlc& Ohlc::textsrc(std::string f) {
     json["textsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc& Ohlc::textsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textsrc(std::move(f));
+}
 
 Ohlc& Ohlc::tickwidth(double f) {
     json["tickwidth"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc& Ohlc::tickwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return tickwidth(std::move(f));
 }
 
 Ohlc& Ohlc::uid(std::string f) {
     json["uid"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc& Ohlc::uid(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return uid(std::move(f));
+}
 
 template <typename T>
 Ohlc& Ohlc::uirevision(T f) {
     json["uirevision"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Ohlc& Ohlc::uirevision(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return uirevision(std::move(f));
 }
 
 Ohlc& Ohlc::visible(enum Visible f) {
@@ -272,10 +494,22 @@ Ohlc& Ohlc::x(std::vector<T> f) {
     json["x"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Ohlc& Ohlc::x(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return x(std::move(f));
+}
 
 Ohlc& Ohlc::xaxis(std::string f) {
     json["xaxis"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc& Ohlc::xaxis(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return xaxis(std::move(f));
 }
 
 Ohlc& Ohlc::xcalendar(enum Xcalendar f) {
@@ -287,17 +521,35 @@ Ohlc& Ohlc::xhoverformat(std::string f) {
     json["xhoverformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc& Ohlc::xhoverformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return xhoverformat(std::move(f));
+}
 
 template <typename T>
 Ohlc& Ohlc::xperiod(T f) {
     json["xperiod"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Ohlc& Ohlc::xperiod(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return xperiod(std::move(f));
+}
 
 template <typename T>
 Ohlc& Ohlc::xperiod0(T f) {
     json["xperiod0"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Ohlc& Ohlc::xperiod0(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return xperiod0(std::move(f));
 }
 
 Ohlc& Ohlc::xperiodalignment(enum Xperiodalignment f) {
@@ -309,20 +561,44 @@ Ohlc& Ohlc::xsrc(std::string f) {
     json["xsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc& Ohlc::xsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return xsrc(std::move(f));
+}
 
 Ohlc& Ohlc::yaxis(std::string f) {
     json["yaxis"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc& Ohlc::yaxis(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return yaxis(std::move(f));
 }
 
 Ohlc& Ohlc::yhoverformat(std::string f) {
     json["yhoverformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc& Ohlc::yhoverformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return yhoverformat(std::move(f));
+}
 
 Ohlc& Ohlc::zorder(int f) {
     json["zorder"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc& Ohlc::zorder(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return zorder(std::move(f));
 }
 
 
@@ -330,21 +606,45 @@ Ohlc::Decreasing& Ohlc::Decreasing::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Decreasing& Ohlc::Decreasing::line(Callable&& c) {
+    Line f{};
+    std::forward<Callable>(c)(f);
+    return line(std::move(f));
+}
 
 
 Ohlc::Decreasing::Line& Ohlc::Decreasing::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Decreasing::Line& Ohlc::Decreasing::Line::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Ohlc::Decreasing::Line& Ohlc::Decreasing::Line::dash(std::string f) {
     json["dash"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Decreasing::Line& Ohlc::Decreasing::Line::dash(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return dash(std::move(f));
+}
 
 Ohlc::Decreasing::Line& Ohlc::Decreasing::Line::width(double f) {
     json["width"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc::Decreasing::Line& Ohlc::Decreasing::Line::width(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return width(std::move(f));
 }
 
 std::string Ohlc::Hoverlabel::to_string(Align e) {
@@ -372,10 +672,22 @@ Ohlc::Hoverlabel& Ohlc::Hoverlabel::alignsrc(std::string f) {
     json["alignsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Hoverlabel& Ohlc::Hoverlabel::alignsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return alignsrc(std::move(f));
+}
 
 Ohlc::Hoverlabel& Ohlc::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc::Hoverlabel& Ohlc::Hoverlabel::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
 }
 Ohlc::Hoverlabel& Ohlc::Hoverlabel::bgcolor(std::vector<std::string> f) {
     json["bgcolor"] = std::move(f);
@@ -386,10 +698,22 @@ Ohlc::Hoverlabel& Ohlc::Hoverlabel::bgcolorsrc(std::string f) {
     json["bgcolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Hoverlabel& Ohlc::Hoverlabel::bgcolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolorsrc(std::move(f));
+}
 
 Ohlc::Hoverlabel& Ohlc::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc::Hoverlabel& Ohlc::Hoverlabel::bordercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolor(std::move(f));
 }
 Ohlc::Hoverlabel& Ohlc::Hoverlabel::bordercolor(std::vector<std::string> f) {
     json["bordercolor"] = std::move(f);
@@ -400,15 +724,33 @@ Ohlc::Hoverlabel& Ohlc::Hoverlabel::bordercolorsrc(std::string f) {
     json["bordercolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Hoverlabel& Ohlc::Hoverlabel::bordercolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolorsrc(std::move(f));
+}
 
 Ohlc::Hoverlabel& Ohlc::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Hoverlabel& Ohlc::Hoverlabel::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Ohlc::Hoverlabel& Ohlc::Hoverlabel::namelength(int f) {
     json["namelength"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc::Hoverlabel& Ohlc::Hoverlabel::namelength(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return namelength(std::move(f));
 }
 Ohlc::Hoverlabel& Ohlc::Hoverlabel::namelength(std::vector<int> f) {
     json["namelength"] = std::move(f);
@@ -419,10 +761,22 @@ Ohlc::Hoverlabel& Ohlc::Hoverlabel::namelengthsrc(std::string f) {
     json["namelengthsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Hoverlabel& Ohlc::Hoverlabel::namelengthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return namelengthsrc(std::move(f));
+}
 
 Ohlc::Hoverlabel& Ohlc::Hoverlabel::split(bool f) {
     json["split"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc::Hoverlabel& Ohlc::Hoverlabel::split(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return split(std::move(f));
 }
 
 std::string Ohlc::Hoverlabel::Font::to_string(Style e) {
@@ -460,6 +814,12 @@ Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
     return *this;
@@ -469,10 +829,22 @@ Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::family(std::vector<std::string> f) {
     json["family"] = std::move(f);
@@ -483,10 +855,22 @@ Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::familysrc(std::string f) {
     json["familysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::familysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return familysrc(std::move(f));
+}
 
 Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
 }
 Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
     json["lineposition"] = std::move(f);
@@ -497,10 +881,22 @@ Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::linepositionsrc(std::string f) {
     json["linepositionsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::linepositionsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return linepositionsrc(std::move(f));
+}
 
 Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
 }
 Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::shadow(std::vector<std::string> f) {
     json["shadow"] = std::move(f);
@@ -511,10 +907,22 @@ Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::shadowsrc(std::string f) {
     json["shadowsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::shadowsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadowsrc(std::move(f));
+}
 
 Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -524,6 +932,12 @@ Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::size(std::vector<double> f) {
 Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
 }
 
 Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::style(enum Style f) {
@@ -541,6 +955,12 @@ Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::stylesrc(std::string f) {
     json["stylesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::stylesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return stylesrc(std::move(f));
+}
 
 Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::textcase(enum Textcase f) {
     json["textcase"] = to_string(f);
@@ -556,6 +976,12 @@ Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::textcase(const std::vector<enum 
 Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::textcasesrc(std::string f) {
     json["textcasesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::textcasesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textcasesrc(std::move(f));
 }
 
 Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::variant(enum Variant f) {
@@ -573,10 +999,22 @@ Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::variantsrc(std::string f) {
     json["variantsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::variantsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return variantsrc(std::move(f));
+}
 
 Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::weight(std::vector<int> f) {
     json["weight"] = std::move(f);
@@ -587,11 +1025,23 @@ Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::weightsrc(std::string f) {
     json["weightsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Hoverlabel::Font& Ohlc::Hoverlabel::Font::weightsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return weightsrc(std::move(f));
+}
 
 
 Ohlc::Increasing& Ohlc::Increasing::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc::Increasing& Ohlc::Increasing::line(Callable&& c) {
+    Line f{};
+    std::forward<Callable>(c)(f);
+    return line(std::move(f));
 }
 
 
@@ -599,15 +1049,33 @@ Ohlc::Increasing::Line& Ohlc::Increasing::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Increasing::Line& Ohlc::Increasing::Line::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Ohlc::Increasing::Line& Ohlc::Increasing::Line::dash(std::string f) {
     json["dash"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Increasing::Line& Ohlc::Increasing::Line::dash(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return dash(std::move(f));
+}
 
 Ohlc::Increasing::Line& Ohlc::Increasing::Line::width(double f) {
     json["width"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc::Increasing::Line& Ohlc::Increasing::Line::width(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return width(std::move(f));
 }
 
 
@@ -615,10 +1083,22 @@ Ohlc::Legendgrouptitle& Ohlc::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Legendgrouptitle& Ohlc::Legendgrouptitle::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Ohlc::Legendgrouptitle& Ohlc::Legendgrouptitle::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc::Legendgrouptitle& Ohlc::Legendgrouptitle::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 
 std::string Ohlc::Legendgrouptitle::Font::to_string(Style e) {
@@ -656,25 +1136,55 @@ Ohlc::Legendgrouptitle::Font& Ohlc::Legendgrouptitle::Font::color(std::string f)
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Legendgrouptitle::Font& Ohlc::Legendgrouptitle::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Ohlc::Legendgrouptitle::Font& Ohlc::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc::Legendgrouptitle::Font& Ohlc::Legendgrouptitle::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Ohlc::Legendgrouptitle::Font& Ohlc::Legendgrouptitle::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Legendgrouptitle::Font& Ohlc::Legendgrouptitle::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Ohlc::Legendgrouptitle::Font& Ohlc::Legendgrouptitle::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Legendgrouptitle::Font& Ohlc::Legendgrouptitle::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Ohlc::Legendgrouptitle::Font& Ohlc::Legendgrouptitle::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc::Legendgrouptitle::Font& Ohlc::Legendgrouptitle::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Ohlc::Legendgrouptitle::Font& Ohlc::Legendgrouptitle::Font::style(enum Style f) {
@@ -696,16 +1206,34 @@ Ohlc::Legendgrouptitle::Font& Ohlc::Legendgrouptitle::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Legendgrouptitle::Font& Ohlc::Legendgrouptitle::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Ohlc::Line& Ohlc::Line::dash(std::string f) {
     json["dash"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Line& Ohlc::Line::dash(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return dash(std::move(f));
+}
 
 Ohlc::Line& Ohlc::Line::width(double f) {
     json["width"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc::Line& Ohlc::Line::width(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return width(std::move(f));
 }
 
 
@@ -713,10 +1241,22 @@ Ohlc::Stream& Ohlc::Stream::maxpoints(double f) {
     json["maxpoints"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Ohlc::Stream& Ohlc::Stream::maxpoints(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return maxpoints(std::move(f));
+}
 
 Ohlc::Stream& Ohlc::Stream::token(std::string f) {
     json["token"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Ohlc::Stream& Ohlc::Stream::token(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return token(std::move(f));
 }
 
 } // namespace plotlypp

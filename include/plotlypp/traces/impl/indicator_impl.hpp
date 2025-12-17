@@ -39,25 +39,55 @@ Indicator& Indicator::customdata(std::vector<T> f) {
     json["customdata"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Indicator& Indicator::customdata(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return customdata(std::move(f));
+}
 
 Indicator& Indicator::customdatasrc(std::string f) {
     json["customdatasrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator& Indicator::customdatasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return customdatasrc(std::move(f));
 }
 
 Indicator& Indicator::delta(Delta f) {
     json["delta"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Indicator& Indicator::delta(Callable&& c) {
+    Delta f{};
+    std::forward<Callable>(c)(f);
+    return delta(std::move(f));
+}
 
 Indicator& Indicator::domain(Domain f) {
     json["domain"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Indicator& Indicator::domain(Callable&& c) {
+    Domain f{};
+    std::forward<Callable>(c)(f);
+    return domain(std::move(f));
+}
 
 Indicator& Indicator::gauge(Gauge f) {
     json["gauge"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Indicator& Indicator::gauge(Callable&& c) {
+    Gauge f{};
+    std::forward<Callable>(c)(f);
+    return gauge(std::move(f));
 }
 
 template <typename T, typename>
@@ -65,36 +95,78 @@ Indicator& Indicator::ids(std::vector<T> f) {
     json["ids"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Indicator& Indicator::ids(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return ids(std::move(f));
+}
 
 Indicator& Indicator::idssrc(std::string f) {
     json["idssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator& Indicator::idssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return idssrc(std::move(f));
 }
 
 Indicator& Indicator::legend(std::string f) {
     json["legend"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator& Indicator::legend(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return legend(std::move(f));
+}
 
 Indicator& Indicator::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Indicator& Indicator::legendgrouptitle(Callable&& c) {
+    Legendgrouptitle f{};
+    std::forward<Callable>(c)(f);
+    return legendgrouptitle(std::move(f));
 }
 
 Indicator& Indicator::legendrank(double f) {
     json["legendrank"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator& Indicator::legendrank(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendrank(std::move(f));
+}
 
 Indicator& Indicator::legendwidth(double f) {
     json["legendwidth"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator& Indicator::legendwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendwidth(std::move(f));
 }
 
 template <typename T>
 Indicator& Indicator::meta(T f) {
     json["meta"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Indicator& Indicator::meta(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return meta(std::move(f));
 }
 template <typename T>
 Indicator& Indicator::meta(std::vector<T> f) {
@@ -106,35 +178,77 @@ Indicator& Indicator::metasrc(std::string f) {
     json["metasrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator& Indicator::metasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return metasrc(std::move(f));
+}
 
 Indicator& Indicator::mode(std::string f) {
     json["mode"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator& Indicator::mode(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return mode(std::move(f));
 }
 
 Indicator& Indicator::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator& Indicator::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
+}
 
 Indicator& Indicator::number(Number f) {
     json["number"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Indicator& Indicator::number(Callable&& c) {
+    Number f{};
+    std::forward<Callable>(c)(f);
+    return number(std::move(f));
 }
 
 Indicator& Indicator::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Indicator& Indicator::stream(Callable&& c) {
+    Stream f{};
+    std::forward<Callable>(c)(f);
+    return stream(std::move(f));
+}
 
 Indicator& Indicator::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Indicator& Indicator::title(Callable&& c) {
+    Title f{};
+    std::forward<Callable>(c)(f);
+    return title(std::move(f));
+}
 
 Indicator& Indicator::uid(std::string f) {
     json["uid"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator& Indicator::uid(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return uid(std::move(f));
 }
 
 template <typename T>
@@ -142,10 +256,22 @@ Indicator& Indicator::uirevision(T f) {
     json["uirevision"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Indicator& Indicator::uirevision(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return uirevision(std::move(f));
+}
 
 Indicator& Indicator::value(double f) {
     json["value"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator& Indicator::value(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return value(std::move(f));
 }
 
 Indicator& Indicator::visible(enum Visible f) {
@@ -168,15 +294,33 @@ Indicator::Delta& Indicator::Delta::decreasing(Decreasing f) {
     json["decreasing"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Delta& Indicator::Delta::decreasing(Callable&& c) {
+    Decreasing f{};
+    std::forward<Callable>(c)(f);
+    return decreasing(std::move(f));
+}
 
 Indicator::Delta& Indicator::Delta::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Delta& Indicator::Delta::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Indicator::Delta& Indicator::Delta::increasing(Increasing f) {
     json["increasing"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Delta& Indicator::Delta::increasing(Callable&& c) {
+    Increasing f{};
+    std::forward<Callable>(c)(f);
+    return increasing(std::move(f));
 }
 
 Indicator::Delta& Indicator::Delta::position(enum Position f) {
@@ -188,25 +332,55 @@ Indicator::Delta& Indicator::Delta::prefix(std::string f) {
     json["prefix"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Delta& Indicator::Delta::prefix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return prefix(std::move(f));
+}
 
 Indicator::Delta& Indicator::Delta::reference(double f) {
     json["reference"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Delta& Indicator::Delta::reference(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return reference(std::move(f));
 }
 
 Indicator::Delta& Indicator::Delta::relative(bool f) {
     json["relative"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Delta& Indicator::Delta::relative(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return relative(std::move(f));
+}
 
 Indicator::Delta& Indicator::Delta::suffix(std::string f) {
     json["suffix"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Delta& Indicator::Delta::suffix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return suffix(std::move(f));
+}
 
 Indicator::Delta& Indicator::Delta::valueformat(std::string f) {
     json["valueformat"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Delta& Indicator::Delta::valueformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return valueformat(std::move(f));
 }
 
 
@@ -214,10 +388,22 @@ Indicator::Delta::Decreasing& Indicator::Delta::Decreasing::color(std::string f)
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Delta::Decreasing& Indicator::Delta::Decreasing::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Indicator::Delta::Decreasing& Indicator::Delta::Decreasing::symbol(std::string f) {
     json["symbol"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Delta::Decreasing& Indicator::Delta::Decreasing::symbol(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return symbol(std::move(f));
 }
 
 std::string Indicator::Delta::Font::to_string(Style e) {
@@ -255,25 +441,55 @@ Indicator::Delta::Font& Indicator::Delta::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Delta::Font& Indicator::Delta::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Indicator::Delta::Font& Indicator::Delta::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Delta::Font& Indicator::Delta::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Indicator::Delta::Font& Indicator::Delta::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Delta::Font& Indicator::Delta::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Indicator::Delta::Font& Indicator::Delta::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Delta::Font& Indicator::Delta::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Indicator::Delta::Font& Indicator::Delta::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Delta::Font& Indicator::Delta::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Indicator::Delta::Font& Indicator::Delta::Font::style(enum Style f) {
@@ -295,16 +511,34 @@ Indicator::Delta::Font& Indicator::Delta::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Delta::Font& Indicator::Delta::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Indicator::Delta::Increasing& Indicator::Delta::Increasing::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Delta::Increasing& Indicator::Delta::Increasing::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Indicator::Delta::Increasing& Indicator::Delta::Increasing::symbol(std::string f) {
     json["symbol"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Delta::Increasing& Indicator::Delta::Increasing::symbol(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return symbol(std::move(f));
 }
 
 
@@ -312,20 +546,44 @@ Indicator::Domain& Indicator::Domain::column(int f) {
     json["column"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Domain& Indicator::Domain::column(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return column(std::move(f));
+}
 
 Indicator::Domain& Indicator::Domain::row(int f) {
     json["row"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Domain& Indicator::Domain::row(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return row(std::move(f));
 }
 
 Indicator::Domain& Indicator::Domain::x(std::vector<double> f) {
     json["x"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Domain& Indicator::Domain::x(Callable&& c) {
+    std::vector<double> f{};
+    std::forward<Callable>(c)(f);
+    return x(std::move(f));
+}
 
 Indicator::Domain& Indicator::Domain::y(std::vector<double> f) {
     json["y"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Domain& Indicator::Domain::y(Callable&& c) {
+    std::vector<double> f{};
+    std::forward<Callable>(c)(f);
+    return y(std::move(f));
 }
 
 std::string Indicator::Gauge::to_string(Shape e) {
@@ -341,25 +599,55 @@ Indicator::Gauge& Indicator::Gauge::axis(Axis f) {
     json["axis"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge& Indicator::Gauge::axis(Callable&& c) {
+    Axis f{};
+    std::forward<Callable>(c)(f);
+    return axis(std::move(f));
+}
 
 Indicator::Gauge& Indicator::Gauge::bar(Bar f) {
     json["bar"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge& Indicator::Gauge::bar(Callable&& c) {
+    Bar f{};
+    std::forward<Callable>(c)(f);
+    return bar(std::move(f));
 }
 
 Indicator::Gauge& Indicator::Gauge::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge& Indicator::Gauge::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
+}
 
 Indicator::Gauge& Indicator::Gauge::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge& Indicator::Gauge::bordercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolor(std::move(f));
+}
 
 Indicator::Gauge& Indicator::Gauge::borderwidth(double f) {
     json["borderwidth"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge& Indicator::Gauge::borderwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return borderwidth(std::move(f));
 }
 
 Indicator::Gauge& Indicator::Gauge::shape(enum Shape f) {
@@ -371,10 +659,22 @@ Indicator::Gauge& Indicator::Gauge::steps(Steps f) {
     json["steps"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge& Indicator::Gauge::steps(Callable&& c) {
+    Steps f{};
+    std::forward<Callable>(c)(f);
+    return steps(std::move(f));
+}
 
 Indicator::Gauge& Indicator::Gauge::threshold(Threshold f) {
     json["threshold"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge& Indicator::Gauge::threshold(Callable&& c) {
+    Threshold f{};
+    std::forward<Callable>(c)(f);
+    return threshold(std::move(f));
 }
 
 std::string Indicator::Gauge::Axis::to_string(Exponentformat e) {
@@ -442,6 +742,12 @@ Indicator::Gauge::Axis& Indicator::Gauge::Axis::dtick(T f) {
     json["dtick"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::dtick(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return dtick(std::move(f));
+}
 
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::exponentformat(enum Exponentformat f) {
     json["exponentformat"] = to_string(f);
@@ -453,25 +759,55 @@ Indicator::Gauge::Axis& Indicator::Gauge::Axis::labelalias(T f) {
     json["labelalias"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::labelalias(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return labelalias(std::move(f));
+}
 
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::minexponent(double f) {
     json["minexponent"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::minexponent(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return minexponent(std::move(f));
 }
 
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::nticks(int f) {
     json["nticks"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::nticks(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return nticks(std::move(f));
+}
 
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::range(std::vector<double> f) {
     json["range"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::range(Callable&& c) {
+    std::vector<double> f{};
+    std::forward<Callable>(c)(f);
+    return range(std::move(f));
+}
 
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::separatethousands(bool f) {
     json["separatethousands"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::separatethousands(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return separatethousands(std::move(f));
 }
 
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::showexponent(enum Showexponent f) {
@@ -482,6 +818,12 @@ Indicator::Gauge::Axis& Indicator::Gauge::Axis::showexponent(enum Showexponent f
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::showticklabels(bool f) {
     json["showticklabels"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::showticklabels(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showticklabels(std::move(f));
 }
 
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::showtickprefix(enum Showtickprefix f) {
@@ -499,40 +841,88 @@ Indicator::Gauge::Axis& Indicator::Gauge::Axis::tick0(T f) {
     json["tick0"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::tick0(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return tick0(std::move(f));
+}
 
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickangle(double f) {
     json["tickangle"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickangle(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return tickangle(std::move(f));
 }
 
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickcolor(std::string f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickcolor(std::move(f));
+}
 
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickfont(Callable&& c) {
+    Tickfont f{};
+    std::forward<Callable>(c)(f);
+    return tickfont(std::move(f));
 }
 
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickformat(std::string f) {
     json["tickformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickformat(std::move(f));
+}
 
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickformatstops(Callable&& c) {
+    Tickformatstops f{};
+    std::forward<Callable>(c)(f);
+    return tickformatstops(std::move(f));
 }
 
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::ticklabelstep(int f) {
     json["ticklabelstep"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::ticklabelstep(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return ticklabelstep(std::move(f));
+}
 
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::ticklen(double f) {
     json["ticklen"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::ticklen(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return ticklen(std::move(f));
 }
 
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickmode(enum Tickmode f) {
@@ -544,6 +934,12 @@ Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickprefix(std::string f) {
     json["tickprefix"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickprefix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickprefix(std::move(f));
+}
 
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::ticks(enum Ticks f) {
     json["ticks"] = to_string(f);
@@ -554,16 +950,34 @@ Indicator::Gauge::Axis& Indicator::Gauge::Axis::ticksuffix(std::string f) {
     json["ticksuffix"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::ticksuffix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ticksuffix(std::move(f));
+}
 
 template <typename T, typename>
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::ticktext(std::vector<T> f) {
     json["ticktext"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::ticktext(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return ticktext(std::move(f));
+}
 
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::ticktextsrc(std::string f) {
     json["ticktextsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::ticktextsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ticktextsrc(std::move(f));
 }
 
 template <typename T, typename>
@@ -571,20 +985,44 @@ Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickvals(std::vector<T> f) {
     json["tickvals"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickvals(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return tickvals(std::move(f));
+}
 
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickvalssrc(std::string f) {
     json["tickvalssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickvalssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickvalssrc(std::move(f));
 }
 
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickwidth(double f) {
     json["tickwidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return tickwidth(std::move(f));
+}
 
 Indicator::Gauge::Axis& Indicator::Gauge::Axis::visible(bool f) {
     json["visible"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::visible(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return visible(std::move(f));
 }
 
 std::string Indicator::Gauge::Axis::Tickfont::to_string(Style e) {
@@ -622,25 +1060,55 @@ Indicator::Gauge::Axis::Tickfont& Indicator::Gauge::Axis::Tickfont::color(std::s
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Axis::Tickfont& Indicator::Gauge::Axis::Tickfont::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Indicator::Gauge::Axis::Tickfont& Indicator::Gauge::Axis::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Axis::Tickfont& Indicator::Gauge::Axis::Tickfont::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Indicator::Gauge::Axis::Tickfont& Indicator::Gauge::Axis::Tickfont::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Axis::Tickfont& Indicator::Gauge::Axis::Tickfont::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Indicator::Gauge::Axis::Tickfont& Indicator::Gauge::Axis::Tickfont::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Axis::Tickfont& Indicator::Gauge::Axis::Tickfont::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Indicator::Gauge::Axis::Tickfont& Indicator::Gauge::Axis::Tickfont::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Axis::Tickfont& Indicator::Gauge::Axis::Tickfont::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Indicator::Gauge::Axis::Tickfont& Indicator::Gauge::Axis::Tickfont::style(enum Style f) {
@@ -662,11 +1130,23 @@ Indicator::Gauge::Axis::Tickfont& Indicator::Gauge::Axis::Tickfont::weight(int f
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Axis::Tickfont& Indicator::Gauge::Axis::Tickfont::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Indicator::Gauge::Axis::Tickformatstops& Indicator::Gauge::Axis::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Axis::Tickformatstops& Indicator::Gauge::Axis::Tickformatstops::tickformatstop(Callable&& c) {
+    Tickformatstop f{};
+    std::forward<Callable>(c)(f);
+    return tickformatstop(std::move(f));
 }
 
 
@@ -674,25 +1154,55 @@ Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& Indicator::Gauge::Axis:
     json["dtickrange"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& Indicator::Gauge::Axis::Tickformatstops::Tickformatstop::dtickrange(Callable&& c) {
+    std::vector<double> f{};
+    std::forward<Callable>(c)(f);
+    return dtickrange(std::move(f));
+}
 
 Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& Indicator::Gauge::Axis::Tickformatstops::Tickformatstop::enabled(bool f) {
     json["enabled"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& Indicator::Gauge::Axis::Tickformatstops::Tickformatstop::enabled(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return enabled(std::move(f));
 }
 
 Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& Indicator::Gauge::Axis::Tickformatstops::Tickformatstop::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& Indicator::Gauge::Axis::Tickformatstops::Tickformatstop::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
+}
 
 Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& Indicator::Gauge::Axis::Tickformatstops::Tickformatstop::templateitemname(std::string f) {
     json["templateitemname"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& Indicator::Gauge::Axis::Tickformatstops::Tickformatstop::templateitemname(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return templateitemname(std::move(f));
+}
 
 Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& Indicator::Gauge::Axis::Tickformatstops::Tickformatstop::value(std::string f) {
     json["value"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& Indicator::Gauge::Axis::Tickformatstops::Tickformatstop::value(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return value(std::move(f));
 }
 
 
@@ -700,15 +1210,33 @@ Indicator::Gauge::Bar& Indicator::Gauge::Bar::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Bar& Indicator::Gauge::Bar::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Indicator::Gauge::Bar& Indicator::Gauge::Bar::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Bar& Indicator::Gauge::Bar::line(Callable&& c) {
+    Line f{};
+    std::forward<Callable>(c)(f);
+    return line(std::move(f));
+}
 
 Indicator::Gauge::Bar& Indicator::Gauge::Bar::thickness(double f) {
     json["thickness"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Bar& Indicator::Gauge::Bar::thickness(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return thickness(std::move(f));
 }
 
 
@@ -716,10 +1244,22 @@ Indicator::Gauge::Bar::Line& Indicator::Gauge::Bar::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Bar::Line& Indicator::Gauge::Bar::Line::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Indicator::Gauge::Bar::Line& Indicator::Gauge::Bar::Line::width(double f) {
     json["width"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Bar::Line& Indicator::Gauge::Bar::Line::width(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return width(std::move(f));
 }
 
 
@@ -727,36 +1267,78 @@ Indicator::Gauge::Steps& Indicator::Gauge::Steps::step(Step f) {
     json["step"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Steps& Indicator::Gauge::Steps::step(Callable&& c) {
+    Step f{};
+    std::forward<Callable>(c)(f);
+    return step(std::move(f));
+}
 
 
 Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::line(Callable&& c) {
+    Line f{};
+    std::forward<Callable>(c)(f);
+    return line(std::move(f));
 }
 
 Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
+}
 
 Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::range(std::vector<double> f) {
     json["range"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::range(Callable&& c) {
+    std::vector<double> f{};
+    std::forward<Callable>(c)(f);
+    return range(std::move(f));
 }
 
 Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::templateitemname(std::string f) {
     json["templateitemname"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::templateitemname(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return templateitemname(std::move(f));
+}
 
 Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::thickness(double f) {
     json["thickness"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::thickness(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return thickness(std::move(f));
 }
 
 
@@ -764,10 +1346,22 @@ Indicator::Gauge::Steps::Step::Line& Indicator::Gauge::Steps::Step::Line::color(
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Steps::Step::Line& Indicator::Gauge::Steps::Step::Line::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Indicator::Gauge::Steps::Step::Line& Indicator::Gauge::Steps::Step::Line::width(double f) {
     json["width"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Steps::Step::Line& Indicator::Gauge::Steps::Step::Line::width(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return width(std::move(f));
 }
 
 
@@ -775,15 +1369,33 @@ Indicator::Gauge::Threshold& Indicator::Gauge::Threshold::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Threshold& Indicator::Gauge::Threshold::line(Callable&& c) {
+    Line f{};
+    std::forward<Callable>(c)(f);
+    return line(std::move(f));
+}
 
 Indicator::Gauge::Threshold& Indicator::Gauge::Threshold::thickness(double f) {
     json["thickness"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Threshold& Indicator::Gauge::Threshold::thickness(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return thickness(std::move(f));
+}
 
 Indicator::Gauge::Threshold& Indicator::Gauge::Threshold::value(double f) {
     json["value"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Threshold& Indicator::Gauge::Threshold::value(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return value(std::move(f));
 }
 
 
@@ -791,10 +1403,22 @@ Indicator::Gauge::Threshold::Line& Indicator::Gauge::Threshold::Line::color(std:
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Gauge::Threshold::Line& Indicator::Gauge::Threshold::Line::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Indicator::Gauge::Threshold::Line& Indicator::Gauge::Threshold::Line::width(double f) {
     json["width"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Gauge::Threshold::Line& Indicator::Gauge::Threshold::Line::width(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return width(std::move(f));
 }
 
 
@@ -802,10 +1426,22 @@ Indicator::Legendgrouptitle& Indicator::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Legendgrouptitle& Indicator::Legendgrouptitle::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Indicator::Legendgrouptitle& Indicator::Legendgrouptitle::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Legendgrouptitle& Indicator::Legendgrouptitle::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 
 std::string Indicator::Legendgrouptitle::Font::to_string(Style e) {
@@ -843,25 +1479,55 @@ Indicator::Legendgrouptitle::Font& Indicator::Legendgrouptitle::Font::color(std:
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Legendgrouptitle::Font& Indicator::Legendgrouptitle::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Indicator::Legendgrouptitle::Font& Indicator::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Legendgrouptitle::Font& Indicator::Legendgrouptitle::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Indicator::Legendgrouptitle::Font& Indicator::Legendgrouptitle::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Legendgrouptitle::Font& Indicator::Legendgrouptitle::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Indicator::Legendgrouptitle::Font& Indicator::Legendgrouptitle::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Legendgrouptitle::Font& Indicator::Legendgrouptitle::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Indicator::Legendgrouptitle::Font& Indicator::Legendgrouptitle::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Legendgrouptitle::Font& Indicator::Legendgrouptitle::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Indicator::Legendgrouptitle::Font& Indicator::Legendgrouptitle::Font::style(enum Style f) {
@@ -883,26 +1549,56 @@ Indicator::Legendgrouptitle::Font& Indicator::Legendgrouptitle::Font::weight(int
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Legendgrouptitle::Font& Indicator::Legendgrouptitle::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Indicator::Number& Indicator::Number::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Number& Indicator::Number::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Indicator::Number& Indicator::Number::prefix(std::string f) {
     json["prefix"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Number& Indicator::Number::prefix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return prefix(std::move(f));
 }
 
 Indicator::Number& Indicator::Number::suffix(std::string f) {
     json["suffix"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Number& Indicator::Number::suffix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return suffix(std::move(f));
+}
 
 Indicator::Number& Indicator::Number::valueformat(std::string f) {
     json["valueformat"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Number& Indicator::Number::valueformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return valueformat(std::move(f));
 }
 
 std::string Indicator::Number::Font::to_string(Style e) {
@@ -940,25 +1636,55 @@ Indicator::Number::Font& Indicator::Number::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Number::Font& Indicator::Number::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Indicator::Number::Font& Indicator::Number::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Number::Font& Indicator::Number::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Indicator::Number::Font& Indicator::Number::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Number::Font& Indicator::Number::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Indicator::Number::Font& Indicator::Number::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Number::Font& Indicator::Number::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Indicator::Number::Font& Indicator::Number::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Number::Font& Indicator::Number::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Indicator::Number::Font& Indicator::Number::Font::style(enum Style f) {
@@ -980,16 +1706,34 @@ Indicator::Number::Font& Indicator::Number::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Number::Font& Indicator::Number::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Indicator::Stream& Indicator::Stream::maxpoints(double f) {
     json["maxpoints"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Stream& Indicator::Stream::maxpoints(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return maxpoints(std::move(f));
+}
 
 Indicator::Stream& Indicator::Stream::token(std::string f) {
     json["token"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Stream& Indicator::Stream::token(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return token(std::move(f));
 }
 
 std::string Indicator::Title::to_string(Align e) {
@@ -1011,10 +1755,22 @@ Indicator::Title& Indicator::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Title& Indicator::Title::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Indicator::Title& Indicator::Title::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Title& Indicator::Title::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 
 std::string Indicator::Title::Font::to_string(Style e) {
@@ -1052,25 +1808,55 @@ Indicator::Title::Font& Indicator::Title::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Title::Font& Indicator::Title::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Indicator::Title::Font& Indicator::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Title::Font& Indicator::Title::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Indicator::Title::Font& Indicator::Title::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Title::Font& Indicator::Title::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Indicator::Title::Font& Indicator::Title::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Indicator::Title::Font& Indicator::Title::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Indicator::Title::Font& Indicator::Title::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Title::Font& Indicator::Title::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Indicator::Title::Font& Indicator::Title::Font::style(enum Style f) {
@@ -1091,6 +1877,12 @@ Indicator::Title::Font& Indicator::Title::Font::variant(enum Variant f) {
 Indicator::Title::Font& Indicator::Title::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Indicator::Title::Font& Indicator::Title::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 
 } // namespace plotlypp

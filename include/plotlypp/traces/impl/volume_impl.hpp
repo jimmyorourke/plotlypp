@@ -24,40 +24,88 @@ Volume& Volume::autocolorscale(bool f) {
     json["autocolorscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::autocolorscale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return autocolorscale(std::move(f));
+}
 
 Volume& Volume::caps(Caps f) {
     json["caps"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::caps(Callable&& c) {
+    Caps f{};
+    std::forward<Callable>(c)(f);
+    return caps(std::move(f));
 }
 
 Volume& Volume::cauto(bool f) {
     json["cauto"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::cauto(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return cauto(std::move(f));
+}
 
 Volume& Volume::cmax(double f) {
     json["cmax"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::cmax(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmax(std::move(f));
 }
 
 Volume& Volume::cmid(double f) {
     json["cmid"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::cmid(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmid(std::move(f));
+}
 
 Volume& Volume::cmin(double f) {
     json["cmin"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::cmin(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmin(std::move(f));
 }
 
 Volume& Volume::coloraxis(std::string f) {
     json["coloraxis"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::coloraxis(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return coloraxis(std::move(f));
+}
 
 Volume& Volume::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::colorbar(Callable&& c) {
+    Colorbar f{};
+    std::forward<Callable>(c)(f);
+    return colorbar(std::move(f));
 }
 
 Volume& Volume::colorscale(std::string f) {
@@ -68,10 +116,22 @@ Volume& Volume::colorscale(std::vector<std::pair<double, std::string>> f) {
     json["colorscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::colorscale(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorscale(std::move(f));
+}
 
 Volume& Volume::contour(Contour f) {
     json["contour"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::contour(Callable&& c) {
+    Contour f{};
+    std::forward<Callable>(c)(f);
+    return contour(std::move(f));
 }
 
 template <typename T, typename>
@@ -79,20 +139,44 @@ Volume& Volume::customdata(std::vector<T> f) {
     json["customdata"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Volume& Volume::customdata(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return customdata(std::move(f));
+}
 
 Volume& Volume::customdatasrc(std::string f) {
     json["customdatasrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::customdatasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return customdatasrc(std::move(f));
 }
 
 Volume& Volume::flatshading(bool f) {
     json["flatshading"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::flatshading(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return flatshading(std::move(f));
+}
 
 Volume& Volume::hoverinfo(std::string f) {
     json["hoverinfo"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::hoverinfo(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hoverinfo(std::move(f));
 }
 Volume& Volume::hoverinfo(std::vector<std::string> f) {
     json["hoverinfo"] = std::move(f);
@@ -103,15 +187,33 @@ Volume& Volume::hoverinfosrc(std::string f) {
     json["hoverinfosrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::hoverinfosrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hoverinfosrc(std::move(f));
+}
 
 Volume& Volume::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::hoverlabel(Callable&& c) {
+    Hoverlabel f{};
+    std::forward<Callable>(c)(f);
+    return hoverlabel(std::move(f));
+}
 
 Volume& Volume::hovertemplate(std::string f) {
     json["hovertemplate"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::hovertemplate(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertemplate(std::move(f));
 }
 Volume& Volume::hovertemplate(std::vector<std::string> f) {
     json["hovertemplate"] = std::move(f);
@@ -122,10 +224,22 @@ Volume& Volume::hovertemplatesrc(std::string f) {
     json["hovertemplatesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::hovertemplatesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertemplatesrc(std::move(f));
+}
 
 Volume& Volume::hovertext(std::string f) {
     json["hovertext"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::hovertext(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertext(std::move(f));
 }
 Volume& Volume::hovertext(std::vector<std::string> f) {
     json["hovertext"] = std::move(f);
@@ -136,67 +250,145 @@ Volume& Volume::hovertextsrc(std::string f) {
     json["hovertextsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::hovertextsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertextsrc(std::move(f));
+}
 
 template <typename T, typename>
 Volume& Volume::ids(std::vector<T> f) {
     json["ids"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Volume& Volume::ids(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return ids(std::move(f));
+}
 
 Volume& Volume::idssrc(std::string f) {
     json["idssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::idssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return idssrc(std::move(f));
 }
 
 Volume& Volume::isomax(double f) {
     json["isomax"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::isomax(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return isomax(std::move(f));
+}
 
 Volume& Volume::isomin(double f) {
     json["isomin"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::isomin(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return isomin(std::move(f));
 }
 
 Volume& Volume::legend(std::string f) {
     json["legend"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::legend(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return legend(std::move(f));
+}
 
 Volume& Volume::legendgroup(std::string f) {
     json["legendgroup"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::legendgroup(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return legendgroup(std::move(f));
 }
 
 Volume& Volume::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::legendgrouptitle(Callable&& c) {
+    Legendgrouptitle f{};
+    std::forward<Callable>(c)(f);
+    return legendgrouptitle(std::move(f));
+}
 
 Volume& Volume::legendrank(double f) {
     json["legendrank"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::legendrank(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendrank(std::move(f));
 }
 
 Volume& Volume::legendwidth(double f) {
     json["legendwidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::legendwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendwidth(std::move(f));
+}
 
 Volume& Volume::lighting(Lighting f) {
     json["lighting"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::lighting(Callable&& c) {
+    Lighting f{};
+    std::forward<Callable>(c)(f);
+    return lighting(std::move(f));
 }
 
 Volume& Volume::lightposition(Lightposition f) {
     json["lightposition"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::lightposition(Callable&& c) {
+    Lightposition f{};
+    std::forward<Callable>(c)(f);
+    return lightposition(std::move(f));
+}
 
 template <typename T>
 Volume& Volume::meta(T f) {
     json["meta"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Volume& Volume::meta(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return meta(std::move(f));
 }
 template <typename T>
 Volume& Volume::meta(std::vector<T> f) {
@@ -208,15 +400,33 @@ Volume& Volume::metasrc(std::string f) {
     json["metasrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::metasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return metasrc(std::move(f));
+}
 
 Volume& Volume::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
+}
 
 Volume& Volume::opacity(double f) {
     json["opacity"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::opacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return opacity(std::move(f));
 }
 
 template <typename T>
@@ -224,50 +434,110 @@ Volume& Volume::opacityscale(T f) {
     json["opacityscale"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Volume& Volume::opacityscale(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return opacityscale(std::move(f));
+}
 
 Volume& Volume::reversescale(bool f) {
     json["reversescale"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::reversescale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return reversescale(std::move(f));
 }
 
 Volume& Volume::scene(std::string f) {
     json["scene"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::scene(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return scene(std::move(f));
+}
 
 Volume& Volume::showlegend(bool f) {
     json["showlegend"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::showlegend(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showlegend(std::move(f));
 }
 
 Volume& Volume::showscale(bool f) {
     json["showscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::showscale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showscale(std::move(f));
+}
 
 Volume& Volume::slices(Slices f) {
     json["slices"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::slices(Callable&& c) {
+    Slices f{};
+    std::forward<Callable>(c)(f);
+    return slices(std::move(f));
 }
 
 Volume& Volume::spaceframe(Spaceframe f) {
     json["spaceframe"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::spaceframe(Callable&& c) {
+    Spaceframe f{};
+    std::forward<Callable>(c)(f);
+    return spaceframe(std::move(f));
+}
 
 Volume& Volume::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::stream(Callable&& c) {
+    Stream f{};
+    std::forward<Callable>(c)(f);
+    return stream(std::move(f));
 }
 
 Volume& Volume::surface(Surface f) {
     json["surface"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::surface(Callable&& c) {
+    Surface f{};
+    std::forward<Callable>(c)(f);
+    return surface(std::move(f));
+}
 
 Volume& Volume::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 Volume& Volume::text(std::vector<std::string> f) {
     json["text"] = std::move(f);
@@ -278,10 +548,22 @@ Volume& Volume::textsrc(std::string f) {
     json["textsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::textsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textsrc(std::move(f));
+}
 
 Volume& Volume::uid(std::string f) {
     json["uid"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::uid(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return uid(std::move(f));
 }
 
 template <typename T>
@@ -289,21 +571,45 @@ Volume& Volume::uirevision(T f) {
     json["uirevision"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Volume& Volume::uirevision(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return uirevision(std::move(f));
+}
 
 template <typename T, typename>
 Volume& Volume::value(std::vector<T> f) {
     json["value"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Volume& Volume::value(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return value(std::move(f));
+}
 
 Volume& Volume::valuehoverformat(std::string f) {
     json["valuehoverformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::valuehoverformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return valuehoverformat(std::move(f));
+}
 
 Volume& Volume::valuesrc(std::string f) {
     json["valuesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::valuesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return valuesrc(std::move(f));
 }
 
 Volume& Volume::visible(enum Visible f) {
@@ -316,15 +622,33 @@ Volume& Volume::x(std::vector<T> f) {
     json["x"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Volume& Volume::x(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return x(std::move(f));
+}
 
 Volume& Volume::xhoverformat(std::string f) {
     json["xhoverformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::xhoverformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return xhoverformat(std::move(f));
+}
 
 Volume& Volume::xsrc(std::string f) {
     json["xsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::xsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return xsrc(std::move(f));
 }
 
 template <typename T, typename>
@@ -332,15 +656,33 @@ Volume& Volume::y(std::vector<T> f) {
     json["y"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Volume& Volume::y(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return y(std::move(f));
+}
 
 Volume& Volume::yhoverformat(std::string f) {
     json["yhoverformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::yhoverformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return yhoverformat(std::move(f));
+}
 
 Volume& Volume::ysrc(std::string f) {
     json["ysrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::ysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ysrc(std::move(f));
 }
 
 template <typename T, typename>
@@ -348,15 +690,33 @@ Volume& Volume::z(std::vector<T> f) {
     json["z"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Volume& Volume::z(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return z(std::move(f));
+}
 
 Volume& Volume::zhoverformat(std::string f) {
     json["zhoverformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume& Volume::zhoverformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return zhoverformat(std::move(f));
+}
 
 Volume& Volume::zsrc(std::string f) {
     json["zsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume& Volume::zsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return zsrc(std::move(f));
 }
 
 
@@ -364,15 +724,33 @@ Volume::Caps& Volume::Caps::x(X f) {
     json["x"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Caps& Volume::Caps::x(Callable&& c) {
+    X f{};
+    std::forward<Callable>(c)(f);
+    return x(std::move(f));
+}
 
 Volume::Caps& Volume::Caps::y(Y f) {
     json["y"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Caps& Volume::Caps::y(Callable&& c) {
+    Y f{};
+    std::forward<Callable>(c)(f);
+    return y(std::move(f));
+}
 
 Volume::Caps& Volume::Caps::z(Z f) {
     json["z"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Caps& Volume::Caps::z(Callable&& c) {
+    Z f{};
+    std::forward<Callable>(c)(f);
+    return z(std::move(f));
 }
 
 
@@ -380,10 +758,22 @@ Volume::Caps::X& Volume::Caps::X::fill(double f) {
     json["fill"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Caps::X& Volume::Caps::X::fill(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return fill(std::move(f));
+}
 
 Volume::Caps::X& Volume::Caps::X::show(bool f) {
     json["show"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Caps::X& Volume::Caps::X::show(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return show(std::move(f));
 }
 
 
@@ -391,10 +781,22 @@ Volume::Caps::Y& Volume::Caps::Y::fill(double f) {
     json["fill"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Caps::Y& Volume::Caps::Y::fill(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return fill(std::move(f));
+}
 
 Volume::Caps::Y& Volume::Caps::Y::show(bool f) {
     json["show"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Caps::Y& Volume::Caps::Y::show(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return show(std::move(f));
 }
 
 
@@ -402,10 +804,22 @@ Volume::Caps::Z& Volume::Caps::Z::fill(double f) {
     json["fill"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Caps::Z& Volume::Caps::Z::fill(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return fill(std::move(f));
+}
 
 Volume::Caps::Z& Volume::Caps::Z::show(bool f) {
     json["show"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Caps::Z& Volume::Caps::Z::show(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return show(std::move(f));
 }
 
 std::string Volume::Colorbar::to_string(Exponentformat e) {
@@ -555,21 +969,45 @@ Volume::Colorbar& Volume::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
+}
 
 Volume::Colorbar& Volume::Colorbar::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::bordercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolor(std::move(f));
 }
 
 Volume::Colorbar& Volume::Colorbar::borderwidth(double f) {
     json["borderwidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::borderwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return borderwidth(std::move(f));
+}
 
 template <typename T>
 Volume::Colorbar& Volume::Colorbar::dtick(T f) {
     json["dtick"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::dtick(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return dtick(std::move(f));
 }
 
 Volume::Colorbar& Volume::Colorbar::exponentformat(enum Exponentformat f) {
@@ -582,10 +1020,22 @@ Volume::Colorbar& Volume::Colorbar::labelalias(T f) {
     json["labelalias"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::labelalias(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return labelalias(std::move(f));
+}
 
 Volume::Colorbar& Volume::Colorbar::len(double f) {
     json["len"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::len(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return len(std::move(f));
 }
 
 Volume::Colorbar& Volume::Colorbar::lenmode(enum Lenmode f) {
@@ -597,10 +1047,22 @@ Volume::Colorbar& Volume::Colorbar::minexponent(double f) {
     json["minexponent"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::minexponent(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return minexponent(std::move(f));
+}
 
 Volume::Colorbar& Volume::Colorbar::nticks(int f) {
     json["nticks"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::nticks(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return nticks(std::move(f));
 }
 
 Volume::Colorbar& Volume::Colorbar::orientation(enum Orientation f) {
@@ -612,15 +1074,33 @@ Volume::Colorbar& Volume::Colorbar::outlinecolor(std::string f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::outlinecolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return outlinecolor(std::move(f));
+}
 
 Volume::Colorbar& Volume::Colorbar::outlinewidth(double f) {
     json["outlinewidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::outlinewidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return outlinewidth(std::move(f));
+}
 
 Volume::Colorbar& Volume::Colorbar::separatethousands(bool f) {
     json["separatethousands"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::separatethousands(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return separatethousands(std::move(f));
 }
 
 Volume::Colorbar& Volume::Colorbar::showexponent(enum Showexponent f) {
@@ -631,6 +1111,12 @@ Volume::Colorbar& Volume::Colorbar::showexponent(enum Showexponent f) {
 Volume::Colorbar& Volume::Colorbar::showticklabels(bool f) {
     json["showticklabels"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::showticklabels(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showticklabels(std::move(f));
 }
 
 Volume::Colorbar& Volume::Colorbar::showtickprefix(enum Showtickprefix f) {
@@ -647,6 +1133,12 @@ Volume::Colorbar& Volume::Colorbar::thickness(double f) {
     json["thickness"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::thickness(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return thickness(std::move(f));
+}
 
 Volume::Colorbar& Volume::Colorbar::thicknessmode(enum Thicknessmode f) {
     json["thicknessmode"] = to_string(f);
@@ -658,30 +1150,66 @@ Volume::Colorbar& Volume::Colorbar::tick0(T f) {
     json["tick0"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::tick0(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return tick0(std::move(f));
+}
 
 Volume::Colorbar& Volume::Colorbar::tickangle(double f) {
     json["tickangle"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::tickangle(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return tickangle(std::move(f));
 }
 
 Volume::Colorbar& Volume::Colorbar::tickcolor(std::string f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::tickcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickcolor(std::move(f));
+}
 
 Volume::Colorbar& Volume::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::tickfont(Callable&& c) {
+    Tickfont f{};
+    std::forward<Callable>(c)(f);
+    return tickfont(std::move(f));
 }
 
 Volume::Colorbar& Volume::Colorbar::tickformat(std::string f) {
     json["tickformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::tickformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickformat(std::move(f));
+}
 
 Volume::Colorbar& Volume::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::tickformatstops(Callable&& c) {
+    Tickformatstops f{};
+    std::forward<Callable>(c)(f);
+    return tickformatstops(std::move(f));
 }
 
 Volume::Colorbar& Volume::Colorbar::ticklabeloverflow(enum Ticklabeloverflow f) {
@@ -698,10 +1226,22 @@ Volume::Colorbar& Volume::Colorbar::ticklabelstep(int f) {
     json["ticklabelstep"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::ticklabelstep(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return ticklabelstep(std::move(f));
+}
 
 Volume::Colorbar& Volume::Colorbar::ticklen(double f) {
     json["ticklen"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::ticklen(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return ticklen(std::move(f));
 }
 
 Volume::Colorbar& Volume::Colorbar::tickmode(enum Tickmode f) {
@@ -713,6 +1253,12 @@ Volume::Colorbar& Volume::Colorbar::tickprefix(std::string f) {
     json["tickprefix"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::tickprefix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickprefix(std::move(f));
+}
 
 Volume::Colorbar& Volume::Colorbar::ticks(enum Ticks f) {
     json["ticks"] = to_string(f);
@@ -723,16 +1269,34 @@ Volume::Colorbar& Volume::Colorbar::ticksuffix(std::string f) {
     json["ticksuffix"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::ticksuffix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ticksuffix(std::move(f));
+}
 
 template <typename T, typename>
 Volume::Colorbar& Volume::Colorbar::ticktext(std::vector<T> f) {
     json["ticktext"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::ticktext(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return ticktext(std::move(f));
+}
 
 Volume::Colorbar& Volume::Colorbar::ticktextsrc(std::string f) {
     json["ticktextsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::ticktextsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ticktextsrc(std::move(f));
 }
 
 template <typename T, typename>
@@ -740,25 +1304,55 @@ Volume::Colorbar& Volume::Colorbar::tickvals(std::vector<T> f) {
     json["tickvals"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::tickvals(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return tickvals(std::move(f));
+}
 
 Volume::Colorbar& Volume::Colorbar::tickvalssrc(std::string f) {
     json["tickvalssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::tickvalssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickvalssrc(std::move(f));
 }
 
 Volume::Colorbar& Volume::Colorbar::tickwidth(double f) {
     json["tickwidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::tickwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return tickwidth(std::move(f));
+}
 
 Volume::Colorbar& Volume::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::title(Callable&& c) {
+    Title f{};
+    std::forward<Callable>(c)(f);
+    return title(std::move(f));
+}
 
 Volume::Colorbar& Volume::Colorbar::x(double f) {
     json["x"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::x(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return x(std::move(f));
 }
 
 Volume::Colorbar& Volume::Colorbar::xanchor(enum Xanchor f) {
@@ -770,6 +1364,12 @@ Volume::Colorbar& Volume::Colorbar::xpad(double f) {
     json["xpad"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::xpad(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return xpad(std::move(f));
+}
 
 Volume::Colorbar& Volume::Colorbar::xref(enum Xref f) {
     json["xref"] = to_string(f);
@@ -780,6 +1380,12 @@ Volume::Colorbar& Volume::Colorbar::y(double f) {
     json["y"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::y(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return y(std::move(f));
+}
 
 Volume::Colorbar& Volume::Colorbar::yanchor(enum Yanchor f) {
     json["yanchor"] = to_string(f);
@@ -789,6 +1395,12 @@ Volume::Colorbar& Volume::Colorbar::yanchor(enum Yanchor f) {
 Volume::Colorbar& Volume::Colorbar::ypad(double f) {
     json["ypad"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Colorbar& Volume::Colorbar::ypad(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return ypad(std::move(f));
 }
 
 Volume::Colorbar& Volume::Colorbar::yref(enum Yref f) {
@@ -831,25 +1443,55 @@ Volume::Colorbar::Tickfont& Volume::Colorbar::Tickfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar::Tickfont& Volume::Colorbar::Tickfont::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Volume::Colorbar::Tickfont& Volume::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Colorbar::Tickfont& Volume::Colorbar::Tickfont::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Volume::Colorbar::Tickfont& Volume::Colorbar::Tickfont::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar::Tickfont& Volume::Colorbar::Tickfont::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Volume::Colorbar::Tickfont& Volume::Colorbar::Tickfont::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar::Tickfont& Volume::Colorbar::Tickfont::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Volume::Colorbar::Tickfont& Volume::Colorbar::Tickfont::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Colorbar::Tickfont& Volume::Colorbar::Tickfont::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Volume::Colorbar::Tickfont& Volume::Colorbar::Tickfont::style(enum Style f) {
@@ -871,11 +1513,23 @@ Volume::Colorbar::Tickfont& Volume::Colorbar::Tickfont::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar::Tickfont& Volume::Colorbar::Tickfont::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Volume::Colorbar::Tickformatstops& Volume::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Colorbar::Tickformatstops& Volume::Colorbar::Tickformatstops::tickformatstop(Callable&& c) {
+    Tickformatstop f{};
+    std::forward<Callable>(c)(f);
+    return tickformatstop(std::move(f));
 }
 
 
@@ -883,25 +1537,55 @@ Volume::Colorbar::Tickformatstops::Tickformatstop& Volume::Colorbar::Tickformats
     json["dtickrange"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar::Tickformatstops::Tickformatstop& Volume::Colorbar::Tickformatstops::Tickformatstop::dtickrange(Callable&& c) {
+    std::vector<double> f{};
+    std::forward<Callable>(c)(f);
+    return dtickrange(std::move(f));
+}
 
 Volume::Colorbar::Tickformatstops::Tickformatstop& Volume::Colorbar::Tickformatstops::Tickformatstop::enabled(bool f) {
     json["enabled"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Colorbar::Tickformatstops::Tickformatstop& Volume::Colorbar::Tickformatstops::Tickformatstop::enabled(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return enabled(std::move(f));
 }
 
 Volume::Colorbar::Tickformatstops::Tickformatstop& Volume::Colorbar::Tickformatstops::Tickformatstop::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar::Tickformatstops::Tickformatstop& Volume::Colorbar::Tickformatstops::Tickformatstop::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
+}
 
 Volume::Colorbar::Tickformatstops::Tickformatstop& Volume::Colorbar::Tickformatstops::Tickformatstop::templateitemname(std::string f) {
     json["templateitemname"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar::Tickformatstops::Tickformatstop& Volume::Colorbar::Tickformatstops::Tickformatstop::templateitemname(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return templateitemname(std::move(f));
+}
 
 Volume::Colorbar::Tickformatstops::Tickformatstop& Volume::Colorbar::Tickformatstops::Tickformatstop::value(std::string f) {
     json["value"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Colorbar::Tickformatstops::Tickformatstop& Volume::Colorbar::Tickformatstops::Tickformatstop::value(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return value(std::move(f));
 }
 
 std::string Volume::Colorbar::Title::to_string(Side e) {
@@ -918,6 +1602,12 @@ Volume::Colorbar::Title& Volume::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar::Title& Volume::Colorbar::Title::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Volume::Colorbar::Title& Volume::Colorbar::Title::side(enum Side f) {
     json["side"] = to_string(f);
@@ -927,6 +1617,12 @@ Volume::Colorbar::Title& Volume::Colorbar::Title::side(enum Side f) {
 Volume::Colorbar::Title& Volume::Colorbar::Title::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Colorbar::Title& Volume::Colorbar::Title::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 
 std::string Volume::Colorbar::Title::Font::to_string(Style e) {
@@ -964,25 +1660,55 @@ Volume::Colorbar::Title::Font& Volume::Colorbar::Title::Font::color(std::string 
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar::Title::Font& Volume::Colorbar::Title::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Volume::Colorbar::Title::Font& Volume::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Colorbar::Title::Font& Volume::Colorbar::Title::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Volume::Colorbar::Title::Font& Volume::Colorbar::Title::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar::Title::Font& Volume::Colorbar::Title::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Volume::Colorbar::Title::Font& Volume::Colorbar::Title::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar::Title::Font& Volume::Colorbar::Title::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Volume::Colorbar::Title::Font& Volume::Colorbar::Title::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Colorbar::Title::Font& Volume::Colorbar::Title::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Volume::Colorbar::Title::Font& Volume::Colorbar::Title::Font::style(enum Style f) {
@@ -1004,21 +1730,45 @@ Volume::Colorbar::Title::Font& Volume::Colorbar::Title::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Colorbar::Title::Font& Volume::Colorbar::Title::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Volume::Contour& Volume::Contour::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Contour& Volume::Contour::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Volume::Contour& Volume::Contour::show(bool f) {
     json["show"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Contour& Volume::Contour::show(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return show(std::move(f));
+}
 
 Volume::Contour& Volume::Contour::width(double f) {
     json["width"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Contour& Volume::Contour::width(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return width(std::move(f));
 }
 
 std::string Volume::Hoverlabel::to_string(Align e) {
@@ -1046,10 +1796,22 @@ Volume::Hoverlabel& Volume::Hoverlabel::alignsrc(std::string f) {
     json["alignsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Hoverlabel& Volume::Hoverlabel::alignsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return alignsrc(std::move(f));
+}
 
 Volume::Hoverlabel& Volume::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Hoverlabel& Volume::Hoverlabel::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
 }
 Volume::Hoverlabel& Volume::Hoverlabel::bgcolor(std::vector<std::string> f) {
     json["bgcolor"] = std::move(f);
@@ -1060,10 +1822,22 @@ Volume::Hoverlabel& Volume::Hoverlabel::bgcolorsrc(std::string f) {
     json["bgcolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Hoverlabel& Volume::Hoverlabel::bgcolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolorsrc(std::move(f));
+}
 
 Volume::Hoverlabel& Volume::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Hoverlabel& Volume::Hoverlabel::bordercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolor(std::move(f));
 }
 Volume::Hoverlabel& Volume::Hoverlabel::bordercolor(std::vector<std::string> f) {
     json["bordercolor"] = std::move(f);
@@ -1074,15 +1848,33 @@ Volume::Hoverlabel& Volume::Hoverlabel::bordercolorsrc(std::string f) {
     json["bordercolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Hoverlabel& Volume::Hoverlabel::bordercolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolorsrc(std::move(f));
+}
 
 Volume::Hoverlabel& Volume::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Hoverlabel& Volume::Hoverlabel::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Volume::Hoverlabel& Volume::Hoverlabel::namelength(int f) {
     json["namelength"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Hoverlabel& Volume::Hoverlabel::namelength(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return namelength(std::move(f));
 }
 Volume::Hoverlabel& Volume::Hoverlabel::namelength(std::vector<int> f) {
     json["namelength"] = std::move(f);
@@ -1092,6 +1884,12 @@ Volume::Hoverlabel& Volume::Hoverlabel::namelength(std::vector<int> f) {
 Volume::Hoverlabel& Volume::Hoverlabel::namelengthsrc(std::string f) {
     json["namelengthsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Hoverlabel& Volume::Hoverlabel::namelengthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return namelengthsrc(std::move(f));
 }
 
 std::string Volume::Hoverlabel::Font::to_string(Style e) {
@@ -1129,6 +1927,12 @@ Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
     return *this;
@@ -1138,10 +1942,22 @@ Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::family(std::vector<std::string> f) {
     json["family"] = std::move(f);
@@ -1152,10 +1968,22 @@ Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::familysrc(std::string f) {
     json["familysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::familysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return familysrc(std::move(f));
+}
 
 Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
 }
 Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
     json["lineposition"] = std::move(f);
@@ -1166,10 +1994,22 @@ Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::linepositionsrc(std::string 
     json["linepositionsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::linepositionsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return linepositionsrc(std::move(f));
+}
 
 Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
 }
 Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::shadow(std::vector<std::string> f) {
     json["shadow"] = std::move(f);
@@ -1180,10 +2020,22 @@ Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::shadowsrc(std::string f) {
     json["shadowsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::shadowsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadowsrc(std::move(f));
+}
 
 Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -1193,6 +2045,12 @@ Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::size(std::vector<double> f) 
 Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
 }
 
 Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::style(enum Style f) {
@@ -1210,6 +2068,12 @@ Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::stylesrc(std::string f) {
     json["stylesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::stylesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return stylesrc(std::move(f));
+}
 
 Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::textcase(enum Textcase f) {
     json["textcase"] = to_string(f);
@@ -1225,6 +2089,12 @@ Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::textcase(const std::vector<e
 Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::textcasesrc(std::string f) {
     json["textcasesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::textcasesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textcasesrc(std::move(f));
 }
 
 Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::variant(enum Variant f) {
@@ -1242,10 +2112,22 @@ Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::variantsrc(std::string f) {
     json["variantsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::variantsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return variantsrc(std::move(f));
+}
 
 Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::weight(std::vector<int> f) {
     json["weight"] = std::move(f);
@@ -1256,16 +2138,34 @@ Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::weightsrc(std::string f) {
     json["weightsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Hoverlabel::Font& Volume::Hoverlabel::Font::weightsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return weightsrc(std::move(f));
+}
 
 
 Volume::Legendgrouptitle& Volume::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Legendgrouptitle& Volume::Legendgrouptitle::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Volume::Legendgrouptitle& Volume::Legendgrouptitle::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Legendgrouptitle& Volume::Legendgrouptitle::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 
 std::string Volume::Legendgrouptitle::Font::to_string(Style e) {
@@ -1303,25 +2203,55 @@ Volume::Legendgrouptitle::Font& Volume::Legendgrouptitle::Font::color(std::strin
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Legendgrouptitle::Font& Volume::Legendgrouptitle::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Volume::Legendgrouptitle::Font& Volume::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Legendgrouptitle::Font& Volume::Legendgrouptitle::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Volume::Legendgrouptitle::Font& Volume::Legendgrouptitle::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Legendgrouptitle::Font& Volume::Legendgrouptitle::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Volume::Legendgrouptitle::Font& Volume::Legendgrouptitle::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Legendgrouptitle::Font& Volume::Legendgrouptitle::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Volume::Legendgrouptitle::Font& Volume::Legendgrouptitle::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Legendgrouptitle::Font& Volume::Legendgrouptitle::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Volume::Legendgrouptitle::Font& Volume::Legendgrouptitle::Font::style(enum Style f) {
@@ -1343,41 +2273,89 @@ Volume::Legendgrouptitle::Font& Volume::Legendgrouptitle::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Legendgrouptitle::Font& Volume::Legendgrouptitle::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Volume::Lighting& Volume::Lighting::ambient(double f) {
     json["ambient"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Lighting& Volume::Lighting::ambient(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return ambient(std::move(f));
+}
 
 Volume::Lighting& Volume::Lighting::diffuse(double f) {
     json["diffuse"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Lighting& Volume::Lighting::diffuse(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return diffuse(std::move(f));
 }
 
 Volume::Lighting& Volume::Lighting::facenormalsepsilon(double f) {
     json["facenormalsepsilon"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Lighting& Volume::Lighting::facenormalsepsilon(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return facenormalsepsilon(std::move(f));
+}
 
 Volume::Lighting& Volume::Lighting::fresnel(double f) {
     json["fresnel"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Lighting& Volume::Lighting::fresnel(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return fresnel(std::move(f));
 }
 
 Volume::Lighting& Volume::Lighting::roughness(double f) {
     json["roughness"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Lighting& Volume::Lighting::roughness(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return roughness(std::move(f));
+}
 
 Volume::Lighting& Volume::Lighting::specular(double f) {
     json["specular"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Lighting& Volume::Lighting::specular(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return specular(std::move(f));
+}
 
 Volume::Lighting& Volume::Lighting::vertexnormalsepsilon(double f) {
     json["vertexnormalsepsilon"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Lighting& Volume::Lighting::vertexnormalsepsilon(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return vertexnormalsepsilon(std::move(f));
 }
 
 
@@ -1385,15 +2363,33 @@ Volume::Lightposition& Volume::Lightposition::x(double f) {
     json["x"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Lightposition& Volume::Lightposition::x(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return x(std::move(f));
+}
 
 Volume::Lightposition& Volume::Lightposition::y(double f) {
     json["y"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Lightposition& Volume::Lightposition::y(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return y(std::move(f));
+}
 
 Volume::Lightposition& Volume::Lightposition::z(double f) {
     json["z"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Lightposition& Volume::Lightposition::z(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return z(std::move(f));
 }
 
 
@@ -1401,15 +2397,33 @@ Volume::Slices& Volume::Slices::x(X f) {
     json["x"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Slices& Volume::Slices::x(Callable&& c) {
+    X f{};
+    std::forward<Callable>(c)(f);
+    return x(std::move(f));
+}
 
 Volume::Slices& Volume::Slices::y(Y f) {
     json["y"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Slices& Volume::Slices::y(Callable&& c) {
+    Y f{};
+    std::forward<Callable>(c)(f);
+    return y(std::move(f));
+}
 
 Volume::Slices& Volume::Slices::z(Z f) {
     json["z"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Slices& Volume::Slices::z(Callable&& c) {
+    Z f{};
+    std::forward<Callable>(c)(f);
+    return z(std::move(f));
 }
 
 
@@ -1417,21 +2431,45 @@ Volume::Slices::X& Volume::Slices::X::fill(double f) {
     json["fill"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Slices::X& Volume::Slices::X::fill(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return fill(std::move(f));
+}
 
 template <typename T, typename>
 Volume::Slices::X& Volume::Slices::X::locations(std::vector<T> f) {
     json["locations"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Volume::Slices::X& Volume::Slices::X::locations(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return locations(std::move(f));
+}
 
 Volume::Slices::X& Volume::Slices::X::locationssrc(std::string f) {
     json["locationssrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Slices::X& Volume::Slices::X::locationssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return locationssrc(std::move(f));
+}
 
 Volume::Slices::X& Volume::Slices::X::show(bool f) {
     json["show"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Slices::X& Volume::Slices::X::show(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return show(std::move(f));
 }
 
 
@@ -1439,21 +2477,45 @@ Volume::Slices::Y& Volume::Slices::Y::fill(double f) {
     json["fill"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Slices::Y& Volume::Slices::Y::fill(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return fill(std::move(f));
+}
 
 template <typename T, typename>
 Volume::Slices::Y& Volume::Slices::Y::locations(std::vector<T> f) {
     json["locations"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Volume::Slices::Y& Volume::Slices::Y::locations(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return locations(std::move(f));
+}
 
 Volume::Slices::Y& Volume::Slices::Y::locationssrc(std::string f) {
     json["locationssrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Slices::Y& Volume::Slices::Y::locationssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return locationssrc(std::move(f));
+}
 
 Volume::Slices::Y& Volume::Slices::Y::show(bool f) {
     json["show"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Slices::Y& Volume::Slices::Y::show(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return show(std::move(f));
 }
 
 
@@ -1461,21 +2523,45 @@ Volume::Slices::Z& Volume::Slices::Z::fill(double f) {
     json["fill"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Slices::Z& Volume::Slices::Z::fill(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return fill(std::move(f));
+}
 
 template <typename T, typename>
 Volume::Slices::Z& Volume::Slices::Z::locations(std::vector<T> f) {
     json["locations"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Volume::Slices::Z& Volume::Slices::Z::locations(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return locations(std::move(f));
+}
 
 Volume::Slices::Z& Volume::Slices::Z::locationssrc(std::string f) {
     json["locationssrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Slices::Z& Volume::Slices::Z::locationssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return locationssrc(std::move(f));
+}
 
 Volume::Slices::Z& Volume::Slices::Z::show(bool f) {
     json["show"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Slices::Z& Volume::Slices::Z::show(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return show(std::move(f));
 }
 
 
@@ -1483,10 +2569,22 @@ Volume::Spaceframe& Volume::Spaceframe::fill(double f) {
     json["fill"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Spaceframe& Volume::Spaceframe::fill(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return fill(std::move(f));
+}
 
 Volume::Spaceframe& Volume::Spaceframe::show(bool f) {
     json["show"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Spaceframe& Volume::Spaceframe::show(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return show(std::move(f));
 }
 
 
@@ -1494,10 +2592,22 @@ Volume::Stream& Volume::Stream::maxpoints(double f) {
     json["maxpoints"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Stream& Volume::Stream::maxpoints(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return maxpoints(std::move(f));
+}
 
 Volume::Stream& Volume::Stream::token(std::string f) {
     json["token"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Stream& Volume::Stream::token(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return token(std::move(f));
 }
 
 
@@ -1505,20 +2615,44 @@ Volume::Surface& Volume::Surface::count(int f) {
     json["count"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Surface& Volume::Surface::count(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return count(std::move(f));
+}
 
 Volume::Surface& Volume::Surface::fill(double f) {
     json["fill"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Surface& Volume::Surface::fill(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return fill(std::move(f));
 }
 
 Volume::Surface& Volume::Surface::pattern(std::string f) {
     json["pattern"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Volume::Surface& Volume::Surface::pattern(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return pattern(std::move(f));
+}
 
 Volume::Surface& Volume::Surface::show(bool f) {
     json["show"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Volume::Surface& Volume::Surface::show(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return show(std::move(f));
 }
 
 } // namespace plotlypp

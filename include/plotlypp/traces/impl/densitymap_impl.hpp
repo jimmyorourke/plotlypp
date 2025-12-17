@@ -24,20 +24,44 @@ Densitymap& Densitymap::autocolorscale(bool f) {
     json["autocolorscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap& Densitymap::autocolorscale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return autocolorscale(std::move(f));
+}
 
 Densitymap& Densitymap::below(std::string f) {
     json["below"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap& Densitymap::below(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return below(std::move(f));
 }
 
 Densitymap& Densitymap::coloraxis(std::string f) {
     json["coloraxis"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap& Densitymap::coloraxis(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return coloraxis(std::move(f));
+}
 
 Densitymap& Densitymap::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap& Densitymap::colorbar(Callable&& c) {
+    Colorbar f{};
+    std::forward<Callable>(c)(f);
+    return colorbar(std::move(f));
 }
 
 Densitymap& Densitymap::colorscale(std::string f) {
@@ -48,21 +72,45 @@ Densitymap& Densitymap::colorscale(std::vector<std::pair<double, std::string>> f
     json["colorscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap& Densitymap::colorscale(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorscale(std::move(f));
+}
 
 template <typename T, typename>
 Densitymap& Densitymap::customdata(std::vector<T> f) {
     json["customdata"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Densitymap& Densitymap::customdata(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return customdata(std::move(f));
+}
 
 Densitymap& Densitymap::customdatasrc(std::string f) {
     json["customdatasrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap& Densitymap::customdatasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return customdatasrc(std::move(f));
+}
 
 Densitymap& Densitymap::hoverinfo(std::string f) {
     json["hoverinfo"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap& Densitymap::hoverinfo(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hoverinfo(std::move(f));
 }
 Densitymap& Densitymap::hoverinfo(std::vector<std::string> f) {
     json["hoverinfo"] = std::move(f);
@@ -73,15 +121,33 @@ Densitymap& Densitymap::hoverinfosrc(std::string f) {
     json["hoverinfosrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap& Densitymap::hoverinfosrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hoverinfosrc(std::move(f));
+}
 
 Densitymap& Densitymap::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap& Densitymap::hoverlabel(Callable&& c) {
+    Hoverlabel f{};
+    std::forward<Callable>(c)(f);
+    return hoverlabel(std::move(f));
+}
 
 Densitymap& Densitymap::hovertemplate(std::string f) {
     json["hovertemplate"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap& Densitymap::hovertemplate(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertemplate(std::move(f));
 }
 Densitymap& Densitymap::hovertemplate(std::vector<std::string> f) {
     json["hovertemplate"] = std::move(f);
@@ -92,10 +158,22 @@ Densitymap& Densitymap::hovertemplatesrc(std::string f) {
     json["hovertemplatesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap& Densitymap::hovertemplatesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertemplatesrc(std::move(f));
+}
 
 Densitymap& Densitymap::hovertext(std::string f) {
     json["hovertext"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap& Densitymap::hovertext(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertext(std::move(f));
 }
 Densitymap& Densitymap::hovertext(std::vector<std::string> f) {
     json["hovertext"] = std::move(f);
@@ -106,16 +184,34 @@ Densitymap& Densitymap::hovertextsrc(std::string f) {
     json["hovertextsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap& Densitymap::hovertextsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertextsrc(std::move(f));
+}
 
 template <typename T, typename>
 Densitymap& Densitymap::ids(std::vector<T> f) {
     json["ids"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Densitymap& Densitymap::ids(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return ids(std::move(f));
+}
 
 Densitymap& Densitymap::idssrc(std::string f) {
     json["idssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap& Densitymap::idssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return idssrc(std::move(f));
 }
 
 template <typename T, typename>
@@ -123,35 +219,77 @@ Densitymap& Densitymap::lat(std::vector<T> f) {
     json["lat"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Densitymap& Densitymap::lat(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return lat(std::move(f));
+}
 
 Densitymap& Densitymap::latsrc(std::string f) {
     json["latsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap& Densitymap::latsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return latsrc(std::move(f));
 }
 
 Densitymap& Densitymap::legend(std::string f) {
     json["legend"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap& Densitymap::legend(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return legend(std::move(f));
+}
 
 Densitymap& Densitymap::legendgroup(std::string f) {
     json["legendgroup"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap& Densitymap::legendgroup(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return legendgroup(std::move(f));
 }
 
 Densitymap& Densitymap::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap& Densitymap::legendgrouptitle(Callable&& c) {
+    Legendgrouptitle f{};
+    std::forward<Callable>(c)(f);
+    return legendgrouptitle(std::move(f));
+}
 
 Densitymap& Densitymap::legendrank(double f) {
     json["legendrank"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap& Densitymap::legendrank(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendrank(std::move(f));
+}
 
 Densitymap& Densitymap::legendwidth(double f) {
     json["legendwidth"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap& Densitymap::legendwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendwidth(std::move(f));
 }
 
 template <typename T, typename>
@@ -159,16 +297,34 @@ Densitymap& Densitymap::lon(std::vector<T> f) {
     json["lon"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Densitymap& Densitymap::lon(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return lon(std::move(f));
+}
 
 Densitymap& Densitymap::lonsrc(std::string f) {
     json["lonsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap& Densitymap::lonsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lonsrc(std::move(f));
 }
 
 template <typename T>
 Densitymap& Densitymap::meta(T f) {
     json["meta"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Densitymap& Densitymap::meta(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return meta(std::move(f));
 }
 template <typename T>
 Densitymap& Densitymap::meta(std::vector<T> f) {
@@ -180,20 +336,44 @@ Densitymap& Densitymap::metasrc(std::string f) {
     json["metasrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap& Densitymap::metasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return metasrc(std::move(f));
+}
 
 Densitymap& Densitymap::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap& Densitymap::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
 }
 
 Densitymap& Densitymap::opacity(double f) {
     json["opacity"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap& Densitymap::opacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return opacity(std::move(f));
+}
 
 Densitymap& Densitymap::radius(double f) {
     json["radius"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap& Densitymap::radius(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return radius(std::move(f));
 }
 Densitymap& Densitymap::radius(std::vector<double> f) {
     json["radius"] = std::move(f);
@@ -204,35 +384,77 @@ Densitymap& Densitymap::radiussrc(std::string f) {
     json["radiussrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap& Densitymap::radiussrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return radiussrc(std::move(f));
+}
 
 Densitymap& Densitymap::reversescale(bool f) {
     json["reversescale"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap& Densitymap::reversescale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return reversescale(std::move(f));
 }
 
 Densitymap& Densitymap::showlegend(bool f) {
     json["showlegend"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap& Densitymap::showlegend(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showlegend(std::move(f));
+}
 
 Densitymap& Densitymap::showscale(bool f) {
     json["showscale"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap& Densitymap::showscale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showscale(std::move(f));
 }
 
 Densitymap& Densitymap::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap& Densitymap::stream(Callable&& c) {
+    Stream f{};
+    std::forward<Callable>(c)(f);
+    return stream(std::move(f));
+}
 
 Densitymap& Densitymap::subplot(std::string f) {
     json["subplot"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap& Densitymap::subplot(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return subplot(std::move(f));
+}
 
 Densitymap& Densitymap::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap& Densitymap::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 Densitymap& Densitymap::text(std::vector<std::string> f) {
     json["text"] = std::move(f);
@@ -243,16 +465,34 @@ Densitymap& Densitymap::textsrc(std::string f) {
     json["textsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap& Densitymap::textsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textsrc(std::move(f));
+}
 
 Densitymap& Densitymap::uid(std::string f) {
     json["uid"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap& Densitymap::uid(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return uid(std::move(f));
 }
 
 template <typename T>
 Densitymap& Densitymap::uirevision(T f) {
     json["uirevision"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Densitymap& Densitymap::uirevision(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return uirevision(std::move(f));
 }
 
 Densitymap& Densitymap::visible(enum Visible f) {
@@ -265,30 +505,66 @@ Densitymap& Densitymap::z(std::vector<T> f) {
     json["z"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Densitymap& Densitymap::z(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return z(std::move(f));
+}
 
 Densitymap& Densitymap::zauto(bool f) {
     json["zauto"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap& Densitymap::zauto(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return zauto(std::move(f));
 }
 
 Densitymap& Densitymap::zmax(double f) {
     json["zmax"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap& Densitymap::zmax(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return zmax(std::move(f));
+}
 
 Densitymap& Densitymap::zmid(double f) {
     json["zmid"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap& Densitymap::zmid(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return zmid(std::move(f));
 }
 
 Densitymap& Densitymap::zmin(double f) {
     json["zmin"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap& Densitymap::zmin(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return zmin(std::move(f));
+}
 
 Densitymap& Densitymap::zsrc(std::string f) {
     json["zsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap& Densitymap::zsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return zsrc(std::move(f));
 }
 
 std::string Densitymap::Colorbar::to_string(Exponentformat e) {
@@ -438,21 +714,45 @@ Densitymap::Colorbar& Densitymap::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
+}
 
 Densitymap::Colorbar& Densitymap::Colorbar::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::bordercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolor(std::move(f));
 }
 
 Densitymap::Colorbar& Densitymap::Colorbar::borderwidth(double f) {
     json["borderwidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::borderwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return borderwidth(std::move(f));
+}
 
 template <typename T>
 Densitymap::Colorbar& Densitymap::Colorbar::dtick(T f) {
     json["dtick"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::dtick(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return dtick(std::move(f));
 }
 
 Densitymap::Colorbar& Densitymap::Colorbar::exponentformat(enum Exponentformat f) {
@@ -465,10 +765,22 @@ Densitymap::Colorbar& Densitymap::Colorbar::labelalias(T f) {
     json["labelalias"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::labelalias(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return labelalias(std::move(f));
+}
 
 Densitymap::Colorbar& Densitymap::Colorbar::len(double f) {
     json["len"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::len(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return len(std::move(f));
 }
 
 Densitymap::Colorbar& Densitymap::Colorbar::lenmode(enum Lenmode f) {
@@ -480,10 +792,22 @@ Densitymap::Colorbar& Densitymap::Colorbar::minexponent(double f) {
     json["minexponent"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::minexponent(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return minexponent(std::move(f));
+}
 
 Densitymap::Colorbar& Densitymap::Colorbar::nticks(int f) {
     json["nticks"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::nticks(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return nticks(std::move(f));
 }
 
 Densitymap::Colorbar& Densitymap::Colorbar::orientation(enum Orientation f) {
@@ -495,15 +819,33 @@ Densitymap::Colorbar& Densitymap::Colorbar::outlinecolor(std::string f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::outlinecolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return outlinecolor(std::move(f));
+}
 
 Densitymap::Colorbar& Densitymap::Colorbar::outlinewidth(double f) {
     json["outlinewidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::outlinewidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return outlinewidth(std::move(f));
+}
 
 Densitymap::Colorbar& Densitymap::Colorbar::separatethousands(bool f) {
     json["separatethousands"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::separatethousands(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return separatethousands(std::move(f));
 }
 
 Densitymap::Colorbar& Densitymap::Colorbar::showexponent(enum Showexponent f) {
@@ -514,6 +856,12 @@ Densitymap::Colorbar& Densitymap::Colorbar::showexponent(enum Showexponent f) {
 Densitymap::Colorbar& Densitymap::Colorbar::showticklabels(bool f) {
     json["showticklabels"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::showticklabels(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showticklabels(std::move(f));
 }
 
 Densitymap::Colorbar& Densitymap::Colorbar::showtickprefix(enum Showtickprefix f) {
@@ -530,6 +878,12 @@ Densitymap::Colorbar& Densitymap::Colorbar::thickness(double f) {
     json["thickness"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::thickness(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return thickness(std::move(f));
+}
 
 Densitymap::Colorbar& Densitymap::Colorbar::thicknessmode(enum Thicknessmode f) {
     json["thicknessmode"] = to_string(f);
@@ -541,30 +895,66 @@ Densitymap::Colorbar& Densitymap::Colorbar::tick0(T f) {
     json["tick0"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::tick0(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return tick0(std::move(f));
+}
 
 Densitymap::Colorbar& Densitymap::Colorbar::tickangle(double f) {
     json["tickangle"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::tickangle(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return tickangle(std::move(f));
 }
 
 Densitymap::Colorbar& Densitymap::Colorbar::tickcolor(std::string f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::tickcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickcolor(std::move(f));
+}
 
 Densitymap::Colorbar& Densitymap::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::tickfont(Callable&& c) {
+    Tickfont f{};
+    std::forward<Callable>(c)(f);
+    return tickfont(std::move(f));
 }
 
 Densitymap::Colorbar& Densitymap::Colorbar::tickformat(std::string f) {
     json["tickformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::tickformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickformat(std::move(f));
+}
 
 Densitymap::Colorbar& Densitymap::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::tickformatstops(Callable&& c) {
+    Tickformatstops f{};
+    std::forward<Callable>(c)(f);
+    return tickformatstops(std::move(f));
 }
 
 Densitymap::Colorbar& Densitymap::Colorbar::ticklabeloverflow(enum Ticklabeloverflow f) {
@@ -581,10 +971,22 @@ Densitymap::Colorbar& Densitymap::Colorbar::ticklabelstep(int f) {
     json["ticklabelstep"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::ticklabelstep(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return ticklabelstep(std::move(f));
+}
 
 Densitymap::Colorbar& Densitymap::Colorbar::ticklen(double f) {
     json["ticklen"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::ticklen(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return ticklen(std::move(f));
 }
 
 Densitymap::Colorbar& Densitymap::Colorbar::tickmode(enum Tickmode f) {
@@ -596,6 +998,12 @@ Densitymap::Colorbar& Densitymap::Colorbar::tickprefix(std::string f) {
     json["tickprefix"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::tickprefix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickprefix(std::move(f));
+}
 
 Densitymap::Colorbar& Densitymap::Colorbar::ticks(enum Ticks f) {
     json["ticks"] = to_string(f);
@@ -606,16 +1014,34 @@ Densitymap::Colorbar& Densitymap::Colorbar::ticksuffix(std::string f) {
     json["ticksuffix"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::ticksuffix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ticksuffix(std::move(f));
+}
 
 template <typename T, typename>
 Densitymap::Colorbar& Densitymap::Colorbar::ticktext(std::vector<T> f) {
     json["ticktext"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::ticktext(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return ticktext(std::move(f));
+}
 
 Densitymap::Colorbar& Densitymap::Colorbar::ticktextsrc(std::string f) {
     json["ticktextsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::ticktextsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ticktextsrc(std::move(f));
 }
 
 template <typename T, typename>
@@ -623,25 +1049,55 @@ Densitymap::Colorbar& Densitymap::Colorbar::tickvals(std::vector<T> f) {
     json["tickvals"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::tickvals(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return tickvals(std::move(f));
+}
 
 Densitymap::Colorbar& Densitymap::Colorbar::tickvalssrc(std::string f) {
     json["tickvalssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::tickvalssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickvalssrc(std::move(f));
 }
 
 Densitymap::Colorbar& Densitymap::Colorbar::tickwidth(double f) {
     json["tickwidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::tickwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return tickwidth(std::move(f));
+}
 
 Densitymap::Colorbar& Densitymap::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::title(Callable&& c) {
+    Title f{};
+    std::forward<Callable>(c)(f);
+    return title(std::move(f));
+}
 
 Densitymap::Colorbar& Densitymap::Colorbar::x(double f) {
     json["x"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::x(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return x(std::move(f));
 }
 
 Densitymap::Colorbar& Densitymap::Colorbar::xanchor(enum Xanchor f) {
@@ -653,6 +1109,12 @@ Densitymap::Colorbar& Densitymap::Colorbar::xpad(double f) {
     json["xpad"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::xpad(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return xpad(std::move(f));
+}
 
 Densitymap::Colorbar& Densitymap::Colorbar::xref(enum Xref f) {
     json["xref"] = to_string(f);
@@ -663,6 +1125,12 @@ Densitymap::Colorbar& Densitymap::Colorbar::y(double f) {
     json["y"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::y(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return y(std::move(f));
+}
 
 Densitymap::Colorbar& Densitymap::Colorbar::yanchor(enum Yanchor f) {
     json["yanchor"] = to_string(f);
@@ -672,6 +1140,12 @@ Densitymap::Colorbar& Densitymap::Colorbar::yanchor(enum Yanchor f) {
 Densitymap::Colorbar& Densitymap::Colorbar::ypad(double f) {
     json["ypad"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Colorbar& Densitymap::Colorbar::ypad(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return ypad(std::move(f));
 }
 
 Densitymap::Colorbar& Densitymap::Colorbar::yref(enum Yref f) {
@@ -714,25 +1188,55 @@ Densitymap::Colorbar::Tickfont& Densitymap::Colorbar::Tickfont::color(std::strin
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar::Tickfont& Densitymap::Colorbar::Tickfont::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Densitymap::Colorbar::Tickfont& Densitymap::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Colorbar::Tickfont& Densitymap::Colorbar::Tickfont::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Densitymap::Colorbar::Tickfont& Densitymap::Colorbar::Tickfont::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar::Tickfont& Densitymap::Colorbar::Tickfont::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Densitymap::Colorbar::Tickfont& Densitymap::Colorbar::Tickfont::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar::Tickfont& Densitymap::Colorbar::Tickfont::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Densitymap::Colorbar::Tickfont& Densitymap::Colorbar::Tickfont::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Colorbar::Tickfont& Densitymap::Colorbar::Tickfont::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Densitymap::Colorbar::Tickfont& Densitymap::Colorbar::Tickfont::style(enum Style f) {
@@ -754,11 +1258,23 @@ Densitymap::Colorbar::Tickfont& Densitymap::Colorbar::Tickfont::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar::Tickfont& Densitymap::Colorbar::Tickfont::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Densitymap::Colorbar::Tickformatstops& Densitymap::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Colorbar::Tickformatstops& Densitymap::Colorbar::Tickformatstops::tickformatstop(Callable&& c) {
+    Tickformatstop f{};
+    std::forward<Callable>(c)(f);
+    return tickformatstop(std::move(f));
 }
 
 
@@ -766,25 +1282,55 @@ Densitymap::Colorbar::Tickformatstops::Tickformatstop& Densitymap::Colorbar::Tic
     json["dtickrange"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar::Tickformatstops::Tickformatstop& Densitymap::Colorbar::Tickformatstops::Tickformatstop::dtickrange(Callable&& c) {
+    std::vector<double> f{};
+    std::forward<Callable>(c)(f);
+    return dtickrange(std::move(f));
+}
 
 Densitymap::Colorbar::Tickformatstops::Tickformatstop& Densitymap::Colorbar::Tickformatstops::Tickformatstop::enabled(bool f) {
     json["enabled"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Colorbar::Tickformatstops::Tickformatstop& Densitymap::Colorbar::Tickformatstops::Tickformatstop::enabled(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return enabled(std::move(f));
 }
 
 Densitymap::Colorbar::Tickformatstops::Tickformatstop& Densitymap::Colorbar::Tickformatstops::Tickformatstop::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar::Tickformatstops::Tickformatstop& Densitymap::Colorbar::Tickformatstops::Tickformatstop::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
+}
 
 Densitymap::Colorbar::Tickformatstops::Tickformatstop& Densitymap::Colorbar::Tickformatstops::Tickformatstop::templateitemname(std::string f) {
     json["templateitemname"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar::Tickformatstops::Tickformatstop& Densitymap::Colorbar::Tickformatstops::Tickformatstop::templateitemname(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return templateitemname(std::move(f));
+}
 
 Densitymap::Colorbar::Tickformatstops::Tickformatstop& Densitymap::Colorbar::Tickformatstops::Tickformatstop::value(std::string f) {
     json["value"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Colorbar::Tickformatstops::Tickformatstop& Densitymap::Colorbar::Tickformatstops::Tickformatstop::value(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return value(std::move(f));
 }
 
 std::string Densitymap::Colorbar::Title::to_string(Side e) {
@@ -801,6 +1347,12 @@ Densitymap::Colorbar::Title& Densitymap::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar::Title& Densitymap::Colorbar::Title::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Densitymap::Colorbar::Title& Densitymap::Colorbar::Title::side(enum Side f) {
     json["side"] = to_string(f);
@@ -810,6 +1362,12 @@ Densitymap::Colorbar::Title& Densitymap::Colorbar::Title::side(enum Side f) {
 Densitymap::Colorbar::Title& Densitymap::Colorbar::Title::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Colorbar::Title& Densitymap::Colorbar::Title::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 
 std::string Densitymap::Colorbar::Title::Font::to_string(Style e) {
@@ -847,25 +1405,55 @@ Densitymap::Colorbar::Title::Font& Densitymap::Colorbar::Title::Font::color(std:
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar::Title::Font& Densitymap::Colorbar::Title::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Densitymap::Colorbar::Title::Font& Densitymap::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Colorbar::Title::Font& Densitymap::Colorbar::Title::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Densitymap::Colorbar::Title::Font& Densitymap::Colorbar::Title::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar::Title::Font& Densitymap::Colorbar::Title::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Densitymap::Colorbar::Title::Font& Densitymap::Colorbar::Title::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Colorbar::Title::Font& Densitymap::Colorbar::Title::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Densitymap::Colorbar::Title::Font& Densitymap::Colorbar::Title::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Colorbar::Title::Font& Densitymap::Colorbar::Title::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Densitymap::Colorbar::Title::Font& Densitymap::Colorbar::Title::Font::style(enum Style f) {
@@ -886,6 +1474,12 @@ Densitymap::Colorbar::Title::Font& Densitymap::Colorbar::Title::Font::variant(en
 Densitymap::Colorbar::Title::Font& Densitymap::Colorbar::Title::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Colorbar::Title::Font& Densitymap::Colorbar::Title::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 
 std::string Densitymap::Hoverlabel::to_string(Align e) {
@@ -913,10 +1507,22 @@ Densitymap::Hoverlabel& Densitymap::Hoverlabel::alignsrc(std::string f) {
     json["alignsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Hoverlabel& Densitymap::Hoverlabel::alignsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return alignsrc(std::move(f));
+}
 
 Densitymap::Hoverlabel& Densitymap::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Hoverlabel& Densitymap::Hoverlabel::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
 }
 Densitymap::Hoverlabel& Densitymap::Hoverlabel::bgcolor(std::vector<std::string> f) {
     json["bgcolor"] = std::move(f);
@@ -927,10 +1533,22 @@ Densitymap::Hoverlabel& Densitymap::Hoverlabel::bgcolorsrc(std::string f) {
     json["bgcolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Hoverlabel& Densitymap::Hoverlabel::bgcolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolorsrc(std::move(f));
+}
 
 Densitymap::Hoverlabel& Densitymap::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Hoverlabel& Densitymap::Hoverlabel::bordercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolor(std::move(f));
 }
 Densitymap::Hoverlabel& Densitymap::Hoverlabel::bordercolor(std::vector<std::string> f) {
     json["bordercolor"] = std::move(f);
@@ -941,15 +1559,33 @@ Densitymap::Hoverlabel& Densitymap::Hoverlabel::bordercolorsrc(std::string f) {
     json["bordercolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Hoverlabel& Densitymap::Hoverlabel::bordercolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolorsrc(std::move(f));
+}
 
 Densitymap::Hoverlabel& Densitymap::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Hoverlabel& Densitymap::Hoverlabel::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Densitymap::Hoverlabel& Densitymap::Hoverlabel::namelength(int f) {
     json["namelength"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Hoverlabel& Densitymap::Hoverlabel::namelength(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return namelength(std::move(f));
 }
 Densitymap::Hoverlabel& Densitymap::Hoverlabel::namelength(std::vector<int> f) {
     json["namelength"] = std::move(f);
@@ -959,6 +1595,12 @@ Densitymap::Hoverlabel& Densitymap::Hoverlabel::namelength(std::vector<int> f) {
 Densitymap::Hoverlabel& Densitymap::Hoverlabel::namelengthsrc(std::string f) {
     json["namelengthsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Hoverlabel& Densitymap::Hoverlabel::namelengthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return namelengthsrc(std::move(f));
 }
 
 std::string Densitymap::Hoverlabel::Font::to_string(Style e) {
@@ -996,6 +1638,12 @@ Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::color(std::string f)
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
     return *this;
@@ -1005,10 +1653,22 @@ Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::colorsrc(std::string
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::family(std::vector<std::string> f) {
     json["family"] = std::move(f);
@@ -1019,10 +1679,22 @@ Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::familysrc(std::strin
     json["familysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::familysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return familysrc(std::move(f));
+}
 
 Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
 }
 Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
     json["lineposition"] = std::move(f);
@@ -1033,10 +1705,22 @@ Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::linepositionsrc(std:
     json["linepositionsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::linepositionsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return linepositionsrc(std::move(f));
+}
 
 Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
 }
 Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::shadow(std::vector<std::string> f) {
     json["shadow"] = std::move(f);
@@ -1047,10 +1731,22 @@ Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::shadowsrc(std::strin
     json["shadowsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::shadowsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadowsrc(std::move(f));
+}
 
 Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -1060,6 +1756,12 @@ Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::size(std::vector<dou
 Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
 }
 
 Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::style(enum Style f) {
@@ -1077,6 +1779,12 @@ Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::stylesrc(std::string
     json["stylesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::stylesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return stylesrc(std::move(f));
+}
 
 Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::textcase(enum Textcase f) {
     json["textcase"] = to_string(f);
@@ -1092,6 +1800,12 @@ Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::textcase(const std::
 Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::textcasesrc(std::string f) {
     json["textcasesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::textcasesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textcasesrc(std::move(f));
 }
 
 Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::variant(enum Variant f) {
@@ -1109,10 +1823,22 @@ Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::variantsrc(std::stri
     json["variantsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::variantsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return variantsrc(std::move(f));
+}
 
 Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::weight(std::vector<int> f) {
     json["weight"] = std::move(f);
@@ -1123,16 +1849,34 @@ Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::weightsrc(std::strin
     json["weightsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Hoverlabel::Font& Densitymap::Hoverlabel::Font::weightsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return weightsrc(std::move(f));
+}
 
 
 Densitymap::Legendgrouptitle& Densitymap::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Legendgrouptitle& Densitymap::Legendgrouptitle::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Densitymap::Legendgrouptitle& Densitymap::Legendgrouptitle::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Legendgrouptitle& Densitymap::Legendgrouptitle::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 
 std::string Densitymap::Legendgrouptitle::Font::to_string(Style e) {
@@ -1170,25 +1914,55 @@ Densitymap::Legendgrouptitle::Font& Densitymap::Legendgrouptitle::Font::color(st
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Legendgrouptitle::Font& Densitymap::Legendgrouptitle::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Densitymap::Legendgrouptitle::Font& Densitymap::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Legendgrouptitle::Font& Densitymap::Legendgrouptitle::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Densitymap::Legendgrouptitle::Font& Densitymap::Legendgrouptitle::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Legendgrouptitle::Font& Densitymap::Legendgrouptitle::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Densitymap::Legendgrouptitle::Font& Densitymap::Legendgrouptitle::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Legendgrouptitle::Font& Densitymap::Legendgrouptitle::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Densitymap::Legendgrouptitle::Font& Densitymap::Legendgrouptitle::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Legendgrouptitle::Font& Densitymap::Legendgrouptitle::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Densitymap::Legendgrouptitle::Font& Densitymap::Legendgrouptitle::Font::style(enum Style f) {
@@ -1210,16 +1984,34 @@ Densitymap::Legendgrouptitle::Font& Densitymap::Legendgrouptitle::Font::weight(i
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Legendgrouptitle::Font& Densitymap::Legendgrouptitle::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Densitymap::Stream& Densitymap::Stream::maxpoints(double f) {
     json["maxpoints"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Densitymap::Stream& Densitymap::Stream::maxpoints(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return maxpoints(std::move(f));
+}
 
 Densitymap::Stream& Densitymap::Stream::token(std::string f) {
     json["token"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Densitymap::Stream& Densitymap::Stream::token(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return token(std::move(f));
 }
 
 } // namespace plotlypp

@@ -25,25 +25,55 @@ Splom& Splom::customdata(std::vector<T> f) {
     json["customdata"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Splom& Splom::customdata(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return customdata(std::move(f));
+}
 
 Splom& Splom::customdatasrc(std::string f) {
     json["customdatasrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom& Splom::customdatasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return customdatasrc(std::move(f));
 }
 
 Splom& Splom::diagonal(Diagonal f) {
     json["diagonal"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Splom& Splom::diagonal(Callable&& c) {
+    Diagonal f{};
+    std::forward<Callable>(c)(f);
+    return diagonal(std::move(f));
+}
 
 Splom& Splom::dimensions(Dimensions f) {
     json["dimensions"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Splom& Splom::dimensions(Callable&& c) {
+    Dimensions f{};
+    std::forward<Callable>(c)(f);
+    return dimensions(std::move(f));
+}
 
 Splom& Splom::hoverinfo(std::string f) {
     json["hoverinfo"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom& Splom::hoverinfo(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hoverinfo(std::move(f));
 }
 Splom& Splom::hoverinfo(std::vector<std::string> f) {
     json["hoverinfo"] = std::move(f);
@@ -54,15 +84,33 @@ Splom& Splom::hoverinfosrc(std::string f) {
     json["hoverinfosrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom& Splom::hoverinfosrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hoverinfosrc(std::move(f));
+}
 
 Splom& Splom::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Splom& Splom::hoverlabel(Callable&& c) {
+    Hoverlabel f{};
+    std::forward<Callable>(c)(f);
+    return hoverlabel(std::move(f));
+}
 
 Splom& Splom::hovertemplate(std::string f) {
     json["hovertemplate"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom& Splom::hovertemplate(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertemplate(std::move(f));
 }
 Splom& Splom::hovertemplate(std::vector<std::string> f) {
     json["hovertemplate"] = std::move(f);
@@ -73,10 +121,22 @@ Splom& Splom::hovertemplatesrc(std::string f) {
     json["hovertemplatesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom& Splom::hovertemplatesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertemplatesrc(std::move(f));
+}
 
 Splom& Splom::hovertext(std::string f) {
     json["hovertext"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom& Splom::hovertext(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertext(std::move(f));
 }
 Splom& Splom::hovertext(std::vector<std::string> f) {
     json["hovertext"] = std::move(f);
@@ -87,52 +147,112 @@ Splom& Splom::hovertextsrc(std::string f) {
     json["hovertextsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom& Splom::hovertextsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertextsrc(std::move(f));
+}
 
 template <typename T, typename>
 Splom& Splom::ids(std::vector<T> f) {
     json["ids"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Splom& Splom::ids(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return ids(std::move(f));
+}
 
 Splom& Splom::idssrc(std::string f) {
     json["idssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom& Splom::idssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return idssrc(std::move(f));
 }
 
 Splom& Splom::legend(std::string f) {
     json["legend"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom& Splom::legend(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return legend(std::move(f));
+}
 
 Splom& Splom::legendgroup(std::string f) {
     json["legendgroup"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom& Splom::legendgroup(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return legendgroup(std::move(f));
 }
 
 Splom& Splom::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Splom& Splom::legendgrouptitle(Callable&& c) {
+    Legendgrouptitle f{};
+    std::forward<Callable>(c)(f);
+    return legendgrouptitle(std::move(f));
+}
 
 Splom& Splom::legendrank(double f) {
     json["legendrank"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom& Splom::legendrank(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendrank(std::move(f));
 }
 
 Splom& Splom::legendwidth(double f) {
     json["legendwidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom& Splom::legendwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendwidth(std::move(f));
+}
 
 Splom& Splom::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Splom& Splom::marker(Callable&& c) {
+    Marker f{};
+    std::forward<Callable>(c)(f);
+    return marker(std::move(f));
 }
 
 template <typename T>
 Splom& Splom::meta(T f) {
     json["meta"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Splom& Splom::meta(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return meta(std::move(f));
 }
 template <typename T>
 Splom& Splom::meta(std::vector<T> f) {
@@ -144,20 +264,44 @@ Splom& Splom::metasrc(std::string f) {
     json["metasrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom& Splom::metasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return metasrc(std::move(f));
+}
 
 Splom& Splom::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom& Splom::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
 }
 
 Splom& Splom::opacity(double f) {
     json["opacity"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom& Splom::opacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return opacity(std::move(f));
+}
 
 Splom& Splom::selected(Selected f) {
     json["selected"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Splom& Splom::selected(Callable&& c) {
+    Selected f{};
+    std::forward<Callable>(c)(f);
+    return selected(std::move(f));
 }
 
 template <typename T>
@@ -165,30 +309,66 @@ Splom& Splom::selectedpoints(T f) {
     json["selectedpoints"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Splom& Splom::selectedpoints(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return selectedpoints(std::move(f));
+}
 
 Splom& Splom::showlegend(bool f) {
     json["showlegend"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom& Splom::showlegend(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showlegend(std::move(f));
 }
 
 Splom& Splom::showlowerhalf(bool f) {
     json["showlowerhalf"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom& Splom::showlowerhalf(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showlowerhalf(std::move(f));
+}
 
 Splom& Splom::showupperhalf(bool f) {
     json["showupperhalf"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom& Splom::showupperhalf(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showupperhalf(std::move(f));
 }
 
 Splom& Splom::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Splom& Splom::stream(Callable&& c) {
+    Stream f{};
+    std::forward<Callable>(c)(f);
+    return stream(std::move(f));
+}
 
 Splom& Splom::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom& Splom::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 Splom& Splom::text(std::vector<std::string> f) {
     json["text"] = std::move(f);
@@ -199,10 +379,22 @@ Splom& Splom::textsrc(std::string f) {
     json["textsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom& Splom::textsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textsrc(std::move(f));
+}
 
 Splom& Splom::uid(std::string f) {
     json["uid"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom& Splom::uid(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return uid(std::move(f));
 }
 
 template <typename T>
@@ -210,10 +402,22 @@ Splom& Splom::uirevision(T f) {
     json["uirevision"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Splom& Splom::uirevision(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return uirevision(std::move(f));
+}
 
 Splom& Splom::unselected(Unselected f) {
     json["unselected"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Splom& Splom::unselected(Callable&& c) {
+    Unselected f{};
+    std::forward<Callable>(c)(f);
+    return unselected(std::move(f));
 }
 
 Splom& Splom::visible(enum Visible f) {
@@ -225,20 +429,44 @@ Splom& Splom::xaxes(std::vector<double> f) {
     json["xaxes"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom& Splom::xaxes(Callable&& c) {
+    std::vector<double> f{};
+    std::forward<Callable>(c)(f);
+    return xaxes(std::move(f));
+}
 
 Splom& Splom::xhoverformat(std::string f) {
     json["xhoverformat"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom& Splom::xhoverformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return xhoverformat(std::move(f));
 }
 
 Splom& Splom::yaxes(std::vector<double> f) {
     json["yaxes"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom& Splom::yaxes(Callable&& c) {
+    std::vector<double> f{};
+    std::forward<Callable>(c)(f);
+    return yaxes(std::move(f));
+}
 
 Splom& Splom::yhoverformat(std::string f) {
     json["yhoverformat"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom& Splom::yhoverformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return yhoverformat(std::move(f));
 }
 
 
@@ -246,11 +474,23 @@ Splom::Diagonal& Splom::Diagonal::visible(bool f) {
     json["visible"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Diagonal& Splom::Diagonal::visible(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return visible(std::move(f));
+}
 
 
 Splom::Dimensions& Splom::Dimensions::dimension(Dimension f) {
     json["dimension"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Dimensions& Splom::Dimensions::dimension(Callable&& c) {
+    Dimension f{};
+    std::forward<Callable>(c)(f);
+    return dimension(std::move(f));
 }
 
 
@@ -258,20 +498,44 @@ Splom::Dimensions::Dimension& Splom::Dimensions::Dimension::axis(Axis f) {
     json["axis"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Dimensions::Dimension& Splom::Dimensions::Dimension::axis(Callable&& c) {
+    Axis f{};
+    std::forward<Callable>(c)(f);
+    return axis(std::move(f));
+}
 
 Splom::Dimensions::Dimension& Splom::Dimensions::Dimension::label(std::string f) {
     json["label"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Dimensions::Dimension& Splom::Dimensions::Dimension::label(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return label(std::move(f));
 }
 
 Splom::Dimensions::Dimension& Splom::Dimensions::Dimension::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Dimensions::Dimension& Splom::Dimensions::Dimension::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
+}
 
 Splom::Dimensions::Dimension& Splom::Dimensions::Dimension::templateitemname(std::string f) {
     json["templateitemname"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Dimensions::Dimension& Splom::Dimensions::Dimension::templateitemname(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return templateitemname(std::move(f));
 }
 
 template <typename T, typename>
@@ -279,15 +543,33 @@ Splom::Dimensions::Dimension& Splom::Dimensions::Dimension::values(std::vector<T
     json["values"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Splom::Dimensions::Dimension& Splom::Dimensions::Dimension::values(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return values(std::move(f));
+}
 
 Splom::Dimensions::Dimension& Splom::Dimensions::Dimension::valuessrc(std::string f) {
     json["valuessrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Dimensions::Dimension& Splom::Dimensions::Dimension::valuessrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return valuessrc(std::move(f));
+}
 
 Splom::Dimensions::Dimension& Splom::Dimensions::Dimension::visible(bool f) {
     json["visible"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Dimensions::Dimension& Splom::Dimensions::Dimension::visible(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return visible(std::move(f));
 }
 
 std::string Splom::Dimensions::Dimension::Axis::to_string(Type e) {
@@ -304,6 +586,12 @@ std::string Splom::Dimensions::Dimension::Axis::to_string(Type e) {
 Splom::Dimensions::Dimension::Axis& Splom::Dimensions::Dimension::Axis::matches(bool f) {
     json["matches"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Dimensions::Dimension::Axis& Splom::Dimensions::Dimension::Axis::matches(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return matches(std::move(f));
 }
 
 Splom::Dimensions::Dimension::Axis& Splom::Dimensions::Dimension::Axis::type(enum Type f) {
@@ -336,10 +624,22 @@ Splom::Hoverlabel& Splom::Hoverlabel::alignsrc(std::string f) {
     json["alignsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Hoverlabel& Splom::Hoverlabel::alignsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return alignsrc(std::move(f));
+}
 
 Splom::Hoverlabel& Splom::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Hoverlabel& Splom::Hoverlabel::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
 }
 Splom::Hoverlabel& Splom::Hoverlabel::bgcolor(std::vector<std::string> f) {
     json["bgcolor"] = std::move(f);
@@ -350,10 +650,22 @@ Splom::Hoverlabel& Splom::Hoverlabel::bgcolorsrc(std::string f) {
     json["bgcolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Hoverlabel& Splom::Hoverlabel::bgcolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolorsrc(std::move(f));
+}
 
 Splom::Hoverlabel& Splom::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Hoverlabel& Splom::Hoverlabel::bordercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolor(std::move(f));
 }
 Splom::Hoverlabel& Splom::Hoverlabel::bordercolor(std::vector<std::string> f) {
     json["bordercolor"] = std::move(f);
@@ -364,15 +676,33 @@ Splom::Hoverlabel& Splom::Hoverlabel::bordercolorsrc(std::string f) {
     json["bordercolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Hoverlabel& Splom::Hoverlabel::bordercolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolorsrc(std::move(f));
+}
 
 Splom::Hoverlabel& Splom::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Hoverlabel& Splom::Hoverlabel::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Splom::Hoverlabel& Splom::Hoverlabel::namelength(int f) {
     json["namelength"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Hoverlabel& Splom::Hoverlabel::namelength(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return namelength(std::move(f));
 }
 Splom::Hoverlabel& Splom::Hoverlabel::namelength(std::vector<int> f) {
     json["namelength"] = std::move(f);
@@ -382,6 +712,12 @@ Splom::Hoverlabel& Splom::Hoverlabel::namelength(std::vector<int> f) {
 Splom::Hoverlabel& Splom::Hoverlabel::namelengthsrc(std::string f) {
     json["namelengthsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Hoverlabel& Splom::Hoverlabel::namelengthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return namelengthsrc(std::move(f));
 }
 
 std::string Splom::Hoverlabel::Font::to_string(Style e) {
@@ -419,6 +755,12 @@ Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
     return *this;
@@ -428,10 +770,22 @@ Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::family(std::vector<std::string> f) {
     json["family"] = std::move(f);
@@ -442,10 +796,22 @@ Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::familysrc(std::string f) {
     json["familysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::familysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return familysrc(std::move(f));
+}
 
 Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
 }
 Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
     json["lineposition"] = std::move(f);
@@ -456,10 +822,22 @@ Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::linepositionsrc(std::string f)
     json["linepositionsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::linepositionsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return linepositionsrc(std::move(f));
+}
 
 Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
 }
 Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::shadow(std::vector<std::string> f) {
     json["shadow"] = std::move(f);
@@ -470,10 +848,22 @@ Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::shadowsrc(std::string f) {
     json["shadowsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::shadowsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadowsrc(std::move(f));
+}
 
 Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -483,6 +873,12 @@ Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::size(std::vector<double> f) {
 Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
 }
 
 Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::style(enum Style f) {
@@ -500,6 +896,12 @@ Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::stylesrc(std::string f) {
     json["stylesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::stylesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return stylesrc(std::move(f));
+}
 
 Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::textcase(enum Textcase f) {
     json["textcase"] = to_string(f);
@@ -515,6 +917,12 @@ Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::textcase(const std::vector<enu
 Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::textcasesrc(std::string f) {
     json["textcasesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::textcasesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textcasesrc(std::move(f));
 }
 
 Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::variant(enum Variant f) {
@@ -532,10 +940,22 @@ Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::variantsrc(std::string f) {
     json["variantsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::variantsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return variantsrc(std::move(f));
+}
 
 Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::weight(std::vector<int> f) {
     json["weight"] = std::move(f);
@@ -546,16 +966,34 @@ Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::weightsrc(std::string f) {
     json["weightsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Hoverlabel::Font& Splom::Hoverlabel::Font::weightsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return weightsrc(std::move(f));
+}
 
 
 Splom::Legendgrouptitle& Splom::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Legendgrouptitle& Splom::Legendgrouptitle::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Splom::Legendgrouptitle& Splom::Legendgrouptitle::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Legendgrouptitle& Splom::Legendgrouptitle::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 
 std::string Splom::Legendgrouptitle::Font::to_string(Style e) {
@@ -593,25 +1031,55 @@ Splom::Legendgrouptitle::Font& Splom::Legendgrouptitle::Font::color(std::string 
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Legendgrouptitle::Font& Splom::Legendgrouptitle::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Splom::Legendgrouptitle::Font& Splom::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Legendgrouptitle::Font& Splom::Legendgrouptitle::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Splom::Legendgrouptitle::Font& Splom::Legendgrouptitle::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Legendgrouptitle::Font& Splom::Legendgrouptitle::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Splom::Legendgrouptitle::Font& Splom::Legendgrouptitle::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Legendgrouptitle::Font& Splom::Legendgrouptitle::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Splom::Legendgrouptitle::Font& Splom::Legendgrouptitle::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Legendgrouptitle::Font& Splom::Legendgrouptitle::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Splom::Legendgrouptitle::Font& Splom::Legendgrouptitle::Font::style(enum Style f) {
@@ -632,6 +1100,12 @@ Splom::Legendgrouptitle::Font& Splom::Legendgrouptitle::Font::variant(enum Varia
 Splom::Legendgrouptitle::Font& Splom::Legendgrouptitle::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Legendgrouptitle::Font& Splom::Legendgrouptitle::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 
 std::string Splom::Marker::to_string(Sizemode e) {
@@ -977,6 +1451,12 @@ Splom::Marker& Splom::Marker::angle(double f) {
     json["angle"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker& Splom::Marker::angle(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return angle(std::move(f));
+}
 Splom::Marker& Splom::Marker::angle(std::vector<double> f) {
     json["angle"] = std::move(f);
     return *this;
@@ -986,35 +1466,77 @@ Splom::Marker& Splom::Marker::anglesrc(std::string f) {
     json["anglesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker& Splom::Marker::anglesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return anglesrc(std::move(f));
+}
 
 Splom::Marker& Splom::Marker::autocolorscale(bool f) {
     json["autocolorscale"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker& Splom::Marker::autocolorscale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return autocolorscale(std::move(f));
 }
 
 Splom::Marker& Splom::Marker::cauto(bool f) {
     json["cauto"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker& Splom::Marker::cauto(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return cauto(std::move(f));
+}
 
 Splom::Marker& Splom::Marker::cmax(double f) {
     json["cmax"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker& Splom::Marker::cmax(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmax(std::move(f));
 }
 
 Splom::Marker& Splom::Marker::cmid(double f) {
     json["cmid"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker& Splom::Marker::cmid(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmid(std::move(f));
+}
 
 Splom::Marker& Splom::Marker::cmin(double f) {
     json["cmin"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker& Splom::Marker::cmin(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmin(std::move(f));
+}
 
 Splom::Marker& Splom::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker& Splom::Marker::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
 }
 Splom::Marker& Splom::Marker::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
@@ -1025,10 +1547,22 @@ Splom::Marker& Splom::Marker::coloraxis(std::string f) {
     json["coloraxis"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker& Splom::Marker::coloraxis(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return coloraxis(std::move(f));
+}
 
 Splom::Marker& Splom::Marker::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker& Splom::Marker::colorbar(Callable&& c) {
+    Colorbar f{};
+    std::forward<Callable>(c)(f);
+    return colorbar(std::move(f));
 }
 
 Splom::Marker& Splom::Marker::colorscale(std::string f) {
@@ -1039,20 +1573,44 @@ Splom::Marker& Splom::Marker::colorscale(std::vector<std::pair<double, std::stri
     json["colorscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker& Splom::Marker::colorscale(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorscale(std::move(f));
+}
 
 Splom::Marker& Splom::Marker::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker& Splom::Marker::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
 }
 
 Splom::Marker& Splom::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker& Splom::Marker::line(Callable&& c) {
+    Line f{};
+    std::forward<Callable>(c)(f);
+    return line(std::move(f));
+}
 
 Splom::Marker& Splom::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker& Splom::Marker::opacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return opacity(std::move(f));
 }
 Splom::Marker& Splom::Marker::opacity(std::vector<double> f) {
     json["opacity"] = std::move(f);
@@ -1063,20 +1621,44 @@ Splom::Marker& Splom::Marker::opacitysrc(std::string f) {
     json["opacitysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker& Splom::Marker::opacitysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return opacitysrc(std::move(f));
+}
 
 Splom::Marker& Splom::Marker::reversescale(bool f) {
     json["reversescale"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker& Splom::Marker::reversescale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return reversescale(std::move(f));
 }
 
 Splom::Marker& Splom::Marker::showscale(bool f) {
     json["showscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker& Splom::Marker::showscale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showscale(std::move(f));
+}
 
 Splom::Marker& Splom::Marker::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker& Splom::Marker::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Splom::Marker& Splom::Marker::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -1086,6 +1668,12 @@ Splom::Marker& Splom::Marker::size(std::vector<double> f) {
 Splom::Marker& Splom::Marker::sizemin(double f) {
     json["sizemin"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker& Splom::Marker::sizemin(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return sizemin(std::move(f));
 }
 
 Splom::Marker& Splom::Marker::sizemode(enum Sizemode f) {
@@ -1097,10 +1685,22 @@ Splom::Marker& Splom::Marker::sizeref(double f) {
     json["sizeref"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker& Splom::Marker::sizeref(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return sizeref(std::move(f));
+}
 
 Splom::Marker& Splom::Marker::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker& Splom::Marker::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
 }
 
 Splom::Marker& Splom::Marker::symbol(enum Symbol f) {
@@ -1117,6 +1717,12 @@ Splom::Marker& Splom::Marker::symbol(const std::vector<enum Symbol>& f) {
 Splom::Marker& Splom::Marker::symbolsrc(std::string f) {
     json["symbolsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker& Splom::Marker::symbolsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return symbolsrc(std::move(f));
 }
 
 std::string Splom::Marker::Colorbar::to_string(Exponentformat e) {
@@ -1266,21 +1872,45 @@ Splom::Marker::Colorbar& Splom::Marker::Colorbar::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
+}
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::bordercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolor(std::move(f));
 }
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::borderwidth(double f) {
     json["borderwidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::borderwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return borderwidth(std::move(f));
+}
 
 template <typename T>
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::dtick(T f) {
     json["dtick"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::dtick(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return dtick(std::move(f));
 }
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::exponentformat(enum Exponentformat f) {
@@ -1293,10 +1923,22 @@ Splom::Marker::Colorbar& Splom::Marker::Colorbar::labelalias(T f) {
     json["labelalias"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::labelalias(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return labelalias(std::move(f));
+}
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::len(double f) {
     json["len"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::len(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return len(std::move(f));
 }
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::lenmode(enum Lenmode f) {
@@ -1308,10 +1950,22 @@ Splom::Marker::Colorbar& Splom::Marker::Colorbar::minexponent(double f) {
     json["minexponent"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::minexponent(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return minexponent(std::move(f));
+}
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::nticks(int f) {
     json["nticks"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::nticks(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return nticks(std::move(f));
 }
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::orientation(enum Orientation f) {
@@ -1323,15 +1977,33 @@ Splom::Marker::Colorbar& Splom::Marker::Colorbar::outlinecolor(std::string f) {
     json["outlinecolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::outlinecolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return outlinecolor(std::move(f));
+}
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::outlinewidth(double f) {
     json["outlinewidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::outlinewidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return outlinewidth(std::move(f));
+}
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::separatethousands(bool f) {
     json["separatethousands"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::separatethousands(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return separatethousands(std::move(f));
 }
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::showexponent(enum Showexponent f) {
@@ -1342,6 +2014,12 @@ Splom::Marker::Colorbar& Splom::Marker::Colorbar::showexponent(enum Showexponent
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::showticklabels(bool f) {
     json["showticklabels"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::showticklabels(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showticklabels(std::move(f));
 }
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::showtickprefix(enum Showtickprefix f) {
@@ -1358,6 +2036,12 @@ Splom::Marker::Colorbar& Splom::Marker::Colorbar::thickness(double f) {
     json["thickness"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::thickness(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return thickness(std::move(f));
+}
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::thicknessmode(enum Thicknessmode f) {
     json["thicknessmode"] = to_string(f);
@@ -1369,30 +2053,66 @@ Splom::Marker::Colorbar& Splom::Marker::Colorbar::tick0(T f) {
     json["tick0"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::tick0(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return tick0(std::move(f));
+}
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickangle(double f) {
     json["tickangle"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickangle(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return tickangle(std::move(f));
 }
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickcolor(std::string f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickcolor(std::move(f));
+}
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickfont(Callable&& c) {
+    Tickfont f{};
+    std::forward<Callable>(c)(f);
+    return tickfont(std::move(f));
 }
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickformat(std::string f) {
     json["tickformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickformat(std::move(f));
+}
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickformatstops(Callable&& c) {
+    Tickformatstops f{};
+    std::forward<Callable>(c)(f);
+    return tickformatstops(std::move(f));
 }
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::ticklabeloverflow(enum Ticklabeloverflow f) {
@@ -1409,10 +2129,22 @@ Splom::Marker::Colorbar& Splom::Marker::Colorbar::ticklabelstep(int f) {
     json["ticklabelstep"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::ticklabelstep(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return ticklabelstep(std::move(f));
+}
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::ticklen(double f) {
     json["ticklen"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::ticklen(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return ticklen(std::move(f));
 }
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickmode(enum Tickmode f) {
@@ -1424,6 +2156,12 @@ Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickprefix(std::string f) {
     json["tickprefix"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickprefix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickprefix(std::move(f));
+}
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::ticks(enum Ticks f) {
     json["ticks"] = to_string(f);
@@ -1434,16 +2172,34 @@ Splom::Marker::Colorbar& Splom::Marker::Colorbar::ticksuffix(std::string f) {
     json["ticksuffix"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::ticksuffix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ticksuffix(std::move(f));
+}
 
 template <typename T, typename>
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::ticktext(std::vector<T> f) {
     json["ticktext"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::ticktext(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return ticktext(std::move(f));
+}
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::ticktextsrc(std::string f) {
     json["ticktextsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::ticktextsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ticktextsrc(std::move(f));
 }
 
 template <typename T, typename>
@@ -1451,25 +2207,55 @@ Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickvals(std::vector<T> f) {
     json["tickvals"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickvals(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return tickvals(std::move(f));
+}
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickvalssrc(std::string f) {
     json["tickvalssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickvalssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickvalssrc(std::move(f));
 }
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickwidth(double f) {
     json["tickwidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::tickwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return tickwidth(std::move(f));
+}
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::title(Callable&& c) {
+    Title f{};
+    std::forward<Callable>(c)(f);
+    return title(std::move(f));
+}
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::x(double f) {
     json["x"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::x(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return x(std::move(f));
 }
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::xanchor(enum Xanchor f) {
@@ -1481,6 +2267,12 @@ Splom::Marker::Colorbar& Splom::Marker::Colorbar::xpad(double f) {
     json["xpad"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::xpad(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return xpad(std::move(f));
+}
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::xref(enum Xref f) {
     json["xref"] = to_string(f);
@@ -1491,6 +2283,12 @@ Splom::Marker::Colorbar& Splom::Marker::Colorbar::y(double f) {
     json["y"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::y(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return y(std::move(f));
+}
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::yanchor(enum Yanchor f) {
     json["yanchor"] = to_string(f);
@@ -1500,6 +2298,12 @@ Splom::Marker::Colorbar& Splom::Marker::Colorbar::yanchor(enum Yanchor f) {
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::ypad(double f) {
     json["ypad"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Colorbar& Splom::Marker::Colorbar::ypad(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return ypad(std::move(f));
 }
 
 Splom::Marker::Colorbar& Splom::Marker::Colorbar::yref(enum Yref f) {
@@ -1542,25 +2346,55 @@ Splom::Marker::Colorbar::Tickfont& Splom::Marker::Colorbar::Tickfont::color(std:
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar::Tickfont& Splom::Marker::Colorbar::Tickfont::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Splom::Marker::Colorbar::Tickfont& Splom::Marker::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Colorbar::Tickfont& Splom::Marker::Colorbar::Tickfont::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Splom::Marker::Colorbar::Tickfont& Splom::Marker::Colorbar::Tickfont::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar::Tickfont& Splom::Marker::Colorbar::Tickfont::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Splom::Marker::Colorbar::Tickfont& Splom::Marker::Colorbar::Tickfont::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar::Tickfont& Splom::Marker::Colorbar::Tickfont::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Splom::Marker::Colorbar::Tickfont& Splom::Marker::Colorbar::Tickfont::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Colorbar::Tickfont& Splom::Marker::Colorbar::Tickfont::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Splom::Marker::Colorbar::Tickfont& Splom::Marker::Colorbar::Tickfont::style(enum Style f) {
@@ -1582,11 +2416,23 @@ Splom::Marker::Colorbar::Tickfont& Splom::Marker::Colorbar::Tickfont::weight(int
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar::Tickfont& Splom::Marker::Colorbar::Tickfont::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Splom::Marker::Colorbar::Tickformatstops& Splom::Marker::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Colorbar::Tickformatstops& Splom::Marker::Colorbar::Tickformatstops::tickformatstop(Callable&& c) {
+    Tickformatstop f{};
+    std::forward<Callable>(c)(f);
+    return tickformatstop(std::move(f));
 }
 
 
@@ -1594,25 +2440,55 @@ Splom::Marker::Colorbar::Tickformatstops::Tickformatstop& Splom::Marker::Colorba
     json["dtickrange"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar::Tickformatstops::Tickformatstop& Splom::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(Callable&& c) {
+    std::vector<double> f{};
+    std::forward<Callable>(c)(f);
+    return dtickrange(std::move(f));
+}
 
 Splom::Marker::Colorbar::Tickformatstops::Tickformatstop& Splom::Marker::Colorbar::Tickformatstops::Tickformatstop::enabled(bool f) {
     json["enabled"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Colorbar::Tickformatstops::Tickformatstop& Splom::Marker::Colorbar::Tickformatstops::Tickformatstop::enabled(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return enabled(std::move(f));
 }
 
 Splom::Marker::Colorbar::Tickformatstops::Tickformatstop& Splom::Marker::Colorbar::Tickformatstops::Tickformatstop::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar::Tickformatstops::Tickformatstop& Splom::Marker::Colorbar::Tickformatstops::Tickformatstop::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
+}
 
 Splom::Marker::Colorbar::Tickformatstops::Tickformatstop& Splom::Marker::Colorbar::Tickformatstops::Tickformatstop::templateitemname(std::string f) {
     json["templateitemname"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar::Tickformatstops::Tickformatstop& Splom::Marker::Colorbar::Tickformatstops::Tickformatstop::templateitemname(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return templateitemname(std::move(f));
+}
 
 Splom::Marker::Colorbar::Tickformatstops::Tickformatstop& Splom::Marker::Colorbar::Tickformatstops::Tickformatstop::value(std::string f) {
     json["value"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Colorbar::Tickformatstops::Tickformatstop& Splom::Marker::Colorbar::Tickformatstops::Tickformatstop::value(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return value(std::move(f));
 }
 
 std::string Splom::Marker::Colorbar::Title::to_string(Side e) {
@@ -1629,6 +2505,12 @@ Splom::Marker::Colorbar::Title& Splom::Marker::Colorbar::Title::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar::Title& Splom::Marker::Colorbar::Title::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Splom::Marker::Colorbar::Title& Splom::Marker::Colorbar::Title::side(enum Side f) {
     json["side"] = to_string(f);
@@ -1638,6 +2520,12 @@ Splom::Marker::Colorbar::Title& Splom::Marker::Colorbar::Title::side(enum Side f
 Splom::Marker::Colorbar::Title& Splom::Marker::Colorbar::Title::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Colorbar::Title& Splom::Marker::Colorbar::Title::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 
 std::string Splom::Marker::Colorbar::Title::Font::to_string(Style e) {
@@ -1675,25 +2563,55 @@ Splom::Marker::Colorbar::Title::Font& Splom::Marker::Colorbar::Title::Font::colo
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar::Title::Font& Splom::Marker::Colorbar::Title::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Splom::Marker::Colorbar::Title::Font& Splom::Marker::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Colorbar::Title::Font& Splom::Marker::Colorbar::Title::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Splom::Marker::Colorbar::Title::Font& Splom::Marker::Colorbar::Title::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar::Title::Font& Splom::Marker::Colorbar::Title::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Splom::Marker::Colorbar::Title::Font& Splom::Marker::Colorbar::Title::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar::Title::Font& Splom::Marker::Colorbar::Title::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Splom::Marker::Colorbar::Title::Font& Splom::Marker::Colorbar::Title::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Colorbar::Title::Font& Splom::Marker::Colorbar::Title::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Splom::Marker::Colorbar::Title::Font& Splom::Marker::Colorbar::Title::Font::style(enum Style f) {
@@ -1715,36 +2633,78 @@ Splom::Marker::Colorbar::Title::Font& Splom::Marker::Colorbar::Title::Font::weig
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Colorbar::Title::Font& Splom::Marker::Colorbar::Title::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Splom::Marker::Line& Splom::Marker::Line::autocolorscale(bool f) {
     json["autocolorscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Line& Splom::Marker::Line::autocolorscale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return autocolorscale(std::move(f));
+}
 
 Splom::Marker::Line& Splom::Marker::Line::cauto(bool f) {
     json["cauto"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Line& Splom::Marker::Line::cauto(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return cauto(std::move(f));
 }
 
 Splom::Marker::Line& Splom::Marker::Line::cmax(double f) {
     json["cmax"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Line& Splom::Marker::Line::cmax(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmax(std::move(f));
+}
 
 Splom::Marker::Line& Splom::Marker::Line::cmid(double f) {
     json["cmid"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Line& Splom::Marker::Line::cmid(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmid(std::move(f));
 }
 
 Splom::Marker::Line& Splom::Marker::Line::cmin(double f) {
     json["cmin"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Line& Splom::Marker::Line::cmin(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmin(std::move(f));
+}
 
 Splom::Marker::Line& Splom::Marker::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Line& Splom::Marker::Line::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
 }
 Splom::Marker::Line& Splom::Marker::Line::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
@@ -1755,6 +2715,12 @@ Splom::Marker::Line& Splom::Marker::Line::coloraxis(std::string f) {
     json["coloraxis"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Line& Splom::Marker::Line::coloraxis(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return coloraxis(std::move(f));
+}
 
 Splom::Marker::Line& Splom::Marker::Line::colorscale(std::string f) {
     json["colorscale"] = std::move(f);
@@ -1764,20 +2730,44 @@ Splom::Marker::Line& Splom::Marker::Line::colorscale(std::vector<std::pair<doubl
     json["colorscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Line& Splom::Marker::Line::colorscale(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorscale(std::move(f));
+}
 
 Splom::Marker::Line& Splom::Marker::Line::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Line& Splom::Marker::Line::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
 }
 
 Splom::Marker::Line& Splom::Marker::Line::reversescale(bool f) {
     json["reversescale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Line& Splom::Marker::Line::reversescale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return reversescale(std::move(f));
+}
 
 Splom::Marker::Line& Splom::Marker::Line::width(double f) {
     json["width"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Marker::Line& Splom::Marker::Line::width(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return width(std::move(f));
 }
 Splom::Marker::Line& Splom::Marker::Line::width(std::vector<double> f) {
     json["width"] = std::move(f);
@@ -1788,11 +2778,23 @@ Splom::Marker::Line& Splom::Marker::Line::widthsrc(std::string f) {
     json["widthsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Marker::Line& Splom::Marker::Line::widthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return widthsrc(std::move(f));
+}
 
 
 Splom::Selected& Splom::Selected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Selected& Splom::Selected::marker(Callable&& c) {
+    Marker f{};
+    std::forward<Callable>(c)(f);
+    return marker(std::move(f));
 }
 
 
@@ -1800,15 +2802,33 @@ Splom::Selected::Marker& Splom::Selected::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Selected::Marker& Splom::Selected::Marker::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Splom::Selected::Marker& Splom::Selected::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Selected::Marker& Splom::Selected::Marker::opacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return opacity(std::move(f));
+}
 
 Splom::Selected::Marker& Splom::Selected::Marker::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Selected::Marker& Splom::Selected::Marker::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 
@@ -1816,10 +2836,22 @@ Splom::Stream& Splom::Stream::maxpoints(double f) {
     json["maxpoints"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Stream& Splom::Stream::maxpoints(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return maxpoints(std::move(f));
+}
 
 Splom::Stream& Splom::Stream::token(std::string f) {
     json["token"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Stream& Splom::Stream::token(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return token(std::move(f));
 }
 
 
@@ -1827,21 +2859,45 @@ Splom::Unselected& Splom::Unselected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Unselected& Splom::Unselected::marker(Callable&& c) {
+    Marker f{};
+    std::forward<Callable>(c)(f);
+    return marker(std::move(f));
+}
 
 
 Splom::Unselected::Marker& Splom::Unselected::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Unselected::Marker& Splom::Unselected::Marker::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Splom::Unselected::Marker& Splom::Unselected::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Splom::Unselected::Marker& Splom::Unselected::Marker::opacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return opacity(std::move(f));
+}
 
 Splom::Unselected::Marker& Splom::Unselected::Marker::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Splom::Unselected::Marker& Splom::Unselected::Marker::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 } // namespace plotlypp

@@ -127,25 +127,55 @@ Histogram& Histogram::alignmentgroup(std::string f) {
     json["alignmentgroup"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::alignmentgroup(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return alignmentgroup(std::move(f));
+}
 
 Histogram& Histogram::autobinx(bool f) {
     json["autobinx"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::autobinx(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return autobinx(std::move(f));
 }
 
 Histogram& Histogram::autobiny(bool f) {
     json["autobiny"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::autobiny(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return autobiny(std::move(f));
+}
 
 Histogram& Histogram::bingroup(std::string f) {
     json["bingroup"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::bingroup(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bingroup(std::move(f));
+}
 
 Histogram& Histogram::cliponaxis(bool f) {
     json["cliponaxis"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::cliponaxis(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return cliponaxis(std::move(f));
 }
 
 Histogram& Histogram::constraintext(enum Constraintext f) {
@@ -157,26 +187,56 @@ Histogram& Histogram::cumulative(Cumulative f) {
     json["cumulative"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::cumulative(Callable&& c) {
+    Cumulative f{};
+    std::forward<Callable>(c)(f);
+    return cumulative(std::move(f));
+}
 
 template <typename T, typename>
 Histogram& Histogram::customdata(std::vector<T> f) {
     json["customdata"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Histogram& Histogram::customdata(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return customdata(std::move(f));
+}
 
 Histogram& Histogram::customdatasrc(std::string f) {
     json["customdatasrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::customdatasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return customdatasrc(std::move(f));
 }
 
 Histogram& Histogram::error_x(Error_X f) {
     json["error_x"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::error_x(Callable&& c) {
+    Error_X f{};
+    std::forward<Callable>(c)(f);
+    return error_x(std::move(f));
+}
 
 Histogram& Histogram::error_y(Error_Y f) {
     json["error_y"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::error_y(Callable&& c) {
+    Error_Y f{};
+    std::forward<Callable>(c)(f);
+    return error_y(std::move(f));
 }
 
 Histogram& Histogram::histfunc(enum Histfunc f) {
@@ -193,6 +253,12 @@ Histogram& Histogram::hoverinfo(std::string f) {
     json["hoverinfo"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::hoverinfo(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hoverinfo(std::move(f));
+}
 Histogram& Histogram::hoverinfo(std::vector<std::string> f) {
     json["hoverinfo"] = std::move(f);
     return *this;
@@ -202,15 +268,33 @@ Histogram& Histogram::hoverinfosrc(std::string f) {
     json["hoverinfosrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::hoverinfosrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hoverinfosrc(std::move(f));
+}
 
 Histogram& Histogram::hoverlabel(Hoverlabel f) {
     json["hoverlabel"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::hoverlabel(Callable&& c) {
+    Hoverlabel f{};
+    std::forward<Callable>(c)(f);
+    return hoverlabel(std::move(f));
+}
 
 Histogram& Histogram::hovertemplate(std::string f) {
     json["hovertemplate"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::hovertemplate(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertemplate(std::move(f));
 }
 Histogram& Histogram::hovertemplate(std::vector<std::string> f) {
     json["hovertemplate"] = std::move(f);
@@ -221,10 +305,22 @@ Histogram& Histogram::hovertemplatesrc(std::string f) {
     json["hovertemplatesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::hovertemplatesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertemplatesrc(std::move(f));
+}
 
 Histogram& Histogram::hovertext(std::string f) {
     json["hovertext"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::hovertext(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertext(std::move(f));
 }
 Histogram& Histogram::hovertext(std::vector<std::string> f) {
     json["hovertext"] = std::move(f);
@@ -235,16 +331,34 @@ Histogram& Histogram::hovertextsrc(std::string f) {
     json["hovertextsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::hovertextsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return hovertextsrc(std::move(f));
+}
 
 template <typename T, typename>
 Histogram& Histogram::ids(std::vector<T> f) {
     json["ids"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Histogram& Histogram::ids(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return ids(std::move(f));
+}
 
 Histogram& Histogram::idssrc(std::string f) {
     json["idssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::idssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return idssrc(std::move(f));
 }
 
 Histogram& Histogram::insidetextanchor(enum Insidetextanchor f) {
@@ -256,41 +370,89 @@ Histogram& Histogram::insidetextfont(Insidetextfont f) {
     json["insidetextfont"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::insidetextfont(Callable&& c) {
+    Insidetextfont f{};
+    std::forward<Callable>(c)(f);
+    return insidetextfont(std::move(f));
+}
 
 Histogram& Histogram::legend(std::string f) {
     json["legend"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::legend(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return legend(std::move(f));
 }
 
 Histogram& Histogram::legendgroup(std::string f) {
     json["legendgroup"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::legendgroup(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return legendgroup(std::move(f));
+}
 
 Histogram& Histogram::legendgrouptitle(Legendgrouptitle f) {
     json["legendgrouptitle"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::legendgrouptitle(Callable&& c) {
+    Legendgrouptitle f{};
+    std::forward<Callable>(c)(f);
+    return legendgrouptitle(std::move(f));
 }
 
 Histogram& Histogram::legendrank(double f) {
     json["legendrank"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::legendrank(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendrank(std::move(f));
+}
 
 Histogram& Histogram::legendwidth(double f) {
     json["legendwidth"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::legendwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return legendwidth(std::move(f));
 }
 
 Histogram& Histogram::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::marker(Callable&& c) {
+    Marker f{};
+    std::forward<Callable>(c)(f);
+    return marker(std::move(f));
+}
 
 template <typename T>
 Histogram& Histogram::meta(T f) {
     json["meta"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Histogram& Histogram::meta(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return meta(std::move(f));
 }
 template <typename T>
 Histogram& Histogram::meta(std::vector<T> f) {
@@ -302,30 +464,66 @@ Histogram& Histogram::metasrc(std::string f) {
     json["metasrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::metasrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return metasrc(std::move(f));
+}
 
 Histogram& Histogram::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
 }
 
 Histogram& Histogram::nbinsx(int f) {
     json["nbinsx"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::nbinsx(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return nbinsx(std::move(f));
+}
 
 Histogram& Histogram::nbinsy(int f) {
     json["nbinsy"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::nbinsy(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return nbinsy(std::move(f));
 }
 
 Histogram& Histogram::offsetgroup(std::string f) {
     json["offsetgroup"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::offsetgroup(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return offsetgroup(std::move(f));
+}
 
 Histogram& Histogram::opacity(double f) {
     json["opacity"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::opacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return opacity(std::move(f));
 }
 
 Histogram& Histogram::orientation(enum Orientation f) {
@@ -337,10 +535,22 @@ Histogram& Histogram::outsidetextfont(Outsidetextfont f) {
     json["outsidetextfont"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::outsidetextfont(Callable&& c) {
+    Outsidetextfont f{};
+    std::forward<Callable>(c)(f);
+    return outsidetextfont(std::move(f));
+}
 
 Histogram& Histogram::selected(Selected f) {
     json["selected"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::selected(Callable&& c) {
+    Selected f{};
+    std::forward<Callable>(c)(f);
+    return selected(std::move(f));
 }
 
 template <typename T>
@@ -348,20 +558,44 @@ Histogram& Histogram::selectedpoints(T f) {
     json["selectedpoints"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Histogram& Histogram::selectedpoints(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return selectedpoints(std::move(f));
+}
 
 Histogram& Histogram::showlegend(bool f) {
     json["showlegend"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::showlegend(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showlegend(std::move(f));
 }
 
 Histogram& Histogram::stream(Stream f) {
     json["stream"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::stream(Callable&& c) {
+    Stream f{};
+    std::forward<Callable>(c)(f);
+    return stream(std::move(f));
+}
 
 Histogram& Histogram::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 Histogram& Histogram::text(std::vector<std::string> f) {
     json["text"] = std::move(f);
@@ -372,10 +606,22 @@ Histogram& Histogram::textangle(double f) {
     json["textangle"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::textangle(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return textangle(std::move(f));
+}
 
 Histogram& Histogram::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::textfont(Callable&& c) {
+    Textfont f{};
+    std::forward<Callable>(c)(f);
+    return textfont(std::move(f));
 }
 
 Histogram& Histogram::textposition(enum Textposition f) {
@@ -387,15 +633,33 @@ Histogram& Histogram::textsrc(std::string f) {
     json["textsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::textsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textsrc(std::move(f));
+}
 
 Histogram& Histogram::texttemplate(std::string f) {
     json["texttemplate"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::texttemplate(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return texttemplate(std::move(f));
+}
 
 Histogram& Histogram::uid(std::string f) {
     json["uid"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::uid(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return uid(std::move(f));
 }
 
 template <typename T>
@@ -403,10 +667,22 @@ Histogram& Histogram::uirevision(T f) {
     json["uirevision"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Histogram& Histogram::uirevision(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return uirevision(std::move(f));
+}
 
 Histogram& Histogram::unselected(Unselected f) {
     json["unselected"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::unselected(Callable&& c) {
+    Unselected f{};
+    std::forward<Callable>(c)(f);
+    return unselected(std::move(f));
 }
 
 Histogram& Histogram::visible(enum Visible f) {
@@ -419,15 +695,33 @@ Histogram& Histogram::x(std::vector<T> f) {
     json["x"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Histogram& Histogram::x(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return x(std::move(f));
+}
 
 Histogram& Histogram::xaxis(std::string f) {
     json["xaxis"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::xaxis(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return xaxis(std::move(f));
+}
 
 Histogram& Histogram::xbins(Xbins f) {
     json["xbins"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::xbins(Callable&& c) {
+    Xbins f{};
+    std::forward<Callable>(c)(f);
+    return xbins(std::move(f));
 }
 
 Histogram& Histogram::xcalendar(enum Xcalendar f) {
@@ -439,10 +733,22 @@ Histogram& Histogram::xhoverformat(std::string f) {
     json["xhoverformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::xhoverformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return xhoverformat(std::move(f));
+}
 
 Histogram& Histogram::xsrc(std::string f) {
     json["xsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::xsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return xsrc(std::move(f));
 }
 
 template <typename T, typename>
@@ -450,15 +756,33 @@ Histogram& Histogram::y(std::vector<T> f) {
     json["y"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Histogram& Histogram::y(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return y(std::move(f));
+}
 
 Histogram& Histogram::yaxis(std::string f) {
     json["yaxis"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::yaxis(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return yaxis(std::move(f));
+}
 
 Histogram& Histogram::ybins(Ybins f) {
     json["ybins"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::ybins(Callable&& c) {
+    Ybins f{};
+    std::forward<Callable>(c)(f);
+    return ybins(std::move(f));
 }
 
 Histogram& Histogram::ycalendar(enum Ycalendar f) {
@@ -470,15 +794,33 @@ Histogram& Histogram::yhoverformat(std::string f) {
     json["yhoverformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::yhoverformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return yhoverformat(std::move(f));
+}
 
 Histogram& Histogram::ysrc(std::string f) {
     json["ysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram& Histogram::ysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ysrc(std::move(f));
+}
 
 Histogram& Histogram::zorder(int f) {
     json["zorder"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram& Histogram::zorder(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return zorder(std::move(f));
 }
 
 std::string Histogram::Cumulative::to_string(Currentbin e) {
@@ -513,6 +855,12 @@ Histogram::Cumulative& Histogram::Cumulative::enabled(bool f) {
     json["enabled"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Cumulative& Histogram::Cumulative::enabled(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return enabled(std::move(f));
+}
 
 std::string Histogram::Error_X::to_string(Type e) {
     switch(e) {
@@ -530,51 +878,111 @@ Histogram::Error_X& Histogram::Error_X::array(std::vector<T> f) {
     json["array"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Histogram::Error_X& Histogram::Error_X::array(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return array(std::move(f));
+}
 
 template <typename T, typename>
 Histogram::Error_X& Histogram::Error_X::arrayminus(std::vector<T> f) {
     json["arrayminus"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Histogram::Error_X& Histogram::Error_X::arrayminus(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return arrayminus(std::move(f));
+}
 
 Histogram::Error_X& Histogram::Error_X::arrayminussrc(std::string f) {
     json["arrayminussrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Error_X& Histogram::Error_X::arrayminussrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return arrayminussrc(std::move(f));
 }
 
 Histogram::Error_X& Histogram::Error_X::arraysrc(std::string f) {
     json["arraysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Error_X& Histogram::Error_X::arraysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return arraysrc(std::move(f));
+}
 
 Histogram::Error_X& Histogram::Error_X::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Error_X& Histogram::Error_X::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
 }
 
 Histogram::Error_X& Histogram::Error_X::copy_ystyle(bool f) {
     json["copy_ystyle"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Error_X& Histogram::Error_X::copy_ystyle(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return copy_ystyle(std::move(f));
+}
 
 Histogram::Error_X& Histogram::Error_X::symmetric(bool f) {
     json["symmetric"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Error_X& Histogram::Error_X::symmetric(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return symmetric(std::move(f));
 }
 
 Histogram::Error_X& Histogram::Error_X::thickness(double f) {
     json["thickness"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Error_X& Histogram::Error_X::thickness(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return thickness(std::move(f));
+}
 
 Histogram::Error_X& Histogram::Error_X::traceref(int f) {
     json["traceref"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Error_X& Histogram::Error_X::traceref(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return traceref(std::move(f));
+}
 
 Histogram::Error_X& Histogram::Error_X::tracerefminus(int f) {
     json["tracerefminus"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Error_X& Histogram::Error_X::tracerefminus(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return tracerefminus(std::move(f));
 }
 
 Histogram::Error_X& Histogram::Error_X::type(enum Type f) {
@@ -586,20 +994,44 @@ Histogram::Error_X& Histogram::Error_X::value(double f) {
     json["value"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Error_X& Histogram::Error_X::value(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return value(std::move(f));
+}
 
 Histogram::Error_X& Histogram::Error_X::valueminus(double f) {
     json["valueminus"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Error_X& Histogram::Error_X::valueminus(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return valueminus(std::move(f));
 }
 
 Histogram::Error_X& Histogram::Error_X::visible(bool f) {
     json["visible"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Error_X& Histogram::Error_X::visible(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return visible(std::move(f));
+}
 
 Histogram::Error_X& Histogram::Error_X::width(double f) {
     json["width"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Error_X& Histogram::Error_X::width(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return width(std::move(f));
 }
 
 std::string Histogram::Error_Y::to_string(Type e) {
@@ -618,46 +1050,100 @@ Histogram::Error_Y& Histogram::Error_Y::array(std::vector<T> f) {
     json["array"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Histogram::Error_Y& Histogram::Error_Y::array(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return array(std::move(f));
+}
 
 template <typename T, typename>
 Histogram::Error_Y& Histogram::Error_Y::arrayminus(std::vector<T> f) {
     json["arrayminus"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Histogram::Error_Y& Histogram::Error_Y::arrayminus(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return arrayminus(std::move(f));
+}
 
 Histogram::Error_Y& Histogram::Error_Y::arrayminussrc(std::string f) {
     json["arrayminussrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Error_Y& Histogram::Error_Y::arrayminussrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return arrayminussrc(std::move(f));
 }
 
 Histogram::Error_Y& Histogram::Error_Y::arraysrc(std::string f) {
     json["arraysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Error_Y& Histogram::Error_Y::arraysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return arraysrc(std::move(f));
+}
 
 Histogram::Error_Y& Histogram::Error_Y::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Error_Y& Histogram::Error_Y::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
 }
 
 Histogram::Error_Y& Histogram::Error_Y::symmetric(bool f) {
     json["symmetric"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Error_Y& Histogram::Error_Y::symmetric(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return symmetric(std::move(f));
+}
 
 Histogram::Error_Y& Histogram::Error_Y::thickness(double f) {
     json["thickness"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Error_Y& Histogram::Error_Y::thickness(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return thickness(std::move(f));
 }
 
 Histogram::Error_Y& Histogram::Error_Y::traceref(int f) {
     json["traceref"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Error_Y& Histogram::Error_Y::traceref(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return traceref(std::move(f));
+}
 
 Histogram::Error_Y& Histogram::Error_Y::tracerefminus(int f) {
     json["tracerefminus"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Error_Y& Histogram::Error_Y::tracerefminus(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return tracerefminus(std::move(f));
 }
 
 Histogram::Error_Y& Histogram::Error_Y::type(enum Type f) {
@@ -669,20 +1155,44 @@ Histogram::Error_Y& Histogram::Error_Y::value(double f) {
     json["value"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Error_Y& Histogram::Error_Y::value(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return value(std::move(f));
+}
 
 Histogram::Error_Y& Histogram::Error_Y::valueminus(double f) {
     json["valueminus"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Error_Y& Histogram::Error_Y::valueminus(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return valueminus(std::move(f));
 }
 
 Histogram::Error_Y& Histogram::Error_Y::visible(bool f) {
     json["visible"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Error_Y& Histogram::Error_Y::visible(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return visible(std::move(f));
+}
 
 Histogram::Error_Y& Histogram::Error_Y::width(double f) {
     json["width"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Error_Y& Histogram::Error_Y::width(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return width(std::move(f));
 }
 
 std::string Histogram::Hoverlabel::to_string(Align e) {
@@ -710,10 +1220,22 @@ Histogram::Hoverlabel& Histogram::Hoverlabel::alignsrc(std::string f) {
     json["alignsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Hoverlabel& Histogram::Hoverlabel::alignsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return alignsrc(std::move(f));
+}
 
 Histogram::Hoverlabel& Histogram::Hoverlabel::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Hoverlabel& Histogram::Hoverlabel::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
 }
 Histogram::Hoverlabel& Histogram::Hoverlabel::bgcolor(std::vector<std::string> f) {
     json["bgcolor"] = std::move(f);
@@ -724,10 +1246,22 @@ Histogram::Hoverlabel& Histogram::Hoverlabel::bgcolorsrc(std::string f) {
     json["bgcolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Hoverlabel& Histogram::Hoverlabel::bgcolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolorsrc(std::move(f));
+}
 
 Histogram::Hoverlabel& Histogram::Hoverlabel::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Hoverlabel& Histogram::Hoverlabel::bordercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolor(std::move(f));
 }
 Histogram::Hoverlabel& Histogram::Hoverlabel::bordercolor(std::vector<std::string> f) {
     json["bordercolor"] = std::move(f);
@@ -738,15 +1272,33 @@ Histogram::Hoverlabel& Histogram::Hoverlabel::bordercolorsrc(std::string f) {
     json["bordercolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Hoverlabel& Histogram::Hoverlabel::bordercolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolorsrc(std::move(f));
+}
 
 Histogram::Hoverlabel& Histogram::Hoverlabel::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Hoverlabel& Histogram::Hoverlabel::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Histogram::Hoverlabel& Histogram::Hoverlabel::namelength(int f) {
     json["namelength"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Hoverlabel& Histogram::Hoverlabel::namelength(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return namelength(std::move(f));
 }
 Histogram::Hoverlabel& Histogram::Hoverlabel::namelength(std::vector<int> f) {
     json["namelength"] = std::move(f);
@@ -756,6 +1308,12 @@ Histogram::Hoverlabel& Histogram::Hoverlabel::namelength(std::vector<int> f) {
 Histogram::Hoverlabel& Histogram::Hoverlabel::namelengthsrc(std::string f) {
     json["namelengthsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Hoverlabel& Histogram::Hoverlabel::namelengthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return namelengthsrc(std::move(f));
 }
 
 std::string Histogram::Hoverlabel::Font::to_string(Style e) {
@@ -793,6 +1351,12 @@ Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
     return *this;
@@ -802,10 +1366,22 @@ Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::colorsrc(std::string f
     json["colorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
+}
 
 Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::family(std::vector<std::string> f) {
     json["family"] = std::move(f);
@@ -816,10 +1392,22 @@ Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::familysrc(std::string 
     json["familysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::familysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return familysrc(std::move(f));
+}
 
 Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
 }
 Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
     json["lineposition"] = std::move(f);
@@ -830,10 +1418,22 @@ Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::linepositionsrc(std::s
     json["linepositionsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::linepositionsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return linepositionsrc(std::move(f));
+}
 
 Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
 }
 Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::shadow(std::vector<std::string> f) {
     json["shadow"] = std::move(f);
@@ -844,10 +1444,22 @@ Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::shadowsrc(std::string 
     json["shadowsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::shadowsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadowsrc(std::move(f));
+}
 
 Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -857,6 +1469,12 @@ Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::size(std::vector<doubl
 Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
 }
 
 Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::style(enum Style f) {
@@ -874,6 +1492,12 @@ Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::stylesrc(std::string f
     json["stylesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::stylesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return stylesrc(std::move(f));
+}
 
 Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::textcase(enum Textcase f) {
     json["textcase"] = to_string(f);
@@ -889,6 +1513,12 @@ Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::textcase(const std::ve
 Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::textcasesrc(std::string f) {
     json["textcasesrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::textcasesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return textcasesrc(std::move(f));
 }
 
 Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::variant(enum Variant f) {
@@ -906,10 +1536,22 @@ Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::variantsrc(std::string
     json["variantsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::variantsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return variantsrc(std::move(f));
+}
 
 Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
 }
 Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::weight(std::vector<int> f) {
     json["weight"] = std::move(f);
@@ -919,6 +1561,12 @@ Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::weight(std::vector<int
 Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::weightsrc(std::string f) {
     json["weightsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Hoverlabel::Font& Histogram::Hoverlabel::Font::weightsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return weightsrc(std::move(f));
 }
 
 std::string Histogram::Insidetextfont::to_string(Style e) {
@@ -956,25 +1604,55 @@ Histogram::Insidetextfont& Histogram::Insidetextfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Insidetextfont& Histogram::Insidetextfont::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Histogram::Insidetextfont& Histogram::Insidetextfont::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Insidetextfont& Histogram::Insidetextfont::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Histogram::Insidetextfont& Histogram::Insidetextfont::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Insidetextfont& Histogram::Insidetextfont::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Histogram::Insidetextfont& Histogram::Insidetextfont::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Insidetextfont& Histogram::Insidetextfont::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Histogram::Insidetextfont& Histogram::Insidetextfont::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Insidetextfont& Histogram::Insidetextfont::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Histogram::Insidetextfont& Histogram::Insidetextfont::style(enum Style f) {
@@ -996,16 +1674,34 @@ Histogram::Insidetextfont& Histogram::Insidetextfont::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Insidetextfont& Histogram::Insidetextfont::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Histogram::Legendgrouptitle& Histogram::Legendgrouptitle::font(Font f) {
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Legendgrouptitle& Histogram::Legendgrouptitle::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Histogram::Legendgrouptitle& Histogram::Legendgrouptitle::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Legendgrouptitle& Histogram::Legendgrouptitle::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 
 std::string Histogram::Legendgrouptitle::Font::to_string(Style e) {
@@ -1043,25 +1739,55 @@ Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::color(std:
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::style(enum Style f) {
@@ -1083,36 +1809,78 @@ Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::weight(int
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Legendgrouptitle::Font& Histogram::Legendgrouptitle::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Histogram::Marker& Histogram::Marker::autocolorscale(bool f) {
     json["autocolorscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker& Histogram::Marker::autocolorscale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return autocolorscale(std::move(f));
+}
 
 Histogram::Marker& Histogram::Marker::cauto(bool f) {
     json["cauto"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker& Histogram::Marker::cauto(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return cauto(std::move(f));
 }
 
 Histogram::Marker& Histogram::Marker::cmax(double f) {
     json["cmax"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker& Histogram::Marker::cmax(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmax(std::move(f));
+}
 
 Histogram::Marker& Histogram::Marker::cmid(double f) {
     json["cmid"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker& Histogram::Marker::cmid(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmid(std::move(f));
 }
 
 Histogram::Marker& Histogram::Marker::cmin(double f) {
     json["cmin"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker& Histogram::Marker::cmin(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmin(std::move(f));
+}
 
 Histogram::Marker& Histogram::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker& Histogram::Marker::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
 }
 Histogram::Marker& Histogram::Marker::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
@@ -1123,10 +1891,22 @@ Histogram::Marker& Histogram::Marker::coloraxis(std::string f) {
     json["coloraxis"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker& Histogram::Marker::coloraxis(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return coloraxis(std::move(f));
+}
 
 Histogram::Marker& Histogram::Marker::colorbar(Colorbar f) {
     json["colorbar"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker& Histogram::Marker::colorbar(Callable&& c) {
+    Colorbar f{};
+    std::forward<Callable>(c)(f);
+    return colorbar(std::move(f));
 }
 
 Histogram::Marker& Histogram::Marker::colorscale(std::string f) {
@@ -1137,10 +1917,22 @@ Histogram::Marker& Histogram::Marker::colorscale(std::vector<std::pair<double, s
     json["colorscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker& Histogram::Marker::colorscale(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorscale(std::move(f));
+}
 
 Histogram::Marker& Histogram::Marker::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker& Histogram::Marker::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
 }
 
 template <typename T>
@@ -1148,15 +1940,33 @@ Histogram::Marker& Histogram::Marker::cornerradius(T f) {
     json["cornerradius"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Histogram::Marker& Histogram::Marker::cornerradius(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return cornerradius(std::move(f));
+}
 
 Histogram::Marker& Histogram::Marker::line(Line f) {
     json["line"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker& Histogram::Marker::line(Callable&& c) {
+    Line f{};
+    std::forward<Callable>(c)(f);
+    return line(std::move(f));
+}
 
 Histogram::Marker& Histogram::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker& Histogram::Marker::opacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return opacity(std::move(f));
 }
 Histogram::Marker& Histogram::Marker::opacity(std::vector<double> f) {
     json["opacity"] = std::move(f);
@@ -1167,20 +1977,44 @@ Histogram::Marker& Histogram::Marker::opacitysrc(std::string f) {
     json["opacitysrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker& Histogram::Marker::opacitysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return opacitysrc(std::move(f));
+}
 
 Histogram::Marker& Histogram::Marker::pattern(Pattern f) {
     json["pattern"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker& Histogram::Marker::pattern(Callable&& c) {
+    Pattern f{};
+    std::forward<Callable>(c)(f);
+    return pattern(std::move(f));
 }
 
 Histogram::Marker& Histogram::Marker::reversescale(bool f) {
     json["reversescale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker& Histogram::Marker::reversescale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return reversescale(std::move(f));
+}
 
 Histogram::Marker& Histogram::Marker::showscale(bool f) {
     json["showscale"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker& Histogram::Marker::showscale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showscale(std::move(f));
 }
 
 std::string Histogram::Marker::Colorbar::to_string(Exponentformat e) {
@@ -1330,21 +2164,45 @@ Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::bgcolor(std::string f)
     json["bgcolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
+}
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::bordercolor(std::string f) {
     json["bordercolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::bordercolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bordercolor(std::move(f));
 }
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::borderwidth(double f) {
     json["borderwidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::borderwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return borderwidth(std::move(f));
+}
 
 template <typename T>
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::dtick(T f) {
     json["dtick"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::dtick(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return dtick(std::move(f));
 }
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::exponentformat(enum Exponentformat f) {
@@ -1357,10 +2215,22 @@ Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::labelalias(T f) {
     json["labelalias"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::labelalias(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return labelalias(std::move(f));
+}
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::len(double f) {
     json["len"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::len(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return len(std::move(f));
 }
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::lenmode(enum Lenmode f) {
@@ -1372,10 +2242,22 @@ Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::minexponent(double f) 
     json["minexponent"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::minexponent(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return minexponent(std::move(f));
+}
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::nticks(int f) {
     json["nticks"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::nticks(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return nticks(std::move(f));
 }
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::orientation(enum Orientation f) {
@@ -1387,15 +2269,33 @@ Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::outlinecolor(std::stri
     json["outlinecolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::outlinecolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return outlinecolor(std::move(f));
+}
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::outlinewidth(double f) {
     json["outlinewidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::outlinewidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return outlinewidth(std::move(f));
+}
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::separatethousands(bool f) {
     json["separatethousands"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::separatethousands(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return separatethousands(std::move(f));
 }
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::showexponent(enum Showexponent f) {
@@ -1406,6 +2306,12 @@ Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::showexponent(enum Show
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::showticklabels(bool f) {
     json["showticklabels"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::showticklabels(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return showticklabels(std::move(f));
 }
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::showtickprefix(enum Showtickprefix f) {
@@ -1422,6 +2328,12 @@ Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::thickness(double f) {
     json["thickness"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::thickness(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return thickness(std::move(f));
+}
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::thicknessmode(enum Thicknessmode f) {
     json["thicknessmode"] = to_string(f);
@@ -1433,30 +2345,66 @@ Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tick0(T f) {
     json["tick0"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tick0(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return tick0(std::move(f));
+}
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickangle(double f) {
     json["tickangle"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickangle(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return tickangle(std::move(f));
 }
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickcolor(std::string f) {
     json["tickcolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickcolor(std::move(f));
+}
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickfont(Tickfont f) {
     json["tickfont"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickfont(Callable&& c) {
+    Tickfont f{};
+    std::forward<Callable>(c)(f);
+    return tickfont(std::move(f));
 }
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickformat(std::string f) {
     json["tickformat"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickformat(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickformat(std::move(f));
+}
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickformatstops(Tickformatstops f) {
     json["tickformatstops"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickformatstops(Callable&& c) {
+    Tickformatstops f{};
+    std::forward<Callable>(c)(f);
+    return tickformatstops(std::move(f));
 }
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ticklabeloverflow(enum Ticklabeloverflow f) {
@@ -1473,10 +2421,22 @@ Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ticklabelstep(int f) {
     json["ticklabelstep"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ticklabelstep(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return ticklabelstep(std::move(f));
+}
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ticklen(double f) {
     json["ticklen"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ticklen(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return ticklen(std::move(f));
 }
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickmode(enum Tickmode f) {
@@ -1488,6 +2448,12 @@ Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickprefix(std::string
     json["tickprefix"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickprefix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickprefix(std::move(f));
+}
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ticks(enum Ticks f) {
     json["ticks"] = to_string(f);
@@ -1498,16 +2464,34 @@ Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ticksuffix(std::string
     json["ticksuffix"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ticksuffix(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ticksuffix(std::move(f));
+}
 
 template <typename T, typename>
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ticktext(std::vector<T> f) {
     json["ticktext"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ticktext(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return ticktext(std::move(f));
+}
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ticktextsrc(std::string f) {
     json["ticktextsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ticktextsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return ticktextsrc(std::move(f));
 }
 
 template <typename T, typename>
@@ -1515,25 +2499,55 @@ Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickvals(std::vector<T
     json["tickvals"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickvals(Callable&& c) {
+    std::vector<T> f{};
+    std::forward<Callable>(c)(f);
+    return tickvals(std::move(f));
+}
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickvalssrc(std::string f) {
     json["tickvalssrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickvalssrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return tickvalssrc(std::move(f));
 }
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickwidth(double f) {
     json["tickwidth"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::tickwidth(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return tickwidth(std::move(f));
+}
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::title(Title f) {
     json["title"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::title(Callable&& c) {
+    Title f{};
+    std::forward<Callable>(c)(f);
+    return title(std::move(f));
+}
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::x(double f) {
     json["x"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::x(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return x(std::move(f));
 }
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::xanchor(enum Xanchor f) {
@@ -1545,6 +2559,12 @@ Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::xpad(double f) {
     json["xpad"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::xpad(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return xpad(std::move(f));
+}
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::xref(enum Xref f) {
     json["xref"] = to_string(f);
@@ -1555,6 +2575,12 @@ Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::y(double f) {
     json["y"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::y(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return y(std::move(f));
+}
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::yanchor(enum Yanchor f) {
     json["yanchor"] = to_string(f);
@@ -1564,6 +2590,12 @@ Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::yanchor(enum Yanchor f
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ypad(double f) {
     json["ypad"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::ypad(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return ypad(std::move(f));
 }
 
 Histogram::Marker::Colorbar& Histogram::Marker::Colorbar::yref(enum Yref f) {
@@ -1606,25 +2638,55 @@ Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::co
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::style(enum Style f) {
@@ -1646,11 +2708,23 @@ Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::we
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar::Tickfont& Histogram::Marker::Colorbar::Tickfont::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Histogram::Marker::Colorbar::Tickformatstops& Histogram::Marker::Colorbar::Tickformatstops::tickformatstop(Tickformatstop f) {
     json["tickformatstop"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Colorbar::Tickformatstops& Histogram::Marker::Colorbar::Tickformatstops::tickformatstop(Callable&& c) {
+    Tickformatstop f{};
+    std::forward<Callable>(c)(f);
+    return tickformatstop(std::move(f));
 }
 
 
@@ -1658,25 +2732,55 @@ Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& Histogram::Marker:
     json["dtickrange"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(Callable&& c) {
+    std::vector<double> f{};
+    std::forward<Callable>(c)(f);
+    return dtickrange(std::move(f));
+}
 
 Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop::enabled(bool f) {
     json["enabled"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop::enabled(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return enabled(std::move(f));
 }
 
 Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop::name(std::string f) {
     json["name"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop::name(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return name(std::move(f));
+}
 
 Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop::templateitemname(std::string f) {
     json["templateitemname"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop::templateitemname(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return templateitemname(std::move(f));
+}
 
 Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop::value(std::string f) {
     json["value"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop::value(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return value(std::move(f));
 }
 
 std::string Histogram::Marker::Colorbar::Title::to_string(Side e) {
@@ -1693,6 +2797,12 @@ Histogram::Marker::Colorbar::Title& Histogram::Marker::Colorbar::Title::font(Fon
     json["font"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar::Title& Histogram::Marker::Colorbar::Title::font(Callable&& c) {
+    Font f{};
+    std::forward<Callable>(c)(f);
+    return font(std::move(f));
+}
 
 Histogram::Marker::Colorbar::Title& Histogram::Marker::Colorbar::Title::side(enum Side f) {
     json["side"] = to_string(f);
@@ -1702,6 +2812,12 @@ Histogram::Marker::Colorbar::Title& Histogram::Marker::Colorbar::Title::side(enu
 Histogram::Marker::Colorbar::Title& Histogram::Marker::Colorbar::Title::text(std::string f) {
     json["text"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Colorbar::Title& Histogram::Marker::Colorbar::Title::text(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return text(std::move(f));
 }
 
 std::string Histogram::Marker::Colorbar::Title::Font::to_string(Style e) {
@@ -1739,25 +2855,55 @@ Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Fo
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::style(enum Style f) {
@@ -1779,36 +2925,78 @@ Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Fo
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Colorbar::Title::Font& Histogram::Marker::Colorbar::Title::Font::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Histogram::Marker::Line& Histogram::Marker::Line::autocolorscale(bool f) {
     json["autocolorscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Line& Histogram::Marker::Line::autocolorscale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return autocolorscale(std::move(f));
+}
 
 Histogram::Marker::Line& Histogram::Marker::Line::cauto(bool f) {
     json["cauto"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Line& Histogram::Marker::Line::cauto(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return cauto(std::move(f));
 }
 
 Histogram::Marker::Line& Histogram::Marker::Line::cmax(double f) {
     json["cmax"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Line& Histogram::Marker::Line::cmax(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmax(std::move(f));
+}
 
 Histogram::Marker::Line& Histogram::Marker::Line::cmid(double f) {
     json["cmid"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Line& Histogram::Marker::Line::cmid(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmid(std::move(f));
 }
 
 Histogram::Marker::Line& Histogram::Marker::Line::cmin(double f) {
     json["cmin"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Line& Histogram::Marker::Line::cmin(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return cmin(std::move(f));
+}
 
 Histogram::Marker::Line& Histogram::Marker::Line::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Line& Histogram::Marker::Line::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
 }
 Histogram::Marker::Line& Histogram::Marker::Line::color(std::vector<std::string> f) {
     json["color"] = std::move(f);
@@ -1819,6 +3007,12 @@ Histogram::Marker::Line& Histogram::Marker::Line::coloraxis(std::string f) {
     json["coloraxis"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Line& Histogram::Marker::Line::coloraxis(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return coloraxis(std::move(f));
+}
 
 Histogram::Marker::Line& Histogram::Marker::Line::colorscale(std::string f) {
     json["colorscale"] = std::move(f);
@@ -1828,20 +3022,44 @@ Histogram::Marker::Line& Histogram::Marker::Line::colorscale(std::vector<std::pa
     json["colorscale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Line& Histogram::Marker::Line::colorscale(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorscale(std::move(f));
+}
 
 Histogram::Marker::Line& Histogram::Marker::Line::colorsrc(std::string f) {
     json["colorsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Line& Histogram::Marker::Line::colorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return colorsrc(std::move(f));
 }
 
 Histogram::Marker::Line& Histogram::Marker::Line::reversescale(bool f) {
     json["reversescale"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Line& Histogram::Marker::Line::reversescale(Callable&& c) {
+    bool f{};
+    std::forward<Callable>(c)(f);
+    return reversescale(std::move(f));
+}
 
 Histogram::Marker::Line& Histogram::Marker::Line::width(double f) {
     json["width"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Line& Histogram::Marker::Line::width(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return width(std::move(f));
 }
 Histogram::Marker::Line& Histogram::Marker::Line::width(std::vector<double> f) {
     json["width"] = std::move(f);
@@ -1851,6 +3069,12 @@ Histogram::Marker::Line& Histogram::Marker::Line::width(std::vector<double> f) {
 Histogram::Marker::Line& Histogram::Marker::Line::widthsrc(std::string f) {
     json["widthsrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Line& Histogram::Marker::Line::widthsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return widthsrc(std::move(f));
 }
 
 std::string Histogram::Marker::Pattern::to_string(Fillmode e) {
@@ -1866,6 +3090,12 @@ Histogram::Marker::Pattern& Histogram::Marker::Pattern::bgcolor(std::string f) {
     json["bgcolor"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::bgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolor(std::move(f));
+}
 Histogram::Marker::Pattern& Histogram::Marker::Pattern::bgcolor(std::vector<std::string> f) {
     json["bgcolor"] = std::move(f);
     return *this;
@@ -1875,10 +3105,22 @@ Histogram::Marker::Pattern& Histogram::Marker::Pattern::bgcolorsrc(std::string f
     json["bgcolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::bgcolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return bgcolorsrc(std::move(f));
+}
 
 Histogram::Marker::Pattern& Histogram::Marker::Pattern::fgcolor(std::string f) {
     json["fgcolor"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::fgcolor(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return fgcolor(std::move(f));
 }
 Histogram::Marker::Pattern& Histogram::Marker::Pattern::fgcolor(std::vector<std::string> f) {
     json["fgcolor"] = std::move(f);
@@ -1889,10 +3131,22 @@ Histogram::Marker::Pattern& Histogram::Marker::Pattern::fgcolorsrc(std::string f
     json["fgcolorsrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::fgcolorsrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return fgcolorsrc(std::move(f));
+}
 
 Histogram::Marker::Pattern& Histogram::Marker::Pattern::fgopacity(double f) {
     json["fgopacity"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::fgopacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return fgopacity(std::move(f));
 }
 
 Histogram::Marker::Pattern& Histogram::Marker::Pattern::fillmode(enum Fillmode f) {
@@ -1904,6 +3158,12 @@ Histogram::Marker::Pattern& Histogram::Marker::Pattern::shape(std::string f) {
     json["shape"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::shape(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shape(std::move(f));
+}
 Histogram::Marker::Pattern& Histogram::Marker::Pattern::shape(std::vector<std::string> f) {
     json["shape"] = std::move(f);
     return *this;
@@ -1913,10 +3173,22 @@ Histogram::Marker::Pattern& Histogram::Marker::Pattern::shapesrc(std::string f) 
     json["shapesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::shapesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shapesrc(std::move(f));
+}
 
 Histogram::Marker::Pattern& Histogram::Marker::Pattern::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 Histogram::Marker::Pattern& Histogram::Marker::Pattern::size(std::vector<double> f) {
     json["size"] = std::move(f);
@@ -1927,10 +3199,22 @@ Histogram::Marker::Pattern& Histogram::Marker::Pattern::sizesrc(std::string f) {
     json["sizesrc"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::sizesrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return sizesrc(std::move(f));
+}
 
 Histogram::Marker::Pattern& Histogram::Marker::Pattern::solidity(double f) {
     json["solidity"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::solidity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return solidity(std::move(f));
 }
 Histogram::Marker::Pattern& Histogram::Marker::Pattern::solidity(std::vector<double> f) {
     json["solidity"] = std::move(f);
@@ -1940,6 +3224,12 @@ Histogram::Marker::Pattern& Histogram::Marker::Pattern::solidity(std::vector<dou
 Histogram::Marker::Pattern& Histogram::Marker::Pattern::soliditysrc(std::string f) {
     json["soliditysrc"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Marker::Pattern& Histogram::Marker::Pattern::soliditysrc(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return soliditysrc(std::move(f));
 }
 
 std::string Histogram::Outsidetextfont::to_string(Style e) {
@@ -1977,25 +3267,55 @@ Histogram::Outsidetextfont& Histogram::Outsidetextfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Outsidetextfont& Histogram::Outsidetextfont::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Histogram::Outsidetextfont& Histogram::Outsidetextfont::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Outsidetextfont& Histogram::Outsidetextfont::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Histogram::Outsidetextfont& Histogram::Outsidetextfont::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Outsidetextfont& Histogram::Outsidetextfont::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Histogram::Outsidetextfont& Histogram::Outsidetextfont::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Outsidetextfont& Histogram::Outsidetextfont::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Histogram::Outsidetextfont& Histogram::Outsidetextfont::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Outsidetextfont& Histogram::Outsidetextfont::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Histogram::Outsidetextfont& Histogram::Outsidetextfont::style(enum Style f) {
@@ -2017,16 +3337,34 @@ Histogram::Outsidetextfont& Histogram::Outsidetextfont::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Outsidetextfont& Histogram::Outsidetextfont::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Histogram::Selected& Histogram::Selected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Selected& Histogram::Selected::marker(Callable&& c) {
+    Marker f{};
+    std::forward<Callable>(c)(f);
+    return marker(std::move(f));
+}
 
 Histogram::Selected& Histogram::Selected::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Selected& Histogram::Selected::textfont(Callable&& c) {
+    Textfont f{};
+    std::forward<Callable>(c)(f);
+    return textfont(std::move(f));
 }
 
 
@@ -2034,10 +3372,22 @@ Histogram::Selected::Marker& Histogram::Selected::Marker::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Selected::Marker& Histogram::Selected::Marker::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Histogram::Selected::Marker& Histogram::Selected::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Selected::Marker& Histogram::Selected::Marker::opacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return opacity(std::move(f));
 }
 
 
@@ -2045,16 +3395,34 @@ Histogram::Selected::Textfont& Histogram::Selected::Textfont::color(std::string 
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Selected::Textfont& Histogram::Selected::Textfont::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 
 Histogram::Stream& Histogram::Stream::maxpoints(double f) {
     json["maxpoints"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Stream& Histogram::Stream::maxpoints(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return maxpoints(std::move(f));
+}
 
 Histogram::Stream& Histogram::Stream::token(std::string f) {
     json["token"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Stream& Histogram::Stream::token(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return token(std::move(f));
 }
 
 std::string Histogram::Textfont::to_string(Style e) {
@@ -2092,25 +3460,55 @@ Histogram::Textfont& Histogram::Textfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Textfont& Histogram::Textfont::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Histogram::Textfont& Histogram::Textfont::family(std::string f) {
     json["family"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Textfont& Histogram::Textfont::family(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return family(std::move(f));
 }
 
 Histogram::Textfont& Histogram::Textfont::lineposition(std::string f) {
     json["lineposition"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Textfont& Histogram::Textfont::lineposition(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return lineposition(std::move(f));
+}
 
 Histogram::Textfont& Histogram::Textfont::shadow(std::string f) {
     json["shadow"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Textfont& Histogram::Textfont::shadow(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return shadow(std::move(f));
+}
 
 Histogram::Textfont& Histogram::Textfont::size(double f) {
     json["size"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Textfont& Histogram::Textfont::size(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
 }
 
 Histogram::Textfont& Histogram::Textfont::style(enum Style f) {
@@ -2132,16 +3530,34 @@ Histogram::Textfont& Histogram::Textfont::weight(int f) {
     json["weight"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Textfont& Histogram::Textfont::weight(Callable&& c) {
+    int f{};
+    std::forward<Callable>(c)(f);
+    return weight(std::move(f));
+}
 
 
 Histogram::Unselected& Histogram::Unselected::marker(Marker f) {
     json["marker"] = std::move(f.json);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Unselected& Histogram::Unselected::marker(Callable&& c) {
+    Marker f{};
+    std::forward<Callable>(c)(f);
+    return marker(std::move(f));
+}
 
 Histogram::Unselected& Histogram::Unselected::textfont(Textfont f) {
     json["textfont"] = std::move(f.json);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Unselected& Histogram::Unselected::textfont(Callable&& c) {
+    Textfont f{};
+    std::forward<Callable>(c)(f);
+    return textfont(std::move(f));
 }
 
 
@@ -2149,16 +3565,34 @@ Histogram::Unselected::Marker& Histogram::Unselected::Marker::color(std::string 
     json["color"] = std::move(f);
     return *this;
 }
+template <typename Callable, typename>
+Histogram::Unselected::Marker& Histogram::Unselected::Marker::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
+}
 
 Histogram::Unselected::Marker& Histogram::Unselected::Marker::opacity(double f) {
     json["opacity"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Unselected::Marker& Histogram::Unselected::Marker::opacity(Callable&& c) {
+    double f{};
+    std::forward<Callable>(c)(f);
+    return opacity(std::move(f));
 }
 
 
 Histogram::Unselected::Textfont& Histogram::Unselected::Textfont::color(std::string f) {
     json["color"] = std::move(f);
     return *this;
+}
+template <typename Callable, typename>
+Histogram::Unselected::Textfont& Histogram::Unselected::Textfont::color(Callable&& c) {
+    std::string f{};
+    std::forward<Callable>(c)(f);
+    return color(std::move(f));
 }
 
 
@@ -2167,17 +3601,35 @@ Histogram::Xbins& Histogram::Xbins::end(T f) {
     json["end"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Histogram::Xbins& Histogram::Xbins::end(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return end(std::move(f));
+}
 
 template <typename T>
 Histogram::Xbins& Histogram::Xbins::size(T f) {
     json["size"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Histogram::Xbins& Histogram::Xbins::size(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
+}
 
 template <typename T>
 Histogram::Xbins& Histogram::Xbins::start(T f) {
     json["start"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Histogram::Xbins& Histogram::Xbins::start(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return start(std::move(f));
 }
 
 
@@ -2186,17 +3638,35 @@ Histogram::Ybins& Histogram::Ybins::end(T f) {
     json["end"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Histogram::Ybins& Histogram::Ybins::end(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return end(std::move(f));
+}
 
 template <typename T>
 Histogram::Ybins& Histogram::Ybins::size(T f) {
     json["size"] = std::move(f);
     return *this;
 }
+template <typename T, typename Callable, typename>
+Histogram::Ybins& Histogram::Ybins::size(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return size(std::move(f));
+}
 
 template <typename T>
 Histogram::Ybins& Histogram::Ybins::start(T f) {
     json["start"] = std::move(f);
     return *this;
+}
+template <typename T, typename Callable, typename>
+Histogram::Ybins& Histogram::Ybins::start(Callable&& c) {
+    T f{};
+    std::forward<Callable>(c)(f);
+    return start(std::move(f));
 }
 
 } // namespace plotlypp
