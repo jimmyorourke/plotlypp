@@ -29,10 +29,10 @@ class Sankey : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Arrangement {
-        SNAP,
-        PERPENDICULAR,
-        FREEFORM,
-        FIXED,
+        Snap,
+        Perpendicular,
+        Freeform,
+        Fixed,
     };
     static std::string to_string(Arrangement e);
 
@@ -43,9 +43,9 @@ class Sankey : public Trace {
     static std::string to_string(Orientation e);
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
@@ -70,7 +70,7 @@ class Sankey : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sankey& customdata(std::vector<T> f);
+    Sankey& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -102,7 +102,7 @@ class Sankey : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sankey& ids(std::vector<T> f);
+    Sankey& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -153,7 +153,7 @@ class Sankey : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Sankey& meta(Callable&& c);
     template <typename T>
-    Sankey& meta(std::vector<T> f);
+    Sankey& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Sankey& metasrc(std::string f);
@@ -244,12 +244,12 @@ class Sankey::Domain {
     Sankey::Domain& row(Callable&& c);
 
     // Sets the horizontal domain of this sankey trace (in plot fraction).
-    Sankey::Domain& x(std::vector<double> f);
+    Sankey::Domain& x(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Sankey::Domain& x(Callable&& c);
 
     // Sets the vertical domain of this sankey trace (in plot fraction).
-    Sankey::Domain& y(std::vector<double> f);
+    Sankey::Domain& y(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Sankey::Domain& y(Callable&& c);
 
@@ -264,9 +264,9 @@ class Sankey::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -288,7 +288,7 @@ class Sankey::Hoverlabel {
     Sankey::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Hoverlabel& bgcolor(Callable&& c);
-    Sankey::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Sankey::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Sankey::Hoverlabel& bgcolorsrc(std::string f);
@@ -299,7 +299,7 @@ class Sankey::Hoverlabel {
     Sankey::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Hoverlabel& bordercolor(Callable&& c);
-    Sankey::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Sankey::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Sankey::Hoverlabel& bordercolorsrc(std::string f);
@@ -318,7 +318,7 @@ class Sankey::Hoverlabel {
     Sankey::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Sankey::Hoverlabel& namelength(Callable&& c);
-    Sankey::Hoverlabel& namelength(std::vector<int> f);
+    Sankey::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Sankey::Hoverlabel& namelengthsrc(std::string f);
@@ -337,33 +337,33 @@ class Sankey::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Sankey::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Hoverlabel::Font& color(Callable&& c);
-    Sankey::Hoverlabel::Font& color(std::vector<std::string> f);
+    Sankey::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sankey::Hoverlabel::Font& colorsrc(std::string f);
@@ -380,7 +380,7 @@ class Sankey::Hoverlabel::Font {
     Sankey::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Hoverlabel::Font& family(Callable&& c);
-    Sankey::Hoverlabel::Font& family(std::vector<std::string> f);
+    Sankey::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Sankey::Hoverlabel::Font& familysrc(std::string f);
@@ -395,7 +395,7 @@ class Sankey::Hoverlabel::Font {
     Sankey::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Hoverlabel::Font& lineposition(Callable&& c);
-    Sankey::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Sankey::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Sankey::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -407,7 +407,7 @@ class Sankey::Hoverlabel::Font {
     Sankey::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Hoverlabel::Font& shadow(Callable&& c);
-    Sankey::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Sankey::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Sankey::Hoverlabel::Font& shadowsrc(std::string f);
@@ -417,7 +417,7 @@ class Sankey::Hoverlabel::Font {
     Sankey::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Sankey::Hoverlabel::Font& size(Callable&& c);
-    Sankey::Hoverlabel::Font& size(std::vector<double> f);
+    Sankey::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Sankey::Hoverlabel::Font& sizesrc(std::string f);
@@ -459,7 +459,7 @@ class Sankey::Hoverlabel::Font {
     Sankey::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Sankey::Hoverlabel::Font& weight(Callable&& c);
-    Sankey::Hoverlabel::Font& weight(std::vector<int> f);
+    Sankey::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Sankey::Hoverlabel::Font& weightsrc(std::string f);
@@ -501,26 +501,26 @@ class Sankey::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -588,9 +588,9 @@ class Sankey::Link {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Hoverinfo {
-        ALL,
-        NONE,
-        SKIP,
+        All,
+        None,
+        Skip,
     };
     static std::string to_string(Hoverinfo e);
 
@@ -608,7 +608,7 @@ class Sankey::Link {
     Sankey::Link& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Link& color(Callable&& c);
-    Sankey::Link& color(std::vector<std::string> f);
+    Sankey::Link& color(const std::vector<std::string>& f);
 
     Sankey::Link& colorscales(Colorscales f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, Colorscales&>>>
@@ -621,7 +621,7 @@ class Sankey::Link {
 
     // Assigns extra data to each link.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sankey::Link& customdata(std::vector<T> f);
+    Sankey::Link& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -637,7 +637,7 @@ class Sankey::Link {
     Sankey::Link& hovercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Link& hovercolor(Callable&& c);
-    Sankey::Link& hovercolor(std::vector<std::string> f);
+    Sankey::Link& hovercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovercolor`.
     Sankey::Link& hovercolorsrc(std::string f);
@@ -670,7 +670,7 @@ class Sankey::Link {
     Sankey::Link& hovertemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Link& hovertemplate(Callable&& c);
-    Sankey::Link& hovertemplate(std::vector<std::string> f);
+    Sankey::Link& hovertemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Sankey::Link& hovertemplatesrc(std::string f);
@@ -679,7 +679,7 @@ class Sankey::Link {
 
     // The shown name of the link.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sankey::Link& label(std::vector<T> f);
+    Sankey::Link& label(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -696,7 +696,7 @@ class Sankey::Link {
 
     // An integer number `[0..nodes.length - 1]` that represents the source node.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sankey::Link& source(std::vector<T> f);
+    Sankey::Link& source(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -709,7 +709,7 @@ class Sankey::Link {
 
     // An integer number `[0..nodes.length - 1]` that represents the target node.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sankey::Link& target(std::vector<T> f);
+    Sankey::Link& target(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -722,7 +722,7 @@ class Sankey::Link {
 
     // A numeric value representing the flow volume value.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sankey::Link& value(std::vector<T> f);
+    Sankey::Link& value(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -776,7 +776,7 @@ class Sankey::Link::Colorscales::Concentrationscales {
     // list:
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Sankey::Link::Colorscales::Concentrationscales& colorscale(std::string f);
-    Sankey::Link::Colorscales::Concentrationscales& colorscale(std::vector<std::pair<double, std::string>> f);
+    Sankey::Link::Colorscales::Concentrationscales& colorscale(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -815,9 +815,9 @@ class Sankey::Link::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -839,7 +839,7 @@ class Sankey::Link::Hoverlabel {
     Sankey::Link::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Link::Hoverlabel& bgcolor(Callable&& c);
-    Sankey::Link::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Sankey::Link::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Sankey::Link::Hoverlabel& bgcolorsrc(std::string f);
@@ -850,7 +850,7 @@ class Sankey::Link::Hoverlabel {
     Sankey::Link::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Link::Hoverlabel& bordercolor(Callable&& c);
-    Sankey::Link::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Sankey::Link::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Sankey::Link::Hoverlabel& bordercolorsrc(std::string f);
@@ -869,7 +869,7 @@ class Sankey::Link::Hoverlabel {
     Sankey::Link::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Sankey::Link::Hoverlabel& namelength(Callable&& c);
-    Sankey::Link::Hoverlabel& namelength(std::vector<int> f);
+    Sankey::Link::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Sankey::Link::Hoverlabel& namelengthsrc(std::string f);
@@ -888,33 +888,33 @@ class Sankey::Link::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Sankey::Link::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Link::Hoverlabel::Font& color(Callable&& c);
-    Sankey::Link::Hoverlabel::Font& color(std::vector<std::string> f);
+    Sankey::Link::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sankey::Link::Hoverlabel::Font& colorsrc(std::string f);
@@ -931,7 +931,7 @@ class Sankey::Link::Hoverlabel::Font {
     Sankey::Link::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Link::Hoverlabel::Font& family(Callable&& c);
-    Sankey::Link::Hoverlabel::Font& family(std::vector<std::string> f);
+    Sankey::Link::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Sankey::Link::Hoverlabel::Font& familysrc(std::string f);
@@ -946,7 +946,7 @@ class Sankey::Link::Hoverlabel::Font {
     Sankey::Link::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Link::Hoverlabel::Font& lineposition(Callable&& c);
-    Sankey::Link::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Sankey::Link::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Sankey::Link::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -958,7 +958,7 @@ class Sankey::Link::Hoverlabel::Font {
     Sankey::Link::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Link::Hoverlabel::Font& shadow(Callable&& c);
-    Sankey::Link::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Sankey::Link::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Sankey::Link::Hoverlabel::Font& shadowsrc(std::string f);
@@ -968,7 +968,7 @@ class Sankey::Link::Hoverlabel::Font {
     Sankey::Link::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Sankey::Link::Hoverlabel::Font& size(Callable&& c);
-    Sankey::Link::Hoverlabel::Font& size(std::vector<double> f);
+    Sankey::Link::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Sankey::Link::Hoverlabel::Font& sizesrc(std::string f);
@@ -1010,7 +1010,7 @@ class Sankey::Link::Hoverlabel::Font {
     Sankey::Link::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Sankey::Link::Hoverlabel::Font& weight(Callable&& c);
-    Sankey::Link::Hoverlabel::Font& weight(std::vector<int> f);
+    Sankey::Link::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Sankey::Link::Hoverlabel::Font& weightsrc(std::string f);
@@ -1031,7 +1031,7 @@ class Sankey::Link::Line {
     Sankey::Link::Line& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Link::Line& color(Callable&& c);
-    Sankey::Link::Line& color(std::vector<std::string> f);
+    Sankey::Link::Line& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sankey::Link::Line& colorsrc(std::string f);
@@ -1042,7 +1042,7 @@ class Sankey::Link::Line {
     Sankey::Link::Line& width(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Sankey::Link::Line& width(Callable&& c);
-    Sankey::Link::Line& width(std::vector<double> f);
+    Sankey::Link::Line& width(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `width`.
     Sankey::Link::Line& widthsrc(std::string f);
@@ -1061,17 +1061,17 @@ class Sankey::Node {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        JUSTIFY,
-        LEFT,
-        RIGHT,
-        CENTER,
+        Justify,
+        Left,
+        Right,
+        Center,
     };
     static std::string to_string(Align e);
 
     enum class Hoverinfo {
-        ALL,
-        NONE,
-        SKIP,
+        All,
+        None,
+        Skip,
     };
     static std::string to_string(Hoverinfo e);
 
@@ -1088,7 +1088,7 @@ class Sankey::Node {
     Sankey::Node& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Node& color(Callable&& c);
-    Sankey::Node& color(std::vector<std::string> f);
+    Sankey::Node& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sankey::Node& colorsrc(std::string f);
@@ -1097,7 +1097,7 @@ class Sankey::Node {
 
     // Assigns extra data to each node.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sankey::Node& customdata(std::vector<T> f);
+    Sankey::Node& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1110,7 +1110,7 @@ class Sankey::Node {
 
     // Groups of nodes. Each group is defined by an array with the indices of the nodes it contains. Multiple groups can
     // be specified.
-    Sankey::Node& groups(std::vector<double> f);
+    Sankey::Node& groups(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Sankey::Node& groups(Callable&& c);
 
@@ -1140,7 +1140,7 @@ class Sankey::Node {
     Sankey::Node& hovertemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Node& hovertemplate(Callable&& c);
-    Sankey::Node& hovertemplate(std::vector<std::string> f);
+    Sankey::Node& hovertemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Sankey::Node& hovertemplatesrc(std::string f);
@@ -1149,7 +1149,7 @@ class Sankey::Node {
 
     // The shown name of the node.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sankey::Node& label(std::vector<T> f);
+    Sankey::Node& label(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1176,7 +1176,7 @@ class Sankey::Node {
 
     // The normalized horizontal position of the node.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sankey::Node& x(std::vector<T> f);
+    Sankey::Node& x(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1189,7 +1189,7 @@ class Sankey::Node {
 
     // The normalized vertical position of the node.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sankey::Node& y(std::vector<T> f);
+    Sankey::Node& y(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1211,9 +1211,9 @@ class Sankey::Node::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -1235,7 +1235,7 @@ class Sankey::Node::Hoverlabel {
     Sankey::Node::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Node::Hoverlabel& bgcolor(Callable&& c);
-    Sankey::Node::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Sankey::Node::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Sankey::Node::Hoverlabel& bgcolorsrc(std::string f);
@@ -1246,7 +1246,7 @@ class Sankey::Node::Hoverlabel {
     Sankey::Node::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Node::Hoverlabel& bordercolor(Callable&& c);
-    Sankey::Node::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Sankey::Node::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Sankey::Node::Hoverlabel& bordercolorsrc(std::string f);
@@ -1265,7 +1265,7 @@ class Sankey::Node::Hoverlabel {
     Sankey::Node::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Sankey::Node::Hoverlabel& namelength(Callable&& c);
-    Sankey::Node::Hoverlabel& namelength(std::vector<int> f);
+    Sankey::Node::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Sankey::Node::Hoverlabel& namelengthsrc(std::string f);
@@ -1284,33 +1284,33 @@ class Sankey::Node::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Sankey::Node::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Node::Hoverlabel::Font& color(Callable&& c);
-    Sankey::Node::Hoverlabel::Font& color(std::vector<std::string> f);
+    Sankey::Node::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sankey::Node::Hoverlabel::Font& colorsrc(std::string f);
@@ -1327,7 +1327,7 @@ class Sankey::Node::Hoverlabel::Font {
     Sankey::Node::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Node::Hoverlabel::Font& family(Callable&& c);
-    Sankey::Node::Hoverlabel::Font& family(std::vector<std::string> f);
+    Sankey::Node::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Sankey::Node::Hoverlabel::Font& familysrc(std::string f);
@@ -1342,7 +1342,7 @@ class Sankey::Node::Hoverlabel::Font {
     Sankey::Node::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Node::Hoverlabel::Font& lineposition(Callable&& c);
-    Sankey::Node::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Sankey::Node::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Sankey::Node::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -1354,7 +1354,7 @@ class Sankey::Node::Hoverlabel::Font {
     Sankey::Node::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Node::Hoverlabel::Font& shadow(Callable&& c);
-    Sankey::Node::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Sankey::Node::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Sankey::Node::Hoverlabel::Font& shadowsrc(std::string f);
@@ -1364,7 +1364,7 @@ class Sankey::Node::Hoverlabel::Font {
     Sankey::Node::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Sankey::Node::Hoverlabel::Font& size(Callable&& c);
-    Sankey::Node::Hoverlabel::Font& size(std::vector<double> f);
+    Sankey::Node::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Sankey::Node::Hoverlabel::Font& sizesrc(std::string f);
@@ -1406,7 +1406,7 @@ class Sankey::Node::Hoverlabel::Font {
     Sankey::Node::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Sankey::Node::Hoverlabel::Font& weight(Callable&& c);
-    Sankey::Node::Hoverlabel::Font& weight(std::vector<int> f);
+    Sankey::Node::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Sankey::Node::Hoverlabel::Font& weightsrc(std::string f);
@@ -1427,7 +1427,7 @@ class Sankey::Node::Line {
     Sankey::Node::Line& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sankey::Node::Line& color(Callable&& c);
-    Sankey::Node::Line& color(std::vector<std::string> f);
+    Sankey::Node::Line& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sankey::Node::Line& colorsrc(std::string f);
@@ -1438,7 +1438,7 @@ class Sankey::Node::Line {
     Sankey::Node::Line& width(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Sankey::Node::Line& width(Callable&& c);
-    Sankey::Node::Line& width(std::vector<double> f);
+    Sankey::Node::Line& width(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `width`.
     Sankey::Node::Line& widthsrc(std::string f);
@@ -1479,26 +1479,26 @@ class Sankey::Textfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 

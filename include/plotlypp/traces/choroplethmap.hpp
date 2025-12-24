@@ -29,9 +29,9 @@ class Choroplethmap : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
@@ -75,7 +75,7 @@ class Choroplethmap : public Trace {
     // list:
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Choroplethmap& colorscale(std::string f);
-    Choroplethmap& colorscale(std::vector<std::pair<double, std::string>> f);
+    Choroplethmap& colorscale(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -84,7 +84,7 @@ class Choroplethmap : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Choroplethmap& customdata(std::vector<T> f);
+    Choroplethmap& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -117,7 +117,7 @@ class Choroplethmap : public Trace {
     Choroplethmap& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Choroplethmap& hoverinfo(Callable&& c);
-    Choroplethmap& hoverinfo(std::vector<std::string> f);
+    Choroplethmap& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Choroplethmap& hoverinfosrc(std::string f);
@@ -144,7 +144,7 @@ class Choroplethmap : public Trace {
     Choroplethmap& hovertemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Choroplethmap& hovertemplate(Callable&& c);
-    Choroplethmap& hovertemplate(std::vector<std::string> f);
+    Choroplethmap& hovertemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Choroplethmap& hovertemplatesrc(std::string f);
@@ -155,7 +155,7 @@ class Choroplethmap : public Trace {
     Choroplethmap& hovertext(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Choroplethmap& hovertext(Callable&& c);
-    Choroplethmap& hovertext(std::vector<std::string> f);
+    Choroplethmap& hovertext(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Choroplethmap& hovertextsrc(std::string f);
@@ -165,7 +165,7 @@ class Choroplethmap : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Choroplethmap& ids(std::vector<T> f);
+    Choroplethmap& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -208,7 +208,7 @@ class Choroplethmap : public Trace {
 
     // Sets which features found in *geojson* to plot using their feature `id` field.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Choroplethmap& locations(std::vector<T> f);
+    Choroplethmap& locations(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -234,7 +234,7 @@ class Choroplethmap : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Choroplethmap& meta(Callable&& c);
     template <typename T>
-    Choroplethmap& meta(std::vector<T> f);
+    Choroplethmap& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Choroplethmap& metasrc(std::string f);
@@ -288,7 +288,7 @@ class Choroplethmap : public Trace {
     Choroplethmap& text(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Choroplethmap& text(Callable&& c);
-    Choroplethmap& text(std::vector<std::string> f);
+    Choroplethmap& text(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `text`.
     Choroplethmap& textsrc(std::string f);
@@ -325,7 +325,7 @@ class Choroplethmap : public Trace {
 
     // Sets the color values.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Choroplethmap& z(std::vector<T> f);
+    Choroplethmap& z(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -368,17 +368,17 @@ class Choroplethmap::Colorbar {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Lenmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Lenmode e);
 
@@ -389,93 +389,93 @@ class Choroplethmap::Colorbar {
     static std::string to_string(Orientation e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Thicknessmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Thicknessmode e);
 
     enum class Ticklabeloverflow {
-        ALLOW,
-        HIDE_PAST_DIV,
-        HIDE_PAST_DOMAIN,
+        Allow,
+        HidePastDiv,
+        HidePastDomain,
     };
     static std::string to_string(Ticklabeloverflow e);
 
     enum class Ticklabelposition {
-        OUTSIDE,
-        INSIDE,
-        OUTSIDE_TOP,
-        INSIDE_TOP,
-        OUTSIDE_LEFT,
-        INSIDE_LEFT,
-        OUTSIDE_RIGHT,
-        INSIDE_RIGHT,
-        OUTSIDE_BOTTOM,
-        INSIDE_BOTTOM,
+        Outside,
+        Inside,
+        OutsideTop,
+        InsideTop,
+        OutsideLeft,
+        InsideLeft,
+        OutsideRight,
+        InsideRight,
+        OutsideBottom,
+        InsideBottom,
     };
     static std::string to_string(Ticklabelposition e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Xanchor {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Xref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Xref e);
 
     enum class Yanchor {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
     enum class Yref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Yref e);
 
@@ -687,7 +687,7 @@ class Choroplethmap::Colorbar {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Choroplethmap::Colorbar& ticktext(std::vector<T> f);
+    Choroplethmap::Colorbar& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -701,7 +701,7 @@ class Choroplethmap::Colorbar {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Choroplethmap::Colorbar& tickvals(std::vector<T> f);
+    Choroplethmap::Colorbar& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -777,26 +777,26 @@ class Choroplethmap::Colorbar::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -880,7 +880,7 @@ class Choroplethmap::Colorbar::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Choroplethmap::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Choroplethmap::Colorbar::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Choroplethmap::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -922,9 +922,9 @@ class Choroplethmap::Colorbar::Title {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
-        RIGHT,
-        TOP,
-        BOTTOM,
+        Right,
+        Top,
+        Bottom,
     };
     static std::string to_string(Side e);
 
@@ -957,26 +957,26 @@ class Choroplethmap::Colorbar::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1043,9 +1043,9 @@ class Choroplethmap::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -1067,7 +1067,7 @@ class Choroplethmap::Hoverlabel {
     Choroplethmap::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Choroplethmap::Hoverlabel& bgcolor(Callable&& c);
-    Choroplethmap::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Choroplethmap::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Choroplethmap::Hoverlabel& bgcolorsrc(std::string f);
@@ -1078,7 +1078,7 @@ class Choroplethmap::Hoverlabel {
     Choroplethmap::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Choroplethmap::Hoverlabel& bordercolor(Callable&& c);
-    Choroplethmap::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Choroplethmap::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Choroplethmap::Hoverlabel& bordercolorsrc(std::string f);
@@ -1097,7 +1097,7 @@ class Choroplethmap::Hoverlabel {
     Choroplethmap::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Choroplethmap::Hoverlabel& namelength(Callable&& c);
-    Choroplethmap::Hoverlabel& namelength(std::vector<int> f);
+    Choroplethmap::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Choroplethmap::Hoverlabel& namelengthsrc(std::string f);
@@ -1116,33 +1116,33 @@ class Choroplethmap::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Choroplethmap::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Choroplethmap::Hoverlabel::Font& color(Callable&& c);
-    Choroplethmap::Hoverlabel::Font& color(std::vector<std::string> f);
+    Choroplethmap::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Choroplethmap::Hoverlabel::Font& colorsrc(std::string f);
@@ -1159,7 +1159,7 @@ class Choroplethmap::Hoverlabel::Font {
     Choroplethmap::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Choroplethmap::Hoverlabel::Font& family(Callable&& c);
-    Choroplethmap::Hoverlabel::Font& family(std::vector<std::string> f);
+    Choroplethmap::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Choroplethmap::Hoverlabel::Font& familysrc(std::string f);
@@ -1174,7 +1174,7 @@ class Choroplethmap::Hoverlabel::Font {
     Choroplethmap::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Choroplethmap::Hoverlabel::Font& lineposition(Callable&& c);
-    Choroplethmap::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Choroplethmap::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Choroplethmap::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -1186,7 +1186,7 @@ class Choroplethmap::Hoverlabel::Font {
     Choroplethmap::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Choroplethmap::Hoverlabel::Font& shadow(Callable&& c);
-    Choroplethmap::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Choroplethmap::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Choroplethmap::Hoverlabel::Font& shadowsrc(std::string f);
@@ -1196,7 +1196,7 @@ class Choroplethmap::Hoverlabel::Font {
     Choroplethmap::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Choroplethmap::Hoverlabel::Font& size(Callable&& c);
-    Choroplethmap::Hoverlabel::Font& size(std::vector<double> f);
+    Choroplethmap::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Choroplethmap::Hoverlabel::Font& sizesrc(std::string f);
@@ -1238,7 +1238,7 @@ class Choroplethmap::Hoverlabel::Font {
     Choroplethmap::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Choroplethmap::Hoverlabel::Font& weight(Callable&& c);
-    Choroplethmap::Hoverlabel::Font& weight(std::vector<int> f);
+    Choroplethmap::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Choroplethmap::Hoverlabel::Font& weightsrc(std::string f);
@@ -1280,26 +1280,26 @@ class Choroplethmap::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1375,7 +1375,7 @@ class Choroplethmap::Marker {
     Choroplethmap::Marker& opacity(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Choroplethmap::Marker& opacity(Callable&& c);
-    Choroplethmap::Marker& opacity(std::vector<double> f);
+    Choroplethmap::Marker& opacity(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `opacity`.
     Choroplethmap::Marker& opacitysrc(std::string f);
@@ -1398,7 +1398,7 @@ class Choroplethmap::Marker::Line {
     Choroplethmap::Marker::Line& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Choroplethmap::Marker::Line& color(Callable&& c);
-    Choroplethmap::Marker::Line& color(std::vector<std::string> f);
+    Choroplethmap::Marker::Line& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Choroplethmap::Marker::Line& colorsrc(std::string f);
@@ -1409,7 +1409,7 @@ class Choroplethmap::Marker::Line {
     Choroplethmap::Marker::Line& width(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Choroplethmap::Marker::Line& width(Callable&& c);
-    Choroplethmap::Marker::Line& width(std::vector<double> f);
+    Choroplethmap::Marker::Line& width(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `width`.
     Choroplethmap::Marker::Line& widthsrc(std::string f);

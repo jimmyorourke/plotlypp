@@ -29,31 +29,31 @@ class Pie : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Direction {
-        CLOCKWISE,
-        COUNTERCLOCKWISE,
+        Clockwise,
+        Counterclockwise,
     };
     static std::string to_string(Direction e);
 
     enum class Insidetextorientation {
-        HORIZONTAL,
-        RADIAL,
-        TANGENTIAL,
-        AUTO,
+        Horizontal,
+        Radial,
+        Tangential,
+        Auto,
     };
     static std::string to_string(Insidetextorientation e);
 
     enum class Textposition {
-        INSIDE,
-        OUTSIDE,
-        AUTO,
-        NONE,
+        Inside,
+        Outside,
+        Auto,
+        None,
     };
     static std::string to_string(Textposition e);
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
@@ -78,7 +78,7 @@ class Pie : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Pie& customdata(std::vector<T> f);
+    Pie& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -115,7 +115,7 @@ class Pie : public Trace {
     Pie& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie& hoverinfo(Callable&& c);
-    Pie& hoverinfo(std::vector<std::string> f);
+    Pie& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Pie& hoverinfosrc(std::string f);
@@ -143,7 +143,7 @@ class Pie : public Trace {
     Pie& hovertemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie& hovertemplate(Callable&& c);
-    Pie& hovertemplate(std::vector<std::string> f);
+    Pie& hovertemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Pie& hovertemplatesrc(std::string f);
@@ -156,7 +156,7 @@ class Pie : public Trace {
     Pie& hovertext(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie& hovertext(Callable&& c);
-    Pie& hovertext(std::vector<std::string> f);
+    Pie& hovertext(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Pie& hovertextsrc(std::string f);
@@ -166,7 +166,7 @@ class Pie : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Pie& ids(std::vector<T> f);
+    Pie& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -200,7 +200,7 @@ class Pie : public Trace {
     // occurrences if `values` is not provided. For other array attributes (including color) we use the first non-empty
     // entry among all occurrences of the label.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Pie& labels(std::vector<T> f);
+    Pie& labels(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -256,7 +256,7 @@ class Pie : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Pie& meta(Callable&& c);
     template <typename T>
-    Pie& meta(std::vector<T> f);
+    Pie& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Pie& metasrc(std::string f);
@@ -283,7 +283,7 @@ class Pie : public Trace {
     Pie& pull(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Pie& pull(Callable&& c);
-    Pie& pull(std::vector<double> f);
+    Pie& pull(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `pull`.
     Pie& pullsrc(std::string f);
@@ -319,7 +319,7 @@ class Pie : public Trace {
     // be seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will
     // be seen in the hover labels.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Pie& text(std::vector<T> f);
+    Pie& text(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -363,7 +363,7 @@ class Pie : public Trace {
     Pie& texttemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie& texttemplate(Callable&& c);
-    Pie& texttemplate(std::vector<std::string> f);
+    Pie& texttemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `texttemplate`.
     Pie& texttemplatesrc(std::string f);
@@ -395,7 +395,7 @@ class Pie : public Trace {
 
     // Sets the values of the sectors. If omitted, we count occurrences of each label.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Pie& values(std::vector<T> f);
+    Pie& values(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -429,12 +429,12 @@ class Pie::Domain {
     Pie::Domain& row(Callable&& c);
 
     // Sets the horizontal domain of this pie trace (in plot fraction).
-    Pie::Domain& x(std::vector<double> f);
+    Pie::Domain& x(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Pie::Domain& x(Callable&& c);
 
     // Sets the vertical domain of this pie trace (in plot fraction).
-    Pie::Domain& y(std::vector<double> f);
+    Pie::Domain& y(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Pie::Domain& y(Callable&& c);
 
@@ -449,9 +449,9 @@ class Pie::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -473,7 +473,7 @@ class Pie::Hoverlabel {
     Pie::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Hoverlabel& bgcolor(Callable&& c);
-    Pie::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Pie::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Pie::Hoverlabel& bgcolorsrc(std::string f);
@@ -484,7 +484,7 @@ class Pie::Hoverlabel {
     Pie::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Hoverlabel& bordercolor(Callable&& c);
-    Pie::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Pie::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Pie::Hoverlabel& bordercolorsrc(std::string f);
@@ -503,7 +503,7 @@ class Pie::Hoverlabel {
     Pie::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Pie::Hoverlabel& namelength(Callable&& c);
-    Pie::Hoverlabel& namelength(std::vector<int> f);
+    Pie::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Pie::Hoverlabel& namelengthsrc(std::string f);
@@ -522,33 +522,33 @@ class Pie::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Pie::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Hoverlabel::Font& color(Callable&& c);
-    Pie::Hoverlabel::Font& color(std::vector<std::string> f);
+    Pie::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Pie::Hoverlabel::Font& colorsrc(std::string f);
@@ -565,7 +565,7 @@ class Pie::Hoverlabel::Font {
     Pie::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Hoverlabel::Font& family(Callable&& c);
-    Pie::Hoverlabel::Font& family(std::vector<std::string> f);
+    Pie::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Pie::Hoverlabel::Font& familysrc(std::string f);
@@ -580,7 +580,7 @@ class Pie::Hoverlabel::Font {
     Pie::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Hoverlabel::Font& lineposition(Callable&& c);
-    Pie::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Pie::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Pie::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -592,7 +592,7 @@ class Pie::Hoverlabel::Font {
     Pie::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Hoverlabel::Font& shadow(Callable&& c);
-    Pie::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Pie::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Pie::Hoverlabel::Font& shadowsrc(std::string f);
@@ -602,7 +602,7 @@ class Pie::Hoverlabel::Font {
     Pie::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Pie::Hoverlabel::Font& size(Callable&& c);
-    Pie::Hoverlabel::Font& size(std::vector<double> f);
+    Pie::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Pie::Hoverlabel::Font& sizesrc(std::string f);
@@ -644,7 +644,7 @@ class Pie::Hoverlabel::Font {
     Pie::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Pie::Hoverlabel::Font& weight(Callable&& c);
-    Pie::Hoverlabel::Font& weight(std::vector<int> f);
+    Pie::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Pie::Hoverlabel::Font& weightsrc(std::string f);
@@ -663,33 +663,33 @@ class Pie::Insidetextfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Pie::Insidetextfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Insidetextfont& color(Callable&& c);
-    Pie::Insidetextfont& color(std::vector<std::string> f);
+    Pie::Insidetextfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Pie::Insidetextfont& colorsrc(std::string f);
@@ -706,7 +706,7 @@ class Pie::Insidetextfont {
     Pie::Insidetextfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Insidetextfont& family(Callable&& c);
-    Pie::Insidetextfont& family(std::vector<std::string> f);
+    Pie::Insidetextfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Pie::Insidetextfont& familysrc(std::string f);
@@ -721,7 +721,7 @@ class Pie::Insidetextfont {
     Pie::Insidetextfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Insidetextfont& lineposition(Callable&& c);
-    Pie::Insidetextfont& lineposition(std::vector<std::string> f);
+    Pie::Insidetextfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Pie::Insidetextfont& linepositionsrc(std::string f);
@@ -733,7 +733,7 @@ class Pie::Insidetextfont {
     Pie::Insidetextfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Insidetextfont& shadow(Callable&& c);
-    Pie::Insidetextfont& shadow(std::vector<std::string> f);
+    Pie::Insidetextfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Pie::Insidetextfont& shadowsrc(std::string f);
@@ -743,7 +743,7 @@ class Pie::Insidetextfont {
     Pie::Insidetextfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Pie::Insidetextfont& size(Callable&& c);
-    Pie::Insidetextfont& size(std::vector<double> f);
+    Pie::Insidetextfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Pie::Insidetextfont& sizesrc(std::string f);
@@ -785,7 +785,7 @@ class Pie::Insidetextfont {
     Pie::Insidetextfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Pie::Insidetextfont& weight(Callable&& c);
-    Pie::Insidetextfont& weight(std::vector<int> f);
+    Pie::Insidetextfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Pie::Insidetextfont& weightsrc(std::string f);
@@ -827,26 +827,26 @@ class Pie::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -918,7 +918,7 @@ class Pie::Marker {
 
     // Sets the color of each sector. If not specified, the default trace color set is used to pick the sector colors.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Pie::Marker& colors(std::vector<T> f);
+    Pie::Marker& colors(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -952,7 +952,7 @@ class Pie::Marker::Line {
     Pie::Marker::Line& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Marker::Line& color(Callable&& c);
-    Pie::Marker::Line& color(std::vector<std::string> f);
+    Pie::Marker::Line& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Pie::Marker::Line& colorsrc(std::string f);
@@ -963,7 +963,7 @@ class Pie::Marker::Line {
     Pie::Marker::Line& width(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Pie::Marker::Line& width(Callable&& c);
-    Pie::Marker::Line& width(std::vector<double> f);
+    Pie::Marker::Line& width(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `width`.
     Pie::Marker::Line& widthsrc(std::string f);
@@ -982,8 +982,8 @@ class Pie::Marker::Pattern {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Fillmode {
-        REPLACE,
-        OVERLAY,
+        Replace,
+        Overlay,
     };
     static std::string to_string(Fillmode e);
 
@@ -992,7 +992,7 @@ class Pie::Marker::Pattern {
     Pie::Marker::Pattern& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Marker::Pattern& bgcolor(Callable&& c);
-    Pie::Marker::Pattern& bgcolor(std::vector<std::string> f);
+    Pie::Marker::Pattern& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Pie::Marker::Pattern& bgcolorsrc(std::string f);
@@ -1004,7 +1004,7 @@ class Pie::Marker::Pattern {
     Pie::Marker::Pattern& fgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Marker::Pattern& fgcolor(Callable&& c);
-    Pie::Marker::Pattern& fgcolor(std::vector<std::string> f);
+    Pie::Marker::Pattern& fgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `fgcolor`.
     Pie::Marker::Pattern& fgcolorsrc(std::string f);
@@ -1025,7 +1025,7 @@ class Pie::Marker::Pattern {
     Pie::Marker::Pattern& shape(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Marker::Pattern& shape(Callable&& c);
-    Pie::Marker::Pattern& shape(std::vector<std::string> f);
+    Pie::Marker::Pattern& shape(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shape`.
     Pie::Marker::Pattern& shapesrc(std::string f);
@@ -1037,7 +1037,7 @@ class Pie::Marker::Pattern {
     Pie::Marker::Pattern& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Pie::Marker::Pattern& size(Callable&& c);
-    Pie::Marker::Pattern& size(std::vector<double> f);
+    Pie::Marker::Pattern& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Pie::Marker::Pattern& sizesrc(std::string f);
@@ -1050,7 +1050,7 @@ class Pie::Marker::Pattern {
     Pie::Marker::Pattern& solidity(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Pie::Marker::Pattern& solidity(Callable&& c);
-    Pie::Marker::Pattern& solidity(std::vector<double> f);
+    Pie::Marker::Pattern& solidity(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `solidity`.
     Pie::Marker::Pattern& soliditysrc(std::string f);
@@ -1069,33 +1069,33 @@ class Pie::Outsidetextfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Pie::Outsidetextfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Outsidetextfont& color(Callable&& c);
-    Pie::Outsidetextfont& color(std::vector<std::string> f);
+    Pie::Outsidetextfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Pie::Outsidetextfont& colorsrc(std::string f);
@@ -1112,7 +1112,7 @@ class Pie::Outsidetextfont {
     Pie::Outsidetextfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Outsidetextfont& family(Callable&& c);
-    Pie::Outsidetextfont& family(std::vector<std::string> f);
+    Pie::Outsidetextfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Pie::Outsidetextfont& familysrc(std::string f);
@@ -1127,7 +1127,7 @@ class Pie::Outsidetextfont {
     Pie::Outsidetextfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Outsidetextfont& lineposition(Callable&& c);
-    Pie::Outsidetextfont& lineposition(std::vector<std::string> f);
+    Pie::Outsidetextfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Pie::Outsidetextfont& linepositionsrc(std::string f);
@@ -1139,7 +1139,7 @@ class Pie::Outsidetextfont {
     Pie::Outsidetextfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Outsidetextfont& shadow(Callable&& c);
-    Pie::Outsidetextfont& shadow(std::vector<std::string> f);
+    Pie::Outsidetextfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Pie::Outsidetextfont& shadowsrc(std::string f);
@@ -1149,7 +1149,7 @@ class Pie::Outsidetextfont {
     Pie::Outsidetextfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Pie::Outsidetextfont& size(Callable&& c);
-    Pie::Outsidetextfont& size(std::vector<double> f);
+    Pie::Outsidetextfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Pie::Outsidetextfont& sizesrc(std::string f);
@@ -1191,7 +1191,7 @@ class Pie::Outsidetextfont {
     Pie::Outsidetextfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Pie::Outsidetextfont& weight(Callable&& c);
-    Pie::Outsidetextfont& weight(std::vector<int> f);
+    Pie::Outsidetextfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Pie::Outsidetextfont& weightsrc(std::string f);
@@ -1232,33 +1232,33 @@ class Pie::Textfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Pie::Textfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Textfont& color(Callable&& c);
-    Pie::Textfont& color(std::vector<std::string> f);
+    Pie::Textfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Pie::Textfont& colorsrc(std::string f);
@@ -1275,7 +1275,7 @@ class Pie::Textfont {
     Pie::Textfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Textfont& family(Callable&& c);
-    Pie::Textfont& family(std::vector<std::string> f);
+    Pie::Textfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Pie::Textfont& familysrc(std::string f);
@@ -1290,7 +1290,7 @@ class Pie::Textfont {
     Pie::Textfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Textfont& lineposition(Callable&& c);
-    Pie::Textfont& lineposition(std::vector<std::string> f);
+    Pie::Textfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Pie::Textfont& linepositionsrc(std::string f);
@@ -1302,7 +1302,7 @@ class Pie::Textfont {
     Pie::Textfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Textfont& shadow(Callable&& c);
-    Pie::Textfont& shadow(std::vector<std::string> f);
+    Pie::Textfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Pie::Textfont& shadowsrc(std::string f);
@@ -1312,7 +1312,7 @@ class Pie::Textfont {
     Pie::Textfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Pie::Textfont& size(Callable&& c);
-    Pie::Textfont& size(std::vector<double> f);
+    Pie::Textfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Pie::Textfont& sizesrc(std::string f);
@@ -1354,7 +1354,7 @@ class Pie::Textfont {
     Pie::Textfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Pie::Textfont& weight(Callable&& c);
-    Pie::Textfont& weight(std::vector<int> f);
+    Pie::Textfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Pie::Textfont& weightsrc(std::string f);
@@ -1372,13 +1372,13 @@ class Pie::Title {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Position {
-        TOP_LEFT,
-        TOP_CENTER,
-        TOP_RIGHT,
-        MIDDLE_CENTER,
-        BOTTOM_LEFT,
-        BOTTOM_CENTER,
-        BOTTOM_RIGHT,
+        TopLeft,
+        TopCenter,
+        TopRight,
+        MiddleCenter,
+        BottomLeft,
+        BottomCenter,
+        BottomRight,
     };
     static std::string to_string(Position e);
 
@@ -1410,33 +1410,33 @@ class Pie::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Pie::Title::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Title::Font& color(Callable&& c);
-    Pie::Title::Font& color(std::vector<std::string> f);
+    Pie::Title::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Pie::Title::Font& colorsrc(std::string f);
@@ -1453,7 +1453,7 @@ class Pie::Title::Font {
     Pie::Title::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Title::Font& family(Callable&& c);
-    Pie::Title::Font& family(std::vector<std::string> f);
+    Pie::Title::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Pie::Title::Font& familysrc(std::string f);
@@ -1468,7 +1468,7 @@ class Pie::Title::Font {
     Pie::Title::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Title::Font& lineposition(Callable&& c);
-    Pie::Title::Font& lineposition(std::vector<std::string> f);
+    Pie::Title::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Pie::Title::Font& linepositionsrc(std::string f);
@@ -1480,7 +1480,7 @@ class Pie::Title::Font {
     Pie::Title::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Pie::Title::Font& shadow(Callable&& c);
-    Pie::Title::Font& shadow(std::vector<std::string> f);
+    Pie::Title::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Pie::Title::Font& shadowsrc(std::string f);
@@ -1490,7 +1490,7 @@ class Pie::Title::Font {
     Pie::Title::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Pie::Title::Font& size(Callable&& c);
-    Pie::Title::Font& size(std::vector<double> f);
+    Pie::Title::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Pie::Title::Font& sizesrc(std::string f);
@@ -1532,7 +1532,7 @@ class Pie::Title::Font {
     Pie::Title::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Pie::Title::Font& weight(Callable&& c);
-    Pie::Title::Font& weight(std::vector<int> f);
+    Pie::Title::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Pie::Title::Font& weightsrc(std::string f);

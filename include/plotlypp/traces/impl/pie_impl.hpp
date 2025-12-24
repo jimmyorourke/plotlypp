@@ -12,37 +12,37 @@ namespace plotlypp {
 
 std::string Pie::to_string(Direction e) {
     switch(e) {
-        case Direction::CLOCKWISE: return "clockwise";
-        case Direction::COUNTERCLOCKWISE: return "counterclockwise";
+        case Direction::Clockwise: return "clockwise";
+        case Direction::Counterclockwise: return "counterclockwise";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::to_string(Insidetextorientation e) {
     switch(e) {
-        case Insidetextorientation::HORIZONTAL: return "horizontal";
-        case Insidetextorientation::RADIAL: return "radial";
-        case Insidetextorientation::TANGENTIAL: return "tangential";
-        case Insidetextorientation::AUTO: return "auto";
+        case Insidetextorientation::Horizontal: return "horizontal";
+        case Insidetextorientation::Radial: return "radial";
+        case Insidetextorientation::Tangential: return "tangential";
+        case Insidetextorientation::Auto: return "auto";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::to_string(Textposition e) {
     switch(e) {
-        case Textposition::INSIDE: return "inside";
-        case Textposition::OUTSIDE: return "outside";
-        case Textposition::AUTO: return "auto";
-        case Textposition::NONE: return "none";
+        case Textposition::Inside: return "inside";
+        case Textposition::Outside: return "outside";
+        case Textposition::Auto: return "auto";
+        case Textposition::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::to_string(Visible e) {
     switch(e) {
-        case Visible::TRUE: return "True";
-        case Visible::FALSE: return "False";
-        case Visible::LEGENDONLY: return "legendonly";
+        case Visible::True: return "True";
+        case Visible::False: return "False";
+        case Visible::Legendonly: return "legendonly";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -60,8 +60,8 @@ Pie& Pie::automargin(Callable&& c) {
 }
 
 template <typename T, typename>
-Pie& Pie::customdata(std::vector<T> f) {
-    json["customdata"] = std::move(f);
+Pie& Pie::customdata(const std::vector<T>& f) {
+    json["customdata"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -130,8 +130,8 @@ Pie& Pie::hoverinfo(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hoverinfo(std::move(f));
 }
-Pie& Pie::hoverinfo(std::vector<std::string> f) {
-    json["hoverinfo"] = std::move(f);
+Pie& Pie::hoverinfo(const std::vector<std::string>& f) {
+    json["hoverinfo"] = f;
     return *this;
 }
 
@@ -167,8 +167,8 @@ Pie& Pie::hovertemplate(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hovertemplate(std::move(f));
 }
-Pie& Pie::hovertemplate(std::vector<std::string> f) {
-    json["hovertemplate"] = std::move(f);
+Pie& Pie::hovertemplate(const std::vector<std::string>& f) {
+    json["hovertemplate"] = f;
     return *this;
 }
 
@@ -193,8 +193,8 @@ Pie& Pie::hovertext(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hovertext(std::move(f));
 }
-Pie& Pie::hovertext(std::vector<std::string> f) {
-    json["hovertext"] = std::move(f);
+Pie& Pie::hovertext(const std::vector<std::string>& f) {
+    json["hovertext"] = f;
     return *this;
 }
 
@@ -210,8 +210,8 @@ Pie& Pie::hovertextsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Pie& Pie::ids(std::vector<T> f) {
-    json["ids"] = std::move(f);
+Pie& Pie::ids(const std::vector<T>& f) {
+    json["ids"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -260,8 +260,8 @@ Pie& Pie::label0(Callable&& c) {
 }
 
 template <typename T, typename>
-Pie& Pie::labels(std::vector<T> f) {
-    json["labels"] = std::move(f);
+Pie& Pie::labels(const std::vector<T>& f) {
+    json["labels"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -360,8 +360,8 @@ Pie& Pie::meta(Callable&& c) {
     return meta(std::move(f));
 }
 template <typename T>
-Pie& Pie::meta(std::vector<T> f) {
-    json["meta"] = std::move(f);
+Pie& Pie::meta(const std::vector<T>& f) {
+    json["meta"] = f;
     return *this;
 }
 
@@ -419,8 +419,8 @@ Pie& Pie::pull(Callable&& c) {
     std::forward<Callable>(c)(f);
     return pull(std::move(f));
 }
-Pie& Pie::pull(std::vector<double> f) {
-    json["pull"] = std::move(f);
+Pie& Pie::pull(const std::vector<double>& f) {
+    json["pull"] = f;
     return *this;
 }
 
@@ -491,8 +491,8 @@ Pie& Pie::stream(Callable&& c) {
 }
 
 template <typename T, typename>
-Pie& Pie::text(std::vector<T> f) {
-    json["text"] = std::move(f);
+Pie& Pie::text(const std::vector<T>& f) {
+    json["text"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -567,8 +567,8 @@ Pie& Pie::texttemplate(Callable&& c) {
     std::forward<Callable>(c)(f);
     return texttemplate(std::move(f));
 }
-Pie& Pie::texttemplate(std::vector<std::string> f) {
-    json["texttemplate"] = std::move(f);
+Pie& Pie::texttemplate(const std::vector<std::string>& f) {
+    json["texttemplate"] = f;
     return *this;
 }
 
@@ -618,8 +618,8 @@ Pie& Pie::uirevision(Callable&& c) {
 }
 
 template <typename T, typename>
-Pie& Pie::values(std::vector<T> f) {
-    json["values"] = std::move(f);
+Pie& Pie::values(const std::vector<T>& f) {
+    json["values"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -668,8 +668,8 @@ Pie::Domain& Pie::Domain::row(Callable&& c) {
     return row(std::move(f));
 }
 
-Pie::Domain& Pie::Domain::x(std::vector<double> f) {
-    json["x"] = std::move(f);
+Pie::Domain& Pie::Domain::x(const std::vector<double>& f) {
+    json["x"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -679,8 +679,8 @@ Pie::Domain& Pie::Domain::x(Callable&& c) {
     return x(std::move(f));
 }
 
-Pie::Domain& Pie::Domain::y(std::vector<double> f) {
-    json["y"] = std::move(f);
+Pie::Domain& Pie::Domain::y(const std::vector<double>& f) {
+    json["y"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -692,9 +692,9 @@ Pie::Domain& Pie::Domain::y(Callable&& c) {
 
 std::string Pie::Hoverlabel::to_string(Align e) {
     switch(e) {
-        case Align::LEFT: return "left";
-        case Align::RIGHT: return "right";
-        case Align::AUTO: return "auto";
+        case Align::Left: return "left";
+        case Align::Right: return "right";
+        case Align::Auto: return "auto";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -732,8 +732,8 @@ Pie::Hoverlabel& Pie::Hoverlabel::bgcolor(Callable&& c) {
     std::forward<Callable>(c)(f);
     return bgcolor(std::move(f));
 }
-Pie::Hoverlabel& Pie::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
+Pie::Hoverlabel& Pie::Hoverlabel::bgcolor(const std::vector<std::string>& f) {
+    json["bgcolor"] = f;
     return *this;
 }
 
@@ -758,8 +758,8 @@ Pie::Hoverlabel& Pie::Hoverlabel::bordercolor(Callable&& c) {
     std::forward<Callable>(c)(f);
     return bordercolor(std::move(f));
 }
-Pie::Hoverlabel& Pie::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
+Pie::Hoverlabel& Pie::Hoverlabel::bordercolor(const std::vector<std::string>& f) {
+    json["bordercolor"] = f;
     return *this;
 }
 
@@ -795,8 +795,8 @@ Pie::Hoverlabel& Pie::Hoverlabel::namelength(Callable&& c) {
     std::forward<Callable>(c)(f);
     return namelength(std::move(f));
 }
-Pie::Hoverlabel& Pie::Hoverlabel::namelength(std::vector<int> f) {
-    json["namelength"] = std::move(f);
+Pie::Hoverlabel& Pie::Hoverlabel::namelength(const std::vector<int>& f) {
+    json["namelength"] = f;
     return *this;
 }
 
@@ -813,30 +813,30 @@ Pie::Hoverlabel& Pie::Hoverlabel::namelengthsrc(Callable&& c) {
 
 std::string Pie::Hoverlabel::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Hoverlabel::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Hoverlabel::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -852,8 +852,8 @@ Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -878,8 +878,8 @@ Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::family(Callable&& c) {
     std::forward<Callable>(c)(f);
     return family(std::move(f));
 }
-Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::family(std::vector<std::string> f) {
-    json["family"] = std::move(f);
+Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::family(const std::vector<std::string>& f) {
+    json["family"] = f;
     return *this;
 }
 
@@ -904,8 +904,8 @@ Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::lineposition(Callable&& c) {
     std::forward<Callable>(c)(f);
     return lineposition(std::move(f));
 }
-Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
-    json["lineposition"] = std::move(f);
+Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::lineposition(const std::vector<std::string>& f) {
+    json["lineposition"] = f;
     return *this;
 }
 
@@ -930,8 +930,8 @@ Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::shadow(Callable&& c) {
     std::forward<Callable>(c)(f);
     return shadow(std::move(f));
 }
-Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::shadow(std::vector<std::string> f) {
-    json["shadow"] = std::move(f);
+Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::shadow(const std::vector<std::string>& f) {
+    json["shadow"] = f;
     return *this;
 }
 
@@ -956,8 +956,8 @@ Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -1048,8 +1048,8 @@ Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::weight(Callable&& c) {
     std::forward<Callable>(c)(f);
     return weight(std::move(f));
 }
-Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::weight(std::vector<int> f) {
-    json["weight"] = std::move(f);
+Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::weight(const std::vector<int>& f) {
+    json["weight"] = f;
     return *this;
 }
 
@@ -1066,30 +1066,30 @@ Pie::Hoverlabel::Font& Pie::Hoverlabel::Font::weightsrc(Callable&& c) {
 
 std::string Pie::Insidetextfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Insidetextfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Insidetextfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1105,8 +1105,8 @@ Pie::Insidetextfont& Pie::Insidetextfont::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Pie::Insidetextfont& Pie::Insidetextfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Pie::Insidetextfont& Pie::Insidetextfont::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -1131,8 +1131,8 @@ Pie::Insidetextfont& Pie::Insidetextfont::family(Callable&& c) {
     std::forward<Callable>(c)(f);
     return family(std::move(f));
 }
-Pie::Insidetextfont& Pie::Insidetextfont::family(std::vector<std::string> f) {
-    json["family"] = std::move(f);
+Pie::Insidetextfont& Pie::Insidetextfont::family(const std::vector<std::string>& f) {
+    json["family"] = f;
     return *this;
 }
 
@@ -1157,8 +1157,8 @@ Pie::Insidetextfont& Pie::Insidetextfont::lineposition(Callable&& c) {
     std::forward<Callable>(c)(f);
     return lineposition(std::move(f));
 }
-Pie::Insidetextfont& Pie::Insidetextfont::lineposition(std::vector<std::string> f) {
-    json["lineposition"] = std::move(f);
+Pie::Insidetextfont& Pie::Insidetextfont::lineposition(const std::vector<std::string>& f) {
+    json["lineposition"] = f;
     return *this;
 }
 
@@ -1183,8 +1183,8 @@ Pie::Insidetextfont& Pie::Insidetextfont::shadow(Callable&& c) {
     std::forward<Callable>(c)(f);
     return shadow(std::move(f));
 }
-Pie::Insidetextfont& Pie::Insidetextfont::shadow(std::vector<std::string> f) {
-    json["shadow"] = std::move(f);
+Pie::Insidetextfont& Pie::Insidetextfont::shadow(const std::vector<std::string>& f) {
+    json["shadow"] = f;
     return *this;
 }
 
@@ -1209,8 +1209,8 @@ Pie::Insidetextfont& Pie::Insidetextfont::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Pie::Insidetextfont& Pie::Insidetextfont::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Pie::Insidetextfont& Pie::Insidetextfont::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -1301,8 +1301,8 @@ Pie::Insidetextfont& Pie::Insidetextfont::weight(Callable&& c) {
     std::forward<Callable>(c)(f);
     return weight(std::move(f));
 }
-Pie::Insidetextfont& Pie::Insidetextfont::weight(std::vector<int> f) {
-    json["weight"] = std::move(f);
+Pie::Insidetextfont& Pie::Insidetextfont::weight(const std::vector<int>& f) {
+    json["weight"] = f;
     return *this;
 }
 
@@ -1342,30 +1342,30 @@ Pie::Legendgrouptitle& Pie::Legendgrouptitle::text(Callable&& c) {
 
 std::string Pie::Legendgrouptitle::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1454,8 +1454,8 @@ Pie::Legendgrouptitle::Font& Pie::Legendgrouptitle::Font::weight(Callable&& c) {
 
 
 template <typename T, typename>
-Pie::Marker& Pie::Marker::colors(std::vector<T> f) {
-    json["colors"] = std::move(f);
+Pie::Marker& Pie::Marker::colors(const std::vector<T>& f) {
+    json["colors"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -1509,8 +1509,8 @@ Pie::Marker::Line& Pie::Marker::Line::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Pie::Marker::Line& Pie::Marker::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Pie::Marker::Line& Pie::Marker::Line::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -1535,8 +1535,8 @@ Pie::Marker::Line& Pie::Marker::Line::width(Callable&& c) {
     std::forward<Callable>(c)(f);
     return width(std::move(f));
 }
-Pie::Marker::Line& Pie::Marker::Line::width(std::vector<double> f) {
-    json["width"] = std::move(f);
+Pie::Marker::Line& Pie::Marker::Line::width(const std::vector<double>& f) {
+    json["width"] = f;
     return *this;
 }
 
@@ -1553,8 +1553,8 @@ Pie::Marker::Line& Pie::Marker::Line::widthsrc(Callable&& c) {
 
 std::string Pie::Marker::Pattern::to_string(Fillmode e) {
     switch(e) {
-        case Fillmode::REPLACE: return "replace";
-        case Fillmode::OVERLAY: return "overlay";
+        case Fillmode::Replace: return "replace";
+        case Fillmode::Overlay: return "overlay";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1570,8 +1570,8 @@ Pie::Marker::Pattern& Pie::Marker::Pattern::bgcolor(Callable&& c) {
     std::forward<Callable>(c)(f);
     return bgcolor(std::move(f));
 }
-Pie::Marker::Pattern& Pie::Marker::Pattern::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
+Pie::Marker::Pattern& Pie::Marker::Pattern::bgcolor(const std::vector<std::string>& f) {
+    json["bgcolor"] = f;
     return *this;
 }
 
@@ -1596,8 +1596,8 @@ Pie::Marker::Pattern& Pie::Marker::Pattern::fgcolor(Callable&& c) {
     std::forward<Callable>(c)(f);
     return fgcolor(std::move(f));
 }
-Pie::Marker::Pattern& Pie::Marker::Pattern::fgcolor(std::vector<std::string> f) {
-    json["fgcolor"] = std::move(f);
+Pie::Marker::Pattern& Pie::Marker::Pattern::fgcolor(const std::vector<std::string>& f) {
+    json["fgcolor"] = f;
     return *this;
 }
 
@@ -1638,8 +1638,8 @@ Pie::Marker::Pattern& Pie::Marker::Pattern::shape(Callable&& c) {
     std::forward<Callable>(c)(f);
     return shape(std::move(f));
 }
-Pie::Marker::Pattern& Pie::Marker::Pattern::shape(std::vector<std::string> f) {
-    json["shape"] = std::move(f);
+Pie::Marker::Pattern& Pie::Marker::Pattern::shape(const std::vector<std::string>& f) {
+    json["shape"] = f;
     return *this;
 }
 
@@ -1664,8 +1664,8 @@ Pie::Marker::Pattern& Pie::Marker::Pattern::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Pie::Marker::Pattern& Pie::Marker::Pattern::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Pie::Marker::Pattern& Pie::Marker::Pattern::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -1690,8 +1690,8 @@ Pie::Marker::Pattern& Pie::Marker::Pattern::solidity(Callable&& c) {
     std::forward<Callable>(c)(f);
     return solidity(std::move(f));
 }
-Pie::Marker::Pattern& Pie::Marker::Pattern::solidity(std::vector<double> f) {
-    json["solidity"] = std::move(f);
+Pie::Marker::Pattern& Pie::Marker::Pattern::solidity(const std::vector<double>& f) {
+    json["solidity"] = f;
     return *this;
 }
 
@@ -1708,30 +1708,30 @@ Pie::Marker::Pattern& Pie::Marker::Pattern::soliditysrc(Callable&& c) {
 
 std::string Pie::Outsidetextfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Outsidetextfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Outsidetextfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1747,8 +1747,8 @@ Pie::Outsidetextfont& Pie::Outsidetextfont::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Pie::Outsidetextfont& Pie::Outsidetextfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Pie::Outsidetextfont& Pie::Outsidetextfont::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -1773,8 +1773,8 @@ Pie::Outsidetextfont& Pie::Outsidetextfont::family(Callable&& c) {
     std::forward<Callable>(c)(f);
     return family(std::move(f));
 }
-Pie::Outsidetextfont& Pie::Outsidetextfont::family(std::vector<std::string> f) {
-    json["family"] = std::move(f);
+Pie::Outsidetextfont& Pie::Outsidetextfont::family(const std::vector<std::string>& f) {
+    json["family"] = f;
     return *this;
 }
 
@@ -1799,8 +1799,8 @@ Pie::Outsidetextfont& Pie::Outsidetextfont::lineposition(Callable&& c) {
     std::forward<Callable>(c)(f);
     return lineposition(std::move(f));
 }
-Pie::Outsidetextfont& Pie::Outsidetextfont::lineposition(std::vector<std::string> f) {
-    json["lineposition"] = std::move(f);
+Pie::Outsidetextfont& Pie::Outsidetextfont::lineposition(const std::vector<std::string>& f) {
+    json["lineposition"] = f;
     return *this;
 }
 
@@ -1825,8 +1825,8 @@ Pie::Outsidetextfont& Pie::Outsidetextfont::shadow(Callable&& c) {
     std::forward<Callable>(c)(f);
     return shadow(std::move(f));
 }
-Pie::Outsidetextfont& Pie::Outsidetextfont::shadow(std::vector<std::string> f) {
-    json["shadow"] = std::move(f);
+Pie::Outsidetextfont& Pie::Outsidetextfont::shadow(const std::vector<std::string>& f) {
+    json["shadow"] = f;
     return *this;
 }
 
@@ -1851,8 +1851,8 @@ Pie::Outsidetextfont& Pie::Outsidetextfont::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Pie::Outsidetextfont& Pie::Outsidetextfont::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Pie::Outsidetextfont& Pie::Outsidetextfont::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -1943,8 +1943,8 @@ Pie::Outsidetextfont& Pie::Outsidetextfont::weight(Callable&& c) {
     std::forward<Callable>(c)(f);
     return weight(std::move(f));
 }
-Pie::Outsidetextfont& Pie::Outsidetextfont::weight(std::vector<int> f) {
-    json["weight"] = std::move(f);
+Pie::Outsidetextfont& Pie::Outsidetextfont::weight(const std::vector<int>& f) {
+    json["weight"] = f;
     return *this;
 }
 
@@ -1984,30 +1984,30 @@ Pie::Stream& Pie::Stream::token(Callable&& c) {
 
 std::string Pie::Textfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Textfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Textfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -2023,8 +2023,8 @@ Pie::Textfont& Pie::Textfont::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Pie::Textfont& Pie::Textfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Pie::Textfont& Pie::Textfont::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -2049,8 +2049,8 @@ Pie::Textfont& Pie::Textfont::family(Callable&& c) {
     std::forward<Callable>(c)(f);
     return family(std::move(f));
 }
-Pie::Textfont& Pie::Textfont::family(std::vector<std::string> f) {
-    json["family"] = std::move(f);
+Pie::Textfont& Pie::Textfont::family(const std::vector<std::string>& f) {
+    json["family"] = f;
     return *this;
 }
 
@@ -2075,8 +2075,8 @@ Pie::Textfont& Pie::Textfont::lineposition(Callable&& c) {
     std::forward<Callable>(c)(f);
     return lineposition(std::move(f));
 }
-Pie::Textfont& Pie::Textfont::lineposition(std::vector<std::string> f) {
-    json["lineposition"] = std::move(f);
+Pie::Textfont& Pie::Textfont::lineposition(const std::vector<std::string>& f) {
+    json["lineposition"] = f;
     return *this;
 }
 
@@ -2101,8 +2101,8 @@ Pie::Textfont& Pie::Textfont::shadow(Callable&& c) {
     std::forward<Callable>(c)(f);
     return shadow(std::move(f));
 }
-Pie::Textfont& Pie::Textfont::shadow(std::vector<std::string> f) {
-    json["shadow"] = std::move(f);
+Pie::Textfont& Pie::Textfont::shadow(const std::vector<std::string>& f) {
+    json["shadow"] = f;
     return *this;
 }
 
@@ -2127,8 +2127,8 @@ Pie::Textfont& Pie::Textfont::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Pie::Textfont& Pie::Textfont::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Pie::Textfont& Pie::Textfont::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -2219,8 +2219,8 @@ Pie::Textfont& Pie::Textfont::weight(Callable&& c) {
     std::forward<Callable>(c)(f);
     return weight(std::move(f));
 }
-Pie::Textfont& Pie::Textfont::weight(std::vector<int> f) {
-    json["weight"] = std::move(f);
+Pie::Textfont& Pie::Textfont::weight(const std::vector<int>& f) {
+    json["weight"] = f;
     return *this;
 }
 
@@ -2237,13 +2237,13 @@ Pie::Textfont& Pie::Textfont::weightsrc(Callable&& c) {
 
 std::string Pie::Title::to_string(Position e) {
     switch(e) {
-        case Position::TOP_LEFT: return "top left";
-        case Position::TOP_CENTER: return "top center";
-        case Position::TOP_RIGHT: return "top right";
-        case Position::MIDDLE_CENTER: return "middle center";
-        case Position::BOTTOM_LEFT: return "bottom left";
-        case Position::BOTTOM_CENTER: return "bottom center";
-        case Position::BOTTOM_RIGHT: return "bottom right";
+        case Position::TopLeft: return "top left";
+        case Position::TopCenter: return "top center";
+        case Position::TopRight: return "top right";
+        case Position::MiddleCenter: return "middle center";
+        case Position::BottomLeft: return "bottom left";
+        case Position::BottomCenter: return "bottom center";
+        case Position::BottomRight: return "bottom right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -2278,30 +2278,30 @@ Pie::Title& Pie::Title::text(Callable&& c) {
 
 std::string Pie::Title::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Title::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Pie::Title::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -2317,8 +2317,8 @@ Pie::Title::Font& Pie::Title::Font::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Pie::Title::Font& Pie::Title::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Pie::Title::Font& Pie::Title::Font::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -2343,8 +2343,8 @@ Pie::Title::Font& Pie::Title::Font::family(Callable&& c) {
     std::forward<Callable>(c)(f);
     return family(std::move(f));
 }
-Pie::Title::Font& Pie::Title::Font::family(std::vector<std::string> f) {
-    json["family"] = std::move(f);
+Pie::Title::Font& Pie::Title::Font::family(const std::vector<std::string>& f) {
+    json["family"] = f;
     return *this;
 }
 
@@ -2369,8 +2369,8 @@ Pie::Title::Font& Pie::Title::Font::lineposition(Callable&& c) {
     std::forward<Callable>(c)(f);
     return lineposition(std::move(f));
 }
-Pie::Title::Font& Pie::Title::Font::lineposition(std::vector<std::string> f) {
-    json["lineposition"] = std::move(f);
+Pie::Title::Font& Pie::Title::Font::lineposition(const std::vector<std::string>& f) {
+    json["lineposition"] = f;
     return *this;
 }
 
@@ -2395,8 +2395,8 @@ Pie::Title::Font& Pie::Title::Font::shadow(Callable&& c) {
     std::forward<Callable>(c)(f);
     return shadow(std::move(f));
 }
-Pie::Title::Font& Pie::Title::Font::shadow(std::vector<std::string> f) {
-    json["shadow"] = std::move(f);
+Pie::Title::Font& Pie::Title::Font::shadow(const std::vector<std::string>& f) {
+    json["shadow"] = f;
     return *this;
 }
 
@@ -2421,8 +2421,8 @@ Pie::Title::Font& Pie::Title::Font::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Pie::Title::Font& Pie::Title::Font::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Pie::Title::Font& Pie::Title::Font::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -2513,8 +2513,8 @@ Pie::Title::Font& Pie::Title::Font::weight(Callable&& c) {
     std::forward<Callable>(c)(f);
     return weight(std::move(f));
 }
-Pie::Title::Font& Pie::Title::Font::weight(std::vector<int> f) {
-    json["weight"] = std::move(f);
+Pie::Title::Font& Pie::Title::Font::weight(const std::vector<int>& f) {
+    json["weight"] = f;
     return *this;
 }
 

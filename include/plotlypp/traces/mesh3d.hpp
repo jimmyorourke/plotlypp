@@ -36,75 +36,75 @@ class Mesh3D : public Trace {
     static std::string to_string(Delaunayaxis e);
 
     enum class Intensitymode {
-        VERTEX,
-        CELL,
+        Vertex,
+        Cell,
     };
     static std::string to_string(Intensitymode e);
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
     enum class Xcalendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Xcalendar e);
 
     enum class Ycalendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Ycalendar e);
 
     enum class Zcalendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Zcalendar e);
 
@@ -183,7 +183,7 @@ class Mesh3D : public Trace {
     // list:
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Mesh3D& colorscale(std::string f);
-    Mesh3D& colorscale(std::vector<std::pair<double, std::string>> f);
+    Mesh3D& colorscale(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -196,7 +196,7 @@ class Mesh3D : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Mesh3D& customdata(std::vector<T> f);
+    Mesh3D& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -214,7 +214,7 @@ class Mesh3D : public Trace {
 
     // Sets the color of each face Overrides *color* and *vertexcolor*.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Mesh3D& facecolor(std::vector<T> f);
+    Mesh3D& facecolor(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -239,7 +239,7 @@ class Mesh3D : public Trace {
     Mesh3D& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Mesh3D& hoverinfo(Callable&& c);
-    Mesh3D& hoverinfo(std::vector<std::string> f);
+    Mesh3D& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Mesh3D& hoverinfosrc(std::string f);
@@ -266,7 +266,7 @@ class Mesh3D : public Trace {
     Mesh3D& hovertemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Mesh3D& hovertemplate(Callable&& c);
-    Mesh3D& hovertemplate(std::vector<std::string> f);
+    Mesh3D& hovertemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Mesh3D& hovertemplatesrc(std::string f);
@@ -277,7 +277,7 @@ class Mesh3D : public Trace {
     Mesh3D& hovertext(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Mesh3D& hovertext(Callable&& c);
-    Mesh3D& hovertext(std::vector<std::string> f);
+    Mesh3D& hovertext(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Mesh3D& hovertextsrc(std::string f);
@@ -289,7 +289,7 @@ class Mesh3D : public Trace {
     // mesh, where `i[m] = n` points to the triplet `{x[n], y[n], z[n]}` in the vertex arrays. Therefore, each element
     // in `i` represents a point in space, which is the first vertex of a triangle.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Mesh3D& i(std::vector<T> f);
+    Mesh3D& i(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -298,7 +298,7 @@ class Mesh3D : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Mesh3D& ids(std::vector<T> f);
+    Mesh3D& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -312,7 +312,7 @@ class Mesh3D : public Trace {
     // Sets the intensity values for vertices or cells as defined by `intensitymode`. It can be used for plotting fields
     // on meshes.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Mesh3D& intensity(std::vector<T> f);
+    Mesh3D& intensity(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -337,7 +337,7 @@ class Mesh3D : public Trace {
     // mesh, where `j[m] = n` points to the triplet `{x[n], y[n], z[n]}` in the vertex arrays. Therefore, each element
     // in `j` represents a point in space, which is the second vertex of a triangle.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Mesh3D& j(std::vector<T> f);
+    Mesh3D& j(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -353,7 +353,7 @@ class Mesh3D : public Trace {
     // mesh, where `k[m] = n` points to the triplet  `{x[n], y[n], z[n]}` in the vertex arrays. Therefore, each element
     // in `k` represents a point in space, which is the third vertex of a triangle.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Mesh3D& k(std::vector<T> f);
+    Mesh3D& k(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -413,7 +413,7 @@ class Mesh3D : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Mesh3D& meta(Callable&& c);
     template <typename T>
-    Mesh3D& meta(std::vector<T> f);
+    Mesh3D& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Mesh3D& metasrc(std::string f);
@@ -465,7 +465,7 @@ class Mesh3D : public Trace {
     Mesh3D& text(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Mesh3D& text(Callable&& c);
-    Mesh3D& text(std::vector<std::string> f);
+    Mesh3D& text(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `text`.
     Mesh3D& textsrc(std::string f);
@@ -495,7 +495,7 @@ class Mesh3D : public Trace {
     // in the case of having vertex color data in RGBA format, the alpha color should be normalized to be between 0
     // and 1.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Mesh3D& vertexcolor(std::vector<T> f);
+    Mesh3D& vertexcolor(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -514,7 +514,7 @@ class Mesh3D : public Trace {
     // Sets the X coordinates of the vertices. The nth element of vectors `x`, `y` and `z` jointly represent the X, Y
     // and Z coordinates of the nth vertex.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Mesh3D& x(std::vector<T> f);
+    Mesh3D& x(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -542,7 +542,7 @@ class Mesh3D : public Trace {
     // Sets the Y coordinates of the vertices. The nth element of vectors `x`, `y` and `z` jointly represent the X, Y
     // and Z coordinates of the nth vertex.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Mesh3D& y(std::vector<T> f);
+    Mesh3D& y(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -570,7 +570,7 @@ class Mesh3D : public Trace {
     // Sets the Z coordinates of the vertices. The nth element of vectors `x`, `y` and `z` jointly represent the X, Y
     // and Z coordinates of the nth vertex.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Mesh3D& z(std::vector<T> f);
+    Mesh3D& z(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -603,17 +603,17 @@ class Mesh3D::Colorbar {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Lenmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Lenmode e);
 
@@ -624,93 +624,93 @@ class Mesh3D::Colorbar {
     static std::string to_string(Orientation e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Thicknessmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Thicknessmode e);
 
     enum class Ticklabeloverflow {
-        ALLOW,
-        HIDE_PAST_DIV,
-        HIDE_PAST_DOMAIN,
+        Allow,
+        HidePastDiv,
+        HidePastDomain,
     };
     static std::string to_string(Ticklabeloverflow e);
 
     enum class Ticklabelposition {
-        OUTSIDE,
-        INSIDE,
-        OUTSIDE_TOP,
-        INSIDE_TOP,
-        OUTSIDE_LEFT,
-        INSIDE_LEFT,
-        OUTSIDE_RIGHT,
-        INSIDE_RIGHT,
-        OUTSIDE_BOTTOM,
-        INSIDE_BOTTOM,
+        Outside,
+        Inside,
+        OutsideTop,
+        InsideTop,
+        OutsideLeft,
+        InsideLeft,
+        OutsideRight,
+        InsideRight,
+        OutsideBottom,
+        InsideBottom,
     };
     static std::string to_string(Ticklabelposition e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Xanchor {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Xref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Xref e);
 
     enum class Yanchor {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
     enum class Yref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Yref e);
 
@@ -922,7 +922,7 @@ class Mesh3D::Colorbar {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Mesh3D::Colorbar& ticktext(std::vector<T> f);
+    Mesh3D::Colorbar& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -936,7 +936,7 @@ class Mesh3D::Colorbar {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Mesh3D::Colorbar& tickvals(std::vector<T> f);
+    Mesh3D::Colorbar& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1012,26 +1012,26 @@ class Mesh3D::Colorbar::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1115,7 +1115,7 @@ class Mesh3D::Colorbar::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Mesh3D::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Mesh3D::Colorbar::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Mesh3D::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -1157,9 +1157,9 @@ class Mesh3D::Colorbar::Title {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
-        RIGHT,
-        TOP,
-        BOTTOM,
+        Right,
+        Top,
+        Bottom,
     };
     static std::string to_string(Side e);
 
@@ -1192,26 +1192,26 @@ class Mesh3D::Colorbar::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1303,9 +1303,9 @@ class Mesh3D::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -1327,7 +1327,7 @@ class Mesh3D::Hoverlabel {
     Mesh3D::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Mesh3D::Hoverlabel& bgcolor(Callable&& c);
-    Mesh3D::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Mesh3D::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Mesh3D::Hoverlabel& bgcolorsrc(std::string f);
@@ -1338,7 +1338,7 @@ class Mesh3D::Hoverlabel {
     Mesh3D::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Mesh3D::Hoverlabel& bordercolor(Callable&& c);
-    Mesh3D::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Mesh3D::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Mesh3D::Hoverlabel& bordercolorsrc(std::string f);
@@ -1357,7 +1357,7 @@ class Mesh3D::Hoverlabel {
     Mesh3D::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Mesh3D::Hoverlabel& namelength(Callable&& c);
-    Mesh3D::Hoverlabel& namelength(std::vector<int> f);
+    Mesh3D::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Mesh3D::Hoverlabel& namelengthsrc(std::string f);
@@ -1376,33 +1376,33 @@ class Mesh3D::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Mesh3D::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Mesh3D::Hoverlabel::Font& color(Callable&& c);
-    Mesh3D::Hoverlabel::Font& color(std::vector<std::string> f);
+    Mesh3D::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Mesh3D::Hoverlabel::Font& colorsrc(std::string f);
@@ -1419,7 +1419,7 @@ class Mesh3D::Hoverlabel::Font {
     Mesh3D::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Mesh3D::Hoverlabel::Font& family(Callable&& c);
-    Mesh3D::Hoverlabel::Font& family(std::vector<std::string> f);
+    Mesh3D::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Mesh3D::Hoverlabel::Font& familysrc(std::string f);
@@ -1434,7 +1434,7 @@ class Mesh3D::Hoverlabel::Font {
     Mesh3D::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Mesh3D::Hoverlabel::Font& lineposition(Callable&& c);
-    Mesh3D::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Mesh3D::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Mesh3D::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -1446,7 +1446,7 @@ class Mesh3D::Hoverlabel::Font {
     Mesh3D::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Mesh3D::Hoverlabel::Font& shadow(Callable&& c);
-    Mesh3D::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Mesh3D::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Mesh3D::Hoverlabel::Font& shadowsrc(std::string f);
@@ -1456,7 +1456,7 @@ class Mesh3D::Hoverlabel::Font {
     Mesh3D::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Mesh3D::Hoverlabel::Font& size(Callable&& c);
-    Mesh3D::Hoverlabel::Font& size(std::vector<double> f);
+    Mesh3D::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Mesh3D::Hoverlabel::Font& sizesrc(std::string f);
@@ -1498,7 +1498,7 @@ class Mesh3D::Hoverlabel::Font {
     Mesh3D::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Mesh3D::Hoverlabel::Font& weight(Callable&& c);
-    Mesh3D::Hoverlabel::Font& weight(std::vector<int> f);
+    Mesh3D::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Mesh3D::Hoverlabel::Font& weightsrc(std::string f);
@@ -1540,26 +1540,26 @@ class Mesh3D::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 

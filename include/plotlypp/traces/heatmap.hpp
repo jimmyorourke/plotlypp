@@ -29,82 +29,82 @@ class Heatmap : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
     enum class Xcalendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Xcalendar e);
 
     enum class Xperiodalignment {
-        START,
-        MIDDLE,
-        END,
+        Start,
+        Middle,
+        End,
     };
     static std::string to_string(Xperiodalignment e);
 
     enum class Xtype {
-        ARRAY,
-        SCALED,
+        Array,
+        Scaled,
     };
     static std::string to_string(Xtype e);
 
     enum class Ycalendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Ycalendar e);
 
     enum class Yperiodalignment {
-        START,
-        MIDDLE,
-        END,
+        Start,
+        Middle,
+        End,
     };
     static std::string to_string(Yperiodalignment e);
 
     enum class Ytype {
-        ARRAY,
-        SCALED,
+        Array,
+        Scaled,
     };
     static std::string to_string(Ytype e);
 
     enum class Zsmooth {
-        FAST,
-        BEST,
-        FALSE,
+        Fast,
+        Best,
+        False,
     };
     static std::string to_string(Zsmooth e);
 
@@ -140,7 +140,7 @@ class Heatmap : public Trace {
     // list:
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Heatmap& colorscale(std::string f);
-    Heatmap& colorscale(std::vector<std::pair<double, std::string>> f);
+    Heatmap& colorscale(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -155,7 +155,7 @@ class Heatmap : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Heatmap& customdata(std::vector<T> f);
+    Heatmap& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -184,7 +184,7 @@ class Heatmap : public Trace {
     Heatmap& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Heatmap& hoverinfo(Callable&& c);
-    Heatmap& hoverinfo(std::vector<std::string> f);
+    Heatmap& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Heatmap& hoverinfosrc(std::string f);
@@ -217,7 +217,7 @@ class Heatmap : public Trace {
     Heatmap& hovertemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Heatmap& hovertemplate(Callable&& c);
-    Heatmap& hovertemplate(std::vector<std::string> f);
+    Heatmap& hovertemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Heatmap& hovertemplatesrc(std::string f);
@@ -226,7 +226,7 @@ class Heatmap : public Trace {
 
     // Same as `text`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Heatmap& hovertext(std::vector<T> f);
+    Heatmap& hovertext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -240,7 +240,7 @@ class Heatmap : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Heatmap& ids(std::vector<T> f);
+    Heatmap& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -292,7 +292,7 @@ class Heatmap : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Heatmap& meta(Callable&& c);
     template <typename T>
-    Heatmap& meta(std::vector<T> f);
+    Heatmap& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Heatmap& metasrc(std::string f);
@@ -331,7 +331,7 @@ class Heatmap : public Trace {
 
     // Sets the text elements associated with each z value.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Heatmap& text(std::vector<T> f);
+    Heatmap& text(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -390,7 +390,7 @@ class Heatmap : public Trace {
 
     // Sets the x coordinates.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Heatmap& x(std::vector<T> f);
+    Heatmap& x(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -459,7 +459,7 @@ class Heatmap : public Trace {
 
     // Sets the y coordinates.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Heatmap& y(std::vector<T> f);
+    Heatmap& y(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -528,7 +528,7 @@ class Heatmap : public Trace {
 
     // Sets the z data.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Heatmap& z(std::vector<T> f);
+    Heatmap& z(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -588,17 +588,17 @@ class Heatmap::Colorbar {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Lenmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Lenmode e);
 
@@ -609,93 +609,93 @@ class Heatmap::Colorbar {
     static std::string to_string(Orientation e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Thicknessmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Thicknessmode e);
 
     enum class Ticklabeloverflow {
-        ALLOW,
-        HIDE_PAST_DIV,
-        HIDE_PAST_DOMAIN,
+        Allow,
+        HidePastDiv,
+        HidePastDomain,
     };
     static std::string to_string(Ticklabeloverflow e);
 
     enum class Ticklabelposition {
-        OUTSIDE,
-        INSIDE,
-        OUTSIDE_TOP,
-        INSIDE_TOP,
-        OUTSIDE_LEFT,
-        INSIDE_LEFT,
-        OUTSIDE_RIGHT,
-        INSIDE_RIGHT,
-        OUTSIDE_BOTTOM,
-        INSIDE_BOTTOM,
+        Outside,
+        Inside,
+        OutsideTop,
+        InsideTop,
+        OutsideLeft,
+        InsideLeft,
+        OutsideRight,
+        InsideRight,
+        OutsideBottom,
+        InsideBottom,
     };
     static std::string to_string(Ticklabelposition e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Xanchor {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Xref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Xref e);
 
     enum class Yanchor {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
     enum class Yref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Yref e);
 
@@ -907,7 +907,7 @@ class Heatmap::Colorbar {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Heatmap::Colorbar& ticktext(std::vector<T> f);
+    Heatmap::Colorbar& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -921,7 +921,7 @@ class Heatmap::Colorbar {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Heatmap::Colorbar& tickvals(std::vector<T> f);
+    Heatmap::Colorbar& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -997,26 +997,26 @@ class Heatmap::Colorbar::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1100,7 +1100,7 @@ class Heatmap::Colorbar::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Heatmap::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Heatmap::Colorbar::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Heatmap::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -1142,9 +1142,9 @@ class Heatmap::Colorbar::Title {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
-        RIGHT,
-        TOP,
-        BOTTOM,
+        Right,
+        Top,
+        Bottom,
     };
     static std::string to_string(Side e);
 
@@ -1177,26 +1177,26 @@ class Heatmap::Colorbar::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1263,9 +1263,9 @@ class Heatmap::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -1287,7 +1287,7 @@ class Heatmap::Hoverlabel {
     Heatmap::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Heatmap::Hoverlabel& bgcolor(Callable&& c);
-    Heatmap::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Heatmap::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Heatmap::Hoverlabel& bgcolorsrc(std::string f);
@@ -1298,7 +1298,7 @@ class Heatmap::Hoverlabel {
     Heatmap::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Heatmap::Hoverlabel& bordercolor(Callable&& c);
-    Heatmap::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Heatmap::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Heatmap::Hoverlabel& bordercolorsrc(std::string f);
@@ -1317,7 +1317,7 @@ class Heatmap::Hoverlabel {
     Heatmap::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Heatmap::Hoverlabel& namelength(Callable&& c);
-    Heatmap::Hoverlabel& namelength(std::vector<int> f);
+    Heatmap::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Heatmap::Hoverlabel& namelengthsrc(std::string f);
@@ -1336,33 +1336,33 @@ class Heatmap::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Heatmap::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Heatmap::Hoverlabel::Font& color(Callable&& c);
-    Heatmap::Hoverlabel::Font& color(std::vector<std::string> f);
+    Heatmap::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Heatmap::Hoverlabel::Font& colorsrc(std::string f);
@@ -1379,7 +1379,7 @@ class Heatmap::Hoverlabel::Font {
     Heatmap::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Heatmap::Hoverlabel::Font& family(Callable&& c);
-    Heatmap::Hoverlabel::Font& family(std::vector<std::string> f);
+    Heatmap::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Heatmap::Hoverlabel::Font& familysrc(std::string f);
@@ -1394,7 +1394,7 @@ class Heatmap::Hoverlabel::Font {
     Heatmap::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Heatmap::Hoverlabel::Font& lineposition(Callable&& c);
-    Heatmap::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Heatmap::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Heatmap::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -1406,7 +1406,7 @@ class Heatmap::Hoverlabel::Font {
     Heatmap::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Heatmap::Hoverlabel::Font& shadow(Callable&& c);
-    Heatmap::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Heatmap::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Heatmap::Hoverlabel::Font& shadowsrc(std::string f);
@@ -1416,7 +1416,7 @@ class Heatmap::Hoverlabel::Font {
     Heatmap::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Heatmap::Hoverlabel::Font& size(Callable&& c);
-    Heatmap::Hoverlabel::Font& size(std::vector<double> f);
+    Heatmap::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Heatmap::Hoverlabel::Font& sizesrc(std::string f);
@@ -1458,7 +1458,7 @@ class Heatmap::Hoverlabel::Font {
     Heatmap::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Heatmap::Hoverlabel::Font& weight(Callable&& c);
-    Heatmap::Hoverlabel::Font& weight(std::vector<int> f);
+    Heatmap::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Heatmap::Hoverlabel::Font& weightsrc(std::string f);
@@ -1500,26 +1500,26 @@ class Heatmap::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1609,26 +1609,26 @@ class Heatmap::Textfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 

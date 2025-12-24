@@ -12,25 +12,25 @@ namespace plotlypp {
 
 std::string Parcoords::to_string(Labelside e) {
     switch(e) {
-        case Labelside::TOP: return "top";
-        case Labelside::BOTTOM: return "bottom";
+        case Labelside::Top: return "top";
+        case Labelside::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::to_string(Visible e) {
     switch(e) {
-        case Visible::TRUE: return "True";
-        case Visible::FALSE: return "False";
-        case Visible::LEGENDONLY: return "legendonly";
+        case Visible::True: return "True";
+        case Visible::False: return "False";
+        case Visible::Legendonly: return "legendonly";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
 template <typename T, typename>
-Parcoords& Parcoords::customdata(std::vector<T> f) {
-    json["customdata"] = std::move(f);
+Parcoords& Parcoords::customdata(const std::vector<T>& f) {
+    json["customdata"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -74,8 +74,8 @@ Parcoords& Parcoords::domain(Callable&& c) {
 }
 
 template <typename T, typename>
-Parcoords& Parcoords::ids(std::vector<T> f) {
-    json["ids"] = std::move(f);
+Parcoords& Parcoords::ids(const std::vector<T>& f) {
+    json["ids"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -190,8 +190,8 @@ Parcoords& Parcoords::meta(Callable&& c) {
     return meta(std::move(f));
 }
 template <typename T>
-Parcoords& Parcoords::meta(std::vector<T> f) {
-    json["meta"] = std::move(f);
+Parcoords& Parcoords::meta(const std::vector<T>& f) {
+    json["meta"] = f;
     return *this;
 }
 
@@ -302,8 +302,8 @@ Parcoords::Dimensions& Parcoords::Dimensions::dimension(Callable&& c) {
 }
 
 
-Parcoords::Dimensions::Dimension& Parcoords::Dimensions::Dimension::constraintrange(std::vector<double> f) {
-    json["constraintrange"] = std::move(f);
+Parcoords::Dimensions::Dimension& Parcoords::Dimensions::Dimension::constraintrange(const std::vector<double>& f) {
+    json["constraintrange"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -346,8 +346,8 @@ Parcoords::Dimensions::Dimension& Parcoords::Dimensions::Dimension::name(Callabl
     return name(std::move(f));
 }
 
-Parcoords::Dimensions::Dimension& Parcoords::Dimensions::Dimension::range(std::vector<double> f) {
-    json["range"] = std::move(f);
+Parcoords::Dimensions::Dimension& Parcoords::Dimensions::Dimension::range(const std::vector<double>& f) {
+    json["range"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -380,8 +380,8 @@ Parcoords::Dimensions::Dimension& Parcoords::Dimensions::Dimension::tickformat(C
 }
 
 template <typename T, typename>
-Parcoords::Dimensions::Dimension& Parcoords::Dimensions::Dimension::ticktext(std::vector<T> f) {
-    json["ticktext"] = std::move(f);
+Parcoords::Dimensions::Dimension& Parcoords::Dimensions::Dimension::ticktext(const std::vector<T>& f) {
+    json["ticktext"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -403,8 +403,8 @@ Parcoords::Dimensions::Dimension& Parcoords::Dimensions::Dimension::ticktextsrc(
 }
 
 template <typename T, typename>
-Parcoords::Dimensions::Dimension& Parcoords::Dimensions::Dimension::tickvals(std::vector<T> f) {
-    json["tickvals"] = std::move(f);
+Parcoords::Dimensions::Dimension& Parcoords::Dimensions::Dimension::tickvals(const std::vector<T>& f) {
+    json["tickvals"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -426,8 +426,8 @@ Parcoords::Dimensions::Dimension& Parcoords::Dimensions::Dimension::tickvalssrc(
 }
 
 template <typename T, typename>
-Parcoords::Dimensions::Dimension& Parcoords::Dimensions::Dimension::values(std::vector<T> f) {
-    json["values"] = std::move(f);
+Parcoords::Dimensions::Dimension& Parcoords::Dimensions::Dimension::values(const std::vector<T>& f) {
+    json["values"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -482,8 +482,8 @@ Parcoords::Domain& Parcoords::Domain::row(Callable&& c) {
     return row(std::move(f));
 }
 
-Parcoords::Domain& Parcoords::Domain::x(std::vector<double> f) {
-    json["x"] = std::move(f);
+Parcoords::Domain& Parcoords::Domain::x(const std::vector<double>& f) {
+    json["x"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -493,8 +493,8 @@ Parcoords::Domain& Parcoords::Domain::x(Callable&& c) {
     return x(std::move(f));
 }
 
-Parcoords::Domain& Parcoords::Domain::y(std::vector<double> f) {
-    json["y"] = std::move(f);
+Parcoords::Domain& Parcoords::Domain::y(const std::vector<double>& f) {
+    json["y"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -506,30 +506,30 @@ Parcoords::Domain& Parcoords::Domain::y(Callable&& c) {
 
 std::string Parcoords::Labelfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Labelfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Labelfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -641,30 +641,30 @@ Parcoords::Legendgrouptitle& Parcoords::Legendgrouptitle::text(Callable&& c) {
 
 std::string Parcoords::Legendgrouptitle::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -817,8 +817,8 @@ Parcoords::Line& Parcoords::Line::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Parcoords::Line& Parcoords::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Parcoords::Line& Parcoords::Line::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -848,8 +848,8 @@ Parcoords::Line& Parcoords::Line::colorscale(std::string f) {
     json["colorscale"] = std::move(f);
     return *this;
 }
-Parcoords::Line& Parcoords::Line::colorscale(std::vector<std::pair<double, std::string>> f) {
-    json["colorscale"] = std::move(f);
+Parcoords::Line& Parcoords::Line::colorscale(const std::vector<std::pair<double, std::string>>& f) {
+    json["colorscale"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -894,10 +894,10 @@ Parcoords::Line& Parcoords::Line::showscale(Callable&& c) {
 
 std::string Parcoords::Line::Colorbar::to_string(Exponentformat e) {
     switch(e) {
-        case Exponentformat::NONE: return "none";
+        case Exponentformat::None: return "none";
         case Exponentformat::E: return "E";
-        case Exponentformat::POWER: return "power";
-        case Exponentformat::SI: return "SI";
+        case Exponentformat::Power: return "power";
+        case Exponentformat::Si: return "SI";
         case Exponentformat::B: return "B";
     }
     // Should be unreachable.
@@ -905,8 +905,8 @@ std::string Parcoords::Line::Colorbar::to_string(Exponentformat e) {
 }
 std::string Parcoords::Line::Colorbar::to_string(Lenmode e) {
     switch(e) {
-        case Lenmode::FRACTION: return "fraction";
-        case Lenmode::PIXELS: return "pixels";
+        case Lenmode::Fraction: return "fraction";
+        case Lenmode::Pixels: return "pixels";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -921,115 +921,115 @@ std::string Parcoords::Line::Colorbar::to_string(Orientation e) {
 }
 std::string Parcoords::Line::Colorbar::to_string(Showexponent e) {
     switch(e) {
-        case Showexponent::ALL: return "all";
-        case Showexponent::FIRST: return "first";
-        case Showexponent::LAST: return "last";
-        case Showexponent::NONE: return "none";
+        case Showexponent::All: return "all";
+        case Showexponent::First: return "first";
+        case Showexponent::Last: return "last";
+        case Showexponent::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Line::Colorbar::to_string(Showtickprefix e) {
     switch(e) {
-        case Showtickprefix::ALL: return "all";
-        case Showtickprefix::FIRST: return "first";
-        case Showtickprefix::LAST: return "last";
-        case Showtickprefix::NONE: return "none";
+        case Showtickprefix::All: return "all";
+        case Showtickprefix::First: return "first";
+        case Showtickprefix::Last: return "last";
+        case Showtickprefix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Line::Colorbar::to_string(Showticksuffix e) {
     switch(e) {
-        case Showticksuffix::ALL: return "all";
-        case Showticksuffix::FIRST: return "first";
-        case Showticksuffix::LAST: return "last";
-        case Showticksuffix::NONE: return "none";
+        case Showticksuffix::All: return "all";
+        case Showticksuffix::First: return "first";
+        case Showticksuffix::Last: return "last";
+        case Showticksuffix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Line::Colorbar::to_string(Thicknessmode e) {
     switch(e) {
-        case Thicknessmode::FRACTION: return "fraction";
-        case Thicknessmode::PIXELS: return "pixels";
+        case Thicknessmode::Fraction: return "fraction";
+        case Thicknessmode::Pixels: return "pixels";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Line::Colorbar::to_string(Ticklabeloverflow e) {
     switch(e) {
-        case Ticklabeloverflow::ALLOW: return "allow";
-        case Ticklabeloverflow::HIDE_PAST_DIV: return "hide past div";
-        case Ticklabeloverflow::HIDE_PAST_DOMAIN: return "hide past domain";
+        case Ticklabeloverflow::Allow: return "allow";
+        case Ticklabeloverflow::HidePastDiv: return "hide past div";
+        case Ticklabeloverflow::HidePastDomain: return "hide past domain";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Line::Colorbar::to_string(Ticklabelposition e) {
     switch(e) {
-        case Ticklabelposition::OUTSIDE: return "outside";
-        case Ticklabelposition::INSIDE: return "inside";
-        case Ticklabelposition::OUTSIDE_TOP: return "outside top";
-        case Ticklabelposition::INSIDE_TOP: return "inside top";
-        case Ticklabelposition::OUTSIDE_LEFT: return "outside left";
-        case Ticklabelposition::INSIDE_LEFT: return "inside left";
-        case Ticklabelposition::OUTSIDE_RIGHT: return "outside right";
-        case Ticklabelposition::INSIDE_RIGHT: return "inside right";
-        case Ticklabelposition::OUTSIDE_BOTTOM: return "outside bottom";
-        case Ticklabelposition::INSIDE_BOTTOM: return "inside bottom";
+        case Ticklabelposition::Outside: return "outside";
+        case Ticklabelposition::Inside: return "inside";
+        case Ticklabelposition::OutsideTop: return "outside top";
+        case Ticklabelposition::InsideTop: return "inside top";
+        case Ticklabelposition::OutsideLeft: return "outside left";
+        case Ticklabelposition::InsideLeft: return "inside left";
+        case Ticklabelposition::OutsideRight: return "outside right";
+        case Ticklabelposition::InsideRight: return "inside right";
+        case Ticklabelposition::OutsideBottom: return "outside bottom";
+        case Ticklabelposition::InsideBottom: return "inside bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Line::Colorbar::to_string(Tickmode e) {
     switch(e) {
-        case Tickmode::AUTO: return "auto";
-        case Tickmode::LINEAR: return "linear";
-        case Tickmode::ARRAY: return "array";
+        case Tickmode::Auto: return "auto";
+        case Tickmode::Linear: return "linear";
+        case Tickmode::Array: return "array";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Line::Colorbar::to_string(Ticks e) {
     switch(e) {
-        case Ticks::OUTSIDE: return "outside";
-        case Ticks::INSIDE: return "inside";
-        case Ticks::EMPTY: return "";
+        case Ticks::Outside: return "outside";
+        case Ticks::Inside: return "inside";
+        case Ticks::Empty: return "";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Line::Colorbar::to_string(Xanchor e) {
     switch(e) {
-        case Xanchor::LEFT: return "left";
-        case Xanchor::CENTER: return "center";
-        case Xanchor::RIGHT: return "right";
+        case Xanchor::Left: return "left";
+        case Xanchor::Center: return "center";
+        case Xanchor::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Line::Colorbar::to_string(Xref e) {
     switch(e) {
-        case Xref::CONTAINER: return "container";
-        case Xref::PAPER: return "paper";
+        case Xref::Container: return "container";
+        case Xref::Paper: return "paper";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Line::Colorbar::to_string(Yanchor e) {
     switch(e) {
-        case Yanchor::TOP: return "top";
-        case Yanchor::MIDDLE: return "middle";
-        case Yanchor::BOTTOM: return "bottom";
+        case Yanchor::Top: return "top";
+        case Yanchor::Middle: return "middle";
+        case Yanchor::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Line::Colorbar::to_string(Yref e) {
     switch(e) {
-        case Yref::CONTAINER: return "container";
-        case Yref::PAPER: return "paper";
+        case Yref::Container: return "container";
+        case Yref::Paper: return "paper";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1347,8 +1347,8 @@ Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::ticksuffix(Callable&& c) {
 }
 
 template <typename T, typename>
-Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::ticktext(std::vector<T> f) {
-    json["ticktext"] = std::move(f);
+Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::ticktext(const std::vector<T>& f) {
+    json["ticktext"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -1370,8 +1370,8 @@ Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::ticktextsrc(Callable&& c) 
 }
 
 template <typename T, typename>
-Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::tickvals(std::vector<T> f) {
-    json["tickvals"] = std::move(f);
+Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::tickvals(const std::vector<T>& f) {
+    json["tickvals"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -1480,30 +1480,30 @@ Parcoords::Line::Colorbar& Parcoords::Line::Colorbar::yref(enum Yref f) {
 
 std::string Parcoords::Line::Colorbar::Tickfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Line::Colorbar::Tickfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Line::Colorbar::Tickfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1603,8 +1603,8 @@ Parcoords::Line::Colorbar::Tickformatstops& Parcoords::Line::Colorbar::Tickforma
 }
 
 
-Parcoords::Line::Colorbar::Tickformatstops::Tickformatstop& Parcoords::Line::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
-    json["dtickrange"] = std::move(f);
+Parcoords::Line::Colorbar::Tickformatstops::Tickformatstop& Parcoords::Line::Colorbar::Tickformatstops::Tickformatstop::dtickrange(const std::vector<double>& f) {
+    json["dtickrange"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -1660,9 +1660,9 @@ Parcoords::Line::Colorbar::Tickformatstops::Tickformatstop& Parcoords::Line::Col
 
 std::string Parcoords::Line::Colorbar::Title::to_string(Side e) {
     switch(e) {
-        case Side::RIGHT: return "right";
-        case Side::TOP: return "top";
-        case Side::BOTTOM: return "bottom";
+        case Side::Right: return "right";
+        case Side::Top: return "top";
+        case Side::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1697,30 +1697,30 @@ Parcoords::Line::Colorbar::Title& Parcoords::Line::Colorbar::Title::text(Callabl
 
 std::string Parcoords::Line::Colorbar::Title::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Line::Colorbar::Title::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Line::Colorbar::Title::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1809,30 +1809,30 @@ Parcoords::Line::Colorbar::Title::Font& Parcoords::Line::Colorbar::Title::Font::
 
 std::string Parcoords::Rangefont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Rangefont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Rangefont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1944,30 +1944,30 @@ Parcoords::Stream& Parcoords::Stream::token(Callable&& c) {
 
 std::string Parcoords::Tickfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Tickfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Parcoords::Tickfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};

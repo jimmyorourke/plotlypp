@@ -12,9 +12,9 @@ namespace plotlypp {
 
 std::string Table::to_string(Visible e) {
     switch(e) {
-        case Visible::TRUE: return "True";
-        case Visible::FALSE: return "False";
-        case Visible::LEGENDONLY: return "legendonly";
+        case Visible::True: return "True";
+        case Visible::False: return "False";
+        case Visible::Legendonly: return "legendonly";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -32,8 +32,8 @@ Table& Table::cells(Callable&& c) {
 }
 
 template <typename T, typename>
-Table& Table::columnorder(std::vector<T> f) {
-    json["columnorder"] = std::move(f);
+Table& Table::columnorder(const std::vector<T>& f) {
+    json["columnorder"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -64,8 +64,8 @@ Table& Table::columnwidth(Callable&& c) {
     std::forward<Callable>(c)(f);
     return columnwidth(std::move(f));
 }
-Table& Table::columnwidth(std::vector<double> f) {
-    json["columnwidth"] = std::move(f);
+Table& Table::columnwidth(const std::vector<double>& f) {
+    json["columnwidth"] = f;
     return *this;
 }
 
@@ -81,8 +81,8 @@ Table& Table::columnwidthsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Table& Table::customdata(std::vector<T> f) {
-    json["customdata"] = std::move(f);
+Table& Table::customdata(const std::vector<T>& f) {
+    json["customdata"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -135,8 +135,8 @@ Table& Table::hoverinfo(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hoverinfo(std::move(f));
 }
-Table& Table::hoverinfo(std::vector<std::string> f) {
-    json["hoverinfo"] = std::move(f);
+Table& Table::hoverinfo(const std::vector<std::string>& f) {
+    json["hoverinfo"] = f;
     return *this;
 }
 
@@ -163,8 +163,8 @@ Table& Table::hoverlabel(Callable&& c) {
 }
 
 template <typename T, typename>
-Table& Table::ids(std::vector<T> f) {
-    json["ids"] = std::move(f);
+Table& Table::ids(const std::vector<T>& f) {
+    json["ids"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -241,8 +241,8 @@ Table& Table::meta(Callable&& c) {
     return meta(std::move(f));
 }
 template <typename T>
-Table& Table::meta(std::vector<T> f) {
-    json["meta"] = std::move(f);
+Table& Table::meta(const std::vector<T>& f) {
+    json["meta"] = f;
     return *this;
 }
 
@@ -309,9 +309,9 @@ Table& Table::visible(enum Visible f) {
 
 std::string Table::Cells::to_string(Align e) {
     switch(e) {
-        case Align::LEFT: return "left";
-        case Align::CENTER: return "center";
-        case Align::RIGHT: return "right";
+        case Align::Left: return "left";
+        case Align::Center: return "center";
+        case Align::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -362,8 +362,8 @@ Table::Cells& Table::Cells::font(Callable&& c) {
 }
 
 template <typename T, typename>
-Table::Cells& Table::Cells::format(std::vector<T> f) {
-    json["format"] = std::move(f);
+Table::Cells& Table::Cells::format(const std::vector<T>& f) {
+    json["format"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -416,8 +416,8 @@ Table::Cells& Table::Cells::prefix(Callable&& c) {
     std::forward<Callable>(c)(f);
     return prefix(std::move(f));
 }
-Table::Cells& Table::Cells::prefix(std::vector<std::string> f) {
-    json["prefix"] = std::move(f);
+Table::Cells& Table::Cells::prefix(const std::vector<std::string>& f) {
+    json["prefix"] = f;
     return *this;
 }
 
@@ -442,8 +442,8 @@ Table::Cells& Table::Cells::suffix(Callable&& c) {
     std::forward<Callable>(c)(f);
     return suffix(std::move(f));
 }
-Table::Cells& Table::Cells::suffix(std::vector<std::string> f) {
-    json["suffix"] = std::move(f);
+Table::Cells& Table::Cells::suffix(const std::vector<std::string>& f) {
+    json["suffix"] = f;
     return *this;
 }
 
@@ -459,8 +459,8 @@ Table::Cells& Table::Cells::suffixsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Table::Cells& Table::Cells::values(std::vector<T> f) {
-    json["values"] = std::move(f);
+Table::Cells& Table::Cells::values(const std::vector<T>& f) {
+    json["values"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -492,8 +492,8 @@ Table::Cells::Fill& Table::Cells::Fill::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Table::Cells::Fill& Table::Cells::Fill::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Table::Cells::Fill& Table::Cells::Fill::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -510,30 +510,30 @@ Table::Cells::Fill& Table::Cells::Fill::colorsrc(Callable&& c) {
 
 std::string Table::Cells::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Table::Cells::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Table::Cells::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -549,8 +549,8 @@ Table::Cells::Font& Table::Cells::Font::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Table::Cells::Font& Table::Cells::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Table::Cells::Font& Table::Cells::Font::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -575,8 +575,8 @@ Table::Cells::Font& Table::Cells::Font::family(Callable&& c) {
     std::forward<Callable>(c)(f);
     return family(std::move(f));
 }
-Table::Cells::Font& Table::Cells::Font::family(std::vector<std::string> f) {
-    json["family"] = std::move(f);
+Table::Cells::Font& Table::Cells::Font::family(const std::vector<std::string>& f) {
+    json["family"] = f;
     return *this;
 }
 
@@ -601,8 +601,8 @@ Table::Cells::Font& Table::Cells::Font::lineposition(Callable&& c) {
     std::forward<Callable>(c)(f);
     return lineposition(std::move(f));
 }
-Table::Cells::Font& Table::Cells::Font::lineposition(std::vector<std::string> f) {
-    json["lineposition"] = std::move(f);
+Table::Cells::Font& Table::Cells::Font::lineposition(const std::vector<std::string>& f) {
+    json["lineposition"] = f;
     return *this;
 }
 
@@ -627,8 +627,8 @@ Table::Cells::Font& Table::Cells::Font::shadow(Callable&& c) {
     std::forward<Callable>(c)(f);
     return shadow(std::move(f));
 }
-Table::Cells::Font& Table::Cells::Font::shadow(std::vector<std::string> f) {
-    json["shadow"] = std::move(f);
+Table::Cells::Font& Table::Cells::Font::shadow(const std::vector<std::string>& f) {
+    json["shadow"] = f;
     return *this;
 }
 
@@ -653,8 +653,8 @@ Table::Cells::Font& Table::Cells::Font::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Table::Cells::Font& Table::Cells::Font::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Table::Cells::Font& Table::Cells::Font::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -745,8 +745,8 @@ Table::Cells::Font& Table::Cells::Font::weight(Callable&& c) {
     std::forward<Callable>(c)(f);
     return weight(std::move(f));
 }
-Table::Cells::Font& Table::Cells::Font::weight(std::vector<int> f) {
-    json["weight"] = std::move(f);
+Table::Cells::Font& Table::Cells::Font::weight(const std::vector<int>& f) {
+    json["weight"] = f;
     return *this;
 }
 
@@ -772,8 +772,8 @@ Table::Cells::Line& Table::Cells::Line::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Table::Cells::Line& Table::Cells::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Table::Cells::Line& Table::Cells::Line::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -798,8 +798,8 @@ Table::Cells::Line& Table::Cells::Line::width(Callable&& c) {
     std::forward<Callable>(c)(f);
     return width(std::move(f));
 }
-Table::Cells::Line& Table::Cells::Line::width(std::vector<double> f) {
-    json["width"] = std::move(f);
+Table::Cells::Line& Table::Cells::Line::width(const std::vector<double>& f) {
+    json["width"] = f;
     return *this;
 }
 
@@ -837,8 +837,8 @@ Table::Domain& Table::Domain::row(Callable&& c) {
     return row(std::move(f));
 }
 
-Table::Domain& Table::Domain::x(std::vector<double> f) {
-    json["x"] = std::move(f);
+Table::Domain& Table::Domain::x(const std::vector<double>& f) {
+    json["x"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -848,8 +848,8 @@ Table::Domain& Table::Domain::x(Callable&& c) {
     return x(std::move(f));
 }
 
-Table::Domain& Table::Domain::y(std::vector<double> f) {
-    json["y"] = std::move(f);
+Table::Domain& Table::Domain::y(const std::vector<double>& f) {
+    json["y"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -861,9 +861,9 @@ Table::Domain& Table::Domain::y(Callable&& c) {
 
 std::string Table::Header::to_string(Align e) {
     switch(e) {
-        case Align::LEFT: return "left";
-        case Align::CENTER: return "center";
-        case Align::RIGHT: return "right";
+        case Align::Left: return "left";
+        case Align::Center: return "center";
+        case Align::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -914,8 +914,8 @@ Table::Header& Table::Header::font(Callable&& c) {
 }
 
 template <typename T, typename>
-Table::Header& Table::Header::format(std::vector<T> f) {
-    json["format"] = std::move(f);
+Table::Header& Table::Header::format(const std::vector<T>& f) {
+    json["format"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -968,8 +968,8 @@ Table::Header& Table::Header::prefix(Callable&& c) {
     std::forward<Callable>(c)(f);
     return prefix(std::move(f));
 }
-Table::Header& Table::Header::prefix(std::vector<std::string> f) {
-    json["prefix"] = std::move(f);
+Table::Header& Table::Header::prefix(const std::vector<std::string>& f) {
+    json["prefix"] = f;
     return *this;
 }
 
@@ -994,8 +994,8 @@ Table::Header& Table::Header::suffix(Callable&& c) {
     std::forward<Callable>(c)(f);
     return suffix(std::move(f));
 }
-Table::Header& Table::Header::suffix(std::vector<std::string> f) {
-    json["suffix"] = std::move(f);
+Table::Header& Table::Header::suffix(const std::vector<std::string>& f) {
+    json["suffix"] = f;
     return *this;
 }
 
@@ -1011,8 +1011,8 @@ Table::Header& Table::Header::suffixsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Table::Header& Table::Header::values(std::vector<T> f) {
-    json["values"] = std::move(f);
+Table::Header& Table::Header::values(const std::vector<T>& f) {
+    json["values"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -1044,8 +1044,8 @@ Table::Header::Fill& Table::Header::Fill::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Table::Header::Fill& Table::Header::Fill::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Table::Header::Fill& Table::Header::Fill::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -1062,30 +1062,30 @@ Table::Header::Fill& Table::Header::Fill::colorsrc(Callable&& c) {
 
 std::string Table::Header::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Table::Header::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Table::Header::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1101,8 +1101,8 @@ Table::Header::Font& Table::Header::Font::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Table::Header::Font& Table::Header::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Table::Header::Font& Table::Header::Font::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -1127,8 +1127,8 @@ Table::Header::Font& Table::Header::Font::family(Callable&& c) {
     std::forward<Callable>(c)(f);
     return family(std::move(f));
 }
-Table::Header::Font& Table::Header::Font::family(std::vector<std::string> f) {
-    json["family"] = std::move(f);
+Table::Header::Font& Table::Header::Font::family(const std::vector<std::string>& f) {
+    json["family"] = f;
     return *this;
 }
 
@@ -1153,8 +1153,8 @@ Table::Header::Font& Table::Header::Font::lineposition(Callable&& c) {
     std::forward<Callable>(c)(f);
     return lineposition(std::move(f));
 }
-Table::Header::Font& Table::Header::Font::lineposition(std::vector<std::string> f) {
-    json["lineposition"] = std::move(f);
+Table::Header::Font& Table::Header::Font::lineposition(const std::vector<std::string>& f) {
+    json["lineposition"] = f;
     return *this;
 }
 
@@ -1179,8 +1179,8 @@ Table::Header::Font& Table::Header::Font::shadow(Callable&& c) {
     std::forward<Callable>(c)(f);
     return shadow(std::move(f));
 }
-Table::Header::Font& Table::Header::Font::shadow(std::vector<std::string> f) {
-    json["shadow"] = std::move(f);
+Table::Header::Font& Table::Header::Font::shadow(const std::vector<std::string>& f) {
+    json["shadow"] = f;
     return *this;
 }
 
@@ -1205,8 +1205,8 @@ Table::Header::Font& Table::Header::Font::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Table::Header::Font& Table::Header::Font::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Table::Header::Font& Table::Header::Font::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -1297,8 +1297,8 @@ Table::Header::Font& Table::Header::Font::weight(Callable&& c) {
     std::forward<Callable>(c)(f);
     return weight(std::move(f));
 }
-Table::Header::Font& Table::Header::Font::weight(std::vector<int> f) {
-    json["weight"] = std::move(f);
+Table::Header::Font& Table::Header::Font::weight(const std::vector<int>& f) {
+    json["weight"] = f;
     return *this;
 }
 
@@ -1324,8 +1324,8 @@ Table::Header::Line& Table::Header::Line::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Table::Header::Line& Table::Header::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Table::Header::Line& Table::Header::Line::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -1350,8 +1350,8 @@ Table::Header::Line& Table::Header::Line::width(Callable&& c) {
     std::forward<Callable>(c)(f);
     return width(std::move(f));
 }
-Table::Header::Line& Table::Header::Line::width(std::vector<double> f) {
-    json["width"] = std::move(f);
+Table::Header::Line& Table::Header::Line::width(const std::vector<double>& f) {
+    json["width"] = f;
     return *this;
 }
 
@@ -1368,9 +1368,9 @@ Table::Header::Line& Table::Header::Line::widthsrc(Callable&& c) {
 
 std::string Table::Hoverlabel::to_string(Align e) {
     switch(e) {
-        case Align::LEFT: return "left";
-        case Align::RIGHT: return "right";
-        case Align::AUTO: return "auto";
+        case Align::Left: return "left";
+        case Align::Right: return "right";
+        case Align::Auto: return "auto";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1408,8 +1408,8 @@ Table::Hoverlabel& Table::Hoverlabel::bgcolor(Callable&& c) {
     std::forward<Callable>(c)(f);
     return bgcolor(std::move(f));
 }
-Table::Hoverlabel& Table::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
+Table::Hoverlabel& Table::Hoverlabel::bgcolor(const std::vector<std::string>& f) {
+    json["bgcolor"] = f;
     return *this;
 }
 
@@ -1434,8 +1434,8 @@ Table::Hoverlabel& Table::Hoverlabel::bordercolor(Callable&& c) {
     std::forward<Callable>(c)(f);
     return bordercolor(std::move(f));
 }
-Table::Hoverlabel& Table::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
+Table::Hoverlabel& Table::Hoverlabel::bordercolor(const std::vector<std::string>& f) {
+    json["bordercolor"] = f;
     return *this;
 }
 
@@ -1471,8 +1471,8 @@ Table::Hoverlabel& Table::Hoverlabel::namelength(Callable&& c) {
     std::forward<Callable>(c)(f);
     return namelength(std::move(f));
 }
-Table::Hoverlabel& Table::Hoverlabel::namelength(std::vector<int> f) {
-    json["namelength"] = std::move(f);
+Table::Hoverlabel& Table::Hoverlabel::namelength(const std::vector<int>& f) {
+    json["namelength"] = f;
     return *this;
 }
 
@@ -1489,30 +1489,30 @@ Table::Hoverlabel& Table::Hoverlabel::namelengthsrc(Callable&& c) {
 
 std::string Table::Hoverlabel::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Table::Hoverlabel::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Table::Hoverlabel::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1528,8 +1528,8 @@ Table::Hoverlabel::Font& Table::Hoverlabel::Font::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Table::Hoverlabel::Font& Table::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -1554,8 +1554,8 @@ Table::Hoverlabel::Font& Table::Hoverlabel::Font::family(Callable&& c) {
     std::forward<Callable>(c)(f);
     return family(std::move(f));
 }
-Table::Hoverlabel::Font& Table::Hoverlabel::Font::family(std::vector<std::string> f) {
-    json["family"] = std::move(f);
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::family(const std::vector<std::string>& f) {
+    json["family"] = f;
     return *this;
 }
 
@@ -1580,8 +1580,8 @@ Table::Hoverlabel::Font& Table::Hoverlabel::Font::lineposition(Callable&& c) {
     std::forward<Callable>(c)(f);
     return lineposition(std::move(f));
 }
-Table::Hoverlabel::Font& Table::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
-    json["lineposition"] = std::move(f);
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::lineposition(const std::vector<std::string>& f) {
+    json["lineposition"] = f;
     return *this;
 }
 
@@ -1606,8 +1606,8 @@ Table::Hoverlabel::Font& Table::Hoverlabel::Font::shadow(Callable&& c) {
     std::forward<Callable>(c)(f);
     return shadow(std::move(f));
 }
-Table::Hoverlabel::Font& Table::Hoverlabel::Font::shadow(std::vector<std::string> f) {
-    json["shadow"] = std::move(f);
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::shadow(const std::vector<std::string>& f) {
+    json["shadow"] = f;
     return *this;
 }
 
@@ -1632,8 +1632,8 @@ Table::Hoverlabel::Font& Table::Hoverlabel::Font::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Table::Hoverlabel::Font& Table::Hoverlabel::Font::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -1724,8 +1724,8 @@ Table::Hoverlabel::Font& Table::Hoverlabel::Font::weight(Callable&& c) {
     std::forward<Callable>(c)(f);
     return weight(std::move(f));
 }
-Table::Hoverlabel::Font& Table::Hoverlabel::Font::weight(std::vector<int> f) {
-    json["weight"] = std::move(f);
+Table::Hoverlabel::Font& Table::Hoverlabel::Font::weight(const std::vector<int>& f) {
+    json["weight"] = f;
     return *this;
 }
 
@@ -1765,30 +1765,30 @@ Table::Legendgrouptitle& Table::Legendgrouptitle::text(Callable&& c) {
 
 std::string Table::Legendgrouptitle::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Table::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Table::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};

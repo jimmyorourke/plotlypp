@@ -12,17 +12,17 @@ namespace plotlypp {
 
 std::string Funnelarea::to_string(Textposition e) {
     switch(e) {
-        case Textposition::INSIDE: return "inside";
-        case Textposition::NONE: return "none";
+        case Textposition::Inside: return "inside";
+        case Textposition::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::to_string(Visible e) {
     switch(e) {
-        case Visible::TRUE: return "True";
-        case Visible::FALSE: return "False";
-        case Visible::LEGENDONLY: return "legendonly";
+        case Visible::True: return "True";
+        case Visible::False: return "False";
+        case Visible::Legendonly: return "legendonly";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -51,8 +51,8 @@ Funnelarea& Funnelarea::baseratio(Callable&& c) {
 }
 
 template <typename T, typename>
-Funnelarea& Funnelarea::customdata(std::vector<T> f) {
-    json["customdata"] = std::move(f);
+Funnelarea& Funnelarea::customdata(const std::vector<T>& f) {
+    json["customdata"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -105,8 +105,8 @@ Funnelarea& Funnelarea::hoverinfo(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hoverinfo(std::move(f));
 }
-Funnelarea& Funnelarea::hoverinfo(std::vector<std::string> f) {
-    json["hoverinfo"] = std::move(f);
+Funnelarea& Funnelarea::hoverinfo(const std::vector<std::string>& f) {
+    json["hoverinfo"] = f;
     return *this;
 }
 
@@ -142,8 +142,8 @@ Funnelarea& Funnelarea::hovertemplate(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hovertemplate(std::move(f));
 }
-Funnelarea& Funnelarea::hovertemplate(std::vector<std::string> f) {
-    json["hovertemplate"] = std::move(f);
+Funnelarea& Funnelarea::hovertemplate(const std::vector<std::string>& f) {
+    json["hovertemplate"] = f;
     return *this;
 }
 
@@ -168,8 +168,8 @@ Funnelarea& Funnelarea::hovertext(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hovertext(std::move(f));
 }
-Funnelarea& Funnelarea::hovertext(std::vector<std::string> f) {
-    json["hovertext"] = std::move(f);
+Funnelarea& Funnelarea::hovertext(const std::vector<std::string>& f) {
+    json["hovertext"] = f;
     return *this;
 }
 
@@ -185,8 +185,8 @@ Funnelarea& Funnelarea::hovertextsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Funnelarea& Funnelarea::ids(std::vector<T> f) {
-    json["ids"] = std::move(f);
+Funnelarea& Funnelarea::ids(const std::vector<T>& f) {
+    json["ids"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -230,8 +230,8 @@ Funnelarea& Funnelarea::label0(Callable&& c) {
 }
 
 template <typename T, typename>
-Funnelarea& Funnelarea::labels(std::vector<T> f) {
-    json["labels"] = std::move(f);
+Funnelarea& Funnelarea::labels(const std::vector<T>& f) {
+    json["labels"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -330,8 +330,8 @@ Funnelarea& Funnelarea::meta(Callable&& c) {
     return meta(std::move(f));
 }
 template <typename T>
-Funnelarea& Funnelarea::meta(std::vector<T> f) {
-    json["meta"] = std::move(f);
+Funnelarea& Funnelarea::meta(const std::vector<T>& f) {
+    json["meta"] = f;
     return *this;
 }
 
@@ -402,8 +402,8 @@ Funnelarea& Funnelarea::stream(Callable&& c) {
 }
 
 template <typename T, typename>
-Funnelarea& Funnelarea::text(std::vector<T> f) {
-    json["text"] = std::move(f);
+Funnelarea& Funnelarea::text(const std::vector<T>& f) {
+    json["text"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -478,8 +478,8 @@ Funnelarea& Funnelarea::texttemplate(Callable&& c) {
     std::forward<Callable>(c)(f);
     return texttemplate(std::move(f));
 }
-Funnelarea& Funnelarea::texttemplate(std::vector<std::string> f) {
-    json["texttemplate"] = std::move(f);
+Funnelarea& Funnelarea::texttemplate(const std::vector<std::string>& f) {
+    json["texttemplate"] = f;
     return *this;
 }
 
@@ -529,8 +529,8 @@ Funnelarea& Funnelarea::uirevision(Callable&& c) {
 }
 
 template <typename T, typename>
-Funnelarea& Funnelarea::values(std::vector<T> f) {
-    json["values"] = std::move(f);
+Funnelarea& Funnelarea::values(const std::vector<T>& f) {
+    json["values"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -579,8 +579,8 @@ Funnelarea::Domain& Funnelarea::Domain::row(Callable&& c) {
     return row(std::move(f));
 }
 
-Funnelarea::Domain& Funnelarea::Domain::x(std::vector<double> f) {
-    json["x"] = std::move(f);
+Funnelarea::Domain& Funnelarea::Domain::x(const std::vector<double>& f) {
+    json["x"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -590,8 +590,8 @@ Funnelarea::Domain& Funnelarea::Domain::x(Callable&& c) {
     return x(std::move(f));
 }
 
-Funnelarea::Domain& Funnelarea::Domain::y(std::vector<double> f) {
-    json["y"] = std::move(f);
+Funnelarea::Domain& Funnelarea::Domain::y(const std::vector<double>& f) {
+    json["y"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -603,9 +603,9 @@ Funnelarea::Domain& Funnelarea::Domain::y(Callable&& c) {
 
 std::string Funnelarea::Hoverlabel::to_string(Align e) {
     switch(e) {
-        case Align::LEFT: return "left";
-        case Align::RIGHT: return "right";
-        case Align::AUTO: return "auto";
+        case Align::Left: return "left";
+        case Align::Right: return "right";
+        case Align::Auto: return "auto";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -643,8 +643,8 @@ Funnelarea::Hoverlabel& Funnelarea::Hoverlabel::bgcolor(Callable&& c) {
     std::forward<Callable>(c)(f);
     return bgcolor(std::move(f));
 }
-Funnelarea::Hoverlabel& Funnelarea::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
+Funnelarea::Hoverlabel& Funnelarea::Hoverlabel::bgcolor(const std::vector<std::string>& f) {
+    json["bgcolor"] = f;
     return *this;
 }
 
@@ -669,8 +669,8 @@ Funnelarea::Hoverlabel& Funnelarea::Hoverlabel::bordercolor(Callable&& c) {
     std::forward<Callable>(c)(f);
     return bordercolor(std::move(f));
 }
-Funnelarea::Hoverlabel& Funnelarea::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
+Funnelarea::Hoverlabel& Funnelarea::Hoverlabel::bordercolor(const std::vector<std::string>& f) {
+    json["bordercolor"] = f;
     return *this;
 }
 
@@ -706,8 +706,8 @@ Funnelarea::Hoverlabel& Funnelarea::Hoverlabel::namelength(Callable&& c) {
     std::forward<Callable>(c)(f);
     return namelength(std::move(f));
 }
-Funnelarea::Hoverlabel& Funnelarea::Hoverlabel::namelength(std::vector<int> f) {
-    json["namelength"] = std::move(f);
+Funnelarea::Hoverlabel& Funnelarea::Hoverlabel::namelength(const std::vector<int>& f) {
+    json["namelength"] = f;
     return *this;
 }
 
@@ -724,30 +724,30 @@ Funnelarea::Hoverlabel& Funnelarea::Hoverlabel::namelengthsrc(Callable&& c) {
 
 std::string Funnelarea::Hoverlabel::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::Hoverlabel::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::Hoverlabel::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -763,8 +763,8 @@ Funnelarea::Hoverlabel::Font& Funnelarea::Hoverlabel::Font::color(Callable&& c) 
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Funnelarea::Hoverlabel::Font& Funnelarea::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Funnelarea::Hoverlabel::Font& Funnelarea::Hoverlabel::Font::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -789,8 +789,8 @@ Funnelarea::Hoverlabel::Font& Funnelarea::Hoverlabel::Font::family(Callable&& c)
     std::forward<Callable>(c)(f);
     return family(std::move(f));
 }
-Funnelarea::Hoverlabel::Font& Funnelarea::Hoverlabel::Font::family(std::vector<std::string> f) {
-    json["family"] = std::move(f);
+Funnelarea::Hoverlabel::Font& Funnelarea::Hoverlabel::Font::family(const std::vector<std::string>& f) {
+    json["family"] = f;
     return *this;
 }
 
@@ -815,8 +815,8 @@ Funnelarea::Hoverlabel::Font& Funnelarea::Hoverlabel::Font::lineposition(Callabl
     std::forward<Callable>(c)(f);
     return lineposition(std::move(f));
 }
-Funnelarea::Hoverlabel::Font& Funnelarea::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
-    json["lineposition"] = std::move(f);
+Funnelarea::Hoverlabel::Font& Funnelarea::Hoverlabel::Font::lineposition(const std::vector<std::string>& f) {
+    json["lineposition"] = f;
     return *this;
 }
 
@@ -841,8 +841,8 @@ Funnelarea::Hoverlabel::Font& Funnelarea::Hoverlabel::Font::shadow(Callable&& c)
     std::forward<Callable>(c)(f);
     return shadow(std::move(f));
 }
-Funnelarea::Hoverlabel::Font& Funnelarea::Hoverlabel::Font::shadow(std::vector<std::string> f) {
-    json["shadow"] = std::move(f);
+Funnelarea::Hoverlabel::Font& Funnelarea::Hoverlabel::Font::shadow(const std::vector<std::string>& f) {
+    json["shadow"] = f;
     return *this;
 }
 
@@ -867,8 +867,8 @@ Funnelarea::Hoverlabel::Font& Funnelarea::Hoverlabel::Font::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Funnelarea::Hoverlabel::Font& Funnelarea::Hoverlabel::Font::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Funnelarea::Hoverlabel::Font& Funnelarea::Hoverlabel::Font::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -959,8 +959,8 @@ Funnelarea::Hoverlabel::Font& Funnelarea::Hoverlabel::Font::weight(Callable&& c)
     std::forward<Callable>(c)(f);
     return weight(std::move(f));
 }
-Funnelarea::Hoverlabel::Font& Funnelarea::Hoverlabel::Font::weight(std::vector<int> f) {
-    json["weight"] = std::move(f);
+Funnelarea::Hoverlabel::Font& Funnelarea::Hoverlabel::Font::weight(const std::vector<int>& f) {
+    json["weight"] = f;
     return *this;
 }
 
@@ -977,30 +977,30 @@ Funnelarea::Hoverlabel::Font& Funnelarea::Hoverlabel::Font::weightsrc(Callable&&
 
 std::string Funnelarea::Insidetextfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::Insidetextfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::Insidetextfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1016,8 +1016,8 @@ Funnelarea::Insidetextfont& Funnelarea::Insidetextfont::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Funnelarea::Insidetextfont& Funnelarea::Insidetextfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Funnelarea::Insidetextfont& Funnelarea::Insidetextfont::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -1042,8 +1042,8 @@ Funnelarea::Insidetextfont& Funnelarea::Insidetextfont::family(Callable&& c) {
     std::forward<Callable>(c)(f);
     return family(std::move(f));
 }
-Funnelarea::Insidetextfont& Funnelarea::Insidetextfont::family(std::vector<std::string> f) {
-    json["family"] = std::move(f);
+Funnelarea::Insidetextfont& Funnelarea::Insidetextfont::family(const std::vector<std::string>& f) {
+    json["family"] = f;
     return *this;
 }
 
@@ -1068,8 +1068,8 @@ Funnelarea::Insidetextfont& Funnelarea::Insidetextfont::lineposition(Callable&& 
     std::forward<Callable>(c)(f);
     return lineposition(std::move(f));
 }
-Funnelarea::Insidetextfont& Funnelarea::Insidetextfont::lineposition(std::vector<std::string> f) {
-    json["lineposition"] = std::move(f);
+Funnelarea::Insidetextfont& Funnelarea::Insidetextfont::lineposition(const std::vector<std::string>& f) {
+    json["lineposition"] = f;
     return *this;
 }
 
@@ -1094,8 +1094,8 @@ Funnelarea::Insidetextfont& Funnelarea::Insidetextfont::shadow(Callable&& c) {
     std::forward<Callable>(c)(f);
     return shadow(std::move(f));
 }
-Funnelarea::Insidetextfont& Funnelarea::Insidetextfont::shadow(std::vector<std::string> f) {
-    json["shadow"] = std::move(f);
+Funnelarea::Insidetextfont& Funnelarea::Insidetextfont::shadow(const std::vector<std::string>& f) {
+    json["shadow"] = f;
     return *this;
 }
 
@@ -1120,8 +1120,8 @@ Funnelarea::Insidetextfont& Funnelarea::Insidetextfont::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Funnelarea::Insidetextfont& Funnelarea::Insidetextfont::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Funnelarea::Insidetextfont& Funnelarea::Insidetextfont::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -1212,8 +1212,8 @@ Funnelarea::Insidetextfont& Funnelarea::Insidetextfont::weight(Callable&& c) {
     std::forward<Callable>(c)(f);
     return weight(std::move(f));
 }
-Funnelarea::Insidetextfont& Funnelarea::Insidetextfont::weight(std::vector<int> f) {
-    json["weight"] = std::move(f);
+Funnelarea::Insidetextfont& Funnelarea::Insidetextfont::weight(const std::vector<int>& f) {
+    json["weight"] = f;
     return *this;
 }
 
@@ -1253,30 +1253,30 @@ Funnelarea::Legendgrouptitle& Funnelarea::Legendgrouptitle::text(Callable&& c) {
 
 std::string Funnelarea::Legendgrouptitle::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1365,8 +1365,8 @@ Funnelarea::Legendgrouptitle::Font& Funnelarea::Legendgrouptitle::Font::weight(C
 
 
 template <typename T, typename>
-Funnelarea::Marker& Funnelarea::Marker::colors(std::vector<T> f) {
-    json["colors"] = std::move(f);
+Funnelarea::Marker& Funnelarea::Marker::colors(const std::vector<T>& f) {
+    json["colors"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -1420,8 +1420,8 @@ Funnelarea::Marker::Line& Funnelarea::Marker::Line::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Funnelarea::Marker::Line& Funnelarea::Marker::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Funnelarea::Marker::Line& Funnelarea::Marker::Line::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -1446,8 +1446,8 @@ Funnelarea::Marker::Line& Funnelarea::Marker::Line::width(Callable&& c) {
     std::forward<Callable>(c)(f);
     return width(std::move(f));
 }
-Funnelarea::Marker::Line& Funnelarea::Marker::Line::width(std::vector<double> f) {
-    json["width"] = std::move(f);
+Funnelarea::Marker::Line& Funnelarea::Marker::Line::width(const std::vector<double>& f) {
+    json["width"] = f;
     return *this;
 }
 
@@ -1464,8 +1464,8 @@ Funnelarea::Marker::Line& Funnelarea::Marker::Line::widthsrc(Callable&& c) {
 
 std::string Funnelarea::Marker::Pattern::to_string(Fillmode e) {
     switch(e) {
-        case Fillmode::REPLACE: return "replace";
-        case Fillmode::OVERLAY: return "overlay";
+        case Fillmode::Replace: return "replace";
+        case Fillmode::Overlay: return "overlay";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1481,8 +1481,8 @@ Funnelarea::Marker::Pattern& Funnelarea::Marker::Pattern::bgcolor(Callable&& c) 
     std::forward<Callable>(c)(f);
     return bgcolor(std::move(f));
 }
-Funnelarea::Marker::Pattern& Funnelarea::Marker::Pattern::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
+Funnelarea::Marker::Pattern& Funnelarea::Marker::Pattern::bgcolor(const std::vector<std::string>& f) {
+    json["bgcolor"] = f;
     return *this;
 }
 
@@ -1507,8 +1507,8 @@ Funnelarea::Marker::Pattern& Funnelarea::Marker::Pattern::fgcolor(Callable&& c) 
     std::forward<Callable>(c)(f);
     return fgcolor(std::move(f));
 }
-Funnelarea::Marker::Pattern& Funnelarea::Marker::Pattern::fgcolor(std::vector<std::string> f) {
-    json["fgcolor"] = std::move(f);
+Funnelarea::Marker::Pattern& Funnelarea::Marker::Pattern::fgcolor(const std::vector<std::string>& f) {
+    json["fgcolor"] = f;
     return *this;
 }
 
@@ -1549,8 +1549,8 @@ Funnelarea::Marker::Pattern& Funnelarea::Marker::Pattern::shape(Callable&& c) {
     std::forward<Callable>(c)(f);
     return shape(std::move(f));
 }
-Funnelarea::Marker::Pattern& Funnelarea::Marker::Pattern::shape(std::vector<std::string> f) {
-    json["shape"] = std::move(f);
+Funnelarea::Marker::Pattern& Funnelarea::Marker::Pattern::shape(const std::vector<std::string>& f) {
+    json["shape"] = f;
     return *this;
 }
 
@@ -1575,8 +1575,8 @@ Funnelarea::Marker::Pattern& Funnelarea::Marker::Pattern::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Funnelarea::Marker::Pattern& Funnelarea::Marker::Pattern::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Funnelarea::Marker::Pattern& Funnelarea::Marker::Pattern::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -1601,8 +1601,8 @@ Funnelarea::Marker::Pattern& Funnelarea::Marker::Pattern::solidity(Callable&& c)
     std::forward<Callable>(c)(f);
     return solidity(std::move(f));
 }
-Funnelarea::Marker::Pattern& Funnelarea::Marker::Pattern::solidity(std::vector<double> f) {
-    json["solidity"] = std::move(f);
+Funnelarea::Marker::Pattern& Funnelarea::Marker::Pattern::solidity(const std::vector<double>& f) {
+    json["solidity"] = f;
     return *this;
 }
 
@@ -1642,30 +1642,30 @@ Funnelarea::Stream& Funnelarea::Stream::token(Callable&& c) {
 
 std::string Funnelarea::Textfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::Textfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::Textfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1681,8 +1681,8 @@ Funnelarea::Textfont& Funnelarea::Textfont::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Funnelarea::Textfont& Funnelarea::Textfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Funnelarea::Textfont& Funnelarea::Textfont::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -1707,8 +1707,8 @@ Funnelarea::Textfont& Funnelarea::Textfont::family(Callable&& c) {
     std::forward<Callable>(c)(f);
     return family(std::move(f));
 }
-Funnelarea::Textfont& Funnelarea::Textfont::family(std::vector<std::string> f) {
-    json["family"] = std::move(f);
+Funnelarea::Textfont& Funnelarea::Textfont::family(const std::vector<std::string>& f) {
+    json["family"] = f;
     return *this;
 }
 
@@ -1733,8 +1733,8 @@ Funnelarea::Textfont& Funnelarea::Textfont::lineposition(Callable&& c) {
     std::forward<Callable>(c)(f);
     return lineposition(std::move(f));
 }
-Funnelarea::Textfont& Funnelarea::Textfont::lineposition(std::vector<std::string> f) {
-    json["lineposition"] = std::move(f);
+Funnelarea::Textfont& Funnelarea::Textfont::lineposition(const std::vector<std::string>& f) {
+    json["lineposition"] = f;
     return *this;
 }
 
@@ -1759,8 +1759,8 @@ Funnelarea::Textfont& Funnelarea::Textfont::shadow(Callable&& c) {
     std::forward<Callable>(c)(f);
     return shadow(std::move(f));
 }
-Funnelarea::Textfont& Funnelarea::Textfont::shadow(std::vector<std::string> f) {
-    json["shadow"] = std::move(f);
+Funnelarea::Textfont& Funnelarea::Textfont::shadow(const std::vector<std::string>& f) {
+    json["shadow"] = f;
     return *this;
 }
 
@@ -1785,8 +1785,8 @@ Funnelarea::Textfont& Funnelarea::Textfont::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Funnelarea::Textfont& Funnelarea::Textfont::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Funnelarea::Textfont& Funnelarea::Textfont::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -1877,8 +1877,8 @@ Funnelarea::Textfont& Funnelarea::Textfont::weight(Callable&& c) {
     std::forward<Callable>(c)(f);
     return weight(std::move(f));
 }
-Funnelarea::Textfont& Funnelarea::Textfont::weight(std::vector<int> f) {
-    json["weight"] = std::move(f);
+Funnelarea::Textfont& Funnelarea::Textfont::weight(const std::vector<int>& f) {
+    json["weight"] = f;
     return *this;
 }
 
@@ -1895,9 +1895,9 @@ Funnelarea::Textfont& Funnelarea::Textfont::weightsrc(Callable&& c) {
 
 std::string Funnelarea::Title::to_string(Position e) {
     switch(e) {
-        case Position::TOP_LEFT: return "top left";
-        case Position::TOP_CENTER: return "top center";
-        case Position::TOP_RIGHT: return "top right";
+        case Position::TopLeft: return "top left";
+        case Position::TopCenter: return "top center";
+        case Position::TopRight: return "top right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1932,30 +1932,30 @@ Funnelarea::Title& Funnelarea::Title::text(Callable&& c) {
 
 std::string Funnelarea::Title::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::Title::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Funnelarea::Title::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1971,8 +1971,8 @@ Funnelarea::Title::Font& Funnelarea::Title::Font::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Funnelarea::Title::Font& Funnelarea::Title::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Funnelarea::Title::Font& Funnelarea::Title::Font::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -1997,8 +1997,8 @@ Funnelarea::Title::Font& Funnelarea::Title::Font::family(Callable&& c) {
     std::forward<Callable>(c)(f);
     return family(std::move(f));
 }
-Funnelarea::Title::Font& Funnelarea::Title::Font::family(std::vector<std::string> f) {
-    json["family"] = std::move(f);
+Funnelarea::Title::Font& Funnelarea::Title::Font::family(const std::vector<std::string>& f) {
+    json["family"] = f;
     return *this;
 }
 
@@ -2023,8 +2023,8 @@ Funnelarea::Title::Font& Funnelarea::Title::Font::lineposition(Callable&& c) {
     std::forward<Callable>(c)(f);
     return lineposition(std::move(f));
 }
-Funnelarea::Title::Font& Funnelarea::Title::Font::lineposition(std::vector<std::string> f) {
-    json["lineposition"] = std::move(f);
+Funnelarea::Title::Font& Funnelarea::Title::Font::lineposition(const std::vector<std::string>& f) {
+    json["lineposition"] = f;
     return *this;
 }
 
@@ -2049,8 +2049,8 @@ Funnelarea::Title::Font& Funnelarea::Title::Font::shadow(Callable&& c) {
     std::forward<Callable>(c)(f);
     return shadow(std::move(f));
 }
-Funnelarea::Title::Font& Funnelarea::Title::Font::shadow(std::vector<std::string> f) {
-    json["shadow"] = std::move(f);
+Funnelarea::Title::Font& Funnelarea::Title::Font::shadow(const std::vector<std::string>& f) {
+    json["shadow"] = f;
     return *this;
 }
 
@@ -2075,8 +2075,8 @@ Funnelarea::Title::Font& Funnelarea::Title::Font::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Funnelarea::Title::Font& Funnelarea::Title::Font::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Funnelarea::Title::Font& Funnelarea::Title::Font::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -2167,8 +2167,8 @@ Funnelarea::Title::Font& Funnelarea::Title::Font::weight(Callable&& c) {
     std::forward<Callable>(c)(f);
     return weight(std::move(f));
 }
-Funnelarea::Title::Font& Funnelarea::Title::Font::weight(std::vector<int> f) {
-    json["weight"] = std::move(f);
+Funnelarea::Title::Font& Funnelarea::Title::Font::weight(const std::vector<int>& f) {
+    json["weight"] = f;
     return *this;
 }
 

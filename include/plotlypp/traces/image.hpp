@@ -29,24 +29,24 @@ class Image : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Colormodel {
-        RGB,
-        RGBA,
-        RGBA256,
-        HSL,
-        HSLA,
+        Rgb,
+        Rgba,
+        Rgba256,
+        Hsl,
+        Hsla,
     };
     static std::string to_string(Colormodel e);
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
     enum class Zsmooth {
-        FAST,
-        FALSE,
+        Fast,
+        False,
     };
     static std::string to_string(Zsmooth e);
 
@@ -61,7 +61,7 @@ class Image : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Image& customdata(std::vector<T> f);
+    Image& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -90,7 +90,7 @@ class Image : public Trace {
     Image& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Image& hoverinfo(Callable&& c);
-    Image& hoverinfo(std::vector<std::string> f);
+    Image& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Image& hoverinfosrc(std::string f);
@@ -118,7 +118,7 @@ class Image : public Trace {
     Image& hovertemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Image& hovertemplate(Callable&& c);
-    Image& hovertemplate(std::vector<std::string> f);
+    Image& hovertemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Image& hovertemplatesrc(std::string f);
@@ -127,7 +127,7 @@ class Image : public Trace {
 
     // Same as `text`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Image& hovertext(std::vector<T> f);
+    Image& hovertext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -141,7 +141,7 @@ class Image : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Image& ids(std::vector<T> f);
+    Image& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -187,7 +187,7 @@ class Image : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Image& meta(Callable&& c);
     template <typename T>
-    Image& meta(std::vector<T> f);
+    Image& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Image& metasrc(std::string f);
@@ -216,7 +216,7 @@ class Image : public Trace {
 
     // Sets the text elements associated with each z value.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Image& text(std::vector<T> f);
+    Image& text(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -281,7 +281,7 @@ class Image : public Trace {
 
     // A 2-dimensional array in which each element is an array of 3 or 4 numbers representing a color.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Image& z(std::vector<T> f);
+    Image& z(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -291,7 +291,7 @@ class Image : public Trace {
     // colormodel. For the `rgb` colormodel, it is [255, 255, 255]. For the `rgba` colormodel, it is [255, 255, 255, 1].
     // For the `rgba256` colormodel, it is [255, 255, 255, 255]. For the `hsl` colormodel, it is [360, 100, 100]. For
     // the `hsla` colormodel, it is [360, 100, 100, 1].
-    Image& zmax(std::vector<double> f);
+    Image& zmax(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Image& zmax(Callable&& c);
 
@@ -299,7 +299,7 @@ class Image : public Trace {
     // colormodel. For the `rgb` colormodel, it is [0, 0, 0]. For the `rgba` colormodel, it is [0, 0, 0, 0]. For the
     // `rgba256` colormodel, it is [0, 0, 0, 0]. For the `hsl` colormodel, it is [0, 0, 0]. For the `hsla` colormodel,
     // it is [0, 0, 0, 0].
-    Image& zmin(std::vector<double> f);
+    Image& zmin(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Image& zmin(Callable&& c);
 
@@ -327,9 +327,9 @@ class Image::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -351,7 +351,7 @@ class Image::Hoverlabel {
     Image::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Image::Hoverlabel& bgcolor(Callable&& c);
-    Image::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Image::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Image::Hoverlabel& bgcolorsrc(std::string f);
@@ -362,7 +362,7 @@ class Image::Hoverlabel {
     Image::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Image::Hoverlabel& bordercolor(Callable&& c);
-    Image::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Image::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Image::Hoverlabel& bordercolorsrc(std::string f);
@@ -381,7 +381,7 @@ class Image::Hoverlabel {
     Image::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Image::Hoverlabel& namelength(Callable&& c);
-    Image::Hoverlabel& namelength(std::vector<int> f);
+    Image::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Image::Hoverlabel& namelengthsrc(std::string f);
@@ -400,33 +400,33 @@ class Image::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Image::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Image::Hoverlabel::Font& color(Callable&& c);
-    Image::Hoverlabel::Font& color(std::vector<std::string> f);
+    Image::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Image::Hoverlabel::Font& colorsrc(std::string f);
@@ -443,7 +443,7 @@ class Image::Hoverlabel::Font {
     Image::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Image::Hoverlabel::Font& family(Callable&& c);
-    Image::Hoverlabel::Font& family(std::vector<std::string> f);
+    Image::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Image::Hoverlabel::Font& familysrc(std::string f);
@@ -458,7 +458,7 @@ class Image::Hoverlabel::Font {
     Image::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Image::Hoverlabel::Font& lineposition(Callable&& c);
-    Image::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Image::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Image::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -470,7 +470,7 @@ class Image::Hoverlabel::Font {
     Image::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Image::Hoverlabel::Font& shadow(Callable&& c);
-    Image::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Image::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Image::Hoverlabel::Font& shadowsrc(std::string f);
@@ -480,7 +480,7 @@ class Image::Hoverlabel::Font {
     Image::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Image::Hoverlabel::Font& size(Callable&& c);
-    Image::Hoverlabel::Font& size(std::vector<double> f);
+    Image::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Image::Hoverlabel::Font& sizesrc(std::string f);
@@ -522,7 +522,7 @@ class Image::Hoverlabel::Font {
     Image::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Image::Hoverlabel::Font& weight(Callable&& c);
-    Image::Hoverlabel::Font& weight(std::vector<int> f);
+    Image::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Image::Hoverlabel::Font& weightsrc(std::string f);
@@ -564,26 +564,26 @@ class Image::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 

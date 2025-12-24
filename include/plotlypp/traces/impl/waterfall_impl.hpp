@@ -12,19 +12,19 @@ namespace plotlypp {
 
 std::string Waterfall::to_string(Constraintext e) {
     switch(e) {
-        case Constraintext::INSIDE: return "inside";
-        case Constraintext::OUTSIDE: return "outside";
-        case Constraintext::BOTH: return "both";
-        case Constraintext::NONE: return "none";
+        case Constraintext::Inside: return "inside";
+        case Constraintext::Outside: return "outside";
+        case Constraintext::Both: return "both";
+        case Constraintext::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::to_string(Insidetextanchor e) {
     switch(e) {
-        case Insidetextanchor::END: return "end";
-        case Insidetextanchor::MIDDLE: return "middle";
-        case Insidetextanchor::START: return "start";
+        case Insidetextanchor::End: return "end";
+        case Insidetextanchor::Middle: return "middle";
+        case Insidetextanchor::Start: return "start";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -39,37 +39,37 @@ std::string Waterfall::to_string(Orientation e) {
 }
 std::string Waterfall::to_string(Textposition e) {
     switch(e) {
-        case Textposition::INSIDE: return "inside";
-        case Textposition::OUTSIDE: return "outside";
-        case Textposition::AUTO: return "auto";
-        case Textposition::NONE: return "none";
+        case Textposition::Inside: return "inside";
+        case Textposition::Outside: return "outside";
+        case Textposition::Auto: return "auto";
+        case Textposition::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::to_string(Visible e) {
     switch(e) {
-        case Visible::TRUE: return "True";
-        case Visible::FALSE: return "False";
-        case Visible::LEGENDONLY: return "legendonly";
+        case Visible::True: return "True";
+        case Visible::False: return "False";
+        case Visible::Legendonly: return "legendonly";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::to_string(Xperiodalignment e) {
     switch(e) {
-        case Xperiodalignment::START: return "start";
-        case Xperiodalignment::MIDDLE: return "middle";
-        case Xperiodalignment::END: return "end";
+        case Xperiodalignment::Start: return "start";
+        case Xperiodalignment::Middle: return "middle";
+        case Xperiodalignment::End: return "end";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::to_string(Yperiodalignment e) {
     switch(e) {
-        case Yperiodalignment::START: return "start";
-        case Yperiodalignment::MIDDLE: return "middle";
-        case Yperiodalignment::END: return "end";
+        case Yperiodalignment::Start: return "start";
+        case Yperiodalignment::Middle: return "middle";
+        case Yperiodalignment::End: return "end";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -125,8 +125,8 @@ Waterfall& Waterfall::constraintext(enum Constraintext f) {
 }
 
 template <typename T, typename>
-Waterfall& Waterfall::customdata(std::vector<T> f) {
-    json["customdata"] = std::move(f);
+Waterfall& Waterfall::customdata(const std::vector<T>& f) {
+    json["customdata"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -190,8 +190,8 @@ Waterfall& Waterfall::hoverinfo(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hoverinfo(std::move(f));
 }
-Waterfall& Waterfall::hoverinfo(std::vector<std::string> f) {
-    json["hoverinfo"] = std::move(f);
+Waterfall& Waterfall::hoverinfo(const std::vector<std::string>& f) {
+    json["hoverinfo"] = f;
     return *this;
 }
 
@@ -227,8 +227,8 @@ Waterfall& Waterfall::hovertemplate(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hovertemplate(std::move(f));
 }
-Waterfall& Waterfall::hovertemplate(std::vector<std::string> f) {
-    json["hovertemplate"] = std::move(f);
+Waterfall& Waterfall::hovertemplate(const std::vector<std::string>& f) {
+    json["hovertemplate"] = f;
     return *this;
 }
 
@@ -253,8 +253,8 @@ Waterfall& Waterfall::hovertext(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hovertext(std::move(f));
 }
-Waterfall& Waterfall::hovertext(std::vector<std::string> f) {
-    json["hovertext"] = std::move(f);
+Waterfall& Waterfall::hovertext(const std::vector<std::string>& f) {
+    json["hovertext"] = f;
     return *this;
 }
 
@@ -270,8 +270,8 @@ Waterfall& Waterfall::hovertextsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Waterfall& Waterfall::ids(std::vector<T> f) {
-    json["ids"] = std::move(f);
+Waterfall& Waterfall::ids(const std::vector<T>& f) {
+    json["ids"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -375,8 +375,8 @@ Waterfall& Waterfall::legendwidth(Callable&& c) {
 }
 
 template <typename T, typename>
-Waterfall& Waterfall::measure(std::vector<T> f) {
-    json["measure"] = std::move(f);
+Waterfall& Waterfall::measure(const std::vector<T>& f) {
+    json["measure"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -409,8 +409,8 @@ Waterfall& Waterfall::meta(Callable&& c) {
     return meta(std::move(f));
 }
 template <typename T>
-Waterfall& Waterfall::meta(std::vector<T> f) {
-    json["meta"] = std::move(f);
+Waterfall& Waterfall::meta(const std::vector<T>& f) {
+    json["meta"] = f;
     return *this;
 }
 
@@ -446,8 +446,8 @@ Waterfall& Waterfall::offset(Callable&& c) {
     std::forward<Callable>(c)(f);
     return offset(std::move(f));
 }
-Waterfall& Waterfall::offset(std::vector<double> f) {
-    json["offset"] = std::move(f);
+Waterfall& Waterfall::offset(const std::vector<double>& f) {
+    json["offset"] = f;
     return *this;
 }
 
@@ -544,8 +544,8 @@ Waterfall& Waterfall::text(Callable&& c) {
     std::forward<Callable>(c)(f);
     return text(std::move(f));
 }
-Waterfall& Waterfall::text(std::vector<std::string> f) {
-    json["text"] = std::move(f);
+Waterfall& Waterfall::text(const std::vector<std::string>& f) {
+    json["text"] = f;
     return *this;
 }
 
@@ -625,8 +625,8 @@ Waterfall& Waterfall::texttemplate(Callable&& c) {
     std::forward<Callable>(c)(f);
     return texttemplate(std::move(f));
 }
-Waterfall& Waterfall::texttemplate(std::vector<std::string> f) {
-    json["texttemplate"] = std::move(f);
+Waterfall& Waterfall::texttemplate(const std::vector<std::string>& f) {
+    json["texttemplate"] = f;
     return *this;
 }
 
@@ -690,8 +690,8 @@ Waterfall& Waterfall::width(Callable&& c) {
     std::forward<Callable>(c)(f);
     return width(std::move(f));
 }
-Waterfall& Waterfall::width(std::vector<double> f) {
-    json["width"] = std::move(f);
+Waterfall& Waterfall::width(const std::vector<double>& f) {
+    json["width"] = f;
     return *this;
 }
 
@@ -707,8 +707,8 @@ Waterfall& Waterfall::widthsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Waterfall& Waterfall::x(std::vector<T> f) {
-    json["x"] = std::move(f);
+Waterfall& Waterfall::x(const std::vector<T>& f) {
+    json["x"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -793,8 +793,8 @@ Waterfall& Waterfall::xsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Waterfall& Waterfall::y(std::vector<T> f) {
-    json["y"] = std::move(f);
+Waterfall& Waterfall::y(const std::vector<T>& f) {
+    json["y"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -891,8 +891,8 @@ Waterfall& Waterfall::zorder(Callable&& c) {
 
 std::string Waterfall::Connector::to_string(Mode e) {
     switch(e) {
-        case Mode::SPANNING: return "spanning";
-        case Mode::BETWEEN: return "between";
+        case Mode::Spanning: return "spanning";
+        case Mode::Between: return "between";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1019,9 +1019,9 @@ Waterfall::Decreasing::Marker::Line& Waterfall::Decreasing::Marker::Line::width(
 
 std::string Waterfall::Hoverlabel::to_string(Align e) {
     switch(e) {
-        case Align::LEFT: return "left";
-        case Align::RIGHT: return "right";
-        case Align::AUTO: return "auto";
+        case Align::Left: return "left";
+        case Align::Right: return "right";
+        case Align::Auto: return "auto";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1059,8 +1059,8 @@ Waterfall::Hoverlabel& Waterfall::Hoverlabel::bgcolor(Callable&& c) {
     std::forward<Callable>(c)(f);
     return bgcolor(std::move(f));
 }
-Waterfall::Hoverlabel& Waterfall::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
+Waterfall::Hoverlabel& Waterfall::Hoverlabel::bgcolor(const std::vector<std::string>& f) {
+    json["bgcolor"] = f;
     return *this;
 }
 
@@ -1085,8 +1085,8 @@ Waterfall::Hoverlabel& Waterfall::Hoverlabel::bordercolor(Callable&& c) {
     std::forward<Callable>(c)(f);
     return bordercolor(std::move(f));
 }
-Waterfall::Hoverlabel& Waterfall::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
+Waterfall::Hoverlabel& Waterfall::Hoverlabel::bordercolor(const std::vector<std::string>& f) {
+    json["bordercolor"] = f;
     return *this;
 }
 
@@ -1122,8 +1122,8 @@ Waterfall::Hoverlabel& Waterfall::Hoverlabel::namelength(Callable&& c) {
     std::forward<Callable>(c)(f);
     return namelength(std::move(f));
 }
-Waterfall::Hoverlabel& Waterfall::Hoverlabel::namelength(std::vector<int> f) {
-    json["namelength"] = std::move(f);
+Waterfall::Hoverlabel& Waterfall::Hoverlabel::namelength(const std::vector<int>& f) {
+    json["namelength"] = f;
     return *this;
 }
 
@@ -1140,30 +1140,30 @@ Waterfall::Hoverlabel& Waterfall::Hoverlabel::namelengthsrc(Callable&& c) {
 
 std::string Waterfall::Hoverlabel::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::Hoverlabel::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::Hoverlabel::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1179,8 +1179,8 @@ Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -1205,8 +1205,8 @@ Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::family(Callable&& c) {
     std::forward<Callable>(c)(f);
     return family(std::move(f));
 }
-Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::family(std::vector<std::string> f) {
-    json["family"] = std::move(f);
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::family(const std::vector<std::string>& f) {
+    json["family"] = f;
     return *this;
 }
 
@@ -1231,8 +1231,8 @@ Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::lineposition(Callable&
     std::forward<Callable>(c)(f);
     return lineposition(std::move(f));
 }
-Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
-    json["lineposition"] = std::move(f);
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::lineposition(const std::vector<std::string>& f) {
+    json["lineposition"] = f;
     return *this;
 }
 
@@ -1257,8 +1257,8 @@ Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::shadow(Callable&& c) {
     std::forward<Callable>(c)(f);
     return shadow(std::move(f));
 }
-Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::shadow(std::vector<std::string> f) {
-    json["shadow"] = std::move(f);
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::shadow(const std::vector<std::string>& f) {
+    json["shadow"] = f;
     return *this;
 }
 
@@ -1283,8 +1283,8 @@ Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -1375,8 +1375,8 @@ Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::weight(Callable&& c) {
     std::forward<Callable>(c)(f);
     return weight(std::move(f));
 }
-Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::weight(std::vector<int> f) {
-    json["weight"] = std::move(f);
+Waterfall::Hoverlabel::Font& Waterfall::Hoverlabel::Font::weight(const std::vector<int>& f) {
+    json["weight"] = f;
     return *this;
 }
 
@@ -1451,30 +1451,30 @@ Waterfall::Increasing::Marker::Line& Waterfall::Increasing::Marker::Line::width(
 
 std::string Waterfall::Insidetextfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::Insidetextfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::Insidetextfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1490,8 +1490,8 @@ Waterfall::Insidetextfont& Waterfall::Insidetextfont::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Waterfall::Insidetextfont& Waterfall::Insidetextfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -1516,8 +1516,8 @@ Waterfall::Insidetextfont& Waterfall::Insidetextfont::family(Callable&& c) {
     std::forward<Callable>(c)(f);
     return family(std::move(f));
 }
-Waterfall::Insidetextfont& Waterfall::Insidetextfont::family(std::vector<std::string> f) {
-    json["family"] = std::move(f);
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::family(const std::vector<std::string>& f) {
+    json["family"] = f;
     return *this;
 }
 
@@ -1542,8 +1542,8 @@ Waterfall::Insidetextfont& Waterfall::Insidetextfont::lineposition(Callable&& c)
     std::forward<Callable>(c)(f);
     return lineposition(std::move(f));
 }
-Waterfall::Insidetextfont& Waterfall::Insidetextfont::lineposition(std::vector<std::string> f) {
-    json["lineposition"] = std::move(f);
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::lineposition(const std::vector<std::string>& f) {
+    json["lineposition"] = f;
     return *this;
 }
 
@@ -1568,8 +1568,8 @@ Waterfall::Insidetextfont& Waterfall::Insidetextfont::shadow(Callable&& c) {
     std::forward<Callable>(c)(f);
     return shadow(std::move(f));
 }
-Waterfall::Insidetextfont& Waterfall::Insidetextfont::shadow(std::vector<std::string> f) {
-    json["shadow"] = std::move(f);
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::shadow(const std::vector<std::string>& f) {
+    json["shadow"] = f;
     return *this;
 }
 
@@ -1594,8 +1594,8 @@ Waterfall::Insidetextfont& Waterfall::Insidetextfont::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Waterfall::Insidetextfont& Waterfall::Insidetextfont::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -1686,8 +1686,8 @@ Waterfall::Insidetextfont& Waterfall::Insidetextfont::weight(Callable&& c) {
     std::forward<Callable>(c)(f);
     return weight(std::move(f));
 }
-Waterfall::Insidetextfont& Waterfall::Insidetextfont::weight(std::vector<int> f) {
-    json["weight"] = std::move(f);
+Waterfall::Insidetextfont& Waterfall::Insidetextfont::weight(const std::vector<int>& f) {
+    json["weight"] = f;
     return *this;
 }
 
@@ -1727,30 +1727,30 @@ Waterfall::Legendgrouptitle& Waterfall::Legendgrouptitle::text(Callable&& c) {
 
 std::string Waterfall::Legendgrouptitle::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1839,30 +1839,30 @@ Waterfall::Legendgrouptitle::Font& Waterfall::Legendgrouptitle::Font::weight(Cal
 
 std::string Waterfall::Outsidetextfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::Outsidetextfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::Outsidetextfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1878,8 +1878,8 @@ Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -1904,8 +1904,8 @@ Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::family(Callable&& c) {
     std::forward<Callable>(c)(f);
     return family(std::move(f));
 }
-Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::family(std::vector<std::string> f) {
-    json["family"] = std::move(f);
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::family(const std::vector<std::string>& f) {
+    json["family"] = f;
     return *this;
 }
 
@@ -1930,8 +1930,8 @@ Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::lineposition(Callable&& 
     std::forward<Callable>(c)(f);
     return lineposition(std::move(f));
 }
-Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::lineposition(std::vector<std::string> f) {
-    json["lineposition"] = std::move(f);
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::lineposition(const std::vector<std::string>& f) {
+    json["lineposition"] = f;
     return *this;
 }
 
@@ -1956,8 +1956,8 @@ Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::shadow(Callable&& c) {
     std::forward<Callable>(c)(f);
     return shadow(std::move(f));
 }
-Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::shadow(std::vector<std::string> f) {
-    json["shadow"] = std::move(f);
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::shadow(const std::vector<std::string>& f) {
+    json["shadow"] = f;
     return *this;
 }
 
@@ -1982,8 +1982,8 @@ Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -2074,8 +2074,8 @@ Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::weight(Callable&& c) {
     std::forward<Callable>(c)(f);
     return weight(std::move(f));
 }
-Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::weight(std::vector<int> f) {
-    json["weight"] = std::move(f);
+Waterfall::Outsidetextfont& Waterfall::Outsidetextfont::weight(const std::vector<int>& f) {
+    json["weight"] = f;
     return *this;
 }
 
@@ -2115,30 +2115,30 @@ Waterfall::Stream& Waterfall::Stream::token(Callable&& c) {
 
 std::string Waterfall::Textfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::Textfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Waterfall::Textfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -2154,8 +2154,8 @@ Waterfall::Textfont& Waterfall::Textfont::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Waterfall::Textfont& Waterfall::Textfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Waterfall::Textfont& Waterfall::Textfont::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -2180,8 +2180,8 @@ Waterfall::Textfont& Waterfall::Textfont::family(Callable&& c) {
     std::forward<Callable>(c)(f);
     return family(std::move(f));
 }
-Waterfall::Textfont& Waterfall::Textfont::family(std::vector<std::string> f) {
-    json["family"] = std::move(f);
+Waterfall::Textfont& Waterfall::Textfont::family(const std::vector<std::string>& f) {
+    json["family"] = f;
     return *this;
 }
 
@@ -2206,8 +2206,8 @@ Waterfall::Textfont& Waterfall::Textfont::lineposition(Callable&& c) {
     std::forward<Callable>(c)(f);
     return lineposition(std::move(f));
 }
-Waterfall::Textfont& Waterfall::Textfont::lineposition(std::vector<std::string> f) {
-    json["lineposition"] = std::move(f);
+Waterfall::Textfont& Waterfall::Textfont::lineposition(const std::vector<std::string>& f) {
+    json["lineposition"] = f;
     return *this;
 }
 
@@ -2232,8 +2232,8 @@ Waterfall::Textfont& Waterfall::Textfont::shadow(Callable&& c) {
     std::forward<Callable>(c)(f);
     return shadow(std::move(f));
 }
-Waterfall::Textfont& Waterfall::Textfont::shadow(std::vector<std::string> f) {
-    json["shadow"] = std::move(f);
+Waterfall::Textfont& Waterfall::Textfont::shadow(const std::vector<std::string>& f) {
+    json["shadow"] = f;
     return *this;
 }
 
@@ -2258,8 +2258,8 @@ Waterfall::Textfont& Waterfall::Textfont::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Waterfall::Textfont& Waterfall::Textfont::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Waterfall::Textfont& Waterfall::Textfont::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -2350,8 +2350,8 @@ Waterfall::Textfont& Waterfall::Textfont::weight(Callable&& c) {
     std::forward<Callable>(c)(f);
     return weight(std::move(f));
 }
-Waterfall::Textfont& Waterfall::Textfont::weight(std::vector<int> f) {
-    json["weight"] = std::move(f);
+Waterfall::Textfont& Waterfall::Textfont::weight(const std::vector<int>& f) {
+    json["weight"] = f;
     return *this;
 }
 

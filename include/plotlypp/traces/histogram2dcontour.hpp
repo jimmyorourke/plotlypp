@@ -29,67 +29,67 @@ class Histogram2Dcontour : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Histfunc {
-        COUNT,
-        SUM,
-        AVG,
-        MIN,
-        MAX,
+        Count,
+        Sum,
+        Avg,
+        Min,
+        Max,
     };
     static std::string to_string(Histfunc e);
 
     enum class Histnorm {
-        EMPTY,
-        PERCENT,
-        PROBABILITY,
-        DENSITY,
-        PROBABILITY_DENSITY,
+        Empty,
+        Percent,
+        Probability,
+        Density,
+        ProbabilityDensity,
     };
     static std::string to_string(Histnorm e);
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
     enum class Xcalendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Xcalendar e);
 
     enum class Ycalendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Ycalendar e);
 
@@ -154,7 +154,7 @@ class Histogram2Dcontour : public Trace {
     // list:
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Histogram2Dcontour& colorscale(std::string f);
-    Histogram2Dcontour& colorscale(std::vector<std::pair<double, std::string>> f);
+    Histogram2Dcontour& colorscale(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -167,7 +167,7 @@ class Histogram2Dcontour : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Histogram2Dcontour& customdata(std::vector<T> f);
+    Histogram2Dcontour& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -202,7 +202,7 @@ class Histogram2Dcontour : public Trace {
     Histogram2Dcontour& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram2Dcontour& hoverinfo(Callable&& c);
-    Histogram2Dcontour& hoverinfo(std::vector<std::string> f);
+    Histogram2Dcontour& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Histogram2Dcontour& hoverinfosrc(std::string f);
@@ -229,7 +229,7 @@ class Histogram2Dcontour : public Trace {
     Histogram2Dcontour& hovertemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram2Dcontour& hovertemplate(Callable&& c);
-    Histogram2Dcontour& hovertemplate(std::vector<std::string> f);
+    Histogram2Dcontour& hovertemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Histogram2Dcontour& hovertemplatesrc(std::string f);
@@ -239,7 +239,7 @@ class Histogram2Dcontour : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Histogram2Dcontour& ids(std::vector<T> f);
+    Histogram2Dcontour& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -299,7 +299,7 @@ class Histogram2Dcontour : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Histogram2Dcontour& meta(Callable&& c);
     template <typename T>
-    Histogram2Dcontour& meta(std::vector<T> f);
+    Histogram2Dcontour& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Histogram2Dcontour& metasrc(std::string f);
@@ -400,7 +400,7 @@ class Histogram2Dcontour : public Trace {
 
     // Sets the sample data to be binned on the x axis.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Histogram2Dcontour& x(std::vector<T> f);
+    Histogram2Dcontour& x(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -444,7 +444,7 @@ class Histogram2Dcontour : public Trace {
 
     // Sets the sample data to be binned on the y axis.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Histogram2Dcontour& y(std::vector<T> f);
+    Histogram2Dcontour& y(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -488,7 +488,7 @@ class Histogram2Dcontour : public Trace {
 
     // Sets the aggregation data.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Histogram2Dcontour& z(std::vector<T> f);
+    Histogram2Dcontour& z(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -538,17 +538,17 @@ class Histogram2Dcontour::Colorbar {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Lenmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Lenmode e);
 
@@ -559,93 +559,93 @@ class Histogram2Dcontour::Colorbar {
     static std::string to_string(Orientation e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Thicknessmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Thicknessmode e);
 
     enum class Ticklabeloverflow {
-        ALLOW,
-        HIDE_PAST_DIV,
-        HIDE_PAST_DOMAIN,
+        Allow,
+        HidePastDiv,
+        HidePastDomain,
     };
     static std::string to_string(Ticklabeloverflow e);
 
     enum class Ticklabelposition {
-        OUTSIDE,
-        INSIDE,
-        OUTSIDE_TOP,
-        INSIDE_TOP,
-        OUTSIDE_LEFT,
-        INSIDE_LEFT,
-        OUTSIDE_RIGHT,
-        INSIDE_RIGHT,
-        OUTSIDE_BOTTOM,
-        INSIDE_BOTTOM,
+        Outside,
+        Inside,
+        OutsideTop,
+        InsideTop,
+        OutsideLeft,
+        InsideLeft,
+        OutsideRight,
+        InsideRight,
+        OutsideBottom,
+        InsideBottom,
     };
     static std::string to_string(Ticklabelposition e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Xanchor {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Xref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Xref e);
 
     enum class Yanchor {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
     enum class Yref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Yref e);
 
@@ -857,7 +857,7 @@ class Histogram2Dcontour::Colorbar {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Histogram2Dcontour::Colorbar& ticktext(std::vector<T> f);
+    Histogram2Dcontour::Colorbar& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -871,7 +871,7 @@ class Histogram2Dcontour::Colorbar {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Histogram2Dcontour::Colorbar& tickvals(std::vector<T> f);
+    Histogram2Dcontour::Colorbar& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -947,26 +947,26 @@ class Histogram2Dcontour::Colorbar::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1050,7 +1050,7 @@ class Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Histogram2Dcontour::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -1092,9 +1092,9 @@ class Histogram2Dcontour::Colorbar::Title {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
-        RIGHT,
-        TOP,
-        BOTTOM,
+        Right,
+        Top,
+        Bottom,
     };
     static std::string to_string(Side e);
 
@@ -1127,26 +1127,26 @@ class Histogram2Dcontour::Colorbar::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1213,16 +1213,16 @@ class Histogram2Dcontour::Contours {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Coloring {
-        FILL,
-        HEATMAP,
-        LINES,
-        NONE,
+        Fill,
+        Heatmap,
+        Lines,
+        None,
     };
     static std::string to_string(Coloring e);
 
     enum class Type {
-        LEVELS,
-        CONSTRAINT,
+        Levels,
+        Constraint,
     };
     static std::string to_string(Type e);
 
@@ -1325,26 +1325,26 @@ class Histogram2Dcontour::Contours::Labelfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1411,9 +1411,9 @@ class Histogram2Dcontour::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -1435,7 +1435,7 @@ class Histogram2Dcontour::Hoverlabel {
     Histogram2Dcontour::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram2Dcontour::Hoverlabel& bgcolor(Callable&& c);
-    Histogram2Dcontour::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Histogram2Dcontour::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Histogram2Dcontour::Hoverlabel& bgcolorsrc(std::string f);
@@ -1446,7 +1446,7 @@ class Histogram2Dcontour::Hoverlabel {
     Histogram2Dcontour::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram2Dcontour::Hoverlabel& bordercolor(Callable&& c);
-    Histogram2Dcontour::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Histogram2Dcontour::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Histogram2Dcontour::Hoverlabel& bordercolorsrc(std::string f);
@@ -1465,7 +1465,7 @@ class Histogram2Dcontour::Hoverlabel {
     Histogram2Dcontour::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Histogram2Dcontour::Hoverlabel& namelength(Callable&& c);
-    Histogram2Dcontour::Hoverlabel& namelength(std::vector<int> f);
+    Histogram2Dcontour::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Histogram2Dcontour::Hoverlabel& namelengthsrc(std::string f);
@@ -1484,33 +1484,33 @@ class Histogram2Dcontour::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Histogram2Dcontour::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram2Dcontour::Hoverlabel::Font& color(Callable&& c);
-    Histogram2Dcontour::Hoverlabel::Font& color(std::vector<std::string> f);
+    Histogram2Dcontour::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Histogram2Dcontour::Hoverlabel::Font& colorsrc(std::string f);
@@ -1527,7 +1527,7 @@ class Histogram2Dcontour::Hoverlabel::Font {
     Histogram2Dcontour::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram2Dcontour::Hoverlabel::Font& family(Callable&& c);
-    Histogram2Dcontour::Hoverlabel::Font& family(std::vector<std::string> f);
+    Histogram2Dcontour::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Histogram2Dcontour::Hoverlabel::Font& familysrc(std::string f);
@@ -1542,7 +1542,7 @@ class Histogram2Dcontour::Hoverlabel::Font {
     Histogram2Dcontour::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram2Dcontour::Hoverlabel::Font& lineposition(Callable&& c);
-    Histogram2Dcontour::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Histogram2Dcontour::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Histogram2Dcontour::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -1554,7 +1554,7 @@ class Histogram2Dcontour::Hoverlabel::Font {
     Histogram2Dcontour::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram2Dcontour::Hoverlabel::Font& shadow(Callable&& c);
-    Histogram2Dcontour::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Histogram2Dcontour::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Histogram2Dcontour::Hoverlabel::Font& shadowsrc(std::string f);
@@ -1564,7 +1564,7 @@ class Histogram2Dcontour::Hoverlabel::Font {
     Histogram2Dcontour::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Histogram2Dcontour::Hoverlabel::Font& size(Callable&& c);
-    Histogram2Dcontour::Hoverlabel::Font& size(std::vector<double> f);
+    Histogram2Dcontour::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Histogram2Dcontour::Hoverlabel::Font& sizesrc(std::string f);
@@ -1606,7 +1606,7 @@ class Histogram2Dcontour::Hoverlabel::Font {
     Histogram2Dcontour::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Histogram2Dcontour::Hoverlabel::Font& weight(Callable&& c);
-    Histogram2Dcontour::Hoverlabel::Font& weight(std::vector<int> f);
+    Histogram2Dcontour::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Histogram2Dcontour::Hoverlabel::Font& weightsrc(std::string f);
@@ -1648,26 +1648,26 @@ class Histogram2Dcontour::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1766,7 +1766,7 @@ class Histogram2Dcontour::Marker {
 
     // Sets the aggregation data.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Histogram2Dcontour::Marker& color(std::vector<T> f);
+    Histogram2Dcontour::Marker& color(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1811,26 +1811,26 @@ class Histogram2Dcontour::Textfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 

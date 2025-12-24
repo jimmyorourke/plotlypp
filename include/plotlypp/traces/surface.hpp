@@ -29,69 +29,69 @@ class Surface : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
     enum class Xcalendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Xcalendar e);
 
     enum class Ycalendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Ycalendar e);
 
     enum class Zcalendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Zcalendar e);
 
@@ -152,7 +152,7 @@ class Surface : public Trace {
     // list:
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Surface& colorscale(std::string f);
-    Surface& colorscale(std::vector<std::pair<double, std::string>> f);
+    Surface& colorscale(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -170,7 +170,7 @@ class Surface : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Surface& customdata(std::vector<T> f);
+    Surface& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -195,7 +195,7 @@ class Surface : public Trace {
     Surface& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Surface& hoverinfo(Callable&& c);
-    Surface& hoverinfo(std::vector<std::string> f);
+    Surface& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Surface& hoverinfosrc(std::string f);
@@ -222,7 +222,7 @@ class Surface : public Trace {
     Surface& hovertemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Surface& hovertemplate(Callable&& c);
-    Surface& hovertemplate(std::vector<std::string> f);
+    Surface& hovertemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Surface& hovertemplatesrc(std::string f);
@@ -233,7 +233,7 @@ class Surface : public Trace {
     Surface& hovertext(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Surface& hovertext(Callable&& c);
-    Surface& hovertext(std::vector<std::string> f);
+    Surface& hovertext(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Surface& hovertextsrc(std::string f);
@@ -243,7 +243,7 @@ class Surface : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Surface& ids(std::vector<T> f);
+    Surface& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -303,7 +303,7 @@ class Surface : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Surface& meta(Callable&& c);
     template <typename T>
-    Surface& meta(std::vector<T> f);
+    Surface& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Surface& metasrc(std::string f);
@@ -362,7 +362,7 @@ class Surface : public Trace {
 
     // Sets the surface color values, used for setting a color scale independent of `z`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Surface& surfacecolor(std::vector<T> f);
+    Surface& surfacecolor(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -378,7 +378,7 @@ class Surface : public Trace {
     Surface& text(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Surface& text(Callable&& c);
-    Surface& text(std::vector<std::string> f);
+    Surface& text(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `text`.
     Surface& textsrc(std::string f);
@@ -411,7 +411,7 @@ class Surface : public Trace {
 
     // Sets the x coordinates.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Surface& x(std::vector<T> f);
+    Surface& x(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -438,7 +438,7 @@ class Surface : public Trace {
 
     // Sets the y coordinates.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Surface& y(std::vector<T> f);
+    Surface& y(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -465,7 +465,7 @@ class Surface : public Trace {
 
     // Sets the z coordinates.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Surface& z(std::vector<T> f);
+    Surface& z(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -498,17 +498,17 @@ class Surface::Colorbar {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Lenmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Lenmode e);
 
@@ -519,93 +519,93 @@ class Surface::Colorbar {
     static std::string to_string(Orientation e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Thicknessmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Thicknessmode e);
 
     enum class Ticklabeloverflow {
-        ALLOW,
-        HIDE_PAST_DIV,
-        HIDE_PAST_DOMAIN,
+        Allow,
+        HidePastDiv,
+        HidePastDomain,
     };
     static std::string to_string(Ticklabeloverflow e);
 
     enum class Ticklabelposition {
-        OUTSIDE,
-        INSIDE,
-        OUTSIDE_TOP,
-        INSIDE_TOP,
-        OUTSIDE_LEFT,
-        INSIDE_LEFT,
-        OUTSIDE_RIGHT,
-        INSIDE_RIGHT,
-        OUTSIDE_BOTTOM,
-        INSIDE_BOTTOM,
+        Outside,
+        Inside,
+        OutsideTop,
+        InsideTop,
+        OutsideLeft,
+        InsideLeft,
+        OutsideRight,
+        InsideRight,
+        OutsideBottom,
+        InsideBottom,
     };
     static std::string to_string(Ticklabelposition e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Xanchor {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Xref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Xref e);
 
     enum class Yanchor {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
     enum class Yref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Yref e);
 
@@ -817,7 +817,7 @@ class Surface::Colorbar {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Surface::Colorbar& ticktext(std::vector<T> f);
+    Surface::Colorbar& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -831,7 +831,7 @@ class Surface::Colorbar {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Surface::Colorbar& tickvals(std::vector<T> f);
+    Surface::Colorbar& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -907,26 +907,26 @@ class Surface::Colorbar::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1010,7 +1010,7 @@ class Surface::Colorbar::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Surface::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Surface::Colorbar::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Surface::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -1052,9 +1052,9 @@ class Surface::Colorbar::Title {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
-        RIGHT,
-        TOP,
-        BOTTOM,
+        Right,
+        Top,
+        Bottom,
     };
     static std::string to_string(Side e);
 
@@ -1087,26 +1087,26 @@ class Surface::Colorbar::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1490,9 +1490,9 @@ class Surface::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -1514,7 +1514,7 @@ class Surface::Hoverlabel {
     Surface::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Surface::Hoverlabel& bgcolor(Callable&& c);
-    Surface::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Surface::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Surface::Hoverlabel& bgcolorsrc(std::string f);
@@ -1525,7 +1525,7 @@ class Surface::Hoverlabel {
     Surface::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Surface::Hoverlabel& bordercolor(Callable&& c);
-    Surface::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Surface::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Surface::Hoverlabel& bordercolorsrc(std::string f);
@@ -1544,7 +1544,7 @@ class Surface::Hoverlabel {
     Surface::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Surface::Hoverlabel& namelength(Callable&& c);
-    Surface::Hoverlabel& namelength(std::vector<int> f);
+    Surface::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Surface::Hoverlabel& namelengthsrc(std::string f);
@@ -1563,33 +1563,33 @@ class Surface::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Surface::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Surface::Hoverlabel::Font& color(Callable&& c);
-    Surface::Hoverlabel::Font& color(std::vector<std::string> f);
+    Surface::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Surface::Hoverlabel::Font& colorsrc(std::string f);
@@ -1606,7 +1606,7 @@ class Surface::Hoverlabel::Font {
     Surface::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Surface::Hoverlabel::Font& family(Callable&& c);
-    Surface::Hoverlabel::Font& family(std::vector<std::string> f);
+    Surface::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Surface::Hoverlabel::Font& familysrc(std::string f);
@@ -1621,7 +1621,7 @@ class Surface::Hoverlabel::Font {
     Surface::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Surface::Hoverlabel::Font& lineposition(Callable&& c);
-    Surface::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Surface::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Surface::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -1633,7 +1633,7 @@ class Surface::Hoverlabel::Font {
     Surface::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Surface::Hoverlabel::Font& shadow(Callable&& c);
-    Surface::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Surface::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Surface::Hoverlabel::Font& shadowsrc(std::string f);
@@ -1643,7 +1643,7 @@ class Surface::Hoverlabel::Font {
     Surface::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Surface::Hoverlabel::Font& size(Callable&& c);
-    Surface::Hoverlabel::Font& size(std::vector<double> f);
+    Surface::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Surface::Hoverlabel::Font& sizesrc(std::string f);
@@ -1685,7 +1685,7 @@ class Surface::Hoverlabel::Font {
     Surface::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Surface::Hoverlabel::Font& weight(Callable&& c);
-    Surface::Hoverlabel::Font& weight(std::vector<int> f);
+    Surface::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Surface::Hoverlabel::Font& weightsrc(std::string f);
@@ -1727,26 +1727,26 @@ class Surface::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 

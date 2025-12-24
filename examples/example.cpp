@@ -90,7 +90,7 @@ plotlypp::Figure gen3dScatterBubblePlanets() {
                                  .text(std::move(planets))
                                  .mode("markers")
                                  .marker(Scatter3D::Marker()
-                                             .sizemode(Scatter3D::Marker::Sizemode::DIAMETER)
+                                             .sizemode(Scatter3D::Marker::Sizemode::Diameter)
                                              .sizeref(750)
                                              .size(std::move(planetDiameter))
                                              .color(std::move(planetColors))));
@@ -230,7 +230,7 @@ plotlypp::Figure genScatterMap() {
             .lat(std::vector{45, 20, -20})
             .marker(Scattermap::Marker().size(20).symbol(std::vector<std::string>{"bus", "harbor", "airport"}))
             .text(std::vector<std::string>{"Bus", "Harbor", "Airport"})
-            .textposition(Scattermap::Textposition::BOTTOM_RIGHT)
+            .textposition(Scattermap::Textposition::BottomRight)
             .textfont(Scattermap::Textfont().size(18).color("black").family("Open Sans Bold")));
 }
 
@@ -281,7 +281,7 @@ plotlypp::Figure genSubPlotsGrid() {
     auto trace1 = Scatter().x(std::vector{1, 2, 3}).y(std::vector{4, 5, 6});
     auto trace2 = Scatter().x(std::vector{20, 30, 40}).y(std::vector{50, 60, 70}).xaxis("x2").yaxis("y2");
 
-    auto gridLayout = Layout{}.grid(Layout::Grid().rows(1).columns(2).pattern(Layout::Grid::Pattern::INDEPENDENT));
+    auto gridLayout = Layout{}.grid(Layout::Grid().rows(1).columns(2).pattern(Layout::Grid::Pattern::Independent));
     auto domanLayout = Layout{}
                            .xaxis(Layout::Xaxis().domain(std::vector{0, 0.7}))
                            .yaxis(2, Layout::Yaxis().anchor("x2"))

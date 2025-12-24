@@ -12,18 +12,18 @@ namespace plotlypp {
 
 std::string Indicator::to_string(Align e) {
     switch(e) {
-        case Align::LEFT: return "left";
-        case Align::CENTER: return "center";
-        case Align::RIGHT: return "right";
+        case Align::Left: return "left";
+        case Align::Center: return "center";
+        case Align::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::to_string(Visible e) {
     switch(e) {
-        case Visible::TRUE: return "True";
-        case Visible::FALSE: return "False";
-        case Visible::LEGENDONLY: return "legendonly";
+        case Visible::True: return "True";
+        case Visible::False: return "False";
+        case Visible::Legendonly: return "legendonly";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -35,8 +35,8 @@ Indicator& Indicator::align(enum Align f) {
 }
 
 template <typename T, typename>
-Indicator& Indicator::customdata(std::vector<T> f) {
-    json["customdata"] = std::move(f);
+Indicator& Indicator::customdata(const std::vector<T>& f) {
+    json["customdata"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -91,8 +91,8 @@ Indicator& Indicator::gauge(Callable&& c) {
 }
 
 template <typename T, typename>
-Indicator& Indicator::ids(std::vector<T> f) {
-    json["ids"] = std::move(f);
+Indicator& Indicator::ids(const std::vector<T>& f) {
+    json["ids"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -169,8 +169,8 @@ Indicator& Indicator::meta(Callable&& c) {
     return meta(std::move(f));
 }
 template <typename T>
-Indicator& Indicator::meta(std::vector<T> f) {
-    json["meta"] = std::move(f);
+Indicator& Indicator::meta(const std::vector<T>& f) {
+    json["meta"] = f;
     return *this;
 }
 
@@ -281,10 +281,10 @@ Indicator& Indicator::visible(enum Visible f) {
 
 std::string Indicator::Delta::to_string(Position e) {
     switch(e) {
-        case Position::TOP: return "top";
-        case Position::BOTTOM: return "bottom";
-        case Position::LEFT: return "left";
-        case Position::RIGHT: return "right";
+        case Position::Top: return "top";
+        case Position::Bottom: return "bottom";
+        case Position::Left: return "left";
+        case Position::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -408,30 +408,30 @@ Indicator::Delta::Decreasing& Indicator::Delta::Decreasing::symbol(Callable&& c)
 
 std::string Indicator::Delta::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Delta::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Delta::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -564,8 +564,8 @@ Indicator::Domain& Indicator::Domain::row(Callable&& c) {
     return row(std::move(f));
 }
 
-Indicator::Domain& Indicator::Domain::x(std::vector<double> f) {
-    json["x"] = std::move(f);
+Indicator::Domain& Indicator::Domain::x(const std::vector<double>& f) {
+    json["x"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -575,8 +575,8 @@ Indicator::Domain& Indicator::Domain::x(Callable&& c) {
     return x(std::move(f));
 }
 
-Indicator::Domain& Indicator::Domain::y(std::vector<double> f) {
-    json["y"] = std::move(f);
+Indicator::Domain& Indicator::Domain::y(const std::vector<double>& f) {
+    json["y"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -588,8 +588,8 @@ Indicator::Domain& Indicator::Domain::y(Callable&& c) {
 
 std::string Indicator::Gauge::to_string(Shape e) {
     switch(e) {
-        case Shape::ANGULAR: return "angular";
-        case Shape::BULLET: return "bullet";
+        case Shape::Angular: return "angular";
+        case Shape::Bullet: return "bullet";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -679,10 +679,10 @@ Indicator::Gauge& Indicator::Gauge::threshold(Callable&& c) {
 
 std::string Indicator::Gauge::Axis::to_string(Exponentformat e) {
     switch(e) {
-        case Exponentformat::NONE: return "none";
+        case Exponentformat::None: return "none";
         case Exponentformat::E: return "E";
-        case Exponentformat::POWER: return "power";
-        case Exponentformat::SI: return "SI";
+        case Exponentformat::Power: return "power";
+        case Exponentformat::Si: return "SI";
         case Exponentformat::B: return "B";
     }
     // Should be unreachable.
@@ -690,48 +690,48 @@ std::string Indicator::Gauge::Axis::to_string(Exponentformat e) {
 }
 std::string Indicator::Gauge::Axis::to_string(Showexponent e) {
     switch(e) {
-        case Showexponent::ALL: return "all";
-        case Showexponent::FIRST: return "first";
-        case Showexponent::LAST: return "last";
-        case Showexponent::NONE: return "none";
+        case Showexponent::All: return "all";
+        case Showexponent::First: return "first";
+        case Showexponent::Last: return "last";
+        case Showexponent::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Gauge::Axis::to_string(Showtickprefix e) {
     switch(e) {
-        case Showtickprefix::ALL: return "all";
-        case Showtickprefix::FIRST: return "first";
-        case Showtickprefix::LAST: return "last";
-        case Showtickprefix::NONE: return "none";
+        case Showtickprefix::All: return "all";
+        case Showtickprefix::First: return "first";
+        case Showtickprefix::Last: return "last";
+        case Showtickprefix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Gauge::Axis::to_string(Showticksuffix e) {
     switch(e) {
-        case Showticksuffix::ALL: return "all";
-        case Showticksuffix::FIRST: return "first";
-        case Showticksuffix::LAST: return "last";
-        case Showticksuffix::NONE: return "none";
+        case Showticksuffix::All: return "all";
+        case Showticksuffix::First: return "first";
+        case Showticksuffix::Last: return "last";
+        case Showticksuffix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Gauge::Axis::to_string(Tickmode e) {
     switch(e) {
-        case Tickmode::AUTO: return "auto";
-        case Tickmode::LINEAR: return "linear";
-        case Tickmode::ARRAY: return "array";
+        case Tickmode::Auto: return "auto";
+        case Tickmode::Linear: return "linear";
+        case Tickmode::Array: return "array";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Gauge::Axis::to_string(Ticks e) {
     switch(e) {
-        case Ticks::OUTSIDE: return "outside";
-        case Ticks::INSIDE: return "inside";
-        case Ticks::EMPTY: return "";
+        case Ticks::Outside: return "outside";
+        case Ticks::Inside: return "inside";
+        case Ticks::Empty: return "";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -788,8 +788,8 @@ Indicator::Gauge::Axis& Indicator::Gauge::Axis::nticks(Callable&& c) {
     return nticks(std::move(f));
 }
 
-Indicator::Gauge::Axis& Indicator::Gauge::Axis::range(std::vector<double> f) {
-    json["range"] = std::move(f);
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::range(const std::vector<double>& f) {
+    json["range"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -958,8 +958,8 @@ Indicator::Gauge::Axis& Indicator::Gauge::Axis::ticksuffix(Callable&& c) {
 }
 
 template <typename T, typename>
-Indicator::Gauge::Axis& Indicator::Gauge::Axis::ticktext(std::vector<T> f) {
-    json["ticktext"] = std::move(f);
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::ticktext(const std::vector<T>& f) {
+    json["ticktext"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -981,8 +981,8 @@ Indicator::Gauge::Axis& Indicator::Gauge::Axis::ticktextsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickvals(std::vector<T> f) {
-    json["tickvals"] = std::move(f);
+Indicator::Gauge::Axis& Indicator::Gauge::Axis::tickvals(const std::vector<T>& f) {
+    json["tickvals"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -1027,30 +1027,30 @@ Indicator::Gauge::Axis& Indicator::Gauge::Axis::visible(Callable&& c) {
 
 std::string Indicator::Gauge::Axis::Tickfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Gauge::Axis::Tickfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Gauge::Axis::Tickfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1150,8 +1150,8 @@ Indicator::Gauge::Axis::Tickformatstops& Indicator::Gauge::Axis::Tickformatstops
 }
 
 
-Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& Indicator::Gauge::Axis::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
-    json["dtickrange"] = std::move(f);
+Indicator::Gauge::Axis::Tickformatstops::Tickformatstop& Indicator::Gauge::Axis::Tickformatstops::Tickformatstop::dtickrange(const std::vector<double>& f) {
+    json["dtickrange"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -1308,8 +1308,8 @@ Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::name(Callable&& c)
     return name(std::move(f));
 }
 
-Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::range(std::vector<double> f) {
-    json["range"] = std::move(f);
+Indicator::Gauge::Steps::Step& Indicator::Gauge::Steps::Step::range(const std::vector<double>& f) {
+    json["range"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -1446,30 +1446,30 @@ Indicator::Legendgrouptitle& Indicator::Legendgrouptitle::text(Callable&& c) {
 
 std::string Indicator::Legendgrouptitle::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1603,30 +1603,30 @@ Indicator::Number& Indicator::Number::valueformat(Callable&& c) {
 
 std::string Indicator::Number::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Number::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Number::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1738,9 +1738,9 @@ Indicator::Stream& Indicator::Stream::token(Callable&& c) {
 
 std::string Indicator::Title::to_string(Align e) {
     switch(e) {
-        case Align::LEFT: return "left";
-        case Align::CENTER: return "center";
-        case Align::RIGHT: return "right";
+        case Align::Left: return "left";
+        case Align::Center: return "center";
+        case Align::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1775,30 +1775,30 @@ Indicator::Title& Indicator::Title::text(Callable&& c) {
 
 std::string Indicator::Title::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Title::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Indicator::Title::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};

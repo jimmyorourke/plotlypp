@@ -29,28 +29,28 @@ class Treemap : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Branchvalues {
-        REMAINDER,
-        TOTAL,
+        Remainder,
+        Total,
     };
     static std::string to_string(Branchvalues e);
 
     enum class Textposition {
-        TOP_LEFT,
-        TOP_CENTER,
-        TOP_RIGHT,
-        MIDDLE_LEFT,
-        MIDDLE_CENTER,
-        MIDDLE_RIGHT,
-        BOTTOM_LEFT,
-        BOTTOM_CENTER,
-        BOTTOM_RIGHT,
+        TopLeft,
+        TopCenter,
+        TopRight,
+        MiddleLeft,
+        MiddleCenter,
+        MiddleRight,
+        BottomLeft,
+        BottomCenter,
+        BottomRight,
     };
     static std::string to_string(Textposition e);
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
@@ -88,7 +88,7 @@ class Treemap : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Treemap& customdata(std::vector<T> f);
+    Treemap& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -111,7 +111,7 @@ class Treemap : public Trace {
     Treemap& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap& hoverinfo(Callable&& c);
-    Treemap& hoverinfo(std::vector<std::string> f);
+    Treemap& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Treemap& hoverinfosrc(std::string f);
@@ -139,7 +139,7 @@ class Treemap : public Trace {
     Treemap& hovertemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap& hovertemplate(Callable&& c);
-    Treemap& hovertemplate(std::vector<std::string> f);
+    Treemap& hovertemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Treemap& hovertemplatesrc(std::string f);
@@ -152,7 +152,7 @@ class Treemap : public Trace {
     Treemap& hovertext(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap& hovertext(Callable&& c);
-    Treemap& hovertext(std::vector<std::string> f);
+    Treemap& hovertext(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Treemap& hovertextsrc(std::string f);
@@ -162,7 +162,7 @@ class Treemap : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Treemap& ids(std::vector<T> f);
+    Treemap& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -180,7 +180,7 @@ class Treemap : public Trace {
 
     // Sets the labels of each of the sectors.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Treemap& labels(std::vector<T> f);
+    Treemap& labels(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -244,7 +244,7 @@ class Treemap : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Treemap& meta(Callable&& c);
     template <typename T>
-    Treemap& meta(std::vector<T> f);
+    Treemap& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Treemap& metasrc(std::string f);
@@ -272,7 +272,7 @@ class Treemap : public Trace {
     // in the hierarchy. If `ids` is filled, `parents` items are understood to be "ids" themselves. When `ids` is not
     // set, plotly attempts to find matching items in `labels`, but beware they must be unique.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Treemap& parents(std::vector<T> f);
+    Treemap& parents(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -304,7 +304,7 @@ class Treemap : public Trace {
     // be seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will
     // be seen in the hover labels.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Treemap& text(std::vector<T> f);
+    Treemap& text(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -343,7 +343,7 @@ class Treemap : public Trace {
     Treemap& texttemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap& texttemplate(Callable&& c);
-    Treemap& texttemplate(std::vector<std::string> f);
+    Treemap& texttemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `texttemplate`.
     Treemap& texttemplatesrc(std::string f);
@@ -376,7 +376,7 @@ class Treemap : public Trace {
     // Sets the values associated with each of the sectors. Use with `branchvalues` to determine how the values are
     // summed.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Treemap& values(std::vector<T> f);
+    Treemap& values(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -410,12 +410,12 @@ class Treemap::Domain {
     Treemap::Domain& row(Callable&& c);
 
     // Sets the horizontal domain of this treemap trace (in plot fraction).
-    Treemap::Domain& x(std::vector<double> f);
+    Treemap::Domain& x(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Treemap::Domain& x(Callable&& c);
 
     // Sets the vertical domain of this treemap trace (in plot fraction).
-    Treemap::Domain& y(std::vector<double> f);
+    Treemap::Domain& y(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Treemap::Domain& y(Callable&& c);
 
@@ -430,9 +430,9 @@ class Treemap::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -454,7 +454,7 @@ class Treemap::Hoverlabel {
     Treemap::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Hoverlabel& bgcolor(Callable&& c);
-    Treemap::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Treemap::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Treemap::Hoverlabel& bgcolorsrc(std::string f);
@@ -465,7 +465,7 @@ class Treemap::Hoverlabel {
     Treemap::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Hoverlabel& bordercolor(Callable&& c);
-    Treemap::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Treemap::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Treemap::Hoverlabel& bordercolorsrc(std::string f);
@@ -484,7 +484,7 @@ class Treemap::Hoverlabel {
     Treemap::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Treemap::Hoverlabel& namelength(Callable&& c);
-    Treemap::Hoverlabel& namelength(std::vector<int> f);
+    Treemap::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Treemap::Hoverlabel& namelengthsrc(std::string f);
@@ -503,33 +503,33 @@ class Treemap::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Treemap::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Hoverlabel::Font& color(Callable&& c);
-    Treemap::Hoverlabel::Font& color(std::vector<std::string> f);
+    Treemap::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Treemap::Hoverlabel::Font& colorsrc(std::string f);
@@ -546,7 +546,7 @@ class Treemap::Hoverlabel::Font {
     Treemap::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Hoverlabel::Font& family(Callable&& c);
-    Treemap::Hoverlabel::Font& family(std::vector<std::string> f);
+    Treemap::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Treemap::Hoverlabel::Font& familysrc(std::string f);
@@ -561,7 +561,7 @@ class Treemap::Hoverlabel::Font {
     Treemap::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Hoverlabel::Font& lineposition(Callable&& c);
-    Treemap::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Treemap::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Treemap::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -573,7 +573,7 @@ class Treemap::Hoverlabel::Font {
     Treemap::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Hoverlabel::Font& shadow(Callable&& c);
-    Treemap::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Treemap::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Treemap::Hoverlabel::Font& shadowsrc(std::string f);
@@ -583,7 +583,7 @@ class Treemap::Hoverlabel::Font {
     Treemap::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Treemap::Hoverlabel::Font& size(Callable&& c);
-    Treemap::Hoverlabel::Font& size(std::vector<double> f);
+    Treemap::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Treemap::Hoverlabel::Font& sizesrc(std::string f);
@@ -625,7 +625,7 @@ class Treemap::Hoverlabel::Font {
     Treemap::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Treemap::Hoverlabel::Font& weight(Callable&& c);
-    Treemap::Hoverlabel::Font& weight(std::vector<int> f);
+    Treemap::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Treemap::Hoverlabel::Font& weightsrc(std::string f);
@@ -644,33 +644,33 @@ class Treemap::Insidetextfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Treemap::Insidetextfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Insidetextfont& color(Callable&& c);
-    Treemap::Insidetextfont& color(std::vector<std::string> f);
+    Treemap::Insidetextfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Treemap::Insidetextfont& colorsrc(std::string f);
@@ -687,7 +687,7 @@ class Treemap::Insidetextfont {
     Treemap::Insidetextfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Insidetextfont& family(Callable&& c);
-    Treemap::Insidetextfont& family(std::vector<std::string> f);
+    Treemap::Insidetextfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Treemap::Insidetextfont& familysrc(std::string f);
@@ -702,7 +702,7 @@ class Treemap::Insidetextfont {
     Treemap::Insidetextfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Insidetextfont& lineposition(Callable&& c);
-    Treemap::Insidetextfont& lineposition(std::vector<std::string> f);
+    Treemap::Insidetextfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Treemap::Insidetextfont& linepositionsrc(std::string f);
@@ -714,7 +714,7 @@ class Treemap::Insidetextfont {
     Treemap::Insidetextfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Insidetextfont& shadow(Callable&& c);
-    Treemap::Insidetextfont& shadow(std::vector<std::string> f);
+    Treemap::Insidetextfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Treemap::Insidetextfont& shadowsrc(std::string f);
@@ -724,7 +724,7 @@ class Treemap::Insidetextfont {
     Treemap::Insidetextfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Treemap::Insidetextfont& size(Callable&& c);
-    Treemap::Insidetextfont& size(std::vector<double> f);
+    Treemap::Insidetextfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Treemap::Insidetextfont& sizesrc(std::string f);
@@ -766,7 +766,7 @@ class Treemap::Insidetextfont {
     Treemap::Insidetextfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Treemap::Insidetextfont& weight(Callable&& c);
-    Treemap::Insidetextfont& weight(std::vector<int> f);
+    Treemap::Insidetextfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Treemap::Insidetextfont& weightsrc(std::string f);
@@ -808,26 +808,26 @@ class Treemap::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -894,9 +894,9 @@ class Treemap::Marker {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Depthfade {
-        TRUE,
-        FALSE,
-        REVERSED,
+        True,
+        False,
+        Reversed,
     };
     static std::string to_string(Depthfade e);
 
@@ -954,7 +954,7 @@ class Treemap::Marker {
     // Sets the color of each sector of this trace. If not specified, the default trace color set is used to pick the
     // sector colors.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Treemap::Marker& colors(std::vector<T> f);
+    Treemap::Marker& colors(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -967,7 +967,7 @@ class Treemap::Marker {
     // Alternatively, `colorscale` may be a palette name string of the following list:
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Treemap::Marker& colorscale(std::string f);
-    Treemap::Marker& colorscale(std::vector<std::pair<double, std::string>> f);
+    Treemap::Marker& colorscale(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -1026,17 +1026,17 @@ class Treemap::Marker::Colorbar {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Lenmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Lenmode e);
 
@@ -1047,93 +1047,93 @@ class Treemap::Marker::Colorbar {
     static std::string to_string(Orientation e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Thicknessmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Thicknessmode e);
 
     enum class Ticklabeloverflow {
-        ALLOW,
-        HIDE_PAST_DIV,
-        HIDE_PAST_DOMAIN,
+        Allow,
+        HidePastDiv,
+        HidePastDomain,
     };
     static std::string to_string(Ticklabeloverflow e);
 
     enum class Ticklabelposition {
-        OUTSIDE,
-        INSIDE,
-        OUTSIDE_TOP,
-        INSIDE_TOP,
-        OUTSIDE_LEFT,
-        INSIDE_LEFT,
-        OUTSIDE_RIGHT,
-        INSIDE_RIGHT,
-        OUTSIDE_BOTTOM,
-        INSIDE_BOTTOM,
+        Outside,
+        Inside,
+        OutsideTop,
+        InsideTop,
+        OutsideLeft,
+        InsideLeft,
+        OutsideRight,
+        InsideRight,
+        OutsideBottom,
+        InsideBottom,
     };
     static std::string to_string(Ticklabelposition e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Xanchor {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Xref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Xref e);
 
     enum class Yanchor {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
     enum class Yref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Yref e);
 
@@ -1345,7 +1345,7 @@ class Treemap::Marker::Colorbar {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Treemap::Marker::Colorbar& ticktext(std::vector<T> f);
+    Treemap::Marker::Colorbar& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1359,7 +1359,7 @@ class Treemap::Marker::Colorbar {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Treemap::Marker::Colorbar& tickvals(std::vector<T> f);
+    Treemap::Marker::Colorbar& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1435,26 +1435,26 @@ class Treemap::Marker::Colorbar::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1538,7 +1538,7 @@ class Treemap::Marker::Colorbar::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Treemap::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Treemap::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Treemap::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -1580,9 +1580,9 @@ class Treemap::Marker::Colorbar::Title {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
-        RIGHT,
-        TOP,
-        BOTTOM,
+        Right,
+        Top,
+        Bottom,
     };
     static std::string to_string(Side e);
 
@@ -1615,26 +1615,26 @@ class Treemap::Marker::Colorbar::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1704,7 +1704,7 @@ class Treemap::Marker::Line {
     Treemap::Marker::Line& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Marker::Line& color(Callable&& c);
-    Treemap::Marker::Line& color(std::vector<std::string> f);
+    Treemap::Marker::Line& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Treemap::Marker::Line& colorsrc(std::string f);
@@ -1715,7 +1715,7 @@ class Treemap::Marker::Line {
     Treemap::Marker::Line& width(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Treemap::Marker::Line& width(Callable&& c);
-    Treemap::Marker::Line& width(std::vector<double> f);
+    Treemap::Marker::Line& width(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `width`.
     Treemap::Marker::Line& widthsrc(std::string f);
@@ -1764,8 +1764,8 @@ class Treemap::Marker::Pattern {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Fillmode {
-        REPLACE,
-        OVERLAY,
+        Replace,
+        Overlay,
     };
     static std::string to_string(Fillmode e);
 
@@ -1774,7 +1774,7 @@ class Treemap::Marker::Pattern {
     Treemap::Marker::Pattern& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Marker::Pattern& bgcolor(Callable&& c);
-    Treemap::Marker::Pattern& bgcolor(std::vector<std::string> f);
+    Treemap::Marker::Pattern& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Treemap::Marker::Pattern& bgcolorsrc(std::string f);
@@ -1786,7 +1786,7 @@ class Treemap::Marker::Pattern {
     Treemap::Marker::Pattern& fgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Marker::Pattern& fgcolor(Callable&& c);
-    Treemap::Marker::Pattern& fgcolor(std::vector<std::string> f);
+    Treemap::Marker::Pattern& fgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `fgcolor`.
     Treemap::Marker::Pattern& fgcolorsrc(std::string f);
@@ -1807,7 +1807,7 @@ class Treemap::Marker::Pattern {
     Treemap::Marker::Pattern& shape(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Marker::Pattern& shape(Callable&& c);
-    Treemap::Marker::Pattern& shape(std::vector<std::string> f);
+    Treemap::Marker::Pattern& shape(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shape`.
     Treemap::Marker::Pattern& shapesrc(std::string f);
@@ -1819,7 +1819,7 @@ class Treemap::Marker::Pattern {
     Treemap::Marker::Pattern& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Treemap::Marker::Pattern& size(Callable&& c);
-    Treemap::Marker::Pattern& size(std::vector<double> f);
+    Treemap::Marker::Pattern& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Treemap::Marker::Pattern& sizesrc(std::string f);
@@ -1832,7 +1832,7 @@ class Treemap::Marker::Pattern {
     Treemap::Marker::Pattern& solidity(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Treemap::Marker::Pattern& solidity(Callable&& c);
-    Treemap::Marker::Pattern& solidity(std::vector<double> f);
+    Treemap::Marker::Pattern& solidity(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `solidity`.
     Treemap::Marker::Pattern& soliditysrc(std::string f);
@@ -1853,33 +1853,33 @@ class Treemap::Outsidetextfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Treemap::Outsidetextfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Outsidetextfont& color(Callable&& c);
-    Treemap::Outsidetextfont& color(std::vector<std::string> f);
+    Treemap::Outsidetextfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Treemap::Outsidetextfont& colorsrc(std::string f);
@@ -1896,7 +1896,7 @@ class Treemap::Outsidetextfont {
     Treemap::Outsidetextfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Outsidetextfont& family(Callable&& c);
-    Treemap::Outsidetextfont& family(std::vector<std::string> f);
+    Treemap::Outsidetextfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Treemap::Outsidetextfont& familysrc(std::string f);
@@ -1911,7 +1911,7 @@ class Treemap::Outsidetextfont {
     Treemap::Outsidetextfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Outsidetextfont& lineposition(Callable&& c);
-    Treemap::Outsidetextfont& lineposition(std::vector<std::string> f);
+    Treemap::Outsidetextfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Treemap::Outsidetextfont& linepositionsrc(std::string f);
@@ -1923,7 +1923,7 @@ class Treemap::Outsidetextfont {
     Treemap::Outsidetextfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Outsidetextfont& shadow(Callable&& c);
-    Treemap::Outsidetextfont& shadow(std::vector<std::string> f);
+    Treemap::Outsidetextfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Treemap::Outsidetextfont& shadowsrc(std::string f);
@@ -1933,7 +1933,7 @@ class Treemap::Outsidetextfont {
     Treemap::Outsidetextfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Treemap::Outsidetextfont& size(Callable&& c);
-    Treemap::Outsidetextfont& size(std::vector<double> f);
+    Treemap::Outsidetextfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Treemap::Outsidetextfont& sizesrc(std::string f);
@@ -1975,7 +1975,7 @@ class Treemap::Outsidetextfont {
     Treemap::Outsidetextfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Treemap::Outsidetextfont& weight(Callable&& c);
-    Treemap::Outsidetextfont& weight(std::vector<int> f);
+    Treemap::Outsidetextfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Treemap::Outsidetextfont& weightsrc(std::string f);
@@ -1993,17 +1993,17 @@ class Treemap::Pathbar {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Edgeshape {
-        GT,
-        LT,
-        OR,
-        SLASH,
-        DOUBLEBACKSLASH,
+        Gt,
+        Lt,
+        Or,
+        Slash,
+        Doublebackslash,
     };
     static std::string to_string(Edgeshape e);
 
     enum class Side {
-        TOP,
-        BOTTOM,
+        Top,
+        Bottom,
     };
     static std::string to_string(Side e);
 
@@ -2046,33 +2046,33 @@ class Treemap::Pathbar::Textfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Treemap::Pathbar::Textfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Pathbar::Textfont& color(Callable&& c);
-    Treemap::Pathbar::Textfont& color(std::vector<std::string> f);
+    Treemap::Pathbar::Textfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Treemap::Pathbar::Textfont& colorsrc(std::string f);
@@ -2089,7 +2089,7 @@ class Treemap::Pathbar::Textfont {
     Treemap::Pathbar::Textfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Pathbar::Textfont& family(Callable&& c);
-    Treemap::Pathbar::Textfont& family(std::vector<std::string> f);
+    Treemap::Pathbar::Textfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Treemap::Pathbar::Textfont& familysrc(std::string f);
@@ -2104,7 +2104,7 @@ class Treemap::Pathbar::Textfont {
     Treemap::Pathbar::Textfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Pathbar::Textfont& lineposition(Callable&& c);
-    Treemap::Pathbar::Textfont& lineposition(std::vector<std::string> f);
+    Treemap::Pathbar::Textfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Treemap::Pathbar::Textfont& linepositionsrc(std::string f);
@@ -2116,7 +2116,7 @@ class Treemap::Pathbar::Textfont {
     Treemap::Pathbar::Textfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Pathbar::Textfont& shadow(Callable&& c);
-    Treemap::Pathbar::Textfont& shadow(std::vector<std::string> f);
+    Treemap::Pathbar::Textfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Treemap::Pathbar::Textfont& shadowsrc(std::string f);
@@ -2126,7 +2126,7 @@ class Treemap::Pathbar::Textfont {
     Treemap::Pathbar::Textfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Treemap::Pathbar::Textfont& size(Callable&& c);
-    Treemap::Pathbar::Textfont& size(std::vector<double> f);
+    Treemap::Pathbar::Textfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Treemap::Pathbar::Textfont& sizesrc(std::string f);
@@ -2168,7 +2168,7 @@ class Treemap::Pathbar::Textfont {
     Treemap::Pathbar::Textfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Treemap::Pathbar::Textfont& weight(Callable&& c);
-    Treemap::Pathbar::Textfont& weight(std::vector<int> f);
+    Treemap::Pathbar::Textfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Treemap::Pathbar::Textfont& weightsrc(std::string f);
@@ -2225,33 +2225,33 @@ class Treemap::Textfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Treemap::Textfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Textfont& color(Callable&& c);
-    Treemap::Textfont& color(std::vector<std::string> f);
+    Treemap::Textfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Treemap::Textfont& colorsrc(std::string f);
@@ -2268,7 +2268,7 @@ class Treemap::Textfont {
     Treemap::Textfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Textfont& family(Callable&& c);
-    Treemap::Textfont& family(std::vector<std::string> f);
+    Treemap::Textfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Treemap::Textfont& familysrc(std::string f);
@@ -2283,7 +2283,7 @@ class Treemap::Textfont {
     Treemap::Textfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Textfont& lineposition(Callable&& c);
-    Treemap::Textfont& lineposition(std::vector<std::string> f);
+    Treemap::Textfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Treemap::Textfont& linepositionsrc(std::string f);
@@ -2295,7 +2295,7 @@ class Treemap::Textfont {
     Treemap::Textfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Treemap::Textfont& shadow(Callable&& c);
-    Treemap::Textfont& shadow(std::vector<std::string> f);
+    Treemap::Textfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Treemap::Textfont& shadowsrc(std::string f);
@@ -2305,7 +2305,7 @@ class Treemap::Textfont {
     Treemap::Textfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Treemap::Textfont& size(Callable&& c);
-    Treemap::Textfont& size(std::vector<double> f);
+    Treemap::Textfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Treemap::Textfont& sizesrc(std::string f);
@@ -2347,7 +2347,7 @@ class Treemap::Textfont {
     Treemap::Textfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Treemap::Textfont& weight(Callable&& c);
-    Treemap::Textfont& weight(std::vector<int> f);
+    Treemap::Textfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Treemap::Textfont& weightsrc(std::string f);
@@ -2365,12 +2365,12 @@ class Treemap::Tiling {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Packing {
-        SQUARIFY,
-        BINARY,
-        DICE,
-        SLICE,
-        SLICE_DICE,
-        DICE_SLICE,
+        Squarify,
+        Binary,
+        Dice,
+        Slice,
+        SliceDice,
+        DiceSlice,
     };
     static std::string to_string(Packing e);
 

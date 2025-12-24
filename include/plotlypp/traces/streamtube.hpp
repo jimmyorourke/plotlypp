@@ -29,9 +29,9 @@ class Streamtube : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
@@ -92,7 +92,7 @@ class Streamtube : public Trace {
     // list:
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Streamtube& colorscale(std::string f);
-    Streamtube& colorscale(std::vector<std::pair<double, std::string>> f);
+    Streamtube& colorscale(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -101,7 +101,7 @@ class Streamtube : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Streamtube& customdata(std::vector<T> f);
+    Streamtube& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -120,7 +120,7 @@ class Streamtube : public Trace {
     Streamtube& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Streamtube& hoverinfo(Callable&& c);
-    Streamtube& hoverinfo(std::vector<std::string> f);
+    Streamtube& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Streamtube& hoverinfosrc(std::string f);
@@ -148,7 +148,7 @@ class Streamtube : public Trace {
     Streamtube& hovertemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Streamtube& hovertemplate(Callable&& c);
-    Streamtube& hovertemplate(std::vector<std::string> f);
+    Streamtube& hovertemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Streamtube& hovertemplatesrc(std::string f);
@@ -163,7 +163,7 @@ class Streamtube : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Streamtube& ids(std::vector<T> f);
+    Streamtube& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -228,7 +228,7 @@ class Streamtube : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Streamtube& meta(Callable&& c);
     template <typename T>
-    Streamtube& meta(std::vector<T> f);
+    Streamtube& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Streamtube& metasrc(std::string f);
@@ -293,7 +293,7 @@ class Streamtube : public Trace {
 
     // Sets the x components of the vector field.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Streamtube& u(std::vector<T> f);
+    Streamtube& u(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -332,7 +332,7 @@ class Streamtube : public Trace {
 
     // Sets the y components of the vector field.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Streamtube& v(std::vector<T> f);
+    Streamtube& v(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -357,7 +357,7 @@ class Streamtube : public Trace {
 
     // Sets the z components of the vector field.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Streamtube& w(std::vector<T> f);
+    Streamtube& w(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -377,7 +377,7 @@ class Streamtube : public Trace {
 
     // Sets the x coordinates of the vector field.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Streamtube& x(std::vector<T> f);
+    Streamtube& x(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -400,7 +400,7 @@ class Streamtube : public Trace {
 
     // Sets the y coordinates of the vector field.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Streamtube& y(std::vector<T> f);
+    Streamtube& y(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -423,7 +423,7 @@ class Streamtube : public Trace {
 
     // Sets the z coordinates of the vector field.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Streamtube& z(std::vector<T> f);
+    Streamtube& z(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -452,17 +452,17 @@ class Streamtube::Colorbar {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Lenmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Lenmode e);
 
@@ -473,93 +473,93 @@ class Streamtube::Colorbar {
     static std::string to_string(Orientation e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Thicknessmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Thicknessmode e);
 
     enum class Ticklabeloverflow {
-        ALLOW,
-        HIDE_PAST_DIV,
-        HIDE_PAST_DOMAIN,
+        Allow,
+        HidePastDiv,
+        HidePastDomain,
     };
     static std::string to_string(Ticklabeloverflow e);
 
     enum class Ticklabelposition {
-        OUTSIDE,
-        INSIDE,
-        OUTSIDE_TOP,
-        INSIDE_TOP,
-        OUTSIDE_LEFT,
-        INSIDE_LEFT,
-        OUTSIDE_RIGHT,
-        INSIDE_RIGHT,
-        OUTSIDE_BOTTOM,
-        INSIDE_BOTTOM,
+        Outside,
+        Inside,
+        OutsideTop,
+        InsideTop,
+        OutsideLeft,
+        InsideLeft,
+        OutsideRight,
+        InsideRight,
+        OutsideBottom,
+        InsideBottom,
     };
     static std::string to_string(Ticklabelposition e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Xanchor {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Xref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Xref e);
 
     enum class Yanchor {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
     enum class Yref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Yref e);
 
@@ -771,7 +771,7 @@ class Streamtube::Colorbar {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Streamtube::Colorbar& ticktext(std::vector<T> f);
+    Streamtube::Colorbar& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -785,7 +785,7 @@ class Streamtube::Colorbar {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Streamtube::Colorbar& tickvals(std::vector<T> f);
+    Streamtube::Colorbar& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -861,26 +861,26 @@ class Streamtube::Colorbar::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -964,7 +964,7 @@ class Streamtube::Colorbar::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Streamtube::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Streamtube::Colorbar::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Streamtube::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -1006,9 +1006,9 @@ class Streamtube::Colorbar::Title {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
-        RIGHT,
-        TOP,
-        BOTTOM,
+        Right,
+        Top,
+        Bottom,
     };
     static std::string to_string(Side e);
 
@@ -1041,26 +1041,26 @@ class Streamtube::Colorbar::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1127,9 +1127,9 @@ class Streamtube::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -1151,7 +1151,7 @@ class Streamtube::Hoverlabel {
     Streamtube::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Streamtube::Hoverlabel& bgcolor(Callable&& c);
-    Streamtube::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Streamtube::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Streamtube::Hoverlabel& bgcolorsrc(std::string f);
@@ -1162,7 +1162,7 @@ class Streamtube::Hoverlabel {
     Streamtube::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Streamtube::Hoverlabel& bordercolor(Callable&& c);
-    Streamtube::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Streamtube::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Streamtube::Hoverlabel& bordercolorsrc(std::string f);
@@ -1181,7 +1181,7 @@ class Streamtube::Hoverlabel {
     Streamtube::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Streamtube::Hoverlabel& namelength(Callable&& c);
-    Streamtube::Hoverlabel& namelength(std::vector<int> f);
+    Streamtube::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Streamtube::Hoverlabel& namelengthsrc(std::string f);
@@ -1200,33 +1200,33 @@ class Streamtube::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Streamtube::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Streamtube::Hoverlabel::Font& color(Callable&& c);
-    Streamtube::Hoverlabel::Font& color(std::vector<std::string> f);
+    Streamtube::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Streamtube::Hoverlabel::Font& colorsrc(std::string f);
@@ -1243,7 +1243,7 @@ class Streamtube::Hoverlabel::Font {
     Streamtube::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Streamtube::Hoverlabel::Font& family(Callable&& c);
-    Streamtube::Hoverlabel::Font& family(std::vector<std::string> f);
+    Streamtube::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Streamtube::Hoverlabel::Font& familysrc(std::string f);
@@ -1258,7 +1258,7 @@ class Streamtube::Hoverlabel::Font {
     Streamtube::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Streamtube::Hoverlabel::Font& lineposition(Callable&& c);
-    Streamtube::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Streamtube::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Streamtube::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -1270,7 +1270,7 @@ class Streamtube::Hoverlabel::Font {
     Streamtube::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Streamtube::Hoverlabel::Font& shadow(Callable&& c);
-    Streamtube::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Streamtube::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Streamtube::Hoverlabel::Font& shadowsrc(std::string f);
@@ -1280,7 +1280,7 @@ class Streamtube::Hoverlabel::Font {
     Streamtube::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Streamtube::Hoverlabel::Font& size(Callable&& c);
-    Streamtube::Hoverlabel::Font& size(std::vector<double> f);
+    Streamtube::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Streamtube::Hoverlabel::Font& sizesrc(std::string f);
@@ -1322,7 +1322,7 @@ class Streamtube::Hoverlabel::Font {
     Streamtube::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Streamtube::Hoverlabel::Font& weight(Callable&& c);
-    Streamtube::Hoverlabel::Font& weight(std::vector<int> f);
+    Streamtube::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Streamtube::Hoverlabel::Font& weightsrc(std::string f);
@@ -1364,26 +1364,26 @@ class Streamtube::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1522,7 +1522,7 @@ class Streamtube::Starts {
 
     // Sets the x components of the starting position of the streamtubes
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Streamtube::Starts& x(std::vector<T> f);
+    Streamtube::Starts& x(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1535,7 +1535,7 @@ class Streamtube::Starts {
 
     // Sets the y components of the starting position of the streamtubes
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Streamtube::Starts& y(std::vector<T> f);
+    Streamtube::Starts& y(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1548,7 +1548,7 @@ class Streamtube::Starts {
 
     // Sets the z components of the starting position of the streamtubes
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Streamtube::Starts& z(std::vector<T> f);
+    Streamtube::Starts& z(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>

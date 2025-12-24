@@ -23,61 +23,61 @@ class Layout {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Autotypenumbers {
-        CONVERT_TYPES,
-        STRICT,
+        ConvertTypes,
+        Strict,
     };
     static std::string to_string(Autotypenumbers e);
 
     enum class Calendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Calendar e);
 
     enum class Dragmode {
-        ZOOM,
-        PAN,
-        SELECT,
-        LASSO,
-        DRAWCLOSEDPATH,
-        DRAWOPENPATH,
-        DRAWLINE,
-        DRAWRECT,
-        DRAWCIRCLE,
-        ORBIT,
-        TURNTABLE,
-        FALSE,
+        Zoom,
+        Pan,
+        Select,
+        Lasso,
+        Drawclosedpath,
+        Drawopenpath,
+        Drawline,
+        Drawrect,
+        Drawcircle,
+        Orbit,
+        Turntable,
+        False,
     };
     static std::string to_string(Dragmode e);
 
     enum class Hovermode {
         X,
         Y,
-        CLOSEST,
-        FALSE,
-        X_UNIFIED,
-        Y_UNIFIED,
+        Closest,
+        False,
+        XUnified,
+        YUnified,
     };
     static std::string to_string(Hovermode e);
 
     enum class Hoversubplots {
-        SINGLE,
-        OVERLAYING,
-        AXIS,
+        Single,
+        Overlaying,
+        Axis,
     };
     static std::string to_string(Hoversubplots e);
 
@@ -85,7 +85,7 @@ class Layout {
         H,
         V,
         D,
-        ANY,
+        Any,
     };
     static std::string to_string(Selectdirection e);
 
@@ -175,7 +175,7 @@ class Layout {
     Layout& colorscale(Callable&& c);
 
     // Sets the default trace colors.
-    Layout& colorway(std::vector<std::string> f);
+    Layout& colorway(const std::vector<std::string>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<std::string>&>>>
     Layout& colorway(Callable&& c);
 
@@ -295,7 +295,7 @@ class Layout {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Layout& meta(Callable&& c);
     template <typename T>
-    Layout& meta(std::vector<T> f);
+    Layout& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Layout& metasrc(std::string f);
@@ -525,39 +525,39 @@ class Layout::Annotations::Annotation {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Align e);
 
     enum class Clicktoshow {
-        FALSE,
-        ONOFF,
-        ONOUT,
+        False,
+        Onoff,
+        Onout,
     };
     static std::string to_string(Clicktoshow e);
 
     enum class Valign {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Valign e);
 
     enum class Xanchor {
-        AUTO,
-        LEFT,
-        CENTER,
-        RIGHT,
+        Auto,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Yanchor {
-        AUTO,
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Auto,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
@@ -879,26 +879,26 @@ class Layout::Annotations::Annotation::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -999,26 +999,26 @@ class Layout::Annotations::Annotation::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1129,7 +1129,7 @@ class Layout::Coloraxis {
     // list:
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Layout::Coloraxis& colorscale(std::string f);
-    Layout::Coloraxis& colorscale(std::vector<std::pair<double, std::string>> f);
+    Layout::Coloraxis& colorscale(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -1157,17 +1157,17 @@ class Layout::Coloraxis::Colorbar {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Lenmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Lenmode e);
 
@@ -1178,93 +1178,93 @@ class Layout::Coloraxis::Colorbar {
     static std::string to_string(Orientation e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Thicknessmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Thicknessmode e);
 
     enum class Ticklabeloverflow {
-        ALLOW,
-        HIDE_PAST_DIV,
-        HIDE_PAST_DOMAIN,
+        Allow,
+        HidePastDiv,
+        HidePastDomain,
     };
     static std::string to_string(Ticklabeloverflow e);
 
     enum class Ticklabelposition {
-        OUTSIDE,
-        INSIDE,
-        OUTSIDE_TOP,
-        INSIDE_TOP,
-        OUTSIDE_LEFT,
-        INSIDE_LEFT,
-        OUTSIDE_RIGHT,
-        INSIDE_RIGHT,
-        OUTSIDE_BOTTOM,
-        INSIDE_BOTTOM,
+        Outside,
+        Inside,
+        OutsideTop,
+        InsideTop,
+        OutsideLeft,
+        InsideLeft,
+        OutsideRight,
+        InsideRight,
+        OutsideBottom,
+        InsideBottom,
     };
     static std::string to_string(Ticklabelposition e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Xanchor {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Xref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Xref e);
 
     enum class Yanchor {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
     enum class Yref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Yref e);
 
@@ -1476,7 +1476,7 @@ class Layout::Coloraxis::Colorbar {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Coloraxis::Colorbar& ticktext(std::vector<T> f);
+    Layout::Coloraxis::Colorbar& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1490,7 +1490,7 @@ class Layout::Coloraxis::Colorbar {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Coloraxis::Colorbar& tickvals(std::vector<T> f);
+    Layout::Coloraxis::Colorbar& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1566,26 +1566,26 @@ class Layout::Coloraxis::Colorbar::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1669,7 +1669,7 @@ class Layout::Coloraxis::Colorbar::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Layout::Coloraxis::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Layout::Coloraxis::Colorbar::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Coloraxis::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -1711,9 +1711,9 @@ class Layout::Coloraxis::Colorbar::Title {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
-        RIGHT,
-        TOP,
-        BOTTOM,
+        Right,
+        Top,
+        Bottom,
     };
     static std::string to_string(Side e);
 
@@ -1746,26 +1746,26 @@ class Layout::Coloraxis::Colorbar::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1833,7 +1833,7 @@ class Layout::Colorscale {
 
     // Sets the default diverging colorscale. Note that `autocolorscale` must be true for this attribute to work.
     Layout::Colorscale& diverging(std::string f);
-    Layout::Colorscale& diverging(std::vector<std::pair<double, std::string>> f);
+    Layout::Colorscale& diverging(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -1842,7 +1842,7 @@ class Layout::Colorscale {
     // Sets the default sequential colorscale for positive values. Note that `autocolorscale` must be true for this
     // attribute to work.
     Layout::Colorscale& sequential(std::string f);
-    Layout::Colorscale& sequential(std::vector<std::pair<double, std::string>> f);
+    Layout::Colorscale& sequential(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -1851,7 +1851,7 @@ class Layout::Colorscale {
     // Sets the default sequential colorscale for negative values. Note that `autocolorscale` must be true for this
     // attribute to work.
     Layout::Colorscale& sequentialminus(std::string f);
-    Layout::Colorscale& sequentialminus(std::vector<std::pair<double, std::string>> f);
+    Layout::Colorscale& sequentialminus(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -1869,26 +1869,26 @@ class Layout::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1955,26 +1955,26 @@ class Layout::Geo {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Fitbounds {
-        FALSE,
-        LOCATIONS,
-        GEOJSON,
+        False,
+        Locations,
+        Geojson,
     };
     static std::string to_string(Fitbounds e);
 
     enum class Resolution {
-        NUM_110,
-        NUM_50,
+        Num_110,
+        Num_50,
     };
     static std::string to_string(Resolution e);
 
     enum class Scope {
-        AFRICA,
-        ASIA,
-        EUROPE,
-        NORTH_AMERICA,
-        SOUTH_AMERICA,
-        USA,
-        WORLD,
+        Africa,
+        Asia,
+        Europe,
+        NorthAmerica,
+        SouthAmerica,
+        Usa,
+        World,
     };
     static std::string to_string(Scope e);
 
@@ -2192,13 +2192,13 @@ class Layout::Geo::Domain {
 
     // Sets the horizontal domain of this geo subplot (in plot fraction). Note that geo subplots are constrained by
     // domain. In general, when `projection.scale` is set to 1. a map will fit either its x or y domain, but not both.
-    Layout::Geo::Domain& x(std::vector<double> f);
+    Layout::Geo::Domain& x(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Geo::Domain& x(Callable&& c);
 
     // Sets the vertical domain of this geo subplot (in plot fraction). Note that geo subplots are constrained by
     // domain. In general, when `projection.scale` is set to 1. a map will fit either its x or y domain, but not both.
-    Layout::Geo::Domain& y(std::vector<double> f);
+    Layout::Geo::Domain& y(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Geo::Domain& y(Callable&& c);
 
@@ -2234,7 +2234,7 @@ class Layout::Geo::Lataxis {
     Layout::Geo::Lataxis& gridwidth(Callable&& c);
 
     // Sets the range of this axis (in degrees), sets the map's clipped coordinates.
-    Layout::Geo::Lataxis& range(std::vector<double> f);
+    Layout::Geo::Lataxis& range(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Geo::Lataxis& range(Callable&& c);
 
@@ -2280,7 +2280,7 @@ class Layout::Geo::Lonaxis {
     Layout::Geo::Lonaxis& gridwidth(Callable&& c);
 
     // Sets the range of this axis (in degrees), sets the map's clipped coordinates.
-    Layout::Geo::Lonaxis& range(std::vector<double> f);
+    Layout::Geo::Lonaxis& range(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Geo::Lonaxis& range(Callable&& c);
 
@@ -2305,90 +2305,90 @@ class Layout::Geo::Projection {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Type {
-        AIRY,
-        AITOFF,
-        ALBERS,
-        ALBERS_USA,
-        AUGUST,
-        AZIMUTHAL_EQUAL_AREA,
-        AZIMUTHAL_EQUIDISTANT,
-        BAKER,
-        BERTIN1953,
-        BOGGS,
-        BONNE,
-        BOTTOMLEY,
-        BROMLEY,
-        COLLIGNON,
-        CONIC_CONFORMAL,
-        CONIC_EQUAL_AREA,
-        CONIC_EQUIDISTANT,
-        CRAIG,
-        CRASTER,
-        CYLINDRICAL_EQUAL_AREA,
-        CYLINDRICAL_STEREOGRAPHIC,
-        ECKERT1,
-        ECKERT2,
-        ECKERT3,
-        ECKERT4,
-        ECKERT5,
-        ECKERT6,
-        EISENLOHR,
-        EQUAL_EARTH,
-        EQUIRECTANGULAR,
-        FAHEY,
-        FOUCAUT,
-        FOUCAUT_SINUSOIDAL,
-        GINZBURG4,
-        GINZBURG5,
-        GINZBURG6,
-        GINZBURG8,
-        GINZBURG9,
-        GNOMONIC,
-        GRINGORTEN,
-        GRINGORTEN_QUINCUNCIAL,
-        GUYOU,
-        HAMMER,
-        HILL,
-        HOMOLOSINE,
-        HUFNAGEL,
-        HYPERELLIPTICAL,
-        KAVRAYSKIY7,
-        LAGRANGE,
-        LARRIVEE,
-        LASKOWSKI,
-        LOXIMUTHAL,
-        MERCATOR,
-        MILLER,
-        MOLLWEIDE,
-        MT_FLAT_POLAR_PARABOLIC,
-        MT_FLAT_POLAR_QUARTIC,
-        MT_FLAT_POLAR_SINUSOIDAL,
-        NATURAL_EARTH,
-        NATURAL_EARTH1,
-        NATURAL_EARTH2,
-        NELL_HAMMER,
-        NICOLOSI,
-        ORTHOGRAPHIC,
-        PATTERSON,
-        PEIRCE_QUINCUNCIAL,
-        POLYCONIC,
-        RECTANGULAR_POLYCONIC,
-        ROBINSON,
-        SATELLITE,
-        SINU_MOLLWEIDE,
-        SINUSOIDAL,
-        STEREOGRAPHIC,
-        TIMES,
-        TRANSVERSE_MERCATOR,
-        VAN_DER_GRINTEN,
-        VAN_DER_GRINTEN2,
-        VAN_DER_GRINTEN3,
-        VAN_DER_GRINTEN4,
-        WAGNER4,
-        WAGNER6,
-        WIECHEL,
-        WINKEL_TRIPEL,
-        WINKEL3,
+        Airy,
+        Aitoff,
+        Albers,
+        AlbersUsa,
+        August,
+        AzimuthalEqualArea,
+        AzimuthalEquidistant,
+        Baker,
+        Bertin1953,
+        Boggs,
+        Bonne,
+        Bottomley,
+        Bromley,
+        Collignon,
+        ConicConformal,
+        ConicEqualArea,
+        ConicEquidistant,
+        Craig,
+        Craster,
+        CylindricalEqualArea,
+        CylindricalStereographic,
+        Eckert1,
+        Eckert2,
+        Eckert3,
+        Eckert4,
+        Eckert5,
+        Eckert6,
+        Eisenlohr,
+        EqualEarth,
+        Equirectangular,
+        Fahey,
+        Foucaut,
+        FoucautSinusoidal,
+        Ginzburg4,
+        Ginzburg5,
+        Ginzburg6,
+        Ginzburg8,
+        Ginzburg9,
+        Gnomonic,
+        Gringorten,
+        GringortenQuincuncial,
+        Guyou,
+        Hammer,
+        Hill,
+        Homolosine,
+        Hufnagel,
+        Hyperelliptical,
+        Kavrayskiy7,
+        Lagrange,
+        Larrivee,
+        Laskowski,
+        Loximuthal,
+        Mercator,
+        Miller,
+        Mollweide,
+        MtFlatPolarParabolic,
+        MtFlatPolarQuartic,
+        MtFlatPolarSinusoidal,
+        NaturalEarth,
+        NaturalEarth1,
+        NaturalEarth2,
+        NellHammer,
+        Nicolosi,
+        Orthographic,
+        Patterson,
+        PeirceQuincuncial,
+        Polyconic,
+        RectangularPolyconic,
+        Robinson,
+        Satellite,
+        SinuMollweide,
+        Sinusoidal,
+        Stereographic,
+        Times,
+        TransverseMercator,
+        VanDerGrinten,
+        VanDerGrinten2,
+        VanDerGrinten3,
+        VanDerGrinten4,
+        Wagner4,
+        Wagner6,
+        Wiechel,
+        WinkelTripel,
+        Winkel3,
     };
     static std::string to_string(Type e);
 
@@ -2401,7 +2401,7 @@ class Layout::Geo::Projection {
     Layout::Geo::Projection& distance(Callable&& c);
 
     // For conic projection types only. Sets the parallels (tangent, secant) where the cone intersects the sphere.
-    Layout::Geo::Projection& parallels(std::vector<double> f);
+    Layout::Geo::Projection& parallels(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Geo::Projection& parallels(Callable&& c);
 
@@ -2459,30 +2459,30 @@ class Layout::Grid {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Pattern {
-        INDEPENDENT,
-        COUPLED,
+        Independent,
+        Coupled,
     };
     static std::string to_string(Pattern e);
 
     enum class Roworder {
-        TOP_TO_BOTTOM,
-        BOTTOM_TO_TOP,
+        TopToBottom,
+        BottomToTop,
     };
     static std::string to_string(Roworder e);
 
     enum class Xside {
-        BOTTOM,
-        BOTTOM_PLOT,
-        TOP_PLOT,
-        TOP,
+        Bottom,
+        BottomPlot,
+        TopPlot,
+        Top,
     };
     static std::string to_string(Xside e);
 
     enum class Yside {
-        LEFT,
-        LEFT_PLOT,
-        RIGHT_PLOT,
-        RIGHT,
+        Left,
+        LeftPlot,
+        RightPlot,
+        Right,
     };
     static std::string to_string(Yside e);
 
@@ -2521,14 +2521,14 @@ class Layout::Grid {
     // cartesian subplot id, like *xy* or *x3y2*, or ** to leave that cell empty. You may reuse x axes within the same
     // column, and y axes within the same row. Non-cartesian subplots and traces that support `domain` can place
     // themselves in this grid separately using the `gridcell` attribute.
-    Layout::Grid& subplots(std::vector<double> f);
+    Layout::Grid& subplots(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Grid& subplots(Callable&& c);
 
     // Used with `yaxes` when the x and y axes are shared across columns and rows. Each entry should be an x axis id
     // like *x*, *x2*, etc., or ** to not put an x axis in that column. Entries other than ** must be unique. Ignored if
     // `subplots` is present. If missing but `yaxes` is present, will generate consecutive IDs.
-    Layout::Grid& xaxes(std::vector<double> f);
+    Layout::Grid& xaxes(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Grid& xaxes(Callable&& c);
 
@@ -2546,7 +2546,7 @@ class Layout::Grid {
     // Used with `yaxes` when the x and y axes are shared across columns and rows. Each entry should be an y axis id
     // like *y*, *y2*, etc., or ** to not put a y axis in that row. Entries other than ** must be unique. Ignored if
     // `subplots` is present. If missing but `xaxes` is present, will generate consecutive IDs.
-    Layout::Grid& yaxes(std::vector<double> f);
+    Layout::Grid& yaxes(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Grid& yaxes(Callable&& c);
 
@@ -2573,13 +2573,13 @@ class Layout::Grid::Domain {
 
     // Sets the horizontal domain of this grid subplot (in plot fraction). The first and last cells end exactly at the
     // domain edges, with no grout around the edges.
-    Layout::Grid::Domain& x(std::vector<double> f);
+    Layout::Grid::Domain& x(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Grid::Domain& x(Callable&& c);
 
     // Sets the vertical domain of this grid subplot (in plot fraction). The first and last cells end exactly at the
     // domain edges, with no grout around the edges.
-    Layout::Grid::Domain& y(std::vector<double> f);
+    Layout::Grid::Domain& y(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Grid::Domain& y(Callable&& c);
 
@@ -2594,9 +2594,9 @@ class Layout::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -2650,26 +2650,26 @@ class Layout::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -2737,26 +2737,26 @@ class Layout::Hoverlabel::Grouptitlefont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -2839,29 +2839,29 @@ class Layout::Images::Image {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Layer {
-        BELOW,
-        ABOVE,
+        Below,
+        Above,
     };
     static std::string to_string(Layer e);
 
     enum class Sizing {
-        FILL,
-        CONTAIN,
-        STRETCH,
+        Fill,
+        Contain,
+        Stretch,
     };
     static std::string to_string(Sizing e);
 
     enum class Xanchor {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Yanchor {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
@@ -2976,34 +2976,34 @@ class Layout::Legend {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Entrywidthmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Entrywidthmode e);
 
     enum class Groupclick {
-        TOGGLEITEM,
-        TOGGLEGROUP,
+        Toggleitem,
+        Togglegroup,
     };
     static std::string to_string(Groupclick e);
 
     enum class Itemclick {
-        TOGGLE,
-        TOGGLEOTHERS,
-        FALSE,
+        Toggle,
+        Toggleothers,
+        False,
     };
     static std::string to_string(Itemclick e);
 
     enum class Itemdoubleclick {
-        TOGGLE,
-        TOGGLEOTHERS,
-        FALSE,
+        Toggle,
+        Toggleothers,
+        False,
     };
     static std::string to_string(Itemdoubleclick e);
 
     enum class Itemsizing {
-        TRACE,
-        CONSTANT,
+        Trace,
+        Constant,
     };
     static std::string to_string(Itemsizing e);
 
@@ -3014,37 +3014,37 @@ class Layout::Legend {
     static std::string to_string(Orientation e);
 
     enum class Valign {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Valign e);
 
     enum class Xanchor {
-        AUTO,
-        LEFT,
-        CENTER,
-        RIGHT,
+        Auto,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Xref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Xref e);
 
     enum class Yanchor {
-        AUTO,
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Auto,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
     enum class Yref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Yref e);
 
@@ -3212,26 +3212,26 @@ class Layout::Legend::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -3299,26 +3299,26 @@ class Layout::Legend::Grouptitlefont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -3385,11 +3385,11 @@ class Layout::Legend::Title {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
-        TOP,
-        LEFT,
-        TOP_LEFT,
-        TOP_CENTER,
-        TOP_RIGHT,
+        Top,
+        Left,
+        TopLeft,
+        TopCenter,
+        TopRight,
     };
     static std::string to_string(Side e);
 
@@ -3423,26 +3423,26 @@ class Layout::Legend::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -3637,12 +3637,12 @@ class Layout::Map::Domain {
     Layout::Map::Domain& row(Callable&& c);
 
     // Sets the horizontal domain of this map subplot (in plot fraction).
-    Layout::Map::Domain& x(std::vector<double> f);
+    Layout::Map::Domain& x(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Map::Domain& x(Callable&& c);
 
     // Sets the vertical domain of this map subplot (in plot fraction).
-    Layout::Map::Domain& y(std::vector<double> f);
+    Layout::Map::Domain& y(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Map::Domain& y(Callable&& c);
 
@@ -3673,19 +3673,19 @@ class Layout::Map::Layers::Layer {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Sourcetype {
-        GEOJSON,
-        VECTOR,
-        RASTER,
-        IMAGE,
+        Geojson,
+        Vector,
+        Raster,
+        Image,
     };
     static std::string to_string(Sourcetype e);
 
     enum class Type {
-        CIRCLE,
-        LINE,
-        FILL,
-        SYMBOL,
-        RASTER,
+        Circle,
+        Line,
+        Fill,
+        Symbol,
+        Raster,
     };
     static std::string to_string(Type e);
 
@@ -3849,7 +3849,7 @@ class Layout::Map::Layers::Layer::Line {
     // Sets the length of dashes and gaps (map.layer.paint.line-dasharray). Has an effect only when `type` is set to
     // *line*.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Map::Layers::Layer::Line& dash(std::vector<T> f);
+    Layout::Map::Layers::Layer::Line& dash(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -3876,22 +3876,22 @@ class Layout::Map::Layers::Layer::Symbol {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Placement {
-        POINT,
-        LINE,
-        LINE_CENTER,
+        Point,
+        Line,
+        LineCenter,
     };
     static std::string to_string(Placement e);
 
     enum class Textposition {
-        TOP_LEFT,
-        TOP_CENTER,
-        TOP_RIGHT,
-        MIDDLE_LEFT,
-        MIDDLE_CENTER,
-        MIDDLE_RIGHT,
-        BOTTOM_LEFT,
-        BOTTOM_CENTER,
-        BOTTOM_RIGHT,
+        TopLeft,
+        TopCenter,
+        TopRight,
+        MiddleLeft,
+        MiddleCenter,
+        MiddleRight,
+        BottomLeft,
+        BottomCenter,
+        BottomRight,
     };
     static std::string to_string(Textposition e);
 
@@ -3943,8 +3943,8 @@ class Layout::Map::Layers::Layer::Symbol::Textfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
@@ -4125,12 +4125,12 @@ class Layout::Mapbox::Domain {
     Layout::Mapbox::Domain& row(Callable&& c);
 
     // Sets the horizontal domain of this mapbox subplot (in plot fraction).
-    Layout::Mapbox::Domain& x(std::vector<double> f);
+    Layout::Mapbox::Domain& x(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Mapbox::Domain& x(Callable&& c);
 
     // Sets the vertical domain of this mapbox subplot (in plot fraction).
-    Layout::Mapbox::Domain& y(std::vector<double> f);
+    Layout::Mapbox::Domain& y(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Mapbox::Domain& y(Callable&& c);
 
@@ -4161,19 +4161,19 @@ class Layout::Mapbox::Layers::Layer {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Sourcetype {
-        GEOJSON,
-        VECTOR,
-        RASTER,
-        IMAGE,
+        Geojson,
+        Vector,
+        Raster,
+        Image,
     };
     static std::string to_string(Sourcetype e);
 
     enum class Type {
-        CIRCLE,
-        LINE,
-        FILL,
-        SYMBOL,
-        RASTER,
+        Circle,
+        Line,
+        Fill,
+        Symbol,
+        Raster,
     };
     static std::string to_string(Type e);
 
@@ -4338,7 +4338,7 @@ class Layout::Mapbox::Layers::Layer::Line {
     // Sets the length of dashes and gaps (mapbox.layer.paint.line-dasharray). Has an effect only when `type` is set to
     // *line*.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Mapbox::Layers::Layer::Line& dash(std::vector<T> f);
+    Layout::Mapbox::Layers::Layer::Line& dash(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -4365,22 +4365,22 @@ class Layout::Mapbox::Layers::Layer::Symbol {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Placement {
-        POINT,
-        LINE,
-        LINE_CENTER,
+        Point,
+        Line,
+        LineCenter,
     };
     static std::string to_string(Placement e);
 
     enum class Textposition {
-        TOP_LEFT,
-        TOP_CENTER,
-        TOP_RIGHT,
-        MIDDLE_LEFT,
-        MIDDLE_CENTER,
-        MIDDLE_RIGHT,
-        BOTTOM_LEFT,
-        BOTTOM_CENTER,
-        BOTTOM_RIGHT,
+        TopLeft,
+        TopCenter,
+        TopRight,
+        MiddleLeft,
+        MiddleCenter,
+        MiddleRight,
+        BottomLeft,
+        BottomCenter,
+        BottomRight,
     };
     static std::string to_string(Textposition e);
 
@@ -4432,8 +4432,8 @@ class Layout::Mapbox::Layers::Layer::Symbol::Textfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
@@ -4534,7 +4534,7 @@ class Layout::Modebar {
     Layout::Modebar& add(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Layout::Modebar& add(Callable&& c);
-    Layout::Modebar& add(std::vector<std::string> f);
+    Layout::Modebar& add(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `add`.
     Layout::Modebar& addsrc(std::string f);
@@ -4567,7 +4567,7 @@ class Layout::Modebar {
     Layout::Modebar& remove(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Layout::Modebar& remove(Callable&& c);
-    Layout::Modebar& remove(std::vector<std::string> f);
+    Layout::Modebar& remove(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `remove`.
     Layout::Modebar& removesrc(std::string f);
@@ -4592,8 +4592,8 @@ class Layout::Newselection {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Mode {
-        IMMEDIATE,
-        GRADUAL,
+        Immediate,
+        Gradual,
     };
     static std::string to_string(Mode e);
 
@@ -4646,30 +4646,30 @@ class Layout::Newshape {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Drawdirection {
-        ORTHO,
-        HORIZONTAL,
-        VERTICAL,
-        DIAGONAL,
+        Ortho,
+        Horizontal,
+        Vertical,
+        Diagonal,
     };
     static std::string to_string(Drawdirection e);
 
     enum class Fillrule {
-        EVENODD,
-        NONZERO,
+        Evenodd,
+        Nonzero,
     };
     static std::string to_string(Fillrule e);
 
     enum class Layer {
-        BELOW,
-        ABOVE,
-        BETWEEN,
+        Below,
+        Above,
+        Between,
     };
     static std::string to_string(Layer e);
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
@@ -4767,33 +4767,33 @@ class Layout::Newshape::Label {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Textposition {
-        TOP_LEFT,
-        TOP_CENTER,
-        TOP_RIGHT,
-        MIDDLE_LEFT,
-        MIDDLE_CENTER,
-        MIDDLE_RIGHT,
-        BOTTOM_LEFT,
-        BOTTOM_CENTER,
-        BOTTOM_RIGHT,
-        START,
-        MIDDLE,
-        END,
+        TopLeft,
+        TopCenter,
+        TopRight,
+        MiddleLeft,
+        MiddleCenter,
+        MiddleRight,
+        BottomLeft,
+        BottomCenter,
+        BottomRight,
+        Start,
+        Middle,
+        End,
     };
     static std::string to_string(Textposition e);
 
     enum class Xanchor {
-        AUTO,
-        LEFT,
-        CENTER,
-        RIGHT,
+        Auto,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Yanchor {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
@@ -4865,26 +4865,26 @@ class Layout::Newshape::Label::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -4975,26 +4975,26 @@ class Layout::Newshape::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -5087,8 +5087,8 @@ class Layout::Polar {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Gridshape {
-        CIRCULAR,
-        LINEAR,
+        Circular,
+        Linear,
     };
     static std::string to_string(Gridshape e);
 
@@ -5127,7 +5127,7 @@ class Layout::Polar {
 
     // Sets angular span of this polar subplot with two angles (in degrees). Sector are assumed to be spanned in the
     // counterclockwise direction with *0* corresponding to rightmost limit of the polar subplot.
-    Layout::Polar& sector(std::vector<double> f);
+    Layout::Polar& sector(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Polar& sector(Callable&& c);
 
@@ -5149,102 +5149,102 @@ class Layout::Polar::Angularaxis {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Autotypenumbers {
-        CONVERT_TYPES,
-        STRICT,
+        ConvertTypes,
+        Strict,
     };
     static std::string to_string(Autotypenumbers e);
 
     enum class Categoryorder {
-        TRACE,
-        CATEGORY_ASCENDING,
-        CATEGORY_DESCENDING,
-        ARRAY,
-        TOTAL_ASCENDING,
-        TOTAL_DESCENDING,
-        MIN_ASCENDING,
-        MIN_DESCENDING,
-        MAX_ASCENDING,
-        MAX_DESCENDING,
-        SUM_ASCENDING,
-        SUM_DESCENDING,
-        MEAN_ASCENDING,
-        MEAN_DESCENDING,
-        GEOMETRIC_MEAN_ASCENDING,
-        GEOMETRIC_MEAN_DESCENDING,
-        MEDIAN_ASCENDING,
-        MEDIAN_DESCENDING,
+        Trace,
+        CategoryAscending,
+        CategoryDescending,
+        Array,
+        TotalAscending,
+        TotalDescending,
+        MinAscending,
+        MinDescending,
+        MaxAscending,
+        MaxDescending,
+        SumAscending,
+        SumDescending,
+        MeanAscending,
+        MeanDescending,
+        GeometricMeanAscending,
+        GeometricMeanDescending,
+        MedianAscending,
+        MedianDescending,
     };
     static std::string to_string(Categoryorder e);
 
     enum class Direction {
-        COUNTERCLOCKWISE,
-        CLOCKWISE,
+        Counterclockwise,
+        Clockwise,
     };
     static std::string to_string(Direction e);
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Layer {
-        ABOVE_TRACES,
-        BELOW_TRACES,
+        AboveTraces,
+        BelowTraces,
     };
     static std::string to_string(Layer e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Thetaunit {
-        RADIANS,
-        DEGREES,
+        Radians,
+        Degrees,
     };
     static std::string to_string(Thetaunit e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Type {
-        HYPHEN,
-        LINEAR,
-        CATEGORY,
+        Hyphen,
+        Linear,
+        Category,
     };
     static std::string to_string(Type e);
 
@@ -5261,7 +5261,7 @@ class Layout::Polar::Angularaxis {
     // Sets the order in which categories on this axis appear. Only has an effect if `categoryorder` is set to *array*.
     // Used with `categoryorder`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Polar::Angularaxis& categoryarray(std::vector<T> f);
+    Layout::Polar::Angularaxis& categoryarray(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -5505,7 +5505,7 @@ class Layout::Polar::Angularaxis {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Polar::Angularaxis& ticktext(std::vector<T> f);
+    Layout::Polar::Angularaxis& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -5519,7 +5519,7 @@ class Layout::Polar::Angularaxis {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Polar::Angularaxis& tickvals(std::vector<T> f);
+    Layout::Polar::Angularaxis& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -5564,26 +5564,26 @@ class Layout::Polar::Angularaxis::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -5667,7 +5667,7 @@ class Layout::Polar::Angularaxis::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Layout::Polar::Angularaxis::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Layout::Polar::Angularaxis::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Polar::Angularaxis::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -5719,12 +5719,12 @@ class Layout::Polar::Domain {
     Layout::Polar::Domain& row(Callable&& c);
 
     // Sets the horizontal domain of this polar subplot (in plot fraction).
-    Layout::Polar::Domain& x(std::vector<double> f);
+    Layout::Polar::Domain& x(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Polar::Domain& x(Callable&& c);
 
     // Sets the vertical domain of this polar subplot (in plot fraction).
-    Layout::Polar::Domain& y(std::vector<double> f);
+    Layout::Polar::Domain& y(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Polar::Domain& y(Callable&& c);
 
@@ -5739,136 +5739,136 @@ class Layout::Polar::Radialaxis {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Autorange {
-        TRUE,
-        FALSE,
-        REVERSED,
-        MIN_REVERSED,
-        MAX_REVERSED,
-        MIN,
-        MAX,
+        True,
+        False,
+        Reversed,
+        MinReversed,
+        MaxReversed,
+        Min,
+        Max,
     };
     static std::string to_string(Autorange e);
 
     enum class Autotypenumbers {
-        CONVERT_TYPES,
-        STRICT,
+        ConvertTypes,
+        Strict,
     };
     static std::string to_string(Autotypenumbers e);
 
     enum class Calendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Calendar e);
 
     enum class Categoryorder {
-        TRACE,
-        CATEGORY_ASCENDING,
-        CATEGORY_DESCENDING,
-        ARRAY,
-        TOTAL_ASCENDING,
-        TOTAL_DESCENDING,
-        MIN_ASCENDING,
-        MIN_DESCENDING,
-        MAX_ASCENDING,
-        MAX_DESCENDING,
-        SUM_ASCENDING,
-        SUM_DESCENDING,
-        MEAN_ASCENDING,
-        MEAN_DESCENDING,
-        GEOMETRIC_MEAN_ASCENDING,
-        GEOMETRIC_MEAN_DESCENDING,
-        MEDIAN_ASCENDING,
-        MEDIAN_DESCENDING,
+        Trace,
+        CategoryAscending,
+        CategoryDescending,
+        Array,
+        TotalAscending,
+        TotalDescending,
+        MinAscending,
+        MinDescending,
+        MaxAscending,
+        MaxDescending,
+        SumAscending,
+        SumDescending,
+        MeanAscending,
+        MeanDescending,
+        GeometricMeanAscending,
+        GeometricMeanDescending,
+        MedianAscending,
+        MedianDescending,
     };
     static std::string to_string(Categoryorder e);
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Layer {
-        ABOVE_TRACES,
-        BELOW_TRACES,
+        AboveTraces,
+        BelowTraces,
     };
     static std::string to_string(Layer e);
 
     enum class Rangemode {
-        TOZERO,
-        NONNEGATIVE,
-        NORMAL,
+        Tozero,
+        Nonnegative,
+        Normal,
     };
     static std::string to_string(Rangemode e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Side {
-        CLOCKWISE,
-        COUNTERCLOCKWISE,
+        Clockwise,
+        Counterclockwise,
     };
     static std::string to_string(Side e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Type {
-        HYPHEN,
-        LINEAR,
-        LOG,
-        DATE,
-        CATEGORY,
+        Hyphen,
+        Linear,
+        Log,
+        Date,
+        Category,
     };
     static std::string to_string(Type e);
 
@@ -5900,7 +5900,7 @@ class Layout::Polar::Radialaxis {
 
     // When `tickangle` is set to *auto*, it will be set to the first angle in this array that is large enough to
     // prevent label overlap.
-    Layout::Polar::Radialaxis& autotickangles(std::vector<double> f);
+    Layout::Polar::Radialaxis& autotickangles(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Polar::Radialaxis& autotickangles(Callable&& c);
 
@@ -5918,7 +5918,7 @@ class Layout::Polar::Radialaxis {
     // Sets the order in which categories on this axis appear. Only has an effect if `categoryorder` is set to *array*.
     // Used with `categoryorder`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Polar::Radialaxis& categoryarray(std::vector<T> f);
+    Layout::Polar::Radialaxis& categoryarray(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -6049,7 +6049,7 @@ class Layout::Polar::Radialaxis {
     // strings, like date data, though Date objects and unix milliseconds will be accepted and converted to strings. If
     // the axis `type` is *category*, it should be numbers, using the scale where each category is assigned a serial
     // number from zero in the order it appears. Leaving either or both elements `null` impacts the default `autorange`.
-    Layout::Polar::Radialaxis& range(std::vector<double> f);
+    Layout::Polar::Radialaxis& range(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Polar::Radialaxis& range(Callable&& c);
 
@@ -6172,7 +6172,7 @@ class Layout::Polar::Radialaxis {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Polar::Radialaxis& ticktext(std::vector<T> f);
+    Layout::Polar::Radialaxis& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -6186,7 +6186,7 @@ class Layout::Polar::Radialaxis {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Polar::Radialaxis& tickvals(std::vector<T> f);
+    Layout::Polar::Radialaxis& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -6254,7 +6254,7 @@ class Layout::Polar::Radialaxis::Autorangeoptions {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Layout::Polar::Radialaxis::Autorangeoptions& include(Callable&& c);
     template <typename T>
-    Layout::Polar::Radialaxis::Autorangeoptions& include(std::vector<T> f);
+    Layout::Polar::Radialaxis::Autorangeoptions& include(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `include`.
     Layout::Polar::Radialaxis::Autorangeoptions& includesrc(std::string f);
@@ -6285,26 +6285,26 @@ class Layout::Polar::Radialaxis::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -6388,7 +6388,7 @@ class Layout::Polar::Radialaxis::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Layout::Polar::Radialaxis::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Layout::Polar::Radialaxis::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Polar::Radialaxis::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -6454,26 +6454,26 @@ class Layout::Polar::Radialaxis::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -6540,25 +6540,25 @@ class Layout::Scene {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Aspectmode {
-        AUTO,
-        CUBE,
-        DATA,
-        MANUAL,
+        Auto,
+        Cube,
+        Data,
+        Manual,
     };
     static std::string to_string(Aspectmode e);
 
     enum class Dragmode {
-        ORBIT,
-        TURNTABLE,
-        ZOOM,
-        PAN,
-        FALSE,
+        Orbit,
+        Turntable,
+        Zoom,
+        Pan,
+        False,
     };
     static std::string to_string(Dragmode e);
 
     enum class Hovermode {
-        CLOSEST,
-        FALSE,
+        Closest,
+        False,
     };
     static std::string to_string(Hovermode e);
 
@@ -6652,32 +6652,32 @@ class Layout::Scene::Annotations::Annotation {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Align e);
 
     enum class Valign {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Valign e);
 
     enum class Xanchor {
-        AUTO,
-        LEFT,
-        CENTER,
-        RIGHT,
+        Auto,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Yanchor {
-        AUTO,
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Auto,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
@@ -6915,26 +6915,26 @@ class Layout::Scene::Annotations::Annotation::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -7035,26 +7035,26 @@ class Layout::Scene::Annotations::Annotation::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -7251,8 +7251,8 @@ class Layout::Scene::Camera::Projection {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Type {
-        PERSPECTIVE,
-        ORTHOGRAPHIC,
+        Perspective,
+        Orthographic,
     };
     static std::string to_string(Type e);
 
@@ -7306,12 +7306,12 @@ class Layout::Scene::Domain {
     Layout::Scene::Domain& row(Callable&& c);
 
     // Sets the horizontal domain of this scene subplot (in plot fraction).
-    Layout::Scene::Domain& x(std::vector<double> f);
+    Layout::Scene::Domain& x(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Scene::Domain& x(Callable&& c);
 
     // Sets the vertical domain of this scene subplot (in plot fraction).
-    Layout::Scene::Domain& y(std::vector<double> f);
+    Layout::Scene::Domain& y(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Scene::Domain& y(Callable&& c);
 
@@ -7326,133 +7326,133 @@ class Layout::Scene::Xaxis {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Autorange {
-        TRUE,
-        FALSE,
-        REVERSED,
-        MIN_REVERSED,
-        MAX_REVERSED,
-        MIN,
-        MAX,
+        True,
+        False,
+        Reversed,
+        MinReversed,
+        MaxReversed,
+        Min,
+        Max,
     };
     static std::string to_string(Autorange e);
 
     enum class Autotypenumbers {
-        CONVERT_TYPES,
-        STRICT,
+        ConvertTypes,
+        Strict,
     };
     static std::string to_string(Autotypenumbers e);
 
     enum class Calendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Calendar e);
 
     enum class Categoryorder {
-        TRACE,
-        CATEGORY_ASCENDING,
-        CATEGORY_DESCENDING,
-        ARRAY,
-        TOTAL_ASCENDING,
-        TOTAL_DESCENDING,
-        MIN_ASCENDING,
-        MIN_DESCENDING,
-        MAX_ASCENDING,
-        MAX_DESCENDING,
-        SUM_ASCENDING,
-        SUM_DESCENDING,
-        MEAN_ASCENDING,
-        MEAN_DESCENDING,
-        GEOMETRIC_MEAN_ASCENDING,
-        GEOMETRIC_MEAN_DESCENDING,
-        MEDIAN_ASCENDING,
-        MEDIAN_DESCENDING,
+        Trace,
+        CategoryAscending,
+        CategoryDescending,
+        Array,
+        TotalAscending,
+        TotalDescending,
+        MinAscending,
+        MinDescending,
+        MaxAscending,
+        MaxDescending,
+        SumAscending,
+        SumDescending,
+        MeanAscending,
+        MeanDescending,
+        GeometricMeanAscending,
+        GeometricMeanDescending,
+        MedianAscending,
+        MedianDescending,
     };
     static std::string to_string(Categoryorder e);
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Mirror {
-        TRUE,
-        TICKS,
-        FALSE,
-        ALL,
-        ALLTICKS,
+        True,
+        Ticks,
+        False,
+        All,
+        Allticks,
     };
     static std::string to_string(Mirror e);
 
     enum class Rangemode {
-        NORMAL,
-        TOZERO,
-        NONNEGATIVE,
+        Normal,
+        Tozero,
+        Nonnegative,
     };
     static std::string to_string(Rangemode e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Type {
-        HYPHEN,
-        LINEAR,
-        LOG,
-        DATE,
-        CATEGORY,
+        Hyphen,
+        Linear,
+        Log,
+        Date,
+        Category,
     };
     static std::string to_string(Type e);
 
@@ -7494,7 +7494,7 @@ class Layout::Scene::Xaxis {
     // Sets the order in which categories on this axis appear. Only has an effect if `categoryorder` is set to *array*.
     // Used with `categoryorder`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Scene::Xaxis& categoryarray(std::vector<T> f);
+    Layout::Scene::Xaxis& categoryarray(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -7619,7 +7619,7 @@ class Layout::Scene::Xaxis {
     // strings, like date data, though Date objects and unix milliseconds will be accepted and converted to strings. If
     // the axis `type` is *category*, it should be numbers, using the scale where each category is assigned a serial
     // number from zero in the order it appears. Leaving either or both elements `null` impacts the default `autorange`.
-    Layout::Scene::Xaxis& range(std::vector<double> f);
+    Layout::Scene::Xaxis& range(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Scene::Xaxis& range(Callable&& c);
 
@@ -7761,7 +7761,7 @@ class Layout::Scene::Xaxis {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Scene::Xaxis& ticktext(std::vector<T> f);
+    Layout::Scene::Xaxis& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -7775,7 +7775,7 @@ class Layout::Scene::Xaxis {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Scene::Xaxis& tickvals(std::vector<T> f);
+    Layout::Scene::Xaxis& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -7852,7 +7852,7 @@ class Layout::Scene::Xaxis::Autorangeoptions {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Layout::Scene::Xaxis::Autorangeoptions& include(Callable&& c);
     template <typename T>
-    Layout::Scene::Xaxis::Autorangeoptions& include(std::vector<T> f);
+    Layout::Scene::Xaxis::Autorangeoptions& include(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `include`.
     Layout::Scene::Xaxis::Autorangeoptions& includesrc(std::string f);
@@ -7883,26 +7883,26 @@ class Layout::Scene::Xaxis::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -7986,7 +7986,7 @@ class Layout::Scene::Xaxis::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Layout::Scene::Xaxis::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Layout::Scene::Xaxis::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Scene::Xaxis::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -8052,26 +8052,26 @@ class Layout::Scene::Xaxis::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -8138,133 +8138,133 @@ class Layout::Scene::Yaxis {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Autorange {
-        TRUE,
-        FALSE,
-        REVERSED,
-        MIN_REVERSED,
-        MAX_REVERSED,
-        MIN,
-        MAX,
+        True,
+        False,
+        Reversed,
+        MinReversed,
+        MaxReversed,
+        Min,
+        Max,
     };
     static std::string to_string(Autorange e);
 
     enum class Autotypenumbers {
-        CONVERT_TYPES,
-        STRICT,
+        ConvertTypes,
+        Strict,
     };
     static std::string to_string(Autotypenumbers e);
 
     enum class Calendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Calendar e);
 
     enum class Categoryorder {
-        TRACE,
-        CATEGORY_ASCENDING,
-        CATEGORY_DESCENDING,
-        ARRAY,
-        TOTAL_ASCENDING,
-        TOTAL_DESCENDING,
-        MIN_ASCENDING,
-        MIN_DESCENDING,
-        MAX_ASCENDING,
-        MAX_DESCENDING,
-        SUM_ASCENDING,
-        SUM_DESCENDING,
-        MEAN_ASCENDING,
-        MEAN_DESCENDING,
-        GEOMETRIC_MEAN_ASCENDING,
-        GEOMETRIC_MEAN_DESCENDING,
-        MEDIAN_ASCENDING,
-        MEDIAN_DESCENDING,
+        Trace,
+        CategoryAscending,
+        CategoryDescending,
+        Array,
+        TotalAscending,
+        TotalDescending,
+        MinAscending,
+        MinDescending,
+        MaxAscending,
+        MaxDescending,
+        SumAscending,
+        SumDescending,
+        MeanAscending,
+        MeanDescending,
+        GeometricMeanAscending,
+        GeometricMeanDescending,
+        MedianAscending,
+        MedianDescending,
     };
     static std::string to_string(Categoryorder e);
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Mirror {
-        TRUE,
-        TICKS,
-        FALSE,
-        ALL,
-        ALLTICKS,
+        True,
+        Ticks,
+        False,
+        All,
+        Allticks,
     };
     static std::string to_string(Mirror e);
 
     enum class Rangemode {
-        NORMAL,
-        TOZERO,
-        NONNEGATIVE,
+        Normal,
+        Tozero,
+        Nonnegative,
     };
     static std::string to_string(Rangemode e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Type {
-        HYPHEN,
-        LINEAR,
-        LOG,
-        DATE,
-        CATEGORY,
+        Hyphen,
+        Linear,
+        Log,
+        Date,
+        Category,
     };
     static std::string to_string(Type e);
 
@@ -8306,7 +8306,7 @@ class Layout::Scene::Yaxis {
     // Sets the order in which categories on this axis appear. Only has an effect if `categoryorder` is set to *array*.
     // Used with `categoryorder`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Scene::Yaxis& categoryarray(std::vector<T> f);
+    Layout::Scene::Yaxis& categoryarray(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -8431,7 +8431,7 @@ class Layout::Scene::Yaxis {
     // strings, like date data, though Date objects and unix milliseconds will be accepted and converted to strings. If
     // the axis `type` is *category*, it should be numbers, using the scale where each category is assigned a serial
     // number from zero in the order it appears. Leaving either or both elements `null` impacts the default `autorange`.
-    Layout::Scene::Yaxis& range(std::vector<double> f);
+    Layout::Scene::Yaxis& range(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Scene::Yaxis& range(Callable&& c);
 
@@ -8573,7 +8573,7 @@ class Layout::Scene::Yaxis {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Scene::Yaxis& ticktext(std::vector<T> f);
+    Layout::Scene::Yaxis& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -8587,7 +8587,7 @@ class Layout::Scene::Yaxis {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Scene::Yaxis& tickvals(std::vector<T> f);
+    Layout::Scene::Yaxis& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -8664,7 +8664,7 @@ class Layout::Scene::Yaxis::Autorangeoptions {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Layout::Scene::Yaxis::Autorangeoptions& include(Callable&& c);
     template <typename T>
-    Layout::Scene::Yaxis::Autorangeoptions& include(std::vector<T> f);
+    Layout::Scene::Yaxis::Autorangeoptions& include(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `include`.
     Layout::Scene::Yaxis::Autorangeoptions& includesrc(std::string f);
@@ -8695,26 +8695,26 @@ class Layout::Scene::Yaxis::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -8798,7 +8798,7 @@ class Layout::Scene::Yaxis::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Layout::Scene::Yaxis::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Layout::Scene::Yaxis::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Scene::Yaxis::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -8864,26 +8864,26 @@ class Layout::Scene::Yaxis::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -8950,133 +8950,133 @@ class Layout::Scene::Zaxis {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Autorange {
-        TRUE,
-        FALSE,
-        REVERSED,
-        MIN_REVERSED,
-        MAX_REVERSED,
-        MIN,
-        MAX,
+        True,
+        False,
+        Reversed,
+        MinReversed,
+        MaxReversed,
+        Min,
+        Max,
     };
     static std::string to_string(Autorange e);
 
     enum class Autotypenumbers {
-        CONVERT_TYPES,
-        STRICT,
+        ConvertTypes,
+        Strict,
     };
     static std::string to_string(Autotypenumbers e);
 
     enum class Calendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Calendar e);
 
     enum class Categoryorder {
-        TRACE,
-        CATEGORY_ASCENDING,
-        CATEGORY_DESCENDING,
-        ARRAY,
-        TOTAL_ASCENDING,
-        TOTAL_DESCENDING,
-        MIN_ASCENDING,
-        MIN_DESCENDING,
-        MAX_ASCENDING,
-        MAX_DESCENDING,
-        SUM_ASCENDING,
-        SUM_DESCENDING,
-        MEAN_ASCENDING,
-        MEAN_DESCENDING,
-        GEOMETRIC_MEAN_ASCENDING,
-        GEOMETRIC_MEAN_DESCENDING,
-        MEDIAN_ASCENDING,
-        MEDIAN_DESCENDING,
+        Trace,
+        CategoryAscending,
+        CategoryDescending,
+        Array,
+        TotalAscending,
+        TotalDescending,
+        MinAscending,
+        MinDescending,
+        MaxAscending,
+        MaxDescending,
+        SumAscending,
+        SumDescending,
+        MeanAscending,
+        MeanDescending,
+        GeometricMeanAscending,
+        GeometricMeanDescending,
+        MedianAscending,
+        MedianDescending,
     };
     static std::string to_string(Categoryorder e);
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Mirror {
-        TRUE,
-        TICKS,
-        FALSE,
-        ALL,
-        ALLTICKS,
+        True,
+        Ticks,
+        False,
+        All,
+        Allticks,
     };
     static std::string to_string(Mirror e);
 
     enum class Rangemode {
-        NORMAL,
-        TOZERO,
-        NONNEGATIVE,
+        Normal,
+        Tozero,
+        Nonnegative,
     };
     static std::string to_string(Rangemode e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Type {
-        HYPHEN,
-        LINEAR,
-        LOG,
-        DATE,
-        CATEGORY,
+        Hyphen,
+        Linear,
+        Log,
+        Date,
+        Category,
     };
     static std::string to_string(Type e);
 
@@ -9118,7 +9118,7 @@ class Layout::Scene::Zaxis {
     // Sets the order in which categories on this axis appear. Only has an effect if `categoryorder` is set to *array*.
     // Used with `categoryorder`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Scene::Zaxis& categoryarray(std::vector<T> f);
+    Layout::Scene::Zaxis& categoryarray(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -9243,7 +9243,7 @@ class Layout::Scene::Zaxis {
     // strings, like date data, though Date objects and unix milliseconds will be accepted and converted to strings. If
     // the axis `type` is *category*, it should be numbers, using the scale where each category is assigned a serial
     // number from zero in the order it appears. Leaving either or both elements `null` impacts the default `autorange`.
-    Layout::Scene::Zaxis& range(std::vector<double> f);
+    Layout::Scene::Zaxis& range(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Scene::Zaxis& range(Callable&& c);
 
@@ -9385,7 +9385,7 @@ class Layout::Scene::Zaxis {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Scene::Zaxis& ticktext(std::vector<T> f);
+    Layout::Scene::Zaxis& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -9399,7 +9399,7 @@ class Layout::Scene::Zaxis {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Scene::Zaxis& tickvals(std::vector<T> f);
+    Layout::Scene::Zaxis& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -9476,7 +9476,7 @@ class Layout::Scene::Zaxis::Autorangeoptions {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Layout::Scene::Zaxis::Autorangeoptions& include(Callable&& c);
     template <typename T>
-    Layout::Scene::Zaxis::Autorangeoptions& include(std::vector<T> f);
+    Layout::Scene::Zaxis::Autorangeoptions& include(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `include`.
     Layout::Scene::Zaxis::Autorangeoptions& includesrc(std::string f);
@@ -9507,26 +9507,26 @@ class Layout::Scene::Zaxis::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -9610,7 +9610,7 @@ class Layout::Scene::Zaxis::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Layout::Scene::Zaxis::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Layout::Scene::Zaxis::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Scene::Zaxis::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -9676,26 +9676,26 @@ class Layout::Scene::Zaxis::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -9778,8 +9778,8 @@ class Layout::Selections::Selection {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Type {
-        RECT,
-        PATH,
+        Rect,
+        Path,
     };
     static std::string to_string(Type e);
 
@@ -9920,42 +9920,42 @@ class Layout::Shapes::Shape {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Fillrule {
-        EVENODD,
-        NONZERO,
+        Evenodd,
+        Nonzero,
     };
     static std::string to_string(Fillrule e);
 
     enum class Layer {
-        BELOW,
-        ABOVE,
-        BETWEEN,
+        Below,
+        Above,
+        Between,
     };
     static std::string to_string(Layer e);
 
     enum class Type {
-        CIRCLE,
-        RECT,
-        PATH,
-        LINE,
+        Circle,
+        Rect,
+        Path,
+        Line,
     };
     static std::string to_string(Type e);
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
     enum class Xsizemode {
-        SCALED,
-        PIXEL,
+        Scaled,
+        Pixel,
     };
     static std::string to_string(Xsizemode e);
 
     enum class Ysizemode {
-        SCALED,
-        PIXEL,
+        Scaled,
+        Pixel,
     };
     static std::string to_string(Ysizemode e);
 
@@ -10189,33 +10189,33 @@ class Layout::Shapes::Shape::Label {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Textposition {
-        TOP_LEFT,
-        TOP_CENTER,
-        TOP_RIGHT,
-        MIDDLE_LEFT,
-        MIDDLE_CENTER,
-        MIDDLE_RIGHT,
-        BOTTOM_LEFT,
-        BOTTOM_CENTER,
-        BOTTOM_RIGHT,
-        START,
-        MIDDLE,
-        END,
+        TopLeft,
+        TopCenter,
+        TopRight,
+        MiddleLeft,
+        MiddleCenter,
+        MiddleRight,
+        BottomLeft,
+        BottomCenter,
+        BottomRight,
+        Start,
+        Middle,
+        End,
     };
     static std::string to_string(Textposition e);
 
     enum class Xanchor {
-        AUTO,
-        LEFT,
-        CENTER,
-        RIGHT,
+        Auto,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Yanchor {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
@@ -10287,26 +10287,26 @@ class Layout::Shapes::Shape::Label::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -10397,26 +10397,26 @@ class Layout::Shapes::Shape::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -10525,24 +10525,24 @@ class Layout::Sliders::Slider {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Lenmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Lenmode e);
 
     enum class Xanchor {
-        AUTO,
-        LEFT,
-        CENTER,
-        RIGHT,
+        Auto,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Yanchor {
-        AUTO,
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Auto,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
@@ -10685,9 +10685,9 @@ class Layout::Sliders::Slider::Currentvalue {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Xanchor {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
@@ -10735,26 +10735,26 @@ class Layout::Sliders::Slider::Currentvalue::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -10822,26 +10822,26 @@ class Layout::Sliders::Slider::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -10955,16 +10955,16 @@ class Layout::Sliders::Slider::Steps::Step {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Method {
-        RESTYLE,
-        RELAYOUT,
-        ANIMATE,
-        UPDATE,
-        SKIP,
+        Restyle,
+        Relayout,
+        Animate,
+        Update,
+        Skip,
     };
     static std::string to_string(Method e);
 
     // Sets the arguments values to be passed to the Plotly method set in `method` on slide.
-    Layout::Sliders::Slider::Steps::Step& args(std::vector<double> f);
+    Layout::Sliders::Slider::Steps::Step& args(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Sliders::Slider::Steps::Step& args(Callable&& c);
 
@@ -11026,42 +11026,42 @@ class Layout::Sliders::Slider::Transition {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Easing {
-        LINEAR,
-        QUAD,
-        CUBIC,
-        SIN,
-        EXP,
-        CIRCLE,
-        ELASTIC,
-        BACK,
-        BOUNCE,
-        LINEAR_IN,
-        QUAD_IN,
-        CUBIC_IN,
-        SIN_IN,
-        EXP_IN,
-        CIRCLE_IN,
-        ELASTIC_IN,
-        BACK_IN,
-        BOUNCE_IN,
-        LINEAR_OUT,
-        QUAD_OUT,
-        CUBIC_OUT,
-        SIN_OUT,
-        EXP_OUT,
-        CIRCLE_OUT,
-        ELASTIC_OUT,
-        BACK_OUT,
-        BOUNCE_OUT,
-        LINEAR_IN_OUT,
-        QUAD_IN_OUT,
-        CUBIC_IN_OUT,
-        SIN_IN_OUT,
-        EXP_IN_OUT,
-        CIRCLE_IN_OUT,
-        ELASTIC_IN_OUT,
-        BACK_IN_OUT,
-        BOUNCE_IN_OUT,
+        Linear,
+        Quad,
+        Cubic,
+        Sin,
+        Exp,
+        Circle,
+        Elastic,
+        Back,
+        Bounce,
+        LinearIn,
+        QuadIn,
+        CubicIn,
+        SinIn,
+        ExpIn,
+        CircleIn,
+        ElasticIn,
+        BackIn,
+        BounceIn,
+        LinearOut,
+        QuadOut,
+        CubicOut,
+        SinOut,
+        ExpOut,
+        CircleOut,
+        ElasticOut,
+        BackOut,
+        BounceOut,
+        LinearInOut,
+        QuadInOut,
+        CubicInOut,
+        SinInOut,
+        ExpInOut,
+        CircleInOut,
+        ElasticInOut,
+        BackInOut,
+        BounceInOut,
     };
     static std::string to_string(Easing e);
 
@@ -11126,12 +11126,12 @@ class Layout::Smith::Domain {
     Layout::Smith::Domain& row(Callable&& c);
 
     // Sets the horizontal domain of this smith subplot (in plot fraction).
-    Layout::Smith::Domain& x(std::vector<double> f);
+    Layout::Smith::Domain& x(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Smith::Domain& x(Callable&& c);
 
     // Sets the vertical domain of this smith subplot (in plot fraction).
-    Layout::Smith::Domain& y(std::vector<double> f);
+    Layout::Smith::Domain& y(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Smith::Domain& y(Callable&& c);
 
@@ -11146,31 +11146,31 @@ class Layout::Smith::Imaginaryaxis {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Layer {
-        ABOVE_TRACES,
-        BELOW_TRACES,
+        AboveTraces,
+        BelowTraces,
     };
     static std::string to_string(Layer e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
@@ -11300,7 +11300,7 @@ class Layout::Smith::Imaginaryaxis {
     // Sets the values at which ticks on this axis appear. Defaults to `realaxis.tickvals` plus the same as negatives
     // and zero.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Smith::Imaginaryaxis& tickvals(std::vector<T> f);
+    Layout::Smith::Imaginaryaxis& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -11334,26 +11334,26 @@ class Layout::Smith::Imaginaryaxis::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -11420,37 +11420,37 @@ class Layout::Smith::Realaxis {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Layer {
-        ABOVE_TRACES,
-        BELOW_TRACES,
+        AboveTraces,
+        BelowTraces,
     };
     static std::string to_string(Layer e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Side {
-        TOP,
-        BOTTOM,
+        Top,
+        Bottom,
     };
     static std::string to_string(Side e);
 
     enum class Ticks {
-        TOP,
-        BOTTOM,
-        EMPTY,
+        Top,
+        Bottom,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
@@ -11589,7 +11589,7 @@ class Layout::Smith::Realaxis {
 
     // Sets the values at which ticks on this axis appear.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Smith::Realaxis& tickvals(std::vector<T> f);
+    Layout::Smith::Realaxis& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -11623,26 +11623,26 @@ class Layout::Smith::Realaxis::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -11757,55 +11757,55 @@ class Layout::Ternary::Aaxis {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Layer {
-        ABOVE_TRACES,
-        BELOW_TRACES,
+        AboveTraces,
+        BelowTraces,
     };
     static std::string to_string(Layer e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
@@ -12021,7 +12021,7 @@ class Layout::Ternary::Aaxis {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Ternary::Aaxis& ticktext(std::vector<T> f);
+    Layout::Ternary::Aaxis& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -12035,7 +12035,7 @@ class Layout::Ternary::Aaxis {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Ternary::Aaxis& tickvals(std::vector<T> f);
+    Layout::Ternary::Aaxis& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -12074,26 +12074,26 @@ class Layout::Ternary::Aaxis::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -12177,7 +12177,7 @@ class Layout::Ternary::Aaxis::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Layout::Ternary::Aaxis::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Layout::Ternary::Aaxis::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Ternary::Aaxis::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -12243,26 +12243,26 @@ class Layout::Ternary::Aaxis::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -12329,55 +12329,55 @@ class Layout::Ternary::Baxis {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Layer {
-        ABOVE_TRACES,
-        BELOW_TRACES,
+        AboveTraces,
+        BelowTraces,
     };
     static std::string to_string(Layer e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
@@ -12593,7 +12593,7 @@ class Layout::Ternary::Baxis {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Ternary::Baxis& ticktext(std::vector<T> f);
+    Layout::Ternary::Baxis& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -12607,7 +12607,7 @@ class Layout::Ternary::Baxis {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Ternary::Baxis& tickvals(std::vector<T> f);
+    Layout::Ternary::Baxis& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -12646,26 +12646,26 @@ class Layout::Ternary::Baxis::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -12749,7 +12749,7 @@ class Layout::Ternary::Baxis::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Layout::Ternary::Baxis::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Layout::Ternary::Baxis::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Ternary::Baxis::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -12815,26 +12815,26 @@ class Layout::Ternary::Baxis::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -12901,55 +12901,55 @@ class Layout::Ternary::Caxis {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Layer {
-        ABOVE_TRACES,
-        BELOW_TRACES,
+        AboveTraces,
+        BelowTraces,
     };
     static std::string to_string(Layer e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
@@ -13165,7 +13165,7 @@ class Layout::Ternary::Caxis {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Ternary::Caxis& ticktext(std::vector<T> f);
+    Layout::Ternary::Caxis& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -13179,7 +13179,7 @@ class Layout::Ternary::Caxis {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Ternary::Caxis& tickvals(std::vector<T> f);
+    Layout::Ternary::Caxis& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -13218,26 +13218,26 @@ class Layout::Ternary::Caxis::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -13321,7 +13321,7 @@ class Layout::Ternary::Caxis::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Layout::Ternary::Caxis::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Layout::Ternary::Caxis::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Ternary::Caxis::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -13387,26 +13387,26 @@ class Layout::Ternary::Caxis::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -13483,12 +13483,12 @@ class Layout::Ternary::Domain {
     Layout::Ternary::Domain& row(Callable&& c);
 
     // Sets the horizontal domain of this ternary subplot (in plot fraction).
-    Layout::Ternary::Domain& x(std::vector<double> f);
+    Layout::Ternary::Domain& x(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Ternary::Domain& x(Callable&& c);
 
     // Sets the vertical domain of this ternary subplot (in plot fraction).
-    Layout::Ternary::Domain& y(std::vector<double> f);
+    Layout::Ternary::Domain& y(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Ternary::Domain& y(Callable&& c);
 
@@ -13503,30 +13503,30 @@ class Layout::Title {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Xanchor {
-        AUTO,
-        LEFT,
-        CENTER,
-        RIGHT,
+        Auto,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Xref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Xref e);
 
     enum class Yanchor {
-        AUTO,
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Auto,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
     enum class Yref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Yref e);
 
@@ -13616,26 +13616,26 @@ class Layout::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -13760,26 +13760,26 @@ class Layout::Title::Subtitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -13847,48 +13847,48 @@ class Layout::Transition {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Easing {
-        LINEAR,
-        QUAD,
-        CUBIC,
-        SIN,
-        EXP,
-        CIRCLE,
-        ELASTIC,
-        BACK,
-        BOUNCE,
-        LINEAR_IN,
-        QUAD_IN,
-        CUBIC_IN,
-        SIN_IN,
-        EXP_IN,
-        CIRCLE_IN,
-        ELASTIC_IN,
-        BACK_IN,
-        BOUNCE_IN,
-        LINEAR_OUT,
-        QUAD_OUT,
-        CUBIC_OUT,
-        SIN_OUT,
-        EXP_OUT,
-        CIRCLE_OUT,
-        ELASTIC_OUT,
-        BACK_OUT,
-        BOUNCE_OUT,
-        LINEAR_IN_OUT,
-        QUAD_IN_OUT,
-        CUBIC_IN_OUT,
-        SIN_IN_OUT,
-        EXP_IN_OUT,
-        CIRCLE_IN_OUT,
-        ELASTIC_IN_OUT,
-        BACK_IN_OUT,
-        BOUNCE_IN_OUT,
+        Linear,
+        Quad,
+        Cubic,
+        Sin,
+        Exp,
+        Circle,
+        Elastic,
+        Back,
+        Bounce,
+        LinearIn,
+        QuadIn,
+        CubicIn,
+        SinIn,
+        ExpIn,
+        CircleIn,
+        ElasticIn,
+        BackIn,
+        BounceIn,
+        LinearOut,
+        QuadOut,
+        CubicOut,
+        SinOut,
+        ExpOut,
+        CircleOut,
+        ElasticOut,
+        BackOut,
+        BounceOut,
+        LinearInOut,
+        QuadInOut,
+        CubicInOut,
+        SinInOut,
+        ExpInOut,
+        CircleInOut,
+        ElasticInOut,
+        BackInOut,
+        BounceInOut,
     };
     static std::string to_string(Easing e);
 
     enum class Ordering {
-        LAYOUT_FIRST,
-        TRACES_FIRST,
+        LayoutFirst,
+        TracesFirst,
     };
     static std::string to_string(Ordering e);
 
@@ -13917,9 +13917,9 @@ class Layout::Uniformtext {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Mode {
-        FALSE,
-        HIDE,
-        SHOW,
+        False,
+        Hide,
+        Show,
     };
     static std::string to_string(Mode e);
 
@@ -13962,32 +13962,32 @@ class Layout::Updatemenus::Updatemenu {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Direction {
-        LEFT,
-        RIGHT,
-        UP,
-        DOWN,
+        Left,
+        Right,
+        Up,
+        Down,
     };
     static std::string to_string(Direction e);
 
     enum class Type {
-        DROPDOWN,
-        BUTTONS,
+        Dropdown,
+        Buttons,
     };
     static std::string to_string(Type e);
 
     enum class Xanchor {
-        AUTO,
-        LEFT,
-        CENTER,
-        RIGHT,
+        Auto,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Yanchor {
-        AUTO,
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Auto,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
@@ -14115,22 +14115,22 @@ class Layout::Updatemenus::Updatemenu::Buttons::Button {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Method {
-        RESTYLE,
-        RELAYOUT,
-        ANIMATE,
-        UPDATE,
-        SKIP,
+        Restyle,
+        Relayout,
+        Animate,
+        Update,
+        Skip,
     };
     static std::string to_string(Method e);
 
     // Sets the arguments values to be passed to the Plotly method set in `method` on click.
-    Layout::Updatemenus::Updatemenu::Buttons::Button& args(std::vector<double> f);
+    Layout::Updatemenus::Updatemenu::Buttons::Button& args(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Updatemenus::Updatemenu::Buttons::Button& args(Callable&& c);
 
     // Sets a 2nd set of `args`, these arguments values are passed to the Plotly method set in `method` when clicking
     // this button while in the active state. Use this to create toggle buttons.
-    Layout::Updatemenus::Updatemenu::Buttons::Button& args2(std::vector<double> f);
+    Layout::Updatemenus::Updatemenu::Buttons::Button& args2(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Updatemenus::Updatemenu::Buttons::Button& args2(Callable&& c);
 
@@ -14187,26 +14187,26 @@ class Layout::Updatemenus::Updatemenu::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -14304,205 +14304,205 @@ class Layout::Xaxis {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Autorange {
-        TRUE,
-        FALSE,
-        REVERSED,
-        MIN_REVERSED,
-        MAX_REVERSED,
-        MIN,
-        MAX,
+        True,
+        False,
+        Reversed,
+        MinReversed,
+        MaxReversed,
+        Min,
+        Max,
     };
     static std::string to_string(Autorange e);
 
     enum class Autotypenumbers {
-        CONVERT_TYPES,
-        STRICT,
+        ConvertTypes,
+        Strict,
     };
     static std::string to_string(Autotypenumbers e);
 
     enum class Calendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Calendar e);
 
     enum class Categoryorder {
-        TRACE,
-        CATEGORY_ASCENDING,
-        CATEGORY_DESCENDING,
-        ARRAY,
-        TOTAL_ASCENDING,
-        TOTAL_DESCENDING,
-        MIN_ASCENDING,
-        MIN_DESCENDING,
-        MAX_ASCENDING,
-        MAX_DESCENDING,
-        SUM_ASCENDING,
-        SUM_DESCENDING,
-        MEAN_ASCENDING,
-        MEAN_DESCENDING,
-        GEOMETRIC_MEAN_ASCENDING,
-        GEOMETRIC_MEAN_DESCENDING,
-        MEDIAN_ASCENDING,
-        MEDIAN_DESCENDING,
+        Trace,
+        CategoryAscending,
+        CategoryDescending,
+        Array,
+        TotalAscending,
+        TotalDescending,
+        MinAscending,
+        MinDescending,
+        MaxAscending,
+        MaxDescending,
+        SumAscending,
+        SumDescending,
+        MeanAscending,
+        MeanDescending,
+        GeometricMeanAscending,
+        GeometricMeanDescending,
+        MedianAscending,
+        MedianDescending,
     };
     static std::string to_string(Categoryorder e);
 
     enum class Constrain {
-        RANGE,
-        DOMAIN,
+        Range,
+        Domain,
     };
     static std::string to_string(Constrain e);
 
     enum class Constraintoward {
-        LEFT,
-        CENTER,
-        RIGHT,
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Left,
+        Center,
+        Right,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Constraintoward e);
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Layer {
-        ABOVE_TRACES,
-        BELOW_TRACES,
+        AboveTraces,
+        BelowTraces,
     };
     static std::string to_string(Layer e);
 
     enum class Mirror {
-        TRUE,
-        TICKS,
-        FALSE,
-        ALL,
-        ALLTICKS,
+        True,
+        Ticks,
+        False,
+        All,
+        Allticks,
     };
     static std::string to_string(Mirror e);
 
     enum class Rangemode {
-        NORMAL,
-        TOZERO,
-        NONNEGATIVE,
+        Normal,
+        Tozero,
+        Nonnegative,
     };
     static std::string to_string(Rangemode e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Side {
-        TOP,
-        BOTTOM,
-        LEFT,
-        RIGHT,
+        Top,
+        Bottom,
+        Left,
+        Right,
     };
     static std::string to_string(Side e);
 
     enum class Spikesnap {
-        DATA,
-        CURSOR,
-        HOVERED_DATA,
+        Data,
+        Cursor,
+        HoveredData,
     };
     static std::string to_string(Spikesnap e);
 
     enum class Ticklabelmode {
-        INSTANT,
-        PERIOD,
+        Instant,
+        Period,
     };
     static std::string to_string(Ticklabelmode e);
 
     enum class Ticklabeloverflow {
-        ALLOW,
-        HIDE_PAST_DIV,
-        HIDE_PAST_DOMAIN,
+        Allow,
+        HidePastDiv,
+        HidePastDomain,
     };
     static std::string to_string(Ticklabeloverflow e);
 
     enum class Ticklabelposition {
-        OUTSIDE,
-        INSIDE,
-        OUTSIDE_TOP,
-        INSIDE_TOP,
-        OUTSIDE_LEFT,
-        INSIDE_LEFT,
-        OUTSIDE_RIGHT,
-        INSIDE_RIGHT,
-        OUTSIDE_BOTTOM,
-        INSIDE_BOTTOM,
+        Outside,
+        Inside,
+        OutsideTop,
+        InsideTop,
+        OutsideLeft,
+        InsideLeft,
+        OutsideRight,
+        InsideRight,
+        OutsideBottom,
+        InsideBottom,
     };
     static std::string to_string(Ticklabelposition e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
-        SYNC,
+        Auto,
+        Linear,
+        Array,
+        Sync,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Tickson {
-        LABELS,
-        BOUNDARIES,
+        Labels,
+        Boundaries,
     };
     static std::string to_string(Tickson e);
 
     enum class Type {
-        HYPHEN,
-        LINEAR,
-        LOG,
-        DATE,
-        CATEGORY,
-        MULTICATEGORY,
+        Hyphen,
+        Linear,
+        Log,
+        Date,
+        Category,
+        Multicategory,
     };
     static std::string to_string(Type e);
 
@@ -14545,7 +14545,7 @@ class Layout::Xaxis {
 
     // When `tickangle` is set to *auto*, it will be set to the first angle in this array that is large enough to
     // prevent label overlap.
-    Layout::Xaxis& autotickangles(std::vector<double> f);
+    Layout::Xaxis& autotickangles(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Xaxis& autotickangles(Callable&& c);
 
@@ -14563,7 +14563,7 @@ class Layout::Xaxis {
     // Sets the order in which categories on this axis appear. Only has an effect if `categoryorder` is set to *array*.
     // Used with `categoryorder`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Xaxis& categoryarray(std::vector<T> f);
+    Layout::Xaxis& categoryarray(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -14612,7 +14612,7 @@ class Layout::Xaxis {
     Layout::Xaxis& dividerwidth(Callable&& c);
 
     // Sets the domain of this axis (in plot fraction).
-    Layout::Xaxis& domain(std::vector<double> f);
+    Layout::Xaxis& domain(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Xaxis& domain(Callable&& c);
 
@@ -14672,7 +14672,7 @@ class Layout::Xaxis {
     // Could be used to set the desired inside range of this axis (excluding the labels) when `ticklabelposition` of the
     // anchored axis has *inside*. Not implemented for axes with `type` *log*. This would be ignored when `range` is
     // provided.
-    Layout::Xaxis& insiderange(std::vector<double> f);
+    Layout::Xaxis& insiderange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Xaxis& insiderange(Callable&& c);
 
@@ -14763,7 +14763,7 @@ class Layout::Xaxis {
     // strings, like date data, though Date objects and unix milliseconds will be accepted and converted to strings. If
     // the axis `type` is *category*, it should be numbers, using the scale where each category is assigned a serial
     // number from zero in the order it appears. Leaving either or both elements `null` impacts the default `autorange`.
-    Layout::Xaxis& range(std::vector<double> f);
+    Layout::Xaxis& range(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Xaxis& range(Callable&& c);
 
@@ -14933,7 +14933,7 @@ class Layout::Xaxis {
     Layout::Xaxis& ticklabelindex(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Layout::Xaxis& ticklabelindex(Callable&& c);
-    Layout::Xaxis& ticklabelindex(std::vector<int> f);
+    Layout::Xaxis& ticklabelindex(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `ticklabelindex`.
     Layout::Xaxis& ticklabelindexsrc(std::string f);
@@ -15017,7 +15017,7 @@ class Layout::Xaxis {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Xaxis& ticktext(std::vector<T> f);
+    Layout::Xaxis& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -15031,7 +15031,7 @@ class Layout::Xaxis {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Xaxis& tickvals(std::vector<T> f);
+    Layout::Xaxis& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -15115,7 +15115,7 @@ class Layout::Xaxis::Autorangeoptions {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Layout::Xaxis::Autorangeoptions& include(Callable&& c);
     template <typename T>
-    Layout::Xaxis::Autorangeoptions& include(std::vector<T> f);
+    Layout::Xaxis::Autorangeoptions& include(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `include`.
     Layout::Xaxis::Autorangeoptions& includesrc(std::string f);
@@ -15145,16 +15145,16 @@ class Layout::Xaxis::Minor {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
@@ -15235,7 +15235,7 @@ class Layout::Xaxis::Minor {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Xaxis::Minor& tickvals(std::vector<T> f);
+    Layout::Xaxis::Minor& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -15278,14 +15278,14 @@ class Layout::Xaxis::Rangebreaks::Rangebreak {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Pattern {
-        DAY_OF_WEEK,
-        HOUR,
-        EMPTY,
+        DayOfWeek,
+        Hour,
+        Empty,
     };
     static std::string to_string(Pattern e);
 
     // Sets the lower and upper bounds of this axis rangebreak. Can be used with `pattern`.
-    Layout::Xaxis::Rangebreaks::Rangebreak& bounds(std::vector<double> f);
+    Layout::Xaxis::Rangebreaks::Rangebreak& bounds(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Xaxis::Rangebreaks::Rangebreak& bounds(Callable&& c);
 
@@ -15327,7 +15327,7 @@ class Layout::Xaxis::Rangebreaks::Rangebreak {
 
     // Sets the coordinate values corresponding to the rangebreaks. An alternative to `bounds`. Use `dvalue` to set the
     // size of the values along the axis.
-    Layout::Xaxis::Rangebreaks::Rangebreak& values(std::vector<double> f);
+    Layout::Xaxis::Rangebreaks::Rangebreak& values(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Xaxis::Rangebreaks::Rangebreak& values(Callable&& c);
 
@@ -15342,18 +15342,18 @@ class Layout::Xaxis::Rangeselector {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Xanchor {
-        AUTO,
-        LEFT,
-        CENTER,
-        RIGHT,
+        Auto,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Yanchor {
-        AUTO,
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Auto,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
@@ -15446,19 +15446,19 @@ class Layout::Xaxis::Rangeselector::Buttons::Button {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Step {
-        MONTH,
-        YEAR,
-        DAY,
-        HOUR,
-        MINUTE,
-        SECOND,
-        ALL,
+        Month,
+        Year,
+        Day,
+        Hour,
+        Minute,
+        Second,
+        All,
     };
     static std::string to_string(Step e);
 
     enum class Stepmode {
-        BACKWARD,
-        TODATE,
+        Backward,
+        Todate,
     };
     static std::string to_string(Stepmode e);
 
@@ -15518,26 +15518,26 @@ class Layout::Xaxis::Rangeselector::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -15631,7 +15631,7 @@ class Layout::Xaxis::Rangeslider {
     // date data, though Date objects and unix milliseconds will be accepted and converted to strings. If the axis
     // `type` is *category*, it should be numbers, using the scale where each category is assigned a serial number from
     // zero in the order it appears.
-    Layout::Xaxis::Rangeslider& range(std::vector<double> f);
+    Layout::Xaxis::Rangeslider& range(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Xaxis::Rangeslider& range(Callable&& c);
 
@@ -15662,14 +15662,14 @@ class Layout::Xaxis::Rangeslider::Yaxis {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Rangemode {
-        AUTO,
-        FIXED,
-        MATCH,
+        Auto,
+        Fixed,
+        Match,
     };
     static std::string to_string(Rangemode e);
 
     // Sets the range of this axis for the rangeslider.
-    Layout::Xaxis::Rangeslider::Yaxis& range(std::vector<double> f);
+    Layout::Xaxis::Rangeslider::Yaxis& range(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Xaxis::Rangeslider::Yaxis& range(Callable&& c);
 
@@ -15691,26 +15691,26 @@ class Layout::Xaxis::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -15794,7 +15794,7 @@ class Layout::Xaxis::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Layout::Xaxis::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Layout::Xaxis::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Xaxis::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -15869,26 +15869,26 @@ class Layout::Xaxis::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -15955,205 +15955,205 @@ class Layout::Yaxis {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Autorange {
-        TRUE,
-        FALSE,
-        REVERSED,
-        MIN_REVERSED,
-        MAX_REVERSED,
-        MIN,
-        MAX,
+        True,
+        False,
+        Reversed,
+        MinReversed,
+        MaxReversed,
+        Min,
+        Max,
     };
     static std::string to_string(Autorange e);
 
     enum class Autotypenumbers {
-        CONVERT_TYPES,
-        STRICT,
+        ConvertTypes,
+        Strict,
     };
     static std::string to_string(Autotypenumbers e);
 
     enum class Calendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Calendar e);
 
     enum class Categoryorder {
-        TRACE,
-        CATEGORY_ASCENDING,
-        CATEGORY_DESCENDING,
-        ARRAY,
-        TOTAL_ASCENDING,
-        TOTAL_DESCENDING,
-        MIN_ASCENDING,
-        MIN_DESCENDING,
-        MAX_ASCENDING,
-        MAX_DESCENDING,
-        SUM_ASCENDING,
-        SUM_DESCENDING,
-        MEAN_ASCENDING,
-        MEAN_DESCENDING,
-        GEOMETRIC_MEAN_ASCENDING,
-        GEOMETRIC_MEAN_DESCENDING,
-        MEDIAN_ASCENDING,
-        MEDIAN_DESCENDING,
+        Trace,
+        CategoryAscending,
+        CategoryDescending,
+        Array,
+        TotalAscending,
+        TotalDescending,
+        MinAscending,
+        MinDescending,
+        MaxAscending,
+        MaxDescending,
+        SumAscending,
+        SumDescending,
+        MeanAscending,
+        MeanDescending,
+        GeometricMeanAscending,
+        GeometricMeanDescending,
+        MedianAscending,
+        MedianDescending,
     };
     static std::string to_string(Categoryorder e);
 
     enum class Constrain {
-        RANGE,
-        DOMAIN,
+        Range,
+        Domain,
     };
     static std::string to_string(Constrain e);
 
     enum class Constraintoward {
-        LEFT,
-        CENTER,
-        RIGHT,
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Left,
+        Center,
+        Right,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Constraintoward e);
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Layer {
-        ABOVE_TRACES,
-        BELOW_TRACES,
+        AboveTraces,
+        BelowTraces,
     };
     static std::string to_string(Layer e);
 
     enum class Mirror {
-        TRUE,
-        TICKS,
-        FALSE,
-        ALL,
-        ALLTICKS,
+        True,
+        Ticks,
+        False,
+        All,
+        Allticks,
     };
     static std::string to_string(Mirror e);
 
     enum class Rangemode {
-        NORMAL,
-        TOZERO,
-        NONNEGATIVE,
+        Normal,
+        Tozero,
+        Nonnegative,
     };
     static std::string to_string(Rangemode e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Side {
-        TOP,
-        BOTTOM,
-        LEFT,
-        RIGHT,
+        Top,
+        Bottom,
+        Left,
+        Right,
     };
     static std::string to_string(Side e);
 
     enum class Spikesnap {
-        DATA,
-        CURSOR,
-        HOVERED_DATA,
+        Data,
+        Cursor,
+        HoveredData,
     };
     static std::string to_string(Spikesnap e);
 
     enum class Ticklabelmode {
-        INSTANT,
-        PERIOD,
+        Instant,
+        Period,
     };
     static std::string to_string(Ticklabelmode e);
 
     enum class Ticklabeloverflow {
-        ALLOW,
-        HIDE_PAST_DIV,
-        HIDE_PAST_DOMAIN,
+        Allow,
+        HidePastDiv,
+        HidePastDomain,
     };
     static std::string to_string(Ticklabeloverflow e);
 
     enum class Ticklabelposition {
-        OUTSIDE,
-        INSIDE,
-        OUTSIDE_TOP,
-        INSIDE_TOP,
-        OUTSIDE_LEFT,
-        INSIDE_LEFT,
-        OUTSIDE_RIGHT,
-        INSIDE_RIGHT,
-        OUTSIDE_BOTTOM,
-        INSIDE_BOTTOM,
+        Outside,
+        Inside,
+        OutsideTop,
+        InsideTop,
+        OutsideLeft,
+        InsideLeft,
+        OutsideRight,
+        InsideRight,
+        OutsideBottom,
+        InsideBottom,
     };
     static std::string to_string(Ticklabelposition e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
-        SYNC,
+        Auto,
+        Linear,
+        Array,
+        Sync,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Tickson {
-        LABELS,
-        BOUNDARIES,
+        Labels,
+        Boundaries,
     };
     static std::string to_string(Tickson e);
 
     enum class Type {
-        HYPHEN,
-        LINEAR,
-        LOG,
-        DATE,
-        CATEGORY,
-        MULTICATEGORY,
+        Hyphen,
+        Linear,
+        Log,
+        Date,
+        Category,
+        Multicategory,
     };
     static std::string to_string(Type e);
 
@@ -16201,7 +16201,7 @@ class Layout::Yaxis {
 
     // When `tickangle` is set to *auto*, it will be set to the first angle in this array that is large enough to
     // prevent label overlap.
-    Layout::Yaxis& autotickangles(std::vector<double> f);
+    Layout::Yaxis& autotickangles(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Yaxis& autotickangles(Callable&& c);
 
@@ -16219,7 +16219,7 @@ class Layout::Yaxis {
     // Sets the order in which categories on this axis appear. Only has an effect if `categoryorder` is set to *array*.
     // Used with `categoryorder`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Yaxis& categoryarray(std::vector<T> f);
+    Layout::Yaxis& categoryarray(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -16268,7 +16268,7 @@ class Layout::Yaxis {
     Layout::Yaxis& dividerwidth(Callable&& c);
 
     // Sets the domain of this axis (in plot fraction).
-    Layout::Yaxis& domain(std::vector<double> f);
+    Layout::Yaxis& domain(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Yaxis& domain(Callable&& c);
 
@@ -16328,7 +16328,7 @@ class Layout::Yaxis {
     // Could be used to set the desired inside range of this axis (excluding the labels) when `ticklabelposition` of the
     // anchored axis has *inside*. Not implemented for axes with `type` *log*. This would be ignored when `range` is
     // provided.
-    Layout::Yaxis& insiderange(std::vector<double> f);
+    Layout::Yaxis& insiderange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Yaxis& insiderange(Callable&& c);
 
@@ -16419,7 +16419,7 @@ class Layout::Yaxis {
     // strings, like date data, though Date objects and unix milliseconds will be accepted and converted to strings. If
     // the axis `type` is *category*, it should be numbers, using the scale where each category is assigned a serial
     // number from zero in the order it appears. Leaving either or both elements `null` impacts the default `autorange`.
-    Layout::Yaxis& range(std::vector<double> f);
+    Layout::Yaxis& range(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Yaxis& range(Callable&& c);
 
@@ -16589,7 +16589,7 @@ class Layout::Yaxis {
     Layout::Yaxis& ticklabelindex(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Layout::Yaxis& ticklabelindex(Callable&& c);
-    Layout::Yaxis& ticklabelindex(std::vector<int> f);
+    Layout::Yaxis& ticklabelindex(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `ticklabelindex`.
     Layout::Yaxis& ticklabelindexsrc(std::string f);
@@ -16673,7 +16673,7 @@ class Layout::Yaxis {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Yaxis& ticktext(std::vector<T> f);
+    Layout::Yaxis& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -16687,7 +16687,7 @@ class Layout::Yaxis {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Yaxis& tickvals(std::vector<T> f);
+    Layout::Yaxis& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -16771,7 +16771,7 @@ class Layout::Yaxis::Autorangeoptions {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Layout::Yaxis::Autorangeoptions& include(Callable&& c);
     template <typename T>
-    Layout::Yaxis::Autorangeoptions& include(std::vector<T> f);
+    Layout::Yaxis::Autorangeoptions& include(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `include`.
     Layout::Yaxis::Autorangeoptions& includesrc(std::string f);
@@ -16801,16 +16801,16 @@ class Layout::Yaxis::Minor {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
@@ -16891,7 +16891,7 @@ class Layout::Yaxis::Minor {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Layout::Yaxis::Minor& tickvals(std::vector<T> f);
+    Layout::Yaxis::Minor& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -16934,14 +16934,14 @@ class Layout::Yaxis::Rangebreaks::Rangebreak {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Pattern {
-        DAY_OF_WEEK,
-        HOUR,
-        EMPTY,
+        DayOfWeek,
+        Hour,
+        Empty,
     };
     static std::string to_string(Pattern e);
 
     // Sets the lower and upper bounds of this axis rangebreak. Can be used with `pattern`.
-    Layout::Yaxis::Rangebreaks::Rangebreak& bounds(std::vector<double> f);
+    Layout::Yaxis::Rangebreaks::Rangebreak& bounds(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Yaxis::Rangebreaks::Rangebreak& bounds(Callable&& c);
 
@@ -16983,7 +16983,7 @@ class Layout::Yaxis::Rangebreaks::Rangebreak {
 
     // Sets the coordinate values corresponding to the rangebreaks. An alternative to `bounds`. Use `dvalue` to set the
     // size of the values along the axis.
-    Layout::Yaxis::Rangebreaks::Rangebreak& values(std::vector<double> f);
+    Layout::Yaxis::Rangebreaks::Rangebreak& values(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Yaxis::Rangebreaks::Rangebreak& values(Callable&& c);
 
@@ -16999,26 +16999,26 @@ class Layout::Yaxis::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -17102,7 +17102,7 @@ class Layout::Yaxis::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Layout::Yaxis::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Layout::Yaxis::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Layout::Yaxis::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -17177,26 +17177,26 @@ class Layout::Yaxis::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 

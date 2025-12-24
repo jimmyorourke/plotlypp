@@ -12,42 +12,42 @@ namespace plotlypp {
 
 std::string Scattergeo::to_string(Fill e) {
     switch(e) {
-        case Fill::NONE: return "none";
-        case Fill::TOSELF: return "toself";
+        case Fill::None: return "none";
+        case Fill::Toself: return "toself";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::to_string(Locationmode e) {
     switch(e) {
-        case Locationmode::ISO_3: return "ISO-3";
-        case Locationmode::USA_STATES: return "USA-states";
-        case Locationmode::COUNTRY_NAMES: return "country names";
-        case Locationmode::GEOJSON_ID: return "geojson-id";
+        case Locationmode::Iso3: return "ISO-3";
+        case Locationmode::UsaStates: return "USA-states";
+        case Locationmode::CountryNames: return "country names";
+        case Locationmode::GeojsonId: return "geojson-id";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::to_string(Textposition e) {
     switch(e) {
-        case Textposition::TOP_LEFT: return "top left";
-        case Textposition::TOP_CENTER: return "top center";
-        case Textposition::TOP_RIGHT: return "top right";
-        case Textposition::MIDDLE_LEFT: return "middle left";
-        case Textposition::MIDDLE_CENTER: return "middle center";
-        case Textposition::MIDDLE_RIGHT: return "middle right";
-        case Textposition::BOTTOM_LEFT: return "bottom left";
-        case Textposition::BOTTOM_CENTER: return "bottom center";
-        case Textposition::BOTTOM_RIGHT: return "bottom right";
+        case Textposition::TopLeft: return "top left";
+        case Textposition::TopCenter: return "top center";
+        case Textposition::TopRight: return "top right";
+        case Textposition::MiddleLeft: return "middle left";
+        case Textposition::MiddleCenter: return "middle center";
+        case Textposition::MiddleRight: return "middle right";
+        case Textposition::BottomLeft: return "bottom left";
+        case Textposition::BottomCenter: return "bottom center";
+        case Textposition::BottomRight: return "bottom right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::to_string(Visible e) {
     switch(e) {
-        case Visible::TRUE: return "True";
-        case Visible::FALSE: return "False";
-        case Visible::LEGENDONLY: return "legendonly";
+        case Visible::True: return "True";
+        case Visible::False: return "False";
+        case Visible::Legendonly: return "legendonly";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -65,8 +65,8 @@ Scattergeo& Scattergeo::connectgaps(Callable&& c) {
 }
 
 template <typename T, typename>
-Scattergeo& Scattergeo::customdata(std::vector<T> f) {
-    json["customdata"] = std::move(f);
+Scattergeo& Scattergeo::customdata(const std::vector<T>& f) {
+    json["customdata"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -147,8 +147,8 @@ Scattergeo& Scattergeo::hoverinfo(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hoverinfo(std::move(f));
 }
-Scattergeo& Scattergeo::hoverinfo(std::vector<std::string> f) {
-    json["hoverinfo"] = std::move(f);
+Scattergeo& Scattergeo::hoverinfo(const std::vector<std::string>& f) {
+    json["hoverinfo"] = f;
     return *this;
 }
 
@@ -184,8 +184,8 @@ Scattergeo& Scattergeo::hovertemplate(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hovertemplate(std::move(f));
 }
-Scattergeo& Scattergeo::hovertemplate(std::vector<std::string> f) {
-    json["hovertemplate"] = std::move(f);
+Scattergeo& Scattergeo::hovertemplate(const std::vector<std::string>& f) {
+    json["hovertemplate"] = f;
     return *this;
 }
 
@@ -210,8 +210,8 @@ Scattergeo& Scattergeo::hovertext(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hovertext(std::move(f));
 }
-Scattergeo& Scattergeo::hovertext(std::vector<std::string> f) {
-    json["hovertext"] = std::move(f);
+Scattergeo& Scattergeo::hovertext(const std::vector<std::string>& f) {
+    json["hovertext"] = f;
     return *this;
 }
 
@@ -227,8 +227,8 @@ Scattergeo& Scattergeo::hovertextsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Scattergeo& Scattergeo::ids(std::vector<T> f) {
-    json["ids"] = std::move(f);
+Scattergeo& Scattergeo::ids(const std::vector<T>& f) {
+    json["ids"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -250,8 +250,8 @@ Scattergeo& Scattergeo::idssrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Scattergeo& Scattergeo::lat(std::vector<T> f) {
-    json["lat"] = std::move(f);
+Scattergeo& Scattergeo::lat(const std::vector<T>& f) {
+    json["lat"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -344,8 +344,8 @@ Scattergeo& Scattergeo::locationmode(enum Locationmode f) {
 }
 
 template <typename T, typename>
-Scattergeo& Scattergeo::locations(std::vector<T> f) {
-    json["locations"] = std::move(f);
+Scattergeo& Scattergeo::locations(const std::vector<T>& f) {
+    json["locations"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -367,8 +367,8 @@ Scattergeo& Scattergeo::locationssrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Scattergeo& Scattergeo::lon(std::vector<T> f) {
-    json["lon"] = std::move(f);
+Scattergeo& Scattergeo::lon(const std::vector<T>& f) {
+    json["lon"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -412,8 +412,8 @@ Scattergeo& Scattergeo::meta(Callable&& c) {
     return meta(std::move(f));
 }
 template <typename T>
-Scattergeo& Scattergeo::meta(std::vector<T> f) {
-    json["meta"] = std::move(f);
+Scattergeo& Scattergeo::meta(const std::vector<T>& f) {
+    json["meta"] = f;
     return *this;
 }
 
@@ -516,8 +516,8 @@ Scattergeo& Scattergeo::text(Callable&& c) {
     std::forward<Callable>(c)(f);
     return text(std::move(f));
 }
-Scattergeo& Scattergeo::text(std::vector<std::string> f) {
-    json["text"] = std::move(f);
+Scattergeo& Scattergeo::text(const std::vector<std::string>& f) {
+    json["text"] = f;
     return *this;
 }
 
@@ -575,8 +575,8 @@ Scattergeo& Scattergeo::texttemplate(Callable&& c) {
     std::forward<Callable>(c)(f);
     return texttemplate(std::move(f));
 }
-Scattergeo& Scattergeo::texttemplate(std::vector<std::string> f) {
-    json["texttemplate"] = std::move(f);
+Scattergeo& Scattergeo::texttemplate(const std::vector<std::string>& f) {
+    json["texttemplate"] = f;
     return *this;
 }
 
@@ -632,9 +632,9 @@ Scattergeo& Scattergeo::visible(enum Visible f) {
 
 std::string Scattergeo::Hoverlabel::to_string(Align e) {
     switch(e) {
-        case Align::LEFT: return "left";
-        case Align::RIGHT: return "right";
-        case Align::AUTO: return "auto";
+        case Align::Left: return "left";
+        case Align::Right: return "right";
+        case Align::Auto: return "auto";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -672,8 +672,8 @@ Scattergeo::Hoverlabel& Scattergeo::Hoverlabel::bgcolor(Callable&& c) {
     std::forward<Callable>(c)(f);
     return bgcolor(std::move(f));
 }
-Scattergeo::Hoverlabel& Scattergeo::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
+Scattergeo::Hoverlabel& Scattergeo::Hoverlabel::bgcolor(const std::vector<std::string>& f) {
+    json["bgcolor"] = f;
     return *this;
 }
 
@@ -698,8 +698,8 @@ Scattergeo::Hoverlabel& Scattergeo::Hoverlabel::bordercolor(Callable&& c) {
     std::forward<Callable>(c)(f);
     return bordercolor(std::move(f));
 }
-Scattergeo::Hoverlabel& Scattergeo::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
+Scattergeo::Hoverlabel& Scattergeo::Hoverlabel::bordercolor(const std::vector<std::string>& f) {
+    json["bordercolor"] = f;
     return *this;
 }
 
@@ -735,8 +735,8 @@ Scattergeo::Hoverlabel& Scattergeo::Hoverlabel::namelength(Callable&& c) {
     std::forward<Callable>(c)(f);
     return namelength(std::move(f));
 }
-Scattergeo::Hoverlabel& Scattergeo::Hoverlabel::namelength(std::vector<int> f) {
-    json["namelength"] = std::move(f);
+Scattergeo::Hoverlabel& Scattergeo::Hoverlabel::namelength(const std::vector<int>& f) {
+    json["namelength"] = f;
     return *this;
 }
 
@@ -753,30 +753,30 @@ Scattergeo::Hoverlabel& Scattergeo::Hoverlabel::namelengthsrc(Callable&& c) {
 
 std::string Scattergeo::Hoverlabel::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Hoverlabel::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Hoverlabel::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -792,8 +792,8 @@ Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::color(Callable&& c) 
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -818,8 +818,8 @@ Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::family(Callable&& c)
     std::forward<Callable>(c)(f);
     return family(std::move(f));
 }
-Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::family(std::vector<std::string> f) {
-    json["family"] = std::move(f);
+Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::family(const std::vector<std::string>& f) {
+    json["family"] = f;
     return *this;
 }
 
@@ -844,8 +844,8 @@ Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::lineposition(Callabl
     std::forward<Callable>(c)(f);
     return lineposition(std::move(f));
 }
-Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
-    json["lineposition"] = std::move(f);
+Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::lineposition(const std::vector<std::string>& f) {
+    json["lineposition"] = f;
     return *this;
 }
 
@@ -870,8 +870,8 @@ Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::shadow(Callable&& c)
     std::forward<Callable>(c)(f);
     return shadow(std::move(f));
 }
-Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::shadow(std::vector<std::string> f) {
-    json["shadow"] = std::move(f);
+Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::shadow(const std::vector<std::string>& f) {
+    json["shadow"] = f;
     return *this;
 }
 
@@ -896,8 +896,8 @@ Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -988,8 +988,8 @@ Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::weight(Callable&& c)
     std::forward<Callable>(c)(f);
     return weight(std::move(f));
 }
-Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::weight(std::vector<int> f) {
-    json["weight"] = std::move(f);
+Scattergeo::Hoverlabel::Font& Scattergeo::Hoverlabel::Font::weight(const std::vector<int>& f) {
+    json["weight"] = f;
     return *this;
 }
 
@@ -1029,30 +1029,30 @@ Scattergeo::Legendgrouptitle& Scattergeo::Legendgrouptitle::text(Callable&& c) {
 
 std::string Scattergeo::Legendgrouptitle::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1175,347 +1175,347 @@ Scattergeo::Line& Scattergeo::Line::width(Callable&& c) {
 
 std::string Scattergeo::Marker::to_string(Angleref e) {
     switch(e) {
-        case Angleref::PREVIOUS: return "previous";
-        case Angleref::UP: return "up";
-        case Angleref::NORTH: return "north";
+        case Angleref::Previous: return "previous";
+        case Angleref::Up: return "up";
+        case Angleref::North: return "north";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Marker::to_string(Sizemode e) {
     switch(e) {
-        case Sizemode::DIAMETER: return "diameter";
-        case Sizemode::AREA: return "area";
+        case Sizemode::Diameter: return "diameter";
+        case Sizemode::Area: return "area";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Marker::to_string(Symbol e) {
     switch(e) {
-        case Symbol::NUM_0: return "0";
-        case Symbol::CIRCLE: return "circle";
-        case Symbol::NUM_100: return "100";
-        case Symbol::CIRCLE_OPEN: return "circle-open";
-        case Symbol::NUM_200: return "200";
-        case Symbol::CIRCLE_DOT: return "circle-dot";
-        case Symbol::NUM_300: return "300";
-        case Symbol::CIRCLE_OPEN_DOT: return "circle-open-dot";
-        case Symbol::NUM_1: return "1";
-        case Symbol::SQUARE: return "square";
-        case Symbol::NUM_101: return "101";
-        case Symbol::SQUARE_OPEN: return "square-open";
-        case Symbol::NUM_201: return "201";
-        case Symbol::SQUARE_DOT: return "square-dot";
-        case Symbol::NUM_301: return "301";
-        case Symbol::SQUARE_OPEN_DOT: return "square-open-dot";
-        case Symbol::NUM_2: return "2";
-        case Symbol::DIAMOND: return "diamond";
-        case Symbol::NUM_102: return "102";
-        case Symbol::DIAMOND_OPEN: return "diamond-open";
-        case Symbol::NUM_202: return "202";
-        case Symbol::DIAMOND_DOT: return "diamond-dot";
-        case Symbol::NUM_302: return "302";
-        case Symbol::DIAMOND_OPEN_DOT: return "diamond-open-dot";
-        case Symbol::NUM_3: return "3";
-        case Symbol::CROSS: return "cross";
-        case Symbol::NUM_103: return "103";
-        case Symbol::CROSS_OPEN: return "cross-open";
-        case Symbol::NUM_203: return "203";
-        case Symbol::CROSS_DOT: return "cross-dot";
-        case Symbol::NUM_303: return "303";
-        case Symbol::CROSS_OPEN_DOT: return "cross-open-dot";
-        case Symbol::NUM_4: return "4";
+        case Symbol::Num_0: return "0";
+        case Symbol::Circle: return "circle";
+        case Symbol::Num_100: return "100";
+        case Symbol::CircleOpen: return "circle-open";
+        case Symbol::Num_200: return "200";
+        case Symbol::CircleDot: return "circle-dot";
+        case Symbol::Num_300: return "300";
+        case Symbol::CircleOpenDot: return "circle-open-dot";
+        case Symbol::Num_1: return "1";
+        case Symbol::Square: return "square";
+        case Symbol::Num_101: return "101";
+        case Symbol::SquareOpen: return "square-open";
+        case Symbol::Num_201: return "201";
+        case Symbol::SquareDot: return "square-dot";
+        case Symbol::Num_301: return "301";
+        case Symbol::SquareOpenDot: return "square-open-dot";
+        case Symbol::Num_2: return "2";
+        case Symbol::Diamond: return "diamond";
+        case Symbol::Num_102: return "102";
+        case Symbol::DiamondOpen: return "diamond-open";
+        case Symbol::Num_202: return "202";
+        case Symbol::DiamondDot: return "diamond-dot";
+        case Symbol::Num_302: return "302";
+        case Symbol::DiamondOpenDot: return "diamond-open-dot";
+        case Symbol::Num_3: return "3";
+        case Symbol::Cross: return "cross";
+        case Symbol::Num_103: return "103";
+        case Symbol::CrossOpen: return "cross-open";
+        case Symbol::Num_203: return "203";
+        case Symbol::CrossDot: return "cross-dot";
+        case Symbol::Num_303: return "303";
+        case Symbol::CrossOpenDot: return "cross-open-dot";
+        case Symbol::Num_4: return "4";
         case Symbol::X: return "x";
-        case Symbol::NUM_104: return "104";
-        case Symbol::X_OPEN: return "x-open";
-        case Symbol::NUM_204: return "204";
-        case Symbol::X_DOT: return "x-dot";
-        case Symbol::NUM_304: return "304";
-        case Symbol::X_OPEN_DOT: return "x-open-dot";
-        case Symbol::NUM_5: return "5";
-        case Symbol::TRIANGLE_UP: return "triangle-up";
-        case Symbol::NUM_105: return "105";
-        case Symbol::TRIANGLE_UP_OPEN: return "triangle-up-open";
-        case Symbol::NUM_205: return "205";
-        case Symbol::TRIANGLE_UP_DOT: return "triangle-up-dot";
-        case Symbol::NUM_305: return "305";
-        case Symbol::TRIANGLE_UP_OPEN_DOT: return "triangle-up-open-dot";
-        case Symbol::NUM_6: return "6";
-        case Symbol::TRIANGLE_DOWN: return "triangle-down";
-        case Symbol::NUM_106: return "106";
-        case Symbol::TRIANGLE_DOWN_OPEN: return "triangle-down-open";
-        case Symbol::NUM_206: return "206";
-        case Symbol::TRIANGLE_DOWN_DOT: return "triangle-down-dot";
-        case Symbol::NUM_306: return "306";
-        case Symbol::TRIANGLE_DOWN_OPEN_DOT: return "triangle-down-open-dot";
-        case Symbol::NUM_7: return "7";
-        case Symbol::TRIANGLE_LEFT: return "triangle-left";
-        case Symbol::NUM_107: return "107";
-        case Symbol::TRIANGLE_LEFT_OPEN: return "triangle-left-open";
-        case Symbol::NUM_207: return "207";
-        case Symbol::TRIANGLE_LEFT_DOT: return "triangle-left-dot";
-        case Symbol::NUM_307: return "307";
-        case Symbol::TRIANGLE_LEFT_OPEN_DOT: return "triangle-left-open-dot";
-        case Symbol::NUM_8: return "8";
-        case Symbol::TRIANGLE_RIGHT: return "triangle-right";
-        case Symbol::NUM_108: return "108";
-        case Symbol::TRIANGLE_RIGHT_OPEN: return "triangle-right-open";
-        case Symbol::NUM_208: return "208";
-        case Symbol::TRIANGLE_RIGHT_DOT: return "triangle-right-dot";
-        case Symbol::NUM_308: return "308";
-        case Symbol::TRIANGLE_RIGHT_OPEN_DOT: return "triangle-right-open-dot";
-        case Symbol::NUM_9: return "9";
-        case Symbol::TRIANGLE_NE: return "triangle-ne";
-        case Symbol::NUM_109: return "109";
-        case Symbol::TRIANGLE_NE_OPEN: return "triangle-ne-open";
-        case Symbol::NUM_209: return "209";
-        case Symbol::TRIANGLE_NE_DOT: return "triangle-ne-dot";
-        case Symbol::NUM_309: return "309";
-        case Symbol::TRIANGLE_NE_OPEN_DOT: return "triangle-ne-open-dot";
-        case Symbol::NUM_10: return "10";
-        case Symbol::TRIANGLE_SE: return "triangle-se";
-        case Symbol::NUM_110: return "110";
-        case Symbol::TRIANGLE_SE_OPEN: return "triangle-se-open";
-        case Symbol::NUM_210: return "210";
-        case Symbol::TRIANGLE_SE_DOT: return "triangle-se-dot";
-        case Symbol::NUM_310: return "310";
-        case Symbol::TRIANGLE_SE_OPEN_DOT: return "triangle-se-open-dot";
-        case Symbol::NUM_11: return "11";
-        case Symbol::TRIANGLE_SW: return "triangle-sw";
-        case Symbol::NUM_111: return "111";
-        case Symbol::TRIANGLE_SW_OPEN: return "triangle-sw-open";
-        case Symbol::NUM_211: return "211";
-        case Symbol::TRIANGLE_SW_DOT: return "triangle-sw-dot";
-        case Symbol::NUM_311: return "311";
-        case Symbol::TRIANGLE_SW_OPEN_DOT: return "triangle-sw-open-dot";
-        case Symbol::NUM_12: return "12";
-        case Symbol::TRIANGLE_NW: return "triangle-nw";
-        case Symbol::NUM_112: return "112";
-        case Symbol::TRIANGLE_NW_OPEN: return "triangle-nw-open";
-        case Symbol::NUM_212: return "212";
-        case Symbol::TRIANGLE_NW_DOT: return "triangle-nw-dot";
-        case Symbol::NUM_312: return "312";
-        case Symbol::TRIANGLE_NW_OPEN_DOT: return "triangle-nw-open-dot";
-        case Symbol::NUM_13: return "13";
-        case Symbol::PENTAGON: return "pentagon";
-        case Symbol::NUM_113: return "113";
-        case Symbol::PENTAGON_OPEN: return "pentagon-open";
-        case Symbol::NUM_213: return "213";
-        case Symbol::PENTAGON_DOT: return "pentagon-dot";
-        case Symbol::NUM_313: return "313";
-        case Symbol::PENTAGON_OPEN_DOT: return "pentagon-open-dot";
-        case Symbol::NUM_14: return "14";
-        case Symbol::HEXAGON: return "hexagon";
-        case Symbol::NUM_114: return "114";
-        case Symbol::HEXAGON_OPEN: return "hexagon-open";
-        case Symbol::NUM_214: return "214";
-        case Symbol::HEXAGON_DOT: return "hexagon-dot";
-        case Symbol::NUM_314: return "314";
-        case Symbol::HEXAGON_OPEN_DOT: return "hexagon-open-dot";
-        case Symbol::NUM_15: return "15";
-        case Symbol::HEXAGON2: return "hexagon2";
-        case Symbol::NUM_115: return "115";
-        case Symbol::HEXAGON2_OPEN: return "hexagon2-open";
-        case Symbol::NUM_215: return "215";
-        case Symbol::HEXAGON2_DOT: return "hexagon2-dot";
-        case Symbol::NUM_315: return "315";
-        case Symbol::HEXAGON2_OPEN_DOT: return "hexagon2-open-dot";
-        case Symbol::NUM_16: return "16";
-        case Symbol::OCTAGON: return "octagon";
-        case Symbol::NUM_116: return "116";
-        case Symbol::OCTAGON_OPEN: return "octagon-open";
-        case Symbol::NUM_216: return "216";
-        case Symbol::OCTAGON_DOT: return "octagon-dot";
-        case Symbol::NUM_316: return "316";
-        case Symbol::OCTAGON_OPEN_DOT: return "octagon-open-dot";
-        case Symbol::NUM_17: return "17";
-        case Symbol::STAR: return "star";
-        case Symbol::NUM_117: return "117";
-        case Symbol::STAR_OPEN: return "star-open";
-        case Symbol::NUM_217: return "217";
-        case Symbol::STAR_DOT: return "star-dot";
-        case Symbol::NUM_317: return "317";
-        case Symbol::STAR_OPEN_DOT: return "star-open-dot";
-        case Symbol::NUM_18: return "18";
-        case Symbol::HEXAGRAM: return "hexagram";
-        case Symbol::NUM_118: return "118";
-        case Symbol::HEXAGRAM_OPEN: return "hexagram-open";
-        case Symbol::NUM_218: return "218";
-        case Symbol::HEXAGRAM_DOT: return "hexagram-dot";
-        case Symbol::NUM_318: return "318";
-        case Symbol::HEXAGRAM_OPEN_DOT: return "hexagram-open-dot";
-        case Symbol::NUM_19: return "19";
-        case Symbol::STAR_TRIANGLE_UP: return "star-triangle-up";
-        case Symbol::NUM_119: return "119";
-        case Symbol::STAR_TRIANGLE_UP_OPEN: return "star-triangle-up-open";
-        case Symbol::NUM_219: return "219";
-        case Symbol::STAR_TRIANGLE_UP_DOT: return "star-triangle-up-dot";
-        case Symbol::NUM_319: return "319";
-        case Symbol::STAR_TRIANGLE_UP_OPEN_DOT: return "star-triangle-up-open-dot";
-        case Symbol::NUM_20: return "20";
-        case Symbol::STAR_TRIANGLE_DOWN: return "star-triangle-down";
-        case Symbol::NUM_120: return "120";
-        case Symbol::STAR_TRIANGLE_DOWN_OPEN: return "star-triangle-down-open";
-        case Symbol::NUM_220: return "220";
-        case Symbol::STAR_TRIANGLE_DOWN_DOT: return "star-triangle-down-dot";
-        case Symbol::NUM_320: return "320";
-        case Symbol::STAR_TRIANGLE_DOWN_OPEN_DOT: return "star-triangle-down-open-dot";
-        case Symbol::NUM_21: return "21";
-        case Symbol::STAR_SQUARE: return "star-square";
-        case Symbol::NUM_121: return "121";
-        case Symbol::STAR_SQUARE_OPEN: return "star-square-open";
-        case Symbol::NUM_221: return "221";
-        case Symbol::STAR_SQUARE_DOT: return "star-square-dot";
-        case Symbol::NUM_321: return "321";
-        case Symbol::STAR_SQUARE_OPEN_DOT: return "star-square-open-dot";
-        case Symbol::NUM_22: return "22";
-        case Symbol::STAR_DIAMOND: return "star-diamond";
-        case Symbol::NUM_122: return "122";
-        case Symbol::STAR_DIAMOND_OPEN: return "star-diamond-open";
-        case Symbol::NUM_222: return "222";
-        case Symbol::STAR_DIAMOND_DOT: return "star-diamond-dot";
-        case Symbol::NUM_322: return "322";
-        case Symbol::STAR_DIAMOND_OPEN_DOT: return "star-diamond-open-dot";
-        case Symbol::NUM_23: return "23";
-        case Symbol::DIAMOND_TALL: return "diamond-tall";
-        case Symbol::NUM_123: return "123";
-        case Symbol::DIAMOND_TALL_OPEN: return "diamond-tall-open";
-        case Symbol::NUM_223: return "223";
-        case Symbol::DIAMOND_TALL_DOT: return "diamond-tall-dot";
-        case Symbol::NUM_323: return "323";
-        case Symbol::DIAMOND_TALL_OPEN_DOT: return "diamond-tall-open-dot";
-        case Symbol::NUM_24: return "24";
-        case Symbol::DIAMOND_WIDE: return "diamond-wide";
-        case Symbol::NUM_124: return "124";
-        case Symbol::DIAMOND_WIDE_OPEN: return "diamond-wide-open";
-        case Symbol::NUM_224: return "224";
-        case Symbol::DIAMOND_WIDE_DOT: return "diamond-wide-dot";
-        case Symbol::NUM_324: return "324";
-        case Symbol::DIAMOND_WIDE_OPEN_DOT: return "diamond-wide-open-dot";
-        case Symbol::NUM_25: return "25";
-        case Symbol::HOURGLASS: return "hourglass";
-        case Symbol::NUM_125: return "125";
-        case Symbol::HOURGLASS_OPEN: return "hourglass-open";
-        case Symbol::NUM_26: return "26";
-        case Symbol::BOWTIE: return "bowtie";
-        case Symbol::NUM_126: return "126";
-        case Symbol::BOWTIE_OPEN: return "bowtie-open";
-        case Symbol::NUM_27: return "27";
-        case Symbol::CIRCLE_CROSS: return "circle-cross";
-        case Symbol::NUM_127: return "127";
-        case Symbol::CIRCLE_CROSS_OPEN: return "circle-cross-open";
-        case Symbol::NUM_28: return "28";
-        case Symbol::CIRCLE_X: return "circle-x";
-        case Symbol::NUM_128: return "128";
-        case Symbol::CIRCLE_X_OPEN: return "circle-x-open";
-        case Symbol::NUM_29: return "29";
-        case Symbol::SQUARE_CROSS: return "square-cross";
-        case Symbol::NUM_129: return "129";
-        case Symbol::SQUARE_CROSS_OPEN: return "square-cross-open";
-        case Symbol::NUM_30: return "30";
-        case Symbol::SQUARE_X: return "square-x";
-        case Symbol::NUM_130: return "130";
-        case Symbol::SQUARE_X_OPEN: return "square-x-open";
-        case Symbol::NUM_31: return "31";
-        case Symbol::DIAMOND_CROSS: return "diamond-cross";
-        case Symbol::NUM_131: return "131";
-        case Symbol::DIAMOND_CROSS_OPEN: return "diamond-cross-open";
-        case Symbol::NUM_32: return "32";
-        case Symbol::DIAMOND_X: return "diamond-x";
-        case Symbol::NUM_132: return "132";
-        case Symbol::DIAMOND_X_OPEN: return "diamond-x-open";
-        case Symbol::NUM_33: return "33";
-        case Symbol::CROSS_THIN: return "cross-thin";
-        case Symbol::NUM_133: return "133";
-        case Symbol::CROSS_THIN_OPEN: return "cross-thin-open";
-        case Symbol::NUM_34: return "34";
-        case Symbol::X_THIN: return "x-thin";
-        case Symbol::NUM_134: return "134";
-        case Symbol::X_THIN_OPEN: return "x-thin-open";
-        case Symbol::NUM_35: return "35";
-        case Symbol::ASTERISK: return "asterisk";
-        case Symbol::NUM_135: return "135";
-        case Symbol::ASTERISK_OPEN: return "asterisk-open";
-        case Symbol::NUM_36: return "36";
-        case Symbol::HASH: return "hash";
-        case Symbol::NUM_136: return "136";
-        case Symbol::HASH_OPEN: return "hash-open";
-        case Symbol::NUM_236: return "236";
-        case Symbol::HASH_DOT: return "hash-dot";
-        case Symbol::NUM_336: return "336";
-        case Symbol::HASH_OPEN_DOT: return "hash-open-dot";
-        case Symbol::NUM_37: return "37";
-        case Symbol::Y_UP: return "y-up";
-        case Symbol::NUM_137: return "137";
-        case Symbol::Y_UP_OPEN: return "y-up-open";
-        case Symbol::NUM_38: return "38";
-        case Symbol::Y_DOWN: return "y-down";
-        case Symbol::NUM_138: return "138";
-        case Symbol::Y_DOWN_OPEN: return "y-down-open";
-        case Symbol::NUM_39: return "39";
-        case Symbol::Y_LEFT: return "y-left";
-        case Symbol::NUM_139: return "139";
-        case Symbol::Y_LEFT_OPEN: return "y-left-open";
-        case Symbol::NUM_40: return "40";
-        case Symbol::Y_RIGHT: return "y-right";
-        case Symbol::NUM_140: return "140";
-        case Symbol::Y_RIGHT_OPEN: return "y-right-open";
-        case Symbol::NUM_41: return "41";
-        case Symbol::LINE_EW: return "line-ew";
-        case Symbol::NUM_141: return "141";
-        case Symbol::LINE_EW_OPEN: return "line-ew-open";
-        case Symbol::NUM_42: return "42";
-        case Symbol::LINE_NS: return "line-ns";
-        case Symbol::NUM_142: return "142";
-        case Symbol::LINE_NS_OPEN: return "line-ns-open";
-        case Symbol::NUM_43: return "43";
-        case Symbol::LINE_NE: return "line-ne";
-        case Symbol::NUM_143: return "143";
-        case Symbol::LINE_NE_OPEN: return "line-ne-open";
-        case Symbol::NUM_44: return "44";
-        case Symbol::LINE_NW: return "line-nw";
-        case Symbol::NUM_144: return "144";
-        case Symbol::LINE_NW_OPEN: return "line-nw-open";
-        case Symbol::NUM_45: return "45";
-        case Symbol::ARROW_UP: return "arrow-up";
-        case Symbol::NUM_145: return "145";
-        case Symbol::ARROW_UP_OPEN: return "arrow-up-open";
-        case Symbol::NUM_46: return "46";
-        case Symbol::ARROW_DOWN: return "arrow-down";
-        case Symbol::NUM_146: return "146";
-        case Symbol::ARROW_DOWN_OPEN: return "arrow-down-open";
-        case Symbol::NUM_47: return "47";
-        case Symbol::ARROW_LEFT: return "arrow-left";
-        case Symbol::NUM_147: return "147";
-        case Symbol::ARROW_LEFT_OPEN: return "arrow-left-open";
-        case Symbol::NUM_48: return "48";
-        case Symbol::ARROW_RIGHT: return "arrow-right";
-        case Symbol::NUM_148: return "148";
-        case Symbol::ARROW_RIGHT_OPEN: return "arrow-right-open";
-        case Symbol::NUM_49: return "49";
-        case Symbol::ARROW_BAR_UP: return "arrow-bar-up";
-        case Symbol::NUM_149: return "149";
-        case Symbol::ARROW_BAR_UP_OPEN: return "arrow-bar-up-open";
-        case Symbol::NUM_50: return "50";
-        case Symbol::ARROW_BAR_DOWN: return "arrow-bar-down";
-        case Symbol::NUM_150: return "150";
-        case Symbol::ARROW_BAR_DOWN_OPEN: return "arrow-bar-down-open";
-        case Symbol::NUM_51: return "51";
-        case Symbol::ARROW_BAR_LEFT: return "arrow-bar-left";
-        case Symbol::NUM_151: return "151";
-        case Symbol::ARROW_BAR_LEFT_OPEN: return "arrow-bar-left-open";
-        case Symbol::NUM_52: return "52";
-        case Symbol::ARROW_BAR_RIGHT: return "arrow-bar-right";
-        case Symbol::NUM_152: return "152";
-        case Symbol::ARROW_BAR_RIGHT_OPEN: return "arrow-bar-right-open";
-        case Symbol::NUM_53: return "53";
-        case Symbol::ARROW: return "arrow";
-        case Symbol::NUM_153: return "153";
-        case Symbol::ARROW_OPEN: return "arrow-open";
-        case Symbol::NUM_54: return "54";
-        case Symbol::ARROW_WIDE: return "arrow-wide";
-        case Symbol::NUM_154: return "154";
-        case Symbol::ARROW_WIDE_OPEN: return "arrow-wide-open";
+        case Symbol::Num_104: return "104";
+        case Symbol::XOpen: return "x-open";
+        case Symbol::Num_204: return "204";
+        case Symbol::XDot: return "x-dot";
+        case Symbol::Num_304: return "304";
+        case Symbol::XOpenDot: return "x-open-dot";
+        case Symbol::Num_5: return "5";
+        case Symbol::TriangleUp: return "triangle-up";
+        case Symbol::Num_105: return "105";
+        case Symbol::TriangleUpOpen: return "triangle-up-open";
+        case Symbol::Num_205: return "205";
+        case Symbol::TriangleUpDot: return "triangle-up-dot";
+        case Symbol::Num_305: return "305";
+        case Symbol::TriangleUpOpenDot: return "triangle-up-open-dot";
+        case Symbol::Num_6: return "6";
+        case Symbol::TriangleDown: return "triangle-down";
+        case Symbol::Num_106: return "106";
+        case Symbol::TriangleDownOpen: return "triangle-down-open";
+        case Symbol::Num_206: return "206";
+        case Symbol::TriangleDownDot: return "triangle-down-dot";
+        case Symbol::Num_306: return "306";
+        case Symbol::TriangleDownOpenDot: return "triangle-down-open-dot";
+        case Symbol::Num_7: return "7";
+        case Symbol::TriangleLeft: return "triangle-left";
+        case Symbol::Num_107: return "107";
+        case Symbol::TriangleLeftOpen: return "triangle-left-open";
+        case Symbol::Num_207: return "207";
+        case Symbol::TriangleLeftDot: return "triangle-left-dot";
+        case Symbol::Num_307: return "307";
+        case Symbol::TriangleLeftOpenDot: return "triangle-left-open-dot";
+        case Symbol::Num_8: return "8";
+        case Symbol::TriangleRight: return "triangle-right";
+        case Symbol::Num_108: return "108";
+        case Symbol::TriangleRightOpen: return "triangle-right-open";
+        case Symbol::Num_208: return "208";
+        case Symbol::TriangleRightDot: return "triangle-right-dot";
+        case Symbol::Num_308: return "308";
+        case Symbol::TriangleRightOpenDot: return "triangle-right-open-dot";
+        case Symbol::Num_9: return "9";
+        case Symbol::TriangleNe: return "triangle-ne";
+        case Symbol::Num_109: return "109";
+        case Symbol::TriangleNeOpen: return "triangle-ne-open";
+        case Symbol::Num_209: return "209";
+        case Symbol::TriangleNeDot: return "triangle-ne-dot";
+        case Symbol::Num_309: return "309";
+        case Symbol::TriangleNeOpenDot: return "triangle-ne-open-dot";
+        case Symbol::Num_10: return "10";
+        case Symbol::TriangleSe: return "triangle-se";
+        case Symbol::Num_110: return "110";
+        case Symbol::TriangleSeOpen: return "triangle-se-open";
+        case Symbol::Num_210: return "210";
+        case Symbol::TriangleSeDot: return "triangle-se-dot";
+        case Symbol::Num_310: return "310";
+        case Symbol::TriangleSeOpenDot: return "triangle-se-open-dot";
+        case Symbol::Num_11: return "11";
+        case Symbol::TriangleSw: return "triangle-sw";
+        case Symbol::Num_111: return "111";
+        case Symbol::TriangleSwOpen: return "triangle-sw-open";
+        case Symbol::Num_211: return "211";
+        case Symbol::TriangleSwDot: return "triangle-sw-dot";
+        case Symbol::Num_311: return "311";
+        case Symbol::TriangleSwOpenDot: return "triangle-sw-open-dot";
+        case Symbol::Num_12: return "12";
+        case Symbol::TriangleNw: return "triangle-nw";
+        case Symbol::Num_112: return "112";
+        case Symbol::TriangleNwOpen: return "triangle-nw-open";
+        case Symbol::Num_212: return "212";
+        case Symbol::TriangleNwDot: return "triangle-nw-dot";
+        case Symbol::Num_312: return "312";
+        case Symbol::TriangleNwOpenDot: return "triangle-nw-open-dot";
+        case Symbol::Num_13: return "13";
+        case Symbol::Pentagon: return "pentagon";
+        case Symbol::Num_113: return "113";
+        case Symbol::PentagonOpen: return "pentagon-open";
+        case Symbol::Num_213: return "213";
+        case Symbol::PentagonDot: return "pentagon-dot";
+        case Symbol::Num_313: return "313";
+        case Symbol::PentagonOpenDot: return "pentagon-open-dot";
+        case Symbol::Num_14: return "14";
+        case Symbol::Hexagon: return "hexagon";
+        case Symbol::Num_114: return "114";
+        case Symbol::HexagonOpen: return "hexagon-open";
+        case Symbol::Num_214: return "214";
+        case Symbol::HexagonDot: return "hexagon-dot";
+        case Symbol::Num_314: return "314";
+        case Symbol::HexagonOpenDot: return "hexagon-open-dot";
+        case Symbol::Num_15: return "15";
+        case Symbol::Hexagon2: return "hexagon2";
+        case Symbol::Num_115: return "115";
+        case Symbol::Hexagon2Open: return "hexagon2-open";
+        case Symbol::Num_215: return "215";
+        case Symbol::Hexagon2Dot: return "hexagon2-dot";
+        case Symbol::Num_315: return "315";
+        case Symbol::Hexagon2OpenDot: return "hexagon2-open-dot";
+        case Symbol::Num_16: return "16";
+        case Symbol::Octagon: return "octagon";
+        case Symbol::Num_116: return "116";
+        case Symbol::OctagonOpen: return "octagon-open";
+        case Symbol::Num_216: return "216";
+        case Symbol::OctagonDot: return "octagon-dot";
+        case Symbol::Num_316: return "316";
+        case Symbol::OctagonOpenDot: return "octagon-open-dot";
+        case Symbol::Num_17: return "17";
+        case Symbol::Star: return "star";
+        case Symbol::Num_117: return "117";
+        case Symbol::StarOpen: return "star-open";
+        case Symbol::Num_217: return "217";
+        case Symbol::StarDot: return "star-dot";
+        case Symbol::Num_317: return "317";
+        case Symbol::StarOpenDot: return "star-open-dot";
+        case Symbol::Num_18: return "18";
+        case Symbol::Hexagram: return "hexagram";
+        case Symbol::Num_118: return "118";
+        case Symbol::HexagramOpen: return "hexagram-open";
+        case Symbol::Num_218: return "218";
+        case Symbol::HexagramDot: return "hexagram-dot";
+        case Symbol::Num_318: return "318";
+        case Symbol::HexagramOpenDot: return "hexagram-open-dot";
+        case Symbol::Num_19: return "19";
+        case Symbol::StarTriangleUp: return "star-triangle-up";
+        case Symbol::Num_119: return "119";
+        case Symbol::StarTriangleUpOpen: return "star-triangle-up-open";
+        case Symbol::Num_219: return "219";
+        case Symbol::StarTriangleUpDot: return "star-triangle-up-dot";
+        case Symbol::Num_319: return "319";
+        case Symbol::StarTriangleUpOpenDot: return "star-triangle-up-open-dot";
+        case Symbol::Num_20: return "20";
+        case Symbol::StarTriangleDown: return "star-triangle-down";
+        case Symbol::Num_120: return "120";
+        case Symbol::StarTriangleDownOpen: return "star-triangle-down-open";
+        case Symbol::Num_220: return "220";
+        case Symbol::StarTriangleDownDot: return "star-triangle-down-dot";
+        case Symbol::Num_320: return "320";
+        case Symbol::StarTriangleDownOpenDot: return "star-triangle-down-open-dot";
+        case Symbol::Num_21: return "21";
+        case Symbol::StarSquare: return "star-square";
+        case Symbol::Num_121: return "121";
+        case Symbol::StarSquareOpen: return "star-square-open";
+        case Symbol::Num_221: return "221";
+        case Symbol::StarSquareDot: return "star-square-dot";
+        case Symbol::Num_321: return "321";
+        case Symbol::StarSquareOpenDot: return "star-square-open-dot";
+        case Symbol::Num_22: return "22";
+        case Symbol::StarDiamond: return "star-diamond";
+        case Symbol::Num_122: return "122";
+        case Symbol::StarDiamondOpen: return "star-diamond-open";
+        case Symbol::Num_222: return "222";
+        case Symbol::StarDiamondDot: return "star-diamond-dot";
+        case Symbol::Num_322: return "322";
+        case Symbol::StarDiamondOpenDot: return "star-diamond-open-dot";
+        case Symbol::Num_23: return "23";
+        case Symbol::DiamondTall: return "diamond-tall";
+        case Symbol::Num_123: return "123";
+        case Symbol::DiamondTallOpen: return "diamond-tall-open";
+        case Symbol::Num_223: return "223";
+        case Symbol::DiamondTallDot: return "diamond-tall-dot";
+        case Symbol::Num_323: return "323";
+        case Symbol::DiamondTallOpenDot: return "diamond-tall-open-dot";
+        case Symbol::Num_24: return "24";
+        case Symbol::DiamondWide: return "diamond-wide";
+        case Symbol::Num_124: return "124";
+        case Symbol::DiamondWideOpen: return "diamond-wide-open";
+        case Symbol::Num_224: return "224";
+        case Symbol::DiamondWideDot: return "diamond-wide-dot";
+        case Symbol::Num_324: return "324";
+        case Symbol::DiamondWideOpenDot: return "diamond-wide-open-dot";
+        case Symbol::Num_25: return "25";
+        case Symbol::Hourglass: return "hourglass";
+        case Symbol::Num_125: return "125";
+        case Symbol::HourglassOpen: return "hourglass-open";
+        case Symbol::Num_26: return "26";
+        case Symbol::Bowtie: return "bowtie";
+        case Symbol::Num_126: return "126";
+        case Symbol::BowtieOpen: return "bowtie-open";
+        case Symbol::Num_27: return "27";
+        case Symbol::CircleCross: return "circle-cross";
+        case Symbol::Num_127: return "127";
+        case Symbol::CircleCrossOpen: return "circle-cross-open";
+        case Symbol::Num_28: return "28";
+        case Symbol::CircleX: return "circle-x";
+        case Symbol::Num_128: return "128";
+        case Symbol::CircleXOpen: return "circle-x-open";
+        case Symbol::Num_29: return "29";
+        case Symbol::SquareCross: return "square-cross";
+        case Symbol::Num_129: return "129";
+        case Symbol::SquareCrossOpen: return "square-cross-open";
+        case Symbol::Num_30: return "30";
+        case Symbol::SquareX: return "square-x";
+        case Symbol::Num_130: return "130";
+        case Symbol::SquareXOpen: return "square-x-open";
+        case Symbol::Num_31: return "31";
+        case Symbol::DiamondCross: return "diamond-cross";
+        case Symbol::Num_131: return "131";
+        case Symbol::DiamondCrossOpen: return "diamond-cross-open";
+        case Symbol::Num_32: return "32";
+        case Symbol::DiamondX: return "diamond-x";
+        case Symbol::Num_132: return "132";
+        case Symbol::DiamondXOpen: return "diamond-x-open";
+        case Symbol::Num_33: return "33";
+        case Symbol::CrossThin: return "cross-thin";
+        case Symbol::Num_133: return "133";
+        case Symbol::CrossThinOpen: return "cross-thin-open";
+        case Symbol::Num_34: return "34";
+        case Symbol::XThin: return "x-thin";
+        case Symbol::Num_134: return "134";
+        case Symbol::XThinOpen: return "x-thin-open";
+        case Symbol::Num_35: return "35";
+        case Symbol::Asterisk: return "asterisk";
+        case Symbol::Num_135: return "135";
+        case Symbol::AsteriskOpen: return "asterisk-open";
+        case Symbol::Num_36: return "36";
+        case Symbol::Hash: return "hash";
+        case Symbol::Num_136: return "136";
+        case Symbol::HashOpen: return "hash-open";
+        case Symbol::Num_236: return "236";
+        case Symbol::HashDot: return "hash-dot";
+        case Symbol::Num_336: return "336";
+        case Symbol::HashOpenDot: return "hash-open-dot";
+        case Symbol::Num_37: return "37";
+        case Symbol::YUp: return "y-up";
+        case Symbol::Num_137: return "137";
+        case Symbol::YUpOpen: return "y-up-open";
+        case Symbol::Num_38: return "38";
+        case Symbol::YDown: return "y-down";
+        case Symbol::Num_138: return "138";
+        case Symbol::YDownOpen: return "y-down-open";
+        case Symbol::Num_39: return "39";
+        case Symbol::YLeft: return "y-left";
+        case Symbol::Num_139: return "139";
+        case Symbol::YLeftOpen: return "y-left-open";
+        case Symbol::Num_40: return "40";
+        case Symbol::YRight: return "y-right";
+        case Symbol::Num_140: return "140";
+        case Symbol::YRightOpen: return "y-right-open";
+        case Symbol::Num_41: return "41";
+        case Symbol::LineEw: return "line-ew";
+        case Symbol::Num_141: return "141";
+        case Symbol::LineEwOpen: return "line-ew-open";
+        case Symbol::Num_42: return "42";
+        case Symbol::LineNs: return "line-ns";
+        case Symbol::Num_142: return "142";
+        case Symbol::LineNsOpen: return "line-ns-open";
+        case Symbol::Num_43: return "43";
+        case Symbol::LineNe: return "line-ne";
+        case Symbol::Num_143: return "143";
+        case Symbol::LineNeOpen: return "line-ne-open";
+        case Symbol::Num_44: return "44";
+        case Symbol::LineNw: return "line-nw";
+        case Symbol::Num_144: return "144";
+        case Symbol::LineNwOpen: return "line-nw-open";
+        case Symbol::Num_45: return "45";
+        case Symbol::ArrowUp: return "arrow-up";
+        case Symbol::Num_145: return "145";
+        case Symbol::ArrowUpOpen: return "arrow-up-open";
+        case Symbol::Num_46: return "46";
+        case Symbol::ArrowDown: return "arrow-down";
+        case Symbol::Num_146: return "146";
+        case Symbol::ArrowDownOpen: return "arrow-down-open";
+        case Symbol::Num_47: return "47";
+        case Symbol::ArrowLeft: return "arrow-left";
+        case Symbol::Num_147: return "147";
+        case Symbol::ArrowLeftOpen: return "arrow-left-open";
+        case Symbol::Num_48: return "48";
+        case Symbol::ArrowRight: return "arrow-right";
+        case Symbol::Num_148: return "148";
+        case Symbol::ArrowRightOpen: return "arrow-right-open";
+        case Symbol::Num_49: return "49";
+        case Symbol::ArrowBarUp: return "arrow-bar-up";
+        case Symbol::Num_149: return "149";
+        case Symbol::ArrowBarUpOpen: return "arrow-bar-up-open";
+        case Symbol::Num_50: return "50";
+        case Symbol::ArrowBarDown: return "arrow-bar-down";
+        case Symbol::Num_150: return "150";
+        case Symbol::ArrowBarDownOpen: return "arrow-bar-down-open";
+        case Symbol::Num_51: return "51";
+        case Symbol::ArrowBarLeft: return "arrow-bar-left";
+        case Symbol::Num_151: return "151";
+        case Symbol::ArrowBarLeftOpen: return "arrow-bar-left-open";
+        case Symbol::Num_52: return "52";
+        case Symbol::ArrowBarRight: return "arrow-bar-right";
+        case Symbol::Num_152: return "152";
+        case Symbol::ArrowBarRightOpen: return "arrow-bar-right-open";
+        case Symbol::Num_53: return "53";
+        case Symbol::Arrow: return "arrow";
+        case Symbol::Num_153: return "153";
+        case Symbol::ArrowOpen: return "arrow-open";
+        case Symbol::Num_54: return "54";
+        case Symbol::ArrowWide: return "arrow-wide";
+        case Symbol::Num_154: return "154";
+        case Symbol::ArrowWideOpen: return "arrow-wide-open";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1531,8 +1531,8 @@ Scattergeo::Marker& Scattergeo::Marker::angle(Callable&& c) {
     std::forward<Callable>(c)(f);
     return angle(std::move(f));
 }
-Scattergeo::Marker& Scattergeo::Marker::angle(std::vector<double> f) {
-    json["angle"] = std::move(f);
+Scattergeo::Marker& Scattergeo::Marker::angle(const std::vector<double>& f) {
+    json["angle"] = f;
     return *this;
 }
 
@@ -1617,8 +1617,8 @@ Scattergeo::Marker& Scattergeo::Marker::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Scattergeo::Marker& Scattergeo::Marker::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Scattergeo::Marker& Scattergeo::Marker::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -1648,8 +1648,8 @@ Scattergeo::Marker& Scattergeo::Marker::colorscale(std::string f) {
     json["colorscale"] = std::move(f);
     return *this;
 }
-Scattergeo::Marker& Scattergeo::Marker::colorscale(std::vector<std::pair<double, std::string>> f) {
-    json["colorscale"] = std::move(f);
+Scattergeo::Marker& Scattergeo::Marker::colorscale(const std::vector<std::pair<double, std::string>>& f) {
+    json["colorscale"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -1702,8 +1702,8 @@ Scattergeo::Marker& Scattergeo::Marker::opacity(Callable&& c) {
     std::forward<Callable>(c)(f);
     return opacity(std::move(f));
 }
-Scattergeo::Marker& Scattergeo::Marker::opacity(std::vector<double> f) {
-    json["opacity"] = std::move(f);
+Scattergeo::Marker& Scattergeo::Marker::opacity(const std::vector<double>& f) {
+    json["opacity"] = f;
     return *this;
 }
 
@@ -1750,8 +1750,8 @@ Scattergeo::Marker& Scattergeo::Marker::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Scattergeo::Marker& Scattergeo::Marker::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Scattergeo::Marker& Scattergeo::Marker::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -1803,8 +1803,8 @@ Scattergeo::Marker& Scattergeo::Marker::standoff(Callable&& c) {
     std::forward<Callable>(c)(f);
     return standoff(std::move(f));
 }
-Scattergeo::Marker& Scattergeo::Marker::standoff(std::vector<double> f) {
-    json["standoff"] = std::move(f);
+Scattergeo::Marker& Scattergeo::Marker::standoff(const std::vector<double>& f) {
+    json["standoff"] = f;
     return *this;
 }
 
@@ -1843,10 +1843,10 @@ Scattergeo::Marker& Scattergeo::Marker::symbolsrc(Callable&& c) {
 
 std::string Scattergeo::Marker::Colorbar::to_string(Exponentformat e) {
     switch(e) {
-        case Exponentformat::NONE: return "none";
+        case Exponentformat::None: return "none";
         case Exponentformat::E: return "E";
-        case Exponentformat::POWER: return "power";
-        case Exponentformat::SI: return "SI";
+        case Exponentformat::Power: return "power";
+        case Exponentformat::Si: return "SI";
         case Exponentformat::B: return "B";
     }
     // Should be unreachable.
@@ -1854,8 +1854,8 @@ std::string Scattergeo::Marker::Colorbar::to_string(Exponentformat e) {
 }
 std::string Scattergeo::Marker::Colorbar::to_string(Lenmode e) {
     switch(e) {
-        case Lenmode::FRACTION: return "fraction";
-        case Lenmode::PIXELS: return "pixels";
+        case Lenmode::Fraction: return "fraction";
+        case Lenmode::Pixels: return "pixels";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1870,115 +1870,115 @@ std::string Scattergeo::Marker::Colorbar::to_string(Orientation e) {
 }
 std::string Scattergeo::Marker::Colorbar::to_string(Showexponent e) {
     switch(e) {
-        case Showexponent::ALL: return "all";
-        case Showexponent::FIRST: return "first";
-        case Showexponent::LAST: return "last";
-        case Showexponent::NONE: return "none";
+        case Showexponent::All: return "all";
+        case Showexponent::First: return "first";
+        case Showexponent::Last: return "last";
+        case Showexponent::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Marker::Colorbar::to_string(Showtickprefix e) {
     switch(e) {
-        case Showtickprefix::ALL: return "all";
-        case Showtickprefix::FIRST: return "first";
-        case Showtickprefix::LAST: return "last";
-        case Showtickprefix::NONE: return "none";
+        case Showtickprefix::All: return "all";
+        case Showtickprefix::First: return "first";
+        case Showtickprefix::Last: return "last";
+        case Showtickprefix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Marker::Colorbar::to_string(Showticksuffix e) {
     switch(e) {
-        case Showticksuffix::ALL: return "all";
-        case Showticksuffix::FIRST: return "first";
-        case Showticksuffix::LAST: return "last";
-        case Showticksuffix::NONE: return "none";
+        case Showticksuffix::All: return "all";
+        case Showticksuffix::First: return "first";
+        case Showticksuffix::Last: return "last";
+        case Showticksuffix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Marker::Colorbar::to_string(Thicknessmode e) {
     switch(e) {
-        case Thicknessmode::FRACTION: return "fraction";
-        case Thicknessmode::PIXELS: return "pixels";
+        case Thicknessmode::Fraction: return "fraction";
+        case Thicknessmode::Pixels: return "pixels";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Marker::Colorbar::to_string(Ticklabeloverflow e) {
     switch(e) {
-        case Ticklabeloverflow::ALLOW: return "allow";
-        case Ticklabeloverflow::HIDE_PAST_DIV: return "hide past div";
-        case Ticklabeloverflow::HIDE_PAST_DOMAIN: return "hide past domain";
+        case Ticklabeloverflow::Allow: return "allow";
+        case Ticklabeloverflow::HidePastDiv: return "hide past div";
+        case Ticklabeloverflow::HidePastDomain: return "hide past domain";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Marker::Colorbar::to_string(Ticklabelposition e) {
     switch(e) {
-        case Ticklabelposition::OUTSIDE: return "outside";
-        case Ticklabelposition::INSIDE: return "inside";
-        case Ticklabelposition::OUTSIDE_TOP: return "outside top";
-        case Ticklabelposition::INSIDE_TOP: return "inside top";
-        case Ticklabelposition::OUTSIDE_LEFT: return "outside left";
-        case Ticklabelposition::INSIDE_LEFT: return "inside left";
-        case Ticklabelposition::OUTSIDE_RIGHT: return "outside right";
-        case Ticklabelposition::INSIDE_RIGHT: return "inside right";
-        case Ticklabelposition::OUTSIDE_BOTTOM: return "outside bottom";
-        case Ticklabelposition::INSIDE_BOTTOM: return "inside bottom";
+        case Ticklabelposition::Outside: return "outside";
+        case Ticklabelposition::Inside: return "inside";
+        case Ticklabelposition::OutsideTop: return "outside top";
+        case Ticklabelposition::InsideTop: return "inside top";
+        case Ticklabelposition::OutsideLeft: return "outside left";
+        case Ticklabelposition::InsideLeft: return "inside left";
+        case Ticklabelposition::OutsideRight: return "outside right";
+        case Ticklabelposition::InsideRight: return "inside right";
+        case Ticklabelposition::OutsideBottom: return "outside bottom";
+        case Ticklabelposition::InsideBottom: return "inside bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Marker::Colorbar::to_string(Tickmode e) {
     switch(e) {
-        case Tickmode::AUTO: return "auto";
-        case Tickmode::LINEAR: return "linear";
-        case Tickmode::ARRAY: return "array";
+        case Tickmode::Auto: return "auto";
+        case Tickmode::Linear: return "linear";
+        case Tickmode::Array: return "array";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Marker::Colorbar::to_string(Ticks e) {
     switch(e) {
-        case Ticks::OUTSIDE: return "outside";
-        case Ticks::INSIDE: return "inside";
-        case Ticks::EMPTY: return "";
+        case Ticks::Outside: return "outside";
+        case Ticks::Inside: return "inside";
+        case Ticks::Empty: return "";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Marker::Colorbar::to_string(Xanchor e) {
     switch(e) {
-        case Xanchor::LEFT: return "left";
-        case Xanchor::CENTER: return "center";
-        case Xanchor::RIGHT: return "right";
+        case Xanchor::Left: return "left";
+        case Xanchor::Center: return "center";
+        case Xanchor::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Marker::Colorbar::to_string(Xref e) {
     switch(e) {
-        case Xref::CONTAINER: return "container";
-        case Xref::PAPER: return "paper";
+        case Xref::Container: return "container";
+        case Xref::Paper: return "paper";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Marker::Colorbar::to_string(Yanchor e) {
     switch(e) {
-        case Yanchor::TOP: return "top";
-        case Yanchor::MIDDLE: return "middle";
-        case Yanchor::BOTTOM: return "bottom";
+        case Yanchor::Top: return "top";
+        case Yanchor::Middle: return "middle";
+        case Yanchor::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Marker::Colorbar::to_string(Yref e) {
     switch(e) {
-        case Yref::CONTAINER: return "container";
-        case Yref::PAPER: return "paper";
+        case Yref::Container: return "container";
+        case Yref::Paper: return "paper";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -2296,8 +2296,8 @@ Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::ticksuffix(Callable&
 }
 
 template <typename T, typename>
-Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::ticktext(std::vector<T> f) {
-    json["ticktext"] = std::move(f);
+Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::ticktext(const std::vector<T>& f) {
+    json["ticktext"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -2319,8 +2319,8 @@ Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::ticktextsrc(Callable
 }
 
 template <typename T, typename>
-Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::tickvals(std::vector<T> f) {
-    json["tickvals"] = std::move(f);
+Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::tickvals(const std::vector<T>& f) {
+    json["tickvals"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -2429,30 +2429,30 @@ Scattergeo::Marker::Colorbar& Scattergeo::Marker::Colorbar::yref(enum Yref f) {
 
 std::string Scattergeo::Marker::Colorbar::Tickfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Marker::Colorbar::Tickfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Marker::Colorbar::Tickfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -2552,8 +2552,8 @@ Scattergeo::Marker::Colorbar::Tickformatstops& Scattergeo::Marker::Colorbar::Tic
 }
 
 
-Scattergeo::Marker::Colorbar::Tickformatstops::Tickformatstop& Scattergeo::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
-    json["dtickrange"] = std::move(f);
+Scattergeo::Marker::Colorbar::Tickformatstops::Tickformatstop& Scattergeo::Marker::Colorbar::Tickformatstops::Tickformatstop::dtickrange(const std::vector<double>& f) {
+    json["dtickrange"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -2609,9 +2609,9 @@ Scattergeo::Marker::Colorbar::Tickformatstops::Tickformatstop& Scattergeo::Marke
 
 std::string Scattergeo::Marker::Colorbar::Title::to_string(Side e) {
     switch(e) {
-        case Side::RIGHT: return "right";
-        case Side::TOP: return "top";
-        case Side::BOTTOM: return "bottom";
+        case Side::Right: return "right";
+        case Side::Top: return "top";
+        case Side::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -2646,30 +2646,30 @@ Scattergeo::Marker::Colorbar::Title& Scattergeo::Marker::Colorbar::Title::text(C
 
 std::string Scattergeo::Marker::Colorbar::Title::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Marker::Colorbar::Title::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Marker::Colorbar::Title::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -2758,10 +2758,10 @@ Scattergeo::Marker::Colorbar::Title::Font& Scattergeo::Marker::Colorbar::Title::
 
 std::string Scattergeo::Marker::Gradient::to_string(Type e) {
     switch(e) {
-        case Type::RADIAL: return "radial";
-        case Type::HORIZONTAL: return "horizontal";
-        case Type::VERTICAL: return "vertical";
-        case Type::NONE: return "none";
+        case Type::Radial: return "radial";
+        case Type::Horizontal: return "horizontal";
+        case Type::Vertical: return "vertical";
+        case Type::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -2777,8 +2777,8 @@ Scattergeo::Marker::Gradient& Scattergeo::Marker::Gradient::color(Callable&& c) 
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Scattergeo::Marker::Gradient& Scattergeo::Marker::Gradient::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Scattergeo::Marker::Gradient& Scattergeo::Marker::Gradient::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -2881,8 +2881,8 @@ Scattergeo::Marker::Line& Scattergeo::Marker::Line::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Scattergeo::Marker::Line& Scattergeo::Marker::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Scattergeo::Marker::Line& Scattergeo::Marker::Line::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -2901,8 +2901,8 @@ Scattergeo::Marker::Line& Scattergeo::Marker::Line::colorscale(std::string f) {
     json["colorscale"] = std::move(f);
     return *this;
 }
-Scattergeo::Marker::Line& Scattergeo::Marker::Line::colorscale(std::vector<std::pair<double, std::string>> f) {
-    json["colorscale"] = std::move(f);
+Scattergeo::Marker::Line& Scattergeo::Marker::Line::colorscale(const std::vector<std::pair<double, std::string>>& f) {
+    json["colorscale"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -2944,8 +2944,8 @@ Scattergeo::Marker::Line& Scattergeo::Marker::Line::width(Callable&& c) {
     std::forward<Callable>(c)(f);
     return width(std::move(f));
 }
-Scattergeo::Marker::Line& Scattergeo::Marker::Line::width(std::vector<double> f) {
-    json["width"] = std::move(f);
+Scattergeo::Marker::Line& Scattergeo::Marker::Line::width(const std::vector<double>& f) {
+    json["width"] = f;
     return *this;
 }
 
@@ -3054,30 +3054,30 @@ Scattergeo::Stream& Scattergeo::Stream::token(Callable&& c) {
 
 std::string Scattergeo::Textfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Textfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Scattergeo::Textfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -3093,8 +3093,8 @@ Scattergeo::Textfont& Scattergeo::Textfont::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Scattergeo::Textfont& Scattergeo::Textfont::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Scattergeo::Textfont& Scattergeo::Textfont::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -3119,8 +3119,8 @@ Scattergeo::Textfont& Scattergeo::Textfont::family(Callable&& c) {
     std::forward<Callable>(c)(f);
     return family(std::move(f));
 }
-Scattergeo::Textfont& Scattergeo::Textfont::family(std::vector<std::string> f) {
-    json["family"] = std::move(f);
+Scattergeo::Textfont& Scattergeo::Textfont::family(const std::vector<std::string>& f) {
+    json["family"] = f;
     return *this;
 }
 
@@ -3145,8 +3145,8 @@ Scattergeo::Textfont& Scattergeo::Textfont::lineposition(Callable&& c) {
     std::forward<Callable>(c)(f);
     return lineposition(std::move(f));
 }
-Scattergeo::Textfont& Scattergeo::Textfont::lineposition(std::vector<std::string> f) {
-    json["lineposition"] = std::move(f);
+Scattergeo::Textfont& Scattergeo::Textfont::lineposition(const std::vector<std::string>& f) {
+    json["lineposition"] = f;
     return *this;
 }
 
@@ -3171,8 +3171,8 @@ Scattergeo::Textfont& Scattergeo::Textfont::shadow(Callable&& c) {
     std::forward<Callable>(c)(f);
     return shadow(std::move(f));
 }
-Scattergeo::Textfont& Scattergeo::Textfont::shadow(std::vector<std::string> f) {
-    json["shadow"] = std::move(f);
+Scattergeo::Textfont& Scattergeo::Textfont::shadow(const std::vector<std::string>& f) {
+    json["shadow"] = f;
     return *this;
 }
 
@@ -3197,8 +3197,8 @@ Scattergeo::Textfont& Scattergeo::Textfont::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Scattergeo::Textfont& Scattergeo::Textfont::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Scattergeo::Textfont& Scattergeo::Textfont::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -3289,8 +3289,8 @@ Scattergeo::Textfont& Scattergeo::Textfont::weight(Callable&& c) {
     std::forward<Callable>(c)(f);
     return weight(std::move(f));
 }
-Scattergeo::Textfont& Scattergeo::Textfont::weight(std::vector<int> f) {
-    json["weight"] = std::move(f);
+Scattergeo::Textfont& Scattergeo::Textfont::weight(const std::vector<int>& f) {
+    json["weight"] = f;
     return *this;
 }
 

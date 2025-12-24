@@ -29,36 +29,36 @@ class Ohlc : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
     enum class Xcalendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Xcalendar e);
 
     enum class Xperiodalignment {
-        START,
-        MIDDLE,
-        END,
+        Start,
+        Middle,
+        End,
     };
     static std::string to_string(Xperiodalignment e);
 
@@ -71,7 +71,7 @@ class Ohlc : public Trace {
 
     // Sets the close values.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Ohlc& close(std::vector<T> f);
+    Ohlc& close(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -85,7 +85,7 @@ class Ohlc : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Ohlc& customdata(std::vector<T> f);
+    Ohlc& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -102,7 +102,7 @@ class Ohlc : public Trace {
 
     // Sets the high values.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Ohlc& high(std::vector<T> f);
+    Ohlc& high(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -121,7 +121,7 @@ class Ohlc : public Trace {
     Ohlc& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Ohlc& hoverinfo(Callable&& c);
-    Ohlc& hoverinfo(std::vector<std::string> f);
+    Ohlc& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Ohlc& hoverinfosrc(std::string f);
@@ -136,7 +136,7 @@ class Ohlc : public Trace {
     Ohlc& hovertext(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Ohlc& hovertext(Callable&& c);
-    Ohlc& hovertext(std::vector<std::string> f);
+    Ohlc& hovertext(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Ohlc& hovertextsrc(std::string f);
@@ -146,7 +146,7 @@ class Ohlc : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Ohlc& ids(std::vector<T> f);
+    Ohlc& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -197,7 +197,7 @@ class Ohlc : public Trace {
 
     // Sets the low values.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Ohlc& low(std::vector<T> f);
+    Ohlc& low(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -219,7 +219,7 @@ class Ohlc : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Ohlc& meta(Callable&& c);
     template <typename T>
-    Ohlc& meta(std::vector<T> f);
+    Ohlc& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Ohlc& metasrc(std::string f);
@@ -238,7 +238,7 @@ class Ohlc : public Trace {
 
     // Sets the open values.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Ohlc& open(std::vector<T> f);
+    Ohlc& open(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -271,7 +271,7 @@ class Ohlc : public Trace {
     Ohlc& text(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Ohlc& text(Callable&& c);
-    Ohlc& text(std::vector<std::string> f);
+    Ohlc& text(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `text`.
     Ohlc& textsrc(std::string f);
@@ -309,7 +309,7 @@ class Ohlc : public Trace {
 
     // Sets the x coordinates. If absent, linear coordinate will be generated.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Ohlc& x(std::vector<T> f);
+    Ohlc& x(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -432,9 +432,9 @@ class Ohlc::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -456,7 +456,7 @@ class Ohlc::Hoverlabel {
     Ohlc::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Ohlc::Hoverlabel& bgcolor(Callable&& c);
-    Ohlc::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Ohlc::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Ohlc::Hoverlabel& bgcolorsrc(std::string f);
@@ -467,7 +467,7 @@ class Ohlc::Hoverlabel {
     Ohlc::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Ohlc::Hoverlabel& bordercolor(Callable&& c);
-    Ohlc::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Ohlc::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Ohlc::Hoverlabel& bordercolorsrc(std::string f);
@@ -486,7 +486,7 @@ class Ohlc::Hoverlabel {
     Ohlc::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Ohlc::Hoverlabel& namelength(Callable&& c);
-    Ohlc::Hoverlabel& namelength(std::vector<int> f);
+    Ohlc::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Ohlc::Hoverlabel& namelengthsrc(std::string f);
@@ -510,33 +510,33 @@ class Ohlc::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Ohlc::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Ohlc::Hoverlabel::Font& color(Callable&& c);
-    Ohlc::Hoverlabel::Font& color(std::vector<std::string> f);
+    Ohlc::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Ohlc::Hoverlabel::Font& colorsrc(std::string f);
@@ -553,7 +553,7 @@ class Ohlc::Hoverlabel::Font {
     Ohlc::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Ohlc::Hoverlabel::Font& family(Callable&& c);
-    Ohlc::Hoverlabel::Font& family(std::vector<std::string> f);
+    Ohlc::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Ohlc::Hoverlabel::Font& familysrc(std::string f);
@@ -568,7 +568,7 @@ class Ohlc::Hoverlabel::Font {
     Ohlc::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Ohlc::Hoverlabel::Font& lineposition(Callable&& c);
-    Ohlc::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Ohlc::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Ohlc::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -580,7 +580,7 @@ class Ohlc::Hoverlabel::Font {
     Ohlc::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Ohlc::Hoverlabel::Font& shadow(Callable&& c);
-    Ohlc::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Ohlc::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Ohlc::Hoverlabel::Font& shadowsrc(std::string f);
@@ -590,7 +590,7 @@ class Ohlc::Hoverlabel::Font {
     Ohlc::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Ohlc::Hoverlabel::Font& size(Callable&& c);
-    Ohlc::Hoverlabel::Font& size(std::vector<double> f);
+    Ohlc::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Ohlc::Hoverlabel::Font& sizesrc(std::string f);
@@ -632,7 +632,7 @@ class Ohlc::Hoverlabel::Font {
     Ohlc::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Ohlc::Hoverlabel::Font& weight(Callable&& c);
-    Ohlc::Hoverlabel::Font& weight(std::vector<int> f);
+    Ohlc::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Ohlc::Hoverlabel::Font& weightsrc(std::string f);
@@ -716,26 +716,26 @@ class Ohlc::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 

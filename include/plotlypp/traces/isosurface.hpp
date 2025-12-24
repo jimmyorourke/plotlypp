@@ -29,9 +29,9 @@ class Isosurface : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
@@ -100,7 +100,7 @@ class Isosurface : public Trace {
     // list:
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Isosurface& colorscale(std::string f);
-    Isosurface& colorscale(std::vector<std::pair<double, std::string>> f);
+    Isosurface& colorscale(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -113,7 +113,7 @@ class Isosurface : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Isosurface& customdata(std::vector<T> f);
+    Isosurface& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -138,7 +138,7 @@ class Isosurface : public Trace {
     Isosurface& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Isosurface& hoverinfo(Callable&& c);
-    Isosurface& hoverinfo(std::vector<std::string> f);
+    Isosurface& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Isosurface& hoverinfosrc(std::string f);
@@ -165,7 +165,7 @@ class Isosurface : public Trace {
     Isosurface& hovertemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Isosurface& hovertemplate(Callable&& c);
-    Isosurface& hovertemplate(std::vector<std::string> f);
+    Isosurface& hovertemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Isosurface& hovertemplatesrc(std::string f);
@@ -176,7 +176,7 @@ class Isosurface : public Trace {
     Isosurface& hovertext(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Isosurface& hovertext(Callable&& c);
-    Isosurface& hovertext(std::vector<std::string> f);
+    Isosurface& hovertext(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Isosurface& hovertextsrc(std::string f);
@@ -186,7 +186,7 @@ class Isosurface : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Isosurface& ids(std::vector<T> f);
+    Isosurface& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -256,7 +256,7 @@ class Isosurface : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Isosurface& meta(Callable&& c);
     template <typename T>
-    Isosurface& meta(std::vector<T> f);
+    Isosurface& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Isosurface& metasrc(std::string f);
@@ -320,7 +320,7 @@ class Isosurface : public Trace {
     Isosurface& text(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Isosurface& text(Callable&& c);
-    Isosurface& text(std::vector<std::string> f);
+    Isosurface& text(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `text`.
     Isosurface& textsrc(std::string f);
@@ -348,7 +348,7 @@ class Isosurface : public Trace {
 
     // Sets the 4th dimension (value) of the vertices.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Isosurface& value(std::vector<T> f);
+    Isosurface& value(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -373,7 +373,7 @@ class Isosurface : public Trace {
 
     // Sets the X coordinates of the vertices on X axis.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Isosurface& x(std::vector<T> f);
+    Isosurface& x(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -396,7 +396,7 @@ class Isosurface : public Trace {
 
     // Sets the Y coordinates of the vertices on Y axis.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Isosurface& y(std::vector<T> f);
+    Isosurface& y(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -419,7 +419,7 @@ class Isosurface : public Trace {
 
     // Sets the Z coordinates of the vertices on Z axis.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Isosurface& z(std::vector<T> f);
+    Isosurface& z(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -546,17 +546,17 @@ class Isosurface::Colorbar {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Lenmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Lenmode e);
 
@@ -567,93 +567,93 @@ class Isosurface::Colorbar {
     static std::string to_string(Orientation e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Thicknessmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Thicknessmode e);
 
     enum class Ticklabeloverflow {
-        ALLOW,
-        HIDE_PAST_DIV,
-        HIDE_PAST_DOMAIN,
+        Allow,
+        HidePastDiv,
+        HidePastDomain,
     };
     static std::string to_string(Ticklabeloverflow e);
 
     enum class Ticklabelposition {
-        OUTSIDE,
-        INSIDE,
-        OUTSIDE_TOP,
-        INSIDE_TOP,
-        OUTSIDE_LEFT,
-        INSIDE_LEFT,
-        OUTSIDE_RIGHT,
-        INSIDE_RIGHT,
-        OUTSIDE_BOTTOM,
-        INSIDE_BOTTOM,
+        Outside,
+        Inside,
+        OutsideTop,
+        InsideTop,
+        OutsideLeft,
+        InsideLeft,
+        OutsideRight,
+        InsideRight,
+        OutsideBottom,
+        InsideBottom,
     };
     static std::string to_string(Ticklabelposition e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Xanchor {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Xref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Xref e);
 
     enum class Yanchor {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
     enum class Yref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Yref e);
 
@@ -865,7 +865,7 @@ class Isosurface::Colorbar {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Isosurface::Colorbar& ticktext(std::vector<T> f);
+    Isosurface::Colorbar& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -879,7 +879,7 @@ class Isosurface::Colorbar {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Isosurface::Colorbar& tickvals(std::vector<T> f);
+    Isosurface::Colorbar& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -955,26 +955,26 @@ class Isosurface::Colorbar::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1058,7 +1058,7 @@ class Isosurface::Colorbar::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Isosurface::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Isosurface::Colorbar::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Isosurface::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -1100,9 +1100,9 @@ class Isosurface::Colorbar::Title {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
-        RIGHT,
-        TOP,
-        BOTTOM,
+        Right,
+        Top,
+        Bottom,
     };
     static std::string to_string(Side e);
 
@@ -1135,26 +1135,26 @@ class Isosurface::Colorbar::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1246,9 +1246,9 @@ class Isosurface::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -1270,7 +1270,7 @@ class Isosurface::Hoverlabel {
     Isosurface::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Isosurface::Hoverlabel& bgcolor(Callable&& c);
-    Isosurface::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Isosurface::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Isosurface::Hoverlabel& bgcolorsrc(std::string f);
@@ -1281,7 +1281,7 @@ class Isosurface::Hoverlabel {
     Isosurface::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Isosurface::Hoverlabel& bordercolor(Callable&& c);
-    Isosurface::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Isosurface::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Isosurface::Hoverlabel& bordercolorsrc(std::string f);
@@ -1300,7 +1300,7 @@ class Isosurface::Hoverlabel {
     Isosurface::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Isosurface::Hoverlabel& namelength(Callable&& c);
-    Isosurface::Hoverlabel& namelength(std::vector<int> f);
+    Isosurface::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Isosurface::Hoverlabel& namelengthsrc(std::string f);
@@ -1319,33 +1319,33 @@ class Isosurface::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Isosurface::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Isosurface::Hoverlabel::Font& color(Callable&& c);
-    Isosurface::Hoverlabel::Font& color(std::vector<std::string> f);
+    Isosurface::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Isosurface::Hoverlabel::Font& colorsrc(std::string f);
@@ -1362,7 +1362,7 @@ class Isosurface::Hoverlabel::Font {
     Isosurface::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Isosurface::Hoverlabel::Font& family(Callable&& c);
-    Isosurface::Hoverlabel::Font& family(std::vector<std::string> f);
+    Isosurface::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Isosurface::Hoverlabel::Font& familysrc(std::string f);
@@ -1377,7 +1377,7 @@ class Isosurface::Hoverlabel::Font {
     Isosurface::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Isosurface::Hoverlabel::Font& lineposition(Callable&& c);
-    Isosurface::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Isosurface::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Isosurface::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -1389,7 +1389,7 @@ class Isosurface::Hoverlabel::Font {
     Isosurface::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Isosurface::Hoverlabel::Font& shadow(Callable&& c);
-    Isosurface::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Isosurface::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Isosurface::Hoverlabel::Font& shadowsrc(std::string f);
@@ -1399,7 +1399,7 @@ class Isosurface::Hoverlabel::Font {
     Isosurface::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Isosurface::Hoverlabel::Font& size(Callable&& c);
-    Isosurface::Hoverlabel::Font& size(std::vector<double> f);
+    Isosurface::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Isosurface::Hoverlabel::Font& sizesrc(std::string f);
@@ -1441,7 +1441,7 @@ class Isosurface::Hoverlabel::Font {
     Isosurface::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Isosurface::Hoverlabel::Font& weight(Callable&& c);
-    Isosurface::Hoverlabel::Font& weight(std::vector<int> f);
+    Isosurface::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Isosurface::Hoverlabel::Font& weightsrc(std::string f);
@@ -1483,26 +1483,26 @@ class Isosurface::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1675,7 +1675,7 @@ class Isosurface::Slices::X {
     // Specifies the location(s) of slices on the axis. When not specified slices would be created for all points of the
     // axis x except start and end.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Isosurface::Slices::X& locations(std::vector<T> f);
+    Isosurface::Slices::X& locations(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1711,7 +1711,7 @@ class Isosurface::Slices::Y {
     // Specifies the location(s) of slices on the axis. When not specified slices would be created for all points of the
     // axis y except start and end.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Isosurface::Slices::Y& locations(std::vector<T> f);
+    Isosurface::Slices::Y& locations(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1747,7 +1747,7 @@ class Isosurface::Slices::Z {
     // Specifies the location(s) of slices on the axis. When not specified slices would be created for all points of the
     // axis z except start and end.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Isosurface::Slices::Z& locations(std::vector<T> f);
+    Isosurface::Slices::Z& locations(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>

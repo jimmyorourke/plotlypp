@@ -29,9 +29,9 @@ class Table : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
@@ -49,7 +49,7 @@ class Table : public Trace {
     // Specifies the rendered order of the data columns; for example, a value `2` at position `0` means that column
     // index `0` in the data will be rendered as the third column, as columns have an index base of zero.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Table& columnorder(std::vector<T> f);
+    Table& columnorder(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -65,7 +65,7 @@ class Table : public Trace {
     Table& columnwidth(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Table& columnwidth(Callable&& c);
-    Table& columnwidth(std::vector<double> f);
+    Table& columnwidth(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `columnwidth`.
     Table& columnwidthsrc(std::string f);
@@ -75,7 +75,7 @@ class Table : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Table& customdata(std::vector<T> f);
+    Table& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -102,7 +102,7 @@ class Table : public Trace {
     Table& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table& hoverinfo(Callable&& c);
-    Table& hoverinfo(std::vector<std::string> f);
+    Table& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Table& hoverinfosrc(std::string f);
@@ -116,7 +116,7 @@ class Table : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Table& ids(std::vector<T> f);
+    Table& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -162,7 +162,7 @@ class Table : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Table& meta(Callable&& c);
     template <typename T>
-    Table& meta(std::vector<T> f);
+    Table& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Table& metasrc(std::string f);
@@ -210,9 +210,9 @@ class Table::Cells {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Align e);
 
@@ -242,7 +242,7 @@ class Table::Cells {
     // Sets the cell value formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Table::Cells& format(std::vector<T> f);
+    Table::Cells& format(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -266,7 +266,7 @@ class Table::Cells {
     Table::Cells& prefix(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table::Cells& prefix(Callable&& c);
-    Table::Cells& prefix(std::vector<std::string> f);
+    Table::Cells& prefix(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `prefix`.
     Table::Cells& prefixsrc(std::string f);
@@ -277,7 +277,7 @@ class Table::Cells {
     Table::Cells& suffix(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table::Cells& suffix(Callable&& c);
-    Table::Cells& suffix(std::vector<std::string> f);
+    Table::Cells& suffix(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `suffix`.
     Table::Cells& suffixsrc(std::string f);
@@ -288,7 +288,7 @@ class Table::Cells {
     // vector length for all columns must be the same (longer vectors will be truncated). Each value must be a finite
     // number or a string.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Table::Cells& values(std::vector<T> f);
+    Table::Cells& values(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -313,7 +313,7 @@ class Table::Cells::Fill {
     Table::Cells::Fill& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table::Cells::Fill& color(Callable&& c);
-    Table::Cells::Fill& color(std::vector<std::string> f);
+    Table::Cells::Fill& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Table::Cells::Fill& colorsrc(std::string f);
@@ -331,33 +331,33 @@ class Table::Cells::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Table::Cells::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table::Cells::Font& color(Callable&& c);
-    Table::Cells::Font& color(std::vector<std::string> f);
+    Table::Cells::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Table::Cells::Font& colorsrc(std::string f);
@@ -374,7 +374,7 @@ class Table::Cells::Font {
     Table::Cells::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table::Cells::Font& family(Callable&& c);
-    Table::Cells::Font& family(std::vector<std::string> f);
+    Table::Cells::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Table::Cells::Font& familysrc(std::string f);
@@ -389,7 +389,7 @@ class Table::Cells::Font {
     Table::Cells::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table::Cells::Font& lineposition(Callable&& c);
-    Table::Cells::Font& lineposition(std::vector<std::string> f);
+    Table::Cells::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Table::Cells::Font& linepositionsrc(std::string f);
@@ -401,7 +401,7 @@ class Table::Cells::Font {
     Table::Cells::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table::Cells::Font& shadow(Callable&& c);
-    Table::Cells::Font& shadow(std::vector<std::string> f);
+    Table::Cells::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Table::Cells::Font& shadowsrc(std::string f);
@@ -411,7 +411,7 @@ class Table::Cells::Font {
     Table::Cells::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Table::Cells::Font& size(Callable&& c);
-    Table::Cells::Font& size(std::vector<double> f);
+    Table::Cells::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Table::Cells::Font& sizesrc(std::string f);
@@ -453,7 +453,7 @@ class Table::Cells::Font {
     Table::Cells::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Table::Cells::Font& weight(Callable&& c);
-    Table::Cells::Font& weight(std::vector<int> f);
+    Table::Cells::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Table::Cells::Font& weightsrc(std::string f);
@@ -473,7 +473,7 @@ class Table::Cells::Line {
     Table::Cells::Line& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table::Cells::Line& color(Callable&& c);
-    Table::Cells::Line& color(std::vector<std::string> f);
+    Table::Cells::Line& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Table::Cells::Line& colorsrc(std::string f);
@@ -483,7 +483,7 @@ class Table::Cells::Line {
     Table::Cells::Line& width(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Table::Cells::Line& width(Callable&& c);
-    Table::Cells::Line& width(std::vector<double> f);
+    Table::Cells::Line& width(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `width`.
     Table::Cells::Line& widthsrc(std::string f);
@@ -511,12 +511,12 @@ class Table::Domain {
     Table::Domain& row(Callable&& c);
 
     // Sets the horizontal domain of this table trace (in plot fraction).
-    Table::Domain& x(std::vector<double> f);
+    Table::Domain& x(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Table::Domain& x(Callable&& c);
 
     // Sets the vertical domain of this table trace (in plot fraction).
-    Table::Domain& y(std::vector<double> f);
+    Table::Domain& y(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Table::Domain& y(Callable&& c);
 
@@ -531,9 +531,9 @@ class Table::Header {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Align e);
 
@@ -563,7 +563,7 @@ class Table::Header {
     // Sets the cell value formatting rule using d3 formatting mini-languages which are very similar to those in Python.
     // For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Table::Header& format(std::vector<T> f);
+    Table::Header& format(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -587,7 +587,7 @@ class Table::Header {
     Table::Header& prefix(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table::Header& prefix(Callable&& c);
-    Table::Header& prefix(std::vector<std::string> f);
+    Table::Header& prefix(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `prefix`.
     Table::Header& prefixsrc(std::string f);
@@ -598,7 +598,7 @@ class Table::Header {
     Table::Header& suffix(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table::Header& suffix(Callable&& c);
-    Table::Header& suffix(std::vector<std::string> f);
+    Table::Header& suffix(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `suffix`.
     Table::Header& suffixsrc(std::string f);
@@ -609,7 +609,7 @@ class Table::Header {
     // `values[m]` vector length for all columns must be the same (longer vectors will be truncated). Each value must be
     // a finite number or a string.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Table::Header& values(std::vector<T> f);
+    Table::Header& values(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -634,7 +634,7 @@ class Table::Header::Fill {
     Table::Header::Fill& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table::Header::Fill& color(Callable&& c);
-    Table::Header::Fill& color(std::vector<std::string> f);
+    Table::Header::Fill& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Table::Header::Fill& colorsrc(std::string f);
@@ -652,33 +652,33 @@ class Table::Header::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Table::Header::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table::Header::Font& color(Callable&& c);
-    Table::Header::Font& color(std::vector<std::string> f);
+    Table::Header::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Table::Header::Font& colorsrc(std::string f);
@@ -695,7 +695,7 @@ class Table::Header::Font {
     Table::Header::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table::Header::Font& family(Callable&& c);
-    Table::Header::Font& family(std::vector<std::string> f);
+    Table::Header::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Table::Header::Font& familysrc(std::string f);
@@ -710,7 +710,7 @@ class Table::Header::Font {
     Table::Header::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table::Header::Font& lineposition(Callable&& c);
-    Table::Header::Font& lineposition(std::vector<std::string> f);
+    Table::Header::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Table::Header::Font& linepositionsrc(std::string f);
@@ -722,7 +722,7 @@ class Table::Header::Font {
     Table::Header::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table::Header::Font& shadow(Callable&& c);
-    Table::Header::Font& shadow(std::vector<std::string> f);
+    Table::Header::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Table::Header::Font& shadowsrc(std::string f);
@@ -732,7 +732,7 @@ class Table::Header::Font {
     Table::Header::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Table::Header::Font& size(Callable&& c);
-    Table::Header::Font& size(std::vector<double> f);
+    Table::Header::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Table::Header::Font& sizesrc(std::string f);
@@ -774,7 +774,7 @@ class Table::Header::Font {
     Table::Header::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Table::Header::Font& weight(Callable&& c);
-    Table::Header::Font& weight(std::vector<int> f);
+    Table::Header::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Table::Header::Font& weightsrc(std::string f);
@@ -794,7 +794,7 @@ class Table::Header::Line {
     Table::Header::Line& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table::Header::Line& color(Callable&& c);
-    Table::Header::Line& color(std::vector<std::string> f);
+    Table::Header::Line& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Table::Header::Line& colorsrc(std::string f);
@@ -804,7 +804,7 @@ class Table::Header::Line {
     Table::Header::Line& width(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Table::Header::Line& width(Callable&& c);
-    Table::Header::Line& width(std::vector<double> f);
+    Table::Header::Line& width(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `width`.
     Table::Header::Line& widthsrc(std::string f);
@@ -822,9 +822,9 @@ class Table::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -846,7 +846,7 @@ class Table::Hoverlabel {
     Table::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table::Hoverlabel& bgcolor(Callable&& c);
-    Table::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Table::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Table::Hoverlabel& bgcolorsrc(std::string f);
@@ -857,7 +857,7 @@ class Table::Hoverlabel {
     Table::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table::Hoverlabel& bordercolor(Callable&& c);
-    Table::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Table::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Table::Hoverlabel& bordercolorsrc(std::string f);
@@ -876,7 +876,7 @@ class Table::Hoverlabel {
     Table::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Table::Hoverlabel& namelength(Callable&& c);
-    Table::Hoverlabel& namelength(std::vector<int> f);
+    Table::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Table::Hoverlabel& namelengthsrc(std::string f);
@@ -895,33 +895,33 @@ class Table::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Table::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table::Hoverlabel::Font& color(Callable&& c);
-    Table::Hoverlabel::Font& color(std::vector<std::string> f);
+    Table::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Table::Hoverlabel::Font& colorsrc(std::string f);
@@ -938,7 +938,7 @@ class Table::Hoverlabel::Font {
     Table::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table::Hoverlabel::Font& family(Callable&& c);
-    Table::Hoverlabel::Font& family(std::vector<std::string> f);
+    Table::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Table::Hoverlabel::Font& familysrc(std::string f);
@@ -953,7 +953,7 @@ class Table::Hoverlabel::Font {
     Table::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table::Hoverlabel::Font& lineposition(Callable&& c);
-    Table::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Table::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Table::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -965,7 +965,7 @@ class Table::Hoverlabel::Font {
     Table::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Table::Hoverlabel::Font& shadow(Callable&& c);
-    Table::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Table::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Table::Hoverlabel::Font& shadowsrc(std::string f);
@@ -975,7 +975,7 @@ class Table::Hoverlabel::Font {
     Table::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Table::Hoverlabel::Font& size(Callable&& c);
-    Table::Hoverlabel::Font& size(std::vector<double> f);
+    Table::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Table::Hoverlabel::Font& sizesrc(std::string f);
@@ -1017,7 +1017,7 @@ class Table::Hoverlabel::Font {
     Table::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Table::Hoverlabel::Font& weight(Callable&& c);
-    Table::Hoverlabel::Font& weight(std::vector<int> f);
+    Table::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Table::Hoverlabel::Font& weightsrc(std::string f);
@@ -1059,26 +1059,26 @@ class Table::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 

@@ -29,16 +29,16 @@ class Barpolar : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Thetaunit {
-        RADIANS,
-        DEGREES,
-        GRADIANS,
+        Radians,
+        Degrees,
+        Gradians,
     };
     static std::string to_string(Thetaunit e);
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
@@ -56,7 +56,7 @@ class Barpolar : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Barpolar& base(Callable&& c);
     template <typename T>
-    Barpolar& base(std::vector<T> f);
+    Barpolar& base(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `base`.
     Barpolar& basesrc(std::string f);
@@ -66,7 +66,7 @@ class Barpolar : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Barpolar& customdata(std::vector<T> f);
+    Barpolar& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -96,7 +96,7 @@ class Barpolar : public Trace {
     Barpolar& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Barpolar& hoverinfo(Callable&& c);
-    Barpolar& hoverinfo(std::vector<std::string> f);
+    Barpolar& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Barpolar& hoverinfosrc(std::string f);
@@ -123,7 +123,7 @@ class Barpolar : public Trace {
     Barpolar& hovertemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Barpolar& hovertemplate(Callable&& c);
-    Barpolar& hovertemplate(std::vector<std::string> f);
+    Barpolar& hovertemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Barpolar& hovertemplatesrc(std::string f);
@@ -134,7 +134,7 @@ class Barpolar : public Trace {
     Barpolar& hovertext(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Barpolar& hovertext(Callable&& c);
-    Barpolar& hovertext(std::vector<std::string> f);
+    Barpolar& hovertext(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Barpolar& hovertextsrc(std::string f);
@@ -144,7 +144,7 @@ class Barpolar : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Barpolar& ids(std::vector<T> f);
+    Barpolar& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -200,7 +200,7 @@ class Barpolar : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Barpolar& meta(Callable&& c);
     template <typename T>
-    Barpolar& meta(std::vector<T> f);
+    Barpolar& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Barpolar& metasrc(std::string f);
@@ -216,7 +216,7 @@ class Barpolar : public Trace {
     Barpolar& offset(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Barpolar& offset(Callable&& c);
-    Barpolar& offset(std::vector<double> f);
+    Barpolar& offset(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `offset`.
     Barpolar& offsetsrc(std::string f);
@@ -230,7 +230,7 @@ class Barpolar : public Trace {
 
     // Sets the radial coordinates
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Barpolar& r(std::vector<T> f);
+    Barpolar& r(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -280,7 +280,7 @@ class Barpolar : public Trace {
     Barpolar& text(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Barpolar& text(Callable&& c);
-    Barpolar& text(std::vector<std::string> f);
+    Barpolar& text(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `text`.
     Barpolar& textsrc(std::string f);
@@ -289,7 +289,7 @@ class Barpolar : public Trace {
 
     // Sets the angular coordinates
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Barpolar& theta(std::vector<T> f);
+    Barpolar& theta(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -343,7 +343,7 @@ class Barpolar : public Trace {
     Barpolar& width(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Barpolar& width(Callable&& c);
-    Barpolar& width(std::vector<double> f);
+    Barpolar& width(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `width`.
     Barpolar& widthsrc(std::string f);
@@ -358,9 +358,9 @@ class Barpolar::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -382,7 +382,7 @@ class Barpolar::Hoverlabel {
     Barpolar::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Barpolar::Hoverlabel& bgcolor(Callable&& c);
-    Barpolar::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Barpolar::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Barpolar::Hoverlabel& bgcolorsrc(std::string f);
@@ -393,7 +393,7 @@ class Barpolar::Hoverlabel {
     Barpolar::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Barpolar::Hoverlabel& bordercolor(Callable&& c);
-    Barpolar::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Barpolar::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Barpolar::Hoverlabel& bordercolorsrc(std::string f);
@@ -412,7 +412,7 @@ class Barpolar::Hoverlabel {
     Barpolar::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Barpolar::Hoverlabel& namelength(Callable&& c);
-    Barpolar::Hoverlabel& namelength(std::vector<int> f);
+    Barpolar::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Barpolar::Hoverlabel& namelengthsrc(std::string f);
@@ -431,33 +431,33 @@ class Barpolar::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Barpolar::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Barpolar::Hoverlabel::Font& color(Callable&& c);
-    Barpolar::Hoverlabel::Font& color(std::vector<std::string> f);
+    Barpolar::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Barpolar::Hoverlabel::Font& colorsrc(std::string f);
@@ -474,7 +474,7 @@ class Barpolar::Hoverlabel::Font {
     Barpolar::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Barpolar::Hoverlabel::Font& family(Callable&& c);
-    Barpolar::Hoverlabel::Font& family(std::vector<std::string> f);
+    Barpolar::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Barpolar::Hoverlabel::Font& familysrc(std::string f);
@@ -489,7 +489,7 @@ class Barpolar::Hoverlabel::Font {
     Barpolar::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Barpolar::Hoverlabel::Font& lineposition(Callable&& c);
-    Barpolar::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Barpolar::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Barpolar::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -501,7 +501,7 @@ class Barpolar::Hoverlabel::Font {
     Barpolar::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Barpolar::Hoverlabel::Font& shadow(Callable&& c);
-    Barpolar::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Barpolar::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Barpolar::Hoverlabel::Font& shadowsrc(std::string f);
@@ -511,7 +511,7 @@ class Barpolar::Hoverlabel::Font {
     Barpolar::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Barpolar::Hoverlabel::Font& size(Callable&& c);
-    Barpolar::Hoverlabel::Font& size(std::vector<double> f);
+    Barpolar::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Barpolar::Hoverlabel::Font& sizesrc(std::string f);
@@ -553,7 +553,7 @@ class Barpolar::Hoverlabel::Font {
     Barpolar::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Barpolar::Hoverlabel::Font& weight(Callable&& c);
-    Barpolar::Hoverlabel::Font& weight(std::vector<int> f);
+    Barpolar::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Barpolar::Hoverlabel::Font& weightsrc(std::string f);
@@ -595,26 +595,26 @@ class Barpolar::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -724,7 +724,7 @@ class Barpolar::Marker {
     Barpolar::Marker& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Barpolar::Marker& color(Callable&& c);
-    Barpolar::Marker& color(std::vector<std::string> f);
+    Barpolar::Marker& color(const std::vector<std::string>& f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -744,7 +744,7 @@ class Barpolar::Marker {
     // `marker.cmax`. Alternatively, `colorscale` may be a palette name string of the following list:
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Barpolar::Marker& colorscale(std::string f);
-    Barpolar::Marker& colorscale(std::vector<std::pair<double, std::string>> f);
+    Barpolar::Marker& colorscale(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -763,7 +763,7 @@ class Barpolar::Marker {
     Barpolar::Marker& opacity(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Barpolar::Marker& opacity(Callable&& c);
-    Barpolar::Marker& opacity(std::vector<double> f);
+    Barpolar::Marker& opacity(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `opacity`.
     Barpolar::Marker& opacitysrc(std::string f);
@@ -799,17 +799,17 @@ class Barpolar::Marker::Colorbar {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Lenmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Lenmode e);
 
@@ -820,93 +820,93 @@ class Barpolar::Marker::Colorbar {
     static std::string to_string(Orientation e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Thicknessmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Thicknessmode e);
 
     enum class Ticklabeloverflow {
-        ALLOW,
-        HIDE_PAST_DIV,
-        HIDE_PAST_DOMAIN,
+        Allow,
+        HidePastDiv,
+        HidePastDomain,
     };
     static std::string to_string(Ticklabeloverflow e);
 
     enum class Ticklabelposition {
-        OUTSIDE,
-        INSIDE,
-        OUTSIDE_TOP,
-        INSIDE_TOP,
-        OUTSIDE_LEFT,
-        INSIDE_LEFT,
-        OUTSIDE_RIGHT,
-        INSIDE_RIGHT,
-        OUTSIDE_BOTTOM,
-        INSIDE_BOTTOM,
+        Outside,
+        Inside,
+        OutsideTop,
+        InsideTop,
+        OutsideLeft,
+        InsideLeft,
+        OutsideRight,
+        InsideRight,
+        OutsideBottom,
+        InsideBottom,
     };
     static std::string to_string(Ticklabelposition e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Xanchor {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Xref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Xref e);
 
     enum class Yanchor {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
     enum class Yref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Yref e);
 
@@ -1118,7 +1118,7 @@ class Barpolar::Marker::Colorbar {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Barpolar::Marker::Colorbar& ticktext(std::vector<T> f);
+    Barpolar::Marker::Colorbar& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1132,7 +1132,7 @@ class Barpolar::Marker::Colorbar {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Barpolar::Marker::Colorbar& tickvals(std::vector<T> f);
+    Barpolar::Marker::Colorbar& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1208,26 +1208,26 @@ class Barpolar::Marker::Colorbar::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1311,7 +1311,7 @@ class Barpolar::Marker::Colorbar::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Barpolar::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Barpolar::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Barpolar::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -1353,9 +1353,9 @@ class Barpolar::Marker::Colorbar::Title {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
-        RIGHT,
-        TOP,
-        BOTTOM,
+        Right,
+        Top,
+        Bottom,
     };
     static std::string to_string(Side e);
 
@@ -1388,26 +1388,26 @@ class Barpolar::Marker::Colorbar::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1516,7 +1516,7 @@ class Barpolar::Marker::Line {
     Barpolar::Marker::Line& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Barpolar::Marker::Line& color(Callable&& c);
-    Barpolar::Marker::Line& color(std::vector<std::string> f);
+    Barpolar::Marker::Line& color(const std::vector<std::string>& f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -1533,7 +1533,7 @@ class Barpolar::Marker::Line {
     // following list:
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Barpolar::Marker::Line& colorscale(std::string f);
-    Barpolar::Marker::Line& colorscale(std::vector<std::pair<double, std::string>> f);
+    Barpolar::Marker::Line& colorscale(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -1555,7 +1555,7 @@ class Barpolar::Marker::Line {
     Barpolar::Marker::Line& width(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Barpolar::Marker::Line& width(Callable&& c);
-    Barpolar::Marker::Line& width(std::vector<double> f);
+    Barpolar::Marker::Line& width(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `width`.
     Barpolar::Marker::Line& widthsrc(std::string f);
@@ -1574,8 +1574,8 @@ class Barpolar::Marker::Pattern {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Fillmode {
-        REPLACE,
-        OVERLAY,
+        Replace,
+        Overlay,
     };
     static std::string to_string(Fillmode e);
 
@@ -1584,7 +1584,7 @@ class Barpolar::Marker::Pattern {
     Barpolar::Marker::Pattern& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Barpolar::Marker::Pattern& bgcolor(Callable&& c);
-    Barpolar::Marker::Pattern& bgcolor(std::vector<std::string> f);
+    Barpolar::Marker::Pattern& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Barpolar::Marker::Pattern& bgcolorsrc(std::string f);
@@ -1596,7 +1596,7 @@ class Barpolar::Marker::Pattern {
     Barpolar::Marker::Pattern& fgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Barpolar::Marker::Pattern& fgcolor(Callable&& c);
-    Barpolar::Marker::Pattern& fgcolor(std::vector<std::string> f);
+    Barpolar::Marker::Pattern& fgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `fgcolor`.
     Barpolar::Marker::Pattern& fgcolorsrc(std::string f);
@@ -1617,7 +1617,7 @@ class Barpolar::Marker::Pattern {
     Barpolar::Marker::Pattern& shape(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Barpolar::Marker::Pattern& shape(Callable&& c);
-    Barpolar::Marker::Pattern& shape(std::vector<std::string> f);
+    Barpolar::Marker::Pattern& shape(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shape`.
     Barpolar::Marker::Pattern& shapesrc(std::string f);
@@ -1629,7 +1629,7 @@ class Barpolar::Marker::Pattern {
     Barpolar::Marker::Pattern& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Barpolar::Marker::Pattern& size(Callable&& c);
-    Barpolar::Marker::Pattern& size(std::vector<double> f);
+    Barpolar::Marker::Pattern& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Barpolar::Marker::Pattern& sizesrc(std::string f);
@@ -1642,7 +1642,7 @@ class Barpolar::Marker::Pattern {
     Barpolar::Marker::Pattern& solidity(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Barpolar::Marker::Pattern& solidity(Callable&& c);
-    Barpolar::Marker::Pattern& solidity(std::vector<double> f);
+    Barpolar::Marker::Pattern& solidity(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `solidity`.
     Barpolar::Marker::Pattern& soliditysrc(std::string f);

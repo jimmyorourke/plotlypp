@@ -78,20 +78,20 @@ def emit_json_member(writer):
 def emit_array_field_setter_decl(class_object, field, output_val_type, writer):
     if output_val_type == 'T':
         writer.write(f"template <typename T>")
-    writer.write(f"{class_object.name.title()}& {field.name}(std::vector<{output_val_type}> f);")
+    writer.write(f"{class_object.name.title()}& {field.name}(const std::vector<{output_val_type}>& f);")
 
 
 def emit_array_field_setter(class_object, field, output_val_type, writer):
     if output_val_type == 'T':
         writer.write(f"template <typename T>")
-    writer.write(f"{class_object.name.title()}& {class_object.name.title()}::{field.name}(std::vector<{output_val_type}> f) {{")
+    writer.write(f"{class_object.name.title()}& {class_object.name.title()}::{field.name}(const std::vector<{output_val_type}>& f) {{")
     with IndentBlock(writer):
         if field.is_object:
             writer.write(f"std::vector<json> jsonified(f.size());")
-            writer.write(f"std::transform(f.begin(), f.end(), jsonified.begin(), [](auto& e){{return std::move(e.json);}});")
+            writer.write(f"std::transform(f.begin(), f.end(), jsonified.begin(), [](auto& e){{ return e.json; }});")
             writer.write(f"json[\"{field.name}\"] = std::move(jsonified);")
         else:
-            writer.write(f"json[\"{field.name}\"] = std::move(f);")
+            writer.write(f"json[\"{field.name}\"] = f;")
         writer.write("return *this;")
     writer.write("}")
 
@@ -115,14 +115,23 @@ def emit_field_setter_decl(class_object, field, output_val_type, writer):
         elif field.json_val_type == 'data_array':
             writer.write(f"template <typename T, typename=std::enable_if_t<is_data_array_element_v<T>>>")
 
+    vec_type = "std::vector" in output_val_type
+
     write_template_signature()
-    writer.write(f"{class_object.name.title()}& {field.name}({output_val_type} f);")
+    if vec_type:
+        # nlohmann json can't uses a const ref to_json for container types
+        writer.write(f"{class_object.name.title()}& {field.name}(const {output_val_type}& f);")
+    else:
+        writer.write(f"{class_object.name.title()}& {field.name}({output_val_type} f);")
 
     if field.is_subplot_object:
         # Add an index-first overload. Putting the index last we could default it and not need an overload but that
         # makes it less readable and less consistent with plotly.js.
         write_template_signature()
-        writer.write(f"{class_object.name.title()}& {field.name}(int index, {output_val_type} f);")
+        if vec_type:
+            writer.write(f"{class_object.name.title()}& {field.name}(int index, const {output_val_type}& f);")
+        else:
+            writer.write(f"{class_object.name.title()}& {field.name}(int index, {output_val_type} f);")
 
 
 
@@ -133,13 +142,18 @@ def emit_field_setter(class_object, field, output_val_type, writer):
         elif field.json_val_type == 'data_array':
             writer.write(f"template <typename T, typename>")
 
+    vec_type = "std::vector" in output_val_type
+
     write_template_signature()
-    writer.write(f"{class_object.name.title()}& {class_object.name.title()}::{field.name}({output_val_type} f) {{")
+    if vec_type:
+        writer.write(f"{class_object.name.title()}& {class_object.name.title()}::{field.name}(const {output_val_type}& f) {{")
+    else:
+        writer.write(f"{class_object.name.title()}& {class_object.name.title()}::{field.name}({output_val_type} f) {{")
     with IndentBlock(writer):
         if field.is_object:
             writer.write(f"json[\"{field.name}\"] = std::move(f.json);")
         else:
-            writer.write(f"json[\"{field.name}\"] = std::move(f);")
+            writer.write(f"json[\"{field.name}\"] = " + ("f" if vec_type else "std::move(f)") + ";")
         writer.write("return *this;")
     writer.write("}")
 
@@ -147,12 +161,15 @@ def emit_field_setter(class_object, field, output_val_type, writer):
         # Add an index-first overload. Putting the index last we could default it and not need an overload but that
         # makes it less readable and less consistent with plotly.js.
         write_template_signature()
-        writer.write(f"{class_object.name.title()}& {class_object.name.title()}::{field.name}(int index, {output_val_type} f) {{")
+        if vec_type:
+            writer.write(f"{class_object.name.title()}& {class_object.name.title()}::{field.name}(int index, const {output_val_type}& f) {{")
+        else:
+            writer.write(f"{class_object.name.title()}& {class_object.name.title()}::{field.name}(int index, {output_val_type} f) {{")
         with IndentBlock(writer):
             if field.is_object:
                 writer.write(f"json[\"{field.name}\" + std::to_string(index)] = std::move(f.json);")
             else:
-                writer.write(f"json[\"{field.name}\"+ std::to_string(index)] = std::move(f);")
+                writer.write(f"json[\"{field.name}\"+ std::to_string(index)] = " + ("f" if vec_type else "std::move(f)") + ";")
             writer.write("return *this;")
         writer.write("}")
 
@@ -553,16 +570,17 @@ def parse_attributes(parent, attributes_node):
                         if safe_val in json_symbol_name_map:
                             safe_val = json_symbol_name_map[safe_val]
 
-                        # Some names have spaces!
-                        safe_val = safe_val.replace(" ", "_")
+                        # To avoid keyword conflicts, and for style, use upper case. Avoid uppercase due to macro conflicts.
+                        safe_val = safe_val.title()
+                        # Some names have spaces! Remove spaces, since we should be in Pascale case style now.
+                        safe_val = safe_val.replace(" ", "")
                         # Some have hypens which are invalid. Note this has to be done after symbol mapping!
-                        safe_val = safe_val.replace("-", "_")
+                        safe_val = safe_val.replace("-", "")
 
                         # Some are numbers which invalid enum identifiers. Enumerators can't start with a digit.
                         if safe_val[0] in ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]:
-                            safe_val = "NUM_" + safe_val
-                        # To avoid keyword conflicts, and for style, use upper case.
-                        safe_val = safe_val.upper()
+                            safe_val = "Num_" + safe_val
+
                         # The map also handles the uniqueness requirement.
                         e.safe_to_json_vals[safe_val] = json_val
 

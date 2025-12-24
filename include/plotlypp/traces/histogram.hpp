@@ -29,35 +29,35 @@ class Histogram : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Constraintext {
-        INSIDE,
-        OUTSIDE,
-        BOTH,
-        NONE,
+        Inside,
+        Outside,
+        Both,
+        None,
     };
     static std::string to_string(Constraintext e);
 
     enum class Histfunc {
-        COUNT,
-        SUM,
-        AVG,
-        MIN,
-        MAX,
+        Count,
+        Sum,
+        Avg,
+        Min,
+        Max,
     };
     static std::string to_string(Histfunc e);
 
     enum class Histnorm {
-        EMPTY,
-        PERCENT,
-        PROBABILITY,
-        DENSITY,
-        PROBABILITY_DENSITY,
+        Empty,
+        Percent,
+        Probability,
+        Density,
+        ProbabilityDensity,
     };
     static std::string to_string(Histnorm e);
 
     enum class Insidetextanchor {
-        END,
-        MIDDLE,
-        START,
+        End,
+        Middle,
+        Start,
     };
     static std::string to_string(Insidetextanchor e);
 
@@ -68,57 +68,57 @@ class Histogram : public Trace {
     static std::string to_string(Orientation e);
 
     enum class Textposition {
-        INSIDE,
-        OUTSIDE,
-        AUTO,
-        NONE,
+        Inside,
+        Outside,
+        Auto,
+        None,
     };
     static std::string to_string(Textposition e);
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
     enum class Xcalendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Xcalendar e);
 
     enum class Ycalendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Ycalendar e);
 
@@ -183,7 +183,7 @@ class Histogram : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Histogram& customdata(std::vector<T> f);
+    Histogram& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -226,7 +226,7 @@ class Histogram : public Trace {
     Histogram& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram& hoverinfo(Callable&& c);
-    Histogram& hoverinfo(std::vector<std::string> f);
+    Histogram& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Histogram& hoverinfosrc(std::string f);
@@ -253,7 +253,7 @@ class Histogram : public Trace {
     Histogram& hovertemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram& hovertemplate(Callable&& c);
-    Histogram& hovertemplate(std::vector<std::string> f);
+    Histogram& hovertemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Histogram& hovertemplatesrc(std::string f);
@@ -264,7 +264,7 @@ class Histogram : public Trace {
     Histogram& hovertext(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram& hovertext(Callable&& c);
-    Histogram& hovertext(std::vector<std::string> f);
+    Histogram& hovertext(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Histogram& hovertextsrc(std::string f);
@@ -274,7 +274,7 @@ class Histogram : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Histogram& ids(std::vector<T> f);
+    Histogram& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -339,7 +339,7 @@ class Histogram : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Histogram& meta(Callable&& c);
     template <typename T>
-    Histogram& meta(std::vector<T> f);
+    Histogram& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Histogram& metasrc(std::string f);
@@ -411,7 +411,7 @@ class Histogram : public Trace {
     Histogram& text(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram& text(Callable&& c);
-    Histogram& text(std::vector<std::string> f);
+    Histogram& text(const std::vector<std::string>& f);
 
     // Sets the angle of the tick labels with respect to the bar. For example, a `tickangle` of -90 draws the tick
     // labels vertically. With *auto* the texts may automatically be rotated to fit with the maximum size in bars.
@@ -478,7 +478,7 @@ class Histogram : public Trace {
 
     // Sets the sample data to be binned on the x axis.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Histogram& x(std::vector<T> f);
+    Histogram& x(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -515,7 +515,7 @@ class Histogram : public Trace {
 
     // Sets the sample data to be binned on the y axis.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Histogram& y(std::vector<T> f);
+    Histogram& y(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -564,15 +564,15 @@ class Histogram::Cumulative {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Currentbin {
-        INCLUDE,
-        EXCLUDE,
-        HALF,
+        Include,
+        Exclude,
+        Half,
     };
     static std::string to_string(Currentbin e);
 
     enum class Direction {
-        INCREASING,
-        DECREASING,
+        Increasing,
+        Decreasing,
     };
     static std::string to_string(Direction e);
 
@@ -607,16 +607,16 @@ class Histogram::Error_X {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Type {
-        PERCENT,
-        CONSTANT,
-        SQRT,
-        DATA,
+        Percent,
+        Constant,
+        Sqrt,
+        Data,
     };
     static std::string to_string(Type e);
 
     // Sets the data corresponding the length of each error bar. Values are plotted relative to the underlying data.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Histogram::Error_X& array(std::vector<T> f);
+    Histogram::Error_X& array(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -625,7 +625,7 @@ class Histogram::Error_X {
     // Sets the data corresponding the length of each error bar in the bottom (left) direction for vertical (horizontal)
     // bars Values are plotted relative to the underlying data.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Histogram::Error_X& arrayminus(std::vector<T> f);
+    Histogram::Error_X& arrayminus(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -709,16 +709,16 @@ class Histogram::Error_Y {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Type {
-        PERCENT,
-        CONSTANT,
-        SQRT,
-        DATA,
+        Percent,
+        Constant,
+        Sqrt,
+        Data,
     };
     static std::string to_string(Type e);
 
     // Sets the data corresponding the length of each error bar. Values are plotted relative to the underlying data.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Histogram::Error_Y& array(std::vector<T> f);
+    Histogram::Error_Y& array(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -727,7 +727,7 @@ class Histogram::Error_Y {
     // Sets the data corresponding the length of each error bar in the bottom (left) direction for vertical (horizontal)
     // bars Values are plotted relative to the underlying data.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Histogram::Error_Y& arrayminus(std::vector<T> f);
+    Histogram::Error_Y& arrayminus(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -807,9 +807,9 @@ class Histogram::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -831,7 +831,7 @@ class Histogram::Hoverlabel {
     Histogram::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram::Hoverlabel& bgcolor(Callable&& c);
-    Histogram::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Histogram::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Histogram::Hoverlabel& bgcolorsrc(std::string f);
@@ -842,7 +842,7 @@ class Histogram::Hoverlabel {
     Histogram::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram::Hoverlabel& bordercolor(Callable&& c);
-    Histogram::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Histogram::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Histogram::Hoverlabel& bordercolorsrc(std::string f);
@@ -861,7 +861,7 @@ class Histogram::Hoverlabel {
     Histogram::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Histogram::Hoverlabel& namelength(Callable&& c);
-    Histogram::Hoverlabel& namelength(std::vector<int> f);
+    Histogram::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Histogram::Hoverlabel& namelengthsrc(std::string f);
@@ -880,33 +880,33 @@ class Histogram::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Histogram::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram::Hoverlabel::Font& color(Callable&& c);
-    Histogram::Hoverlabel::Font& color(std::vector<std::string> f);
+    Histogram::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Histogram::Hoverlabel::Font& colorsrc(std::string f);
@@ -923,7 +923,7 @@ class Histogram::Hoverlabel::Font {
     Histogram::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram::Hoverlabel::Font& family(Callable&& c);
-    Histogram::Hoverlabel::Font& family(std::vector<std::string> f);
+    Histogram::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Histogram::Hoverlabel::Font& familysrc(std::string f);
@@ -938,7 +938,7 @@ class Histogram::Hoverlabel::Font {
     Histogram::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram::Hoverlabel::Font& lineposition(Callable&& c);
-    Histogram::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Histogram::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Histogram::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -950,7 +950,7 @@ class Histogram::Hoverlabel::Font {
     Histogram::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram::Hoverlabel::Font& shadow(Callable&& c);
-    Histogram::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Histogram::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Histogram::Hoverlabel::Font& shadowsrc(std::string f);
@@ -960,7 +960,7 @@ class Histogram::Hoverlabel::Font {
     Histogram::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Histogram::Hoverlabel::Font& size(Callable&& c);
-    Histogram::Hoverlabel::Font& size(std::vector<double> f);
+    Histogram::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Histogram::Hoverlabel::Font& sizesrc(std::string f);
@@ -1002,7 +1002,7 @@ class Histogram::Hoverlabel::Font {
     Histogram::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Histogram::Hoverlabel::Font& weight(Callable&& c);
-    Histogram::Hoverlabel::Font& weight(std::vector<int> f);
+    Histogram::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Histogram::Hoverlabel::Font& weightsrc(std::string f);
@@ -1021,26 +1021,26 @@ class Histogram::Insidetextfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1131,26 +1131,26 @@ class Histogram::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1260,7 +1260,7 @@ class Histogram::Marker {
     Histogram::Marker& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram::Marker& color(Callable&& c);
-    Histogram::Marker& color(std::vector<std::string> f);
+    Histogram::Marker& color(const std::vector<std::string>& f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -1280,7 +1280,7 @@ class Histogram::Marker {
     // `marker.cmax`. Alternatively, `colorscale` may be a palette name string of the following list:
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Histogram::Marker& colorscale(std::string f);
-    Histogram::Marker& colorscale(std::vector<std::pair<double, std::string>> f);
+    Histogram::Marker& colorscale(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -1307,7 +1307,7 @@ class Histogram::Marker {
     Histogram::Marker& opacity(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Histogram::Marker& opacity(Callable&& c);
-    Histogram::Marker& opacity(std::vector<double> f);
+    Histogram::Marker& opacity(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `opacity`.
     Histogram::Marker& opacitysrc(std::string f);
@@ -1343,17 +1343,17 @@ class Histogram::Marker::Colorbar {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Lenmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Lenmode e);
 
@@ -1364,93 +1364,93 @@ class Histogram::Marker::Colorbar {
     static std::string to_string(Orientation e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Thicknessmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Thicknessmode e);
 
     enum class Ticklabeloverflow {
-        ALLOW,
-        HIDE_PAST_DIV,
-        HIDE_PAST_DOMAIN,
+        Allow,
+        HidePastDiv,
+        HidePastDomain,
     };
     static std::string to_string(Ticklabeloverflow e);
 
     enum class Ticklabelposition {
-        OUTSIDE,
-        INSIDE,
-        OUTSIDE_TOP,
-        INSIDE_TOP,
-        OUTSIDE_LEFT,
-        INSIDE_LEFT,
-        OUTSIDE_RIGHT,
-        INSIDE_RIGHT,
-        OUTSIDE_BOTTOM,
-        INSIDE_BOTTOM,
+        Outside,
+        Inside,
+        OutsideTop,
+        InsideTop,
+        OutsideLeft,
+        InsideLeft,
+        OutsideRight,
+        InsideRight,
+        OutsideBottom,
+        InsideBottom,
     };
     static std::string to_string(Ticklabelposition e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Xanchor {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Xref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Xref e);
 
     enum class Yanchor {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
     enum class Yref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Yref e);
 
@@ -1662,7 +1662,7 @@ class Histogram::Marker::Colorbar {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Histogram::Marker::Colorbar& ticktext(std::vector<T> f);
+    Histogram::Marker::Colorbar& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1676,7 +1676,7 @@ class Histogram::Marker::Colorbar {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Histogram::Marker::Colorbar& tickvals(std::vector<T> f);
+    Histogram::Marker::Colorbar& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1752,26 +1752,26 @@ class Histogram::Marker::Colorbar::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1855,7 +1855,7 @@ class Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Histogram::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -1897,9 +1897,9 @@ class Histogram::Marker::Colorbar::Title {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
-        RIGHT,
-        TOP,
-        BOTTOM,
+        Right,
+        Top,
+        Bottom,
     };
     static std::string to_string(Side e);
 
@@ -1932,26 +1932,26 @@ class Histogram::Marker::Colorbar::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -2060,7 +2060,7 @@ class Histogram::Marker::Line {
     Histogram::Marker::Line& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram::Marker::Line& color(Callable&& c);
-    Histogram::Marker::Line& color(std::vector<std::string> f);
+    Histogram::Marker::Line& color(const std::vector<std::string>& f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -2077,7 +2077,7 @@ class Histogram::Marker::Line {
     // following list:
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Histogram::Marker::Line& colorscale(std::string f);
-    Histogram::Marker::Line& colorscale(std::vector<std::pair<double, std::string>> f);
+    Histogram::Marker::Line& colorscale(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -2099,7 +2099,7 @@ class Histogram::Marker::Line {
     Histogram::Marker::Line& width(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Histogram::Marker::Line& width(Callable&& c);
-    Histogram::Marker::Line& width(std::vector<double> f);
+    Histogram::Marker::Line& width(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `width`.
     Histogram::Marker::Line& widthsrc(std::string f);
@@ -2118,8 +2118,8 @@ class Histogram::Marker::Pattern {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Fillmode {
-        REPLACE,
-        OVERLAY,
+        Replace,
+        Overlay,
     };
     static std::string to_string(Fillmode e);
 
@@ -2128,7 +2128,7 @@ class Histogram::Marker::Pattern {
     Histogram::Marker::Pattern& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram::Marker::Pattern& bgcolor(Callable&& c);
-    Histogram::Marker::Pattern& bgcolor(std::vector<std::string> f);
+    Histogram::Marker::Pattern& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Histogram::Marker::Pattern& bgcolorsrc(std::string f);
@@ -2140,7 +2140,7 @@ class Histogram::Marker::Pattern {
     Histogram::Marker::Pattern& fgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram::Marker::Pattern& fgcolor(Callable&& c);
-    Histogram::Marker::Pattern& fgcolor(std::vector<std::string> f);
+    Histogram::Marker::Pattern& fgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `fgcolor`.
     Histogram::Marker::Pattern& fgcolorsrc(std::string f);
@@ -2161,7 +2161,7 @@ class Histogram::Marker::Pattern {
     Histogram::Marker::Pattern& shape(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Histogram::Marker::Pattern& shape(Callable&& c);
-    Histogram::Marker::Pattern& shape(std::vector<std::string> f);
+    Histogram::Marker::Pattern& shape(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shape`.
     Histogram::Marker::Pattern& shapesrc(std::string f);
@@ -2173,7 +2173,7 @@ class Histogram::Marker::Pattern {
     Histogram::Marker::Pattern& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Histogram::Marker::Pattern& size(Callable&& c);
-    Histogram::Marker::Pattern& size(std::vector<double> f);
+    Histogram::Marker::Pattern& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Histogram::Marker::Pattern& sizesrc(std::string f);
@@ -2186,7 +2186,7 @@ class Histogram::Marker::Pattern {
     Histogram::Marker::Pattern& solidity(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Histogram::Marker::Pattern& solidity(Callable&& c);
-    Histogram::Marker::Pattern& solidity(std::vector<double> f);
+    Histogram::Marker::Pattern& solidity(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `solidity`.
     Histogram::Marker::Pattern& soliditysrc(std::string f);
@@ -2205,26 +2205,26 @@ class Histogram::Outsidetextfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -2370,26 +2370,26 @@ class Histogram::Textfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 

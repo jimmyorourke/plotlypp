@@ -29,36 +29,36 @@ class Candlestick : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
     enum class Xcalendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Xcalendar e);
 
     enum class Xperiodalignment {
-        START,
-        MIDDLE,
-        END,
+        Start,
+        Middle,
+        End,
     };
     static std::string to_string(Xperiodalignment e);
 
@@ -71,7 +71,7 @@ class Candlestick : public Trace {
 
     // Sets the close values.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Candlestick& close(std::vector<T> f);
+    Candlestick& close(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -85,7 +85,7 @@ class Candlestick : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Candlestick& customdata(std::vector<T> f);
+    Candlestick& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -102,7 +102,7 @@ class Candlestick : public Trace {
 
     // Sets the high values.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Candlestick& high(std::vector<T> f);
+    Candlestick& high(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -121,7 +121,7 @@ class Candlestick : public Trace {
     Candlestick& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Candlestick& hoverinfo(Callable&& c);
-    Candlestick& hoverinfo(std::vector<std::string> f);
+    Candlestick& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Candlestick& hoverinfosrc(std::string f);
@@ -136,7 +136,7 @@ class Candlestick : public Trace {
     Candlestick& hovertext(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Candlestick& hovertext(Callable&& c);
-    Candlestick& hovertext(std::vector<std::string> f);
+    Candlestick& hovertext(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Candlestick& hovertextsrc(std::string f);
@@ -146,7 +146,7 @@ class Candlestick : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Candlestick& ids(std::vector<T> f);
+    Candlestick& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -197,7 +197,7 @@ class Candlestick : public Trace {
 
     // Sets the low values.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Candlestick& low(std::vector<T> f);
+    Candlestick& low(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -219,7 +219,7 @@ class Candlestick : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Candlestick& meta(Callable&& c);
     template <typename T>
-    Candlestick& meta(std::vector<T> f);
+    Candlestick& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Candlestick& metasrc(std::string f);
@@ -238,7 +238,7 @@ class Candlestick : public Trace {
 
     // Sets the open values.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Candlestick& open(std::vector<T> f);
+    Candlestick& open(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -271,7 +271,7 @@ class Candlestick : public Trace {
     Candlestick& text(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Candlestick& text(Callable&& c);
-    Candlestick& text(std::vector<std::string> f);
+    Candlestick& text(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `text`.
     Candlestick& textsrc(std::string f);
@@ -310,7 +310,7 @@ class Candlestick : public Trace {
 
     // Sets the x coordinates. If absent, linear coordinate will be generated.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Candlestick& x(std::vector<T> f);
+    Candlestick& x(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -433,9 +433,9 @@ class Candlestick::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -457,7 +457,7 @@ class Candlestick::Hoverlabel {
     Candlestick::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Candlestick::Hoverlabel& bgcolor(Callable&& c);
-    Candlestick::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Candlestick::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Candlestick::Hoverlabel& bgcolorsrc(std::string f);
@@ -468,7 +468,7 @@ class Candlestick::Hoverlabel {
     Candlestick::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Candlestick::Hoverlabel& bordercolor(Callable&& c);
-    Candlestick::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Candlestick::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Candlestick::Hoverlabel& bordercolorsrc(std::string f);
@@ -487,7 +487,7 @@ class Candlestick::Hoverlabel {
     Candlestick::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Candlestick::Hoverlabel& namelength(Callable&& c);
-    Candlestick::Hoverlabel& namelength(std::vector<int> f);
+    Candlestick::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Candlestick::Hoverlabel& namelengthsrc(std::string f);
@@ -511,33 +511,33 @@ class Candlestick::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Candlestick::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Candlestick::Hoverlabel::Font& color(Callable&& c);
-    Candlestick::Hoverlabel::Font& color(std::vector<std::string> f);
+    Candlestick::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Candlestick::Hoverlabel::Font& colorsrc(std::string f);
@@ -554,7 +554,7 @@ class Candlestick::Hoverlabel::Font {
     Candlestick::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Candlestick::Hoverlabel::Font& family(Callable&& c);
-    Candlestick::Hoverlabel::Font& family(std::vector<std::string> f);
+    Candlestick::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Candlestick::Hoverlabel::Font& familysrc(std::string f);
@@ -569,7 +569,7 @@ class Candlestick::Hoverlabel::Font {
     Candlestick::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Candlestick::Hoverlabel::Font& lineposition(Callable&& c);
-    Candlestick::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Candlestick::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Candlestick::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -581,7 +581,7 @@ class Candlestick::Hoverlabel::Font {
     Candlestick::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Candlestick::Hoverlabel::Font& shadow(Callable&& c);
-    Candlestick::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Candlestick::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Candlestick::Hoverlabel::Font& shadowsrc(std::string f);
@@ -591,7 +591,7 @@ class Candlestick::Hoverlabel::Font {
     Candlestick::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Candlestick::Hoverlabel::Font& size(Callable&& c);
-    Candlestick::Hoverlabel::Font& size(std::vector<double> f);
+    Candlestick::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Candlestick::Hoverlabel::Font& sizesrc(std::string f);
@@ -633,7 +633,7 @@ class Candlestick::Hoverlabel::Font {
     Candlestick::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Candlestick::Hoverlabel::Font& weight(Callable&& c);
-    Candlestick::Hoverlabel::Font& weight(std::vector<int> f);
+    Candlestick::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Candlestick::Hoverlabel::Font& weightsrc(std::string f);
@@ -717,26 +717,26 @@ class Candlestick::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 

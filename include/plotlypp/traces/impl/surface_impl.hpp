@@ -12,75 +12,75 @@ namespace plotlypp {
 
 std::string Surface::to_string(Visible e) {
     switch(e) {
-        case Visible::TRUE: return "True";
-        case Visible::FALSE: return "False";
-        case Visible::LEGENDONLY: return "legendonly";
+        case Visible::True: return "True";
+        case Visible::False: return "False";
+        case Visible::Legendonly: return "legendonly";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Surface::to_string(Xcalendar e) {
     switch(e) {
-        case Xcalendar::CHINESE: return "chinese";
-        case Xcalendar::COPTIC: return "coptic";
-        case Xcalendar::DISCWORLD: return "discworld";
-        case Xcalendar::ETHIOPIAN: return "ethiopian";
-        case Xcalendar::GREGORIAN: return "gregorian";
-        case Xcalendar::HEBREW: return "hebrew";
-        case Xcalendar::ISLAMIC: return "islamic";
-        case Xcalendar::JALALI: return "jalali";
-        case Xcalendar::JULIAN: return "julian";
-        case Xcalendar::MAYAN: return "mayan";
-        case Xcalendar::NANAKSHAHI: return "nanakshahi";
-        case Xcalendar::NEPALI: return "nepali";
-        case Xcalendar::PERSIAN: return "persian";
-        case Xcalendar::TAIWAN: return "taiwan";
-        case Xcalendar::THAI: return "thai";
-        case Xcalendar::UMMALQURA: return "ummalqura";
+        case Xcalendar::Chinese: return "chinese";
+        case Xcalendar::Coptic: return "coptic";
+        case Xcalendar::Discworld: return "discworld";
+        case Xcalendar::Ethiopian: return "ethiopian";
+        case Xcalendar::Gregorian: return "gregorian";
+        case Xcalendar::Hebrew: return "hebrew";
+        case Xcalendar::Islamic: return "islamic";
+        case Xcalendar::Jalali: return "jalali";
+        case Xcalendar::Julian: return "julian";
+        case Xcalendar::Mayan: return "mayan";
+        case Xcalendar::Nanakshahi: return "nanakshahi";
+        case Xcalendar::Nepali: return "nepali";
+        case Xcalendar::Persian: return "persian";
+        case Xcalendar::Taiwan: return "taiwan";
+        case Xcalendar::Thai: return "thai";
+        case Xcalendar::Ummalqura: return "ummalqura";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Surface::to_string(Ycalendar e) {
     switch(e) {
-        case Ycalendar::CHINESE: return "chinese";
-        case Ycalendar::COPTIC: return "coptic";
-        case Ycalendar::DISCWORLD: return "discworld";
-        case Ycalendar::ETHIOPIAN: return "ethiopian";
-        case Ycalendar::GREGORIAN: return "gregorian";
-        case Ycalendar::HEBREW: return "hebrew";
-        case Ycalendar::ISLAMIC: return "islamic";
-        case Ycalendar::JALALI: return "jalali";
-        case Ycalendar::JULIAN: return "julian";
-        case Ycalendar::MAYAN: return "mayan";
-        case Ycalendar::NANAKSHAHI: return "nanakshahi";
-        case Ycalendar::NEPALI: return "nepali";
-        case Ycalendar::PERSIAN: return "persian";
-        case Ycalendar::TAIWAN: return "taiwan";
-        case Ycalendar::THAI: return "thai";
-        case Ycalendar::UMMALQURA: return "ummalqura";
+        case Ycalendar::Chinese: return "chinese";
+        case Ycalendar::Coptic: return "coptic";
+        case Ycalendar::Discworld: return "discworld";
+        case Ycalendar::Ethiopian: return "ethiopian";
+        case Ycalendar::Gregorian: return "gregorian";
+        case Ycalendar::Hebrew: return "hebrew";
+        case Ycalendar::Islamic: return "islamic";
+        case Ycalendar::Jalali: return "jalali";
+        case Ycalendar::Julian: return "julian";
+        case Ycalendar::Mayan: return "mayan";
+        case Ycalendar::Nanakshahi: return "nanakshahi";
+        case Ycalendar::Nepali: return "nepali";
+        case Ycalendar::Persian: return "persian";
+        case Ycalendar::Taiwan: return "taiwan";
+        case Ycalendar::Thai: return "thai";
+        case Ycalendar::Ummalqura: return "ummalqura";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Surface::to_string(Zcalendar e) {
     switch(e) {
-        case Zcalendar::CHINESE: return "chinese";
-        case Zcalendar::COPTIC: return "coptic";
-        case Zcalendar::DISCWORLD: return "discworld";
-        case Zcalendar::ETHIOPIAN: return "ethiopian";
-        case Zcalendar::GREGORIAN: return "gregorian";
-        case Zcalendar::HEBREW: return "hebrew";
-        case Zcalendar::ISLAMIC: return "islamic";
-        case Zcalendar::JALALI: return "jalali";
-        case Zcalendar::JULIAN: return "julian";
-        case Zcalendar::MAYAN: return "mayan";
-        case Zcalendar::NANAKSHAHI: return "nanakshahi";
-        case Zcalendar::NEPALI: return "nepali";
-        case Zcalendar::PERSIAN: return "persian";
-        case Zcalendar::TAIWAN: return "taiwan";
-        case Zcalendar::THAI: return "thai";
-        case Zcalendar::UMMALQURA: return "ummalqura";
+        case Zcalendar::Chinese: return "chinese";
+        case Zcalendar::Coptic: return "coptic";
+        case Zcalendar::Discworld: return "discworld";
+        case Zcalendar::Ethiopian: return "ethiopian";
+        case Zcalendar::Gregorian: return "gregorian";
+        case Zcalendar::Hebrew: return "hebrew";
+        case Zcalendar::Islamic: return "islamic";
+        case Zcalendar::Jalali: return "jalali";
+        case Zcalendar::Julian: return "julian";
+        case Zcalendar::Mayan: return "mayan";
+        case Zcalendar::Nanakshahi: return "nanakshahi";
+        case Zcalendar::Nepali: return "nepali";
+        case Zcalendar::Persian: return "persian";
+        case Zcalendar::Taiwan: return "taiwan";
+        case Zcalendar::Thai: return "thai";
+        case Zcalendar::Ummalqura: return "ummalqura";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -167,8 +167,8 @@ Surface& Surface::colorscale(std::string f) {
     json["colorscale"] = std::move(f);
     return *this;
 }
-Surface& Surface::colorscale(std::vector<std::pair<double, std::string>> f) {
-    json["colorscale"] = std::move(f);
+Surface& Surface::colorscale(const std::vector<std::pair<double, std::string>>& f) {
+    json["colorscale"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -201,8 +201,8 @@ Surface& Surface::contours(Callable&& c) {
 }
 
 template <typename T, typename>
-Surface& Surface::customdata(std::vector<T> f) {
-    json["customdata"] = std::move(f);
+Surface& Surface::customdata(const std::vector<T>& f) {
+    json["customdata"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -244,8 +244,8 @@ Surface& Surface::hoverinfo(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hoverinfo(std::move(f));
 }
-Surface& Surface::hoverinfo(std::vector<std::string> f) {
-    json["hoverinfo"] = std::move(f);
+Surface& Surface::hoverinfo(const std::vector<std::string>& f) {
+    json["hoverinfo"] = f;
     return *this;
 }
 
@@ -281,8 +281,8 @@ Surface& Surface::hovertemplate(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hovertemplate(std::move(f));
 }
-Surface& Surface::hovertemplate(std::vector<std::string> f) {
-    json["hovertemplate"] = std::move(f);
+Surface& Surface::hovertemplate(const std::vector<std::string>& f) {
+    json["hovertemplate"] = f;
     return *this;
 }
 
@@ -307,8 +307,8 @@ Surface& Surface::hovertext(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hovertext(std::move(f));
 }
-Surface& Surface::hovertext(std::vector<std::string> f) {
-    json["hovertext"] = std::move(f);
+Surface& Surface::hovertext(const std::vector<std::string>& f) {
+    json["hovertext"] = f;
     return *this;
 }
 
@@ -324,8 +324,8 @@ Surface& Surface::hovertextsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Surface& Surface::ids(std::vector<T> f) {
-    json["ids"] = std::move(f);
+Surface& Surface::ids(const std::vector<T>& f) {
+    json["ids"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -435,8 +435,8 @@ Surface& Surface::meta(Callable&& c) {
     return meta(std::move(f));
 }
 template <typename T>
-Surface& Surface::meta(std::vector<T> f) {
-    json["meta"] = std::move(f);
+Surface& Surface::meta(const std::vector<T>& f) {
+    json["meta"] = f;
     return *this;
 }
 
@@ -541,8 +541,8 @@ Surface& Surface::stream(Callable&& c) {
 }
 
 template <typename T, typename>
-Surface& Surface::surfacecolor(std::vector<T> f) {
-    json["surfacecolor"] = std::move(f);
+Surface& Surface::surfacecolor(const std::vector<T>& f) {
+    json["surfacecolor"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -573,8 +573,8 @@ Surface& Surface::text(Callable&& c) {
     std::forward<Callable>(c)(f);
     return text(std::move(f));
 }
-Surface& Surface::text(std::vector<std::string> f) {
-    json["text"] = std::move(f);
+Surface& Surface::text(const std::vector<std::string>& f) {
+    json["text"] = f;
     return *this;
 }
 
@@ -618,8 +618,8 @@ Surface& Surface::visible(enum Visible f) {
 }
 
 template <typename T, typename>
-Surface& Surface::x(std::vector<T> f) {
-    json["x"] = std::move(f);
+Surface& Surface::x(const std::vector<T>& f) {
+    json["x"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -657,8 +657,8 @@ Surface& Surface::xsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Surface& Surface::y(std::vector<T> f) {
-    json["y"] = std::move(f);
+Surface& Surface::y(const std::vector<T>& f) {
+    json["y"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -696,8 +696,8 @@ Surface& Surface::ysrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Surface& Surface::z(std::vector<T> f) {
-    json["z"] = std::move(f);
+Surface& Surface::z(const std::vector<T>& f) {
+    json["z"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -736,10 +736,10 @@ Surface& Surface::zsrc(Callable&& c) {
 
 std::string Surface::Colorbar::to_string(Exponentformat e) {
     switch(e) {
-        case Exponentformat::NONE: return "none";
+        case Exponentformat::None: return "none";
         case Exponentformat::E: return "E";
-        case Exponentformat::POWER: return "power";
-        case Exponentformat::SI: return "SI";
+        case Exponentformat::Power: return "power";
+        case Exponentformat::Si: return "SI";
         case Exponentformat::B: return "B";
     }
     // Should be unreachable.
@@ -747,8 +747,8 @@ std::string Surface::Colorbar::to_string(Exponentformat e) {
 }
 std::string Surface::Colorbar::to_string(Lenmode e) {
     switch(e) {
-        case Lenmode::FRACTION: return "fraction";
-        case Lenmode::PIXELS: return "pixels";
+        case Lenmode::Fraction: return "fraction";
+        case Lenmode::Pixels: return "pixels";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -763,115 +763,115 @@ std::string Surface::Colorbar::to_string(Orientation e) {
 }
 std::string Surface::Colorbar::to_string(Showexponent e) {
     switch(e) {
-        case Showexponent::ALL: return "all";
-        case Showexponent::FIRST: return "first";
-        case Showexponent::LAST: return "last";
-        case Showexponent::NONE: return "none";
+        case Showexponent::All: return "all";
+        case Showexponent::First: return "first";
+        case Showexponent::Last: return "last";
+        case Showexponent::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Surface::Colorbar::to_string(Showtickprefix e) {
     switch(e) {
-        case Showtickprefix::ALL: return "all";
-        case Showtickprefix::FIRST: return "first";
-        case Showtickprefix::LAST: return "last";
-        case Showtickprefix::NONE: return "none";
+        case Showtickprefix::All: return "all";
+        case Showtickprefix::First: return "first";
+        case Showtickprefix::Last: return "last";
+        case Showtickprefix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Surface::Colorbar::to_string(Showticksuffix e) {
     switch(e) {
-        case Showticksuffix::ALL: return "all";
-        case Showticksuffix::FIRST: return "first";
-        case Showticksuffix::LAST: return "last";
-        case Showticksuffix::NONE: return "none";
+        case Showticksuffix::All: return "all";
+        case Showticksuffix::First: return "first";
+        case Showticksuffix::Last: return "last";
+        case Showticksuffix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Surface::Colorbar::to_string(Thicknessmode e) {
     switch(e) {
-        case Thicknessmode::FRACTION: return "fraction";
-        case Thicknessmode::PIXELS: return "pixels";
+        case Thicknessmode::Fraction: return "fraction";
+        case Thicknessmode::Pixels: return "pixels";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Surface::Colorbar::to_string(Ticklabeloverflow e) {
     switch(e) {
-        case Ticklabeloverflow::ALLOW: return "allow";
-        case Ticklabeloverflow::HIDE_PAST_DIV: return "hide past div";
-        case Ticklabeloverflow::HIDE_PAST_DOMAIN: return "hide past domain";
+        case Ticklabeloverflow::Allow: return "allow";
+        case Ticklabeloverflow::HidePastDiv: return "hide past div";
+        case Ticklabeloverflow::HidePastDomain: return "hide past domain";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Surface::Colorbar::to_string(Ticklabelposition e) {
     switch(e) {
-        case Ticklabelposition::OUTSIDE: return "outside";
-        case Ticklabelposition::INSIDE: return "inside";
-        case Ticklabelposition::OUTSIDE_TOP: return "outside top";
-        case Ticklabelposition::INSIDE_TOP: return "inside top";
-        case Ticklabelposition::OUTSIDE_LEFT: return "outside left";
-        case Ticklabelposition::INSIDE_LEFT: return "inside left";
-        case Ticklabelposition::OUTSIDE_RIGHT: return "outside right";
-        case Ticklabelposition::INSIDE_RIGHT: return "inside right";
-        case Ticklabelposition::OUTSIDE_BOTTOM: return "outside bottom";
-        case Ticklabelposition::INSIDE_BOTTOM: return "inside bottom";
+        case Ticklabelposition::Outside: return "outside";
+        case Ticklabelposition::Inside: return "inside";
+        case Ticklabelposition::OutsideTop: return "outside top";
+        case Ticklabelposition::InsideTop: return "inside top";
+        case Ticklabelposition::OutsideLeft: return "outside left";
+        case Ticklabelposition::InsideLeft: return "inside left";
+        case Ticklabelposition::OutsideRight: return "outside right";
+        case Ticklabelposition::InsideRight: return "inside right";
+        case Ticklabelposition::OutsideBottom: return "outside bottom";
+        case Ticklabelposition::InsideBottom: return "inside bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Surface::Colorbar::to_string(Tickmode e) {
     switch(e) {
-        case Tickmode::AUTO: return "auto";
-        case Tickmode::LINEAR: return "linear";
-        case Tickmode::ARRAY: return "array";
+        case Tickmode::Auto: return "auto";
+        case Tickmode::Linear: return "linear";
+        case Tickmode::Array: return "array";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Surface::Colorbar::to_string(Ticks e) {
     switch(e) {
-        case Ticks::OUTSIDE: return "outside";
-        case Ticks::INSIDE: return "inside";
-        case Ticks::EMPTY: return "";
+        case Ticks::Outside: return "outside";
+        case Ticks::Inside: return "inside";
+        case Ticks::Empty: return "";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Surface::Colorbar::to_string(Xanchor e) {
     switch(e) {
-        case Xanchor::LEFT: return "left";
-        case Xanchor::CENTER: return "center";
-        case Xanchor::RIGHT: return "right";
+        case Xanchor::Left: return "left";
+        case Xanchor::Center: return "center";
+        case Xanchor::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Surface::Colorbar::to_string(Xref e) {
     switch(e) {
-        case Xref::CONTAINER: return "container";
-        case Xref::PAPER: return "paper";
+        case Xref::Container: return "container";
+        case Xref::Paper: return "paper";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Surface::Colorbar::to_string(Yanchor e) {
     switch(e) {
-        case Yanchor::TOP: return "top";
-        case Yanchor::MIDDLE: return "middle";
-        case Yanchor::BOTTOM: return "bottom";
+        case Yanchor::Top: return "top";
+        case Yanchor::Middle: return "middle";
+        case Yanchor::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Surface::Colorbar::to_string(Yref e) {
     switch(e) {
-        case Yref::CONTAINER: return "container";
-        case Yref::PAPER: return "paper";
+        case Yref::Container: return "container";
+        case Yref::Paper: return "paper";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1189,8 +1189,8 @@ Surface::Colorbar& Surface::Colorbar::ticksuffix(Callable&& c) {
 }
 
 template <typename T, typename>
-Surface::Colorbar& Surface::Colorbar::ticktext(std::vector<T> f) {
-    json["ticktext"] = std::move(f);
+Surface::Colorbar& Surface::Colorbar::ticktext(const std::vector<T>& f) {
+    json["ticktext"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -1212,8 +1212,8 @@ Surface::Colorbar& Surface::Colorbar::ticktextsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Surface::Colorbar& Surface::Colorbar::tickvals(std::vector<T> f) {
-    json["tickvals"] = std::move(f);
+Surface::Colorbar& Surface::Colorbar::tickvals(const std::vector<T>& f) {
+    json["tickvals"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -1322,30 +1322,30 @@ Surface::Colorbar& Surface::Colorbar::yref(enum Yref f) {
 
 std::string Surface::Colorbar::Tickfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Surface::Colorbar::Tickfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Surface::Colorbar::Tickfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1445,8 +1445,8 @@ Surface::Colorbar::Tickformatstops& Surface::Colorbar::Tickformatstops::tickform
 }
 
 
-Surface::Colorbar::Tickformatstops::Tickformatstop& Surface::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
-    json["dtickrange"] = std::move(f);
+Surface::Colorbar::Tickformatstops::Tickformatstop& Surface::Colorbar::Tickformatstops::Tickformatstop::dtickrange(const std::vector<double>& f) {
+    json["dtickrange"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -1502,9 +1502,9 @@ Surface::Colorbar::Tickformatstops::Tickformatstop& Surface::Colorbar::Tickforma
 
 std::string Surface::Colorbar::Title::to_string(Side e) {
     switch(e) {
-        case Side::RIGHT: return "right";
-        case Side::TOP: return "top";
-        case Side::BOTTOM: return "bottom";
+        case Side::Right: return "right";
+        case Side::Top: return "top";
+        case Side::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1539,30 +1539,30 @@ Surface::Colorbar::Title& Surface::Colorbar::Title::text(Callable&& c) {
 
 std::string Surface::Colorbar::Title::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Surface::Colorbar::Title::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Surface::Colorbar::Title::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -2153,9 +2153,9 @@ Surface::Contours::Z::Project& Surface::Contours::Z::Project::z(Callable&& c) {
 
 std::string Surface::Hoverlabel::to_string(Align e) {
     switch(e) {
-        case Align::LEFT: return "left";
-        case Align::RIGHT: return "right";
-        case Align::AUTO: return "auto";
+        case Align::Left: return "left";
+        case Align::Right: return "right";
+        case Align::Auto: return "auto";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -2193,8 +2193,8 @@ Surface::Hoverlabel& Surface::Hoverlabel::bgcolor(Callable&& c) {
     std::forward<Callable>(c)(f);
     return bgcolor(std::move(f));
 }
-Surface::Hoverlabel& Surface::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
+Surface::Hoverlabel& Surface::Hoverlabel::bgcolor(const std::vector<std::string>& f) {
+    json["bgcolor"] = f;
     return *this;
 }
 
@@ -2219,8 +2219,8 @@ Surface::Hoverlabel& Surface::Hoverlabel::bordercolor(Callable&& c) {
     std::forward<Callable>(c)(f);
     return bordercolor(std::move(f));
 }
-Surface::Hoverlabel& Surface::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
+Surface::Hoverlabel& Surface::Hoverlabel::bordercolor(const std::vector<std::string>& f) {
+    json["bordercolor"] = f;
     return *this;
 }
 
@@ -2256,8 +2256,8 @@ Surface::Hoverlabel& Surface::Hoverlabel::namelength(Callable&& c) {
     std::forward<Callable>(c)(f);
     return namelength(std::move(f));
 }
-Surface::Hoverlabel& Surface::Hoverlabel::namelength(std::vector<int> f) {
-    json["namelength"] = std::move(f);
+Surface::Hoverlabel& Surface::Hoverlabel::namelength(const std::vector<int>& f) {
+    json["namelength"] = f;
     return *this;
 }
 
@@ -2274,30 +2274,30 @@ Surface::Hoverlabel& Surface::Hoverlabel::namelengthsrc(Callable&& c) {
 
 std::string Surface::Hoverlabel::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Surface::Hoverlabel::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Surface::Hoverlabel::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -2313,8 +2313,8 @@ Surface::Hoverlabel::Font& Surface::Hoverlabel::Font::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Surface::Hoverlabel::Font& Surface::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Surface::Hoverlabel::Font& Surface::Hoverlabel::Font::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -2339,8 +2339,8 @@ Surface::Hoverlabel::Font& Surface::Hoverlabel::Font::family(Callable&& c) {
     std::forward<Callable>(c)(f);
     return family(std::move(f));
 }
-Surface::Hoverlabel::Font& Surface::Hoverlabel::Font::family(std::vector<std::string> f) {
-    json["family"] = std::move(f);
+Surface::Hoverlabel::Font& Surface::Hoverlabel::Font::family(const std::vector<std::string>& f) {
+    json["family"] = f;
     return *this;
 }
 
@@ -2365,8 +2365,8 @@ Surface::Hoverlabel::Font& Surface::Hoverlabel::Font::lineposition(Callable&& c)
     std::forward<Callable>(c)(f);
     return lineposition(std::move(f));
 }
-Surface::Hoverlabel::Font& Surface::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
-    json["lineposition"] = std::move(f);
+Surface::Hoverlabel::Font& Surface::Hoverlabel::Font::lineposition(const std::vector<std::string>& f) {
+    json["lineposition"] = f;
     return *this;
 }
 
@@ -2391,8 +2391,8 @@ Surface::Hoverlabel::Font& Surface::Hoverlabel::Font::shadow(Callable&& c) {
     std::forward<Callable>(c)(f);
     return shadow(std::move(f));
 }
-Surface::Hoverlabel::Font& Surface::Hoverlabel::Font::shadow(std::vector<std::string> f) {
-    json["shadow"] = std::move(f);
+Surface::Hoverlabel::Font& Surface::Hoverlabel::Font::shadow(const std::vector<std::string>& f) {
+    json["shadow"] = f;
     return *this;
 }
 
@@ -2417,8 +2417,8 @@ Surface::Hoverlabel::Font& Surface::Hoverlabel::Font::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Surface::Hoverlabel::Font& Surface::Hoverlabel::Font::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Surface::Hoverlabel::Font& Surface::Hoverlabel::Font::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -2509,8 +2509,8 @@ Surface::Hoverlabel::Font& Surface::Hoverlabel::Font::weight(Callable&& c) {
     std::forward<Callable>(c)(f);
     return weight(std::move(f));
 }
-Surface::Hoverlabel::Font& Surface::Hoverlabel::Font::weight(std::vector<int> f) {
-    json["weight"] = std::move(f);
+Surface::Hoverlabel::Font& Surface::Hoverlabel::Font::weight(const std::vector<int>& f) {
+    json["weight"] = f;
     return *this;
 }
 
@@ -2550,30 +2550,30 @@ Surface::Legendgrouptitle& Surface::Legendgrouptitle::text(Callable&& c) {
 
 std::string Surface::Legendgrouptitle::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Surface::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Surface::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};

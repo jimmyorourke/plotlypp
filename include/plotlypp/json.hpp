@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <string>
+#include <string_view>
 
 #include <nlohmann/json.hpp>
 
@@ -14,6 +14,6 @@ using Json = nlohmann::json;
 
 inline std::string serialize(const Json& json) { return json.dump(); }
 
-inline Json parse(std::string content) { return Json::parse(std::move(content)); }
+inline Json parse(std::string_view content) { return Json::parse(content); }
 
 } // namespace plotlypp

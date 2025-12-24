@@ -12,19 +12,19 @@ namespace plotlypp {
 
 std::string Box::to_string(Boxmean e) {
     switch(e) {
-        case Boxmean::TRUE: return "True";
-        case Boxmean::SD: return "sd";
-        case Boxmean::FALSE: return "False";
+        case Boxmean::True: return "True";
+        case Boxmean::Sd: return "sd";
+        case Boxmean::False: return "False";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::to_string(Boxpoints e) {
     switch(e) {
-        case Boxpoints::ALL: return "all";
-        case Boxpoints::OUTLIERS: return "outliers";
-        case Boxpoints::SUSPECTEDOUTLIERS: return "suspectedoutliers";
-        case Boxpoints::FALSE: return "False";
+        case Boxpoints::All: return "all";
+        case Boxpoints::Outliers: return "outliers";
+        case Boxpoints::Suspectedoutliers: return "suspectedoutliers";
+        case Boxpoints::False: return "False";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -39,88 +39,88 @@ std::string Box::to_string(Orientation e) {
 }
 std::string Box::to_string(Quartilemethod e) {
     switch(e) {
-        case Quartilemethod::LINEAR: return "linear";
-        case Quartilemethod::EXCLUSIVE: return "exclusive";
-        case Quartilemethod::INCLUSIVE: return "inclusive";
+        case Quartilemethod::Linear: return "linear";
+        case Quartilemethod::Exclusive: return "exclusive";
+        case Quartilemethod::Inclusive: return "inclusive";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::to_string(Sizemode e) {
     switch(e) {
-        case Sizemode::QUARTILES: return "quartiles";
-        case Sizemode::SD: return "sd";
+        case Sizemode::Quartiles: return "quartiles";
+        case Sizemode::Sd: return "sd";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::to_string(Visible e) {
     switch(e) {
-        case Visible::TRUE: return "True";
-        case Visible::FALSE: return "False";
-        case Visible::LEGENDONLY: return "legendonly";
+        case Visible::True: return "True";
+        case Visible::False: return "False";
+        case Visible::Legendonly: return "legendonly";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::to_string(Xcalendar e) {
     switch(e) {
-        case Xcalendar::CHINESE: return "chinese";
-        case Xcalendar::COPTIC: return "coptic";
-        case Xcalendar::DISCWORLD: return "discworld";
-        case Xcalendar::ETHIOPIAN: return "ethiopian";
-        case Xcalendar::GREGORIAN: return "gregorian";
-        case Xcalendar::HEBREW: return "hebrew";
-        case Xcalendar::ISLAMIC: return "islamic";
-        case Xcalendar::JALALI: return "jalali";
-        case Xcalendar::JULIAN: return "julian";
-        case Xcalendar::MAYAN: return "mayan";
-        case Xcalendar::NANAKSHAHI: return "nanakshahi";
-        case Xcalendar::NEPALI: return "nepali";
-        case Xcalendar::PERSIAN: return "persian";
-        case Xcalendar::TAIWAN: return "taiwan";
-        case Xcalendar::THAI: return "thai";
-        case Xcalendar::UMMALQURA: return "ummalqura";
+        case Xcalendar::Chinese: return "chinese";
+        case Xcalendar::Coptic: return "coptic";
+        case Xcalendar::Discworld: return "discworld";
+        case Xcalendar::Ethiopian: return "ethiopian";
+        case Xcalendar::Gregorian: return "gregorian";
+        case Xcalendar::Hebrew: return "hebrew";
+        case Xcalendar::Islamic: return "islamic";
+        case Xcalendar::Jalali: return "jalali";
+        case Xcalendar::Julian: return "julian";
+        case Xcalendar::Mayan: return "mayan";
+        case Xcalendar::Nanakshahi: return "nanakshahi";
+        case Xcalendar::Nepali: return "nepali";
+        case Xcalendar::Persian: return "persian";
+        case Xcalendar::Taiwan: return "taiwan";
+        case Xcalendar::Thai: return "thai";
+        case Xcalendar::Ummalqura: return "ummalqura";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::to_string(Xperiodalignment e) {
     switch(e) {
-        case Xperiodalignment::START: return "start";
-        case Xperiodalignment::MIDDLE: return "middle";
-        case Xperiodalignment::END: return "end";
+        case Xperiodalignment::Start: return "start";
+        case Xperiodalignment::Middle: return "middle";
+        case Xperiodalignment::End: return "end";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::to_string(Ycalendar e) {
     switch(e) {
-        case Ycalendar::CHINESE: return "chinese";
-        case Ycalendar::COPTIC: return "coptic";
-        case Ycalendar::DISCWORLD: return "discworld";
-        case Ycalendar::ETHIOPIAN: return "ethiopian";
-        case Ycalendar::GREGORIAN: return "gregorian";
-        case Ycalendar::HEBREW: return "hebrew";
-        case Ycalendar::ISLAMIC: return "islamic";
-        case Ycalendar::JALALI: return "jalali";
-        case Ycalendar::JULIAN: return "julian";
-        case Ycalendar::MAYAN: return "mayan";
-        case Ycalendar::NANAKSHAHI: return "nanakshahi";
-        case Ycalendar::NEPALI: return "nepali";
-        case Ycalendar::PERSIAN: return "persian";
-        case Ycalendar::TAIWAN: return "taiwan";
-        case Ycalendar::THAI: return "thai";
-        case Ycalendar::UMMALQURA: return "ummalqura";
+        case Ycalendar::Chinese: return "chinese";
+        case Ycalendar::Coptic: return "coptic";
+        case Ycalendar::Discworld: return "discworld";
+        case Ycalendar::Ethiopian: return "ethiopian";
+        case Ycalendar::Gregorian: return "gregorian";
+        case Ycalendar::Hebrew: return "hebrew";
+        case Ycalendar::Islamic: return "islamic";
+        case Ycalendar::Jalali: return "jalali";
+        case Ycalendar::Julian: return "julian";
+        case Ycalendar::Mayan: return "mayan";
+        case Ycalendar::Nanakshahi: return "nanakshahi";
+        case Ycalendar::Nepali: return "nepali";
+        case Ycalendar::Persian: return "persian";
+        case Ycalendar::Taiwan: return "taiwan";
+        case Ycalendar::Thai: return "thai";
+        case Ycalendar::Ummalqura: return "ummalqura";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::to_string(Yperiodalignment e) {
     switch(e) {
-        case Yperiodalignment::START: return "start";
-        case Yperiodalignment::MIDDLE: return "middle";
-        case Yperiodalignment::END: return "end";
+        case Yperiodalignment::Start: return "start";
+        case Yperiodalignment::Middle: return "middle";
+        case Yperiodalignment::End: return "end";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -148,8 +148,8 @@ Box& Box::boxpoints(enum Boxpoints f) {
 }
 
 template <typename T, typename>
-Box& Box::customdata(std::vector<T> f) {
-    json["customdata"] = std::move(f);
+Box& Box::customdata(const std::vector<T>& f) {
+    json["customdata"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -213,8 +213,8 @@ Box& Box::hoverinfo(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hoverinfo(std::move(f));
 }
-Box& Box::hoverinfo(std::vector<std::string> f) {
-    json["hoverinfo"] = std::move(f);
+Box& Box::hoverinfo(const std::vector<std::string>& f) {
+    json["hoverinfo"] = f;
     return *this;
 }
 
@@ -261,8 +261,8 @@ Box& Box::hovertemplate(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hovertemplate(std::move(f));
 }
-Box& Box::hovertemplate(std::vector<std::string> f) {
-    json["hovertemplate"] = std::move(f);
+Box& Box::hovertemplate(const std::vector<std::string>& f) {
+    json["hovertemplate"] = f;
     return *this;
 }
 
@@ -287,8 +287,8 @@ Box& Box::hovertext(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hovertext(std::move(f));
 }
-Box& Box::hovertext(std::vector<std::string> f) {
-    json["hovertext"] = std::move(f);
+Box& Box::hovertext(const std::vector<std::string>& f) {
+    json["hovertext"] = f;
     return *this;
 }
 
@@ -304,8 +304,8 @@ Box& Box::hovertextsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Box& Box::ids(std::vector<T> f) {
-    json["ids"] = std::move(f);
+Box& Box::ids(const std::vector<T>& f) {
+    json["ids"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -404,8 +404,8 @@ Box& Box::line(Callable&& c) {
 }
 
 template <typename T, typename>
-Box& Box::lowerfence(std::vector<T> f) {
-    json["lowerfence"] = std::move(f);
+Box& Box::lowerfence(const std::vector<T>& f) {
+    json["lowerfence"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -438,8 +438,8 @@ Box& Box::marker(Callable&& c) {
 }
 
 template <typename T, typename>
-Box& Box::mean(std::vector<T> f) {
-    json["mean"] = std::move(f);
+Box& Box::mean(const std::vector<T>& f) {
+    json["mean"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -461,8 +461,8 @@ Box& Box::meansrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Box& Box::median(std::vector<T> f) {
-    json["median"] = std::move(f);
+Box& Box::median(const std::vector<T>& f) {
+    json["median"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -495,8 +495,8 @@ Box& Box::meta(Callable&& c) {
     return meta(std::move(f));
 }
 template <typename T>
-Box& Box::meta(std::vector<T> f) {
-    json["meta"] = std::move(f);
+Box& Box::meta(const std::vector<T>& f) {
+    json["meta"] = f;
     return *this;
 }
 
@@ -534,8 +534,8 @@ Box& Box::notched(Callable&& c) {
 }
 
 template <typename T, typename>
-Box& Box::notchspan(std::vector<T> f) {
-    json["notchspan"] = std::move(f);
+Box& Box::notchspan(const std::vector<T>& f) {
+    json["notchspan"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -606,8 +606,8 @@ Box& Box::pointpos(Callable&& c) {
 }
 
 template <typename T, typename>
-Box& Box::q1(std::vector<T> f) {
-    json["q1"] = std::move(f);
+Box& Box::q1(const std::vector<T>& f) {
+    json["q1"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -629,8 +629,8 @@ Box& Box::q1src(Callable&& c) {
 }
 
 template <typename T, typename>
-Box& Box::q3(std::vector<T> f) {
-    json["q3"] = std::move(f);
+Box& Box::q3(const std::vector<T>& f) {
+    json["q3"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -657,8 +657,8 @@ Box& Box::quartilemethod(enum Quartilemethod f) {
 }
 
 template <typename T, typename>
-Box& Box::sd(std::vector<T> f) {
-    json["sd"] = std::move(f);
+Box& Box::sd(const std::vector<T>& f) {
+    json["sd"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -761,8 +761,8 @@ Box& Box::text(Callable&& c) {
     std::forward<Callable>(c)(f);
     return text(std::move(f));
 }
-Box& Box::text(std::vector<std::string> f) {
-    json["text"] = std::move(f);
+Box& Box::text(const std::vector<std::string>& f) {
+    json["text"] = f;
     return *this;
 }
 
@@ -812,8 +812,8 @@ Box& Box::unselected(Callable&& c) {
 }
 
 template <typename T, typename>
-Box& Box::upperfence(std::vector<T> f) {
-    json["upperfence"] = std::move(f);
+Box& Box::upperfence(const std::vector<T>& f) {
+    json["upperfence"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -862,8 +862,8 @@ Box& Box::width(Callable&& c) {
 }
 
 template <typename T, typename>
-Box& Box::x(std::vector<T> f) {
-    json["x"] = std::move(f);
+Box& Box::x(const std::vector<T>& f) {
+    json["x"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -953,8 +953,8 @@ Box& Box::xsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Box& Box::y(std::vector<T> f) {
-    json["y"] = std::move(f);
+Box& Box::y(const std::vector<T>& f) {
+    json["y"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -1056,9 +1056,9 @@ Box& Box::zorder(Callable&& c) {
 
 std::string Box::Hoverlabel::to_string(Align e) {
     switch(e) {
-        case Align::LEFT: return "left";
-        case Align::RIGHT: return "right";
-        case Align::AUTO: return "auto";
+        case Align::Left: return "left";
+        case Align::Right: return "right";
+        case Align::Auto: return "auto";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1096,8 +1096,8 @@ Box::Hoverlabel& Box::Hoverlabel::bgcolor(Callable&& c) {
     std::forward<Callable>(c)(f);
     return bgcolor(std::move(f));
 }
-Box::Hoverlabel& Box::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
+Box::Hoverlabel& Box::Hoverlabel::bgcolor(const std::vector<std::string>& f) {
+    json["bgcolor"] = f;
     return *this;
 }
 
@@ -1122,8 +1122,8 @@ Box::Hoverlabel& Box::Hoverlabel::bordercolor(Callable&& c) {
     std::forward<Callable>(c)(f);
     return bordercolor(std::move(f));
 }
-Box::Hoverlabel& Box::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
+Box::Hoverlabel& Box::Hoverlabel::bordercolor(const std::vector<std::string>& f) {
+    json["bordercolor"] = f;
     return *this;
 }
 
@@ -1159,8 +1159,8 @@ Box::Hoverlabel& Box::Hoverlabel::namelength(Callable&& c) {
     std::forward<Callable>(c)(f);
     return namelength(std::move(f));
 }
-Box::Hoverlabel& Box::Hoverlabel::namelength(std::vector<int> f) {
-    json["namelength"] = std::move(f);
+Box::Hoverlabel& Box::Hoverlabel::namelength(const std::vector<int>& f) {
+    json["namelength"] = f;
     return *this;
 }
 
@@ -1177,30 +1177,30 @@ Box::Hoverlabel& Box::Hoverlabel::namelengthsrc(Callable&& c) {
 
 std::string Box::Hoverlabel::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::Hoverlabel::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::Hoverlabel::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1216,8 +1216,8 @@ Box::Hoverlabel::Font& Box::Hoverlabel::Font::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Box::Hoverlabel::Font& Box::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Box::Hoverlabel::Font& Box::Hoverlabel::Font::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -1242,8 +1242,8 @@ Box::Hoverlabel::Font& Box::Hoverlabel::Font::family(Callable&& c) {
     std::forward<Callable>(c)(f);
     return family(std::move(f));
 }
-Box::Hoverlabel::Font& Box::Hoverlabel::Font::family(std::vector<std::string> f) {
-    json["family"] = std::move(f);
+Box::Hoverlabel::Font& Box::Hoverlabel::Font::family(const std::vector<std::string>& f) {
+    json["family"] = f;
     return *this;
 }
 
@@ -1268,8 +1268,8 @@ Box::Hoverlabel::Font& Box::Hoverlabel::Font::lineposition(Callable&& c) {
     std::forward<Callable>(c)(f);
     return lineposition(std::move(f));
 }
-Box::Hoverlabel::Font& Box::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
-    json["lineposition"] = std::move(f);
+Box::Hoverlabel::Font& Box::Hoverlabel::Font::lineposition(const std::vector<std::string>& f) {
+    json["lineposition"] = f;
     return *this;
 }
 
@@ -1294,8 +1294,8 @@ Box::Hoverlabel::Font& Box::Hoverlabel::Font::shadow(Callable&& c) {
     std::forward<Callable>(c)(f);
     return shadow(std::move(f));
 }
-Box::Hoverlabel::Font& Box::Hoverlabel::Font::shadow(std::vector<std::string> f) {
-    json["shadow"] = std::move(f);
+Box::Hoverlabel::Font& Box::Hoverlabel::Font::shadow(const std::vector<std::string>& f) {
+    json["shadow"] = f;
     return *this;
 }
 
@@ -1320,8 +1320,8 @@ Box::Hoverlabel::Font& Box::Hoverlabel::Font::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Box::Hoverlabel::Font& Box::Hoverlabel::Font::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Box::Hoverlabel::Font& Box::Hoverlabel::Font::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -1412,8 +1412,8 @@ Box::Hoverlabel::Font& Box::Hoverlabel::Font::weight(Callable&& c) {
     std::forward<Callable>(c)(f);
     return weight(std::move(f));
 }
-Box::Hoverlabel::Font& Box::Hoverlabel::Font::weight(std::vector<int> f) {
-    json["weight"] = std::move(f);
+Box::Hoverlabel::Font& Box::Hoverlabel::Font::weight(const std::vector<int>& f) {
+    json["weight"] = f;
     return *this;
 }
 
@@ -1453,30 +1453,30 @@ Box::Legendgrouptitle& Box::Legendgrouptitle::text(Callable&& c) {
 
 std::string Box::Legendgrouptitle::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Box::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1588,330 +1588,330 @@ Box::Line& Box::Line::width(Callable&& c) {
 
 std::string Box::Marker::to_string(Symbol e) {
     switch(e) {
-        case Symbol::NUM_0: return "0";
-        case Symbol::CIRCLE: return "circle";
-        case Symbol::NUM_100: return "100";
-        case Symbol::CIRCLE_OPEN: return "circle-open";
-        case Symbol::NUM_200: return "200";
-        case Symbol::CIRCLE_DOT: return "circle-dot";
-        case Symbol::NUM_300: return "300";
-        case Symbol::CIRCLE_OPEN_DOT: return "circle-open-dot";
-        case Symbol::NUM_1: return "1";
-        case Symbol::SQUARE: return "square";
-        case Symbol::NUM_101: return "101";
-        case Symbol::SQUARE_OPEN: return "square-open";
-        case Symbol::NUM_201: return "201";
-        case Symbol::SQUARE_DOT: return "square-dot";
-        case Symbol::NUM_301: return "301";
-        case Symbol::SQUARE_OPEN_DOT: return "square-open-dot";
-        case Symbol::NUM_2: return "2";
-        case Symbol::DIAMOND: return "diamond";
-        case Symbol::NUM_102: return "102";
-        case Symbol::DIAMOND_OPEN: return "diamond-open";
-        case Symbol::NUM_202: return "202";
-        case Symbol::DIAMOND_DOT: return "diamond-dot";
-        case Symbol::NUM_302: return "302";
-        case Symbol::DIAMOND_OPEN_DOT: return "diamond-open-dot";
-        case Symbol::NUM_3: return "3";
-        case Symbol::CROSS: return "cross";
-        case Symbol::NUM_103: return "103";
-        case Symbol::CROSS_OPEN: return "cross-open";
-        case Symbol::NUM_203: return "203";
-        case Symbol::CROSS_DOT: return "cross-dot";
-        case Symbol::NUM_303: return "303";
-        case Symbol::CROSS_OPEN_DOT: return "cross-open-dot";
-        case Symbol::NUM_4: return "4";
+        case Symbol::Num_0: return "0";
+        case Symbol::Circle: return "circle";
+        case Symbol::Num_100: return "100";
+        case Symbol::CircleOpen: return "circle-open";
+        case Symbol::Num_200: return "200";
+        case Symbol::CircleDot: return "circle-dot";
+        case Symbol::Num_300: return "300";
+        case Symbol::CircleOpenDot: return "circle-open-dot";
+        case Symbol::Num_1: return "1";
+        case Symbol::Square: return "square";
+        case Symbol::Num_101: return "101";
+        case Symbol::SquareOpen: return "square-open";
+        case Symbol::Num_201: return "201";
+        case Symbol::SquareDot: return "square-dot";
+        case Symbol::Num_301: return "301";
+        case Symbol::SquareOpenDot: return "square-open-dot";
+        case Symbol::Num_2: return "2";
+        case Symbol::Diamond: return "diamond";
+        case Symbol::Num_102: return "102";
+        case Symbol::DiamondOpen: return "diamond-open";
+        case Symbol::Num_202: return "202";
+        case Symbol::DiamondDot: return "diamond-dot";
+        case Symbol::Num_302: return "302";
+        case Symbol::DiamondOpenDot: return "diamond-open-dot";
+        case Symbol::Num_3: return "3";
+        case Symbol::Cross: return "cross";
+        case Symbol::Num_103: return "103";
+        case Symbol::CrossOpen: return "cross-open";
+        case Symbol::Num_203: return "203";
+        case Symbol::CrossDot: return "cross-dot";
+        case Symbol::Num_303: return "303";
+        case Symbol::CrossOpenDot: return "cross-open-dot";
+        case Symbol::Num_4: return "4";
         case Symbol::X: return "x";
-        case Symbol::NUM_104: return "104";
-        case Symbol::X_OPEN: return "x-open";
-        case Symbol::NUM_204: return "204";
-        case Symbol::X_DOT: return "x-dot";
-        case Symbol::NUM_304: return "304";
-        case Symbol::X_OPEN_DOT: return "x-open-dot";
-        case Symbol::NUM_5: return "5";
-        case Symbol::TRIANGLE_UP: return "triangle-up";
-        case Symbol::NUM_105: return "105";
-        case Symbol::TRIANGLE_UP_OPEN: return "triangle-up-open";
-        case Symbol::NUM_205: return "205";
-        case Symbol::TRIANGLE_UP_DOT: return "triangle-up-dot";
-        case Symbol::NUM_305: return "305";
-        case Symbol::TRIANGLE_UP_OPEN_DOT: return "triangle-up-open-dot";
-        case Symbol::NUM_6: return "6";
-        case Symbol::TRIANGLE_DOWN: return "triangle-down";
-        case Symbol::NUM_106: return "106";
-        case Symbol::TRIANGLE_DOWN_OPEN: return "triangle-down-open";
-        case Symbol::NUM_206: return "206";
-        case Symbol::TRIANGLE_DOWN_DOT: return "triangle-down-dot";
-        case Symbol::NUM_306: return "306";
-        case Symbol::TRIANGLE_DOWN_OPEN_DOT: return "triangle-down-open-dot";
-        case Symbol::NUM_7: return "7";
-        case Symbol::TRIANGLE_LEFT: return "triangle-left";
-        case Symbol::NUM_107: return "107";
-        case Symbol::TRIANGLE_LEFT_OPEN: return "triangle-left-open";
-        case Symbol::NUM_207: return "207";
-        case Symbol::TRIANGLE_LEFT_DOT: return "triangle-left-dot";
-        case Symbol::NUM_307: return "307";
-        case Symbol::TRIANGLE_LEFT_OPEN_DOT: return "triangle-left-open-dot";
-        case Symbol::NUM_8: return "8";
-        case Symbol::TRIANGLE_RIGHT: return "triangle-right";
-        case Symbol::NUM_108: return "108";
-        case Symbol::TRIANGLE_RIGHT_OPEN: return "triangle-right-open";
-        case Symbol::NUM_208: return "208";
-        case Symbol::TRIANGLE_RIGHT_DOT: return "triangle-right-dot";
-        case Symbol::NUM_308: return "308";
-        case Symbol::TRIANGLE_RIGHT_OPEN_DOT: return "triangle-right-open-dot";
-        case Symbol::NUM_9: return "9";
-        case Symbol::TRIANGLE_NE: return "triangle-ne";
-        case Symbol::NUM_109: return "109";
-        case Symbol::TRIANGLE_NE_OPEN: return "triangle-ne-open";
-        case Symbol::NUM_209: return "209";
-        case Symbol::TRIANGLE_NE_DOT: return "triangle-ne-dot";
-        case Symbol::NUM_309: return "309";
-        case Symbol::TRIANGLE_NE_OPEN_DOT: return "triangle-ne-open-dot";
-        case Symbol::NUM_10: return "10";
-        case Symbol::TRIANGLE_SE: return "triangle-se";
-        case Symbol::NUM_110: return "110";
-        case Symbol::TRIANGLE_SE_OPEN: return "triangle-se-open";
-        case Symbol::NUM_210: return "210";
-        case Symbol::TRIANGLE_SE_DOT: return "triangle-se-dot";
-        case Symbol::NUM_310: return "310";
-        case Symbol::TRIANGLE_SE_OPEN_DOT: return "triangle-se-open-dot";
-        case Symbol::NUM_11: return "11";
-        case Symbol::TRIANGLE_SW: return "triangle-sw";
-        case Symbol::NUM_111: return "111";
-        case Symbol::TRIANGLE_SW_OPEN: return "triangle-sw-open";
-        case Symbol::NUM_211: return "211";
-        case Symbol::TRIANGLE_SW_DOT: return "triangle-sw-dot";
-        case Symbol::NUM_311: return "311";
-        case Symbol::TRIANGLE_SW_OPEN_DOT: return "triangle-sw-open-dot";
-        case Symbol::NUM_12: return "12";
-        case Symbol::TRIANGLE_NW: return "triangle-nw";
-        case Symbol::NUM_112: return "112";
-        case Symbol::TRIANGLE_NW_OPEN: return "triangle-nw-open";
-        case Symbol::NUM_212: return "212";
-        case Symbol::TRIANGLE_NW_DOT: return "triangle-nw-dot";
-        case Symbol::NUM_312: return "312";
-        case Symbol::TRIANGLE_NW_OPEN_DOT: return "triangle-nw-open-dot";
-        case Symbol::NUM_13: return "13";
-        case Symbol::PENTAGON: return "pentagon";
-        case Symbol::NUM_113: return "113";
-        case Symbol::PENTAGON_OPEN: return "pentagon-open";
-        case Symbol::NUM_213: return "213";
-        case Symbol::PENTAGON_DOT: return "pentagon-dot";
-        case Symbol::NUM_313: return "313";
-        case Symbol::PENTAGON_OPEN_DOT: return "pentagon-open-dot";
-        case Symbol::NUM_14: return "14";
-        case Symbol::HEXAGON: return "hexagon";
-        case Symbol::NUM_114: return "114";
-        case Symbol::HEXAGON_OPEN: return "hexagon-open";
-        case Symbol::NUM_214: return "214";
-        case Symbol::HEXAGON_DOT: return "hexagon-dot";
-        case Symbol::NUM_314: return "314";
-        case Symbol::HEXAGON_OPEN_DOT: return "hexagon-open-dot";
-        case Symbol::NUM_15: return "15";
-        case Symbol::HEXAGON2: return "hexagon2";
-        case Symbol::NUM_115: return "115";
-        case Symbol::HEXAGON2_OPEN: return "hexagon2-open";
-        case Symbol::NUM_215: return "215";
-        case Symbol::HEXAGON2_DOT: return "hexagon2-dot";
-        case Symbol::NUM_315: return "315";
-        case Symbol::HEXAGON2_OPEN_DOT: return "hexagon2-open-dot";
-        case Symbol::NUM_16: return "16";
-        case Symbol::OCTAGON: return "octagon";
-        case Symbol::NUM_116: return "116";
-        case Symbol::OCTAGON_OPEN: return "octagon-open";
-        case Symbol::NUM_216: return "216";
-        case Symbol::OCTAGON_DOT: return "octagon-dot";
-        case Symbol::NUM_316: return "316";
-        case Symbol::OCTAGON_OPEN_DOT: return "octagon-open-dot";
-        case Symbol::NUM_17: return "17";
-        case Symbol::STAR: return "star";
-        case Symbol::NUM_117: return "117";
-        case Symbol::STAR_OPEN: return "star-open";
-        case Symbol::NUM_217: return "217";
-        case Symbol::STAR_DOT: return "star-dot";
-        case Symbol::NUM_317: return "317";
-        case Symbol::STAR_OPEN_DOT: return "star-open-dot";
-        case Symbol::NUM_18: return "18";
-        case Symbol::HEXAGRAM: return "hexagram";
-        case Symbol::NUM_118: return "118";
-        case Symbol::HEXAGRAM_OPEN: return "hexagram-open";
-        case Symbol::NUM_218: return "218";
-        case Symbol::HEXAGRAM_DOT: return "hexagram-dot";
-        case Symbol::NUM_318: return "318";
-        case Symbol::HEXAGRAM_OPEN_DOT: return "hexagram-open-dot";
-        case Symbol::NUM_19: return "19";
-        case Symbol::STAR_TRIANGLE_UP: return "star-triangle-up";
-        case Symbol::NUM_119: return "119";
-        case Symbol::STAR_TRIANGLE_UP_OPEN: return "star-triangle-up-open";
-        case Symbol::NUM_219: return "219";
-        case Symbol::STAR_TRIANGLE_UP_DOT: return "star-triangle-up-dot";
-        case Symbol::NUM_319: return "319";
-        case Symbol::STAR_TRIANGLE_UP_OPEN_DOT: return "star-triangle-up-open-dot";
-        case Symbol::NUM_20: return "20";
-        case Symbol::STAR_TRIANGLE_DOWN: return "star-triangle-down";
-        case Symbol::NUM_120: return "120";
-        case Symbol::STAR_TRIANGLE_DOWN_OPEN: return "star-triangle-down-open";
-        case Symbol::NUM_220: return "220";
-        case Symbol::STAR_TRIANGLE_DOWN_DOT: return "star-triangle-down-dot";
-        case Symbol::NUM_320: return "320";
-        case Symbol::STAR_TRIANGLE_DOWN_OPEN_DOT: return "star-triangle-down-open-dot";
-        case Symbol::NUM_21: return "21";
-        case Symbol::STAR_SQUARE: return "star-square";
-        case Symbol::NUM_121: return "121";
-        case Symbol::STAR_SQUARE_OPEN: return "star-square-open";
-        case Symbol::NUM_221: return "221";
-        case Symbol::STAR_SQUARE_DOT: return "star-square-dot";
-        case Symbol::NUM_321: return "321";
-        case Symbol::STAR_SQUARE_OPEN_DOT: return "star-square-open-dot";
-        case Symbol::NUM_22: return "22";
-        case Symbol::STAR_DIAMOND: return "star-diamond";
-        case Symbol::NUM_122: return "122";
-        case Symbol::STAR_DIAMOND_OPEN: return "star-diamond-open";
-        case Symbol::NUM_222: return "222";
-        case Symbol::STAR_DIAMOND_DOT: return "star-diamond-dot";
-        case Symbol::NUM_322: return "322";
-        case Symbol::STAR_DIAMOND_OPEN_DOT: return "star-diamond-open-dot";
-        case Symbol::NUM_23: return "23";
-        case Symbol::DIAMOND_TALL: return "diamond-tall";
-        case Symbol::NUM_123: return "123";
-        case Symbol::DIAMOND_TALL_OPEN: return "diamond-tall-open";
-        case Symbol::NUM_223: return "223";
-        case Symbol::DIAMOND_TALL_DOT: return "diamond-tall-dot";
-        case Symbol::NUM_323: return "323";
-        case Symbol::DIAMOND_TALL_OPEN_DOT: return "diamond-tall-open-dot";
-        case Symbol::NUM_24: return "24";
-        case Symbol::DIAMOND_WIDE: return "diamond-wide";
-        case Symbol::NUM_124: return "124";
-        case Symbol::DIAMOND_WIDE_OPEN: return "diamond-wide-open";
-        case Symbol::NUM_224: return "224";
-        case Symbol::DIAMOND_WIDE_DOT: return "diamond-wide-dot";
-        case Symbol::NUM_324: return "324";
-        case Symbol::DIAMOND_WIDE_OPEN_DOT: return "diamond-wide-open-dot";
-        case Symbol::NUM_25: return "25";
-        case Symbol::HOURGLASS: return "hourglass";
-        case Symbol::NUM_125: return "125";
-        case Symbol::HOURGLASS_OPEN: return "hourglass-open";
-        case Symbol::NUM_26: return "26";
-        case Symbol::BOWTIE: return "bowtie";
-        case Symbol::NUM_126: return "126";
-        case Symbol::BOWTIE_OPEN: return "bowtie-open";
-        case Symbol::NUM_27: return "27";
-        case Symbol::CIRCLE_CROSS: return "circle-cross";
-        case Symbol::NUM_127: return "127";
-        case Symbol::CIRCLE_CROSS_OPEN: return "circle-cross-open";
-        case Symbol::NUM_28: return "28";
-        case Symbol::CIRCLE_X: return "circle-x";
-        case Symbol::NUM_128: return "128";
-        case Symbol::CIRCLE_X_OPEN: return "circle-x-open";
-        case Symbol::NUM_29: return "29";
-        case Symbol::SQUARE_CROSS: return "square-cross";
-        case Symbol::NUM_129: return "129";
-        case Symbol::SQUARE_CROSS_OPEN: return "square-cross-open";
-        case Symbol::NUM_30: return "30";
-        case Symbol::SQUARE_X: return "square-x";
-        case Symbol::NUM_130: return "130";
-        case Symbol::SQUARE_X_OPEN: return "square-x-open";
-        case Symbol::NUM_31: return "31";
-        case Symbol::DIAMOND_CROSS: return "diamond-cross";
-        case Symbol::NUM_131: return "131";
-        case Symbol::DIAMOND_CROSS_OPEN: return "diamond-cross-open";
-        case Symbol::NUM_32: return "32";
-        case Symbol::DIAMOND_X: return "diamond-x";
-        case Symbol::NUM_132: return "132";
-        case Symbol::DIAMOND_X_OPEN: return "diamond-x-open";
-        case Symbol::NUM_33: return "33";
-        case Symbol::CROSS_THIN: return "cross-thin";
-        case Symbol::NUM_133: return "133";
-        case Symbol::CROSS_THIN_OPEN: return "cross-thin-open";
-        case Symbol::NUM_34: return "34";
-        case Symbol::X_THIN: return "x-thin";
-        case Symbol::NUM_134: return "134";
-        case Symbol::X_THIN_OPEN: return "x-thin-open";
-        case Symbol::NUM_35: return "35";
-        case Symbol::ASTERISK: return "asterisk";
-        case Symbol::NUM_135: return "135";
-        case Symbol::ASTERISK_OPEN: return "asterisk-open";
-        case Symbol::NUM_36: return "36";
-        case Symbol::HASH: return "hash";
-        case Symbol::NUM_136: return "136";
-        case Symbol::HASH_OPEN: return "hash-open";
-        case Symbol::NUM_236: return "236";
-        case Symbol::HASH_DOT: return "hash-dot";
-        case Symbol::NUM_336: return "336";
-        case Symbol::HASH_OPEN_DOT: return "hash-open-dot";
-        case Symbol::NUM_37: return "37";
-        case Symbol::Y_UP: return "y-up";
-        case Symbol::NUM_137: return "137";
-        case Symbol::Y_UP_OPEN: return "y-up-open";
-        case Symbol::NUM_38: return "38";
-        case Symbol::Y_DOWN: return "y-down";
-        case Symbol::NUM_138: return "138";
-        case Symbol::Y_DOWN_OPEN: return "y-down-open";
-        case Symbol::NUM_39: return "39";
-        case Symbol::Y_LEFT: return "y-left";
-        case Symbol::NUM_139: return "139";
-        case Symbol::Y_LEFT_OPEN: return "y-left-open";
-        case Symbol::NUM_40: return "40";
-        case Symbol::Y_RIGHT: return "y-right";
-        case Symbol::NUM_140: return "140";
-        case Symbol::Y_RIGHT_OPEN: return "y-right-open";
-        case Symbol::NUM_41: return "41";
-        case Symbol::LINE_EW: return "line-ew";
-        case Symbol::NUM_141: return "141";
-        case Symbol::LINE_EW_OPEN: return "line-ew-open";
-        case Symbol::NUM_42: return "42";
-        case Symbol::LINE_NS: return "line-ns";
-        case Symbol::NUM_142: return "142";
-        case Symbol::LINE_NS_OPEN: return "line-ns-open";
-        case Symbol::NUM_43: return "43";
-        case Symbol::LINE_NE: return "line-ne";
-        case Symbol::NUM_143: return "143";
-        case Symbol::LINE_NE_OPEN: return "line-ne-open";
-        case Symbol::NUM_44: return "44";
-        case Symbol::LINE_NW: return "line-nw";
-        case Symbol::NUM_144: return "144";
-        case Symbol::LINE_NW_OPEN: return "line-nw-open";
-        case Symbol::NUM_45: return "45";
-        case Symbol::ARROW_UP: return "arrow-up";
-        case Symbol::NUM_145: return "145";
-        case Symbol::ARROW_UP_OPEN: return "arrow-up-open";
-        case Symbol::NUM_46: return "46";
-        case Symbol::ARROW_DOWN: return "arrow-down";
-        case Symbol::NUM_146: return "146";
-        case Symbol::ARROW_DOWN_OPEN: return "arrow-down-open";
-        case Symbol::NUM_47: return "47";
-        case Symbol::ARROW_LEFT: return "arrow-left";
-        case Symbol::NUM_147: return "147";
-        case Symbol::ARROW_LEFT_OPEN: return "arrow-left-open";
-        case Symbol::NUM_48: return "48";
-        case Symbol::ARROW_RIGHT: return "arrow-right";
-        case Symbol::NUM_148: return "148";
-        case Symbol::ARROW_RIGHT_OPEN: return "arrow-right-open";
-        case Symbol::NUM_49: return "49";
-        case Symbol::ARROW_BAR_UP: return "arrow-bar-up";
-        case Symbol::NUM_149: return "149";
-        case Symbol::ARROW_BAR_UP_OPEN: return "arrow-bar-up-open";
-        case Symbol::NUM_50: return "50";
-        case Symbol::ARROW_BAR_DOWN: return "arrow-bar-down";
-        case Symbol::NUM_150: return "150";
-        case Symbol::ARROW_BAR_DOWN_OPEN: return "arrow-bar-down-open";
-        case Symbol::NUM_51: return "51";
-        case Symbol::ARROW_BAR_LEFT: return "arrow-bar-left";
-        case Symbol::NUM_151: return "151";
-        case Symbol::ARROW_BAR_LEFT_OPEN: return "arrow-bar-left-open";
-        case Symbol::NUM_52: return "52";
-        case Symbol::ARROW_BAR_RIGHT: return "arrow-bar-right";
-        case Symbol::NUM_152: return "152";
-        case Symbol::ARROW_BAR_RIGHT_OPEN: return "arrow-bar-right-open";
-        case Symbol::NUM_53: return "53";
-        case Symbol::ARROW: return "arrow";
-        case Symbol::NUM_153: return "153";
-        case Symbol::ARROW_OPEN: return "arrow-open";
-        case Symbol::NUM_54: return "54";
-        case Symbol::ARROW_WIDE: return "arrow-wide";
-        case Symbol::NUM_154: return "154";
-        case Symbol::ARROW_WIDE_OPEN: return "arrow-wide-open";
+        case Symbol::Num_104: return "104";
+        case Symbol::XOpen: return "x-open";
+        case Symbol::Num_204: return "204";
+        case Symbol::XDot: return "x-dot";
+        case Symbol::Num_304: return "304";
+        case Symbol::XOpenDot: return "x-open-dot";
+        case Symbol::Num_5: return "5";
+        case Symbol::TriangleUp: return "triangle-up";
+        case Symbol::Num_105: return "105";
+        case Symbol::TriangleUpOpen: return "triangle-up-open";
+        case Symbol::Num_205: return "205";
+        case Symbol::TriangleUpDot: return "triangle-up-dot";
+        case Symbol::Num_305: return "305";
+        case Symbol::TriangleUpOpenDot: return "triangle-up-open-dot";
+        case Symbol::Num_6: return "6";
+        case Symbol::TriangleDown: return "triangle-down";
+        case Symbol::Num_106: return "106";
+        case Symbol::TriangleDownOpen: return "triangle-down-open";
+        case Symbol::Num_206: return "206";
+        case Symbol::TriangleDownDot: return "triangle-down-dot";
+        case Symbol::Num_306: return "306";
+        case Symbol::TriangleDownOpenDot: return "triangle-down-open-dot";
+        case Symbol::Num_7: return "7";
+        case Symbol::TriangleLeft: return "triangle-left";
+        case Symbol::Num_107: return "107";
+        case Symbol::TriangleLeftOpen: return "triangle-left-open";
+        case Symbol::Num_207: return "207";
+        case Symbol::TriangleLeftDot: return "triangle-left-dot";
+        case Symbol::Num_307: return "307";
+        case Symbol::TriangleLeftOpenDot: return "triangle-left-open-dot";
+        case Symbol::Num_8: return "8";
+        case Symbol::TriangleRight: return "triangle-right";
+        case Symbol::Num_108: return "108";
+        case Symbol::TriangleRightOpen: return "triangle-right-open";
+        case Symbol::Num_208: return "208";
+        case Symbol::TriangleRightDot: return "triangle-right-dot";
+        case Symbol::Num_308: return "308";
+        case Symbol::TriangleRightOpenDot: return "triangle-right-open-dot";
+        case Symbol::Num_9: return "9";
+        case Symbol::TriangleNe: return "triangle-ne";
+        case Symbol::Num_109: return "109";
+        case Symbol::TriangleNeOpen: return "triangle-ne-open";
+        case Symbol::Num_209: return "209";
+        case Symbol::TriangleNeDot: return "triangle-ne-dot";
+        case Symbol::Num_309: return "309";
+        case Symbol::TriangleNeOpenDot: return "triangle-ne-open-dot";
+        case Symbol::Num_10: return "10";
+        case Symbol::TriangleSe: return "triangle-se";
+        case Symbol::Num_110: return "110";
+        case Symbol::TriangleSeOpen: return "triangle-se-open";
+        case Symbol::Num_210: return "210";
+        case Symbol::TriangleSeDot: return "triangle-se-dot";
+        case Symbol::Num_310: return "310";
+        case Symbol::TriangleSeOpenDot: return "triangle-se-open-dot";
+        case Symbol::Num_11: return "11";
+        case Symbol::TriangleSw: return "triangle-sw";
+        case Symbol::Num_111: return "111";
+        case Symbol::TriangleSwOpen: return "triangle-sw-open";
+        case Symbol::Num_211: return "211";
+        case Symbol::TriangleSwDot: return "triangle-sw-dot";
+        case Symbol::Num_311: return "311";
+        case Symbol::TriangleSwOpenDot: return "triangle-sw-open-dot";
+        case Symbol::Num_12: return "12";
+        case Symbol::TriangleNw: return "triangle-nw";
+        case Symbol::Num_112: return "112";
+        case Symbol::TriangleNwOpen: return "triangle-nw-open";
+        case Symbol::Num_212: return "212";
+        case Symbol::TriangleNwDot: return "triangle-nw-dot";
+        case Symbol::Num_312: return "312";
+        case Symbol::TriangleNwOpenDot: return "triangle-nw-open-dot";
+        case Symbol::Num_13: return "13";
+        case Symbol::Pentagon: return "pentagon";
+        case Symbol::Num_113: return "113";
+        case Symbol::PentagonOpen: return "pentagon-open";
+        case Symbol::Num_213: return "213";
+        case Symbol::PentagonDot: return "pentagon-dot";
+        case Symbol::Num_313: return "313";
+        case Symbol::PentagonOpenDot: return "pentagon-open-dot";
+        case Symbol::Num_14: return "14";
+        case Symbol::Hexagon: return "hexagon";
+        case Symbol::Num_114: return "114";
+        case Symbol::HexagonOpen: return "hexagon-open";
+        case Symbol::Num_214: return "214";
+        case Symbol::HexagonDot: return "hexagon-dot";
+        case Symbol::Num_314: return "314";
+        case Symbol::HexagonOpenDot: return "hexagon-open-dot";
+        case Symbol::Num_15: return "15";
+        case Symbol::Hexagon2: return "hexagon2";
+        case Symbol::Num_115: return "115";
+        case Symbol::Hexagon2Open: return "hexagon2-open";
+        case Symbol::Num_215: return "215";
+        case Symbol::Hexagon2Dot: return "hexagon2-dot";
+        case Symbol::Num_315: return "315";
+        case Symbol::Hexagon2OpenDot: return "hexagon2-open-dot";
+        case Symbol::Num_16: return "16";
+        case Symbol::Octagon: return "octagon";
+        case Symbol::Num_116: return "116";
+        case Symbol::OctagonOpen: return "octagon-open";
+        case Symbol::Num_216: return "216";
+        case Symbol::OctagonDot: return "octagon-dot";
+        case Symbol::Num_316: return "316";
+        case Symbol::OctagonOpenDot: return "octagon-open-dot";
+        case Symbol::Num_17: return "17";
+        case Symbol::Star: return "star";
+        case Symbol::Num_117: return "117";
+        case Symbol::StarOpen: return "star-open";
+        case Symbol::Num_217: return "217";
+        case Symbol::StarDot: return "star-dot";
+        case Symbol::Num_317: return "317";
+        case Symbol::StarOpenDot: return "star-open-dot";
+        case Symbol::Num_18: return "18";
+        case Symbol::Hexagram: return "hexagram";
+        case Symbol::Num_118: return "118";
+        case Symbol::HexagramOpen: return "hexagram-open";
+        case Symbol::Num_218: return "218";
+        case Symbol::HexagramDot: return "hexagram-dot";
+        case Symbol::Num_318: return "318";
+        case Symbol::HexagramOpenDot: return "hexagram-open-dot";
+        case Symbol::Num_19: return "19";
+        case Symbol::StarTriangleUp: return "star-triangle-up";
+        case Symbol::Num_119: return "119";
+        case Symbol::StarTriangleUpOpen: return "star-triangle-up-open";
+        case Symbol::Num_219: return "219";
+        case Symbol::StarTriangleUpDot: return "star-triangle-up-dot";
+        case Symbol::Num_319: return "319";
+        case Symbol::StarTriangleUpOpenDot: return "star-triangle-up-open-dot";
+        case Symbol::Num_20: return "20";
+        case Symbol::StarTriangleDown: return "star-triangle-down";
+        case Symbol::Num_120: return "120";
+        case Symbol::StarTriangleDownOpen: return "star-triangle-down-open";
+        case Symbol::Num_220: return "220";
+        case Symbol::StarTriangleDownDot: return "star-triangle-down-dot";
+        case Symbol::Num_320: return "320";
+        case Symbol::StarTriangleDownOpenDot: return "star-triangle-down-open-dot";
+        case Symbol::Num_21: return "21";
+        case Symbol::StarSquare: return "star-square";
+        case Symbol::Num_121: return "121";
+        case Symbol::StarSquareOpen: return "star-square-open";
+        case Symbol::Num_221: return "221";
+        case Symbol::StarSquareDot: return "star-square-dot";
+        case Symbol::Num_321: return "321";
+        case Symbol::StarSquareOpenDot: return "star-square-open-dot";
+        case Symbol::Num_22: return "22";
+        case Symbol::StarDiamond: return "star-diamond";
+        case Symbol::Num_122: return "122";
+        case Symbol::StarDiamondOpen: return "star-diamond-open";
+        case Symbol::Num_222: return "222";
+        case Symbol::StarDiamondDot: return "star-diamond-dot";
+        case Symbol::Num_322: return "322";
+        case Symbol::StarDiamondOpenDot: return "star-diamond-open-dot";
+        case Symbol::Num_23: return "23";
+        case Symbol::DiamondTall: return "diamond-tall";
+        case Symbol::Num_123: return "123";
+        case Symbol::DiamondTallOpen: return "diamond-tall-open";
+        case Symbol::Num_223: return "223";
+        case Symbol::DiamondTallDot: return "diamond-tall-dot";
+        case Symbol::Num_323: return "323";
+        case Symbol::DiamondTallOpenDot: return "diamond-tall-open-dot";
+        case Symbol::Num_24: return "24";
+        case Symbol::DiamondWide: return "diamond-wide";
+        case Symbol::Num_124: return "124";
+        case Symbol::DiamondWideOpen: return "diamond-wide-open";
+        case Symbol::Num_224: return "224";
+        case Symbol::DiamondWideDot: return "diamond-wide-dot";
+        case Symbol::Num_324: return "324";
+        case Symbol::DiamondWideOpenDot: return "diamond-wide-open-dot";
+        case Symbol::Num_25: return "25";
+        case Symbol::Hourglass: return "hourglass";
+        case Symbol::Num_125: return "125";
+        case Symbol::HourglassOpen: return "hourglass-open";
+        case Symbol::Num_26: return "26";
+        case Symbol::Bowtie: return "bowtie";
+        case Symbol::Num_126: return "126";
+        case Symbol::BowtieOpen: return "bowtie-open";
+        case Symbol::Num_27: return "27";
+        case Symbol::CircleCross: return "circle-cross";
+        case Symbol::Num_127: return "127";
+        case Symbol::CircleCrossOpen: return "circle-cross-open";
+        case Symbol::Num_28: return "28";
+        case Symbol::CircleX: return "circle-x";
+        case Symbol::Num_128: return "128";
+        case Symbol::CircleXOpen: return "circle-x-open";
+        case Symbol::Num_29: return "29";
+        case Symbol::SquareCross: return "square-cross";
+        case Symbol::Num_129: return "129";
+        case Symbol::SquareCrossOpen: return "square-cross-open";
+        case Symbol::Num_30: return "30";
+        case Symbol::SquareX: return "square-x";
+        case Symbol::Num_130: return "130";
+        case Symbol::SquareXOpen: return "square-x-open";
+        case Symbol::Num_31: return "31";
+        case Symbol::DiamondCross: return "diamond-cross";
+        case Symbol::Num_131: return "131";
+        case Symbol::DiamondCrossOpen: return "diamond-cross-open";
+        case Symbol::Num_32: return "32";
+        case Symbol::DiamondX: return "diamond-x";
+        case Symbol::Num_132: return "132";
+        case Symbol::DiamondXOpen: return "diamond-x-open";
+        case Symbol::Num_33: return "33";
+        case Symbol::CrossThin: return "cross-thin";
+        case Symbol::Num_133: return "133";
+        case Symbol::CrossThinOpen: return "cross-thin-open";
+        case Symbol::Num_34: return "34";
+        case Symbol::XThin: return "x-thin";
+        case Symbol::Num_134: return "134";
+        case Symbol::XThinOpen: return "x-thin-open";
+        case Symbol::Num_35: return "35";
+        case Symbol::Asterisk: return "asterisk";
+        case Symbol::Num_135: return "135";
+        case Symbol::AsteriskOpen: return "asterisk-open";
+        case Symbol::Num_36: return "36";
+        case Symbol::Hash: return "hash";
+        case Symbol::Num_136: return "136";
+        case Symbol::HashOpen: return "hash-open";
+        case Symbol::Num_236: return "236";
+        case Symbol::HashDot: return "hash-dot";
+        case Symbol::Num_336: return "336";
+        case Symbol::HashOpenDot: return "hash-open-dot";
+        case Symbol::Num_37: return "37";
+        case Symbol::YUp: return "y-up";
+        case Symbol::Num_137: return "137";
+        case Symbol::YUpOpen: return "y-up-open";
+        case Symbol::Num_38: return "38";
+        case Symbol::YDown: return "y-down";
+        case Symbol::Num_138: return "138";
+        case Symbol::YDownOpen: return "y-down-open";
+        case Symbol::Num_39: return "39";
+        case Symbol::YLeft: return "y-left";
+        case Symbol::Num_139: return "139";
+        case Symbol::YLeftOpen: return "y-left-open";
+        case Symbol::Num_40: return "40";
+        case Symbol::YRight: return "y-right";
+        case Symbol::Num_140: return "140";
+        case Symbol::YRightOpen: return "y-right-open";
+        case Symbol::Num_41: return "41";
+        case Symbol::LineEw: return "line-ew";
+        case Symbol::Num_141: return "141";
+        case Symbol::LineEwOpen: return "line-ew-open";
+        case Symbol::Num_42: return "42";
+        case Symbol::LineNs: return "line-ns";
+        case Symbol::Num_142: return "142";
+        case Symbol::LineNsOpen: return "line-ns-open";
+        case Symbol::Num_43: return "43";
+        case Symbol::LineNe: return "line-ne";
+        case Symbol::Num_143: return "143";
+        case Symbol::LineNeOpen: return "line-ne-open";
+        case Symbol::Num_44: return "44";
+        case Symbol::LineNw: return "line-nw";
+        case Symbol::Num_144: return "144";
+        case Symbol::LineNwOpen: return "line-nw-open";
+        case Symbol::Num_45: return "45";
+        case Symbol::ArrowUp: return "arrow-up";
+        case Symbol::Num_145: return "145";
+        case Symbol::ArrowUpOpen: return "arrow-up-open";
+        case Symbol::Num_46: return "46";
+        case Symbol::ArrowDown: return "arrow-down";
+        case Symbol::Num_146: return "146";
+        case Symbol::ArrowDownOpen: return "arrow-down-open";
+        case Symbol::Num_47: return "47";
+        case Symbol::ArrowLeft: return "arrow-left";
+        case Symbol::Num_147: return "147";
+        case Symbol::ArrowLeftOpen: return "arrow-left-open";
+        case Symbol::Num_48: return "48";
+        case Symbol::ArrowRight: return "arrow-right";
+        case Symbol::Num_148: return "148";
+        case Symbol::ArrowRightOpen: return "arrow-right-open";
+        case Symbol::Num_49: return "49";
+        case Symbol::ArrowBarUp: return "arrow-bar-up";
+        case Symbol::Num_149: return "149";
+        case Symbol::ArrowBarUpOpen: return "arrow-bar-up-open";
+        case Symbol::Num_50: return "50";
+        case Symbol::ArrowBarDown: return "arrow-bar-down";
+        case Symbol::Num_150: return "150";
+        case Symbol::ArrowBarDownOpen: return "arrow-bar-down-open";
+        case Symbol::Num_51: return "51";
+        case Symbol::ArrowBarLeft: return "arrow-bar-left";
+        case Symbol::Num_151: return "151";
+        case Symbol::ArrowBarLeftOpen: return "arrow-bar-left-open";
+        case Symbol::Num_52: return "52";
+        case Symbol::ArrowBarRight: return "arrow-bar-right";
+        case Symbol::Num_152: return "152";
+        case Symbol::ArrowBarRightOpen: return "arrow-bar-right-open";
+        case Symbol::Num_53: return "53";
+        case Symbol::Arrow: return "arrow";
+        case Symbol::Num_153: return "153";
+        case Symbol::ArrowOpen: return "arrow-open";
+        case Symbol::Num_54: return "54";
+        case Symbol::ArrowWide: return "arrow-wide";
+        case Symbol::Num_154: return "154";
+        case Symbol::ArrowWideOpen: return "arrow-wide-open";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};

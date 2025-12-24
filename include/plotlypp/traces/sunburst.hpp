@@ -29,23 +29,23 @@ class Sunburst : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Branchvalues {
-        REMAINDER,
-        TOTAL,
+        Remainder,
+        Total,
     };
     static std::string to_string(Branchvalues e);
 
     enum class Insidetextorientation {
-        HORIZONTAL,
-        RADIAL,
-        TANGENTIAL,
-        AUTO,
+        Horizontal,
+        Radial,
+        Tangential,
+        Auto,
     };
     static std::string to_string(Insidetextorientation e);
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
@@ -82,7 +82,7 @@ class Sunburst : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sunburst& customdata(std::vector<T> f);
+    Sunburst& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -105,7 +105,7 @@ class Sunburst : public Trace {
     Sunburst& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst& hoverinfo(Callable&& c);
-    Sunburst& hoverinfo(std::vector<std::string> f);
+    Sunburst& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Sunburst& hoverinfosrc(std::string f);
@@ -133,7 +133,7 @@ class Sunburst : public Trace {
     Sunburst& hovertemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst& hovertemplate(Callable&& c);
-    Sunburst& hovertemplate(std::vector<std::string> f);
+    Sunburst& hovertemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Sunburst& hovertemplatesrc(std::string f);
@@ -146,7 +146,7 @@ class Sunburst : public Trace {
     Sunburst& hovertext(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst& hovertext(Callable&& c);
-    Sunburst& hovertext(std::vector<std::string> f);
+    Sunburst& hovertext(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Sunburst& hovertextsrc(std::string f);
@@ -156,7 +156,7 @@ class Sunburst : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sunburst& ids(std::vector<T> f);
+    Sunburst& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -182,7 +182,7 @@ class Sunburst : public Trace {
 
     // Sets the labels of each of the sectors.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sunburst& labels(std::vector<T> f);
+    Sunburst& labels(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -250,7 +250,7 @@ class Sunburst : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Sunburst& meta(Callable&& c);
     template <typename T>
-    Sunburst& meta(std::vector<T> f);
+    Sunburst& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Sunburst& metasrc(std::string f);
@@ -278,7 +278,7 @@ class Sunburst : public Trace {
     // in the hierarchy. If `ids` is filled, `parents` items are understood to be "ids" themselves. When `ids` is not
     // set, plotly attempts to find matching items in `labels`, but beware they must be unique.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sunburst& parents(std::vector<T> f);
+    Sunburst& parents(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -311,7 +311,7 @@ class Sunburst : public Trace {
     // be seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will
     // be seen in the hover labels.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sunburst& text(std::vector<T> f);
+    Sunburst& text(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -346,7 +346,7 @@ class Sunburst : public Trace {
     Sunburst& texttemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst& texttemplate(Callable&& c);
-    Sunburst& texttemplate(std::vector<std::string> f);
+    Sunburst& texttemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `texttemplate`.
     Sunburst& texttemplatesrc(std::string f);
@@ -375,7 +375,7 @@ class Sunburst : public Trace {
     // Sets the values associated with each of the sectors. Use with `branchvalues` to determine how the values are
     // summed.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sunburst& values(std::vector<T> f);
+    Sunburst& values(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -409,12 +409,12 @@ class Sunburst::Domain {
     Sunburst::Domain& row(Callable&& c);
 
     // Sets the horizontal domain of this sunburst trace (in plot fraction).
-    Sunburst::Domain& x(std::vector<double> f);
+    Sunburst::Domain& x(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Sunburst::Domain& x(Callable&& c);
 
     // Sets the vertical domain of this sunburst trace (in plot fraction).
-    Sunburst::Domain& y(std::vector<double> f);
+    Sunburst::Domain& y(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Sunburst::Domain& y(Callable&& c);
 
@@ -429,9 +429,9 @@ class Sunburst::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -453,7 +453,7 @@ class Sunburst::Hoverlabel {
     Sunburst::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst::Hoverlabel& bgcolor(Callable&& c);
-    Sunburst::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Sunburst::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Sunburst::Hoverlabel& bgcolorsrc(std::string f);
@@ -464,7 +464,7 @@ class Sunburst::Hoverlabel {
     Sunburst::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst::Hoverlabel& bordercolor(Callable&& c);
-    Sunburst::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Sunburst::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Sunburst::Hoverlabel& bordercolorsrc(std::string f);
@@ -483,7 +483,7 @@ class Sunburst::Hoverlabel {
     Sunburst::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Sunburst::Hoverlabel& namelength(Callable&& c);
-    Sunburst::Hoverlabel& namelength(std::vector<int> f);
+    Sunburst::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Sunburst::Hoverlabel& namelengthsrc(std::string f);
@@ -502,33 +502,33 @@ class Sunburst::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Sunburst::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst::Hoverlabel::Font& color(Callable&& c);
-    Sunburst::Hoverlabel::Font& color(std::vector<std::string> f);
+    Sunburst::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sunburst::Hoverlabel::Font& colorsrc(std::string f);
@@ -545,7 +545,7 @@ class Sunburst::Hoverlabel::Font {
     Sunburst::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst::Hoverlabel::Font& family(Callable&& c);
-    Sunburst::Hoverlabel::Font& family(std::vector<std::string> f);
+    Sunburst::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Sunburst::Hoverlabel::Font& familysrc(std::string f);
@@ -560,7 +560,7 @@ class Sunburst::Hoverlabel::Font {
     Sunburst::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst::Hoverlabel::Font& lineposition(Callable&& c);
-    Sunburst::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Sunburst::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Sunburst::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -572,7 +572,7 @@ class Sunburst::Hoverlabel::Font {
     Sunburst::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst::Hoverlabel::Font& shadow(Callable&& c);
-    Sunburst::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Sunburst::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Sunburst::Hoverlabel::Font& shadowsrc(std::string f);
@@ -582,7 +582,7 @@ class Sunburst::Hoverlabel::Font {
     Sunburst::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Sunburst::Hoverlabel::Font& size(Callable&& c);
-    Sunburst::Hoverlabel::Font& size(std::vector<double> f);
+    Sunburst::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Sunburst::Hoverlabel::Font& sizesrc(std::string f);
@@ -624,7 +624,7 @@ class Sunburst::Hoverlabel::Font {
     Sunburst::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Sunburst::Hoverlabel::Font& weight(Callable&& c);
-    Sunburst::Hoverlabel::Font& weight(std::vector<int> f);
+    Sunburst::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Sunburst::Hoverlabel::Font& weightsrc(std::string f);
@@ -643,33 +643,33 @@ class Sunburst::Insidetextfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Sunburst::Insidetextfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst::Insidetextfont& color(Callable&& c);
-    Sunburst::Insidetextfont& color(std::vector<std::string> f);
+    Sunburst::Insidetextfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sunburst::Insidetextfont& colorsrc(std::string f);
@@ -686,7 +686,7 @@ class Sunburst::Insidetextfont {
     Sunburst::Insidetextfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst::Insidetextfont& family(Callable&& c);
-    Sunburst::Insidetextfont& family(std::vector<std::string> f);
+    Sunburst::Insidetextfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Sunburst::Insidetextfont& familysrc(std::string f);
@@ -701,7 +701,7 @@ class Sunburst::Insidetextfont {
     Sunburst::Insidetextfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst::Insidetextfont& lineposition(Callable&& c);
-    Sunburst::Insidetextfont& lineposition(std::vector<std::string> f);
+    Sunburst::Insidetextfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Sunburst::Insidetextfont& linepositionsrc(std::string f);
@@ -713,7 +713,7 @@ class Sunburst::Insidetextfont {
     Sunburst::Insidetextfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst::Insidetextfont& shadow(Callable&& c);
-    Sunburst::Insidetextfont& shadow(std::vector<std::string> f);
+    Sunburst::Insidetextfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Sunburst::Insidetextfont& shadowsrc(std::string f);
@@ -723,7 +723,7 @@ class Sunburst::Insidetextfont {
     Sunburst::Insidetextfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Sunburst::Insidetextfont& size(Callable&& c);
-    Sunburst::Insidetextfont& size(std::vector<double> f);
+    Sunburst::Insidetextfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Sunburst::Insidetextfont& sizesrc(std::string f);
@@ -765,7 +765,7 @@ class Sunburst::Insidetextfont {
     Sunburst::Insidetextfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Sunburst::Insidetextfont& weight(Callable&& c);
-    Sunburst::Insidetextfont& weight(std::vector<int> f);
+    Sunburst::Insidetextfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Sunburst::Insidetextfont& weightsrc(std::string f);
@@ -822,26 +822,26 @@ class Sunburst::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -960,7 +960,7 @@ class Sunburst::Marker {
     // Sets the color of each sector of this trace. If not specified, the default trace color set is used to pick the
     // sector colors.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sunburst::Marker& colors(std::vector<T> f);
+    Sunburst::Marker& colors(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -973,7 +973,7 @@ class Sunburst::Marker {
     // Alternatively, `colorscale` may be a palette name string of the following list:
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Sunburst::Marker& colorscale(std::string f);
-    Sunburst::Marker& colorscale(std::vector<std::pair<double, std::string>> f);
+    Sunburst::Marker& colorscale(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -1017,17 +1017,17 @@ class Sunburst::Marker::Colorbar {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Lenmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Lenmode e);
 
@@ -1038,93 +1038,93 @@ class Sunburst::Marker::Colorbar {
     static std::string to_string(Orientation e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Thicknessmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Thicknessmode e);
 
     enum class Ticklabeloverflow {
-        ALLOW,
-        HIDE_PAST_DIV,
-        HIDE_PAST_DOMAIN,
+        Allow,
+        HidePastDiv,
+        HidePastDomain,
     };
     static std::string to_string(Ticklabeloverflow e);
 
     enum class Ticklabelposition {
-        OUTSIDE,
-        INSIDE,
-        OUTSIDE_TOP,
-        INSIDE_TOP,
-        OUTSIDE_LEFT,
-        INSIDE_LEFT,
-        OUTSIDE_RIGHT,
-        INSIDE_RIGHT,
-        OUTSIDE_BOTTOM,
-        INSIDE_BOTTOM,
+        Outside,
+        Inside,
+        OutsideTop,
+        InsideTop,
+        OutsideLeft,
+        InsideLeft,
+        OutsideRight,
+        InsideRight,
+        OutsideBottom,
+        InsideBottom,
     };
     static std::string to_string(Ticklabelposition e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Xanchor {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Xref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Xref e);
 
     enum class Yanchor {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
     enum class Yref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Yref e);
 
@@ -1336,7 +1336,7 @@ class Sunburst::Marker::Colorbar {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sunburst::Marker::Colorbar& ticktext(std::vector<T> f);
+    Sunburst::Marker::Colorbar& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1350,7 +1350,7 @@ class Sunburst::Marker::Colorbar {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Sunburst::Marker::Colorbar& tickvals(std::vector<T> f);
+    Sunburst::Marker::Colorbar& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1426,26 +1426,26 @@ class Sunburst::Marker::Colorbar::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1529,7 +1529,7 @@ class Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Sunburst::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -1571,9 +1571,9 @@ class Sunburst::Marker::Colorbar::Title {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
-        RIGHT,
-        TOP,
-        BOTTOM,
+        Right,
+        Top,
+        Bottom,
     };
     static std::string to_string(Side e);
 
@@ -1606,26 +1606,26 @@ class Sunburst::Marker::Colorbar::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1695,7 +1695,7 @@ class Sunburst::Marker::Line {
     Sunburst::Marker::Line& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst::Marker::Line& color(Callable&& c);
-    Sunburst::Marker::Line& color(std::vector<std::string> f);
+    Sunburst::Marker::Line& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sunburst::Marker::Line& colorsrc(std::string f);
@@ -1706,7 +1706,7 @@ class Sunburst::Marker::Line {
     Sunburst::Marker::Line& width(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Sunburst::Marker::Line& width(Callable&& c);
-    Sunburst::Marker::Line& width(std::vector<double> f);
+    Sunburst::Marker::Line& width(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `width`.
     Sunburst::Marker::Line& widthsrc(std::string f);
@@ -1725,8 +1725,8 @@ class Sunburst::Marker::Pattern {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Fillmode {
-        REPLACE,
-        OVERLAY,
+        Replace,
+        Overlay,
     };
     static std::string to_string(Fillmode e);
 
@@ -1735,7 +1735,7 @@ class Sunburst::Marker::Pattern {
     Sunburst::Marker::Pattern& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst::Marker::Pattern& bgcolor(Callable&& c);
-    Sunburst::Marker::Pattern& bgcolor(std::vector<std::string> f);
+    Sunburst::Marker::Pattern& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Sunburst::Marker::Pattern& bgcolorsrc(std::string f);
@@ -1747,7 +1747,7 @@ class Sunburst::Marker::Pattern {
     Sunburst::Marker::Pattern& fgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst::Marker::Pattern& fgcolor(Callable&& c);
-    Sunburst::Marker::Pattern& fgcolor(std::vector<std::string> f);
+    Sunburst::Marker::Pattern& fgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `fgcolor`.
     Sunburst::Marker::Pattern& fgcolorsrc(std::string f);
@@ -1768,7 +1768,7 @@ class Sunburst::Marker::Pattern {
     Sunburst::Marker::Pattern& shape(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst::Marker::Pattern& shape(Callable&& c);
-    Sunburst::Marker::Pattern& shape(std::vector<std::string> f);
+    Sunburst::Marker::Pattern& shape(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shape`.
     Sunburst::Marker::Pattern& shapesrc(std::string f);
@@ -1780,7 +1780,7 @@ class Sunburst::Marker::Pattern {
     Sunburst::Marker::Pattern& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Sunburst::Marker::Pattern& size(Callable&& c);
-    Sunburst::Marker::Pattern& size(std::vector<double> f);
+    Sunburst::Marker::Pattern& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Sunburst::Marker::Pattern& sizesrc(std::string f);
@@ -1793,7 +1793,7 @@ class Sunburst::Marker::Pattern {
     Sunburst::Marker::Pattern& solidity(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Sunburst::Marker::Pattern& solidity(Callable&& c);
-    Sunburst::Marker::Pattern& solidity(std::vector<double> f);
+    Sunburst::Marker::Pattern& solidity(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `solidity`.
     Sunburst::Marker::Pattern& soliditysrc(std::string f);
@@ -1814,33 +1814,33 @@ class Sunburst::Outsidetextfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Sunburst::Outsidetextfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst::Outsidetextfont& color(Callable&& c);
-    Sunburst::Outsidetextfont& color(std::vector<std::string> f);
+    Sunburst::Outsidetextfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sunburst::Outsidetextfont& colorsrc(std::string f);
@@ -1857,7 +1857,7 @@ class Sunburst::Outsidetextfont {
     Sunburst::Outsidetextfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst::Outsidetextfont& family(Callable&& c);
-    Sunburst::Outsidetextfont& family(std::vector<std::string> f);
+    Sunburst::Outsidetextfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Sunburst::Outsidetextfont& familysrc(std::string f);
@@ -1872,7 +1872,7 @@ class Sunburst::Outsidetextfont {
     Sunburst::Outsidetextfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst::Outsidetextfont& lineposition(Callable&& c);
-    Sunburst::Outsidetextfont& lineposition(std::vector<std::string> f);
+    Sunburst::Outsidetextfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Sunburst::Outsidetextfont& linepositionsrc(std::string f);
@@ -1884,7 +1884,7 @@ class Sunburst::Outsidetextfont {
     Sunburst::Outsidetextfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst::Outsidetextfont& shadow(Callable&& c);
-    Sunburst::Outsidetextfont& shadow(std::vector<std::string> f);
+    Sunburst::Outsidetextfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Sunburst::Outsidetextfont& shadowsrc(std::string f);
@@ -1894,7 +1894,7 @@ class Sunburst::Outsidetextfont {
     Sunburst::Outsidetextfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Sunburst::Outsidetextfont& size(Callable&& c);
-    Sunburst::Outsidetextfont& size(std::vector<double> f);
+    Sunburst::Outsidetextfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Sunburst::Outsidetextfont& sizesrc(std::string f);
@@ -1936,7 +1936,7 @@ class Sunburst::Outsidetextfont {
     Sunburst::Outsidetextfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Sunburst::Outsidetextfont& weight(Callable&& c);
-    Sunburst::Outsidetextfont& weight(std::vector<int> f);
+    Sunburst::Outsidetextfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Sunburst::Outsidetextfont& weightsrc(std::string f);
@@ -1993,33 +1993,33 @@ class Sunburst::Textfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Sunburst::Textfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst::Textfont& color(Callable&& c);
-    Sunburst::Textfont& color(std::vector<std::string> f);
+    Sunburst::Textfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Sunburst::Textfont& colorsrc(std::string f);
@@ -2036,7 +2036,7 @@ class Sunburst::Textfont {
     Sunburst::Textfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst::Textfont& family(Callable&& c);
-    Sunburst::Textfont& family(std::vector<std::string> f);
+    Sunburst::Textfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Sunburst::Textfont& familysrc(std::string f);
@@ -2051,7 +2051,7 @@ class Sunburst::Textfont {
     Sunburst::Textfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst::Textfont& lineposition(Callable&& c);
-    Sunburst::Textfont& lineposition(std::vector<std::string> f);
+    Sunburst::Textfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Sunburst::Textfont& linepositionsrc(std::string f);
@@ -2063,7 +2063,7 @@ class Sunburst::Textfont {
     Sunburst::Textfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Sunburst::Textfont& shadow(Callable&& c);
-    Sunburst::Textfont& shadow(std::vector<std::string> f);
+    Sunburst::Textfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Sunburst::Textfont& shadowsrc(std::string f);
@@ -2073,7 +2073,7 @@ class Sunburst::Textfont {
     Sunburst::Textfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Sunburst::Textfont& size(Callable&& c);
-    Sunburst::Textfont& size(std::vector<double> f);
+    Sunburst::Textfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Sunburst::Textfont& sizesrc(std::string f);
@@ -2115,7 +2115,7 @@ class Sunburst::Textfont {
     Sunburst::Textfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Sunburst::Textfont& weight(Callable&& c);
-    Sunburst::Textfont& weight(std::vector<int> f);
+    Sunburst::Textfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Sunburst::Textfont& weightsrc(std::string f);

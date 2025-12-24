@@ -29,28 +29,28 @@ class Icicle : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Branchvalues {
-        REMAINDER,
-        TOTAL,
+        Remainder,
+        Total,
     };
     static std::string to_string(Branchvalues e);
 
     enum class Textposition {
-        TOP_LEFT,
-        TOP_CENTER,
-        TOP_RIGHT,
-        MIDDLE_LEFT,
-        MIDDLE_CENTER,
-        MIDDLE_RIGHT,
-        BOTTOM_LEFT,
-        BOTTOM_CENTER,
-        BOTTOM_RIGHT,
+        TopLeft,
+        TopCenter,
+        TopRight,
+        MiddleLeft,
+        MiddleCenter,
+        MiddleRight,
+        BottomLeft,
+        BottomCenter,
+        BottomRight,
     };
     static std::string to_string(Textposition e);
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
@@ -89,7 +89,7 @@ class Icicle : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Icicle& customdata(std::vector<T> f);
+    Icicle& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -112,7 +112,7 @@ class Icicle : public Trace {
     Icicle& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle& hoverinfo(Callable&& c);
-    Icicle& hoverinfo(std::vector<std::string> f);
+    Icicle& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Icicle& hoverinfosrc(std::string f);
@@ -140,7 +140,7 @@ class Icicle : public Trace {
     Icicle& hovertemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle& hovertemplate(Callable&& c);
-    Icicle& hovertemplate(std::vector<std::string> f);
+    Icicle& hovertemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Icicle& hovertemplatesrc(std::string f);
@@ -153,7 +153,7 @@ class Icicle : public Trace {
     Icicle& hovertext(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle& hovertext(Callable&& c);
-    Icicle& hovertext(std::vector<std::string> f);
+    Icicle& hovertext(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Icicle& hovertextsrc(std::string f);
@@ -163,7 +163,7 @@ class Icicle : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Icicle& ids(std::vector<T> f);
+    Icicle& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -181,7 +181,7 @@ class Icicle : public Trace {
 
     // Sets the labels of each of the sectors.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Icicle& labels(std::vector<T> f);
+    Icicle& labels(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -249,7 +249,7 @@ class Icicle : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Icicle& meta(Callable&& c);
     template <typename T>
-    Icicle& meta(std::vector<T> f);
+    Icicle& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Icicle& metasrc(std::string f);
@@ -277,7 +277,7 @@ class Icicle : public Trace {
     // in the hierarchy. If `ids` is filled, `parents` items are understood to be "ids" themselves. When `ids` is not
     // set, plotly attempts to find matching items in `labels`, but beware they must be unique.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Icicle& parents(std::vector<T> f);
+    Icicle& parents(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -309,7 +309,7 @@ class Icicle : public Trace {
     // be seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will
     // be seen in the hover labels.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Icicle& text(std::vector<T> f);
+    Icicle& text(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -348,7 +348,7 @@ class Icicle : public Trace {
     Icicle& texttemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle& texttemplate(Callable&& c);
-    Icicle& texttemplate(std::vector<std::string> f);
+    Icicle& texttemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `texttemplate`.
     Icicle& texttemplatesrc(std::string f);
@@ -381,7 +381,7 @@ class Icicle : public Trace {
     // Sets the values associated with each of the sectors. Use with `branchvalues` to determine how the values are
     // summed.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Icicle& values(std::vector<T> f);
+    Icicle& values(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -415,12 +415,12 @@ class Icicle::Domain {
     Icicle::Domain& row(Callable&& c);
 
     // Sets the horizontal domain of this icicle trace (in plot fraction).
-    Icicle::Domain& x(std::vector<double> f);
+    Icicle::Domain& x(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Icicle::Domain& x(Callable&& c);
 
     // Sets the vertical domain of this icicle trace (in plot fraction).
-    Icicle::Domain& y(std::vector<double> f);
+    Icicle::Domain& y(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Icicle::Domain& y(Callable&& c);
 
@@ -435,9 +435,9 @@ class Icicle::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -459,7 +459,7 @@ class Icicle::Hoverlabel {
     Icicle::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Hoverlabel& bgcolor(Callable&& c);
-    Icicle::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Icicle::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Icicle::Hoverlabel& bgcolorsrc(std::string f);
@@ -470,7 +470,7 @@ class Icicle::Hoverlabel {
     Icicle::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Hoverlabel& bordercolor(Callable&& c);
-    Icicle::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Icicle::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Icicle::Hoverlabel& bordercolorsrc(std::string f);
@@ -489,7 +489,7 @@ class Icicle::Hoverlabel {
     Icicle::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Icicle::Hoverlabel& namelength(Callable&& c);
-    Icicle::Hoverlabel& namelength(std::vector<int> f);
+    Icicle::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Icicle::Hoverlabel& namelengthsrc(std::string f);
@@ -508,33 +508,33 @@ class Icicle::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Icicle::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Hoverlabel::Font& color(Callable&& c);
-    Icicle::Hoverlabel::Font& color(std::vector<std::string> f);
+    Icicle::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Icicle::Hoverlabel::Font& colorsrc(std::string f);
@@ -551,7 +551,7 @@ class Icicle::Hoverlabel::Font {
     Icicle::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Hoverlabel::Font& family(Callable&& c);
-    Icicle::Hoverlabel::Font& family(std::vector<std::string> f);
+    Icicle::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Icicle::Hoverlabel::Font& familysrc(std::string f);
@@ -566,7 +566,7 @@ class Icicle::Hoverlabel::Font {
     Icicle::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Hoverlabel::Font& lineposition(Callable&& c);
-    Icicle::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Icicle::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Icicle::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -578,7 +578,7 @@ class Icicle::Hoverlabel::Font {
     Icicle::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Hoverlabel::Font& shadow(Callable&& c);
-    Icicle::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Icicle::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Icicle::Hoverlabel::Font& shadowsrc(std::string f);
@@ -588,7 +588,7 @@ class Icicle::Hoverlabel::Font {
     Icicle::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Icicle::Hoverlabel::Font& size(Callable&& c);
-    Icicle::Hoverlabel::Font& size(std::vector<double> f);
+    Icicle::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Icicle::Hoverlabel::Font& sizesrc(std::string f);
@@ -630,7 +630,7 @@ class Icicle::Hoverlabel::Font {
     Icicle::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Icicle::Hoverlabel::Font& weight(Callable&& c);
-    Icicle::Hoverlabel::Font& weight(std::vector<int> f);
+    Icicle::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Icicle::Hoverlabel::Font& weightsrc(std::string f);
@@ -649,33 +649,33 @@ class Icicle::Insidetextfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Icicle::Insidetextfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Insidetextfont& color(Callable&& c);
-    Icicle::Insidetextfont& color(std::vector<std::string> f);
+    Icicle::Insidetextfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Icicle::Insidetextfont& colorsrc(std::string f);
@@ -692,7 +692,7 @@ class Icicle::Insidetextfont {
     Icicle::Insidetextfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Insidetextfont& family(Callable&& c);
-    Icicle::Insidetextfont& family(std::vector<std::string> f);
+    Icicle::Insidetextfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Icicle::Insidetextfont& familysrc(std::string f);
@@ -707,7 +707,7 @@ class Icicle::Insidetextfont {
     Icicle::Insidetextfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Insidetextfont& lineposition(Callable&& c);
-    Icicle::Insidetextfont& lineposition(std::vector<std::string> f);
+    Icicle::Insidetextfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Icicle::Insidetextfont& linepositionsrc(std::string f);
@@ -719,7 +719,7 @@ class Icicle::Insidetextfont {
     Icicle::Insidetextfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Insidetextfont& shadow(Callable&& c);
-    Icicle::Insidetextfont& shadow(std::vector<std::string> f);
+    Icicle::Insidetextfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Icicle::Insidetextfont& shadowsrc(std::string f);
@@ -729,7 +729,7 @@ class Icicle::Insidetextfont {
     Icicle::Insidetextfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Icicle::Insidetextfont& size(Callable&& c);
-    Icicle::Insidetextfont& size(std::vector<double> f);
+    Icicle::Insidetextfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Icicle::Insidetextfont& sizesrc(std::string f);
@@ -771,7 +771,7 @@ class Icicle::Insidetextfont {
     Icicle::Insidetextfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Icicle::Insidetextfont& weight(Callable&& c);
-    Icicle::Insidetextfont& weight(std::vector<int> f);
+    Icicle::Insidetextfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Icicle::Insidetextfont& weightsrc(std::string f);
@@ -828,26 +828,26 @@ class Icicle::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -966,7 +966,7 @@ class Icicle::Marker {
     // Sets the color of each sector of this trace. If not specified, the default trace color set is used to pick the
     // sector colors.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Icicle::Marker& colors(std::vector<T> f);
+    Icicle::Marker& colors(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -979,7 +979,7 @@ class Icicle::Marker {
     // Alternatively, `colorscale` may be a palette name string of the following list:
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Icicle::Marker& colorscale(std::string f);
-    Icicle::Marker& colorscale(std::vector<std::pair<double, std::string>> f);
+    Icicle::Marker& colorscale(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -1023,17 +1023,17 @@ class Icicle::Marker::Colorbar {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Lenmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Lenmode e);
 
@@ -1044,93 +1044,93 @@ class Icicle::Marker::Colorbar {
     static std::string to_string(Orientation e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Thicknessmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Thicknessmode e);
 
     enum class Ticklabeloverflow {
-        ALLOW,
-        HIDE_PAST_DIV,
-        HIDE_PAST_DOMAIN,
+        Allow,
+        HidePastDiv,
+        HidePastDomain,
     };
     static std::string to_string(Ticklabeloverflow e);
 
     enum class Ticklabelposition {
-        OUTSIDE,
-        INSIDE,
-        OUTSIDE_TOP,
-        INSIDE_TOP,
-        OUTSIDE_LEFT,
-        INSIDE_LEFT,
-        OUTSIDE_RIGHT,
-        INSIDE_RIGHT,
-        OUTSIDE_BOTTOM,
-        INSIDE_BOTTOM,
+        Outside,
+        Inside,
+        OutsideTop,
+        InsideTop,
+        OutsideLeft,
+        InsideLeft,
+        OutsideRight,
+        InsideRight,
+        OutsideBottom,
+        InsideBottom,
     };
     static std::string to_string(Ticklabelposition e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Xanchor {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Xref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Xref e);
 
     enum class Yanchor {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
     enum class Yref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Yref e);
 
@@ -1342,7 +1342,7 @@ class Icicle::Marker::Colorbar {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Icicle::Marker::Colorbar& ticktext(std::vector<T> f);
+    Icicle::Marker::Colorbar& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1356,7 +1356,7 @@ class Icicle::Marker::Colorbar {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Icicle::Marker::Colorbar& tickvals(std::vector<T> f);
+    Icicle::Marker::Colorbar& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1432,26 +1432,26 @@ class Icicle::Marker::Colorbar::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1535,7 +1535,7 @@ class Icicle::Marker::Colorbar::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Icicle::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Icicle::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Icicle::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -1577,9 +1577,9 @@ class Icicle::Marker::Colorbar::Title {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
-        RIGHT,
-        TOP,
-        BOTTOM,
+        Right,
+        Top,
+        Bottom,
     };
     static std::string to_string(Side e);
 
@@ -1612,26 +1612,26 @@ class Icicle::Marker::Colorbar::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1701,7 +1701,7 @@ class Icicle::Marker::Line {
     Icicle::Marker::Line& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Marker::Line& color(Callable&& c);
-    Icicle::Marker::Line& color(std::vector<std::string> f);
+    Icicle::Marker::Line& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Icicle::Marker::Line& colorsrc(std::string f);
@@ -1712,7 +1712,7 @@ class Icicle::Marker::Line {
     Icicle::Marker::Line& width(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Icicle::Marker::Line& width(Callable&& c);
-    Icicle::Marker::Line& width(std::vector<double> f);
+    Icicle::Marker::Line& width(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `width`.
     Icicle::Marker::Line& widthsrc(std::string f);
@@ -1731,8 +1731,8 @@ class Icicle::Marker::Pattern {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Fillmode {
-        REPLACE,
-        OVERLAY,
+        Replace,
+        Overlay,
     };
     static std::string to_string(Fillmode e);
 
@@ -1741,7 +1741,7 @@ class Icicle::Marker::Pattern {
     Icicle::Marker::Pattern& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Marker::Pattern& bgcolor(Callable&& c);
-    Icicle::Marker::Pattern& bgcolor(std::vector<std::string> f);
+    Icicle::Marker::Pattern& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Icicle::Marker::Pattern& bgcolorsrc(std::string f);
@@ -1753,7 +1753,7 @@ class Icicle::Marker::Pattern {
     Icicle::Marker::Pattern& fgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Marker::Pattern& fgcolor(Callable&& c);
-    Icicle::Marker::Pattern& fgcolor(std::vector<std::string> f);
+    Icicle::Marker::Pattern& fgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `fgcolor`.
     Icicle::Marker::Pattern& fgcolorsrc(std::string f);
@@ -1774,7 +1774,7 @@ class Icicle::Marker::Pattern {
     Icicle::Marker::Pattern& shape(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Marker::Pattern& shape(Callable&& c);
-    Icicle::Marker::Pattern& shape(std::vector<std::string> f);
+    Icicle::Marker::Pattern& shape(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shape`.
     Icicle::Marker::Pattern& shapesrc(std::string f);
@@ -1786,7 +1786,7 @@ class Icicle::Marker::Pattern {
     Icicle::Marker::Pattern& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Icicle::Marker::Pattern& size(Callable&& c);
-    Icicle::Marker::Pattern& size(std::vector<double> f);
+    Icicle::Marker::Pattern& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Icicle::Marker::Pattern& sizesrc(std::string f);
@@ -1799,7 +1799,7 @@ class Icicle::Marker::Pattern {
     Icicle::Marker::Pattern& solidity(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Icicle::Marker::Pattern& solidity(Callable&& c);
-    Icicle::Marker::Pattern& solidity(std::vector<double> f);
+    Icicle::Marker::Pattern& solidity(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `solidity`.
     Icicle::Marker::Pattern& soliditysrc(std::string f);
@@ -1820,33 +1820,33 @@ class Icicle::Outsidetextfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Icicle::Outsidetextfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Outsidetextfont& color(Callable&& c);
-    Icicle::Outsidetextfont& color(std::vector<std::string> f);
+    Icicle::Outsidetextfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Icicle::Outsidetextfont& colorsrc(std::string f);
@@ -1863,7 +1863,7 @@ class Icicle::Outsidetextfont {
     Icicle::Outsidetextfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Outsidetextfont& family(Callable&& c);
-    Icicle::Outsidetextfont& family(std::vector<std::string> f);
+    Icicle::Outsidetextfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Icicle::Outsidetextfont& familysrc(std::string f);
@@ -1878,7 +1878,7 @@ class Icicle::Outsidetextfont {
     Icicle::Outsidetextfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Outsidetextfont& lineposition(Callable&& c);
-    Icicle::Outsidetextfont& lineposition(std::vector<std::string> f);
+    Icicle::Outsidetextfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Icicle::Outsidetextfont& linepositionsrc(std::string f);
@@ -1890,7 +1890,7 @@ class Icicle::Outsidetextfont {
     Icicle::Outsidetextfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Outsidetextfont& shadow(Callable&& c);
-    Icicle::Outsidetextfont& shadow(std::vector<std::string> f);
+    Icicle::Outsidetextfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Icicle::Outsidetextfont& shadowsrc(std::string f);
@@ -1900,7 +1900,7 @@ class Icicle::Outsidetextfont {
     Icicle::Outsidetextfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Icicle::Outsidetextfont& size(Callable&& c);
-    Icicle::Outsidetextfont& size(std::vector<double> f);
+    Icicle::Outsidetextfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Icicle::Outsidetextfont& sizesrc(std::string f);
@@ -1942,7 +1942,7 @@ class Icicle::Outsidetextfont {
     Icicle::Outsidetextfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Icicle::Outsidetextfont& weight(Callable&& c);
-    Icicle::Outsidetextfont& weight(std::vector<int> f);
+    Icicle::Outsidetextfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Icicle::Outsidetextfont& weightsrc(std::string f);
@@ -1960,17 +1960,17 @@ class Icicle::Pathbar {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Edgeshape {
-        GT,
-        LT,
-        OR,
-        SLASH,
-        DOUBLEBACKSLASH,
+        Gt,
+        Lt,
+        Or,
+        Slash,
+        Doublebackslash,
     };
     static std::string to_string(Edgeshape e);
 
     enum class Side {
-        TOP,
-        BOTTOM,
+        Top,
+        Bottom,
     };
     static std::string to_string(Side e);
 
@@ -2013,33 +2013,33 @@ class Icicle::Pathbar::Textfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Icicle::Pathbar::Textfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Pathbar::Textfont& color(Callable&& c);
-    Icicle::Pathbar::Textfont& color(std::vector<std::string> f);
+    Icicle::Pathbar::Textfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Icicle::Pathbar::Textfont& colorsrc(std::string f);
@@ -2056,7 +2056,7 @@ class Icicle::Pathbar::Textfont {
     Icicle::Pathbar::Textfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Pathbar::Textfont& family(Callable&& c);
-    Icicle::Pathbar::Textfont& family(std::vector<std::string> f);
+    Icicle::Pathbar::Textfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Icicle::Pathbar::Textfont& familysrc(std::string f);
@@ -2071,7 +2071,7 @@ class Icicle::Pathbar::Textfont {
     Icicle::Pathbar::Textfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Pathbar::Textfont& lineposition(Callable&& c);
-    Icicle::Pathbar::Textfont& lineposition(std::vector<std::string> f);
+    Icicle::Pathbar::Textfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Icicle::Pathbar::Textfont& linepositionsrc(std::string f);
@@ -2083,7 +2083,7 @@ class Icicle::Pathbar::Textfont {
     Icicle::Pathbar::Textfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Pathbar::Textfont& shadow(Callable&& c);
-    Icicle::Pathbar::Textfont& shadow(std::vector<std::string> f);
+    Icicle::Pathbar::Textfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Icicle::Pathbar::Textfont& shadowsrc(std::string f);
@@ -2093,7 +2093,7 @@ class Icicle::Pathbar::Textfont {
     Icicle::Pathbar::Textfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Icicle::Pathbar::Textfont& size(Callable&& c);
-    Icicle::Pathbar::Textfont& size(std::vector<double> f);
+    Icicle::Pathbar::Textfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Icicle::Pathbar::Textfont& sizesrc(std::string f);
@@ -2135,7 +2135,7 @@ class Icicle::Pathbar::Textfont {
     Icicle::Pathbar::Textfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Icicle::Pathbar::Textfont& weight(Callable&& c);
-    Icicle::Pathbar::Textfont& weight(std::vector<int> f);
+    Icicle::Pathbar::Textfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Icicle::Pathbar::Textfont& weightsrc(std::string f);
@@ -2192,33 +2192,33 @@ class Icicle::Textfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Icicle::Textfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Textfont& color(Callable&& c);
-    Icicle::Textfont& color(std::vector<std::string> f);
+    Icicle::Textfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Icicle::Textfont& colorsrc(std::string f);
@@ -2235,7 +2235,7 @@ class Icicle::Textfont {
     Icicle::Textfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Textfont& family(Callable&& c);
-    Icicle::Textfont& family(std::vector<std::string> f);
+    Icicle::Textfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Icicle::Textfont& familysrc(std::string f);
@@ -2250,7 +2250,7 @@ class Icicle::Textfont {
     Icicle::Textfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Textfont& lineposition(Callable&& c);
-    Icicle::Textfont& lineposition(std::vector<std::string> f);
+    Icicle::Textfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Icicle::Textfont& linepositionsrc(std::string f);
@@ -2262,7 +2262,7 @@ class Icicle::Textfont {
     Icicle::Textfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Icicle::Textfont& shadow(Callable&& c);
-    Icicle::Textfont& shadow(std::vector<std::string> f);
+    Icicle::Textfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Icicle::Textfont& shadowsrc(std::string f);
@@ -2272,7 +2272,7 @@ class Icicle::Textfont {
     Icicle::Textfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Icicle::Textfont& size(Callable&& c);
-    Icicle::Textfont& size(std::vector<double> f);
+    Icicle::Textfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Icicle::Textfont& sizesrc(std::string f);
@@ -2314,7 +2314,7 @@ class Icicle::Textfont {
     Icicle::Textfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Icicle::Textfont& weight(Callable&& c);
-    Icicle::Textfont& weight(std::vector<int> f);
+    Icicle::Textfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Icicle::Textfont& weightsrc(std::string f);

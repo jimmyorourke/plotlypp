@@ -29,17 +29,17 @@ class Funnel : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Constraintext {
-        INSIDE,
-        OUTSIDE,
-        BOTH,
-        NONE,
+        Inside,
+        Outside,
+        Both,
+        None,
     };
     static std::string to_string(Constraintext e);
 
     enum class Insidetextanchor {
-        END,
-        MIDDLE,
-        START,
+        End,
+        Middle,
+        Start,
     };
     static std::string to_string(Insidetextanchor e);
 
@@ -50,31 +50,31 @@ class Funnel : public Trace {
     static std::string to_string(Orientation e);
 
     enum class Textposition {
-        INSIDE,
-        OUTSIDE,
-        AUTO,
-        NONE,
+        Inside,
+        Outside,
+        Auto,
+        None,
     };
     static std::string to_string(Textposition e);
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
     enum class Xperiodalignment {
-        START,
-        MIDDLE,
-        END,
+        Start,
+        Middle,
+        End,
     };
     static std::string to_string(Xperiodalignment e);
 
     enum class Yperiodalignment {
-        START,
-        MIDDLE,
-        END,
+        Start,
+        Middle,
+        End,
     };
     static std::string to_string(Yperiodalignment e);
 
@@ -113,7 +113,7 @@ class Funnel : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Funnel& customdata(std::vector<T> f);
+    Funnel& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -142,7 +142,7 @@ class Funnel : public Trace {
     Funnel& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel& hoverinfo(Callable&& c);
-    Funnel& hoverinfo(std::vector<std::string> f);
+    Funnel& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Funnel& hoverinfosrc(std::string f);
@@ -170,7 +170,7 @@ class Funnel : public Trace {
     Funnel& hovertemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel& hovertemplate(Callable&& c);
-    Funnel& hovertemplate(std::vector<std::string> f);
+    Funnel& hovertemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Funnel& hovertemplatesrc(std::string f);
@@ -183,7 +183,7 @@ class Funnel : public Trace {
     Funnel& hovertext(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel& hovertext(Callable&& c);
-    Funnel& hovertext(std::vector<std::string> f);
+    Funnel& hovertext(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Funnel& hovertextsrc(std::string f);
@@ -193,7 +193,7 @@ class Funnel : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Funnel& ids(std::vector<T> f);
+    Funnel& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -258,7 +258,7 @@ class Funnel : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Funnel& meta(Callable&& c);
     template <typename T>
-    Funnel& meta(std::vector<T> f);
+    Funnel& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Funnel& metasrc(std::string f);
@@ -321,7 +321,7 @@ class Funnel : public Trace {
     Funnel& text(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel& text(Callable&& c);
-    Funnel& text(std::vector<std::string> f);
+    Funnel& text(const std::vector<std::string>& f);
 
     // Sets the angle of the tick labels with respect to the bar. For example, a `tickangle` of -90 draws the tick
     // labels vertically. With *auto* the texts may automatically be rotated to fit with the maximum size in bars.
@@ -371,7 +371,7 @@ class Funnel : public Trace {
     Funnel& texttemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel& texttemplate(Callable&& c);
-    Funnel& texttemplate(std::vector<std::string> f);
+    Funnel& texttemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `texttemplate`.
     Funnel& texttemplatesrc(std::string f);
@@ -409,7 +409,7 @@ class Funnel : public Trace {
 
     // Sets the x coordinates.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Funnel& x(std::vector<T> f);
+    Funnel& x(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -465,7 +465,7 @@ class Funnel : public Trace {
 
     // Sets the y coordinates.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Funnel& y(std::vector<T> f);
+    Funnel& y(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -585,9 +585,9 @@ class Funnel::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -609,7 +609,7 @@ class Funnel::Hoverlabel {
     Funnel::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel::Hoverlabel& bgcolor(Callable&& c);
-    Funnel::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Funnel::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Funnel::Hoverlabel& bgcolorsrc(std::string f);
@@ -620,7 +620,7 @@ class Funnel::Hoverlabel {
     Funnel::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel::Hoverlabel& bordercolor(Callable&& c);
-    Funnel::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Funnel::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Funnel::Hoverlabel& bordercolorsrc(std::string f);
@@ -639,7 +639,7 @@ class Funnel::Hoverlabel {
     Funnel::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Funnel::Hoverlabel& namelength(Callable&& c);
-    Funnel::Hoverlabel& namelength(std::vector<int> f);
+    Funnel::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Funnel::Hoverlabel& namelengthsrc(std::string f);
@@ -658,33 +658,33 @@ class Funnel::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Funnel::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel::Hoverlabel::Font& color(Callable&& c);
-    Funnel::Hoverlabel::Font& color(std::vector<std::string> f);
+    Funnel::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Funnel::Hoverlabel::Font& colorsrc(std::string f);
@@ -701,7 +701,7 @@ class Funnel::Hoverlabel::Font {
     Funnel::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel::Hoverlabel::Font& family(Callable&& c);
-    Funnel::Hoverlabel::Font& family(std::vector<std::string> f);
+    Funnel::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Funnel::Hoverlabel::Font& familysrc(std::string f);
@@ -716,7 +716,7 @@ class Funnel::Hoverlabel::Font {
     Funnel::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel::Hoverlabel::Font& lineposition(Callable&& c);
-    Funnel::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Funnel::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Funnel::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -728,7 +728,7 @@ class Funnel::Hoverlabel::Font {
     Funnel::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel::Hoverlabel::Font& shadow(Callable&& c);
-    Funnel::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Funnel::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Funnel::Hoverlabel::Font& shadowsrc(std::string f);
@@ -738,7 +738,7 @@ class Funnel::Hoverlabel::Font {
     Funnel::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Funnel::Hoverlabel::Font& size(Callable&& c);
-    Funnel::Hoverlabel::Font& size(std::vector<double> f);
+    Funnel::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Funnel::Hoverlabel::Font& sizesrc(std::string f);
@@ -780,7 +780,7 @@ class Funnel::Hoverlabel::Font {
     Funnel::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Funnel::Hoverlabel::Font& weight(Callable&& c);
-    Funnel::Hoverlabel::Font& weight(std::vector<int> f);
+    Funnel::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Funnel::Hoverlabel::Font& weightsrc(std::string f);
@@ -799,33 +799,33 @@ class Funnel::Insidetextfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Funnel::Insidetextfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel::Insidetextfont& color(Callable&& c);
-    Funnel::Insidetextfont& color(std::vector<std::string> f);
+    Funnel::Insidetextfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Funnel::Insidetextfont& colorsrc(std::string f);
@@ -842,7 +842,7 @@ class Funnel::Insidetextfont {
     Funnel::Insidetextfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel::Insidetextfont& family(Callable&& c);
-    Funnel::Insidetextfont& family(std::vector<std::string> f);
+    Funnel::Insidetextfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Funnel::Insidetextfont& familysrc(std::string f);
@@ -857,7 +857,7 @@ class Funnel::Insidetextfont {
     Funnel::Insidetextfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel::Insidetextfont& lineposition(Callable&& c);
-    Funnel::Insidetextfont& lineposition(std::vector<std::string> f);
+    Funnel::Insidetextfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Funnel::Insidetextfont& linepositionsrc(std::string f);
@@ -869,7 +869,7 @@ class Funnel::Insidetextfont {
     Funnel::Insidetextfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel::Insidetextfont& shadow(Callable&& c);
-    Funnel::Insidetextfont& shadow(std::vector<std::string> f);
+    Funnel::Insidetextfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Funnel::Insidetextfont& shadowsrc(std::string f);
@@ -879,7 +879,7 @@ class Funnel::Insidetextfont {
     Funnel::Insidetextfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Funnel::Insidetextfont& size(Callable&& c);
-    Funnel::Insidetextfont& size(std::vector<double> f);
+    Funnel::Insidetextfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Funnel::Insidetextfont& sizesrc(std::string f);
@@ -921,7 +921,7 @@ class Funnel::Insidetextfont {
     Funnel::Insidetextfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Funnel::Insidetextfont& weight(Callable&& c);
-    Funnel::Insidetextfont& weight(std::vector<int> f);
+    Funnel::Insidetextfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Funnel::Insidetextfont& weightsrc(std::string f);
@@ -963,26 +963,26 @@ class Funnel::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1090,7 +1090,7 @@ class Funnel::Marker {
     Funnel::Marker& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel::Marker& color(Callable&& c);
-    Funnel::Marker& color(std::vector<std::string> f);
+    Funnel::Marker& color(const std::vector<std::string>& f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -1110,7 +1110,7 @@ class Funnel::Marker {
     // `marker.cmax`. Alternatively, `colorscale` may be a palette name string of the following list:
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Funnel::Marker& colorscale(std::string f);
-    Funnel::Marker& colorscale(std::vector<std::pair<double, std::string>> f);
+    Funnel::Marker& colorscale(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -1129,7 +1129,7 @@ class Funnel::Marker {
     Funnel::Marker& opacity(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Funnel::Marker& opacity(Callable&& c);
-    Funnel::Marker& opacity(std::vector<double> f);
+    Funnel::Marker& opacity(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `opacity`.
     Funnel::Marker& opacitysrc(std::string f);
@@ -1160,17 +1160,17 @@ class Funnel::Marker::Colorbar {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Lenmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Lenmode e);
 
@@ -1181,93 +1181,93 @@ class Funnel::Marker::Colorbar {
     static std::string to_string(Orientation e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Thicknessmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Thicknessmode e);
 
     enum class Ticklabeloverflow {
-        ALLOW,
-        HIDE_PAST_DIV,
-        HIDE_PAST_DOMAIN,
+        Allow,
+        HidePastDiv,
+        HidePastDomain,
     };
     static std::string to_string(Ticklabeloverflow e);
 
     enum class Ticklabelposition {
-        OUTSIDE,
-        INSIDE,
-        OUTSIDE_TOP,
-        INSIDE_TOP,
-        OUTSIDE_LEFT,
-        INSIDE_LEFT,
-        OUTSIDE_RIGHT,
-        INSIDE_RIGHT,
-        OUTSIDE_BOTTOM,
-        INSIDE_BOTTOM,
+        Outside,
+        Inside,
+        OutsideTop,
+        InsideTop,
+        OutsideLeft,
+        InsideLeft,
+        OutsideRight,
+        InsideRight,
+        OutsideBottom,
+        InsideBottom,
     };
     static std::string to_string(Ticklabelposition e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Xanchor {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Xref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Xref e);
 
     enum class Yanchor {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
     enum class Yref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Yref e);
 
@@ -1479,7 +1479,7 @@ class Funnel::Marker::Colorbar {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Funnel::Marker::Colorbar& ticktext(std::vector<T> f);
+    Funnel::Marker::Colorbar& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1493,7 +1493,7 @@ class Funnel::Marker::Colorbar {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Funnel::Marker::Colorbar& tickvals(std::vector<T> f);
+    Funnel::Marker::Colorbar& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1569,26 +1569,26 @@ class Funnel::Marker::Colorbar::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1672,7 +1672,7 @@ class Funnel::Marker::Colorbar::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Funnel::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Funnel::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Funnel::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -1714,9 +1714,9 @@ class Funnel::Marker::Colorbar::Title {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
-        RIGHT,
-        TOP,
-        BOTTOM,
+        Right,
+        Top,
+        Bottom,
     };
     static std::string to_string(Side e);
 
@@ -1749,26 +1749,26 @@ class Funnel::Marker::Colorbar::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1877,7 +1877,7 @@ class Funnel::Marker::Line {
     Funnel::Marker::Line& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel::Marker::Line& color(Callable&& c);
-    Funnel::Marker::Line& color(std::vector<std::string> f);
+    Funnel::Marker::Line& color(const std::vector<std::string>& f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -1894,7 +1894,7 @@ class Funnel::Marker::Line {
     // following list:
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Funnel::Marker::Line& colorscale(std::string f);
-    Funnel::Marker::Line& colorscale(std::vector<std::pair<double, std::string>> f);
+    Funnel::Marker::Line& colorscale(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -1916,7 +1916,7 @@ class Funnel::Marker::Line {
     Funnel::Marker::Line& width(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Funnel::Marker::Line& width(Callable&& c);
-    Funnel::Marker::Line& width(std::vector<double> f);
+    Funnel::Marker::Line& width(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `width`.
     Funnel::Marker::Line& widthsrc(std::string f);
@@ -1935,33 +1935,33 @@ class Funnel::Outsidetextfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Funnel::Outsidetextfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel::Outsidetextfont& color(Callable&& c);
-    Funnel::Outsidetextfont& color(std::vector<std::string> f);
+    Funnel::Outsidetextfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Funnel::Outsidetextfont& colorsrc(std::string f);
@@ -1978,7 +1978,7 @@ class Funnel::Outsidetextfont {
     Funnel::Outsidetextfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel::Outsidetextfont& family(Callable&& c);
-    Funnel::Outsidetextfont& family(std::vector<std::string> f);
+    Funnel::Outsidetextfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Funnel::Outsidetextfont& familysrc(std::string f);
@@ -1993,7 +1993,7 @@ class Funnel::Outsidetextfont {
     Funnel::Outsidetextfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel::Outsidetextfont& lineposition(Callable&& c);
-    Funnel::Outsidetextfont& lineposition(std::vector<std::string> f);
+    Funnel::Outsidetextfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Funnel::Outsidetextfont& linepositionsrc(std::string f);
@@ -2005,7 +2005,7 @@ class Funnel::Outsidetextfont {
     Funnel::Outsidetextfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel::Outsidetextfont& shadow(Callable&& c);
-    Funnel::Outsidetextfont& shadow(std::vector<std::string> f);
+    Funnel::Outsidetextfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Funnel::Outsidetextfont& shadowsrc(std::string f);
@@ -2015,7 +2015,7 @@ class Funnel::Outsidetextfont {
     Funnel::Outsidetextfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Funnel::Outsidetextfont& size(Callable&& c);
-    Funnel::Outsidetextfont& size(std::vector<double> f);
+    Funnel::Outsidetextfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Funnel::Outsidetextfont& sizesrc(std::string f);
@@ -2057,7 +2057,7 @@ class Funnel::Outsidetextfont {
     Funnel::Outsidetextfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Funnel::Outsidetextfont& weight(Callable&& c);
-    Funnel::Outsidetextfont& weight(std::vector<int> f);
+    Funnel::Outsidetextfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Funnel::Outsidetextfont& weightsrc(std::string f);
@@ -2098,33 +2098,33 @@ class Funnel::Textfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Funnel::Textfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel::Textfont& color(Callable&& c);
-    Funnel::Textfont& color(std::vector<std::string> f);
+    Funnel::Textfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Funnel::Textfont& colorsrc(std::string f);
@@ -2141,7 +2141,7 @@ class Funnel::Textfont {
     Funnel::Textfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel::Textfont& family(Callable&& c);
-    Funnel::Textfont& family(std::vector<std::string> f);
+    Funnel::Textfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Funnel::Textfont& familysrc(std::string f);
@@ -2156,7 +2156,7 @@ class Funnel::Textfont {
     Funnel::Textfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel::Textfont& lineposition(Callable&& c);
-    Funnel::Textfont& lineposition(std::vector<std::string> f);
+    Funnel::Textfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Funnel::Textfont& linepositionsrc(std::string f);
@@ -2168,7 +2168,7 @@ class Funnel::Textfont {
     Funnel::Textfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Funnel::Textfont& shadow(Callable&& c);
-    Funnel::Textfont& shadow(std::vector<std::string> f);
+    Funnel::Textfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Funnel::Textfont& shadowsrc(std::string f);
@@ -2178,7 +2178,7 @@ class Funnel::Textfont {
     Funnel::Textfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Funnel::Textfont& size(Callable&& c);
-    Funnel::Textfont& size(std::vector<double> f);
+    Funnel::Textfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Funnel::Textfont& sizesrc(std::string f);
@@ -2220,7 +2220,7 @@ class Funnel::Textfont {
     Funnel::Textfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Funnel::Textfont& weight(Callable&& c);
-    Funnel::Textfont& weight(std::vector<int> f);
+    Funnel::Textfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Funnel::Textfont& weightsrc(std::string f);

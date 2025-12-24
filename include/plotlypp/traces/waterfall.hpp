@@ -29,17 +29,17 @@ class Waterfall : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Constraintext {
-        INSIDE,
-        OUTSIDE,
-        BOTH,
-        NONE,
+        Inside,
+        Outside,
+        Both,
+        None,
     };
     static std::string to_string(Constraintext e);
 
     enum class Insidetextanchor {
-        END,
-        MIDDLE,
-        START,
+        End,
+        Middle,
+        Start,
     };
     static std::string to_string(Insidetextanchor e);
 
@@ -50,31 +50,31 @@ class Waterfall : public Trace {
     static std::string to_string(Orientation e);
 
     enum class Textposition {
-        INSIDE,
-        OUTSIDE,
-        AUTO,
-        NONE,
+        Inside,
+        Outside,
+        Auto,
+        None,
     };
     static std::string to_string(Textposition e);
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
     enum class Xperiodalignment {
-        START,
-        MIDDLE,
-        END,
+        Start,
+        Middle,
+        End,
     };
     static std::string to_string(Xperiodalignment e);
 
     enum class Yperiodalignment {
-        START,
-        MIDDLE,
-        END,
+        Start,
+        Middle,
+        End,
     };
     static std::string to_string(Yperiodalignment e);
 
@@ -120,7 +120,7 @@ class Waterfall : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Waterfall& customdata(std::vector<T> f);
+    Waterfall& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -153,7 +153,7 @@ class Waterfall : public Trace {
     Waterfall& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall& hoverinfo(Callable&& c);
-    Waterfall& hoverinfo(std::vector<std::string> f);
+    Waterfall& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Waterfall& hoverinfosrc(std::string f);
@@ -181,7 +181,7 @@ class Waterfall : public Trace {
     Waterfall& hovertemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall& hovertemplate(Callable&& c);
-    Waterfall& hovertemplate(std::vector<std::string> f);
+    Waterfall& hovertemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Waterfall& hovertemplatesrc(std::string f);
@@ -194,7 +194,7 @@ class Waterfall : public Trace {
     Waterfall& hovertext(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall& hovertext(Callable&& c);
-    Waterfall& hovertext(std::vector<std::string> f);
+    Waterfall& hovertext(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Waterfall& hovertextsrc(std::string f);
@@ -204,7 +204,7 @@ class Waterfall : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Waterfall& ids(std::vector<T> f);
+    Waterfall& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -262,7 +262,7 @@ class Waterfall : public Trace {
     // to use 'total' to compute the sums. Also 'absolute' could be applied to reset the computed total or to declare an
     // initial value where needed.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Waterfall& measure(std::vector<T> f);
+    Waterfall& measure(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -284,7 +284,7 @@ class Waterfall : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Waterfall& meta(Callable&& c);
     template <typename T>
-    Waterfall& meta(std::vector<T> f);
+    Waterfall& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Waterfall& metasrc(std::string f);
@@ -301,7 +301,7 @@ class Waterfall : public Trace {
     Waterfall& offset(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Waterfall& offset(Callable&& c);
-    Waterfall& offset(std::vector<double> f);
+    Waterfall& offset(const std::vector<double>& f);
 
     // Set several traces linked to the same position axis or matching axes to the same offsetgroup where bars of the
     // same position coordinate will line up.
@@ -351,7 +351,7 @@ class Waterfall : public Trace {
     Waterfall& text(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall& text(Callable&& c);
-    Waterfall& text(std::vector<std::string> f);
+    Waterfall& text(const std::vector<std::string>& f);
 
     // Sets the angle of the tick labels with respect to the bar. For example, a `tickangle` of -90 draws the tick
     // labels vertically. With *auto* the texts may automatically be rotated to fit with the maximum size in bars.
@@ -401,7 +401,7 @@ class Waterfall : public Trace {
     Waterfall& texttemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall& texttemplate(Callable&& c);
-    Waterfall& texttemplate(std::vector<std::string> f);
+    Waterfall& texttemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `texttemplate`.
     Waterfall& texttemplatesrc(std::string f);
@@ -440,7 +440,7 @@ class Waterfall : public Trace {
     Waterfall& width(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Waterfall& width(Callable&& c);
-    Waterfall& width(std::vector<double> f);
+    Waterfall& width(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `width`.
     Waterfall& widthsrc(std::string f);
@@ -449,7 +449,7 @@ class Waterfall : public Trace {
 
     // Sets the x coordinates.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Waterfall& x(std::vector<T> f);
+    Waterfall& x(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -505,7 +505,7 @@ class Waterfall : public Trace {
 
     // Sets the y coordinates.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Waterfall& y(std::vector<T> f);
+    Waterfall& y(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -573,8 +573,8 @@ class Waterfall::Connector {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Mode {
-        SPANNING,
-        BETWEEN,
+        Spanning,
+        Between,
     };
     static std::string to_string(Mode e);
 
@@ -687,9 +687,9 @@ class Waterfall::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -711,7 +711,7 @@ class Waterfall::Hoverlabel {
     Waterfall::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall::Hoverlabel& bgcolor(Callable&& c);
-    Waterfall::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Waterfall::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Waterfall::Hoverlabel& bgcolorsrc(std::string f);
@@ -722,7 +722,7 @@ class Waterfall::Hoverlabel {
     Waterfall::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall::Hoverlabel& bordercolor(Callable&& c);
-    Waterfall::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Waterfall::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Waterfall::Hoverlabel& bordercolorsrc(std::string f);
@@ -741,7 +741,7 @@ class Waterfall::Hoverlabel {
     Waterfall::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Waterfall::Hoverlabel& namelength(Callable&& c);
-    Waterfall::Hoverlabel& namelength(std::vector<int> f);
+    Waterfall::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Waterfall::Hoverlabel& namelengthsrc(std::string f);
@@ -760,33 +760,33 @@ class Waterfall::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Waterfall::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall::Hoverlabel::Font& color(Callable&& c);
-    Waterfall::Hoverlabel::Font& color(std::vector<std::string> f);
+    Waterfall::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Waterfall::Hoverlabel::Font& colorsrc(std::string f);
@@ -803,7 +803,7 @@ class Waterfall::Hoverlabel::Font {
     Waterfall::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall::Hoverlabel::Font& family(Callable&& c);
-    Waterfall::Hoverlabel::Font& family(std::vector<std::string> f);
+    Waterfall::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Waterfall::Hoverlabel::Font& familysrc(std::string f);
@@ -818,7 +818,7 @@ class Waterfall::Hoverlabel::Font {
     Waterfall::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall::Hoverlabel::Font& lineposition(Callable&& c);
-    Waterfall::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Waterfall::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Waterfall::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -830,7 +830,7 @@ class Waterfall::Hoverlabel::Font {
     Waterfall::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall::Hoverlabel::Font& shadow(Callable&& c);
-    Waterfall::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Waterfall::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Waterfall::Hoverlabel::Font& shadowsrc(std::string f);
@@ -840,7 +840,7 @@ class Waterfall::Hoverlabel::Font {
     Waterfall::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Waterfall::Hoverlabel::Font& size(Callable&& c);
-    Waterfall::Hoverlabel::Font& size(std::vector<double> f);
+    Waterfall::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Waterfall::Hoverlabel::Font& sizesrc(std::string f);
@@ -882,7 +882,7 @@ class Waterfall::Hoverlabel::Font {
     Waterfall::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Waterfall::Hoverlabel::Font& weight(Callable&& c);
-    Waterfall::Hoverlabel::Font& weight(std::vector<int> f);
+    Waterfall::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Waterfall::Hoverlabel::Font& weightsrc(std::string f);
@@ -958,33 +958,33 @@ class Waterfall::Insidetextfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Waterfall::Insidetextfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall::Insidetextfont& color(Callable&& c);
-    Waterfall::Insidetextfont& color(std::vector<std::string> f);
+    Waterfall::Insidetextfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Waterfall::Insidetextfont& colorsrc(std::string f);
@@ -1001,7 +1001,7 @@ class Waterfall::Insidetextfont {
     Waterfall::Insidetextfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall::Insidetextfont& family(Callable&& c);
-    Waterfall::Insidetextfont& family(std::vector<std::string> f);
+    Waterfall::Insidetextfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Waterfall::Insidetextfont& familysrc(std::string f);
@@ -1016,7 +1016,7 @@ class Waterfall::Insidetextfont {
     Waterfall::Insidetextfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall::Insidetextfont& lineposition(Callable&& c);
-    Waterfall::Insidetextfont& lineposition(std::vector<std::string> f);
+    Waterfall::Insidetextfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Waterfall::Insidetextfont& linepositionsrc(std::string f);
@@ -1028,7 +1028,7 @@ class Waterfall::Insidetextfont {
     Waterfall::Insidetextfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall::Insidetextfont& shadow(Callable&& c);
-    Waterfall::Insidetextfont& shadow(std::vector<std::string> f);
+    Waterfall::Insidetextfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Waterfall::Insidetextfont& shadowsrc(std::string f);
@@ -1038,7 +1038,7 @@ class Waterfall::Insidetextfont {
     Waterfall::Insidetextfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Waterfall::Insidetextfont& size(Callable&& c);
-    Waterfall::Insidetextfont& size(std::vector<double> f);
+    Waterfall::Insidetextfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Waterfall::Insidetextfont& sizesrc(std::string f);
@@ -1080,7 +1080,7 @@ class Waterfall::Insidetextfont {
     Waterfall::Insidetextfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Waterfall::Insidetextfont& weight(Callable&& c);
-    Waterfall::Insidetextfont& weight(std::vector<int> f);
+    Waterfall::Insidetextfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Waterfall::Insidetextfont& weightsrc(std::string f);
@@ -1122,26 +1122,26 @@ class Waterfall::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1209,33 +1209,33 @@ class Waterfall::Outsidetextfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Waterfall::Outsidetextfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall::Outsidetextfont& color(Callable&& c);
-    Waterfall::Outsidetextfont& color(std::vector<std::string> f);
+    Waterfall::Outsidetextfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Waterfall::Outsidetextfont& colorsrc(std::string f);
@@ -1252,7 +1252,7 @@ class Waterfall::Outsidetextfont {
     Waterfall::Outsidetextfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall::Outsidetextfont& family(Callable&& c);
-    Waterfall::Outsidetextfont& family(std::vector<std::string> f);
+    Waterfall::Outsidetextfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Waterfall::Outsidetextfont& familysrc(std::string f);
@@ -1267,7 +1267,7 @@ class Waterfall::Outsidetextfont {
     Waterfall::Outsidetextfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall::Outsidetextfont& lineposition(Callable&& c);
-    Waterfall::Outsidetextfont& lineposition(std::vector<std::string> f);
+    Waterfall::Outsidetextfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Waterfall::Outsidetextfont& linepositionsrc(std::string f);
@@ -1279,7 +1279,7 @@ class Waterfall::Outsidetextfont {
     Waterfall::Outsidetextfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall::Outsidetextfont& shadow(Callable&& c);
-    Waterfall::Outsidetextfont& shadow(std::vector<std::string> f);
+    Waterfall::Outsidetextfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Waterfall::Outsidetextfont& shadowsrc(std::string f);
@@ -1289,7 +1289,7 @@ class Waterfall::Outsidetextfont {
     Waterfall::Outsidetextfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Waterfall::Outsidetextfont& size(Callable&& c);
-    Waterfall::Outsidetextfont& size(std::vector<double> f);
+    Waterfall::Outsidetextfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Waterfall::Outsidetextfont& sizesrc(std::string f);
@@ -1331,7 +1331,7 @@ class Waterfall::Outsidetextfont {
     Waterfall::Outsidetextfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Waterfall::Outsidetextfont& weight(Callable&& c);
-    Waterfall::Outsidetextfont& weight(std::vector<int> f);
+    Waterfall::Outsidetextfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Waterfall::Outsidetextfont& weightsrc(std::string f);
@@ -1372,33 +1372,33 @@ class Waterfall::Textfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Waterfall::Textfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall::Textfont& color(Callable&& c);
-    Waterfall::Textfont& color(std::vector<std::string> f);
+    Waterfall::Textfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Waterfall::Textfont& colorsrc(std::string f);
@@ -1415,7 +1415,7 @@ class Waterfall::Textfont {
     Waterfall::Textfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall::Textfont& family(Callable&& c);
-    Waterfall::Textfont& family(std::vector<std::string> f);
+    Waterfall::Textfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Waterfall::Textfont& familysrc(std::string f);
@@ -1430,7 +1430,7 @@ class Waterfall::Textfont {
     Waterfall::Textfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall::Textfont& lineposition(Callable&& c);
-    Waterfall::Textfont& lineposition(std::vector<std::string> f);
+    Waterfall::Textfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Waterfall::Textfont& linepositionsrc(std::string f);
@@ -1442,7 +1442,7 @@ class Waterfall::Textfont {
     Waterfall::Textfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Waterfall::Textfont& shadow(Callable&& c);
-    Waterfall::Textfont& shadow(std::vector<std::string> f);
+    Waterfall::Textfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Waterfall::Textfont& shadowsrc(std::string f);
@@ -1452,7 +1452,7 @@ class Waterfall::Textfont {
     Waterfall::Textfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Waterfall::Textfont& size(Callable&& c);
-    Waterfall::Textfont& size(std::vector<double> f);
+    Waterfall::Textfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Waterfall::Textfont& sizesrc(std::string f);
@@ -1494,7 +1494,7 @@ class Waterfall::Textfont {
     Waterfall::Textfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Waterfall::Textfont& weight(Callable&& c);
-    Waterfall::Textfont& weight(std::vector<int> f);
+    Waterfall::Textfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Waterfall::Textfont& weightsrc(std::string f);

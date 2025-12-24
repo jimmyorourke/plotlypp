@@ -29,9 +29,9 @@ class Densitymapbox : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
@@ -72,7 +72,7 @@ class Densitymapbox : public Trace {
     // list:
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Densitymapbox& colorscale(std::string f);
-    Densitymapbox& colorscale(std::vector<std::pair<double, std::string>> f);
+    Densitymapbox& colorscale(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -81,7 +81,7 @@ class Densitymapbox : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Densitymapbox& customdata(std::vector<T> f);
+    Densitymapbox& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -100,7 +100,7 @@ class Densitymapbox : public Trace {
     Densitymapbox& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Densitymapbox& hoverinfo(Callable&& c);
-    Densitymapbox& hoverinfo(std::vector<std::string> f);
+    Densitymapbox& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Densitymapbox& hoverinfosrc(std::string f);
@@ -127,7 +127,7 @@ class Densitymapbox : public Trace {
     Densitymapbox& hovertemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Densitymapbox& hovertemplate(Callable&& c);
-    Densitymapbox& hovertemplate(std::vector<std::string> f);
+    Densitymapbox& hovertemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Densitymapbox& hovertemplatesrc(std::string f);
@@ -140,7 +140,7 @@ class Densitymapbox : public Trace {
     Densitymapbox& hovertext(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Densitymapbox& hovertext(Callable&& c);
-    Densitymapbox& hovertext(std::vector<std::string> f);
+    Densitymapbox& hovertext(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Densitymapbox& hovertextsrc(std::string f);
@@ -150,7 +150,7 @@ class Densitymapbox : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Densitymapbox& ids(std::vector<T> f);
+    Densitymapbox& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -163,7 +163,7 @@ class Densitymapbox : public Trace {
 
     // Sets the latitude coordinates (in degrees North).
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Densitymapbox& lat(std::vector<T> f);
+    Densitymapbox& lat(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -206,7 +206,7 @@ class Densitymapbox : public Trace {
 
     // Sets the longitude coordinates (in degrees East).
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Densitymapbox& lon(std::vector<T> f);
+    Densitymapbox& lon(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -228,7 +228,7 @@ class Densitymapbox : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Densitymapbox& meta(Callable&& c);
     template <typename T>
-    Densitymapbox& meta(std::vector<T> f);
+    Densitymapbox& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Densitymapbox& metasrc(std::string f);
@@ -250,7 +250,7 @@ class Densitymapbox : public Trace {
     Densitymapbox& radius(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Densitymapbox& radius(Callable&& c);
-    Densitymapbox& radius(std::vector<double> f);
+    Densitymapbox& radius(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `radius`.
     Densitymapbox& radiussrc(std::string f);
@@ -292,7 +292,7 @@ class Densitymapbox : public Trace {
     Densitymapbox& text(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Densitymapbox& text(Callable&& c);
-    Densitymapbox& text(std::vector<std::string> f);
+    Densitymapbox& text(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `text`.
     Densitymapbox& textsrc(std::string f);
@@ -326,7 +326,7 @@ class Densitymapbox : public Trace {
     // Sets the points' weight. For example, a value of 10 would be equivalent to having 10 points of weight 1 in the
     // same spot
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Densitymapbox& z(std::vector<T> f);
+    Densitymapbox& z(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -369,17 +369,17 @@ class Densitymapbox::Colorbar {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Lenmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Lenmode e);
 
@@ -390,93 +390,93 @@ class Densitymapbox::Colorbar {
     static std::string to_string(Orientation e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Thicknessmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Thicknessmode e);
 
     enum class Ticklabeloverflow {
-        ALLOW,
-        HIDE_PAST_DIV,
-        HIDE_PAST_DOMAIN,
+        Allow,
+        HidePastDiv,
+        HidePastDomain,
     };
     static std::string to_string(Ticklabeloverflow e);
 
     enum class Ticklabelposition {
-        OUTSIDE,
-        INSIDE,
-        OUTSIDE_TOP,
-        INSIDE_TOP,
-        OUTSIDE_LEFT,
-        INSIDE_LEFT,
-        OUTSIDE_RIGHT,
-        INSIDE_RIGHT,
-        OUTSIDE_BOTTOM,
-        INSIDE_BOTTOM,
+        Outside,
+        Inside,
+        OutsideTop,
+        InsideTop,
+        OutsideLeft,
+        InsideLeft,
+        OutsideRight,
+        InsideRight,
+        OutsideBottom,
+        InsideBottom,
     };
     static std::string to_string(Ticklabelposition e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Xanchor {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Xref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Xref e);
 
     enum class Yanchor {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
     enum class Yref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Yref e);
 
@@ -688,7 +688,7 @@ class Densitymapbox::Colorbar {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Densitymapbox::Colorbar& ticktext(std::vector<T> f);
+    Densitymapbox::Colorbar& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -702,7 +702,7 @@ class Densitymapbox::Colorbar {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Densitymapbox::Colorbar& tickvals(std::vector<T> f);
+    Densitymapbox::Colorbar& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -778,26 +778,26 @@ class Densitymapbox::Colorbar::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -881,7 +881,7 @@ class Densitymapbox::Colorbar::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Densitymapbox::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Densitymapbox::Colorbar::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Densitymapbox::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -923,9 +923,9 @@ class Densitymapbox::Colorbar::Title {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
-        RIGHT,
-        TOP,
-        BOTTOM,
+        Right,
+        Top,
+        Bottom,
     };
     static std::string to_string(Side e);
 
@@ -958,26 +958,26 @@ class Densitymapbox::Colorbar::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1044,9 +1044,9 @@ class Densitymapbox::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -1068,7 +1068,7 @@ class Densitymapbox::Hoverlabel {
     Densitymapbox::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Densitymapbox::Hoverlabel& bgcolor(Callable&& c);
-    Densitymapbox::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Densitymapbox::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Densitymapbox::Hoverlabel& bgcolorsrc(std::string f);
@@ -1079,7 +1079,7 @@ class Densitymapbox::Hoverlabel {
     Densitymapbox::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Densitymapbox::Hoverlabel& bordercolor(Callable&& c);
-    Densitymapbox::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Densitymapbox::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Densitymapbox::Hoverlabel& bordercolorsrc(std::string f);
@@ -1098,7 +1098,7 @@ class Densitymapbox::Hoverlabel {
     Densitymapbox::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Densitymapbox::Hoverlabel& namelength(Callable&& c);
-    Densitymapbox::Hoverlabel& namelength(std::vector<int> f);
+    Densitymapbox::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Densitymapbox::Hoverlabel& namelengthsrc(std::string f);
@@ -1117,33 +1117,33 @@ class Densitymapbox::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Densitymapbox::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Densitymapbox::Hoverlabel::Font& color(Callable&& c);
-    Densitymapbox::Hoverlabel::Font& color(std::vector<std::string> f);
+    Densitymapbox::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Densitymapbox::Hoverlabel::Font& colorsrc(std::string f);
@@ -1160,7 +1160,7 @@ class Densitymapbox::Hoverlabel::Font {
     Densitymapbox::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Densitymapbox::Hoverlabel::Font& family(Callable&& c);
-    Densitymapbox::Hoverlabel::Font& family(std::vector<std::string> f);
+    Densitymapbox::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Densitymapbox::Hoverlabel::Font& familysrc(std::string f);
@@ -1175,7 +1175,7 @@ class Densitymapbox::Hoverlabel::Font {
     Densitymapbox::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Densitymapbox::Hoverlabel::Font& lineposition(Callable&& c);
-    Densitymapbox::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Densitymapbox::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Densitymapbox::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -1187,7 +1187,7 @@ class Densitymapbox::Hoverlabel::Font {
     Densitymapbox::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Densitymapbox::Hoverlabel::Font& shadow(Callable&& c);
-    Densitymapbox::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Densitymapbox::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Densitymapbox::Hoverlabel::Font& shadowsrc(std::string f);
@@ -1197,7 +1197,7 @@ class Densitymapbox::Hoverlabel::Font {
     Densitymapbox::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Densitymapbox::Hoverlabel::Font& size(Callable&& c);
-    Densitymapbox::Hoverlabel::Font& size(std::vector<double> f);
+    Densitymapbox::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Densitymapbox::Hoverlabel::Font& sizesrc(std::string f);
@@ -1239,7 +1239,7 @@ class Densitymapbox::Hoverlabel::Font {
     Densitymapbox::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Densitymapbox::Hoverlabel::Font& weight(Callable&& c);
-    Densitymapbox::Hoverlabel::Font& weight(std::vector<int> f);
+    Densitymapbox::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Densitymapbox::Hoverlabel::Font& weightsrc(std::string f);
@@ -1281,26 +1281,26 @@ class Densitymapbox::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 

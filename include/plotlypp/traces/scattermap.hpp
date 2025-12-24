@@ -29,28 +29,28 @@ class Scattermap : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Fill {
-        NONE,
-        TOSELF,
+        None,
+        Toself,
     };
     static std::string to_string(Fill e);
 
     enum class Textposition {
-        TOP_LEFT,
-        TOP_CENTER,
-        TOP_RIGHT,
-        MIDDLE_LEFT,
-        MIDDLE_CENTER,
-        MIDDLE_RIGHT,
-        BOTTOM_LEFT,
-        BOTTOM_CENTER,
-        BOTTOM_RIGHT,
+        TopLeft,
+        TopCenter,
+        TopRight,
+        MiddleLeft,
+        MiddleCenter,
+        MiddleRight,
+        BottomLeft,
+        BottomCenter,
+        BottomRight,
     };
     static std::string to_string(Textposition e);
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
@@ -85,7 +85,7 @@ class Scattermap : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Scattermap& customdata(std::vector<T> f);
+    Scattermap& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -115,7 +115,7 @@ class Scattermap : public Trace {
     Scattermap& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Scattermap& hoverinfo(Callable&& c);
-    Scattermap& hoverinfo(std::vector<std::string> f);
+    Scattermap& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Scattermap& hoverinfosrc(std::string f);
@@ -142,7 +142,7 @@ class Scattermap : public Trace {
     Scattermap& hovertemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Scattermap& hovertemplate(Callable&& c);
-    Scattermap& hovertemplate(std::vector<std::string> f);
+    Scattermap& hovertemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Scattermap& hovertemplatesrc(std::string f);
@@ -155,7 +155,7 @@ class Scattermap : public Trace {
     Scattermap& hovertext(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Scattermap& hovertext(Callable&& c);
-    Scattermap& hovertext(std::vector<std::string> f);
+    Scattermap& hovertext(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Scattermap& hovertextsrc(std::string f);
@@ -165,7 +165,7 @@ class Scattermap : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Scattermap& ids(std::vector<T> f);
+    Scattermap& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -178,7 +178,7 @@ class Scattermap : public Trace {
 
     // Sets the latitude coordinates (in degrees North).
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Scattermap& lat(std::vector<T> f);
+    Scattermap& lat(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -225,7 +225,7 @@ class Scattermap : public Trace {
 
     // Sets the longitude coordinates (in degrees East).
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Scattermap& lon(std::vector<T> f);
+    Scattermap& lon(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -251,7 +251,7 @@ class Scattermap : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Scattermap& meta(Callable&& c);
     template <typename T>
-    Scattermap& meta(std::vector<T> f);
+    Scattermap& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Scattermap& metasrc(std::string f);
@@ -311,7 +311,7 @@ class Scattermap : public Trace {
     Scattermap& text(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Scattermap& text(Callable&& c);
-    Scattermap& text(std::vector<std::string> f);
+    Scattermap& text(const std::vector<std::string>& f);
 
     // Sets the icon text font (color=map.layer.paint.text-color, size=map.layer.layout.text-size). Has an effect only
     // when `type` is set to *symbol*.
@@ -339,7 +339,7 @@ class Scattermap : public Trace {
     Scattermap& texttemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Scattermap& texttemplate(Callable&& c);
-    Scattermap& texttemplate(std::vector<std::string> f);
+    Scattermap& texttemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `texttemplate`.
     Scattermap& texttemplatesrc(std::string f);
@@ -385,7 +385,7 @@ class Scattermap::Cluster {
     Scattermap::Cluster& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Scattermap::Cluster& color(Callable&& c);
-    Scattermap::Cluster& color(std::vector<std::string> f);
+    Scattermap::Cluster& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scattermap::Cluster& colorsrc(std::string f);
@@ -406,7 +406,7 @@ class Scattermap::Cluster {
     Scattermap::Cluster& opacity(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Scattermap::Cluster& opacity(Callable&& c);
-    Scattermap::Cluster& opacity(std::vector<double> f);
+    Scattermap::Cluster& opacity(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `opacity`.
     Scattermap::Cluster& opacitysrc(std::string f);
@@ -417,7 +417,7 @@ class Scattermap::Cluster {
     Scattermap::Cluster& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Scattermap::Cluster& size(Callable&& c);
-    Scattermap::Cluster& size(std::vector<double> f);
+    Scattermap::Cluster& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Scattermap::Cluster& sizesrc(std::string f);
@@ -430,7 +430,7 @@ class Scattermap::Cluster {
     Scattermap::Cluster& step(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Scattermap::Cluster& step(Callable&& c);
-    Scattermap::Cluster& step(std::vector<double> f);
+    Scattermap::Cluster& step(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `step`.
     Scattermap::Cluster& stepsrc(std::string f);
@@ -448,9 +448,9 @@ class Scattermap::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -472,7 +472,7 @@ class Scattermap::Hoverlabel {
     Scattermap::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Scattermap::Hoverlabel& bgcolor(Callable&& c);
-    Scattermap::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Scattermap::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Scattermap::Hoverlabel& bgcolorsrc(std::string f);
@@ -483,7 +483,7 @@ class Scattermap::Hoverlabel {
     Scattermap::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Scattermap::Hoverlabel& bordercolor(Callable&& c);
-    Scattermap::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Scattermap::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Scattermap::Hoverlabel& bordercolorsrc(std::string f);
@@ -502,7 +502,7 @@ class Scattermap::Hoverlabel {
     Scattermap::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Scattermap::Hoverlabel& namelength(Callable&& c);
-    Scattermap::Hoverlabel& namelength(std::vector<int> f);
+    Scattermap::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Scattermap::Hoverlabel& namelengthsrc(std::string f);
@@ -521,33 +521,33 @@ class Scattermap::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Scattermap::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Scattermap::Hoverlabel::Font& color(Callable&& c);
-    Scattermap::Hoverlabel::Font& color(std::vector<std::string> f);
+    Scattermap::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Scattermap::Hoverlabel::Font& colorsrc(std::string f);
@@ -564,7 +564,7 @@ class Scattermap::Hoverlabel::Font {
     Scattermap::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Scattermap::Hoverlabel::Font& family(Callable&& c);
-    Scattermap::Hoverlabel::Font& family(std::vector<std::string> f);
+    Scattermap::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Scattermap::Hoverlabel::Font& familysrc(std::string f);
@@ -579,7 +579,7 @@ class Scattermap::Hoverlabel::Font {
     Scattermap::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Scattermap::Hoverlabel::Font& lineposition(Callable&& c);
-    Scattermap::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Scattermap::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Scattermap::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -591,7 +591,7 @@ class Scattermap::Hoverlabel::Font {
     Scattermap::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Scattermap::Hoverlabel::Font& shadow(Callable&& c);
-    Scattermap::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Scattermap::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Scattermap::Hoverlabel::Font& shadowsrc(std::string f);
@@ -601,7 +601,7 @@ class Scattermap::Hoverlabel::Font {
     Scattermap::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Scattermap::Hoverlabel::Font& size(Callable&& c);
-    Scattermap::Hoverlabel::Font& size(std::vector<double> f);
+    Scattermap::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Scattermap::Hoverlabel::Font& sizesrc(std::string f);
@@ -643,7 +643,7 @@ class Scattermap::Hoverlabel::Font {
     Scattermap::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Scattermap::Hoverlabel::Font& weight(Callable&& c);
-    Scattermap::Hoverlabel::Font& weight(std::vector<int> f);
+    Scattermap::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Scattermap::Hoverlabel::Font& weightsrc(std::string f);
@@ -685,26 +685,26 @@ class Scattermap::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -791,8 +791,8 @@ class Scattermap::Marker {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Sizemode {
-        DIAMETER,
-        AREA,
+        Diameter,
+        Area,
     };
     static std::string to_string(Sizemode e);
 
@@ -808,7 +808,7 @@ class Scattermap::Marker {
     Scattermap::Marker& angle(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Scattermap::Marker& angle(Callable&& c);
-    Scattermap::Marker& angle(std::vector<double> f);
+    Scattermap::Marker& angle(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `angle`.
     Scattermap::Marker& anglesrc(std::string f);
@@ -854,7 +854,7 @@ class Scattermap::Marker {
     Scattermap::Marker& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Scattermap::Marker& color(Callable&& c);
-    Scattermap::Marker& color(std::vector<std::string> f);
+    Scattermap::Marker& color(const std::vector<std::string>& f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -874,7 +874,7 @@ class Scattermap::Marker {
     // `marker.cmax`. Alternatively, `colorscale` may be a palette name string of the following list:
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Scattermap::Marker& colorscale(std::string f);
-    Scattermap::Marker& colorscale(std::vector<std::pair<double, std::string>> f);
+    Scattermap::Marker& colorscale(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -889,7 +889,7 @@ class Scattermap::Marker {
     Scattermap::Marker& opacity(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Scattermap::Marker& opacity(Callable&& c);
-    Scattermap::Marker& opacity(std::vector<double> f);
+    Scattermap::Marker& opacity(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `opacity`.
     Scattermap::Marker& opacitysrc(std::string f);
@@ -913,7 +913,7 @@ class Scattermap::Marker {
     Scattermap::Marker& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Scattermap::Marker& size(Callable&& c);
-    Scattermap::Marker& size(std::vector<double> f);
+    Scattermap::Marker& size(const std::vector<double>& f);
 
     // Has an effect only if `marker.size` is set to a numerical array. Sets the minimum size (in px) of the rendered
     // marker points.
@@ -942,7 +942,7 @@ class Scattermap::Marker {
     Scattermap::Marker& symbol(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Scattermap::Marker& symbol(Callable&& c);
-    Scattermap::Marker& symbol(std::vector<std::string> f);
+    Scattermap::Marker& symbol(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `symbol`.
     Scattermap::Marker& symbolsrc(std::string f);
@@ -960,17 +960,17 @@ class Scattermap::Marker::Colorbar {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Lenmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Lenmode e);
 
@@ -981,93 +981,93 @@ class Scattermap::Marker::Colorbar {
     static std::string to_string(Orientation e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Thicknessmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Thicknessmode e);
 
     enum class Ticklabeloverflow {
-        ALLOW,
-        HIDE_PAST_DIV,
-        HIDE_PAST_DOMAIN,
+        Allow,
+        HidePastDiv,
+        HidePastDomain,
     };
     static std::string to_string(Ticklabeloverflow e);
 
     enum class Ticklabelposition {
-        OUTSIDE,
-        INSIDE,
-        OUTSIDE_TOP,
-        INSIDE_TOP,
-        OUTSIDE_LEFT,
-        INSIDE_LEFT,
-        OUTSIDE_RIGHT,
-        INSIDE_RIGHT,
-        OUTSIDE_BOTTOM,
-        INSIDE_BOTTOM,
+        Outside,
+        Inside,
+        OutsideTop,
+        InsideTop,
+        OutsideLeft,
+        InsideLeft,
+        OutsideRight,
+        InsideRight,
+        OutsideBottom,
+        InsideBottom,
     };
     static std::string to_string(Ticklabelposition e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Xanchor {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Xref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Xref e);
 
     enum class Yanchor {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
     enum class Yref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Yref e);
 
@@ -1279,7 +1279,7 @@ class Scattermap::Marker::Colorbar {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Scattermap::Marker::Colorbar& ticktext(std::vector<T> f);
+    Scattermap::Marker::Colorbar& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1293,7 +1293,7 @@ class Scattermap::Marker::Colorbar {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Scattermap::Marker::Colorbar& tickvals(std::vector<T> f);
+    Scattermap::Marker::Colorbar& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1369,26 +1369,26 @@ class Scattermap::Marker::Colorbar::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1472,7 +1472,7 @@ class Scattermap::Marker::Colorbar::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Scattermap::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Scattermap::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Scattermap::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -1514,9 +1514,9 @@ class Scattermap::Marker::Colorbar::Title {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
-        RIGHT,
-        TOP,
-        BOTTOM,
+        Right,
+        Top,
+        Bottom,
     };
     static std::string to_string(Side e);
 
@@ -1549,26 +1549,26 @@ class Scattermap::Marker::Colorbar::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1700,8 +1700,8 @@ class Scattermap::Textfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 

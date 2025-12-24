@@ -29,17 +29,17 @@ class Bar : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Constraintext {
-        INSIDE,
-        OUTSIDE,
-        BOTH,
-        NONE,
+        Inside,
+        Outside,
+        Both,
+        None,
     };
     static std::string to_string(Constraintext e);
 
     enum class Insidetextanchor {
-        END,
-        MIDDLE,
-        START,
+        End,
+        Middle,
+        Start,
     };
     static std::string to_string(Insidetextanchor e);
 
@@ -50,71 +50,71 @@ class Bar : public Trace {
     static std::string to_string(Orientation e);
 
     enum class Textposition {
-        INSIDE,
-        OUTSIDE,
-        AUTO,
-        NONE,
+        Inside,
+        Outside,
+        Auto,
+        None,
     };
     static std::string to_string(Textposition e);
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
     enum class Xcalendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Xcalendar e);
 
     enum class Xperiodalignment {
-        START,
-        MIDDLE,
-        END,
+        Start,
+        Middle,
+        End,
     };
     static std::string to_string(Xperiodalignment e);
 
     enum class Ycalendar {
-        CHINESE,
-        COPTIC,
-        DISCWORLD,
-        ETHIOPIAN,
-        GREGORIAN,
-        HEBREW,
-        ISLAMIC,
-        JALALI,
-        JULIAN,
-        MAYAN,
-        NANAKSHAHI,
-        NEPALI,
-        PERSIAN,
-        TAIWAN,
-        THAI,
-        UMMALQURA,
+        Chinese,
+        Coptic,
+        Discworld,
+        Ethiopian,
+        Gregorian,
+        Hebrew,
+        Islamic,
+        Jalali,
+        Julian,
+        Mayan,
+        Nanakshahi,
+        Nepali,
+        Persian,
+        Taiwan,
+        Thai,
+        Ummalqura,
     };
     static std::string to_string(Ycalendar e);
 
     enum class Yperiodalignment {
-        START,
-        MIDDLE,
-        END,
+        Start,
+        Middle,
+        End,
     };
     static std::string to_string(Yperiodalignment e);
 
@@ -146,7 +146,7 @@ class Bar : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Bar& base(Callable&& c);
     template <typename T>
-    Bar& base(std::vector<T> f);
+    Bar& base(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `base`.
     Bar& basesrc(std::string f);
@@ -166,7 +166,7 @@ class Bar : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Bar& customdata(std::vector<T> f);
+    Bar& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -203,7 +203,7 @@ class Bar : public Trace {
     Bar& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar& hoverinfo(Callable&& c);
-    Bar& hoverinfo(std::vector<std::string> f);
+    Bar& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Bar& hoverinfosrc(std::string f);
@@ -230,7 +230,7 @@ class Bar : public Trace {
     Bar& hovertemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar& hovertemplate(Callable&& c);
-    Bar& hovertemplate(std::vector<std::string> f);
+    Bar& hovertemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Bar& hovertemplatesrc(std::string f);
@@ -243,7 +243,7 @@ class Bar : public Trace {
     Bar& hovertext(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar& hovertext(Callable&& c);
-    Bar& hovertext(std::vector<std::string> f);
+    Bar& hovertext(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Bar& hovertextsrc(std::string f);
@@ -253,7 +253,7 @@ class Bar : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Bar& ids(std::vector<T> f);
+    Bar& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -318,7 +318,7 @@ class Bar : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Bar& meta(Callable&& c);
     template <typename T>
-    Bar& meta(std::vector<T> f);
+    Bar& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Bar& metasrc(std::string f);
@@ -335,7 +335,7 @@ class Bar : public Trace {
     Bar& offset(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Bar& offset(Callable&& c);
-    Bar& offset(std::vector<double> f);
+    Bar& offset(const std::vector<double>& f);
 
     // Set several traces linked to the same position axis or matching axes to the same offsetgroup where bars of the
     // same position coordinate will line up.
@@ -389,7 +389,7 @@ class Bar : public Trace {
     Bar& text(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar& text(Callable&& c);
-    Bar& text(std::vector<std::string> f);
+    Bar& text(const std::vector<std::string>& f);
 
     // Sets the angle of the tick labels with respect to the bar. For example, a `tickangle` of -90 draws the tick
     // labels vertically. With *auto* the texts may automatically be rotated to fit with the maximum size in bars.
@@ -431,7 +431,7 @@ class Bar : public Trace {
     Bar& texttemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar& texttemplate(Callable&& c);
-    Bar& texttemplate(std::vector<std::string> f);
+    Bar& texttemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `texttemplate`.
     Bar& texttemplatesrc(std::string f);
@@ -470,7 +470,7 @@ class Bar : public Trace {
     Bar& width(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Bar& width(Callable&& c);
-    Bar& width(std::vector<double> f);
+    Bar& width(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `width`.
     Bar& widthsrc(std::string f);
@@ -479,7 +479,7 @@ class Bar : public Trace {
 
     // Sets the x coordinates.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Bar& x(std::vector<T> f);
+    Bar& x(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -539,7 +539,7 @@ class Bar : public Trace {
 
     // Sets the y coordinates.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Bar& y(std::vector<T> f);
+    Bar& y(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -611,16 +611,16 @@ class Bar::Error_X {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Type {
-        PERCENT,
-        CONSTANT,
-        SQRT,
-        DATA,
+        Percent,
+        Constant,
+        Sqrt,
+        Data,
     };
     static std::string to_string(Type e);
 
     // Sets the data corresponding the length of each error bar. Values are plotted relative to the underlying data.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Bar::Error_X& array(std::vector<T> f);
+    Bar::Error_X& array(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -629,7 +629,7 @@ class Bar::Error_X {
     // Sets the data corresponding the length of each error bar in the bottom (left) direction for vertical (horizontal)
     // bars Values are plotted relative to the underlying data.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Bar::Error_X& arrayminus(std::vector<T> f);
+    Bar::Error_X& arrayminus(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -713,16 +713,16 @@ class Bar::Error_Y {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Type {
-        PERCENT,
-        CONSTANT,
-        SQRT,
-        DATA,
+        Percent,
+        Constant,
+        Sqrt,
+        Data,
     };
     static std::string to_string(Type e);
 
     // Sets the data corresponding the length of each error bar. Values are plotted relative to the underlying data.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Bar::Error_Y& array(std::vector<T> f);
+    Bar::Error_Y& array(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -731,7 +731,7 @@ class Bar::Error_Y {
     // Sets the data corresponding the length of each error bar in the bottom (left) direction for vertical (horizontal)
     // bars Values are plotted relative to the underlying data.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Bar::Error_Y& arrayminus(std::vector<T> f);
+    Bar::Error_Y& arrayminus(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -811,9 +811,9 @@ class Bar::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -835,7 +835,7 @@ class Bar::Hoverlabel {
     Bar::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Hoverlabel& bgcolor(Callable&& c);
-    Bar::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Bar::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Bar::Hoverlabel& bgcolorsrc(std::string f);
@@ -846,7 +846,7 @@ class Bar::Hoverlabel {
     Bar::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Hoverlabel& bordercolor(Callable&& c);
-    Bar::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Bar::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Bar::Hoverlabel& bordercolorsrc(std::string f);
@@ -865,7 +865,7 @@ class Bar::Hoverlabel {
     Bar::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Bar::Hoverlabel& namelength(Callable&& c);
-    Bar::Hoverlabel& namelength(std::vector<int> f);
+    Bar::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Bar::Hoverlabel& namelengthsrc(std::string f);
@@ -884,33 +884,33 @@ class Bar::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Bar::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Hoverlabel::Font& color(Callable&& c);
-    Bar::Hoverlabel::Font& color(std::vector<std::string> f);
+    Bar::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Bar::Hoverlabel::Font& colorsrc(std::string f);
@@ -927,7 +927,7 @@ class Bar::Hoverlabel::Font {
     Bar::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Hoverlabel::Font& family(Callable&& c);
-    Bar::Hoverlabel::Font& family(std::vector<std::string> f);
+    Bar::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Bar::Hoverlabel::Font& familysrc(std::string f);
@@ -942,7 +942,7 @@ class Bar::Hoverlabel::Font {
     Bar::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Hoverlabel::Font& lineposition(Callable&& c);
-    Bar::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Bar::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Bar::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -954,7 +954,7 @@ class Bar::Hoverlabel::Font {
     Bar::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Hoverlabel::Font& shadow(Callable&& c);
-    Bar::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Bar::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Bar::Hoverlabel::Font& shadowsrc(std::string f);
@@ -964,7 +964,7 @@ class Bar::Hoverlabel::Font {
     Bar::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Bar::Hoverlabel::Font& size(Callable&& c);
-    Bar::Hoverlabel::Font& size(std::vector<double> f);
+    Bar::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Bar::Hoverlabel::Font& sizesrc(std::string f);
@@ -1006,7 +1006,7 @@ class Bar::Hoverlabel::Font {
     Bar::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Bar::Hoverlabel::Font& weight(Callable&& c);
-    Bar::Hoverlabel::Font& weight(std::vector<int> f);
+    Bar::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Bar::Hoverlabel::Font& weightsrc(std::string f);
@@ -1025,33 +1025,33 @@ class Bar::Insidetextfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Bar::Insidetextfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Insidetextfont& color(Callable&& c);
-    Bar::Insidetextfont& color(std::vector<std::string> f);
+    Bar::Insidetextfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Bar::Insidetextfont& colorsrc(std::string f);
@@ -1068,7 +1068,7 @@ class Bar::Insidetextfont {
     Bar::Insidetextfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Insidetextfont& family(Callable&& c);
-    Bar::Insidetextfont& family(std::vector<std::string> f);
+    Bar::Insidetextfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Bar::Insidetextfont& familysrc(std::string f);
@@ -1083,7 +1083,7 @@ class Bar::Insidetextfont {
     Bar::Insidetextfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Insidetextfont& lineposition(Callable&& c);
-    Bar::Insidetextfont& lineposition(std::vector<std::string> f);
+    Bar::Insidetextfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Bar::Insidetextfont& linepositionsrc(std::string f);
@@ -1095,7 +1095,7 @@ class Bar::Insidetextfont {
     Bar::Insidetextfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Insidetextfont& shadow(Callable&& c);
-    Bar::Insidetextfont& shadow(std::vector<std::string> f);
+    Bar::Insidetextfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Bar::Insidetextfont& shadowsrc(std::string f);
@@ -1105,7 +1105,7 @@ class Bar::Insidetextfont {
     Bar::Insidetextfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Bar::Insidetextfont& size(Callable&& c);
-    Bar::Insidetextfont& size(std::vector<double> f);
+    Bar::Insidetextfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Bar::Insidetextfont& sizesrc(std::string f);
@@ -1147,7 +1147,7 @@ class Bar::Insidetextfont {
     Bar::Insidetextfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Bar::Insidetextfont& weight(Callable&& c);
-    Bar::Insidetextfont& weight(std::vector<int> f);
+    Bar::Insidetextfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Bar::Insidetextfont& weightsrc(std::string f);
@@ -1189,26 +1189,26 @@ class Bar::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1318,7 +1318,7 @@ class Bar::Marker {
     Bar::Marker& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Marker& color(Callable&& c);
-    Bar::Marker& color(std::vector<std::string> f);
+    Bar::Marker& color(const std::vector<std::string>& f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -1338,7 +1338,7 @@ class Bar::Marker {
     // `marker.cmax`. Alternatively, `colorscale` may be a palette name string of the following list:
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Bar::Marker& colorscale(std::string f);
-    Bar::Marker& colorscale(std::vector<std::pair<double, std::string>> f);
+    Bar::Marker& colorscale(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -1365,7 +1365,7 @@ class Bar::Marker {
     Bar::Marker& opacity(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Bar::Marker& opacity(Callable&& c);
-    Bar::Marker& opacity(std::vector<double> f);
+    Bar::Marker& opacity(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `opacity`.
     Bar::Marker& opacitysrc(std::string f);
@@ -1401,17 +1401,17 @@ class Bar::Marker::Colorbar {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Lenmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Lenmode e);
 
@@ -1422,93 +1422,93 @@ class Bar::Marker::Colorbar {
     static std::string to_string(Orientation e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Thicknessmode {
-        FRACTION,
-        PIXELS,
+        Fraction,
+        Pixels,
     };
     static std::string to_string(Thicknessmode e);
 
     enum class Ticklabeloverflow {
-        ALLOW,
-        HIDE_PAST_DIV,
-        HIDE_PAST_DOMAIN,
+        Allow,
+        HidePastDiv,
+        HidePastDomain,
     };
     static std::string to_string(Ticklabeloverflow e);
 
     enum class Ticklabelposition {
-        OUTSIDE,
-        INSIDE,
-        OUTSIDE_TOP,
-        INSIDE_TOP,
-        OUTSIDE_LEFT,
-        INSIDE_LEFT,
-        OUTSIDE_RIGHT,
-        INSIDE_RIGHT,
-        OUTSIDE_BOTTOM,
-        INSIDE_BOTTOM,
+        Outside,
+        Inside,
+        OutsideTop,
+        InsideTop,
+        OutsideLeft,
+        InsideLeft,
+        OutsideRight,
+        InsideRight,
+        OutsideBottom,
+        InsideBottom,
     };
     static std::string to_string(Ticklabelposition e);
 
     enum class Tickmode {
-        AUTO,
-        LINEAR,
-        ARRAY,
+        Auto,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Ticks {
-        OUTSIDE,
-        INSIDE,
-        EMPTY,
+        Outside,
+        Inside,
+        Empty,
     };
     static std::string to_string(Ticks e);
 
     enum class Xanchor {
-        LEFT,
-        CENTER,
-        RIGHT,
+        Left,
+        Center,
+        Right,
     };
     static std::string to_string(Xanchor e);
 
     enum class Xref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Xref e);
 
     enum class Yanchor {
-        TOP,
-        MIDDLE,
-        BOTTOM,
+        Top,
+        Middle,
+        Bottom,
     };
     static std::string to_string(Yanchor e);
 
     enum class Yref {
-        CONTAINER,
-        PAPER,
+        Container,
+        Paper,
     };
     static std::string to_string(Yref e);
 
@@ -1720,7 +1720,7 @@ class Bar::Marker::Colorbar {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Bar::Marker::Colorbar& ticktext(std::vector<T> f);
+    Bar::Marker::Colorbar& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1734,7 +1734,7 @@ class Bar::Marker::Colorbar {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Bar::Marker::Colorbar& tickvals(std::vector<T> f);
+    Bar::Marker::Colorbar& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1810,26 +1810,26 @@ class Bar::Marker::Colorbar::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1913,7 +1913,7 @@ class Bar::Marker::Colorbar::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Bar::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Bar::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Bar::Marker::Colorbar::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -1955,9 +1955,9 @@ class Bar::Marker::Colorbar::Title {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Side {
-        RIGHT,
-        TOP,
-        BOTTOM,
+        Right,
+        Top,
+        Bottom,
     };
     static std::string to_string(Side e);
 
@@ -1990,26 +1990,26 @@ class Bar::Marker::Colorbar::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -2118,7 +2118,7 @@ class Bar::Marker::Line {
     Bar::Marker::Line& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Marker::Line& color(Callable&& c);
-    Bar::Marker::Line& color(std::vector<std::string> f);
+    Bar::Marker::Line& color(const std::vector<std::string>& f);
 
     // Sets a reference to a shared color axis. References to these shared color axes are *coloraxis*, *coloraxis2*,
     // *coloraxis3*, etc. Settings for these shared color axes are set in the layout, under `layout.coloraxis`,
@@ -2135,7 +2135,7 @@ class Bar::Marker::Line {
     // following list:
     // Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
     Bar::Marker::Line& colorscale(std::string f);
-    Bar::Marker::Line& colorscale(std::vector<std::pair<double, std::string>> f);
+    Bar::Marker::Line& colorscale(const std::vector<std::pair<double, std::string>>& f);
     template <typename Callable,
               typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&> ||
                                           std::is_invocable_v<Callable, std::vector<std::pair<double, std::string>>&>>>
@@ -2157,7 +2157,7 @@ class Bar::Marker::Line {
     Bar::Marker::Line& width(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Bar::Marker::Line& width(Callable&& c);
-    Bar::Marker::Line& width(std::vector<double> f);
+    Bar::Marker::Line& width(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `width`.
     Bar::Marker::Line& widthsrc(std::string f);
@@ -2176,8 +2176,8 @@ class Bar::Marker::Pattern {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Fillmode {
-        REPLACE,
-        OVERLAY,
+        Replace,
+        Overlay,
     };
     static std::string to_string(Fillmode e);
 
@@ -2186,7 +2186,7 @@ class Bar::Marker::Pattern {
     Bar::Marker::Pattern& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Marker::Pattern& bgcolor(Callable&& c);
-    Bar::Marker::Pattern& bgcolor(std::vector<std::string> f);
+    Bar::Marker::Pattern& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Bar::Marker::Pattern& bgcolorsrc(std::string f);
@@ -2198,7 +2198,7 @@ class Bar::Marker::Pattern {
     Bar::Marker::Pattern& fgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Marker::Pattern& fgcolor(Callable&& c);
-    Bar::Marker::Pattern& fgcolor(std::vector<std::string> f);
+    Bar::Marker::Pattern& fgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `fgcolor`.
     Bar::Marker::Pattern& fgcolorsrc(std::string f);
@@ -2219,7 +2219,7 @@ class Bar::Marker::Pattern {
     Bar::Marker::Pattern& shape(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Marker::Pattern& shape(Callable&& c);
-    Bar::Marker::Pattern& shape(std::vector<std::string> f);
+    Bar::Marker::Pattern& shape(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shape`.
     Bar::Marker::Pattern& shapesrc(std::string f);
@@ -2231,7 +2231,7 @@ class Bar::Marker::Pattern {
     Bar::Marker::Pattern& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Bar::Marker::Pattern& size(Callable&& c);
-    Bar::Marker::Pattern& size(std::vector<double> f);
+    Bar::Marker::Pattern& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Bar::Marker::Pattern& sizesrc(std::string f);
@@ -2244,7 +2244,7 @@ class Bar::Marker::Pattern {
     Bar::Marker::Pattern& solidity(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Bar::Marker::Pattern& solidity(Callable&& c);
-    Bar::Marker::Pattern& solidity(std::vector<double> f);
+    Bar::Marker::Pattern& solidity(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `solidity`.
     Bar::Marker::Pattern& soliditysrc(std::string f);
@@ -2263,33 +2263,33 @@ class Bar::Outsidetextfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Bar::Outsidetextfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Outsidetextfont& color(Callable&& c);
-    Bar::Outsidetextfont& color(std::vector<std::string> f);
+    Bar::Outsidetextfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Bar::Outsidetextfont& colorsrc(std::string f);
@@ -2306,7 +2306,7 @@ class Bar::Outsidetextfont {
     Bar::Outsidetextfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Outsidetextfont& family(Callable&& c);
-    Bar::Outsidetextfont& family(std::vector<std::string> f);
+    Bar::Outsidetextfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Bar::Outsidetextfont& familysrc(std::string f);
@@ -2321,7 +2321,7 @@ class Bar::Outsidetextfont {
     Bar::Outsidetextfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Outsidetextfont& lineposition(Callable&& c);
-    Bar::Outsidetextfont& lineposition(std::vector<std::string> f);
+    Bar::Outsidetextfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Bar::Outsidetextfont& linepositionsrc(std::string f);
@@ -2333,7 +2333,7 @@ class Bar::Outsidetextfont {
     Bar::Outsidetextfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Outsidetextfont& shadow(Callable&& c);
-    Bar::Outsidetextfont& shadow(std::vector<std::string> f);
+    Bar::Outsidetextfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Bar::Outsidetextfont& shadowsrc(std::string f);
@@ -2343,7 +2343,7 @@ class Bar::Outsidetextfont {
     Bar::Outsidetextfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Bar::Outsidetextfont& size(Callable&& c);
-    Bar::Outsidetextfont& size(std::vector<double> f);
+    Bar::Outsidetextfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Bar::Outsidetextfont& sizesrc(std::string f);
@@ -2385,7 +2385,7 @@ class Bar::Outsidetextfont {
     Bar::Outsidetextfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Bar::Outsidetextfont& weight(Callable&& c);
-    Bar::Outsidetextfont& weight(std::vector<int> f);
+    Bar::Outsidetextfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Bar::Outsidetextfont& weightsrc(std::string f);
@@ -2482,33 +2482,33 @@ class Bar::Textfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Bar::Textfont& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Textfont& color(Callable&& c);
-    Bar::Textfont& color(std::vector<std::string> f);
+    Bar::Textfont& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Bar::Textfont& colorsrc(std::string f);
@@ -2525,7 +2525,7 @@ class Bar::Textfont {
     Bar::Textfont& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Textfont& family(Callable&& c);
-    Bar::Textfont& family(std::vector<std::string> f);
+    Bar::Textfont& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Bar::Textfont& familysrc(std::string f);
@@ -2540,7 +2540,7 @@ class Bar::Textfont {
     Bar::Textfont& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Textfont& lineposition(Callable&& c);
-    Bar::Textfont& lineposition(std::vector<std::string> f);
+    Bar::Textfont& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Bar::Textfont& linepositionsrc(std::string f);
@@ -2552,7 +2552,7 @@ class Bar::Textfont {
     Bar::Textfont& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Bar::Textfont& shadow(Callable&& c);
-    Bar::Textfont& shadow(std::vector<std::string> f);
+    Bar::Textfont& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Bar::Textfont& shadowsrc(std::string f);
@@ -2562,7 +2562,7 @@ class Bar::Textfont {
     Bar::Textfont& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Bar::Textfont& size(Callable&& c);
-    Bar::Textfont& size(std::vector<double> f);
+    Bar::Textfont& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Bar::Textfont& sizesrc(std::string f);
@@ -2604,7 +2604,7 @@ class Bar::Textfont {
     Bar::Textfont& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Bar::Textfont& weight(Callable&& c);
-    Bar::Textfont& weight(std::vector<int> f);
+    Bar::Textfont& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Bar::Textfont& weightsrc(std::string f);

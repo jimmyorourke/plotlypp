@@ -12,9 +12,9 @@ namespace plotlypp {
 
 std::string Choroplethmap::to_string(Visible e) {
     switch(e) {
-        case Visible::TRUE: return "True";
-        case Visible::FALSE: return "False";
-        case Visible::LEGENDONLY: return "legendonly";
+        case Visible::True: return "True";
+        case Visible::False: return "False";
+        case Visible::Legendonly: return "legendonly";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -68,8 +68,8 @@ Choroplethmap& Choroplethmap::colorscale(std::string f) {
     json["colorscale"] = std::move(f);
     return *this;
 }
-Choroplethmap& Choroplethmap::colorscale(std::vector<std::pair<double, std::string>> f) {
-    json["colorscale"] = std::move(f);
+Choroplethmap& Choroplethmap::colorscale(const std::vector<std::pair<double, std::string>>& f) {
+    json["colorscale"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -80,8 +80,8 @@ Choroplethmap& Choroplethmap::colorscale(Callable&& c) {
 }
 
 template <typename T, typename>
-Choroplethmap& Choroplethmap::customdata(std::vector<T> f) {
-    json["customdata"] = std::move(f);
+Choroplethmap& Choroplethmap::customdata(const std::vector<T>& f) {
+    json["customdata"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -135,8 +135,8 @@ Choroplethmap& Choroplethmap::hoverinfo(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hoverinfo(std::move(f));
 }
-Choroplethmap& Choroplethmap::hoverinfo(std::vector<std::string> f) {
-    json["hoverinfo"] = std::move(f);
+Choroplethmap& Choroplethmap::hoverinfo(const std::vector<std::string>& f) {
+    json["hoverinfo"] = f;
     return *this;
 }
 
@@ -172,8 +172,8 @@ Choroplethmap& Choroplethmap::hovertemplate(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hovertemplate(std::move(f));
 }
-Choroplethmap& Choroplethmap::hovertemplate(std::vector<std::string> f) {
-    json["hovertemplate"] = std::move(f);
+Choroplethmap& Choroplethmap::hovertemplate(const std::vector<std::string>& f) {
+    json["hovertemplate"] = f;
     return *this;
 }
 
@@ -198,8 +198,8 @@ Choroplethmap& Choroplethmap::hovertext(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hovertext(std::move(f));
 }
-Choroplethmap& Choroplethmap::hovertext(std::vector<std::string> f) {
-    json["hovertext"] = std::move(f);
+Choroplethmap& Choroplethmap::hovertext(const std::vector<std::string>& f) {
+    json["hovertext"] = f;
     return *this;
 }
 
@@ -215,8 +215,8 @@ Choroplethmap& Choroplethmap::hovertextsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Choroplethmap& Choroplethmap::ids(std::vector<T> f) {
-    json["ids"] = std::move(f);
+Choroplethmap& Choroplethmap::ids(const std::vector<T>& f) {
+    json["ids"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -293,8 +293,8 @@ Choroplethmap& Choroplethmap::legendwidth(Callable&& c) {
 }
 
 template <typename T, typename>
-Choroplethmap& Choroplethmap::locations(std::vector<T> f) {
-    json["locations"] = std::move(f);
+Choroplethmap& Choroplethmap::locations(const std::vector<T>& f) {
+    json["locations"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -338,8 +338,8 @@ Choroplethmap& Choroplethmap::meta(Callable&& c) {
     return meta(std::move(f));
 }
 template <typename T>
-Choroplethmap& Choroplethmap::meta(std::vector<T> f) {
-    json["meta"] = std::move(f);
+Choroplethmap& Choroplethmap::meta(const std::vector<T>& f) {
+    json["meta"] = f;
     return *this;
 }
 
@@ -453,8 +453,8 @@ Choroplethmap& Choroplethmap::text(Callable&& c) {
     std::forward<Callable>(c)(f);
     return text(std::move(f));
 }
-Choroplethmap& Choroplethmap::text(std::vector<std::string> f) {
-    json["text"] = std::move(f);
+Choroplethmap& Choroplethmap::text(const std::vector<std::string>& f) {
+    json["text"] = f;
     return *this;
 }
 
@@ -509,8 +509,8 @@ Choroplethmap& Choroplethmap::visible(enum Visible f) {
 }
 
 template <typename T, typename>
-Choroplethmap& Choroplethmap::z(std::vector<T> f) {
-    json["z"] = std::move(f);
+Choroplethmap& Choroplethmap::z(const std::vector<T>& f) {
+    json["z"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -577,10 +577,10 @@ Choroplethmap& Choroplethmap::zsrc(Callable&& c) {
 
 std::string Choroplethmap::Colorbar::to_string(Exponentformat e) {
     switch(e) {
-        case Exponentformat::NONE: return "none";
+        case Exponentformat::None: return "none";
         case Exponentformat::E: return "E";
-        case Exponentformat::POWER: return "power";
-        case Exponentformat::SI: return "SI";
+        case Exponentformat::Power: return "power";
+        case Exponentformat::Si: return "SI";
         case Exponentformat::B: return "B";
     }
     // Should be unreachable.
@@ -588,8 +588,8 @@ std::string Choroplethmap::Colorbar::to_string(Exponentformat e) {
 }
 std::string Choroplethmap::Colorbar::to_string(Lenmode e) {
     switch(e) {
-        case Lenmode::FRACTION: return "fraction";
-        case Lenmode::PIXELS: return "pixels";
+        case Lenmode::Fraction: return "fraction";
+        case Lenmode::Pixels: return "pixels";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -604,115 +604,115 @@ std::string Choroplethmap::Colorbar::to_string(Orientation e) {
 }
 std::string Choroplethmap::Colorbar::to_string(Showexponent e) {
     switch(e) {
-        case Showexponent::ALL: return "all";
-        case Showexponent::FIRST: return "first";
-        case Showexponent::LAST: return "last";
-        case Showexponent::NONE: return "none";
+        case Showexponent::All: return "all";
+        case Showexponent::First: return "first";
+        case Showexponent::Last: return "last";
+        case Showexponent::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Choroplethmap::Colorbar::to_string(Showtickprefix e) {
     switch(e) {
-        case Showtickprefix::ALL: return "all";
-        case Showtickprefix::FIRST: return "first";
-        case Showtickprefix::LAST: return "last";
-        case Showtickprefix::NONE: return "none";
+        case Showtickprefix::All: return "all";
+        case Showtickprefix::First: return "first";
+        case Showtickprefix::Last: return "last";
+        case Showtickprefix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Choroplethmap::Colorbar::to_string(Showticksuffix e) {
     switch(e) {
-        case Showticksuffix::ALL: return "all";
-        case Showticksuffix::FIRST: return "first";
-        case Showticksuffix::LAST: return "last";
-        case Showticksuffix::NONE: return "none";
+        case Showticksuffix::All: return "all";
+        case Showticksuffix::First: return "first";
+        case Showticksuffix::Last: return "last";
+        case Showticksuffix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Choroplethmap::Colorbar::to_string(Thicknessmode e) {
     switch(e) {
-        case Thicknessmode::FRACTION: return "fraction";
-        case Thicknessmode::PIXELS: return "pixels";
+        case Thicknessmode::Fraction: return "fraction";
+        case Thicknessmode::Pixels: return "pixels";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Choroplethmap::Colorbar::to_string(Ticklabeloverflow e) {
     switch(e) {
-        case Ticklabeloverflow::ALLOW: return "allow";
-        case Ticklabeloverflow::HIDE_PAST_DIV: return "hide past div";
-        case Ticklabeloverflow::HIDE_PAST_DOMAIN: return "hide past domain";
+        case Ticklabeloverflow::Allow: return "allow";
+        case Ticklabeloverflow::HidePastDiv: return "hide past div";
+        case Ticklabeloverflow::HidePastDomain: return "hide past domain";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Choroplethmap::Colorbar::to_string(Ticklabelposition e) {
     switch(e) {
-        case Ticklabelposition::OUTSIDE: return "outside";
-        case Ticklabelposition::INSIDE: return "inside";
-        case Ticklabelposition::OUTSIDE_TOP: return "outside top";
-        case Ticklabelposition::INSIDE_TOP: return "inside top";
-        case Ticklabelposition::OUTSIDE_LEFT: return "outside left";
-        case Ticklabelposition::INSIDE_LEFT: return "inside left";
-        case Ticklabelposition::OUTSIDE_RIGHT: return "outside right";
-        case Ticklabelposition::INSIDE_RIGHT: return "inside right";
-        case Ticklabelposition::OUTSIDE_BOTTOM: return "outside bottom";
-        case Ticklabelposition::INSIDE_BOTTOM: return "inside bottom";
+        case Ticklabelposition::Outside: return "outside";
+        case Ticklabelposition::Inside: return "inside";
+        case Ticklabelposition::OutsideTop: return "outside top";
+        case Ticklabelposition::InsideTop: return "inside top";
+        case Ticklabelposition::OutsideLeft: return "outside left";
+        case Ticklabelposition::InsideLeft: return "inside left";
+        case Ticklabelposition::OutsideRight: return "outside right";
+        case Ticklabelposition::InsideRight: return "inside right";
+        case Ticklabelposition::OutsideBottom: return "outside bottom";
+        case Ticklabelposition::InsideBottom: return "inside bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Choroplethmap::Colorbar::to_string(Tickmode e) {
     switch(e) {
-        case Tickmode::AUTO: return "auto";
-        case Tickmode::LINEAR: return "linear";
-        case Tickmode::ARRAY: return "array";
+        case Tickmode::Auto: return "auto";
+        case Tickmode::Linear: return "linear";
+        case Tickmode::Array: return "array";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Choroplethmap::Colorbar::to_string(Ticks e) {
     switch(e) {
-        case Ticks::OUTSIDE: return "outside";
-        case Ticks::INSIDE: return "inside";
-        case Ticks::EMPTY: return "";
+        case Ticks::Outside: return "outside";
+        case Ticks::Inside: return "inside";
+        case Ticks::Empty: return "";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Choroplethmap::Colorbar::to_string(Xanchor e) {
     switch(e) {
-        case Xanchor::LEFT: return "left";
-        case Xanchor::CENTER: return "center";
-        case Xanchor::RIGHT: return "right";
+        case Xanchor::Left: return "left";
+        case Xanchor::Center: return "center";
+        case Xanchor::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Choroplethmap::Colorbar::to_string(Xref e) {
     switch(e) {
-        case Xref::CONTAINER: return "container";
-        case Xref::PAPER: return "paper";
+        case Xref::Container: return "container";
+        case Xref::Paper: return "paper";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Choroplethmap::Colorbar::to_string(Yanchor e) {
     switch(e) {
-        case Yanchor::TOP: return "top";
-        case Yanchor::MIDDLE: return "middle";
-        case Yanchor::BOTTOM: return "bottom";
+        case Yanchor::Top: return "top";
+        case Yanchor::Middle: return "middle";
+        case Yanchor::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Choroplethmap::Colorbar::to_string(Yref e) {
     switch(e) {
-        case Yref::CONTAINER: return "container";
-        case Yref::PAPER: return "paper";
+        case Yref::Container: return "container";
+        case Yref::Paper: return "paper";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1030,8 +1030,8 @@ Choroplethmap::Colorbar& Choroplethmap::Colorbar::ticksuffix(Callable&& c) {
 }
 
 template <typename T, typename>
-Choroplethmap::Colorbar& Choroplethmap::Colorbar::ticktext(std::vector<T> f) {
-    json["ticktext"] = std::move(f);
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::ticktext(const std::vector<T>& f) {
+    json["ticktext"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -1053,8 +1053,8 @@ Choroplethmap::Colorbar& Choroplethmap::Colorbar::ticktextsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Choroplethmap::Colorbar& Choroplethmap::Colorbar::tickvals(std::vector<T> f) {
-    json["tickvals"] = std::move(f);
+Choroplethmap::Colorbar& Choroplethmap::Colorbar::tickvals(const std::vector<T>& f) {
+    json["tickvals"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -1163,30 +1163,30 @@ Choroplethmap::Colorbar& Choroplethmap::Colorbar::yref(enum Yref f) {
 
 std::string Choroplethmap::Colorbar::Tickfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Choroplethmap::Colorbar::Tickfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Choroplethmap::Colorbar::Tickfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1286,8 +1286,8 @@ Choroplethmap::Colorbar::Tickformatstops& Choroplethmap::Colorbar::Tickformatsto
 }
 
 
-Choroplethmap::Colorbar::Tickformatstops::Tickformatstop& Choroplethmap::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
-    json["dtickrange"] = std::move(f);
+Choroplethmap::Colorbar::Tickformatstops::Tickformatstop& Choroplethmap::Colorbar::Tickformatstops::Tickformatstop::dtickrange(const std::vector<double>& f) {
+    json["dtickrange"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -1343,9 +1343,9 @@ Choroplethmap::Colorbar::Tickformatstops::Tickformatstop& Choroplethmap::Colorba
 
 std::string Choroplethmap::Colorbar::Title::to_string(Side e) {
     switch(e) {
-        case Side::RIGHT: return "right";
-        case Side::TOP: return "top";
-        case Side::BOTTOM: return "bottom";
+        case Side::Right: return "right";
+        case Side::Top: return "top";
+        case Side::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1380,30 +1380,30 @@ Choroplethmap::Colorbar::Title& Choroplethmap::Colorbar::Title::text(Callable&& 
 
 std::string Choroplethmap::Colorbar::Title::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Choroplethmap::Colorbar::Title::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Choroplethmap::Colorbar::Title::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1492,9 +1492,9 @@ Choroplethmap::Colorbar::Title::Font& Choroplethmap::Colorbar::Title::Font::weig
 
 std::string Choroplethmap::Hoverlabel::to_string(Align e) {
     switch(e) {
-        case Align::LEFT: return "left";
-        case Align::RIGHT: return "right";
-        case Align::AUTO: return "auto";
+        case Align::Left: return "left";
+        case Align::Right: return "right";
+        case Align::Auto: return "auto";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1532,8 +1532,8 @@ Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::bgcolor(Callable&& c) {
     std::forward<Callable>(c)(f);
     return bgcolor(std::move(f));
 }
-Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
+Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::bgcolor(const std::vector<std::string>& f) {
+    json["bgcolor"] = f;
     return *this;
 }
 
@@ -1558,8 +1558,8 @@ Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::bordercolor(Callable&& c) 
     std::forward<Callable>(c)(f);
     return bordercolor(std::move(f));
 }
-Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
+Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::bordercolor(const std::vector<std::string>& f) {
+    json["bordercolor"] = f;
     return *this;
 }
 
@@ -1595,8 +1595,8 @@ Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::namelength(Callable&& c) {
     std::forward<Callable>(c)(f);
     return namelength(std::move(f));
 }
-Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::namelength(std::vector<int> f) {
-    json["namelength"] = std::move(f);
+Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::namelength(const std::vector<int>& f) {
+    json["namelength"] = f;
     return *this;
 }
 
@@ -1613,30 +1613,30 @@ Choroplethmap::Hoverlabel& Choroplethmap::Hoverlabel::namelengthsrc(Callable&& c
 
 std::string Choroplethmap::Hoverlabel::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Choroplethmap::Hoverlabel::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Choroplethmap::Hoverlabel::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1652,8 +1652,8 @@ Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::color(Callable
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -1678,8 +1678,8 @@ Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::family(Callabl
     std::forward<Callable>(c)(f);
     return family(std::move(f));
 }
-Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::family(std::vector<std::string> f) {
-    json["family"] = std::move(f);
+Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::family(const std::vector<std::string>& f) {
+    json["family"] = f;
     return *this;
 }
 
@@ -1704,8 +1704,8 @@ Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::lineposition(C
     std::forward<Callable>(c)(f);
     return lineposition(std::move(f));
 }
-Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
-    json["lineposition"] = std::move(f);
+Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::lineposition(const std::vector<std::string>& f) {
+    json["lineposition"] = f;
     return *this;
 }
 
@@ -1730,8 +1730,8 @@ Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::shadow(Callabl
     std::forward<Callable>(c)(f);
     return shadow(std::move(f));
 }
-Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::shadow(std::vector<std::string> f) {
-    json["shadow"] = std::move(f);
+Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::shadow(const std::vector<std::string>& f) {
+    json["shadow"] = f;
     return *this;
 }
 
@@ -1756,8 +1756,8 @@ Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::size(Callable&
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -1848,8 +1848,8 @@ Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::weight(Callabl
     std::forward<Callable>(c)(f);
     return weight(std::move(f));
 }
-Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::weight(std::vector<int> f) {
-    json["weight"] = std::move(f);
+Choroplethmap::Hoverlabel::Font& Choroplethmap::Hoverlabel::Font::weight(const std::vector<int>& f) {
+    json["weight"] = f;
     return *this;
 }
 
@@ -1889,30 +1889,30 @@ Choroplethmap::Legendgrouptitle& Choroplethmap::Legendgrouptitle::text(Callable&
 
 std::string Choroplethmap::Legendgrouptitle::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Choroplethmap::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Choroplethmap::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -2021,8 +2021,8 @@ Choroplethmap::Marker& Choroplethmap::Marker::opacity(Callable&& c) {
     std::forward<Callable>(c)(f);
     return opacity(std::move(f));
 }
-Choroplethmap::Marker& Choroplethmap::Marker::opacity(std::vector<double> f) {
-    json["opacity"] = std::move(f);
+Choroplethmap::Marker& Choroplethmap::Marker::opacity(const std::vector<double>& f) {
+    json["opacity"] = f;
     return *this;
 }
 
@@ -2048,8 +2048,8 @@ Choroplethmap::Marker::Line& Choroplethmap::Marker::Line::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Choroplethmap::Marker::Line& Choroplethmap::Marker::Line::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Choroplethmap::Marker::Line& Choroplethmap::Marker::Line::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -2074,8 +2074,8 @@ Choroplethmap::Marker::Line& Choroplethmap::Marker::Line::width(Callable&& c) {
     std::forward<Callable>(c)(f);
     return width(std::move(f));
 }
-Choroplethmap::Marker::Line& Choroplethmap::Marker::Line::width(std::vector<double> f) {
-    json["width"] = std::move(f);
+Choroplethmap::Marker::Line& Choroplethmap::Marker::Line::width(const std::vector<double>& f) {
+    json["width"] = f;
     return *this;
 }
 

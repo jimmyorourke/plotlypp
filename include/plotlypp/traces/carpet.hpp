@@ -29,9 +29,9 @@ class Carpet : public Trace {
     : Trace(std::move(jsonStr)) {}
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
@@ -44,7 +44,7 @@ class Carpet : public Trace {
 
     // An array containing values of the first parameter value
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Carpet& a(std::vector<T> f);
+    Carpet& a(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -67,7 +67,7 @@ class Carpet : public Trace {
 
     // A two dimensional array of y coordinates at each carpet point.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Carpet& b(std::vector<T> f);
+    Carpet& b(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -108,7 +108,7 @@ class Carpet : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Carpet& customdata(std::vector<T> f);
+    Carpet& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -137,7 +137,7 @@ class Carpet : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Carpet& ids(std::vector<T> f);
+    Carpet& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -183,7 +183,7 @@ class Carpet : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Carpet& meta(Callable&& c);
     template <typename T>
-    Carpet& meta(std::vector<T> f);
+    Carpet& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Carpet& metasrc(std::string f);
@@ -231,7 +231,7 @@ class Carpet : public Trace {
     // A two dimensional array of x coordinates at each carpet point. If omitted, the plot is a cheater plot and the
     // xaxis is hidden by default.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Carpet& x(std::vector<T> f);
+    Carpet& x(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -250,7 +250,7 @@ class Carpet : public Trace {
 
     // A two dimensional array of y coordinates at each carpet point.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Carpet& y(std::vector<T> f);
+    Carpet& y(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -281,91 +281,91 @@ class Carpet::Aaxis {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Autorange {
-        TRUE,
-        FALSE,
-        REVERSED,
+        True,
+        False,
+        Reversed,
     };
     static std::string to_string(Autorange e);
 
     enum class Autotypenumbers {
-        CONVERT_TYPES,
-        STRICT,
+        ConvertTypes,
+        Strict,
     };
     static std::string to_string(Autotypenumbers e);
 
     enum class Categoryorder {
-        TRACE,
-        CATEGORY_ASCENDING,
-        CATEGORY_DESCENDING,
-        ARRAY,
+        Trace,
+        CategoryAscending,
+        CategoryDescending,
+        Array,
     };
     static std::string to_string(Categoryorder e);
 
     enum class Cheatertype {
-        INDEX,
-        VALUE,
+        Index,
+        Value,
     };
     static std::string to_string(Cheatertype e);
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Rangemode {
-        NORMAL,
-        TOZERO,
-        NONNEGATIVE,
+        Normal,
+        Tozero,
+        Nonnegative,
     };
     static std::string to_string(Rangemode e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showticklabels {
-        START,
-        END,
-        BOTH,
-        NONE,
+        Start,
+        End,
+        Both,
+        None,
     };
     static std::string to_string(Showticklabels e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Tickmode {
-        LINEAR,
-        ARRAY,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Type {
-        HYPHEN,
-        LINEAR,
-        DATE,
-        CATEGORY,
+        Hyphen,
+        Linear,
+        Date,
+        Category,
     };
     static std::string to_string(Type e);
 
@@ -398,7 +398,7 @@ class Carpet::Aaxis {
     // Sets the order in which categories on this axis appear. Only has an effect if `categoryorder` is set to *array*.
     // Used with `categoryorder`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Carpet::Aaxis& categoryarray(std::vector<T> f);
+    Carpet::Aaxis& categoryarray(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -548,7 +548,7 @@ class Carpet::Aaxis {
     // strings, like date data, though Date objects and unix milliseconds will be accepted and converted to strings. If
     // the axis `type` is *category*, it should be numbers, using the scale where each category is assigned a serial
     // number from zero in the order it appears.
-    Carpet::Aaxis& range(std::vector<double> f);
+    Carpet::Aaxis& range(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Carpet::Aaxis& range(Callable&& c);
 
@@ -656,7 +656,7 @@ class Carpet::Aaxis {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Carpet::Aaxis& ticktext(std::vector<T> f);
+    Carpet::Aaxis& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -670,7 +670,7 @@ class Carpet::Aaxis {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Carpet::Aaxis& tickvals(std::vector<T> f);
+    Carpet::Aaxis& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -702,26 +702,26 @@ class Carpet::Aaxis::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -805,7 +805,7 @@ class Carpet::Aaxis::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Carpet::Aaxis::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Carpet::Aaxis::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Carpet::Aaxis::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -876,26 +876,26 @@ class Carpet::Aaxis::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -962,91 +962,91 @@ class Carpet::Baxis {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Autorange {
-        TRUE,
-        FALSE,
-        REVERSED,
+        True,
+        False,
+        Reversed,
     };
     static std::string to_string(Autorange e);
 
     enum class Autotypenumbers {
-        CONVERT_TYPES,
-        STRICT,
+        ConvertTypes,
+        Strict,
     };
     static std::string to_string(Autotypenumbers e);
 
     enum class Categoryorder {
-        TRACE,
-        CATEGORY_ASCENDING,
-        CATEGORY_DESCENDING,
-        ARRAY,
+        Trace,
+        CategoryAscending,
+        CategoryDescending,
+        Array,
     };
     static std::string to_string(Categoryorder e);
 
     enum class Cheatertype {
-        INDEX,
-        VALUE,
+        Index,
+        Value,
     };
     static std::string to_string(Cheatertype e);
 
     enum class Exponentformat {
-        NONE,
+        None,
         E,
-        POWER,
-        SI,
+        Power,
+        Si,
         B,
     };
     static std::string to_string(Exponentformat e);
 
     enum class Rangemode {
-        NORMAL,
-        TOZERO,
-        NONNEGATIVE,
+        Normal,
+        Tozero,
+        Nonnegative,
     };
     static std::string to_string(Rangemode e);
 
     enum class Showexponent {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showexponent e);
 
     enum class Showticklabels {
-        START,
-        END,
-        BOTH,
-        NONE,
+        Start,
+        End,
+        Both,
+        None,
     };
     static std::string to_string(Showticklabels e);
 
     enum class Showtickprefix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showtickprefix e);
 
     enum class Showticksuffix {
-        ALL,
-        FIRST,
-        LAST,
-        NONE,
+        All,
+        First,
+        Last,
+        None,
     };
     static std::string to_string(Showticksuffix e);
 
     enum class Tickmode {
-        LINEAR,
-        ARRAY,
+        Linear,
+        Array,
     };
     static std::string to_string(Tickmode e);
 
     enum class Type {
-        HYPHEN,
-        LINEAR,
-        DATE,
-        CATEGORY,
+        Hyphen,
+        Linear,
+        Date,
+        Category,
     };
     static std::string to_string(Type e);
 
@@ -1079,7 +1079,7 @@ class Carpet::Baxis {
     // Sets the order in which categories on this axis appear. Only has an effect if `categoryorder` is set to *array*.
     // Used with `categoryorder`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Carpet::Baxis& categoryarray(std::vector<T> f);
+    Carpet::Baxis& categoryarray(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1229,7 +1229,7 @@ class Carpet::Baxis {
     // strings, like date data, though Date objects and unix milliseconds will be accepted and converted to strings. If
     // the axis `type` is *category*, it should be numbers, using the scale where each category is assigned a serial
     // number from zero in the order it appears.
-    Carpet::Baxis& range(std::vector<double> f);
+    Carpet::Baxis& range(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Carpet::Baxis& range(Callable&& c);
 
@@ -1337,7 +1337,7 @@ class Carpet::Baxis {
     // Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*.
     // Used with `tickvals`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Carpet::Baxis& ticktext(std::vector<T> f);
+    Carpet::Baxis& ticktext(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1351,7 +1351,7 @@ class Carpet::Baxis {
     // Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with
     // `ticktext`.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Carpet::Baxis& tickvals(std::vector<T> f);
+    Carpet::Baxis& tickvals(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -1383,26 +1383,26 @@ class Carpet::Baxis::Tickfont {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1486,7 +1486,7 @@ class Carpet::Baxis::Tickformatstops::Tickformatstop {
 
     // range [*min*, *max*], where *min*, *max* - dtick values which describe some zoom level, it is possible to omit
     // *min* or *max* value by passing *null*
-    Carpet::Baxis::Tickformatstops::Tickformatstop& dtickrange(std::vector<double> f);
+    Carpet::Baxis::Tickformatstops::Tickformatstop& dtickrange(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Carpet::Baxis::Tickformatstops::Tickformatstop& dtickrange(Callable&& c);
 
@@ -1557,26 +1557,26 @@ class Carpet::Baxis::Title::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1644,26 +1644,26 @@ class Carpet::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -1754,26 +1754,26 @@ class Carpet::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 

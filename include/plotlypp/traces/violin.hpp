@@ -35,44 +35,44 @@ class Violin : public Trace {
     static std::string to_string(Orientation e);
 
     enum class Points {
-        ALL,
-        OUTLIERS,
-        SUSPECTEDOUTLIERS,
-        FALSE,
+        All,
+        Outliers,
+        Suspectedoutliers,
+        False,
     };
     static std::string to_string(Points e);
 
     enum class Quartilemethod {
-        LINEAR,
-        EXCLUSIVE,
-        INCLUSIVE,
+        Linear,
+        Exclusive,
+        Inclusive,
     };
     static std::string to_string(Quartilemethod e);
 
     enum class Scalemode {
-        WIDTH,
-        COUNT,
+        Width,
+        Count,
     };
     static std::string to_string(Scalemode e);
 
     enum class Side {
-        BOTH,
-        POSITIVE,
-        NEGATIVE,
+        Both,
+        Positive,
+        Negative,
     };
     static std::string to_string(Side e);
 
     enum class Spanmode {
-        SOFT,
-        HARD,
-        MANUAL,
+        Soft,
+        Hard,
+        Manual,
     };
     static std::string to_string(Spanmode e);
 
     enum class Visible {
-        TRUE,
-        FALSE,
-        LEGENDONLY,
+        True,
+        False,
+        Legendonly,
     };
     static std::string to_string(Visible e);
 
@@ -105,7 +105,7 @@ class Violin : public Trace {
     // Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that,
     // *scatter* traces also appends customdata items in the markers DOM elements
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Violin& customdata(std::vector<T> f);
+    Violin& customdata(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -130,7 +130,7 @@ class Violin : public Trace {
     Violin& hoverinfo(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Violin& hoverinfo(Callable&& c);
-    Violin& hoverinfo(std::vector<std::string> f);
+    Violin& hoverinfo(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hoverinfo`.
     Violin& hoverinfosrc(std::string f);
@@ -166,7 +166,7 @@ class Violin : public Trace {
     Violin& hovertemplate(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Violin& hovertemplate(Callable&& c);
-    Violin& hovertemplate(std::vector<std::string> f);
+    Violin& hovertemplate(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertemplate`.
     Violin& hovertemplatesrc(std::string f);
@@ -177,7 +177,7 @@ class Violin : public Trace {
     Violin& hovertext(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Violin& hovertext(Callable&& c);
-    Violin& hovertext(std::vector<std::string> f);
+    Violin& hovertext(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `hovertext`.
     Violin& hovertextsrc(std::string f);
@@ -187,7 +187,7 @@ class Violin : public Trace {
     // Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an
     // array of strings, not numbers or any other type.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Violin& ids(std::vector<T> f);
+    Violin& ids(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -257,7 +257,7 @@ class Violin : public Trace {
     template <typename T, typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, T&>>>
     Violin& meta(Callable&& c);
     template <typename T>
-    Violin& meta(std::vector<T> f);
+    Violin& meta(const std::vector<T>& f);
 
     // Sets the source reference on Chart Studio Cloud for `meta`.
     Violin& metasrc(std::string f);
@@ -348,7 +348,7 @@ class Violin : public Trace {
 
     // Sets the span in data space for which the density function will be computed. Has an effect only when `spanmode`
     // is set to *manual*.
-    Violin& span(std::vector<double> f);
+    Violin& span(const std::vector<double>& f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::vector<double>&>>>
     Violin& span(Callable&& c);
 
@@ -369,7 +369,7 @@ class Violin : public Trace {
     Violin& text(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Violin& text(Callable&& c);
-    Violin& text(std::vector<std::string> f);
+    Violin& text(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `text`.
     Violin& textsrc(std::string f);
@@ -412,7 +412,7 @@ class Violin : public Trace {
 
     // Sets the x sample data or coordinates. See overview for more info.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Violin& x(std::vector<T> f);
+    Violin& x(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -448,7 +448,7 @@ class Violin : public Trace {
 
     // Sets the y sample data or coordinates. See overview for more info.
     template <typename T, typename = std::enable_if_t<is_data_array_element_v<T>>>
-    Violin& y(std::vector<T> f);
+    Violin& y(const std::vector<T>& f);
     template <
         typename T, typename Callable,
         typename = std::enable_if_t<is_data_array_element_v<T> && (std::is_invocable_v<Callable, std::vector<T>&>)>>
@@ -548,9 +548,9 @@ class Violin::Hoverlabel {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Align {
-        LEFT,
-        RIGHT,
-        AUTO,
+        Left,
+        Right,
+        Auto,
     };
     static std::string to_string(Align e);
 
@@ -572,7 +572,7 @@ class Violin::Hoverlabel {
     Violin::Hoverlabel& bgcolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Violin::Hoverlabel& bgcolor(Callable&& c);
-    Violin::Hoverlabel& bgcolor(std::vector<std::string> f);
+    Violin::Hoverlabel& bgcolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bgcolor`.
     Violin::Hoverlabel& bgcolorsrc(std::string f);
@@ -583,7 +583,7 @@ class Violin::Hoverlabel {
     Violin::Hoverlabel& bordercolor(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Violin::Hoverlabel& bordercolor(Callable&& c);
-    Violin::Hoverlabel& bordercolor(std::vector<std::string> f);
+    Violin::Hoverlabel& bordercolor(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `bordercolor`.
     Violin::Hoverlabel& bordercolorsrc(std::string f);
@@ -602,7 +602,7 @@ class Violin::Hoverlabel {
     Violin::Hoverlabel& namelength(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Violin::Hoverlabel& namelength(Callable&& c);
-    Violin::Hoverlabel& namelength(std::vector<int> f);
+    Violin::Hoverlabel& namelength(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `namelength`.
     Violin::Hoverlabel& namelengthsrc(std::string f);
@@ -621,33 +621,33 @@ class Violin::Hoverlabel::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
     Violin::Hoverlabel::Font& color(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Violin::Hoverlabel::Font& color(Callable&& c);
-    Violin::Hoverlabel::Font& color(std::vector<std::string> f);
+    Violin::Hoverlabel::Font& color(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `color`.
     Violin::Hoverlabel::Font& colorsrc(std::string f);
@@ -664,7 +664,7 @@ class Violin::Hoverlabel::Font {
     Violin::Hoverlabel::Font& family(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Violin::Hoverlabel::Font& family(Callable&& c);
-    Violin::Hoverlabel::Font& family(std::vector<std::string> f);
+    Violin::Hoverlabel::Font& family(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `family`.
     Violin::Hoverlabel::Font& familysrc(std::string f);
@@ -679,7 +679,7 @@ class Violin::Hoverlabel::Font {
     Violin::Hoverlabel::Font& lineposition(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Violin::Hoverlabel::Font& lineposition(Callable&& c);
-    Violin::Hoverlabel::Font& lineposition(std::vector<std::string> f);
+    Violin::Hoverlabel::Font& lineposition(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `lineposition`.
     Violin::Hoverlabel::Font& linepositionsrc(std::string f);
@@ -691,7 +691,7 @@ class Violin::Hoverlabel::Font {
     Violin::Hoverlabel::Font& shadow(std::string f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, std::string&>>>
     Violin::Hoverlabel::Font& shadow(Callable&& c);
-    Violin::Hoverlabel::Font& shadow(std::vector<std::string> f);
+    Violin::Hoverlabel::Font& shadow(const std::vector<std::string>& f);
 
     // Sets the source reference on Chart Studio Cloud for `shadow`.
     Violin::Hoverlabel::Font& shadowsrc(std::string f);
@@ -701,7 +701,7 @@ class Violin::Hoverlabel::Font {
     Violin::Hoverlabel::Font& size(double f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, double&>>>
     Violin::Hoverlabel::Font& size(Callable&& c);
-    Violin::Hoverlabel::Font& size(std::vector<double> f);
+    Violin::Hoverlabel::Font& size(const std::vector<double>& f);
 
     // Sets the source reference on Chart Studio Cloud for `size`.
     Violin::Hoverlabel::Font& sizesrc(std::string f);
@@ -743,7 +743,7 @@ class Violin::Hoverlabel::Font {
     Violin::Hoverlabel::Font& weight(int f);
     template <typename Callable, typename = std::enable_if_t<std::is_invocable_v<Callable, int&>>>
     Violin::Hoverlabel::Font& weight(Callable&& c);
-    Violin::Hoverlabel::Font& weight(std::vector<int> f);
+    Violin::Hoverlabel::Font& weight(const std::vector<int>& f);
 
     // Sets the source reference on Chart Studio Cloud for `weight`.
     Violin::Hoverlabel::Font& weightsrc(std::string f);
@@ -785,26 +785,26 @@ class Violin::Legendgrouptitle::Font {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Style {
-        NORMAL,
-        ITALIC,
+        Normal,
+        Italic,
     };
     static std::string to_string(Style e);
 
     enum class Textcase {
-        NORMAL,
-        WORD_CAPS,
-        UPPER,
-        LOWER,
+        Normal,
+        WordCaps,
+        Upper,
+        Lower,
     };
     static std::string to_string(Textcase e);
 
     enum class Variant {
-        NORMAL,
-        SMALL_CAPS,
-        ALL_SMALL_CAPS,
-        ALL_PETITE_CAPS,
-        PETITE_CAPS,
-        UNICASE,
+        Normal,
+        SmallCaps,
+        AllSmallCaps,
+        AllPetiteCaps,
+        PetiteCaps,
+        Unicase,
     };
     static std::string to_string(Variant e);
 
@@ -891,330 +891,330 @@ class Violin::Marker {
     : json(parse(std::move(jsonStr))) {}
 
     enum class Symbol {
-        NUM_0,
-        CIRCLE,
-        NUM_100,
-        CIRCLE_OPEN,
-        NUM_200,
-        CIRCLE_DOT,
-        NUM_300,
-        CIRCLE_OPEN_DOT,
-        NUM_1,
-        SQUARE,
-        NUM_101,
-        SQUARE_OPEN,
-        NUM_201,
-        SQUARE_DOT,
-        NUM_301,
-        SQUARE_OPEN_DOT,
-        NUM_2,
-        DIAMOND,
-        NUM_102,
-        DIAMOND_OPEN,
-        NUM_202,
-        DIAMOND_DOT,
-        NUM_302,
-        DIAMOND_OPEN_DOT,
-        NUM_3,
-        CROSS,
-        NUM_103,
-        CROSS_OPEN,
-        NUM_203,
-        CROSS_DOT,
-        NUM_303,
-        CROSS_OPEN_DOT,
-        NUM_4,
+        Num_0,
+        Circle,
+        Num_100,
+        CircleOpen,
+        Num_200,
+        CircleDot,
+        Num_300,
+        CircleOpenDot,
+        Num_1,
+        Square,
+        Num_101,
+        SquareOpen,
+        Num_201,
+        SquareDot,
+        Num_301,
+        SquareOpenDot,
+        Num_2,
+        Diamond,
+        Num_102,
+        DiamondOpen,
+        Num_202,
+        DiamondDot,
+        Num_302,
+        DiamondOpenDot,
+        Num_3,
+        Cross,
+        Num_103,
+        CrossOpen,
+        Num_203,
+        CrossDot,
+        Num_303,
+        CrossOpenDot,
+        Num_4,
         X,
-        NUM_104,
-        X_OPEN,
-        NUM_204,
-        X_DOT,
-        NUM_304,
-        X_OPEN_DOT,
-        NUM_5,
-        TRIANGLE_UP,
-        NUM_105,
-        TRIANGLE_UP_OPEN,
-        NUM_205,
-        TRIANGLE_UP_DOT,
-        NUM_305,
-        TRIANGLE_UP_OPEN_DOT,
-        NUM_6,
-        TRIANGLE_DOWN,
-        NUM_106,
-        TRIANGLE_DOWN_OPEN,
-        NUM_206,
-        TRIANGLE_DOWN_DOT,
-        NUM_306,
-        TRIANGLE_DOWN_OPEN_DOT,
-        NUM_7,
-        TRIANGLE_LEFT,
-        NUM_107,
-        TRIANGLE_LEFT_OPEN,
-        NUM_207,
-        TRIANGLE_LEFT_DOT,
-        NUM_307,
-        TRIANGLE_LEFT_OPEN_DOT,
-        NUM_8,
-        TRIANGLE_RIGHT,
-        NUM_108,
-        TRIANGLE_RIGHT_OPEN,
-        NUM_208,
-        TRIANGLE_RIGHT_DOT,
-        NUM_308,
-        TRIANGLE_RIGHT_OPEN_DOT,
-        NUM_9,
-        TRIANGLE_NE,
-        NUM_109,
-        TRIANGLE_NE_OPEN,
-        NUM_209,
-        TRIANGLE_NE_DOT,
-        NUM_309,
-        TRIANGLE_NE_OPEN_DOT,
-        NUM_10,
-        TRIANGLE_SE,
-        NUM_110,
-        TRIANGLE_SE_OPEN,
-        NUM_210,
-        TRIANGLE_SE_DOT,
-        NUM_310,
-        TRIANGLE_SE_OPEN_DOT,
-        NUM_11,
-        TRIANGLE_SW,
-        NUM_111,
-        TRIANGLE_SW_OPEN,
-        NUM_211,
-        TRIANGLE_SW_DOT,
-        NUM_311,
-        TRIANGLE_SW_OPEN_DOT,
-        NUM_12,
-        TRIANGLE_NW,
-        NUM_112,
-        TRIANGLE_NW_OPEN,
-        NUM_212,
-        TRIANGLE_NW_DOT,
-        NUM_312,
-        TRIANGLE_NW_OPEN_DOT,
-        NUM_13,
-        PENTAGON,
-        NUM_113,
-        PENTAGON_OPEN,
-        NUM_213,
-        PENTAGON_DOT,
-        NUM_313,
-        PENTAGON_OPEN_DOT,
-        NUM_14,
-        HEXAGON,
-        NUM_114,
-        HEXAGON_OPEN,
-        NUM_214,
-        HEXAGON_DOT,
-        NUM_314,
-        HEXAGON_OPEN_DOT,
-        NUM_15,
-        HEXAGON2,
-        NUM_115,
-        HEXAGON2_OPEN,
-        NUM_215,
-        HEXAGON2_DOT,
-        NUM_315,
-        HEXAGON2_OPEN_DOT,
-        NUM_16,
-        OCTAGON,
-        NUM_116,
-        OCTAGON_OPEN,
-        NUM_216,
-        OCTAGON_DOT,
-        NUM_316,
-        OCTAGON_OPEN_DOT,
-        NUM_17,
-        STAR,
-        NUM_117,
-        STAR_OPEN,
-        NUM_217,
-        STAR_DOT,
-        NUM_317,
-        STAR_OPEN_DOT,
-        NUM_18,
-        HEXAGRAM,
-        NUM_118,
-        HEXAGRAM_OPEN,
-        NUM_218,
-        HEXAGRAM_DOT,
-        NUM_318,
-        HEXAGRAM_OPEN_DOT,
-        NUM_19,
-        STAR_TRIANGLE_UP,
-        NUM_119,
-        STAR_TRIANGLE_UP_OPEN,
-        NUM_219,
-        STAR_TRIANGLE_UP_DOT,
-        NUM_319,
-        STAR_TRIANGLE_UP_OPEN_DOT,
-        NUM_20,
-        STAR_TRIANGLE_DOWN,
-        NUM_120,
-        STAR_TRIANGLE_DOWN_OPEN,
-        NUM_220,
-        STAR_TRIANGLE_DOWN_DOT,
-        NUM_320,
-        STAR_TRIANGLE_DOWN_OPEN_DOT,
-        NUM_21,
-        STAR_SQUARE,
-        NUM_121,
-        STAR_SQUARE_OPEN,
-        NUM_221,
-        STAR_SQUARE_DOT,
-        NUM_321,
-        STAR_SQUARE_OPEN_DOT,
-        NUM_22,
-        STAR_DIAMOND,
-        NUM_122,
-        STAR_DIAMOND_OPEN,
-        NUM_222,
-        STAR_DIAMOND_DOT,
-        NUM_322,
-        STAR_DIAMOND_OPEN_DOT,
-        NUM_23,
-        DIAMOND_TALL,
-        NUM_123,
-        DIAMOND_TALL_OPEN,
-        NUM_223,
-        DIAMOND_TALL_DOT,
-        NUM_323,
-        DIAMOND_TALL_OPEN_DOT,
-        NUM_24,
-        DIAMOND_WIDE,
-        NUM_124,
-        DIAMOND_WIDE_OPEN,
-        NUM_224,
-        DIAMOND_WIDE_DOT,
-        NUM_324,
-        DIAMOND_WIDE_OPEN_DOT,
-        NUM_25,
-        HOURGLASS,
-        NUM_125,
-        HOURGLASS_OPEN,
-        NUM_26,
-        BOWTIE,
-        NUM_126,
-        BOWTIE_OPEN,
-        NUM_27,
-        CIRCLE_CROSS,
-        NUM_127,
-        CIRCLE_CROSS_OPEN,
-        NUM_28,
-        CIRCLE_X,
-        NUM_128,
-        CIRCLE_X_OPEN,
-        NUM_29,
-        SQUARE_CROSS,
-        NUM_129,
-        SQUARE_CROSS_OPEN,
-        NUM_30,
-        SQUARE_X,
-        NUM_130,
-        SQUARE_X_OPEN,
-        NUM_31,
-        DIAMOND_CROSS,
-        NUM_131,
-        DIAMOND_CROSS_OPEN,
-        NUM_32,
-        DIAMOND_X,
-        NUM_132,
-        DIAMOND_X_OPEN,
-        NUM_33,
-        CROSS_THIN,
-        NUM_133,
-        CROSS_THIN_OPEN,
-        NUM_34,
-        X_THIN,
-        NUM_134,
-        X_THIN_OPEN,
-        NUM_35,
-        ASTERISK,
-        NUM_135,
-        ASTERISK_OPEN,
-        NUM_36,
-        HASH,
-        NUM_136,
-        HASH_OPEN,
-        NUM_236,
-        HASH_DOT,
-        NUM_336,
-        HASH_OPEN_DOT,
-        NUM_37,
-        Y_UP,
-        NUM_137,
-        Y_UP_OPEN,
-        NUM_38,
-        Y_DOWN,
-        NUM_138,
-        Y_DOWN_OPEN,
-        NUM_39,
-        Y_LEFT,
-        NUM_139,
-        Y_LEFT_OPEN,
-        NUM_40,
-        Y_RIGHT,
-        NUM_140,
-        Y_RIGHT_OPEN,
-        NUM_41,
-        LINE_EW,
-        NUM_141,
-        LINE_EW_OPEN,
-        NUM_42,
-        LINE_NS,
-        NUM_142,
-        LINE_NS_OPEN,
-        NUM_43,
-        LINE_NE,
-        NUM_143,
-        LINE_NE_OPEN,
-        NUM_44,
-        LINE_NW,
-        NUM_144,
-        LINE_NW_OPEN,
-        NUM_45,
-        ARROW_UP,
-        NUM_145,
-        ARROW_UP_OPEN,
-        NUM_46,
-        ARROW_DOWN,
-        NUM_146,
-        ARROW_DOWN_OPEN,
-        NUM_47,
-        ARROW_LEFT,
-        NUM_147,
-        ARROW_LEFT_OPEN,
-        NUM_48,
-        ARROW_RIGHT,
-        NUM_148,
-        ARROW_RIGHT_OPEN,
-        NUM_49,
-        ARROW_BAR_UP,
-        NUM_149,
-        ARROW_BAR_UP_OPEN,
-        NUM_50,
-        ARROW_BAR_DOWN,
-        NUM_150,
-        ARROW_BAR_DOWN_OPEN,
-        NUM_51,
-        ARROW_BAR_LEFT,
-        NUM_151,
-        ARROW_BAR_LEFT_OPEN,
-        NUM_52,
-        ARROW_BAR_RIGHT,
-        NUM_152,
-        ARROW_BAR_RIGHT_OPEN,
-        NUM_53,
-        ARROW,
-        NUM_153,
-        ARROW_OPEN,
-        NUM_54,
-        ARROW_WIDE,
-        NUM_154,
-        ARROW_WIDE_OPEN,
+        Num_104,
+        XOpen,
+        Num_204,
+        XDot,
+        Num_304,
+        XOpenDot,
+        Num_5,
+        TriangleUp,
+        Num_105,
+        TriangleUpOpen,
+        Num_205,
+        TriangleUpDot,
+        Num_305,
+        TriangleUpOpenDot,
+        Num_6,
+        TriangleDown,
+        Num_106,
+        TriangleDownOpen,
+        Num_206,
+        TriangleDownDot,
+        Num_306,
+        TriangleDownOpenDot,
+        Num_7,
+        TriangleLeft,
+        Num_107,
+        TriangleLeftOpen,
+        Num_207,
+        TriangleLeftDot,
+        Num_307,
+        TriangleLeftOpenDot,
+        Num_8,
+        TriangleRight,
+        Num_108,
+        TriangleRightOpen,
+        Num_208,
+        TriangleRightDot,
+        Num_308,
+        TriangleRightOpenDot,
+        Num_9,
+        TriangleNe,
+        Num_109,
+        TriangleNeOpen,
+        Num_209,
+        TriangleNeDot,
+        Num_309,
+        TriangleNeOpenDot,
+        Num_10,
+        TriangleSe,
+        Num_110,
+        TriangleSeOpen,
+        Num_210,
+        TriangleSeDot,
+        Num_310,
+        TriangleSeOpenDot,
+        Num_11,
+        TriangleSw,
+        Num_111,
+        TriangleSwOpen,
+        Num_211,
+        TriangleSwDot,
+        Num_311,
+        TriangleSwOpenDot,
+        Num_12,
+        TriangleNw,
+        Num_112,
+        TriangleNwOpen,
+        Num_212,
+        TriangleNwDot,
+        Num_312,
+        TriangleNwOpenDot,
+        Num_13,
+        Pentagon,
+        Num_113,
+        PentagonOpen,
+        Num_213,
+        PentagonDot,
+        Num_313,
+        PentagonOpenDot,
+        Num_14,
+        Hexagon,
+        Num_114,
+        HexagonOpen,
+        Num_214,
+        HexagonDot,
+        Num_314,
+        HexagonOpenDot,
+        Num_15,
+        Hexagon2,
+        Num_115,
+        Hexagon2Open,
+        Num_215,
+        Hexagon2Dot,
+        Num_315,
+        Hexagon2OpenDot,
+        Num_16,
+        Octagon,
+        Num_116,
+        OctagonOpen,
+        Num_216,
+        OctagonDot,
+        Num_316,
+        OctagonOpenDot,
+        Num_17,
+        Star,
+        Num_117,
+        StarOpen,
+        Num_217,
+        StarDot,
+        Num_317,
+        StarOpenDot,
+        Num_18,
+        Hexagram,
+        Num_118,
+        HexagramOpen,
+        Num_218,
+        HexagramDot,
+        Num_318,
+        HexagramOpenDot,
+        Num_19,
+        StarTriangleUp,
+        Num_119,
+        StarTriangleUpOpen,
+        Num_219,
+        StarTriangleUpDot,
+        Num_319,
+        StarTriangleUpOpenDot,
+        Num_20,
+        StarTriangleDown,
+        Num_120,
+        StarTriangleDownOpen,
+        Num_220,
+        StarTriangleDownDot,
+        Num_320,
+        StarTriangleDownOpenDot,
+        Num_21,
+        StarSquare,
+        Num_121,
+        StarSquareOpen,
+        Num_221,
+        StarSquareDot,
+        Num_321,
+        StarSquareOpenDot,
+        Num_22,
+        StarDiamond,
+        Num_122,
+        StarDiamondOpen,
+        Num_222,
+        StarDiamondDot,
+        Num_322,
+        StarDiamondOpenDot,
+        Num_23,
+        DiamondTall,
+        Num_123,
+        DiamondTallOpen,
+        Num_223,
+        DiamondTallDot,
+        Num_323,
+        DiamondTallOpenDot,
+        Num_24,
+        DiamondWide,
+        Num_124,
+        DiamondWideOpen,
+        Num_224,
+        DiamondWideDot,
+        Num_324,
+        DiamondWideOpenDot,
+        Num_25,
+        Hourglass,
+        Num_125,
+        HourglassOpen,
+        Num_26,
+        Bowtie,
+        Num_126,
+        BowtieOpen,
+        Num_27,
+        CircleCross,
+        Num_127,
+        CircleCrossOpen,
+        Num_28,
+        CircleX,
+        Num_128,
+        CircleXOpen,
+        Num_29,
+        SquareCross,
+        Num_129,
+        SquareCrossOpen,
+        Num_30,
+        SquareX,
+        Num_130,
+        SquareXOpen,
+        Num_31,
+        DiamondCross,
+        Num_131,
+        DiamondCrossOpen,
+        Num_32,
+        DiamondX,
+        Num_132,
+        DiamondXOpen,
+        Num_33,
+        CrossThin,
+        Num_133,
+        CrossThinOpen,
+        Num_34,
+        XThin,
+        Num_134,
+        XThinOpen,
+        Num_35,
+        Asterisk,
+        Num_135,
+        AsteriskOpen,
+        Num_36,
+        Hash,
+        Num_136,
+        HashOpen,
+        Num_236,
+        HashDot,
+        Num_336,
+        HashOpenDot,
+        Num_37,
+        YUp,
+        Num_137,
+        YUpOpen,
+        Num_38,
+        YDown,
+        Num_138,
+        YDownOpen,
+        Num_39,
+        YLeft,
+        Num_139,
+        YLeftOpen,
+        Num_40,
+        YRight,
+        Num_140,
+        YRightOpen,
+        Num_41,
+        LineEw,
+        Num_141,
+        LineEwOpen,
+        Num_42,
+        LineNs,
+        Num_142,
+        LineNsOpen,
+        Num_43,
+        LineNe,
+        Num_143,
+        LineNeOpen,
+        Num_44,
+        LineNw,
+        Num_144,
+        LineNwOpen,
+        Num_45,
+        ArrowUp,
+        Num_145,
+        ArrowUpOpen,
+        Num_46,
+        ArrowDown,
+        Num_146,
+        ArrowDownOpen,
+        Num_47,
+        ArrowLeft,
+        Num_147,
+        ArrowLeftOpen,
+        Num_48,
+        ArrowRight,
+        Num_148,
+        ArrowRightOpen,
+        Num_49,
+        ArrowBarUp,
+        Num_149,
+        ArrowBarUpOpen,
+        Num_50,
+        ArrowBarDown,
+        Num_150,
+        ArrowBarDownOpen,
+        Num_51,
+        ArrowBarLeft,
+        Num_151,
+        ArrowBarLeftOpen,
+        Num_52,
+        ArrowBarRight,
+        Num_152,
+        ArrowBarRightOpen,
+        Num_53,
+        Arrow,
+        Num_153,
+        ArrowOpen,
+        Num_54,
+        ArrowWide,
+        Num_154,
+        ArrowWideOpen,
     };
     static std::string to_string(Symbol e);
 

@@ -12,48 +12,48 @@ namespace plotlypp {
 
 std::string Layout::to_string(Autotypenumbers e) {
     switch(e) {
-        case Autotypenumbers::CONVERT_TYPES: return "convert types";
-        case Autotypenumbers::STRICT: return "strict";
+        case Autotypenumbers::ConvertTypes: return "convert types";
+        case Autotypenumbers::Strict: return "strict";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::to_string(Calendar e) {
     switch(e) {
-        case Calendar::CHINESE: return "chinese";
-        case Calendar::COPTIC: return "coptic";
-        case Calendar::DISCWORLD: return "discworld";
-        case Calendar::ETHIOPIAN: return "ethiopian";
-        case Calendar::GREGORIAN: return "gregorian";
-        case Calendar::HEBREW: return "hebrew";
-        case Calendar::ISLAMIC: return "islamic";
-        case Calendar::JALALI: return "jalali";
-        case Calendar::JULIAN: return "julian";
-        case Calendar::MAYAN: return "mayan";
-        case Calendar::NANAKSHAHI: return "nanakshahi";
-        case Calendar::NEPALI: return "nepali";
-        case Calendar::PERSIAN: return "persian";
-        case Calendar::TAIWAN: return "taiwan";
-        case Calendar::THAI: return "thai";
-        case Calendar::UMMALQURA: return "ummalqura";
+        case Calendar::Chinese: return "chinese";
+        case Calendar::Coptic: return "coptic";
+        case Calendar::Discworld: return "discworld";
+        case Calendar::Ethiopian: return "ethiopian";
+        case Calendar::Gregorian: return "gregorian";
+        case Calendar::Hebrew: return "hebrew";
+        case Calendar::Islamic: return "islamic";
+        case Calendar::Jalali: return "jalali";
+        case Calendar::Julian: return "julian";
+        case Calendar::Mayan: return "mayan";
+        case Calendar::Nanakshahi: return "nanakshahi";
+        case Calendar::Nepali: return "nepali";
+        case Calendar::Persian: return "persian";
+        case Calendar::Taiwan: return "taiwan";
+        case Calendar::Thai: return "thai";
+        case Calendar::Ummalqura: return "ummalqura";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::to_string(Dragmode e) {
     switch(e) {
-        case Dragmode::ZOOM: return "zoom";
-        case Dragmode::PAN: return "pan";
-        case Dragmode::SELECT: return "select";
-        case Dragmode::LASSO: return "lasso";
-        case Dragmode::DRAWCLOSEDPATH: return "drawclosedpath";
-        case Dragmode::DRAWOPENPATH: return "drawopenpath";
-        case Dragmode::DRAWLINE: return "drawline";
-        case Dragmode::DRAWRECT: return "drawrect";
-        case Dragmode::DRAWCIRCLE: return "drawcircle";
-        case Dragmode::ORBIT: return "orbit";
-        case Dragmode::TURNTABLE: return "turntable";
-        case Dragmode::FALSE: return "False";
+        case Dragmode::Zoom: return "zoom";
+        case Dragmode::Pan: return "pan";
+        case Dragmode::Select: return "select";
+        case Dragmode::Lasso: return "lasso";
+        case Dragmode::Drawclosedpath: return "drawclosedpath";
+        case Dragmode::Drawopenpath: return "drawopenpath";
+        case Dragmode::Drawline: return "drawline";
+        case Dragmode::Drawrect: return "drawrect";
+        case Dragmode::Drawcircle: return "drawcircle";
+        case Dragmode::Orbit: return "orbit";
+        case Dragmode::Turntable: return "turntable";
+        case Dragmode::False: return "False";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -62,19 +62,19 @@ std::string Layout::to_string(Hovermode e) {
     switch(e) {
         case Hovermode::X: return "x";
         case Hovermode::Y: return "y";
-        case Hovermode::CLOSEST: return "closest";
-        case Hovermode::FALSE: return "False";
-        case Hovermode::X_UNIFIED: return "x unified";
-        case Hovermode::Y_UNIFIED: return "y unified";
+        case Hovermode::Closest: return "closest";
+        case Hovermode::False: return "False";
+        case Hovermode::XUnified: return "x unified";
+        case Hovermode::YUnified: return "y unified";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::to_string(Hoversubplots e) {
     switch(e) {
-        case Hoversubplots::SINGLE: return "single";
-        case Hoversubplots::OVERLAYING: return "overlaying";
-        case Hoversubplots::AXIS: return "axis";
+        case Hoversubplots::Single: return "single";
+        case Hoversubplots::Overlaying: return "overlaying";
+        case Hoversubplots::Axis: return "axis";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -84,7 +84,7 @@ std::string Layout::to_string(Selectdirection e) {
         case Selectdirection::H: return "h";
         case Selectdirection::V: return "v";
         case Selectdirection::D: return "d";
-        case Selectdirection::ANY: return "any";
+        case Selectdirection::Any: return "any";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -181,8 +181,8 @@ Layout& Layout::colorscale(Callable&& c) {
     return colorscale(std::move(f));
 }
 
-Layout& Layout::colorway(std::vector<std::string> f) {
-    json["colorway"] = std::move(f);
+Layout& Layout::colorway(const std::vector<std::string>& f) {
+    json["colorway"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -403,8 +403,8 @@ Layout& Layout::meta(Callable&& c) {
     return meta(std::move(f));
 }
 template <typename T>
-Layout& Layout::meta(std::vector<T> f) {
-    json["meta"] = std::move(f);
+Layout& Layout::meta(const std::vector<T>& f) {
+    json["meta"] = f;
     return *this;
 }
 
@@ -808,47 +808,47 @@ Layout::Annotations& Layout::Annotations::annotation(Callable&& c) {
 
 std::string Layout::Annotations::Annotation::to_string(Align e) {
     switch(e) {
-        case Align::LEFT: return "left";
-        case Align::CENTER: return "center";
-        case Align::RIGHT: return "right";
+        case Align::Left: return "left";
+        case Align::Center: return "center";
+        case Align::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Annotations::Annotation::to_string(Clicktoshow e) {
     switch(e) {
-        case Clicktoshow::FALSE: return "False";
-        case Clicktoshow::ONOFF: return "onoff";
-        case Clicktoshow::ONOUT: return "onout";
+        case Clicktoshow::False: return "False";
+        case Clicktoshow::Onoff: return "onoff";
+        case Clicktoshow::Onout: return "onout";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Annotations::Annotation::to_string(Valign e) {
     switch(e) {
-        case Valign::TOP: return "top";
-        case Valign::MIDDLE: return "middle";
-        case Valign::BOTTOM: return "bottom";
+        case Valign::Top: return "top";
+        case Valign::Middle: return "middle";
+        case Valign::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Annotations::Annotation::to_string(Xanchor e) {
     switch(e) {
-        case Xanchor::AUTO: return "auto";
-        case Xanchor::LEFT: return "left";
-        case Xanchor::CENTER: return "center";
-        case Xanchor::RIGHT: return "right";
+        case Xanchor::Auto: return "auto";
+        case Xanchor::Left: return "left";
+        case Xanchor::Center: return "center";
+        case Xanchor::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Annotations::Annotation::to_string(Yanchor e) {
     switch(e) {
-        case Yanchor::AUTO: return "auto";
-        case Yanchor::TOP: return "top";
-        case Yanchor::MIDDLE: return "middle";
-        case Yanchor::BOTTOM: return "bottom";
+        case Yanchor::Auto: return "auto";
+        case Yanchor::Top: return "top";
+        case Yanchor::Middle: return "middle";
+        case Yanchor::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1305,30 +1305,30 @@ Layout::Annotations::Annotation& Layout::Annotations::Annotation::yshift(Callabl
 
 std::string Layout::Annotations::Annotation::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Annotations::Annotation::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Annotations::Annotation::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1451,30 +1451,30 @@ Layout::Annotations::Annotation::Hoverlabel& Layout::Annotations::Annotation::Ho
 
 std::string Layout::Annotations::Annotation::Hoverlabel::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Annotations::Annotation::Hoverlabel::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Annotations::Annotation::Hoverlabel::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1632,8 +1632,8 @@ Layout::Coloraxis& Layout::Coloraxis::colorscale(std::string f) {
     json["colorscale"] = std::move(f);
     return *this;
 }
-Layout::Coloraxis& Layout::Coloraxis::colorscale(std::vector<std::pair<double, std::string>> f) {
-    json["colorscale"] = std::move(f);
+Layout::Coloraxis& Layout::Coloraxis::colorscale(const std::vector<std::pair<double, std::string>>& f) {
+    json["colorscale"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -1667,10 +1667,10 @@ Layout::Coloraxis& Layout::Coloraxis::showscale(Callable&& c) {
 
 std::string Layout::Coloraxis::Colorbar::to_string(Exponentformat e) {
     switch(e) {
-        case Exponentformat::NONE: return "none";
+        case Exponentformat::None: return "none";
         case Exponentformat::E: return "E";
-        case Exponentformat::POWER: return "power";
-        case Exponentformat::SI: return "SI";
+        case Exponentformat::Power: return "power";
+        case Exponentformat::Si: return "SI";
         case Exponentformat::B: return "B";
     }
     // Should be unreachable.
@@ -1678,8 +1678,8 @@ std::string Layout::Coloraxis::Colorbar::to_string(Exponentformat e) {
 }
 std::string Layout::Coloraxis::Colorbar::to_string(Lenmode e) {
     switch(e) {
-        case Lenmode::FRACTION: return "fraction";
-        case Lenmode::PIXELS: return "pixels";
+        case Lenmode::Fraction: return "fraction";
+        case Lenmode::Pixels: return "pixels";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -1694,115 +1694,115 @@ std::string Layout::Coloraxis::Colorbar::to_string(Orientation e) {
 }
 std::string Layout::Coloraxis::Colorbar::to_string(Showexponent e) {
     switch(e) {
-        case Showexponent::ALL: return "all";
-        case Showexponent::FIRST: return "first";
-        case Showexponent::LAST: return "last";
-        case Showexponent::NONE: return "none";
+        case Showexponent::All: return "all";
+        case Showexponent::First: return "first";
+        case Showexponent::Last: return "last";
+        case Showexponent::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Coloraxis::Colorbar::to_string(Showtickprefix e) {
     switch(e) {
-        case Showtickprefix::ALL: return "all";
-        case Showtickprefix::FIRST: return "first";
-        case Showtickprefix::LAST: return "last";
-        case Showtickprefix::NONE: return "none";
+        case Showtickprefix::All: return "all";
+        case Showtickprefix::First: return "first";
+        case Showtickprefix::Last: return "last";
+        case Showtickprefix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Coloraxis::Colorbar::to_string(Showticksuffix e) {
     switch(e) {
-        case Showticksuffix::ALL: return "all";
-        case Showticksuffix::FIRST: return "first";
-        case Showticksuffix::LAST: return "last";
-        case Showticksuffix::NONE: return "none";
+        case Showticksuffix::All: return "all";
+        case Showticksuffix::First: return "first";
+        case Showticksuffix::Last: return "last";
+        case Showticksuffix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Coloraxis::Colorbar::to_string(Thicknessmode e) {
     switch(e) {
-        case Thicknessmode::FRACTION: return "fraction";
-        case Thicknessmode::PIXELS: return "pixels";
+        case Thicknessmode::Fraction: return "fraction";
+        case Thicknessmode::Pixels: return "pixels";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Coloraxis::Colorbar::to_string(Ticklabeloverflow e) {
     switch(e) {
-        case Ticklabeloverflow::ALLOW: return "allow";
-        case Ticklabeloverflow::HIDE_PAST_DIV: return "hide past div";
-        case Ticklabeloverflow::HIDE_PAST_DOMAIN: return "hide past domain";
+        case Ticklabeloverflow::Allow: return "allow";
+        case Ticklabeloverflow::HidePastDiv: return "hide past div";
+        case Ticklabeloverflow::HidePastDomain: return "hide past domain";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Coloraxis::Colorbar::to_string(Ticklabelposition e) {
     switch(e) {
-        case Ticklabelposition::OUTSIDE: return "outside";
-        case Ticklabelposition::INSIDE: return "inside";
-        case Ticklabelposition::OUTSIDE_TOP: return "outside top";
-        case Ticklabelposition::INSIDE_TOP: return "inside top";
-        case Ticklabelposition::OUTSIDE_LEFT: return "outside left";
-        case Ticklabelposition::INSIDE_LEFT: return "inside left";
-        case Ticklabelposition::OUTSIDE_RIGHT: return "outside right";
-        case Ticklabelposition::INSIDE_RIGHT: return "inside right";
-        case Ticklabelposition::OUTSIDE_BOTTOM: return "outside bottom";
-        case Ticklabelposition::INSIDE_BOTTOM: return "inside bottom";
+        case Ticklabelposition::Outside: return "outside";
+        case Ticklabelposition::Inside: return "inside";
+        case Ticklabelposition::OutsideTop: return "outside top";
+        case Ticklabelposition::InsideTop: return "inside top";
+        case Ticklabelposition::OutsideLeft: return "outside left";
+        case Ticklabelposition::InsideLeft: return "inside left";
+        case Ticklabelposition::OutsideRight: return "outside right";
+        case Ticklabelposition::InsideRight: return "inside right";
+        case Ticklabelposition::OutsideBottom: return "outside bottom";
+        case Ticklabelposition::InsideBottom: return "inside bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Coloraxis::Colorbar::to_string(Tickmode e) {
     switch(e) {
-        case Tickmode::AUTO: return "auto";
-        case Tickmode::LINEAR: return "linear";
-        case Tickmode::ARRAY: return "array";
+        case Tickmode::Auto: return "auto";
+        case Tickmode::Linear: return "linear";
+        case Tickmode::Array: return "array";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Coloraxis::Colorbar::to_string(Ticks e) {
     switch(e) {
-        case Ticks::OUTSIDE: return "outside";
-        case Ticks::INSIDE: return "inside";
-        case Ticks::EMPTY: return "";
+        case Ticks::Outside: return "outside";
+        case Ticks::Inside: return "inside";
+        case Ticks::Empty: return "";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Coloraxis::Colorbar::to_string(Xanchor e) {
     switch(e) {
-        case Xanchor::LEFT: return "left";
-        case Xanchor::CENTER: return "center";
-        case Xanchor::RIGHT: return "right";
+        case Xanchor::Left: return "left";
+        case Xanchor::Center: return "center";
+        case Xanchor::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Coloraxis::Colorbar::to_string(Xref e) {
     switch(e) {
-        case Xref::CONTAINER: return "container";
-        case Xref::PAPER: return "paper";
+        case Xref::Container: return "container";
+        case Xref::Paper: return "paper";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Coloraxis::Colorbar::to_string(Yanchor e) {
     switch(e) {
-        case Yanchor::TOP: return "top";
-        case Yanchor::MIDDLE: return "middle";
-        case Yanchor::BOTTOM: return "bottom";
+        case Yanchor::Top: return "top";
+        case Yanchor::Middle: return "middle";
+        case Yanchor::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Coloraxis::Colorbar::to_string(Yref e) {
     switch(e) {
-        case Yref::CONTAINER: return "container";
-        case Yref::PAPER: return "paper";
+        case Yref::Container: return "container";
+        case Yref::Paper: return "paper";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -2120,8 +2120,8 @@ Layout::Coloraxis::Colorbar& Layout::Coloraxis::Colorbar::ticksuffix(Callable&& 
 }
 
 template <typename T, typename>
-Layout::Coloraxis::Colorbar& Layout::Coloraxis::Colorbar::ticktext(std::vector<T> f) {
-    json["ticktext"] = std::move(f);
+Layout::Coloraxis::Colorbar& Layout::Coloraxis::Colorbar::ticktext(const std::vector<T>& f) {
+    json["ticktext"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -2143,8 +2143,8 @@ Layout::Coloraxis::Colorbar& Layout::Coloraxis::Colorbar::ticktextsrc(Callable&&
 }
 
 template <typename T, typename>
-Layout::Coloraxis::Colorbar& Layout::Coloraxis::Colorbar::tickvals(std::vector<T> f) {
-    json["tickvals"] = std::move(f);
+Layout::Coloraxis::Colorbar& Layout::Coloraxis::Colorbar::tickvals(const std::vector<T>& f) {
+    json["tickvals"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -2253,30 +2253,30 @@ Layout::Coloraxis::Colorbar& Layout::Coloraxis::Colorbar::yref(enum Yref f) {
 
 std::string Layout::Coloraxis::Colorbar::Tickfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Coloraxis::Colorbar::Tickfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Coloraxis::Colorbar::Tickfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -2376,8 +2376,8 @@ Layout::Coloraxis::Colorbar::Tickformatstops& Layout::Coloraxis::Colorbar::Tickf
 }
 
 
-Layout::Coloraxis::Colorbar::Tickformatstops::Tickformatstop& Layout::Coloraxis::Colorbar::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
-    json["dtickrange"] = std::move(f);
+Layout::Coloraxis::Colorbar::Tickformatstops::Tickformatstop& Layout::Coloraxis::Colorbar::Tickformatstops::Tickformatstop::dtickrange(const std::vector<double>& f) {
+    json["dtickrange"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -2433,9 +2433,9 @@ Layout::Coloraxis::Colorbar::Tickformatstops::Tickformatstop& Layout::Coloraxis:
 
 std::string Layout::Coloraxis::Colorbar::Title::to_string(Side e) {
     switch(e) {
-        case Side::RIGHT: return "right";
-        case Side::TOP: return "top";
-        case Side::BOTTOM: return "bottom";
+        case Side::Right: return "right";
+        case Side::Top: return "top";
+        case Side::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -2470,30 +2470,30 @@ Layout::Coloraxis::Colorbar::Title& Layout::Coloraxis::Colorbar::Title::text(Cal
 
 std::string Layout::Coloraxis::Colorbar::Title::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Coloraxis::Colorbar::Title::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Coloraxis::Colorbar::Title::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -2585,8 +2585,8 @@ Layout::Colorscale& Layout::Colorscale::diverging(std::string f) {
     json["diverging"] = std::move(f);
     return *this;
 }
-Layout::Colorscale& Layout::Colorscale::diverging(std::vector<std::pair<double, std::string>> f) {
-    json["diverging"] = std::move(f);
+Layout::Colorscale& Layout::Colorscale::diverging(const std::vector<std::pair<double, std::string>>& f) {
+    json["diverging"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -2600,8 +2600,8 @@ Layout::Colorscale& Layout::Colorscale::sequential(std::string f) {
     json["sequential"] = std::move(f);
     return *this;
 }
-Layout::Colorscale& Layout::Colorscale::sequential(std::vector<std::pair<double, std::string>> f) {
-    json["sequential"] = std::move(f);
+Layout::Colorscale& Layout::Colorscale::sequential(const std::vector<std::pair<double, std::string>>& f) {
+    json["sequential"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -2615,8 +2615,8 @@ Layout::Colorscale& Layout::Colorscale::sequentialminus(std::string f) {
     json["sequentialminus"] = std::move(f);
     return *this;
 }
-Layout::Colorscale& Layout::Colorscale::sequentialminus(std::vector<std::pair<double, std::string>> f) {
-    json["sequentialminus"] = std::move(f);
+Layout::Colorscale& Layout::Colorscale::sequentialminus(const std::vector<std::pair<double, std::string>>& f) {
+    json["sequentialminus"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -2628,30 +2628,30 @@ Layout::Colorscale& Layout::Colorscale::sequentialminus(Callable&& c) {
 
 std::string Layout::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -2740,30 +2740,30 @@ Layout::Font& Layout::Font::weight(Callable&& c) {
 
 std::string Layout::Geo::to_string(Fitbounds e) {
     switch(e) {
-        case Fitbounds::FALSE: return "False";
-        case Fitbounds::LOCATIONS: return "locations";
-        case Fitbounds::GEOJSON: return "geojson";
+        case Fitbounds::False: return "False";
+        case Fitbounds::Locations: return "locations";
+        case Fitbounds::Geojson: return "geojson";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Geo::to_string(Resolution e) {
     switch(e) {
-        case Resolution::NUM_110: return "110";
-        case Resolution::NUM_50: return "50";
+        case Resolution::Num_110: return "110";
+        case Resolution::Num_50: return "50";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Geo::to_string(Scope e) {
     switch(e) {
-        case Scope::AFRICA: return "africa";
-        case Scope::ASIA: return "asia";
-        case Scope::EUROPE: return "europe";
-        case Scope::NORTH_AMERICA: return "north america";
-        case Scope::SOUTH_AMERICA: return "south america";
-        case Scope::USA: return "usa";
-        case Scope::WORLD: return "world";
+        case Scope::Africa: return "africa";
+        case Scope::Asia: return "asia";
+        case Scope::Europe: return "europe";
+        case Scope::NorthAmerica: return "north america";
+        case Scope::SouthAmerica: return "south america";
+        case Scope::Usa: return "usa";
+        case Scope::World: return "world";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -3150,8 +3150,8 @@ Layout::Geo::Domain& Layout::Geo::Domain::row(Callable&& c) {
     return row(std::move(f));
 }
 
-Layout::Geo::Domain& Layout::Geo::Domain::x(std::vector<double> f) {
-    json["x"] = std::move(f);
+Layout::Geo::Domain& Layout::Geo::Domain::x(const std::vector<double>& f) {
+    json["x"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -3161,8 +3161,8 @@ Layout::Geo::Domain& Layout::Geo::Domain::x(Callable&& c) {
     return x(std::move(f));
 }
 
-Layout::Geo::Domain& Layout::Geo::Domain::y(std::vector<double> f) {
-    json["y"] = std::move(f);
+Layout::Geo::Domain& Layout::Geo::Domain::y(const std::vector<double>& f) {
+    json["y"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -3217,8 +3217,8 @@ Layout::Geo::Lataxis& Layout::Geo::Lataxis::gridwidth(Callable&& c) {
     return gridwidth(std::move(f));
 }
 
-Layout::Geo::Lataxis& Layout::Geo::Lataxis::range(std::vector<double> f) {
-    json["range"] = std::move(f);
+Layout::Geo::Lataxis& Layout::Geo::Lataxis::range(const std::vector<double>& f) {
+    json["range"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -3295,8 +3295,8 @@ Layout::Geo::Lonaxis& Layout::Geo::Lonaxis::gridwidth(Callable&& c) {
     return gridwidth(std::move(f));
 }
 
-Layout::Geo::Lonaxis& Layout::Geo::Lonaxis::range(std::vector<double> f) {
-    json["range"] = std::move(f);
+Layout::Geo::Lonaxis& Layout::Geo::Lonaxis::range(const std::vector<double>& f) {
+    json["range"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -3330,90 +3330,90 @@ Layout::Geo::Lonaxis& Layout::Geo::Lonaxis::tick0(Callable&& c) {
 
 std::string Layout::Geo::Projection::to_string(Type e) {
     switch(e) {
-        case Type::AIRY: return "airy";
-        case Type::AITOFF: return "aitoff";
-        case Type::ALBERS: return "albers";
-        case Type::ALBERS_USA: return "albers usa";
-        case Type::AUGUST: return "august";
-        case Type::AZIMUTHAL_EQUAL_AREA: return "azimuthal equal area";
-        case Type::AZIMUTHAL_EQUIDISTANT: return "azimuthal equidistant";
-        case Type::BAKER: return "baker";
-        case Type::BERTIN1953: return "bertin1953";
-        case Type::BOGGS: return "boggs";
-        case Type::BONNE: return "bonne";
-        case Type::BOTTOMLEY: return "bottomley";
-        case Type::BROMLEY: return "bromley";
-        case Type::COLLIGNON: return "collignon";
-        case Type::CONIC_CONFORMAL: return "conic conformal";
-        case Type::CONIC_EQUAL_AREA: return "conic equal area";
-        case Type::CONIC_EQUIDISTANT: return "conic equidistant";
-        case Type::CRAIG: return "craig";
-        case Type::CRASTER: return "craster";
-        case Type::CYLINDRICAL_EQUAL_AREA: return "cylindrical equal area";
-        case Type::CYLINDRICAL_STEREOGRAPHIC: return "cylindrical stereographic";
-        case Type::ECKERT1: return "eckert1";
-        case Type::ECKERT2: return "eckert2";
-        case Type::ECKERT3: return "eckert3";
-        case Type::ECKERT4: return "eckert4";
-        case Type::ECKERT5: return "eckert5";
-        case Type::ECKERT6: return "eckert6";
-        case Type::EISENLOHR: return "eisenlohr";
-        case Type::EQUAL_EARTH: return "equal earth";
-        case Type::EQUIRECTANGULAR: return "equirectangular";
-        case Type::FAHEY: return "fahey";
-        case Type::FOUCAUT: return "foucaut";
-        case Type::FOUCAUT_SINUSOIDAL: return "foucaut sinusoidal";
-        case Type::GINZBURG4: return "ginzburg4";
-        case Type::GINZBURG5: return "ginzburg5";
-        case Type::GINZBURG6: return "ginzburg6";
-        case Type::GINZBURG8: return "ginzburg8";
-        case Type::GINZBURG9: return "ginzburg9";
-        case Type::GNOMONIC: return "gnomonic";
-        case Type::GRINGORTEN: return "gringorten";
-        case Type::GRINGORTEN_QUINCUNCIAL: return "gringorten quincuncial";
-        case Type::GUYOU: return "guyou";
-        case Type::HAMMER: return "hammer";
-        case Type::HILL: return "hill";
-        case Type::HOMOLOSINE: return "homolosine";
-        case Type::HUFNAGEL: return "hufnagel";
-        case Type::HYPERELLIPTICAL: return "hyperelliptical";
-        case Type::KAVRAYSKIY7: return "kavrayskiy7";
-        case Type::LAGRANGE: return "lagrange";
-        case Type::LARRIVEE: return "larrivee";
-        case Type::LASKOWSKI: return "laskowski";
-        case Type::LOXIMUTHAL: return "loximuthal";
-        case Type::MERCATOR: return "mercator";
-        case Type::MILLER: return "miller";
-        case Type::MOLLWEIDE: return "mollweide";
-        case Type::MT_FLAT_POLAR_PARABOLIC: return "mt flat polar parabolic";
-        case Type::MT_FLAT_POLAR_QUARTIC: return "mt flat polar quartic";
-        case Type::MT_FLAT_POLAR_SINUSOIDAL: return "mt flat polar sinusoidal";
-        case Type::NATURAL_EARTH: return "natural earth";
-        case Type::NATURAL_EARTH1: return "natural earth1";
-        case Type::NATURAL_EARTH2: return "natural earth2";
-        case Type::NELL_HAMMER: return "nell hammer";
-        case Type::NICOLOSI: return "nicolosi";
-        case Type::ORTHOGRAPHIC: return "orthographic";
-        case Type::PATTERSON: return "patterson";
-        case Type::PEIRCE_QUINCUNCIAL: return "peirce quincuncial";
-        case Type::POLYCONIC: return "polyconic";
-        case Type::RECTANGULAR_POLYCONIC: return "rectangular polyconic";
-        case Type::ROBINSON: return "robinson";
-        case Type::SATELLITE: return "satellite";
-        case Type::SINU_MOLLWEIDE: return "sinu mollweide";
-        case Type::SINUSOIDAL: return "sinusoidal";
-        case Type::STEREOGRAPHIC: return "stereographic";
-        case Type::TIMES: return "times";
-        case Type::TRANSVERSE_MERCATOR: return "transverse mercator";
-        case Type::VAN_DER_GRINTEN: return "van der grinten";
-        case Type::VAN_DER_GRINTEN2: return "van der grinten2";
-        case Type::VAN_DER_GRINTEN3: return "van der grinten3";
-        case Type::VAN_DER_GRINTEN4: return "van der grinten4";
-        case Type::WAGNER4: return "wagner4";
-        case Type::WAGNER6: return "wagner6";
-        case Type::WIECHEL: return "wiechel";
-        case Type::WINKEL_TRIPEL: return "winkel tripel";
-        case Type::WINKEL3: return "winkel3";
+        case Type::Airy: return "airy";
+        case Type::Aitoff: return "aitoff";
+        case Type::Albers: return "albers";
+        case Type::AlbersUsa: return "albers usa";
+        case Type::August: return "august";
+        case Type::AzimuthalEqualArea: return "azimuthal equal area";
+        case Type::AzimuthalEquidistant: return "azimuthal equidistant";
+        case Type::Baker: return "baker";
+        case Type::Bertin1953: return "bertin1953";
+        case Type::Boggs: return "boggs";
+        case Type::Bonne: return "bonne";
+        case Type::Bottomley: return "bottomley";
+        case Type::Bromley: return "bromley";
+        case Type::Collignon: return "collignon";
+        case Type::ConicConformal: return "conic conformal";
+        case Type::ConicEqualArea: return "conic equal area";
+        case Type::ConicEquidistant: return "conic equidistant";
+        case Type::Craig: return "craig";
+        case Type::Craster: return "craster";
+        case Type::CylindricalEqualArea: return "cylindrical equal area";
+        case Type::CylindricalStereographic: return "cylindrical stereographic";
+        case Type::Eckert1: return "eckert1";
+        case Type::Eckert2: return "eckert2";
+        case Type::Eckert3: return "eckert3";
+        case Type::Eckert4: return "eckert4";
+        case Type::Eckert5: return "eckert5";
+        case Type::Eckert6: return "eckert6";
+        case Type::Eisenlohr: return "eisenlohr";
+        case Type::EqualEarth: return "equal earth";
+        case Type::Equirectangular: return "equirectangular";
+        case Type::Fahey: return "fahey";
+        case Type::Foucaut: return "foucaut";
+        case Type::FoucautSinusoidal: return "foucaut sinusoidal";
+        case Type::Ginzburg4: return "ginzburg4";
+        case Type::Ginzburg5: return "ginzburg5";
+        case Type::Ginzburg6: return "ginzburg6";
+        case Type::Ginzburg8: return "ginzburg8";
+        case Type::Ginzburg9: return "ginzburg9";
+        case Type::Gnomonic: return "gnomonic";
+        case Type::Gringorten: return "gringorten";
+        case Type::GringortenQuincuncial: return "gringorten quincuncial";
+        case Type::Guyou: return "guyou";
+        case Type::Hammer: return "hammer";
+        case Type::Hill: return "hill";
+        case Type::Homolosine: return "homolosine";
+        case Type::Hufnagel: return "hufnagel";
+        case Type::Hyperelliptical: return "hyperelliptical";
+        case Type::Kavrayskiy7: return "kavrayskiy7";
+        case Type::Lagrange: return "lagrange";
+        case Type::Larrivee: return "larrivee";
+        case Type::Laskowski: return "laskowski";
+        case Type::Loximuthal: return "loximuthal";
+        case Type::Mercator: return "mercator";
+        case Type::Miller: return "miller";
+        case Type::Mollweide: return "mollweide";
+        case Type::MtFlatPolarParabolic: return "mt flat polar parabolic";
+        case Type::MtFlatPolarQuartic: return "mt flat polar quartic";
+        case Type::MtFlatPolarSinusoidal: return "mt flat polar sinusoidal";
+        case Type::NaturalEarth: return "natural earth";
+        case Type::NaturalEarth1: return "natural earth1";
+        case Type::NaturalEarth2: return "natural earth2";
+        case Type::NellHammer: return "nell hammer";
+        case Type::Nicolosi: return "nicolosi";
+        case Type::Orthographic: return "orthographic";
+        case Type::Patterson: return "patterson";
+        case Type::PeirceQuincuncial: return "peirce quincuncial";
+        case Type::Polyconic: return "polyconic";
+        case Type::RectangularPolyconic: return "rectangular polyconic";
+        case Type::Robinson: return "robinson";
+        case Type::Satellite: return "satellite";
+        case Type::SinuMollweide: return "sinu mollweide";
+        case Type::Sinusoidal: return "sinusoidal";
+        case Type::Stereographic: return "stereographic";
+        case Type::Times: return "times";
+        case Type::TransverseMercator: return "transverse mercator";
+        case Type::VanDerGrinten: return "van der grinten";
+        case Type::VanDerGrinten2: return "van der grinten2";
+        case Type::VanDerGrinten3: return "van der grinten3";
+        case Type::VanDerGrinten4: return "van der grinten4";
+        case Type::Wagner4: return "wagner4";
+        case Type::Wagner6: return "wagner6";
+        case Type::Wiechel: return "wiechel";
+        case Type::WinkelTripel: return "winkel tripel";
+        case Type::Winkel3: return "winkel3";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -3430,8 +3430,8 @@ Layout::Geo::Projection& Layout::Geo::Projection::distance(Callable&& c) {
     return distance(std::move(f));
 }
 
-Layout::Geo::Projection& Layout::Geo::Projection::parallels(std::vector<double> f) {
-    json["parallels"] = std::move(f);
+Layout::Geo::Projection& Layout::Geo::Projection::parallels(const std::vector<double>& f) {
+    json["parallels"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -3515,36 +3515,36 @@ Layout::Geo::Projection::Rotation& Layout::Geo::Projection::Rotation::roll(Calla
 
 std::string Layout::Grid::to_string(Pattern e) {
     switch(e) {
-        case Pattern::INDEPENDENT: return "independent";
-        case Pattern::COUPLED: return "coupled";
+        case Pattern::Independent: return "independent";
+        case Pattern::Coupled: return "coupled";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Grid::to_string(Roworder e) {
     switch(e) {
-        case Roworder::TOP_TO_BOTTOM: return "top to bottom";
-        case Roworder::BOTTOM_TO_TOP: return "bottom to top";
+        case Roworder::TopToBottom: return "top to bottom";
+        case Roworder::BottomToTop: return "bottom to top";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Grid::to_string(Xside e) {
     switch(e) {
-        case Xside::BOTTOM: return "bottom";
-        case Xside::BOTTOM_PLOT: return "bottom plot";
-        case Xside::TOP_PLOT: return "top plot";
-        case Xside::TOP: return "top";
+        case Xside::Bottom: return "bottom";
+        case Xside::BottomPlot: return "bottom plot";
+        case Xside::TopPlot: return "top plot";
+        case Xside::Top: return "top";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Grid::to_string(Yside e) {
     switch(e) {
-        case Yside::LEFT: return "left";
-        case Yside::LEFT_PLOT: return "left plot";
-        case Yside::RIGHT_PLOT: return "right plot";
-        case Yside::RIGHT: return "right";
+        case Yside::Left: return "left";
+        case Yside::LeftPlot: return "left plot";
+        case Yside::RightPlot: return "right plot";
+        case Yside::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -3593,8 +3593,8 @@ Layout::Grid& Layout::Grid::rows(Callable&& c) {
     return rows(std::move(f));
 }
 
-Layout::Grid& Layout::Grid::subplots(std::vector<double> f) {
-    json["subplots"] = std::move(f);
+Layout::Grid& Layout::Grid::subplots(const std::vector<double>& f) {
+    json["subplots"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -3604,8 +3604,8 @@ Layout::Grid& Layout::Grid::subplots(Callable&& c) {
     return subplots(std::move(f));
 }
 
-Layout::Grid& Layout::Grid::xaxes(std::vector<double> f) {
-    json["xaxes"] = std::move(f);
+Layout::Grid& Layout::Grid::xaxes(const std::vector<double>& f) {
+    json["xaxes"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -3631,8 +3631,8 @@ Layout::Grid& Layout::Grid::xside(enum Xside f) {
     return *this;
 }
 
-Layout::Grid& Layout::Grid::yaxes(std::vector<double> f) {
-    json["yaxes"] = std::move(f);
+Layout::Grid& Layout::Grid::yaxes(const std::vector<double>& f) {
+    json["yaxes"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -3659,8 +3659,8 @@ Layout::Grid& Layout::Grid::yside(enum Yside f) {
 }
 
 
-Layout::Grid::Domain& Layout::Grid::Domain::x(std::vector<double> f) {
-    json["x"] = std::move(f);
+Layout::Grid::Domain& Layout::Grid::Domain::x(const std::vector<double>& f) {
+    json["x"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -3670,8 +3670,8 @@ Layout::Grid::Domain& Layout::Grid::Domain::x(Callable&& c) {
     return x(std::move(f));
 }
 
-Layout::Grid::Domain& Layout::Grid::Domain::y(std::vector<double> f) {
-    json["y"] = std::move(f);
+Layout::Grid::Domain& Layout::Grid::Domain::y(const std::vector<double>& f) {
+    json["y"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -3683,9 +3683,9 @@ Layout::Grid::Domain& Layout::Grid::Domain::y(Callable&& c) {
 
 std::string Layout::Hoverlabel::to_string(Align e) {
     switch(e) {
-        case Align::LEFT: return "left";
-        case Align::RIGHT: return "right";
-        case Align::AUTO: return "auto";
+        case Align::Left: return "left";
+        case Align::Right: return "right";
+        case Align::Auto: return "auto";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -3753,30 +3753,30 @@ Layout::Hoverlabel& Layout::Hoverlabel::namelength(Callable&& c) {
 
 std::string Layout::Hoverlabel::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Hoverlabel::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Hoverlabel::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -3865,30 +3865,30 @@ Layout::Hoverlabel::Font& Layout::Hoverlabel::Font::weight(Callable&& c) {
 
 std::string Layout::Hoverlabel::Grouptitlefont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Hoverlabel::Grouptitlefont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Hoverlabel::Grouptitlefont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -3989,35 +3989,35 @@ Layout::Images& Layout::Images::image(Callable&& c) {
 
 std::string Layout::Images::Image::to_string(Layer e) {
     switch(e) {
-        case Layer::BELOW: return "below";
-        case Layer::ABOVE: return "above";
+        case Layer::Below: return "below";
+        case Layer::Above: return "above";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Images::Image::to_string(Sizing e) {
     switch(e) {
-        case Sizing::FILL: return "fill";
-        case Sizing::CONTAIN: return "contain";
-        case Sizing::STRETCH: return "stretch";
+        case Sizing::Fill: return "fill";
+        case Sizing::Contain: return "contain";
+        case Sizing::Stretch: return "stretch";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Images::Image::to_string(Xanchor e) {
     switch(e) {
-        case Xanchor::LEFT: return "left";
-        case Xanchor::CENTER: return "center";
-        case Xanchor::RIGHT: return "right";
+        case Xanchor::Left: return "left";
+        case Xanchor::Center: return "center";
+        case Xanchor::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Images::Image::to_string(Yanchor e) {
     switch(e) {
-        case Yanchor::TOP: return "top";
-        case Yanchor::MIDDLE: return "middle";
-        case Yanchor::BOTTOM: return "bottom";
+        case Yanchor::Top: return "top";
+        case Yanchor::Middle: return "middle";
+        case Yanchor::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -4168,42 +4168,42 @@ Layout::Images::Image& Layout::Images::Image::yref(Callable&& c) {
 
 std::string Layout::Legend::to_string(Entrywidthmode e) {
     switch(e) {
-        case Entrywidthmode::FRACTION: return "fraction";
-        case Entrywidthmode::PIXELS: return "pixels";
+        case Entrywidthmode::Fraction: return "fraction";
+        case Entrywidthmode::Pixels: return "pixels";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Legend::to_string(Groupclick e) {
     switch(e) {
-        case Groupclick::TOGGLEITEM: return "toggleitem";
-        case Groupclick::TOGGLEGROUP: return "togglegroup";
+        case Groupclick::Toggleitem: return "toggleitem";
+        case Groupclick::Togglegroup: return "togglegroup";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Legend::to_string(Itemclick e) {
     switch(e) {
-        case Itemclick::TOGGLE: return "toggle";
-        case Itemclick::TOGGLEOTHERS: return "toggleothers";
-        case Itemclick::FALSE: return "False";
+        case Itemclick::Toggle: return "toggle";
+        case Itemclick::Toggleothers: return "toggleothers";
+        case Itemclick::False: return "False";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Legend::to_string(Itemdoubleclick e) {
     switch(e) {
-        case Itemdoubleclick::TOGGLE: return "toggle";
-        case Itemdoubleclick::TOGGLEOTHERS: return "toggleothers";
-        case Itemdoubleclick::FALSE: return "False";
+        case Itemdoubleclick::Toggle: return "toggle";
+        case Itemdoubleclick::Toggleothers: return "toggleothers";
+        case Itemdoubleclick::False: return "False";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Legend::to_string(Itemsizing e) {
     switch(e) {
-        case Itemsizing::TRACE: return "trace";
-        case Itemsizing::CONSTANT: return "constant";
+        case Itemsizing::Trace: return "trace";
+        case Itemsizing::Constant: return "constant";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -4218,45 +4218,45 @@ std::string Layout::Legend::to_string(Orientation e) {
 }
 std::string Layout::Legend::to_string(Valign e) {
     switch(e) {
-        case Valign::TOP: return "top";
-        case Valign::MIDDLE: return "middle";
-        case Valign::BOTTOM: return "bottom";
+        case Valign::Top: return "top";
+        case Valign::Middle: return "middle";
+        case Valign::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Legend::to_string(Xanchor e) {
     switch(e) {
-        case Xanchor::AUTO: return "auto";
-        case Xanchor::LEFT: return "left";
-        case Xanchor::CENTER: return "center";
-        case Xanchor::RIGHT: return "right";
+        case Xanchor::Auto: return "auto";
+        case Xanchor::Left: return "left";
+        case Xanchor::Center: return "center";
+        case Xanchor::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Legend::to_string(Xref e) {
     switch(e) {
-        case Xref::CONTAINER: return "container";
-        case Xref::PAPER: return "paper";
+        case Xref::Container: return "container";
+        case Xref::Paper: return "paper";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Legend::to_string(Yanchor e) {
     switch(e) {
-        case Yanchor::AUTO: return "auto";
-        case Yanchor::TOP: return "top";
-        case Yanchor::MIDDLE: return "middle";
-        case Yanchor::BOTTOM: return "bottom";
+        case Yanchor::Auto: return "auto";
+        case Yanchor::Top: return "top";
+        case Yanchor::Middle: return "middle";
+        case Yanchor::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Legend::to_string(Yref e) {
     switch(e) {
-        case Yref::CONTAINER: return "container";
-        case Yref::PAPER: return "paper";
+        case Yref::Container: return "container";
+        case Yref::Paper: return "paper";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -4485,30 +4485,30 @@ Layout::Legend& Layout::Legend::yref(enum Yref f) {
 
 std::string Layout::Legend::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Legend::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Legend::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -4597,30 +4597,30 @@ Layout::Legend::Font& Layout::Legend::Font::weight(Callable&& c) {
 
 std::string Layout::Legend::Grouptitlefont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Legend::Grouptitlefont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Legend::Grouptitlefont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -4709,11 +4709,11 @@ Layout::Legend::Grouptitlefont& Layout::Legend::Grouptitlefont::weight(Callable&
 
 std::string Layout::Legend::Title::to_string(Side e) {
     switch(e) {
-        case Side::TOP: return "top";
-        case Side::LEFT: return "left";
-        case Side::TOP_LEFT: return "top left";
-        case Side::TOP_CENTER: return "top center";
-        case Side::TOP_RIGHT: return "top right";
+        case Side::Top: return "top";
+        case Side::Left: return "left";
+        case Side::TopLeft: return "top left";
+        case Side::TopCenter: return "top center";
+        case Side::TopRight: return "top right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -4748,30 +4748,30 @@ Layout::Legend::Title& Layout::Legend::Title::text(Callable&& c) {
 
 std::string Layout::Legend::Title::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Legend::Title::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Legend::Title::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -5051,8 +5051,8 @@ Layout::Map::Domain& Layout::Map::Domain::row(Callable&& c) {
     return row(std::move(f));
 }
 
-Layout::Map::Domain& Layout::Map::Domain::x(std::vector<double> f) {
-    json["x"] = std::move(f);
+Layout::Map::Domain& Layout::Map::Domain::x(const std::vector<double>& f) {
+    json["x"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -5062,8 +5062,8 @@ Layout::Map::Domain& Layout::Map::Domain::x(Callable&& c) {
     return x(std::move(f));
 }
 
-Layout::Map::Domain& Layout::Map::Domain::y(std::vector<double> f) {
-    json["y"] = std::move(f);
+Layout::Map::Domain& Layout::Map::Domain::y(const std::vector<double>& f) {
+    json["y"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -5087,21 +5087,21 @@ Layout::Map::Layers& Layout::Map::Layers::layer(Callable&& c) {
 
 std::string Layout::Map::Layers::Layer::to_string(Sourcetype e) {
     switch(e) {
-        case Sourcetype::GEOJSON: return "geojson";
-        case Sourcetype::VECTOR: return "vector";
-        case Sourcetype::RASTER: return "raster";
-        case Sourcetype::IMAGE: return "image";
+        case Sourcetype::Geojson: return "geojson";
+        case Sourcetype::Vector: return "vector";
+        case Sourcetype::Raster: return "raster";
+        case Sourcetype::Image: return "image";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Map::Layers::Layer::to_string(Type e) {
     switch(e) {
-        case Type::CIRCLE: return "circle";
-        case Type::LINE: return "line";
-        case Type::FILL: return "fill";
-        case Type::SYMBOL: return "symbol";
-        case Type::RASTER: return "raster";
+        case Type::Circle: return "circle";
+        case Type::Line: return "line";
+        case Type::Fill: return "fill";
+        case Type::Symbol: return "symbol";
+        case Type::Raster: return "raster";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -5321,8 +5321,8 @@ Layout::Map::Layers::Layer::Fill& Layout::Map::Layers::Layer::Fill::outlinecolor
 
 
 template <typename T, typename>
-Layout::Map::Layers::Layer::Line& Layout::Map::Layers::Layer::Line::dash(std::vector<T> f) {
-    json["dash"] = std::move(f);
+Layout::Map::Layers::Layer::Line& Layout::Map::Layers::Layer::Line::dash(const std::vector<T>& f) {
+    json["dash"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -5356,24 +5356,24 @@ Layout::Map::Layers::Layer::Line& Layout::Map::Layers::Layer::Line::width(Callab
 
 std::string Layout::Map::Layers::Layer::Symbol::to_string(Placement e) {
     switch(e) {
-        case Placement::POINT: return "point";
-        case Placement::LINE: return "line";
-        case Placement::LINE_CENTER: return "line-center";
+        case Placement::Point: return "point";
+        case Placement::Line: return "line";
+        case Placement::LineCenter: return "line-center";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Map::Layers::Layer::Symbol::to_string(Textposition e) {
     switch(e) {
-        case Textposition::TOP_LEFT: return "top left";
-        case Textposition::TOP_CENTER: return "top center";
-        case Textposition::TOP_RIGHT: return "top right";
-        case Textposition::MIDDLE_LEFT: return "middle left";
-        case Textposition::MIDDLE_CENTER: return "middle center";
-        case Textposition::MIDDLE_RIGHT: return "middle right";
-        case Textposition::BOTTOM_LEFT: return "bottom left";
-        case Textposition::BOTTOM_CENTER: return "bottom center";
-        case Textposition::BOTTOM_RIGHT: return "bottom right";
+        case Textposition::TopLeft: return "top left";
+        case Textposition::TopCenter: return "top center";
+        case Textposition::TopRight: return "top right";
+        case Textposition::MiddleLeft: return "middle left";
+        case Textposition::MiddleCenter: return "middle center";
+        case Textposition::MiddleRight: return "middle right";
+        case Textposition::BottomLeft: return "bottom left";
+        case Textposition::BottomCenter: return "bottom center";
+        case Textposition::BottomRight: return "bottom right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -5435,8 +5435,8 @@ Layout::Map::Layers::Layer::Symbol& Layout::Map::Layers::Layer::Symbol::textposi
 
 std::string Layout::Map::Layers::Layer::Symbol::Textfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -5695,8 +5695,8 @@ Layout::Mapbox::Domain& Layout::Mapbox::Domain::row(Callable&& c) {
     return row(std::move(f));
 }
 
-Layout::Mapbox::Domain& Layout::Mapbox::Domain::x(std::vector<double> f) {
-    json["x"] = std::move(f);
+Layout::Mapbox::Domain& Layout::Mapbox::Domain::x(const std::vector<double>& f) {
+    json["x"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -5706,8 +5706,8 @@ Layout::Mapbox::Domain& Layout::Mapbox::Domain::x(Callable&& c) {
     return x(std::move(f));
 }
 
-Layout::Mapbox::Domain& Layout::Mapbox::Domain::y(std::vector<double> f) {
-    json["y"] = std::move(f);
+Layout::Mapbox::Domain& Layout::Mapbox::Domain::y(const std::vector<double>& f) {
+    json["y"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -5731,21 +5731,21 @@ Layout::Mapbox::Layers& Layout::Mapbox::Layers::layer(Callable&& c) {
 
 std::string Layout::Mapbox::Layers::Layer::to_string(Sourcetype e) {
     switch(e) {
-        case Sourcetype::GEOJSON: return "geojson";
-        case Sourcetype::VECTOR: return "vector";
-        case Sourcetype::RASTER: return "raster";
-        case Sourcetype::IMAGE: return "image";
+        case Sourcetype::Geojson: return "geojson";
+        case Sourcetype::Vector: return "vector";
+        case Sourcetype::Raster: return "raster";
+        case Sourcetype::Image: return "image";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Mapbox::Layers::Layer::to_string(Type e) {
     switch(e) {
-        case Type::CIRCLE: return "circle";
-        case Type::LINE: return "line";
-        case Type::FILL: return "fill";
-        case Type::SYMBOL: return "symbol";
-        case Type::RASTER: return "raster";
+        case Type::Circle: return "circle";
+        case Type::Line: return "line";
+        case Type::Fill: return "fill";
+        case Type::Symbol: return "symbol";
+        case Type::Raster: return "raster";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -5965,8 +5965,8 @@ Layout::Mapbox::Layers::Layer::Fill& Layout::Mapbox::Layers::Layer::Fill::outlin
 
 
 template <typename T, typename>
-Layout::Mapbox::Layers::Layer::Line& Layout::Mapbox::Layers::Layer::Line::dash(std::vector<T> f) {
-    json["dash"] = std::move(f);
+Layout::Mapbox::Layers::Layer::Line& Layout::Mapbox::Layers::Layer::Line::dash(const std::vector<T>& f) {
+    json["dash"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -6000,24 +6000,24 @@ Layout::Mapbox::Layers::Layer::Line& Layout::Mapbox::Layers::Layer::Line::width(
 
 std::string Layout::Mapbox::Layers::Layer::Symbol::to_string(Placement e) {
     switch(e) {
-        case Placement::POINT: return "point";
-        case Placement::LINE: return "line";
-        case Placement::LINE_CENTER: return "line-center";
+        case Placement::Point: return "point";
+        case Placement::Line: return "line";
+        case Placement::LineCenter: return "line-center";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Mapbox::Layers::Layer::Symbol::to_string(Textposition e) {
     switch(e) {
-        case Textposition::TOP_LEFT: return "top left";
-        case Textposition::TOP_CENTER: return "top center";
-        case Textposition::TOP_RIGHT: return "top right";
-        case Textposition::MIDDLE_LEFT: return "middle left";
-        case Textposition::MIDDLE_CENTER: return "middle center";
-        case Textposition::MIDDLE_RIGHT: return "middle right";
-        case Textposition::BOTTOM_LEFT: return "bottom left";
-        case Textposition::BOTTOM_CENTER: return "bottom center";
-        case Textposition::BOTTOM_RIGHT: return "bottom right";
+        case Textposition::TopLeft: return "top left";
+        case Textposition::TopCenter: return "top center";
+        case Textposition::TopRight: return "top right";
+        case Textposition::MiddleLeft: return "middle left";
+        case Textposition::MiddleCenter: return "middle center";
+        case Textposition::MiddleRight: return "middle right";
+        case Textposition::BottomLeft: return "bottom left";
+        case Textposition::BottomCenter: return "bottom center";
+        case Textposition::BottomRight: return "bottom right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -6079,8 +6079,8 @@ Layout::Mapbox::Layers::Layer::Symbol& Layout::Mapbox::Layers::Layer::Symbol::te
 
 std::string Layout::Mapbox::Layers::Layer::Symbol::Textfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -6232,8 +6232,8 @@ Layout::Modebar& Layout::Modebar::add(Callable&& c) {
     std::forward<Callable>(c)(f);
     return add(std::move(f));
 }
-Layout::Modebar& Layout::Modebar::add(std::vector<std::string> f) {
-    json["add"] = std::move(f);
+Layout::Modebar& Layout::Modebar::add(const std::vector<std::string>& f) {
+    json["add"] = f;
     return *this;
 }
 
@@ -6285,8 +6285,8 @@ Layout::Modebar& Layout::Modebar::remove(Callable&& c) {
     std::forward<Callable>(c)(f);
     return remove(std::move(f));
 }
-Layout::Modebar& Layout::Modebar::remove(std::vector<std::string> f) {
-    json["remove"] = std::move(f);
+Layout::Modebar& Layout::Modebar::remove(const std::vector<std::string>& f) {
+    json["remove"] = f;
     return *this;
 }
 
@@ -6315,8 +6315,8 @@ Layout::Modebar& Layout::Modebar::uirevision(Callable&& c) {
 
 std::string Layout::Newselection::to_string(Mode e) {
     switch(e) {
-        case Mode::IMMEDIATE: return "immediate";
-        case Mode::GRADUAL: return "gradual";
+        case Mode::Immediate: return "immediate";
+        case Mode::Gradual: return "gradual";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -6374,36 +6374,36 @@ Layout::Newselection::Line& Layout::Newselection::Line::width(Callable&& c) {
 
 std::string Layout::Newshape::to_string(Drawdirection e) {
     switch(e) {
-        case Drawdirection::ORTHO: return "ortho";
-        case Drawdirection::HORIZONTAL: return "horizontal";
-        case Drawdirection::VERTICAL: return "vertical";
-        case Drawdirection::DIAGONAL: return "diagonal";
+        case Drawdirection::Ortho: return "ortho";
+        case Drawdirection::Horizontal: return "horizontal";
+        case Drawdirection::Vertical: return "vertical";
+        case Drawdirection::Diagonal: return "diagonal";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Newshape::to_string(Fillrule e) {
     switch(e) {
-        case Fillrule::EVENODD: return "evenodd";
-        case Fillrule::NONZERO: return "nonzero";
+        case Fillrule::Evenodd: return "evenodd";
+        case Fillrule::Nonzero: return "nonzero";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Newshape::to_string(Layer e) {
     switch(e) {
-        case Layer::BELOW: return "below";
-        case Layer::ABOVE: return "above";
-        case Layer::BETWEEN: return "between";
+        case Layer::Below: return "below";
+        case Layer::Above: return "above";
+        case Layer::Between: return "between";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Newshape::to_string(Visible e) {
     switch(e) {
-        case Visible::TRUE: return "True";
-        case Visible::FALSE: return "False";
-        case Visible::LEGENDONLY: return "legendonly";
+        case Visible::True: return "True";
+        case Visible::False: return "False";
+        case Visible::Legendonly: return "legendonly";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -6552,37 +6552,37 @@ Layout::Newshape& Layout::Newshape::visible(enum Visible f) {
 
 std::string Layout::Newshape::Label::to_string(Textposition e) {
     switch(e) {
-        case Textposition::TOP_LEFT: return "top left";
-        case Textposition::TOP_CENTER: return "top center";
-        case Textposition::TOP_RIGHT: return "top right";
-        case Textposition::MIDDLE_LEFT: return "middle left";
-        case Textposition::MIDDLE_CENTER: return "middle center";
-        case Textposition::MIDDLE_RIGHT: return "middle right";
-        case Textposition::BOTTOM_LEFT: return "bottom left";
-        case Textposition::BOTTOM_CENTER: return "bottom center";
-        case Textposition::BOTTOM_RIGHT: return "bottom right";
-        case Textposition::START: return "start";
-        case Textposition::MIDDLE: return "middle";
-        case Textposition::END: return "end";
+        case Textposition::TopLeft: return "top left";
+        case Textposition::TopCenter: return "top center";
+        case Textposition::TopRight: return "top right";
+        case Textposition::MiddleLeft: return "middle left";
+        case Textposition::MiddleCenter: return "middle center";
+        case Textposition::MiddleRight: return "middle right";
+        case Textposition::BottomLeft: return "bottom left";
+        case Textposition::BottomCenter: return "bottom center";
+        case Textposition::BottomRight: return "bottom right";
+        case Textposition::Start: return "start";
+        case Textposition::Middle: return "middle";
+        case Textposition::End: return "end";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Newshape::Label::to_string(Xanchor e) {
     switch(e) {
-        case Xanchor::AUTO: return "auto";
-        case Xanchor::LEFT: return "left";
-        case Xanchor::CENTER: return "center";
-        case Xanchor::RIGHT: return "right";
+        case Xanchor::Auto: return "auto";
+        case Xanchor::Left: return "left";
+        case Xanchor::Center: return "center";
+        case Xanchor::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Newshape::Label::to_string(Yanchor e) {
     switch(e) {
-        case Yanchor::TOP: return "top";
-        case Yanchor::MIDDLE: return "middle";
-        case Yanchor::BOTTOM: return "bottom";
+        case Yanchor::Top: return "top";
+        case Yanchor::Middle: return "middle";
+        case Yanchor::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -6660,30 +6660,30 @@ Layout::Newshape::Label& Layout::Newshape::Label::yanchor(enum Yanchor f) {
 
 std::string Layout::Newshape::Label::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Newshape::Label::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Newshape::Label::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -6795,30 +6795,30 @@ Layout::Newshape::Legendgrouptitle& Layout::Newshape::Legendgrouptitle::text(Cal
 
 std::string Layout::Newshape::Legendgrouptitle::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Newshape::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Newshape::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -6941,8 +6941,8 @@ Layout::Newshape::Line& Layout::Newshape::Line::width(Callable&& c) {
 
 std::string Layout::Polar::to_string(Gridshape e) {
     switch(e) {
-        case Gridshape::CIRCULAR: return "circular";
-        case Gridshape::LINEAR: return "linear";
+        case Gridshape::Circular: return "circular";
+        case Gridshape::Linear: return "linear";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -7008,8 +7008,8 @@ Layout::Polar& Layout::Polar::radialaxis(Callable&& c) {
     return radialaxis(std::move(f));
 }
 
-Layout::Polar& Layout::Polar::sector(std::vector<double> f) {
-    json["sector"] = std::move(f);
+Layout::Polar& Layout::Polar::sector(const std::vector<double>& f) {
+    json["sector"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -7033,50 +7033,50 @@ Layout::Polar& Layout::Polar::uirevision(Callable&& c) {
 
 std::string Layout::Polar::Angularaxis::to_string(Autotypenumbers e) {
     switch(e) {
-        case Autotypenumbers::CONVERT_TYPES: return "convert types";
-        case Autotypenumbers::STRICT: return "strict";
+        case Autotypenumbers::ConvertTypes: return "convert types";
+        case Autotypenumbers::Strict: return "strict";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Angularaxis::to_string(Categoryorder e) {
     switch(e) {
-        case Categoryorder::TRACE: return "trace";
-        case Categoryorder::CATEGORY_ASCENDING: return "category ascending";
-        case Categoryorder::CATEGORY_DESCENDING: return "category descending";
-        case Categoryorder::ARRAY: return "array";
-        case Categoryorder::TOTAL_ASCENDING: return "total ascending";
-        case Categoryorder::TOTAL_DESCENDING: return "total descending";
-        case Categoryorder::MIN_ASCENDING: return "min ascending";
-        case Categoryorder::MIN_DESCENDING: return "min descending";
-        case Categoryorder::MAX_ASCENDING: return "max ascending";
-        case Categoryorder::MAX_DESCENDING: return "max descending";
-        case Categoryorder::SUM_ASCENDING: return "sum ascending";
-        case Categoryorder::SUM_DESCENDING: return "sum descending";
-        case Categoryorder::MEAN_ASCENDING: return "mean ascending";
-        case Categoryorder::MEAN_DESCENDING: return "mean descending";
-        case Categoryorder::GEOMETRIC_MEAN_ASCENDING: return "geometric mean ascending";
-        case Categoryorder::GEOMETRIC_MEAN_DESCENDING: return "geometric mean descending";
-        case Categoryorder::MEDIAN_ASCENDING: return "median ascending";
-        case Categoryorder::MEDIAN_DESCENDING: return "median descending";
+        case Categoryorder::Trace: return "trace";
+        case Categoryorder::CategoryAscending: return "category ascending";
+        case Categoryorder::CategoryDescending: return "category descending";
+        case Categoryorder::Array: return "array";
+        case Categoryorder::TotalAscending: return "total ascending";
+        case Categoryorder::TotalDescending: return "total descending";
+        case Categoryorder::MinAscending: return "min ascending";
+        case Categoryorder::MinDescending: return "min descending";
+        case Categoryorder::MaxAscending: return "max ascending";
+        case Categoryorder::MaxDescending: return "max descending";
+        case Categoryorder::SumAscending: return "sum ascending";
+        case Categoryorder::SumDescending: return "sum descending";
+        case Categoryorder::MeanAscending: return "mean ascending";
+        case Categoryorder::MeanDescending: return "mean descending";
+        case Categoryorder::GeometricMeanAscending: return "geometric mean ascending";
+        case Categoryorder::GeometricMeanDescending: return "geometric mean descending";
+        case Categoryorder::MedianAscending: return "median ascending";
+        case Categoryorder::MedianDescending: return "median descending";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Angularaxis::to_string(Direction e) {
     switch(e) {
-        case Direction::COUNTERCLOCKWISE: return "counterclockwise";
-        case Direction::CLOCKWISE: return "clockwise";
+        case Direction::Counterclockwise: return "counterclockwise";
+        case Direction::Clockwise: return "clockwise";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Angularaxis::to_string(Exponentformat e) {
     switch(e) {
-        case Exponentformat::NONE: return "none";
+        case Exponentformat::None: return "none";
         case Exponentformat::E: return "E";
-        case Exponentformat::POWER: return "power";
-        case Exponentformat::SI: return "SI";
+        case Exponentformat::Power: return "power";
+        case Exponentformat::Si: return "SI";
         case Exponentformat::B: return "B";
     }
     // Should be unreachable.
@@ -7084,73 +7084,73 @@ std::string Layout::Polar::Angularaxis::to_string(Exponentformat e) {
 }
 std::string Layout::Polar::Angularaxis::to_string(Layer e) {
     switch(e) {
-        case Layer::ABOVE_TRACES: return "above traces";
-        case Layer::BELOW_TRACES: return "below traces";
+        case Layer::AboveTraces: return "above traces";
+        case Layer::BelowTraces: return "below traces";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Angularaxis::to_string(Showexponent e) {
     switch(e) {
-        case Showexponent::ALL: return "all";
-        case Showexponent::FIRST: return "first";
-        case Showexponent::LAST: return "last";
-        case Showexponent::NONE: return "none";
+        case Showexponent::All: return "all";
+        case Showexponent::First: return "first";
+        case Showexponent::Last: return "last";
+        case Showexponent::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Angularaxis::to_string(Showtickprefix e) {
     switch(e) {
-        case Showtickprefix::ALL: return "all";
-        case Showtickprefix::FIRST: return "first";
-        case Showtickprefix::LAST: return "last";
-        case Showtickprefix::NONE: return "none";
+        case Showtickprefix::All: return "all";
+        case Showtickprefix::First: return "first";
+        case Showtickprefix::Last: return "last";
+        case Showtickprefix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Angularaxis::to_string(Showticksuffix e) {
     switch(e) {
-        case Showticksuffix::ALL: return "all";
-        case Showticksuffix::FIRST: return "first";
-        case Showticksuffix::LAST: return "last";
-        case Showticksuffix::NONE: return "none";
+        case Showticksuffix::All: return "all";
+        case Showticksuffix::First: return "first";
+        case Showticksuffix::Last: return "last";
+        case Showticksuffix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Angularaxis::to_string(Thetaunit e) {
     switch(e) {
-        case Thetaunit::RADIANS: return "radians";
-        case Thetaunit::DEGREES: return "degrees";
+        case Thetaunit::Radians: return "radians";
+        case Thetaunit::Degrees: return "degrees";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Angularaxis::to_string(Tickmode e) {
     switch(e) {
-        case Tickmode::AUTO: return "auto";
-        case Tickmode::LINEAR: return "linear";
-        case Tickmode::ARRAY: return "array";
+        case Tickmode::Auto: return "auto";
+        case Tickmode::Linear: return "linear";
+        case Tickmode::Array: return "array";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Angularaxis::to_string(Ticks e) {
     switch(e) {
-        case Ticks::OUTSIDE: return "outside";
-        case Ticks::INSIDE: return "inside";
-        case Ticks::EMPTY: return "";
+        case Ticks::Outside: return "outside";
+        case Ticks::Inside: return "inside";
+        case Ticks::Empty: return "";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Angularaxis::to_string(Type e) {
     switch(e) {
-        case Type::HYPHEN: return "-";
-        case Type::LINEAR: return "linear";
-        case Type::CATEGORY: return "category";
+        case Type::Hyphen: return "-";
+        case Type::Linear: return "linear";
+        case Type::Category: return "category";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -7162,8 +7162,8 @@ Layout::Polar::Angularaxis& Layout::Polar::Angularaxis::autotypenumbers(enum Aut
 }
 
 template <typename T, typename>
-Layout::Polar::Angularaxis& Layout::Polar::Angularaxis::categoryarray(std::vector<T> f) {
-    json["categoryarray"] = std::move(f);
+Layout::Polar::Angularaxis& Layout::Polar::Angularaxis::categoryarray(const std::vector<T>& f) {
+    json["categoryarray"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -7535,8 +7535,8 @@ Layout::Polar::Angularaxis& Layout::Polar::Angularaxis::ticksuffix(Callable&& c)
 }
 
 template <typename T, typename>
-Layout::Polar::Angularaxis& Layout::Polar::Angularaxis::ticktext(std::vector<T> f) {
-    json["ticktext"] = std::move(f);
+Layout::Polar::Angularaxis& Layout::Polar::Angularaxis::ticktext(const std::vector<T>& f) {
+    json["ticktext"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -7558,8 +7558,8 @@ Layout::Polar::Angularaxis& Layout::Polar::Angularaxis::ticktextsrc(Callable&& c
 }
 
 template <typename T, typename>
-Layout::Polar::Angularaxis& Layout::Polar::Angularaxis::tickvals(std::vector<T> f) {
-    json["tickvals"] = std::move(f);
+Layout::Polar::Angularaxis& Layout::Polar::Angularaxis::tickvals(const std::vector<T>& f) {
+    json["tickvals"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -7621,30 +7621,30 @@ Layout::Polar::Angularaxis& Layout::Polar::Angularaxis::visible(Callable&& c) {
 
 std::string Layout::Polar::Angularaxis::Tickfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Angularaxis::Tickfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Angularaxis::Tickfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -7744,8 +7744,8 @@ Layout::Polar::Angularaxis::Tickformatstops& Layout::Polar::Angularaxis::Tickfor
 }
 
 
-Layout::Polar::Angularaxis::Tickformatstops::Tickformatstop& Layout::Polar::Angularaxis::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
-    json["dtickrange"] = std::move(f);
+Layout::Polar::Angularaxis::Tickformatstops::Tickformatstop& Layout::Polar::Angularaxis::Tickformatstops::Tickformatstop::dtickrange(const std::vector<double>& f) {
+    json["dtickrange"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -7822,8 +7822,8 @@ Layout::Polar::Domain& Layout::Polar::Domain::row(Callable&& c) {
     return row(std::move(f));
 }
 
-Layout::Polar::Domain& Layout::Polar::Domain::x(std::vector<double> f) {
-    json["x"] = std::move(f);
+Layout::Polar::Domain& Layout::Polar::Domain::x(const std::vector<double>& f) {
+    json["x"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -7833,8 +7833,8 @@ Layout::Polar::Domain& Layout::Polar::Domain::x(Callable&& c) {
     return x(std::move(f));
 }
 
-Layout::Polar::Domain& Layout::Polar::Domain::y(std::vector<double> f) {
-    json["y"] = std::move(f);
+Layout::Polar::Domain& Layout::Polar::Domain::y(const std::vector<double>& f) {
+    json["y"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -7846,77 +7846,77 @@ Layout::Polar::Domain& Layout::Polar::Domain::y(Callable&& c) {
 
 std::string Layout::Polar::Radialaxis::to_string(Autorange e) {
     switch(e) {
-        case Autorange::TRUE: return "True";
-        case Autorange::FALSE: return "False";
-        case Autorange::REVERSED: return "reversed";
-        case Autorange::MIN_REVERSED: return "min reversed";
-        case Autorange::MAX_REVERSED: return "max reversed";
-        case Autorange::MIN: return "min";
-        case Autorange::MAX: return "max";
+        case Autorange::True: return "True";
+        case Autorange::False: return "False";
+        case Autorange::Reversed: return "reversed";
+        case Autorange::MinReversed: return "min reversed";
+        case Autorange::MaxReversed: return "max reversed";
+        case Autorange::Min: return "min";
+        case Autorange::Max: return "max";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Radialaxis::to_string(Autotypenumbers e) {
     switch(e) {
-        case Autotypenumbers::CONVERT_TYPES: return "convert types";
-        case Autotypenumbers::STRICT: return "strict";
+        case Autotypenumbers::ConvertTypes: return "convert types";
+        case Autotypenumbers::Strict: return "strict";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Radialaxis::to_string(Calendar e) {
     switch(e) {
-        case Calendar::CHINESE: return "chinese";
-        case Calendar::COPTIC: return "coptic";
-        case Calendar::DISCWORLD: return "discworld";
-        case Calendar::ETHIOPIAN: return "ethiopian";
-        case Calendar::GREGORIAN: return "gregorian";
-        case Calendar::HEBREW: return "hebrew";
-        case Calendar::ISLAMIC: return "islamic";
-        case Calendar::JALALI: return "jalali";
-        case Calendar::JULIAN: return "julian";
-        case Calendar::MAYAN: return "mayan";
-        case Calendar::NANAKSHAHI: return "nanakshahi";
-        case Calendar::NEPALI: return "nepali";
-        case Calendar::PERSIAN: return "persian";
-        case Calendar::TAIWAN: return "taiwan";
-        case Calendar::THAI: return "thai";
-        case Calendar::UMMALQURA: return "ummalqura";
+        case Calendar::Chinese: return "chinese";
+        case Calendar::Coptic: return "coptic";
+        case Calendar::Discworld: return "discworld";
+        case Calendar::Ethiopian: return "ethiopian";
+        case Calendar::Gregorian: return "gregorian";
+        case Calendar::Hebrew: return "hebrew";
+        case Calendar::Islamic: return "islamic";
+        case Calendar::Jalali: return "jalali";
+        case Calendar::Julian: return "julian";
+        case Calendar::Mayan: return "mayan";
+        case Calendar::Nanakshahi: return "nanakshahi";
+        case Calendar::Nepali: return "nepali";
+        case Calendar::Persian: return "persian";
+        case Calendar::Taiwan: return "taiwan";
+        case Calendar::Thai: return "thai";
+        case Calendar::Ummalqura: return "ummalqura";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Radialaxis::to_string(Categoryorder e) {
     switch(e) {
-        case Categoryorder::TRACE: return "trace";
-        case Categoryorder::CATEGORY_ASCENDING: return "category ascending";
-        case Categoryorder::CATEGORY_DESCENDING: return "category descending";
-        case Categoryorder::ARRAY: return "array";
-        case Categoryorder::TOTAL_ASCENDING: return "total ascending";
-        case Categoryorder::TOTAL_DESCENDING: return "total descending";
-        case Categoryorder::MIN_ASCENDING: return "min ascending";
-        case Categoryorder::MIN_DESCENDING: return "min descending";
-        case Categoryorder::MAX_ASCENDING: return "max ascending";
-        case Categoryorder::MAX_DESCENDING: return "max descending";
-        case Categoryorder::SUM_ASCENDING: return "sum ascending";
-        case Categoryorder::SUM_DESCENDING: return "sum descending";
-        case Categoryorder::MEAN_ASCENDING: return "mean ascending";
-        case Categoryorder::MEAN_DESCENDING: return "mean descending";
-        case Categoryorder::GEOMETRIC_MEAN_ASCENDING: return "geometric mean ascending";
-        case Categoryorder::GEOMETRIC_MEAN_DESCENDING: return "geometric mean descending";
-        case Categoryorder::MEDIAN_ASCENDING: return "median ascending";
-        case Categoryorder::MEDIAN_DESCENDING: return "median descending";
+        case Categoryorder::Trace: return "trace";
+        case Categoryorder::CategoryAscending: return "category ascending";
+        case Categoryorder::CategoryDescending: return "category descending";
+        case Categoryorder::Array: return "array";
+        case Categoryorder::TotalAscending: return "total ascending";
+        case Categoryorder::TotalDescending: return "total descending";
+        case Categoryorder::MinAscending: return "min ascending";
+        case Categoryorder::MinDescending: return "min descending";
+        case Categoryorder::MaxAscending: return "max ascending";
+        case Categoryorder::MaxDescending: return "max descending";
+        case Categoryorder::SumAscending: return "sum ascending";
+        case Categoryorder::SumDescending: return "sum descending";
+        case Categoryorder::MeanAscending: return "mean ascending";
+        case Categoryorder::MeanDescending: return "mean descending";
+        case Categoryorder::GeometricMeanAscending: return "geometric mean ascending";
+        case Categoryorder::GeometricMeanDescending: return "geometric mean descending";
+        case Categoryorder::MedianAscending: return "median ascending";
+        case Categoryorder::MedianDescending: return "median descending";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Radialaxis::to_string(Exponentformat e) {
     switch(e) {
-        case Exponentformat::NONE: return "none";
+        case Exponentformat::None: return "none";
         case Exponentformat::E: return "E";
-        case Exponentformat::POWER: return "power";
-        case Exponentformat::SI: return "SI";
+        case Exponentformat::Power: return "power";
+        case Exponentformat::Si: return "SI";
         case Exponentformat::B: return "B";
     }
     // Should be unreachable.
@@ -7924,84 +7924,84 @@ std::string Layout::Polar::Radialaxis::to_string(Exponentformat e) {
 }
 std::string Layout::Polar::Radialaxis::to_string(Layer e) {
     switch(e) {
-        case Layer::ABOVE_TRACES: return "above traces";
-        case Layer::BELOW_TRACES: return "below traces";
+        case Layer::AboveTraces: return "above traces";
+        case Layer::BelowTraces: return "below traces";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Radialaxis::to_string(Rangemode e) {
     switch(e) {
-        case Rangemode::TOZERO: return "tozero";
-        case Rangemode::NONNEGATIVE: return "nonnegative";
-        case Rangemode::NORMAL: return "normal";
+        case Rangemode::Tozero: return "tozero";
+        case Rangemode::Nonnegative: return "nonnegative";
+        case Rangemode::Normal: return "normal";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Radialaxis::to_string(Showexponent e) {
     switch(e) {
-        case Showexponent::ALL: return "all";
-        case Showexponent::FIRST: return "first";
-        case Showexponent::LAST: return "last";
-        case Showexponent::NONE: return "none";
+        case Showexponent::All: return "all";
+        case Showexponent::First: return "first";
+        case Showexponent::Last: return "last";
+        case Showexponent::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Radialaxis::to_string(Showtickprefix e) {
     switch(e) {
-        case Showtickprefix::ALL: return "all";
-        case Showtickprefix::FIRST: return "first";
-        case Showtickprefix::LAST: return "last";
-        case Showtickprefix::NONE: return "none";
+        case Showtickprefix::All: return "all";
+        case Showtickprefix::First: return "first";
+        case Showtickprefix::Last: return "last";
+        case Showtickprefix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Radialaxis::to_string(Showticksuffix e) {
     switch(e) {
-        case Showticksuffix::ALL: return "all";
-        case Showticksuffix::FIRST: return "first";
-        case Showticksuffix::LAST: return "last";
-        case Showticksuffix::NONE: return "none";
+        case Showticksuffix::All: return "all";
+        case Showticksuffix::First: return "first";
+        case Showticksuffix::Last: return "last";
+        case Showticksuffix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Radialaxis::to_string(Side e) {
     switch(e) {
-        case Side::CLOCKWISE: return "clockwise";
-        case Side::COUNTERCLOCKWISE: return "counterclockwise";
+        case Side::Clockwise: return "clockwise";
+        case Side::Counterclockwise: return "counterclockwise";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Radialaxis::to_string(Tickmode e) {
     switch(e) {
-        case Tickmode::AUTO: return "auto";
-        case Tickmode::LINEAR: return "linear";
-        case Tickmode::ARRAY: return "array";
+        case Tickmode::Auto: return "auto";
+        case Tickmode::Linear: return "linear";
+        case Tickmode::Array: return "array";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Radialaxis::to_string(Ticks e) {
     switch(e) {
-        case Ticks::OUTSIDE: return "outside";
-        case Ticks::INSIDE: return "inside";
-        case Ticks::EMPTY: return "";
+        case Ticks::Outside: return "outside";
+        case Ticks::Inside: return "inside";
+        case Ticks::Empty: return "";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Radialaxis::to_string(Type e) {
     switch(e) {
-        case Type::HYPHEN: return "-";
-        case Type::LINEAR: return "linear";
-        case Type::LOG: return "log";
-        case Type::DATE: return "date";
-        case Type::CATEGORY: return "category";
+        case Type::Hyphen: return "-";
+        case Type::Linear: return "linear";
+        case Type::Log: return "log";
+        case Type::Date: return "date";
+        case Type::Category: return "category";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -8034,8 +8034,8 @@ Layout::Polar::Radialaxis& Layout::Polar::Radialaxis::autorangeoptions(Callable&
     return autorangeoptions(std::move(f));
 }
 
-Layout::Polar::Radialaxis& Layout::Polar::Radialaxis::autotickangles(std::vector<double> f) {
-    json["autotickangles"] = std::move(f);
+Layout::Polar::Radialaxis& Layout::Polar::Radialaxis::autotickangles(const std::vector<double>& f) {
+    json["autotickangles"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -8056,8 +8056,8 @@ Layout::Polar::Radialaxis& Layout::Polar::Radialaxis::calendar(enum Calendar f) 
 }
 
 template <typename T, typename>
-Layout::Polar::Radialaxis& Layout::Polar::Radialaxis::categoryarray(std::vector<T> f) {
-    json["categoryarray"] = std::move(f);
+Layout::Polar::Radialaxis& Layout::Polar::Radialaxis::categoryarray(const std::vector<T>& f) {
+    json["categoryarray"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -8240,8 +8240,8 @@ Layout::Polar::Radialaxis& Layout::Polar::Radialaxis::nticks(Callable&& c) {
     return nticks(std::move(f));
 }
 
-Layout::Polar::Radialaxis& Layout::Polar::Radialaxis::range(std::vector<double> f) {
-    json["range"] = std::move(f);
+Layout::Polar::Radialaxis& Layout::Polar::Radialaxis::range(const std::vector<double>& f) {
+    json["range"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -8442,8 +8442,8 @@ Layout::Polar::Radialaxis& Layout::Polar::Radialaxis::ticksuffix(Callable&& c) {
 }
 
 template <typename T, typename>
-Layout::Polar::Radialaxis& Layout::Polar::Radialaxis::ticktext(std::vector<T> f) {
-    json["ticktext"] = std::move(f);
+Layout::Polar::Radialaxis& Layout::Polar::Radialaxis::ticktext(const std::vector<T>& f) {
+    json["ticktext"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -8465,8 +8465,8 @@ Layout::Polar::Radialaxis& Layout::Polar::Radialaxis::ticktextsrc(Callable&& c) 
 }
 
 template <typename T, typename>
-Layout::Polar::Radialaxis& Layout::Polar::Radialaxis::tickvals(std::vector<T> f) {
-    json["tickvals"] = std::move(f);
+Layout::Polar::Radialaxis& Layout::Polar::Radialaxis::tickvals(const std::vector<T>& f) {
+    json["tickvals"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -8574,8 +8574,8 @@ Layout::Polar::Radialaxis::Autorangeoptions& Layout::Polar::Radialaxis::Autorang
     return include(std::move(f));
 }
 template <typename T>
-Layout::Polar::Radialaxis::Autorangeoptions& Layout::Polar::Radialaxis::Autorangeoptions::include(std::vector<T> f) {
-    json["include"] = std::move(f);
+Layout::Polar::Radialaxis::Autorangeoptions& Layout::Polar::Radialaxis::Autorangeoptions::include(const std::vector<T>& f) {
+    json["include"] = f;
     return *this;
 }
 
@@ -8616,30 +8616,30 @@ Layout::Polar::Radialaxis::Autorangeoptions& Layout::Polar::Radialaxis::Autorang
 
 std::string Layout::Polar::Radialaxis::Tickfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Radialaxis::Tickfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Radialaxis::Tickfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -8739,8 +8739,8 @@ Layout::Polar::Radialaxis::Tickformatstops& Layout::Polar::Radialaxis::Tickforma
 }
 
 
-Layout::Polar::Radialaxis::Tickformatstops::Tickformatstop& Layout::Polar::Radialaxis::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
-    json["dtickrange"] = std::move(f);
+Layout::Polar::Radialaxis::Tickformatstops::Tickformatstop& Layout::Polar::Radialaxis::Tickformatstops::Tickformatstop::dtickrange(const std::vector<double>& f) {
+    json["dtickrange"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -8819,30 +8819,30 @@ Layout::Polar::Radialaxis::Title& Layout::Polar::Radialaxis::Title::text(Callabl
 
 std::string Layout::Polar::Radialaxis::Title::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Radialaxis::Title::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Polar::Radialaxis::Title::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -8931,29 +8931,29 @@ Layout::Polar::Radialaxis::Title::Font& Layout::Polar::Radialaxis::Title::Font::
 
 std::string Layout::Scene::to_string(Aspectmode e) {
     switch(e) {
-        case Aspectmode::AUTO: return "auto";
-        case Aspectmode::CUBE: return "cube";
-        case Aspectmode::DATA: return "data";
-        case Aspectmode::MANUAL: return "manual";
+        case Aspectmode::Auto: return "auto";
+        case Aspectmode::Cube: return "cube";
+        case Aspectmode::Data: return "data";
+        case Aspectmode::Manual: return "manual";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::to_string(Dragmode e) {
     switch(e) {
-        case Dragmode::ORBIT: return "orbit";
-        case Dragmode::TURNTABLE: return "turntable";
-        case Dragmode::ZOOM: return "zoom";
-        case Dragmode::PAN: return "pan";
-        case Dragmode::FALSE: return "False";
+        case Dragmode::Orbit: return "orbit";
+        case Dragmode::Turntable: return "turntable";
+        case Dragmode::Zoom: return "zoom";
+        case Dragmode::Pan: return "pan";
+        case Dragmode::False: return "False";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::to_string(Hovermode e) {
     switch(e) {
-        case Hovermode::CLOSEST: return "closest";
-        case Hovermode::FALSE: return "False";
+        case Hovermode::Closest: return "closest";
+        case Hovermode::False: return "False";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -9088,38 +9088,38 @@ Layout::Scene::Annotations& Layout::Scene::Annotations::annotation(Callable&& c)
 
 std::string Layout::Scene::Annotations::Annotation::to_string(Align e) {
     switch(e) {
-        case Align::LEFT: return "left";
-        case Align::CENTER: return "center";
-        case Align::RIGHT: return "right";
+        case Align::Left: return "left";
+        case Align::Center: return "center";
+        case Align::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Annotations::Annotation::to_string(Valign e) {
     switch(e) {
-        case Valign::TOP: return "top";
-        case Valign::MIDDLE: return "middle";
-        case Valign::BOTTOM: return "bottom";
+        case Valign::Top: return "top";
+        case Valign::Middle: return "middle";
+        case Valign::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Annotations::Annotation::to_string(Xanchor e) {
     switch(e) {
-        case Xanchor::AUTO: return "auto";
-        case Xanchor::LEFT: return "left";
-        case Xanchor::CENTER: return "center";
-        case Xanchor::RIGHT: return "right";
+        case Xanchor::Auto: return "auto";
+        case Xanchor::Left: return "left";
+        case Xanchor::Center: return "center";
+        case Xanchor::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Annotations::Annotation::to_string(Yanchor e) {
     switch(e) {
-        case Yanchor::AUTO: return "auto";
-        case Yanchor::TOP: return "top";
-        case Yanchor::MIDDLE: return "middle";
-        case Yanchor::BOTTOM: return "bottom";
+        case Yanchor::Auto: return "auto";
+        case Yanchor::Top: return "top";
+        case Yanchor::Middle: return "middle";
+        case Yanchor::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -9513,30 +9513,30 @@ Layout::Scene::Annotations::Annotation& Layout::Scene::Annotations::Annotation::
 
 std::string Layout::Scene::Annotations::Annotation::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Annotations::Annotation::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Annotations::Annotation::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -9659,30 +9659,30 @@ Layout::Scene::Annotations::Annotation::Hoverlabel& Layout::Scene::Annotations::
 
 std::string Layout::Scene::Annotations::Annotation::Hoverlabel::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Annotations::Annotation::Hoverlabel::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Annotations::Annotation::Hoverlabel::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -9930,8 +9930,8 @@ Layout::Scene::Camera::Eye& Layout::Scene::Camera::Eye::z(Callable&& c) {
 
 std::string Layout::Scene::Camera::Projection::to_string(Type e) {
     switch(e) {
-        case Type::PERSPECTIVE: return "perspective";
-        case Type::ORTHOGRAPHIC: return "orthographic";
+        case Type::Perspective: return "perspective";
+        case Type::Orthographic: return "orthographic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -9999,8 +9999,8 @@ Layout::Scene::Domain& Layout::Scene::Domain::row(Callable&& c) {
     return row(std::move(f));
 }
 
-Layout::Scene::Domain& Layout::Scene::Domain::x(std::vector<double> f) {
-    json["x"] = std::move(f);
+Layout::Scene::Domain& Layout::Scene::Domain::x(const std::vector<double>& f) {
+    json["x"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -10010,8 +10010,8 @@ Layout::Scene::Domain& Layout::Scene::Domain::x(Callable&& c) {
     return x(std::move(f));
 }
 
-Layout::Scene::Domain& Layout::Scene::Domain::y(std::vector<double> f) {
-    json["y"] = std::move(f);
+Layout::Scene::Domain& Layout::Scene::Domain::y(const std::vector<double>& f) {
+    json["y"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -10023,77 +10023,77 @@ Layout::Scene::Domain& Layout::Scene::Domain::y(Callable&& c) {
 
 std::string Layout::Scene::Xaxis::to_string(Autorange e) {
     switch(e) {
-        case Autorange::TRUE: return "True";
-        case Autorange::FALSE: return "False";
-        case Autorange::REVERSED: return "reversed";
-        case Autorange::MIN_REVERSED: return "min reversed";
-        case Autorange::MAX_REVERSED: return "max reversed";
-        case Autorange::MIN: return "min";
-        case Autorange::MAX: return "max";
+        case Autorange::True: return "True";
+        case Autorange::False: return "False";
+        case Autorange::Reversed: return "reversed";
+        case Autorange::MinReversed: return "min reversed";
+        case Autorange::MaxReversed: return "max reversed";
+        case Autorange::Min: return "min";
+        case Autorange::Max: return "max";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Xaxis::to_string(Autotypenumbers e) {
     switch(e) {
-        case Autotypenumbers::CONVERT_TYPES: return "convert types";
-        case Autotypenumbers::STRICT: return "strict";
+        case Autotypenumbers::ConvertTypes: return "convert types";
+        case Autotypenumbers::Strict: return "strict";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Xaxis::to_string(Calendar e) {
     switch(e) {
-        case Calendar::CHINESE: return "chinese";
-        case Calendar::COPTIC: return "coptic";
-        case Calendar::DISCWORLD: return "discworld";
-        case Calendar::ETHIOPIAN: return "ethiopian";
-        case Calendar::GREGORIAN: return "gregorian";
-        case Calendar::HEBREW: return "hebrew";
-        case Calendar::ISLAMIC: return "islamic";
-        case Calendar::JALALI: return "jalali";
-        case Calendar::JULIAN: return "julian";
-        case Calendar::MAYAN: return "mayan";
-        case Calendar::NANAKSHAHI: return "nanakshahi";
-        case Calendar::NEPALI: return "nepali";
-        case Calendar::PERSIAN: return "persian";
-        case Calendar::TAIWAN: return "taiwan";
-        case Calendar::THAI: return "thai";
-        case Calendar::UMMALQURA: return "ummalqura";
+        case Calendar::Chinese: return "chinese";
+        case Calendar::Coptic: return "coptic";
+        case Calendar::Discworld: return "discworld";
+        case Calendar::Ethiopian: return "ethiopian";
+        case Calendar::Gregorian: return "gregorian";
+        case Calendar::Hebrew: return "hebrew";
+        case Calendar::Islamic: return "islamic";
+        case Calendar::Jalali: return "jalali";
+        case Calendar::Julian: return "julian";
+        case Calendar::Mayan: return "mayan";
+        case Calendar::Nanakshahi: return "nanakshahi";
+        case Calendar::Nepali: return "nepali";
+        case Calendar::Persian: return "persian";
+        case Calendar::Taiwan: return "taiwan";
+        case Calendar::Thai: return "thai";
+        case Calendar::Ummalqura: return "ummalqura";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Xaxis::to_string(Categoryorder e) {
     switch(e) {
-        case Categoryorder::TRACE: return "trace";
-        case Categoryorder::CATEGORY_ASCENDING: return "category ascending";
-        case Categoryorder::CATEGORY_DESCENDING: return "category descending";
-        case Categoryorder::ARRAY: return "array";
-        case Categoryorder::TOTAL_ASCENDING: return "total ascending";
-        case Categoryorder::TOTAL_DESCENDING: return "total descending";
-        case Categoryorder::MIN_ASCENDING: return "min ascending";
-        case Categoryorder::MIN_DESCENDING: return "min descending";
-        case Categoryorder::MAX_ASCENDING: return "max ascending";
-        case Categoryorder::MAX_DESCENDING: return "max descending";
-        case Categoryorder::SUM_ASCENDING: return "sum ascending";
-        case Categoryorder::SUM_DESCENDING: return "sum descending";
-        case Categoryorder::MEAN_ASCENDING: return "mean ascending";
-        case Categoryorder::MEAN_DESCENDING: return "mean descending";
-        case Categoryorder::GEOMETRIC_MEAN_ASCENDING: return "geometric mean ascending";
-        case Categoryorder::GEOMETRIC_MEAN_DESCENDING: return "geometric mean descending";
-        case Categoryorder::MEDIAN_ASCENDING: return "median ascending";
-        case Categoryorder::MEDIAN_DESCENDING: return "median descending";
+        case Categoryorder::Trace: return "trace";
+        case Categoryorder::CategoryAscending: return "category ascending";
+        case Categoryorder::CategoryDescending: return "category descending";
+        case Categoryorder::Array: return "array";
+        case Categoryorder::TotalAscending: return "total ascending";
+        case Categoryorder::TotalDescending: return "total descending";
+        case Categoryorder::MinAscending: return "min ascending";
+        case Categoryorder::MinDescending: return "min descending";
+        case Categoryorder::MaxAscending: return "max ascending";
+        case Categoryorder::MaxDescending: return "max descending";
+        case Categoryorder::SumAscending: return "sum ascending";
+        case Categoryorder::SumDescending: return "sum descending";
+        case Categoryorder::MeanAscending: return "mean ascending";
+        case Categoryorder::MeanDescending: return "mean descending";
+        case Categoryorder::GeometricMeanAscending: return "geometric mean ascending";
+        case Categoryorder::GeometricMeanDescending: return "geometric mean descending";
+        case Categoryorder::MedianAscending: return "median ascending";
+        case Categoryorder::MedianDescending: return "median descending";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Xaxis::to_string(Exponentformat e) {
     switch(e) {
-        case Exponentformat::NONE: return "none";
+        case Exponentformat::None: return "none";
         case Exponentformat::E: return "E";
-        case Exponentformat::POWER: return "power";
-        case Exponentformat::SI: return "SI";
+        case Exponentformat::Power: return "power";
+        case Exponentformat::Si: return "SI";
         case Exponentformat::B: return "B";
     }
     // Should be unreachable.
@@ -10101,79 +10101,79 @@ std::string Layout::Scene::Xaxis::to_string(Exponentformat e) {
 }
 std::string Layout::Scene::Xaxis::to_string(Mirror e) {
     switch(e) {
-        case Mirror::TRUE: return "True";
-        case Mirror::TICKS: return "ticks";
-        case Mirror::FALSE: return "False";
-        case Mirror::ALL: return "all";
-        case Mirror::ALLTICKS: return "allticks";
+        case Mirror::True: return "True";
+        case Mirror::Ticks: return "ticks";
+        case Mirror::False: return "False";
+        case Mirror::All: return "all";
+        case Mirror::Allticks: return "allticks";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Xaxis::to_string(Rangemode e) {
     switch(e) {
-        case Rangemode::NORMAL: return "normal";
-        case Rangemode::TOZERO: return "tozero";
-        case Rangemode::NONNEGATIVE: return "nonnegative";
+        case Rangemode::Normal: return "normal";
+        case Rangemode::Tozero: return "tozero";
+        case Rangemode::Nonnegative: return "nonnegative";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Xaxis::to_string(Showexponent e) {
     switch(e) {
-        case Showexponent::ALL: return "all";
-        case Showexponent::FIRST: return "first";
-        case Showexponent::LAST: return "last";
-        case Showexponent::NONE: return "none";
+        case Showexponent::All: return "all";
+        case Showexponent::First: return "first";
+        case Showexponent::Last: return "last";
+        case Showexponent::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Xaxis::to_string(Showtickprefix e) {
     switch(e) {
-        case Showtickprefix::ALL: return "all";
-        case Showtickprefix::FIRST: return "first";
-        case Showtickprefix::LAST: return "last";
-        case Showtickprefix::NONE: return "none";
+        case Showtickprefix::All: return "all";
+        case Showtickprefix::First: return "first";
+        case Showtickprefix::Last: return "last";
+        case Showtickprefix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Xaxis::to_string(Showticksuffix e) {
     switch(e) {
-        case Showticksuffix::ALL: return "all";
-        case Showticksuffix::FIRST: return "first";
-        case Showticksuffix::LAST: return "last";
-        case Showticksuffix::NONE: return "none";
+        case Showticksuffix::All: return "all";
+        case Showticksuffix::First: return "first";
+        case Showticksuffix::Last: return "last";
+        case Showticksuffix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Xaxis::to_string(Tickmode e) {
     switch(e) {
-        case Tickmode::AUTO: return "auto";
-        case Tickmode::LINEAR: return "linear";
-        case Tickmode::ARRAY: return "array";
+        case Tickmode::Auto: return "auto";
+        case Tickmode::Linear: return "linear";
+        case Tickmode::Array: return "array";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Xaxis::to_string(Ticks e) {
     switch(e) {
-        case Ticks::OUTSIDE: return "outside";
-        case Ticks::INSIDE: return "inside";
-        case Ticks::EMPTY: return "";
+        case Ticks::Outside: return "outside";
+        case Ticks::Inside: return "inside";
+        case Ticks::Empty: return "";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Xaxis::to_string(Type e) {
     switch(e) {
-        case Type::HYPHEN: return "-";
-        case Type::LINEAR: return "linear";
-        case Type::LOG: return "log";
-        case Type::DATE: return "date";
-        case Type::CATEGORY: return "category";
+        case Type::Hyphen: return "-";
+        case Type::Linear: return "linear";
+        case Type::Log: return "log";
+        case Type::Date: return "date";
+        case Type::Category: return "category";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -10217,8 +10217,8 @@ Layout::Scene::Xaxis& Layout::Scene::Xaxis::calendar(enum Calendar f) {
 }
 
 template <typename T, typename>
-Layout::Scene::Xaxis& Layout::Scene::Xaxis::categoryarray(std::vector<T> f) {
-    json["categoryarray"] = std::move(f);
+Layout::Scene::Xaxis& Layout::Scene::Xaxis::categoryarray(const std::vector<T>& f) {
+    json["categoryarray"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -10390,8 +10390,8 @@ Layout::Scene::Xaxis& Layout::Scene::Xaxis::nticks(Callable&& c) {
     return nticks(std::move(f));
 }
 
-Layout::Scene::Xaxis& Layout::Scene::Xaxis::range(std::vector<double> f) {
-    json["range"] = std::move(f);
+Layout::Scene::Xaxis& Layout::Scene::Xaxis::range(const std::vector<double>& f) {
+    json["range"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -10642,8 +10642,8 @@ Layout::Scene::Xaxis& Layout::Scene::Xaxis::ticksuffix(Callable&& c) {
 }
 
 template <typename T, typename>
-Layout::Scene::Xaxis& Layout::Scene::Xaxis::ticktext(std::vector<T> f) {
-    json["ticktext"] = std::move(f);
+Layout::Scene::Xaxis& Layout::Scene::Xaxis::ticktext(const std::vector<T>& f) {
+    json["ticktext"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -10665,8 +10665,8 @@ Layout::Scene::Xaxis& Layout::Scene::Xaxis::ticktextsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Layout::Scene::Xaxis& Layout::Scene::Xaxis::tickvals(std::vector<T> f) {
-    json["tickvals"] = std::move(f);
+Layout::Scene::Xaxis& Layout::Scene::Xaxis::tickvals(const std::vector<T>& f) {
+    json["tickvals"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -10795,8 +10795,8 @@ Layout::Scene::Xaxis::Autorangeoptions& Layout::Scene::Xaxis::Autorangeoptions::
     return include(std::move(f));
 }
 template <typename T>
-Layout::Scene::Xaxis::Autorangeoptions& Layout::Scene::Xaxis::Autorangeoptions::include(std::vector<T> f) {
-    json["include"] = std::move(f);
+Layout::Scene::Xaxis::Autorangeoptions& Layout::Scene::Xaxis::Autorangeoptions::include(const std::vector<T>& f) {
+    json["include"] = f;
     return *this;
 }
 
@@ -10837,30 +10837,30 @@ Layout::Scene::Xaxis::Autorangeoptions& Layout::Scene::Xaxis::Autorangeoptions::
 
 std::string Layout::Scene::Xaxis::Tickfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Xaxis::Tickfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Xaxis::Tickfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -10960,8 +10960,8 @@ Layout::Scene::Xaxis::Tickformatstops& Layout::Scene::Xaxis::Tickformatstops::ti
 }
 
 
-Layout::Scene::Xaxis::Tickformatstops::Tickformatstop& Layout::Scene::Xaxis::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
-    json["dtickrange"] = std::move(f);
+Layout::Scene::Xaxis::Tickformatstops::Tickformatstop& Layout::Scene::Xaxis::Tickformatstops::Tickformatstop::dtickrange(const std::vector<double>& f) {
+    json["dtickrange"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -11040,30 +11040,30 @@ Layout::Scene::Xaxis::Title& Layout::Scene::Xaxis::Title::text(Callable&& c) {
 
 std::string Layout::Scene::Xaxis::Title::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Xaxis::Title::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Xaxis::Title::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -11152,77 +11152,77 @@ Layout::Scene::Xaxis::Title::Font& Layout::Scene::Xaxis::Title::Font::weight(Cal
 
 std::string Layout::Scene::Yaxis::to_string(Autorange e) {
     switch(e) {
-        case Autorange::TRUE: return "True";
-        case Autorange::FALSE: return "False";
-        case Autorange::REVERSED: return "reversed";
-        case Autorange::MIN_REVERSED: return "min reversed";
-        case Autorange::MAX_REVERSED: return "max reversed";
-        case Autorange::MIN: return "min";
-        case Autorange::MAX: return "max";
+        case Autorange::True: return "True";
+        case Autorange::False: return "False";
+        case Autorange::Reversed: return "reversed";
+        case Autorange::MinReversed: return "min reversed";
+        case Autorange::MaxReversed: return "max reversed";
+        case Autorange::Min: return "min";
+        case Autorange::Max: return "max";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Yaxis::to_string(Autotypenumbers e) {
     switch(e) {
-        case Autotypenumbers::CONVERT_TYPES: return "convert types";
-        case Autotypenumbers::STRICT: return "strict";
+        case Autotypenumbers::ConvertTypes: return "convert types";
+        case Autotypenumbers::Strict: return "strict";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Yaxis::to_string(Calendar e) {
     switch(e) {
-        case Calendar::CHINESE: return "chinese";
-        case Calendar::COPTIC: return "coptic";
-        case Calendar::DISCWORLD: return "discworld";
-        case Calendar::ETHIOPIAN: return "ethiopian";
-        case Calendar::GREGORIAN: return "gregorian";
-        case Calendar::HEBREW: return "hebrew";
-        case Calendar::ISLAMIC: return "islamic";
-        case Calendar::JALALI: return "jalali";
-        case Calendar::JULIAN: return "julian";
-        case Calendar::MAYAN: return "mayan";
-        case Calendar::NANAKSHAHI: return "nanakshahi";
-        case Calendar::NEPALI: return "nepali";
-        case Calendar::PERSIAN: return "persian";
-        case Calendar::TAIWAN: return "taiwan";
-        case Calendar::THAI: return "thai";
-        case Calendar::UMMALQURA: return "ummalqura";
+        case Calendar::Chinese: return "chinese";
+        case Calendar::Coptic: return "coptic";
+        case Calendar::Discworld: return "discworld";
+        case Calendar::Ethiopian: return "ethiopian";
+        case Calendar::Gregorian: return "gregorian";
+        case Calendar::Hebrew: return "hebrew";
+        case Calendar::Islamic: return "islamic";
+        case Calendar::Jalali: return "jalali";
+        case Calendar::Julian: return "julian";
+        case Calendar::Mayan: return "mayan";
+        case Calendar::Nanakshahi: return "nanakshahi";
+        case Calendar::Nepali: return "nepali";
+        case Calendar::Persian: return "persian";
+        case Calendar::Taiwan: return "taiwan";
+        case Calendar::Thai: return "thai";
+        case Calendar::Ummalqura: return "ummalqura";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Yaxis::to_string(Categoryorder e) {
     switch(e) {
-        case Categoryorder::TRACE: return "trace";
-        case Categoryorder::CATEGORY_ASCENDING: return "category ascending";
-        case Categoryorder::CATEGORY_DESCENDING: return "category descending";
-        case Categoryorder::ARRAY: return "array";
-        case Categoryorder::TOTAL_ASCENDING: return "total ascending";
-        case Categoryorder::TOTAL_DESCENDING: return "total descending";
-        case Categoryorder::MIN_ASCENDING: return "min ascending";
-        case Categoryorder::MIN_DESCENDING: return "min descending";
-        case Categoryorder::MAX_ASCENDING: return "max ascending";
-        case Categoryorder::MAX_DESCENDING: return "max descending";
-        case Categoryorder::SUM_ASCENDING: return "sum ascending";
-        case Categoryorder::SUM_DESCENDING: return "sum descending";
-        case Categoryorder::MEAN_ASCENDING: return "mean ascending";
-        case Categoryorder::MEAN_DESCENDING: return "mean descending";
-        case Categoryorder::GEOMETRIC_MEAN_ASCENDING: return "geometric mean ascending";
-        case Categoryorder::GEOMETRIC_MEAN_DESCENDING: return "geometric mean descending";
-        case Categoryorder::MEDIAN_ASCENDING: return "median ascending";
-        case Categoryorder::MEDIAN_DESCENDING: return "median descending";
+        case Categoryorder::Trace: return "trace";
+        case Categoryorder::CategoryAscending: return "category ascending";
+        case Categoryorder::CategoryDescending: return "category descending";
+        case Categoryorder::Array: return "array";
+        case Categoryorder::TotalAscending: return "total ascending";
+        case Categoryorder::TotalDescending: return "total descending";
+        case Categoryorder::MinAscending: return "min ascending";
+        case Categoryorder::MinDescending: return "min descending";
+        case Categoryorder::MaxAscending: return "max ascending";
+        case Categoryorder::MaxDescending: return "max descending";
+        case Categoryorder::SumAscending: return "sum ascending";
+        case Categoryorder::SumDescending: return "sum descending";
+        case Categoryorder::MeanAscending: return "mean ascending";
+        case Categoryorder::MeanDescending: return "mean descending";
+        case Categoryorder::GeometricMeanAscending: return "geometric mean ascending";
+        case Categoryorder::GeometricMeanDescending: return "geometric mean descending";
+        case Categoryorder::MedianAscending: return "median ascending";
+        case Categoryorder::MedianDescending: return "median descending";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Yaxis::to_string(Exponentformat e) {
     switch(e) {
-        case Exponentformat::NONE: return "none";
+        case Exponentformat::None: return "none";
         case Exponentformat::E: return "E";
-        case Exponentformat::POWER: return "power";
-        case Exponentformat::SI: return "SI";
+        case Exponentformat::Power: return "power";
+        case Exponentformat::Si: return "SI";
         case Exponentformat::B: return "B";
     }
     // Should be unreachable.
@@ -11230,79 +11230,79 @@ std::string Layout::Scene::Yaxis::to_string(Exponentformat e) {
 }
 std::string Layout::Scene::Yaxis::to_string(Mirror e) {
     switch(e) {
-        case Mirror::TRUE: return "True";
-        case Mirror::TICKS: return "ticks";
-        case Mirror::FALSE: return "False";
-        case Mirror::ALL: return "all";
-        case Mirror::ALLTICKS: return "allticks";
+        case Mirror::True: return "True";
+        case Mirror::Ticks: return "ticks";
+        case Mirror::False: return "False";
+        case Mirror::All: return "all";
+        case Mirror::Allticks: return "allticks";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Yaxis::to_string(Rangemode e) {
     switch(e) {
-        case Rangemode::NORMAL: return "normal";
-        case Rangemode::TOZERO: return "tozero";
-        case Rangemode::NONNEGATIVE: return "nonnegative";
+        case Rangemode::Normal: return "normal";
+        case Rangemode::Tozero: return "tozero";
+        case Rangemode::Nonnegative: return "nonnegative";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Yaxis::to_string(Showexponent e) {
     switch(e) {
-        case Showexponent::ALL: return "all";
-        case Showexponent::FIRST: return "first";
-        case Showexponent::LAST: return "last";
-        case Showexponent::NONE: return "none";
+        case Showexponent::All: return "all";
+        case Showexponent::First: return "first";
+        case Showexponent::Last: return "last";
+        case Showexponent::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Yaxis::to_string(Showtickprefix e) {
     switch(e) {
-        case Showtickprefix::ALL: return "all";
-        case Showtickprefix::FIRST: return "first";
-        case Showtickprefix::LAST: return "last";
-        case Showtickprefix::NONE: return "none";
+        case Showtickprefix::All: return "all";
+        case Showtickprefix::First: return "first";
+        case Showtickprefix::Last: return "last";
+        case Showtickprefix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Yaxis::to_string(Showticksuffix e) {
     switch(e) {
-        case Showticksuffix::ALL: return "all";
-        case Showticksuffix::FIRST: return "first";
-        case Showticksuffix::LAST: return "last";
-        case Showticksuffix::NONE: return "none";
+        case Showticksuffix::All: return "all";
+        case Showticksuffix::First: return "first";
+        case Showticksuffix::Last: return "last";
+        case Showticksuffix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Yaxis::to_string(Tickmode e) {
     switch(e) {
-        case Tickmode::AUTO: return "auto";
-        case Tickmode::LINEAR: return "linear";
-        case Tickmode::ARRAY: return "array";
+        case Tickmode::Auto: return "auto";
+        case Tickmode::Linear: return "linear";
+        case Tickmode::Array: return "array";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Yaxis::to_string(Ticks e) {
     switch(e) {
-        case Ticks::OUTSIDE: return "outside";
-        case Ticks::INSIDE: return "inside";
-        case Ticks::EMPTY: return "";
+        case Ticks::Outside: return "outside";
+        case Ticks::Inside: return "inside";
+        case Ticks::Empty: return "";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Yaxis::to_string(Type e) {
     switch(e) {
-        case Type::HYPHEN: return "-";
-        case Type::LINEAR: return "linear";
-        case Type::LOG: return "log";
-        case Type::DATE: return "date";
-        case Type::CATEGORY: return "category";
+        case Type::Hyphen: return "-";
+        case Type::Linear: return "linear";
+        case Type::Log: return "log";
+        case Type::Date: return "date";
+        case Type::Category: return "category";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -11346,8 +11346,8 @@ Layout::Scene::Yaxis& Layout::Scene::Yaxis::calendar(enum Calendar f) {
 }
 
 template <typename T, typename>
-Layout::Scene::Yaxis& Layout::Scene::Yaxis::categoryarray(std::vector<T> f) {
-    json["categoryarray"] = std::move(f);
+Layout::Scene::Yaxis& Layout::Scene::Yaxis::categoryarray(const std::vector<T>& f) {
+    json["categoryarray"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -11519,8 +11519,8 @@ Layout::Scene::Yaxis& Layout::Scene::Yaxis::nticks(Callable&& c) {
     return nticks(std::move(f));
 }
 
-Layout::Scene::Yaxis& Layout::Scene::Yaxis::range(std::vector<double> f) {
-    json["range"] = std::move(f);
+Layout::Scene::Yaxis& Layout::Scene::Yaxis::range(const std::vector<double>& f) {
+    json["range"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -11771,8 +11771,8 @@ Layout::Scene::Yaxis& Layout::Scene::Yaxis::ticksuffix(Callable&& c) {
 }
 
 template <typename T, typename>
-Layout::Scene::Yaxis& Layout::Scene::Yaxis::ticktext(std::vector<T> f) {
-    json["ticktext"] = std::move(f);
+Layout::Scene::Yaxis& Layout::Scene::Yaxis::ticktext(const std::vector<T>& f) {
+    json["ticktext"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -11794,8 +11794,8 @@ Layout::Scene::Yaxis& Layout::Scene::Yaxis::ticktextsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Layout::Scene::Yaxis& Layout::Scene::Yaxis::tickvals(std::vector<T> f) {
-    json["tickvals"] = std::move(f);
+Layout::Scene::Yaxis& Layout::Scene::Yaxis::tickvals(const std::vector<T>& f) {
+    json["tickvals"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -11924,8 +11924,8 @@ Layout::Scene::Yaxis::Autorangeoptions& Layout::Scene::Yaxis::Autorangeoptions::
     return include(std::move(f));
 }
 template <typename T>
-Layout::Scene::Yaxis::Autorangeoptions& Layout::Scene::Yaxis::Autorangeoptions::include(std::vector<T> f) {
-    json["include"] = std::move(f);
+Layout::Scene::Yaxis::Autorangeoptions& Layout::Scene::Yaxis::Autorangeoptions::include(const std::vector<T>& f) {
+    json["include"] = f;
     return *this;
 }
 
@@ -11966,30 +11966,30 @@ Layout::Scene::Yaxis::Autorangeoptions& Layout::Scene::Yaxis::Autorangeoptions::
 
 std::string Layout::Scene::Yaxis::Tickfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Yaxis::Tickfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Yaxis::Tickfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -12089,8 +12089,8 @@ Layout::Scene::Yaxis::Tickformatstops& Layout::Scene::Yaxis::Tickformatstops::ti
 }
 
 
-Layout::Scene::Yaxis::Tickformatstops::Tickformatstop& Layout::Scene::Yaxis::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
-    json["dtickrange"] = std::move(f);
+Layout::Scene::Yaxis::Tickformatstops::Tickformatstop& Layout::Scene::Yaxis::Tickformatstops::Tickformatstop::dtickrange(const std::vector<double>& f) {
+    json["dtickrange"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -12169,30 +12169,30 @@ Layout::Scene::Yaxis::Title& Layout::Scene::Yaxis::Title::text(Callable&& c) {
 
 std::string Layout::Scene::Yaxis::Title::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Yaxis::Title::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Yaxis::Title::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -12281,77 +12281,77 @@ Layout::Scene::Yaxis::Title::Font& Layout::Scene::Yaxis::Title::Font::weight(Cal
 
 std::string Layout::Scene::Zaxis::to_string(Autorange e) {
     switch(e) {
-        case Autorange::TRUE: return "True";
-        case Autorange::FALSE: return "False";
-        case Autorange::REVERSED: return "reversed";
-        case Autorange::MIN_REVERSED: return "min reversed";
-        case Autorange::MAX_REVERSED: return "max reversed";
-        case Autorange::MIN: return "min";
-        case Autorange::MAX: return "max";
+        case Autorange::True: return "True";
+        case Autorange::False: return "False";
+        case Autorange::Reversed: return "reversed";
+        case Autorange::MinReversed: return "min reversed";
+        case Autorange::MaxReversed: return "max reversed";
+        case Autorange::Min: return "min";
+        case Autorange::Max: return "max";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Zaxis::to_string(Autotypenumbers e) {
     switch(e) {
-        case Autotypenumbers::CONVERT_TYPES: return "convert types";
-        case Autotypenumbers::STRICT: return "strict";
+        case Autotypenumbers::ConvertTypes: return "convert types";
+        case Autotypenumbers::Strict: return "strict";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Zaxis::to_string(Calendar e) {
     switch(e) {
-        case Calendar::CHINESE: return "chinese";
-        case Calendar::COPTIC: return "coptic";
-        case Calendar::DISCWORLD: return "discworld";
-        case Calendar::ETHIOPIAN: return "ethiopian";
-        case Calendar::GREGORIAN: return "gregorian";
-        case Calendar::HEBREW: return "hebrew";
-        case Calendar::ISLAMIC: return "islamic";
-        case Calendar::JALALI: return "jalali";
-        case Calendar::JULIAN: return "julian";
-        case Calendar::MAYAN: return "mayan";
-        case Calendar::NANAKSHAHI: return "nanakshahi";
-        case Calendar::NEPALI: return "nepali";
-        case Calendar::PERSIAN: return "persian";
-        case Calendar::TAIWAN: return "taiwan";
-        case Calendar::THAI: return "thai";
-        case Calendar::UMMALQURA: return "ummalqura";
+        case Calendar::Chinese: return "chinese";
+        case Calendar::Coptic: return "coptic";
+        case Calendar::Discworld: return "discworld";
+        case Calendar::Ethiopian: return "ethiopian";
+        case Calendar::Gregorian: return "gregorian";
+        case Calendar::Hebrew: return "hebrew";
+        case Calendar::Islamic: return "islamic";
+        case Calendar::Jalali: return "jalali";
+        case Calendar::Julian: return "julian";
+        case Calendar::Mayan: return "mayan";
+        case Calendar::Nanakshahi: return "nanakshahi";
+        case Calendar::Nepali: return "nepali";
+        case Calendar::Persian: return "persian";
+        case Calendar::Taiwan: return "taiwan";
+        case Calendar::Thai: return "thai";
+        case Calendar::Ummalqura: return "ummalqura";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Zaxis::to_string(Categoryorder e) {
     switch(e) {
-        case Categoryorder::TRACE: return "trace";
-        case Categoryorder::CATEGORY_ASCENDING: return "category ascending";
-        case Categoryorder::CATEGORY_DESCENDING: return "category descending";
-        case Categoryorder::ARRAY: return "array";
-        case Categoryorder::TOTAL_ASCENDING: return "total ascending";
-        case Categoryorder::TOTAL_DESCENDING: return "total descending";
-        case Categoryorder::MIN_ASCENDING: return "min ascending";
-        case Categoryorder::MIN_DESCENDING: return "min descending";
-        case Categoryorder::MAX_ASCENDING: return "max ascending";
-        case Categoryorder::MAX_DESCENDING: return "max descending";
-        case Categoryorder::SUM_ASCENDING: return "sum ascending";
-        case Categoryorder::SUM_DESCENDING: return "sum descending";
-        case Categoryorder::MEAN_ASCENDING: return "mean ascending";
-        case Categoryorder::MEAN_DESCENDING: return "mean descending";
-        case Categoryorder::GEOMETRIC_MEAN_ASCENDING: return "geometric mean ascending";
-        case Categoryorder::GEOMETRIC_MEAN_DESCENDING: return "geometric mean descending";
-        case Categoryorder::MEDIAN_ASCENDING: return "median ascending";
-        case Categoryorder::MEDIAN_DESCENDING: return "median descending";
+        case Categoryorder::Trace: return "trace";
+        case Categoryorder::CategoryAscending: return "category ascending";
+        case Categoryorder::CategoryDescending: return "category descending";
+        case Categoryorder::Array: return "array";
+        case Categoryorder::TotalAscending: return "total ascending";
+        case Categoryorder::TotalDescending: return "total descending";
+        case Categoryorder::MinAscending: return "min ascending";
+        case Categoryorder::MinDescending: return "min descending";
+        case Categoryorder::MaxAscending: return "max ascending";
+        case Categoryorder::MaxDescending: return "max descending";
+        case Categoryorder::SumAscending: return "sum ascending";
+        case Categoryorder::SumDescending: return "sum descending";
+        case Categoryorder::MeanAscending: return "mean ascending";
+        case Categoryorder::MeanDescending: return "mean descending";
+        case Categoryorder::GeometricMeanAscending: return "geometric mean ascending";
+        case Categoryorder::GeometricMeanDescending: return "geometric mean descending";
+        case Categoryorder::MedianAscending: return "median ascending";
+        case Categoryorder::MedianDescending: return "median descending";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Zaxis::to_string(Exponentformat e) {
     switch(e) {
-        case Exponentformat::NONE: return "none";
+        case Exponentformat::None: return "none";
         case Exponentformat::E: return "E";
-        case Exponentformat::POWER: return "power";
-        case Exponentformat::SI: return "SI";
+        case Exponentformat::Power: return "power";
+        case Exponentformat::Si: return "SI";
         case Exponentformat::B: return "B";
     }
     // Should be unreachable.
@@ -12359,79 +12359,79 @@ std::string Layout::Scene::Zaxis::to_string(Exponentformat e) {
 }
 std::string Layout::Scene::Zaxis::to_string(Mirror e) {
     switch(e) {
-        case Mirror::TRUE: return "True";
-        case Mirror::TICKS: return "ticks";
-        case Mirror::FALSE: return "False";
-        case Mirror::ALL: return "all";
-        case Mirror::ALLTICKS: return "allticks";
+        case Mirror::True: return "True";
+        case Mirror::Ticks: return "ticks";
+        case Mirror::False: return "False";
+        case Mirror::All: return "all";
+        case Mirror::Allticks: return "allticks";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Zaxis::to_string(Rangemode e) {
     switch(e) {
-        case Rangemode::NORMAL: return "normal";
-        case Rangemode::TOZERO: return "tozero";
-        case Rangemode::NONNEGATIVE: return "nonnegative";
+        case Rangemode::Normal: return "normal";
+        case Rangemode::Tozero: return "tozero";
+        case Rangemode::Nonnegative: return "nonnegative";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Zaxis::to_string(Showexponent e) {
     switch(e) {
-        case Showexponent::ALL: return "all";
-        case Showexponent::FIRST: return "first";
-        case Showexponent::LAST: return "last";
-        case Showexponent::NONE: return "none";
+        case Showexponent::All: return "all";
+        case Showexponent::First: return "first";
+        case Showexponent::Last: return "last";
+        case Showexponent::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Zaxis::to_string(Showtickprefix e) {
     switch(e) {
-        case Showtickprefix::ALL: return "all";
-        case Showtickprefix::FIRST: return "first";
-        case Showtickprefix::LAST: return "last";
-        case Showtickprefix::NONE: return "none";
+        case Showtickprefix::All: return "all";
+        case Showtickprefix::First: return "first";
+        case Showtickprefix::Last: return "last";
+        case Showtickprefix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Zaxis::to_string(Showticksuffix e) {
     switch(e) {
-        case Showticksuffix::ALL: return "all";
-        case Showticksuffix::FIRST: return "first";
-        case Showticksuffix::LAST: return "last";
-        case Showticksuffix::NONE: return "none";
+        case Showticksuffix::All: return "all";
+        case Showticksuffix::First: return "first";
+        case Showticksuffix::Last: return "last";
+        case Showticksuffix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Zaxis::to_string(Tickmode e) {
     switch(e) {
-        case Tickmode::AUTO: return "auto";
-        case Tickmode::LINEAR: return "linear";
-        case Tickmode::ARRAY: return "array";
+        case Tickmode::Auto: return "auto";
+        case Tickmode::Linear: return "linear";
+        case Tickmode::Array: return "array";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Zaxis::to_string(Ticks e) {
     switch(e) {
-        case Ticks::OUTSIDE: return "outside";
-        case Ticks::INSIDE: return "inside";
-        case Ticks::EMPTY: return "";
+        case Ticks::Outside: return "outside";
+        case Ticks::Inside: return "inside";
+        case Ticks::Empty: return "";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Zaxis::to_string(Type e) {
     switch(e) {
-        case Type::HYPHEN: return "-";
-        case Type::LINEAR: return "linear";
-        case Type::LOG: return "log";
-        case Type::DATE: return "date";
-        case Type::CATEGORY: return "category";
+        case Type::Hyphen: return "-";
+        case Type::Linear: return "linear";
+        case Type::Log: return "log";
+        case Type::Date: return "date";
+        case Type::Category: return "category";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -12475,8 +12475,8 @@ Layout::Scene::Zaxis& Layout::Scene::Zaxis::calendar(enum Calendar f) {
 }
 
 template <typename T, typename>
-Layout::Scene::Zaxis& Layout::Scene::Zaxis::categoryarray(std::vector<T> f) {
-    json["categoryarray"] = std::move(f);
+Layout::Scene::Zaxis& Layout::Scene::Zaxis::categoryarray(const std::vector<T>& f) {
+    json["categoryarray"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -12648,8 +12648,8 @@ Layout::Scene::Zaxis& Layout::Scene::Zaxis::nticks(Callable&& c) {
     return nticks(std::move(f));
 }
 
-Layout::Scene::Zaxis& Layout::Scene::Zaxis::range(std::vector<double> f) {
-    json["range"] = std::move(f);
+Layout::Scene::Zaxis& Layout::Scene::Zaxis::range(const std::vector<double>& f) {
+    json["range"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -12900,8 +12900,8 @@ Layout::Scene::Zaxis& Layout::Scene::Zaxis::ticksuffix(Callable&& c) {
 }
 
 template <typename T, typename>
-Layout::Scene::Zaxis& Layout::Scene::Zaxis::ticktext(std::vector<T> f) {
-    json["ticktext"] = std::move(f);
+Layout::Scene::Zaxis& Layout::Scene::Zaxis::ticktext(const std::vector<T>& f) {
+    json["ticktext"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -12923,8 +12923,8 @@ Layout::Scene::Zaxis& Layout::Scene::Zaxis::ticktextsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Layout::Scene::Zaxis& Layout::Scene::Zaxis::tickvals(std::vector<T> f) {
-    json["tickvals"] = std::move(f);
+Layout::Scene::Zaxis& Layout::Scene::Zaxis::tickvals(const std::vector<T>& f) {
+    json["tickvals"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -13053,8 +13053,8 @@ Layout::Scene::Zaxis::Autorangeoptions& Layout::Scene::Zaxis::Autorangeoptions::
     return include(std::move(f));
 }
 template <typename T>
-Layout::Scene::Zaxis::Autorangeoptions& Layout::Scene::Zaxis::Autorangeoptions::include(std::vector<T> f) {
-    json["include"] = std::move(f);
+Layout::Scene::Zaxis::Autorangeoptions& Layout::Scene::Zaxis::Autorangeoptions::include(const std::vector<T>& f) {
+    json["include"] = f;
     return *this;
 }
 
@@ -13095,30 +13095,30 @@ Layout::Scene::Zaxis::Autorangeoptions& Layout::Scene::Zaxis::Autorangeoptions::
 
 std::string Layout::Scene::Zaxis::Tickfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Zaxis::Tickfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Zaxis::Tickfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -13218,8 +13218,8 @@ Layout::Scene::Zaxis::Tickformatstops& Layout::Scene::Zaxis::Tickformatstops::ti
 }
 
 
-Layout::Scene::Zaxis::Tickformatstops::Tickformatstop& Layout::Scene::Zaxis::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
-    json["dtickrange"] = std::move(f);
+Layout::Scene::Zaxis::Tickformatstops::Tickformatstop& Layout::Scene::Zaxis::Tickformatstops::Tickformatstop::dtickrange(const std::vector<double>& f) {
+    json["dtickrange"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -13298,30 +13298,30 @@ Layout::Scene::Zaxis::Title& Layout::Scene::Zaxis::Title::text(Callable&& c) {
 
 std::string Layout::Scene::Zaxis::Title::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Zaxis::Title::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Scene::Zaxis::Title::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -13422,8 +13422,8 @@ Layout::Selections& Layout::Selections::selection(Callable&& c) {
 
 std::string Layout::Selections::Selection::to_string(Type e) {
     switch(e) {
-        case Type::RECT: return "rect";
-        case Type::PATH: return "path";
+        case Type::Rect: return "rect";
+        case Type::Path: return "path";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -13607,52 +13607,52 @@ Layout::Shapes& Layout::Shapes::shape(Callable&& c) {
 
 std::string Layout::Shapes::Shape::to_string(Fillrule e) {
     switch(e) {
-        case Fillrule::EVENODD: return "evenodd";
-        case Fillrule::NONZERO: return "nonzero";
+        case Fillrule::Evenodd: return "evenodd";
+        case Fillrule::Nonzero: return "nonzero";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Shapes::Shape::to_string(Layer e) {
     switch(e) {
-        case Layer::BELOW: return "below";
-        case Layer::ABOVE: return "above";
-        case Layer::BETWEEN: return "between";
+        case Layer::Below: return "below";
+        case Layer::Above: return "above";
+        case Layer::Between: return "between";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Shapes::Shape::to_string(Type e) {
     switch(e) {
-        case Type::CIRCLE: return "circle";
-        case Type::RECT: return "rect";
-        case Type::PATH: return "path";
-        case Type::LINE: return "line";
+        case Type::Circle: return "circle";
+        case Type::Rect: return "rect";
+        case Type::Path: return "path";
+        case Type::Line: return "line";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Shapes::Shape::to_string(Visible e) {
     switch(e) {
-        case Visible::TRUE: return "True";
-        case Visible::FALSE: return "False";
-        case Visible::LEGENDONLY: return "legendonly";
+        case Visible::True: return "True";
+        case Visible::False: return "False";
+        case Visible::Legendonly: return "legendonly";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Shapes::Shape::to_string(Xsizemode e) {
     switch(e) {
-        case Xsizemode::SCALED: return "scaled";
-        case Xsizemode::PIXEL: return "pixel";
+        case Xsizemode::Scaled: return "scaled";
+        case Xsizemode::Pixel: return "pixel";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Shapes::Shape::to_string(Ysizemode e) {
     switch(e) {
-        case Ysizemode::SCALED: return "scaled";
-        case Ysizemode::PIXEL: return "pixel";
+        case Ysizemode::Scaled: return "scaled";
+        case Ysizemode::Pixel: return "pixel";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -13982,37 +13982,37 @@ Layout::Shapes::Shape& Layout::Shapes::Shape::ysizemode(enum Ysizemode f) {
 
 std::string Layout::Shapes::Shape::Label::to_string(Textposition e) {
     switch(e) {
-        case Textposition::TOP_LEFT: return "top left";
-        case Textposition::TOP_CENTER: return "top center";
-        case Textposition::TOP_RIGHT: return "top right";
-        case Textposition::MIDDLE_LEFT: return "middle left";
-        case Textposition::MIDDLE_CENTER: return "middle center";
-        case Textposition::MIDDLE_RIGHT: return "middle right";
-        case Textposition::BOTTOM_LEFT: return "bottom left";
-        case Textposition::BOTTOM_CENTER: return "bottom center";
-        case Textposition::BOTTOM_RIGHT: return "bottom right";
-        case Textposition::START: return "start";
-        case Textposition::MIDDLE: return "middle";
-        case Textposition::END: return "end";
+        case Textposition::TopLeft: return "top left";
+        case Textposition::TopCenter: return "top center";
+        case Textposition::TopRight: return "top right";
+        case Textposition::MiddleLeft: return "middle left";
+        case Textposition::MiddleCenter: return "middle center";
+        case Textposition::MiddleRight: return "middle right";
+        case Textposition::BottomLeft: return "bottom left";
+        case Textposition::BottomCenter: return "bottom center";
+        case Textposition::BottomRight: return "bottom right";
+        case Textposition::Start: return "start";
+        case Textposition::Middle: return "middle";
+        case Textposition::End: return "end";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Shapes::Shape::Label::to_string(Xanchor e) {
     switch(e) {
-        case Xanchor::AUTO: return "auto";
-        case Xanchor::LEFT: return "left";
-        case Xanchor::CENTER: return "center";
-        case Xanchor::RIGHT: return "right";
+        case Xanchor::Auto: return "auto";
+        case Xanchor::Left: return "left";
+        case Xanchor::Center: return "center";
+        case Xanchor::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Shapes::Shape::Label::to_string(Yanchor e) {
     switch(e) {
-        case Yanchor::TOP: return "top";
-        case Yanchor::MIDDLE: return "middle";
-        case Yanchor::BOTTOM: return "bottom";
+        case Yanchor::Top: return "top";
+        case Yanchor::Middle: return "middle";
+        case Yanchor::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -14090,30 +14090,30 @@ Layout::Shapes::Shape::Label& Layout::Shapes::Shape::Label::yanchor(enum Yanchor
 
 std::string Layout::Shapes::Shape::Label::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Shapes::Shape::Label::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Shapes::Shape::Label::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -14225,30 +14225,30 @@ Layout::Shapes::Shape::Legendgrouptitle& Layout::Shapes::Shape::Legendgrouptitle
 
 std::string Layout::Shapes::Shape::Legendgrouptitle::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Shapes::Shape::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Shapes::Shape::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -14383,28 +14383,28 @@ Layout::Sliders& Layout::Sliders::slider(Callable&& c) {
 
 std::string Layout::Sliders::Slider::to_string(Lenmode e) {
     switch(e) {
-        case Lenmode::FRACTION: return "fraction";
-        case Lenmode::PIXELS: return "pixels";
+        case Lenmode::Fraction: return "fraction";
+        case Lenmode::Pixels: return "pixels";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Sliders::Slider::to_string(Xanchor e) {
     switch(e) {
-        case Xanchor::AUTO: return "auto";
-        case Xanchor::LEFT: return "left";
-        case Xanchor::CENTER: return "center";
-        case Xanchor::RIGHT: return "right";
+        case Xanchor::Auto: return "auto";
+        case Xanchor::Left: return "left";
+        case Xanchor::Center: return "center";
+        case Xanchor::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Sliders::Slider::to_string(Yanchor e) {
     switch(e) {
-        case Yanchor::AUTO: return "auto";
-        case Yanchor::TOP: return "top";
-        case Yanchor::MIDDLE: return "middle";
-        case Yanchor::BOTTOM: return "bottom";
+        case Yanchor::Auto: return "auto";
+        case Yanchor::Top: return "top";
+        case Yanchor::Middle: return "middle";
+        case Yanchor::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -14647,9 +14647,9 @@ Layout::Sliders::Slider& Layout::Sliders::Slider::yanchor(enum Yanchor f) {
 
 std::string Layout::Sliders::Slider::Currentvalue::to_string(Xanchor e) {
     switch(e) {
-        case Xanchor::LEFT: return "left";
-        case Xanchor::CENTER: return "center";
-        case Xanchor::RIGHT: return "right";
+        case Xanchor::Left: return "left";
+        case Xanchor::Center: return "center";
+        case Xanchor::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -14717,30 +14717,30 @@ Layout::Sliders::Slider::Currentvalue& Layout::Sliders::Slider::Currentvalue::xa
 
 std::string Layout::Sliders::Slider::Currentvalue::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Sliders::Slider::Currentvalue::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Sliders::Slider::Currentvalue::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -14829,30 +14829,30 @@ Layout::Sliders::Slider::Currentvalue::Font& Layout::Sliders::Slider::Currentval
 
 std::string Layout::Sliders::Slider::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Sliders::Slider::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Sliders::Slider::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -14998,18 +14998,18 @@ Layout::Sliders::Slider::Steps& Layout::Sliders::Slider::Steps::step(Callable&& 
 
 std::string Layout::Sliders::Slider::Steps::Step::to_string(Method e) {
     switch(e) {
-        case Method::RESTYLE: return "restyle";
-        case Method::RELAYOUT: return "relayout";
-        case Method::ANIMATE: return "animate";
-        case Method::UPDATE: return "update";
-        case Method::SKIP: return "skip";
+        case Method::Restyle: return "restyle";
+        case Method::Relayout: return "relayout";
+        case Method::Animate: return "animate";
+        case Method::Update: return "update";
+        case Method::Skip: return "skip";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Layout::Sliders::Slider::Steps::Step& Layout::Sliders::Slider::Steps::Step::args(std::vector<double> f) {
-    json["args"] = std::move(f);
+Layout::Sliders::Slider::Steps::Step& Layout::Sliders::Slider::Steps::Step::args(const std::vector<double>& f) {
+    json["args"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -15092,42 +15092,42 @@ Layout::Sliders::Slider::Steps::Step& Layout::Sliders::Slider::Steps::Step::visi
 
 std::string Layout::Sliders::Slider::Transition::to_string(Easing e) {
     switch(e) {
-        case Easing::LINEAR: return "linear";
-        case Easing::QUAD: return "quad";
-        case Easing::CUBIC: return "cubic";
-        case Easing::SIN: return "sin";
-        case Easing::EXP: return "exp";
-        case Easing::CIRCLE: return "circle";
-        case Easing::ELASTIC: return "elastic";
-        case Easing::BACK: return "back";
-        case Easing::BOUNCE: return "bounce";
-        case Easing::LINEAR_IN: return "linear-in";
-        case Easing::QUAD_IN: return "quad-in";
-        case Easing::CUBIC_IN: return "cubic-in";
-        case Easing::SIN_IN: return "sin-in";
-        case Easing::EXP_IN: return "exp-in";
-        case Easing::CIRCLE_IN: return "circle-in";
-        case Easing::ELASTIC_IN: return "elastic-in";
-        case Easing::BACK_IN: return "back-in";
-        case Easing::BOUNCE_IN: return "bounce-in";
-        case Easing::LINEAR_OUT: return "linear-out";
-        case Easing::QUAD_OUT: return "quad-out";
-        case Easing::CUBIC_OUT: return "cubic-out";
-        case Easing::SIN_OUT: return "sin-out";
-        case Easing::EXP_OUT: return "exp-out";
-        case Easing::CIRCLE_OUT: return "circle-out";
-        case Easing::ELASTIC_OUT: return "elastic-out";
-        case Easing::BACK_OUT: return "back-out";
-        case Easing::BOUNCE_OUT: return "bounce-out";
-        case Easing::LINEAR_IN_OUT: return "linear-in-out";
-        case Easing::QUAD_IN_OUT: return "quad-in-out";
-        case Easing::CUBIC_IN_OUT: return "cubic-in-out";
-        case Easing::SIN_IN_OUT: return "sin-in-out";
-        case Easing::EXP_IN_OUT: return "exp-in-out";
-        case Easing::CIRCLE_IN_OUT: return "circle-in-out";
-        case Easing::ELASTIC_IN_OUT: return "elastic-in-out";
-        case Easing::BACK_IN_OUT: return "back-in-out";
-        case Easing::BOUNCE_IN_OUT: return "bounce-in-out";
+        case Easing::Linear: return "linear";
+        case Easing::Quad: return "quad";
+        case Easing::Cubic: return "cubic";
+        case Easing::Sin: return "sin";
+        case Easing::Exp: return "exp";
+        case Easing::Circle: return "circle";
+        case Easing::Elastic: return "elastic";
+        case Easing::Back: return "back";
+        case Easing::Bounce: return "bounce";
+        case Easing::LinearIn: return "linear-in";
+        case Easing::QuadIn: return "quad-in";
+        case Easing::CubicIn: return "cubic-in";
+        case Easing::SinIn: return "sin-in";
+        case Easing::ExpIn: return "exp-in";
+        case Easing::CircleIn: return "circle-in";
+        case Easing::ElasticIn: return "elastic-in";
+        case Easing::BackIn: return "back-in";
+        case Easing::BounceIn: return "bounce-in";
+        case Easing::LinearOut: return "linear-out";
+        case Easing::QuadOut: return "quad-out";
+        case Easing::CubicOut: return "cubic-out";
+        case Easing::SinOut: return "sin-out";
+        case Easing::ExpOut: return "exp-out";
+        case Easing::CircleOut: return "circle-out";
+        case Easing::ElasticOut: return "elastic-out";
+        case Easing::BackOut: return "back-out";
+        case Easing::BounceOut: return "bounce-out";
+        case Easing::LinearInOut: return "linear-in-out";
+        case Easing::QuadInOut: return "quad-in-out";
+        case Easing::CubicInOut: return "cubic-in-out";
+        case Easing::SinInOut: return "sin-in-out";
+        case Easing::ExpInOut: return "exp-in-out";
+        case Easing::CircleInOut: return "circle-in-out";
+        case Easing::ElasticInOut: return "elastic-in-out";
+        case Easing::BackInOut: return "back-in-out";
+        case Easing::BounceInOut: return "bounce-in-out";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -15217,8 +15217,8 @@ Layout::Smith::Domain& Layout::Smith::Domain::row(Callable&& c) {
     return row(std::move(f));
 }
 
-Layout::Smith::Domain& Layout::Smith::Domain::x(std::vector<double> f) {
-    json["x"] = std::move(f);
+Layout::Smith::Domain& Layout::Smith::Domain::x(const std::vector<double>& f) {
+    json["x"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -15228,8 +15228,8 @@ Layout::Smith::Domain& Layout::Smith::Domain::x(Callable&& c) {
     return x(std::move(f));
 }
 
-Layout::Smith::Domain& Layout::Smith::Domain::y(std::vector<double> f) {
-    json["y"] = std::move(f);
+Layout::Smith::Domain& Layout::Smith::Domain::y(const std::vector<double>& f) {
+    json["y"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -15241,37 +15241,37 @@ Layout::Smith::Domain& Layout::Smith::Domain::y(Callable&& c) {
 
 std::string Layout::Smith::Imaginaryaxis::to_string(Layer e) {
     switch(e) {
-        case Layer::ABOVE_TRACES: return "above traces";
-        case Layer::BELOW_TRACES: return "below traces";
+        case Layer::AboveTraces: return "above traces";
+        case Layer::BelowTraces: return "below traces";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Smith::Imaginaryaxis::to_string(Showtickprefix e) {
     switch(e) {
-        case Showtickprefix::ALL: return "all";
-        case Showtickprefix::FIRST: return "first";
-        case Showtickprefix::LAST: return "last";
-        case Showtickprefix::NONE: return "none";
+        case Showtickprefix::All: return "all";
+        case Showtickprefix::First: return "first";
+        case Showtickprefix::Last: return "last";
+        case Showtickprefix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Smith::Imaginaryaxis::to_string(Showticksuffix e) {
     switch(e) {
-        case Showticksuffix::ALL: return "all";
-        case Showticksuffix::FIRST: return "first";
-        case Showticksuffix::LAST: return "last";
-        case Showticksuffix::NONE: return "none";
+        case Showticksuffix::All: return "all";
+        case Showticksuffix::First: return "first";
+        case Showticksuffix::Last: return "last";
+        case Showticksuffix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Smith::Imaginaryaxis::to_string(Ticks e) {
     switch(e) {
-        case Ticks::OUTSIDE: return "outside";
-        case Ticks::INSIDE: return "inside";
-        case Ticks::EMPTY: return "";
+        case Ticks::Outside: return "outside";
+        case Ticks::Inside: return "inside";
+        case Ticks::Empty: return "";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -15486,8 +15486,8 @@ Layout::Smith::Imaginaryaxis& Layout::Smith::Imaginaryaxis::ticksuffix(Callable&
 }
 
 template <typename T, typename>
-Layout::Smith::Imaginaryaxis& Layout::Smith::Imaginaryaxis::tickvals(std::vector<T> f) {
-    json["tickvals"] = std::move(f);
+Layout::Smith::Imaginaryaxis& Layout::Smith::Imaginaryaxis::tickvals(const std::vector<T>& f) {
+    json["tickvals"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -15532,30 +15532,30 @@ Layout::Smith::Imaginaryaxis& Layout::Smith::Imaginaryaxis::visible(Callable&& c
 
 std::string Layout::Smith::Imaginaryaxis::Tickfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Smith::Imaginaryaxis::Tickfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Smith::Imaginaryaxis::Tickfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -15644,45 +15644,45 @@ Layout::Smith::Imaginaryaxis::Tickfont& Layout::Smith::Imaginaryaxis::Tickfont::
 
 std::string Layout::Smith::Realaxis::to_string(Layer e) {
     switch(e) {
-        case Layer::ABOVE_TRACES: return "above traces";
-        case Layer::BELOW_TRACES: return "below traces";
+        case Layer::AboveTraces: return "above traces";
+        case Layer::BelowTraces: return "below traces";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Smith::Realaxis::to_string(Showtickprefix e) {
     switch(e) {
-        case Showtickprefix::ALL: return "all";
-        case Showtickprefix::FIRST: return "first";
-        case Showtickprefix::LAST: return "last";
-        case Showtickprefix::NONE: return "none";
+        case Showtickprefix::All: return "all";
+        case Showtickprefix::First: return "first";
+        case Showtickprefix::Last: return "last";
+        case Showtickprefix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Smith::Realaxis::to_string(Showticksuffix e) {
     switch(e) {
-        case Showticksuffix::ALL: return "all";
-        case Showticksuffix::FIRST: return "first";
-        case Showticksuffix::LAST: return "last";
-        case Showticksuffix::NONE: return "none";
+        case Showticksuffix::All: return "all";
+        case Showticksuffix::First: return "first";
+        case Showticksuffix::Last: return "last";
+        case Showticksuffix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Smith::Realaxis::to_string(Side e) {
     switch(e) {
-        case Side::TOP: return "top";
-        case Side::BOTTOM: return "bottom";
+        case Side::Top: return "top";
+        case Side::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Smith::Realaxis::to_string(Ticks e) {
     switch(e) {
-        case Ticks::TOP: return "top";
-        case Ticks::BOTTOM: return "bottom";
-        case Ticks::EMPTY: return "";
+        case Ticks::Top: return "top";
+        case Ticks::Bottom: return "bottom";
+        case Ticks::Empty: return "";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -15913,8 +15913,8 @@ Layout::Smith::Realaxis& Layout::Smith::Realaxis::ticksuffix(Callable&& c) {
 }
 
 template <typename T, typename>
-Layout::Smith::Realaxis& Layout::Smith::Realaxis::tickvals(std::vector<T> f) {
-    json["tickvals"] = std::move(f);
+Layout::Smith::Realaxis& Layout::Smith::Realaxis::tickvals(const std::vector<T>& f) {
+    json["tickvals"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -15959,30 +15959,30 @@ Layout::Smith::Realaxis& Layout::Smith::Realaxis::visible(Callable&& c) {
 
 std::string Layout::Smith::Realaxis::Tickfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Smith::Realaxis::Tickfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Smith::Realaxis::Tickfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -16150,10 +16150,10 @@ Layout::Ternary& Layout::Ternary::uirevision(Callable&& c) {
 
 std::string Layout::Ternary::Aaxis::to_string(Exponentformat e) {
     switch(e) {
-        case Exponentformat::NONE: return "none";
+        case Exponentformat::None: return "none";
         case Exponentformat::E: return "E";
-        case Exponentformat::POWER: return "power";
-        case Exponentformat::SI: return "SI";
+        case Exponentformat::Power: return "power";
+        case Exponentformat::Si: return "SI";
         case Exponentformat::B: return "B";
     }
     // Should be unreachable.
@@ -16161,56 +16161,56 @@ std::string Layout::Ternary::Aaxis::to_string(Exponentformat e) {
 }
 std::string Layout::Ternary::Aaxis::to_string(Layer e) {
     switch(e) {
-        case Layer::ABOVE_TRACES: return "above traces";
-        case Layer::BELOW_TRACES: return "below traces";
+        case Layer::AboveTraces: return "above traces";
+        case Layer::BelowTraces: return "below traces";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Aaxis::to_string(Showexponent e) {
     switch(e) {
-        case Showexponent::ALL: return "all";
-        case Showexponent::FIRST: return "first";
-        case Showexponent::LAST: return "last";
-        case Showexponent::NONE: return "none";
+        case Showexponent::All: return "all";
+        case Showexponent::First: return "first";
+        case Showexponent::Last: return "last";
+        case Showexponent::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Aaxis::to_string(Showtickprefix e) {
     switch(e) {
-        case Showtickprefix::ALL: return "all";
-        case Showtickprefix::FIRST: return "first";
-        case Showtickprefix::LAST: return "last";
-        case Showtickprefix::NONE: return "none";
+        case Showtickprefix::All: return "all";
+        case Showtickprefix::First: return "first";
+        case Showtickprefix::Last: return "last";
+        case Showtickprefix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Aaxis::to_string(Showticksuffix e) {
     switch(e) {
-        case Showticksuffix::ALL: return "all";
-        case Showticksuffix::FIRST: return "first";
-        case Showticksuffix::LAST: return "last";
-        case Showticksuffix::NONE: return "none";
+        case Showticksuffix::All: return "all";
+        case Showticksuffix::First: return "first";
+        case Showticksuffix::Last: return "last";
+        case Showticksuffix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Aaxis::to_string(Tickmode e) {
     switch(e) {
-        case Tickmode::AUTO: return "auto";
-        case Tickmode::LINEAR: return "linear";
-        case Tickmode::ARRAY: return "array";
+        case Tickmode::Auto: return "auto";
+        case Tickmode::Linear: return "linear";
+        case Tickmode::Array: return "array";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Aaxis::to_string(Ticks e) {
     switch(e) {
-        case Ticks::OUTSIDE: return "outside";
-        case Ticks::INSIDE: return "inside";
-        case Ticks::EMPTY: return "";
+        case Ticks::Outside: return "outside";
+        case Ticks::Inside: return "inside";
+        case Ticks::Empty: return "";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -16541,8 +16541,8 @@ Layout::Ternary::Aaxis& Layout::Ternary::Aaxis::ticksuffix(Callable&& c) {
 }
 
 template <typename T, typename>
-Layout::Ternary::Aaxis& Layout::Ternary::Aaxis::ticktext(std::vector<T> f) {
-    json["ticktext"] = std::move(f);
+Layout::Ternary::Aaxis& Layout::Ternary::Aaxis::ticktext(const std::vector<T>& f) {
+    json["ticktext"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -16564,8 +16564,8 @@ Layout::Ternary::Aaxis& Layout::Ternary::Aaxis::ticktextsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Layout::Ternary::Aaxis& Layout::Ternary::Aaxis::tickvals(std::vector<T> f) {
-    json["tickvals"] = std::move(f);
+Layout::Ternary::Aaxis& Layout::Ternary::Aaxis::tickvals(const std::vector<T>& f) {
+    json["tickvals"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -16622,30 +16622,30 @@ Layout::Ternary::Aaxis& Layout::Ternary::Aaxis::uirevision(Callable&& c) {
 
 std::string Layout::Ternary::Aaxis::Tickfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Aaxis::Tickfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Aaxis::Tickfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -16745,8 +16745,8 @@ Layout::Ternary::Aaxis::Tickformatstops& Layout::Ternary::Aaxis::Tickformatstops
 }
 
 
-Layout::Ternary::Aaxis::Tickformatstops::Tickformatstop& Layout::Ternary::Aaxis::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
-    json["dtickrange"] = std::move(f);
+Layout::Ternary::Aaxis::Tickformatstops::Tickformatstop& Layout::Ternary::Aaxis::Tickformatstops::Tickformatstop::dtickrange(const std::vector<double>& f) {
+    json["dtickrange"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -16825,30 +16825,30 @@ Layout::Ternary::Aaxis::Title& Layout::Ternary::Aaxis::Title::text(Callable&& c)
 
 std::string Layout::Ternary::Aaxis::Title::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Aaxis::Title::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Aaxis::Title::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -16937,10 +16937,10 @@ Layout::Ternary::Aaxis::Title::Font& Layout::Ternary::Aaxis::Title::Font::weight
 
 std::string Layout::Ternary::Baxis::to_string(Exponentformat e) {
     switch(e) {
-        case Exponentformat::NONE: return "none";
+        case Exponentformat::None: return "none";
         case Exponentformat::E: return "E";
-        case Exponentformat::POWER: return "power";
-        case Exponentformat::SI: return "SI";
+        case Exponentformat::Power: return "power";
+        case Exponentformat::Si: return "SI";
         case Exponentformat::B: return "B";
     }
     // Should be unreachable.
@@ -16948,56 +16948,56 @@ std::string Layout::Ternary::Baxis::to_string(Exponentformat e) {
 }
 std::string Layout::Ternary::Baxis::to_string(Layer e) {
     switch(e) {
-        case Layer::ABOVE_TRACES: return "above traces";
-        case Layer::BELOW_TRACES: return "below traces";
+        case Layer::AboveTraces: return "above traces";
+        case Layer::BelowTraces: return "below traces";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Baxis::to_string(Showexponent e) {
     switch(e) {
-        case Showexponent::ALL: return "all";
-        case Showexponent::FIRST: return "first";
-        case Showexponent::LAST: return "last";
-        case Showexponent::NONE: return "none";
+        case Showexponent::All: return "all";
+        case Showexponent::First: return "first";
+        case Showexponent::Last: return "last";
+        case Showexponent::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Baxis::to_string(Showtickprefix e) {
     switch(e) {
-        case Showtickprefix::ALL: return "all";
-        case Showtickprefix::FIRST: return "first";
-        case Showtickprefix::LAST: return "last";
-        case Showtickprefix::NONE: return "none";
+        case Showtickprefix::All: return "all";
+        case Showtickprefix::First: return "first";
+        case Showtickprefix::Last: return "last";
+        case Showtickprefix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Baxis::to_string(Showticksuffix e) {
     switch(e) {
-        case Showticksuffix::ALL: return "all";
-        case Showticksuffix::FIRST: return "first";
-        case Showticksuffix::LAST: return "last";
-        case Showticksuffix::NONE: return "none";
+        case Showticksuffix::All: return "all";
+        case Showticksuffix::First: return "first";
+        case Showticksuffix::Last: return "last";
+        case Showticksuffix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Baxis::to_string(Tickmode e) {
     switch(e) {
-        case Tickmode::AUTO: return "auto";
-        case Tickmode::LINEAR: return "linear";
-        case Tickmode::ARRAY: return "array";
+        case Tickmode::Auto: return "auto";
+        case Tickmode::Linear: return "linear";
+        case Tickmode::Array: return "array";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Baxis::to_string(Ticks e) {
     switch(e) {
-        case Ticks::OUTSIDE: return "outside";
-        case Ticks::INSIDE: return "inside";
-        case Ticks::EMPTY: return "";
+        case Ticks::Outside: return "outside";
+        case Ticks::Inside: return "inside";
+        case Ticks::Empty: return "";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -17328,8 +17328,8 @@ Layout::Ternary::Baxis& Layout::Ternary::Baxis::ticksuffix(Callable&& c) {
 }
 
 template <typename T, typename>
-Layout::Ternary::Baxis& Layout::Ternary::Baxis::ticktext(std::vector<T> f) {
-    json["ticktext"] = std::move(f);
+Layout::Ternary::Baxis& Layout::Ternary::Baxis::ticktext(const std::vector<T>& f) {
+    json["ticktext"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -17351,8 +17351,8 @@ Layout::Ternary::Baxis& Layout::Ternary::Baxis::ticktextsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Layout::Ternary::Baxis& Layout::Ternary::Baxis::tickvals(std::vector<T> f) {
-    json["tickvals"] = std::move(f);
+Layout::Ternary::Baxis& Layout::Ternary::Baxis::tickvals(const std::vector<T>& f) {
+    json["tickvals"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -17409,30 +17409,30 @@ Layout::Ternary::Baxis& Layout::Ternary::Baxis::uirevision(Callable&& c) {
 
 std::string Layout::Ternary::Baxis::Tickfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Baxis::Tickfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Baxis::Tickfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -17532,8 +17532,8 @@ Layout::Ternary::Baxis::Tickformatstops& Layout::Ternary::Baxis::Tickformatstops
 }
 
 
-Layout::Ternary::Baxis::Tickformatstops::Tickformatstop& Layout::Ternary::Baxis::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
-    json["dtickrange"] = std::move(f);
+Layout::Ternary::Baxis::Tickformatstops::Tickformatstop& Layout::Ternary::Baxis::Tickformatstops::Tickformatstop::dtickrange(const std::vector<double>& f) {
+    json["dtickrange"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -17612,30 +17612,30 @@ Layout::Ternary::Baxis::Title& Layout::Ternary::Baxis::Title::text(Callable&& c)
 
 std::string Layout::Ternary::Baxis::Title::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Baxis::Title::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Baxis::Title::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -17724,10 +17724,10 @@ Layout::Ternary::Baxis::Title::Font& Layout::Ternary::Baxis::Title::Font::weight
 
 std::string Layout::Ternary::Caxis::to_string(Exponentformat e) {
     switch(e) {
-        case Exponentformat::NONE: return "none";
+        case Exponentformat::None: return "none";
         case Exponentformat::E: return "E";
-        case Exponentformat::POWER: return "power";
-        case Exponentformat::SI: return "SI";
+        case Exponentformat::Power: return "power";
+        case Exponentformat::Si: return "SI";
         case Exponentformat::B: return "B";
     }
     // Should be unreachable.
@@ -17735,56 +17735,56 @@ std::string Layout::Ternary::Caxis::to_string(Exponentformat e) {
 }
 std::string Layout::Ternary::Caxis::to_string(Layer e) {
     switch(e) {
-        case Layer::ABOVE_TRACES: return "above traces";
-        case Layer::BELOW_TRACES: return "below traces";
+        case Layer::AboveTraces: return "above traces";
+        case Layer::BelowTraces: return "below traces";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Caxis::to_string(Showexponent e) {
     switch(e) {
-        case Showexponent::ALL: return "all";
-        case Showexponent::FIRST: return "first";
-        case Showexponent::LAST: return "last";
-        case Showexponent::NONE: return "none";
+        case Showexponent::All: return "all";
+        case Showexponent::First: return "first";
+        case Showexponent::Last: return "last";
+        case Showexponent::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Caxis::to_string(Showtickprefix e) {
     switch(e) {
-        case Showtickprefix::ALL: return "all";
-        case Showtickprefix::FIRST: return "first";
-        case Showtickprefix::LAST: return "last";
-        case Showtickprefix::NONE: return "none";
+        case Showtickprefix::All: return "all";
+        case Showtickprefix::First: return "first";
+        case Showtickprefix::Last: return "last";
+        case Showtickprefix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Caxis::to_string(Showticksuffix e) {
     switch(e) {
-        case Showticksuffix::ALL: return "all";
-        case Showticksuffix::FIRST: return "first";
-        case Showticksuffix::LAST: return "last";
-        case Showticksuffix::NONE: return "none";
+        case Showticksuffix::All: return "all";
+        case Showticksuffix::First: return "first";
+        case Showticksuffix::Last: return "last";
+        case Showticksuffix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Caxis::to_string(Tickmode e) {
     switch(e) {
-        case Tickmode::AUTO: return "auto";
-        case Tickmode::LINEAR: return "linear";
-        case Tickmode::ARRAY: return "array";
+        case Tickmode::Auto: return "auto";
+        case Tickmode::Linear: return "linear";
+        case Tickmode::Array: return "array";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Caxis::to_string(Ticks e) {
     switch(e) {
-        case Ticks::OUTSIDE: return "outside";
-        case Ticks::INSIDE: return "inside";
-        case Ticks::EMPTY: return "";
+        case Ticks::Outside: return "outside";
+        case Ticks::Inside: return "inside";
+        case Ticks::Empty: return "";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -18115,8 +18115,8 @@ Layout::Ternary::Caxis& Layout::Ternary::Caxis::ticksuffix(Callable&& c) {
 }
 
 template <typename T, typename>
-Layout::Ternary::Caxis& Layout::Ternary::Caxis::ticktext(std::vector<T> f) {
-    json["ticktext"] = std::move(f);
+Layout::Ternary::Caxis& Layout::Ternary::Caxis::ticktext(const std::vector<T>& f) {
+    json["ticktext"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -18138,8 +18138,8 @@ Layout::Ternary::Caxis& Layout::Ternary::Caxis::ticktextsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Layout::Ternary::Caxis& Layout::Ternary::Caxis::tickvals(std::vector<T> f) {
-    json["tickvals"] = std::move(f);
+Layout::Ternary::Caxis& Layout::Ternary::Caxis::tickvals(const std::vector<T>& f) {
+    json["tickvals"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -18196,30 +18196,30 @@ Layout::Ternary::Caxis& Layout::Ternary::Caxis::uirevision(Callable&& c) {
 
 std::string Layout::Ternary::Caxis::Tickfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Caxis::Tickfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Caxis::Tickfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -18319,8 +18319,8 @@ Layout::Ternary::Caxis::Tickformatstops& Layout::Ternary::Caxis::Tickformatstops
 }
 
 
-Layout::Ternary::Caxis::Tickformatstops::Tickformatstop& Layout::Ternary::Caxis::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
-    json["dtickrange"] = std::move(f);
+Layout::Ternary::Caxis::Tickformatstops::Tickformatstop& Layout::Ternary::Caxis::Tickformatstops::Tickformatstop::dtickrange(const std::vector<double>& f) {
+    json["dtickrange"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -18399,30 +18399,30 @@ Layout::Ternary::Caxis::Title& Layout::Ternary::Caxis::Title::text(Callable&& c)
 
 std::string Layout::Ternary::Caxis::Title::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Caxis::Title::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Ternary::Caxis::Title::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -18532,8 +18532,8 @@ Layout::Ternary::Domain& Layout::Ternary::Domain::row(Callable&& c) {
     return row(std::move(f));
 }
 
-Layout::Ternary::Domain& Layout::Ternary::Domain::x(std::vector<double> f) {
-    json["x"] = std::move(f);
+Layout::Ternary::Domain& Layout::Ternary::Domain::x(const std::vector<double>& f) {
+    json["x"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -18543,8 +18543,8 @@ Layout::Ternary::Domain& Layout::Ternary::Domain::x(Callable&& c) {
     return x(std::move(f));
 }
 
-Layout::Ternary::Domain& Layout::Ternary::Domain::y(std::vector<double> f) {
-    json["y"] = std::move(f);
+Layout::Ternary::Domain& Layout::Ternary::Domain::y(const std::vector<double>& f) {
+    json["y"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -18556,36 +18556,36 @@ Layout::Ternary::Domain& Layout::Ternary::Domain::y(Callable&& c) {
 
 std::string Layout::Title::to_string(Xanchor e) {
     switch(e) {
-        case Xanchor::AUTO: return "auto";
-        case Xanchor::LEFT: return "left";
-        case Xanchor::CENTER: return "center";
-        case Xanchor::RIGHT: return "right";
+        case Xanchor::Auto: return "auto";
+        case Xanchor::Left: return "left";
+        case Xanchor::Center: return "center";
+        case Xanchor::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Title::to_string(Xref e) {
     switch(e) {
-        case Xref::CONTAINER: return "container";
-        case Xref::PAPER: return "paper";
+        case Xref::Container: return "container";
+        case Xref::Paper: return "paper";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Title::to_string(Yanchor e) {
     switch(e) {
-        case Yanchor::AUTO: return "auto";
-        case Yanchor::TOP: return "top";
-        case Yanchor::MIDDLE: return "middle";
-        case Yanchor::BOTTOM: return "bottom";
+        case Yanchor::Auto: return "auto";
+        case Yanchor::Top: return "top";
+        case Yanchor::Middle: return "middle";
+        case Yanchor::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Title::to_string(Yref e) {
     switch(e) {
-        case Yref::CONTAINER: return "container";
-        case Yref::PAPER: return "paper";
+        case Yref::Container: return "container";
+        case Yref::Paper: return "paper";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -18690,30 +18690,30 @@ Layout::Title& Layout::Title::yref(enum Yref f) {
 
 std::string Layout::Title::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Title::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Title::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -18870,30 +18870,30 @@ Layout::Title::Subtitle& Layout::Title::Subtitle::text(Callable&& c) {
 
 std::string Layout::Title::Subtitle::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Title::Subtitle::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Title::Subtitle::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -18982,50 +18982,50 @@ Layout::Title::Subtitle::Font& Layout::Title::Subtitle::Font::weight(Callable&& 
 
 std::string Layout::Transition::to_string(Easing e) {
     switch(e) {
-        case Easing::LINEAR: return "linear";
-        case Easing::QUAD: return "quad";
-        case Easing::CUBIC: return "cubic";
-        case Easing::SIN: return "sin";
-        case Easing::EXP: return "exp";
-        case Easing::CIRCLE: return "circle";
-        case Easing::ELASTIC: return "elastic";
-        case Easing::BACK: return "back";
-        case Easing::BOUNCE: return "bounce";
-        case Easing::LINEAR_IN: return "linear-in";
-        case Easing::QUAD_IN: return "quad-in";
-        case Easing::CUBIC_IN: return "cubic-in";
-        case Easing::SIN_IN: return "sin-in";
-        case Easing::EXP_IN: return "exp-in";
-        case Easing::CIRCLE_IN: return "circle-in";
-        case Easing::ELASTIC_IN: return "elastic-in";
-        case Easing::BACK_IN: return "back-in";
-        case Easing::BOUNCE_IN: return "bounce-in";
-        case Easing::LINEAR_OUT: return "linear-out";
-        case Easing::QUAD_OUT: return "quad-out";
-        case Easing::CUBIC_OUT: return "cubic-out";
-        case Easing::SIN_OUT: return "sin-out";
-        case Easing::EXP_OUT: return "exp-out";
-        case Easing::CIRCLE_OUT: return "circle-out";
-        case Easing::ELASTIC_OUT: return "elastic-out";
-        case Easing::BACK_OUT: return "back-out";
-        case Easing::BOUNCE_OUT: return "bounce-out";
-        case Easing::LINEAR_IN_OUT: return "linear-in-out";
-        case Easing::QUAD_IN_OUT: return "quad-in-out";
-        case Easing::CUBIC_IN_OUT: return "cubic-in-out";
-        case Easing::SIN_IN_OUT: return "sin-in-out";
-        case Easing::EXP_IN_OUT: return "exp-in-out";
-        case Easing::CIRCLE_IN_OUT: return "circle-in-out";
-        case Easing::ELASTIC_IN_OUT: return "elastic-in-out";
-        case Easing::BACK_IN_OUT: return "back-in-out";
-        case Easing::BOUNCE_IN_OUT: return "bounce-in-out";
+        case Easing::Linear: return "linear";
+        case Easing::Quad: return "quad";
+        case Easing::Cubic: return "cubic";
+        case Easing::Sin: return "sin";
+        case Easing::Exp: return "exp";
+        case Easing::Circle: return "circle";
+        case Easing::Elastic: return "elastic";
+        case Easing::Back: return "back";
+        case Easing::Bounce: return "bounce";
+        case Easing::LinearIn: return "linear-in";
+        case Easing::QuadIn: return "quad-in";
+        case Easing::CubicIn: return "cubic-in";
+        case Easing::SinIn: return "sin-in";
+        case Easing::ExpIn: return "exp-in";
+        case Easing::CircleIn: return "circle-in";
+        case Easing::ElasticIn: return "elastic-in";
+        case Easing::BackIn: return "back-in";
+        case Easing::BounceIn: return "bounce-in";
+        case Easing::LinearOut: return "linear-out";
+        case Easing::QuadOut: return "quad-out";
+        case Easing::CubicOut: return "cubic-out";
+        case Easing::SinOut: return "sin-out";
+        case Easing::ExpOut: return "exp-out";
+        case Easing::CircleOut: return "circle-out";
+        case Easing::ElasticOut: return "elastic-out";
+        case Easing::BackOut: return "back-out";
+        case Easing::BounceOut: return "bounce-out";
+        case Easing::LinearInOut: return "linear-in-out";
+        case Easing::QuadInOut: return "quad-in-out";
+        case Easing::CubicInOut: return "cubic-in-out";
+        case Easing::SinInOut: return "sin-in-out";
+        case Easing::ExpInOut: return "exp-in-out";
+        case Easing::CircleInOut: return "circle-in-out";
+        case Easing::ElasticInOut: return "elastic-in-out";
+        case Easing::BackInOut: return "back-in-out";
+        case Easing::BounceInOut: return "bounce-in-out";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Transition::to_string(Ordering e) {
     switch(e) {
-        case Ordering::LAYOUT_FIRST: return "layout first";
-        case Ordering::TRACES_FIRST: return "traces first";
+        case Ordering::LayoutFirst: return "layout first";
+        case Ordering::TracesFirst: return "traces first";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -19054,9 +19054,9 @@ Layout::Transition& Layout::Transition::ordering(enum Ordering f) {
 
 std::string Layout::Uniformtext::to_string(Mode e) {
     switch(e) {
-        case Mode::FALSE: return "False";
-        case Mode::HIDE: return "hide";
-        case Mode::SHOW: return "show";
+        case Mode::False: return "False";
+        case Mode::Hide: return "hide";
+        case Mode::Show: return "show";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -19092,38 +19092,38 @@ Layout::Updatemenus& Layout::Updatemenus::updatemenu(Callable&& c) {
 
 std::string Layout::Updatemenus::Updatemenu::to_string(Direction e) {
     switch(e) {
-        case Direction::LEFT: return "left";
-        case Direction::RIGHT: return "right";
-        case Direction::UP: return "up";
-        case Direction::DOWN: return "down";
+        case Direction::Left: return "left";
+        case Direction::Right: return "right";
+        case Direction::Up: return "up";
+        case Direction::Down: return "down";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Updatemenus::Updatemenu::to_string(Type e) {
     switch(e) {
-        case Type::DROPDOWN: return "dropdown";
-        case Type::BUTTONS: return "buttons";
+        case Type::Dropdown: return "dropdown";
+        case Type::Buttons: return "buttons";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Updatemenus::Updatemenu::to_string(Xanchor e) {
     switch(e) {
-        case Xanchor::AUTO: return "auto";
-        case Xanchor::LEFT: return "left";
-        case Xanchor::CENTER: return "center";
-        case Xanchor::RIGHT: return "right";
+        case Xanchor::Auto: return "auto";
+        case Xanchor::Left: return "left";
+        case Xanchor::Center: return "center";
+        case Xanchor::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Updatemenus::Updatemenu::to_string(Yanchor e) {
     switch(e) {
-        case Yanchor::AUTO: return "auto";
-        case Yanchor::TOP: return "top";
-        case Yanchor::MIDDLE: return "middle";
-        case Yanchor::BOTTOM: return "bottom";
+        case Yanchor::Auto: return "auto";
+        case Yanchor::Top: return "top";
+        case Yanchor::Middle: return "middle";
+        case Yanchor::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -19306,18 +19306,18 @@ Layout::Updatemenus::Updatemenu::Buttons& Layout::Updatemenus::Updatemenu::Butto
 
 std::string Layout::Updatemenus::Updatemenu::Buttons::Button::to_string(Method e) {
     switch(e) {
-        case Method::RESTYLE: return "restyle";
-        case Method::RELAYOUT: return "relayout";
-        case Method::ANIMATE: return "animate";
-        case Method::UPDATE: return "update";
-        case Method::SKIP: return "skip";
+        case Method::Restyle: return "restyle";
+        case Method::Relayout: return "relayout";
+        case Method::Animate: return "animate";
+        case Method::Update: return "update";
+        case Method::Skip: return "skip";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Layout::Updatemenus::Updatemenu::Buttons::Button& Layout::Updatemenus::Updatemenu::Buttons::Button::args(std::vector<double> f) {
-    json["args"] = std::move(f);
+Layout::Updatemenus::Updatemenu::Buttons::Button& Layout::Updatemenus::Updatemenu::Buttons::Button::args(const std::vector<double>& f) {
+    json["args"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -19327,8 +19327,8 @@ Layout::Updatemenus::Updatemenu::Buttons::Button& Layout::Updatemenus::Updatemen
     return args(std::move(f));
 }
 
-Layout::Updatemenus::Updatemenu::Buttons::Button& Layout::Updatemenus::Updatemenu::Buttons::Button::args2(std::vector<double> f) {
-    json["args2"] = std::move(f);
+Layout::Updatemenus::Updatemenu::Buttons::Button& Layout::Updatemenus::Updatemenu::Buttons::Button::args2(const std::vector<double>& f) {
+    json["args2"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -19400,30 +19400,30 @@ Layout::Updatemenus::Updatemenu::Buttons::Button& Layout::Updatemenus::Updatemen
 
 std::string Layout::Updatemenus::Updatemenu::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Updatemenus::Updatemenu::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Updatemenus::Updatemenu::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -19557,97 +19557,97 @@ Layout::Updatemenus::Updatemenu::Pad& Layout::Updatemenus::Updatemenu::Pad::t(Ca
 
 std::string Layout::Xaxis::to_string(Autorange e) {
     switch(e) {
-        case Autorange::TRUE: return "True";
-        case Autorange::FALSE: return "False";
-        case Autorange::REVERSED: return "reversed";
-        case Autorange::MIN_REVERSED: return "min reversed";
-        case Autorange::MAX_REVERSED: return "max reversed";
-        case Autorange::MIN: return "min";
-        case Autorange::MAX: return "max";
+        case Autorange::True: return "True";
+        case Autorange::False: return "False";
+        case Autorange::Reversed: return "reversed";
+        case Autorange::MinReversed: return "min reversed";
+        case Autorange::MaxReversed: return "max reversed";
+        case Autorange::Min: return "min";
+        case Autorange::Max: return "max";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::to_string(Autotypenumbers e) {
     switch(e) {
-        case Autotypenumbers::CONVERT_TYPES: return "convert types";
-        case Autotypenumbers::STRICT: return "strict";
+        case Autotypenumbers::ConvertTypes: return "convert types";
+        case Autotypenumbers::Strict: return "strict";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::to_string(Calendar e) {
     switch(e) {
-        case Calendar::CHINESE: return "chinese";
-        case Calendar::COPTIC: return "coptic";
-        case Calendar::DISCWORLD: return "discworld";
-        case Calendar::ETHIOPIAN: return "ethiopian";
-        case Calendar::GREGORIAN: return "gregorian";
-        case Calendar::HEBREW: return "hebrew";
-        case Calendar::ISLAMIC: return "islamic";
-        case Calendar::JALALI: return "jalali";
-        case Calendar::JULIAN: return "julian";
-        case Calendar::MAYAN: return "mayan";
-        case Calendar::NANAKSHAHI: return "nanakshahi";
-        case Calendar::NEPALI: return "nepali";
-        case Calendar::PERSIAN: return "persian";
-        case Calendar::TAIWAN: return "taiwan";
-        case Calendar::THAI: return "thai";
-        case Calendar::UMMALQURA: return "ummalqura";
+        case Calendar::Chinese: return "chinese";
+        case Calendar::Coptic: return "coptic";
+        case Calendar::Discworld: return "discworld";
+        case Calendar::Ethiopian: return "ethiopian";
+        case Calendar::Gregorian: return "gregorian";
+        case Calendar::Hebrew: return "hebrew";
+        case Calendar::Islamic: return "islamic";
+        case Calendar::Jalali: return "jalali";
+        case Calendar::Julian: return "julian";
+        case Calendar::Mayan: return "mayan";
+        case Calendar::Nanakshahi: return "nanakshahi";
+        case Calendar::Nepali: return "nepali";
+        case Calendar::Persian: return "persian";
+        case Calendar::Taiwan: return "taiwan";
+        case Calendar::Thai: return "thai";
+        case Calendar::Ummalqura: return "ummalqura";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::to_string(Categoryorder e) {
     switch(e) {
-        case Categoryorder::TRACE: return "trace";
-        case Categoryorder::CATEGORY_ASCENDING: return "category ascending";
-        case Categoryorder::CATEGORY_DESCENDING: return "category descending";
-        case Categoryorder::ARRAY: return "array";
-        case Categoryorder::TOTAL_ASCENDING: return "total ascending";
-        case Categoryorder::TOTAL_DESCENDING: return "total descending";
-        case Categoryorder::MIN_ASCENDING: return "min ascending";
-        case Categoryorder::MIN_DESCENDING: return "min descending";
-        case Categoryorder::MAX_ASCENDING: return "max ascending";
-        case Categoryorder::MAX_DESCENDING: return "max descending";
-        case Categoryorder::SUM_ASCENDING: return "sum ascending";
-        case Categoryorder::SUM_DESCENDING: return "sum descending";
-        case Categoryorder::MEAN_ASCENDING: return "mean ascending";
-        case Categoryorder::MEAN_DESCENDING: return "mean descending";
-        case Categoryorder::GEOMETRIC_MEAN_ASCENDING: return "geometric mean ascending";
-        case Categoryorder::GEOMETRIC_MEAN_DESCENDING: return "geometric mean descending";
-        case Categoryorder::MEDIAN_ASCENDING: return "median ascending";
-        case Categoryorder::MEDIAN_DESCENDING: return "median descending";
+        case Categoryorder::Trace: return "trace";
+        case Categoryorder::CategoryAscending: return "category ascending";
+        case Categoryorder::CategoryDescending: return "category descending";
+        case Categoryorder::Array: return "array";
+        case Categoryorder::TotalAscending: return "total ascending";
+        case Categoryorder::TotalDescending: return "total descending";
+        case Categoryorder::MinAscending: return "min ascending";
+        case Categoryorder::MinDescending: return "min descending";
+        case Categoryorder::MaxAscending: return "max ascending";
+        case Categoryorder::MaxDescending: return "max descending";
+        case Categoryorder::SumAscending: return "sum ascending";
+        case Categoryorder::SumDescending: return "sum descending";
+        case Categoryorder::MeanAscending: return "mean ascending";
+        case Categoryorder::MeanDescending: return "mean descending";
+        case Categoryorder::GeometricMeanAscending: return "geometric mean ascending";
+        case Categoryorder::GeometricMeanDescending: return "geometric mean descending";
+        case Categoryorder::MedianAscending: return "median ascending";
+        case Categoryorder::MedianDescending: return "median descending";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::to_string(Constrain e) {
     switch(e) {
-        case Constrain::RANGE: return "range";
-        case Constrain::DOMAIN: return "domain";
+        case Constrain::Range: return "range";
+        case Constrain::Domain: return "domain";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::to_string(Constraintoward e) {
     switch(e) {
-        case Constraintoward::LEFT: return "left";
-        case Constraintoward::CENTER: return "center";
-        case Constraintoward::RIGHT: return "right";
-        case Constraintoward::TOP: return "top";
-        case Constraintoward::MIDDLE: return "middle";
-        case Constraintoward::BOTTOM: return "bottom";
+        case Constraintoward::Left: return "left";
+        case Constraintoward::Center: return "center";
+        case Constraintoward::Right: return "right";
+        case Constraintoward::Top: return "top";
+        case Constraintoward::Middle: return "middle";
+        case Constraintoward::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::to_string(Exponentformat e) {
     switch(e) {
-        case Exponentformat::NONE: return "none";
+        case Exponentformat::None: return "none";
         case Exponentformat::E: return "E";
-        case Exponentformat::POWER: return "power";
-        case Exponentformat::SI: return "SI";
+        case Exponentformat::Power: return "power";
+        case Exponentformat::Si: return "SI";
         case Exponentformat::B: return "B";
     }
     // Should be unreachable.
@@ -19655,149 +19655,149 @@ std::string Layout::Xaxis::to_string(Exponentformat e) {
 }
 std::string Layout::Xaxis::to_string(Layer e) {
     switch(e) {
-        case Layer::ABOVE_TRACES: return "above traces";
-        case Layer::BELOW_TRACES: return "below traces";
+        case Layer::AboveTraces: return "above traces";
+        case Layer::BelowTraces: return "below traces";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::to_string(Mirror e) {
     switch(e) {
-        case Mirror::TRUE: return "True";
-        case Mirror::TICKS: return "ticks";
-        case Mirror::FALSE: return "False";
-        case Mirror::ALL: return "all";
-        case Mirror::ALLTICKS: return "allticks";
+        case Mirror::True: return "True";
+        case Mirror::Ticks: return "ticks";
+        case Mirror::False: return "False";
+        case Mirror::All: return "all";
+        case Mirror::Allticks: return "allticks";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::to_string(Rangemode e) {
     switch(e) {
-        case Rangemode::NORMAL: return "normal";
-        case Rangemode::TOZERO: return "tozero";
-        case Rangemode::NONNEGATIVE: return "nonnegative";
+        case Rangemode::Normal: return "normal";
+        case Rangemode::Tozero: return "tozero";
+        case Rangemode::Nonnegative: return "nonnegative";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::to_string(Showexponent e) {
     switch(e) {
-        case Showexponent::ALL: return "all";
-        case Showexponent::FIRST: return "first";
-        case Showexponent::LAST: return "last";
-        case Showexponent::NONE: return "none";
+        case Showexponent::All: return "all";
+        case Showexponent::First: return "first";
+        case Showexponent::Last: return "last";
+        case Showexponent::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::to_string(Showtickprefix e) {
     switch(e) {
-        case Showtickprefix::ALL: return "all";
-        case Showtickprefix::FIRST: return "first";
-        case Showtickprefix::LAST: return "last";
-        case Showtickprefix::NONE: return "none";
+        case Showtickprefix::All: return "all";
+        case Showtickprefix::First: return "first";
+        case Showtickprefix::Last: return "last";
+        case Showtickprefix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::to_string(Showticksuffix e) {
     switch(e) {
-        case Showticksuffix::ALL: return "all";
-        case Showticksuffix::FIRST: return "first";
-        case Showticksuffix::LAST: return "last";
-        case Showticksuffix::NONE: return "none";
+        case Showticksuffix::All: return "all";
+        case Showticksuffix::First: return "first";
+        case Showticksuffix::Last: return "last";
+        case Showticksuffix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::to_string(Side e) {
     switch(e) {
-        case Side::TOP: return "top";
-        case Side::BOTTOM: return "bottom";
-        case Side::LEFT: return "left";
-        case Side::RIGHT: return "right";
+        case Side::Top: return "top";
+        case Side::Bottom: return "bottom";
+        case Side::Left: return "left";
+        case Side::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::to_string(Spikesnap e) {
     switch(e) {
-        case Spikesnap::DATA: return "data";
-        case Spikesnap::CURSOR: return "cursor";
-        case Spikesnap::HOVERED_DATA: return "hovered data";
+        case Spikesnap::Data: return "data";
+        case Spikesnap::Cursor: return "cursor";
+        case Spikesnap::HoveredData: return "hovered data";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::to_string(Ticklabelmode e) {
     switch(e) {
-        case Ticklabelmode::INSTANT: return "instant";
-        case Ticklabelmode::PERIOD: return "period";
+        case Ticklabelmode::Instant: return "instant";
+        case Ticklabelmode::Period: return "period";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::to_string(Ticklabeloverflow e) {
     switch(e) {
-        case Ticklabeloverflow::ALLOW: return "allow";
-        case Ticklabeloverflow::HIDE_PAST_DIV: return "hide past div";
-        case Ticklabeloverflow::HIDE_PAST_DOMAIN: return "hide past domain";
+        case Ticklabeloverflow::Allow: return "allow";
+        case Ticklabeloverflow::HidePastDiv: return "hide past div";
+        case Ticklabeloverflow::HidePastDomain: return "hide past domain";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::to_string(Ticklabelposition e) {
     switch(e) {
-        case Ticklabelposition::OUTSIDE: return "outside";
-        case Ticklabelposition::INSIDE: return "inside";
-        case Ticklabelposition::OUTSIDE_TOP: return "outside top";
-        case Ticklabelposition::INSIDE_TOP: return "inside top";
-        case Ticklabelposition::OUTSIDE_LEFT: return "outside left";
-        case Ticklabelposition::INSIDE_LEFT: return "inside left";
-        case Ticklabelposition::OUTSIDE_RIGHT: return "outside right";
-        case Ticklabelposition::INSIDE_RIGHT: return "inside right";
-        case Ticklabelposition::OUTSIDE_BOTTOM: return "outside bottom";
-        case Ticklabelposition::INSIDE_BOTTOM: return "inside bottom";
+        case Ticklabelposition::Outside: return "outside";
+        case Ticklabelposition::Inside: return "inside";
+        case Ticklabelposition::OutsideTop: return "outside top";
+        case Ticklabelposition::InsideTop: return "inside top";
+        case Ticklabelposition::OutsideLeft: return "outside left";
+        case Ticklabelposition::InsideLeft: return "inside left";
+        case Ticklabelposition::OutsideRight: return "outside right";
+        case Ticklabelposition::InsideRight: return "inside right";
+        case Ticklabelposition::OutsideBottom: return "outside bottom";
+        case Ticklabelposition::InsideBottom: return "inside bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::to_string(Tickmode e) {
     switch(e) {
-        case Tickmode::AUTO: return "auto";
-        case Tickmode::LINEAR: return "linear";
-        case Tickmode::ARRAY: return "array";
-        case Tickmode::SYNC: return "sync";
+        case Tickmode::Auto: return "auto";
+        case Tickmode::Linear: return "linear";
+        case Tickmode::Array: return "array";
+        case Tickmode::Sync: return "sync";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::to_string(Ticks e) {
     switch(e) {
-        case Ticks::OUTSIDE: return "outside";
-        case Ticks::INSIDE: return "inside";
-        case Ticks::EMPTY: return "";
+        case Ticks::Outside: return "outside";
+        case Ticks::Inside: return "inside";
+        case Ticks::Empty: return "";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::to_string(Tickson e) {
     switch(e) {
-        case Tickson::LABELS: return "labels";
-        case Tickson::BOUNDARIES: return "boundaries";
+        case Tickson::Labels: return "labels";
+        case Tickson::Boundaries: return "boundaries";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::to_string(Type e) {
     switch(e) {
-        case Type::HYPHEN: return "-";
-        case Type::LINEAR: return "linear";
-        case Type::LOG: return "log";
-        case Type::DATE: return "date";
-        case Type::CATEGORY: return "category";
-        case Type::MULTICATEGORY: return "multicategory";
+        case Type::Hyphen: return "-";
+        case Type::Linear: return "linear";
+        case Type::Log: return "log";
+        case Type::Date: return "date";
+        case Type::Category: return "category";
+        case Type::Multicategory: return "multicategory";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -19841,8 +19841,8 @@ Layout::Xaxis& Layout::Xaxis::autorangeoptions(Callable&& c) {
     return autorangeoptions(std::move(f));
 }
 
-Layout::Xaxis& Layout::Xaxis::autotickangles(std::vector<double> f) {
-    json["autotickangles"] = std::move(f);
+Layout::Xaxis& Layout::Xaxis::autotickangles(const std::vector<double>& f) {
+    json["autotickangles"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -19863,8 +19863,8 @@ Layout::Xaxis& Layout::Xaxis::calendar(enum Calendar f) {
 }
 
 template <typename T, typename>
-Layout::Xaxis& Layout::Xaxis::categoryarray(std::vector<T> f) {
-    json["categoryarray"] = std::move(f);
+Layout::Xaxis& Layout::Xaxis::categoryarray(const std::vector<T>& f) {
+    json["categoryarray"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -19933,8 +19933,8 @@ Layout::Xaxis& Layout::Xaxis::dividerwidth(Callable&& c) {
     return dividerwidth(std::move(f));
 }
 
-Layout::Xaxis& Layout::Xaxis::domain(std::vector<double> f) {
-    json["domain"] = std::move(f);
+Layout::Xaxis& Layout::Xaxis::domain(const std::vector<double>& f) {
+    json["domain"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -20016,8 +20016,8 @@ Layout::Xaxis& Layout::Xaxis::hoverformat(Callable&& c) {
     return hoverformat(std::move(f));
 }
 
-Layout::Xaxis& Layout::Xaxis::insiderange(std::vector<double> f) {
-    json["insiderange"] = std::move(f);
+Layout::Xaxis& Layout::Xaxis::insiderange(const std::vector<double>& f) {
+    json["insiderange"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -20161,8 +20161,8 @@ Layout::Xaxis& Layout::Xaxis::position(Callable&& c) {
     return position(std::move(f));
 }
 
-Layout::Xaxis& Layout::Xaxis::range(std::vector<double> f) {
-    json["range"] = std::move(f);
+Layout::Xaxis& Layout::Xaxis::range(const std::vector<double>& f) {
+    json["range"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -20444,8 +20444,8 @@ Layout::Xaxis& Layout::Xaxis::ticklabelindex(Callable&& c) {
     std::forward<Callable>(c)(f);
     return ticklabelindex(std::move(f));
 }
-Layout::Xaxis& Layout::Xaxis::ticklabelindex(std::vector<int> f) {
-    json["ticklabelindex"] = std::move(f);
+Layout::Xaxis& Layout::Xaxis::ticklabelindex(const std::vector<int>& f) {
+    json["ticklabelindex"] = f;
     return *this;
 }
 
@@ -20557,8 +20557,8 @@ Layout::Xaxis& Layout::Xaxis::ticksuffix(Callable&& c) {
 }
 
 template <typename T, typename>
-Layout::Xaxis& Layout::Xaxis::ticktext(std::vector<T> f) {
-    json["ticktext"] = std::move(f);
+Layout::Xaxis& Layout::Xaxis::ticktext(const std::vector<T>& f) {
+    json["ticktext"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -20580,8 +20580,8 @@ Layout::Xaxis& Layout::Xaxis::ticktextsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Layout::Xaxis& Layout::Xaxis::tickvals(std::vector<T> f) {
-    json["tickvals"] = std::move(f);
+Layout::Xaxis& Layout::Xaxis::tickvals(const std::vector<T>& f) {
+    json["tickvals"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -20722,8 +20722,8 @@ Layout::Xaxis::Autorangeoptions& Layout::Xaxis::Autorangeoptions::include(Callab
     return include(std::move(f));
 }
 template <typename T>
-Layout::Xaxis::Autorangeoptions& Layout::Xaxis::Autorangeoptions::include(std::vector<T> f) {
-    json["include"] = std::move(f);
+Layout::Xaxis::Autorangeoptions& Layout::Xaxis::Autorangeoptions::include(const std::vector<T>& f) {
+    json["include"] = f;
     return *this;
 }
 
@@ -20764,18 +20764,18 @@ Layout::Xaxis::Autorangeoptions& Layout::Xaxis::Autorangeoptions::minallowed(Cal
 
 std::string Layout::Xaxis::Minor::to_string(Tickmode e) {
     switch(e) {
-        case Tickmode::AUTO: return "auto";
-        case Tickmode::LINEAR: return "linear";
-        case Tickmode::ARRAY: return "array";
+        case Tickmode::Auto: return "auto";
+        case Tickmode::Linear: return "linear";
+        case Tickmode::Array: return "array";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::Minor::to_string(Ticks e) {
     switch(e) {
-        case Ticks::OUTSIDE: return "outside";
-        case Ticks::INSIDE: return "inside";
-        case Ticks::EMPTY: return "";
+        case Ticks::Outside: return "outside";
+        case Ticks::Inside: return "inside";
+        case Ticks::Empty: return "";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -20893,8 +20893,8 @@ Layout::Xaxis::Minor& Layout::Xaxis::Minor::ticks(enum Ticks f) {
 }
 
 template <typename T, typename>
-Layout::Xaxis::Minor& Layout::Xaxis::Minor::tickvals(std::vector<T> f) {
-    json["tickvals"] = std::move(f);
+Layout::Xaxis::Minor& Layout::Xaxis::Minor::tickvals(const std::vector<T>& f) {
+    json["tickvals"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -20940,16 +20940,16 @@ Layout::Xaxis::Rangebreaks& Layout::Xaxis::Rangebreaks::rangebreak(Callable&& c)
 
 std::string Layout::Xaxis::Rangebreaks::Rangebreak::to_string(Pattern e) {
     switch(e) {
-        case Pattern::DAY_OF_WEEK: return "day of week";
-        case Pattern::HOUR: return "hour";
-        case Pattern::EMPTY: return "";
+        case Pattern::DayOfWeek: return "day of week";
+        case Pattern::Hour: return "hour";
+        case Pattern::Empty: return "";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Layout::Xaxis::Rangebreaks::Rangebreak& Layout::Xaxis::Rangebreaks::Rangebreak::bounds(std::vector<double> f) {
-    json["bounds"] = std::move(f);
+Layout::Xaxis::Rangebreaks::Rangebreak& Layout::Xaxis::Rangebreaks::Rangebreak::bounds(const std::vector<double>& f) {
+    json["bounds"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -21008,8 +21008,8 @@ Layout::Xaxis::Rangebreaks::Rangebreak& Layout::Xaxis::Rangebreaks::Rangebreak::
     return templateitemname(std::move(f));
 }
 
-Layout::Xaxis::Rangebreaks::Rangebreak& Layout::Xaxis::Rangebreaks::Rangebreak::values(std::vector<double> f) {
-    json["values"] = std::move(f);
+Layout::Xaxis::Rangebreaks::Rangebreak& Layout::Xaxis::Rangebreaks::Rangebreak::values(const std::vector<double>& f) {
+    json["values"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -21021,20 +21021,20 @@ Layout::Xaxis::Rangebreaks::Rangebreak& Layout::Xaxis::Rangebreaks::Rangebreak::
 
 std::string Layout::Xaxis::Rangeselector::to_string(Xanchor e) {
     switch(e) {
-        case Xanchor::AUTO: return "auto";
-        case Xanchor::LEFT: return "left";
-        case Xanchor::CENTER: return "center";
-        case Xanchor::RIGHT: return "right";
+        case Xanchor::Auto: return "auto";
+        case Xanchor::Left: return "left";
+        case Xanchor::Center: return "center";
+        case Xanchor::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::Rangeselector::to_string(Yanchor e) {
     switch(e) {
-        case Yanchor::AUTO: return "auto";
-        case Yanchor::TOP: return "top";
-        case Yanchor::MIDDLE: return "middle";
-        case Yanchor::BOTTOM: return "bottom";
+        case Yanchor::Auto: return "auto";
+        case Yanchor::Top: return "top";
+        case Yanchor::Middle: return "middle";
+        case Yanchor::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -21163,21 +21163,21 @@ Layout::Xaxis::Rangeselector::Buttons& Layout::Xaxis::Rangeselector::Buttons::bu
 
 std::string Layout::Xaxis::Rangeselector::Buttons::Button::to_string(Step e) {
     switch(e) {
-        case Step::MONTH: return "month";
-        case Step::YEAR: return "year";
-        case Step::DAY: return "day";
-        case Step::HOUR: return "hour";
-        case Step::MINUTE: return "minute";
-        case Step::SECOND: return "second";
-        case Step::ALL: return "all";
+        case Step::Month: return "month";
+        case Step::Year: return "year";
+        case Step::Day: return "day";
+        case Step::Hour: return "hour";
+        case Step::Minute: return "minute";
+        case Step::Second: return "second";
+        case Step::All: return "all";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::Rangeselector::Buttons::Button::to_string(Stepmode e) {
     switch(e) {
-        case Stepmode::BACKWARD: return "backward";
-        case Stepmode::TODATE: return "todate";
+        case Stepmode::Backward: return "backward";
+        case Stepmode::Todate: return "todate";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -21250,30 +21250,30 @@ Layout::Xaxis::Rangeselector::Buttons::Button& Layout::Xaxis::Rangeselector::But
 
 std::string Layout::Xaxis::Rangeselector::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::Rangeselector::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::Rangeselector::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -21405,8 +21405,8 @@ Layout::Xaxis::Rangeslider& Layout::Xaxis::Rangeslider::borderwidth(Callable&& c
     return borderwidth(std::move(f));
 }
 
-Layout::Xaxis::Rangeslider& Layout::Xaxis::Rangeslider::range(std::vector<double> f) {
-    json["range"] = std::move(f);
+Layout::Xaxis::Rangeslider& Layout::Xaxis::Rangeslider::range(const std::vector<double>& f) {
+    json["range"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -21455,16 +21455,16 @@ Layout::Xaxis::Rangeslider& Layout::Xaxis::Rangeslider::yaxis(Callable&& c) {
 
 std::string Layout::Xaxis::Rangeslider::Yaxis::to_string(Rangemode e) {
     switch(e) {
-        case Rangemode::AUTO: return "auto";
-        case Rangemode::FIXED: return "fixed";
-        case Rangemode::MATCH: return "match";
+        case Rangemode::Auto: return "auto";
+        case Rangemode::Fixed: return "fixed";
+        case Rangemode::Match: return "match";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Layout::Xaxis::Rangeslider::Yaxis& Layout::Xaxis::Rangeslider::Yaxis::range(std::vector<double> f) {
-    json["range"] = std::move(f);
+Layout::Xaxis::Rangeslider::Yaxis& Layout::Xaxis::Rangeslider::Yaxis::range(const std::vector<double>& f) {
+    json["range"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -21481,30 +21481,30 @@ Layout::Xaxis::Rangeslider::Yaxis& Layout::Xaxis::Rangeslider::Yaxis::rangemode(
 
 std::string Layout::Xaxis::Tickfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::Tickfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::Tickfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -21604,8 +21604,8 @@ Layout::Xaxis::Tickformatstops& Layout::Xaxis::Tickformatstops::tickformatstop(C
 }
 
 
-Layout::Xaxis::Tickformatstops::Tickformatstop& Layout::Xaxis::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
-    json["dtickrange"] = std::move(f);
+Layout::Xaxis::Tickformatstops::Tickformatstop& Layout::Xaxis::Tickformatstops::Tickformatstop::dtickrange(const std::vector<double>& f) {
+    json["dtickrange"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -21695,30 +21695,30 @@ Layout::Xaxis::Title& Layout::Xaxis::Title::text(Callable&& c) {
 
 std::string Layout::Xaxis::Title::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::Title::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Xaxis::Title::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -21807,97 +21807,97 @@ Layout::Xaxis::Title::Font& Layout::Xaxis::Title::Font::weight(Callable&& c) {
 
 std::string Layout::Yaxis::to_string(Autorange e) {
     switch(e) {
-        case Autorange::TRUE: return "True";
-        case Autorange::FALSE: return "False";
-        case Autorange::REVERSED: return "reversed";
-        case Autorange::MIN_REVERSED: return "min reversed";
-        case Autorange::MAX_REVERSED: return "max reversed";
-        case Autorange::MIN: return "min";
-        case Autorange::MAX: return "max";
+        case Autorange::True: return "True";
+        case Autorange::False: return "False";
+        case Autorange::Reversed: return "reversed";
+        case Autorange::MinReversed: return "min reversed";
+        case Autorange::MaxReversed: return "max reversed";
+        case Autorange::Min: return "min";
+        case Autorange::Max: return "max";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::to_string(Autotypenumbers e) {
     switch(e) {
-        case Autotypenumbers::CONVERT_TYPES: return "convert types";
-        case Autotypenumbers::STRICT: return "strict";
+        case Autotypenumbers::ConvertTypes: return "convert types";
+        case Autotypenumbers::Strict: return "strict";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::to_string(Calendar e) {
     switch(e) {
-        case Calendar::CHINESE: return "chinese";
-        case Calendar::COPTIC: return "coptic";
-        case Calendar::DISCWORLD: return "discworld";
-        case Calendar::ETHIOPIAN: return "ethiopian";
-        case Calendar::GREGORIAN: return "gregorian";
-        case Calendar::HEBREW: return "hebrew";
-        case Calendar::ISLAMIC: return "islamic";
-        case Calendar::JALALI: return "jalali";
-        case Calendar::JULIAN: return "julian";
-        case Calendar::MAYAN: return "mayan";
-        case Calendar::NANAKSHAHI: return "nanakshahi";
-        case Calendar::NEPALI: return "nepali";
-        case Calendar::PERSIAN: return "persian";
-        case Calendar::TAIWAN: return "taiwan";
-        case Calendar::THAI: return "thai";
-        case Calendar::UMMALQURA: return "ummalqura";
+        case Calendar::Chinese: return "chinese";
+        case Calendar::Coptic: return "coptic";
+        case Calendar::Discworld: return "discworld";
+        case Calendar::Ethiopian: return "ethiopian";
+        case Calendar::Gregorian: return "gregorian";
+        case Calendar::Hebrew: return "hebrew";
+        case Calendar::Islamic: return "islamic";
+        case Calendar::Jalali: return "jalali";
+        case Calendar::Julian: return "julian";
+        case Calendar::Mayan: return "mayan";
+        case Calendar::Nanakshahi: return "nanakshahi";
+        case Calendar::Nepali: return "nepali";
+        case Calendar::Persian: return "persian";
+        case Calendar::Taiwan: return "taiwan";
+        case Calendar::Thai: return "thai";
+        case Calendar::Ummalqura: return "ummalqura";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::to_string(Categoryorder e) {
     switch(e) {
-        case Categoryorder::TRACE: return "trace";
-        case Categoryorder::CATEGORY_ASCENDING: return "category ascending";
-        case Categoryorder::CATEGORY_DESCENDING: return "category descending";
-        case Categoryorder::ARRAY: return "array";
-        case Categoryorder::TOTAL_ASCENDING: return "total ascending";
-        case Categoryorder::TOTAL_DESCENDING: return "total descending";
-        case Categoryorder::MIN_ASCENDING: return "min ascending";
-        case Categoryorder::MIN_DESCENDING: return "min descending";
-        case Categoryorder::MAX_ASCENDING: return "max ascending";
-        case Categoryorder::MAX_DESCENDING: return "max descending";
-        case Categoryorder::SUM_ASCENDING: return "sum ascending";
-        case Categoryorder::SUM_DESCENDING: return "sum descending";
-        case Categoryorder::MEAN_ASCENDING: return "mean ascending";
-        case Categoryorder::MEAN_DESCENDING: return "mean descending";
-        case Categoryorder::GEOMETRIC_MEAN_ASCENDING: return "geometric mean ascending";
-        case Categoryorder::GEOMETRIC_MEAN_DESCENDING: return "geometric mean descending";
-        case Categoryorder::MEDIAN_ASCENDING: return "median ascending";
-        case Categoryorder::MEDIAN_DESCENDING: return "median descending";
+        case Categoryorder::Trace: return "trace";
+        case Categoryorder::CategoryAscending: return "category ascending";
+        case Categoryorder::CategoryDescending: return "category descending";
+        case Categoryorder::Array: return "array";
+        case Categoryorder::TotalAscending: return "total ascending";
+        case Categoryorder::TotalDescending: return "total descending";
+        case Categoryorder::MinAscending: return "min ascending";
+        case Categoryorder::MinDescending: return "min descending";
+        case Categoryorder::MaxAscending: return "max ascending";
+        case Categoryorder::MaxDescending: return "max descending";
+        case Categoryorder::SumAscending: return "sum ascending";
+        case Categoryorder::SumDescending: return "sum descending";
+        case Categoryorder::MeanAscending: return "mean ascending";
+        case Categoryorder::MeanDescending: return "mean descending";
+        case Categoryorder::GeometricMeanAscending: return "geometric mean ascending";
+        case Categoryorder::GeometricMeanDescending: return "geometric mean descending";
+        case Categoryorder::MedianAscending: return "median ascending";
+        case Categoryorder::MedianDescending: return "median descending";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::to_string(Constrain e) {
     switch(e) {
-        case Constrain::RANGE: return "range";
-        case Constrain::DOMAIN: return "domain";
+        case Constrain::Range: return "range";
+        case Constrain::Domain: return "domain";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::to_string(Constraintoward e) {
     switch(e) {
-        case Constraintoward::LEFT: return "left";
-        case Constraintoward::CENTER: return "center";
-        case Constraintoward::RIGHT: return "right";
-        case Constraintoward::TOP: return "top";
-        case Constraintoward::MIDDLE: return "middle";
-        case Constraintoward::BOTTOM: return "bottom";
+        case Constraintoward::Left: return "left";
+        case Constraintoward::Center: return "center";
+        case Constraintoward::Right: return "right";
+        case Constraintoward::Top: return "top";
+        case Constraintoward::Middle: return "middle";
+        case Constraintoward::Bottom: return "bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::to_string(Exponentformat e) {
     switch(e) {
-        case Exponentformat::NONE: return "none";
+        case Exponentformat::None: return "none";
         case Exponentformat::E: return "E";
-        case Exponentformat::POWER: return "power";
-        case Exponentformat::SI: return "SI";
+        case Exponentformat::Power: return "power";
+        case Exponentformat::Si: return "SI";
         case Exponentformat::B: return "B";
     }
     // Should be unreachable.
@@ -21905,149 +21905,149 @@ std::string Layout::Yaxis::to_string(Exponentformat e) {
 }
 std::string Layout::Yaxis::to_string(Layer e) {
     switch(e) {
-        case Layer::ABOVE_TRACES: return "above traces";
-        case Layer::BELOW_TRACES: return "below traces";
+        case Layer::AboveTraces: return "above traces";
+        case Layer::BelowTraces: return "below traces";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::to_string(Mirror e) {
     switch(e) {
-        case Mirror::TRUE: return "True";
-        case Mirror::TICKS: return "ticks";
-        case Mirror::FALSE: return "False";
-        case Mirror::ALL: return "all";
-        case Mirror::ALLTICKS: return "allticks";
+        case Mirror::True: return "True";
+        case Mirror::Ticks: return "ticks";
+        case Mirror::False: return "False";
+        case Mirror::All: return "all";
+        case Mirror::Allticks: return "allticks";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::to_string(Rangemode e) {
     switch(e) {
-        case Rangemode::NORMAL: return "normal";
-        case Rangemode::TOZERO: return "tozero";
-        case Rangemode::NONNEGATIVE: return "nonnegative";
+        case Rangemode::Normal: return "normal";
+        case Rangemode::Tozero: return "tozero";
+        case Rangemode::Nonnegative: return "nonnegative";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::to_string(Showexponent e) {
     switch(e) {
-        case Showexponent::ALL: return "all";
-        case Showexponent::FIRST: return "first";
-        case Showexponent::LAST: return "last";
-        case Showexponent::NONE: return "none";
+        case Showexponent::All: return "all";
+        case Showexponent::First: return "first";
+        case Showexponent::Last: return "last";
+        case Showexponent::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::to_string(Showtickprefix e) {
     switch(e) {
-        case Showtickprefix::ALL: return "all";
-        case Showtickprefix::FIRST: return "first";
-        case Showtickprefix::LAST: return "last";
-        case Showtickprefix::NONE: return "none";
+        case Showtickprefix::All: return "all";
+        case Showtickprefix::First: return "first";
+        case Showtickprefix::Last: return "last";
+        case Showtickprefix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::to_string(Showticksuffix e) {
     switch(e) {
-        case Showticksuffix::ALL: return "all";
-        case Showticksuffix::FIRST: return "first";
-        case Showticksuffix::LAST: return "last";
-        case Showticksuffix::NONE: return "none";
+        case Showticksuffix::All: return "all";
+        case Showticksuffix::First: return "first";
+        case Showticksuffix::Last: return "last";
+        case Showticksuffix::None: return "none";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::to_string(Side e) {
     switch(e) {
-        case Side::TOP: return "top";
-        case Side::BOTTOM: return "bottom";
-        case Side::LEFT: return "left";
-        case Side::RIGHT: return "right";
+        case Side::Top: return "top";
+        case Side::Bottom: return "bottom";
+        case Side::Left: return "left";
+        case Side::Right: return "right";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::to_string(Spikesnap e) {
     switch(e) {
-        case Spikesnap::DATA: return "data";
-        case Spikesnap::CURSOR: return "cursor";
-        case Spikesnap::HOVERED_DATA: return "hovered data";
+        case Spikesnap::Data: return "data";
+        case Spikesnap::Cursor: return "cursor";
+        case Spikesnap::HoveredData: return "hovered data";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::to_string(Ticklabelmode e) {
     switch(e) {
-        case Ticklabelmode::INSTANT: return "instant";
-        case Ticklabelmode::PERIOD: return "period";
+        case Ticklabelmode::Instant: return "instant";
+        case Ticklabelmode::Period: return "period";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::to_string(Ticklabeloverflow e) {
     switch(e) {
-        case Ticklabeloverflow::ALLOW: return "allow";
-        case Ticklabeloverflow::HIDE_PAST_DIV: return "hide past div";
-        case Ticklabeloverflow::HIDE_PAST_DOMAIN: return "hide past domain";
+        case Ticklabeloverflow::Allow: return "allow";
+        case Ticklabeloverflow::HidePastDiv: return "hide past div";
+        case Ticklabeloverflow::HidePastDomain: return "hide past domain";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::to_string(Ticklabelposition e) {
     switch(e) {
-        case Ticklabelposition::OUTSIDE: return "outside";
-        case Ticklabelposition::INSIDE: return "inside";
-        case Ticklabelposition::OUTSIDE_TOP: return "outside top";
-        case Ticklabelposition::INSIDE_TOP: return "inside top";
-        case Ticklabelposition::OUTSIDE_LEFT: return "outside left";
-        case Ticklabelposition::INSIDE_LEFT: return "inside left";
-        case Ticklabelposition::OUTSIDE_RIGHT: return "outside right";
-        case Ticklabelposition::INSIDE_RIGHT: return "inside right";
-        case Ticklabelposition::OUTSIDE_BOTTOM: return "outside bottom";
-        case Ticklabelposition::INSIDE_BOTTOM: return "inside bottom";
+        case Ticklabelposition::Outside: return "outside";
+        case Ticklabelposition::Inside: return "inside";
+        case Ticklabelposition::OutsideTop: return "outside top";
+        case Ticklabelposition::InsideTop: return "inside top";
+        case Ticklabelposition::OutsideLeft: return "outside left";
+        case Ticklabelposition::InsideLeft: return "inside left";
+        case Ticklabelposition::OutsideRight: return "outside right";
+        case Ticklabelposition::InsideRight: return "inside right";
+        case Ticklabelposition::OutsideBottom: return "outside bottom";
+        case Ticklabelposition::InsideBottom: return "inside bottom";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::to_string(Tickmode e) {
     switch(e) {
-        case Tickmode::AUTO: return "auto";
-        case Tickmode::LINEAR: return "linear";
-        case Tickmode::ARRAY: return "array";
-        case Tickmode::SYNC: return "sync";
+        case Tickmode::Auto: return "auto";
+        case Tickmode::Linear: return "linear";
+        case Tickmode::Array: return "array";
+        case Tickmode::Sync: return "sync";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::to_string(Ticks e) {
     switch(e) {
-        case Ticks::OUTSIDE: return "outside";
-        case Ticks::INSIDE: return "inside";
-        case Ticks::EMPTY: return "";
+        case Ticks::Outside: return "outside";
+        case Ticks::Inside: return "inside";
+        case Ticks::Empty: return "";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::to_string(Tickson e) {
     switch(e) {
-        case Tickson::LABELS: return "labels";
-        case Tickson::BOUNDARIES: return "boundaries";
+        case Tickson::Labels: return "labels";
+        case Tickson::Boundaries: return "boundaries";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::to_string(Type e) {
     switch(e) {
-        case Type::HYPHEN: return "-";
-        case Type::LINEAR: return "linear";
-        case Type::LOG: return "log";
-        case Type::DATE: return "date";
-        case Type::CATEGORY: return "category";
-        case Type::MULTICATEGORY: return "multicategory";
+        case Type::Hyphen: return "-";
+        case Type::Linear: return "linear";
+        case Type::Log: return "log";
+        case Type::Date: return "date";
+        case Type::Category: return "category";
+        case Type::Multicategory: return "multicategory";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -22102,8 +22102,8 @@ Layout::Yaxis& Layout::Yaxis::autoshift(Callable&& c) {
     return autoshift(std::move(f));
 }
 
-Layout::Yaxis& Layout::Yaxis::autotickangles(std::vector<double> f) {
-    json["autotickangles"] = std::move(f);
+Layout::Yaxis& Layout::Yaxis::autotickangles(const std::vector<double>& f) {
+    json["autotickangles"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -22124,8 +22124,8 @@ Layout::Yaxis& Layout::Yaxis::calendar(enum Calendar f) {
 }
 
 template <typename T, typename>
-Layout::Yaxis& Layout::Yaxis::categoryarray(std::vector<T> f) {
-    json["categoryarray"] = std::move(f);
+Layout::Yaxis& Layout::Yaxis::categoryarray(const std::vector<T>& f) {
+    json["categoryarray"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -22194,8 +22194,8 @@ Layout::Yaxis& Layout::Yaxis::dividerwidth(Callable&& c) {
     return dividerwidth(std::move(f));
 }
 
-Layout::Yaxis& Layout::Yaxis::domain(std::vector<double> f) {
-    json["domain"] = std::move(f);
+Layout::Yaxis& Layout::Yaxis::domain(const std::vector<double>& f) {
+    json["domain"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -22277,8 +22277,8 @@ Layout::Yaxis& Layout::Yaxis::hoverformat(Callable&& c) {
     return hoverformat(std::move(f));
 }
 
-Layout::Yaxis& Layout::Yaxis::insiderange(std::vector<double> f) {
-    json["insiderange"] = std::move(f);
+Layout::Yaxis& Layout::Yaxis::insiderange(const std::vector<double>& f) {
+    json["insiderange"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -22422,8 +22422,8 @@ Layout::Yaxis& Layout::Yaxis::position(Callable&& c) {
     return position(std::move(f));
 }
 
-Layout::Yaxis& Layout::Yaxis::range(std::vector<double> f) {
-    json["range"] = std::move(f);
+Layout::Yaxis& Layout::Yaxis::range(const std::vector<double>& f) {
+    json["range"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -22694,8 +22694,8 @@ Layout::Yaxis& Layout::Yaxis::ticklabelindex(Callable&& c) {
     std::forward<Callable>(c)(f);
     return ticklabelindex(std::move(f));
 }
-Layout::Yaxis& Layout::Yaxis::ticklabelindex(std::vector<int> f) {
-    json["ticklabelindex"] = std::move(f);
+Layout::Yaxis& Layout::Yaxis::ticklabelindex(const std::vector<int>& f) {
+    json["ticklabelindex"] = f;
     return *this;
 }
 
@@ -22807,8 +22807,8 @@ Layout::Yaxis& Layout::Yaxis::ticksuffix(Callable&& c) {
 }
 
 template <typename T, typename>
-Layout::Yaxis& Layout::Yaxis::ticktext(std::vector<T> f) {
-    json["ticktext"] = std::move(f);
+Layout::Yaxis& Layout::Yaxis::ticktext(const std::vector<T>& f) {
+    json["ticktext"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -22830,8 +22830,8 @@ Layout::Yaxis& Layout::Yaxis::ticktextsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Layout::Yaxis& Layout::Yaxis::tickvals(std::vector<T> f) {
-    json["tickvals"] = std::move(f);
+Layout::Yaxis& Layout::Yaxis::tickvals(const std::vector<T>& f) {
+    json["tickvals"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -22972,8 +22972,8 @@ Layout::Yaxis::Autorangeoptions& Layout::Yaxis::Autorangeoptions::include(Callab
     return include(std::move(f));
 }
 template <typename T>
-Layout::Yaxis::Autorangeoptions& Layout::Yaxis::Autorangeoptions::include(std::vector<T> f) {
-    json["include"] = std::move(f);
+Layout::Yaxis::Autorangeoptions& Layout::Yaxis::Autorangeoptions::include(const std::vector<T>& f) {
+    json["include"] = f;
     return *this;
 }
 
@@ -23014,18 +23014,18 @@ Layout::Yaxis::Autorangeoptions& Layout::Yaxis::Autorangeoptions::minallowed(Cal
 
 std::string Layout::Yaxis::Minor::to_string(Tickmode e) {
     switch(e) {
-        case Tickmode::AUTO: return "auto";
-        case Tickmode::LINEAR: return "linear";
-        case Tickmode::ARRAY: return "array";
+        case Tickmode::Auto: return "auto";
+        case Tickmode::Linear: return "linear";
+        case Tickmode::Array: return "array";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::Minor::to_string(Ticks e) {
     switch(e) {
-        case Ticks::OUTSIDE: return "outside";
-        case Ticks::INSIDE: return "inside";
-        case Ticks::EMPTY: return "";
+        case Ticks::Outside: return "outside";
+        case Ticks::Inside: return "inside";
+        case Ticks::Empty: return "";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -23143,8 +23143,8 @@ Layout::Yaxis::Minor& Layout::Yaxis::Minor::ticks(enum Ticks f) {
 }
 
 template <typename T, typename>
-Layout::Yaxis::Minor& Layout::Yaxis::Minor::tickvals(std::vector<T> f) {
-    json["tickvals"] = std::move(f);
+Layout::Yaxis::Minor& Layout::Yaxis::Minor::tickvals(const std::vector<T>& f) {
+    json["tickvals"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -23190,16 +23190,16 @@ Layout::Yaxis::Rangebreaks& Layout::Yaxis::Rangebreaks::rangebreak(Callable&& c)
 
 std::string Layout::Yaxis::Rangebreaks::Rangebreak::to_string(Pattern e) {
     switch(e) {
-        case Pattern::DAY_OF_WEEK: return "day of week";
-        case Pattern::HOUR: return "hour";
-        case Pattern::EMPTY: return "";
+        case Pattern::DayOfWeek: return "day of week";
+        case Pattern::Hour: return "hour";
+        case Pattern::Empty: return "";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 
-Layout::Yaxis::Rangebreaks::Rangebreak& Layout::Yaxis::Rangebreaks::Rangebreak::bounds(std::vector<double> f) {
-    json["bounds"] = std::move(f);
+Layout::Yaxis::Rangebreaks::Rangebreak& Layout::Yaxis::Rangebreaks::Rangebreak::bounds(const std::vector<double>& f) {
+    json["bounds"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -23258,8 +23258,8 @@ Layout::Yaxis::Rangebreaks::Rangebreak& Layout::Yaxis::Rangebreaks::Rangebreak::
     return templateitemname(std::move(f));
 }
 
-Layout::Yaxis::Rangebreaks::Rangebreak& Layout::Yaxis::Rangebreaks::Rangebreak::values(std::vector<double> f) {
-    json["values"] = std::move(f);
+Layout::Yaxis::Rangebreaks::Rangebreak& Layout::Yaxis::Rangebreaks::Rangebreak::values(const std::vector<double>& f) {
+    json["values"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -23271,30 +23271,30 @@ Layout::Yaxis::Rangebreaks::Rangebreak& Layout::Yaxis::Rangebreaks::Rangebreak::
 
 std::string Layout::Yaxis::Tickfont::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::Tickfont::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::Tickfont::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -23394,8 +23394,8 @@ Layout::Yaxis::Tickformatstops& Layout::Yaxis::Tickformatstops::tickformatstop(C
 }
 
 
-Layout::Yaxis::Tickformatstops::Tickformatstop& Layout::Yaxis::Tickformatstops::Tickformatstop::dtickrange(std::vector<double> f) {
-    json["dtickrange"] = std::move(f);
+Layout::Yaxis::Tickformatstops::Tickformatstop& Layout::Yaxis::Tickformatstops::Tickformatstop::dtickrange(const std::vector<double>& f) {
+    json["dtickrange"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -23485,30 +23485,30 @@ Layout::Yaxis::Title& Layout::Yaxis::Title::text(Callable&& c) {
 
 std::string Layout::Yaxis::Title::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::Title::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Layout::Yaxis::Title::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};

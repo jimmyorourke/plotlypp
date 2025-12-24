@@ -12,28 +12,28 @@ namespace plotlypp {
 
 std::string Image::to_string(Colormodel e) {
     switch(e) {
-        case Colormodel::RGB: return "rgb";
-        case Colormodel::RGBA: return "rgba";
-        case Colormodel::RGBA256: return "rgba256";
-        case Colormodel::HSL: return "hsl";
-        case Colormodel::HSLA: return "hsla";
+        case Colormodel::Rgb: return "rgb";
+        case Colormodel::Rgba: return "rgba";
+        case Colormodel::Rgba256: return "rgba256";
+        case Colormodel::Hsl: return "hsl";
+        case Colormodel::Hsla: return "hsla";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Image::to_string(Visible e) {
     switch(e) {
-        case Visible::TRUE: return "True";
-        case Visible::FALSE: return "False";
-        case Visible::LEGENDONLY: return "legendonly";
+        case Visible::True: return "True";
+        case Visible::False: return "False";
+        case Visible::Legendonly: return "legendonly";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Image::to_string(Zsmooth e) {
     switch(e) {
-        case Zsmooth::FAST: return "fast";
-        case Zsmooth::FALSE: return "False";
+        case Zsmooth::Fast: return "fast";
+        case Zsmooth::False: return "False";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -45,8 +45,8 @@ Image& Image::colormodel(enum Colormodel f) {
 }
 
 template <typename T, typename>
-Image& Image::customdata(std::vector<T> f) {
-    json["customdata"] = std::move(f);
+Image& Image::customdata(const std::vector<T>& f) {
+    json["customdata"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -99,8 +99,8 @@ Image& Image::hoverinfo(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hoverinfo(std::move(f));
 }
-Image& Image::hoverinfo(std::vector<std::string> f) {
-    json["hoverinfo"] = std::move(f);
+Image& Image::hoverinfo(const std::vector<std::string>& f) {
+    json["hoverinfo"] = f;
     return *this;
 }
 
@@ -136,8 +136,8 @@ Image& Image::hovertemplate(Callable&& c) {
     std::forward<Callable>(c)(f);
     return hovertemplate(std::move(f));
 }
-Image& Image::hovertemplate(std::vector<std::string> f) {
-    json["hovertemplate"] = std::move(f);
+Image& Image::hovertemplate(const std::vector<std::string>& f) {
+    json["hovertemplate"] = f;
     return *this;
 }
 
@@ -153,8 +153,8 @@ Image& Image::hovertemplatesrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Image& Image::hovertext(std::vector<T> f) {
-    json["hovertext"] = std::move(f);
+Image& Image::hovertext(const std::vector<T>& f) {
+    json["hovertext"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -176,8 +176,8 @@ Image& Image::hovertextsrc(Callable&& c) {
 }
 
 template <typename T, typename>
-Image& Image::ids(std::vector<T> f) {
-    json["ids"] = std::move(f);
+Image& Image::ids(const std::vector<T>& f) {
+    json["ids"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -254,8 +254,8 @@ Image& Image::meta(Callable&& c) {
     return meta(std::move(f));
 }
 template <typename T>
-Image& Image::meta(std::vector<T> f) {
-    json["meta"] = std::move(f);
+Image& Image::meta(const std::vector<T>& f) {
+    json["meta"] = f;
     return *this;
 }
 
@@ -315,8 +315,8 @@ Image& Image::stream(Callable&& c) {
 }
 
 template <typename T, typename>
-Image& Image::text(std::vector<T> f) {
-    json["text"] = std::move(f);
+Image& Image::text(const std::vector<T>& f) {
+    json["text"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -412,8 +412,8 @@ Image& Image::yaxis(Callable&& c) {
 }
 
 template <typename T, typename>
-Image& Image::z(std::vector<T> f) {
-    json["z"] = std::move(f);
+Image& Image::z(const std::vector<T>& f) {
+    json["z"] = f;
     return *this;
 }
 template <typename T, typename Callable, typename>
@@ -423,8 +423,8 @@ Image& Image::z(Callable&& c) {
     return z(std::move(f));
 }
 
-Image& Image::zmax(std::vector<double> f) {
-    json["zmax"] = std::move(f);
+Image& Image::zmax(const std::vector<double>& f) {
+    json["zmax"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -434,8 +434,8 @@ Image& Image::zmax(Callable&& c) {
     return zmax(std::move(f));
 }
 
-Image& Image::zmin(std::vector<double> f) {
-    json["zmin"] = std::move(f);
+Image& Image::zmin(const std::vector<double>& f) {
+    json["zmin"] = f;
     return *this;
 }
 template <typename Callable, typename>
@@ -474,9 +474,9 @@ Image& Image::zsrc(Callable&& c) {
 
 std::string Image::Hoverlabel::to_string(Align e) {
     switch(e) {
-        case Align::LEFT: return "left";
-        case Align::RIGHT: return "right";
-        case Align::AUTO: return "auto";
+        case Align::Left: return "left";
+        case Align::Right: return "right";
+        case Align::Auto: return "auto";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -514,8 +514,8 @@ Image::Hoverlabel& Image::Hoverlabel::bgcolor(Callable&& c) {
     std::forward<Callable>(c)(f);
     return bgcolor(std::move(f));
 }
-Image::Hoverlabel& Image::Hoverlabel::bgcolor(std::vector<std::string> f) {
-    json["bgcolor"] = std::move(f);
+Image::Hoverlabel& Image::Hoverlabel::bgcolor(const std::vector<std::string>& f) {
+    json["bgcolor"] = f;
     return *this;
 }
 
@@ -540,8 +540,8 @@ Image::Hoverlabel& Image::Hoverlabel::bordercolor(Callable&& c) {
     std::forward<Callable>(c)(f);
     return bordercolor(std::move(f));
 }
-Image::Hoverlabel& Image::Hoverlabel::bordercolor(std::vector<std::string> f) {
-    json["bordercolor"] = std::move(f);
+Image::Hoverlabel& Image::Hoverlabel::bordercolor(const std::vector<std::string>& f) {
+    json["bordercolor"] = f;
     return *this;
 }
 
@@ -577,8 +577,8 @@ Image::Hoverlabel& Image::Hoverlabel::namelength(Callable&& c) {
     std::forward<Callable>(c)(f);
     return namelength(std::move(f));
 }
-Image::Hoverlabel& Image::Hoverlabel::namelength(std::vector<int> f) {
-    json["namelength"] = std::move(f);
+Image::Hoverlabel& Image::Hoverlabel::namelength(const std::vector<int>& f) {
+    json["namelength"] = f;
     return *this;
 }
 
@@ -595,30 +595,30 @@ Image::Hoverlabel& Image::Hoverlabel::namelengthsrc(Callable&& c) {
 
 std::string Image::Hoverlabel::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Image::Hoverlabel::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Image::Hoverlabel::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
@@ -634,8 +634,8 @@ Image::Hoverlabel::Font& Image::Hoverlabel::Font::color(Callable&& c) {
     std::forward<Callable>(c)(f);
     return color(std::move(f));
 }
-Image::Hoverlabel::Font& Image::Hoverlabel::Font::color(std::vector<std::string> f) {
-    json["color"] = std::move(f);
+Image::Hoverlabel::Font& Image::Hoverlabel::Font::color(const std::vector<std::string>& f) {
+    json["color"] = f;
     return *this;
 }
 
@@ -660,8 +660,8 @@ Image::Hoverlabel::Font& Image::Hoverlabel::Font::family(Callable&& c) {
     std::forward<Callable>(c)(f);
     return family(std::move(f));
 }
-Image::Hoverlabel::Font& Image::Hoverlabel::Font::family(std::vector<std::string> f) {
-    json["family"] = std::move(f);
+Image::Hoverlabel::Font& Image::Hoverlabel::Font::family(const std::vector<std::string>& f) {
+    json["family"] = f;
     return *this;
 }
 
@@ -686,8 +686,8 @@ Image::Hoverlabel::Font& Image::Hoverlabel::Font::lineposition(Callable&& c) {
     std::forward<Callable>(c)(f);
     return lineposition(std::move(f));
 }
-Image::Hoverlabel::Font& Image::Hoverlabel::Font::lineposition(std::vector<std::string> f) {
-    json["lineposition"] = std::move(f);
+Image::Hoverlabel::Font& Image::Hoverlabel::Font::lineposition(const std::vector<std::string>& f) {
+    json["lineposition"] = f;
     return *this;
 }
 
@@ -712,8 +712,8 @@ Image::Hoverlabel::Font& Image::Hoverlabel::Font::shadow(Callable&& c) {
     std::forward<Callable>(c)(f);
     return shadow(std::move(f));
 }
-Image::Hoverlabel::Font& Image::Hoverlabel::Font::shadow(std::vector<std::string> f) {
-    json["shadow"] = std::move(f);
+Image::Hoverlabel::Font& Image::Hoverlabel::Font::shadow(const std::vector<std::string>& f) {
+    json["shadow"] = f;
     return *this;
 }
 
@@ -738,8 +738,8 @@ Image::Hoverlabel::Font& Image::Hoverlabel::Font::size(Callable&& c) {
     std::forward<Callable>(c)(f);
     return size(std::move(f));
 }
-Image::Hoverlabel::Font& Image::Hoverlabel::Font::size(std::vector<double> f) {
-    json["size"] = std::move(f);
+Image::Hoverlabel::Font& Image::Hoverlabel::Font::size(const std::vector<double>& f) {
+    json["size"] = f;
     return *this;
 }
 
@@ -830,8 +830,8 @@ Image::Hoverlabel::Font& Image::Hoverlabel::Font::weight(Callable&& c) {
     std::forward<Callable>(c)(f);
     return weight(std::move(f));
 }
-Image::Hoverlabel::Font& Image::Hoverlabel::Font::weight(std::vector<int> f) {
-    json["weight"] = std::move(f);
+Image::Hoverlabel::Font& Image::Hoverlabel::Font::weight(const std::vector<int>& f) {
+    json["weight"] = f;
     return *this;
 }
 
@@ -871,30 +871,30 @@ Image::Legendgrouptitle& Image::Legendgrouptitle::text(Callable&& c) {
 
 std::string Image::Legendgrouptitle::Font::to_string(Style e) {
     switch(e) {
-        case Style::NORMAL: return "normal";
-        case Style::ITALIC: return "italic";
+        case Style::Normal: return "normal";
+        case Style::Italic: return "italic";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Image::Legendgrouptitle::Font::to_string(Textcase e) {
     switch(e) {
-        case Textcase::NORMAL: return "normal";
-        case Textcase::WORD_CAPS: return "word caps";
-        case Textcase::UPPER: return "upper";
-        case Textcase::LOWER: return "lower";
+        case Textcase::Normal: return "normal";
+        case Textcase::WordCaps: return "word caps";
+        case Textcase::Upper: return "upper";
+        case Textcase::Lower: return "lower";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
 }
 std::string Image::Legendgrouptitle::Font::to_string(Variant e) {
     switch(e) {
-        case Variant::NORMAL: return "normal";
-        case Variant::SMALL_CAPS: return "small-caps";
-        case Variant::ALL_SMALL_CAPS: return "all-small-caps";
-        case Variant::ALL_PETITE_CAPS: return "all-petite-caps";
-        case Variant::PETITE_CAPS: return "petite-caps";
-        case Variant::UNICASE: return "unicase";
+        case Variant::Normal: return "normal";
+        case Variant::SmallCaps: return "small-caps";
+        case Variant::AllSmallCaps: return "all-small-caps";
+        case Variant::AllPetiteCaps: return "all-petite-caps";
+        case Variant::PetiteCaps: return "petite-caps";
+        case Variant::Unicase: return "unicase";
     }
     // Should be unreachable.
     throw std::invalid_argument{"Unknown enumerator value " + std::to_string(static_cast<int>(e))};
