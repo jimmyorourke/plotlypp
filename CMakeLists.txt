@@ -2,7 +2,7 @@
 # Licensed under and subject to the terms of the LICENSE file accompanying this distribution.
 # Official repository: https://github.com/jimmyorourke/plotlypp
 
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.28)
 project(plotlypp VERSION 0.1.0 LANGUAGES CXX)
 
 set(MAIN_PROJECT OFF)
@@ -11,6 +11,7 @@ if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 endif()
 
 option(PLOTLYPP_BUILD_EXAMPLES "Build the examples" ${MAIN_PROJECT})
+option(PLOTLYPP_BUILD_MODULES "Build Plotly++ as a C++ module" OFF)
 
 if(MAIN_PROJECT)
     set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -41,19 +42,34 @@ else()
 endif()
 set(JSON_TARGET nlohmann_json::nlohmann_json)
 
-add_library(plotlypp INTERFACE)
+if(PLOTLYPP_BUILD_MODULES)
+    # Build as C++20 module
+    add_library(plotlypp)
+    target_sources(plotlypp
+        PUBLIC
+            FILE_SET CXX_MODULES FILES
+                modules/plotlypp.cppm
+    )
+    target_link_libraries(plotlypp PUBLIC ${JSON_TARGET})
+    target_include_directories(plotlypp PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
+    )
+    target_compile_features(plotlypp PUBLIC cxx_std_20)
+else()
+    # Build as header-only interface library
+    add_library(plotlypp INTERFACE)
+    target_link_libraries(plotlypp INTERFACE ${JSON_TARGET})
+    target_include_directories(plotlypp INTERFACE
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
+    )
+    # Require at least C++17. Depending executables can override with a newer version.
+    target_compile_features(plotlypp INTERFACE cxx_std_17)
+endif()
+
 # Add a namespaced alias for in-tree users.
 add_library(plotlypp::plotlypp ALIAS plotlypp)
-
-target_link_libraries(plotlypp INTERFACE ${JSON_TARGET})
-
-target_include_directories(plotlypp INTERFACE
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include>
-)
-
-# Require at least C++17. Depending executables can override with a newer version.
-target_compile_features(plotlypp INTERFACE cxx_std_17)
 
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
@@ -62,12 +78,22 @@ include(CMakePackageConfigHelpers)
 install(DIRECTORY include/plotlypp DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 # Register the target with the export set.
-install(TARGETS plotlypp
-    EXPORT ${PROJECT_NAME}Targets
-    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-)
+if(PLOTLYPP_BUILD_MODULES)
+    install(TARGETS plotlypp
+        EXPORT ${PROJECT_NAME}Targets
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        FILE_SET CXX_MODULES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/modules
+    )
+else()
+    install(TARGETS plotlypp
+        EXPORT ${PROJECT_NAME}Targets
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    )
+endif()
 
 # Install/generate the cmake file for rebuilding the export set targets.
 install(EXPORT ${PROJECT_NAME}Targets

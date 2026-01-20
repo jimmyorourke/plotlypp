@@ -257,6 +257,8 @@ Since much of Plotly++ is auto-generated from the Plotly.js schema, the official
 
 IDE auto-complete and suggestion features are also highly beneficial when working with Plotly++.
 
+It is possible to build Plotly++ as a C++ module, using the CMake option `PLOTLYPP_BUILD_MODULES`. This requires at least CMake 3.28, as well as any module-supporting build system (such as Ninja).
+
 ## Dependencies
 
 * C++17 or newer
