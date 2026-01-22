@@ -7,6 +7,8 @@ on:
       cxx: { required: true, type: string }
       cc: { required: true, type: string }
       cpp_std: { required: true, type: string }
+      build_modules: { required: false, type: boolean, default: false }
+      install_cmd: { required: false, type: string, default: "" }
 
 jobs:
   build:
@@ -15,7 +17,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # 1. Setup MSVC environment (Windows Only)
+      - name: Install Dependencies
+        if: inputs.install_cmd != ''
+        run: ${{ inputs.install_cmd }}
+
+      # Set up MSVC environment (Windows Only)
       # This adds cl.exe, link.exe, etc. to the PATH. (Fancy way of finding vcvarsall and bringing them into the env)
       - name: Setup MSVC
         if: inputs.os == 'windows-latest'
@@ -31,6 +37,7 @@ jobs:
           -DCMAKE_BUILD_TYPE=Release
           -DCMAKE_CXX_STANDARD=${{ inputs.cpp_std }}
           -DCMAKE_CXX_STANDARD_REQUIRED=ON
+          -DPLOTLYPP_BUILD_MODULES=${{ inputs.build_modules }}
 
       - name: Build
         run: cmake --build build

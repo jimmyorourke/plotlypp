@@ -19,3 +19,8 @@ jobs:
       cxx: g++
       cc: gcc
       cpp_std: ${{ matrix.cpp_std }}
+      # GCC 14 is needed for better modules support, but hit and ICE and segfaults due to running out of index space.
+      # GCC 15 is not yet available for 24.04. (Note GCC 13 is the default installed.)
+      build_modules: false
+
+

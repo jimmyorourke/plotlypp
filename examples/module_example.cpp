@@ -1,6 +1,10 @@
 #include <utility>
 #include <vector>
 
+// Workaround for MSVC Module bug: https://github.com/nlohmann/json/issues/3970
+// Must include json.hpp before import to make 'detail' namespace visible.
+// Should be fixed in next nlohmann::json release, 3.12.1
+#include <nlohmann/json.hpp>
 import plotlypp;
 
 int main() {

@@ -19,3 +19,4 @@ jobs:
       cxx: clang++
       cc: clang
       cpp_std: ${{ matrix.cpp_std }}
+      # Apple clang doesn't support modules yet. We could install LLVM clang, but we have ubuntu to test that.

@@ -19,3 +19,4 @@ jobs:
       cxx: cl
       cc: cl
       cpp_std: ${{ matrix.cpp_std }}
+      build_modules: ${{ matrix.cpp_std == '23' }}
