@@ -65,7 +65,9 @@ export module plotlypp;
 export namespace plotlypp {
     using plotlypp::Figure;
     using plotlypp::Json;
+    using plotlypp::Layout;
     using plotlypp::Trace;
+
     using plotlypp::Bar;
     using plotlypp::Barpolar;
     using plotlypp::Box;

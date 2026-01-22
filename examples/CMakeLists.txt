@@ -41,3 +41,10 @@ target_link_libraries(example
     math_utils
     Eigen3::Eigen
 )
+
+if(PLOTLYPP_BUILD_MODULES)
+    add_executable(module_example module_example.cpp)
+    target_link_libraries(module_example PRIVATE plotlypp)
+    # Must use at least C++20 for modules
+    target_compile_features(module_example PRIVATE cxx_std_20)
+endif()

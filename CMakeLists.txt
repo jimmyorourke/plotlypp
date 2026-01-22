@@ -44,29 +44,30 @@ set(JSON_TARGET nlohmann_json::nlohmann_json)
 
 if(PLOTLYPP_BUILD_MODULES)
     # Build as C++20 module
-    add_library(plotlypp)
-    target_sources(plotlypp
-        PUBLIC
-            FILE_SET CXX_MODULES FILES
-                modules/plotlypp.cppm
+    add_library(plotlypp STATIC)
+    target_sources(plotlypp PUBLIC
+        FILE_SET CXX_MODULES FILES modules/plotlypp.cppm
     )
-    target_link_libraries(plotlypp PUBLIC ${JSON_TARGET})
-    target_include_directories(plotlypp PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:include>
-    )
+    # Require at least C++2o for modules. Depending executables can override with a newer version.
     target_compile_features(plotlypp PUBLIC cxx_std_20)
+
+    set(SCOPE PUBLIC)
+    set(INSTALL_MODULE_ARGS FILE_SET CXX_MODULES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/modules)
 else()
     # Build as header-only interface library
     add_library(plotlypp INTERFACE)
-    target_link_libraries(plotlypp INTERFACE ${JSON_TARGET})
-    target_include_directories(plotlypp INTERFACE
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:include>
-    )
     # Require at least C++17. Depending executables can override with a newer version.
     target_compile_features(plotlypp INTERFACE cxx_std_17)
+
+    set(SCOPE INTERFACE)
+    set(INSTALL_MODULE_ARGS "")
 endif()
+
+target_link_libraries(plotlypp ${SCOPE} ${JSON_TARGET})
+target_include_directories(plotlypp ${SCOPE}
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
+)
 
 # Add a namespaced alias for in-tree users.
 add_library(plotlypp::plotlypp ALIAS plotlypp)
@@ -78,22 +79,13 @@ include(CMakePackageConfigHelpers)
 install(DIRECTORY include/plotlypp DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 # Register the target with the export set.
-if(PLOTLYPP_BUILD_MODULES)
-    install(TARGETS plotlypp
-        EXPORT ${PROJECT_NAME}Targets
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-        FILE_SET CXX_MODULES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/modules
-    )
-else()
-    install(TARGETS plotlypp
-        EXPORT ${PROJECT_NAME}Targets
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-    )
-endif()
+install(TARGETS plotlypp
+    EXPORT ${PROJECT_NAME}Targets
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    ${INSTALL_MODULE_ARGS}
+)
 
 # Install/generate the cmake file for rebuilding the export set targets.
 install(EXPORT ${PROJECT_NAME}Targets
