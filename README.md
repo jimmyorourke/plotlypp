@@ -227,7 +227,7 @@ void linePlotWithMarkers() {
   layout.yaxis({R"({"title": {"text": "New y-axis title"}})"});
 
   // The underlying nlohmann::json object can also be accessed and modified directly.
-  layout.title().json["font"]["size"] = 24;
+  layout.json["title"]["font"]["size"] = 24;
 
   auto figure = Figure()
                   .addTrace(std::move(scatter_and_lines))
