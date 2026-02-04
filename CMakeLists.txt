@@ -19,26 +19,30 @@ endif()
 
 set(PLOTLYPP_FETCH_CONTENT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/third_party_fetch_content)
 
-# When part of a larger project, nlohmann_json may be made available by the greater project, and discoverable by
-# find_package. This way we impose no requirement on how projects procure their dependencies. If not discoverable, or
-# when just building plotlypp (eg the examples), use FetchContent.
-find_package(nlohmann_json QUIET)
-if(nlohmann_json_FOUND)
-    message(STATUS "Found system nlohmann_json")
-else()
-    message(STATUS "nlohmann_json not found, fetching...")
-    # Avoid warning about DOWNLOAD_EXTRACT_TIMESTAMP in CMake 3.24+:
-    if (CMAKE_VERSION VERSION_GREATER_EQUAL "3.24.0")
-        cmake_policy(SET CMP0135 NEW)
-    endif()
-    include(FetchContent)
+# When part of a larger project, nlohmann_json may be made available by the greater project, but may or may not be
+# discoverable by find_package. Try to avoid imposing requirements on how projects procure their dependencies. If not
+# discoverable, no pre-defined target found, or when just building plotlypp (eg the examples), use FetchContent.
+if(NOT TARGET nlohmann_json::nlohmann_json)
+    find_package(nlohmann_json QUIET)
+    if(nlohmann_json_FOUND)
+        message(STATUS "Found system nlohmann_json")
+    else()
+        message(STATUS "nlohmann_json not found, fetching...")
+        # Avoid warning about DOWNLOAD_EXTRACT_TIMESTAMP in CMake 3.24+:
+        if (CMAKE_VERSION VERSION_GREATER_EQUAL "3.24.0")
+            cmake_policy(SET CMP0135 NEW)
+        endif()
+        include(FetchContent)
 
-    set(FETCHCONTENT_BASE_DIR ${PLOTLYPP_FETCH_CONTENT_DIR})
-    # Enable nlohmann::json install targets. Otherwise the plotlypp install targets complain the "local" dependency
-    # is not being exported.
-    set(JSON_Install ON)
-    FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz)
-    FetchContent_MakeAvailable(json)
+        set(FETCHCONTENT_BASE_DIR ${PLOTLYPP_FETCH_CONTENT_DIR})
+        # Enable nlohmann::json install targets. Otherwise the plotlypp install targets complain the "local" dependency
+        # is not being exported.
+        set(JSON_Install ON)
+        FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz)
+        FetchContent_MakeAvailable(json)
+    endif()
+else()
+    message(STATUS "Found pre-existing nlohmann_json::nlohmann_json target definition.")
 endif()
 set(JSON_TARGET nlohmann_json::nlohmann_json)
 
