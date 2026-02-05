@@ -122,8 +122,8 @@ Figure gen3dSurfaceTorus() {
 
     Eigen::MatrixXd u(kNumPoints, kNumPoints);
     Eigen::MatrixXd v(kNumPoints, kNumPoints);
-    for (int i = 0; i < kNumPoints; ++i) {
-        for (int j = 0; j < kNumPoints; ++j) {
+    for (auto i = 0u; i < kNumPoints; ++i) {
+        for (auto j = 0u; j < kNumPoints; ++j) {
             u(i, j) = ugrid[i][j];
             v(i, j) = vgrid[i][j];
         }

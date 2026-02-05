@@ -70,7 +70,7 @@ Figure gen3dSubplots() {
 
     std::vector<std::vector<double>> z(x_grid.size(), std::vector<double>(x_grid[0].size()));
 
-    for (auto i = 0; i < x_grid.size(); ++i) {
+    for (auto i = 0u; i < x_grid.size(); ++i) {
         for (size_t j = 0; j < x_grid[0].size(); ++j) {
             double x_val = x_grid[i][j];
             double y_val = y_grid[i][j];
@@ -137,9 +137,9 @@ VolcanoData generate_data(int n) {
     std::normal_distribution<> elev_dist(1000.0, 5000.0);
     std::uniform_real_distribution<> lon_dist(-180.0, 180.0);
     std::uniform_real_distribution<> lat_dist(-70.0, 80.0);
-    std::uniform_int_distribution<> status_dist(0, 1);
-    std::uniform_int_distribution<> type_dist(0, 3);
-    std::uniform_int_distribution<> country_dist(0, 5);
+    std::uniform_int_distribution<unsigned int> status_dist(0, 1);
+    std::uniform_int_distribution<unsigned int> type_dist(0, 3);
+    std::uniform_int_distribution<unsigned int> country_dist(0, 5);
 
     std::vector<std::string> statuses = {"Historical", "Holocene"};
     std::vector<std::string> types = {"Stratovolcano", "Shield volcano", "Submarine volcano", "Caldera"};

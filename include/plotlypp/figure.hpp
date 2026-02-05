@@ -51,7 +51,7 @@ class Figure {
     void toHtml(std::ostream& os) const {
         // Serialize and sanitize for HTML embedding.
         // This escapes '<' to '\u003c' so the browser never confuses JSON data for HTML tags.
-        auto html_safe_serialize = [this](const auto& json) {
+        auto html_safe_serialize = [](const auto& json) {
             std::string s = serialize(json);
             // Escape '<' to '\u003c' so the browser never confuses JSON data for HTML tags.
             size_t pos = 0;

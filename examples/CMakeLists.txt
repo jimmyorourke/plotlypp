@@ -24,6 +24,7 @@ add_library(math_utils
 target_include_directories(math_utils PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_compile_features(math_utils PUBLIC cxx_std_17)
 
+include(Warnings.cmake)
 
 add_executable(example
     example.cpp
@@ -42,9 +43,22 @@ target_link_libraries(example
     Eigen3::Eigen
 )
 
+target_include_directories(example SYSTEM PRIVATE
+    $<TARGET_PROPERTY:Eigen3::Eigen,INTERFACE_INCLUDE_DIRECTORIES>
+)
+
 if(PLOTLYPP_BUILD_MODULES)
     add_executable(module_example module_example.cpp)
     target_link_libraries(module_example PRIVATE plotlypp)
     # Must use at least C++20 for modules
     target_compile_features(module_example PRIVATE cxx_std_20)
 endif()
+
+set_target_warnings(example)
+target_compile_options(example PRIVATE
+    $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>>:
+        # Clang complains with -Wpedantic. For external users we also have the PLOTLYPP_SYSTEM_INCLUDE CMake option
+        # to treat all plotlypp headers as system headers.
+    	-Wno-overlength-strings
+    >
+)

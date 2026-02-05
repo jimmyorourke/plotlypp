@@ -12,6 +12,7 @@ endif()
 
 option(PLOTLYPP_BUILD_EXAMPLES "Build the examples" ${MAIN_PROJECT})
 option(PLOTLYPP_BUILD_MODULES "Build Plotly++ as a C++ module" OFF)
+option(PLOTLYPP_SYSTEM_INCLUDE "Include as system headers (skip for clang-tidy)." OFF)
 
 if(MAIN_PROJECT)
     set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -46,6 +47,10 @@ else()
 endif()
 set(JSON_TARGET nlohmann_json::nlohmann_json)
 
+if (PLOTLYPP_SYSTEM_INCLUDE)
+    set(PLOTLYPP_INCLUDE_TYPE "SYSTEM")
+endif()
+
 if(PLOTLYPP_BUILD_MODULES)
     # Build as C++20 module
     add_library(plotlypp STATIC)
@@ -68,7 +73,7 @@ else()
 endif()
 
 target_link_libraries(plotlypp ${SCOPE} ${JSON_TARGET})
-target_include_directories(plotlypp ${SCOPE}
+target_include_directories(plotlypp ${PLOTLYPP_INCLUDE_TYPE} ${SCOPE}
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
 )
