@@ -55,10 +55,3 @@ if(PLOTLYPP_BUILD_MODULES)
 endif()
 
 set_target_warnings(example)
-target_compile_options(example PRIVATE
-    $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>>:
-        # Clang complains with -Wpedantic. For external users we also have the PLOTLYPP_SYSTEM_INCLUDE CMake option
-        # to treat all plotlypp headers as system headers.
-    	-Wno-overlength-strings
-    >
-)

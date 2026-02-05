@@ -869,7 +869,12 @@ def package_js() -> None:
 
     writer = Writer(Path(__file__).parent.parent / "include" / "plotlypp" / "plotly_min_js.hpp")
     emit_preamble(writer)
+    writer.write("#include <plotlypp/warnings.hpp>")
+    writer.write("")
     writer.write("namespace plotlypp {")
+    writer.write("")
+    writer.write("PLOTLYPP_DISABLE_WARNING_PUSH")
+    writer.write("PLOTLYPP_DISABLE_WARNING_OVERLENGTH_STRINGS")
     writer.write("")
     writer.write("// Note: constexpr string_view excessively bloats compile times due to length counts.")
     writer.write(
@@ -899,6 +904,8 @@ def package_js() -> None:
         if i < len(segments) - 1:
             writer.write('"\\x1a"')
     writer.write(";")
+    writer.write("")
+    writer.write("PLOTLYPP_DISABLE_WARNING_POP")
     writer.write("")
     writer.write("} // namespace plotlypp")
     writer.close()

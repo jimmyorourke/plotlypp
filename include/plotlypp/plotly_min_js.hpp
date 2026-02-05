@@ -8,7 +8,12 @@
 
 #pragma once
 
+#include <plotlypp/warnings.hpp>
+
 namespace plotlypp {
+
+PLOTLYPP_DISABLE_WARNING_PUSH
+PLOTLYPP_DISABLE_WARNING_OVERLENGTH_STRINGS
 
 // Note: constexpr string_view excessively bloats compile times due to length counts.
 // Note: Plotly JS is chunked into multiple raw string literals to support MSVC limits, and 0x1a characters are escaped to avoid MSVC trating them as EOF.
@@ -5031,5 +5036,7 @@ window.Plotly = Plotly;
 return Plotly;
 }));)d0"
 ;
+
+PLOTLYPP_DISABLE_WARNING_POP
 
 } // namespace plotlypp
