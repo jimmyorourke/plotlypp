@@ -8,6 +8,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <cstdlib>
 #include <string>
 #include <type_traits>
 #include <utility>
@@ -145,16 +146,59 @@ class Figure {
     }
 
  private:
+    static bool isWSL2() {
+        std::ifstream version_file("/proc/version");
+        if (!version_file.is_open()) {
+            return false;
+        }
+        std::string line;
+        while (std::getline(version_file, line)) {
+            if (line.find("microsoft") != std::string::npos || 
+                line.find("wsl") != std::string::npos) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    static std::string wslToWindowsPath(const std::string& wslPath) {
+        // Get WSL distro name from environment variable
+        const char* distroName = std::getenv("WSL_DISTRO_NAME");
+        if (!distroName) {
+            distroName = "Ubuntu-22.04";  // fallback
+        }
+        
+        // Construct file:// URL for Windows browser to access WSL files
+        // Format: file://wsl.localhost/{distro_name}/{unix_path}
+        std::string fileUrl = "file://wsl.localhost/" + std::string(distroName) + wslPath;
+        
+        // Escape spaces for cmd.exe
+        size_t pos = 0;
+        while ((pos = fileUrl.find(' ', pos)) != std::string::npos) {
+            fileUrl.replace(pos, 1, "%20");
+            pos += 3;
+        }
+        
+        return fileUrl;
+    }
+
     void showInBrowser(const std::string& plotFile) const {
         std::cout << "opening " << plotFile << "\n";
 #ifdef _WIN32
-        system(("cmd /C start " + plotFile).c_str());
+        [[maybe_unused]] const int rc = system(("cmd /C start " + plotFile).c_str());
 #elif __APPLE__
-        system(("open " + plotFile).c_str());
+        [[maybe_unused]] const int rc = system(("open " + plotFile).c_str());
 #elif __linux__
-        // On some systems, using `system` opens a text editor rather than a web browser, for unknown reasons.
-        if (auto* pipe = popen(("xdg-open " + plotFile).c_str(), "r"); pipe) {
-            pclose(pipe);
+        if (isWSL2()) {
+            // In WSL2, convert WSL path to Windows path and use Windows cmd to open the browser
+            std::string winPath = wslToWindowsPath(plotFile);
+            [[maybe_unused]] const int rc = system(("cmd.exe /C start " + winPath).c_str());
+        } else {
+            // On native Linux, use xdg-open
+            // On some systems, using `system` opens a text editor rather than a web browser, for unknown reasons.
+            if (auto* pipe = popen(("xdg-open " + plotFile).c_str(), "r"); pipe) {
+                pclose(pipe);
+            }
         }
 #else
         // Force a linker error, only if this function is actually called.
